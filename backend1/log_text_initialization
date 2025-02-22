@@ -1,0 +1,3 @@
+# Initialize logging
+log_file_path = os.path.join(os.getcwd(), 'LogName.log')
+logging.basicConfig(filename=log_file_path, level=logging.INFO, format='%(asctime)s %(message)s')
