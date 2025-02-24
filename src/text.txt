@@ -8,7 +8,16 @@ import './L_1_HomePage4.css';
 import './L_1_HomePage5.css';
 import './L_1_HomePage6.css';
 
+git status
 
-PS C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy> git push -u origin master:blueprint-sketch-update8
+git rev-parse HEAD  # Should show current
 
-PS C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy> git commit -m "Add src directory and package.json 9" 
+git remote -v  # Should show https://github.com/Mohsendirbaz/SF.git
+
+git checkout -b SF.R2
+
+git add .
+
+git commit -m "Initial commit for SF.R2 branch"
+
+git push origin SF.R2

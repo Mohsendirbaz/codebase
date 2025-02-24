@@ -54,12 +54,13 @@ def save_structure(structure: Dict[str, Any], output_file: str) -> None:
         json.dump(structure, f, indent=2)
 
 def main():
-    upload_dir = r"C:\Users\md8w7\OneDrive University of Missouri\Desktop\ImportantFiles\Milestone4"
-    output_file = os.path.join(upload_dir, "g_src_directory_scanner.json")
-    Base_dir = r"C:\Users\md8w7\OneDrive University of Missouri\Desktop\ImportantFiles\Milestone4\src"
+    # Use relative paths
+    current_dir = os.path.dirname(__file__)
+    output_file = os.path.join(current_dir, "g_src_directory_scanner.json")
+    Base_dir = os.path.join(current_dir, "src")
 
-    if not os.path.exists(upload_dir):
-        print(f"Directory not found: {upload_dir}")
+    if not os.path.exists(Base_dir):
+        print(f"Directory not found: {Base_dir}")
         return
         
     structure = analyze_directory_structure(Base_dir)

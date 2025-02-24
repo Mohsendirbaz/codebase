@@ -114,3 +114,13 @@
 2025-02-24 07:05:40 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on http://127.0.0.1:5008
 2025-02-24 07:05:40 [INFO] [33mPress CTRL+C to quit[0m
+2025-02-24 15:15:52 [INFO] Initialized logging in C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\PNG.log
+2025-02-24 15:15:52 [INFO] Backend directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend
+2025-02-24 15:15:52 [INFO] Script directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Visualization_generators
+2025-02-24 15:15:52 [INFO] Starting PNG visualization server on port 5008
+2025-02-24 15:15:52 [INFO] Serving images from: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original
+2025-02-24 15:15:52 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5008
+2025-02-24 15:15:52 [INFO] [33mPress CTRL+C to quit[0m
+2025-02-24 15:17:07 [INFO] 127.0.0.1 - - [24/Feb/2025 15:17:07] "GET /images/Batch(2)/Results(2)/2_PieStaticPlots/Operational_Cost_Breakdown_Pie_Chart(2).png HTTP/1.1" 200 -
+2025-02-24 15:17:07 [INFO] 127.0.0.1 - - [24/Feb/2025 15:17:07] "[36mGET /images/Batch(2)/Results(2)/2_PieStaticPlots/Operational_Cost_Breakdown_Pie_Chart(2).png HTTP/1.1[0m" 304 -

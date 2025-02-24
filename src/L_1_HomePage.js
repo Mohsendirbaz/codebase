@@ -23,7 +23,7 @@ import EditableHierarchicalList from './Editable';
 import SpatialTransformComponent from './naturalmotion';
 import SensitivityAnalysis from './components/SensitivityAnalysis';
 import useFormValues from './useFormValues.js';
-
+import TestingZone from './components/TestingZone';
 const L_1_HomePageContent = () => {
     const [activeTab, setActiveTab] = useState('Input');
     const [activeSubTab, setActiveSubTab] = useState('ProjectConfig');
@@ -1274,8 +1274,11 @@ const L_1_HomePageContent = () => {
                 );
             case 'SensitivityAnalysis':
                 return <SensitivityAnalysis />;
-            default:
-                return null;
+           
+            case 'TestingZone':
+            return <TestingZone />;
+        default:
+            return null;
         }
     };
 
@@ -1363,6 +1366,12 @@ const L_1_HomePageContent = () => {
                             onClick={() => setActiveTab('SensitivityAnalysis')}
                         >
                             Sensitivity Analysis
+                        </button>
+                        <button
+                            className={`tab-button ${activeTab === 'TestingZone' ? 'active' : ''}`}
+                            onClick={() => setActiveTab('TestingZone')}
+                        >
+                            Testing Zone
                         </button>
                     </div>
                 </nav>

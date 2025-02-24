@@ -36,8 +36,9 @@ def analyze_backend_directory(backend_path, output_path):
         json.dump(directory_structure, f, indent=2)
 
 def main():
-    backend_path = r"C:\Users\md8w7\OneDrive University of Missouri\Desktop\ImportantFiles\Milestone4\backend"
-    output_path = r"C:\Users\md8w7\OneDrive University of Missouri\Desktop\ImportantFiles\Milestone4\backend\c_backend_directory_structure.json"
+    # Use relative paths
+    backend_path = os.path.join(os.path.dirname(__file__), "backend")
+    output_path = os.path.join(backend_path, "c_backend_directory_structure.json")
     
     try:
         analyze_backend_directory(backend_path, output_path)

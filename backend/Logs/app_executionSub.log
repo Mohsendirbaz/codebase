@@ -112,3 +112,11 @@
 2025-02-24 08:14:12,887 DEBUG Logging is configured and working correctly.
 2025-02-24 08:14:12,963 WARNING  * Debugger is active!
 2025-02-24 08:14:12,970 INFO  * Debugger PIN: 119-059-632
+2025-02-24 15:15:53,934 DEBUG Logging is configured and working correctly.
+2025-02-24 15:15:53,984 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5009
+2025-02-24 15:15:53,984 INFO [33mPress CTRL+C to quit[0m
+2025-02-24 15:15:53,984 INFO  * Restarting with stat
+2025-02-24 15:15:54,453 DEBUG Logging is configured and working correctly.
+2025-02-24 15:15:54,484 WARNING  * Debugger is active!
+2025-02-24 15:15:54,488 INFO  * Debugger PIN: 119-059-632
