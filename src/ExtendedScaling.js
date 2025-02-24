@@ -3,6 +3,7 @@ import { Tab } from '@headlessui/react';
 import { ArrowPathIcon, PlusIcon, TrashIcon, LockClosedIcon, LockOpenIcon } from '@heroicons/react/24/outline';
 import * as math from 'mathjs';
 import ScalingSummary from './ScalingSummary';
+import './L_1_HomePage4.css';
 import { DndProvider, useDrag, useDrop } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -118,10 +119,12 @@ const ExtendedScaling = ({
           isProtected: false,
           items: baseCosts.map(cost => ({
             ...cost,
+            baseValue: parseFloat(cost.value) || cost.baseValue || 0,
             scalingFactor: 1,
             operation: 'multiply',
             enabled: true,
-            notes: ''
+            notes: '',
+            scaledValue: parseFloat(cost.value) || cost.baseValue || 0
           }))
         }];
     
@@ -253,13 +256,15 @@ const ExtendedScaling = ({
       id: `group-${Date.now()}`,
       name: `Scaling Group ${scalingGroups.length + 1}`,
       isProtected: false,
-      items: baseCosts.map(cost => ({
-        ...cost,
-        scalingFactor: 1,
-        operation: 'multiply',
-        enabled: true,
-        notes: ''
-      }))
+          items: baseCosts.map(cost => ({
+            ...cost,
+            baseValue: cost.baseValue || 0,
+            scalingFactor: 1,
+            operation: 'multiply',
+            enabled: true,
+            notes: '',
+            scaledValue: cost.baseValue || 0
+          }))
     };
     
     const newGroups = [...scalingGroups, newGroup];
@@ -420,20 +425,28 @@ const ExtendedScaling = ({
                   <div className="scaling-tab-content">
                     <span>{group.name}</span>
                     <div className="scaling-tab-actions">
-                      <button
+                      <div
                         className="scaling-tab-action"
                         onClick={(e) => {
                           e.stopPropagation();
                           toggleProtection(group.id);
                         }}
                         title={protectedTabs.has(group.id) ? 'Protected (Click to unprotect)' : 'Unprotected (Click to protect)'}
+                        role="button"
+                        tabIndex={0}
+                        onKeyPress={(e) => {
+                          if (e.key === 'Enter' || e.key === ' ') {
+                            e.stopPropagation();
+                            toggleProtection(group.id);
+                          }
+                        }}
                       >
                         {protectedTabs.has(group.id) ? (
                           <LockClosedIcon className="scaling-action-icon" />
                         ) : (
                           <LockOpenIcon className="scaling-action-icon" />
                         )}
-                      </button>
+                      </div>
                       {scalingGroups.length > 1 && !protectedTabs.has(group.id) && (
                         <TrashIcon
                           className="scaling-remove-icon"

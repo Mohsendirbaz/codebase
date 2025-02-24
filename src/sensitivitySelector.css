@@ -232,3 +232,34 @@
     background-color: var(--primary-color);
     color: white;
 }
+
+.sensitivity-results {
+    padding: 20px;
+    background: var(--bg-color);
+}
+
+.sensitivity-parameter-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.sensitivity-plots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.sensitivity-plot {
+    padding: 15px;
+    background: var(--bg-color-secondary);
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.sensitivity-plot h4 {
+    margin: 0 0 10px 0;
+    color: var(--text-color-primary);
+}

@@ -116,7 +116,7 @@ def update_and_save_config_module(config_received, config_matrix_df, results_fol
 # Example function to demonstrate usage (this is just for context, not part of the core functionality)
 def main(version):
     # Set the path to the directory containing the modules
-    code_files_path = r"C:\Users\md8w7\OneDrive University of Missouri\Desktop\ImportantFiles\Milestone4\backend\Original"
+    code_files_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "backend", "Original")
     
     results_folder = os.path.join(code_files_path,f"Batch({version})", f"Results({version})")
     config_matrix_file = os.path.join(results_folder, f"General_Configuration_Matrix({version}).csv")

@@ -33,11 +33,20 @@ COMMON_PYTHON_SCRIPTS = [
     os.path.join(SCRIPT_DIR, "Configuration_management", 'formatter.py'),
     os.path.join(SCRIPT_DIR, "Configuration_management", 'module1.py'),
     os.path.join(SCRIPT_DIR, "Configuration_management", 'update_config_modules_with_CFA.py'),
-    os.path.join(SCRIPT_DIR, "API_endpoints_and_controllers", 'Table.py')
+    os.path.join(SCRIPT_DIR, "Configuration_management", 'Table.py')
 ]
 
+def get_calculation_script(version):
+    """Get the appropriate calculation script based on version number"""
+    script_name = f'update_config_modules_with_CFA_{version}.py'
+    script_path = os.path.join(SCRIPT_DIR, "Core_calculation_engines", script_name)
+    if os.path.exists(script_path):
+        return script_path
+    raise Exception(f"Calculation script not found for version {version}")
+
 CALCULATION_SCRIPTS = {
-    'calculateForPrice': os.path.join(SCRIPT_DIR, "Core_calculation_engines", 'update_config_modules_with_CFA_8.py')
+    'calculateForPrice': get_calculation_script,
+    'freeFlowNPV': get_calculation_script
 }
 
 PLOT_SCRIPTS = {}
@@ -121,6 +130,48 @@ def process_version(version, calculation_script, selected_v, selected_f, target_
         error_msg = f"Error processing version {version}: {str(e)}"
         logging.exception(error_msg)
         return error_msg
+
+def log_run_configuration(logger, config):
+    """Log run configuration in a structured format"""
+    logger.info("\n" + "="*80)
+    logger.info("CFA Run Configuration")
+    logger.info("="*80)
+    
+    # Basic Configuration
+    logger.info("\nBasic Configuration:")
+    logger.info(f"Version(s): {', '.join(map(str, config['versions']))}")
+    logger.info(f"Calculation Mode: {config['calculationOption']}")
+    if config['calculationOption'] == 'calculateForPrice':
+        logger.info(f"Target Row: {config['targetRow']}")
+    
+    # Parameter States
+    logger.info("\nParameter States:")
+    v_enabled = [k for k, v in config['selectedV'].items() if v == 'on']
+    f_enabled = [k for k, v in config['selectedF'].items() if v == 'on']
+    logger.info(f"Enabled V Parameters: {', '.join(v_enabled) if v_enabled else 'None'}")
+    logger.info(f"Enabled F Parameters: {', '.join(f_enabled) if f_enabled else 'None'}")
+    
+    # Sensitivity Configuration (if enabled)
+    enabled_params = [k for k, v in config['senParameters'].items() if v.get('enabled')]
+    if enabled_params:
+        logger.info("\nSensitivity Analysis Configuration:")
+        logger.info(f"Enabled Parameters: {', '.join(enabled_params)}")
+        for param_id in enabled_params:
+            param_config = config['senParameters'][param_id]
+            logger.info(f"\n{param_id} Configuration:")
+            logger.info(f"  Mode: {param_config.get('mode')}")
+            logger.info(f"  Values: {param_config.get('values')}")
+            if param_config.get('compareToKey'):
+                logger.info(f"  Comparison:")
+                logger.info(f"    Target: {param_config['compareToKey']}")
+                logger.info(f"    Type: {param_config.get('comparisonType', 'primary')}")
+                plot_types = []
+                if param_config.get('waterfall'): plot_types.append('waterfall')
+                if param_config.get('bar'): plot_types.append('bar')
+                if param_config.get('point'): plot_types.append('point')
+                logger.info(f"    Plot Types: {', '.join(plot_types)}")
+    
+    logger.info("\n" + "="*80 + "\n")
 
 def process_sensitivity_visualization(senParameters):
     """
@@ -237,202 +288,153 @@ app = initialize_app()
 def run_calculations():
     """Orchestrates the execution sequence of configuration updates and calculations."""
     sensitivity_logger = logging.getLogger('sensitivity')
+    run_id = time.strftime("%Y%m%d_%H%M%S")
+    
     try:
         data = request.get_json()
         if not data:
             return jsonify({"error": "No data provided"}), 400
 
-        version = data.get('selectedVersions', [1])[0]
-        selected_v = data.get('selectedV', {f'V{i+1}': 'off' for i in range(10)})
-        selected_f = data.get('selectedF', {f'F{i+1}': 'off' for i in range(5)})
-        target_row = int(data.get('targetRow', 20))
-        sen_parameters = data.get('senParameters', {})
+        # Extract and validate configuration
+        config = {
+            'versions': data.get('selectedVersions', [1]),
+            'selectedV': data.get('selectedV', {f'V{i+1}': 'off' for i in range(10)}),
+            'selectedF': data.get('selectedF', {f'F{i+1}': 'off' for i in range(5)}),
+            'calculationOption': data.get('selectedCalculationOption', 'freeFlowNPV'),
+            'targetRow': int(data.get('targetRow', 20)),
+            'senParameters': data.get('senParameters', {})
+        }
+        
+        # Log run configuration
+        log_run_configuration(sensitivity_logger, config)
 
-        run_id = time.strftime("%Y%m%d_%H%M%S")
-        sensitivity_logger.info(f"\n{'='*80}\nInitiating Sensitivity Calculation Run - ID: {run_id}\n{'='*80}")
-        sensitivity_logger.info(f"Configuration Details:")
-        sensitivity_logger.info(f"Version: {version}")
-        sensitivity_logger.info(f"Target Row: {target_row}")
-        sensitivity_logger.info(f"Selected V Parameters: {json.dumps(selected_v, indent=2)}")
-        sensitivity_logger.info(f"Selected F Parameters: {json.dumps(selected_f, indent=2)}")
-
-        # Step 1: Run common Python scripts
-        sensitivity_logger.info("\nExecuting Common Python Scripts:")
+        # Step 1: Execute configuration management scripts
+        sensitivity_logger.info("\nExecuting Configuration Management Scripts:")
+        start_time = time.time()
+        
         for script in COMMON_PYTHON_SCRIPTS:
-            sensitivity_logger.info(f"Executing: {os.path.basename(script)}")
+            script_name = os.path.basename(script)
+            script_start = time.time()
+            sensitivity_logger.info(f"\nExecuting: {script_name}")
+            
             result = subprocess.run(
-                ['python', script, str(version)],
+                ['python', script, str(config['versions'][0])],
                 capture_output=True,
                 text=True
             )
             
             if result.returncode != 0:
-                error_msg = f"Script execution failed: {os.path.basename(script)}\nError: {result.stderr}"
+                error_msg = f"Script execution failed: {script_name}\nError: {result.stderr}"
                 sensitivity_logger.error(error_msg)
                 raise Exception(error_msg)
-            sensitivity_logger.info(f"Successfully completed: {os.path.basename(script)}")
+            
+            script_duration = time.time() - script_start
+            sensitivity_logger.info(f"Completed {script_name} in {script_duration:.2f}s")
+            time.sleep(0.5)  # Ensure proper sequencing
+        
+        config_time = time.time() - start_time
+        sensitivity_logger.info(f"\nConfiguration scripts completed in {config_time:.2f}s")
 
-        # Step 2: Process sensitivity parameters
-        sensitivity_logger.info("\nProcessing Sensitivity Parameters:")
-        enabled_params = [param_id for param_id, config in sen_parameters.items() if config.get('enabled')]
-        sensitivity_logger.info(f"Found {len(enabled_params)} enabled sensitivity parameters")
+        # Step 2: Process calculations based on mode
+        sensitivity_logger.info("\nProcessing Calculations:")
+        calc_start = time.time()
+        
+        # Get calculation script
+        calculation_script_func = CALCULATION_SCRIPTS.get(config['calculationOption'])
+        if not calculation_script_func:
+            raise Exception(f"No script found for calculation mode: {config['calculationOption']}")
+        
+        calculation_script = calculation_script_func(config['versions'][0])
+        sensitivity_logger.info(f"Using calculation script: {os.path.basename(calculation_script)}")
+        
+        # Run baseline calculation first
+        sensitivity_logger.info("\nExecuting baseline calculation:")
+        result = subprocess.run(
+            [
+                'python',
+                calculation_script,
+                str(config['versions'][0]),
+                json.dumps(config['selectedV']),
+                json.dumps(config['selectedF']),
+                str(config['targetRow']),
+                config['calculationOption'],
+                '{}'  # Empty senParameters for baseline
+            ],
+            capture_output=True,
+            text=True
+        )
+        
+        if result.returncode != 0:
+            error_msg = f"Baseline calculation failed: {result.stderr}"
+            sensitivity_logger.error(error_msg)
+            raise Exception(error_msg)
+        
+        sensitivity_logger.info("Baseline calculation completed successfully")
 
-        for param_id, config in sen_parameters.items():
-            if not config.get('enabled'):
-                continue
-
-            sensitivity_logger.info(f"\nProcessing Parameter: {param_id}")
-            sensitivity_logger.info(f"Mode: {config.get('mode')}")
-            sensitivity_logger.info(f"Values: {config.get('values')}")
-
-            # Get the calculation script path from configuration
-            calculation_script = CALCULATION_SCRIPTS.get('calculateForPrice')
-            if not calculation_script:
-                raise Exception("Calculation script path not found in configuration")
+        # Step 3: Process sensitivity parameters if enabled
+        enabled_params = [k for k, v in config['senParameters'].items() if v.get('enabled')]
+        if enabled_params:
+            sensitivity_logger.info(f"\nProcessing {len(enabled_params)} sensitivity parameters:")
+            
+            for param_id, param_config in config['senParameters'].items():
+                if not param_config.get('enabled'):
+                    continue
+                    
+                param_start = time.time()
+                sensitivity_logger.info(f"\nProcessing {param_id}:")
+                sensitivity_logger.info(f"Mode: {param_config.get('mode')}")
+                sensitivity_logger.info(f"Values: {param_config.get('values')}")
                 
-            result = subprocess.run(
-                [
-                    'python',
-                    calculation_script,
-                    str(version),
-                    json.dumps(selected_v),
-                    json.dumps(selected_f),
-                    str(target_row),
-                    'calculateForPrice',
-                    json.dumps({param_id: config})
-                ],
-                capture_output=True,
-                text=True
-            )
-            
-            if result.returncode != 0:
-                error_msg = f"Calculation failed for parameter {param_id}: {result.stderr}"
-                sensitivity_logger.error(error_msg)
-                raise Exception(error_msg)
-            
-            sensitivity_logger.info(f"Successfully completed calculations for {param_id}")
+                result = subprocess.run(
+                    [
+                        'python',
+                        calculation_script,
+                        str(config['versions'][0]),
+                        json.dumps(config['selectedV']),
+                        json.dumps(config['selectedF']),
+                        str(config['targetRow']),
+                        config['calculationOption'],
+                        json.dumps({param_id: param_config})
+                    ],
+                    capture_output=True,
+                    text=True
+                )
+                
+                if result.returncode != 0:
+                    error_msg = f"Sensitivity calculation failed for {param_id}: {result.stderr}"
+                    sensitivity_logger.error(error_msg)
+                    raise Exception(error_msg)
+                
+                param_duration = time.time() - param_start
+                sensitivity_logger.info(f"Completed {param_id} in {param_duration:.2f}s")
 
+        total_time = time.time() - start_time
         sensitivity_logger.info(f"\n{'='*80}")
-        sensitivity_logger.info(f"Sensitivity Calculations Complete - Run ID: {run_id}")
-        sensitivity_logger.info(f"Total Parameters Processed: {len(enabled_params)}")
+        sensitivity_logger.info(f"Run Summary - ID: {run_id}")
+        sensitivity_logger.info(f"Total execution time: {total_time:.2f}s")
+        sensitivity_logger.info(f"Configuration scripts: {config_time:.2f}s")
+        sensitivity_logger.info(f"Calculations completed: {len(enabled_params) + 1}")  # +1 for baseline
         sensitivity_logger.info(f"{'='*80}\n")
 
+        # Return success response with timing information
         return jsonify({
             "status": "success",
             "message": "Calculations completed successfully",
-            "runId": run_id
+            "runId": run_id,
+            "timing": {
+                "total": f"{total_time:.2f}s",
+                "configuration": f"{config_time:.2f}s",
+                "calculations": len(enabled_params) + 1
+            }
         })
 
     except Exception as e:
         error_msg = f"Error during orchestrated calculations: {str(e)}"
         sensitivity_logger.error(error_msg)
-        return jsonify({"error": error_msg}), 500
-        for param_id, config in sen_parameters.items():
-            if not config.get('enabled'):
-                continue
-
-            sensitivity_script = os.path.join(
-                SCRIPT_DIR,
-                "Configuration_management",
-                'update_config_modules_with_CFA.py'
-            )
-            
-            sensitivity_params = {
-                'param_id': param_id,
-                'mode': config.get('mode'),
-                'values': config.get('values', [])
-            }
-            
-            result = subprocess.run(
-                [
-                    'python',
-                    sensitivity_script,
-                    str(version),
-                    json.dumps(sensitivity_params)
-                ],
-                capture_output=True,
-                text=True
-            )
-            
-            if result.returncode != 0:
-                raise Exception(f"Sensitivity configuration update failed for {param_id}: {result.stderr}")
-
-        # Step 3: Run financial calculations
-        calculation_script = os.path.join(
-            SCRIPT_DIR,
-            "Core_calculation_engines",
-            'update_config_modules_with_CFA_8.py'
-        )
-        
-        # First run baseline calculation
-        logging.info(f"Executing baseline calculation with parameters: version={version}, target_row={target_row}")
-        command = [
-            'python',
-            calculation_script,
-            str(version),
-            json.dumps(selected_v),
-            json.dumps(selected_f),
-            str(target_row),
-            'calculateForPrice',
-            '{}'  # Empty senParameters for baseline
-        ]
-        logging.debug(f"Executing command: {' '.join(command)}")
-        
-        result = subprocess.run(
-            command,
-            capture_output=True,
-            text=True
-        )
-        
-        if result.stdout:
-            logging.debug(f"Calculation output: {result.stdout[:200]}...")
-        
-        if result.returncode != 0:
-            raise Exception(f"Baseline calculation failed: {result.stderr}")
-
-        # Then run calculations for each sensitivity configuration
-        results = {}
-        for param_id, config in sen_parameters.items():
-            if not config.get('enabled'):
-                continue
-
-            result = subprocess.run(
-                [
-                    'python',
-                    calculation_script,
-                    str(version),
-                    json.dumps(selected_v),
-                    json.dumps(selected_f),
-                    str(target_row),
-                    'calculateForPrice',
-                    json.dumps({param_id: config})
-                ],
-                capture_output=True,
-                text=True
-            )
-            
-            if result.returncode != 0:
-                raise Exception(f"Sensitivity calculation failed for {param_id}: {result.stderr}")
-                
-            try:
-                if result.stdout.strip():
-                    results[param_id] = json.loads(result.stdout)
-                else:
-                    logging.warning(f"Empty output received for {param_id}")
-                    results[param_id] = {}
-            except json.JSONDecodeError as e:
-                logging.error(f"Failed to parse JSON output for {param_id}: {str(e)}\nOutput: {result.stdout}")
-                results[param_id] = {"error": "Invalid output format"}
-
         return jsonify({
-            "status": "success",
-            "message": "Calculations completed successfully",
-            "results": results
-        })
-
-    except Exception as e:
-        logging.error(f"Error during orchestrated calculations: {str(e)}")
-        return jsonify({"error": str(e)}), 500
+            "error": error_msg,
+            "runId": run_id
+        }), 500
 
 @app.route('/sensitivity/visualization', methods=['POST'])
 def get_sensitivity_visualization():

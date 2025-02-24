@@ -97,6 +97,10 @@ Thumbs.db
 !/src
 !/src/**
 
+# Include backend folder
+!/backend
+!/backend/**
+
 # Include root files
 !/*.*
 

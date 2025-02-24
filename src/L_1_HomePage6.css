@@ -168,3 +168,43 @@
     background-color: #ef4444;
     color: white;
 }
+
+/* CFS Form Button States */
+.todo-button,
+.version-button,
+.add-todo-button {
+    transition: all 0.2s ease-in-out;
+}
+
+.todo-button:hover,
+.todo-button:focus,
+.version-button:hover,
+.version-button:focus,
+.add-todo-button:hover,
+.add-todo-button:focus {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    opacity: 0.9;
+}
+
+.todo-button:active,
+.version-button:active,
+.add-todo-button:active {
+    transform: translateY(2px);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Specific button color states */
+.todo-button.edit:hover,
+.todo-button.edit:focus,
+.version-button.load:hover,
+.version-button.load:focus {
+    background-color: #2980b9;
+}
+
+.todo-button.delete:hover,
+.todo-button.delete:focus,
+.version-button.delete:hover,
+.version-button.delete:focus {
+    background-color: #dc2626;
+}

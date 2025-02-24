@@ -2,7 +2,7 @@
     "name": "my-dashboard",
     "version": "1.0.0",
     "private": true,
-    "main": "public/electron.js",
+    "main": "src/index.js",
     "dependencies": {
         "@atlaskit/drag-and-drop": "^0.15.1",
         "@fortawesome/fontawesome-svg-core": "^6.7.2",
@@ -129,5 +129,16 @@
         "stylelint-order": "^6.0.4",
         "tailwindcss": "^4.0.6",
         "wait-on": "^7.2.0"
-    }
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Mohsendirbaz/SF.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Mohsendirbaz/SF/issues"
+    },
+    "homepage": "/",
+    "description": ""
 }

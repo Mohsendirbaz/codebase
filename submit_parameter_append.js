@@ -8,7 +8,7 @@ const app = express();
 app.use(bodyParser.text({ type: '*/*' })); // Use text parser for all content types
 app.use(cors());
 
-const NF3_ML_DIR = "C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4-Copy\\backend";
+const NF3_ML_DIR = "C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend";
 
 // Function to check write permissions
 const checkWritePermissions = (dir) => {

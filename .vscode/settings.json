@@ -1,7 +1,0 @@
-{
-    "terminal.integrated.cwd": "${workspaceFolder}",
-
-    "files.autoSave": "afterDelay",
-    "files.autoSaveDelay": 500,
-    
-}
