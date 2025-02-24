@@ -34,8 +34,8 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
   // Previous helper functions remain the same
   const getVNumber = (vAmountNum) => {
     const num = parseInt(vAmountNum);
-    if (num >= 40 && num <= 49) return `Variable Cost ${num - 39}`;
-    if (num >= 50 && num <= 59) return `Variable Cost ${num - 49}`;
+    if (num >= 40 && num <= 49) return `V${num - 39}`;
+    if (num >= 50 && num <= 59) return `V${num - 49}`;
     return null;
   };
 
@@ -44,7 +44,7 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
     if (!match) return null;
 
     const num = parseInt(match[1]);
-    if (num >= 34 && num <= 38) return `Fixed Cost ${num - 33}`;
+    if (num >= 34 && num <= 38) return `F${num - 33}`;
     return null;
   };
 

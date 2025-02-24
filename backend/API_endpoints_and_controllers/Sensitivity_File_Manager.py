@@ -50,10 +50,15 @@ class SensitivityFileManager:
             raise
 
     def get_plot_path(self, version: int, mode: str, plot_type: str, param_id: str, 
-                     compare_to_key: str, comparison_type: str) -> str:
-        """Constructs the full path for a plot file."""
+                     compare_to_key: str, comparison_type: str) -> dict:
+        """
+        Constructs the full path for a plot file and returns its status.
+        
+        Returns:
+            dict: Plot information including path and status
+        """
         plot_name = f"{plot_type}_{param_id}_{compare_to_key}_{comparison_type}.png"
-        return os.path.join(
+        full_path = os.path.join(
             self.base_dir,
             f'Batch({version})',
             f'Results({version})',
@@ -61,23 +66,102 @@ class SensitivityFileManager:
             mode.capitalize(),
             plot_name
         )
+        
+        plot_info = {
+            'name': plot_name,
+            'full_path': full_path,
+            'relative_path': None,
+            'status': 'not_found',
+            'error': None,
+            'metadata': {
+                'version': version,
+                'mode': mode,
+                'plot_type': plot_type,
+                'param_id': param_id,
+                'compare_to_key': compare_to_key,
+                'comparison_type': comparison_type,
+                'last_modified': None,
+                'file_size': None
+            }
+        }
+        
+        try:
+            if os.path.exists(full_path):
+                plot_info.update({
+                    'status': 'ready',
+                    'relative_path': os.path.relpath(full_path, self.base_dir),
+                    'error': None,
+                    'metadata': {
+                        **plot_info['metadata'],
+                        'last_modified': os.path.getmtime(full_path),
+                        'file_size': os.path.getsize(full_path)
+                    }
+                })
+            else:
+                plot_info['error'] = f"Plot file not found: {plot_name}"
+        except Exception as e:
+            plot_info.update({
+                'status': 'error',
+                'error': str(e)
+            })
+            self.logger.error(f"Error getting plot info for {plot_name}: {str(e)}")
+        
+        return plot_info
 
     def store_calculation_result(self, version: int, param_id: str, 
-                               result_data: Dict, mode: str) -> str:
-        """Stores calculation results in JSON format."""
-        result_path = os.path.join(
-            self.base_dir,
-            f'Batch({version})',
-            f'Results({version})',
-            'Sensitivity',
-            mode.capitalize(),
-            f"{param_id}_results.json"
-        )
+                               result_data: Dict, mode: str) -> dict:
+        """
+        Stores calculation results in JSON format with metadata.
         
-        with open(result_path, 'w') as f:
-            json.dump(result_data, f, indent=4)
+        Returns:
+            dict: Result information including path and status
+        """
+        result_info = {
+            'path': None,
+            'status': 'error',
+            'error': None,
+            'metadata': {
+                'version': version,
+                'param_id': param_id,
+                'mode': mode,
+                'timestamp': datetime.now().isoformat(),
+                'size': 0
+            }
+        }
         
-        return result_path
+        try:
+            result_path = os.path.join(
+                self.base_dir,
+                f'Batch({version})',
+                f'Results({version})',
+                'Sensitivity',
+                mode.capitalize(),
+                f"{param_id}_results.json"
+            )
+            
+            # Ensure directory exists
+            os.makedirs(os.path.dirname(result_path), exist_ok=True)
+            
+            with open(result_path, 'w') as f:
+                json.dump(result_data, f, indent=4)
+            
+            result_info.update({
+                'path': result_path,
+                'status': 'success',
+                'metadata': {
+                    **result_info['metadata'],
+                    'size': os.path.getsize(result_path)
+                }
+            })
+            
+            self.logger.info(f"Stored calculation result for {param_id} at {result_path}")
+            
+        except Exception as e:
+            error_msg = f"Error storing calculation result: {str(e)}"
+            result_info['error'] = error_msg
+            self.logger.error(error_msg)
+        
+        return result_info
 
     def create_analysis_report(self, version: int, analysis_data: Dict) -> str:
         """Creates an HTML report from analysis results."""
@@ -164,21 +248,65 @@ class SensitivityFileManager:
         
         return cache_path
 
-    def cleanup_cache(self, version: int, older_than_days: int = 7):
-        """Cleans up cached calculation data older than specified days."""
-        cache_dir = os.path.join(
-            self.base_dir,
-            f'Batch({version})',
-            f'Results({version})',
-            'Calculation_Cache'
-        )
+    def cleanup_cache(self, version: int, older_than_days: int = 7) -> dict:
+        """
+        Cleans up cached calculation data older than specified days.
         
-        current_time = datetime.now()
-        for file_name in os.listdir(cache_dir):
-            file_path = os.path.join(cache_dir, file_name)
-            file_modified = datetime.fromtimestamp(os.path.getmtime(file_path))
-            if (current_time - file_modified).days > older_than_days:
-                os.remove(file_path)
+        Returns:
+            dict: Cleanup operation results
+        """
+        cleanup_info = {
+            'files_removed': [],
+            'errors': [],
+            'total_space_freed': 0
+        }
+        
+        try:
+            cache_dir = os.path.join(
+                self.base_dir,
+                f'Batch({version})',
+                f'Results({version})',
+                'Calculation_Cache'
+            )
+            
+            if not os.path.exists(cache_dir):
+                return cleanup_info
+            
+            current_time = datetime.now()
+            for file_name in os.listdir(cache_dir):
+                try:
+                    file_path = os.path.join(cache_dir, file_name)
+                    file_modified = datetime.fromtimestamp(os.path.getmtime(file_path))
+                    
+                    if (current_time - file_modified).days > older_than_days:
+                        file_size = os.path.getsize(file_path)
+                        os.remove(file_path)
+                        cleanup_info['files_removed'].append({
+                            'name': file_name,
+                            'path': file_path,
+                            'size': file_size,
+                            'age_days': (current_time - file_modified).days
+                        })
+                        cleanup_info['total_space_freed'] += file_size
+                        
+                except Exception as e:
+                    cleanup_info['errors'].append({
+                        'file': file_name,
+                        'error': str(e)
+                    })
+                    self.logger.error(f"Error cleaning up {file_name}: {str(e)}")
+            
+            self.logger.info(
+                f"Cache cleanup completed: removed {len(cleanup_info['files_removed'])} files, "
+                f"freed {cleanup_info['total_space_freed']} bytes"
+            )
+            
+        except Exception as e:
+            error_msg = f"Error during cache cleanup: {str(e)}"
+            cleanup_info['errors'].append({'error': error_msg})
+            self.logger.error(error_msg)
+        
+        return cleanup_info
 
     def archive_analysis(self, version: int, archive_name: Optional[str] = None) -> str:
         """Archives analysis results and reports."""

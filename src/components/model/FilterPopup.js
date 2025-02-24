@@ -213,16 +213,33 @@ const FilterPopup = ({ modelType, settings, onUpdate, onClose }) => {
 
               <div className="priority-control">
                 <label>Priority Level</label>
-                <div className="priority-buttons">
-                  {['high', 'medium', 'low'].map(priority => (
-                    <button
-                      key={priority}
-                      className={`priority-button ${localSettings.priority === priority ? 'active' : ''}`}
-                      onClick={() => handlePriorityChange(priority)}
-                    >
-                      {priority.charAt(0).toUpperCase() + priority.slice(1)}
-                    </button>
-                  ))}
+                <div className="priority-options">
+                  <div className="priority-description">
+                    <p>Set the priority level for this model variant. This affects how inheritance conflicts are resolved:</p>
+                    <ul>
+                      <li><strong>High:</strong> This model's values take precedence</li>
+                      <li><strong>Medium:</strong> Values are averaged with base model</li>
+                      <li><strong>Low:</strong> Base model values take precedence</li>
+                    </ul>
+                  </div>
+                  <div className="priority-buttons">
+                    {['high', 'medium', 'low'].map(priority => (
+                      <button
+                        key={priority}
+                        className={`priority-button ${priority} ${localSettings.priority === priority ? 'active' : ''}`}
+                        onClick={() => handlePriorityChange(priority)}
+                      >
+                        <span className="priority-icon">
+                          {priority === 'high' && '⬆️'}
+                          {priority === 'medium' && '⬅️'}
+                          {priority === 'low' && '⬇️'}
+                        </span>
+                        <span className="priority-label">
+                          {priority.charAt(0).toUpperCase() + priority.slice(1)}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </div>
             </section>

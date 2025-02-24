@@ -28,12 +28,17 @@
 }
 
 .sensitivity-dialog {
-    background-color: var(--sidebar-background);
+    position: absolute;
+    background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 500px;
     max-width: 90vw;
     animation: slideIn 0.3s ease-out;
+    z-index: 1001;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .sensitivity-dialog.closing {
@@ -43,22 +48,22 @@
 @keyframes slideIn {
     from {
         opacity: 0;
-        transform: translateY(-20px) translateX(-50%);
+        transform: translate(-50%, -60%);
     }
     to {
         opacity: 1;
-        transform: translateY(0) translateX(-50%);
+        transform: translate(-50%, -50%);
     }
 }
 
 @keyframes slideOut {
     from {
         opacity: 1;
-        transform: translateY(0) translateX(-50%);
+        transform: translate(-50%, -50%);
     }
     to {
         opacity: 0;
-        transform: translateY(-20px) translateX(-50%);
+        transform: translate(-50%, -60%);
     }
 }
 
@@ -133,8 +138,8 @@
     padding: 8px;
     border: 1px solid var(--border-color);
     border-radius: 4px;
-    background-color: var(--sidebar-background);
-    color: var(--text-color);
+    background-color: #ffffff;
+    color: #333;
 }
 
 .points-grid {
@@ -172,8 +177,8 @@
     padding: 8px;
     border: 1px solid var(--border-color);
     border-radius: 4px;
-    background-color: var(--sidebar-background);
-    color: var(--text-color);
+    background-color: #ffffff;
+    color: #333;
 }
 
 .axis-section {

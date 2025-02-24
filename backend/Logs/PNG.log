@@ -62,3 +62,55 @@
 2025-02-23 17:30:30 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on http://127.0.0.1:5008
 2025-02-23 17:30:30 [INFO] [33mPress CTRL+C to quit[0m
+2025-02-23 22:07:21 [INFO] Initialized logging in C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\PNG.log
+2025-02-23 22:07:21 [INFO] Backend directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend
+2025-02-23 22:07:21 [INFO] Script directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Visualization_generators
+2025-02-23 22:07:21 [INFO] Starting PNG visualization server on port 5008
+2025-02-23 22:07:21 [INFO] Serving images from: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original
+2025-02-23 22:07:21 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5008
+2025-02-23 22:07:21 [INFO] [33mPress CTRL+C to quit[0m
+2025-02-23 22:11:15 [INFO] Initialized logging in C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\PNG.log
+2025-02-23 22:11:15 [INFO] Backend directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend
+2025-02-23 22:11:15 [INFO] Script directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Visualization_generators
+2025-02-23 22:11:15 [INFO] Starting PNG visualization server on port 5008
+2025-02-23 22:11:15 [INFO] Serving images from: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original
+2025-02-23 22:11:15 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5008
+2025-02-23 22:11:15 [INFO] [33mPress CTRL+C to quit[0m
+2025-02-23 22:13:18 [INFO] 127.0.0.1 - - [23/Feb/2025 22:13:18] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_annual_cash_flow_net_1.png HTTP/1.1[0m" 304 -
+2025-02-23 22:13:18 [INFO] 127.0.0.1 - - [23/Feb/2025 22:13:18] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_depreciation_1.png HTTP/1.1[0m" 304 -
+2025-02-23 22:13:18 [INFO] 127.0.0.1 - - [23/Feb/2025 22:13:18] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_cumulative_cash_flow_1.png HTTP/1.1[0m" 304 -
+2025-02-23 22:13:18 [INFO] 127.0.0.1 - - [23/Feb/2025 22:13:18] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_operating_expenses_1.png HTTP/1.1[0m" 304 -
+2025-02-23 22:13:18 [INFO] 127.0.0.1 - - [23/Feb/2025 22:13:18] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_federal_taxes_1.png HTTP/1.1[0m" 304 -
+2025-02-23 22:13:18 [INFO] 127.0.0.1 - - [23/Feb/2025 22:13:18] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_revenue_1.png HTTP/1.1[0m" 304 -
+2025-02-23 22:13:18 [INFO] 127.0.0.1 - - [23/Feb/2025 22:13:18] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_annual_cash_flow_net_1.png HTTP/1.1[0m" 304 -
+2025-02-23 22:13:18 [INFO] 127.0.0.1 - - [23/Feb/2025 22:13:18] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_state_taxes_1.png HTTP/1.1[0m" 304 -
+2025-02-23 22:13:18 [INFO] 127.0.0.1 - - [23/Feb/2025 22:13:18] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_depreciation_1.png HTTP/1.1[0m" 304 -
+2025-02-23 22:13:18 [INFO] 127.0.0.1 - - [23/Feb/2025 22:13:18] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_cumulative_cash_flow_1.png HTTP/1.1[0m" 304 -
+2025-02-23 22:13:18 [INFO] 127.0.0.1 - - [23/Feb/2025 22:13:18] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_operating_expenses_1.png HTTP/1.1[0m" 304 -
+2025-02-23 22:13:18 [INFO] 127.0.0.1 - - [23/Feb/2025 22:13:18] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_federal_taxes_1.png HTTP/1.1[0m" 304 -
+2025-02-23 22:13:18 [INFO] 127.0.0.1 - - [23/Feb/2025 22:13:18] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_revenue_1.png HTTP/1.1[0m" 304 -
+2025-02-23 22:13:18 [INFO] 127.0.0.1 - - [23/Feb/2025 22:13:18] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_state_taxes_1.png HTTP/1.1[0m" 304 -
+2025-02-23 22:18:16 [INFO] 127.0.0.1 - - [23/Feb/2025 22:18:16] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_annual_cash_flow_net_1.png HTTP/1.1[0m" 304 -
+2025-02-23 22:18:16 [INFO] 127.0.0.1 - - [23/Feb/2025 22:18:16] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_cumulative_cash_flow_1.png HTTP/1.1[0m" 304 -
+2025-02-23 22:18:16 [INFO] 127.0.0.1 - - [23/Feb/2025 22:18:16] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_depreciation_1.png HTTP/1.1[0m" 304 -
+2025-02-23 22:18:16 [INFO] 127.0.0.1 - - [23/Feb/2025 22:18:16] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_federal_taxes_1.png HTTP/1.1[0m" 304 -
+2025-02-23 22:18:16 [INFO] 127.0.0.1 - - [23/Feb/2025 22:18:16] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_operating_expenses_1.png HTTP/1.1[0m" 304 -
+2025-02-23 22:18:16 [INFO] 127.0.0.1 - - [23/Feb/2025 22:18:16] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_revenue_1.png HTTP/1.1[0m" 304 -
+2025-02-23 22:18:16 [INFO] 127.0.0.1 - - [23/Feb/2025 22:18:16] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_state_taxes_1.png HTTP/1.1[0m" 304 -
+2025-02-23 22:18:16 [INFO] 127.0.0.1 - - [23/Feb/2025 22:18:16] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_annual_cash_flow_net_1.png HTTP/1.1[0m" 304 -
+2025-02-23 22:18:16 [INFO] 127.0.0.1 - - [23/Feb/2025 22:18:16] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_cumulative_cash_flow_1.png HTTP/1.1[0m" 304 -
+2025-02-23 22:18:16 [INFO] 127.0.0.1 - - [23/Feb/2025 22:18:16] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_depreciation_1.png HTTP/1.1[0m" 304 -
+2025-02-23 22:18:16 [INFO] 127.0.0.1 - - [23/Feb/2025 22:18:16] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_federal_taxes_1.png HTTP/1.1[0m" 304 -
+2025-02-23 22:18:16 [INFO] 127.0.0.1 - - [23/Feb/2025 22:18:16] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_operating_expenses_1.png HTTP/1.1[0m" 304 -
+2025-02-23 22:18:17 [INFO] 127.0.0.1 - - [23/Feb/2025 22:18:17] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_state_taxes_1.png HTTP/1.1[0m" 304 -
+2025-02-23 22:18:17 [INFO] 127.0.0.1 - - [23/Feb/2025 22:18:17] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_revenue_1.png HTTP/1.1[0m" 304 -
+2025-02-24 07:05:40 [INFO] Initialized logging in C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\PNG.log
+2025-02-24 07:05:40 [INFO] Backend directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend
+2025-02-24 07:05:40 [INFO] Script directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Visualization_generators
+2025-02-24 07:05:40 [INFO] Starting PNG visualization server on port 5008
+2025-02-24 07:05:40 [INFO] Serving images from: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original
+2025-02-24 07:05:40 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5008
+2025-02-24 07:05:40 [INFO] [33mPress CTRL+C to quit[0m

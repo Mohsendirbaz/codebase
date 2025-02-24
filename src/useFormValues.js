@@ -151,7 +151,7 @@ const defaultValues = {
 
   // vAmount defaults (40-61)
   ...Object.fromEntries(
-    Array.from({ length: 22 }, (_, i) => [`vAmount${40 + i}`, 0])
+    Array.from({ length: 22 }, (_, i) => [`vAmount${40 + i}`, 1])
   )
 };
 

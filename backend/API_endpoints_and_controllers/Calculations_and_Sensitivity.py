@@ -438,6 +438,10 @@ def run_calculations():
 
 @app.route('/sensitivity/visualization', methods=['POST'])
 def get_sensitivity_visualization():
+    sensitivity_logger = logging.getLogger('sensitivity')
+    run_id = time.strftime("%Y%m%d_%H%M%S")
+    start_time = time.time()
+    
     try:
         data = request.get_json()
         if not data:
@@ -446,63 +450,149 @@ def get_sensitivity_visualization():
         version = data.get('selectedVersions', [1])[0]
         sen_parameters = data.get('senParameters', {})
 
+        sensitivity_logger.info(f"\nProcessing visualization request - Run ID: {run_id}")
+        sensitivity_logger.info(f"Version: {version}")
+        sensitivity_logger.info(f"Parameters: {list(sen_parameters.keys())}")
+
         visualization_data = {
             'parameters': {},
             'relationships': [],
-            'plots': {}
+            'plots': {},
+            'metadata': {
+                'version': str(version),
+                'runId': run_id,
+                'processingTime': 0,
+                'plotsGenerated': 0,
+                'errors': []
+            }
         }
 
         base_dir = os.path.join(BASE_DIR, 'public', 'Original')
         results_folder = os.path.join(base_dir, f'Batch({version})', f'Results({version})')
-
+        
+        plots_generated = 0
+        
         for param_id, config in sen_parameters.items():
             if not config.get('enabled'):
                 continue
 
+            sensitivity_logger.info(f"\nProcessing {param_id}:")
+            
             mode = config.get('mode')
             plot_types = []
             if config.get('waterfall'): plot_types.append('waterfall')
             if config.get('bar'): plot_types.append('bar')
             if config.get('point'): plot_types.append('point')
 
-            # Add parameter metadata
+            # Special handling for S34-S38 against S13
+            is_special_case = (
+                param_id >= 'S34' and param_id <= 'S38' and 
+                config.get('compareToKey') == 'S13'
+            )
+            
+            if is_special_case:
+                sensitivity_logger.info(f"{param_id} identified as special case (vs S13)")
+
+            # Add parameter metadata with status
             visualization_data['parameters'][param_id] = {
                 'id': param_id,
                 'mode': mode,
-                'enabled': True
+                'enabled': True,
+                'status': {
+                    'processed': False,
+                    'error': None,
+                    'isSpecialCase': is_special_case
+                }
             }
 
             # Add relationship data
             if config.get('compareToKey'):
-                visualization_data['relationships'].append({
+                relationship = {
                     'source': param_id,
                     'target': config['compareToKey'],
                     'type': config.get('comparisonType', 'primary'),
                     'plotTypes': plot_types
-                })
+                }
+                visualization_data['relationships'].append(relationship)
+                sensitivity_logger.info(
+                    f"Added relationship: {param_id} -> {config['compareToKey']} "
+                    f"({config.get('comparisonType', 'primary')})"
+                )
 
-            # Collect plot paths
+            # Initialize plot data structure
+            visualization_data['plots'][param_id] = {}
+            
+            # Collect plot paths with status
             sensitivity_dir = os.path.join(
                 results_folder,
                 'Sensitivity',
                 'Symmetrical' if mode == 'symmetrical' else 'Multipoint'
             )
 
-            plot_paths = {}
+            if not os.path.exists(sensitivity_dir):
+                error_msg = f"Sensitivity directory not found: {sensitivity_dir}"
+                sensitivity_logger.error(error_msg)
+                visualization_data['parameters'][param_id]['status']['error'] = error_msg
+                visualization_data['metadata']['errors'].append(error_msg)
+                continue
+
             for plot_type in plot_types:
                 plot_name = f"{plot_type}_{param_id}_{config['compareToKey']}_{config.get('comparisonType', 'primary')}"
                 plot_path = os.path.join(sensitivity_dir, f"{plot_name}.png")
                 
-                if os.path.exists(plot_path):
-                    plot_paths[plot_type] = os.path.relpath(plot_path, base_dir)
+                plot_status = {
+                    'status': 'error',
+                    'path': None,
+                    'error': None
+                }
 
-            visualization_data['plots'][param_id] = plot_paths
+                if os.path.exists(plot_path):
+                    relative_path = os.path.relpath(plot_path, base_dir)
+                    plot_status.update({
+                        'status': 'ready',
+                        'path': relative_path,
+                        'error': None
+                    })
+                    plots_generated += 1
+                    sensitivity_logger.info(f"Found {plot_type} plot: {relative_path}")
+                else:
+                    error_msg = f"Plot not found: {plot_name}"
+                    plot_status['error'] = error_msg
+                    sensitivity_logger.warning(error_msg)
+
+                visualization_data['plots'][param_id][plot_type] = plot_status
+
+            # Update parameter processing status
+            visualization_data['parameters'][param_id]['status']['processed'] = True
+
+        # Update metadata
+        processing_time = time.time() - start_time
+        visualization_data['metadata'].update({
+            'processingTime': round(processing_time, 2),
+            'plotsGenerated': plots_generated
+        })
+
+        sensitivity_logger.info(f"\nVisualization processing complete - Run ID: {run_id}")
+        sensitivity_logger.info(f"Processing time: {processing_time:.2f}s")
+        sensitivity_logger.info(f"Plots generated: {plots_generated}")
+        if visualization_data['metadata']['errors']:
+            sensitivity_logger.info(f"Errors encountered: {len(visualization_data['metadata']['errors'])}")
 
         return jsonify(visualization_data)
 
     except Exception as e:
-        logging.error(f"Error generating visualization data: {str(e)}")
-        return jsonify({"error": str(e)}), 500
+        error_msg = f"Error generating visualization data: {str(e)}"
+        sensitivity_logger.exception(error_msg)
+        
+        # Return partial data if available, along with error
+        if 'visualization_data' in locals():
+            visualization_data['metadata']['errors'].append(error_msg)
+            return jsonify(visualization_data)
+            
+        return jsonify({
+            "error": error_msg,
+            "runId": run_id
+        }), 500
 
 # =====================================
 # Application Entry Point

@@ -21,15 +21,15 @@ import ModelZone from './components/model/ModelZone';
 import VersionControl from './components/version/VersionControl';
 import EditableHierarchicalList from './Editable';
 import SpatialTransformComponent from './naturalmotion';
+import SensitivityAnalysis from './components/SensitivityAnalysis';
 import useFormValues from './useFormValues.js';
 
 const L_1_HomePageContent = () => {
     const [activeTab, setActiveTab] = useState('Input');
     const [activeSubTab, setActiveSubTab] = useState('ProjectConfig');
     const [selectedProperties, setSelectedProperties] = useState([]);
-    const [selectedVersions, setSelectedVersions] = useState([]);  // Add state for selected versions
-    const [season, setSeason] = useState('winter'); // 'winter', 'fall', or 'dark'
-    // Sensitivity Analysis State
+    const [selectedVersions, setSelectedVersions] = useState([]);
+    const [season, setSeason] = useState('winter');
     const [S, setS] = useState(() => {
         const initialS = {};
         for (let i = 10; i <= 61; i++) {
@@ -44,6 +44,21 @@ const L_1_HomePageContent = () => {
                 point: false,
             };
         }
+        
+        // Enable and configure S34-S38
+        for (let i = 34; i <= 38; i++) {
+            initialS[`S${i}`] = {
+                ...initialS[`S${i}`],
+                mode: 'symmetrical',
+                enabled: true,
+                compareToKey: 'S13',
+                comparisonType: 'primary',
+                waterfall: true,
+                bar: true,
+                point: true,
+            };
+        }
+        
         return initialS;
     });
 
@@ -66,10 +81,6 @@ const L_1_HomePageContent = () => {
         images: {},
         content: {},
     });
-
-    // Add new state for sensitivity results
-    const [sensitivityResults, setSensitivityResults] = useState({});
-    const [showSensitivityTab, setShowSensitivityTab] = useState(false);
 
     // Effect for tab transitions
     useEffect(() => {
@@ -99,18 +110,14 @@ const L_1_HomePageContent = () => {
 
     // Theme management
     useEffect(() => {
-        // Remove previous theme data attribute
         document.documentElement.removeAttribute('data-theme');
-        // Set new theme
         document.documentElement.setAttribute('data-theme', season);
 
-        // Load theme CSS if it exists (for fall/winter themes)
         if (season !== 'dark') {
             const link = document.createElement('link');
             link.rel = 'stylesheet';
             link.href = `${process.env.PUBLIC_URL}/styles/${season}.css`;
 
-            // Remove any existing theme stylesheets
             const oldLink = document.querySelector('link[href*="/styles/"][href$=".css"]');
             if (oldLink) {
                 oldLink.remove();
@@ -118,7 +125,7 @@ const L_1_HomePageContent = () => {
 
             document.head.appendChild(link);
         }
-    }, [season]); // Update whenever season changes
+    }, [season]);
 
     const { formValues, handleInputChange, handleReset, setFormValues } = useFormValues();
     const [version, setVersion] = useState('1');
@@ -132,7 +139,7 @@ const L_1_HomePageContent = () => {
     const [selectedHtml, setSelectedHtml] = useState('');
     const [remarks, setRemarks] = useState('off');
     const [customizedFeatures, setcustomizedFeatures] = useState('off');
-    const [selectedCalculationOption, setSelectedCalculationOption] = useState('calculateForPrice');
+    const [selectedCalculationOption, setSelectedCalculationOption] = useState('freeFlowNPV');
     const [target_row, settarget_row] = useState('20');
     const [calculatedPrices, setCalculatedPrices] = useState({});
     const [baseCosts, setBaseCosts] = useState([]);
@@ -149,7 +156,6 @@ const L_1_HomePageContent = () => {
             .map(([key, value]) => ({
                 id: key,
                 label: value.label || 'Unnamed Cost',
-                value: value.value,
                 baseValue: parseFloat(value.value) || 0,
             }));
         setBaseCosts(process2Costs);
@@ -241,9 +247,9 @@ const L_1_HomePageContent = () => {
     };
 
     // States for F1-F5 and V1-V10
-    const [F, setF] = useState({ F1: 'off', F2: 'off', F3: 'off', F4: 'off', F5: 'off' });
+    const [F, setF] = useState({ F1: 'on', F2: 'on', F3: 'on', F4: 'on', F5: 'on' });
     const [V, setV] = useState({
-        V1: 'off',
+        V1: 'on',
         V2: 'off',
         V3: 'off',
         V4: 'off',
@@ -265,24 +271,26 @@ const L_1_HomePageContent = () => {
         const targetButton =
             newSeason === 'dark' ? buttons[2] : newSeason === 'fall' ? buttons[0] : buttons[1];
 
-        // Prevent multiple transitions
         if (themeRibbon && themeRibbon.classList.contains('theme-transition')) {
             return;
         }
 
-        // Add direction-based class for transition effects
         if (themeRibbon) {
-            // Calculate button positions and set transition properties
             const targetButtonRect = targetButton?.getBoundingClientRect();
             const ribbonRect = themeRibbon.getBoundingClientRect();
             const creativeButton = buttons[0]?.getBoundingClientRect();
 
             if (targetButtonRect && ribbonRect && creativeButton) {
-                // Calculate horizontal and vertical distances for diagonal movement
                 const startX = ribbonRect.right - targetButtonRect.right + 35;
                 const startY = ribbonRect.bottom - targetButtonRect.bottom;
                 const endX = ribbonRect.right - creativeButton.right + 35;
                 const endY = ribbonRect.bottom - creativeButton.bottom;
+
+                themeRibbon.style.setProperty('--glow-start-x', `${startX}px`);
+                // Calculate horizontal and vertical distances for diagonal movement
+                themeRibbon.style.setProperty('--glow-start-y', `${startY}px`);
+                themeRibbon.style.setProperty('--glow-end-x', `${endX}px`);
+                themeRibbon.style.setProperty('--glow-end-y', `${endY}px`);
 
                 // Set position variables for the glow effect
                 themeRibbon.style.setProperty('--glow-start-x', `${startX}px`);
@@ -423,12 +431,12 @@ const L_1_HomePageContent = () => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    selectedVersions: selectedVersions.length > 0 ? selectedVersions : [version],
+                    selectedVersions,
                     selectedV: V,
                     selectedF: F,
-                    selectedCalculationOption,
+                    selectedCalculationOption: selectedCalculationOption,
                     targetRow: target_row,
-                    senParameters: S,
+                    SenParameters: S,
                 }),
             });
 
@@ -461,27 +469,6 @@ const L_1_HomePageContent = () => {
             } else {
                 const result = await response.json();
                 if (response.ok) {
-                    // Process sensitivity results if they exist
-                    if (Object.keys(S).some(key => S[key].enabled)) {
-                        const vizResponse = await fetch('http://127.0.0.1:5007/sensitivity/visualization', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                            body: JSON.stringify({
-                                selectedVersions,
-                                senParameters: S
-                            }),
-                        });
-                        
-                        if (vizResponse.ok) {
-                            const vizData = await vizResponse.json();
-                            setSensitivityResults(vizData);
-                            setShowSensitivityTab(true);
-                            setActiveTab('Sensitivity');
-                        }
-                    }
-
                     console.log(result.message);
                 } else {
                     console.error(result.error);
@@ -1056,7 +1043,14 @@ const L_1_HomePageContent = () => {
                             <button
                                 type="button"
                                 onClick={() => loadConfiguration(version)}
-                                className="form-action-button load-config"
+                                style={{
+                                    backgroundColor: '#5C27cv',
+                                    color: 'white',
+                                    fontWeight: 'bold',
+                                    padding: '10px',
+                                    border: 'none',
+                                    cursor: 'pointer',
+                                }}
                             >
                                 Load Configuration
                             </button>
@@ -1096,7 +1090,14 @@ const L_1_HomePageContent = () => {
                         <div className="tooltip-container">
                             <button
                                 onClick={handleRunPNG}
-                                className="form-action-button generate-png"
+                                style={{
+                                    backgroundColor: '#4CAF50',
+                                    color: 'white',
+                                    fontWeight: 'bold',
+                                    padding: '10px',
+                                    border: 'none',
+                                    cursor: 'pointer',
+                                }}
                             >
                                 Generate PNG Plots
                             </button>
@@ -1109,7 +1110,14 @@ const L_1_HomePageContent = () => {
                             <button
                                 type="button"
                                 onClick={handleRunSub}
-                                className="form-action-button generate-dynamic"
+                                style={{
+                                    backgroundColor: '#2196F3',
+                                    color: 'white',
+                                    fontWeight: 'bold',
+                                    padding: '10px',
+                                    border: 'none',
+                                    cursor: 'pointer',
+                                }}
                             >
                                 Generate Dynamic Plots
                             </button>
@@ -1123,28 +1131,17 @@ const L_1_HomePageContent = () => {
                     <div className="button-row practical-row">
                         <div className="tooltip-container">
                             <button
-                                onClick={createNewBatch}
-                                disabled={batchRunning}
-                                className="form-action-button create-batch"
-                            >
-                                Create New Batch
-                            </button>
-                        </div>
-                        <div className="tooltip-container">
-                            <button
-                                onClick={RemoveBatch}
-                                className="form-action-button remove-batch"
-                            >
-                                Remove Batch
-                            </button>
-                        </div>
-                        <div className="tooltip-container">
-                            <button
                                 onClick={handleRun}
-                                className="form-action-button run-cfa"
-                                disabled={analysisRunning}
+                                style={{
+                                    backgroundColor: '#FF5722',
+                                    color: 'white',
+                                    fontWeight: 'bold',
+                                    padding: '10px',
+                                    border: 'none',
+                                    cursor: 'pointer',
+                                }}
                             >
-                                {analysisRunning ? 'Running CFA...' : 'Run CFA'}
+                                Run CFA
                             </button>
                             <span className="tooltip1">
                                 <p className="left-aligned-text">
@@ -1158,7 +1155,14 @@ const L_1_HomePageContent = () => {
                         <div className="tooltip-container">
                             <button
                                 onClick={handleSubmitCompleteSet}
-                                className="form-action-button submit-set"
+                                style={{
+                                    backgroundColor: '#9C27B0',
+                                    color: 'white',
+                                    fontWeight: 'bold',
+                                    padding: '10px',
+                                    border: 'none',
+                                    cursor: 'pointer',
+                                }}
                             >
                                 Submit Complete Set
                             </button>
@@ -1167,7 +1171,14 @@ const L_1_HomePageContent = () => {
                             <button
                                 type="button"
                                 onClick={handleReset}
-                                className="form-action-button reset"
+                                style={{
+                                    backgroundColor: '#5C27B0',
+                                    color: 'white',
+                                    fontWeight: 'bold',
+                                    padding: '10px',
+                                    border: 'none',
+                                    cursor: 'pointer',
+                                }}
                             >
                                 Reset
                             </button>
@@ -1181,33 +1192,21 @@ const L_1_HomePageContent = () => {
                                 <input
                                     type="radio"
                                     name="calculationOption"
-                                    value="freeFlowNPV"
-                                    checked={selectedCalculationOption === 'freeFlowNPV'}
-                                    onChange={handleOptionChange}
-                                />
-                                Free Flow NPV
-                            </label>
-                            <label className="radio-label">
-                                <input
-                                    type="radio"
-                                    name="calculationOption"
                                     value="calculateForPrice"
                                     checked={selectedCalculationOption === 'calculateForPrice'}
                                     onChange={handleOptionChange}
                                 />
                                 Calculate for Price, Zeroing NPV at Year
-                                {selectedCalculationOption === 'calculateForPrice' && (
-                                    <div className="target-row-container">
-                                        <input
-                                            type="number"
-                                            className="target-row-input"
-                                            placeholder="Enter Year"
-                                            value={target_row}
-                                            onChange={handleTargetRowChange}
-                                        />
-                                    </div>
-                                )}
                             </label>
+                            <div className="target-row-container">
+                                <input
+                                    type="number"
+                                    className="target-row-input"
+                                    placeholder="Enter Year"
+                                    value={target_row}
+                                    onChange={handleTargetRowChange}
+                                />
+                            </div>
                         </div>
                     </div>
                     <div className="property-selector-container">
@@ -1224,7 +1223,21 @@ const L_1_HomePageContent = () => {
     const renderTabContent = () => {
         switch (activeTab) {
             case 'Input':
-                return renderForm();
+                return (
+                    <div className="form-content">
+                        {renderForm()}
+                    </div>
+                );
+            case 'ModelZone':
+                return (
+                    <div className="model-zone">
+                        <ModelZone />
+                        <div className="model-selection">
+                            <VersionSelector />
+                            <SpatialTransformComponent />
+                        </div>
+                    </div>
+                );
             case 'Case1':
                 return renderCase1Content();
             case 'Case2':
@@ -1259,42 +1272,11 @@ const L_1_HomePageContent = () => {
                         </Tabs>
                     </div>
                 );
-            case 'Sensitivity':
-                return renderSensitivityContent();
+            case 'SensitivityAnalysis':
+                return <SensitivityAnalysis />;
             default:
                 return null;
         }
-    };
-
-    // Add sensitivity results rendering function
-    const renderSensitivityContent = () => {
-        if (!sensitivityResults || Object.keys(sensitivityResults).length === 0) {
-            return <div>No sensitivity analysis results available</div>;
-        }
-
-        return (
-            <div className="sensitivity-results">
-                <h2>Sensitivity Analysis Results</h2>
-                {Object.entries(sensitivityResults.parameters || {}).map(([paramId, param]) => (
-                    <div key={paramId} className="sensitivity-parameter-section">
-                        <h3>Parameter: {paramId}</h3>
-                        <div className="sensitivity-plots-grid">
-                            {sensitivityResults.plots[paramId] && 
-                             Object.entries(sensitivityResults.plots[paramId]).map(([plotType, plotPath]) => (
-                                <div key={plotType} className="sensitivity-plot">
-                                    <h4>{plotType.charAt(0).toUpperCase() + plotType.slice(1)} Plot</h4>
-                                    <img 
-                                        src={`http://localhost:5007/sensitivity/plots/${plotPath}`}
-                                        alt={`${plotType} plot for ${paramId}`}
-                                        style={{ maxWidth: '100%', height: 'auto' }}
-                                    />
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                ))}
-            </div>
-        );
     };
 
     return (
@@ -1371,31 +1353,22 @@ const L_1_HomePageContent = () => {
                             Editable
                         </button>
                         <button
-                            className={`tab-button ${activeTab === 'Sensitivity' ? 'active' : ''}`}
-                            onClick={() => setActiveTab('Sensitivity')}
+                            className={`tab-button ${activeTab === 'ModelZone' ? 'active' : ''}`}
+                            onClick={() => setActiveTab('ModelZone')}
+                        >
+                            Model Zone
+                        </button>
+                        <button
+                            className={`tab-button ${activeTab === 'SensitivityAnalysis' ? 'active' : ''}`}
+                            onClick={() => setActiveTab('SensitivityAnalysis')}
                         >
                             Sensitivity Analysis
                         </button>
                     </div>
                 </nav>
-                {activeTab === 'Input' ? (
-                    <div className="form-content">
-                        {renderForm()}
-                    </div>
-                ) : (
-                    <div className="content-wrapper">
-                        <div className="model-zone">
-                            <ModelZone />
-                            <div className="model-selection">
-                                <VersionSelector />
-                                <SpatialTransformComponent />
-                            </div>
-                        </div>
-                        <div className="L_1_HomePageTabContent">
-                            {renderTabContent()}
-                        </div>
-                    </div>
-                )}
+                <div className="L_1_HomePageTabContent">
+                    {renderTabContent()}
+                </div>
             </div>
         </div>
     );
