@@ -1,3 +1,21 @@
+"""
+Orchestrates the execution sequence of configuration updates and calculations.
+
+This function is the main entry point for the 'run' route in the Flask application.
+It handles the following steps:
+1. Extracts and validates the configuration data from the request.
+2. Executes the configuration management scripts.
+3. Processes the calculations based on the selected calculation mode.
+4. If sensitivity analysis is enabled, processes the sensitivity parameters and executes the corresponding calculations.
+5. Logs the run configuration and timing information.
+6. Returns a success response with timing details, or an error response if any exceptions occur.
+
+Args:
+    None
+
+Returns:
+    A JSON response with the status, message, run ID, and timing information.
+"""
 from flask import Flask, request, Response, jsonify
 from flask_cors import CORS
 import subprocess

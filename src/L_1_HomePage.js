@@ -1,30 +1,37 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { VersionStateProvider } from './contexts/VersionStateContext';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import CustomizableImage from './CustomizableImage';
-import CustomizableTable from './CustomizableTable';
 import ExtendedScaling from './ExtendedScaling';
-import FormHeader from './FormHeader.js';
-import GeneralFormConfig from './GeneralFormConfig.js';
-import Popup from './Popup.js';
 import './L_1_HomePage1.css';
 import './L_1_HomePage2.css';
 import './L_1_HomePage3.css';
 import './L_1_HomePage4.css';
 import './L_1_HomePage5.css';
 import './L_1_HomePage6.css';
-import PropertySelector from './PropertySelector.js';
-import TodoList from './TodoList.js';
-import VersionSelector from './VersionSelector.js';
+import TodoList from './TodoList';
+import VersionSelector from './VersionSelector';
 import ModelZone from './components/model/ModelZone';
 import VersionControl from './components/version/VersionControl';
 import EditableHierarchicalList from './Editable';
 import SpatialTransformComponent from './naturalmotion';
 import SensitivityAnalysis from './components/SensitivityAnalysis';
-import useFormValues from './useFormValues.js';
+import useFormValues from './useFormValues';
 import TestingZone from './components/TestingZone';
+
+// Component imports
+import ThemeSelector from './components/theme/ThemeSelector';
+import TabNavigation from './components/navigation/TabNavigation';
+import CsvContentTab from './components/tabs/CsvContentTab';
+import HtmlContentTab from './components/tabs/HtmlContentTab';
+import PlotContentTab from './components/tabs/PlotContentTab';
+import InputForm from './components/forms/InputForm';
+import TabContent from './components/tabs/TabContent';
+
+// Service imports
+import * as apiService from './services/apiService';
 const L_1_HomePageContent = () => {
+    // Core state
     const [activeTab, setActiveTab] = useState('Input');
     const [activeSubTab, setActiveSubTab] = useState('ProjectConfig');
     const [selectedProperties, setSelectedProperties] = useState([]);
@@ -62,6 +69,9 @@ const L_1_HomePageContent = () => {
         return initialS;
     });
 
+    //This code defines several state variables to track the loading and content states of the application. The `loadingStates` object tracks whether the HTML, CSV, and plots content are currently loading. The `contentLoaded` and `iframesLoaded` objects track whether the corresponding content has finished loading. The `contentLoadingState` object provides more detailed information about the loading state of different content types, including CSV, HTML, plots, iframes, images, and general content.
+    
+    //These state variables are likely used throughout the application to conditionally render content or display loading indicators based on the current loading and content states.
     // Loading States
     const [loadingStates, setLoadingStates] = useState({
         html: false,
@@ -127,8 +137,9 @@ const L_1_HomePageContent = () => {
         }
     }, [season]);
 
+    // Form and version state
     const { formValues, handleInputChange, handleReset, setFormValues } = useFormValues();
-    const [version, setVersion] = useState('1');
+    const [version, setVersion] = useState('1'); // Single version state declaration
     const [batchRunning, setBatchRunning] = useState(false);
     const [analysisRunning, setAnalysisRunning] = useState(false);
     const [csvFiles, setCsvFiles] = useState([]);
@@ -1220,67 +1231,31 @@ const L_1_HomePageContent = () => {
         </div>
     );
 
-    const renderTabContent = () => {
-        switch (activeTab) {
-            case 'Input':
-                return (
-                    <div className="form-content">
-                        {renderForm()}
-                    </div>
-                );
-            case 'ModelZone':
-                return (
-                    <div className="model-zone">
-                        <ModelZone />
-                        <div className="model-selection">
-                            <VersionSelector />
-                            <SpatialTransformComponent />
-                        </div>
-                    </div>
-                );
-            case 'Case1':
-                return renderCase1Content();
-            case 'Case2':
-                return renderCase2Content();
-            case 'Case3':
-                return renderCase3Content();
-            case 'Scaling':
-                return (
-                    <ExtendedScaling
-                        baseCosts={baseCosts}
-                        onScaledValuesChange={handleScaledValuesChange}
-                        initialScalingGroups={scalingGroups}
-                        onScalingGroupsChange={handleScalingGroupsChange}
-                    />
-                );
-            case 'Editable':
-                return (
-                    <div className="p-4">
-                        <Tabs>
-                            <TabList>
-                                <Tab>Outline</Tab>
-                                <Tab>Todo List</Tab>
-                            </TabList>
-                            <TabPanel>
-                                <h2 className="text-xl font-bold mb-4">Editable Hierarchical List</h2>
-                                <EditableHierarchicalList />
-                            </TabPanel>
-                            <TabPanel>
-                                <h2 className="text-xl font-bold mb-4">Todo List</h2>
-                                <TodoList />
-                            </TabPanel>
-                        </Tabs>
-                    </div>
-                );
-            case 'SensitivityAnalysis':
-                return <SensitivityAnalysis />;
-           
-            case 'TestingZone':
-            return <TestingZone />;
-        default:
-            return null;
-        }
-    };
+    // Tab content renderer
+    const renderTabContent = () => (
+        <TabContent
+            activeTab={activeTab}
+            csvFiles={csvFiles}
+            subTab={subTab}
+            setSubTab={setSubTab}
+            version={version}
+            albumHtmls={albumHtmls}
+            selectedHtml={selectedHtml}
+            setSelectedHtml={setSelectedHtml}
+            iframesLoaded={iframesLoaded}
+            setIframesLoaded={setIframesLoaded}
+            albumImages={albumImages}
+            selectedAlbum={selectedAlbum}
+            setSelectedAlbum={setSelectedAlbum}
+            imagesLoaded={imagesLoaded}
+            setImagesLoaded={setImagesLoaded}
+            baseCosts={baseCosts}
+            handleScaledValuesChange={handleScaledValuesChange}
+            scalingGroups={scalingGroups}
+            handleScalingGroupsChange={handleScalingGroupsChange}
+            renderForm={renderForm}
+        />
+    );
 
     return (
         <div className="L_1_HomePage">
@@ -1292,89 +1267,10 @@ const L_1_HomePageContent = () => {
                     <h2 className="h2-small">From lemonad stand to Tesla, TEA Space accomodates your complex cost modeling scenarios</h2>
                     <h2 className="h2-small">Grand opening April 15th 2025</h2>
                 </div>
-                <div className="theme-ribbon">
-                    <div className="logo-container"></div>
-                    <div className="theme-buttons">
-                        <button
-                            className={`theme-button ${season === 'fall' ? 'active' : ''}`}
-                            onClick={() => handleThemeChange('fall')}
-                        >
-                            Creative
-                        </button>
-                        <button
-                            className={`theme-button ${season === 'winter' ? 'active' : ''}`}
-                            onClick={() => handleThemeChange('winter')}
-                        >
-                            Normal
-                        </button>
-                        <button
-                            className={`theme-button ${season === 'dark' ? 'active' : ''}`}
-                            onClick={() => handleThemeChange('dark')}
-                        >
-                            Dark
-                        </button>
-                    </div>
-                </div>
+                <ThemeSelector season={season} handleThemeChange={handleThemeChange} />
             </div>
             <div className="main-content">
-                <nav className="L_1_HomePageTabs">
-                    <div>
-                        <button
-                            className={`tab-button ${activeTab === 'Input' ? 'active' : ''}`}
-                            onClick={() => setActiveTab('Input')}
-                        >
-                            Input
-                        </button>
-                        <button
-                            className={`tab-button ${activeTab === 'Case1' ? 'active' : ''}`}
-                            onClick={() => setActiveTab('Case1')}
-                        >
-                            Cash Flow Analysis
-                        </button>
-                        <button
-                            className={`tab-button ${activeTab === 'Case2' ? 'active' : ''}`}
-                            onClick={() => setActiveTab('Case2')}
-                        >
-                            Dynamic SubPlots
-                        </button>
-                        <button
-                            className={`tab-button ${activeTab === 'Case3' ? 'active' : ''}`}
-                            onClick={() => setActiveTab('Case3')}
-                        >
-                            Plots
-                        </button>
-                        <button
-                            className={`tab-button ${activeTab === 'Scaling' ? 'active' : ''}`}
-                            onClick={() => setActiveTab('Scaling')}
-                        >
-                            Scaling
-                        </button>
-                        <button
-                            className={`tab-button ${activeTab === 'Editable' ? 'active' : ''}`}
-                            onClick={() => setActiveTab('Editable')}
-                        >
-                            Editable
-                        </button>
-                        <button
-                            className={`tab-button ${activeTab === 'ModelZone' ? 'active' : ''}`}
-                            onClick={() => setActiveTab('ModelZone')}
-                        >
-                            Model Zone
-                        </button>
-                        <button
-                            className={`tab-button ${activeTab === 'SensitivityAnalysis' ? 'active' : ''}`}
-                            onClick={() => setActiveTab('SensitivityAnalysis')}
-                        >
-                            Sensitivity Analysis
-                        </button>
-                        <button
-                            className={`tab-button ${activeTab === 'TestingZone' ? 'active' : ''}`}
-                            onClick={() => setActiveTab('TestingZone')}
-                        >
-                            Testing Zone
-                        </button>
-                    </div>
-                </nav>
+                <TabNavigation activeTab={activeTab} setActiveTab={setActiveTab} />
                 <div className="L_1_HomePageTabContent">
                     {renderTabContent()}
                 </div>

@@ -1,3 +1,15 @@
+"""
+Flask server setup for handling PNG file requests.
+
+This module sets up a Flask server that provides an API endpoint to retrieve a list of PNG files for a given version. The server scans the file system to find the available versions and the corresponding PNG files, and returns the file information as a JSON response.
+
+The main functions are:
+- `get_available_versions(directory: str) -> List[str]`: Retrieves a list of available versions based on the directory structure.
+- `log_png_file_names_for_versions(versions: List[str], base_directory: str) -> None`: Logs the names and paths of all PNG files found for the given versions.
+- `get_png_files(version: str) -> Tuple[str, int]`: Handles the API request to retrieve the PNG file information for the given version.
+"""
+# Flask server setup for handling PNG file requests
+
 from flask import Flask, jsonify
 from flask_cors import CORS
 import os

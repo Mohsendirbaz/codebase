@@ -1,3 +1,12 @@
+"""
+Provides utility functions for managing batch versions and finding files across microservices.
+
+find_versions(directory: str) -> List[str]:
+    Extracts version numbers from batch folders in the given directory.
+
+find_files(base_path: str, version: str, extension: str) -> List[Dict]:
+    Scans the version directory for files with the specified extension across albums.
+"""
 """Core utilities for batch version management and file operations across microservices"""
 import os
 import logging
