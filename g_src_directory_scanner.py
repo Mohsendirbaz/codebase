@@ -56,7 +56,7 @@ def save_structure(structure: Dict[str, Any], output_file: str) -> None:
 def main():
     # Use relative paths
     current_dir = os.path.dirname(__file__)
-    output_file = os.path.join(current_dir, "g_src_directory_scanner.json")
+    output_file = os.path.join(current_dir, "g_src_directory_scanner_NEW.json")
     Base_dir = os.path.join(current_dir, "src")
 
     if not os.path.exists(Base_dir):
