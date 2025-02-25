@@ -1,6 +1,6 @@
 {
   "project_name": "src",
-  "analysis_date": "2025-02-25 12:41:52",
+  "analysis_date": "2025-02-25 15:43:55",
   "version": 6,
   "directories": {
     ".": {
@@ -58,6 +58,12 @@
       ],
       "import_count": 4
     },
+    "components\\buttons": {
+      "files": [
+        "components\\buttons\\ActionButtons.js"
+      ],
+      "import_count": 1
+    },
     "components\\cfa": {
       "files": [
         "components\\cfa\\CFAConsolidationUI.css",
@@ -75,6 +81,12 @@
     "components\\forms": {
       "files": [
         "components\\forms\\InputForm.js"
+      ],
+      "import_count": 1
+    },
+    "components\\layout": {
+      "files": [
+        "components\\layout\\HeaderSection.js"
       ],
       "import_count": 1
     },
@@ -205,7 +217,7 @@
       {
         "name": "App.js",
         "path": ".\\App.js",
-        "size": 582
+        "size": 9261
       },
       {
         "name": "Card.js",
@@ -240,7 +252,7 @@
       {
         "name": "GeneralFormConfig.js",
         "path": ".\\GeneralFormConfig.js",
-        "size": 11187
+        "size": 10927
       },
       {
         "name": "index.js",
@@ -250,7 +262,7 @@
       {
         "name": "L_1_HomePage.js",
         "path": ".\\L_1_HomePage.js",
-        "size": 53426
+        "size": 12022
       },
       {
         "name": "naturalmotion.js",
@@ -318,6 +330,11 @@
         "size": 538
       },
       {
+        "name": "ActionButtons.js",
+        "path": "components\\buttons\\ActionButtons.js",
+        "size": 1930
+      },
+      {
         "name": "CFAConsolidationUI.js",
         "path": "components\\cfa\\CFAConsolidationUI.js",
         "size": 12779
@@ -345,7 +362,12 @@
       {
         "name": "InputForm.js",
         "path": "components\\forms\\InputForm.js",
-        "size": 14254
+        "size": 10150
+      },
+      {
+        "name": "HeaderSection.js",
+        "path": "components\\layout\\HeaderSection.js",
+        "size": 779
       },
       {
         "name": "AnalysisChart.js",
@@ -375,7 +397,7 @@
       {
         "name": "InheritanceControl.js",
         "path": "components\\model\\InheritanceControl.js",
-        "size": 8817
+        "size": 8949
       },
       {
         "name": "ModelCard.js",
@@ -435,7 +457,7 @@
       {
         "name": "TabContent.js",
         "path": "components\\tabs\\TabContent.js",
-        "size": 4007
+        "size": 4888
       },
       {
         "name": "ThemeSelector.js",
@@ -455,22 +477,22 @@
       {
         "name": "index.js",
         "path": "hooks\\index.js",
-        "size": 1180
+        "size": 425
       },
       {
         "name": "useAnalysis.js",
         "path": "hooks\\useAnalysis.js",
-        "size": 5372
+        "size": 4616
       },
       {
         "name": "useContentLoading.js",
         "path": "hooks\\useContentLoading.js",
-        "size": 3922
+        "size": 1748
       },
       {
         "name": "useFeatureToggles.js",
         "path": "hooks\\useFeatureToggles.js",
-        "size": 3472
+        "size": 1285
       },
       {
         "name": "useFormValues.js",
@@ -480,42 +502,42 @@
       {
         "name": "useSensitivity.js",
         "path": "hooks\\useSensitivity.js",
-        "size": 4321
+        "size": 1346
       },
       {
         "name": "useTheme.js",
         "path": "hooks\\useTheme.js",
-        "size": 4732
+        "size": 3475
       },
       {
         "name": "useVersion.js",
         "path": "hooks\\useVersion.js",
-        "size": 3099
+        "size": 5971
       },
       {
         "name": "apiService.js",
         "path": "services\\apiService.js",
-        "size": 7476
+        "size": 5907
       },
       {
         "name": "batchService.js",
         "path": "services\\batchService.js",
-        "size": 5521
+        "size": 2195
       },
       {
         "name": "configService.js",
         "path": "services\\configService.js",
-        "size": 4031
+        "size": 1857
       },
       {
         "name": "contentService.js",
         "path": "services\\contentService.js",
-        "size": 5111
+        "size": 4039
       },
       {
         "name": "index.js",
         "path": "services\\index.js",
-        "size": 501
+        "size": 652
       },
       {
         "name": "VersionStateManager.js",
@@ -542,7 +564,7 @@
       {
         "name": "App.css",
         "path": ".\\App.css",
-        "size": 0
+        "size": 6563
       },
       {
         "name": "index.css",

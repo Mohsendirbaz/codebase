@@ -1,26 +1,51 @@
-"""Flask service (port:8009) - Serves HTML files from batch results"""
+"""Flask service (port:8009) - Processes HTML files from batch results"""
 from flask import Flask, jsonify
 from flask_cors import CORS
-import os, logging, logging.config
-from file_utils import find_versions, find_files
+import os
+import logging
+import logging.config
 
 app = Flask(__name__)
 CORS(app)
 
-BASE_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "public", "Original")
-'''
-logging.config.dictConfig({'version':1, 'disable_existing_loggers':False,
-    'formatters':{'standard':{'format':'%(asctime)s %(levelname)s %(message)s'}},
-    'handlers':{'file':{'level':'DEBUG', 'formatter':'standard', 'class':'logging.FileHandler',
-    'filename':os.path.join(os.getcwd(),'DirectoryInventoryhtml.log'), 'mode':'w'}},
-    'root':{'handlers':['file'], 'level':'DEBUG'}})
-'''
+BASE_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "backend", "Original")
+
+def get_versions(directory: str):
+    if not os.path.exists(directory):
+        logging.warning(f"Directory not found: {directory}")
+        return []
+    return [name.split("(")[1].split(")")[0] for name in os.listdir(directory) 
+            if name.startswith("Batch(") and name.endswith(")")]
+
 @app.route('/api/album_html/<version>')
 def get_html_files(version: str):
-    # API: Returns all HTML files for specified version
     logging.info(f"Processing request for version: {version}")
-    return jsonify(find_files(BASE_PATH, version, '.html'))
+    results_path = os.path.join(BASE_PATH, f"Batch({version})", f"Results({version})")
+    html_files = []
+
+    if not os.path.exists(results_path):
+        logging.warning(f"Results folder not found: {results_path}")
+        return jsonify([])
+
+    for root, _, files in os.walk(results_path):
+        for file in files:
+            if file.lower().endswith('.html'):
+                file_path = os.path.join(root, file)
+                try:
+                    with open(file_path, 'r', encoding='utf-8') as f:
+                        content = f.read()
+                    album = os.path.basename(os.path.dirname(file_path))
+                    html_files.append({
+                        "name": file,
+                        "content": content,
+                        "album": album
+                    })
+                    logging.info(f"Processed {file}")
+                except Exception as e:
+                    logging.error(f"Failed to process {file}: {e}")
+
+    return jsonify(html_files)
 
 if __name__ == '__main__':
-    [find_files(BASE_PATH, v, '.html') for v in find_versions(BASE_PATH)]
+    versions = get_versions(BASE_PATH)
     app.run(port=8009)

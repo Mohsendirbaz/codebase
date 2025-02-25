@@ -7,14 +7,8 @@ import pandas as pd
 app = Flask(__name__)
 CORS(app)
 
-BASE_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "public", "Original")
-'''
-logging.config.dictConfig({'version':1, 'disable_existing_loggers':False,
-    'formatters':{'standard':{'format':'%(asctime)s %(levelname)s %(message)s'}},
-    'handlers':{'file':{'level':'DEBUG', 'formatter':'standard', 'class':'logging.FileHandler',
-    'filename':os.path.join(os.getcwd(),'DirectoryInventory.log'), 'mode':'w'}},
-    'root':{'handlers':['file'], 'level':'DEBUG'}})
-'''
+BASE_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "backend", "Original")
+
 def get_versions(directory: str):
     if not os.path.exists(directory):
         logging.warning(f"Directory not found: {directory}")

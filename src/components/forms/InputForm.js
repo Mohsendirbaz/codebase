@@ -1,7 +1,7 @@
 import React from 'react';
-import FormHeader from '../../FormHeader';
 import GeneralFormConfig from '../../GeneralFormConfig';
-import Popup from '../../Popup';
+import PropertySelector from '../../PropertySelector';
+
 
 const InputForm = ({
     activeSubTab,
@@ -12,17 +12,11 @@ const InputForm = ({
     S,
     setS,
     F,
-    setF,
+    toggleF,
     V,
-    setV,
+    toggleV,
     setVersion,
     handleReset,
-    showPopup,
-    setShowPopup,
-    popupPosition,
-    setPopupPosition,
-    handleRunPNG,
-    handleRunSub,
     handleRun,
     handleSubmitCompleteSet,
     selectedCalculationOption,
@@ -71,46 +65,10 @@ const InputForm = ({
                 </button>
             </div>
             <div className="form-content">
-                {activeSubTab && (
-                    <>
-                        <FormHeader
-                            onSensitivityClick={() => {
-                                const sKey = `S${activeSubTab === 'ProjectConfig' ? '10' : 
-                                            activeSubTab === 'LoanConfig' ? '20' : 
-                                            activeSubTab === 'RatesConfig' ? '30' : 
-                                            activeSubTab === 'Process1Config' ? '40' : '50'}`;
-                                setS(prev => ({
-                                    ...prev,
-                                    [sKey]: {
-                                        ...prev[sKey],
-                                        enabled: true,
-                                        mode: 'symmetrical'
-                                    }
-                                }));
-                            }}
-                            onEfficacyPeriodClick={(e) => {
-                                const rect = e.target.getBoundingClientRect();
-                                setPopupPosition({
-                                    top: rect.top + window.scrollY,
-                                    left: rect.left + rect.width
-                                });
-                                setShowPopup(true);
-                            }}
-                            onFactualPrecedenceClick={() => {}}
-                        />
-                        {showPopup && (
-                            <Popup
-                                show={showPopup}
-                                onClose={() => setShowPopup(false)}
-                                formValues={formValues}
-                                handleInputChange={handleInputChange}
-                                id={activeSubTab}
-                                version={version}
-                                itemId={activeSubTab}
-                            />
-                        )}
-                    </>
-                )}
+                <PropertySelector
+                    selectedProperties={selectedProperties}
+                    setSelectedProperties={setSelectedProperties}
+                />
                 {activeSubTab === 'ProjectConfig' && (
                     <GeneralFormConfig
                         formValues={formValues}
@@ -140,7 +98,7 @@ const InputForm = ({
                         version={version}
                         filterKeyword="Amount3"
                         F={F}
-                        setF={setF}
+                        toggleF={toggleF}
                         S={S}
                         setS={setS}
                         setVersion={setVersion}
@@ -153,7 +111,7 @@ const InputForm = ({
                         version={version}
                         filterKeyword="Amount4"
                         V={V}
-                        setV={setV}
+                        toggleV={toggleV}
                         S={S}
                         setS={setS}
                         setVersion={setVersion}
@@ -166,7 +124,7 @@ const InputForm = ({
                         version={version}
                         filterKeyword="Amount5"
                         V={V}
-                        setV={setV}
+                        toggleV={toggleV}
                         S={S}
                         setS={setS}
                         setVersion={setVersion}
@@ -191,48 +149,6 @@ const InputForm = ({
                             />
                             Customized Features
                         </label>
-                    </div>
-
-                    <div className="button-row visualization-row">
-                        <div className="tooltip-container">
-                            <button
-                                onClick={handleRunPNG}
-                                style={{
-                                    backgroundColor: '#4CAF50',
-                                    color: 'white',
-                                    fontWeight: 'bold',
-                                    padding: '10px',
-                                    border: 'none',
-                                    cursor: 'pointer',
-                                }}
-                            >
-                                Generate PNG Plots
-                            </button>
-                            <span className="tooltip1">
-                                Choose the attributes thou wishest to grace the legend, and with a
-                                click, summon forth the PNG plots.
-                            </span>
-                        </div>
-                        <div className="tooltip-container">
-                            <button
-                                type="button"
-                                onClick={handleRunSub}
-                                style={{
-                                    backgroundColor: '#2196F3',
-                                    color: 'white',
-                                    fontWeight: 'bold',
-                                    padding: '10px',
-                                    border: 'none',
-                                    cursor: 'pointer',
-                                }}
-                            >
-                                Generate Dynamic Plots
-                            </button>
-                            <span className="tooltip1">
-                                Seize the power of efficacy to tailor thy analysis, then click to
-                                conjure dynamic plots.
-                            </span>
-                        </div>
                     </div>
 
                     <div className="button-row practical-row">

@@ -1,245 +1,173 @@
-// API service functions for handling all network requests
+export const apiService = {
+  async fetchData(url, options = {}) {
+    const MAX_RETRIES = 3;
+    const TIMEOUT = 5000; // 5 seconds timeout
+    let attempt = 0;
 
-export const loadConfiguration = async (version) => {
-    try {
-        const response = await fetch('http://localhost:5000/load_configuration', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ version }),
+    while (attempt < MAX_RETRIES) {
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), TIMEOUT);
+
+        const response = await fetch(url, {
+          ...options,
+          signal: controller.signal,
+          headers: {
+            'Content-Type': 'application/json',
+            ...options.headers,
+          },
         });
 
+        clearTimeout(timeoutId);
+
         if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+          throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        return await response.json();
-    } catch (error) {
-        console.error('Error loading configuration:', error);
-        throw error;
-    }
-};
-
-export const createNewBatch = async () => {
-    try {
-        const response = await fetch('http://127.0.0.1:8001/create_new_batch', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+        const contentType = response.headers.get('content-type');
+        if (!contentType || !contentType.includes('application/json')) {
+          throw new Error('Invalid response format: Expected JSON');
         }
 
-        return await response.json();
-    } catch (error) {
-        console.error('Batch creation failed', error);
-        throw error;
-    }
-};
-
-export const removeBatch = async (version) => {
-    try {
-        const response = await fetch('http://127.0.0.1:7001/Remove_batch', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ version }),
-        });
-        
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+        const text = await response.text();
+        if (!text) {
+          return null; // Handle empty response
         }
-        
-        return await response.json();
-    } catch (error) {
-        console.error('Error during batch removal:', error);
-        throw error;
-    }
-};
 
-export const checkAndCreateUploads = async () => {
-    try {
-        const response = await fetch('http://127.0.0.1:8007/check_and_create_uploads', {
-            method: 'POST',
-        });
+        try {
+          return JSON.parse(text);
+        } catch (parseError) {
+          throw new Error(`Invalid JSON response: ${parseError.message}`);
+        }
+      } catch (error) {
+        attempt++;
         
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+        if (error.name === 'AbortError') {
+          if (attempt === MAX_RETRIES) {
+            throw new Error(`Request timeout after ${TIMEOUT}ms`);
+          }
+          console.warn(`Request timeout, attempt ${attempt} of ${MAX_RETRIES}`);
+          continue;
+        }
+
+        if (error.name === 'TypeError' && error.message.includes('Failed to fetch')) {
+          if (attempt === MAX_RETRIES) {
+            throw new Error('Network error: Server may be unavailable');
+          }
+          console.warn(`Network error, attempt ${attempt} of ${MAX_RETRIES}`);
+          await new Promise(resolve => setTimeout(resolve, 1000 * attempt)); // Exponential backoff
+          continue;
+        }
+
+        if (attempt === MAX_RETRIES) {
+          console.error('API request failed:', error);
+          throw error;
         }
         
-        return await response.json();
-    } catch (error) {
-        console.error('Analysis failed', error);
-        throw error;
+        console.warn(`Request failed, attempt ${attempt} of ${MAX_RETRIES}`);
+        await new Promise(resolve => setTimeout(resolve, 1000 * attempt)); // Exponential backoff
+      }
     }
-};
+  },
 
-export const runAnalysis = async (selectedVersions, selectedV, selectedF, selectedCalculationOption, targetRow, SenParameters) => {
-    try {
-        const response = await fetch('http://127.0.0.1:5007/run', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                selectedVersions,
-                selectedV,
-                selectedF,
-                selectedCalculationOption,
-                targetRow,
-                SenParameters,
-            }),
+  async postData(url, data, options = {}) {
+    const MAX_RETRIES = 3;
+    const TIMEOUT = 5000; // 5 seconds timeout
+    let attempt = 0;
+
+    while (attempt < MAX_RETRIES) {
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), TIMEOUT);
+
+        const response = await fetch(url, {
+          method: 'POST',
+          signal: controller.signal,
+          headers: {
+            'Content-Type': 'application/json',
+            ...options.headers,
+          },
+          body: JSON.stringify(data),
+          ...options,
         });
 
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        return await response.json();
-    } catch (error) {
-        console.error('Error during analysis:', error);
-        throw error;
-    }
-};
-
-export const generatePngPlots = async (selectedVersions, selectedProperties, remarks, customizedFeatures) => {
-    try {
-        const response = await fetch('http://127.0.0.1:5008/generate_png_plots', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                selectedVersions,
-                selectedProperties,
-                remarks,
-                customizedFeatures,
-                S: {} // Empty sensitivity params for now
-            }),
-        });
+        clearTimeout(timeoutId);
 
         if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+          throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        return await response.json();
-    } catch (error) {
-        console.error('Error during PNG generation:', error);
-        throw error;
-    }
-};
-
-export const runSub = async (selectedVersions, selectedProperties, remarks, customizedFeatures, selectedV) => {
-    try {
-        const response = await fetch('http://127.0.0.1:5009/runSub', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                selectedVersions,
-                selectedProperties,
-                remarks,
-                customizedFeatures,
-                selectedV,
-            }),
-        });
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+        const contentType = response.headers.get('content-type');
+        if (contentType && contentType.includes('application/json')) {
+          return await response.json();
         }
-
-        return await response.json();
-    } catch (error) {
-        console.error('Error during analysis:', error);
-        throw error;
-    }
-};
-
-export const submitCompleteSet = async (version, formValues) => {
-    const formItems = Object.keys(formValues)
-        .filter((key) =>
-            ['Amount1', 'Amount2', 'Amount3', 'Amount4', 'Amount5', 'Amount6'].some((amt) =>
-                key.includes(amt)
-            )
-        )
-        .map((key) => ({
-            id: key,
-            ...formValues[key],
-        }));
-
-    const filteredValues = formItems.map((item) => {
-        const efficacyPeriod = formValues[item.id].efficacyPeriod || {};
-        return {
-            id: item.id,
-            value: item.value,
-            senParam: item.senParam,
-            lifeStage: efficacyPeriod.lifeStage?.value,
-            duration: efficacyPeriod.duration?.value,
-            remarks: item.remarks || '',
-        };
-    });
-
-    try {
-        const response = await fetch(`http://127.0.0.1:3052/append/${version}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ filteredValues }),
-        });
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
         return await response.text();
-    } catch (error) {
-        console.error('Error during parameter submission:', error);
-        throw error;
+      } catch (error) {
+        attempt++;
+        
+        if (error.name === 'AbortError') {
+          if (attempt === MAX_RETRIES) {
+            throw new Error(`Request timeout after ${TIMEOUT}ms`);
+          }
+          console.warn(`Request timeout, attempt ${attempt} of ${MAX_RETRIES}`);
+          continue;
+        }
+
+        if (error.name === 'TypeError' && error.message.includes('Failed to fetch')) {
+          if (attempt === MAX_RETRIES) {
+            throw new Error('Network error: Server may be unavailable');
+          }
+          console.warn(`Network error, attempt ${attempt} of ${MAX_RETRIES}`);
+          await new Promise(resolve => setTimeout(resolve, 1000 * attempt)); // Exponential backoff
+          continue;
+        }
+
+        if (attempt === MAX_RETRIES) {
+          console.error('API request failed:', error);
+          throw error;
+        }
+        
+        console.warn(`Request failed, attempt ${attempt} of ${MAX_RETRIES}`);
+        await new Promise(resolve => setTimeout(resolve, 1000 * attempt)); // Exponential backoff
+      }
     }
+  },
+
+  createEventSource(url) {
+    return new EventSource(url);
+  },
+
+  handleStreamError(error, eventSource) {
+    console.error('Stream error:', error);
+    if (eventSource) {
+      eventSource.close();
+    }
+  },
+
+  endpoints: {
+    run: 'http://127.0.0.1:5007/run',
+    streamPrice: (version) => `http://127.0.0.1:5007/stream_price/${version}`,
+    generatePngPlots: 'http://127.0.0.1:5008/generate_png_plots',
+    runSub: 'http://127.0.0.1:5009/runSub',
+    createNewBatch: 'http://127.0.0.1:8001/create_new_batch',
+    removeBatch: 'http://127.0.0.1:7001/Remove_batch',
+    checkUploads: 'http://127.0.0.1:8007/check_and_create_uploads',
+    loadConfiguration: 'http://localhost:5000/load_configuration',
+    submitCompleteSet: (version) => `http://127.0.0.1:3052/append/${version}`,
+    csvFiles: (version) => `http://localhost:8007/api/csv-files/${version}`,
+    albumHtml: (version) => `http://localhost:8009/api/album_html/${version}`,
+    albumImages: (version) => `http://localhost:8008/api/album/${version}`,
+    images: {
+      base: 'http://localhost:5008/images',
+      batch: (version) => `Batch(${version})`,
+      results: (version) => `Results(${version})`,
+    },
+    original: {
+      base: 'http://localhost:3000/Original',
+      batch: (version) => `Batch(${version})`,
+      results: (version) => `Results(${version})`,
+    }
+  }
 };
 
-export const fetchHtmlFiles = async (version) => {
-    try {
-        const response = await fetch(`http://localhost:8009/api/album_html/${version}`);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return await response.json();
-    } catch (error) {
-        console.error('Error fetching HTML files:', error);
-        throw error;
-    }
-};
-
-export const fetchImages = async (version) => {
-    try {
-        const response = await fetch(`http://localhost:8008/api/album/${version}`);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return await response.json();
-    } catch (error) {
-        console.error('Error fetching images:', error);
-        throw error;
-    }
-};
-
-export const fetchCsvFiles = async (version) => {
-    try {
-        const response = await fetch(`http://localhost:8007/api/csv-files/${version}`);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return await response.json();
-    } catch (error) {
-        console.error('Error fetching CSV files:', error);
-        throw error;
-    }
-};
+export default apiService;

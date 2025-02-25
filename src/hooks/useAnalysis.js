@@ -1,155 +1,161 @@
-import { useState, useCallback } from 'react';
-import { contentService, batchService } from '../services';
+import { useState } from 'react';
+import { apiService } from '../services';
 
-/**
- * Custom hook for managing analysis operations
- * @param {Object} options - Hook options
- * @param {string} version - Current version
- * @param {Array} selectedVersions - Selected versions for analysis
- * @param {Object} V - V parameters
- * @param {Object} F - F parameters
- * @param {Object} S - Sensitivity parameters
- * @returns {Object} Analysis state and handlers
- */
-const useAnalysis = ({ version, selectedVersions, V, F, S }) => {
-    const [analysisRunning, setAnalysisRunning] = useState(false);
-    const [calculatedPrices, setCalculatedPrices] = useState({});
-    const [selectedCalculationOption, setSelectedCalculationOption] = useState('freeFlowNPV');
-    const [targetRow, setTargetRow] = useState('20');
+export const useAnalysis = ({ version, selectedVersions, V, F, S }) => {
+  const [analysisRunning, setAnalysisRunning] = useState(false);
+  const [selectedCalculationOption, setSelectedCalculationOption] = useState('freeFlowNPV');
+  const [targetRow, setTargetRow] = useState('20');
+  const [calculatedPrices, setCalculatedPrices] = useState({});
 
-    /**
-     * Update price for a specific version
-     * @param {string} version - The version to update price for
-     * @param {number} price - The new price value
-     */
-    const updatePrice = useCallback((version, price) => {
-        setCalculatedPrices((prevPrices) => ({
-            ...prevPrices,
-            [version]: price,
-        }));
-    }, []);
+  const handleOptionChange = (event) => {
+    setSelectedCalculationOption(event.target.value);
+  };
 
-    /**
-     * Handle calculation option change
-     * @param {Object} event - The change event
-     */
-    const handleOptionChange = useCallback((event) => {
-        setSelectedCalculationOption(event.target.value);
-    }, []);
+  const handleTargetRowChange = (event) => {
+    setTargetRow(event.target.value);
+  };
 
-    /**
-     * Handle target row change
-     * @param {Object} event - The change event
-     */
-    const handleTargetRowChange = useCallback((event) => {
-        setTargetRow(event.target.value);
-    }, []);
+  const updatePrice = (version, price) => {
+    setCalculatedPrices((prevPrices) => ({
+      ...prevPrices,
+      [version]: price,
+    }));
+  };
 
-    /**
-     * Run the main analysis
-     */
-    const handleRun = useCallback(async () => {
-        setAnalysisRunning(true);
-        setCalculatedPrices({}); // Reset prices at start
+  const handleRun = async () => {
+    setAnalysisRunning(true);
+    setCalculatedPrices({});
 
-        try {
-            if (selectedCalculationOption === 'calculateForPrice') {
-                // Handle price streaming
-                selectedVersions.forEach((version) => {
-                    const eventSource = batchService.streamPrice(
-                        version,
-                        updatePrice,
-                        (version) => console.log(`Completed streaming for version ${version}`),
-                        (version, error) => console.error(`Error in stream for version ${version}:`, error)
-                    );
-                });
-            } else {
-                await batchService.runAnalysis({
-                    selectedVersions,
-                    selectedV: V,
-                    selectedF: F,
-                    selectedCalculationOption,
-                    targetRow,
-                    SenParameters: S,
-                });
+    try {
+      const response = await fetch(apiService.endpoints.run, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          selectedVersions,
+          selectedV: V,
+          selectedF: F,
+          selectedCalculationOption,
+          targetRow,
+          SenParameters: S,
+        }),
+      });
+
+      if (selectedCalculationOption === 'calculateForPrice') {
+        selectedVersions.forEach((version) => {
+          const eventSource = apiService.createEventSource(
+            apiService.endpoints.streamPrice(version)
+          );
+
+          eventSource.onmessage = (event) => {
+            const data = JSON.parse(event.data);
+            console.log(`Streamed Price for version ${version}:`, data.price);
+            updatePrice(version, data.price);
+
+            if (data.complete) {
+              console.log(`Completed streaming for version ${version}`);
+              eventSource.close();
             }
-        } catch (error) {
-            console.error('Error during analysis:', error);
-        } finally {
-            setAnalysisRunning(false);
+          };
+
+          eventSource.onerror = (error) => {
+            apiService.handleStreamError(error, eventSource);
+          };
+        });
+      } else {
+        const result = await response.json();
+        if (response.ok) {
+          console.log(result.message);
+        } else {
+          console.error(result.error);
         }
-    }, [selectedVersions, V, F, selectedCalculationOption, targetRow, S]);
+      }
+    } catch (error) {
+      console.error('Error during analysis:', error);
+    } finally {
+      setAnalysisRunning(false);
+    }
+  };
 
-    /**
-     * Generate PNG plots
-     * @param {Object} params - Parameters for plot generation
-     */
-    const handleRunPNG = useCallback(async ({ selectedProperties, remarks, customizedFeatures }) => {
-        setAnalysisRunning(true);
-        try {
-            // Always use current version if no versions selected
-            const versions = selectedVersions.length > 0 ? selectedVersions : [version];
-            
-            // Ensure current version is included
-            if (!versions.includes(version)) {
-                versions.push(version);
-            }
+  const handleRunPNG = async ({ selectedProperties, remarks, customizedFeatures }) => {
+    setAnalysisRunning(true);
+    try {
+      const versions = selectedVersions.length > 0 ? selectedVersions : [version];
+      
+      if (!versions.includes(version)) {
+        versions.push(version);
+      }
 
-            await contentService.generatePngPlots({
-                selectedVersions: versions,
-                selectedProperties,
-                remarks,
-                customizedFeatures,
-            });
+      const response = await fetch(apiService.endpoints.generatePngPlots, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          selectedVersions: versions,
+          selectedProperties: selectedProperties || [],
+          remarks,
+          customizedFeatures,
+          S: {}
+        }),
+      });
 
-            // Wait a bit for plots to be generated
-            await new Promise(resolve => setTimeout(resolve, 1000));
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
 
-            // Trigger a refresh of the plots
-            const plotsTab = document.querySelector('button.tab-button:nth-child(4)');
-            if (plotsTab) {
-                plotsTab.click();
-            }
-        } catch (error) {
-            console.error('Error during PNG generation:', error);
-        } finally {
-            setAnalysisRunning(false);
-        }
-    }, [version, selectedVersions]);
+      await new Promise(resolve => setTimeout(resolve, 1000));
 
-    /**
-     * Run sub-analysis
-     * @param {Object} params - Parameters for sub-analysis
-     */
-    const handleRunSub = useCallback(async ({ selectedProperties, remarks, customizedFeatures }) => {
-        setAnalysisRunning(true);
-        try {
-            await contentService.runSub({
-                selectedVersions,
-                selectedProperties,
-                remarks,
-                customizedFeatures,
-                selectedV: V,
-            });
-        } catch (error) {
-            console.error('Error during analysis:', error);
-        } finally {
-            setAnalysisRunning(false);
-        }
-    }, [selectedVersions, V]);
+      const plotsTab = document.querySelector('button.tab-button:nth-child(4)');
+      if (plotsTab) {
+        plotsTab.click();
+      }
+    } catch (error) {
+      console.error('Error during PNG generation:', error);
+    } finally {
+      setAnalysisRunning(false);
+    }
+  };
 
-    return {
-        analysisRunning,
-        calculatedPrices,
-        selectedCalculationOption,
-        targetRow,
-        updatePrice,
-        handleOptionChange,
-        handleTargetRowChange,
-        handleRun,
-        handleRunPNG,
-        handleRunSub,
-    };
+  const handleRunSub = async ({ selectedVersions, selectedProperties, remarks, customizedFeatures }) => {
+    setAnalysisRunning(true);
+    try {
+      const response = await fetch(apiService.endpoints.runSub, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          selectedVersions,
+          selectedProperties,
+          remarks,
+          customizedFeatures,
+          selectedV: V,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+    } catch (error) {
+      console.error('Error during analysis:', error);
+    } finally {
+      setAnalysisRunning(false);
+    }
+  };
+
+  return {
+    analysisRunning,
+    selectedCalculationOption,
+    targetRow,
+    calculatedPrices,
+    handleOptionChange,
+    handleTargetRowChange,
+    handleRun,
+    handleRunPNG,
+    handleRunSub,
+  };
 };
 
 export default useAnalysis;
