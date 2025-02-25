@@ -1,27 +1,24 @@
 .testing-zone-container {
-  /* Enforce positioning */
+  /* Container positioning */
   position: relative;
   width: 80%;
   margin: 40px auto;
   padding: 20px;
   
-  /* Enforce box model */
+  /* Basic styling */
   box-sizing: border-box;
   border: 2px solid #ccc;
   border-radius: 8px;
-  
-  /* Enforce isolation */
-  isolation: isolate;
-  z-index: 1;
-  
-  /* Enforce background */
   background-color: #ffffff;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  
+  /* Clean container */
+  isolation: isolate;
+  z-index: 1;
 }
 
+/* Clean box model */
 .testing-zone-container * {
-  /* Reset all inherited styles */
-  all: revert;
   box-sizing: border-box;
 }
 
@@ -34,21 +31,27 @@
   color: #333;
 }
 
+/* Content area */
 .testing-zone-content {
-  /* Create a contained space for components */
-  min-height: 400px;
   padding: 20px;
+  background-color: #fafafa;
   border: 1px dashed #ccc;
   border-radius: 4px;
-  background-color: #fafafa;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Enforce component container styles */
-.component-test-area {
+/* Component area */
+.testing-zone-container .component-test-area {
+  position: relative;
   width: 100%;
-  padding: 15px;
-  margin: 10px 0;
+  flex: 1;
+  padding: 20px;
+  margin: 0;
   background: white;
-  border: 1px solid #e0e0e0;
   border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
 }

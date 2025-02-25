@@ -1,15 +1,22 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useState, useMemo } from 'react';
 import './ResultsPanel.css';
+import CustomizableTable from '../../CustomizableTable'; // Adjust path as needed
 
-const ResultsPanel = ({
+const IndividualResultsPanel = ({
   data,
   selectedCell,
   inspectorVisible,
   inspectorPosition,
   cellDetails,
   onCellClick,
-  onCloseInspector
+  onCloseInspector,
+  selectedVersions = [] // Add this to receive the selected versions
 }) => {
+  // State for individual table view
+  const [viewingVersion, setViewingVersion] = useState(null);
+  const [individualTableData, setIndividualTableData] = useState(null);
+  const [loadingTable, setLoadingTable] = useState(false);
+
   // Validate and memoize data
   const validatedData = useMemo(() => {
     if (!data || !data.columns || !data.years || !data.values) {
@@ -30,6 +37,17 @@ const ResultsPanel = ({
       </div>
     );
   }
+
+  // Convert consolidated data to format for CustomizableTable
+  const consolidatedTableData = useMemo(() => {
+    return validatedData.years.map((year, rowIndex) => {
+      const rowData = { Year: year };
+      validatedData.columns.forEach((column, colIndex) => {
+        rowData[column] = validatedData.values[rowIndex][colIndex];
+      });
+      return rowData;
+    });
+  }, [validatedData]);
 
   const renderTableHeader = useCallback(() => {
     return (
@@ -159,10 +177,17 @@ const ResultsPanel = ({
                           </span>
                         </div>
                         <div className="source-value">
-                          {source.value.toLocaleString(undefined, {
-                            minimumFractionDigits: 2,
-                            maximumFractionDigits: 2
-                          })}
+                          <div className="value-amount">
+                            {source.value.toLocaleString(undefined, {
+                              minimumFractionDigits: 2,
+                              maximumFractionDigits: 2
+                            })}
+                          </div>
+                          {source.percentage && (
+                            <div className="value-percentage">
+                              ({source.percentage}% of total)
+                            </div>
+                          )}
                         </div>
                       </div>
                     ))}
@@ -189,30 +214,122 @@ const ResultsPanel = ({
     );
   }, [selectedCell, inspectorVisible, inspectorPosition, cellDetails, onCloseInspector]);
 
+  // Load individual version data
+  const loadVersionData = useCallback(async (version) => {
+    if (!version) return;
+    
+    setLoadingTable(true);
+    try {
+      const response = await fetch(`http://localhost:456/api/process/${version}`);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch version data: ${response.status}`);
+      }
+      
+      const result = await response.json();
+      if (result.error) {
+        throw new Error(result.error);
+      }
+      
+      setIndividualTableData(result.data);
+      setViewingVersion(version);
+    } catch (error) {
+      console.error('Error loading version data:', error);
+      setIndividualTableData(null);
+      // Show error message to user
+    } finally {
+      setLoadingTable(false);
+    }
+  }, []);
+
+  // Close individual version view
+  const closeVersionView = useCallback(() => {
+    setViewingVersion(null);
+    setIndividualTableData(null);
+  }, []);
+
   return (
     <div className="results-panel">
       <div className="results-panel__header">
-        <h3 className="results-panel__title">Consolidated Results</h3>
+        <h3 className="results-panel__title">
+          {viewingVersion 
+            ? `CFA Version ${viewingVersion} Data` 
+            : 'Consolidated Results'}
+        </h3>
         <div className="results-panel__actions">
-          <button
-            className="action-button"
-            onClick={() => {
-              // Add export functionality
-              console.log('Export table data:', validatedData);
-            }}
-          >
-            Export Table
-          </button>
+          {!viewingVersion ? (
+            <>
+              <div className="version-selector">
+                <label>View Individual Version: </label>
+                <select 
+                  onChange={(e) => loadVersionData(e.target.value)}
+                  value={viewingVersion || ''}
+                  disabled={loadingTable}
+                >
+                  <option value="">Select a version</option>
+                  {selectedVersions.map(version => (
+                    <option key={version} value={version}>Version {version}</option>
+                  ))}
+                </select>
+              </div>
+              <button
+                className="action-button"
+                onClick={() => {
+                  // Add export functionality
+                  console.log('Export consolidated data:', consolidatedTableData);
+                }}
+              >
+                Export Table
+              </button>
+            </>
+          ) : (
+            <>
+              <button
+                className="action-button"
+                onClick={closeVersionView}
+              >
+                Back to Consolidated View
+              </button>
+              <button
+                className="action-button"
+                onClick={() => {
+                  // Add export functionality
+                  console.log('Export version data:', individualTableData);
+                }}
+              >
+                Export Version Data
+              </button>
+            </>
+          )}
         </div>
       </div>
 
       <div className="results-panel__content">
-        <div className="results-table-container">
-          <table className="results-table">
-            {renderTableHeader()}
-            {renderTableBody()}
-          </table>
-        </div>
+        {loadingTable ? (
+          <div className="loading-indicator">Loading version data...</div>
+        ) : viewingVersion && individualTableData ? (
+          <div className="individual-table-container">
+            <CustomizableTable 
+              data={individualTableData}
+              fileName={`CFA(${viewingVersion})`}
+              tableClassName="individual-cfa-table"
+            />
+          </div>
+        ) : (
+          <div className="results-table-container">
+            {consolidatedTableData.length > 0 ? (
+              <CustomizableTable 
+                data={consolidatedTableData}
+                fileName="CFA(Consolidated)"
+                tableClassName="consolidated-cfa-table"
+              />
+            ) : (
+              <table className="results-table">
+                {renderTableHeader()}
+                {renderTableBody()}
+              </table>
+            )}
+          </div>
+        )}
       </div>
 
       {renderCellInspector()}
@@ -220,4 +337,4 @@ const ResultsPanel = ({
   );
 };
 
-export default ResultsPanel;
+export default IndividualResultsPanel;

@@ -66,7 +66,7 @@
   height: 4px;
   background: var(--model-color-border);
   border-radius: var(--model-border-radius-sm);
-  overflow: hidden;
+  overflow: visible;
 }
 
 .processing-panel__progress-bar {
@@ -142,6 +142,7 @@
   display: flex;
   align-items: center;
   gap: var(--model-spacing-md);
+  flex-wrap: wrap;
 }
 
 .action-button {
@@ -170,6 +171,17 @@
 
 .action-button.cancel:hover:not(:disabled) {
   background: var(--model-color-danger-dark);
+}
+
+.action-button.reset {
+  background: var(--model-color-background);
+  color: var(--model-color-text);
+  border: 1px solid var(--model-color-border);
+}
+
+.action-button.reset:hover:not(:disabled) {
+  background: var(--model-color-background-hover);
+  border-color: var(--model-color-text);
 }
 
 .action-button:disabled {

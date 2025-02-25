@@ -8,7 +8,9 @@ const ProcessingPanel = ({
   error,
   onStart,
   onCancel,
-  disabled
+  onReset,
+  disabled,
+  showReset
 }) => {
   const renderStatusIndicator = useCallback(() => {
     const statusConfig = {
@@ -126,6 +128,16 @@ const ProcessingPanel = ({
               Retry
             </button>
           </div>
+        )}
+
+        {showReset && (
+          <button
+            className="action-button reset"
+            onClick={onReset}
+            disabled={isProcessing}
+          >
+            Reset
+          </button>
         )}
       </div>
 

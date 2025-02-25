@@ -4,6 +4,7 @@
   gap: var(--model-spacing-md);
   height: 100%;
   min-height: 400px;
+  max-width: none;
 }
 
 /* Header Styles */
@@ -45,20 +46,18 @@
 /* Table Container */
 .results-panel__content {
   flex: 1;
-  overflow: hidden;
   border: 1px solid var(--model-color-border);
   border-radius: var(--model-border-radius-md);
 }
 
 .results-table-container {
   width: 100%;
-  height: 100%;
-  overflow: auto;
 }
 
 /* Table Styles */
 .results-table {
   width: 100%;
+  table-layout: fixed;
   border-collapse: collapse;
   font-size: var(--model-font-size-sm);
 }
@@ -82,7 +81,6 @@
 .table-cell {
   padding: var(--model-spacing-sm) var(--model-spacing-md);
   border-bottom: 1px solid var(--model-color-border);
-  white-space: nowrap;
 }
 
 .table-cell.year {
@@ -309,7 +307,6 @@
     left: 50% !important;
     transform: translate(-50%, -50%);
     width: 90%;
-    max-width: none;
     margin: var(--model-spacing-md);
   }
 }
