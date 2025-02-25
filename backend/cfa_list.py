@@ -246,24 +246,15 @@ def consolidate_data(versions: List[str]) -> Dict:
     }
     
     dfs = []
-    max_rows = 0
-    max_rows_version = None
     
-    # Load all dataframes and find the one with the most rows
+    # Load all dataframes
     for version in versions:
         file_path = state.get_file_path(version)
         if file_path and os.path.exists(file_path):
             try:
                 df = pd.read_csv(file_path)
-                # Add version as a column
-                df['cfa_version'] = version
+                df['cfa_version'] = version  # Add version tracking
                 dfs.append(df)
-                
-                # Track the maximum row count
-                if len(df) > max_rows:
-                    max_rows = len(df)
-                    max_rows_version = version
-                    
                 logging.info(f"Loaded data from version {version} with {len(df)} rows")
             except Exception as e:
                 logging.error(f"Failed to process CFA version {version}: {e}")
@@ -272,13 +263,13 @@ def consolidate_data(versions: List[str]) -> Dict:
         logging.warning("No data frames could be loaded for consolidation")
         return consolidated_data
     
-    logging.info(f"Version {max_rows_version} has the most rows ({max_rows}) and will be used as the base structure")
-    
     # Determine the largest year range
     all_years = set()
     for df in dfs:
         if 'Year' in df.columns:
             all_years.update(df['Year'].unique())
+            
+    logging.info(f"Processing {len(dfs)} dataframes with years: {all_years}")
     
     # Sort years to maintain chronological order
     consolidated_data["years"] = sorted([int(year) for year in all_years])
@@ -298,11 +289,12 @@ def consolidate_data(versions: List[str]) -> Dict:
         for _ in range(len(consolidated_data["years"]))
     ]
     
-    # Initialize sources tracking
+    # Initialize sources tracking only for summed columns
     for year in consolidated_data["years"]:
-        consolidated_data["sources"][str(year)] = {}
-        for column in sum_columns:
-            consolidated_data["sources"][str(year)][column] = []
+        year_str = str(year)
+        consolidated_data["sources"][year_str] = {}
+        for column in sum_columns:  # Only track sources for summed columns
+            consolidated_data["sources"][year_str][column] = []
     
     # Apply the consolidation policy
     for year_idx, year in enumerate(consolidated_data["years"]):
@@ -321,10 +313,11 @@ def consolidate_data(versions: List[str]) -> Dict:
                                 if pd.notna(value):  # Skip NaN values
                                     # Add to the sum
                                     consolidated_data["values"][year_idx][col_idx] += value
-                                    # Track the source
+                                    # Track the source with timestamp
                                     consolidated_data["sources"][str(year)][column].append({
                                         "version": df['cfa_version'].values[0],
-                                        "value": float(value)
+                                        "value": float(value),
+                                        "timestamp": datetime.now().isoformat()
                                     })
                         except Exception as e:
                             logging.error(f"Error processing {column} for year {year} from version {df['cfa_version'].values[0]}: {e}")
@@ -500,14 +493,66 @@ def get_consolidation_status(job_id: str):
             
             if current_version_index < versions_count:
                 current_version = job.versions[current_version_index]
-                # Update progress for current version
-                job.progress = min(100, (current_version_index + 1) * progress_per_version)
-                job.message = f"Processing CFA version {current_version}..."
                 
-                # Complete job when all versions are processed
-                if current_version_index == versions_count - 1:
-                    results = consolidate_data(job.versions)
-                    state.complete_job(job_id, results)
+                # Initialize results if not present
+                if not job.results:
+                    job.results = {
+                        "years": [],
+                        "columns": [],
+                        "values": [],
+                        "sources": {}
+                    }
+                
+                # Process current version
+                try:
+                    # Update progress for current version
+                    job.progress = min(100, (current_version_index + 1) * progress_per_version)
+                    job.message = f"Processing CFA version {current_version}..."
+                    
+                    # Process current version
+                    new_data = consolidate_data([current_version])
+                    
+                    # Initialize or merge results
+                    if current_version_index == 0:
+                        # First version sets the structure
+                        job.results = new_data
+                    else:
+                        # Process each cell independently
+                        for year_idx, year in enumerate(job.results["years"]):
+                            # Find matching row in new_data
+                            if year in new_data["years"]:
+                                new_year_idx = new_data["years"].index(year)
+                                year_str = str(year)
+                                
+                                # Process each column
+                                for col_idx, column in enumerate(job.results["columns"]):
+                                    if column in ['Revenue', 'Operating Expenses']:
+                                        # Add value from this version
+                                        value = new_data["values"][new_year_idx][col_idx]
+                                        job.results["values"][year_idx][col_idx] += value
+                                        
+                                        # Track source with proper value
+                                        source_entry = {
+                                            "version": current_version,
+                                            "value": float(value),
+                                            "timestamp": datetime.now().isoformat()
+                                        }
+                                        
+                                        # Check if source already exists
+                                        existing_sources = job.results["sources"][year_str][column]
+                                        version_exists = any(s["version"] == current_version for s in existing_sources)
+                                        
+                                        if not version_exists:
+                                            job.results["sources"][year_str][column].append(source_entry)
+                    
+                    # Complete job when all versions are processed
+                    if current_version_index == versions_count - 1:
+                        state.complete_job(job_id, job.results)
+                        
+                except Exception as e:
+                    logging.error(f"Error processing version {current_version}: {e}")
+                    job.status = "error"
+                    job.error = str(e)
     
     return jsonify({
         "status": job.status,
@@ -565,19 +610,27 @@ def get_cell_details():
             "message": f"Detailed tracking not available for {column}"
         })
     
-    # Get source data from consolidation sources
+    # Get source data from active consolidation job
     source_data = []
     total_value = 0
     
-    # Get consolidated data to access sources
-    consolidated_data = consolidate_data(state.selected_versions)
-    if str(year) in consolidated_data["sources"] and column in consolidated_data["sources"][str(year)]:
-        source_data = consolidated_data["sources"][str(year)][column]
-        total_value = sum(source["value"] for source in source_data)
+    # Find the active job for these versions
+    active_jobs = [job for job in state.consolidation_jobs.values() 
+                  if job.status == "complete" and 
+                  set(job.versions) == set(state.selected_versions)]
+    
+    if active_jobs:
+        # Use the most recent job's results
+        latest_job = max(active_jobs, key=lambda j: j.start_time)
+        consolidated_data = latest_job.results
         
-        # Add timestamps to sources
-        for source in source_data:
-            source["timestamp"] = datetime.now().isoformat()
+        if str(year) in consolidated_data["sources"] and column in consolidated_data["sources"][str(year)]:
+            source_data = consolidated_data["sources"][str(year)][column]
+            total_value = sum(source["value"] for source in source_data)
+            
+            # Add timestamps to sources
+            for source in source_data:
+                source["timestamp"] = datetime.now().isoformat()
     
     # Calculate percentage contribution for each source
     if total_value > 0:

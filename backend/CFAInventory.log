@@ -1,57 +1,69 @@
-2025-02-24 18:59:55,966 INFO Searching for CFA files in BASE_PATH: C:\Users\Mohse\OneDrive\Desktop\public\Original
-2025-02-24 18:59:55,967 WARNING Base directory not found: C:\Users\Mohse\OneDrive\Desktop\public\Original
-2025-02-24 18:59:55,967 INFO Found alternative path: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original
-2025-02-24 18:59:55,967 INFO Directory contents: ['aggregated_data', 'Batch(0)', 'Batch(10)', 'Batch(11)', 'Batch(12)', 'Batch(13)', 'Batch(14)', 'Batch(15)', 'Batch(16)', 'Batch(17)', 'Batch(2)', 'Batch(3)', 'Batch(4)', 'Batch(5)', 'Batch(6)', 'Batch(7)', 'Batch(8)', 'Batch(9)']
-2025-02-24 18:59:55,967 INFO Found batch versions: ['0', '10', '11', '12', '13', '14', '15', '16', '17', '2', '3', '4', '5', '6', '7', '8', '9']
-2025-02-24 18:59:55,967 WARNING Results folder not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(0)\Results(0)
-2025-02-24 18:59:55,969 WARNING Results folder not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(14)\Results(14)
-2025-02-24 18:59:55,971 INFO Found CFA file for version 2 at: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\CFA(2).csv
-2025-02-24 18:59:55,972 INFO Found CFA file for version 3 at: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(3)\Results(3)\CFA(3).csv
-2025-02-24 18:59:55,973 INFO Found CFA file for version 4 at: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(4)\Results(4)\CFA(4).csv
-2025-02-24 18:59:55,974 INFO Found CFA file for version 6 at: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\CFA(6).csv
-2025-02-24 18:59:55,976 INFO Total CFA versions found: 4
-2025-02-24 18:59:55,976 INFO Found 4 CFA versions: 2, 3, 4, 6
-2025-02-24 18:59:56,005 WARNING  * Debugger is active!
-2025-02-24 18:59:56,009 INFO  * Debugger PIN: 119-059-632
-2025-02-24 19:00:07,039 INFO 127.0.0.1 - - [24/Feb/2025 19:00:07] "OPTIONS /api/versions HTTP/1.1" 200 -
-2025-02-24 19:00:07,039 INFO 127.0.0.1 - - [24/Feb/2025 19:00:07] "OPTIONS /api/versions HTTP/1.1" 200 -
-2025-02-24 19:00:07,294 INFO Searching for CFA files in BASE_PATH: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original
-2025-02-24 19:00:07,295 INFO Directory contents: ['aggregated_data', 'Batch(0)', 'Batch(10)', 'Batch(11)', 'Batch(12)', 'Batch(13)', 'Batch(14)', 'Batch(15)', 'Batch(16)', 'Batch(17)', 'Batch(2)', 'Batch(3)', 'Batch(4)', 'Batch(5)', 'Batch(6)', 'Batch(7)', 'Batch(8)', 'Batch(9)']
-2025-02-24 19:00:07,295 INFO Found batch versions: ['0', '10', '11', '12', '13', '14', '15', '16', '17', '2', '3', '4', '5', '6', '7', '8', '9']
-2025-02-24 19:00:07,295 WARNING Results folder not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(0)\Results(0)
-2025-02-24 19:00:07,296 WARNING Results folder not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(14)\Results(14)
-2025-02-24 19:00:07,297 INFO Found CFA file for version 2 at: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\CFA(2).csv
-2025-02-24 19:00:07,298 INFO Found CFA file for version 3 at: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(3)\Results(3)\CFA(3).csv
-2025-02-24 19:00:07,299 INFO Found CFA file for version 4 at: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(4)\Results(4)\CFA(4).csv
-2025-02-24 19:00:07,301 INFO Found CFA file for version 6 at: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\CFA(6).csv
-2025-02-24 19:00:07,302 INFO Total CFA versions found: 4
-2025-02-24 19:00:07,302 INFO 127.0.0.1 - - [24/Feb/2025 19:00:07] "GET /api/versions HTTP/1.1" 200 -
-2025-02-24 19:00:07,346 INFO Searching for CFA files in BASE_PATH: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original
-2025-02-24 19:00:07,346 INFO Directory contents: ['aggregated_data', 'Batch(0)', 'Batch(10)', 'Batch(11)', 'Batch(12)', 'Batch(13)', 'Batch(14)', 'Batch(15)', 'Batch(16)', 'Batch(17)', 'Batch(2)', 'Batch(3)', 'Batch(4)', 'Batch(5)', 'Batch(6)', 'Batch(7)', 'Batch(8)', 'Batch(9)']
-2025-02-24 19:00:07,346 INFO Found batch versions: ['0', '10', '11', '12', '13', '14', '15', '16', '17', '2', '3', '4', '5', '6', '7', '8', '9']
-2025-02-24 19:00:07,346 WARNING Results folder not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(0)\Results(0)
-2025-02-24 19:00:07,346 WARNING Results folder not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(14)\Results(14)
-2025-02-24 19:00:07,346 INFO Found CFA file for version 2 at: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\CFA(2).csv
-2025-02-24 19:00:07,346 INFO Found CFA file for version 3 at: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(3)\Results(3)\CFA(3).csv
-2025-02-24 19:00:07,346 INFO Found CFA file for version 4 at: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(4)\Results(4)\CFA(4).csv
-2025-02-24 19:00:07,346 INFO Found CFA file for version 6 at: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\CFA(6).csv
-2025-02-24 19:00:07,346 INFO Total CFA versions found: 4
-2025-02-24 19:00:07,346 INFO 127.0.0.1 - - [24/Feb/2025 19:00:07] "GET /api/versions HTTP/1.1" 200 -
-2025-02-24 19:00:14,191 INFO 127.0.0.1 - - [24/Feb/2025 19:00:14] "OPTIONS /api/consolidate HTTP/1.1" 200 -
-2025-02-24 19:00:14,507 INFO Created consolidation job 6c47cfeb-8a39-4951-9660-9f6ec62417a8 for versions: ['2', '3', '4', '6']
-2025-02-24 19:00:14,507 INFO 127.0.0.1 - - [24/Feb/2025 19:00:14] "POST /api/consolidate HTTP/1.1" 200 -
-2025-02-24 19:00:14,763 INFO 127.0.0.1 - - [24/Feb/2025 19:00:14] "OPTIONS /api/consolidate/status/6c47cfeb-8a39-4951-9660-9f6ec62417a8 HTTP/1.1" 200 -
-2025-02-24 19:00:14,828 INFO 127.0.0.1 - - [24/Feb/2025 19:00:14] "GET /api/consolidate/status/6c47cfeb-8a39-4951-9660-9f6ec62417a8 HTTP/1.1" 200 -
-2025-02-24 19:00:15,846 INFO 127.0.0.1 - - [24/Feb/2025 19:00:15] "GET /api/consolidate/status/6c47cfeb-8a39-4951-9660-9f6ec62417a8 HTTP/1.1" 200 -
-2025-02-24 19:00:17,170 INFO 127.0.0.1 - - [24/Feb/2025 19:00:17] "GET /api/consolidate/status/6c47cfeb-8a39-4951-9660-9f6ec62417a8 HTTP/1.1" 200 -
-2025-02-24 19:00:18,186 INFO Beginning consolidation of versions: ['2', '3', '4', '6']
-2025-02-24 19:00:18,186 INFO Loaded data from version 2 with 21 rows
-2025-02-24 19:00:18,186 INFO Loaded data from version 3 with 21 rows
-2025-02-24 19:00:18,186 INFO Loaded data from version 4 with 21 rows
-2025-02-24 19:00:18,186 INFO Loaded data from version 6 with 21 rows
-2025-02-24 19:00:18,186 INFO Version 2 has the most rows (21) and will be used as the base structure
-2025-02-24 19:00:18,186 INFO Consolidated years range: 1 to 21
-2025-02-24 19:00:18,242 INFO Consolidation complete. Processed 21 years and 9 columns.
-2025-02-24 19:00:18,242 INFO 127.0.0.1 - - [24/Feb/2025 19:00:18] "GET /api/consolidate/status/6c47cfeb-8a39-4951-9660-9f6ec62417a8 HTTP/1.1" 200 -
-2025-02-24 19:00:18,586 INFO 127.0.0.1 - - [24/Feb/2025 19:00:18] "OPTIONS /api/consolidate/results/6c47cfeb-8a39-4951-9660-9f6ec62417a8 HTTP/1.1" 200 -
-2025-02-24 19:00:18,822 INFO 127.0.0.1 - - [24/Feb/2025 19:00:18] "GET /api/consolidate/results/6c47cfeb-8a39-4951-9660-9f6ec62417a8 HTTP/1.1" 200 -
+2025-02-24 19:25:59,803 INFO Searching for CFA files in BASE_PATH: C:\Users\Mohse\OneDrive\Desktop\public\Original
+2025-02-24 19:25:59,803 WARNING Base directory not found: C:\Users\Mohse\OneDrive\Desktop\public\Original
+2025-02-24 19:25:59,803 INFO Found alternative path: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original
+2025-02-24 19:25:59,803 INFO Directory contents: ['aggregated_data', 'Batch(0)', 'Batch(10)', 'Batch(11)', 'Batch(12)', 'Batch(13)', 'Batch(14)', 'Batch(15)', 'Batch(16)', 'Batch(17)', 'Batch(2)', 'Batch(3)', 'Batch(4)', 'Batch(5)', 'Batch(6)', 'Batch(7)', 'Batch(8)', 'Batch(9)']
+2025-02-24 19:25:59,803 INFO Found batch versions: ['0', '10', '11', '12', '13', '14', '15', '16', '17', '2', '3', '4', '5', '6', '7', '8', '9']
+2025-02-24 19:25:59,803 WARNING Results folder not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(0)\Results(0)
+2025-02-24 19:25:59,806 WARNING Results folder not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(14)\Results(14)
+2025-02-24 19:25:59,807 INFO Found CFA file for version 2 at: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\CFA(2).csv
+2025-02-24 19:25:59,808 INFO Found CFA file for version 3 at: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(3)\Results(3)\CFA(3).csv
+2025-02-24 19:25:59,809 INFO Found CFA file for version 4 at: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(4)\Results(4)\CFA(4).csv
+2025-02-24 19:25:59,810 INFO Found CFA file for version 6 at: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\CFA(6).csv
+2025-02-24 19:25:59,811 INFO Total CFA versions found: 4
+2025-02-24 19:25:59,811 INFO Found 4 CFA versions: 2, 3, 4, 6
+2025-02-24 19:25:59,822 WARNING  * Debugger is active!
+2025-02-24 19:25:59,822 INFO  * Debugger PIN: 119-059-632
+2025-02-24 19:26:49,404 INFO 127.0.0.1 - - [24/Feb/2025 19:26:49] "OPTIONS /api/consolidate HTTP/1.1" 200 -
+2025-02-24 19:26:49,662 INFO Created consolidation job eccb0858-c272-4a45-8182-890757bd478d for versions: ['3', '4']
+2025-02-24 19:26:49,664 INFO 127.0.0.1 - - [24/Feb/2025 19:26:49] "POST /api/consolidate HTTP/1.1" 200 -
+2025-02-24 19:26:49,726 INFO 127.0.0.1 - - [24/Feb/2025 19:26:49] "OPTIONS /api/consolidate/status/eccb0858-c272-4a45-8182-890757bd478d HTTP/1.1" 200 -
+2025-02-24 19:26:49,983 INFO Beginning consolidation of versions: ['3']
+2025-02-24 19:26:49,983 INFO Loaded data from version 3 with 21 rows
+2025-02-24 19:26:49,983 INFO Processing 1 dataframes with years: {np.int64(1), np.int64(2), np.int64(3), np.int64(4), np.int64(5), np.int64(6), np.int64(7), np.int64(8), np.int64(9), np.int64(10), np.int64(11), np.int64(12), np.int64(13), np.int64(14), np.int64(15), np.int64(16), np.int64(17), np.int64(18), np.int64(19), np.int64(20), np.int64(21)}
+2025-02-24 19:26:49,983 INFO Consolidated years range: 1 to 21
+2025-02-24 19:26:50,014 INFO Consolidation complete. Processed 21 years and 9 columns.
+2025-02-24 19:26:50,014 INFO 127.0.0.1 - - [24/Feb/2025 19:26:50] "GET /api/consolidate/status/eccb0858-c272-4a45-8182-890757bd478d HTTP/1.1" 200 -
+2025-02-24 19:26:51,023 INFO Beginning consolidation of versions: ['4']
+2025-02-24 19:26:51,023 INFO Loaded data from version 4 with 21 rows
+2025-02-24 19:26:51,023 INFO Processing 1 dataframes with years: {np.int64(1), np.int64(2), np.int64(3), np.int64(4), np.int64(5), np.int64(6), np.int64(7), np.int64(8), np.int64(9), np.int64(10), np.int64(11), np.int64(12), np.int64(13), np.int64(14), np.int64(15), np.int64(16), np.int64(17), np.int64(18), np.int64(19), np.int64(20), np.int64(21)}
+2025-02-24 19:26:51,023 INFO Consolidated years range: 1 to 21
+2025-02-24 19:26:51,038 INFO Consolidation complete. Processed 21 years and 9 columns.
+2025-02-24 19:26:51,038 INFO 127.0.0.1 - - [24/Feb/2025 19:26:51] "GET /api/consolidate/status/eccb0858-c272-4a45-8182-890757bd478d HTTP/1.1" 200 -
+2025-02-24 19:26:51,371 INFO 127.0.0.1 - - [24/Feb/2025 19:26:51] "OPTIONS /api/consolidate/results/eccb0858-c272-4a45-8182-890757bd478d HTTP/1.1" 200 -
+2025-02-24 19:26:51,631 INFO 127.0.0.1 - - [24/Feb/2025 19:26:51] "GET /api/consolidate/results/eccb0858-c272-4a45-8182-890757bd478d HTTP/1.1" 200 -
+2025-02-24 19:26:54,860 INFO 127.0.0.1 - - [24/Feb/2025 19:26:54] "OPTIONS /api/cell-details HTTP/1.1" 200 -
+2025-02-24 19:26:55,175 INFO 127.0.0.1 - - [24/Feb/2025 19:26:55] "POST /api/cell-details HTTP/1.1" 200 -
+2025-02-24 19:27:25,752 INFO 127.0.0.1 - - [24/Feb/2025 19:27:25] "OPTIONS /api/versions HTTP/1.1" 200 -
+2025-02-24 19:27:26,068 INFO Searching for CFA files in BASE_PATH: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original
+2025-02-24 19:27:26,068 INFO Directory contents: ['aggregated_data', 'Batch(0)', 'Batch(10)', 'Batch(11)', 'Batch(12)', 'Batch(13)', 'Batch(14)', 'Batch(15)', 'Batch(16)', 'Batch(17)', 'Batch(2)', 'Batch(3)', 'Batch(4)', 'Batch(5)', 'Batch(6)', 'Batch(7)', 'Batch(8)', 'Batch(9)']
+2025-02-24 19:27:26,068 INFO Found batch versions: ['0', '10', '11', '12', '13', '14', '15', '16', '17', '2', '3', '4', '5', '6', '7', '8', '9']
+2025-02-24 19:27:26,068 WARNING Results folder not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(0)\Results(0)
+2025-02-24 19:27:26,068 WARNING Results folder not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(14)\Results(14)
+2025-02-24 19:27:26,068 INFO Found CFA file for version 2 at: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\CFA(2).csv
+2025-02-24 19:27:26,068 INFO Found CFA file for version 3 at: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(3)\Results(3)\CFA(3).csv
+2025-02-24 19:27:26,068 INFO Found CFA file for version 4 at: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(4)\Results(4)\CFA(4).csv
+2025-02-24 19:27:26,068 INFO Found CFA file for version 6 at: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\CFA(6).csv
+2025-02-24 19:27:26,068 INFO Total CFA versions found: 4
+2025-02-24 19:27:26,068 INFO 127.0.0.1 - - [24/Feb/2025 19:27:26] "GET /api/versions HTTP/1.1" 200 -
+2025-02-24 19:33:18,956 INFO 127.0.0.1 - - [24/Feb/2025 19:33:18] "OPTIONS /api/cell-details HTTP/1.1" 200 -
+2025-02-24 19:33:19,217 INFO 127.0.0.1 - - [24/Feb/2025 19:33:19] "POST /api/cell-details HTTP/1.1" 200 -
+2025-02-24 19:33:31,190 INFO 127.0.0.1 - - [24/Feb/2025 19:33:31] "OPTIONS /api/consolidate HTTP/1.1" 200 -
+2025-02-24 19:33:31,509 INFO Created consolidation job 81a1ab5f-225e-4965-b518-d0d1dd76dc48 for versions: ['3', '4']
+2025-02-24 19:33:31,509 INFO 127.0.0.1 - - [24/Feb/2025 19:33:31] "POST /api/consolidate HTTP/1.1" 200 -
+2025-02-24 19:33:31,757 INFO 127.0.0.1 - - [24/Feb/2025 19:33:31] "OPTIONS /api/consolidate/status/81a1ab5f-225e-4965-b518-d0d1dd76dc48 HTTP/1.1" 200 -
+2025-02-24 19:33:31,820 INFO Beginning consolidation of versions: ['3']
+2025-02-24 19:33:31,824 INFO Loaded data from version 3 with 21 rows
+2025-02-24 19:33:31,824 INFO Processing 1 dataframes with years: {np.int64(1), np.int64(2), np.int64(3), np.int64(4), np.int64(5), np.int64(6), np.int64(7), np.int64(8), np.int64(9), np.int64(10), np.int64(11), np.int64(12), np.int64(13), np.int64(14), np.int64(15), np.int64(16), np.int64(17), np.int64(18), np.int64(19), np.int64(20), np.int64(21)}
+2025-02-24 19:33:31,824 INFO Consolidated years range: 1 to 21
+2025-02-24 19:33:31,840 INFO Consolidation complete. Processed 21 years and 9 columns.
+2025-02-24 19:33:31,840 INFO 127.0.0.1 - - [24/Feb/2025 19:33:31] "GET /api/consolidate/status/81a1ab5f-225e-4965-b518-d0d1dd76dc48 HTTP/1.1" 200 -
+2025-02-24 19:33:32,867 INFO Beginning consolidation of versions: ['4']
+2025-02-24 19:33:32,867 INFO Loaded data from version 4 with 21 rows
+2025-02-24 19:33:32,867 INFO Processing 1 dataframes with years: {np.int64(1), np.int64(2), np.int64(3), np.int64(4), np.int64(5), np.int64(6), np.int64(7), np.int64(8), np.int64(9), np.int64(10), np.int64(11), np.int64(12), np.int64(13), np.int64(14), np.int64(15), np.int64(16), np.int64(17), np.int64(18), np.int64(19), np.int64(20), np.int64(21)}
+2025-02-24 19:33:32,867 INFO Consolidated years range: 1 to 21
+2025-02-24 19:33:32,886 INFO Consolidation complete. Processed 21 years and 9 columns.
+2025-02-24 19:33:32,886 INFO 127.0.0.1 - - [24/Feb/2025 19:33:32] "GET /api/consolidate/status/81a1ab5f-225e-4965-b518-d0d1dd76dc48 HTTP/1.1" 200 -
+2025-02-24 19:33:33,208 INFO 127.0.0.1 - - [24/Feb/2025 19:33:33] "OPTIONS /api/consolidate/results/81a1ab5f-225e-4965-b518-d0d1dd76dc48 HTTP/1.1" 200 -
+2025-02-24 19:33:33,474 INFO 127.0.0.1 - - [24/Feb/2025 19:33:33] "GET /api/consolidate/results/81a1ab5f-225e-4965-b518-d0d1dd76dc48 HTTP/1.1" 200 -
+2025-02-24 19:33:43,195 INFO 127.0.0.1 - - [24/Feb/2025 19:33:43] "OPTIONS /api/cell-details HTTP/1.1" 200 -
+2025-02-24 19:33:43,497 INFO 127.0.0.1 - - [24/Feb/2025 19:33:43] "POST /api/cell-details HTTP/1.1" 200 -

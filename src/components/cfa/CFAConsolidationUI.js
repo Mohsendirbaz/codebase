@@ -363,54 +363,54 @@ const CFAConsolidationUI = () => {
             showReset={processingState.status === 'complete' || processingState.status === 'error'}
           />
           
-  <div className="results-section">
-    <div className="view-switcher">
-      <button
-        className={`view-button ${resultsState.viewMode === 'consolidated' ? 'active' : ''}`}
-        onClick={switchToConsolidatedView}
-        disabled={!resultsState.data || processingState.status !== 'complete'}
-      >
-        Consolidated View
-      </button>
-      <button
-        className={`view-button ${resultsState.viewMode === 'individual' ? 'active' : ''}`}
-        onClick={switchToIndividualView}
-        disabled={!resultsState.data || processingState.status !== 'complete'}
-      >
-        Individual View
-      </button>
-    </div>
+          <div className="view-switcher">
+            <button
+              className={`view-button ${resultsState.viewMode === 'consolidated' ? 'active' : ''}`}
+              onClick={switchToConsolidatedView}
+              disabled={!resultsState.data || processingState.status !== 'complete'}
+            >
+              Consolidated View
+            </button>
+            <button
+              className={`view-button ${resultsState.viewMode === 'individual' ? 'active' : ''}`}
+              onClick={switchToIndividualView}
+              disabled={!resultsState.data || processingState.status !== 'complete'}
+            >
+              Individual View
+            </button>
+          </div>
 
-    {resultsState.data && processingState.status === 'complete' ? (
-      resultsState.viewMode === 'individual' ? (
-        <IndividualResultsPanel
-          data={resultsState.data}
-          selectedCell={resultsState.selectedCell}
-          inspectorVisible={resultsState.inspectorVisible}
-          inspectorPosition={resultsState.inspectorPosition}
-          cellDetails={resultsState.cellDetails}
-          onCellClick={handleCellClick}
-          onCloseInspector={closeInspector}
-          selectedVersions={selectionState.selected}
-        />
-      ) : (
-        <ResultsPanel
-          data={resultsState.data}
-          selectedCell={resultsState.selectedCell}
-          inspectorVisible={resultsState.inspectorVisible}
-          inspectorPosition={resultsState.inspectorPosition}
-          cellDetails={resultsState.cellDetails}
-          onCellClick={handleCellClick}
-          onCloseInspector={closeInspector}
-          selectedVersions={selectionState.selected}
-        />
-      )
-    ) : (
-      <div className="results-placeholder">
-        Select versions and start consolidation to view results
-      </div>
-    )}
-  </div>
+          <div className="results-section">
+            {resultsState.data && processingState.status === 'complete' ? (
+              resultsState.viewMode === 'individual' ? (
+                <IndividualResultsPanel
+                  data={resultsState.data}
+                  selectedCell={resultsState.selectedCell}
+                  inspectorVisible={resultsState.inspectorVisible}
+                  inspectorPosition={resultsState.inspectorPosition}
+                  cellDetails={resultsState.cellDetails}
+                  onCellClick={handleCellClick}
+                  onCloseInspector={closeInspector}
+                  selectedVersions={selectionState.selected}
+                />
+              ) : (
+                <ResultsPanel
+                  data={resultsState.data}
+                  selectedCell={resultsState.selectedCell}
+                  inspectorVisible={resultsState.inspectorVisible}
+                  inspectorPosition={resultsState.inspectorPosition}
+                  cellDetails={resultsState.cellDetails}
+                  onCellClick={handleCellClick}
+                  onCloseInspector={closeInspector}
+                  selectedVersions={selectionState.selected}
+                />
+              )
+            ) : (
+              <div className="results-placeholder">
+                Select versions and start consolidation to view results
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>
