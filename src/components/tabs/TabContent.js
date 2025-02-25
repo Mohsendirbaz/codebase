@@ -1,6 +1,7 @@
 import React from 'react';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import ExtendedScaling from '../../ExtendedScaling';
+import InputForm from '../forms/InputForm';
 import ModelZone from '../model/ModelZone';
 import VersionSelector from '../../VersionSelector';
 import SpatialTransformComponent from '../../naturalmotion';
@@ -15,31 +16,69 @@ import PlotContentTab from './PlotContentTab';
 const TabContent = ({
     activeTab,
     csvFiles,
-    subTab,
-    setSubTab,
     version,
     albumHtmls,
-    selectedHtml,
-    setSelectedHtml,
-    iframesLoaded,
-    setIframesLoaded,
     albumImages,
-    selectedAlbum,
-    setSelectedAlbum,
-    imagesLoaded,
-    setImagesLoaded,
-    baseCosts,
-    handleScaledValuesChange,
-    scalingGroups,
-    handleScalingGroupsChange,
-    renderForm
+    loadingStates,
+    contentLoaded,
+    onIframeLoad,
+    onImageLoad,
+    onError,
+    formValues,
+    handleInputChange,
+    handleReset,
+    F,
+    toggleF,
+    V,
+    toggleV,
+    setVersion,
+    handleRun,
+    handleSubmitCompleteSet,
+    selectedCalculationOption,
+    handleOptionChange,
+    target_row,
+    handleTargetRowChange,
+    remarks,
+    toggleRemarks,
+    customizedFeatures,
+    toggleCustomizedFeatures,
+    activeSubTab,
+    setActiveSubTab,
+    selectedProperties,
+    setSelectedProperties,
+    S,
+    setS
 }) => {
     switch (activeTab) {
         case 'Input':
             return (
-                <div className="form-content">
-                    {renderForm()}
-                </div>
+                <InputForm
+                    activeSubTab={activeSubTab}
+                    setActiveSubTab={setActiveSubTab}
+                    version={version}
+                    formValues={formValues}
+                    handleInputChange={handleInputChange}
+                    handleReset={handleReset}
+                    F={F}
+                    toggleF={toggleF}
+                    V={V}
+                    toggleV={toggleV}
+                    setVersion={setVersion}
+                    handleRun={handleRun}
+                    handleSubmitCompleteSet={handleSubmitCompleteSet}
+                    selectedCalculationOption={selectedCalculationOption}
+                    handleOptionChange={handleOptionChange}
+                    target_row={target_row}
+                    handleTargetRowChange={handleTargetRowChange}
+                    remarks={remarks}
+                    toggleRemarks={toggleRemarks}
+                    customizedFeatures={customizedFeatures}
+                    toggleCustomizedFeatures={toggleCustomizedFeatures}
+                    selectedProperties={selectedProperties}
+                    setSelectedProperties={setSelectedProperties}
+                    S={S}
+                    setS={setS}
+                />
             );
         case 'ModelZone':
             return (
@@ -55,8 +94,6 @@ const TabContent = ({
             return (
                 <CsvContentTab
                     csvFiles={csvFiles}
-                    subTab={subTab}
-                    setSubTab={setSubTab}
                     version={version}
                 />
             );
@@ -64,31 +101,20 @@ const TabContent = ({
             return (
                 <HtmlContentTab
                     albumHtmls={albumHtmls}
-                    selectedHtml={selectedHtml}
-                    setSelectedHtml={setSelectedHtml}
-                    iframesLoaded={iframesLoaded}
-                    setIframesLoaded={setIframesLoaded}
+                    onIframeLoad={onIframeLoad}
+                    contentLoaded={contentLoaded}
                 />
             );
         case 'Case3':
             return (
                 <PlotContentTab
                     albumImages={albumImages}
-                    selectedAlbum={selectedAlbum}
-                    setSelectedAlbum={setSelectedAlbum}
-                    imagesLoaded={imagesLoaded}
-                    setImagesLoaded={setImagesLoaded}
+                    onImageLoad={onImageLoad}
+                    contentLoaded={contentLoaded}
                 />
             );
         case 'Scaling':
-            return (
-                <ExtendedScaling
-                    baseCosts={baseCosts}
-                    onScaledValuesChange={handleScaledValuesChange}
-                    initialScalingGroups={scalingGroups}
-                    onScalingGroupsChange={handleScalingGroupsChange}
-                />
-            );
+            return <ExtendedScaling />;
         case 'Editable':
             return (
                 <div className="p-4">

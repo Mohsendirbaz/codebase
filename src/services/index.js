@@ -1,15 +1,13 @@
-/**
- * Export all services from a single location
- */
+export * from './apiService';
+export * from './batchService';
+export * from './configService';
+export * from './contentService';
 
-export * as contentService from './contentService';
-export * as batchService from './batchService';
-export * as configService from './configService';
-export * as apiService from './apiService';
-
-// Example usage in components:
-// import { contentService, batchService, configService } from '../services';
-// 
-// contentService.fetchHtmlFiles(version);
-// batchService.createNewBatch();
-// configService.loadConfiguration(version);
+// Error constants
+export const ERROR_MESSAGES = {
+  BACKEND_UNAVAILABLE: 'Backend service is unavailable. Please run start_servers.py to start the backend services.',
+  CONNECTION_REFUSED: 'Connection refused. Please ensure the backend servers are running.',
+  FETCH_ERROR: 'Failed to fetch data. Please check your connection and try again.',
+  BATCH_ERROR: 'Failed to perform batch operation. Please try again.',
+  ANALYSIS_ERROR: 'Analysis operation failed. Please check the parameters and try again.',
+};

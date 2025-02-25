@@ -1,7 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './InheritanceControl.css';
 
-const InheritanceControl = ({ models, onUpdate }) => {
+const InheritanceControl = ({ models = {
+  variant1: { filters: {}, departure: 0 },
+  variant2: { filters: {}, departure: 0 }
+}, onUpdate }) => {
   const canvasRef = useRef(null);
   const [hoveredConnection, setHoveredConnection] = useState(null);
   const [activeConnection, setActiveConnection] = useState(null);
@@ -92,9 +95,9 @@ const InheritanceControl = ({ models, onUpdate }) => {
 
     // Draw connections with enhanced styling
     // Core Cost connection
-    const variant1Active = models.variant1.filters.cost || 
-                         models.variant1.filters.time || 
-                         models.variant1.filters.process;
+    const variant1Active = models?.variant1?.filters?.cost || 
+                         models?.variant1?.filters?.time || 
+                         models?.variant1?.filters?.process;
     
     ctx.beginPath();
     ctx.strokeStyle = variant1Active ? '#3b82f6' : '#e2e8f0';
@@ -112,9 +115,9 @@ const InheritanceControl = ({ models, onUpdate }) => {
     ctx.setLineDash([]);
 
     // Brand Cost connection
-    const variant2Active = models.variant2.filters.cost || 
-                         models.variant2.filters.time || 
-                         models.variant2.filters.process;
+    const variant2Active = models?.variant2?.filters?.cost || 
+                         models?.variant2?.filters?.time || 
+                         models?.variant2?.filters?.process;
     
     ctx.beginPath();
     ctx.strokeStyle = variant2Active ? '#3b82f6' : '#e2e8f0';
@@ -171,7 +174,7 @@ const InheritanceControl = ({ models, onUpdate }) => {
     activeConnection
   ) => {
     // Core Cost Indicators with enhanced visibility
-    if (models.variant1.departure > 0) {
+    if (models?.variant1?.departure > 0) {
       const isHighlighted = hoveredConnection === 'variant1' || activeConnection === 'variant1';
       drawDepartureLabel(
         ctx, 
@@ -182,7 +185,7 @@ const InheritanceControl = ({ models, onUpdate }) => {
       );
     }
 
-    const variant1Filters = Object.entries(models.variant1.filters)
+    const variant1Filters = Object.entries(models?.variant1?.filters || {})
       .filter(([_, active]) => active)
       .map(([type]) => type);
 
@@ -198,7 +201,7 @@ const InheritanceControl = ({ models, onUpdate }) => {
     }
 
     // Brand Cost Indicators with enhanced visibility
-    if (models.variant2.departure > 0) {
+    if (models?.variant2?.departure > 0) {
       const isHighlighted = hoveredConnection === 'variant2' || activeConnection === 'variant2';
       drawDepartureLabel(
         ctx, 
@@ -209,7 +212,7 @@ const InheritanceControl = ({ models, onUpdate }) => {
       );
     }
 
-    const variant2Filters = Object.entries(models.variant2.filters)
+    const variant2Filters = Object.entries(models?.variant2?.filters || {})
       .filter(([_, active]) => active)
       .map(([type]) => type);
 

@@ -1,0 +1,704 @@
+{
+  "project_name": "src",
+  "analysis_date": "2025-02-25 15:47:18",
+  "version": 2,
+  "directories": {
+    ".": {
+      "files": [
+        "App.js",
+        "Card.js",
+        "CustomizableImage.js",
+        "CustomizableTable.js",
+        "Editable.js",
+        "ExtendedScaling.js",
+        "FormHeader.js",
+        "GeneralFormConfig.js",
+        "index.js",
+        "L_1_HomePage.js",
+        "naturalmotion.js",
+        "Popup.js",
+        "PropertySelector.js",
+        "ScalingSummary.js",
+        "SensitivitySelector.js",
+        "TodoList.js",
+        "TodoList2.js",
+        "useFormValues.js",
+        "VersionSelector.js"
+      ],
+      "import_count": 74
+    },
+    "components": {
+      "files": [
+        "components\\ErrorBoundary.js",
+        "components\\SensitivityAnalysis.js",
+        "components\\SensitivityVisualization.js",
+        "components\\TestingZone.js"
+      ],
+      "import_count": 7
+    },
+    "contexts": {
+      "files": [
+        "contexts\\VersionStateContext.js"
+      ],
+      "import_count": 1
+    },
+    "hooks": {
+      "files": [
+        "hooks\\useAnalysis.js",
+        "hooks\\useContentLoading.js",
+        "hooks\\useFeatureToggles.js",
+        "hooks\\useFormValues.js",
+        "hooks\\useSensitivity.js",
+        "hooks\\useTheme.js",
+        "hooks\\useVersion.js"
+      ],
+      "import_count": 9
+    },
+    "services": {
+      "files": [
+        "services\\contentService.js"
+      ],
+      "import_count": 1
+    },
+    "state": {
+      "files": [
+        "state\\VersionStateManager.js"
+      ],
+      "import_count": 1
+    },
+    "ui": {
+      "files": [
+        "ui\\tooltip.js",
+        "ui\\tooltip.jsx"
+      ],
+      "import_count": 3
+    },
+    "components\\buttons": {
+      "files": [
+        "components\\buttons\\ActionButtons.js"
+      ],
+      "import_count": 1
+    },
+    "components\\cfa": {
+      "files": [
+        "components\\cfa\\CFAConsolidationUI.js",
+        "components\\cfa\\IndividualResultsPanel.js",
+        "components\\cfa\\ProcessingPanel.js",
+        "components\\cfa\\ResultsPanel.js",
+        "components\\cfa\\SelectionPanel.js"
+      ],
+      "import_count": 10
+    },
+    "components\\forms": {
+      "files": [
+        "components\\forms\\InputForm.js"
+      ],
+      "import_count": 3
+    },
+    "components\\layout": {
+      "files": [
+        "components\\layout\\HeaderSection.js"
+      ],
+      "import_count": 2
+    },
+    "components\\model": {
+      "files": [
+        "components\\model\\AnalysisChart.js",
+        "components\\model\\AnalysisVisualizationIntegration.js",
+        "components\\model\\DecisionEngine.js",
+        "components\\model\\FilterPopup.js",
+        "components\\model\\ImpactAnalysis.js",
+        "components\\model\\InheritanceControl.js",
+        "components\\model\\ModelCard.js",
+        "components\\model\\ModelZone.js",
+        "components\\model\\NavigationManager.js",
+        "components\\model\\OptimizationEngine.js",
+        "components\\model\\OverlayController.js",
+        "components\\model\\RiskAssessment.js",
+        "components\\model\\SensitivityEngine.js"
+      ],
+      "import_count": 29
+    },
+    "components\\navigation": {
+      "files": [
+        "components\\navigation\\TabNavigation.js"
+      ],
+      "import_count": 1
+    },
+    "components\\tabs": {
+      "files": [
+        "components\\tabs\\CsvContentTab.js",
+        "components\\tabs\\HtmlContentTab.js",
+        "components\\tabs\\PlotContentTab.js",
+        "components\\tabs\\TabContent.js"
+      ],
+      "import_count": 24
+    },
+    "components\\theme": {
+      "files": [
+        "components\\theme\\ThemeSelector.js"
+      ],
+      "import_count": 1
+    },
+    "components\\version": {
+      "files": [
+        "components\\version\\VersionControl.js"
+      ],
+      "import_count": 1
+    }
+  },
+  "files": {
+    "App.js": {
+      "type": ".js",
+      "directory": ".",
+      "imports": [
+        "import React, { useState, useCallback } from 'react'",
+        "import { BrowserRouter as Router } from 'react-router-dom'",
+        "import ErrorBoundary from './components/ErrorBoundary'",
+        "import { VersionStateProvider } from './contexts/VersionStateContext'",
+        "import TabNavigation from './components/navigation/TabNavigation'",
+        "import ThemeSelector from './components/theme/ThemeSelector'",
+        "import TabContent from './components/tabs/TabContent'",
+        "import ModelZone from './components/model/ModelZone'",
+        "import VersionControl from './components/version/VersionControl'"
+      ]
+    },
+    "Card.js": {
+      "type": ".js",
+      "directory": ".",
+      "imports": [
+        "import React from 'react'"
+      ]
+    },
+    "CustomizableImage.js": {
+      "type": ".js",
+      "directory": ".",
+      "imports": [
+        "import React, { useState, useEffect } from 'react'"
+      ]
+    },
+    "CustomizableTable.js": {
+      "type": ".js",
+      "directory": ".",
+      "imports": [
+        "import React from 'react'",
+        "import PropTypes from 'prop-types'",
+        "import propertyMapping from './useFormValues.js';  // Correctly importing propertyMapping"
+      ]
+    },
+    "Editable.js": {
+      "type": ".js",
+      "directory": ".",
+      "imports": [
+        "import React, { useState } from 'react'",
+        "import { GripVertical, X, Check } from 'lucide-react'"
+      ]
+    },
+    "ExtendedScaling.js": {
+      "type": ".js",
+      "directory": ".",
+      "imports": [
+        "import React, { useState, useEffect, useCallback, useRef } from 'react'",
+        "import { Tab } from '@headlessui/react'",
+        "import { ArrowPathIcon, PlusIcon, TrashIcon, LockClosedIcon, LockOpenIcon } from '@heroicons/react/24/outline'",
+        "import * as math from 'mathjs'",
+        "import ScalingSummary from './ScalingSummary'",
+        "import { DndProvider, useDrag, useDrop } from 'react-dnd'",
+        "import { HTML5Backend } from 'react-dnd-html5-backend'",
+        "import { motion, AnimatePresence } from 'framer-motion'"
+      ]
+    },
+    "FormHeader.js": {
+      "type": ".js",
+      "directory": ".",
+      "imports": [
+        "import React, { useState } from 'react'"
+      ]
+    },
+    "GeneralFormConfig.js": {
+      "type": ".js",
+      "directory": ".",
+      "imports": [
+        "import React, { useState } from 'react'",
+        "import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'",
+        "import useFormValues from './useFormValues'",
+        "import Popup from './Popup'",
+        "import { faEdit, faCheck, faTimes } from '@fortawesome/free-solid-svg-icons'",
+        "import SensitivityAnalysisSelector from './SensitivitySelector'"
+      ]
+    },
+    "index.js": {
+      "type": ".js",
+      "directory": ".",
+      "imports": [
+        "import React from 'react'",
+        "import { createRoot } from 'react-dom/client'",
+        "import App from './App'"
+      ]
+    },
+    "L_1_HomePage.js": {
+      "type": ".js",
+      "directory": ".",
+      "imports": [
+        "import React, { useState, useEffect } from 'react'",
+        "import { VersionStateProvider } from './contexts/VersionStateContext'",
+        "import { Tab, TabList, TabPanel, Tabs } from 'react-tabs'",
+        "import CustomizableImage from './CustomizableImage'",
+        "import CustomizableTable from './CustomizableTable'",
+        "import ExtendedScaling from './ExtendedScaling'",
+        "import FormHeader from './FormHeader'",
+        "import GeneralFormConfig from './GeneralFormConfig'",
+        "import Popup from './Popup'",
+        "import PropertySelector from './PropertySelector'",
+        "import TodoList from './TodoList'",
+        "import VersionSelector from './VersionSelector'",
+        "import ModelZone from './components/model/ModelZone'",
+        "import VersionControl from './components/version/VersionControl'",
+        "import EditableHierarchicalList from './Editable'",
+        "import SpatialTransformComponent from './naturalmotion'",
+        "import HeaderSection from './components/layout/HeaderSection'",
+        "import TabNavigation from './components/navigation/TabNavigation'",
+        "import InputForm from './components/forms/InputForm'",
+        "import CsvContentTab from './components/tabs/CsvContentTab'",
+        "import HtmlContentTab from './components/tabs/HtmlContentTab'",
+        "import PlotContentTab from './components/tabs/PlotContentTab'",
+        "import ActionButtons from './components/buttons/ActionButtons'",
+        "import { configService, batchService } from './services'"
+      ]
+    },
+    "naturalmotion.js": {
+      "type": ".js",
+      "directory": ".",
+      "imports": [
+        "import React, { useState, useEffect } from 'react'"
+      ]
+    },
+    "Popup.js": {
+      "type": ".js",
+      "directory": ".",
+      "imports": [
+        "import React, { useEffect, useState } from 'react'"
+      ]
+    },
+    "PropertySelector.js": {
+      "type": ".js",
+      "directory": ".",
+      "imports": [
+        "import React from 'react'",
+        "import useFormValues from './useFormValues'"
+      ]
+    },
+    "ScalingSummary.js": {
+      "type": ".js",
+      "directory": ".",
+      "imports": [
+        "import React, { useState, useEffect, useCallback } from 'react'",
+        "import { Card, CardHeader, CardContent } from './Card'",
+        "import { motion, AnimatePresence } from 'framer-motion'"
+      ]
+    },
+    "SensitivitySelector.js": {
+      "type": ".js",
+      "directory": ".",
+      "imports": [
+        "import React, { useState, useRef, useEffect } from 'react'"
+      ]
+    },
+    "TodoList.js": {
+      "type": ".js",
+      "directory": ".",
+      "imports": [
+        "import React, { useState } from 'react'",
+        "import { GripVertical, X, Check, Plus, Trash2 } from 'lucide-react'"
+      ]
+    },
+    "TodoList2.js": {
+      "type": ".js",
+      "directory": ".",
+      "imports": [
+        "import React, { useState } from 'react'",
+        "import { GripVertical, X, Check, Plus, Trash2 } from 'lucide-react'"
+      ]
+    },
+    "useFormValues.js": {
+      "type": ".js",
+      "directory": ".",
+      "imports": [
+        "import { useState } from 'react'",
+        "import { faDollarSign, faCogs, faIndustry, faBuilding, faWarehouse, faHandshake, faChartLine, faTools } from '@fortawesome/free-solid-svg-icons'"
+      ]
+    },
+    "VersionSelector.js": {
+      "type": ".js",
+      "directory": ".",
+      "imports": [
+        "import React, { useMemo, useEffect } from 'react'",
+        "import { useVersionState } from './contexts/VersionStateContext'"
+      ]
+    },
+    "components\\ErrorBoundary.js": {
+      "type": ".js",
+      "directory": "components",
+      "imports": [
+        "import React from 'react'"
+      ]
+    },
+    "components\\SensitivityAnalysis.js": {
+      "type": ".js",
+      "directory": "components",
+      "imports": [
+        "import React, { useState, useEffect } from 'react'",
+        "import SensitivityVisualization from './SensitivityVisualization'",
+        "import { useVersionState } from '../contexts/VersionStateContext'"
+      ]
+    },
+    "components\\SensitivityVisualization.js": {
+      "type": ".js",
+      "directory": "components",
+      "imports": [
+        "import React from 'react'"
+      ]
+    },
+    "components\\TestingZone.js": {
+      "type": ".js",
+      "directory": "components",
+      "imports": [
+        "import React from 'react'",
+        "import CFAConsolidationUI from './cfa/CFAConsolidationUI'"
+      ]
+    },
+    "contexts\\VersionStateContext.js": {
+      "type": ".js",
+      "directory": "contexts",
+      "imports": [
+        "import React, { createContext, useContext, useState, useCallback } from 'react'"
+      ]
+    },
+    "hooks\\useAnalysis.js": {
+      "type": ".js",
+      "directory": "hooks",
+      "imports": [
+        "import { useState } from 'react'",
+        "import { apiService } from '../services'"
+      ]
+    },
+    "hooks\\useContentLoading.js": {
+      "type": ".js",
+      "directory": "hooks",
+      "imports": [
+        "import { useState, useEffect } from 'react'"
+      ]
+    },
+    "hooks\\useFeatureToggles.js": {
+      "type": ".js",
+      "directory": "hooks",
+      "imports": [
+        "import { useState } from 'react'"
+      ]
+    },
+    "hooks\\useFormValues.js": {
+      "type": ".js",
+      "directory": "hooks",
+      "imports": [
+        "import { useState } from 'react'"
+      ]
+    },
+    "hooks\\useSensitivity.js": {
+      "type": ".js",
+      "directory": "hooks",
+      "imports": [
+        "import { useState } from 'react'"
+      ]
+    },
+    "hooks\\useTheme.js": {
+      "type": ".js",
+      "directory": "hooks",
+      "imports": [
+        "import { useState, useEffect } from 'react'"
+      ]
+    },
+    "hooks\\useVersion.js": {
+      "type": ".js",
+      "directory": "hooks",
+      "imports": [
+        "import { useState, useCallback, useEffect } from 'react'",
+        "import { batchService, contentService, ERROR_MESSAGES } from '../services'"
+      ]
+    },
+    "services\\contentService.js": {
+      "type": ".js",
+      "directory": "services",
+      "imports": [
+        "import { apiService } from './apiService'"
+      ]
+    },
+    "state\\VersionStateManager.js": {
+      "type": ".js",
+      "directory": "state",
+      "imports": [
+        "import { createContext, useContext, useReducer, useCallback } from 'react'"
+      ]
+    },
+    "ui\\tooltip.js": {
+      "type": ".js",
+      "directory": "ui",
+      "imports": [
+        "import React, { useState } from 'react'"
+      ]
+    },
+    "ui\\tooltip.jsx": {
+      "type": ".jsx",
+      "directory": "ui",
+      "imports": [
+        "import * as React from \"react\"",
+        "import * as TooltipPrimitive from \"@radix-ui/react-tooltip\""
+      ]
+    },
+    "components\\buttons\\ActionButtons.js": {
+      "type": ".js",
+      "directory": "components\\buttons",
+      "imports": [
+        "import React from 'react'"
+      ]
+    },
+    "components\\cfa\\CFAConsolidationUI.js": {
+      "type": ".js",
+      "directory": "components\\cfa",
+      "imports": [
+        "import React, { useState, useCallback, useEffect } from 'react'",
+        "import SelectionPanel from './SelectionPanel'",
+        "import ProcessingPanel from './ProcessingPanel'",
+        "import ResultsPanel from './ResultsPanel'",
+        "import IndividualResultsPanel from './IndividualResultsPanel'"
+      ]
+    },
+    "components\\cfa\\IndividualResultsPanel.js": {
+      "type": ".js",
+      "directory": "components\\cfa",
+      "imports": [
+        "import React, { useCallback, useState, useMemo } from 'react'",
+        "import CustomizableTable from '../../CustomizableTable'; // Adjust path as needed"
+      ]
+    },
+    "components\\cfa\\ProcessingPanel.js": {
+      "type": ".js",
+      "directory": "components\\cfa",
+      "imports": [
+        "import React, { useCallback } from 'react'"
+      ]
+    },
+    "components\\cfa\\ResultsPanel.js": {
+      "type": ".js",
+      "directory": "components\\cfa",
+      "imports": [
+        "import React, { useCallback, useMemo } from 'react'"
+      ]
+    },
+    "components\\cfa\\SelectionPanel.js": {
+      "type": ".js",
+      "directory": "components\\cfa",
+      "imports": [
+        "import React from 'react'"
+      ]
+    },
+    "components\\forms\\InputForm.js": {
+      "type": ".js",
+      "directory": "components\\forms",
+      "imports": [
+        "import React from 'react'",
+        "import GeneralFormConfig from '../../GeneralFormConfig'",
+        "import PropertySelector from '../../PropertySelector'"
+      ]
+    },
+    "components\\layout\\HeaderSection.js": {
+      "type": ".js",
+      "directory": "components\\layout",
+      "imports": [
+        "import React from 'react'",
+        "import ThemeSelector from '../theme/ThemeSelector'"
+      ]
+    },
+    "components\\model\\AnalysisChart.js": {
+      "type": ".js",
+      "directory": "components\\model",
+      "imports": [
+        "import React, { useEffect, useRef } from 'react'"
+      ]
+    },
+    "components\\model\\AnalysisVisualizationIntegration.js": {
+      "type": ".js",
+      "directory": "components\\model",
+      "imports": [
+        "import React, { useEffect, useCallback, useRef } from 'react'"
+      ]
+    },
+    "components\\model\\DecisionEngine.js": {
+      "type": ".js",
+      "directory": "components\\model",
+      "imports": [
+        "import React, { useState, useEffect, useCallback } from 'react'",
+        "import AnalysisChart from './AnalysisChart'"
+      ]
+    },
+    "components\\model\\FilterPopup.js": {
+      "type": ".js",
+      "directory": "components\\model",
+      "imports": [
+        "import React, { useState, useCallback } from 'react'"
+      ]
+    },
+    "components\\model\\ImpactAnalysis.js": {
+      "type": ".js",
+      "directory": "components\\model",
+      "imports": [
+        "import React, { useState, useEffect } from 'react'"
+      ]
+    },
+    "components\\model\\InheritanceControl.js": {
+      "type": ".js",
+      "directory": "components\\model",
+      "imports": [
+        "import React, { useEffect, useRef, useState } from 'react'"
+      ]
+    },
+    "components\\model\\ModelCard.js": {
+      "type": ".js",
+      "directory": "components\\model",
+      "imports": [
+        "import React from 'react'"
+      ]
+    },
+    "components\\model\\ModelZone.js": {
+      "type": ".js",
+      "directory": "components\\model",
+      "imports": [
+        "import React, { useState, useCallback } from 'react'",
+        "import ModelCard from './ModelCard'",
+        "import FilterPopup from './FilterPopup'",
+        "import InheritanceControl from './InheritanceControl'",
+        "import ImpactAnalysis from './ImpactAnalysis'",
+        "import SensitivityEngine from './SensitivityEngine'",
+        "import RiskAssessment from './RiskAssessment'",
+        "import OptimizationEngine from './OptimizationEngine'",
+        "import DecisionEngine from './DecisionEngine'",
+        "import OverlayController from './OverlayController'",
+        "import AnalysisVisualizationIntegration from './AnalysisVisualizationIntegration'",
+        "import { useVersionState } from '../../contexts/VersionStateContext'"
+      ]
+    },
+    "components\\model\\NavigationManager.js": {
+      "type": ".js",
+      "directory": "components\\model",
+      "imports": [
+        "import React, { useState, useCallback, useEffect } from 'react'"
+      ]
+    },
+    "components\\model\\OptimizationEngine.js": {
+      "type": ".js",
+      "directory": "components\\model",
+      "imports": [
+        "import React, { useState, useEffect, useCallback } from 'react'",
+        "import AnalysisChart from './AnalysisChart'"
+      ]
+    },
+    "components\\model\\OverlayController.js": {
+      "type": ".js",
+      "directory": "components\\model",
+      "imports": [
+        "import React, { useState, useEffect, useCallback } from 'react'",
+        "import NavigationManager from './NavigationManager'"
+      ]
+    },
+    "components\\model\\RiskAssessment.js": {
+      "type": ".js",
+      "directory": "components\\model",
+      "imports": [
+        "import React, { useState, useEffect, useCallback } from 'react'",
+        "import AnalysisChart from './AnalysisChart'"
+      ]
+    },
+    "components\\model\\SensitivityEngine.js": {
+      "type": ".js",
+      "directory": "components\\model",
+      "imports": [
+        "import React, { useState, useEffect, useCallback } from 'react'",
+        "import AnalysisChart from './AnalysisChart'"
+      ]
+    },
+    "components\\navigation\\TabNavigation.js": {
+      "type": ".js",
+      "directory": "components\\navigation",
+      "imports": [
+        "import React from 'react'"
+      ]
+    },
+    "components\\tabs\\CsvContentTab.js": {
+      "type": ".js",
+      "directory": "components\\tabs",
+      "imports": [
+        "import React from 'react'",
+        "import { Tab, TabList, TabPanel, Tabs } from 'react-tabs'",
+        "import CustomizableTable from '../../CustomizableTable'"
+      ]
+    },
+    "components\\tabs\\HtmlContentTab.js": {
+      "type": ".js",
+      "directory": "components\\tabs",
+      "imports": [
+        "import React from 'react'",
+        "import { Tab, TabList, TabPanel, Tabs } from 'react-tabs'",
+        "import { transformHtmlPath, transformHtmlAlbumName } from '../../utils/pathTransformers'"
+      ]
+    },
+    "components\\tabs\\PlotContentTab.js": {
+      "type": ".js",
+      "directory": "components\\tabs",
+      "imports": [
+        "import React from 'react'",
+        "import { Tab, TabList, TabPanel, Tabs } from 'react-tabs'",
+        "import CustomizableImage from '../../CustomizableImage'",
+        "import { transformPngPath, transformPlotAlbumName } from '../../utils/pathTransformers'"
+      ]
+    },
+    "components\\tabs\\TabContent.js": {
+      "type": ".js",
+      "directory": "components\\tabs",
+      "imports": [
+        "import React from 'react'",
+        "import { Tab, TabList, TabPanel, Tabs } from 'react-tabs'",
+        "import ExtendedScaling from '../../ExtendedScaling'",
+        "import InputForm from '../forms/InputForm'",
+        "import ModelZone from '../model/ModelZone'",
+        "import VersionSelector from '../../VersionSelector'",
+        "import SpatialTransformComponent from '../../naturalmotion'",
+        "import SensitivityAnalysis from '../SensitivityAnalysis'",
+        "import TestingZone from '../TestingZone'",
+        "import EditableHierarchicalList from '../../Editable'",
+        "import TodoList from '../../TodoList'",
+        "import CsvContentTab from './CsvContentTab'",
+        "import HtmlContentTab from './HtmlContentTab'",
+        "import PlotContentTab from './PlotContentTab'"
+      ]
+    },
+    "components\\theme\\ThemeSelector.js": {
+      "type": ".js",
+      "directory": "components\\theme",
+      "imports": [
+        "import React from 'react'"
+      ]
+    },
+    "components\\version\\VersionControl.js": {
+      "type": ".js",
+      "directory": "components\\version",
+      "imports": [
+        "import React, { useState, useEffect } from 'react'"
+      ]
+    }
+  },
+  "changes": {
+    "added_files": [],
+    "removed_files": [],
+    "modified_files": [],
+    "import_changes": []
+  }
+}

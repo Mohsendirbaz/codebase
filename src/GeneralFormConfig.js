@@ -11,7 +11,7 @@ const getLatestPlantLifetime = (formValues) => {
   return filteredValues.length > 0 ? filteredValues[0].value : 40;
 };
 
-const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeyword, V, setV, F, setF, S, setS, setVersion }) => {
+const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeyword, V, toggleV, F, toggleF, S, setS, setVersion }) => {
   const { iconMapping } = useFormValues();
   const [showPopup, setShowPopup] = useState(false);
   const [popupPosition, setPopupPosition] = useState({ top: 0, left: 0 });
@@ -46,20 +46,6 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
     const num = parseInt(match[1]);
     if (num >= 34 && num <= 38) return `F${num - 33}`;
     return null;
-  };
-
-  const toggleV = (key) => {
-    setV(prev => ({
-      ...prev,
-      [key]: prev[key] === 'on' ? 'off' : 'on'
-    }));
-  };
-
-  const toggleF = (key) => {
-    setF(prev => ({
-      ...prev,
-      [key]: prev[key] === 'on' ? 'off' : 'on'
-    }));
   };
 
   // Updated formItems to include S numbers

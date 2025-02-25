@@ -1,0 +1,1281 @@
+{
+  "project_name": "src",
+  "analysis_date": "2025-02-25 16:29:03",
+  "version": 1,
+  "directories": {
+    ".": {
+      "files": [
+        "App.css",
+        "App.js",
+        "Card.js",
+        "CustomizableImage.js",
+        "CustomizableTable.js",
+        "Editable.js",
+        "ExtendedScaling.js",
+        "FormHeader.js",
+        "GeneralFormConfig.js",
+        "index.css",
+        "index.js",
+        "L_1_HomePage.js",
+        "L_1_HomePage1.css",
+        "L_1_HomePage2.css",
+        "L_1_HomePage3.css",
+        "L_1_HomePage4.css",
+        "L_1_HomePage5.css",
+        "L_1_HomePage6.css",
+        "naturalmotion.css",
+        "naturalmotion.js",
+        "Popup.css",
+        "Popup.js",
+        "PropertySelector.js",
+        "ScalingSummary.js",
+        "sensitivitySelector.css",
+        "SensitivitySelector.js",
+        "TodoList.js",
+        "TodoList2.js",
+        "useFormValues.js",
+        "VersionSelector.css",
+        "VersionSelector.js"
+      ],
+      "import_count": 93
+    },
+    "components": {
+      "files": [
+        "components/ErrorBoundary.js",
+        "components/SensitivityAnalysis.css",
+        "components/SensitivityAnalysis.js",
+        "components/SensitivityVisualization.css",
+        "components/SensitivityVisualization.js",
+        "components/TestingZone.css",
+        "components/TestingZone.js"
+      ],
+      "import_count": 9
+    },
+    "contexts": {
+      "files": [
+        "contexts/VersionStateContext.js"
+      ],
+      "import_count": 1
+    },
+    "hooks": {
+      "files": [
+        "hooks/index.js",
+        "hooks/useAnalysis.js",
+        "hooks/useContentLoading.js",
+        "hooks/useFeatureToggles.js",
+        "hooks/useFormValues.js",
+        "hooks/useSensitivity.js",
+        "hooks/useTheme.js",
+        "hooks/useVersion.js"
+      ],
+      "import_count": 9
+    },
+    "services": {
+      "files": [
+        "services/apiService.js",
+        "services/batchService.js",
+        "services/configService.js",
+        "services/contentService.js",
+        "services/index.js"
+      ],
+      "import_count": 1
+    },
+    "state": {
+      "files": [
+        "state/VersionStateManager.js"
+      ],
+      "import_count": 1
+    },
+    "styles": {
+      "files": [
+        "styles/fall.css",
+        "styles/winter.css"
+      ],
+      "import_count": 0
+    },
+    "ui": {
+      "files": [
+        "ui/tooltip.js",
+        "ui/tooltip.jsx"
+      ],
+      "import_count": 3
+    },
+    "utils": {
+      "files": [
+        "utils/math-processor.js",
+        "utils/pathTransformers.js"
+      ],
+      "import_count": 0
+    },
+    "components/buttons": {
+      "files": [
+        "components/buttons/ActionButtons.js"
+      ],
+      "import_count": 1
+    },
+    "components/cfa": {
+      "files": [
+        "components/cfa/CFAConsolidationUI.css",
+        "components/cfa/CFAConsolidationUI.js",
+        "components/cfa/IndividualResultsPanel.js",
+        "components/cfa/ProcessingPanel.css",
+        "components/cfa/ProcessingPanel.js",
+        "components/cfa/ResultsPanel.css",
+        "components/cfa/ResultsPanel.js",
+        "components/cfa/SelectionPanel.css",
+        "components/cfa/SelectionPanel.js"
+      ],
+      "import_count": 15
+    },
+    "components/forms": {
+      "files": [
+        "components/forms/InputForm.js"
+      ],
+      "import_count": 3
+    },
+    "components/layout": {
+      "files": [
+        "components/layout/HeaderSection.js"
+      ],
+      "import_count": 2
+    },
+    "components/model": {
+      "files": [
+        "components/model/AnalysisChart.css",
+        "components/model/AnalysisChart.js",
+        "components/model/AnalysisVisualizationIntegration.css",
+        "components/model/AnalysisVisualizationIntegration.js",
+        "components/model/DecisionEngine.css",
+        "components/model/DecisionEngine.js",
+        "components/model/FilterPopup.css",
+        "components/model/FilterPopup.js",
+        "components/model/ImpactAnalysis.css",
+        "components/model/ImpactAnalysis.js",
+        "components/model/InheritanceControl.css",
+        "components/model/InheritanceControl.js",
+        "components/model/ModelCard.css",
+        "components/model/ModelCard.js",
+        "components/model/ModelZone.css",
+        "components/model/ModelZone.js",
+        "components/model/NavigationManager.css",
+        "components/model/NavigationManager.js",
+        "components/model/OptimizationEngine.css",
+        "components/model/OptimizationEngine.js",
+        "components/model/OverlayController.css",
+        "components/model/OverlayController.js",
+        "components/model/RiskAssessment.css",
+        "components/model/RiskAssessment.js",
+        "components/model/SensitivityEngine.css",
+        "components/model/SensitivityEngine.js"
+      ],
+      "import_count": 43
+    },
+    "components/navigation": {
+      "files": [
+        "components/navigation/TabNavigation.js"
+      ],
+      "import_count": 1
+    },
+    "components/tabs": {
+      "files": [
+        "components/tabs/CsvContentTab.js",
+        "components/tabs/HtmlContentTab.js",
+        "components/tabs/PlotContentTab.js",
+        "components/tabs/TabContent.js"
+      ],
+      "import_count": 24
+    },
+    "components/theme": {
+      "files": [
+        "components/theme/ThemeSelector.js"
+      ],
+      "import_count": 1
+    },
+    "components/version": {
+      "files": [
+        "components/version/VersionControl.css",
+        "components/version/VersionControl.js"
+      ],
+      "import_count": 2
+    }
+  },
+  "files": {
+    "App.css": {
+      "type": ".css",
+      "directory": ".",
+      "imports": [],
+      "exports": []
+    },
+    "App.js": {
+      "type": ".js",
+      "directory": ".",
+      "imports": [
+        "./components/ErrorBoundary",
+        "./components/navigation/TabNavigation",
+        "./components/theme/ThemeSelector",
+        "./components/tabs/TabContent",
+        "./components/model/ModelZone",
+        "./components/version/VersionControl",
+        "react-router-dom",
+        "./contexts/VersionStateContext",
+        "./hooks",
+        "react"
+      ],
+      "exports": [
+        "App (default)"
+      ]
+    },
+    "Card.js": {
+      "type": ".js",
+      "directory": ".",
+      "imports": [
+        "react",
+        "./L_1_HomePage4.css"
+      ],
+      "exports": [
+        "Card",
+        "CardHeader",
+        "CardContent",
+        "Card (default)"
+      ]
+    },
+    "CustomizableImage.js": {
+      "type": ".js",
+      "directory": ".",
+      "imports": [
+        "react"
+      ],
+      "exports": [
+        "CustomizableImage (default)"
+      ]
+    },
+    "CustomizableTable.js": {
+      "type": ".js",
+      "directory": ".",
+      "imports": [
+        "react",
+        "prop-types",
+        "./useFormValues.js"
+      ],
+      "exports": [
+        "CustomizableTable (default)"
+      ]
+    },
+    "Editable.js": {
+      "type": ".js",
+      "directory": ".",
+      "imports": [
+        "lucide-react",
+        "react"
+      ],
+      "exports": [
+        "EditableHierarchicalList (default)"
+      ]
+    },
+    "ExtendedScaling.js": {
+      "type": ".js",
+      "directory": ".",
+      "imports": [
+        "./ScalingSummary",
+        "@headlessui/react",
+        "@heroicons/react/24/outline",
+        "react-dnd",
+        "react-dnd-html5-backend",
+        "framer-motion",
+        "react",
+        "mathjs",
+        "./L_1_HomePage4.css"
+      ],
+      "exports": [
+        "ExtendedScaling (default)"
+      ]
+    },
+    "FormHeader.js": {
+      "type": ".js",
+      "directory": ".",
+      "imports": [
+        "./ui/tooltip",
+        "lucide-react",
+        "react"
+      ],
+      "exports": [
+        "FormHeader (default)"
+      ]
+    },
+    "GeneralFormConfig.js": {
+      "type": ".js",
+      "directory": ".",
+      "imports": [
+        "./useFormValues",
+        "./Popup",
+        "./SensitivitySelector",
+        "@fortawesome/react-fontawesome",
+        "@fortawesome/free-solid-svg-icons",
+        "react"
+      ],
+      "exports": [
+        "GeneralFormConfig (default)"
+      ]
+    },
+    "index.css": {
+      "type": ".css",
+      "directory": ".",
+      "imports": [],
+      "exports": []
+    },
+    "index.js": {
+      "type": ".js",
+      "directory": ".",
+      "imports": [
+        "react",
+        "./App",
+        "react-dom/client",
+        "./index.css"
+      ],
+      "exports": []
+    },
+    "L_1_HomePage.js": {
+      "type": ".js",
+      "directory": ".",
+      "imports": [
+        "./CustomizableImage",
+        "./CustomizableTable",
+        "./ExtendedScaling",
+        "./FormHeader",
+        "./GeneralFormConfig",
+        "./Popup",
+        "./PropertySelector",
+        "./TodoList",
+        "./VersionSelector",
+        "./components/model/ModelZone",
+        "./components/version/VersionControl",
+        "./Editable",
+        "./naturalmotion",
+        "./components/layout/HeaderSection",
+        "./components/navigation/TabNavigation",
+        "./components/forms/InputForm",
+        "./components/tabs/CsvContentTab",
+        "./components/tabs/HtmlContentTab",
+        "./components/tabs/PlotContentTab",
+        "./components/buttons/ActionButtons",
+        "./contexts/VersionStateContext",
+        "react-tabs",
+        "./hooks",
+        "./services",
+        "react",
+        "react-tabs/style/react-tabs.css",
+        "./L_1_HomePage1.css",
+        "./L_1_HomePage2.css",
+        "./L_1_HomePage3.css",
+        "./L_1_HomePage4.css",
+        "./L_1_HomePage5.css",
+        "./L_1_HomePage6.css"
+      ],
+      "exports": [
+        "L_1_HomePage (default)"
+      ]
+    },
+    "L_1_HomePage1.css": {
+      "type": ".css",
+      "directory": ".",
+      "imports": [],
+      "exports": []
+    },
+    "L_1_HomePage2.css": {
+      "type": ".css",
+      "directory": ".",
+      "imports": [],
+      "exports": []
+    },
+    "L_1_HomePage3.css": {
+      "type": ".css",
+      "directory": ".",
+      "imports": [],
+      "exports": []
+    },
+    "L_1_HomePage4.css": {
+      "type": ".css",
+      "directory": ".",
+      "imports": [],
+      "exports": []
+    },
+    "L_1_HomePage5.css": {
+      "type": ".css",
+      "directory": ".",
+      "imports": [],
+      "exports": []
+    },
+    "L_1_HomePage6.css": {
+      "type": ".css",
+      "directory": ".",
+      "imports": [],
+      "exports": []
+    },
+    "naturalmotion.css": {
+      "type": ".css",
+      "directory": ".",
+      "imports": [],
+      "exports": []
+    },
+    "naturalmotion.js": {
+      "type": ".js",
+      "directory": ".",
+      "imports": [
+        "react",
+        "./naturalmotion.css"
+      ],
+      "exports": [
+        "SpatialTransformComponent (default)"
+      ]
+    },
+    "Popup.css": {
+      "type": ".css",
+      "directory": ".",
+      "imports": [],
+      "exports": []
+    },
+    "Popup.js": {
+      "type": ".js",
+      "directory": ".",
+      "imports": [
+        "react",
+        "./Popup.css"
+      ],
+      "exports": [
+        "Popup (default)"
+      ]
+    },
+    "PropertySelector.js": {
+      "type": ".js",
+      "directory": ".",
+      "imports": [
+        "react",
+        "./useFormValues"
+      ],
+      "exports": [
+        "PropertySelector (default)"
+      ]
+    },
+    "ScalingSummary.js": {
+      "type": ".js",
+      "directory": ".",
+      "imports": [
+        "./Card",
+        "framer-motion",
+        "react",
+        "./L_1_HomePage4.css"
+      ],
+      "exports": [
+        "ScalingSummary (default)"
+      ]
+    },
+    "sensitivitySelector.css": {
+      "type": ".css",
+      "directory": ".",
+      "imports": [],
+      "exports": []
+    },
+    "SensitivitySelector.js": {
+      "type": ".js",
+      "directory": ".",
+      "imports": [
+        "react",
+        "./sensitivitySelector.css"
+      ],
+      "exports": [
+        "SensitivityAnalysisSelector (default)"
+      ]
+    },
+    "TodoList.js": {
+      "type": ".js",
+      "directory": ".",
+      "imports": [
+        "lucide-react",
+        "react"
+      ],
+      "exports": [
+        "TodoList (default)"
+      ]
+    },
+    "TodoList2.js": {
+      "type": ".js",
+      "directory": ".",
+      "imports": [
+        "lucide-react",
+        "react"
+      ],
+      "exports": [
+        "TodoList2 (default)"
+      ]
+    },
+    "useFormValues.js": {
+      "type": ".js",
+      "directory": ".",
+      "imports": [
+        "react",
+        "@fortawesome/free-solid-svg-icons"
+      ],
+      "exports": [
+        "useFormValues (default)"
+      ]
+    },
+    "VersionSelector.css": {
+      "type": ".css",
+      "directory": ".",
+      "imports": [],
+      "exports": []
+    },
+    "VersionSelector.js": {
+      "type": ".js",
+      "directory": ".",
+      "imports": [
+        "./contexts/VersionStateContext",
+        "react",
+        "./VersionSelector.css"
+      ],
+      "exports": [
+        "VersionSelector (default)"
+      ]
+    },
+    "components/ErrorBoundary.js": {
+      "type": ".js",
+      "directory": "components",
+      "imports": [
+        "react"
+      ],
+      "exports": [
+        "ErrorBoundary (default)"
+      ]
+    },
+    "components/SensitivityAnalysis.css": {
+      "type": ".css",
+      "directory": "components",
+      "imports": [],
+      "exports": []
+    },
+    "components/SensitivityAnalysis.js": {
+      "type": ".js",
+      "directory": "components",
+      "imports": [
+        "./SensitivityVisualization",
+        "../contexts/VersionStateContext",
+        "react",
+        "./SensitivityAnalysis.css"
+      ],
+      "exports": [
+        "SensitivityAnalysis (default)"
+      ]
+    },
+    "components/SensitivityVisualization.css": {
+      "type": ".css",
+      "directory": "components",
+      "imports": [],
+      "exports": []
+    },
+    "components/SensitivityVisualization.js": {
+      "type": ".js",
+      "directory": "components",
+      "imports": [
+        "react"
+      ],
+      "exports": [
+        "SensitivityVisualization (default)"
+      ]
+    },
+    "components/TestingZone.css": {
+      "type": ".css",
+      "directory": "components",
+      "imports": [],
+      "exports": []
+    },
+    "components/TestingZone.js": {
+      "type": ".js",
+      "directory": "components",
+      "imports": [
+        "react",
+        "./cfa/CFAConsolidationUI",
+        "./TestingZone.css"
+      ],
+      "exports": [
+        "TestingZone (default)"
+      ]
+    },
+    "contexts/VersionStateContext.js": {
+      "type": ".js",
+      "directory": "contexts",
+      "imports": [
+        "react"
+      ],
+      "exports": [
+        "VersionStateProvider",
+        "useVersionState"
+      ]
+    },
+    "hooks/index.js": {
+      "type": ".js",
+      "directory": "hooks",
+      "imports": [],
+      "exports": [
+        "default",
+        "default",
+        "default",
+        "default",
+        "default",
+        "default",
+        "default"
+      ]
+    },
+    "hooks/useAnalysis.js": {
+      "type": ".js",
+      "directory": "hooks",
+      "imports": [
+        "react",
+        "../services"
+      ],
+      "exports": [
+        "useAnalysis",
+        "useAnalysis (default)"
+      ]
+    },
+    "hooks/useContentLoading.js": {
+      "type": ".js",
+      "directory": "hooks",
+      "imports": [
+        "react"
+      ],
+      "exports": [
+        "useContentLoading",
+        "useContentLoading (default)"
+      ]
+    },
+    "hooks/useFeatureToggles.js": {
+      "type": ".js",
+      "directory": "hooks",
+      "imports": [
+        "react"
+      ],
+      "exports": [
+        "useFeatureToggles",
+        "useFeatureToggles (default)"
+      ]
+    },
+    "hooks/useFormValues.js": {
+      "type": ".js",
+      "directory": "hooks",
+      "imports": [
+        "react"
+      ],
+      "exports": [
+        "useFormValues (default)"
+      ]
+    },
+    "hooks/useSensitivity.js": {
+      "type": ".js",
+      "directory": "hooks",
+      "imports": [
+        "react"
+      ],
+      "exports": [
+        "useSensitivity",
+        "useSensitivity (default)"
+      ]
+    },
+    "hooks/useTheme.js": {
+      "type": ".js",
+      "directory": "hooks",
+      "imports": [
+        "react"
+      ],
+      "exports": [
+        "useTheme",
+        "useTheme (default)"
+      ]
+    },
+    "hooks/useVersion.js": {
+      "type": ".js",
+      "directory": "hooks",
+      "imports": [
+        "react",
+        "../services"
+      ],
+      "exports": [
+        "useVersion (default)"
+      ]
+    },
+    "services/apiService.js": {
+      "type": ".js",
+      "directory": "services",
+      "imports": [],
+      "exports": [
+        "apiService",
+        "apiService (default)"
+      ]
+    },
+    "services/batchService.js": {
+      "type": ".js",
+      "directory": "services",
+      "imports": [],
+      "exports": [
+        "batchService",
+        "batchService (default)"
+      ]
+    },
+    "services/configService.js": {
+      "type": ".js",
+      "directory": "services",
+      "imports": [],
+      "exports": [
+        "configService",
+        "configService (default)"
+      ]
+    },
+    "services/contentService.js": {
+      "type": ".js",
+      "directory": "services",
+      "imports": [
+        "./apiService"
+      ],
+      "exports": [
+        "contentService",
+        "contentService (default)"
+      ]
+    },
+    "services/index.js": {
+      "type": ".js",
+      "directory": "services",
+      "imports": [],
+      "exports": [
+        "ERROR_MESSAGES"
+      ]
+    },
+    "state/VersionStateManager.js": {
+      "type": ".js",
+      "directory": "state",
+      "imports": [
+        "react"
+      ],
+      "exports": [
+        "VersionStateProvider",
+        "useVersionState",
+        "useVersionDispatch",
+        "useCurrentVersion",
+        "useSelectedVersions",
+        "useBatchInfo",
+        "useVersionHistory",
+        "useVersionActions"
+      ]
+    },
+    "styles/fall.css": {
+      "type": ".css",
+      "directory": "styles",
+      "imports": [],
+      "exports": []
+    },
+    "styles/winter.css": {
+      "type": ".css",
+      "directory": "styles",
+      "imports": [],
+      "exports": []
+    },
+    "ui/tooltip.js": {
+      "type": ".js",
+      "directory": "ui",
+      "imports": [
+        "react"
+      ],
+      "exports": [
+        "TooltipProvider",
+        "TooltipTrigger",
+        "TooltipContent",
+        "Tooltip"
+      ]
+    },
+    "ui/tooltip.jsx": {
+      "type": ".jsx",
+      "directory": "ui",
+      "imports": [
+        "react",
+        "@radix-ui/react-tooltip"
+      ],
+      "exports": [
+        "Tooltip",
+        "TooltipTrigger",
+        "TooltipContent",
+        "TooltipProvider"
+      ]
+    },
+    "utils/math-processor.js": {
+      "type": ".js",
+      "directory": "utils",
+      "imports": [],
+      "exports": [
+        "getDisplaySymbol",
+        "MathProcessor",
+        "MathProcessor (default)"
+      ]
+    },
+    "utils/pathTransformers.js": {
+      "type": ".js",
+      "directory": "utils",
+      "imports": [],
+      "exports": [
+        "transformHtmlPath",
+        "transformPngPath",
+        "transformHtmlAlbumName",
+        "transformPlotAlbumName"
+      ]
+    },
+    "components/buttons/ActionButtons.js": {
+      "type": ".js",
+      "directory": "components/buttons",
+      "imports": [
+        "react"
+      ],
+      "exports": [
+        "ActionButtons (default)"
+      ]
+    },
+    "components/cfa/CFAConsolidationUI.css": {
+      "type": ".css",
+      "directory": "components/cfa",
+      "imports": [],
+      "exports": []
+    },
+    "components/cfa/CFAConsolidationUI.js": {
+      "type": ".js",
+      "directory": "components/cfa",
+      "imports": [
+        "./SelectionPanel",
+        "./ProcessingPanel",
+        "./ResultsPanel",
+        "./IndividualResultsPanel",
+        "react",
+        "./CFAConsolidationUI.css"
+      ],
+      "exports": [
+        "CFAConsolidationUI (default)"
+      ]
+    },
+    "components/cfa/IndividualResultsPanel.js": {
+      "type": ".js",
+      "directory": "components/cfa",
+      "imports": [
+        "../../CustomizableTable",
+        "react",
+        "./ResultsPanel.css"
+      ],
+      "exports": [
+        "IndividualResultsPanel (default)"
+      ]
+    },
+    "components/cfa/ProcessingPanel.css": {
+      "type": ".css",
+      "directory": "components/cfa",
+      "imports": [],
+      "exports": []
+    },
+    "components/cfa/ProcessingPanel.js": {
+      "type": ".js",
+      "directory": "components/cfa",
+      "imports": [
+        "react",
+        "./ProcessingPanel.css"
+      ],
+      "exports": [
+        "ProcessingPanel (default)"
+      ]
+    },
+    "components/cfa/ResultsPanel.css": {
+      "type": ".css",
+      "directory": "components/cfa",
+      "imports": [],
+      "exports": []
+    },
+    "components/cfa/ResultsPanel.js": {
+      "type": ".js",
+      "directory": "components/cfa",
+      "imports": [
+        "react",
+        "./ResultsPanel.css"
+      ],
+      "exports": [
+        "ResultsPanel (default)"
+      ]
+    },
+    "components/cfa/SelectionPanel.css": {
+      "type": ".css",
+      "directory": "components/cfa",
+      "imports": [],
+      "exports": []
+    },
+    "components/cfa/SelectionPanel.js": {
+      "type": ".js",
+      "directory": "components/cfa",
+      "imports": [
+        "react",
+        "./SelectionPanel.css"
+      ],
+      "exports": [
+        "SelectionPanel (default)"
+      ]
+    },
+    "components/forms/InputForm.js": {
+      "type": ".js",
+      "directory": "components/forms",
+      "imports": [
+        "react",
+        "../../GeneralFormConfig",
+        "../../PropertySelector"
+      ],
+      "exports": [
+        "InputForm (default)"
+      ]
+    },
+    "components/layout/HeaderSection.js": {
+      "type": ".js",
+      "directory": "components/layout",
+      "imports": [
+        "react",
+        "../theme/ThemeSelector"
+      ],
+      "exports": [
+        "HeaderSection (default)"
+      ]
+    },
+    "components/model/AnalysisChart.css": {
+      "type": ".css",
+      "directory": "components/model",
+      "imports": [],
+      "exports": []
+    },
+    "components/model/AnalysisChart.js": {
+      "type": ".js",
+      "directory": "components/model",
+      "imports": [
+        "react",
+        "./AnalysisChart.css"
+      ],
+      "exports": [
+        "AnalysisChart (default)"
+      ]
+    },
+    "components/model/AnalysisVisualizationIntegration.css": {
+      "type": ".css",
+      "directory": "components/model",
+      "imports": [],
+      "exports": []
+    },
+    "components/model/AnalysisVisualizationIntegration.js": {
+      "type": ".js",
+      "directory": "components/model",
+      "imports": [
+        "react",
+        "./AnalysisVisualizationIntegration.css"
+      ],
+      "exports": [
+        "AnalysisVisualizationIntegration (default)"
+      ]
+    },
+    "components/model/DecisionEngine.css": {
+      "type": ".css",
+      "directory": "components/model",
+      "imports": [],
+      "exports": []
+    },
+    "components/model/DecisionEngine.js": {
+      "type": ".js",
+      "directory": "components/model",
+      "imports": [
+        "./AnalysisChart",
+        "react",
+        "./DecisionEngine.css"
+      ],
+      "exports": [
+        "DecisionEngine (default)"
+      ]
+    },
+    "components/model/FilterPopup.css": {
+      "type": ".css",
+      "directory": "components/model",
+      "imports": [],
+      "exports": []
+    },
+    "components/model/FilterPopup.js": {
+      "type": ".js",
+      "directory": "components/model",
+      "imports": [
+        "react",
+        "./FilterPopup.css"
+      ],
+      "exports": [
+        "FilterPopup (default)"
+      ]
+    },
+    "components/model/ImpactAnalysis.css": {
+      "type": ".css",
+      "directory": "components/model",
+      "imports": [],
+      "exports": []
+    },
+    "components/model/ImpactAnalysis.js": {
+      "type": ".js",
+      "directory": "components/model",
+      "imports": [
+        "react",
+        "./ImpactAnalysis.css"
+      ],
+      "exports": [
+        "ImpactAnalysis (default)"
+      ]
+    },
+    "components/model/InheritanceControl.css": {
+      "type": ".css",
+      "directory": "components/model",
+      "imports": [],
+      "exports": []
+    },
+    "components/model/InheritanceControl.js": {
+      "type": ".js",
+      "directory": "components/model",
+      "imports": [
+        "react",
+        "./InheritanceControl.css"
+      ],
+      "exports": [
+        "InheritanceControl (default)"
+      ]
+    },
+    "components/model/ModelCard.css": {
+      "type": ".css",
+      "directory": "components/model",
+      "imports": [],
+      "exports": []
+    },
+    "components/model/ModelCard.js": {
+      "type": ".js",
+      "directory": "components/model",
+      "imports": [
+        "react",
+        "./ModelCard.css"
+      ],
+      "exports": [
+        "ModelCard (default)"
+      ]
+    },
+    "components/model/ModelZone.css": {
+      "type": ".css",
+      "directory": "components/model",
+      "imports": [],
+      "exports": []
+    },
+    "components/model/ModelZone.js": {
+      "type": ".js",
+      "directory": "components/model",
+      "imports": [
+        "./ModelCard",
+        "./FilterPopup",
+        "./InheritanceControl",
+        "./ImpactAnalysis",
+        "./SensitivityEngine",
+        "./RiskAssessment",
+        "./OptimizationEngine",
+        "./DecisionEngine",
+        "./OverlayController",
+        "./AnalysisVisualizationIntegration",
+        "../../contexts/VersionStateContext",
+        "react",
+        "./ModelZone.css",
+        "./FilterPopup.css"
+      ],
+      "exports": [
+        "ModelZone (default)"
+      ]
+    },
+    "components/model/NavigationManager.css": {
+      "type": ".css",
+      "directory": "components/model",
+      "imports": [],
+      "exports": []
+    },
+    "components/model/NavigationManager.js": {
+      "type": ".js",
+      "directory": "components/model",
+      "imports": [
+        "react",
+        "./NavigationManager.css"
+      ],
+      "exports": [
+        "NavigationManager (default)"
+      ]
+    },
+    "components/model/OptimizationEngine.css": {
+      "type": ".css",
+      "directory": "components/model",
+      "imports": [],
+      "exports": []
+    },
+    "components/model/OptimizationEngine.js": {
+      "type": ".js",
+      "directory": "components/model",
+      "imports": [
+        "./AnalysisChart",
+        "react",
+        "./OptimizationEngine.css"
+      ],
+      "exports": [
+        "OptimizationEngine (default)"
+      ]
+    },
+    "components/model/OverlayController.css": {
+      "type": ".css",
+      "directory": "components/model",
+      "imports": [],
+      "exports": []
+    },
+    "components/model/OverlayController.js": {
+      "type": ".js",
+      "directory": "components/model",
+      "imports": [
+        "./NavigationManager",
+        "react",
+        "./OverlayController.css"
+      ],
+      "exports": [
+        "OverlayController (default)"
+      ]
+    },
+    "components/model/RiskAssessment.css": {
+      "type": ".css",
+      "directory": "components/model",
+      "imports": [],
+      "exports": []
+    },
+    "components/model/RiskAssessment.js": {
+      "type": ".js",
+      "directory": "components/model",
+      "imports": [
+        "./AnalysisChart",
+        "react",
+        "./RiskAssessment.css"
+      ],
+      "exports": [
+        "RiskAssessment (default)"
+      ]
+    },
+    "components/model/SensitivityEngine.css": {
+      "type": ".css",
+      "directory": "components/model",
+      "imports": [],
+      "exports": []
+    },
+    "components/model/SensitivityEngine.js": {
+      "type": ".js",
+      "directory": "components/model",
+      "imports": [
+        "./AnalysisChart",
+        "react",
+        "./SensitivityEngine.css"
+      ],
+      "exports": [
+        "SensitivityEngine (default)"
+      ]
+    },
+    "components/navigation/TabNavigation.js": {
+      "type": ".js",
+      "directory": "components/navigation",
+      "imports": [
+        "react"
+      ],
+      "exports": [
+        "TabNavigation (default)"
+      ]
+    },
+    "components/tabs/CsvContentTab.js": {
+      "type": ".js",
+      "directory": "components/tabs",
+      "imports": [
+        "react",
+        "../../CustomizableTable",
+        "react-tabs"
+      ],
+      "exports": [
+        "CsvContentTab (default)"
+      ]
+    },
+    "components/tabs/HtmlContentTab.js": {
+      "type": ".js",
+      "directory": "components/tabs",
+      "imports": [
+        "react",
+        "react-tabs",
+        "../../utils/pathTransformers"
+      ],
+      "exports": [
+        "HtmlContentTab (default)"
+      ]
+    },
+    "components/tabs/PlotContentTab.js": {
+      "type": ".js",
+      "directory": "components/tabs",
+      "imports": [
+        "react",
+        "../../CustomizableImage",
+        "react-tabs",
+        "../../utils/pathTransformers"
+      ],
+      "exports": [
+        "PlotContentTab (default)"
+      ]
+    },
+    "components/tabs/TabContent.js": {
+      "type": ".js",
+      "directory": "components/tabs",
+      "imports": [
+        "react",
+        "../../ExtendedScaling",
+        "../forms/InputForm",
+        "../model/ModelZone",
+        "../../VersionSelector",
+        "../../naturalmotion",
+        "../SensitivityAnalysis",
+        "../TestingZone",
+        "../../Editable",
+        "../../TodoList",
+        "./CsvContentTab",
+        "./HtmlContentTab",
+        "./PlotContentTab",
+        "react-tabs"
+      ],
+      "exports": [
+        "TabContent (default)"
+      ]
+    },
+    "components/theme/ThemeSelector.js": {
+      "type": ".js",
+      "directory": "components/theme",
+      "imports": [
+        "react"
+      ],
+      "exports": [
+        "ThemeSelector (default)"
+      ]
+    },
+    "components/version/VersionControl.css": {
+      "type": ".css",
+      "directory": "components/version",
+      "imports": [],
+      "exports": []
+    },
+    "components/version/VersionControl.js": {
+      "type": ".js",
+      "directory": "components/version",
+      "imports": [
+        "react",
+        "./VersionControl.css"
+      ],
+      "exports": [
+        "VersionControl (default)"
+      ]
+    }
+  }
+}
