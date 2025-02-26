@@ -1,36 +1,31 @@
 Component,Type,Props,State,Hooks,Context Usage,Renders
-App,functional,,"activeTab, activeSubTab, selectedProperties, S, error","useState, useState, useState, useState, useState, useCallback, useCallback, useCallback",,"ErrorBoundary, VersionStateProvider, Router, VersionControl, ThemeSelector, TabNavigation, TabContent, ModelZone"
-Card,functional,"children, className = '', ...props",,,,
+App,functional,,,,,"ErrorBoundary, VersionStateProvider, Router, Routes, Route, L_1_HomePage"
 CustomizableImage,functional,"src, alt, width, height, style, onLoad",imageState,useState,,
 CustomizableTable,functional,,,,,
+Editable,unknown,,,,,
 EditableHierarchicalList,functional,,"items, draggedId, editingId, editText","useState, useState, useState, useState",,"GripVertical, Check, X"
-Tooltip,functional,"content, children","isVisible, history, historyIndex, errors, protectedTabs, sequentialOperations, tabConfigs, frozenItems, itemExpressions, scalingGroups, selectedGroup, isExporting","useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useCallback, useCallback, useCallback, useRef, useRef, useRef, useRef, useCallback, useCallback, useCallback, useCallback, useCallback, useCallback, useCallback, useCallback, useCallback",,"AnimatePresence, DndProvider, Tab, LockClosedIcon, LockOpenIcon, TrashIcon, ArrowPathIcon, PlusIcon, DraggableScalingItem, ScalingSummary"
 TooltipWithMore,functional,"initialContent, extendedContent",showMore,useState,,"ChevronDownIcon, TooltipProvider, BuildingIcon, Tooltip, TooltipTrigger, InfoIcon, TooltipContent, MinusIcon, PlusIcon"
 GeneralFormConfig,functional,"formValues, handleInputChange, version, filterKeyword, V, toggleV, F, toggleF, S, setS, setVersion","showPopup, popupPosition, selectedItemId, editingLabel, tempLabel","useState, useState, useState, useState, useState",,"FontAwesomeIcon, SensitivityAnalysisSelector, Popup"
 Index,unknown,,,,,
-L_1_HomePageContent,functional,,"activeTab, activeSubTab, selectedProperties, selectedVersions, subTab, selectedHtml, selectedAlbum, showPopup, popupPosition, baseCosts, scalingGroups, collapsedTabs, isToggleSectionOpen, calculatedPrices, loadingStates, contentLoaded, contentLoadingState","useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState",,"InputForm, ActionButtons, VersionControl, CsvContentTab, HtmlContentTab, PlotContentTab, ExtendedScaling, Tabs, TabList, Tab, TabPanel, EditableHierarchicalList, TodoList, ModelZone, SensitivityAnalysis, TestingZone, HeaderSection, TabNavigation, VersionStateProvider"
-L_1_HomePage1,unknown,,,,,
-L_1_HomePage2,unknown,,,,,
-L_1_HomePage3,unknown,,,,,
-L_1_HomePage4,unknown,,,,,
-L_1_HomePage5,unknown,,,,,
-L_1_HomePage6,unknown,,,,,
+L_1_HomePageContent,functional,,"activeTab, activeSubTab, selectedProperties, selectedVersions, season, S, loadingStates, contentLoaded, iframesLoaded, imagesLoaded, contentLoadingState, version, batchRunning, analysisRunning, csvFiles, subTab, albumImages, selectedAlbum, albumHtmls, selectedHtml, remarks, customizedFeatures, selectedCalculationOption, target_row, calculatedPrices, baseCosts, scalingGroups, collapsedTabs, isToggleSectionOpen, showPopup, popupPosition, F, V","useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState",,"Tabs, TabList, Tab, TabPanel, CustomizableImage, CustomizableTable, FormHeader, Popup, GeneralFormConfig, PropertySelector, ModelZone, VersionSelector, SpatialTransformComponent, ExtendedScaling, EditableHierarchicalList, TodoList, SensitivityAnalysis, TestingZone, VersionStateProvider"
 Naturalmotion,unknown,,,,,
 SpatialTransformComponent,functional,,interactionState,useState,,
 Popup,functional,"show, position, onClose, formValues, handleInputChange, id, version, itemId, onVersionChange","sliderValues, isSubmitting, submitError, submitSuccess, isClosing","useState, useState, useState, useState, useState",,
 PropertySelector,functional,"selectedProperties, setSelectedProperties",,,,
-ScalingSummary,functional,"items, tabConfigs, sequentialOperations, onSequentialOperationChange, onTabConfigsChange, onItemFreeze, onExpressionChange","itemExpressions, frozenItems, lastUpdated, intermediateResults","useState, useState, useState, useState, useCallback",,"Card, CardHeader, CardContent, React, AnimatePresence"
-SensitivitySelector,unknown,,,,,
-Dialog,functional,"show, onClose, children, triggerRef, isClosing","position, showDialog, isClosing","useState, useState, useState, useRef, useRef",,
+SensitivityVisualization,functional,visualizationData,,,,
 TodoList,functional,,"items, draggedId, editingId, editText, newItemType","useState, useState, useState, useState, useState",,"Plus, GripVertical, Check, X, Trash2"
 TodoList2,functional,,"items, draggedId, editingId, editText, newItemType","useState, useState, useState, useState, useState",,"Plus, GripVertical, Check, X, Trash2"
 useFormValues,hook,,formValues,useState,,
 VersionSelector,functional,,,useMemo,,
 ErrorBoundary,class,,"hasError, error, errorInfo",,,
 SensitivityAnalysis,functional,,"visualizationData, isLoading, error","useState, useState, useState",,SensitivityVisualization
-SensitivityVisualization,functional,visualizationData,,,,
+SensitivitySelector,unknown,,,,,
+Dialog,functional,"show, onClose, children, triggerRef, isClosing","position, showDialog, isClosing","useState, useState, useState, useRef, useRef",,
 TestingZone,functional,,,,,CFAConsolidationUI
 VersionStateProvider,functional,children,,"useContext, useContext, useCallback, useCallback, useCallback, useCallback, useContext, useContext","VersionStateContext, VersionDispatchContext","VersionStateContext, VersionDispatchContext"
+Card,unknown,,,,,
+Tooltip,unknown,,,,,
+ScalingSummary,functional,"items, tabConfigs, sequentialOperations, onSequentialOperationChange, onTabConfigsChange, onItemFreeze, onExpressionChange","itemExpressions, frozenItems, lastUpdated, intermediateResults","useState, useState, useState, useState, useCallback",,"Card, CardHeader, CardContent, React, AnimatePresence"
 useAnalysis,hook,,"analysisRunning, selectedCalculationOption, targetRow, calculatedPrices","useState, useState, useState, useState",,
 useContentLoading,hook,,"loadingStates, contentLoaded, iframesLoaded, imagesLoaded, contentLoadingState","useState, useState, useState, useState, useState",,
 useFeatureToggles,hook,,"remarks, customizedFeatures, F, V","useState, useState, useState, useState",,
@@ -45,7 +40,6 @@ Fall,unknown,,,,,
 Winter,unknown,,,,,
 TooltipProvider,functional,children,isVisible,useState,,
 TooltipContent,unknown,,,,,TooltipPrimitive
-MathProcessor,functional,,,,,
 PathTransformers,functional,,,,,
 ActionButtons,functional,"handleRunPNG, handleRunSub, selectedProperties, remarks, customizedFeatures, version, selectedVersions, analyzingRunning",,,,
 CFAConsolidationUI,functional,,"selectionState, processingState, resultsState","useState, useState, useState, useEffect, useCallback, useCallback, useCallback, useCallback, useCallback, useCallback, useCallback, useCallback, useCallback, useCallback, useCallback",,"SelectionPanel, ProcessingPanel, IndividualResultsPanel, ResultsPanel"
@@ -55,6 +49,12 @@ ResultsPanel,functional,"data, selectedCell, inspectorVisible, inspectorPosition
 SelectionPanel,functional,"available, selected, filtered, searchQuery, error, loading, onSelect, onSelectAll, onSelectNone, onSearch, onRefresh",,,,
 InputForm,functional,"activeSubTab, setActiveSubTab, formValues, handleInputChange, version, S, setS, F, toggleF, V, toggleV, setVersion, handleReset, handleRun, handleSubmitCompleteSet, selectedCalculationOption, handleOptionChange, target_row, handleTargetRowChange, remarks, toggleRemarks, customizedFeatures, toggleCustomizedFeatures, selectedProperties, setSelectedProperties",,,,"PropertySelector, GeneralFormConfig"
 HeaderSection,functional,"season, handleThemeChange",,,,ThemeSelector
+L_1_HomePage1,unknown,,,,,
+L_1_HomePage2,unknown,,,,,
+L_1_HomePage3,unknown,,,,,
+L_1_HomePage4,unknown,,,,,
+L_1_HomePage5,unknown,,,,,
+L_1_HomePage6,unknown,,,,,
 AnalysisChart,functional,,,"useRef, useRef",,
 AnalysisVisualizationIntegration,functional,"onAnalysisUpdate, onVisualizationUpdate, children",,"useCallback, useCallback, useRef, useRef, useCallback, useCallback",,
 DecisionEngine,functional,"model, baseModel, scenarios, optimizationResults, riskMetrics, sensitivityData, onApply, onClose","recommendations, selectedRecommendation, isAnalyzing","useState, useState, useState, useCallback, useCallback, useCallback, useCallback",,AnalysisChart
@@ -69,9 +69,18 @@ OverlayController,functional,"activeModel, activeOverlay, children, onNavigate, 
 RiskAssessment,functional,"model, baseModel, scenarios, onUpdate, onClose","activeRiskType, riskMetrics, isCalculating, optimizationTarget","useState, useState, useState, useState, useCallback",,AnalysisChart
 SensitivityEngine,functional,"model, baseModel, onUpdate, onClose","activeSimulation, parameters, results, isCalculating","useState, useState, useState, useState, useCallback, useCallback",,AnalysisChart
 TabNavigation,functional,"activeTab, setActiveTab",,,,
+MathProcessor,functional,,,,,
+MotionDraggableItem,functional,"id, onDragStart, onDragEnd, isDragging, variants, dragConstraints, whileDrag = ""dragging"", className = '', children, ...props",,"useRef, useRef, useDragControls",,
+MotionScalingSummary,functional,,,,,AnimatePresence
+MotionTooltip,functional,"children, content, position = 'top', delay = 300, variants, className = '', ...props","isVisible, timeoutId","useState, useState",,AnimatePresence
+ScalingTab,functional,,"items, sequentialOperations, tabConfigs, activeExpression, draggedItemId","useState, useState, useState, useState, useState, useCallback, useCallback, useCallback, useCallback, useMemo, useCallback, useCallback, useCallback, useCallback, useCallback, useCallback, useCallback, useCallback, useCallback, useCallback, useCallback",,"Card, CardHeader, CardContent, TooltipComponent, AnimatePresence, DraggableItemComponent, SummaryComponent"
 CsvContentTab,functional,"csvFiles, subTab, setSubTab, version",,,,"Tabs, TabList, Tab, TabPanel, CustomizableTable"
 HtmlContentTab,functional,"albumHtmls, selectedHtml, setSelectedHtml, iframesLoaded, setIframesLoaded",,,,"Tabs, TabList, Tab, TabPanel"
 PlotContentTab,functional,"albumImages, selectedAlbum, setSelectedAlbum, imagesLoaded, setImagesLoaded",,,,"CustomizableImage, Tabs, TabList, Tab, TabPanel"
-TabContent,functional,"activeTab, csvFiles, version, albumHtmls, albumImages, loadingStates, contentLoaded, onIframeLoad, onImageLoad, onError, formValues, handleInputChange, handleReset, F, toggleF, V, toggleV, setVersion, handleRun, handleSubmitCompleteSet, selectedCalculationOption, handleOptionChange, target_row, handleTargetRowChange, remarks, toggleRemarks, customizedFeatures, toggleCustomizedFeatures, activeSubTab, setActiveSubTab, selectedProperties, setSelectedProperties, S, setS",,,,"InputForm, ModelZone, VersionSelector, SpatialTransformComponent, CsvContentTab, HtmlContentTab, PlotContentTab, ExtendedScaling, Tabs, TabList, Tab, TabPanel, EditableHierarchicalList, TodoList, SensitivityAnalysis, TestingZone"
-ThemeSelector,functional,"season, handleThemeChange",,,,
+TabContent,functional,"activeTab, csvFiles, version, albumHtmls, albumImages, loadingStates, contentLoaded, onIframeLoad, onImageLoad, onError, formValues, handleInputChange, handleReset, F, toggleF, V, toggleV, setVersion, handleRun, handleRunPNG, handleRunSub, handleSubmitCompleteSet, selectedCalculationOption, handleOptionChange, target_row, handleTargetRowChange, remarks, toggleRemarks, customizedFeatures, toggleCustomizedFeatures, activeSubTab, setActiveSubTab, selectedProperties, setSelectedProperties, S, setS, analyzingRunning",editableTab,useState,,"InputForm, ActionButtons, ModelZone, VersionSelector, SpatialTransformComponent, CsvContentTab, HtmlContentTab, PlotContentTab, ScalingTab, EditableHierarchicalList, TodoList, SensitivityAnalysis, TestingZone"
 VersionControl,functional,"version, onVersionChange, onRefresh, disabled = false","localVersion, showHistory","useState, useState, useEffect",,
+ThemeSelector,functional,"season, handleThemeChange",,,,
+Animations,unknown,,,,,
+Base,unknown,,,,,
+Draggable,unknown,,,,,
+Scaling,unknown,,,,,

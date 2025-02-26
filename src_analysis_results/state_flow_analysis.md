@@ -5,81 +5,80 @@
 - **Total Components**: 40
 - **Context Providers**: 0
 - **Context Consumers**: 0
-- **Stateful Components**: 22
-- **Maximum Prop Drilling Depth**: 5
+- **Stateful Components**: 21
+- **Maximum Prop Drilling Depth**: 4
 
 ## Prop Drilling Chains
 
 The following chains represent potential prop drilling patterns:
 
-### Chain 1 (Depth: 5)
+### Chain 1 (Depth: 4)
 
-App → TabContent → TestingZone → CFAConsolidationUI → IndividualResultsPanel → CustomizableTable
+TabContent → TestingZone → CFAConsolidationUI → IndividualResultsPanel → CustomizableTable
 
-### Chain 2 (Depth: 5)
+### Chain 2 (Depth: 4)
 
-Index → App → TabContent → InputForm → GeneralFormConfig → Popup
+L_1_HomePageContent → TestingZone → CFAConsolidationUI → IndividualResultsPanel → CustomizableTable
 
-### Chain 3 (Depth: 5)
+### Chain 3 (Depth: 3)
 
-Index → App → TabContent → TestingZone → CFAConsolidationUI → IndividualResultsPanel
+TestingZone → CFAConsolidationUI → IndividualResultsPanel → CustomizableTable
 
-### Chain 4 (Depth: 5)
+### Chain 4 (Depth: 3)
 
-Index → App → TabContent → ModelZone → SensitivityEngine → AnalysisChart
+TabContent → InputForm → GeneralFormConfig → Popup
 
-### Chain 5 (Depth: 5)
+### Chain 5 (Depth: 3)
 
-Index → App → TabContent → ModelZone → RiskAssessment → AnalysisChart
+TabContent → TestingZone → CFAConsolidationUI → ProcessingPanel
 
-### Chain 6 (Depth: 5)
+### Chain 6 (Depth: 3)
 
-Index → App → TabContent → ModelZone → OptimizationEngine → AnalysisChart
+TabContent → ModelZone → SensitivityEngine → AnalysisChart
 
-### Chain 7 (Depth: 5)
+### Chain 7 (Depth: 3)
 
-Index → App → TabContent → ModelZone → DecisionEngine → AnalysisChart
+TabContent → ModelZone → RiskAssessment → AnalysisChart
 
-### Chain 8 (Depth: 4)
+### Chain 8 (Depth: 3)
 
-App → TabContent → InputForm → GeneralFormConfig → Popup
+TabContent → ModelZone → OptimizationEngine → AnalysisChart
 
-### Chain 9 (Depth: 4)
+### Chain 9 (Depth: 3)
 
-App → TabContent → TestingZone → CFAConsolidationUI → IndividualResultsPanel
+TabContent → ModelZone → DecisionEngine → AnalysisChart
 
-### Chain 10 (Depth: 4)
+### Chain 10 (Depth: 3)
 
-App → TabContent → ModelZone → SensitivityEngine → AnalysisChart
+TabContent → TestingZone → CFAConsolidationUI → IndividualResultsPanel
 
-*62 additional chains omitted for brevity*
+*9 additional chains omitted for brevity*
 
 ## Stateful Components
 
 The following components manage local state:
 
-- **App**: activeTab, activeSubTab, selectedProperties, S, error
-- **VersionControl**: localVersion, showHistory
-- **ModelZone**: activeModel, activeDialog, scenarios, optimizationResults, riskMetrics, sensitivityData
-- **CustomizableImage**: imageState
-- **EditableHierarchicalList**: items, draggedId, editingId, editText
-- **Tooltip**: isVisible, history, historyIndex, errors, protectedTabs, sequentialOperations, tabConfigs, frozenItems, itemExpressions, scalingGroups, selectedGroup, isExporting
-- **ScalingSummary**: itemExpressions, frozenItems, lastUpdated, intermediateResults
-- **TooltipWithMore**: showMore
-- **TooltipProvider**: isVisible
-- **GeneralFormConfig**: showPopup, popupPosition, selectedItemId, editingLabel, tempLabel
-- **Popup**: sliderValues, isSubmitting, submitError, submitSuccess, isClosing
-- **L_1_HomePageContent**: activeTab, activeSubTab, selectedProperties, selectedVersions, subTab, selectedHtml, selectedAlbum, showPopup, popupPosition, baseCosts, scalingGroups, collapsedTabs, isToggleSectionOpen, calculatedPrices, loadingStates, contentLoaded, contentLoadingState
-- **TodoList**: items, draggedId, editingId, editText, newItemType
-- **SensitivityAnalysis**: visualizationData, isLoading, error
-- **SpatialTransformComponent**: interactionState
-- **CFAConsolidationUI**: selectionState, processingState, resultsState
-- **IndividualResultsPanel**: viewingVersion, individualTableData, loadingTable
 - **DecisionEngine**: recommendations, selectedRecommendation, isAnalyzing
-- **SensitivityEngine**: activeSimulation, parameters, results, isCalculating
+- **ModelZone**: activeModel, activeDialog, scenarios, optimizationResults, riskMetrics, sensitivityData
+- **TodoList**: items, draggedId, editingId, editText, newItemType
+- **Popup**: sliderValues, isSubmitting, submitError, submitSuccess, isClosing
+- **ScalingSummary**: itemExpressions, frozenItems, lastUpdated, intermediateResults
+- **TabContent**: editableTab
+- **ScalingTab**: items, sequentialOperations, tabConfigs, activeExpression, draggedItemId
+- **EditableHierarchicalList**: items, draggedId, editingId, editText
+- **L_1_HomePageContent**: activeTab, activeSubTab, selectedProperties, selectedVersions, season, S, loadingStates, contentLoaded, iframesLoaded, imagesLoaded, contentLoadingState, version, batchRunning, analysisRunning, csvFiles, subTab, albumImages, selectedAlbum, albumHtmls, selectedHtml, remarks, customizedFeatures, selectedCalculationOption, target_row, calculatedPrices, baseCosts, scalingGroups, collapsedTabs, isToggleSectionOpen, showPopup, popupPosition, F, V
+- **TooltipProvider**: isVisible
+- **IndividualResultsPanel**: viewingVersion, individualTableData, loadingTable
+- **CustomizableImage**: imageState
+- **SpatialTransformComponent**: interactionState
 - **RiskAssessment**: activeRiskType, riskMetrics, isCalculating, optimizationTarget
+- **GeneralFormConfig**: showPopup, popupPosition, selectedItemId, editingLabel, tempLabel
+- **SensitivityAnalysis**: visualizationData, isLoading, error
+- **SensitivityEngine**: activeSimulation, parameters, results, isCalculating
+- **CFAConsolidationUI**: selectionState, processingState, resultsState
 - **OptimizationEngine**: activeOptimization, objectiveFunction, solutions, isOptimizing, optimizationParams
 - **OverlayController**: isTransitioning, currentContent, nextContent
+- **TooltipWithMore**: showMore
 
 ## Recommendations
 
