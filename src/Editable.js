@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { GripVertical, X, Check } from 'lucide-react';
+import './Editable.css';
 
 const EditableHierarchicalList = () => {
   const [items, setItems] = useState([
@@ -93,22 +94,22 @@ const EditableHierarchicalList = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg">
-      <div className="space-y-2">
+    <div className="editable-container">
+      <div className="editable-list">
         {items.map((item) => (
           <div
             key={item.id}
-            className={`flex items-center gap-3 p-2 rounded hover:bg-gray-50 transition-colors ${
-              item.type === 'header' ? 'font-bold text-lg ml-0' :
-              item.type === 'subheader' ? 'font-semibold ml-4' :
-              'ml-8'
+            className={`editable-item ${
+              item.type === 'header' ? 'editable-header' :
+              item.type === 'subheader' ? 'editable-subheader' :
+              'editable-bullet'
             }`}
             draggable={editingId !== item.id}
             onDragStart={() => handleDragStart(item.id)}
             onDragOver={(e) => e.preventDefault()}
             onDrop={() => handleDrop(item.id)}
           >
-            <GripVertical className="text-gray-400 cursor-move flex-shrink-0" size={16} />
+            <GripVertical className="drag-handle" size={16} />
 
             {editingId === item.id ? (
               <>
@@ -116,31 +117,29 @@ const EditableHierarchicalList = () => {
                   type="text"
                   value={editText}
                   onChange={(e) => setEditText(e.target.value)}
-                  className="flex-1 p-1 border rounded"
+                  className="edit-input"
                   autoFocus
                 />
                 <button
                   onClick={saveEdit}
-                  className="p-1 text-green-600 hover:text-green-800"
+                  className="action-button save-button"
                 >
                   <Check size={16} />
                 </button>
                 <button
                   onClick={cancelEdit}
-                  className="p-1 text-red-600 hover:text-red-800"
+                  className="action-button cancel-button"
                 >
                   <X size={16} />
                 </button>
               </>
             ) : (
-              <>
-                <span
-                  className="text-gray-700 flex-1 cursor-pointer"
-                  onClick={() => startEdit(item)}
-                >
-                  {item.text}
-                </span>
-              </>
+              <span
+                className="editable-text"
+                onClick={() => startEdit(item)}
+              >
+                {item.text}
+              </span>
             )}
           </div>
         ))}

@@ -1,4 +1,5 @@
 import React from 'react';
+import './ActionButtons.css';
 
 const ActionButtons = ({
   handleRunPNG,
@@ -20,15 +21,6 @@ const ActionButtons = ({
             customizedFeatures 
           })}
           disabled={analyzingRunning}
-          style={{
-            backgroundColor: '#4CAF50',
-            color: 'white',
-            fontWeight: 'bold',
-            padding: '10px',
-            border: 'none',
-            cursor: 'pointer',
-            opacity: analyzingRunning ? 0.7 : 1,
-          }}
         >
           Generate PNG Plots
         </button>
@@ -47,15 +39,6 @@ const ActionButtons = ({
             customizedFeatures 
           })}
           disabled={analyzingRunning}
-          style={{
-            backgroundColor: '#2196F3',
-            color: 'white',
-            fontWeight: 'bold',
-            padding: '10px',
-            border: 'none',
-            cursor: 'pointer',
-            opacity: analyzingRunning ? 0.7 : 1,
-          }}
         >
           Generate Dynamic Plots
         </button>

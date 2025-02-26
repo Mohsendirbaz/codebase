@@ -678,3 +678,27 @@
 2025-02-25 15:29:05,808 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-25 15:29:05,841 WARNING  * Debugger is active!
 2025-02-25 15:29:05,841 INFO  * Debugger PIN: 119-059-632
+2025-02-25 17:14:05,447 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-02-25 17:14:05,497 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5007
+2025-02-25 17:14:05,497 INFO [33mPress CTRL+C to quit[0m
+2025-02-25 17:14:05,497 INFO  * Restarting with stat
+2025-02-25 17:14:05,930 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-02-25 17:14:05,946 WARNING  * Debugger is active!
+2025-02-25 17:14:05,946 INFO  * Debugger PIN: 119-059-632
+2025-02-25 17:42:33,907 INFO 127.0.0.1 - - [25/Feb/2025 17:42:33] "OPTIONS /sensitivity/visualization HTTP/1.1" 200 -
+2025-02-25 17:42:33,921 INFO 127.0.0.1 - - [25/Feb/2025 17:42:33] "OPTIONS /sensitivity/visualization HTTP/1.1" 200 -
+2025-02-25 17:42:33,938 INFO 127.0.0.1 - - [25/Feb/2025 17:42:33] "POST /sensitivity/visualization HTTP/1.1" 200 -
+2025-02-25 17:42:33,940 INFO 127.0.0.1 - - [25/Feb/2025 17:42:33] "POST /sensitivity/visualization HTTP/1.1" 200 -
+2025-02-25 17:48:57,331 INFO 127.0.0.1 - - [25/Feb/2025 17:48:57] "OPTIONS /sensitivity/visualization HTTP/1.1" 200 -
+2025-02-25 17:48:57,332 INFO 127.0.0.1 - - [25/Feb/2025 17:48:57] "OPTIONS /sensitivity/visualization HTTP/1.1" 200 -
+2025-02-25 17:48:57,348 INFO 127.0.0.1 - - [25/Feb/2025 17:48:57] "POST /sensitivity/visualization HTTP/1.1" 200 -
+2025-02-25 17:48:57,351 INFO 127.0.0.1 - - [25/Feb/2025 17:48:57] "POST /sensitivity/visualization HTTP/1.1" 200 -
+2025-02-25 17:55:21,951 INFO 127.0.0.1 - - [25/Feb/2025 17:55:21] "OPTIONS /sensitivity/visualization HTTP/1.1" 200 -
+2025-02-25 17:55:21,957 INFO 127.0.0.1 - - [25/Feb/2025 17:55:21] "OPTIONS /sensitivity/visualization HTTP/1.1" 200 -
+2025-02-25 17:55:21,971 INFO 127.0.0.1 - - [25/Feb/2025 17:55:21] "POST /sensitivity/visualization HTTP/1.1" 200 -
+2025-02-25 17:55:21,978 INFO 127.0.0.1 - - [25/Feb/2025 17:55:21] "POST /sensitivity/visualization HTTP/1.1" 200 -
+2025-02-25 18:02:01,764 INFO 127.0.0.1 - - [25/Feb/2025 18:02:01] "OPTIONS /sensitivity/visualization HTTP/1.1" 200 -
+2025-02-25 18:02:01,765 INFO 127.0.0.1 - - [25/Feb/2025 18:02:01] "OPTIONS /sensitivity/visualization HTTP/1.1" 200 -
+2025-02-25 18:02:01,778 INFO 127.0.0.1 - - [25/Feb/2025 18:02:01] "POST /sensitivity/visualization HTTP/1.1" 200 -
+2025-02-25 18:02:01,781 INFO 127.0.0.1 - - [25/Feb/2025 18:02:01] "POST /sensitivity/visualization HTTP/1.1" 200 -
