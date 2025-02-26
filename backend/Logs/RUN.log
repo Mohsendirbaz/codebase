@@ -702,3 +702,11 @@
 2025-02-25 18:02:01,765 INFO 127.0.0.1 - - [25/Feb/2025 18:02:01] "OPTIONS /sensitivity/visualization HTTP/1.1" 200 -
 2025-02-25 18:02:01,778 INFO 127.0.0.1 - - [25/Feb/2025 18:02:01] "POST /sensitivity/visualization HTTP/1.1" 200 -
 2025-02-25 18:02:01,781 INFO 127.0.0.1 - - [25/Feb/2025 18:02:01] "POST /sensitivity/visualization HTTP/1.1" 200 -
+2025-02-25 20:05:38,796 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-02-25 20:05:38,828 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5007
+2025-02-25 20:05:38,828 INFO [33mPress CTRL+C to quit[0m
+2025-02-25 20:05:38,830 INFO  * Restarting with stat
+2025-02-25 20:05:39,202 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-02-25 20:05:39,231 WARNING  * Debugger is active!
+2025-02-25 20:05:39,235 INFO  * Debugger PIN: 119-059-632

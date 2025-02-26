@@ -885,3 +885,5 @@ Visualization processing complete - Run ID: 20250225_180201
 2025-02-25 18:02:01,779 INFO Processing time: 0.01s
 2025-02-25 18:02:01,779 INFO Plots generated: 0
 2025-02-25 18:02:01,779 INFO Errors encountered: 5
+2025-02-25 20:05:38,796 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-25 20:05:39,203 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
