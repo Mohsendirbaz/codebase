@@ -1,6 +1,4 @@
-import React from 'react';
-import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
-import ExtendedScaling from '../../ExtendedScaling';
+import React, { useState, useEffect } from 'react';
 import InputForm from '../forms/InputForm';
 import ModelZone from '../model/ModelZone';
 import VersionSelector from '../../VersionSelector';
@@ -12,6 +10,12 @@ import TodoList from '../../TodoList';
 import CsvContentTab from './CsvContentTab';
 import HtmlContentTab from './HtmlContentTab';
 import PlotContentTab from './PlotContentTab';
+import ActionButtons from '../buttons/ActionButtons';
+import ScalingTab from '../scaling/ScalingTab';
+import MotionTooltip from '../scaling/MotionTooltip';
+import MotionDraggableItem from '../scaling/MotionDraggableIte';
+import MotionScalingSummary from '../scaling/MotionScalingSummary';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const TabContent = ({
     activeTab,
@@ -33,6 +37,8 @@ const TabContent = ({
     toggleV,
     setVersion,
     handleRun,
+    handleRunPNG,
+    handleRunSub,
     handleSubmitCompleteSet,
     selectedCalculationOption,
     handleOptionChange,
@@ -47,38 +53,73 @@ const TabContent = ({
     selectedProperties,
     setSelectedProperties,
     S,
-    setS
+    setS,
+    analyzingRunning
 }) => {
+    const [editableTab, setEditableTab] = useState('outline');
+
+    // Process Amount5 values for scaling
+    const processedItems = Object.entries(formValues || {})
+        .filter(([key]) => key.includes('Amount5'))
+        .map(([key, value]) => ({
+            id: key,
+            label: value.label || key,
+            baseValue: parseFloat(value.value) || 0,
+            name: value.label || key,
+            frozen: false,
+            remarks: value.remarks || ''
+        }));
+
+    // Initial scaling group with processed items
+    const initialScalingGroups = [{
+        id: 'default',
+        name: 'Default Scaling',
+        isProtected: false,
+        items: processedItems
+    }];
+
     switch (activeTab) {
         case 'Input':
             return (
-                <InputForm
-                    activeSubTab={activeSubTab}
-                    setActiveSubTab={setActiveSubTab}
-                    version={version}
-                    formValues={formValues}
-                    handleInputChange={handleInputChange}
-                    handleReset={handleReset}
-                    F={F}
-                    toggleF={toggleF}
-                    V={V}
-                    toggleV={toggleV}
-                    setVersion={setVersion}
-                    handleRun={handleRun}
-                    handleSubmitCompleteSet={handleSubmitCompleteSet}
-                    selectedCalculationOption={selectedCalculationOption}
-                    handleOptionChange={handleOptionChange}
-                    target_row={target_row}
-                    handleTargetRowChange={handleTargetRowChange}
-                    remarks={remarks}
-                    toggleRemarks={toggleRemarks}
-                    customizedFeatures={customizedFeatures}
-                    toggleCustomizedFeatures={toggleCustomizedFeatures}
-                    selectedProperties={selectedProperties}
-                    setSelectedProperties={setSelectedProperties}
-                    S={S}
-                    setS={setS}
-                />
+                <div>
+                    <InputForm
+                        activeSubTab={activeSubTab}
+                        setActiveSubTab={setActiveSubTab}
+                        version={version}
+                        formValues={formValues}
+                        handleInputChange={handleInputChange}
+                        handleReset={handleReset}
+                        F={F}
+                        toggleF={toggleF}
+                        V={V}
+                        toggleV={toggleV}
+                        setVersion={setVersion}
+                        handleRun={handleRun}
+                        handleSubmitCompleteSet={handleSubmitCompleteSet}
+                        selectedCalculationOption={selectedCalculationOption}
+                        handleOptionChange={handleOptionChange}
+                        target_row={target_row}
+                        handleTargetRowChange={handleTargetRowChange}
+                        remarks={remarks}
+                        toggleRemarks={toggleRemarks}
+                        customizedFeatures={customizedFeatures}
+                        toggleCustomizedFeatures={toggleCustomizedFeatures}
+                        selectedProperties={selectedProperties}
+                        setSelectedProperties={setSelectedProperties}
+                        S={S}
+                        setS={setS}
+                    />
+                    <ActionButtons
+                        handleRunPNG={handleRunPNG}
+                        handleRunSub={handleRunSub}
+                        selectedProperties={selectedProperties}
+                        remarks={remarks}
+                        customizedFeatures={customizedFeatures}
+                        version={version}
+                        selectedVersions={[version]}
+                        analyzingRunning={analyzingRunning}
+                    />
+                </div>
             );
         case 'ModelZone':
             return (
@@ -86,10 +127,11 @@ const TabContent = ({
                     <ModelZone />
                     <div className="model-selection">
                         <VersionSelector />
-                        <SpatialTransformComponent />
                     </div>
                 </div>
             );
+        case 'SpatialTransform':
+            return <SpatialTransformComponent />;
         case 'Case1':
             return (
                 <CsvContentTab
@@ -114,24 +156,33 @@ const TabContent = ({
                 />
             );
         case 'Scaling':
-            return <ExtendedScaling />;
+            return (
+                <div className="scaling-interface">
+                    <ScalingTab
+                        TooltipComponent={MotionTooltip}
+                        DraggableItemComponent={MotionDraggableItem}
+                        SummaryComponent={MotionScalingSummary}
+                        AnimatePresence={AnimatePresence}
+                        motion={motion}
+                        initialItems={processedItems}
+                        initialOperations={[]}
+                        initialTabConfigs={{
+                            showLogarithmic: true,
+                            showLinear: true,
+                            precision: 2,
+                            defaultOperation: 'multiply'
+                        }}
+                    />
+                </div>
+            );
         case 'Editable':
             return (
-                <div className="p-4">
-                    <Tabs>
-                        <TabList>
-                            <Tab>Outline</Tab>
-                            <Tab>Todo List</Tab>
-                        </TabList>
-                        <TabPanel>
-                            <h2 className="text-xl font-bold mb-4">Editable Hierarchical List</h2>
-                            <EditableHierarchicalList />
-                        </TabPanel>
-                        <TabPanel>
-                            <h2 className="text-xl font-bold mb-4">Todo List</h2>
-                            <TodoList />
-                        </TabPanel>
-                    </Tabs>
+                <div>
+                    <div>
+                        <button onClick={() => setEditableTab('outline')}>Outline</button>
+                        <button onClick={() => setEditableTab('todo')}>Todo List</button>
+                    </div>
+                    {editableTab === 'outline' ? <EditableHierarchicalList /> : <TodoList />}
                 </div>
             );
         case 'SensitivityAnalysis':

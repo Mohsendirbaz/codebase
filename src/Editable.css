@@ -1,0 +1,90 @@
+/* Container styles */
+.editable-container {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+}
+
+/* Item styles */
+.editable-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s;
+}
+
+.editable-item:hover {
+  background-color: #f9fafb;
+}
+
+/* Item types */
+.editable-header {
+  font-weight: bold;
+  font-size: 1.125rem;
+  margin-left: 0;
+}
+
+.editable-subheader {
+  font-weight: 600;
+  margin-left: 1rem;
+}
+
+.editable-bullet {
+  margin-left: 2rem;
+}
+
+/* Drag handle */
+.drag-handle {
+  color: #9ca3af;
+  cursor: move;
+  flex-shrink: 0;
+}
+
+/* Text content */
+.editable-text {
+  color: #374151;
+  flex: 1;
+  cursor: pointer;
+}
+
+/* Edit mode */
+.edit-input {
+  flex: 1;
+  padding: 0.25rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.25rem;
+}
+
+/* Action buttons */
+.action-button {
+  padding: 0.25rem;
+  cursor: pointer;
+}
+
+.save-button {
+  color: #059669;
+}
+
+.save-button:hover {
+  color: #047857;
+}
+
+.cancel-button {
+  color: #dc2626;
+}
+
+.cancel-button:hover {
+  color: #b91c1c;
+}
+
+/* Spacing between items */
+.editable-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}

@@ -611,3 +611,277 @@ Visualization processing complete - Run ID: 20250224_082241
 2025-02-25 14:18:16,055 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
 2025-02-25 15:29:05,335 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
 2025-02-25 15:29:05,808 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-25 17:14:05,448 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-25 17:14:05,930 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-25 17:42:33,927 INFO 
+Processing visualization request - Run ID: 20250225_174233
+2025-02-25 17:42:33,927 INFO Version: 1
+2025-02-25 17:42:33,927 INFO Parameters: ['S34', 'S35', 'S36', 'S37', 'S38']
+2025-02-25 17:42:33,927 INFO 
+Processing S34:
+2025-02-25 17:42:33,927 INFO S34 identified as special case (vs S13)
+2025-02-25 17:42:33,927 INFO 
+Processing visualization request - Run ID: 20250225_174233
+2025-02-25 17:42:33,927 INFO Added relationship: S34 -> S13 (primary)
+2025-02-25 17:42:33,927 INFO Version: 1
+2025-02-25 17:42:33,927 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-02-25 17:42:33,927 INFO Parameters: ['S34', 'S35', 'S36', 'S37', 'S38']
+2025-02-25 17:42:33,927 INFO 
+Processing S35:
+2025-02-25 17:42:33,927 INFO 
+Processing S34:
+2025-02-25 17:42:33,927 INFO S35 identified as special case (vs S13)
+2025-02-25 17:42:33,927 INFO S34 identified as special case (vs S13)
+2025-02-25 17:42:33,927 INFO Added relationship: S35 -> S13 (primary)
+2025-02-25 17:42:33,927 INFO Added relationship: S34 -> S13 (primary)
+2025-02-25 17:42:33,927 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-02-25 17:42:33,927 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-02-25 17:42:33,927 INFO 
+Processing S36:
+2025-02-25 17:42:33,927 INFO 
+Processing S35:
+2025-02-25 17:42:33,927 INFO S36 identified as special case (vs S13)
+2025-02-25 17:42:33,927 INFO S35 identified as special case (vs S13)
+2025-02-25 17:42:33,927 INFO Added relationship: S36 -> S13 (primary)
+2025-02-25 17:42:33,927 INFO Added relationship: S35 -> S13 (primary)
+2025-02-25 17:42:33,927 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-02-25 17:42:33,927 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-02-25 17:42:33,927 INFO 
+Processing S37:
+2025-02-25 17:42:33,927 INFO 
+Processing S36:
+2025-02-25 17:42:33,927 INFO S37 identified as special case (vs S13)
+2025-02-25 17:42:33,927 INFO S36 identified as special case (vs S13)
+2025-02-25 17:42:33,927 INFO Added relationship: S37 -> S13 (primary)
+2025-02-25 17:42:33,927 INFO Added relationship: S36 -> S13 (primary)
+2025-02-25 17:42:33,927 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-02-25 17:42:33,927 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-02-25 17:42:33,927 INFO 
+Processing S38:
+2025-02-25 17:42:33,927 INFO 
+Processing S37:
+2025-02-25 17:42:33,927 INFO S38 identified as special case (vs S13)
+2025-02-25 17:42:33,927 INFO S37 identified as special case (vs S13)
+2025-02-25 17:42:33,927 INFO Added relationship: S38 -> S13 (primary)
+2025-02-25 17:42:33,927 INFO Added relationship: S37 -> S13 (primary)
+2025-02-25 17:42:33,927 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-02-25 17:42:33,927 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-02-25 17:42:33,927 INFO 
+Visualization processing complete - Run ID: 20250225_174233
+2025-02-25 17:42:33,936 INFO 
+Processing S38:
+2025-02-25 17:42:33,936 INFO Processing time: 0.00s
+2025-02-25 17:42:33,936 INFO S38 identified as special case (vs S13)
+2025-02-25 17:42:33,936 INFO Plots generated: 0
+2025-02-25 17:42:33,936 INFO Added relationship: S38 -> S13 (primary)
+2025-02-25 17:42:33,936 INFO Errors encountered: 5
+2025-02-25 17:42:33,938 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-02-25 17:42:33,939 INFO 
+Visualization processing complete - Run ID: 20250225_174233
+2025-02-25 17:42:33,939 INFO Processing time: 0.01s
+2025-02-25 17:42:33,939 INFO Plots generated: 0
+2025-02-25 17:42:33,939 INFO Errors encountered: 5
+2025-02-25 17:48:57,332 INFO 
+Processing visualization request - Run ID: 20250225_174857
+2025-02-25 17:48:57,332 INFO Version: 1
+2025-02-25 17:48:57,332 INFO Parameters: ['S34', 'S35', 'S36', 'S37', 'S38']
+2025-02-25 17:48:57,332 INFO 
+Processing S34:
+2025-02-25 17:48:57,332 INFO S34 identified as special case (vs S13)
+2025-02-25 17:48:57,332 INFO Added relationship: S34 -> S13 (primary)
+2025-02-25 17:48:57,332 INFO 
+Processing visualization request - Run ID: 20250225_174857
+2025-02-25 17:48:57,332 INFO Version: 1
+2025-02-25 17:48:57,332 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-02-25 17:48:57,332 INFO Parameters: ['S34', 'S35', 'S36', 'S37', 'S38']
+2025-02-25 17:48:57,332 INFO 
+Processing S35:
+2025-02-25 17:48:57,332 INFO 
+Processing S34:
+2025-02-25 17:48:57,332 INFO S35 identified as special case (vs S13)
+2025-02-25 17:48:57,332 INFO S34 identified as special case (vs S13)
+2025-02-25 17:48:57,332 INFO Added relationship: S35 -> S13 (primary)
+2025-02-25 17:48:57,332 INFO Added relationship: S34 -> S13 (primary)
+2025-02-25 17:48:57,332 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-02-25 17:48:57,332 INFO 
+Processing S36:
+2025-02-25 17:48:57,332 INFO S36 identified as special case (vs S13)
+2025-02-25 17:48:57,332 INFO Added relationship: S36 -> S13 (primary)
+2025-02-25 17:48:57,332 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-02-25 17:48:57,332 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-02-25 17:48:57,332 INFO 
+Processing S37:
+2025-02-25 17:48:57,332 INFO 
+Processing S35:
+2025-02-25 17:48:57,332 INFO S37 identified as special case (vs S13)
+2025-02-25 17:48:57,332 INFO S35 identified as special case (vs S13)
+2025-02-25 17:48:57,332 INFO Added relationship: S37 -> S13 (primary)
+2025-02-25 17:48:57,332 INFO Added relationship: S35 -> S13 (primary)
+2025-02-25 17:48:57,332 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-02-25 17:48:57,332 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-02-25 17:48:57,332 INFO 
+Processing S38:
+2025-02-25 17:48:57,332 INFO 
+Processing S36:
+2025-02-25 17:48:57,332 INFO S38 identified as special case (vs S13)
+2025-02-25 17:48:57,332 INFO S36 identified as special case (vs S13)
+2025-02-25 17:48:57,332 INFO Added relationship: S38 -> S13 (primary)
+2025-02-25 17:48:57,332 INFO Added relationship: S36 -> S13 (primary)
+2025-02-25 17:48:57,332 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-02-25 17:48:57,332 INFO 
+Visualization processing complete - Run ID: 20250225_174857
+2025-02-25 17:48:57,332 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-02-25 17:48:57,346 INFO Processing time: 0.00s
+2025-02-25 17:48:57,346 INFO 
+Processing S37:
+2025-02-25 17:48:57,346 INFO Plots generated: 0
+2025-02-25 17:48:57,346 INFO S37 identified as special case (vs S13)
+2025-02-25 17:48:57,346 INFO Errors encountered: 5
+2025-02-25 17:48:57,346 INFO Added relationship: S37 -> S13 (primary)
+2025-02-25 17:48:57,348 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-02-25 17:48:57,348 INFO 
+Processing S38:
+2025-02-25 17:48:57,348 INFO S38 identified as special case (vs S13)
+2025-02-25 17:48:57,348 INFO Added relationship: S38 -> S13 (primary)
+2025-02-25 17:48:57,349 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-02-25 17:48:57,349 INFO 
+Visualization processing complete - Run ID: 20250225_174857
+2025-02-25 17:48:57,349 INFO Processing time: 0.02s
+2025-02-25 17:48:57,349 INFO Plots generated: 0
+2025-02-25 17:48:57,350 INFO Errors encountered: 5
+2025-02-25 17:55:21,963 INFO 
+Processing visualization request - Run ID: 20250225_175521
+2025-02-25 17:55:21,963 INFO Version: 1
+2025-02-25 17:55:21,963 INFO Parameters: ['S34', 'S35', 'S36', 'S37', 'S38']
+2025-02-25 17:55:21,963 INFO 
+Processing S34:
+2025-02-25 17:55:21,963 INFO S34 identified as special case (vs S13)
+2025-02-25 17:55:21,963 INFO Added relationship: S34 -> S13 (primary)
+2025-02-25 17:55:21,964 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-02-25 17:55:21,964 INFO 
+Processing visualization request - Run ID: 20250225_175521
+2025-02-25 17:55:21,965 INFO 
+Processing S35:
+2025-02-25 17:55:21,965 INFO Version: 1
+2025-02-25 17:55:21,965 INFO S35 identified as special case (vs S13)
+2025-02-25 17:55:21,965 INFO Parameters: ['S34', 'S35', 'S36', 'S37', 'S38']
+2025-02-25 17:55:21,965 INFO Added relationship: S35 -> S13 (primary)
+2025-02-25 17:55:21,965 INFO 
+Processing S34:
+2025-02-25 17:55:21,965 INFO S34 identified as special case (vs S13)
+2025-02-25 17:55:21,966 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-02-25 17:55:21,966 INFO Added relationship: S34 -> S13 (primary)
+2025-02-25 17:55:21,966 INFO 
+Processing S36:
+2025-02-25 17:55:21,966 INFO S36 identified as special case (vs S13)
+2025-02-25 17:55:21,967 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-02-25 17:55:21,967 INFO Added relationship: S36 -> S13 (primary)
+2025-02-25 17:55:21,967 INFO 
+Processing S35:
+2025-02-25 17:55:21,967 INFO S35 identified as special case (vs S13)
+2025-02-25 17:55:21,967 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-02-25 17:55:21,967 INFO Added relationship: S35 -> S13 (primary)
+2025-02-25 17:55:21,967 INFO 
+Processing S37:
+2025-02-25 17:55:21,967 INFO S37 identified as special case (vs S13)
+2025-02-25 17:55:21,968 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-02-25 17:55:21,968 INFO Added relationship: S37 -> S13 (primary)
+2025-02-25 17:55:21,968 INFO 
+Processing S36:
+2025-02-25 17:55:21,968 INFO S36 identified as special case (vs S13)
+2025-02-25 17:55:21,968 INFO Added relationship: S36 -> S13 (primary)
+2025-02-25 17:55:21,968 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-02-25 17:55:21,968 INFO 
+Processing S38:
+2025-02-25 17:55:21,968 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-02-25 17:55:21,969 INFO S38 identified as special case (vs S13)
+2025-02-25 17:55:21,969 INFO 
+Processing S37:
+2025-02-25 17:55:21,969 INFO Added relationship: S38 -> S13 (primary)
+2025-02-25 17:55:21,969 INFO S37 identified as special case (vs S13)
+2025-02-25 17:55:21,969 INFO Added relationship: S37 -> S13 (primary)
+2025-02-25 17:55:21,969 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-02-25 17:55:21,969 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-02-25 17:55:21,969 INFO 
+Processing S38:
+2025-02-25 17:55:21,970 INFO 
+Visualization processing complete - Run ID: 20250225_175521
+2025-02-25 17:55:21,970 INFO S38 identified as special case (vs S13)
+2025-02-25 17:55:21,970 INFO Processing time: 0.01s
+2025-02-25 17:55:21,970 INFO Added relationship: S38 -> S13 (primary)
+2025-02-25 17:55:21,970 INFO Plots generated: 0
+2025-02-25 17:55:21,970 INFO Errors encountered: 5
+2025-02-25 17:55:21,970 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-02-25 17:55:21,972 INFO 
+Visualization processing complete - Run ID: 20250225_175521
+2025-02-25 17:55:21,972 INFO Processing time: 0.01s
+2025-02-25 17:55:21,972 INFO Plots generated: 0
+2025-02-25 17:55:21,973 INFO Errors encountered: 5
+2025-02-25 18:02:01,767 INFO 
+Processing visualization request - Run ID: 20250225_180201
+2025-02-25 18:02:01,767 INFO Version: 1
+2025-02-25 18:02:01,768 INFO Parameters: ['S34', 'S35', 'S36', 'S37', 'S38']
+2025-02-25 18:02:01,770 INFO 
+Processing S34:
+2025-02-25 18:02:01,770 INFO S34 identified as special case (vs S13)
+2025-02-25 18:02:01,771 INFO 
+Processing visualization request - Run ID: 20250225_180201
+2025-02-25 18:02:01,771 INFO Added relationship: S34 -> S13 (primary)
+2025-02-25 18:02:01,771 INFO Version: 1
+2025-02-25 18:02:01,771 INFO Parameters: ['S34', 'S35', 'S36', 'S37', 'S38']
+2025-02-25 18:02:01,771 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-02-25 18:02:01,772 INFO 
+Processing S34:
+2025-02-25 18:02:01,772 INFO 
+Processing S35:
+2025-02-25 18:02:01,772 INFO S34 identified as special case (vs S13)
+2025-02-25 18:02:01,772 INFO S35 identified as special case (vs S13)
+2025-02-25 18:02:01,772 INFO Added relationship: S34 -> S13 (primary)
+2025-02-25 18:02:01,772 INFO Added relationship: S35 -> S13 (primary)
+2025-02-25 18:02:01,773 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-02-25 18:02:01,773 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-02-25 18:02:01,773 INFO 
+Processing S35:
+2025-02-25 18:02:01,773 INFO 
+Processing S36:
+2025-02-25 18:02:01,773 INFO S35 identified as special case (vs S13)
+2025-02-25 18:02:01,773 INFO S36 identified as special case (vs S13)
+2025-02-25 18:02:01,773 INFO Added relationship: S35 -> S13 (primary)
+2025-02-25 18:02:01,774 INFO Added relationship: S36 -> S13 (primary)
+2025-02-25 18:02:01,774 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-02-25 18:02:01,774 INFO 
+Processing S36:
+2025-02-25 18:02:01,774 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-02-25 18:02:01,774 INFO S36 identified as special case (vs S13)
+2025-02-25 18:02:01,774 INFO 
+Processing S37:
+2025-02-25 18:02:01,774 INFO Added relationship: S36 -> S13 (primary)
+2025-02-25 18:02:01,775 INFO S37 identified as special case (vs S13)
+2025-02-25 18:02:01,775 INFO Added relationship: S37 -> S13 (primary)
+2025-02-25 18:02:01,775 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-02-25 18:02:01,775 INFO 
+Processing S37:
+2025-02-25 18:02:01,775 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-02-25 18:02:01,775 INFO S37 identified as special case (vs S13)
+2025-02-25 18:02:01,775 INFO 
+Processing S38:
+2025-02-25 18:02:01,776 INFO Added relationship: S37 -> S13 (primary)
+2025-02-25 18:02:01,776 INFO S38 identified as special case (vs S13)
+2025-02-25 18:02:01,776 INFO Added relationship: S38 -> S13 (primary)
+2025-02-25 18:02:01,776 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-02-25 18:02:01,776 INFO 
+Processing S38:
+2025-02-25 18:02:01,776 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-02-25 18:02:01,776 INFO S38 identified as special case (vs S13)
+2025-02-25 18:02:01,776 INFO 
+Visualization processing complete - Run ID: 20250225_180201
+2025-02-25 18:02:01,777 INFO Added relationship: S38 -> S13 (primary)
+2025-02-25 18:02:01,777 INFO Processing time: 0.01s
+2025-02-25 18:02:01,777 INFO Plots generated: 0
+2025-02-25 18:02:01,777 INFO Errors encountered: 5
+2025-02-25 18:02:01,777 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-02-25 18:02:01,778 INFO 
+Visualization processing complete - Run ID: 20250225_180201
+2025-02-25 18:02:01,779 INFO Processing time: 0.01s
+2025-02-25 18:02:01,779 INFO Plots generated: 0
+2025-02-25 18:02:01,779 INFO Errors encountered: 5

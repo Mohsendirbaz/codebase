@@ -31,8 +31,9 @@ const TabNavigation = ({ activeTab, setActiveTab }) => {
                 <button
                     className={`tab-button ${activeTab === 'Scaling' ? 'active' : ''}`}
                     onClick={() => setActiveTab('Scaling')}
+                    title="Process cost scaling and analysis"
                 >
-                    Scaling
+                    Process Scaling
                 </button>
                 <button
                     className={`tab-button ${activeTab === 'Editable' ? 'active' : ''}`}
