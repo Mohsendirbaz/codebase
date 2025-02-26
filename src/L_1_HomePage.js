@@ -14,6 +14,7 @@ import './L_1_HomePage.CSS/L_1_HomePage3.css';
 import './L_1_HomePage.CSS/L_1_HomePage4.css';
 import './L_1_HomePage.CSS/L_1_HomePage5.css';
 import './L_1_HomePage.CSS/L_1_HomePage6.css';
+import './styles/neumorphic-tabs.css';
 import PropertySelector from './PropertySelector.js';
 import TodoList from './TodoList.js';
 import VersionSelector from './VersionSelector.js';
@@ -935,46 +936,7 @@ const L_1_HomePageContent = () => {
                 </button>
             </div>
             <div className="form-content">
-                {activeSubTab && (
-                    <>
-                        <FormHeader
-                            onSensitivityClick={() => {
-                                const sKey = `S${activeSubTab === 'ProjectConfig' ? '10' : 
-                                            activeSubTab === 'LoanConfig' ? '20' : 
-                                            activeSubTab === 'RatesConfig' ? '30' : 
-                                            activeSubTab === 'Process1Config' ? '40' : '50'}`;
-                                setS(prev => ({
-                                    ...prev,
-                                    [sKey]: {
-                                        ...prev[sKey],
-                                        enabled: true,
-                                        mode: 'symmetrical'
-                                    }
-                                }));
-                            }}
-                            onEfficacyPeriodClick={(e) => {
-                                const rect = e.target.getBoundingClientRect();
-                                setPopupPosition({
-                                    top: rect.top + window.scrollY,
-                                    left: rect.left + rect.width
-                                });
-                                setShowPopup(true);
-                            }}
-                            onFactualPrecedenceClick={() => {}}
-                        />
-                        {showPopup && (
-                            <Popup
-                                show={showPopup}
-                                onClose={() => setShowPopup(false)}
-                                formValues={formValues}
-                                handleInputChange={handleInputChange}
-                                id={activeSubTab}
-                                version={version}
-                                itemId={activeSubTab}
-                            />
-                        )}
-                    </>
-                )}
+                
                 {activeSubTab === 'ProjectConfig' && (
                     <GeneralFormConfig
                         formValues={formValues}
