@@ -14,10 +14,30 @@ git rev-parse HEAD  # Should show current
 
 git remote -v  # Should show https://github.com/Mohsendirbaz/SF.git
 
-git checkout -b SF.R2
+git checkout -b SF.R8
 
 git add .
 
-git commit -m "Initial commit for SF.R2 branch"
+git commit -m "Initial commit for SF.R8 branch"
 
-git push origin SF.R2
+git push origin SF.R8
+
+
+
+
+
+
+# Remove existing temp directory (already done)
+# rm -rf temp_SF
+
+# Create directory for the output if it doesn't exist
+mkdir -p src.fetched
+
+# Clone the repository
+git clone -b SF.R1 --depth 1 https://github.com/Mohsendirbaz/SF.git temp_SF
+
+# Copy only the src directory to destination
+cp -r temp_SF/src/* src.fetched/
+
+# Remove the temporary repository
+rm -rf temp_SF

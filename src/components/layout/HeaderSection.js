@@ -1,5 +1,5 @@
 import React from 'react';
-import ThemeSelector from '../theme/ThemeSelector';
+import ThemeSelector from './theme/ThemeSelector';
 import './HeaderSection.css';
 
 const HeaderSection = ({ season, handleThemeChange }) => {

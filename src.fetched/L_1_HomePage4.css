@@ -1,0 +1,339 @@
+/* Form Action Buttons */
+.form-action-buttons {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.button-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Common Button Styles */
+.form-action-button {
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.form-action-button:hover {
+    opacity: 0.9;
+}
+
+.form-action-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Button Colors */
+.form-action-button.create-batch {
+    background-color: #4CAF50;
+}
+
+.form-action-button.remove-batch {
+    background-color: #f44336;
+}
+
+.form-action-button.run-cfa {
+    background-color: #FF5722;
+}
+
+.form-action-button.submit-set {
+    background-color: #9C27B0;
+}
+
+.form-action-button.reset {
+    background-color: #5C27B0;
+}
+
+.form-action-button.load-config {
+    background-color: #5C27C0;
+}
+
+.form-action-button.generate-png {
+    background-color: #4CAF50;
+}
+
+.form-action-button.generate-dynamic {
+    background-color: #2196F3;
+}
+
+.config-row {
+    justify-content: space-between;
+}
+
+.checkbox-row {
+    gap: 20px;
+}
+
+.checkbox-row label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.visualization-row {
+    justify-content: flex-start;
+}
+
+.practical-row {
+    justify-content: flex-start;
+}
+
+/* Tooltip Container */
+.tooltip-container {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip-container button {
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.tooltip-container button:hover {
+    opacity: 0.9;
+}
+
+.tooltip1 {
+    visibility: hidden;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    border-radius: 4px;
+    white-space: nowrap;
+    font-size: 12px;
+    width: max-content;
+    max-width: 300px;
+}
+
+.tooltip-container:hover .tooltip1 {
+    visibility: visible;
+}
+
+/* Version Input */
+.version-input-container {
+    display: flex;
+    align-items: center;
+}
+
+.version-input {
+    width: 60px;
+    padding: 5px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--sidebar-background);
+    color: var(--text-color);
+}
+
+/* Radio Label */
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+/* Price Display */
+.price-display {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: var(--sidebar-background);
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+}
+
+.price-display h3 {
+    margin: 0;
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+.price-value {
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Scaling Summary Styles */
+.scaling-summary {
+    width: 100%;
+}
+
+.scaling-summary-title {
+    font-size: 1.125rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+.scaling-summary-container {
+    overflow-x: auto;
+}
+
+.scaling-summary-table {
+    min-width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.scaling-summary-header {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.scaling-summary-row {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.scaling-summary-row-frozen {
+    background-color: var(--sidebar-background);
+}
+
+.scaling-summary-cell {
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.scaling-summary-cell-checkbox {
+    width: 1rem;
+    height: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+
+.scaling-summary-cell-frozen-indicator {
+    font-size: 0.75rem;
+    color: #3b82f6;
+    margin-left: 0.25rem;
+}
+
+.scaling-summary-cell-right {
+    text-align: right;
+}
+
+.scaling-summary-cell-center {
+    text-align: center;
+}
+
+.scaling-summary-operation-select {
+    width: 5rem;
+    padding: 0.25rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.25rem;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.scaling-summary-expression-input {
+    width: 100%;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.25rem;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.scaling-summary-parenthesis {
+    background-color: rgba(59, 130, 246, 0.05);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.scaling-summary-result {
+    background-color: var(--sidebar-background);
+}
+
+.scaling-summary-result-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.scaling-summary-error {
+    color: #ef4444;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.scaling-summary-error-message {
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+}
+
+.scaling-summary-steps {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-top: 0.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.scaling-summary-step {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.25rem;
+}
+
+.scaling-summary-operator {
+    color: #3b82f6;
+}
+
+.scaling-summary-operator-error {
+    color: #ef4444;
+}
+
+.scaling-summary-footer {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-top: 0.5rem;
+}
+
+.scaling-summary-footer-item {
+    margin-bottom: 0.25rem;
+}
+
+/* Card Component Styles */
+.card {
+    background-color: var(--background-color);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-radius: 0.75rem;
+    transition: all 0.3s ease-in-out;
+    border: 1px solid var(--border-color);
+}
+
+.card:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--sidebar-background);
+    border-top-left-radius: 0.75rem;
+    border-top-right-radius: 0.75rem;
+    transition: colors 0.3s ease;
+}
+
+.card-content {
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}

@@ -3,8 +3,8 @@
 ## Graph Statistics
 
 - **Number of Components**: 50
-- **Number of Dependencies**: 1
-- **Graph Density**: 0.0004
+- **Number of Dependencies**: 8
+- **Graph Density**: 0.0033
 - **Average Shortest Path Length**: N/A (disconnected graph)
 - **Graph Diameter**: N/A (disconnected graph)
 
@@ -14,16 +14,16 @@ These components are imported by many others and could be bottlenecks or critica
 
 | Component | Imported By |
 |-----------|------------|
-| useFormValues | 1 |
-| Index | 0 |
-| Index | 0 |
-| CustomizableTable | 0 |
-| BatchService | 0 |
-| ConfigService | 0 |
-| ScalingSummary | 0 |
-| App | 0 |
-| SensitivityVisualization | 0 |
-| Card | 0 |
+| useFormValues | 2 |
+| TodoList | 1 |
+| Popup | 1 |
+| VersionSelector | 1 |
+| GeneralFormConfig | 1 |
+| TooltipWithMore | 1 |
+| PropertySelector | 1 |
+| Editable | 0 |
+| VersionStateProvider | 0 |
+| VersionSelector | 0 |
 
 ## Components with Most Dependencies
 
@@ -31,16 +31,16 @@ These components import many others and might be too complex:
 
 | Component | Number of Imports |
 |-----------|------------------|
+| L_1_HomePageContent | 7 |
 | CustomizableTable | 1 |
-| Index | 0 |
-| Index | 0 |
+| Editable | 0 |
+| TodoList | 0 |
+| VersionStateProvider | 0 |
+| VersionSelector | 0 |
 | BatchService | 0 |
-| ConfigService | 0 |
-| ScalingSummary | 0 |
-| App | 0 |
-| SensitivityVisualization | 0 |
-| Card | 0 |
-| CustomizableImage | 0 |
+| Popup | 0 |
+| useFeatureToggles | 0 |
+| VersionSelector | 0 |
 
 ## Circular Dependencies
 
