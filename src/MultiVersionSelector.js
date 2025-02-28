@@ -12,6 +12,13 @@ const MultiVersionSelector = ({ maxVersions = 20 }) => {
   // Generate array of version numbers from 1 to maxVersions
   const versionNumbers = Array.from({ length: maxVersions }, (_, i) => (i + 1).toString());
 
+  // Set initial state with no versions selected
+  React.useEffect(() => {
+    if (selectedVersions.length === 0) {
+      setSelectedVersions([]);
+    }
+  }, []);
+
   // Handle selection changes
   const handleVersionChange = (event) => {
     // Get selected options from the multi-select

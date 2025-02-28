@@ -502,3 +502,87 @@
 2025-02-27 21:20:23,341 DEBUG Logging is configured and working correctly.
 2025-02-27 21:20:23,375 WARNING  * Debugger is active!
 2025-02-27 21:20:23,383 INFO  * Debugger PIN: 119-059-632
+2025-02-27 22:00:12,942 DEBUG Logging is configured and working correctly.
+2025-02-27 22:00:12,989 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5009
+2025-02-27 22:00:12,989 INFO [33mPress CTRL+C to quit[0m
+2025-02-27 22:00:13,005 INFO  * Restarting with stat
+2025-02-27 22:00:13,743 DEBUG Logging is configured and working correctly.
+2025-02-27 22:00:13,782 WARNING  * Debugger is active!
+2025-02-27 22:00:13,797 INFO  * Debugger PIN: 119-059-632
+2025-02-27 22:10:30,659 DEBUG Logging is configured and working correctly.
+2025-02-27 22:10:30,700 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5009
+2025-02-27 22:10:30,700 INFO [33mPress CTRL+C to quit[0m
+2025-02-27 22:10:30,700 INFO  * Restarting with stat
+2025-02-27 22:10:31,285 DEBUG Logging is configured and working correctly.
+2025-02-27 22:10:31,325 WARNING  * Debugger is active!
+2025-02-27 22:10:31,331 INFO  * Debugger PIN: 119-059-632
+2025-02-27 23:10:26,606 DEBUG Logging is configured and working correctly.
+2025-02-27 23:10:26,658 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5009
+2025-02-27 23:10:26,658 INFO [33mPress CTRL+C to quit[0m
+2025-02-27 23:10:26,671 INFO  * Restarting with stat
+2025-02-27 23:10:27,743 DEBUG Logging is configured and working correctly.
+2025-02-27 23:10:27,841 WARNING  * Debugger is active!
+2025-02-27 23:10:27,841 INFO  * Debugger PIN: 119-059-632
+2025-02-27 23:14:36,660 INFO 127.0.0.1 - - [27/Feb/2025 23:14:36] "OPTIONS /runSub HTTP/1.1" 200 -
+2025-02-27 23:14:36,660 INFO Received data: {'selectedVersions': [1], 'selectedProperties': ['numberOfUnitsAmount12'], 'remarks': 'off', 'customizedFeatures': 'off', 'selectedV': {'V1': 'on', 'V2': 'off', 'V3': 'off', 'V4': 'off', 'V5': 'off', 'V6': 'off', 'V7': 'off', 'V8': 'off', 'V9': 'off', 'V10': 'off'}}
+2025-02-27 23:14:36,660 INFO Changed working directory to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Visualization_generators
+2025-02-27 23:14:36,660 DEBUG Formatted versions string: 1
+2025-02-27 23:14:36,660 DEBUG Formatted properties string: numberOfUnitsAmount12
+2025-02-27 23:14:38,385 ERROR Error running AggregatedSubPlots.py: Traceback (most recent call last):
+  File "C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Visualization_generators\AggregatedSubPlots.py", line 544, in <module>
+    save_html_content(html_content, metric_name, version, versions_identifier)
+  File "C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Visualization_generators\AggregatedSubPlots.py", line 336, in save_html_content
+    os.makedirs(version_dir, exist_ok=True)
+  File "<frozen os>", line 215, in makedirs
+  File "<frozen os>", line 215, in makedirs
+  File "<frozen os>", line 215, in makedirs
+  [Previous line repeated 6 more times]
+  File "<frozen os>", line 225, in makedirs
+PermissionError: [WinError 5] Access is denied: 'C:\\Users\\md8w7'
+
+2025-02-27 23:14:38,385 INFO 127.0.0.1 - - [27/Feb/2025 23:14:38] "[35m[1mPOST /runSub HTTP/1.1[0m" 500 -
+2025-02-27 23:16:20,997 INFO 127.0.0.1 - - [27/Feb/2025 23:16:20] "OPTIONS /runSub HTTP/1.1" 200 -
+2025-02-27 23:16:21,000 INFO Received data: {'selectedVersions': [1], 'selectedProperties': ['totalOperatingCostPercentageAmount14'], 'remarks': 'off', 'customizedFeatures': 'off', 'selectedV': {'V1': 'on', 'V2': 'off', 'V3': 'off', 'V4': 'off', 'V5': 'off', 'V6': 'off', 'V7': 'off', 'V8': 'off', 'V9': 'off', 'V10': 'off'}}
+2025-02-27 23:16:21,001 INFO Changed working directory to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Visualization_generators
+2025-02-27 23:16:21,001 DEBUG Formatted versions string: 1
+2025-02-27 23:16:21,001 DEBUG Formatted properties string: totalOperatingCostPercentageAmount14
+2025-02-27 23:16:22,328 ERROR Error running AggregatedSubPlots.py: Traceback (most recent call last):
+  File "C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Visualization_generators\AggregatedSubPlots.py", line 544, in <module>
+    save_html_content(html_content, metric_name, version, versions_identifier)
+  File "C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Visualization_generators\AggregatedSubPlots.py", line 336, in save_html_content
+    os.makedirs(version_dir, exist_ok=True)
+  File "<frozen os>", line 215, in makedirs
+  File "<frozen os>", line 215, in makedirs
+  File "<frozen os>", line 215, in makedirs
+  [Previous line repeated 6 more times]
+  File "<frozen os>", line 225, in makedirs
+PermissionError: [WinError 5] Access is denied: 'C:\\Users\\md8w7'
+
+2025-02-27 23:16:22,329 INFO 127.0.0.1 - - [27/Feb/2025 23:16:22] "[35m[1mPOST /runSub HTTP/1.1[0m" 500 -
+2025-02-27 23:22:42,664 DEBUG Logging is configured and working correctly.
+2025-02-27 23:22:42,828 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5009
+2025-02-27 23:22:42,828 INFO [33mPress CTRL+C to quit[0m
+2025-02-27 23:22:42,828 INFO  * Restarting with stat
+2025-02-27 23:22:45,174 DEBUG Logging is configured and working correctly.
+2025-02-27 23:22:45,227 WARNING  * Debugger is active!
+2025-02-27 23:22:45,240 INFO  * Debugger PIN: 119-059-632
+2025-02-27 23:29:56,749 DEBUG Logging is configured and working correctly.
+2025-02-27 23:29:56,875 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5009
+2025-02-27 23:29:56,876 INFO [33mPress CTRL+C to quit[0m
+2025-02-27 23:29:56,878 INFO  * Restarting with stat
+2025-02-27 23:29:58,382 DEBUG Logging is configured and working correctly.
+2025-02-27 23:29:58,460 WARNING  * Debugger is active!
+2025-02-27 23:29:58,467 INFO  * Debugger PIN: 119-059-632
+2025-02-28 08:28:55,916 DEBUG Logging is configured and working correctly.
+2025-02-28 08:28:55,961 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5009
+2025-02-28 08:28:55,961 INFO [33mPress CTRL+C to quit[0m
+2025-02-28 08:28:55,963 INFO  * Restarting with stat
+2025-02-28 08:28:56,413 DEBUG Logging is configured and working correctly.
+2025-02-28 08:28:56,433 WARNING  * Debugger is active!
+2025-02-28 08:28:56,437 INFO  * Debugger PIN: 119-059-632

@@ -32,7 +32,7 @@ logging.basicConfig(
     filename=log_file_path,
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s: %(message)s',
-    filemode='w'
+    filemode='a'
 )
 
 # Create a separate logger for price optimization
@@ -635,13 +635,13 @@ def calculate_revenue_and_expenses_from_modules(config_received, config_matrix_d
         )
         adjusted_length_calculation = length - 1
         # Store individual cost components for each row
-        feedstock_cost_operational[idx] = config_module['rawmaterialAmount34'] * adjusted_length_calculation
-        labor_cost_operational[idx] = config_module['laborAmount35'] * adjusted_length_calculation
-        utility_cost_operational[idx] = config_module['utilityAmount36'] * adjusted_length_calculation
-        maintenance_cost_operational[idx] = config_module['maintenanceAmount37'] * adjusted_length_calculation
-        insurance_cost_operational[idx] = config_module['insuranceAmount38'] * adjusted_length_calculation
+        feedstock_cost_operational[idx] = config_module['rawmaterialAmount34'] * max(adjusted_length_calculation, 1)
+        labor_cost_operational[idx] = config_module['laborAmount35'] * max(adjusted_length_calculation, 1)
+        utility_cost_operational[idx] = config_module['utilityAmount36'] * max(adjusted_length_calculation, 1)
+        maintenance_cost_operational[idx] = config_module['maintenanceAmount37'] * max(adjusted_length_calculation, 1)
+        insurance_cost_operational[idx] = config_module['insuranceAmount38'] * max(adjusted_length_calculation, 1)
         # Store module selling price for each row
-        module_selling_price_operational[idx] = selling_price * adjusted_length_calculation
+        module_selling_price_operational[idx] = selling_price * max(adjusted_length_calculation, 1)
         
         # Calculate running averages for each cost component
         average_feedstock_cost_operational = sum(feedstock_cost_operational.values()) / (idx + 1)
@@ -1007,6 +1007,8 @@ def main(version, selected_v, selected_f, target_row=None, tolerance_lower=-1000
 if __name__ == "__main__":
     # Parse command line arguments
     import argparse
+    import json
+    
     parser = argparse.ArgumentParser(description='Run CFA calculation with optional price optimization')
     parser.add_argument('--version', type=str, required=True, help='Version number')
     parser.add_argument('--calculation-option', type=str, default=None, help='Calculation option, e.g., calculateForPrice')
@@ -1016,21 +1018,50 @@ if __name__ == "__main__":
     parser.add_argument('--increase-rate', type=float, default=1.02, help='Rate to increase price when NPV is too low')
     parser.add_argument('--decrease-rate', type=float, default=0.985, help='Rate to decrease price when NPV is too high')
     
+    # Add arguments for selected_v and selected_f as JSON strings
+    parser.add_argument('--selected-v', type=str, default=None, help='JSON string of selected V states')
+    parser.add_argument('--selected-f', type=str, default=None, help='JSON string of selected F states')
+    parser.add_argument('--sen-parameters', type=str, default=None, help='JSON string of sensitivity parameters')
+    
     args = parser.parse_args()
     
-    # Set up default V and F dictionaries for command line mode
+    # Set up default V and F dictionaries
     default_v = {f'V{i}': 'on' if i == 1 else 'off' for i in range(1, 11)}
     default_f = {f'F{i}': 'on' for i in range(1, 6)}
+    
+    # Parse JSON strings if provided
+    selected_v = default_v
+    selected_f = default_f
+    sen_parameters = {}
+    
+    if args.selected_v:
+        try:
+            selected_v = json.loads(args.selected_v)
+        except json.JSONDecodeError:
+            logging.error(f"Invalid JSON for selected_v: {args.selected_v}")
+    
+    if args.selected_f:
+        try:
+            selected_f = json.loads(args.selected_f)
+        except json.JSONDecodeError:
+            logging.error(f"Invalid JSON for selected_f: {args.selected_f}")
+    
+    if args.sen_parameters:
+        try:
+            sen_parameters = json.loads(args.sen_parameters)
+        except json.JSONDecodeError:
+            logging.error(f"Invalid JSON for sen_parameters: {args.sen_parameters}")
     
     # Call main function with command line arguments
     main(
         version=args.version,
-        selected_v=default_v,
-        selected_f=default_f,
+        selected_v=selected_v,
+        selected_f=selected_f,
         target_row=args.target_row,
         tolerance_lower=args.tolerance_lower,
         tolerance_upper=args.tolerance_upper,
         increase_rate=args.increase_rate,
         decrease_rate=args.decrease_rate,
-        selected_calculation_option=args.calculation_option
+        selected_calculation_option=args.calculation_option,
+        sen_parameters=sen_parameters
     )

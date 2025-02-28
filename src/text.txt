@@ -14,13 +14,13 @@ git rev-parse HEAD  # Should show current
 
 git remote -v  # Should show https://github.com/Mohsendirbaz/SF.git
 
-git checkout -b SF.R11
+git checkout -b SF.R12
 
 git add .
 
-git commit -m "Initial commit for SF.R11 price optimization, update 7, streaming in progress"
+git commit -m "Initial commit for SF.R11 price optimization, update 7, streaming in progress 2"
 
-git push origin SF.R11
+git push origin SF.R12
 
 
 

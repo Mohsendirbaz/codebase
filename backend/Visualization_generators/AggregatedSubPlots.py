@@ -12,8 +12,11 @@ if str(BACKEND_DIR) not in sys.path:
     sys.path.append(str(BACKEND_DIR))
 
 # Now we can import from other backend modules
-from Utility_functions.common_utils import property_mapping# Define the base directory for your uploads and batches
-uploads_dir = r"C:\Users\md8w7\OneDrive University of Missouri\Desktop\ImportantFiles\Milestone4\backend\Original"
+from Utility_functions.common_utils import property_mapping
+
+# Define the base directory for your uploads and batches
+ORIGINAL_DIR = Path(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+uploads_dir = ORIGINAL_DIR / "public" / "Original"
 
 # Initialize logging
 log_file_path = os.path.join(os.getcwd(), 'app_executionSub.log')

@@ -1510,3 +1510,1503 @@
 2025-02-27 18:49:59,794 fv_tuple: 18
 2025-02-27 18:49:59,794 fv_tuple: 19
 2025-02-27 18:49:59,794 fv_tuple: 20
+2025-02-27 21:54:58,204 filtered_values: [{'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.020', 'start': '1', 'end': '1', 'remarks': '2004'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.0424', 'start': '2', 'end': '2', 'remarks': '2005'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.0664', 'start': '3', 'end': '3', 'remarks': '2006'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.0915', 'start': '4', 'end': '4', 'remarks': '2007'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1323', 'start': '5', 'end': '5', 'remarks': '2008'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1426', 'start': '6', 'end': '6', 'remarks': '2009'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1662', 'start': '7', 'end': '7', 'remarks': '2010'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1980', 'start': '8', 'end': '8', 'remarks': '2011'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2246', 'start': '9', 'end': '9', 'remarks': '2012'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2400', 'start': '10', 'end': '10', 'remarks': '2013'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2424', 'start': '11', 'end': '11', 'remarks': '2014'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2424', 'start': '12', 'end': '12', 'remarks': '2015'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2451', 'start': '13', 'end': '13', 'remarks': '2016'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2668', 'start': '14', 'end': '14', 'remarks': '2017'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2881', 'start': '15', 'end': '15', 'remarks': '2018'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.3032', 'start': '16', 'end': '16', 'remarks': '2019'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.3104', 'start': '17', 'end': '17', 'remarks': '2020'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.3382', 'start': '18', 'end': '18', 'remarks': '2021'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.4415', 'start': '19', 'end': '19', 'remarks': '2022'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.5035', 'start': '20', 'end': '20', 'remarks': '2023'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.020', 'start': '1', 'end': '1', 'remarks': '2004'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.0404', 'start': '2', 'end': '2', 'remarks': '2005'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.0620', 'start': '3', 'end': '3', 'remarks': '2006'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.0859', 'start': '4', 'end': '4', 'remarks': '2007'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.1126', 'start': '5', 'end': '5', 'remarks': '2008'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.1419', 'start': '6', 'end': '6', 'remarks': '2009'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.1743', 'start': '7', 'end': '7', 'remarks': '2010'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.2099', 'start': '8', 'end': '8', 'remarks': '2011'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.2488', 'start': '9', 'end': '9', 'remarks': '2012'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.2912', 'start': '10', 'end': '10', 'remarks': '2013'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.3372', 'start': '11', 'end': '11', 'remarks': '2014'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.3869', 'start': '12', 'end': '12', 'remarks': '2015'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.4406', 'start': '13', 'end': '13', 'remarks': '2016'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.4983', 'start': '14', 'end': '14', 'remarks': '2017'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.5602', 'start': '15', 'end': '15', 'remarks': '2018'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.6264', 'start': '16', 'end': '16', 'remarks': '2019'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.6970', 'start': '17', 'end': '17', 'remarks': '2020'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.7722', 'start': '18', 'end': '18', 'remarks': '2021'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.8521', 'start': '19', 'end': '19', 'remarks': '2022'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.9369', 'start': '20', 'end': '20', 'remarks': '2023'}}]
+2025-02-27 21:54:58,204 general_year_sorted_list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+2025-02-27 21:54:58,204 start_end_points: {1, 20}
+2025-02-27 21:54:58,204 start_end_points: {1, 2, 20}
+2025-02-27 21:54:58,204 start_end_points: {1, 2, 3, 20}
+2025-02-27 21:54:58,204 start_end_points: {1, 2, 3, 4, 20}
+2025-02-27 21:54:58,204 start_end_points: {1, 2, 3, 4, 5, 20}
+2025-02-27 21:54:58,204 start_end_points: {1, 2, 3, 4, 5, 6, 20}
+2025-02-27 21:54:58,204 start_end_points: {1, 2, 3, 4, 5, 6, 7, 20}
+2025-02-27 21:54:58,204 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 20}
+2025-02-27 21:54:58,204 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 20}
+2025-02-27 21:54:58,204 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20}
+2025-02-27 21:54:58,204 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 20}
+2025-02-27 21:54:58,204 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 20}
+2025-02-27 21:54:58,204 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 20}
+2025-02-27 21:54:58,204 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 20}
+2025-02-27 21:54:58,204 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 20}
+2025-02-27 21:54:58,204 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 20}
+2025-02-27 21:54:58,204 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 20}
+2025-02-27 21:54:58,204 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20}
+2025-02-27 21:54:58,204 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:54:58,204 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:54:58,204 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:54:58,204 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:54:58,204 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:54:58,204 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:54:58,204 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:54:58,204 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:54:58,204 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:54:58,204 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:54:58,204 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:54:58,204 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:54:58,204 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:54:58,204 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:54:58,204 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:54:58,204 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:54:58,204 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:54:58,204 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:54:58,204 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:54:58,204 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:54:58,204 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:54:58,204 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:54:58,204 sorted_points: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+2025-02-27 21:54:58,204 general_intervals: [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8), (8, 9), (9, 10), (10, 11), (11, 12), (12, 13), (13, 14), (14, 15), (15, 16), (16, 17), (17, 18), (18, 19), (19, 20), (20, 21)]
+2025-02-27 21:54:58,204 intervals: [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8), (8, 9), (9, 10), (10, 11), (11, 12), (12, 13), (13, 14), (14, 15), (15, 16), (16, 17), (17, 18), (18, 19), (19, 20)]
+2025-02-27 21:54:58,204 fv_tuple: 1
+2025-02-27 21:54:58,204 fv_tuple: 2
+2025-02-27 21:54:58,204 fv_tuple: 3
+2025-02-27 21:54:58,204 fv_tuple: 4
+2025-02-27 21:54:58,204 fv_tuple: 5
+2025-02-27 21:54:58,204 fv_tuple: 6
+2025-02-27 21:54:58,204 fv_tuple: 7
+2025-02-27 21:54:58,204 fv_tuple: 8
+2025-02-27 21:54:58,204 fv_tuple: 9
+2025-02-27 21:54:58,204 fv_tuple: 10
+2025-02-27 21:54:58,204 fv_tuple: 11
+2025-02-27 21:54:58,204 fv_tuple: 12
+2025-02-27 21:54:58,204 fv_tuple: 13
+2025-02-27 21:54:58,204 fv_tuple: 14
+2025-02-27 21:54:58,204 fv_tuple: 15
+2025-02-27 21:54:58,204 fv_tuple: 16
+2025-02-27 21:54:58,204 fv_tuple: 17
+2025-02-27 21:54:58,204 fv_tuple: 18
+2025-02-27 21:54:58,204 fv_tuple: 19
+2025-02-27 21:54:58,204 fv_tuple: 20
+2025-02-27 21:54:58,204 fv_tuple: 1
+2025-02-27 21:54:58,204 fv_tuple: 2
+2025-02-27 21:54:58,204 fv_tuple: 3
+2025-02-27 21:54:58,204 fv_tuple: 4
+2025-02-27 21:54:58,204 fv_tuple: 5
+2025-02-27 21:54:58,204 fv_tuple: 6
+2025-02-27 21:54:58,204 fv_tuple: 7
+2025-02-27 21:54:58,204 fv_tuple: 8
+2025-02-27 21:54:58,204 fv_tuple: 9
+2025-02-27 21:54:58,204 fv_tuple: 10
+2025-02-27 21:54:58,204 fv_tuple: 11
+2025-02-27 21:54:58,204 fv_tuple: 12
+2025-02-27 21:54:58,204 fv_tuple: 13
+2025-02-27 21:54:58,204 fv_tuple: 14
+2025-02-27 21:54:58,204 fv_tuple: 15
+2025-02-27 21:54:58,204 fv_tuple: 16
+2025-02-27 21:54:58,204 fv_tuple: 17
+2025-02-27 21:54:58,204 fv_tuple: 18
+2025-02-27 21:54:58,204 fv_tuple: 19
+2025-02-27 21:54:58,204 fv_tuple: 20
+2025-02-27 21:54:58,204 fv_tuple: 1
+2025-02-27 21:54:58,204 fv_tuple: 2
+2025-02-27 21:54:58,204 fv_tuple: 3
+2025-02-27 21:54:58,204 fv_tuple: 4
+2025-02-27 21:54:58,204 fv_tuple: 5
+2025-02-27 21:54:58,204 fv_tuple: 6
+2025-02-27 21:54:58,204 fv_tuple: 7
+2025-02-27 21:54:58,204 fv_tuple: 8
+2025-02-27 21:54:58,204 fv_tuple: 9
+2025-02-27 21:54:58,204 fv_tuple: 10
+2025-02-27 21:54:58,204 fv_tuple: 11
+2025-02-27 21:54:58,204 fv_tuple: 12
+2025-02-27 21:54:58,204 fv_tuple: 13
+2025-02-27 21:54:58,204 fv_tuple: 14
+2025-02-27 21:54:58,204 fv_tuple: 15
+2025-02-27 21:54:58,204 fv_tuple: 16
+2025-02-27 21:54:58,204 fv_tuple: 17
+2025-02-27 21:54:58,204 fv_tuple: 18
+2025-02-27 21:54:58,204 fv_tuple: 19
+2025-02-27 21:54:58,204 fv_tuple: 20
+2025-02-27 21:54:58,204 fv_tuple: 1
+2025-02-27 21:54:58,204 fv_tuple: 2
+2025-02-27 21:54:58,204 fv_tuple: 3
+2025-02-27 21:54:58,204 fv_tuple: 4
+2025-02-27 21:54:58,204 fv_tuple: 5
+2025-02-27 21:54:58,204 fv_tuple: 6
+2025-02-27 21:54:58,204 fv_tuple: 7
+2025-02-27 21:54:58,204 fv_tuple: 8
+2025-02-27 21:54:58,204 fv_tuple: 9
+2025-02-27 21:54:58,204 fv_tuple: 10
+2025-02-27 21:54:58,204 fv_tuple: 11
+2025-02-27 21:54:58,204 fv_tuple: 12
+2025-02-27 21:54:58,204 fv_tuple: 13
+2025-02-27 21:54:58,204 fv_tuple: 14
+2025-02-27 21:54:58,204 fv_tuple: 15
+2025-02-27 21:54:58,204 fv_tuple: 16
+2025-02-27 21:54:58,204 fv_tuple: 17
+2025-02-27 21:54:58,204 fv_tuple: 18
+2025-02-27 21:54:58,204 fv_tuple: 19
+2025-02-27 21:54:58,204 fv_tuple: 20
+2025-02-27 21:58:35,723 filtered_values: [{'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.020', 'start': '1', 'end': '1', 'remarks': '2004'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.0424', 'start': '2', 'end': '2', 'remarks': '2005'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.0664', 'start': '3', 'end': '3', 'remarks': '2006'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.0915', 'start': '4', 'end': '4', 'remarks': '2007'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1323', 'start': '5', 'end': '5', 'remarks': '2008'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1426', 'start': '6', 'end': '6', 'remarks': '2009'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1662', 'start': '7', 'end': '7', 'remarks': '2010'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1980', 'start': '8', 'end': '8', 'remarks': '2011'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2246', 'start': '9', 'end': '9', 'remarks': '2012'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2400', 'start': '10', 'end': '10', 'remarks': '2013'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2424', 'start': '11', 'end': '11', 'remarks': '2014'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2424', 'start': '12', 'end': '12', 'remarks': '2015'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2451', 'start': '13', 'end': '13', 'remarks': '2016'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2668', 'start': '14', 'end': '14', 'remarks': '2017'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2881', 'start': '15', 'end': '15', 'remarks': '2018'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.3032', 'start': '16', 'end': '16', 'remarks': '2019'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.3104', 'start': '17', 'end': '17', 'remarks': '2020'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.3382', 'start': '18', 'end': '18', 'remarks': '2021'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.4415', 'start': '19', 'end': '19', 'remarks': '2022'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.5035', 'start': '20', 'end': '20', 'remarks': '2023'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.020', 'start': '1', 'end': '1', 'remarks': '2004'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.0404', 'start': '2', 'end': '2', 'remarks': '2005'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.0620', 'start': '3', 'end': '3', 'remarks': '2006'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.0859', 'start': '4', 'end': '4', 'remarks': '2007'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.1126', 'start': '5', 'end': '5', 'remarks': '2008'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.1419', 'start': '6', 'end': '6', 'remarks': '2009'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.1743', 'start': '7', 'end': '7', 'remarks': '2010'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.2099', 'start': '8', 'end': '8', 'remarks': '2011'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.2488', 'start': '9', 'end': '9', 'remarks': '2012'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.2912', 'start': '10', 'end': '10', 'remarks': '2013'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.3372', 'start': '11', 'end': '11', 'remarks': '2014'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.3869', 'start': '12', 'end': '12', 'remarks': '2015'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.4406', 'start': '13', 'end': '13', 'remarks': '2016'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.4983', 'start': '14', 'end': '14', 'remarks': '2017'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.5602', 'start': '15', 'end': '15', 'remarks': '2018'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.6264', 'start': '16', 'end': '16', 'remarks': '2019'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.6970', 'start': '17', 'end': '17', 'remarks': '2020'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.7722', 'start': '18', 'end': '18', 'remarks': '2021'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.8521', 'start': '19', 'end': '19', 'remarks': '2022'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.9369', 'start': '20', 'end': '20', 'remarks': '2023'}}]
+2025-02-27 21:58:35,723 general_year_sorted_list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+2025-02-27 21:58:35,723 start_end_points: {1, 20}
+2025-02-27 21:58:35,723 start_end_points: {1, 2, 20}
+2025-02-27 21:58:35,723 start_end_points: {1, 2, 3, 20}
+2025-02-27 21:58:35,723 start_end_points: {1, 2, 3, 4, 20}
+2025-02-27 21:58:35,723 start_end_points: {1, 2, 3, 4, 5, 20}
+2025-02-27 21:58:35,723 start_end_points: {1, 2, 3, 4, 5, 6, 20}
+2025-02-27 21:58:35,723 start_end_points: {1, 2, 3, 4, 5, 6, 7, 20}
+2025-02-27 21:58:35,723 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 20}
+2025-02-27 21:58:35,723 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 20}
+2025-02-27 21:58:35,723 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20}
+2025-02-27 21:58:35,723 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 20}
+2025-02-27 21:58:35,723 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 20}
+2025-02-27 21:58:35,723 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 20}
+2025-02-27 21:58:35,723 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 20}
+2025-02-27 21:58:35,723 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 20}
+2025-02-27 21:58:35,723 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 20}
+2025-02-27 21:58:35,723 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 20}
+2025-02-27 21:58:35,723 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20}
+2025-02-27 21:58:35,723 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:58:35,723 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:58:35,723 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:58:35,723 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:58:35,723 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:58:35,723 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:58:35,723 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:58:35,723 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:58:35,723 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:58:35,723 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:58:35,723 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:58:35,723 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:58:35,723 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:58:35,723 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:58:35,723 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:58:35,738 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:58:35,738 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:58:35,739 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:58:35,739 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:58:35,739 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:58:35,739 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:58:35,739 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 21:58:35,739 sorted_points: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+2025-02-27 21:58:35,739 general_intervals: [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8), (8, 9), (9, 10), (10, 11), (11, 12), (12, 13), (13, 14), (14, 15), (15, 16), (16, 17), (17, 18), (18, 19), (19, 20), (20, 21)]
+2025-02-27 21:58:35,739 intervals: [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8), (8, 9), (9, 10), (10, 11), (11, 12), (12, 13), (13, 14), (14, 15), (15, 16), (16, 17), (17, 18), (18, 19), (19, 20)]
+2025-02-27 21:58:35,739 fv_tuple: 1
+2025-02-27 21:58:35,739 fv_tuple: 2
+2025-02-27 21:58:35,739 fv_tuple: 3
+2025-02-27 21:58:35,739 fv_tuple: 4
+2025-02-27 21:58:35,739 fv_tuple: 5
+2025-02-27 21:58:35,739 fv_tuple: 6
+2025-02-27 21:58:35,739 fv_tuple: 7
+2025-02-27 21:58:35,739 fv_tuple: 8
+2025-02-27 21:58:35,739 fv_tuple: 9
+2025-02-27 21:58:35,739 fv_tuple: 10
+2025-02-27 21:58:35,739 fv_tuple: 11
+2025-02-27 21:58:35,739 fv_tuple: 12
+2025-02-27 21:58:35,739 fv_tuple: 13
+2025-02-27 21:58:35,739 fv_tuple: 14
+2025-02-27 21:58:35,739 fv_tuple: 15
+2025-02-27 21:58:35,739 fv_tuple: 16
+2025-02-27 21:58:35,739 fv_tuple: 17
+2025-02-27 21:58:35,739 fv_tuple: 18
+2025-02-27 21:58:35,739 fv_tuple: 19
+2025-02-27 21:58:35,739 fv_tuple: 20
+2025-02-27 21:58:35,739 fv_tuple: 1
+2025-02-27 21:58:35,739 fv_tuple: 2
+2025-02-27 21:58:35,739 fv_tuple: 3
+2025-02-27 21:58:35,739 fv_tuple: 4
+2025-02-27 21:58:35,739 fv_tuple: 5
+2025-02-27 21:58:35,739 fv_tuple: 6
+2025-02-27 21:58:35,739 fv_tuple: 7
+2025-02-27 21:58:35,739 fv_tuple: 8
+2025-02-27 21:58:35,739 fv_tuple: 9
+2025-02-27 21:58:35,739 fv_tuple: 10
+2025-02-27 21:58:35,739 fv_tuple: 11
+2025-02-27 21:58:35,739 fv_tuple: 12
+2025-02-27 21:58:35,739 fv_tuple: 13
+2025-02-27 21:58:35,739 fv_tuple: 14
+2025-02-27 21:58:35,739 fv_tuple: 15
+2025-02-27 21:58:35,739 fv_tuple: 16
+2025-02-27 21:58:35,739 fv_tuple: 17
+2025-02-27 21:58:35,739 fv_tuple: 18
+2025-02-27 21:58:35,739 fv_tuple: 19
+2025-02-27 21:58:35,739 fv_tuple: 20
+2025-02-27 21:58:35,739 fv_tuple: 1
+2025-02-27 21:58:35,739 fv_tuple: 2
+2025-02-27 21:58:35,739 fv_tuple: 3
+2025-02-27 21:58:35,739 fv_tuple: 4
+2025-02-27 21:58:35,739 fv_tuple: 5
+2025-02-27 21:58:35,739 fv_tuple: 6
+2025-02-27 21:58:35,739 fv_tuple: 7
+2025-02-27 21:58:35,739 fv_tuple: 8
+2025-02-27 21:58:35,739 fv_tuple: 9
+2025-02-27 21:58:35,739 fv_tuple: 10
+2025-02-27 21:58:35,739 fv_tuple: 11
+2025-02-27 21:58:35,739 fv_tuple: 12
+2025-02-27 21:58:35,739 fv_tuple: 13
+2025-02-27 21:58:35,739 fv_tuple: 14
+2025-02-27 21:58:35,739 fv_tuple: 15
+2025-02-27 21:58:35,739 fv_tuple: 16
+2025-02-27 21:58:35,739 fv_tuple: 17
+2025-02-27 21:58:35,739 fv_tuple: 18
+2025-02-27 21:58:35,739 fv_tuple: 19
+2025-02-27 21:58:35,739 fv_tuple: 20
+2025-02-27 21:58:35,739 fv_tuple: 1
+2025-02-27 21:58:35,739 fv_tuple: 2
+2025-02-27 21:58:35,739 fv_tuple: 3
+2025-02-27 21:58:35,739 fv_tuple: 4
+2025-02-27 21:58:35,739 fv_tuple: 5
+2025-02-27 21:58:35,739 fv_tuple: 6
+2025-02-27 21:58:35,739 fv_tuple: 7
+2025-02-27 21:58:35,739 fv_tuple: 8
+2025-02-27 21:58:35,739 fv_tuple: 9
+2025-02-27 21:58:35,739 fv_tuple: 10
+2025-02-27 21:58:35,739 fv_tuple: 11
+2025-02-27 21:58:35,739 fv_tuple: 12
+2025-02-27 21:58:35,739 fv_tuple: 13
+2025-02-27 21:58:35,739 fv_tuple: 14
+2025-02-27 21:58:35,739 fv_tuple: 15
+2025-02-27 21:58:35,739 fv_tuple: 16
+2025-02-27 21:58:35,739 fv_tuple: 17
+2025-02-27 21:58:35,739 fv_tuple: 18
+2025-02-27 21:58:35,739 fv_tuple: 19
+2025-02-27 21:58:35,739 fv_tuple: 20
+2025-02-27 22:11:38,608 filtered_values: [{'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.020', 'start': '1', 'end': '1', 'remarks': '2004'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.0424', 'start': '2', 'end': '2', 'remarks': '2005'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.0664', 'start': '3', 'end': '3', 'remarks': '2006'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.0915', 'start': '4', 'end': '4', 'remarks': '2007'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1323', 'start': '5', 'end': '5', 'remarks': '2008'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1426', 'start': '6', 'end': '6', 'remarks': '2009'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1662', 'start': '7', 'end': '7', 'remarks': '2010'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1980', 'start': '8', 'end': '8', 'remarks': '2011'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2246', 'start': '9', 'end': '9', 'remarks': '2012'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2400', 'start': '10', 'end': '10', 'remarks': '2013'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2424', 'start': '11', 'end': '11', 'remarks': '2014'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2424', 'start': '12', 'end': '12', 'remarks': '2015'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2451', 'start': '13', 'end': '13', 'remarks': '2016'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2668', 'start': '14', 'end': '14', 'remarks': '2017'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2881', 'start': '15', 'end': '15', 'remarks': '2018'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.3032', 'start': '16', 'end': '16', 'remarks': '2019'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.3104', 'start': '17', 'end': '17', 'remarks': '2020'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.3382', 'start': '18', 'end': '18', 'remarks': '2021'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.4415', 'start': '19', 'end': '19', 'remarks': '2022'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.5035', 'start': '20', 'end': '20', 'remarks': '2023'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.020', 'start': '1', 'end': '1', 'remarks': '2004'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.0404', 'start': '2', 'end': '2', 'remarks': '2005'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.0620', 'start': '3', 'end': '3', 'remarks': '2006'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.0859', 'start': '4', 'end': '4', 'remarks': '2007'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.1126', 'start': '5', 'end': '5', 'remarks': '2008'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.1419', 'start': '6', 'end': '6', 'remarks': '2009'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.1743', 'start': '7', 'end': '7', 'remarks': '2010'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.2099', 'start': '8', 'end': '8', 'remarks': '2011'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.2488', 'start': '9', 'end': '9', 'remarks': '2012'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.2912', 'start': '10', 'end': '10', 'remarks': '2013'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.3372', 'start': '11', 'end': '11', 'remarks': '2014'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.3869', 'start': '12', 'end': '12', 'remarks': '2015'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.4406', 'start': '13', 'end': '13', 'remarks': '2016'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.4983', 'start': '14', 'end': '14', 'remarks': '2017'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.5602', 'start': '15', 'end': '15', 'remarks': '2018'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.6264', 'start': '16', 'end': '16', 'remarks': '2019'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.6970', 'start': '17', 'end': '17', 'remarks': '2020'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.7722', 'start': '18', 'end': '18', 'remarks': '2021'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.8521', 'start': '19', 'end': '19', 'remarks': '2022'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.9369', 'start': '20', 'end': '20', 'remarks': '2023'}}]
+2025-02-27 22:11:38,610 general_year_sorted_list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+2025-02-27 22:11:38,610 start_end_points: {1, 20}
+2025-02-27 22:11:38,611 start_end_points: {1, 2, 20}
+2025-02-27 22:11:38,611 start_end_points: {1, 2, 3, 20}
+2025-02-27 22:11:38,612 start_end_points: {1, 2, 3, 4, 20}
+2025-02-27 22:11:38,612 start_end_points: {1, 2, 3, 4, 5, 20}
+2025-02-27 22:11:38,612 start_end_points: {1, 2, 3, 4, 5, 6, 20}
+2025-02-27 22:11:38,612 start_end_points: {1, 2, 3, 4, 5, 6, 7, 20}
+2025-02-27 22:11:38,613 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 20}
+2025-02-27 22:11:38,613 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 20}
+2025-02-27 22:11:38,613 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20}
+2025-02-27 22:11:38,613 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 20}
+2025-02-27 22:11:38,613 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 20}
+2025-02-27 22:11:38,614 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 20}
+2025-02-27 22:11:38,614 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 20}
+2025-02-27 22:11:38,614 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 20}
+2025-02-27 22:11:38,614 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 20}
+2025-02-27 22:11:38,615 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 20}
+2025-02-27 22:11:38,615 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20}
+2025-02-27 22:11:38,615 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:11:38,615 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:11:38,615 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:11:38,616 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:11:38,616 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:11:38,616 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:11:38,616 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:11:38,617 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:11:38,617 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:11:38,617 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:11:38,618 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:11:38,619 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:11:38,619 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:11:38,619 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:11:38,619 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:11:38,619 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:11:38,619 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:11:38,620 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:11:38,620 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:11:38,620 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:11:38,620 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:11:38,621 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:11:38,621 sorted_points: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+2025-02-27 22:11:38,621 general_intervals: [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8), (8, 9), (9, 10), (10, 11), (11, 12), (12, 13), (13, 14), (14, 15), (15, 16), (16, 17), (17, 18), (18, 19), (19, 20), (20, 21)]
+2025-02-27 22:11:38,621 intervals: [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8), (8, 9), (9, 10), (10, 11), (11, 12), (12, 13), (13, 14), (14, 15), (15, 16), (16, 17), (17, 18), (18, 19), (19, 20)]
+2025-02-27 22:11:38,621 fv_tuple: 1
+2025-02-27 22:11:38,622 fv_tuple: 2
+2025-02-27 22:11:38,622 fv_tuple: 3
+2025-02-27 22:11:38,622 fv_tuple: 4
+2025-02-27 22:11:38,622 fv_tuple: 5
+2025-02-27 22:11:38,623 fv_tuple: 6
+2025-02-27 22:11:38,623 fv_tuple: 7
+2025-02-27 22:11:38,623 fv_tuple: 8
+2025-02-27 22:11:38,623 fv_tuple: 9
+2025-02-27 22:11:38,624 fv_tuple: 10
+2025-02-27 22:11:38,624 fv_tuple: 11
+2025-02-27 22:11:38,624 fv_tuple: 12
+2025-02-27 22:11:38,624 fv_tuple: 13
+2025-02-27 22:11:38,624 fv_tuple: 14
+2025-02-27 22:11:38,624 fv_tuple: 15
+2025-02-27 22:11:38,624 fv_tuple: 16
+2025-02-27 22:11:38,624 fv_tuple: 17
+2025-02-27 22:11:38,624 fv_tuple: 18
+2025-02-27 22:11:38,624 fv_tuple: 19
+2025-02-27 22:11:38,624 fv_tuple: 20
+2025-02-27 22:11:38,624 fv_tuple: 1
+2025-02-27 22:11:38,624 fv_tuple: 2
+2025-02-27 22:11:38,624 fv_tuple: 3
+2025-02-27 22:11:38,624 fv_tuple: 4
+2025-02-27 22:11:38,624 fv_tuple: 5
+2025-02-27 22:11:38,624 fv_tuple: 6
+2025-02-27 22:11:38,624 fv_tuple: 7
+2025-02-27 22:11:38,624 fv_tuple: 8
+2025-02-27 22:11:38,624 fv_tuple: 9
+2025-02-27 22:11:38,624 fv_tuple: 10
+2025-02-27 22:11:38,624 fv_tuple: 11
+2025-02-27 22:11:38,624 fv_tuple: 12
+2025-02-27 22:11:38,624 fv_tuple: 13
+2025-02-27 22:11:38,624 fv_tuple: 14
+2025-02-27 22:11:38,631 fv_tuple: 15
+2025-02-27 22:11:38,631 fv_tuple: 16
+2025-02-27 22:11:38,631 fv_tuple: 17
+2025-02-27 22:11:38,631 fv_tuple: 18
+2025-02-27 22:11:38,631 fv_tuple: 19
+2025-02-27 22:11:38,632 fv_tuple: 20
+2025-02-27 22:11:38,632 fv_tuple: 1
+2025-02-27 22:11:38,632 fv_tuple: 2
+2025-02-27 22:11:38,632 fv_tuple: 3
+2025-02-27 22:11:38,632 fv_tuple: 4
+2025-02-27 22:11:38,632 fv_tuple: 5
+2025-02-27 22:11:38,632 fv_tuple: 6
+2025-02-27 22:11:38,632 fv_tuple: 7
+2025-02-27 22:11:38,635 fv_tuple: 8
+2025-02-27 22:11:38,635 fv_tuple: 9
+2025-02-27 22:11:38,635 fv_tuple: 10
+2025-02-27 22:11:38,635 fv_tuple: 11
+2025-02-27 22:11:38,635 fv_tuple: 12
+2025-02-27 22:11:38,635 fv_tuple: 13
+2025-02-27 22:11:38,635 fv_tuple: 14
+2025-02-27 22:11:38,635 fv_tuple: 15
+2025-02-27 22:11:38,635 fv_tuple: 16
+2025-02-27 22:11:38,635 fv_tuple: 17
+2025-02-27 22:11:38,635 fv_tuple: 18
+2025-02-27 22:11:38,635 fv_tuple: 19
+2025-02-27 22:11:38,635 fv_tuple: 20
+2025-02-27 22:11:38,635 fv_tuple: 1
+2025-02-27 22:11:38,635 fv_tuple: 2
+2025-02-27 22:11:38,635 fv_tuple: 3
+2025-02-27 22:11:38,635 fv_tuple: 4
+2025-02-27 22:11:38,635 fv_tuple: 5
+2025-02-27 22:11:38,635 fv_tuple: 6
+2025-02-27 22:11:38,635 fv_tuple: 7
+2025-02-27 22:11:38,635 fv_tuple: 8
+2025-02-27 22:11:38,635 fv_tuple: 9
+2025-02-27 22:11:38,635 fv_tuple: 10
+2025-02-27 22:11:38,635 fv_tuple: 11
+2025-02-27 22:11:38,635 fv_tuple: 12
+2025-02-27 22:11:38,635 fv_tuple: 13
+2025-02-27 22:11:38,635 fv_tuple: 14
+2025-02-27 22:11:38,635 fv_tuple: 15
+2025-02-27 22:11:38,635 fv_tuple: 16
+2025-02-27 22:11:38,635 fv_tuple: 17
+2025-02-27 22:11:38,635 fv_tuple: 18
+2025-02-27 22:11:38,635 fv_tuple: 19
+2025-02-27 22:11:38,635 fv_tuple: 20
+2025-02-27 22:12:56,657 filtered_values: [{'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.020', 'start': '1', 'end': '1', 'remarks': '2004'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.0424', 'start': '2', 'end': '2', 'remarks': '2005'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.0664', 'start': '3', 'end': '3', 'remarks': '2006'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.0915', 'start': '4', 'end': '4', 'remarks': '2007'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1323', 'start': '5', 'end': '5', 'remarks': '2008'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1426', 'start': '6', 'end': '6', 'remarks': '2009'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1662', 'start': '7', 'end': '7', 'remarks': '2010'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1980', 'start': '8', 'end': '8', 'remarks': '2011'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2246', 'start': '9', 'end': '9', 'remarks': '2012'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2400', 'start': '10', 'end': '10', 'remarks': '2013'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2424', 'start': '11', 'end': '11', 'remarks': '2014'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2424', 'start': '12', 'end': '12', 'remarks': '2015'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2451', 'start': '13', 'end': '13', 'remarks': '2016'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2668', 'start': '14', 'end': '14', 'remarks': '2017'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2881', 'start': '15', 'end': '15', 'remarks': '2018'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.3032', 'start': '16', 'end': '16', 'remarks': '2019'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.3104', 'start': '17', 'end': '17', 'remarks': '2020'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.3382', 'start': '18', 'end': '18', 'remarks': '2021'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.4415', 'start': '19', 'end': '19', 'remarks': '2022'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.5035', 'start': '20', 'end': '20', 'remarks': '2023'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.020', 'start': '1', 'end': '1', 'remarks': '2004'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.0404', 'start': '2', 'end': '2', 'remarks': '2005'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.0620', 'start': '3', 'end': '3', 'remarks': '2006'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.0859', 'start': '4', 'end': '4', 'remarks': '2007'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.1126', 'start': '5', 'end': '5', 'remarks': '2008'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.1419', 'start': '6', 'end': '6', 'remarks': '2009'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.1743', 'start': '7', 'end': '7', 'remarks': '2010'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.2099', 'start': '8', 'end': '8', 'remarks': '2011'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.2488', 'start': '9', 'end': '9', 'remarks': '2012'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.2912', 'start': '10', 'end': '10', 'remarks': '2013'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.3372', 'start': '11', 'end': '11', 'remarks': '2014'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.3869', 'start': '12', 'end': '12', 'remarks': '2015'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.4406', 'start': '13', 'end': '13', 'remarks': '2016'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.4983', 'start': '14', 'end': '14', 'remarks': '2017'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.5602', 'start': '15', 'end': '15', 'remarks': '2018'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.6264', 'start': '16', 'end': '16', 'remarks': '2019'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.6970', 'start': '17', 'end': '17', 'remarks': '2020'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.7722', 'start': '18', 'end': '18', 'remarks': '2021'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.8521', 'start': '19', 'end': '19', 'remarks': '2022'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.9369', 'start': '20', 'end': '20', 'remarks': '2023'}}]
+2025-02-27 22:12:56,658 general_year_sorted_list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+2025-02-27 22:12:56,659 start_end_points: {1, 20}
+2025-02-27 22:12:56,659 start_end_points: {1, 2, 20}
+2025-02-27 22:12:56,659 start_end_points: {1, 2, 3, 20}
+2025-02-27 22:12:56,659 start_end_points: {1, 2, 3, 4, 20}
+2025-02-27 22:12:56,659 start_end_points: {1, 2, 3, 4, 5, 20}
+2025-02-27 22:12:56,659 start_end_points: {1, 2, 3, 4, 5, 6, 20}
+2025-02-27 22:12:56,659 start_end_points: {1, 2, 3, 4, 5, 6, 7, 20}
+2025-02-27 22:12:56,659 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 20}
+2025-02-27 22:12:56,659 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 20}
+2025-02-27 22:12:56,659 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20}
+2025-02-27 22:12:56,660 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 20}
+2025-02-27 22:12:56,660 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 20}
+2025-02-27 22:12:56,660 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 20}
+2025-02-27 22:12:56,660 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 20}
+2025-02-27 22:12:56,660 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 20}
+2025-02-27 22:12:56,660 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 20}
+2025-02-27 22:12:56,660 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 20}
+2025-02-27 22:12:56,660 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20}
+2025-02-27 22:12:56,660 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:12:56,661 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:12:56,661 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:12:56,661 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:12:56,661 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:12:56,661 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:12:56,661 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:12:56,661 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:12:56,661 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:12:56,661 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:12:56,662 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:12:56,662 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:12:56,662 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:12:56,662 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:12:56,662 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:12:56,662 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:12:56,662 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:12:56,662 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:12:56,662 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:12:56,662 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:12:56,662 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:12:56,662 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:12:56,663 sorted_points: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+2025-02-27 22:12:56,663 general_intervals: [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8), (8, 9), (9, 10), (10, 11), (11, 12), (12, 13), (13, 14), (14, 15), (15, 16), (16, 17), (17, 18), (18, 19), (19, 20), (20, 21)]
+2025-02-27 22:12:56,663 intervals: [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8), (8, 9), (9, 10), (10, 11), (11, 12), (12, 13), (13, 14), (14, 15), (15, 16), (16, 17), (17, 18), (18, 19), (19, 20)]
+2025-02-27 22:12:56,663 fv_tuple: 1
+2025-02-27 22:12:56,663 fv_tuple: 2
+2025-02-27 22:12:56,663 fv_tuple: 3
+2025-02-27 22:12:56,663 fv_tuple: 4
+2025-02-27 22:12:56,663 fv_tuple: 5
+2025-02-27 22:12:56,663 fv_tuple: 6
+2025-02-27 22:12:56,664 fv_tuple: 7
+2025-02-27 22:12:56,664 fv_tuple: 8
+2025-02-27 22:12:56,664 fv_tuple: 9
+2025-02-27 22:12:56,664 fv_tuple: 10
+2025-02-27 22:12:56,664 fv_tuple: 11
+2025-02-27 22:12:56,664 fv_tuple: 12
+2025-02-27 22:12:56,664 fv_tuple: 13
+2025-02-27 22:12:56,664 fv_tuple: 14
+2025-02-27 22:12:56,664 fv_tuple: 15
+2025-02-27 22:12:56,664 fv_tuple: 16
+2025-02-27 22:12:56,665 fv_tuple: 17
+2025-02-27 22:12:56,665 fv_tuple: 18
+2025-02-27 22:12:56,665 fv_tuple: 19
+2025-02-27 22:12:56,665 fv_tuple: 20
+2025-02-27 22:12:56,665 fv_tuple: 1
+2025-02-27 22:12:56,666 fv_tuple: 2
+2025-02-27 22:12:56,666 fv_tuple: 3
+2025-02-27 22:12:56,666 fv_tuple: 4
+2025-02-27 22:12:56,666 fv_tuple: 5
+2025-02-27 22:12:56,666 fv_tuple: 6
+2025-02-27 22:12:56,666 fv_tuple: 7
+2025-02-27 22:12:56,666 fv_tuple: 8
+2025-02-27 22:12:56,667 fv_tuple: 9
+2025-02-27 22:12:56,667 fv_tuple: 10
+2025-02-27 22:12:56,667 fv_tuple: 11
+2025-02-27 22:12:56,667 fv_tuple: 12
+2025-02-27 22:12:56,667 fv_tuple: 13
+2025-02-27 22:12:56,667 fv_tuple: 14
+2025-02-27 22:12:56,667 fv_tuple: 15
+2025-02-27 22:12:56,667 fv_tuple: 16
+2025-02-27 22:12:56,667 fv_tuple: 17
+2025-02-27 22:12:56,667 fv_tuple: 18
+2025-02-27 22:12:56,667 fv_tuple: 19
+2025-02-27 22:12:56,667 fv_tuple: 20
+2025-02-27 22:12:56,668 fv_tuple: 1
+2025-02-27 22:12:56,668 fv_tuple: 2
+2025-02-27 22:12:56,668 fv_tuple: 3
+2025-02-27 22:12:56,668 fv_tuple: 4
+2025-02-27 22:12:56,668 fv_tuple: 5
+2025-02-27 22:12:56,668 fv_tuple: 6
+2025-02-27 22:12:56,668 fv_tuple: 7
+2025-02-27 22:12:56,669 fv_tuple: 8
+2025-02-27 22:12:56,669 fv_tuple: 9
+2025-02-27 22:12:56,669 fv_tuple: 10
+2025-02-27 22:12:56,669 fv_tuple: 11
+2025-02-27 22:12:56,669 fv_tuple: 12
+2025-02-27 22:12:56,669 fv_tuple: 13
+2025-02-27 22:12:56,669 fv_tuple: 14
+2025-02-27 22:12:56,669 fv_tuple: 15
+2025-02-27 22:12:56,669 fv_tuple: 16
+2025-02-27 22:12:56,670 fv_tuple: 17
+2025-02-27 22:12:56,670 fv_tuple: 18
+2025-02-27 22:12:56,670 fv_tuple: 19
+2025-02-27 22:12:56,670 fv_tuple: 20
+2025-02-27 22:12:56,670 fv_tuple: 1
+2025-02-27 22:12:56,670 fv_tuple: 2
+2025-02-27 22:12:56,670 fv_tuple: 3
+2025-02-27 22:12:56,670 fv_tuple: 4
+2025-02-27 22:12:56,670 fv_tuple: 5
+2025-02-27 22:12:56,670 fv_tuple: 6
+2025-02-27 22:12:56,670 fv_tuple: 7
+2025-02-27 22:12:56,670 fv_tuple: 8
+2025-02-27 22:12:56,671 fv_tuple: 9
+2025-02-27 22:12:56,671 fv_tuple: 10
+2025-02-27 22:12:56,671 fv_tuple: 11
+2025-02-27 22:12:56,671 fv_tuple: 12
+2025-02-27 22:12:56,671 fv_tuple: 13
+2025-02-27 22:12:56,671 fv_tuple: 14
+2025-02-27 22:12:56,671 fv_tuple: 15
+2025-02-27 22:12:56,671 fv_tuple: 16
+2025-02-27 22:12:56,671 fv_tuple: 17
+2025-02-27 22:12:56,671 fv_tuple: 18
+2025-02-27 22:12:56,671 fv_tuple: 19
+2025-02-27 22:12:56,672 fv_tuple: 20
+2025-02-27 22:14:30,283 filtered_values: [{'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.020', 'start': '1', 'end': '1', 'remarks': '2004'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.0424', 'start': '2', 'end': '2', 'remarks': '2005'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.0664', 'start': '3', 'end': '3', 'remarks': '2006'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.0915', 'start': '4', 'end': '4', 'remarks': '2007'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1323', 'start': '5', 'end': '5', 'remarks': '2008'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1426', 'start': '6', 'end': '6', 'remarks': '2009'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1662', 'start': '7', 'end': '7', 'remarks': '2010'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1980', 'start': '8', 'end': '8', 'remarks': '2011'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2246', 'start': '9', 'end': '9', 'remarks': '2012'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2400', 'start': '10', 'end': '10', 'remarks': '2013'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2424', 'start': '11', 'end': '11', 'remarks': '2014'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2424', 'start': '12', 'end': '12', 'remarks': '2015'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2451', 'start': '13', 'end': '13', 'remarks': '2016'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2668', 'start': '14', 'end': '14', 'remarks': '2017'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2881', 'start': '15', 'end': '15', 'remarks': '2018'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.3032', 'start': '16', 'end': '16', 'remarks': '2019'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.3104', 'start': '17', 'end': '17', 'remarks': '2020'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.3382', 'start': '18', 'end': '18', 'remarks': '2021'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.4415', 'start': '19', 'end': '19', 'remarks': '2022'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.5035', 'start': '20', 'end': '20', 'remarks': '2023'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.020', 'start': '1', 'end': '1', 'remarks': '2004'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.0404', 'start': '2', 'end': '2', 'remarks': '2005'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.0620', 'start': '3', 'end': '3', 'remarks': '2006'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.0859', 'start': '4', 'end': '4', 'remarks': '2007'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.1126', 'start': '5', 'end': '5', 'remarks': '2008'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.1419', 'start': '6', 'end': '6', 'remarks': '2009'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.1743', 'start': '7', 'end': '7', 'remarks': '2010'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.2099', 'start': '8', 'end': '8', 'remarks': '2011'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.2488', 'start': '9', 'end': '9', 'remarks': '2012'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.2912', 'start': '10', 'end': '10', 'remarks': '2013'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.3372', 'start': '11', 'end': '11', 'remarks': '2014'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.3869', 'start': '12', 'end': '12', 'remarks': '2015'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.4406', 'start': '13', 'end': '13', 'remarks': '2016'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.4983', 'start': '14', 'end': '14', 'remarks': '2017'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.5602', 'start': '15', 'end': '15', 'remarks': '2018'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.6264', 'start': '16', 'end': '16', 'remarks': '2019'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.6970', 'start': '17', 'end': '17', 'remarks': '2020'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.7722', 'start': '18', 'end': '18', 'remarks': '2021'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.8521', 'start': '19', 'end': '19', 'remarks': '2022'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.9369', 'start': '20', 'end': '20', 'remarks': '2023'}}]
+2025-02-27 22:14:30,283 general_year_sorted_list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+2025-02-27 22:14:30,283 start_end_points: {1, 20}
+2025-02-27 22:14:30,283 start_end_points: {1, 2, 20}
+2025-02-27 22:14:30,283 start_end_points: {1, 2, 3, 20}
+2025-02-27 22:14:30,283 start_end_points: {1, 2, 3, 4, 20}
+2025-02-27 22:14:30,283 start_end_points: {1, 2, 3, 4, 5, 20}
+2025-02-27 22:14:30,283 start_end_points: {1, 2, 3, 4, 5, 6, 20}
+2025-02-27 22:14:30,283 start_end_points: {1, 2, 3, 4, 5, 6, 7, 20}
+2025-02-27 22:14:30,283 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 20}
+2025-02-27 22:14:30,283 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 20}
+2025-02-27 22:14:30,283 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20}
+2025-02-27 22:14:30,283 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 20}
+2025-02-27 22:14:30,283 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 20}
+2025-02-27 22:14:30,283 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 20}
+2025-02-27 22:14:30,283 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 20}
+2025-02-27 22:14:30,283 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 20}
+2025-02-27 22:14:30,283 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 20}
+2025-02-27 22:14:30,283 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 20}
+2025-02-27 22:14:30,283 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20}
+2025-02-27 22:14:30,283 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:14:30,283 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:14:30,283 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:14:30,283 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:14:30,283 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:14:30,283 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:14:30,283 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:14:30,283 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:14:30,283 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:14:30,283 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:14:30,283 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:14:30,283 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:14:30,283 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:14:30,283 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:14:30,283 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:14:30,283 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:14:30,283 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:14:30,283 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:14:30,283 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:14:30,283 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:14:30,283 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:14:30,283 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:14:30,292 sorted_points: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+2025-02-27 22:14:30,292 general_intervals: [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8), (8, 9), (9, 10), (10, 11), (11, 12), (12, 13), (13, 14), (14, 15), (15, 16), (16, 17), (17, 18), (18, 19), (19, 20), (20, 21)]
+2025-02-27 22:14:30,292 intervals: [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8), (8, 9), (9, 10), (10, 11), (11, 12), (12, 13), (13, 14), (14, 15), (15, 16), (16, 17), (17, 18), (18, 19), (19, 20)]
+2025-02-27 22:14:30,292 fv_tuple: 1
+2025-02-27 22:14:30,292 fv_tuple: 2
+2025-02-27 22:14:30,292 fv_tuple: 3
+2025-02-27 22:14:30,292 fv_tuple: 4
+2025-02-27 22:14:30,292 fv_tuple: 5
+2025-02-27 22:14:30,292 fv_tuple: 6
+2025-02-27 22:14:30,292 fv_tuple: 7
+2025-02-27 22:14:30,292 fv_tuple: 8
+2025-02-27 22:14:30,292 fv_tuple: 9
+2025-02-27 22:14:30,292 fv_tuple: 10
+2025-02-27 22:14:30,292 fv_tuple: 11
+2025-02-27 22:14:30,292 fv_tuple: 12
+2025-02-27 22:14:30,292 fv_tuple: 13
+2025-02-27 22:14:30,292 fv_tuple: 14
+2025-02-27 22:14:30,292 fv_tuple: 15
+2025-02-27 22:14:30,292 fv_tuple: 16
+2025-02-27 22:14:30,292 fv_tuple: 17
+2025-02-27 22:14:30,292 fv_tuple: 18
+2025-02-27 22:14:30,292 fv_tuple: 19
+2025-02-27 22:14:30,292 fv_tuple: 20
+2025-02-27 22:14:30,292 fv_tuple: 1
+2025-02-27 22:14:30,292 fv_tuple: 2
+2025-02-27 22:14:30,292 fv_tuple: 3
+2025-02-27 22:14:30,292 fv_tuple: 4
+2025-02-27 22:14:30,292 fv_tuple: 5
+2025-02-27 22:14:30,292 fv_tuple: 6
+2025-02-27 22:14:30,292 fv_tuple: 7
+2025-02-27 22:14:30,292 fv_tuple: 8
+2025-02-27 22:14:30,292 fv_tuple: 9
+2025-02-27 22:14:30,292 fv_tuple: 10
+2025-02-27 22:14:30,292 fv_tuple: 11
+2025-02-27 22:14:30,292 fv_tuple: 12
+2025-02-27 22:14:30,292 fv_tuple: 13
+2025-02-27 22:14:30,292 fv_tuple: 14
+2025-02-27 22:14:30,292 fv_tuple: 15
+2025-02-27 22:14:30,292 fv_tuple: 16
+2025-02-27 22:14:30,292 fv_tuple: 17
+2025-02-27 22:14:30,292 fv_tuple: 18
+2025-02-27 22:14:30,292 fv_tuple: 19
+2025-02-27 22:14:30,292 fv_tuple: 20
+2025-02-27 22:14:30,292 fv_tuple: 1
+2025-02-27 22:14:30,292 fv_tuple: 2
+2025-02-27 22:14:30,292 fv_tuple: 3
+2025-02-27 22:14:30,292 fv_tuple: 4
+2025-02-27 22:14:30,292 fv_tuple: 5
+2025-02-27 22:14:30,292 fv_tuple: 6
+2025-02-27 22:14:30,292 fv_tuple: 7
+2025-02-27 22:14:30,292 fv_tuple: 8
+2025-02-27 22:14:30,292 fv_tuple: 9
+2025-02-27 22:14:30,292 fv_tuple: 10
+2025-02-27 22:14:30,292 fv_tuple: 11
+2025-02-27 22:14:30,292 fv_tuple: 12
+2025-02-27 22:14:30,292 fv_tuple: 13
+2025-02-27 22:14:30,292 fv_tuple: 14
+2025-02-27 22:14:30,292 fv_tuple: 15
+2025-02-27 22:14:30,292 fv_tuple: 16
+2025-02-27 22:14:30,292 fv_tuple: 17
+2025-02-27 22:14:30,292 fv_tuple: 18
+2025-02-27 22:14:30,292 fv_tuple: 19
+2025-02-27 22:14:30,292 fv_tuple: 20
+2025-02-27 22:14:30,292 fv_tuple: 1
+2025-02-27 22:14:30,292 fv_tuple: 2
+2025-02-27 22:14:30,292 fv_tuple: 3
+2025-02-27 22:14:30,292 fv_tuple: 4
+2025-02-27 22:14:30,292 fv_tuple: 5
+2025-02-27 22:14:30,292 fv_tuple: 6
+2025-02-27 22:14:30,307 fv_tuple: 7
+2025-02-27 22:14:30,307 fv_tuple: 8
+2025-02-27 22:14:30,307 fv_tuple: 9
+2025-02-27 22:14:30,307 fv_tuple: 10
+2025-02-27 22:14:30,307 fv_tuple: 11
+2025-02-27 22:14:30,307 fv_tuple: 12
+2025-02-27 22:14:30,307 fv_tuple: 13
+2025-02-27 22:14:30,307 fv_tuple: 14
+2025-02-27 22:14:30,307 fv_tuple: 15
+2025-02-27 22:14:30,307 fv_tuple: 16
+2025-02-27 22:14:30,307 fv_tuple: 17
+2025-02-27 22:14:30,307 fv_tuple: 18
+2025-02-27 22:14:30,307 fv_tuple: 19
+2025-02-27 22:14:30,307 fv_tuple: 20
+2025-02-27 22:19:40,754 filtered_values: [{'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.020', 'start': '1', 'end': '1', 'remarks': '2004'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.0424', 'start': '2', 'end': '2', 'remarks': '2005'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.0664', 'start': '3', 'end': '3', 'remarks': '2006'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.0915', 'start': '4', 'end': '4', 'remarks': '2007'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1323', 'start': '5', 'end': '5', 'remarks': '2008'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1426', 'start': '6', 'end': '6', 'remarks': '2009'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1662', 'start': '7', 'end': '7', 'remarks': '2010'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1980', 'start': '8', 'end': '8', 'remarks': '2011'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2246', 'start': '9', 'end': '9', 'remarks': '2012'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2400', 'start': '10', 'end': '10', 'remarks': '2013'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2424', 'start': '11', 'end': '11', 'remarks': '2014'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2424', 'start': '12', 'end': '12', 'remarks': '2015'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2451', 'start': '13', 'end': '13', 'remarks': '2016'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2668', 'start': '14', 'end': '14', 'remarks': '2017'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2881', 'start': '15', 'end': '15', 'remarks': '2018'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.3032', 'start': '16', 'end': '16', 'remarks': '2019'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.3104', 'start': '17', 'end': '17', 'remarks': '2020'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.3382', 'start': '18', 'end': '18', 'remarks': '2021'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.4415', 'start': '19', 'end': '19', 'remarks': '2022'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.5035', 'start': '20', 'end': '20', 'remarks': '2023'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.020', 'start': '1', 'end': '1', 'remarks': '2004'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.0404', 'start': '2', 'end': '2', 'remarks': '2005'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.0620', 'start': '3', 'end': '3', 'remarks': '2006'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.0859', 'start': '4', 'end': '4', 'remarks': '2007'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.1126', 'start': '5', 'end': '5', 'remarks': '2008'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.1419', 'start': '6', 'end': '6', 'remarks': '2009'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.1743', 'start': '7', 'end': '7', 'remarks': '2010'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.2099', 'start': '8', 'end': '8', 'remarks': '2011'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.2488', 'start': '9', 'end': '9', 'remarks': '2012'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.2912', 'start': '10', 'end': '10', 'remarks': '2013'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.3372', 'start': '11', 'end': '11', 'remarks': '2014'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.3869', 'start': '12', 'end': '12', 'remarks': '2015'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.4406', 'start': '13', 'end': '13', 'remarks': '2016'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.4983', 'start': '14', 'end': '14', 'remarks': '2017'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.5602', 'start': '15', 'end': '15', 'remarks': '2018'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.6264', 'start': '16', 'end': '16', 'remarks': '2019'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.6970', 'start': '17', 'end': '17', 'remarks': '2020'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.7722', 'start': '18', 'end': '18', 'remarks': '2021'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.8521', 'start': '19', 'end': '19', 'remarks': '2022'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.9369', 'start': '20', 'end': '20', 'remarks': '2023'}}]
+2025-02-27 22:19:40,754 general_year_sorted_list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+2025-02-27 22:19:40,754 start_end_points: {1, 20}
+2025-02-27 22:19:40,754 start_end_points: {1, 2, 20}
+2025-02-27 22:19:40,754 start_end_points: {1, 2, 3, 20}
+2025-02-27 22:19:40,754 start_end_points: {1, 2, 3, 4, 20}
+2025-02-27 22:19:40,754 start_end_points: {1, 2, 3, 4, 5, 20}
+2025-02-27 22:19:40,754 start_end_points: {1, 2, 3, 4, 5, 6, 20}
+2025-02-27 22:19:40,754 start_end_points: {1, 2, 3, 4, 5, 6, 7, 20}
+2025-02-27 22:19:40,754 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 20}
+2025-02-27 22:19:40,754 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 20}
+2025-02-27 22:19:40,754 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20}
+2025-02-27 22:19:40,754 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 20}
+2025-02-27 22:19:40,754 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 20}
+2025-02-27 22:19:40,754 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 20}
+2025-02-27 22:19:40,754 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 20}
+2025-02-27 22:19:40,754 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 20}
+2025-02-27 22:19:40,754 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 20}
+2025-02-27 22:19:40,754 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 20}
+2025-02-27 22:19:40,754 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20}
+2025-02-27 22:19:40,754 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:19:40,754 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:19:40,754 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:19:40,754 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:19:40,754 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:19:40,754 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:19:40,766 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:19:40,766 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:19:40,766 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:19:40,767 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:19:40,767 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:19:40,767 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:19:40,767 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:19:40,767 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:19:40,767 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:19:40,767 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:19:40,767 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:19:40,768 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:19:40,768 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:19:40,768 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:19:40,768 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:19:40,768 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:19:40,768 sorted_points: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+2025-02-27 22:19:40,768 general_intervals: [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8), (8, 9), (9, 10), (10, 11), (11, 12), (12, 13), (13, 14), (14, 15), (15, 16), (16, 17), (17, 18), (18, 19), (19, 20), (20, 21)]
+2025-02-27 22:19:40,769 intervals: [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8), (8, 9), (9, 10), (10, 11), (11, 12), (12, 13), (13, 14), (14, 15), (15, 16), (16, 17), (17, 18), (18, 19), (19, 20)]
+2025-02-27 22:19:40,769 fv_tuple: 1
+2025-02-27 22:19:40,769 fv_tuple: 2
+2025-02-27 22:19:40,769 fv_tuple: 3
+2025-02-27 22:19:40,769 fv_tuple: 4
+2025-02-27 22:19:40,769 fv_tuple: 5
+2025-02-27 22:19:40,769 fv_tuple: 6
+2025-02-27 22:19:40,769 fv_tuple: 7
+2025-02-27 22:19:40,769 fv_tuple: 8
+2025-02-27 22:19:40,769 fv_tuple: 9
+2025-02-27 22:19:40,770 fv_tuple: 10
+2025-02-27 22:19:40,770 fv_tuple: 11
+2025-02-27 22:19:40,770 fv_tuple: 12
+2025-02-27 22:19:40,770 fv_tuple: 13
+2025-02-27 22:19:40,770 fv_tuple: 14
+2025-02-27 22:19:40,770 fv_tuple: 15
+2025-02-27 22:19:40,770 fv_tuple: 16
+2025-02-27 22:19:40,770 fv_tuple: 17
+2025-02-27 22:19:40,771 fv_tuple: 18
+2025-02-27 22:19:40,771 fv_tuple: 19
+2025-02-27 22:19:40,771 fv_tuple: 20
+2025-02-27 22:19:40,771 fv_tuple: 1
+2025-02-27 22:19:40,771 fv_tuple: 2
+2025-02-27 22:19:40,771 fv_tuple: 3
+2025-02-27 22:19:40,771 fv_tuple: 4
+2025-02-27 22:19:40,771 fv_tuple: 5
+2025-02-27 22:19:40,771 fv_tuple: 6
+2025-02-27 22:19:40,771 fv_tuple: 7
+2025-02-27 22:19:40,771 fv_tuple: 8
+2025-02-27 22:19:40,771 fv_tuple: 9
+2025-02-27 22:19:40,771 fv_tuple: 10
+2025-02-27 22:19:40,771 fv_tuple: 11
+2025-02-27 22:19:40,771 fv_tuple: 12
+2025-02-27 22:19:40,771 fv_tuple: 13
+2025-02-27 22:19:40,771 fv_tuple: 14
+2025-02-27 22:19:40,771 fv_tuple: 15
+2025-02-27 22:19:40,771 fv_tuple: 16
+2025-02-27 22:19:40,771 fv_tuple: 17
+2025-02-27 22:19:40,771 fv_tuple: 18
+2025-02-27 22:19:40,771 fv_tuple: 19
+2025-02-27 22:19:40,771 fv_tuple: 20
+2025-02-27 22:19:40,771 fv_tuple: 1
+2025-02-27 22:19:40,771 fv_tuple: 2
+2025-02-27 22:19:40,771 fv_tuple: 3
+2025-02-27 22:19:40,771 fv_tuple: 4
+2025-02-27 22:19:40,771 fv_tuple: 5
+2025-02-27 22:19:40,771 fv_tuple: 6
+2025-02-27 22:19:40,771 fv_tuple: 7
+2025-02-27 22:19:40,771 fv_tuple: 8
+2025-02-27 22:19:40,771 fv_tuple: 9
+2025-02-27 22:19:40,771 fv_tuple: 10
+2025-02-27 22:19:40,771 fv_tuple: 11
+2025-02-27 22:19:40,771 fv_tuple: 12
+2025-02-27 22:19:40,771 fv_tuple: 13
+2025-02-27 22:19:40,771 fv_tuple: 14
+2025-02-27 22:19:40,771 fv_tuple: 15
+2025-02-27 22:19:40,771 fv_tuple: 16
+2025-02-27 22:19:40,771 fv_tuple: 17
+2025-02-27 22:19:40,771 fv_tuple: 18
+2025-02-27 22:19:40,771 fv_tuple: 19
+2025-02-27 22:19:40,771 fv_tuple: 20
+2025-02-27 22:19:40,771 fv_tuple: 1
+2025-02-27 22:19:40,771 fv_tuple: 2
+2025-02-27 22:19:40,771 fv_tuple: 3
+2025-02-27 22:19:40,771 fv_tuple: 4
+2025-02-27 22:19:40,771 fv_tuple: 5
+2025-02-27 22:19:40,771 fv_tuple: 6
+2025-02-27 22:19:40,771 fv_tuple: 7
+2025-02-27 22:19:40,771 fv_tuple: 8
+2025-02-27 22:19:40,771 fv_tuple: 9
+2025-02-27 22:19:40,771 fv_tuple: 10
+2025-02-27 22:19:40,771 fv_tuple: 11
+2025-02-27 22:19:40,771 fv_tuple: 12
+2025-02-27 22:19:40,771 fv_tuple: 13
+2025-02-27 22:19:40,771 fv_tuple: 14
+2025-02-27 22:19:40,771 fv_tuple: 15
+2025-02-27 22:19:40,771 fv_tuple: 16
+2025-02-27 22:19:40,771 fv_tuple: 17
+2025-02-27 22:19:40,771 fv_tuple: 18
+2025-02-27 22:19:40,771 fv_tuple: 19
+2025-02-27 22:19:40,771 fv_tuple: 20
+2025-02-27 22:20:56,838 filtered_values: [{'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.020', 'start': '1', 'end': '1', 'remarks': '2004'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.0424', 'start': '2', 'end': '2', 'remarks': '2005'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.0664', 'start': '3', 'end': '3', 'remarks': '2006'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.0915', 'start': '4', 'end': '4', 'remarks': '2007'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1323', 'start': '5', 'end': '5', 'remarks': '2008'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1426', 'start': '6', 'end': '6', 'remarks': '2009'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1662', 'start': '7', 'end': '7', 'remarks': '2010'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1980', 'start': '8', 'end': '8', 'remarks': '2011'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2246', 'start': '9', 'end': '9', 'remarks': '2012'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2400', 'start': '10', 'end': '10', 'remarks': '2013'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2424', 'start': '11', 'end': '11', 'remarks': '2014'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2424', 'start': '12', 'end': '12', 'remarks': '2015'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2451', 'start': '13', 'end': '13', 'remarks': '2016'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2668', 'start': '14', 'end': '14', 'remarks': '2017'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2881', 'start': '15', 'end': '15', 'remarks': '2018'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.3032', 'start': '16', 'end': '16', 'remarks': '2019'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.3104', 'start': '17', 'end': '17', 'remarks': '2020'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.3382', 'start': '18', 'end': '18', 'remarks': '2021'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.4415', 'start': '19', 'end': '19', 'remarks': '2022'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.5035', 'start': '20', 'end': '20', 'remarks': '2023'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.020', 'start': '1', 'end': '1', 'remarks': '2004'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.0404', 'start': '2', 'end': '2', 'remarks': '2005'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.0620', 'start': '3', 'end': '3', 'remarks': '2006'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.0859', 'start': '4', 'end': '4', 'remarks': '2007'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.1126', 'start': '5', 'end': '5', 'remarks': '2008'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.1419', 'start': '6', 'end': '6', 'remarks': '2009'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.1743', 'start': '7', 'end': '7', 'remarks': '2010'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.2099', 'start': '8', 'end': '8', 'remarks': '2011'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.2488', 'start': '9', 'end': '9', 'remarks': '2012'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.2912', 'start': '10', 'end': '10', 'remarks': '2013'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.3372', 'start': '11', 'end': '11', 'remarks': '2014'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.3869', 'start': '12', 'end': '12', 'remarks': '2015'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.4406', 'start': '13', 'end': '13', 'remarks': '2016'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.4983', 'start': '14', 'end': '14', 'remarks': '2017'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.5602', 'start': '15', 'end': '15', 'remarks': '2018'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.6264', 'start': '16', 'end': '16', 'remarks': '2019'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.6970', 'start': '17', 'end': '17', 'remarks': '2020'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.7722', 'start': '18', 'end': '18', 'remarks': '2021'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.8521', 'start': '19', 'end': '19', 'remarks': '2022'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.9369', 'start': '20', 'end': '20', 'remarks': '2023'}}]
+2025-02-27 22:20:56,839 general_year_sorted_list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+2025-02-27 22:20:56,839 start_end_points: {1, 20}
+2025-02-27 22:20:56,839 start_end_points: {1, 2, 20}
+2025-02-27 22:20:56,839 start_end_points: {1, 2, 3, 20}
+2025-02-27 22:20:56,839 start_end_points: {1, 2, 3, 4, 20}
+2025-02-27 22:20:56,839 start_end_points: {1, 2, 3, 4, 5, 20}
+2025-02-27 22:20:56,839 start_end_points: {1, 2, 3, 4, 5, 6, 20}
+2025-02-27 22:20:56,839 start_end_points: {1, 2, 3, 4, 5, 6, 7, 20}
+2025-02-27 22:20:56,839 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 20}
+2025-02-27 22:20:56,839 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 20}
+2025-02-27 22:20:56,840 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20}
+2025-02-27 22:20:56,840 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 20}
+2025-02-27 22:20:56,840 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 20}
+2025-02-27 22:20:56,840 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 20}
+2025-02-27 22:20:56,840 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 20}
+2025-02-27 22:20:56,840 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 20}
+2025-02-27 22:20:56,840 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 20}
+2025-02-27 22:20:56,840 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 20}
+2025-02-27 22:20:56,840 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20}
+2025-02-27 22:20:56,840 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:20:56,841 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:20:56,841 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:20:56,841 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:20:56,841 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:20:56,841 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:20:56,841 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:20:56,841 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:20:56,841 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:20:56,841 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:20:56,841 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:20:56,842 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:20:56,842 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:20:56,842 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:20:56,842 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:20:56,842 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:20:56,842 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:20:56,842 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:20:56,842 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:20:56,842 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:20:56,842 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:20:56,842 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:20:56,843 sorted_points: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+2025-02-27 22:20:56,843 general_intervals: [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8), (8, 9), (9, 10), (10, 11), (11, 12), (12, 13), (13, 14), (14, 15), (15, 16), (16, 17), (17, 18), (18, 19), (19, 20), (20, 21)]
+2025-02-27 22:20:56,843 intervals: [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8), (8, 9), (9, 10), (10, 11), (11, 12), (12, 13), (13, 14), (14, 15), (15, 16), (16, 17), (17, 18), (18, 19), (19, 20)]
+2025-02-27 22:20:56,843 fv_tuple: 1
+2025-02-27 22:20:56,843 fv_tuple: 2
+2025-02-27 22:20:56,843 fv_tuple: 3
+2025-02-27 22:20:56,843 fv_tuple: 4
+2025-02-27 22:20:56,843 fv_tuple: 5
+2025-02-27 22:20:56,843 fv_tuple: 6
+2025-02-27 22:20:56,844 fv_tuple: 7
+2025-02-27 22:20:56,844 fv_tuple: 8
+2025-02-27 22:20:56,844 fv_tuple: 9
+2025-02-27 22:20:56,844 fv_tuple: 10
+2025-02-27 22:20:56,844 fv_tuple: 11
+2025-02-27 22:20:56,844 fv_tuple: 12
+2025-02-27 22:20:56,844 fv_tuple: 13
+2025-02-27 22:20:56,844 fv_tuple: 14
+2025-02-27 22:20:56,844 fv_tuple: 15
+2025-02-27 22:20:56,844 fv_tuple: 16
+2025-02-27 22:20:56,844 fv_tuple: 17
+2025-02-27 22:20:56,845 fv_tuple: 18
+2025-02-27 22:20:56,845 fv_tuple: 19
+2025-02-27 22:20:56,845 fv_tuple: 20
+2025-02-27 22:20:56,845 fv_tuple: 1
+2025-02-27 22:20:56,845 fv_tuple: 2
+2025-02-27 22:20:56,845 fv_tuple: 3
+2025-02-27 22:20:56,845 fv_tuple: 4
+2025-02-27 22:20:56,845 fv_tuple: 5
+2025-02-27 22:20:56,845 fv_tuple: 6
+2025-02-27 22:20:56,845 fv_tuple: 7
+2025-02-27 22:20:56,845 fv_tuple: 8
+2025-02-27 22:20:56,845 fv_tuple: 9
+2025-02-27 22:20:56,846 fv_tuple: 10
+2025-02-27 22:20:56,846 fv_tuple: 11
+2025-02-27 22:20:56,846 fv_tuple: 12
+2025-02-27 22:20:56,846 fv_tuple: 13
+2025-02-27 22:20:56,846 fv_tuple: 14
+2025-02-27 22:20:56,846 fv_tuple: 15
+2025-02-27 22:20:56,846 fv_tuple: 16
+2025-02-27 22:20:56,846 fv_tuple: 17
+2025-02-27 22:20:56,846 fv_tuple: 18
+2025-02-27 22:20:56,846 fv_tuple: 19
+2025-02-27 22:20:56,846 fv_tuple: 20
+2025-02-27 22:20:56,847 fv_tuple: 1
+2025-02-27 22:20:56,847 fv_tuple: 2
+2025-02-27 22:20:56,847 fv_tuple: 3
+2025-02-27 22:20:56,847 fv_tuple: 4
+2025-02-27 22:20:56,847 fv_tuple: 5
+2025-02-27 22:20:56,847 fv_tuple: 6
+2025-02-27 22:20:56,847 fv_tuple: 7
+2025-02-27 22:20:56,847 fv_tuple: 8
+2025-02-27 22:20:56,847 fv_tuple: 9
+2025-02-27 22:20:56,847 fv_tuple: 10
+2025-02-27 22:20:56,847 fv_tuple: 11
+2025-02-27 22:20:56,848 fv_tuple: 12
+2025-02-27 22:20:56,848 fv_tuple: 13
+2025-02-27 22:20:56,848 fv_tuple: 14
+2025-02-27 22:20:56,848 fv_tuple: 15
+2025-02-27 22:20:56,848 fv_tuple: 16
+2025-02-27 22:20:56,849 fv_tuple: 17
+2025-02-27 22:20:56,849 fv_tuple: 18
+2025-02-27 22:20:56,849 fv_tuple: 19
+2025-02-27 22:20:56,849 fv_tuple: 20
+2025-02-27 22:20:56,849 fv_tuple: 1
+2025-02-27 22:20:56,849 fv_tuple: 2
+2025-02-27 22:20:56,849 fv_tuple: 3
+2025-02-27 22:20:56,849 fv_tuple: 4
+2025-02-27 22:20:56,849 fv_tuple: 5
+2025-02-27 22:20:56,849 fv_tuple: 6
+2025-02-27 22:20:56,849 fv_tuple: 7
+2025-02-27 22:20:56,849 fv_tuple: 8
+2025-02-27 22:20:56,849 fv_tuple: 9
+2025-02-27 22:20:56,849 fv_tuple: 10
+2025-02-27 22:20:56,849 fv_tuple: 11
+2025-02-27 22:20:56,849 fv_tuple: 12
+2025-02-27 22:20:56,849 fv_tuple: 13
+2025-02-27 22:20:56,849 fv_tuple: 14
+2025-02-27 22:20:56,849 fv_tuple: 15
+2025-02-27 22:20:56,849 fv_tuple: 16
+2025-02-27 22:20:56,849 fv_tuple: 17
+2025-02-27 22:20:56,849 fv_tuple: 18
+2025-02-27 22:20:56,849 fv_tuple: 19
+2025-02-27 22:20:56,849 fv_tuple: 20
+2025-02-27 22:21:37,422 filtered_values: [{'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.020', 'start': '1', 'end': '1', 'remarks': '2004'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.0424', 'start': '2', 'end': '2', 'remarks': '2005'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.0664', 'start': '3', 'end': '3', 'remarks': '2006'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.0915', 'start': '4', 'end': '4', 'remarks': '2007'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1323', 'start': '5', 'end': '5', 'remarks': '2008'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1426', 'start': '6', 'end': '6', 'remarks': '2009'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1662', 'start': '7', 'end': '7', 'remarks': '2010'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1980', 'start': '8', 'end': '8', 'remarks': '2011'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2246', 'start': '9', 'end': '9', 'remarks': '2012'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2400', 'start': '10', 'end': '10', 'remarks': '2013'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2424', 'start': '11', 'end': '11', 'remarks': '2014'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2424', 'start': '12', 'end': '12', 'remarks': '2015'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2451', 'start': '13', 'end': '13', 'remarks': '2016'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2668', 'start': '14', 'end': '14', 'remarks': '2017'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2881', 'start': '15', 'end': '15', 'remarks': '2018'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.3032', 'start': '16', 'end': '16', 'remarks': '2019'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.3104', 'start': '17', 'end': '17', 'remarks': '2020'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.3382', 'start': '18', 'end': '18', 'remarks': '2021'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.4415', 'start': '19', 'end': '19', 'remarks': '2022'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.5035', 'start': '20', 'end': '20', 'remarks': '2023'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.020', 'start': '1', 'end': '1', 'remarks': '2004'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.0404', 'start': '2', 'end': '2', 'remarks': '2005'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.0620', 'start': '3', 'end': '3', 'remarks': '2006'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.0859', 'start': '4', 'end': '4', 'remarks': '2007'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.1126', 'start': '5', 'end': '5', 'remarks': '2008'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.1419', 'start': '6', 'end': '6', 'remarks': '2009'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.1743', 'start': '7', 'end': '7', 'remarks': '2010'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.2099', 'start': '8', 'end': '8', 'remarks': '2011'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.2488', 'start': '9', 'end': '9', 'remarks': '2012'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.2912', 'start': '10', 'end': '10', 'remarks': '2013'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.3372', 'start': '11', 'end': '11', 'remarks': '2014'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.3869', 'start': '12', 'end': '12', 'remarks': '2015'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.4406', 'start': '13', 'end': '13', 'remarks': '2016'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.4983', 'start': '14', 'end': '14', 'remarks': '2017'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.5602', 'start': '15', 'end': '15', 'remarks': '2018'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.6264', 'start': '16', 'end': '16', 'remarks': '2019'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.6970', 'start': '17', 'end': '17', 'remarks': '2020'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.7722', 'start': '18', 'end': '18', 'remarks': '2021'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.8521', 'start': '19', 'end': '19', 'remarks': '2022'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.9369', 'start': '20', 'end': '20', 'remarks': '2023'}}]
+2025-02-27 22:21:37,422 general_year_sorted_list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+2025-02-27 22:21:37,422 start_end_points: {1, 20}
+2025-02-27 22:21:37,423 start_end_points: {1, 2, 20}
+2025-02-27 22:21:37,423 start_end_points: {1, 2, 3, 20}
+2025-02-27 22:21:37,423 start_end_points: {1, 2, 3, 4, 20}
+2025-02-27 22:21:37,423 start_end_points: {1, 2, 3, 4, 5, 20}
+2025-02-27 22:21:37,423 start_end_points: {1, 2, 3, 4, 5, 6, 20}
+2025-02-27 22:21:37,423 start_end_points: {1, 2, 3, 4, 5, 6, 7, 20}
+2025-02-27 22:21:37,423 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 20}
+2025-02-27 22:21:37,423 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 20}
+2025-02-27 22:21:37,423 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20}
+2025-02-27 22:21:37,424 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 20}
+2025-02-27 22:21:37,424 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 20}
+2025-02-27 22:21:37,424 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 20}
+2025-02-27 22:21:37,424 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 20}
+2025-02-27 22:21:37,424 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 20}
+2025-02-27 22:21:37,424 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 20}
+2025-02-27 22:21:37,424 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 20}
+2025-02-27 22:21:37,424 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20}
+2025-02-27 22:21:37,424 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:21:37,425 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:21:37,425 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:21:37,425 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:21:37,425 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:21:37,425 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:21:37,425 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:21:37,425 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:21:37,425 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:21:37,426 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:21:37,426 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:21:37,426 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:21:37,426 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:21:37,426 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:21:37,426 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:21:37,426 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:21:37,426 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:21:37,426 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:21:37,427 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:21:37,427 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:21:37,427 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:21:37,427 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:21:37,427 sorted_points: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+2025-02-27 22:21:37,427 general_intervals: [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8), (8, 9), (9, 10), (10, 11), (11, 12), (12, 13), (13, 14), (14, 15), (15, 16), (16, 17), (17, 18), (18, 19), (19, 20), (20, 21)]
+2025-02-27 22:21:37,427 intervals: [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8), (8, 9), (9, 10), (10, 11), (11, 12), (12, 13), (13, 14), (14, 15), (15, 16), (16, 17), (17, 18), (18, 19), (19, 20)]
+2025-02-27 22:21:37,428 fv_tuple: 1
+2025-02-27 22:21:37,428 fv_tuple: 2
+2025-02-27 22:21:37,428 fv_tuple: 3
+2025-02-27 22:21:37,428 fv_tuple: 4
+2025-02-27 22:21:37,428 fv_tuple: 5
+2025-02-27 22:21:37,428 fv_tuple: 6
+2025-02-27 22:21:37,428 fv_tuple: 7
+2025-02-27 22:21:37,428 fv_tuple: 8
+2025-02-27 22:21:37,428 fv_tuple: 9
+2025-02-27 22:21:37,429 fv_tuple: 10
+2025-02-27 22:21:37,429 fv_tuple: 11
+2025-02-27 22:21:37,429 fv_tuple: 12
+2025-02-27 22:21:37,429 fv_tuple: 13
+2025-02-27 22:21:37,429 fv_tuple: 14
+2025-02-27 22:21:37,429 fv_tuple: 15
+2025-02-27 22:21:37,429 fv_tuple: 16
+2025-02-27 22:21:37,429 fv_tuple: 17
+2025-02-27 22:21:37,429 fv_tuple: 18
+2025-02-27 22:21:37,430 fv_tuple: 19
+2025-02-27 22:21:37,430 fv_tuple: 20
+2025-02-27 22:21:37,430 fv_tuple: 1
+2025-02-27 22:21:37,430 fv_tuple: 2
+2025-02-27 22:21:37,430 fv_tuple: 3
+2025-02-27 22:21:37,430 fv_tuple: 4
+2025-02-27 22:21:37,430 fv_tuple: 5
+2025-02-27 22:21:37,430 fv_tuple: 6
+2025-02-27 22:21:37,430 fv_tuple: 7
+2025-02-27 22:21:37,430 fv_tuple: 8
+2025-02-27 22:21:37,431 fv_tuple: 9
+2025-02-27 22:21:37,431 fv_tuple: 10
+2025-02-27 22:21:37,431 fv_tuple: 11
+2025-02-27 22:21:37,431 fv_tuple: 12
+2025-02-27 22:21:37,431 fv_tuple: 13
+2025-02-27 22:21:37,431 fv_tuple: 14
+2025-02-27 22:21:37,431 fv_tuple: 15
+2025-02-27 22:21:37,431 fv_tuple: 16
+2025-02-27 22:21:37,431 fv_tuple: 17
+2025-02-27 22:21:37,431 fv_tuple: 18
+2025-02-27 22:21:37,431 fv_tuple: 19
+2025-02-27 22:21:37,432 fv_tuple: 20
+2025-02-27 22:21:37,432 fv_tuple: 1
+2025-02-27 22:21:37,432 fv_tuple: 2
+2025-02-27 22:21:37,432 fv_tuple: 3
+2025-02-27 22:21:37,432 fv_tuple: 4
+2025-02-27 22:21:37,432 fv_tuple: 5
+2025-02-27 22:21:37,432 fv_tuple: 6
+2025-02-27 22:21:37,432 fv_tuple: 7
+2025-02-27 22:21:37,432 fv_tuple: 8
+2025-02-27 22:21:37,432 fv_tuple: 9
+2025-02-27 22:21:37,433 fv_tuple: 10
+2025-02-27 22:21:37,433 fv_tuple: 11
+2025-02-27 22:21:37,433 fv_tuple: 12
+2025-02-27 22:21:37,433 fv_tuple: 13
+2025-02-27 22:21:37,433 fv_tuple: 14
+2025-02-27 22:21:37,433 fv_tuple: 15
+2025-02-27 22:21:37,433 fv_tuple: 16
+2025-02-27 22:21:37,433 fv_tuple: 17
+2025-02-27 22:21:37,433 fv_tuple: 18
+2025-02-27 22:21:37,433 fv_tuple: 19
+2025-02-27 22:21:37,434 fv_tuple: 20
+2025-02-27 22:21:37,434 fv_tuple: 1
+2025-02-27 22:21:37,434 fv_tuple: 2
+2025-02-27 22:21:37,434 fv_tuple: 3
+2025-02-27 22:21:37,434 fv_tuple: 4
+2025-02-27 22:21:37,434 fv_tuple: 5
+2025-02-27 22:21:37,434 fv_tuple: 6
+2025-02-27 22:21:37,434 fv_tuple: 7
+2025-02-27 22:21:37,434 fv_tuple: 8
+2025-02-27 22:21:37,434 fv_tuple: 9
+2025-02-27 22:21:37,435 fv_tuple: 10
+2025-02-27 22:21:37,435 fv_tuple: 11
+2025-02-27 22:21:37,435 fv_tuple: 12
+2025-02-27 22:21:37,435 fv_tuple: 13
+2025-02-27 22:21:37,435 fv_tuple: 14
+2025-02-27 22:21:37,435 fv_tuple: 15
+2025-02-27 22:21:37,435 fv_tuple: 16
+2025-02-27 22:21:37,435 fv_tuple: 17
+2025-02-27 22:21:37,435 fv_tuple: 18
+2025-02-27 22:21:37,435 fv_tuple: 19
+2025-02-27 22:21:37,436 fv_tuple: 20
+2025-02-27 22:24:15,710 filtered_values: [{'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.020', 'start': '1', 'end': '1', 'remarks': '2004'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.0424', 'start': '2', 'end': '2', 'remarks': '2005'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.0664', 'start': '3', 'end': '3', 'remarks': '2006'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.0915', 'start': '4', 'end': '4', 'remarks': '2007'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1323', 'start': '5', 'end': '5', 'remarks': '2008'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1426', 'start': '6', 'end': '6', 'remarks': '2009'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1662', 'start': '7', 'end': '7', 'remarks': '2010'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1980', 'start': '8', 'end': '8', 'remarks': '2011'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2246', 'start': '9', 'end': '9', 'remarks': '2012'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2400', 'start': '10', 'end': '10', 'remarks': '2013'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2424', 'start': '11', 'end': '11', 'remarks': '2014'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2424', 'start': '12', 'end': '12', 'remarks': '2015'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2451', 'start': '13', 'end': '13', 'remarks': '2016'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2668', 'start': '14', 'end': '14', 'remarks': '2017'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2881', 'start': '15', 'end': '15', 'remarks': '2018'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.3032', 'start': '16', 'end': '16', 'remarks': '2019'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.3104', 'start': '17', 'end': '17', 'remarks': '2020'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.3382', 'start': '18', 'end': '18', 'remarks': '2021'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.4415', 'start': '19', 'end': '19', 'remarks': '2022'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.5035', 'start': '20', 'end': '20', 'remarks': '2023'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.020', 'start': '1', 'end': '1', 'remarks': '2004'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.0404', 'start': '2', 'end': '2', 'remarks': '2005'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.0620', 'start': '3', 'end': '3', 'remarks': '2006'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.0859', 'start': '4', 'end': '4', 'remarks': '2007'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.1126', 'start': '5', 'end': '5', 'remarks': '2008'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.1419', 'start': '6', 'end': '6', 'remarks': '2009'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.1743', 'start': '7', 'end': '7', 'remarks': '2010'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.2099', 'start': '8', 'end': '8', 'remarks': '2011'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.2488', 'start': '9', 'end': '9', 'remarks': '2012'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.2912', 'start': '10', 'end': '10', 'remarks': '2013'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.3372', 'start': '11', 'end': '11', 'remarks': '2014'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.3869', 'start': '12', 'end': '12', 'remarks': '2015'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.4406', 'start': '13', 'end': '13', 'remarks': '2016'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.4983', 'start': '14', 'end': '14', 'remarks': '2017'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.5602', 'start': '15', 'end': '15', 'remarks': '2018'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.6264', 'start': '16', 'end': '16', 'remarks': '2019'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.6970', 'start': '17', 'end': '17', 'remarks': '2020'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.7722', 'start': '18', 'end': '18', 'remarks': '2021'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.8521', 'start': '19', 'end': '19', 'remarks': '2022'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.9369', 'start': '20', 'end': '20', 'remarks': '2023'}}]
+2025-02-27 22:24:15,710 general_year_sorted_list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+2025-02-27 22:24:15,710 start_end_points: {1, 20}
+2025-02-27 22:24:15,710 start_end_points: {1, 2, 20}
+2025-02-27 22:24:15,710 start_end_points: {1, 2, 3, 20}
+2025-02-27 22:24:15,710 start_end_points: {1, 2, 3, 4, 20}
+2025-02-27 22:24:15,710 start_end_points: {1, 2, 3, 4, 5, 20}
+2025-02-27 22:24:15,710 start_end_points: {1, 2, 3, 4, 5, 6, 20}
+2025-02-27 22:24:15,710 start_end_points: {1, 2, 3, 4, 5, 6, 7, 20}
+2025-02-27 22:24:15,710 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 20}
+2025-02-27 22:24:15,710 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 20}
+2025-02-27 22:24:15,710 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20}
+2025-02-27 22:24:15,710 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 20}
+2025-02-27 22:24:15,710 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 20}
+2025-02-27 22:24:15,710 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 20}
+2025-02-27 22:24:15,710 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 20}
+2025-02-27 22:24:15,710 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 20}
+2025-02-27 22:24:15,710 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 20}
+2025-02-27 22:24:15,710 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 20}
+2025-02-27 22:24:15,710 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20}
+2025-02-27 22:24:15,710 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:15,710 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:15,710 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:15,710 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:15,710 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:15,710 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:15,710 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:15,710 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:15,710 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:15,710 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:15,710 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:15,710 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:15,710 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:15,710 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:15,710 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:15,710 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:15,710 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:15,710 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:15,710 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:15,710 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:15,710 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:15,710 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:15,710 sorted_points: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+2025-02-27 22:24:15,710 general_intervals: [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8), (8, 9), (9, 10), (10, 11), (11, 12), (12, 13), (13, 14), (14, 15), (15, 16), (16, 17), (17, 18), (18, 19), (19, 20), (20, 21)]
+2025-02-27 22:24:15,710 intervals: [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8), (8, 9), (9, 10), (10, 11), (11, 12), (12, 13), (13, 14), (14, 15), (15, 16), (16, 17), (17, 18), (18, 19), (19, 20)]
+2025-02-27 22:24:15,710 fv_tuple: 1
+2025-02-27 22:24:15,710 fv_tuple: 2
+2025-02-27 22:24:15,710 fv_tuple: 3
+2025-02-27 22:24:15,710 fv_tuple: 4
+2025-02-27 22:24:15,710 fv_tuple: 5
+2025-02-27 22:24:15,710 fv_tuple: 6
+2025-02-27 22:24:15,710 fv_tuple: 7
+2025-02-27 22:24:15,710 fv_tuple: 8
+2025-02-27 22:24:15,710 fv_tuple: 9
+2025-02-27 22:24:15,710 fv_tuple: 10
+2025-02-27 22:24:15,710 fv_tuple: 11
+2025-02-27 22:24:15,710 fv_tuple: 12
+2025-02-27 22:24:15,710 fv_tuple: 13
+2025-02-27 22:24:15,710 fv_tuple: 14
+2025-02-27 22:24:15,710 fv_tuple: 15
+2025-02-27 22:24:15,710 fv_tuple: 16
+2025-02-27 22:24:15,710 fv_tuple: 17
+2025-02-27 22:24:15,710 fv_tuple: 18
+2025-02-27 22:24:15,710 fv_tuple: 19
+2025-02-27 22:24:15,710 fv_tuple: 20
+2025-02-27 22:24:15,710 fv_tuple: 1
+2025-02-27 22:24:15,710 fv_tuple: 2
+2025-02-27 22:24:15,710 fv_tuple: 3
+2025-02-27 22:24:15,710 fv_tuple: 4
+2025-02-27 22:24:15,710 fv_tuple: 5
+2025-02-27 22:24:15,725 fv_tuple: 6
+2025-02-27 22:24:15,725 fv_tuple: 7
+2025-02-27 22:24:15,725 fv_tuple: 8
+2025-02-27 22:24:15,725 fv_tuple: 9
+2025-02-27 22:24:15,726 fv_tuple: 10
+2025-02-27 22:24:15,726 fv_tuple: 11
+2025-02-27 22:24:15,726 fv_tuple: 12
+2025-02-27 22:24:15,727 fv_tuple: 13
+2025-02-27 22:24:15,727 fv_tuple: 14
+2025-02-27 22:24:15,727 fv_tuple: 15
+2025-02-27 22:24:15,727 fv_tuple: 16
+2025-02-27 22:24:15,727 fv_tuple: 17
+2025-02-27 22:24:15,727 fv_tuple: 18
+2025-02-27 22:24:15,727 fv_tuple: 19
+2025-02-27 22:24:15,727 fv_tuple: 20
+2025-02-27 22:24:15,727 fv_tuple: 1
+2025-02-27 22:24:15,727 fv_tuple: 2
+2025-02-27 22:24:15,728 fv_tuple: 3
+2025-02-27 22:24:15,728 fv_tuple: 4
+2025-02-27 22:24:15,728 fv_tuple: 5
+2025-02-27 22:24:15,728 fv_tuple: 6
+2025-02-27 22:24:15,728 fv_tuple: 7
+2025-02-27 22:24:15,728 fv_tuple: 8
+2025-02-27 22:24:15,728 fv_tuple: 9
+2025-02-27 22:24:15,728 fv_tuple: 10
+2025-02-27 22:24:15,728 fv_tuple: 11
+2025-02-27 22:24:15,729 fv_tuple: 12
+2025-02-27 22:24:15,729 fv_tuple: 13
+2025-02-27 22:24:15,729 fv_tuple: 14
+2025-02-27 22:24:15,729 fv_tuple: 15
+2025-02-27 22:24:15,729 fv_tuple: 16
+2025-02-27 22:24:15,729 fv_tuple: 17
+2025-02-27 22:24:15,729 fv_tuple: 18
+2025-02-27 22:24:15,729 fv_tuple: 19
+2025-02-27 22:24:15,729 fv_tuple: 20
+2025-02-27 22:24:15,729 fv_tuple: 1
+2025-02-27 22:24:15,730 fv_tuple: 2
+2025-02-27 22:24:15,730 fv_tuple: 3
+2025-02-27 22:24:15,730 fv_tuple: 4
+2025-02-27 22:24:15,730 fv_tuple: 5
+2025-02-27 22:24:15,730 fv_tuple: 6
+2025-02-27 22:24:15,730 fv_tuple: 7
+2025-02-27 22:24:15,730 fv_tuple: 8
+2025-02-27 22:24:15,730 fv_tuple: 9
+2025-02-27 22:24:15,730 fv_tuple: 10
+2025-02-27 22:24:15,730 fv_tuple: 11
+2025-02-27 22:24:15,731 fv_tuple: 12
+2025-02-27 22:24:15,731 fv_tuple: 13
+2025-02-27 22:24:15,731 fv_tuple: 14
+2025-02-27 22:24:15,731 fv_tuple: 15
+2025-02-27 22:24:15,731 fv_tuple: 16
+2025-02-27 22:24:15,731 fv_tuple: 17
+2025-02-27 22:24:15,731 fv_tuple: 18
+2025-02-27 22:24:15,731 fv_tuple: 19
+2025-02-27 22:24:15,731 fv_tuple: 20
+2025-02-27 22:24:30,331 filtered_values: [{'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.020', 'start': '1', 'end': '1', 'remarks': '2004'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.0424', 'start': '2', 'end': '2', 'remarks': '2005'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.0664', 'start': '3', 'end': '3', 'remarks': '2006'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.0915', 'start': '4', 'end': '4', 'remarks': '2007'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1323', 'start': '5', 'end': '5', 'remarks': '2008'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1426', 'start': '6', 'end': '6', 'remarks': '2009'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1662', 'start': '7', 'end': '7', 'remarks': '2010'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1980', 'start': '8', 'end': '8', 'remarks': '2011'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2246', 'start': '9', 'end': '9', 'remarks': '2012'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2400', 'start': '10', 'end': '10', 'remarks': '2013'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2424', 'start': '11', 'end': '11', 'remarks': '2014'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2424', 'start': '12', 'end': '12', 'remarks': '2015'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2451', 'start': '13', 'end': '13', 'remarks': '2016'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2668', 'start': '14', 'end': '14', 'remarks': '2017'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2881', 'start': '15', 'end': '15', 'remarks': '2018'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.3032', 'start': '16', 'end': '16', 'remarks': '2019'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.3104', 'start': '17', 'end': '17', 'remarks': '2020'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.3382', 'start': '18', 'end': '18', 'remarks': '2021'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.4415', 'start': '19', 'end': '19', 'remarks': '2022'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.5035', 'start': '20', 'end': '20', 'remarks': '2023'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.020', 'start': '1', 'end': '1', 'remarks': '2004'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.0404', 'start': '2', 'end': '2', 'remarks': '2005'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.0620', 'start': '3', 'end': '3', 'remarks': '2006'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.0859', 'start': '4', 'end': '4', 'remarks': '2007'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.1126', 'start': '5', 'end': '5', 'remarks': '2008'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.1419', 'start': '6', 'end': '6', 'remarks': '2009'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.1743', 'start': '7', 'end': '7', 'remarks': '2010'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.2099', 'start': '8', 'end': '8', 'remarks': '2011'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.2488', 'start': '9', 'end': '9', 'remarks': '2012'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.2912', 'start': '10', 'end': '10', 'remarks': '2013'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.3372', 'start': '11', 'end': '11', 'remarks': '2014'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.3869', 'start': '12', 'end': '12', 'remarks': '2015'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.4406', 'start': '13', 'end': '13', 'remarks': '2016'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.4983', 'start': '14', 'end': '14', 'remarks': '2017'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.5602', 'start': '15', 'end': '15', 'remarks': '2018'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.6264', 'start': '16', 'end': '16', 'remarks': '2019'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.6970', 'start': '17', 'end': '17', 'remarks': '2020'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.7722', 'start': '18', 'end': '18', 'remarks': '2021'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.8521', 'start': '19', 'end': '19', 'remarks': '2022'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.9369', 'start': '20', 'end': '20', 'remarks': '2023'}}]
+2025-02-27 22:24:30,331 general_year_sorted_list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+2025-02-27 22:24:30,331 start_end_points: {1, 20}
+2025-02-27 22:24:30,331 start_end_points: {1, 2, 20}
+2025-02-27 22:24:30,331 start_end_points: {1, 2, 3, 20}
+2025-02-27 22:24:30,332 start_end_points: {1, 2, 3, 4, 20}
+2025-02-27 22:24:30,332 start_end_points: {1, 2, 3, 4, 5, 20}
+2025-02-27 22:24:30,332 start_end_points: {1, 2, 3, 4, 5, 6, 20}
+2025-02-27 22:24:30,332 start_end_points: {1, 2, 3, 4, 5, 6, 7, 20}
+2025-02-27 22:24:30,332 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 20}
+2025-02-27 22:24:30,332 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 20}
+2025-02-27 22:24:30,332 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20}
+2025-02-27 22:24:30,332 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 20}
+2025-02-27 22:24:30,333 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 20}
+2025-02-27 22:24:30,333 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 20}
+2025-02-27 22:24:30,333 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 20}
+2025-02-27 22:24:30,333 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 20}
+2025-02-27 22:24:30,333 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 20}
+2025-02-27 22:24:30,333 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 20}
+2025-02-27 22:24:30,333 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20}
+2025-02-27 22:24:30,333 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:30,333 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:30,333 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:30,334 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:30,334 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:30,334 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:30,334 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:30,334 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:30,334 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:30,334 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:30,334 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:30,335 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:30,335 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:30,335 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:30,335 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:30,335 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:30,335 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:30,335 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:30,336 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:30,336 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:30,336 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:30,336 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:24:30,336 sorted_points: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+2025-02-27 22:24:30,336 general_intervals: [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8), (8, 9), (9, 10), (10, 11), (11, 12), (12, 13), (13, 14), (14, 15), (15, 16), (16, 17), (17, 18), (18, 19), (19, 20), (20, 21)]
+2025-02-27 22:24:30,336 intervals: [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8), (8, 9), (9, 10), (10, 11), (11, 12), (12, 13), (13, 14), (14, 15), (15, 16), (16, 17), (17, 18), (18, 19), (19, 20)]
+2025-02-27 22:24:30,337 fv_tuple: 1
+2025-02-27 22:24:30,337 fv_tuple: 2
+2025-02-27 22:24:30,337 fv_tuple: 3
+2025-02-27 22:24:30,337 fv_tuple: 4
+2025-02-27 22:24:30,337 fv_tuple: 5
+2025-02-27 22:24:30,337 fv_tuple: 6
+2025-02-27 22:24:30,337 fv_tuple: 7
+2025-02-27 22:24:30,337 fv_tuple: 8
+2025-02-27 22:24:30,337 fv_tuple: 9
+2025-02-27 22:24:30,337 fv_tuple: 10
+2025-02-27 22:24:30,337 fv_tuple: 11
+2025-02-27 22:24:30,338 fv_tuple: 12
+2025-02-27 22:24:30,338 fv_tuple: 13
+2025-02-27 22:24:30,338 fv_tuple: 14
+2025-02-27 22:24:30,338 fv_tuple: 15
+2025-02-27 22:24:30,338 fv_tuple: 16
+2025-02-27 22:24:30,338 fv_tuple: 17
+2025-02-27 22:24:30,338 fv_tuple: 18
+2025-02-27 22:24:30,338 fv_tuple: 19
+2025-02-27 22:24:30,338 fv_tuple: 20
+2025-02-27 22:24:30,338 fv_tuple: 1
+2025-02-27 22:24:30,338 fv_tuple: 2
+2025-02-27 22:24:30,338 fv_tuple: 3
+2025-02-27 22:24:30,339 fv_tuple: 4
+2025-02-27 22:24:30,339 fv_tuple: 5
+2025-02-27 22:24:30,339 fv_tuple: 6
+2025-02-27 22:24:30,339 fv_tuple: 7
+2025-02-27 22:24:30,339 fv_tuple: 8
+2025-02-27 22:24:30,339 fv_tuple: 9
+2025-02-27 22:24:30,339 fv_tuple: 10
+2025-02-27 22:24:30,340 fv_tuple: 11
+2025-02-27 22:24:30,340 fv_tuple: 12
+2025-02-27 22:24:30,340 fv_tuple: 13
+2025-02-27 22:24:30,340 fv_tuple: 14
+2025-02-27 22:24:30,340 fv_tuple: 15
+2025-02-27 22:24:30,340 fv_tuple: 16
+2025-02-27 22:24:30,340 fv_tuple: 17
+2025-02-27 22:24:30,340 fv_tuple: 18
+2025-02-27 22:24:30,340 fv_tuple: 19
+2025-02-27 22:24:30,340 fv_tuple: 20
+2025-02-27 22:24:30,340 fv_tuple: 1
+2025-02-27 22:24:30,340 fv_tuple: 2
+2025-02-27 22:24:30,340 fv_tuple: 3
+2025-02-27 22:24:30,340 fv_tuple: 4
+2025-02-27 22:24:30,340 fv_tuple: 5
+2025-02-27 22:24:30,340 fv_tuple: 6
+2025-02-27 22:24:30,340 fv_tuple: 7
+2025-02-27 22:24:30,341 fv_tuple: 8
+2025-02-27 22:24:30,341 fv_tuple: 9
+2025-02-27 22:24:30,341 fv_tuple: 10
+2025-02-27 22:24:30,341 fv_tuple: 11
+2025-02-27 22:24:30,341 fv_tuple: 12
+2025-02-27 22:24:30,341 fv_tuple: 13
+2025-02-27 22:24:30,341 fv_tuple: 14
+2025-02-27 22:24:30,342 fv_tuple: 15
+2025-02-27 22:24:30,342 fv_tuple: 16
+2025-02-27 22:24:30,342 fv_tuple: 17
+2025-02-27 22:24:30,342 fv_tuple: 18
+2025-02-27 22:24:30,342 fv_tuple: 19
+2025-02-27 22:24:30,342 fv_tuple: 20
+2025-02-27 22:24:30,342 fv_tuple: 1
+2025-02-27 22:24:30,342 fv_tuple: 2
+2025-02-27 22:24:30,342 fv_tuple: 3
+2025-02-27 22:24:30,342 fv_tuple: 4
+2025-02-27 22:24:30,342 fv_tuple: 5
+2025-02-27 22:24:30,342 fv_tuple: 6
+2025-02-27 22:24:30,343 fv_tuple: 7
+2025-02-27 22:24:30,343 fv_tuple: 8
+2025-02-27 22:24:30,343 fv_tuple: 9
+2025-02-27 22:24:30,343 fv_tuple: 10
+2025-02-27 22:24:30,343 fv_tuple: 11
+2025-02-27 22:24:30,343 fv_tuple: 12
+2025-02-27 22:24:30,343 fv_tuple: 13
+2025-02-27 22:24:30,343 fv_tuple: 14
+2025-02-27 22:24:30,343 fv_tuple: 15
+2025-02-27 22:24:30,343 fv_tuple: 16
+2025-02-27 22:24:30,343 fv_tuple: 17
+2025-02-27 22:24:30,343 fv_tuple: 18
+2025-02-27 22:24:30,344 fv_tuple: 19
+2025-02-27 22:24:30,344 fv_tuple: 20
+2025-02-27 22:25:26,145 filtered_values: [{'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.020', 'start': '1', 'end': '1', 'remarks': '2004'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.0424', 'start': '2', 'end': '2', 'remarks': '2005'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.0664', 'start': '3', 'end': '3', 'remarks': '2006'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.0915', 'start': '4', 'end': '4', 'remarks': '2007'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1323', 'start': '5', 'end': '5', 'remarks': '2008'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1426', 'start': '6', 'end': '6', 'remarks': '2009'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1662', 'start': '7', 'end': '7', 'remarks': '2010'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1980', 'start': '8', 'end': '8', 'remarks': '2011'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2246', 'start': '9', 'end': '9', 'remarks': '2012'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2400', 'start': '10', 'end': '10', 'remarks': '2013'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2424', 'start': '11', 'end': '11', 'remarks': '2014'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2424', 'start': '12', 'end': '12', 'remarks': '2015'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2451', 'start': '13', 'end': '13', 'remarks': '2016'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2668', 'start': '14', 'end': '14', 'remarks': '2017'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2881', 'start': '15', 'end': '15', 'remarks': '2018'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.3032', 'start': '16', 'end': '16', 'remarks': '2019'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.3104', 'start': '17', 'end': '17', 'remarks': '2020'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.3382', 'start': '18', 'end': '18', 'remarks': '2021'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.4415', 'start': '19', 'end': '19', 'remarks': '2022'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.5035', 'start': '20', 'end': '20', 'remarks': '2023'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.020', 'start': '1', 'end': '1', 'remarks': '2004'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.0404', 'start': '2', 'end': '2', 'remarks': '2005'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.0620', 'start': '3', 'end': '3', 'remarks': '2006'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.0859', 'start': '4', 'end': '4', 'remarks': '2007'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.1126', 'start': '5', 'end': '5', 'remarks': '2008'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.1419', 'start': '6', 'end': '6', 'remarks': '2009'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.1743', 'start': '7', 'end': '7', 'remarks': '2010'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.2099', 'start': '8', 'end': '8', 'remarks': '2011'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.2488', 'start': '9', 'end': '9', 'remarks': '2012'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.2912', 'start': '10', 'end': '10', 'remarks': '2013'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.3372', 'start': '11', 'end': '11', 'remarks': '2014'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.3869', 'start': '12', 'end': '12', 'remarks': '2015'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.4406', 'start': '13', 'end': '13', 'remarks': '2016'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.4983', 'start': '14', 'end': '14', 'remarks': '2017'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.5602', 'start': '15', 'end': '15', 'remarks': '2018'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.6264', 'start': '16', 'end': '16', 'remarks': '2019'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.6970', 'start': '17', 'end': '17', 'remarks': '2020'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.7722', 'start': '18', 'end': '18', 'remarks': '2021'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.8521', 'start': '19', 'end': '19', 'remarks': '2022'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.9369', 'start': '20', 'end': '20', 'remarks': '2023'}}]
+2025-02-27 22:25:26,145 general_year_sorted_list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+2025-02-27 22:25:26,145 start_end_points: {1, 20}
+2025-02-27 22:25:26,145 start_end_points: {1, 2, 20}
+2025-02-27 22:25:26,145 start_end_points: {1, 2, 3, 20}
+2025-02-27 22:25:26,145 start_end_points: {1, 2, 3, 4, 20}
+2025-02-27 22:25:26,145 start_end_points: {1, 2, 3, 4, 5, 20}
+2025-02-27 22:25:26,145 start_end_points: {1, 2, 3, 4, 5, 6, 20}
+2025-02-27 22:25:26,145 start_end_points: {1, 2, 3, 4, 5, 6, 7, 20}
+2025-02-27 22:25:26,145 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 20}
+2025-02-27 22:25:26,145 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 20}
+2025-02-27 22:25:26,145 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20}
+2025-02-27 22:25:26,145 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 20}
+2025-02-27 22:25:26,145 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 20}
+2025-02-27 22:25:26,145 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 20}
+2025-02-27 22:25:26,145 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 20}
+2025-02-27 22:25:26,145 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 20}
+2025-02-27 22:25:26,145 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 20}
+2025-02-27 22:25:26,145 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 20}
+2025-02-27 22:25:26,145 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20}
+2025-02-27 22:25:26,145 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:25:26,145 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:25:26,145 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:25:26,145 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:25:26,145 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:25:26,145 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:25:26,145 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:25:26,145 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:25:26,145 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:25:26,145 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:25:26,145 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:25:26,145 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:25:26,145 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:25:26,145 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:25:26,145 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:25:26,145 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:25:26,145 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:25:26,145 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:25:26,145 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:25:26,145 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:25:26,145 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:25:26,145 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-27 22:25:26,145 sorted_points: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+2025-02-27 22:25:26,145 general_intervals: [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8), (8, 9), (9, 10), (10, 11), (11, 12), (12, 13), (13, 14), (14, 15), (15, 16), (16, 17), (17, 18), (18, 19), (19, 20), (20, 21)]
+2025-02-27 22:25:26,145 intervals: [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8), (8, 9), (9, 10), (10, 11), (11, 12), (12, 13), (13, 14), (14, 15), (15, 16), (16, 17), (17, 18), (18, 19), (19, 20)]
+2025-02-27 22:25:26,145 fv_tuple: 1
+2025-02-27 22:25:26,145 fv_tuple: 2
+2025-02-27 22:25:26,145 fv_tuple: 3
+2025-02-27 22:25:26,145 fv_tuple: 4
+2025-02-27 22:25:26,145 fv_tuple: 5
+2025-02-27 22:25:26,145 fv_tuple: 6
+2025-02-27 22:25:26,145 fv_tuple: 7
+2025-02-27 22:25:26,145 fv_tuple: 8
+2025-02-27 22:25:26,145 fv_tuple: 9
+2025-02-27 22:25:26,145 fv_tuple: 10
+2025-02-27 22:25:26,161 fv_tuple: 11
+2025-02-27 22:25:26,161 fv_tuple: 12
+2025-02-27 22:25:26,161 fv_tuple: 13
+2025-02-27 22:25:26,161 fv_tuple: 14
+2025-02-27 22:25:26,161 fv_tuple: 15
+2025-02-27 22:25:26,161 fv_tuple: 16
+2025-02-27 22:25:26,161 fv_tuple: 17
+2025-02-27 22:25:26,161 fv_tuple: 18
+2025-02-27 22:25:26,161 fv_tuple: 19
+2025-02-27 22:25:26,161 fv_tuple: 20
+2025-02-27 22:25:26,161 fv_tuple: 1
+2025-02-27 22:25:26,161 fv_tuple: 2
+2025-02-27 22:25:26,161 fv_tuple: 3
+2025-02-27 22:25:26,161 fv_tuple: 4
+2025-02-27 22:25:26,161 fv_tuple: 5
+2025-02-27 22:25:26,161 fv_tuple: 6
+2025-02-27 22:25:26,161 fv_tuple: 7
+2025-02-27 22:25:26,161 fv_tuple: 8
+2025-02-27 22:25:26,161 fv_tuple: 9
+2025-02-27 22:25:26,161 fv_tuple: 10
+2025-02-27 22:25:26,161 fv_tuple: 11
+2025-02-27 22:25:26,161 fv_tuple: 12
+2025-02-27 22:25:26,161 fv_tuple: 13
+2025-02-27 22:25:26,161 fv_tuple: 14
+2025-02-27 22:25:26,161 fv_tuple: 15
+2025-02-27 22:25:26,161 fv_tuple: 16
+2025-02-27 22:25:26,161 fv_tuple: 17
+2025-02-27 22:25:26,161 fv_tuple: 18
+2025-02-27 22:25:26,161 fv_tuple: 19
+2025-02-27 22:25:26,161 fv_tuple: 20
+2025-02-27 22:25:26,161 fv_tuple: 1
+2025-02-27 22:25:26,161 fv_tuple: 2
+2025-02-27 22:25:26,161 fv_tuple: 3
+2025-02-27 22:25:26,161 fv_tuple: 4
+2025-02-27 22:25:26,161 fv_tuple: 5
+2025-02-27 22:25:26,161 fv_tuple: 6
+2025-02-27 22:25:26,161 fv_tuple: 7
+2025-02-27 22:25:26,161 fv_tuple: 8
+2025-02-27 22:25:26,161 fv_tuple: 9
+2025-02-27 22:25:26,161 fv_tuple: 10
+2025-02-27 22:25:26,161 fv_tuple: 11
+2025-02-27 22:25:26,161 fv_tuple: 12
+2025-02-27 22:25:26,161 fv_tuple: 13
+2025-02-27 22:25:26,161 fv_tuple: 14
+2025-02-27 22:25:26,161 fv_tuple: 15
+2025-02-27 22:25:26,161 fv_tuple: 16
+2025-02-27 22:25:26,161 fv_tuple: 17
+2025-02-27 22:25:26,161 fv_tuple: 18
+2025-02-27 22:25:26,161 fv_tuple: 19
+2025-02-27 22:25:26,161 fv_tuple: 20
+2025-02-27 22:25:26,161 fv_tuple: 1
+2025-02-27 22:25:26,161 fv_tuple: 2
+2025-02-27 22:25:26,161 fv_tuple: 3
+2025-02-27 22:25:26,161 fv_tuple: 4
+2025-02-27 22:25:26,161 fv_tuple: 5
+2025-02-27 22:25:26,161 fv_tuple: 6
+2025-02-27 22:25:26,161 fv_tuple: 7
+2025-02-27 22:25:26,161 fv_tuple: 8
+2025-02-27 22:25:26,161 fv_tuple: 9
+2025-02-27 22:25:26,161 fv_tuple: 10
+2025-02-27 22:25:26,161 fv_tuple: 11
+2025-02-27 22:25:26,161 fv_tuple: 12
+2025-02-27 22:25:26,161 fv_tuple: 13
+2025-02-27 22:25:26,161 fv_tuple: 14
+2025-02-27 22:25:26,161 fv_tuple: 15
+2025-02-27 22:25:26,161 fv_tuple: 16
+2025-02-27 22:25:26,161 fv_tuple: 17
+2025-02-27 22:25:26,161 fv_tuple: 18
+2025-02-27 22:25:26,161 fv_tuple: 19
+2025-02-27 22:25:26,161 fv_tuple: 20
+2025-02-28 08:31:30,872 filtered_values: [{'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.020', 'start': '1', 'end': '1', 'remarks': '2004'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.0424', 'start': '2', 'end': '2', 'remarks': '2005'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.0664', 'start': '3', 'end': '3', 'remarks': '2006'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.0915', 'start': '4', 'end': '4', 'remarks': '2007'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1323', 'start': '5', 'end': '5', 'remarks': '2008'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1426', 'start': '6', 'end': '6', 'remarks': '2009'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1662', 'start': '7', 'end': '7', 'remarks': '2010'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.1980', 'start': '8', 'end': '8', 'remarks': '2011'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2246', 'start': '9', 'end': '9', 'remarks': '2012'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2400', 'start': '10', 'end': '10', 'remarks': '2013'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2424', 'start': '11', 'end': '11', 'remarks': '2014'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2424', 'start': '12', 'end': '12', 'remarks': '2015'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2451', 'start': '13', 'end': '13', 'remarks': '2016'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2668', 'start': '14', 'end': '14', 'remarks': '2017'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.2881', 'start': '15', 'end': '15', 'remarks': '2018'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.3032', 'start': '16', 'end': '16', 'remarks': '2019'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.3104', 'start': '17', 'end': '17', 'remarks': '2020'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.3382', 'start': '18', 'end': '18', 'remarks': '2021'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.4415', 'start': '19', 'end': '19', 'remarks': '2022'}}, {'filteredValue': {'id': 'generalInflationRateAmount23', 'value': '0.5035', 'start': '20', 'end': '20', 'remarks': '2023'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.020', 'start': '1', 'end': '1', 'remarks': '2004'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.0404', 'start': '2', 'end': '2', 'remarks': '2005'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.0620', 'start': '3', 'end': '3', 'remarks': '2006'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.0859', 'start': '4', 'end': '4', 'remarks': '2007'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.1126', 'start': '5', 'end': '5', 'remarks': '2008'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.1419', 'start': '6', 'end': '6', 'remarks': '2009'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.1743', 'start': '7', 'end': '7', 'remarks': '2010'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.2099', 'start': '8', 'end': '8', 'remarks': '2011'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.2488', 'start': '9', 'end': '9', 'remarks': '2012'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.2912', 'start': '10', 'end': '10', 'remarks': '2013'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.3372', 'start': '11', 'end': '11', 'remarks': '2014'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.3869', 'start': '12', 'end': '12', 'remarks': '2015'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.4406', 'start': '13', 'end': '13', 'remarks': '2016'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.4983', 'start': '14', 'end': '14', 'remarks': '2017'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.5602', 'start': '15', 'end': '15', 'remarks': '2018'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.6264', 'start': '16', 'end': '16', 'remarks': '2019'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.6970', 'start': '17', 'end': '17', 'remarks': '2020'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.7722', 'start': '18', 'end': '18', 'remarks': '2021'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.8521', 'start': '19', 'end': '19', 'remarks': '2022'}}, {'filteredValue': {'id': 'iRRAmount30', 'value': '0.9369', 'start': '20', 'end': '20', 'remarks': '2023'}}]
+2025-02-28 08:31:30,873 general_year_sorted_list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+2025-02-28 08:31:30,873 start_end_points: {1, 20}
+2025-02-28 08:31:30,873 start_end_points: {1, 2, 20}
+2025-02-28 08:31:30,873 start_end_points: {1, 2, 3, 20}
+2025-02-28 08:31:30,873 start_end_points: {1, 2, 3, 4, 20}
+2025-02-28 08:31:30,873 start_end_points: {1, 2, 3, 4, 5, 20}
+2025-02-28 08:31:30,874 start_end_points: {1, 2, 3, 4, 5, 6, 20}
+2025-02-28 08:31:30,874 start_end_points: {1, 2, 3, 4, 5, 6, 7, 20}
+2025-02-28 08:31:30,874 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 20}
+2025-02-28 08:31:30,874 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 20}
+2025-02-28 08:31:30,874 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20}
+2025-02-28 08:31:30,874 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 20}
+2025-02-28 08:31:30,874 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 20}
+2025-02-28 08:31:30,874 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 20}
+2025-02-28 08:31:30,875 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 20}
+2025-02-28 08:31:30,875 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 20}
+2025-02-28 08:31:30,875 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 20}
+2025-02-28 08:31:30,875 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 20}
+2025-02-28 08:31:30,875 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20}
+2025-02-28 08:31:30,875 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-28 08:31:30,875 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-28 08:31:30,875 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-28 08:31:30,875 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-28 08:31:30,876 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-28 08:31:30,876 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-28 08:31:30,876 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-28 08:31:30,876 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-28 08:31:30,876 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-28 08:31:30,876 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-28 08:31:30,876 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-28 08:31:30,876 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-28 08:31:30,876 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-28 08:31:30,877 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-28 08:31:30,877 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-28 08:31:30,877 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-28 08:31:30,877 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-28 08:31:30,877 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-28 08:31:30,877 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-28 08:31:30,877 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-28 08:31:30,877 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-28 08:31:30,877 start_end_points: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+2025-02-28 08:31:30,878 sorted_points: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+2025-02-28 08:31:30,878 general_intervals: [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8), (8, 9), (9, 10), (10, 11), (11, 12), (12, 13), (13, 14), (14, 15), (15, 16), (16, 17), (17, 18), (18, 19), (19, 20), (20, 21)]
+2025-02-28 08:31:30,878 intervals: [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8), (8, 9), (9, 10), (10, 11), (11, 12), (12, 13), (13, 14), (14, 15), (15, 16), (16, 17), (17, 18), (18, 19), (19, 20)]
+2025-02-28 08:31:30,878 fv_tuple: 1
+2025-02-28 08:31:30,878 fv_tuple: 2
+2025-02-28 08:31:30,878 fv_tuple: 3
+2025-02-28 08:31:30,878 fv_tuple: 4
+2025-02-28 08:31:30,879 fv_tuple: 5
+2025-02-28 08:31:30,879 fv_tuple: 6
+2025-02-28 08:31:30,879 fv_tuple: 7
+2025-02-28 08:31:30,879 fv_tuple: 8
+2025-02-28 08:31:30,879 fv_tuple: 9
+2025-02-28 08:31:30,879 fv_tuple: 10
+2025-02-28 08:31:30,879 fv_tuple: 11
+2025-02-28 08:31:30,879 fv_tuple: 12
+2025-02-28 08:31:30,879 fv_tuple: 13
+2025-02-28 08:31:30,879 fv_tuple: 14
+2025-02-28 08:31:30,880 fv_tuple: 15
+2025-02-28 08:31:30,880 fv_tuple: 16
+2025-02-28 08:31:30,880 fv_tuple: 17
+2025-02-28 08:31:30,880 fv_tuple: 18
+2025-02-28 08:31:30,880 fv_tuple: 19
+2025-02-28 08:31:30,880 fv_tuple: 20
+2025-02-28 08:31:30,880 fv_tuple: 1
+2025-02-28 08:31:30,880 fv_tuple: 2
+2025-02-28 08:31:30,880 fv_tuple: 3
+2025-02-28 08:31:30,880 fv_tuple: 4
+2025-02-28 08:31:30,880 fv_tuple: 5
+2025-02-28 08:31:30,880 fv_tuple: 6
+2025-02-28 08:31:30,880 fv_tuple: 7
+2025-02-28 08:31:30,880 fv_tuple: 8
+2025-02-28 08:31:30,880 fv_tuple: 9
+2025-02-28 08:31:30,880 fv_tuple: 10
+2025-02-28 08:31:30,880 fv_tuple: 11
+2025-02-28 08:31:30,881 fv_tuple: 12
+2025-02-28 08:31:30,881 fv_tuple: 13
+2025-02-28 08:31:30,881 fv_tuple: 14
+2025-02-28 08:31:30,881 fv_tuple: 15
+2025-02-28 08:31:30,881 fv_tuple: 16
+2025-02-28 08:31:30,881 fv_tuple: 17
+2025-02-28 08:31:30,881 fv_tuple: 18
+2025-02-28 08:31:30,881 fv_tuple: 19
+2025-02-28 08:31:30,881 fv_tuple: 20
+2025-02-28 08:31:30,881 fv_tuple: 1
+2025-02-28 08:31:30,881 fv_tuple: 2
+2025-02-28 08:31:30,881 fv_tuple: 3
+2025-02-28 08:31:30,882 fv_tuple: 4
+2025-02-28 08:31:30,882 fv_tuple: 5
+2025-02-28 08:31:30,882 fv_tuple: 6
+2025-02-28 08:31:30,882 fv_tuple: 7
+2025-02-28 08:31:30,882 fv_tuple: 8
+2025-02-28 08:31:30,882 fv_tuple: 9
+2025-02-28 08:31:30,882 fv_tuple: 10
+2025-02-28 08:31:30,882 fv_tuple: 11
+2025-02-28 08:31:30,882 fv_tuple: 12
+2025-02-28 08:31:30,882 fv_tuple: 13
+2025-02-28 08:31:30,883 fv_tuple: 14
+2025-02-28 08:31:30,883 fv_tuple: 15
+2025-02-28 08:31:30,883 fv_tuple: 16
+2025-02-28 08:31:30,883 fv_tuple: 17
+2025-02-28 08:31:30,883 fv_tuple: 18
+2025-02-28 08:31:30,883 fv_tuple: 19
+2025-02-28 08:31:30,883 fv_tuple: 20
+2025-02-28 08:31:30,883 fv_tuple: 1
+2025-02-28 08:31:30,883 fv_tuple: 2
+2025-02-28 08:31:30,883 fv_tuple: 3
+2025-02-28 08:31:30,884 fv_tuple: 4
+2025-02-28 08:31:30,884 fv_tuple: 5
+2025-02-28 08:31:30,884 fv_tuple: 6
+2025-02-28 08:31:30,884 fv_tuple: 7
+2025-02-28 08:31:30,884 fv_tuple: 8
+2025-02-28 08:31:30,885 fv_tuple: 9
+2025-02-28 08:31:30,885 fv_tuple: 10
+2025-02-28 08:31:30,885 fv_tuple: 11
+2025-02-28 08:31:30,885 fv_tuple: 12
+2025-02-28 08:31:30,886 fv_tuple: 13
+2025-02-28 08:31:30,886 fv_tuple: 14
+2025-02-28 08:31:30,886 fv_tuple: 15
+2025-02-28 08:31:30,886 fv_tuple: 16
+2025-02-28 08:31:30,886 fv_tuple: 17
+2025-02-28 08:31:30,886 fv_tuple: 18
+2025-02-28 08:31:30,886 fv_tuple: 19
+2025-02-28 08:31:30,886 fv_tuple: 20
