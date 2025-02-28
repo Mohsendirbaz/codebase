@@ -32,14 +32,14 @@
         "Configuration_management\\module1.py",
         "Configuration_management\\Table.log",
         "Configuration_management\\Table.py",
-        "Configuration_management\\update_config_modules_with_CFA.py"
+        "Configuration_management\\config_modules.py"
       ],
       "import_count": 9
     },
     "Core_calculation_engines": {
       "files": [
-        "Core_calculation_engines\\update_config_modules_with_CFA_7.py",
-        "Core_calculation_engines\\update_config_modules_with_CFA_8.py"
+        "Core_calculation_engines\\CFA.py",
+        "Core_calculation_engines\\config_modules_8.py"
       ],
       "import_count": 2
     },

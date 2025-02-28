@@ -62,8 +62,8 @@
 2025-02-23 17:27:58,872 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 17:27:58,915 WARNING  * Debugger is active!
 2025-02-23 17:27:58,931 INFO  * Debugger PIN: 119-059-632
-2025-02-23 17:29:32,004 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\update_config_modules_with_CFA_7.py', reloading
-2025-02-23 17:29:32,472 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 17:29:32,004 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\CFA.py', reloading
+2025-02-23 17:29:32,472 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\CFA.py', reloading
 2025-02-23 17:29:32,542 INFO  * Restarting with stat
 2025-02-23 17:29:33,228 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 17:29:33,272 WARNING  * Debugger is active!
@@ -80,34 +80,34 @@
 2025-02-23 17:32:07,369 INFO 127.0.0.1 - - [23/Feb/2025 17:32:07] "[35m[1mPOST /run HTTP/1.1[0m" 500 -
 2025-02-23 17:38:18,931 INFO 127.0.0.1 - - [23/Feb/2025 17:38:18] "OPTIONS /run HTTP/1.1" 200 -
 2025-02-23 17:38:25,002 INFO 127.0.0.1 - - [23/Feb/2025 17:38:25] "[35m[1mPOST /run HTTP/1.1[0m" 500 -
-2025-02-23 17:42:17,724 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\update_config_modules_with_CFA.py', reloading
+2025-02-23 17:42:17,724 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\config_modules.py', reloading
 2025-02-23 17:42:17,807 INFO  * Restarting with stat
 2025-02-23 17:42:18,791 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 17:42:18,857 WARNING  * Debugger is active!
 2025-02-23 17:42:18,857 INFO  * Debugger PIN: 119-059-632
-2025-02-23 17:44:19,256 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\update_config_modules_with_CFA.py', reloading
+2025-02-23 17:44:19,256 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\config_modules.py', reloading
 2025-02-23 17:44:19,359 INFO  * Restarting with stat
 2025-02-23 17:44:20,173 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 17:44:20,219 WARNING  * Debugger is active!
 2025-02-23 17:44:20,225 INFO  * Debugger PIN: 119-059-632
-2025-02-23 17:45:29,773 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\update_config_modules_with_CFA.py', reloading
+2025-02-23 17:45:29,773 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\config_modules.py', reloading
 2025-02-23 17:45:29,886 INFO  * Restarting with stat
 2025-02-23 17:45:31,533 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 17:45:31,646 WARNING  * Debugger is active!
 2025-02-23 17:45:31,646 INFO  * Debugger PIN: 119-059-632
-2025-02-23 17:46:33,316 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\update_config_modules_with_CFA.py', reloading
+2025-02-23 17:46:33,316 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\config_modules.py', reloading
 2025-02-23 17:46:33,403 INFO  * Restarting with stat
 2025-02-23 17:46:34,960 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 17:46:35,014 WARNING  * Debugger is active!
 2025-02-23 17:46:35,020 INFO  * Debugger PIN: 119-059-632
-2025-02-23 17:47:31,184 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\update_config_modules_with_CFA.py', reloading
+2025-02-23 17:47:31,184 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\config_modules.py', reloading
 2025-02-23 17:47:31,262 INFO  * Restarting with stat
 2025-02-23 17:47:33,228 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 17:47:33,345 WARNING  * Debugger is active!
 2025-02-23 17:47:33,367 INFO  * Debugger PIN: 119-059-632
 2025-02-23 17:47:47,324 INFO 127.0.0.1 - - [23/Feb/2025 17:47:47] "OPTIONS /run HTTP/1.1" 200 -
 2025-02-23 17:47:56,350 INFO 127.0.0.1 - - [23/Feb/2025 17:47:56] "[35m[1mPOST /run HTTP/1.1[0m" 500 -
-2025-02-23 17:50:03,678 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 17:50:03,678 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\CFA.py', reloading
 2025-02-23 17:50:03,734 INFO  * Restarting with stat
 2025-02-23 17:50:04,206 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 17:50:04,222 WARNING  * Debugger is active!
@@ -132,17 +132,17 @@
 2025-02-23 18:00:24,681 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 18:00:24,743 WARNING  * Debugger is active!
 2025-02-23 18:00:24,749 INFO  * Debugger PIN: 119-059-632
-2025-02-23 18:03:53,156 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 18:03:53,156 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\CFA.py', reloading
 2025-02-23 18:03:53,251 INFO  * Restarting with stat
 2025-02-23 18:03:53,839 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 18:03:53,942 WARNING  * Debugger is active!
 2025-02-23 18:03:53,949 INFO  * Debugger PIN: 119-059-632
-2025-02-23 18:07:00,772 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 18:07:00,772 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\CFA.py', reloading
 2025-02-23 18:07:00,821 INFO  * Restarting with stat
 2025-02-23 18:07:01,197 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 18:07:01,224 WARNING  * Debugger is active!
 2025-02-23 18:07:01,230 INFO  * Debugger PIN: 119-059-632
-2025-02-23 18:08:17,730 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\update_config_modules_with_CFA_8.py', reloading
+2025-02-23 18:08:17,730 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\config_modules_8.py', reloading
 2025-02-23 18:08:17,763 INFO  * Restarting with stat
 2025-02-23 18:08:18,166 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 18:08:18,192 WARNING  * Debugger is active!
@@ -155,12 +155,12 @@
 2025-02-23 18:11:28,058 INFO 127.0.0.1 - - [23/Feb/2025 18:11:28] "[35m[1mPOST /run HTTP/1.1[0m" 500 -
 2025-02-23 18:11:35,199 INFO 127.0.0.1 - - [23/Feb/2025 18:11:35] "OPTIONS /run HTTP/1.1" 200 -
 2025-02-23 18:11:40,310 INFO 127.0.0.1 - - [23/Feb/2025 18:11:40] "[35m[1mPOST /run HTTP/1.1[0m" 500 -
-2025-02-23 18:18:02,913 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 18:18:02,913 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\CFA.py', reloading
 2025-02-23 18:18:02,981 INFO  * Restarting with stat
 2025-02-23 18:18:03,598 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 18:18:03,629 WARNING  * Debugger is active!
 2025-02-23 18:18:03,635 INFO  * Debugger PIN: 119-059-632
-2025-02-23 18:19:28,056 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 18:19:28,056 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\CFA.py', reloading
 2025-02-23 18:19:28,121 INFO  * Restarting with stat
 2025-02-23 18:19:29,150 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 18:19:29,216 WARNING  * Debugger is active!
@@ -183,274 +183,274 @@
 2025-02-23 22:11:14,184 INFO  * Debugger PIN: 119-059-632
 2025-02-23 22:11:31,796 INFO 127.0.0.1 - - [23/Feb/2025 22:11:31] "OPTIONS /run HTTP/1.1" 200 -
 2025-02-23 22:11:38,210 INFO 127.0.0.1 - - [23/Feb/2025 22:11:38] "[35m[1mPOST /run HTTP/1.1[0m" 500 -
-2025-02-23 22:24:31,956 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 22:24:31,956 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\CFA.py', reloading
 2025-02-23 22:24:32,005 INFO  * Restarting with stat
 2025-02-23 22:24:32,508 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 22:24:32,534 WARNING  * Debugger is active!
 2025-02-23 22:24:32,538 INFO  * Debugger PIN: 119-059-632
-2025-02-23 22:26:15,384 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\update_config_modules_with_CFA_8.py', reloading
+2025-02-23 22:26:15,384 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\config_modules_8.py', reloading
 2025-02-23 22:26:15,464 INFO  * Restarting with stat
 2025-02-23 22:26:16,609 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 22:26:16,647 WARNING  * Debugger is active!
 2025-02-23 22:26:16,653 INFO  * Debugger PIN: 119-059-632
-2025-02-23 22:27:04,697 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\update_config_modules_with_CFA_8.py', reloading
+2025-02-23 22:27:04,697 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\config_modules_8.py', reloading
 2025-02-23 22:27:04,759 INFO  * Restarting with stat
 2025-02-23 22:27:05,191 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 22:27:05,226 WARNING  * Debugger is active!
 2025-02-23 22:27:05,226 INFO  * Debugger PIN: 119-059-632
-2025-02-23 22:28:47,610 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 22:28:47,610 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\CFA.py', reloading
 2025-02-23 22:28:47,700 INFO  * Restarting with stat
 2025-02-23 22:28:48,290 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 22:28:48,326 WARNING  * Debugger is active!
 2025-02-23 22:28:48,331 INFO  * Debugger PIN: 119-059-632
-2025-02-23 22:29:08,858 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 22:29:08,858 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\CFA.py', reloading
 2025-02-23 22:29:08,894 INFO  * Restarting with stat
 2025-02-23 22:29:09,260 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 22:29:09,294 WARNING  * Debugger is active!
 2025-02-23 22:29:09,294 INFO  * Debugger PIN: 119-059-632
-2025-02-23 22:29:16,215 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 22:29:16,215 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\CFA.py', reloading
 2025-02-23 22:29:16,268 INFO  * Restarting with stat
 2025-02-23 22:29:16,699 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 22:29:16,725 WARNING  * Debugger is active!
 2025-02-23 22:29:16,725 INFO  * Debugger PIN: 119-059-632
-2025-02-23 22:30:20,995 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\update_config_modules_with_CFA_8.py', reloading
+2025-02-23 22:30:20,995 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\config_modules_8.py', reloading
 2025-02-23 22:30:21,177 INFO  * Restarting with stat
 2025-02-23 22:30:25,926 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 22:30:26,018 WARNING  * Debugger is active!
 2025-02-23 22:30:26,024 INFO  * Debugger PIN: 119-059-632
-2025-02-23 22:31:05,055 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\update_config_modules_with_CFA_8.py', reloading
+2025-02-23 22:31:05,055 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\config_modules_8.py', reloading
 2025-02-23 22:31:05,127 INFO  * Restarting with stat
 2025-02-23 22:31:05,715 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 22:31:05,747 WARNING  * Debugger is active!
 2025-02-23 22:31:05,747 INFO  * Debugger PIN: 119-059-632
-2025-02-23 22:32:02,761 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\update_config_modules_with_CFA_8.py', reloading
+2025-02-23 22:32:02,761 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\config_modules_8.py', reloading
 2025-02-23 22:32:02,821 INFO  * Restarting with stat
 2025-02-23 22:32:03,354 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 22:32:03,383 WARNING  * Debugger is active!
 2025-02-23 22:32:03,383 INFO  * Debugger PIN: 119-059-632
-2025-02-23 22:32:33,667 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\update_config_modules_with_CFA_8.py', reloading
+2025-02-23 22:32:33,667 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\config_modules_8.py', reloading
 2025-02-23 22:32:33,750 INFO  * Restarting with stat
 2025-02-23 22:32:34,271 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 22:32:34,303 WARNING  * Debugger is active!
 2025-02-23 22:32:34,303 INFO  * Debugger PIN: 119-059-632
-2025-02-23 22:32:40,950 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\update_config_modules_with_CFA_8.py', reloading
+2025-02-23 22:32:40,950 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\config_modules_8.py', reloading
 2025-02-23 22:32:41,002 INFO  * Restarting with stat
 2025-02-23 22:32:41,623 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 22:32:41,657 WARNING  * Debugger is active!
 2025-02-23 22:32:41,662 INFO  * Debugger PIN: 119-059-632
-2025-02-23 22:34:00,938 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 22:34:00,938 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\CFA.py', reloading
 2025-02-23 22:34:00,984 INFO  * Restarting with stat
 2025-02-23 22:34:01,551 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 22:34:01,599 WARNING  * Debugger is active!
 2025-02-23 22:34:01,603 INFO  * Debugger PIN: 119-059-632
-2025-02-23 22:34:13,975 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 22:34:13,975 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\CFA.py', reloading
 2025-02-23 22:34:14,039 INFO  * Restarting with stat
 2025-02-23 22:34:14,495 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 22:34:14,520 WARNING  * Debugger is active!
 2025-02-23 22:34:14,521 INFO  * Debugger PIN: 119-059-632
-2025-02-23 22:35:42,286 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 22:35:42,286 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\CFA.py', reloading
 2025-02-23 22:35:42,354 INFO  * Restarting with stat
 2025-02-23 22:35:43,490 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 22:35:43,635 WARNING  * Debugger is active!
 2025-02-23 22:35:43,635 INFO  * Debugger PIN: 119-059-632
-2025-02-23 22:37:16,426 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\update_config_modules_with_CFA_8.py', reloading
+2025-02-23 22:37:16,426 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\config_modules_8.py', reloading
 2025-02-23 22:37:16,491 INFO  * Restarting with stat
 2025-02-23 22:37:16,975 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 22:37:17,019 WARNING  * Debugger is active!
 2025-02-23 22:37:17,025 INFO  * Debugger PIN: 119-059-632
-2025-02-23 22:43:00,206 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 22:43:00,206 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\CFA.py', reloading
 2025-02-23 22:43:00,237 INFO  * Restarting with stat
 2025-02-23 22:43:00,708 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 22:43:00,740 WARNING  * Debugger is active!
 2025-02-23 22:43:00,744 INFO  * Debugger PIN: 119-059-632
-2025-02-23 22:43:17,316 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\update_config_modules_with_CFA_8.py', reloading
+2025-02-23 22:43:17,316 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\config_modules_8.py', reloading
 2025-02-23 22:43:17,378 INFO  * Restarting with stat
 2025-02-23 22:43:17,946 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 22:43:17,959 WARNING  * Debugger is active!
 2025-02-23 22:43:17,975 INFO  * Debugger PIN: 119-059-632
 2025-02-23 22:44:24,459 INFO 127.0.0.1 - - [23/Feb/2025 22:44:24] "OPTIONS /run HTTP/1.1" 200 -
 2025-02-23 22:44:30,362 INFO 127.0.0.1 - - [23/Feb/2025 22:44:30] "[35m[1mPOST /run HTTP/1.1[0m" 500 -
-2025-02-23 22:45:14,617 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\update_config_modules_with_CFA_8.py', reloading
+2025-02-23 22:45:14,617 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\config_modules_8.py', reloading
 2025-02-23 22:45:14,673 INFO  * Restarting with stat
 2025-02-23 22:45:15,148 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 22:45:15,176 WARNING  * Debugger is active!
 2025-02-23 22:45:15,180 INFO  * Debugger PIN: 119-059-632
-2025-02-23 22:46:43,896 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 22:46:43,896 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\CFA.py', reloading
 2025-02-23 22:46:43,960 INFO  * Restarting with stat
 2025-02-23 22:46:44,458 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 22:46:44,490 WARNING  * Debugger is active!
 2025-02-23 22:46:44,496 INFO  * Debugger PIN: 119-059-632
-2025-02-23 22:54:43,302 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 22:54:43,302 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\CFA.py', reloading
 2025-02-23 22:54:43,439 INFO  * Restarting with stat
 2025-02-23 22:54:45,401 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 22:54:45,439 WARNING  * Debugger is active!
 2025-02-23 22:54:45,445 INFO  * Debugger PIN: 119-059-632
-2025-02-23 22:55:03,007 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 22:55:03,007 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\CFA.py', reloading
 2025-02-23 22:55:03,097 INFO  * Restarting with stat
 2025-02-23 22:55:03,996 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 22:55:04,046 WARNING  * Debugger is active!
 2025-02-23 22:55:04,053 INFO  * Debugger PIN: 119-059-632
-2025-02-23 22:55:09,463 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 22:55:09,463 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\CFA.py', reloading
 2025-02-23 22:55:09,578 INFO  * Restarting with stat
 2025-02-23 22:55:10,195 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 22:55:10,233 WARNING  * Debugger is active!
 2025-02-23 22:55:10,239 INFO  * Debugger PIN: 119-059-632
-2025-02-23 22:55:18,881 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 22:55:18,881 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\CFA.py', reloading
 2025-02-23 22:55:18,926 INFO  * Restarting with stat
 2025-02-23 22:55:19,387 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 22:55:19,414 WARNING  * Debugger is active!
 2025-02-23 22:55:19,419 INFO  * Debugger PIN: 119-059-632
-2025-02-23 22:55:27,590 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 22:55:27,590 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\CFA.py', reloading
 2025-02-23 22:55:27,644 INFO  * Restarting with stat
 2025-02-23 22:55:28,154 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 22:55:28,187 WARNING  * Debugger is active!
 2025-02-23 22:55:28,192 INFO  * Debugger PIN: 119-059-632
-2025-02-23 22:55:51,285 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 22:55:51,285 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\CFA.py', reloading
 2025-02-23 22:55:51,334 INFO  * Restarting with stat
 2025-02-23 22:55:51,712 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 22:55:51,737 WARNING  * Debugger is active!
 2025-02-23 22:55:51,741 INFO  * Debugger PIN: 119-059-632
-2025-02-23 22:58:15,862 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 22:58:15,862 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\CFA.py', reloading
 2025-02-23 22:58:15,928 INFO  * Restarting with stat
 2025-02-23 22:58:16,417 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 22:58:16,441 WARNING  * Debugger is active!
 2025-02-23 22:58:16,444 INFO  * Debugger PIN: 119-059-632
-2025-02-23 22:58:54,871 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 22:58:54,871 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\CFA.py', reloading
 2025-02-23 22:58:54,930 INFO  * Restarting with stat
 2025-02-23 22:58:55,478 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 22:58:55,509 WARNING  * Debugger is active!
 2025-02-23 22:58:55,515 INFO  * Debugger PIN: 119-059-632
-2025-02-23 22:59:27,792 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 22:59:27,792 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\CFA.py', reloading
 2025-02-23 22:59:27,867 INFO  * Restarting with stat
 2025-02-23 22:59:28,600 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 22:59:28,640 WARNING  * Debugger is active!
 2025-02-23 22:59:28,646 INFO  * Debugger PIN: 119-059-632
-2025-02-23 22:59:41,432 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 22:59:41,432 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\CFA.py', reloading
 2025-02-23 22:59:41,475 INFO  * Restarting with stat
 2025-02-23 22:59:41,923 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 22:59:41,965 WARNING  * Debugger is active!
 2025-02-23 22:59:41,971 INFO  * Debugger PIN: 119-059-632
-2025-02-23 23:00:04,034 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 23:00:04,034 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\CFA.py', reloading
 2025-02-23 23:00:04,134 INFO  * Restarting with stat
 2025-02-23 23:00:04,741 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 23:00:04,771 WARNING  * Debugger is active!
 2025-02-23 23:00:04,776 INFO  * Debugger PIN: 119-059-632
-2025-02-23 23:00:40,527 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 23:00:40,527 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\CFA.py', reloading
 2025-02-23 23:00:40,574 INFO  * Restarting with stat
 2025-02-23 23:00:41,021 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 23:00:41,044 WARNING  * Debugger is active!
 2025-02-23 23:00:41,051 INFO  * Debugger PIN: 119-059-632
-2025-02-23 23:01:44,370 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 23:01:44,370 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\CFA.py', reloading
 2025-02-23 23:01:44,439 INFO  * Restarting with stat
 2025-02-23 23:01:45,485 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 23:01:45,527 WARNING  * Debugger is active!
 2025-02-23 23:01:45,533 INFO  * Debugger PIN: 119-059-632
-2025-02-23 23:02:11,181 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 23:02:11,181 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\CFA.py', reloading
 2025-02-23 23:02:11,221 INFO  * Restarting with stat
 2025-02-23 23:02:11,571 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 23:02:11,594 WARNING  * Debugger is active!
 2025-02-23 23:02:11,597 INFO  * Debugger PIN: 119-059-632
-2025-02-23 23:02:32,060 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 23:02:32,060 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\CFA.py', reloading
 2025-02-23 23:02:32,100 INFO  * Restarting with stat
 2025-02-23 23:02:32,480 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 23:02:32,506 WARNING  * Debugger is active!
 2025-02-23 23:02:32,509 INFO  * Debugger PIN: 119-059-632
-2025-02-23 23:02:55,127 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 23:02:55,127 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\CFA.py', reloading
 2025-02-23 23:02:55,205 INFO  * Restarting with stat
 2025-02-23 23:02:55,712 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 23:02:55,736 WARNING  * Debugger is active!
 2025-02-23 23:02:55,739 INFO  * Debugger PIN: 119-059-632
-2025-02-23 23:03:13,423 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 23:03:13,423 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\CFA.py', reloading
 2025-02-23 23:03:13,467 INFO  * Restarting with stat
 2025-02-23 23:03:13,868 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 23:03:13,892 WARNING  * Debugger is active!
 2025-02-23 23:03:13,896 INFO  * Debugger PIN: 119-059-632
-2025-02-23 23:03:30,552 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 23:03:30,552 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\CFA.py', reloading
 2025-02-23 23:03:30,593 INFO  * Restarting with stat
 2025-02-23 23:03:30,980 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 23:03:31,006 WARNING  * Debugger is active!
 2025-02-23 23:03:31,010 INFO  * Debugger PIN: 119-059-632
-2025-02-23 23:03:44,928 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 23:03:44,928 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\CFA.py', reloading
 2025-02-23 23:03:44,973 INFO  * Restarting with stat
 2025-02-23 23:03:45,382 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 23:03:45,407 WARNING  * Debugger is active!
 2025-02-23 23:03:45,410 INFO  * Debugger PIN: 119-059-632
-2025-02-23 23:04:01,880 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 23:04:01,880 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\CFA.py', reloading
 2025-02-23 23:04:01,920 INFO  * Restarting with stat
 2025-02-23 23:04:02,305 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 23:04:02,328 WARNING  * Debugger is active!
 2025-02-23 23:04:02,332 INFO  * Debugger PIN: 119-059-632
-2025-02-23 23:04:15,955 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 23:04:15,955 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\CFA.py', reloading
 2025-02-23 23:04:16,001 INFO  * Restarting with stat
 2025-02-23 23:04:16,395 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 23:04:16,419 WARNING  * Debugger is active!
 2025-02-23 23:04:16,423 INFO  * Debugger PIN: 119-059-632
-2025-02-23 23:04:33,579 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 23:04:33,579 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\CFA.py', reloading
 2025-02-23 23:04:33,620 INFO  * Restarting with stat
 2025-02-23 23:04:34,008 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 23:04:34,031 WARNING  * Debugger is active!
 2025-02-23 23:04:34,035 INFO  * Debugger PIN: 119-059-632
-2025-02-23 23:04:51,122 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 23:04:51,122 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\CFA.py', reloading
 2025-02-23 23:04:51,165 INFO  * Restarting with stat
 2025-02-23 23:04:51,565 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 23:04:51,589 WARNING  * Debugger is active!
 2025-02-23 23:04:51,593 INFO  * Debugger PIN: 119-059-632
-2025-02-23 23:05:05,982 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 23:05:05,982 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\CFA.py', reloading
 2025-02-23 23:05:06,023 INFO  * Restarting with stat
 2025-02-23 23:05:06,433 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 23:05:06,452 WARNING  * Debugger is active!
 2025-02-23 23:05:06,452 INFO  * Debugger PIN: 119-059-632
-2025-02-23 23:05:23,939 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 23:05:23,939 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\CFA.py', reloading
 2025-02-23 23:05:23,993 INFO  * Restarting with stat
 2025-02-23 23:05:24,407 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 23:05:24,432 WARNING  * Debugger is active!
 2025-02-23 23:05:24,436 INFO  * Debugger PIN: 119-059-632
-2025-02-23 23:05:38,965 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 23:05:38,965 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\CFA.py', reloading
 2025-02-23 23:05:39,006 INFO  * Restarting with stat
 2025-02-23 23:05:39,379 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 23:05:39,406 WARNING  * Debugger is active!
 2025-02-23 23:05:39,409 INFO  * Debugger PIN: 119-059-632
-2025-02-23 23:06:15,272 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 23:06:15,272 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\CFA.py', reloading
 2025-02-23 23:06:15,314 INFO  * Restarting with stat
 2025-02-23 23:06:15,695 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 23:06:15,716 WARNING  * Debugger is active!
 2025-02-23 23:06:15,716 INFO  * Debugger PIN: 119-059-632
-2025-02-23 23:06:32,845 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 23:06:32,845 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\CFA.py', reloading
 2025-02-23 23:06:32,905 INFO  * Restarting with stat
 2025-02-23 23:06:33,323 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 23:06:33,338 WARNING  * Debugger is active!
 2025-02-23 23:06:33,356 INFO  * Debugger PIN: 119-059-632
-2025-02-23 23:06:50,127 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 23:06:50,127 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\CFA.py', reloading
 2025-02-23 23:06:50,169 INFO  * Restarting with stat
 2025-02-23 23:06:50,557 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 23:06:50,573 WARNING  * Debugger is active!
 2025-02-23 23:06:50,573 INFO  * Debugger PIN: 119-059-632
-2025-02-23 23:07:04,749 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 23:07:04,749 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\CFA.py', reloading
 2025-02-23 23:07:04,795 INFO  * Restarting with stat
 2025-02-23 23:07:05,183 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 23:07:05,207 WARNING  * Debugger is active!
 2025-02-23 23:07:05,211 INFO  * Debugger PIN: 119-059-632
-2025-02-23 23:07:28,129 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 23:07:28,129 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\CFA.py', reloading
 2025-02-23 23:07:28,222 INFO  * Restarting with stat
 2025-02-23 23:07:28,672 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 23:07:28,702 WARNING  * Debugger is active!
 2025-02-23 23:07:28,702 INFO  * Debugger PIN: 119-059-632
-2025-02-23 23:08:05,070 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 23:08:05,070 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\CFA.py', reloading
 2025-02-23 23:08:05,137 INFO  * Restarting with stat
 2025-02-23 23:08:05,599 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 23:08:05,628 WARNING  * Debugger is active!
 2025-02-23 23:08:05,628 INFO  * Debugger PIN: 119-059-632
-2025-02-23 23:09:05,149 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 23:09:05,149 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\CFA.py', reloading
 2025-02-23 23:09:05,189 INFO  * Restarting with stat
 2025-02-23 23:09:05,550 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 23:09:05,582 WARNING  * Debugger is active!
 2025-02-23 23:09:05,582 INFO  * Debugger PIN: 119-059-632
-2025-02-23 23:09:50,626 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 23:09:50,626 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\CFA.py', reloading
 2025-02-23 23:09:50,677 INFO  * Restarting with stat
 2025-02-23 23:09:51,102 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-23 23:09:51,135 WARNING  * Debugger is active!
 2025-02-23 23:09:51,136 INFO  * Debugger PIN: 119-059-632
-2025-02-23 23:10:31,776 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\update_config_modules_with_CFA_7.py', reloading
+2025-02-23 23:10:31,776 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\CFA.py', reloading
 2025-02-23 23:10:31,802 INFO  * Restarting with stat
 2025-02-23 23:10:32,218 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-24 07:05:39,457 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log

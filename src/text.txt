@@ -14,17 +14,13 @@ git rev-parse HEAD  # Should show current
 
 git remote -v  # Should show https://github.com/Mohsendirbaz/SF.git
 
-git checkout -b SF.R24
+git checkout -b SF.R25
 
 git add .
 
-git commit -m "Run cfa and generate PNG restored, generate dynamic plots and their respective tabs restored"
+git commit -m "Casino Gate"
 
-git push origin SF.R24
-
-
-
-
+git push origin SF.R25
 
 
 # Remove existing temp directory (already done)
@@ -45,15 +41,13 @@ rm -rf temp_SF
 
 Configuration_management:     version = sys.argv[1] if len(sys.argv) > 1 else 1
 
-
-
     version = sys.argv[1] if len(sys.argv) > 1 else 1
     selected_v = json.loads(sys.argv[2]) if len(sys.argv) > 2 else {"V1": "off", "V2": "off", "V3": "off", "V4": "off", "V5": "off", "V6": "off", "V7": "off", "V8": "off", "V9": "off", "V10": "off"}
     selected_f = json.loads(sys.argv[3]) if len(sys.argv) > 3 else {"F1": "off", "F2": "off", "F3": "off", "F4": "off", "F5": "off"}
     target_row = int(sys.argv[4]) if len(sys.argv) > 4 else 10
     selected_calculation_option = sys.argv[5] if len(sys.argv) > 5 else 'calculateforprice'  # Default to calculateforprice
 
-python update_config_modules_with_CFA_7.py "1" '{"V1": "off", "V2": "off", "V3": "off", "V4": "off", "V5": "off", "V6": "off", "V7": "off", "V8": "off", "V9": "off", "V10": "off"}' '{"F1": "off", "F2": "off", "F3": "off", "F4": "off", "F5": "off"}' "10" "calculateforprice"
+python CFA.py "1" '{"V1": "off", "V2": "off", "V3": "off", "V4": "off", "V5": "off", "V6": "off", "V7": "off", "V8": "off", "V9": "off", "V10": "off"}' '{"F1": "off", "F2": "off", "F3": "off", "F4": "off", "F5": "off"}' "10" "calculateforprice"
 
 
 
