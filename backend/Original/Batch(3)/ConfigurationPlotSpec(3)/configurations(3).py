@@ -51,5 +51,5 @@ variable_costsAmount4=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 amounts_per_unitAmount5=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
 filtered_values_json=[
-   '{"filteredValue":{"id":"iRRAmount30","value":"0.9369","start":"20","end":"20","remarks":"2023"}}',
+   '{"filteredValue":{"id":"laborAmount35","value":"28800","start":"8","end":"20","remarks":""}}',
 ]

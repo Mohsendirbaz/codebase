@@ -345,3 +345,460 @@ C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Visualization_generato
 2025-02-28 13:44:13 [INFO] Album organization completed successfully
 2025-02-28 13:44:13 [INFO] Album organization completed
 2025-02-28 13:44:13 [INFO] 127.0.0.1 - - [28/Feb/2025 13:44:13] "[35m[1mPOST /generate_png_plots HTTP/1.1[0m" 204 -
+2025-02-28 14:25:25 [INFO] Initialized logging in C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\PNG.log
+2025-02-28 14:25:25 [INFO] Backend directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend
+2025-02-28 14:25:25 [INFO] Script directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Visualization_generators
+2025-02-28 14:25:25 [INFO] Starting PNG visualization server on port 5008
+2025-02-28 14:25:25 [INFO] Serving images from: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original
+2025-02-28 14:25:25 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5008
+2025-02-28 14:25:25 [INFO] [33mPress CTRL+C to quit[0m
+2025-02-28 14:29:07 [INFO] 127.0.0.1 - - [28/Feb/2025 14:29:07] "OPTIONS /generate_png_plots HTTP/1.1" 200 -
+2025-02-28 14:29:07 [INFO] New visualization request received at 2025-02-28 14:29:07.778335
+2025-02-28 14:29:07 [INFO] Received sensitivity parameters: {}
+2025-02-28 14:29:07 [INFO] Selected versions: [6]
+2025-02-28 14:29:07 [INFO] -------------------------------------------------------------
+2025-02-28 14:29:07 [INFO] Row   | Property                                             
+2025-02-28 14:29:07 [INFO] -------------------------------------------------------------
+2025-02-28 14:29:07 [INFO] 1     | initialSellingPriceAmount13                          
+2025-02-28 14:29:07 [INFO] 2     | totalOperatingCostPercentageAmount14                 
+2025-02-28 14:29:07 [INFO] 3     | engineering_Procurement_and_Construction_EPC_Amount15
+2025-02-28 14:29:07 [INFO] 4     | process_contingency_PC_Amount16                      
+2025-02-28 14:29:07 [INFO] -------------------------------------------------------------
+2025-02-28 14:29:07 [INFO] Remarks state: on
+2025-02-28 14:29:07 [INFO] Customized features state: on
+2025-02-28 14:29:07 [INFO] No sensitivity parameters provided
+2025-02-28 14:29:07 [INFO] Executing script: PNG_PLOT.py
+2025-02-28 14:29:07 [INFO] Command arguments: ['C:\\Program Files\\Python312\\python.exe', 'PNG_PLOT.py', '6', 'initialSellingPriceAmount13,totalOperatingCostPercentageAmount14,engineering_Procurement_and_Construction_EPC_Amount15,process_contingency_PC_Amount16', 'on', 'on', '{}']
+2025-02-28 14:29:07 [INFO] Created directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)
+2025-02-28 14:29:07 [INFO] Created directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)
+2025-02-28 14:29:07 [INFO] Created directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\ConfigurationPlotSpec(6)
+INFO:root:Script started.
+INFO:root:Ensured base directory exists at C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original
+INFO:root:Ensured aggregated data directory exists at C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\aggregated_data
+INFO:root:Selected versions: [6]
+INFO:root:Selected properties: ['initialSellingPriceAmount13', 'totalOperatingCostPercentageAmount14', 'engineering_Procurement_and_Construction_EPC_Amount15', 'process_contingency_PC_Amount16']
+INFO:root:Include baseline remarks: on
+INFO:root:Include customized features: on
+INFO:root:Ensured Batch folder exists for version 6
+INFO:root:Ensured Results folder exists for version 6
+INFO:root:Ensured ConfigurationPlotSpec directory exists for version 6
+INFO:root:legend_cluster_version_stat {1: {'version': 6, 'custom_count': 45}}
+INFO:root:Created version-specific plot directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\6_AnnotatedStaticPlots
+INFO:__main__:Version-specific legend: ['Version 6', 'General Inflation Rate: 0.02, [1-1], Remarks: 2004', 'General Inflation Rate: 0.0424, [2-2], Remarks: 2005', 'General Inflation Rate: 0.0664, [3-3], Remarks: 2006', 'General Inflation Rate: 0.0915, [4-4], Remarks: 2007', 'General Inflation Rate: 0.1323, [5-5], Remarks: 2008', 'General Inflation Rate: 0.1426, [6-6], Remarks: 2009', 'General Inflation Rate: 0.1662, [7-7], Remarks: 2010', 'General Inflation Rate: 0.198, [8-8], Remarks: 2011', 'General Inflation Rate: 0.2246, [9-9], Remarks: 2012', 'General Inflation Rate: 0.24, [10-10], Remarks: 2013', 'General Inflation Rate: 0.2424, [11-11], Remarks: 2014', 'General Inflation Rate: 0.2424, [12-12], Remarks: 2015', 'General Inflation Rate: 0.2451, [13-13], Remarks: 2016', 'General Inflation Rate: 0.2668, [14-14], Remarks: 2017', 'General Inflation Rate: 0.2881, [15-15], Remarks: 2018', 'General Inflation Rate: 0.3032, [16-16], Remarks: 2019', 'General Inflation Rate: 0.3104, [17-17], Remarks: 2020', 'General Inflation Rate: 0.3382, [18-18], Remarks: 2021', 'General Inflation Rate: 0.4415, [19-19], Remarks: 2022', 'General Inflation Rate: 0.5035, [20-20], Remarks: 2023', 'Internal Rate of Return: 0.02, [1-1], Remarks: 2004', 'Internal Rate of Return: 0.0404, [2-2], Remarks: 2005', 'Internal Rate of Return: 0.062, [3-3], Remarks: 2006', 'Internal Rate of Return: 0.0859, [4-4], Remarks: 2007', 'Internal Rate of Return: 0.1126, [5-5], Remarks: 2008', 'Internal Rate of Return: 0.1419, [6-6], Remarks: 2009', 'Internal Rate of Return: 0.1743, [7-7], Remarks: 2010', 'Internal Rate of Return: 0.2099, [8-8], Remarks: 2011', 'Internal Rate of Return: 0.2488, [9-9], Remarks: 2012', 'Internal Rate of Return: 0.2912, [10-10], Remarks: 2013', 'Internal Rate of Return: 0.3372, [11-11], Remarks: 2014', 'Internal Rate of Return: 0.3869, [12-12], Remarks: 2015', 'Internal Rate of Return: 0.4406, [13-13], Remarks: 2016', 'Internal Rate of Return: 0.4983, [14-14], Remarks: 2017', 'Internal Rate of Return: 0.5602, [15-15], Remarks: 2018', 'Internal Rate of Return: 0.6264, [16-16], Remarks: 2019', 'Internal Rate of Return: 0.697, [17-17], Remarks: 2020', 'Internal Rate of Return: 0.7722, [18-18], Remarks: 2021', 'Internal Rate of Return: 0.8521, [19-19], Remarks: 2022', 'Internal Rate of Return: 0.9369, [20-20], Remarks: 2023', 'Price: 2.8, [7-15], Remarks: a']
+INFO:__main__:Cumulative legend: [['Version 6', 'General Inflation Rate: 0.02, [1-1], Remarks: 2004', 'General Inflation Rate: 0.0424, [2-2], Remarks: 2005', 'General Inflation Rate: 0.0664, [3-3], Remarks: 2006', 'General Inflation Rate: 0.0915, [4-4], Remarks: 2007', 'General Inflation Rate: 0.1323, [5-5], Remarks: 2008', 'General Inflation Rate: 0.1426, [6-6], Remarks: 2009', 'General Inflation Rate: 0.1662, [7-7], Remarks: 2010', 'General Inflation Rate: 0.198, [8-8], Remarks: 2011', 'General Inflation Rate: 0.2246, [9-9], Remarks: 2012', 'General Inflation Rate: 0.24, [10-10], Remarks: 2013', 'General Inflation Rate: 0.2424, [11-11], Remarks: 2014', 'General Inflation Rate: 0.2424, [12-12], Remarks: 2015', 'General Inflation Rate: 0.2451, [13-13], Remarks: 2016', 'General Inflation Rate: 0.2668, [14-14], Remarks: 2017', 'General Inflation Rate: 0.2881, [15-15], Remarks: 2018', 'General Inflation Rate: 0.3032, [16-16], Remarks: 2019', 'General Inflation Rate: 0.3104, [17-17], Remarks: 2020', 'General Inflation Rate: 0.3382, [18-18], Remarks: 2021', 'General Inflation Rate: 0.4415, [19-19], Remarks: 2022', 'General Inflation Rate: 0.5035, [20-20], Remarks: 2023', 'Internal Rate of Return: 0.02, [1-1], Remarks: 2004', 'Internal Rate of Return: 0.0404, [2-2], Remarks: 2005', 'Internal Rate of Return: 0.062, [3-3], Remarks: 2006', 'Internal Rate of Return: 0.0859, [4-4], Remarks: 2007', 'Internal Rate of Return: 0.1126, [5-5], Remarks: 2008', 'Internal Rate of Return: 0.1419, [6-6], Remarks: 2009', 'Internal Rate of Return: 0.1743, [7-7], Remarks: 2010', 'Internal Rate of Return: 0.2099, [8-8], Remarks: 2011', 'Internal Rate of Return: 0.2488, [9-9], Remarks: 2012', 'Internal Rate of Return: 0.2912, [10-10], Remarks: 2013', 'Internal Rate of Return: 0.3372, [11-11], Remarks: 2014', 'Internal Rate of Return: 0.3869, [12-12], Remarks: 2015', 'Internal Rate of Return: 0.4406, [13-13], Remarks: 2016', 'Internal Rate of Return: 0.4983, [14-14], Remarks: 2017', 'Internal Rate of Return: 0.5602, [15-15], Remarks: 2018', 'Internal Rate of Return: 0.6264, [16-16], Remarks: 2019', 'Internal Rate of Return: 0.697, [17-17], Remarks: 2020', 'Internal Rate of Return: 0.7722, [18-18], Remarks: 2021', 'Internal Rate of Return: 0.8521, [19-19], Remarks: 2022', 'Internal Rate of Return: 0.9369, [20-20], Remarks: 2023', 'Price: 2.8, [7-15], Remarks: a']]
+INFO:root:Using directory for version 6: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\6_AnnotatedStaticPlots
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\6_AnnotatedStaticPlots/aggregated_annual_cash_flow_net_6.png
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\6_AnnotatedStaticPlots/aggregated_revenue_6.png
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\6_AnnotatedStaticPlots/aggregated_operating_expenses_6.png
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\6_AnnotatedStaticPlots/aggregated_depreciation_6.png
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\6_AnnotatedStaticPlots/aggregated_state_taxes_6.png
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\6_AnnotatedStaticPlots/aggregated_federal_taxes_6.png
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\6_AnnotatedStaticPlots/aggregated_cumulative_cash_flow_6.png
+INFO:root:All data and legend information saved for R script.
+INFO:root:All plots completed successfully.
+2025-02-28 14:29:19 [INFO] Script output: All plots completed successfully.
+
+2025-02-28 14:29:19 [WARNING] Script stderr: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Visualization_generators\PNG_PLOT.py:642: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all Axes decorations.
+  plt.tight_layout(rect=[0, 0, 1, 1])
+C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Visualization_generators\PNG_PLOT.py:642: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all Axes decorations.
+  plt.tight_layout(rect=[0, 0, 1, 1])
+C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Visualization_generators\PNG_PLOT.py:642: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all Axes decorations.
+  plt.tight_layout(rect=[0, 0, 1, 1])
+C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Visualization_generators\PNG_PLOT.py:642: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all Axes decorations.
+  plt.tight_layout(rect=[0, 0, 1, 1])
+C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Visualization_generators\PNG_PLOT.py:642: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all Axes decorations.
+  plt.tight_layout(rect=[0, 0, 1, 1])
+C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Visualization_generators\PNG_PLOT.py:642: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all Axes decorations.
+  plt.tight_layout(rect=[0, 0, 1, 1])
+C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Visualization_generators\PNG_PLOT.py:642: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all Axes decorations.
+  plt.tight_layout(rect=[0, 0, 1, 1])
+
+2025-02-28 14:29:19 [INFO] Request completed successfully in 0:00:11.970481
+2025-02-28 14:29:19 [INFO] Scanning for version directories in C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original
+2025-02-28 14:29:19 [WARNING] Results directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(0)\Results(0)
+2025-02-28 14:29:19 [INFO] No plot directories found for version 1
+2025-02-28 14:29:19 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\2_PlotType_annual_cash_flow_net
+2025-02-28 14:29:19 [INFO] Copied aggregated_annual_cash_flow_net_2.png to album 2_PlotType_annual_cash_flow_net
+2025-02-28 14:29:19 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\2_PlotType_cumulative_cash_flow
+2025-02-28 14:29:19 [INFO] Copied aggregated_cumulative_cash_flow_2.png to album 2_PlotType_cumulative_cash_flow
+2025-02-28 14:29:19 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\2_PlotType_depreciation
+2025-02-28 14:29:19 [INFO] Copied aggregated_depreciation_2.png to album 2_PlotType_depreciation
+2025-02-28 14:29:19 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\2_PlotType_federal_taxes
+2025-02-28 14:29:19 [INFO] Copied aggregated_federal_taxes_2.png to album 2_PlotType_federal_taxes
+2025-02-28 14:29:19 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\2_PlotType_operating_expenses
+2025-02-28 14:29:19 [INFO] Copied aggregated_operating_expenses_2.png to album 2_PlotType_operating_expenses
+2025-02-28 14:29:19 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\2_PlotType_revenue
+2025-02-28 14:29:19 [INFO] Copied aggregated_revenue_2.png to album 2_PlotType_revenue
+2025-02-28 14:29:19 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\2_PlotType_state_taxes
+2025-02-28 14:29:19 [INFO] Copied aggregated_state_taxes_2.png to album 2_PlotType_state_taxes
+2025-02-28 14:29:19 [INFO] No plot directories found for version 3
+2025-02-28 14:29:19 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(4)\Results(4)\4_PlotType_annual_cash_flow_net
+2025-02-28 14:29:19 [INFO] Copied aggregated_annual_cash_flow_net_4.png to album 4_PlotType_annual_cash_flow_net
+2025-02-28 14:29:19 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(4)\Results(4)\4_PlotType_cumulative_cash_flow
+2025-02-28 14:29:19 [INFO] Copied aggregated_cumulative_cash_flow_4.png to album 4_PlotType_cumulative_cash_flow
+2025-02-28 14:29:19 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(4)\Results(4)\4_PlotType_depreciation
+2025-02-28 14:29:19 [INFO] Copied aggregated_depreciation_4.png to album 4_PlotType_depreciation
+2025-02-28 14:29:19 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(4)\Results(4)\4_PlotType_federal_taxes
+2025-02-28 14:29:19 [INFO] Copied aggregated_federal_taxes_4.png to album 4_PlotType_federal_taxes
+2025-02-28 14:29:19 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(4)\Results(4)\4_PlotType_operating_expenses
+2025-02-28 14:29:19 [INFO] Copied aggregated_operating_expenses_4.png to album 4_PlotType_operating_expenses
+2025-02-28 14:29:19 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(4)\Results(4)\4_PlotType_revenue
+2025-02-28 14:29:19 [INFO] Copied aggregated_revenue_4.png to album 4_PlotType_revenue
+2025-02-28 14:29:19 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(4)\Results(4)\4_PlotType_state_taxes
+2025-02-28 14:29:19 [INFO] Copied aggregated_state_taxes_4.png to album 4_PlotType_state_taxes
+2025-02-28 14:29:19 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(5)\Results(5)\5_PlotType_annual_cash_flow_net
+2025-02-28 14:29:19 [INFO] Copied aggregated_annual_cash_flow_net_5.png to album 5_PlotType_annual_cash_flow_net
+2025-02-28 14:29:19 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(5)\Results(5)\5_PlotType_cumulative_cash_flow
+2025-02-28 14:29:19 [INFO] Copied aggregated_cumulative_cash_flow_5.png to album 5_PlotType_cumulative_cash_flow
+2025-02-28 14:29:19 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(5)\Results(5)\5_PlotType_depreciation
+2025-02-28 14:29:19 [INFO] Copied aggregated_depreciation_5.png to album 5_PlotType_depreciation
+2025-02-28 14:29:19 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(5)\Results(5)\5_PlotType_federal_taxes
+2025-02-28 14:29:19 [INFO] Copied aggregated_federal_taxes_5.png to album 5_PlotType_federal_taxes
+2025-02-28 14:29:19 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(5)\Results(5)\5_PlotType_operating_expenses
+2025-02-28 14:29:19 [INFO] Copied aggregated_operating_expenses_5.png to album 5_PlotType_operating_expenses
+2025-02-28 14:29:19 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(5)\Results(5)\5_PlotType_revenue
+2025-02-28 14:29:19 [INFO] Copied aggregated_revenue_5.png to album 5_PlotType_revenue
+2025-02-28 14:29:19 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(5)\Results(5)\5_PlotType_state_taxes
+2025-02-28 14:29:19 [INFO] Copied aggregated_state_taxes_5.png to album 5_PlotType_state_taxes
+2025-02-28 14:29:19 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\6_PlotType_annual_cash_flow_net
+2025-02-28 14:29:19 [INFO] Copied aggregated_annual_cash_flow_net_6.png to album 6_PlotType_annual_cash_flow_net
+2025-02-28 14:29:19 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\6_PlotType_cumulative_cash_flow
+2025-02-28 14:29:19 [INFO] Copied aggregated_cumulative_cash_flow_6.png to album 6_PlotType_cumulative_cash_flow
+2025-02-28 14:29:19 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\6_PlotType_depreciation
+2025-02-28 14:29:19 [INFO] Copied aggregated_depreciation_6.png to album 6_PlotType_depreciation
+2025-02-28 14:29:19 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\6_PlotType_federal_taxes
+2025-02-28 14:29:19 [INFO] Copied aggregated_federal_taxes_6.png to album 6_PlotType_federal_taxes
+2025-02-28 14:29:19 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\6_PlotType_operating_expenses
+2025-02-28 14:29:19 [INFO] Copied aggregated_operating_expenses_6.png to album 6_PlotType_operating_expenses
+2025-02-28 14:29:19 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\6_PlotType_revenue
+2025-02-28 14:29:19 [INFO] Copied aggregated_revenue_6.png to album 6_PlotType_revenue
+2025-02-28 14:29:19 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\6_PlotType_state_taxes
+2025-02-28 14:29:19 [INFO] Copied aggregated_state_taxes_6.png to album 6_PlotType_state_taxes
+2025-02-28 14:29:19 [INFO] Album organization completed successfully
+2025-02-28 14:29:19 [INFO] Album organization completed
+2025-02-28 14:29:19 [INFO] 127.0.0.1 - - [28/Feb/2025 14:29:19] "[35m[1mPOST /generate_png_plots HTTP/1.1[0m" 204 -
+2025-02-28 14:30:09 [INFO] 127.0.0.1 - - [28/Feb/2025 14:30:09] "OPTIONS /generate_png_plots HTTP/1.1" 200 -
+2025-02-28 14:30:09 [INFO] New visualization request received at 2025-02-28 14:30:09.351220
+2025-02-28 14:30:09 [INFO] Received sensitivity parameters: {}
+2025-02-28 14:30:09 [INFO] Selected versions: [5, 6]
+2025-02-28 14:30:09 [INFO] -------------------------------------------------------------
+2025-02-28 14:30:09 [INFO] Row   | Property                                             
+2025-02-28 14:30:09 [INFO] -------------------------------------------------------------
+2025-02-28 14:30:09 [INFO] 1     | initialSellingPriceAmount13                          
+2025-02-28 14:30:09 [INFO] 2     | totalOperatingCostPercentageAmount14                 
+2025-02-28 14:30:09 [INFO] 3     | engineering_Procurement_and_Construction_EPC_Amount15
+2025-02-28 14:30:09 [INFO] 4     | process_contingency_PC_Amount16                      
+2025-02-28 14:30:09 [INFO] -------------------------------------------------------------
+2025-02-28 14:30:09 [INFO] Remarks state: on
+2025-02-28 14:30:09 [INFO] Customized features state: on
+2025-02-28 14:30:09 [INFO] No sensitivity parameters provided
+2025-02-28 14:30:09 [INFO] Executing script: PNG_PLOT.py
+2025-02-28 14:30:09 [INFO] Command arguments: ['C:\\Program Files\\Python312\\python.exe', 'PNG_PLOT.py', '5,6', 'initialSellingPriceAmount13,totalOperatingCostPercentageAmount14,engineering_Procurement_and_Construction_EPC_Amount15,process_contingency_PC_Amount16', 'on', 'on', '{}']
+2025-02-28 14:30:09 [INFO] Created directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(5)
+2025-02-28 14:30:09 [INFO] Created directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(5)\Results(5)
+2025-02-28 14:30:09 [INFO] Created directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(5)\ConfigurationPlotSpec(5)
+2025-02-28 14:30:09 [INFO] Created directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)
+2025-02-28 14:30:09 [INFO] Created directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)
+2025-02-28 14:30:09 [INFO] Created directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\ConfigurationPlotSpec(6)
+INFO:root:Script started.
+INFO:root:Ensured base directory exists at C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original
+INFO:root:Ensured aggregated data directory exists at C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\aggregated_data
+INFO:root:Selected versions: [5, 6]
+INFO:root:Selected properties: ['initialSellingPriceAmount13', 'totalOperatingCostPercentageAmount14', 'engineering_Procurement_and_Construction_EPC_Amount15', 'process_contingency_PC_Amount16']
+INFO:root:Include baseline remarks: on
+INFO:root:Include customized features: on
+INFO:root:Ensured Batch folder exists for version 5
+INFO:root:Ensured Results folder exists for version 5
+INFO:root:Ensured ConfigurationPlotSpec directory exists for version 5
+INFO:root:Ensured Batch folder exists for version 6
+INFO:root:Ensured Results folder exists for version 6
+INFO:root:Ensured ConfigurationPlotSpec directory exists for version 6
+INFO:root:legend_cluster_version_stat {1: {'version': 5, 'custom_count': 45}, 2: {'version': 6, 'custom_count': 45}}
+INFO:root:Created version-specific plot directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(5)\Results(5)\5_6_AnnotatedStaticPlots
+INFO:__main__:Version-specific legend: ['Version 5', 'General Inflation Rate: 0.02, [1-1], Remarks: 2004', 'General Inflation Rate: 0.0424, [2-2], Remarks: 2005', 'General Inflation Rate: 0.0664, [3-3], Remarks: 2006', 'General Inflation Rate: 0.0915, [4-4], Remarks: 2007', 'General Inflation Rate: 0.1323, [5-5], Remarks: 2008', 'General Inflation Rate: 0.1426, [6-6], Remarks: 2009', 'General Inflation Rate: 0.1662, [7-7], Remarks: 2010', 'General Inflation Rate: 0.198, [8-8], Remarks: 2011', 'General Inflation Rate: 0.2246, [9-9], Remarks: 2012', 'General Inflation Rate: 0.24, [10-10], Remarks: 2013', 'General Inflation Rate: 0.2424, [11-11], Remarks: 2014', 'General Inflation Rate: 0.2424, [12-12], Remarks: 2015', 'General Inflation Rate: 0.2451, [13-13], Remarks: 2016', 'General Inflation Rate: 0.2668, [14-14], Remarks: 2017', 'General Inflation Rate: 0.2881, [15-15], Remarks: 2018', 'General Inflation Rate: 0.3032, [16-16], Remarks: 2019', 'General Inflation Rate: 0.3104, [17-17], Remarks: 2020', 'General Inflation Rate: 0.3382, [18-18], Remarks: 2021', 'General Inflation Rate: 0.4415, [19-19], Remarks: 2022', 'General Inflation Rate: 0.5035, [20-20], Remarks: 2023', 'Internal Rate of Return: 0.02, [1-1], Remarks: 2004', 'Internal Rate of Return: 0.0404, [2-2], Remarks: 2005', 'Internal Rate of Return: 0.062, [3-3], Remarks: 2006', 'Internal Rate of Return: 0.0859, [4-4], Remarks: 2007', 'Internal Rate of Return: 0.1126, [5-5], Remarks: 2008', 'Internal Rate of Return: 0.1419, [6-6], Remarks: 2009', 'Internal Rate of Return: 0.1743, [7-7], Remarks: 2010', 'Internal Rate of Return: 0.2099, [8-8], Remarks: 2011', 'Internal Rate of Return: 0.2488, [9-9], Remarks: 2012', 'Internal Rate of Return: 0.2912, [10-10], Remarks: 2013', 'Internal Rate of Return: 0.3372, [11-11], Remarks: 2014', 'Internal Rate of Return: 0.3869, [12-12], Remarks: 2015', 'Internal Rate of Return: 0.4406, [13-13], Remarks: 2016', 'Internal Rate of Return: 0.4983, [14-14], Remarks: 2017', 'Internal Rate of Return: 0.5602, [15-15], Remarks: 2018', 'Internal Rate of Return: 0.6264, [16-16], Remarks: 2019', 'Internal Rate of Return: 0.697, [17-17], Remarks: 2020', 'Internal Rate of Return: 0.7722, [18-18], Remarks: 2021', 'Internal Rate of Return: 0.8521, [19-19], Remarks: 2022', 'Internal Rate of Return: 0.9369, [20-20], Remarks: 2023', 'Price: 2.4, [5-14], Remarks: a']
+INFO:__main__:Cumulative legend: [['Version 5', 'General Inflation Rate: 0.02, [1-1], Remarks: 2004', 'General Inflation Rate: 0.0424, [2-2], Remarks: 2005', 'General Inflation Rate: 0.0664, [3-3], Remarks: 2006', 'General Inflation Rate: 0.0915, [4-4], Remarks: 2007', 'General Inflation Rate: 0.1323, [5-5], Remarks: 2008', 'General Inflation Rate: 0.1426, [6-6], Remarks: 2009', 'General Inflation Rate: 0.1662, [7-7], Remarks: 2010', 'General Inflation Rate: 0.198, [8-8], Remarks: 2011', 'General Inflation Rate: 0.2246, [9-9], Remarks: 2012', 'General Inflation Rate: 0.24, [10-10], Remarks: 2013', 'General Inflation Rate: 0.2424, [11-11], Remarks: 2014', 'General Inflation Rate: 0.2424, [12-12], Remarks: 2015', 'General Inflation Rate: 0.2451, [13-13], Remarks: 2016', 'General Inflation Rate: 0.2668, [14-14], Remarks: 2017', 'General Inflation Rate: 0.2881, [15-15], Remarks: 2018', 'General Inflation Rate: 0.3032, [16-16], Remarks: 2019', 'General Inflation Rate: 0.3104, [17-17], Remarks: 2020', 'General Inflation Rate: 0.3382, [18-18], Remarks: 2021', 'General Inflation Rate: 0.4415, [19-19], Remarks: 2022', 'General Inflation Rate: 0.5035, [20-20], Remarks: 2023', 'Internal Rate of Return: 0.02, [1-1], Remarks: 2004', 'Internal Rate of Return: 0.0404, [2-2], Remarks: 2005', 'Internal Rate of Return: 0.062, [3-3], Remarks: 2006', 'Internal Rate of Return: 0.0859, [4-4], Remarks: 2007', 'Internal Rate of Return: 0.1126, [5-5], Remarks: 2008', 'Internal Rate of Return: 0.1419, [6-6], Remarks: 2009', 'Internal Rate of Return: 0.1743, [7-7], Remarks: 2010', 'Internal Rate of Return: 0.2099, [8-8], Remarks: 2011', 'Internal Rate of Return: 0.2488, [9-9], Remarks: 2012', 'Internal Rate of Return: 0.2912, [10-10], Remarks: 2013', 'Internal Rate of Return: 0.3372, [11-11], Remarks: 2014', 'Internal Rate of Return: 0.3869, [12-12], Remarks: 2015', 'Internal Rate of Return: 0.4406, [13-13], Remarks: 2016', 'Internal Rate of Return: 0.4983, [14-14], Remarks: 2017', 'Internal Rate of Return: 0.5602, [15-15], Remarks: 2018', 'Internal Rate of Return: 0.6264, [16-16], Remarks: 2019', 'Internal Rate of Return: 0.697, [17-17], Remarks: 2020', 'Internal Rate of Return: 0.7722, [18-18], Remarks: 2021', 'Internal Rate of Return: 0.8521, [19-19], Remarks: 2022', 'Internal Rate of Return: 0.9369, [20-20], Remarks: 2023', 'Price: 2.4, [5-14], Remarks: a']]
+INFO:root:Created version-specific plot directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\5_6_AnnotatedStaticPlots
+INFO:__main__:Version-specific legend: ['Version 6', 'General Inflation Rate: 0.02, [1-1], Remarks: 2004', 'General Inflation Rate: 0.0424, [2-2], Remarks: 2005', 'General Inflation Rate: 0.0664, [3-3], Remarks: 2006', 'General Inflation Rate: 0.0915, [4-4], Remarks: 2007', 'General Inflation Rate: 0.1323, [5-5], Remarks: 2008', 'General Inflation Rate: 0.1426, [6-6], Remarks: 2009', 'General Inflation Rate: 0.1662, [7-7], Remarks: 2010', 'General Inflation Rate: 0.198, [8-8], Remarks: 2011', 'General Inflation Rate: 0.2246, [9-9], Remarks: 2012', 'General Inflation Rate: 0.24, [10-10], Remarks: 2013', 'General Inflation Rate: 0.2424, [11-11], Remarks: 2014', 'General Inflation Rate: 0.2424, [12-12], Remarks: 2015', 'General Inflation Rate: 0.2451, [13-13], Remarks: 2016', 'General Inflation Rate: 0.2668, [14-14], Remarks: 2017', 'General Inflation Rate: 0.2881, [15-15], Remarks: 2018', 'General Inflation Rate: 0.3032, [16-16], Remarks: 2019', 'General Inflation Rate: 0.3104, [17-17], Remarks: 2020', 'General Inflation Rate: 0.3382, [18-18], Remarks: 2021', 'General Inflation Rate: 0.4415, [19-19], Remarks: 2022', 'General Inflation Rate: 0.5035, [20-20], Remarks: 2023', 'Internal Rate of Return: 0.02, [1-1], Remarks: 2004', 'Internal Rate of Return: 0.0404, [2-2], Remarks: 2005', 'Internal Rate of Return: 0.062, [3-3], Remarks: 2006', 'Internal Rate of Return: 0.0859, [4-4], Remarks: 2007', 'Internal Rate of Return: 0.1126, [5-5], Remarks: 2008', 'Internal Rate of Return: 0.1419, [6-6], Remarks: 2009', 'Internal Rate of Return: 0.1743, [7-7], Remarks: 2010', 'Internal Rate of Return: 0.2099, [8-8], Remarks: 2011', 'Internal Rate of Return: 0.2488, [9-9], Remarks: 2012', 'Internal Rate of Return: 0.2912, [10-10], Remarks: 2013', 'Internal Rate of Return: 0.3372, [11-11], Remarks: 2014', 'Internal Rate of Return: 0.3869, [12-12], Remarks: 2015', 'Internal Rate of Return: 0.4406, [13-13], Remarks: 2016', 'Internal Rate of Return: 0.4983, [14-14], Remarks: 2017', 'Internal Rate of Return: 0.5602, [15-15], Remarks: 2018', 'Internal Rate of Return: 0.6264, [16-16], Remarks: 2019', 'Internal Rate of Return: 0.697, [17-17], Remarks: 2020', 'Internal Rate of Return: 0.7722, [18-18], Remarks: 2021', 'Internal Rate of Return: 0.8521, [19-19], Remarks: 2022', 'Internal Rate of Return: 0.9369, [20-20], Remarks: 2023', 'Price: 2.8, [7-15], Remarks: a']
+INFO:__main__:Cumulative legend: [['Version 5', 'General Inflation Rate: 0.02, [1-1], Remarks: 2004', 'General Inflation Rate: 0.0424, [2-2], Remarks: 2005', 'General Inflation Rate: 0.0664, [3-3], Remarks: 2006', 'General Inflation Rate: 0.0915, [4-4], Remarks: 2007', 'General Inflation Rate: 0.1323, [5-5], Remarks: 2008', 'General Inflation Rate: 0.1426, [6-6], Remarks: 2009', 'General Inflation Rate: 0.1662, [7-7], Remarks: 2010', 'General Inflation Rate: 0.198, [8-8], Remarks: 2011', 'General Inflation Rate: 0.2246, [9-9], Remarks: 2012', 'General Inflation Rate: 0.24, [10-10], Remarks: 2013', 'General Inflation Rate: 0.2424, [11-11], Remarks: 2014', 'General Inflation Rate: 0.2424, [12-12], Remarks: 2015', 'General Inflation Rate: 0.2451, [13-13], Remarks: 2016', 'General Inflation Rate: 0.2668, [14-14], Remarks: 2017', 'General Inflation Rate: 0.2881, [15-15], Remarks: 2018', 'General Inflation Rate: 0.3032, [16-16], Remarks: 2019', 'General Inflation Rate: 0.3104, [17-17], Remarks: 2020', 'General Inflation Rate: 0.3382, [18-18], Remarks: 2021', 'General Inflation Rate: 0.4415, [19-19], Remarks: 2022', 'General Inflation Rate: 0.5035, [20-20], Remarks: 2023', 'Internal Rate of Return: 0.02, [1-1], Remarks: 2004', 'Internal Rate of Return: 0.0404, [2-2], Remarks: 2005', 'Internal Rate of Return: 0.062, [3-3], Remarks: 2006', 'Internal Rate of Return: 0.0859, [4-4], Remarks: 2007', 'Internal Rate of Return: 0.1126, [5-5], Remarks: 2008', 'Internal Rate of Return: 0.1419, [6-6], Remarks: 2009', 'Internal Rate of Return: 0.1743, [7-7], Remarks: 2010', 'Internal Rate of Return: 0.2099, [8-8], Remarks: 2011', 'Internal Rate of Return: 0.2488, [9-9], Remarks: 2012', 'Internal Rate of Return: 0.2912, [10-10], Remarks: 2013', 'Internal Rate of Return: 0.3372, [11-11], Remarks: 2014', 'Internal Rate of Return: 0.3869, [12-12], Remarks: 2015', 'Internal Rate of Return: 0.4406, [13-13], Remarks: 2016', 'Internal Rate of Return: 0.4983, [14-14], Remarks: 2017', 'Internal Rate of Return: 0.5602, [15-15], Remarks: 2018', 'Internal Rate of Return: 0.6264, [16-16], Remarks: 2019', 'Internal Rate of Return: 0.697, [17-17], Remarks: 2020', 'Internal Rate of Return: 0.7722, [18-18], Remarks: 2021', 'Internal Rate of Return: 0.8521, [19-19], Remarks: 2022', 'Internal Rate of Return: 0.9369, [20-20], Remarks: 2023', 'Price: 2.4, [5-14], Remarks: a'], ['Version 6', 'General Inflation Rate: 0.02, [1-1], Remarks: 2004', 'General Inflation Rate: 0.0424, [2-2], Remarks: 2005', 'General Inflation Rate: 0.0664, [3-3], Remarks: 2006', 'General Inflation Rate: 0.0915, [4-4], Remarks: 2007', 'General Inflation Rate: 0.1323, [5-5], Remarks: 2008', 'General Inflation Rate: 0.1426, [6-6], Remarks: 2009', 'General Inflation Rate: 0.1662, [7-7], Remarks: 2010', 'General Inflation Rate: 0.198, [8-8], Remarks: 2011', 'General Inflation Rate: 0.2246, [9-9], Remarks: 2012', 'General Inflation Rate: 0.24, [10-10], Remarks: 2013', 'General Inflation Rate: 0.2424, [11-11], Remarks: 2014', 'General Inflation Rate: 0.2424, [12-12], Remarks: 2015', 'General Inflation Rate: 0.2451, [13-13], Remarks: 2016', 'General Inflation Rate: 0.2668, [14-14], Remarks: 2017', 'General Inflation Rate: 0.2881, [15-15], Remarks: 2018', 'General Inflation Rate: 0.3032, [16-16], Remarks: 2019', 'General Inflation Rate: 0.3104, [17-17], Remarks: 2020', 'General Inflation Rate: 0.3382, [18-18], Remarks: 2021', 'General Inflation Rate: 0.4415, [19-19], Remarks: 2022', 'General Inflation Rate: 0.5035, [20-20], Remarks: 2023', 'Internal Rate of Return: 0.02, [1-1], Remarks: 2004', 'Internal Rate of Return: 0.0404, [2-2], Remarks: 2005', 'Internal Rate of Return: 0.062, [3-3], Remarks: 2006', 'Internal Rate of Return: 0.0859, [4-4], Remarks: 2007', 'Internal Rate of Return: 0.1126, [5-5], Remarks: 2008', 'Internal Rate of Return: 0.1419, [6-6], Remarks: 2009', 'Internal Rate of Return: 0.1743, [7-7], Remarks: 2010', 'Internal Rate of Return: 0.2099, [8-8], Remarks: 2011', 'Internal Rate of Return: 0.2488, [9-9], Remarks: 2012', 'Internal Rate of Return: 0.2912, [10-10], Remarks: 2013', 'Internal Rate of Return: 0.3372, [11-11], Remarks: 2014', 'Internal Rate of Return: 0.3869, [12-12], Remarks: 2015', 'Internal Rate of Return: 0.4406, [13-13], Remarks: 2016', 'Internal Rate of Return: 0.4983, [14-14], Remarks: 2017', 'Internal Rate of Return: 0.5602, [15-15], Remarks: 2018', 'Internal Rate of Return: 0.6264, [16-16], Remarks: 2019', 'Internal Rate of Return: 0.697, [17-17], Remarks: 2020', 'Internal Rate of Return: 0.7722, [18-18], Remarks: 2021', 'Internal Rate of Return: 0.8521, [19-19], Remarks: 2022', 'Internal Rate of Return: 0.9369, [20-20], Remarks: 2023', 'Price: 2.8, [7-15], Remarks: a']]
+INFO:root:Using directory for version 5: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(5)\Results(5)\5_6_AnnotatedStaticPlots
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(5)\Results(5)\5_6_AnnotatedStaticPlots/aggregated_annual_cash_flow_net_5_6.png
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(5)\Results(5)\5_6_AnnotatedStaticPlots/aggregated_revenue_5_6.png
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(5)\Results(5)\5_6_AnnotatedStaticPlots/aggregated_operating_expenses_5_6.png
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(5)\Results(5)\5_6_AnnotatedStaticPlots/aggregated_depreciation_5_6.png
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(5)\Results(5)\5_6_AnnotatedStaticPlots/aggregated_state_taxes_5_6.png
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(5)\Results(5)\5_6_AnnotatedStaticPlots/aggregated_federal_taxes_5_6.png
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(5)\Results(5)\5_6_AnnotatedStaticPlots/aggregated_cumulative_cash_flow_5_6.png
+INFO:root:Using directory for version 6: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\5_6_AnnotatedStaticPlots
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\5_6_AnnotatedStaticPlots/aggregated_annual_cash_flow_net_5_6.png
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\5_6_AnnotatedStaticPlots/aggregated_revenue_5_6.png
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\5_6_AnnotatedStaticPlots/aggregated_operating_expenses_5_6.png
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\5_6_AnnotatedStaticPlots/aggregated_depreciation_5_6.png
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\5_6_AnnotatedStaticPlots/aggregated_state_taxes_5_6.png
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\5_6_AnnotatedStaticPlots/aggregated_federal_taxes_5_6.png
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\5_6_AnnotatedStaticPlots/aggregated_cumulative_cash_flow_5_6.png
+INFO:root:All data and legend information saved for R script.
+INFO:root:All plots completed successfully.
+2025-02-28 14:30:41 [INFO] Script output: All plots completed successfully.
+
+2025-02-28 14:30:41 [WARNING] Script stderr: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Visualization_generators\PNG_PLOT.py:642: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all Axes decorations.
+  plt.tight_layout(rect=[0, 0, 1, 1])
+C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Visualization_generators\PNG_PLOT.py:642: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all Axes decorations.
+  plt.tight_layout(rect=[0, 0, 1, 1])
+C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Visualization_generators\PNG_PLOT.py:642: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all Axes decorations.
+  plt.tight_layout(rect=[0, 0, 1, 1])
+C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Visualization_generators\PNG_PLOT.py:642: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all Axes decorations.
+  plt.tight_layout(rect=[0, 0, 1, 1])
+C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Visualization_generators\PNG_PLOT.py:642: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all Axes decorations.
+  plt.tight_layout(rect=[0, 0, 1, 1])
+C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Visualization_generators\PNG_PLOT.py:642: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all Axes decorations.
+  plt.tight_layout(rect=[0, 0, 1, 1])
+C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Visualization_generators\PNG_PLOT.py:642: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all Axes decorations.
+  plt.tight_layout(rect=[0, 0, 1, 1])
+C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Visualization_generators\PNG_PLOT.py:642: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all Axes decorations.
+  plt.tight_layout(rect=[0, 0, 1, 1])
+C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Visualization_generators\PNG_PLOT.py:642: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all Axes decorations.
+  plt.tight_layout(rect=[0, 0, 1, 1])
+C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Visualization_generators\PNG_PLOT.py:642: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all Axes decorations.
+  plt.tight_layout(rect=[0, 0, 1, 1])
+C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Visualization_generators\PNG_PLOT.py:642: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all Axes decorations.
+  plt.tight_layout(rect=[0, 0, 1, 1])
+C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Visualization_generators\PNG_PLOT.py:642: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all Axes decorations.
+  plt.tight_layout(rect=[0, 0, 1, 1])
+C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Visualization_generators\PNG_PLOT.py:642: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all Axes decorations.
+  plt.tight_layout(rect=[0, 0, 1, 1])
+C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Visualization_generators\PNG_PLOT.py:642: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all Axes decorations.
+  plt.tight_layout(rect=[0, 0, 1, 1])
+
+2025-02-28 14:30:41 [INFO] Request completed successfully in 0:00:32.123504
+2025-02-28 14:30:41 [INFO] Scanning for version directories in C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original
+2025-02-28 14:30:41 [WARNING] Results directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(0)\Results(0)
+2025-02-28 14:30:41 [INFO] No plot directories found for version 1
+2025-02-28 14:30:41 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\2_PlotType_annual_cash_flow_net
+2025-02-28 14:30:41 [INFO] Copied aggregated_annual_cash_flow_net_2.png to album 2_PlotType_annual_cash_flow_net
+2025-02-28 14:30:41 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\2_PlotType_cumulative_cash_flow
+2025-02-28 14:30:41 [INFO] Copied aggregated_cumulative_cash_flow_2.png to album 2_PlotType_cumulative_cash_flow
+2025-02-28 14:30:41 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\2_PlotType_depreciation
+2025-02-28 14:30:41 [INFO] Copied aggregated_depreciation_2.png to album 2_PlotType_depreciation
+2025-02-28 14:30:41 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\2_PlotType_federal_taxes
+2025-02-28 14:30:41 [INFO] Copied aggregated_federal_taxes_2.png to album 2_PlotType_federal_taxes
+2025-02-28 14:30:41 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\2_PlotType_operating_expenses
+2025-02-28 14:30:41 [INFO] Copied aggregated_operating_expenses_2.png to album 2_PlotType_operating_expenses
+2025-02-28 14:30:41 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\2_PlotType_revenue
+2025-02-28 14:30:41 [INFO] Copied aggregated_revenue_2.png to album 2_PlotType_revenue
+2025-02-28 14:30:41 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\2_PlotType_state_taxes
+2025-02-28 14:30:41 [INFO] Copied aggregated_state_taxes_2.png to album 2_PlotType_state_taxes
+2025-02-28 14:30:41 [INFO] No plot directories found for version 3
+2025-02-28 14:30:41 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(4)\Results(4)\4_PlotType_annual_cash_flow_net
+2025-02-28 14:30:41 [INFO] Copied aggregated_annual_cash_flow_net_4.png to album 4_PlotType_annual_cash_flow_net
+2025-02-28 14:30:41 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(4)\Results(4)\4_PlotType_cumulative_cash_flow
+2025-02-28 14:30:41 [INFO] Copied aggregated_cumulative_cash_flow_4.png to album 4_PlotType_cumulative_cash_flow
+2025-02-28 14:30:41 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(4)\Results(4)\4_PlotType_depreciation
+2025-02-28 14:30:41 [INFO] Copied aggregated_depreciation_4.png to album 4_PlotType_depreciation
+2025-02-28 14:30:41 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(4)\Results(4)\4_PlotType_federal_taxes
+2025-02-28 14:30:41 [INFO] Copied aggregated_federal_taxes_4.png to album 4_PlotType_federal_taxes
+2025-02-28 14:30:41 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(4)\Results(4)\4_PlotType_operating_expenses
+2025-02-28 14:30:41 [INFO] Copied aggregated_operating_expenses_4.png to album 4_PlotType_operating_expenses
+2025-02-28 14:30:41 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(4)\Results(4)\4_PlotType_revenue
+2025-02-28 14:30:41 [INFO] Copied aggregated_revenue_4.png to album 4_PlotType_revenue
+2025-02-28 14:30:41 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(4)\Results(4)\4_PlotType_state_taxes
+2025-02-28 14:30:41 [INFO] Copied aggregated_state_taxes_4.png to album 4_PlotType_state_taxes
+2025-02-28 14:30:41 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(5)\Results(5)\5_6_PlotType_annual_cash_flow_net
+2025-02-28 14:30:41 [INFO] Copied aggregated_annual_cash_flow_net_5_6.png to album 5_6_PlotType_annual_cash_flow_net
+2025-02-28 14:30:41 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(5)\Results(5)\5_6_PlotType_cumulative_cash_flow
+2025-02-28 14:30:41 [INFO] Copied aggregated_cumulative_cash_flow_5_6.png to album 5_6_PlotType_cumulative_cash_flow
+2025-02-28 14:30:41 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(5)\Results(5)\5_6_PlotType_depreciation
+2025-02-28 14:30:41 [INFO] Copied aggregated_depreciation_5_6.png to album 5_6_PlotType_depreciation
+2025-02-28 14:30:41 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(5)\Results(5)\5_6_PlotType_federal_taxes
+2025-02-28 14:30:41 [INFO] Copied aggregated_federal_taxes_5_6.png to album 5_6_PlotType_federal_taxes
+2025-02-28 14:30:41 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(5)\Results(5)\5_6_PlotType_operating_expenses
+2025-02-28 14:30:41 [INFO] Copied aggregated_operating_expenses_5_6.png to album 5_6_PlotType_operating_expenses
+2025-02-28 14:30:41 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(5)\Results(5)\5_6_PlotType_revenue
+2025-02-28 14:30:41 [INFO] Copied aggregated_revenue_5_6.png to album 5_6_PlotType_revenue
+2025-02-28 14:30:41 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(5)\Results(5)\5_6_PlotType_state_taxes
+2025-02-28 14:30:41 [INFO] Copied aggregated_state_taxes_5_6.png to album 5_6_PlotType_state_taxes
+2025-02-28 14:30:41 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(5)\Results(5)\5_PlotType_annual_cash_flow_net
+2025-02-28 14:30:41 [INFO] Copied aggregated_annual_cash_flow_net_5.png to album 5_PlotType_annual_cash_flow_net
+2025-02-28 14:30:41 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(5)\Results(5)\5_PlotType_cumulative_cash_flow
+2025-02-28 14:30:41 [INFO] Copied aggregated_cumulative_cash_flow_5.png to album 5_PlotType_cumulative_cash_flow
+2025-02-28 14:30:41 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(5)\Results(5)\5_PlotType_depreciation
+2025-02-28 14:30:41 [INFO] Copied aggregated_depreciation_5.png to album 5_PlotType_depreciation
+2025-02-28 14:30:41 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(5)\Results(5)\5_PlotType_federal_taxes
+2025-02-28 14:30:41 [INFO] Copied aggregated_federal_taxes_5.png to album 5_PlotType_federal_taxes
+2025-02-28 14:30:41 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(5)\Results(5)\5_PlotType_operating_expenses
+2025-02-28 14:30:41 [INFO] Copied aggregated_operating_expenses_5.png to album 5_PlotType_operating_expenses
+2025-02-28 14:30:41 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(5)\Results(5)\5_PlotType_revenue
+2025-02-28 14:30:41 [INFO] Copied aggregated_revenue_5.png to album 5_PlotType_revenue
+2025-02-28 14:30:41 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(5)\Results(5)\5_PlotType_state_taxes
+2025-02-28 14:30:41 [INFO] Copied aggregated_state_taxes_5.png to album 5_PlotType_state_taxes
+2025-02-28 14:30:41 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\5_6_PlotType_annual_cash_flow_net
+2025-02-28 14:30:41 [INFO] Copied aggregated_annual_cash_flow_net_5_6.png to album 5_6_PlotType_annual_cash_flow_net
+2025-02-28 14:30:41 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\5_6_PlotType_cumulative_cash_flow
+2025-02-28 14:30:41 [INFO] Copied aggregated_cumulative_cash_flow_5_6.png to album 5_6_PlotType_cumulative_cash_flow
+2025-02-28 14:30:41 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\5_6_PlotType_depreciation
+2025-02-28 14:30:41 [INFO] Copied aggregated_depreciation_5_6.png to album 5_6_PlotType_depreciation
+2025-02-28 14:30:41 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\5_6_PlotType_federal_taxes
+2025-02-28 14:30:41 [INFO] Copied aggregated_federal_taxes_5_6.png to album 5_6_PlotType_federal_taxes
+2025-02-28 14:30:41 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\5_6_PlotType_operating_expenses
+2025-02-28 14:30:41 [INFO] Copied aggregated_operating_expenses_5_6.png to album 5_6_PlotType_operating_expenses
+2025-02-28 14:30:41 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\5_6_PlotType_revenue
+2025-02-28 14:30:41 [INFO] Copied aggregated_revenue_5_6.png to album 5_6_PlotType_revenue
+2025-02-28 14:30:41 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\5_6_PlotType_state_taxes
+2025-02-28 14:30:41 [INFO] Copied aggregated_state_taxes_5_6.png to album 5_6_PlotType_state_taxes
+2025-02-28 14:30:41 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\6_PlotType_annual_cash_flow_net
+2025-02-28 14:30:41 [INFO] Copied aggregated_annual_cash_flow_net_6.png to album 6_PlotType_annual_cash_flow_net
+2025-02-28 14:30:41 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\6_PlotType_cumulative_cash_flow
+2025-02-28 14:30:41 [INFO] Copied aggregated_cumulative_cash_flow_6.png to album 6_PlotType_cumulative_cash_flow
+2025-02-28 14:30:41 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\6_PlotType_depreciation
+2025-02-28 14:30:41 [INFO] Copied aggregated_depreciation_6.png to album 6_PlotType_depreciation
+2025-02-28 14:30:41 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\6_PlotType_federal_taxes
+2025-02-28 14:30:41 [INFO] Copied aggregated_federal_taxes_6.png to album 6_PlotType_federal_taxes
+2025-02-28 14:30:41 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\6_PlotType_operating_expenses
+2025-02-28 14:30:41 [INFO] Copied aggregated_operating_expenses_6.png to album 6_PlotType_operating_expenses
+2025-02-28 14:30:41 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\6_PlotType_revenue
+2025-02-28 14:30:41 [INFO] Copied aggregated_revenue_6.png to album 6_PlotType_revenue
+2025-02-28 14:30:41 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(6)\Results(6)\6_PlotType_state_taxes
+2025-02-28 14:30:41 [INFO] Copied aggregated_state_taxes_6.png to album 6_PlotType_state_taxes
+2025-02-28 14:30:41 [INFO] Album organization completed successfully
+2025-02-28 14:30:41 [INFO] Album organization completed
+2025-02-28 14:30:41 [INFO] 127.0.0.1 - - [28/Feb/2025 14:30:41] "[35m[1mPOST /generate_png_plots HTTP/1.1[0m" 204 -
+2025-02-28 14:41:25 [INFO] 127.0.0.1 - - [28/Feb/2025 14:41:25] "OPTIONS /generate_png_plots HTTP/1.1" 200 -
+2025-02-28 14:41:25 [INFO] New visualization request received at 2025-02-28 14:41:25.548480
+2025-02-28 14:41:25 [INFO] No properties selected, proceeding with empty list
+2025-02-28 14:41:25 [INFO] Received sensitivity parameters: {}
+2025-02-28 14:41:25 [INFO] Selected versions: [1, 2, 3, 3]
+2025-02-28 14:41:25 [WARNING] No properties provided for logging
+2025-02-28 14:41:25 [INFO] Remarks state: on
+2025-02-28 14:41:25 [INFO] Customized features state: on
+2025-02-28 14:41:25 [INFO] No sensitivity parameters provided
+2025-02-28 14:41:25 [INFO] Executing script: PNG_PLOT.py
+2025-02-28 14:41:25 [INFO] Command arguments: ['C:\\Program Files\\Python312\\python.exe', 'PNG_PLOT.py', '1,2,3,3', '', 'on', 'on', '{}']
+2025-02-28 14:41:25 [INFO] Created directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)
+2025-02-28 14:41:25 [INFO] Created directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)
+2025-02-28 14:41:25 [INFO] Created directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\ConfigurationPlotSpec(1)
+2025-02-28 14:41:25 [INFO] Created directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)
+2025-02-28 14:41:25 [INFO] Created directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)
+2025-02-28 14:41:25 [INFO] Created directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\ConfigurationPlotSpec(2)
+2025-02-28 14:41:25 [INFO] Created directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(3)
+2025-02-28 14:41:25 [INFO] Created directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(3)\Results(3)
+2025-02-28 14:41:25 [INFO] Created directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(3)\ConfigurationPlotSpec(3)
+2025-02-28 14:41:25 [INFO] Created directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(3)
+2025-02-28 14:41:25 [INFO] Created directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(3)\Results(3)
+2025-02-28 14:41:25 [INFO] Created directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(3)\ConfigurationPlotSpec(3)
+INFO:root:Script started.
+INFO:root:Ensured base directory exists at C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original
+INFO:root:Ensured aggregated data directory exists at C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\aggregated_data
+INFO:root:No properties selected
+INFO:root:Selected versions: [1, 2, 3, 3]
+INFO:root:Selected properties: []
+INFO:root:Include baseline remarks: on
+INFO:root:Include customized features: on
+INFO:root:Ensured Batch folder exists for version 1
+INFO:root:Ensured Results folder exists for version 1
+INFO:root:Ensured ConfigurationPlotSpec directory exists for version 1
+INFO:root:Ensured Batch folder exists for version 2
+INFO:root:Ensured Results folder exists for version 2
+INFO:root:Ensured ConfigurationPlotSpec directory exists for version 2
+INFO:root:Ensured Batch folder exists for version 3
+INFO:root:Ensured Results folder exists for version 3
+INFO:root:Ensured ConfigurationPlotSpec directory exists for version 3
+INFO:root:Ensured Batch folder exists for version 3
+INFO:root:Ensured Results folder exists for version 3
+INFO:root:Ensured ConfigurationPlotSpec directory exists for version 3
+INFO:root:legend_cluster_version_stat {1: {'version': 1, 'custom_count': 1}, 2: {'version': 2, 'custom_count': 3}, 3: {'version': 3, 'custom_count': 2}, 4: {'version': 3, 'custom_count': 2}}
+INFO:root:Created version-specific plot directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\1_2_3_3_AnnotatedStaticPlots
+INFO:__main__:Version-specific legend: ['Version 1']
+INFO:__main__:Cumulative legend: [['Version 1']]
+INFO:root:Created version-specific plot directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\1_2_3_3_AnnotatedStaticPlots
+INFO:__main__:Version-specific legend: ['Version 2', 'Price: 4.7, [7-20], Remarks: ab', 'Price: 4.7, [7-15], Remarks: ab']
+INFO:__main__:Cumulative legend: [['Version 1'], ['Version 2', 'Price: 4.7, [7-20], Remarks: ab', 'Price: 4.7, [7-15], Remarks: ab']]
+INFO:root:Created version-specific plot directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(3)\Results(3)\1_2_3_3_AnnotatedStaticPlots
+INFO:__main__:Version-specific legend: ['Version 3', 'Labor Cost: 28800, [8-20]']
+INFO:__main__:Cumulative legend: [['Version 1'], ['Version 2', 'Price: 4.7, [7-20], Remarks: ab', 'Price: 4.7, [7-15], Remarks: ab'], ['Version 3', 'Labor Cost: 28800, [8-20]']]
+INFO:root:Created version-specific plot directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(3)\Results(3)\1_2_3_3_AnnotatedStaticPlots
+INFO:__main__:Version-specific legend: ['Version 3', 'Labor Cost: 28800, [8-20]']
+INFO:__main__:Cumulative legend: [['Version 1'], ['Version 2', 'Price: 4.7, [7-20], Remarks: ab', 'Price: 4.7, [7-15], Remarks: ab'], ['Version 3', 'Labor Cost: 28800, [8-20]'], ['Version 3', 'Labor Cost: 28800, [8-20]']]
+INFO:root:Using directory for version 1: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\1_2_3_3_AnnotatedStaticPlots
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\1_2_3_3_AnnotatedStaticPlots/aggregated_annual_cash_flow_net_1_2_3_3.png
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\1_2_3_3_AnnotatedStaticPlots/aggregated_revenue_1_2_3_3.png
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\1_2_3_3_AnnotatedStaticPlots/aggregated_operating_expenses_1_2_3_3.png
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\1_2_3_3_AnnotatedStaticPlots/aggregated_depreciation_1_2_3_3.png
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\1_2_3_3_AnnotatedStaticPlots/aggregated_state_taxes_1_2_3_3.png
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\1_2_3_3_AnnotatedStaticPlots/aggregated_federal_taxes_1_2_3_3.png
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\1_2_3_3_AnnotatedStaticPlots/aggregated_cumulative_cash_flow_1_2_3_3.png
+INFO:root:Using directory for version 2: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\1_2_3_3_AnnotatedStaticPlots
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\1_2_3_3_AnnotatedStaticPlots/aggregated_annual_cash_flow_net_1_2_3_3.png
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\1_2_3_3_AnnotatedStaticPlots/aggregated_revenue_1_2_3_3.png
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\1_2_3_3_AnnotatedStaticPlots/aggregated_operating_expenses_1_2_3_3.png
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\1_2_3_3_AnnotatedStaticPlots/aggregated_depreciation_1_2_3_3.png
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\1_2_3_3_AnnotatedStaticPlots/aggregated_state_taxes_1_2_3_3.png
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\1_2_3_3_AnnotatedStaticPlots/aggregated_federal_taxes_1_2_3_3.png
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\1_2_3_3_AnnotatedStaticPlots/aggregated_cumulative_cash_flow_1_2_3_3.png
+INFO:root:Using directory for version 3: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(3)\Results(3)\1_2_3_3_AnnotatedStaticPlots
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(3)\Results(3)\1_2_3_3_AnnotatedStaticPlots/aggregated_annual_cash_flow_net_1_2_3_3.png
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(3)\Results(3)\1_2_3_3_AnnotatedStaticPlots/aggregated_revenue_1_2_3_3.png
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(3)\Results(3)\1_2_3_3_AnnotatedStaticPlots/aggregated_operating_expenses_1_2_3_3.png
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(3)\Results(3)\1_2_3_3_AnnotatedStaticPlots/aggregated_depreciation_1_2_3_3.png
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(3)\Results(3)\1_2_3_3_AnnotatedStaticPlots/aggregated_state_taxes_1_2_3_3.png
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(3)\Results(3)\1_2_3_3_AnnotatedStaticPlots/aggregated_federal_taxes_1_2_3_3.png
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(3)\Results(3)\1_2_3_3_AnnotatedStaticPlots/aggregated_cumulative_cash_flow_1_2_3_3.png
+INFO:root:Using directory for version 3: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(3)\Results(3)\1_2_3_3_AnnotatedStaticPlots
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(3)\Results(3)\1_2_3_3_AnnotatedStaticPlots/aggregated_annual_cash_flow_net_1_2_3_3.png
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(3)\Results(3)\1_2_3_3_AnnotatedStaticPlots/aggregated_revenue_1_2_3_3.png
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(3)\Results(3)\1_2_3_3_AnnotatedStaticPlots/aggregated_operating_expenses_1_2_3_3.png
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(3)\Results(3)\1_2_3_3_AnnotatedStaticPlots/aggregated_depreciation_1_2_3_3.png
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(3)\Results(3)\1_2_3_3_AnnotatedStaticPlots/aggregated_state_taxes_1_2_3_3.png
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(3)\Results(3)\1_2_3_3_AnnotatedStaticPlots/aggregated_federal_taxes_1_2_3_3.png
+INFO:root:Successfully saved plot to C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(3)\Results(3)\1_2_3_3_AnnotatedStaticPlots/aggregated_cumulative_cash_flow_1_2_3_3.png
+INFO:root:All data and legend information saved for R script.
+INFO:root:All plots completed successfully.
+2025-02-28 14:41:44 [INFO] Script output: All plots completed successfully.
+
+2025-02-28 14:41:44 [INFO] Request completed successfully in 0:00:19.050324
+2025-02-28 14:41:44 [INFO] Scanning for version directories in C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original
+2025-02-28 14:41:44 [WARNING] Results directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(0)\Results(0)
+2025-02-28 14:41:44 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\1_2_3_3_PlotType_annual_cash_flow_net
+2025-02-28 14:41:44 [INFO] Copied aggregated_annual_cash_flow_net_1_2_3_3.png to album 1_2_3_3_PlotType_annual_cash_flow_net
+2025-02-28 14:41:44 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\1_2_3_3_PlotType_cumulative_cash_flow
+2025-02-28 14:41:44 [INFO] Copied aggregated_cumulative_cash_flow_1_2_3_3.png to album 1_2_3_3_PlotType_cumulative_cash_flow
+2025-02-28 14:41:44 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\1_2_3_3_PlotType_depreciation
+2025-02-28 14:41:44 [INFO] Copied aggregated_depreciation_1_2_3_3.png to album 1_2_3_3_PlotType_depreciation
+2025-02-28 14:41:44 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\1_2_3_3_PlotType_federal_taxes
+2025-02-28 14:41:44 [INFO] Copied aggregated_federal_taxes_1_2_3_3.png to album 1_2_3_3_PlotType_federal_taxes
+2025-02-28 14:41:44 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\1_2_3_3_PlotType_operating_expenses
+2025-02-28 14:41:44 [INFO] Copied aggregated_operating_expenses_1_2_3_3.png to album 1_2_3_3_PlotType_operating_expenses
+2025-02-28 14:41:44 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\1_2_3_3_PlotType_revenue
+2025-02-28 14:41:44 [INFO] Copied aggregated_revenue_1_2_3_3.png to album 1_2_3_3_PlotType_revenue
+2025-02-28 14:41:44 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\1_2_3_3_PlotType_state_taxes
+2025-02-28 14:41:44 [INFO] Copied aggregated_state_taxes_1_2_3_3.png to album 1_2_3_3_PlotType_state_taxes
+2025-02-28 14:41:44 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\1_2_3_3_PlotType_annual_cash_flow_net
+2025-02-28 14:41:44 [INFO] Copied aggregated_annual_cash_flow_net_1_2_3_3.png to album 1_2_3_3_PlotType_annual_cash_flow_net
+2025-02-28 14:41:44 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\1_2_3_3_PlotType_cumulative_cash_flow
+2025-02-28 14:41:44 [INFO] Copied aggregated_cumulative_cash_flow_1_2_3_3.png to album 1_2_3_3_PlotType_cumulative_cash_flow
+2025-02-28 14:41:44 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\1_2_3_3_PlotType_depreciation
+2025-02-28 14:41:44 [INFO] Copied aggregated_depreciation_1_2_3_3.png to album 1_2_3_3_PlotType_depreciation
+2025-02-28 14:41:44 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\1_2_3_3_PlotType_federal_taxes
+2025-02-28 14:41:44 [INFO] Copied aggregated_federal_taxes_1_2_3_3.png to album 1_2_3_3_PlotType_federal_taxes
+2025-02-28 14:41:44 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\1_2_3_3_PlotType_operating_expenses
+2025-02-28 14:41:44 [INFO] Copied aggregated_operating_expenses_1_2_3_3.png to album 1_2_3_3_PlotType_operating_expenses
+2025-02-28 14:41:44 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\1_2_3_3_PlotType_revenue
+2025-02-28 14:41:44 [INFO] Copied aggregated_revenue_1_2_3_3.png to album 1_2_3_3_PlotType_revenue
+2025-02-28 14:41:44 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\1_2_3_3_PlotType_state_taxes
+2025-02-28 14:41:44 [INFO] Copied aggregated_state_taxes_1_2_3_3.png to album 1_2_3_3_PlotType_state_taxes
+2025-02-28 14:41:44 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(3)\Results(3)\1_2_3_3_PlotType_annual_cash_flow_net
+2025-02-28 14:41:44 [INFO] Copied aggregated_annual_cash_flow_net_1_2_3_3.png to album 1_2_3_3_PlotType_annual_cash_flow_net
+2025-02-28 14:41:44 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(3)\Results(3)\1_2_3_3_PlotType_cumulative_cash_flow
+2025-02-28 14:41:44 [INFO] Copied aggregated_cumulative_cash_flow_1_2_3_3.png to album 1_2_3_3_PlotType_cumulative_cash_flow
+2025-02-28 14:41:44 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(3)\Results(3)\1_2_3_3_PlotType_depreciation
+2025-02-28 14:41:44 [INFO] Copied aggregated_depreciation_1_2_3_3.png to album 1_2_3_3_PlotType_depreciation
+2025-02-28 14:41:44 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(3)\Results(3)\1_2_3_3_PlotType_federal_taxes
+2025-02-28 14:41:44 [INFO] Copied aggregated_federal_taxes_1_2_3_3.png to album 1_2_3_3_PlotType_federal_taxes
+2025-02-28 14:41:44 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(3)\Results(3)\1_2_3_3_PlotType_operating_expenses
+2025-02-28 14:41:44 [INFO] Copied aggregated_operating_expenses_1_2_3_3.png to album 1_2_3_3_PlotType_operating_expenses
+2025-02-28 14:41:44 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(3)\Results(3)\1_2_3_3_PlotType_revenue
+2025-02-28 14:41:44 [INFO] Copied aggregated_revenue_1_2_3_3.png to album 1_2_3_3_PlotType_revenue
+2025-02-28 14:41:44 [INFO] Created album directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(3)\Results(3)\1_2_3_3_PlotType_state_taxes
+2025-02-28 14:41:44 [INFO] Copied aggregated_state_taxes_1_2_3_3.png to album 1_2_3_3_PlotType_state_taxes
+2025-02-28 14:41:44 [INFO] Album organization completed successfully
+2025-02-28 14:41:44 [INFO] Album organization completed
+2025-02-28 14:41:44 [INFO] 127.0.0.1 - - [28/Feb/2025 14:41:44] "[35m[1mPOST /generate_png_plots HTTP/1.1[0m" 204 -
