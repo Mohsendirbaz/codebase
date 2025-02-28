@@ -14,13 +14,13 @@ git rev-parse HEAD  # Should show current
 
 git remote -v  # Should show https://github.com/Mohsendirbaz/SF.git
 
-git checkout -b SF.R25
+git checkout -b SF.R26
 
 git add .
 
 git commit -m "Casino Gate"
 
-git push origin SF.R25
+git push origin SF.R26
 
 
 # Remove existing temp directory (already done)
