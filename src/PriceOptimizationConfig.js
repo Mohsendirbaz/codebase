@@ -1,13 +1,5 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import './PriceOptimizationConfig.css';
-
-// Default parameters defined outside component to prevent recreation on each render
-const DEFAULT_PARAMS = {
-  toleranceLower: -1000,
-  toleranceUpper: 1000,
-  increaseRate: 1.02,
-  decreaseRate: 0.985
-};
 
 /**
  * PriceOptimizationConfig component allows users to configure price optimization parameters
@@ -19,10 +11,14 @@ const DEFAULT_PARAMS = {
  * @param {Function} props.setOptimizationParams - Function to update optimization parameters
  */
 const PriceOptimizationConfig = ({ selectedVersions, optimizationParams, setOptimizationParams }) => {
+  console.log("PriceOptimizationConfig rendering with selectedVersions:", selectedVersions);
   // Local state for global parameters
-  const [globalParams, setGlobalParams] = useState(() => 
-    optimizationParams.global || { ...DEFAULT_PARAMS }
-  );
+  const [globalParams, setGlobalParams] = useState({
+    toleranceLower: -1000,
+    toleranceUpper: 1000,
+    increaseRate: 1.02,
+    decreaseRate: 0.985
+  });
 
   // Local state for version-specific parameters
   const [versionParams, setVersionParams] = useState({});
@@ -31,47 +27,42 @@ const PriceOptimizationConfig = ({ selectedVersions, optimizationParams, setOpti
   const [showAdvanced, setShowAdvanced] = useState(false);
   const [activeTab, setActiveTab] = useState('global');
 
-  // Use ref to track if we need to update parent state
-  const paramsRef = useRef({ global: globalParams, versions: versionParams });
-  const initializedRef = useRef(false);
-
-  // Initialize version parameters once on mount or when versions/optimization params change
+  // Initialize from props
   useEffect(() => {
-    if (initializedRef.current) return;
+    if (optimizationParams.global) {
+      setGlobalParams(optimizationParams.global);
+    }
     
     // Initialize version-specific parameters
     const newVersionParams = {};
+    
+    // Ensure selectedVersions is an array
     const versions = Array.isArray(selectedVersions) ? selectedVersions : [];
+    console.log("Processing versions:", versions);
     
     versions.forEach(version => {
+      // Convert version to string for consistent key handling
       const versionKey = String(version);
       if (optimizationParams[versionKey]) {
         newVersionParams[versionKey] = optimizationParams[versionKey];
       } else {
-        newVersionParams[versionKey] = { ...DEFAULT_PARAMS };
+        newVersionParams[versionKey] = { ...globalParams };
       }
     });
     
     setVersionParams(newVersionParams);
-    initializedRef.current = true;
-  }, [optimizationParams, selectedVersions]);
-
-  // Update active tab when selectedVersions changes
-  useEffect(() => {
-    const versions = Array.isArray(selectedVersions) ? selectedVersions : [];
     
+    // If we have versions but no active tab is set, set the first version as active
     if (versions.length > 0 && activeTab === 'global') {
       setActiveTab(`version-${versions[0]}`);
-    } else if (versions.length === 0 && activeTab !== 'global') {
+    } else if (versions.length === 0) {
+      // If no versions are selected, make sure we're on the global tab
       setActiveTab('global');
     }
-  }, [selectedVersions, activeTab]);
+  }, [optimizationParams, selectedVersions]);
 
-  // Update parent component's state when parameters change, but only when necessary
-  useEffect(() => {
-    // Skip the initial render
-    if (!initializedRef.current) return;
-    
+  // Update the parent component's state when parameters change
+  const updateOptimizationParams = () => {
     const newParams = { global: globalParams };
     
     // Only include version-specific parameters if they differ from global
@@ -86,18 +77,11 @@ const PriceOptimizationConfig = ({ selectedVersions, optimizationParams, setOpti
       }
     });
     
-    // Only update if the params have actually changed
-    const currentParams = JSON.stringify(paramsRef.current);
-    const newParamsStr = JSON.stringify(newParams);
-    
-    if (currentParams !== newParamsStr) {
-      paramsRef.current = newParams;
-      setOptimizationParams(newParams);
-    }
-  }, [globalParams, versionParams, setOptimizationParams]);
+    setOptimizationParams(newParams);
+  };
 
-  // Memoized handlers to prevent recreation on each render
-  const handleGlobalChange = useCallback((e) => {
+  // Handle changes to global parameters
+  const handleGlobalChange = (e) => {
     const { name, value } = e.target;
     const numValue = parseFloat(value);
     
@@ -105,9 +89,10 @@ const PriceOptimizationConfig = ({ selectedVersions, optimizationParams, setOpti
       ...prev,
       [name]: numValue
     }));
-  }, []);
+  };
 
-  const handleVersionChange = useCallback((version, name, value) => {
+  // Handle changes to version-specific parameters
+  const handleVersionChange = (version, name, value) => {
     const numValue = parseFloat(value);
     
     setVersionParams(prev => ({
@@ -117,26 +102,21 @@ const PriceOptimizationConfig = ({ selectedVersions, optimizationParams, setOpti
         [name]: numValue
       }
     }));
-  }, []);
+  };
 
-  const applyGlobalToAll = useCallback(() => {
+  // Apply global parameters to all versions
+  const applyGlobalToAll = () => {
     const newVersionParams = {};
-    const versions = Array.isArray(selectedVersions) ? selectedVersions : [];
-    
-    versions.forEach(version => {
+    selectedVersions.forEach(version => {
       newVersionParams[version] = { ...globalParams };
     });
-    
     setVersionParams(newVersionParams);
-  }, [globalParams, selectedVersions]);
+  };
 
-  const toggleAdvanced = useCallback(() => {
-    setShowAdvanced(prev => !prev);
-  }, []);
-
-  const selectTab = useCallback((tab) => {
-    setActiveTab(tab);
-  }, []);
+  // Apply changes when parameters are updated
+  useEffect(() => {
+    updateOptimizationParams();
+  }, [globalParams, versionParams]);
 
   return (
     <div className="price-optimization-config">
@@ -144,7 +124,7 @@ const PriceOptimizationConfig = ({ selectedVersions, optimizationParams, setOpti
         <h3>Price Optimization Parameters</h3>
         <button 
           className="toggle-advanced-button"
-          onClick={toggleAdvanced}
+          onClick={() => setShowAdvanced(!showAdvanced)}
         >
           {showAdvanced ? 'Hide Advanced' : 'Show Advanced'}
         </button>
@@ -155,7 +135,7 @@ const PriceOptimizationConfig = ({ selectedVersions, optimizationParams, setOpti
           <div className="tabs">
             <button 
               className={`tab-button ${activeTab === 'global' ? 'active' : ''}`}
-              onClick={() => selectTab('global')}
+              onClick={() => setActiveTab('global')}
             >
               Global Settings
             </button>
@@ -163,7 +143,7 @@ const PriceOptimizationConfig = ({ selectedVersions, optimizationParams, setOpti
               <button 
                 key={version}
                 className={`tab-button ${activeTab === `version-${version}` ? 'active' : ''}`}
-                onClick={() => selectTab(`version-${version}`)}
+                onClick={() => setActiveTab(`version-${version}`)}
               >
                 Version {version}
               </button>
