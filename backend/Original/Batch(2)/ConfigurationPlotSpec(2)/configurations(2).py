@@ -1,5 +1,5 @@
 plantLifetimeAmount10=20
-bECAmount11=300000
+bECAmount11=200000
 numberOfUnitsAmount12=30000
 initialSellingPriceAmount13=2
 totalOperatingCostPercentageAmount14=0.1
