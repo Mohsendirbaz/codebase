@@ -764,19 +764,31 @@ const L_1_HomePageContent = () => {
             return <div>No HTML files available</div>;
 
         return (
-            <Tabs
-                selectedIndex={Object.keys(albumHtmls).indexOf(selectedHtml)}
-                onSelect={(index) => setSelectedHtml(Object.keys(albumHtmls)[index])}
-            >
-                <TabList>
+            <div>
+                <div className="version-input-container">
+                    <input
+                        id="versionNumber"
+                        type="number"
+                        className="version-input"
+                        placeholder="1"
+                        value={version}
+                        onChange={handleVersionChange}
+                    />
+                </div>
+                <Tabs
+                    selectedIndex={Object.keys(albumHtmls).indexOf(selectedHtml)}
+                    onSelect={(index) => setSelectedHtml(Object.keys(albumHtmls)[index])}
+                >
+                    <TabList>
+                        {Object.keys(albumHtmls).map((album) => (
+                            <Tab key={album}>{transformAlbumName(album)}</Tab>
+                        ))}
+                    </TabList>
                     {Object.keys(albumHtmls).map((album) => (
-                        <Tab key={album}>{transformAlbumName(album)}</Tab>
+                        <TabPanel key={album}>{renderHtmlContent()}</TabPanel>
                     ))}
-                </TabList>
-                {Object.keys(albumHtmls).map((album) => (
-                    <TabPanel key={album}>{renderHtmlContent()}</TabPanel>
-                ))}
-            </Tabs>
+                </Tabs>
+            </div>
         );
     };
 
@@ -875,19 +887,31 @@ const L_1_HomePageContent = () => {
             return <div>No PNG files available</div>;
 
         return (
-            <Tabs
-                selectedIndex={Object.keys(albumImages).indexOf(selectedAlbum)}
-                onSelect={(index) => setSelectedAlbum(Object.keys(albumImages)[index])}
-            >
-                <TabList>
+            <div>
+                <div className="version-input-container">
+                    <input
+                        id="versionNumber"
+                        type="number"
+                        className="version-input"
+                        placeholder="1"
+                        value={version}
+                        onChange={handleVersionChange}
+                    />
+                </div>
+                <Tabs
+                    selectedIndex={Object.keys(albumImages).indexOf(selectedAlbum)}
+                    onSelect={(index) => setSelectedAlbum(Object.keys(albumImages)[index])}
+                >
+                    <TabList>
+                        {Object.keys(albumImages).map((album) => (
+                            <Tab key={album}>{transformAlbumNamePlot(album)}</Tab>
+                        ))}
+                    </TabList>
                     {Object.keys(albumImages).map((album) => (
-                        <Tab key={album}>{transformAlbumNamePlot(album)}</Tab>
+                        <TabPanel key={album}>{renderPlotContent1()}</TabPanel>
                     ))}
-                </TabList>
-                {Object.keys(albumImages).map((album) => (
-                    <TabPanel key={album}>{renderPlotContent1()}</TabPanel>
-                ))}
-            </Tabs>
+                </Tabs>
+            </div>
         );
     };
 
@@ -955,10 +979,21 @@ const L_1_HomePageContent = () => {
             .sort((a, b) => a.name.localeCompare(b.name)); // Sort files alphabetically
 
         return (
-            <Tabs
-                selectedIndex={sortedCsvFiles.findIndex((file) => file.name === subTab)}
-                onSelect={(index) => setSubTab(sortedCsvFiles[index]?.name || '')}
-            >
+            <div>
+                <div className="version-input-container">
+                    <input
+                        id="versionNumber"
+                        type="number"
+                        className="version-input"
+                        placeholder="1"
+                        value={version}
+                        onChange={handleVersionChange}
+                    />
+                </div>
+                <Tabs
+                    selectedIndex={sortedCsvFiles.findIndex((file) => file.name === subTab)}
+                    onSelect={(index) => setSubTab(sortedCsvFiles[index]?.name || '')}
+                >
                 <TabList>
                     {sortedCsvFiles.map((file) => (
                         <Tab key={file.name}>
@@ -973,6 +1008,7 @@ const L_1_HomePageContent = () => {
                     </TabPanel>
                 ))}
             </Tabs>
+            </div>
         );
     };
 

@@ -13,6 +13,8 @@ BACKEND_DIR = Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 if str(BACKEND_DIR) not in sys.path:
     sys.path.append(str(BACKEND_DIR))
 
+# Base paths
+PUBLIC_DIR = BACKEND_DIR.parent / 'public' / 'Original'
 # Try to import property_mapping, use empty dict if not available
 try:
     from Utility_functions.common_utils import property_mapping
@@ -38,13 +40,12 @@ logging.basicConfig(
 logging.info("Script started.")
 logger = logging.getLogger(__name__)
 
-# Base directory for uploads and batches
-uploads_dir = BACKEND_DIR.parent / "public" / "Original"
-os.makedirs(uploads_dir, exist_ok=True)
-logging.info(f"Ensured base uploads directory exists at {uploads_dir}")
+# Ensure base directory exists
+os.makedirs(PUBLIC_DIR, exist_ok=True)
+logging.info(f"Ensured base directory exists at {PUBLIC_DIR}")
 
 # Define paths to save aggregated data and legend information
-output_data_dir = os.path.join(uploads_dir, "aggregated_data")
+output_data_dir = os.path.join(PUBLIC_DIR, "aggregated_data")
 os.makedirs(output_data_dir, exist_ok=True)
 logging.info(f"Ensured aggregated data directory exists at {output_data_dir}")
 
@@ -204,7 +205,7 @@ legend_cluster_version_stat = {}
 cluster_size = max(1, len(selected_properties))
 
 for i, selected_version in enumerate(selected_versions, start=1):
-    batch_folder = os.path.join(uploads_dir, f'Batch({selected_version})')
+    batch_folder = os.path.join(PUBLIC_DIR, f'Batch({selected_version})')
     results_folder = os.path.join(batch_folder, f'Results({selected_version})')
 
     # Create all required directories first
@@ -408,14 +409,9 @@ all_cumulative_cash_flows = []
 cumulative_legend_items = []
 
 
-
-
-
-
-
 # Iterate over each selected version to aggregate data
 for i, selected_version in enumerate(selected_versions):
-    batch_folder = os.path.join(uploads_dir, f'Batch({selected_version})')
+    batch_folder = os.path.join(PUBLIC_DIR, f'Batch({selected_version})')
     results_folder = os.path.join(batch_folder, f'Results({selected_version})')
 
     # Create results folder if it doesn't exist
@@ -676,7 +672,7 @@ def plot_aggregated(datasets, title, xlabel, ylabel, filename, title_font=chosen
 for selected_version in selected_versions:
     try:
         # Create version-specific directory path
-        batch_folder = os.path.join(uploads_dir, f'Batch({selected_version})')
+        batch_folder = os.path.join(PUBLIC_DIR, f'Batch({selected_version})')
         results_folder = os.path.join(batch_folder, f'Results({selected_version})')
         version_specific_dir = os.path.join(results_folder, f'{versions_identifier}_AnnotatedStaticPlots')
         

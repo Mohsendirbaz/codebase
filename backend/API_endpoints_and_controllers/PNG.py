@@ -12,14 +12,8 @@ from pathlib import Path
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 
-# Add path for serving images
-ORIGINAL_DIR = Path(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-
-# Replace the current path configuration block with:
-import os
-from pathlib import Path
-
 # Path Configuration
+ORIGINAL_DIR = Path(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 BACKEND_DIR = Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 PUBLIC_DIR = ORIGINAL_DIR / 'public' / 'Original'
 LOG_DIR = BACKEND_DIR / "Logs"
@@ -305,6 +299,18 @@ def run_scripts():
         # Log successful completion
         request_duration = datetime.now() - request_start_time
         logger.info(f"Request completed successfully in {request_duration}")
+        
+        # Import and run album organizer
+        try:
+            # Import and run album organizer
+            sys.path.append(str(BACKEND_DIR))
+            from album_organizer import organize_plot_albums
+            organize_plot_albums()
+            logger.info("Album organization completed")
+        except Exception as e:
+            logger.error(f"Error during album organization: {str(e)}")
+            # Continue with normal flow, don't fail the request
+            
         return '', 204
 
     except Exception as e:
