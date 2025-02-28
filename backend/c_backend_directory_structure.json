@@ -37,14 +37,15 @@
         "Configuration_management\\module.log",
         "Configuration_management\\module1.py",
         "Configuration_management\\Table.log",
-        "Configuration_management\\Table.py"
+        "Configuration_management\\Table.py",
+        "Configuration_management\\config_modules.py"
       ],
       "import_count": 8
     },
     "Core_calculation_engines": {
       "files": [
         "Core_calculation_engines\\CFA.py",
-        "Core_calculation_engines\\Old_Script.py"
+        "Core_calculation_engines\\config_modules_8.py"
       ],
       "import_count": 2
     },

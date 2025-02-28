@@ -1656,6 +1656,7 @@ Decreasing price to $1.75 due to NPV above tolerance.
 Calculated Current NPV: -855.00 from row 20
 'primary_result': -855,'secondary_result': 12
 NPV is within tolerance bounds. Exiting optimization loop.
+<<<<<<< HEAD
 Price optimization started.
 <<<<<<< HEAD
 Calculated Current NPV: 103238.00 from row 20
@@ -1906,3 +1907,5 @@ Decreasing price to $1.75 due to NPV above tolerance.
 Calculated Current NPV: -869.00 from row 20
 'primary_result': -869,'secondary_result': 12
 NPV is within tolerance bounds. Exiting optimization loop.
+=======
+>>>>>>> 99feaad7 (Casino Gate)

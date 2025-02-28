@@ -6,61 +6,66 @@
 ================================================================================
 2025-03-03 04:53:17,547 INFO 
 ================================================================================
-2025-03-03 04:53:17,547 INFO Sensitivity Configuration Generation - Run ID: 20250303_045317
-2025-03-03 04:53:17,547 INFO Sensitivity Configuration Generation - Run ID: 20250303_045317
-2025-03-03 04:53:17,556 INFO ================================================================================
-2025-03-03 04:53:17,556 INFO ================================================================================
-2025-03-03 04:53:17,556 INFO Version: 1
-2025-03-03 04:53:17,556 INFO Version: 1
-2025-03-03 04:53:17,556 INFO Calculation Mode: calculateForPrice
-2025-03-03 04:53:17,556 INFO Calculation Mode: calculateForPrice
-2025-03-03 04:53:17,556 INFO Target Row: 20
-2025-03-03 04:53:17,556 INFO Target Row: 20
-2025-03-03 04:53:17,557 INFO Created main sensitivity directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity
-2025-03-03 04:53:17,557 INFO Created main sensitivity directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity
-2025-03-03 04:53:17,557 INFO Created Reports directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Reports
-2025-03-03 04:53:17,557 INFO Created Reports directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Reports
-2025-03-03 04:53:17,558 INFO Created parameter directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S34
-2025-03-03 04:53:17,558 INFO Created parameter directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S34
-2025-03-03 04:53:17,559 INFO Created mode directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S34\symmetrical
-2025-03-03 04:53:17,559 INFO Created mode directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S34\symmetrical
-2025-03-03 04:53:17,559 INFO Created variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S34\symmetrical\+20.00
-2025-03-03 04:53:17,559 INFO Created variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S34\symmetrical\+20.00
-2025-03-03 04:53:17,560 INFO Created variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S34\symmetrical\-20.00
-2025-03-03 04:53:17,560 INFO Created variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S34\symmetrical\-20.00
-2025-03-03 04:53:17,560 INFO Created parameter directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S35
-2025-03-03 04:53:17,560 INFO Created parameter directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S35
-2025-03-03 04:53:17,561 INFO Created mode directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S35\symmetrical
-2025-03-03 04:53:17,561 INFO Created mode directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S35\symmetrical
-2025-03-03 04:53:17,561 INFO Created variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S35\symmetrical\+20.00
-2025-03-03 04:53:17,561 INFO Created variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S35\symmetrical\+20.00
-2025-03-03 04:53:17,563 INFO Created variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S35\symmetrical\-20.00
-2025-03-03 04:53:17,563 INFO Created variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S35\symmetrical\-20.00
-2025-03-03 04:53:17,563 INFO Created parameter directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S36
-2025-03-03 04:53:17,563 INFO Created parameter directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S36
-2025-03-03 04:53:17,564 INFO Created mode directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S36\symmetrical
-2025-03-03 04:53:17,564 INFO Created mode directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S36\symmetrical
-2025-03-03 04:53:17,564 INFO Created variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S36\symmetrical\+20.00
-2025-03-03 04:53:17,564 INFO Created variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S36\symmetrical\+20.00
-2025-03-03 04:53:17,565 INFO Created variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S36\symmetrical\-20.00
-2025-03-03 04:53:17,565 INFO Created variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S36\symmetrical\-20.00
-2025-03-03 04:53:17,565 INFO Created parameter directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S37
-2025-03-03 04:53:17,565 INFO Created parameter directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S37
-2025-03-03 04:53:17,566 INFO Created mode directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S37\symmetrical
-2025-03-03 04:53:17,566 INFO Created mode directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S37\symmetrical
-2025-03-03 04:53:17,566 INFO Created variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S37\symmetrical\+20.00
-2025-03-03 04:53:17,566 INFO Created variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S37\symmetrical\+20.00
-2025-03-03 04:53:17,568 INFO Created variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S37\symmetrical\-20.00
-2025-03-03 04:53:17,568 INFO Created variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S37\symmetrical\-20.00
-2025-03-03 04:53:17,568 INFO Created parameter directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S38
-2025-03-03 04:53:17,568 INFO Created parameter directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S38
-2025-03-03 04:53:17,570 INFO Created mode directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S38\symmetrical
-2025-03-03 04:53:17,570 INFO Created mode directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S38\symmetrical
-2025-03-03 04:53:17,570 INFO Created variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S38\symmetrical\+20.00
-2025-03-03 04:53:17,570 INFO Created variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S38\symmetrical\+20.00
-2025-03-03 04:53:17,571 INFO Created variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S38\symmetrical\-20.00
-2025-03-03 04:53:17,571 INFO Created variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S38\symmetrical\-20.00
-2025-03-03 04:53:17,571 INFO 
+
+2025-02-23 17:32:00,542 INFO 
+Executing Configuration Management Scripts:
+2025-02-23 17:32:00,542 INFO 
+Executing: formatter.py
+2025-02-23 17:32:00,845 INFO Completed formatter.py in 0.30s
+2025-02-23 17:32:01,355 INFO 
+Executing: module1.py
+2025-02-23 17:32:03,885 INFO Completed module1.py in 2.53s
+2025-02-23 17:32:04,391 INFO 
+Executing: config_modules.py
+2025-02-23 17:32:07,369 ERROR Script execution failed: config_modules.py
+Error: Traceback (most recent call last):
+  File "C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Configuration_management\config_modules.py", line 139, in <module>
+    main(version)
+  File "C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Configuration_management\config_modules.py", line 125, in main
+    config_matrix_df = pd.read_csv(config_matrix_file)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 1880, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\common.py", line 873, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\md8w7\\OneDrive University of Missouri\\Desktop\\ImportantFiles\\Milestone4\\backend\\Original\\Batch(8)\\Results(8)\\General_Configuration_Matrix(8).csv'
+
+2025-02-23 17:32:07,369 ERROR Error during orchestrated calculations: Script execution failed: config_modules.py
+Error: Traceback (most recent call last):
+  File "C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Configuration_management\config_modules.py", line 139, in <module>
+    main(version)
+  File "C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Configuration_management\config_modules.py", line 125, in main
+    config_matrix_df = pd.read_csv(config_matrix_file)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 1880, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\common.py", line 873, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\md8w7\\OneDrive University of Missouri\\Desktop\\ImportantFiles\\Milestone4\\backend\\Original\\Batch(8)\\Results(8)\\General_Configuration_Matrix(8).csv'
+
+2025-02-23 17:38:18,947 INFO 
 ================================================================================
 2025-03-03 04:53:17,571 INFO 
 ================================================================================
@@ -175,86 +180,188 @@ S38 Configuration:
 2025-03-03 04:53:17,581 INFO 
 ================================================================================
 
-2025-03-03 04:53:17,581 INFO 
-================================================================================
+2025-02-23 17:38:18,948 INFO 
+Executing Configuration Management Scripts:
+2025-02-23 17:38:18,948 INFO 
+Executing: formatter.py
+2025-02-23 17:38:19,258 INFO Completed formatter.py in 0.31s
+2025-02-23 17:38:19,775 INFO 
+Executing: module1.py
+2025-02-23 17:38:20,671 INFO Completed module1.py in 0.90s
+2025-02-23 17:38:21,197 INFO 
+Executing: config_modules.py
+2025-02-23 17:38:25,002 ERROR Script execution failed: config_modules.py
+Error: Traceback (most recent call last):
+  File "C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Configuration_management\config_modules.py", line 139, in <module>
+    main(version)
+  File "C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Configuration_management\config_modules.py", line 125, in main
+    config_matrix_df = pd.read_csv(config_matrix_file)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 1880, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\common.py", line 873, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\md8w7\\OneDrive University of Missouri\\Desktop\\ImportantFiles\\Milestone4\\backend\\Original\\Batch(7)\\Results(7)\\General_Configuration_Matrix(7).csv'
 
-2025-03-03 04:53:17,586 INFO Saved main configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Reports\sensitivity_config.json
-2025-03-03 04:53:17,586 INFO Saved main configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Reports\sensitivity_config.json
-2025-03-03 04:53:17,587 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S34\symmetrical\+20.00\S34_config.json
-2025-03-03 04:53:17,587 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S34\symmetrical\+20.00\S34_config.json
-2025-03-03 04:53:17,589 INFO Saved config module copy: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S34\symmetrical\+20.00\1_config_module_3.json
-2025-03-03 04:53:17,589 INFO Saved config module copy: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S34\symmetrical\+20.00\1_config_module_3.json
-2025-03-03 04:53:17,590 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S34\symmetrical\-20.00\S34_config.json
-2025-03-03 04:53:17,590 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S34\symmetrical\-20.00\S34_config.json
-2025-03-03 04:53:17,592 INFO Saved config module copy: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S34\symmetrical\-20.00\1_config_module_3.json
-2025-03-03 04:53:17,592 INFO Saved config module copy: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S34\symmetrical\-20.00\1_config_module_3.json
-2025-03-03 04:53:17,593 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S35\symmetrical\+20.00\S35_config.json
-2025-03-03 04:53:17,593 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S35\symmetrical\+20.00\S35_config.json
-2025-03-03 04:53:17,595 INFO Saved config module copy: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S35\symmetrical\+20.00\1_config_module_3.json
-2025-03-03 04:53:17,595 INFO Saved config module copy: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S35\symmetrical\+20.00\1_config_module_3.json
-2025-03-03 04:53:17,597 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S35\symmetrical\-20.00\S35_config.json
-2025-03-03 04:53:17,597 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S35\symmetrical\-20.00\S35_config.json
-2025-03-03 04:53:17,599 INFO Saved config module copy: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S35\symmetrical\-20.00\1_config_module_3.json
-2025-03-03 04:53:17,599 INFO Saved config module copy: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S35\symmetrical\-20.00\1_config_module_3.json
-2025-03-03 04:53:17,600 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S36\symmetrical\+20.00\S36_config.json
-2025-03-03 04:53:17,600 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S36\symmetrical\+20.00\S36_config.json
-2025-03-03 04:53:17,602 INFO Saved config module copy: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S36\symmetrical\+20.00\1_config_module_3.json
-2025-03-03 04:53:17,602 INFO Saved config module copy: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S36\symmetrical\+20.00\1_config_module_3.json
-2025-03-03 04:53:17,603 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S36\symmetrical\-20.00\S36_config.json
-2025-03-03 04:53:17,603 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S36\symmetrical\-20.00\S36_config.json
-2025-03-03 04:53:17,605 INFO Saved config module copy: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S36\symmetrical\-20.00\1_config_module_3.json
-2025-03-03 04:53:17,605 INFO Saved config module copy: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S36\symmetrical\-20.00\1_config_module_3.json
-2025-03-03 04:53:17,606 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S37\symmetrical\+20.00\S37_config.json
-2025-03-03 04:53:17,606 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S37\symmetrical\+20.00\S37_config.json
-2025-03-03 04:53:17,607 INFO Saved config module copy: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S37\symmetrical\+20.00\1_config_module_3.json
-2025-03-03 04:53:17,607 INFO Saved config module copy: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S37\symmetrical\+20.00\1_config_module_3.json
-2025-03-03 04:53:17,609 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S37\symmetrical\-20.00\S37_config.json
-2025-03-03 04:53:17,609 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S37\symmetrical\-20.00\S37_config.json
-2025-03-03 04:53:17,610 INFO Saved config module copy: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S37\symmetrical\-20.00\1_config_module_3.json
-2025-03-03 04:53:17,610 INFO Saved config module copy: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S37\symmetrical\-20.00\1_config_module_3.json
-2025-03-03 04:53:17,611 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S38\symmetrical\+20.00\S38_config.json
-2025-03-03 04:53:17,611 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S38\symmetrical\+20.00\S38_config.json
-2025-03-03 04:53:17,615 INFO Saved config module copy: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S38\symmetrical\+20.00\1_config_module_3.json
-2025-03-03 04:53:17,615 INFO Saved config module copy: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S38\symmetrical\+20.00\1_config_module_3.json
-2025-03-03 04:53:17,616 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S38\symmetrical\-20.00\S38_config.json
-2025-03-03 04:53:17,616 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S38\symmetrical\-20.00\S38_config.json
-2025-03-03 04:53:17,618 INFO Saved config module copy: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S38\symmetrical\-20.00\1_config_module_3.json
-2025-03-03 04:53:17,618 INFO Saved config module copy: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S38\symmetrical\-20.00\1_config_module_3.json
-2025-03-03 04:53:17,619 INFO 
-Sensitivity configuration completed successfully
-2025-03-03 04:53:17,619 INFO 
-Sensitivity configuration completed successfully
-2025-03-03 04:53:17,619 INFO Configuration files saved: 21
-2025-03-03 04:53:17,619 INFO Configuration files saved: 21
-2025-03-03 04:53:17,619 INFO Configuration status saved to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\sensitivity_config_status.json
-2025-03-03 04:53:17,619 INFO Configuration status saved to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\sensitivity_config_status.json
+2025-02-23 17:38:25,002 ERROR Error during orchestrated calculations: Script execution failed: config_modules.py
+Error: Traceback (most recent call last):
+  File "C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Configuration_management\config_modules.py", line 139, in <module>
+    main(version)
+  File "C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Configuration_management\config_modules.py", line 125, in main
+    config_matrix_df = pd.read_csv(config_matrix_file)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 1880, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\common.py", line 873, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\md8w7\\OneDrive University of Missouri\\Desktop\\ImportantFiles\\Milestone4\\backend\\Original\\Batch(7)\\Results(7)\\General_Configuration_Matrix(7).csv'
+
 2025-03-03 04:53:17,620 INFO ================================================================================
 
-2025-03-03 04:53:17,620 INFO ================================================================================
+2025-02-23 17:47:47,334 INFO 
+Executing Configuration Management Scripts:
+2025-02-23 17:47:47,334 INFO 
+Executing: formatter.py
+2025-02-23 17:47:47,704 INFO Completed formatter.py in 0.37s
+2025-02-23 17:47:48,217 INFO 
+Executing: module1.py
+2025-02-23 17:47:50,925 INFO Completed module1.py in 2.71s
+2025-02-23 17:47:51,434 INFO 
+Executing: config_modules.py
+2025-02-23 17:47:53,040 INFO Completed config_modules.py in 1.61s
+2025-02-23 17:47:53,544 INFO 
+Executing: Table.py
+2025-02-23 17:47:55,839 INFO Completed Table.py in 2.30s
+2025-02-23 17:47:56,350 INFO 
+Configuration scripts completed in 9.02s
+2025-02-23 17:47:56,350 INFO 
+Processing Calculations:
+2025-02-23 17:47:56,350 ERROR Error during orchestrated calculations: Calculation script not found for version 9
+2025-02-23 17:50:04,206 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-23 17:53:24,919 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-23 17:57:01,296 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-23 17:58:35,136 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-23 18:00:24,682 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-23 18:03:53,839 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-23 18:07:01,197 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-23 18:08:18,166 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-23 18:08:59,246 INFO 
+================================================================================
+2025-03-03 04:53:17,722 INFO 
+================================================================================
 
-2025-03-03 04:53:17,722 INFO Using saved sensitivity configuration data
-2025-03-03 04:53:17,722 INFO Using saved sensitivity configuration data
-2025-03-03 04:53:17,722 INFO Using sensitivity directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity
-2025-03-03 04:53:17,722 INFO Using sensitivity directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity
-2025-03-03 04:53:17,722 INFO 
+2025-02-23 18:08:59,248 INFO 
+Executing Configuration Management Scripts:
+2025-02-23 18:08:59,248 INFO 
+Executing: formatter.py
+2025-02-23 18:08:59,394 INFO Completed formatter.py in 0.15s
+2025-02-23 18:08:59,904 INFO 
+Executing: module1.py
+2025-02-23 18:09:01,759 INFO Completed module1.py in 1.86s
+2025-02-23 18:09:02,272 INFO 
+Executing: config_modules.py
+2025-02-23 18:09:03,256 INFO Completed config_modules.py in 0.98s
+2025-02-23 18:09:03,768 INFO 
+Executing: Table.py
+2025-02-23 18:09:04,971 INFO Completed Table.py in 1.20s
+2025-02-23 18:09:05,482 INFO 
+Configuration scripts completed in 6.23s
+2025-02-23 18:09:05,482 INFO 
+Processing Calculations:
+2025-02-23 18:09:05,482 ERROR Error during orchestrated calculations: Calculation script not found for version 10
+2025-02-23 18:09:38,944 INFO 
 ================================================================================
-2025-03-03 04:53:17,722 INFO 
-================================================================================
-2025-03-03 04:53:17,723 INFO Sensitivity Calculation Run - ID: 20250303_045317
-2025-03-03 04:53:17,723 INFO Sensitivity Calculation Run - ID: 20250303_045317
-2025-03-03 04:53:17,723 INFO ================================================================================
-2025-03-03 04:53:17,723 INFO ================================================================================
 2025-03-03 04:53:17,723 INFO 
 ================================================================================
-2025-03-03 04:53:17,723 INFO 
+
+2025-02-23 18:09:38,947 INFO 
+Executing Configuration Management Scripts:
+2025-02-23 18:09:38,947 INFO 
+Executing: formatter.py
+2025-02-23 18:09:39,046 INFO Completed formatter.py in 0.10s
+2025-02-23 18:09:39,554 INFO 
+Executing: module1.py
+2025-02-23 18:09:40,635 INFO Completed module1.py in 1.08s
+2025-02-23 18:09:41,149 INFO 
+Executing: config_modules.py
+2025-02-23 18:09:42,046 INFO Completed config_modules.py in 0.90s
+2025-02-23 18:09:42,553 INFO 
+Executing: Table.py
+2025-02-23 18:09:43,777 INFO Completed Table.py in 1.22s
+2025-02-23 18:09:44,277 INFO 
+Configuration scripts completed in 5.33s
+2025-02-23 18:09:44,277 INFO 
+Processing Calculations:
+2025-02-23 18:09:44,277 ERROR Error during orchestrated calculations: Calculation script not found for version 11
+2025-02-23 18:11:22,339 INFO 
 ================================================================================
-2025-03-03 04:53:17,723 INFO CFA Run Configuration
-2025-03-03 04:53:17,723 INFO CFA Run Configuration
-2025-03-03 04:53:17,724 INFO ================================================================================
-2025-03-03 04:53:17,724 INFO ================================================================================
-2025-03-03 04:53:17,724 INFO 
+2025-02-23 18:11:22,339 INFO CFA Run Configuration
+2025-02-23 18:11:22,339 INFO ================================================================================
+2025-02-23 18:11:22,339 INFO 
 Basic Configuration:
-2025-03-03 04:53:17,724 INFO 
+2025-02-23 18:11:22,339 INFO Version(s): 12
+2025-02-23 18:11:22,339 INFO Calculation Mode: calculateForPrice
+2025-02-23 18:11:22,339 INFO Target Row: 20
+2025-02-23 18:11:22,339 INFO 
+Parameter States:
+2025-02-23 18:11:22,340 INFO Enabled V Parameters: None
+2025-02-23 18:11:22,340 INFO Enabled F Parameters: None
+2025-02-23 18:11:22,340 INFO 
+Sensitivity Analysis Configuration:
+2025-02-23 18:11:22,340 INFO Enabled Parameters: S17
+2025-02-23 18:11:22,340 INFO 
+S17 Configuration:
+2025-02-23 18:11:22,340 INFO   Mode: symmetrical
+2025-02-23 18:11:22,340 INFO   Values: []
+2025-02-23 18:11:22,340 INFO 
+================================================================================
+
+2025-02-23 18:11:22,340 INFO 
+Executing Configuration Management Scripts:
+2025-02-23 18:11:22,341 INFO 
+Executing: formatter.py
+2025-02-23 18:11:22,462 INFO Completed formatter.py in 0.12s
+2025-02-23 18:11:22,979 INFO 
+Executing: module1.py
+2025-02-23 18:11:24,461 INFO Completed module1.py in 1.48s
+2025-02-23 18:11:24,977 INFO 
+Executing: config_modules.py
+2025-02-23 18:11:26,002 INFO Completed config_modules.py in 1.02s
+2025-02-23 18:11:26,513 INFO 
+Executing: Table.py
+2025-02-23 18:11:27,549 INFO Completed Table.py in 1.04s
+2025-02-23 18:11:28,058 INFO 
+Configuration scripts completed in 5.72s
+2025-02-23 18:11:28,058 INFO 
+Processing Calculations:
+2025-02-23 18:11:28,058 ERROR Error during orchestrated calculations: Calculation script not found for version 12
+2025-02-23 18:11:35,204 INFO 
+================================================================================
+2025-02-23 18:11:35,206 INFO CFA Run Configuration
+2025-02-23 18:11:35,206 INFO ================================================================================
+2025-02-23 18:11:35,206 INFO 
 Basic Configuration:
 2025-03-03 04:53:17,724 INFO Version(s): 1
 2025-03-03 04:53:17,724 INFO Version(s): 1
@@ -359,12 +466,87 @@ S38 Configuration:
 2025-03-03 04:53:17,736 INFO 
 ================================================================================
 
-2025-03-03 04:53:17,736 INFO 
+2025-02-23 18:11:35,207 INFO 
+Executing Configuration Management Scripts:
+2025-02-23 18:11:35,207 INFO 
+Executing: formatter.py
+2025-02-23 18:11:35,303 INFO Completed formatter.py in 0.10s
+2025-02-23 18:11:35,810 INFO 
+Executing: module1.py
+2025-02-23 18:11:36,703 INFO Completed module1.py in 0.89s
+2025-02-23 18:11:37,209 INFO 
+Executing: config_modules.py
+2025-02-23 18:11:38,374 INFO Completed config_modules.py in 1.16s
+2025-02-23 18:11:38,875 INFO 
+Executing: Table.py
+2025-02-23 18:11:39,802 INFO Completed Table.py in 0.93s
+2025-02-23 18:11:40,310 INFO 
+Configuration scripts completed in 5.10s
+2025-02-23 18:11:40,310 INFO 
+Processing Calculations:
+2025-02-23 18:11:40,310 ERROR Error during orchestrated calculations: Calculation script not found for version 12
+2025-02-23 18:18:03,598 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-23 18:19:29,150 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-23 22:07:20,024 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-23 22:07:20,405 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-23 22:11:13,700 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-23 22:11:14,152 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-23 22:11:31,852 INFO 
 ================================================================================
 
 2025-03-03 04:53:17,737 INFO 
 Executing Configuration Management Scripts:
-2025-03-03 04:53:17,737 INFO 
+2025-02-23 22:11:31,859 INFO 
+Executing: formatter.py
+2025-02-23 22:11:32,277 INFO Completed formatter.py in 0.42s
+2025-02-23 22:11:32,785 INFO 
+Executing: module1.py
+2025-02-23 22:11:34,546 INFO Completed module1.py in 1.76s
+2025-02-23 22:11:35,056 INFO 
+Executing: config_modules.py
+2025-02-23 22:11:35,991 INFO Completed config_modules.py in 0.94s
+2025-02-23 22:11:36,502 INFO 
+Executing: Table.py
+2025-02-23 22:11:37,709 INFO Completed Table.py in 1.21s
+2025-02-23 22:11:38,210 INFO 
+Configuration scripts completed in 6.35s
+2025-02-23 22:11:38,210 INFO 
+Processing Calculations:
+2025-02-23 22:11:38,210 ERROR Error during orchestrated calculations: Calculation script not found for version 13
+2025-02-23 22:24:32,508 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-23 22:26:16,609 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-23 22:27:05,193 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-23 22:28:48,290 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-23 22:29:09,260 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-23 22:29:16,699 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-23 22:30:25,926 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-23 22:31:05,715 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-23 22:32:03,354 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-23 22:32:34,271 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-23 22:32:41,623 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-23 22:34:01,551 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-23 22:34:14,495 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-23 22:35:43,490 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-23 22:37:16,975 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-23 22:43:00,708 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-23 22:43:17,946 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-23 22:44:24,469 INFO 
+================================================================================
+2025-02-23 22:44:24,469 INFO CFA Run Configuration
+2025-02-23 22:44:24,470 INFO ================================================================================
+2025-02-23 22:44:24,470 INFO 
+Basic Configuration:
+2025-02-23 22:44:24,470 INFO Version(s): 14
+2025-02-23 22:44:24,470 INFO Calculation Mode: calculateForPrice
+2025-02-23 22:44:24,470 INFO Target Row: 20
+2025-02-23 22:44:24,470 INFO 
+Parameter States:
+2025-02-23 22:44:24,470 INFO Enabled V Parameters: None
+2025-02-23 22:44:24,470 INFO Enabled F Parameters: None
+2025-02-23 22:44:24,470 INFO 
+================================================================================
+
+2025-02-23 22:44:24,471 INFO 
 Executing Configuration Management Scripts:
 2025-03-03 04:53:17,737 INFO 
 Executing: formatter.py
@@ -374,17 +556,11 @@ Executing: formatter.py
 2025-03-03 04:53:17,906 INFO Completed formatter.py in 0.17s
 2025-03-03 04:53:18,410 INFO 
 Executing: module1.py
-2025-03-03 04:53:18,410 INFO 
-Executing: module1.py
-2025-03-03 04:53:20,978 INFO Completed module1.py in 2.57s
-2025-03-03 04:53:20,978 INFO Completed module1.py in 2.57s
-2025-03-03 04:53:21,482 INFO 
+2025-02-23 22:44:26,586 INFO Completed module1.py in 1.49s
+2025-02-23 22:44:27,088 INFO 
 Executing: config_modules.py
-2025-03-03 04:53:21,482 INFO 
-Executing: config_modules.py
-2025-03-03 04:53:23,093 INFO Completed config_modules.py in 1.61s
-2025-03-03 04:53:23,093 INFO Completed config_modules.py in 1.61s
-2025-03-03 04:53:23,598 INFO 
+2025-02-23 22:44:28,485 INFO Completed config_modules.py in 1.40s
+2025-02-23 22:44:28,986 INFO 
 Executing: Table.py
 2025-03-03 04:53:23,598 INFO 
 Executing: Table.py

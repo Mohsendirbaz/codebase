@@ -6,6 +6,7 @@ git rev-parse HEAD  # Should show current
 
 git remote -v  # Should show https://github.com/Mohsendirbaz/SF.git
 
+<<<<<<< HEAD
 git checkout -b SConfig.R3
 
 git add .
@@ -13,6 +14,18 @@ git add .
 git commit -m "Themes "
 
 git push codebase SConfig.R3
+
+
+
+=======
+git checkout -b SF.R25
+
+git add .
+
+git commit -m "Casino Gate"
+>>>>>>> 99feaad7 (Casino Gate)
+
+git push origin SF.R25
 
 
 # Remove existing temp directory (already done)
