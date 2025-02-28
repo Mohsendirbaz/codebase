@@ -676,11 +676,22 @@ const L_1_HomePageContent = () => {
     useEffect(() => {
         const fetchHtmlFiles = async () => {
             try {
+                console.log(`Fetching HTML files for version: ${version}`);
                 const response = await fetch(`http://localhost:8009/api/album_html/${version}`);
+                console.log(`Response status:`, response.status);
+                
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
+                
                 const data = await response.json();
+                console.log(`API response data:`, data);
+
+                if (!data || data.length === 0) {
+                    console.log(`No HTML files returned from API for version ${version}`);
+                    setAlbumHtmls({});
+                    return;
+                }
 
                 // Group HTML files by album
                 const albumGroupedHtmls = data.reduce((acc, html) => {
@@ -692,15 +703,19 @@ const L_1_HomePageContent = () => {
                     return acc;
                 }, {});
 
+                console.log(`Grouped HTML files by album:`, albumGroupedHtmls);
                 setAlbumHtmls(albumGroupedHtmls); // Update the HTML paths for the specified version
 
                 // Automatically select the first album that has HTML files
                 const firstAlbumWithHtml = Object.keys(albumGroupedHtmls)[0];
+                console.log(`First album with HTML files:`, firstAlbumWithHtml);
                 if (firstAlbumWithHtml) {
                     setSelectedHtml(firstAlbumWithHtml);
                 }
             } catch (error) {
                 console.error('Error fetching HTML files:', error);
+                console.error('Error details:', error.message);
+                setAlbumHtmls({});
             }
         };
 
@@ -711,42 +726,24 @@ const L_1_HomePageContent = () => {
         // Normalize the file path to replace backslashes with forward slashes
         const normalizedPath = filePath.replace(/\\/g, '/');
         const baseUrl = `http://localhost:3000/Original`;
-    
-        // Handle both organized and non-organized albums
-        // Pattern for HTML_v1_2_PlotType albums
-        const organizedMatch = normalizedPath.match(
-            /Batch\((\d+)\)\/Results\((\d+)\)\/(HTML_v[\d_]+_[^/]+)\/([^/]+\.html)$/
-        );
         
-        // Pattern for v1_2_PlotType_Plot albums
-        const legacyMatch = normalizedPath.match(
-            /Batch\((\d+)\)\/Results\((\d+)\)\/(v[\d_]+_[^/]+_Plot)\/([^/]+\.html)$/
-        );
+        // Extract the batch version using a simpler regex that just looks for the number in Batch(X)
+        const batchMatch = normalizedPath.match(/Batch\((\d+)\)/);
+        if (!batchMatch) return normalizedPath; // If no batch number found, return original path
         
-        // Pattern for any other album structure
-        const regularMatch = normalizedPath.match(
-            /Batch\((\d+)\)\/Results\((\d+)\)\/([^/]+)\/([^/]+\.html)$/
-        );
+        const version = batchMatch[1];
         
-        if (organizedMatch) {
-            const version = organizedMatch[1];
-            const album = organizedMatch[2];
-            const fileName = organizedMatch[3];
-            return `${baseUrl}/Batch(${version})/Results(${version})/${album}/${fileName}`;
-        } else if (legacyMatch) {
-            const version = legacyMatch[1];
-            const album = legacyMatch[2];
-            const fileName = legacyMatch[3];
-            return `${baseUrl}/Batch(${version})/Results(${version})/${album}/${fileName}`;
-        } else if (regularMatch) {
-            const version = regularMatch[1];
-            const album = regularMatch[2];
-            const fileName = regularMatch[3];
-            return `${baseUrl}/Batch(${version})/Results(${version})/${album}/${fileName}`;
-        }
+        // Split the path by '/' to extract album and filename more reliably
+        const pathParts = normalizedPath.split('/');
         
-        // If no pattern matches, return the normalized path
-        return normalizedPath;
+        // The HTML file should be the last part
+        const fileName = pathParts[pathParts.length - 1];
+        
+        // The album should be the second-to-last directory
+        const album = pathParts[pathParts.length - 2];
+        
+        // Construct the URL using the extracted parts
+        return `${baseUrl}/Batch(${version})/Results(${version})/${album}/${fileName}`;
     };
 
     const transformAlbumName = (album) => {
@@ -864,20 +861,24 @@ const L_1_HomePageContent = () => {
     const transformPathToUrl = (filePath) => {
         // Normalize the file path to replace backslashes with forward slashes
         const normalizedPath = filePath.replace(/\\/g, '/');
-
-        // Extract version and album from the normalized path
-        const match = normalizedPath.match(
-            /Batch\((\d+)\)\/Results\(\d+\)\/([^\/]+)\/([^\/]+\.png)$/
-        );
-
-        if (match) {
-            const version = match[1];
-            const album = match[2];
-            const fileName = match[3];
-            // Use the PNG server's image endpoint
-            return `http://localhost:5008/images/Batch(${version})/Results(${version})/${album}/${fileName}`;
-        }
-        return normalizedPath;
+        
+        // Extract the batch version using a simpler regex that just looks for the number in Batch(X)
+        const batchMatch = normalizedPath.match(/Batch\((\d+)\)/);
+        if (!batchMatch) return normalizedPath; // If no batch number found, return original path
+        
+        const version = batchMatch[1];
+        
+        // Split the path by '/' to extract album and filename more reliably
+        const pathParts = normalizedPath.split('/');
+        
+        // The PNG file should be the last part
+        const fileName = pathParts[pathParts.length - 1];
+        
+        // The album should be the second-to-last directory
+        const album = pathParts[pathParts.length - 2];
+        
+        // Construct the URL using the extracted parts
+        return `http://localhost:5008/images/Batch(${version})/Results(${version})/${album}/${fileName}`;
     };
 
     const transformAlbumNamePlot = (album) => {

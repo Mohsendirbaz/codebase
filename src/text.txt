@@ -14,13 +14,13 @@ git rev-parse HEAD  # Should show current
 
 git remote -v  # Should show https://github.com/Mohsendirbaz/SF.git
 
-git checkout -b SF.R21
+git checkout -b SF.R22
 
 git add .
 
-git commit -m "Run cfa and generate PNG restored"
+git commit -m "Run cfa and generate PNG restored, generate dynamic plots and their respective tabs restored"
 
-git push origin SF.R21
+git push origin SF.R22
 
 
 

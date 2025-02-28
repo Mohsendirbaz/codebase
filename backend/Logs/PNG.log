@@ -802,3 +802,103 @@ INFO:root:All plots completed successfully.
 2025-02-28 14:41:44 [INFO] Album organization completed successfully
 2025-02-28 14:41:44 [INFO] Album organization completed
 2025-02-28 14:41:44 [INFO] 127.0.0.1 - - [28/Feb/2025 14:41:44] "[35m[1mPOST /generate_png_plots HTTP/1.1[0m" 204 -
+2025-02-28 15:02:47 [INFO] 127.0.0.1 - - [28/Feb/2025 15:02:47] "GET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_revenue_1_2_3_3.png HTTP/1.1" 200 -
+2025-02-28 15:02:47 [INFO] 127.0.0.1 - - [28/Feb/2025 15:02:47] "GET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_operating_expenses_1_2_3_3.png HTTP/1.1" 200 -
+2025-02-28 15:02:47 [INFO] 127.0.0.1 - - [28/Feb/2025 15:02:47] "GET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_federal_taxes_1_2_3_3.png HTTP/1.1" 200 -
+2025-02-28 15:02:47 [INFO] 127.0.0.1 - - [28/Feb/2025 15:02:47] "GET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_cumulative_cash_flow_1_2_3_3.png HTTP/1.1" 200 -
+2025-02-28 15:02:47 [INFO] 127.0.0.1 - - [28/Feb/2025 15:02:47] "GET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_annual_cash_flow_net_1_2_3_3.png HTTP/1.1" 200 -
+2025-02-28 15:02:47 [INFO] 127.0.0.1 - - [28/Feb/2025 15:02:47] "GET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_depreciation_1_2_3_3.png HTTP/1.1" 200 -
+2025-02-28 15:02:48 [INFO] 127.0.0.1 - - [28/Feb/2025 15:02:48] "GET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_state_taxes_1_2_3_3.png HTTP/1.1" 200 -
+2025-02-28 15:02:48 [INFO] 127.0.0.1 - - [28/Feb/2025 15:02:48] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_revenue_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:02:48 [INFO] 127.0.0.1 - - [28/Feb/2025 15:02:48] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_operating_expenses_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:02:48 [INFO] 127.0.0.1 - - [28/Feb/2025 15:02:48] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_federal_taxes_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:02:48 [INFO] 127.0.0.1 - - [28/Feb/2025 15:02:48] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_cumulative_cash_flow_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:02:48 [INFO] 127.0.0.1 - - [28/Feb/2025 15:02:48] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_annual_cash_flow_net_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:02:48 [INFO] 127.0.0.1 - - [28/Feb/2025 15:02:48] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_depreciation_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:02:48 [INFO] 127.0.0.1 - - [28/Feb/2025 15:02:48] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_state_taxes_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:02:53 [INFO] 127.0.0.1 - - [28/Feb/2025 15:02:53] "GET /images/Batch(1)/Results(1)/1_2_3_3_PlotType_cumulative_cash_flow/aggregated_cumulative_cash_flow_1_2_3_3.png HTTP/1.1" 200 -
+2025-02-28 15:02:53 [INFO] 127.0.0.1 - - [28/Feb/2025 15:02:53] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_PlotType_cumulative_cash_flow/aggregated_cumulative_cash_flow_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:02:58 [INFO] 127.0.0.1 - - [28/Feb/2025 15:02:58] "GET /images/Batch(1)/Results(1)/1_2_3_3_PlotType_depreciation/aggregated_depreciation_1_2_3_3.png HTTP/1.1" 200 -
+2025-02-28 15:02:58 [INFO] 127.0.0.1 - - [28/Feb/2025 15:02:58] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_PlotType_depreciation/aggregated_depreciation_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:03:01 [INFO] 127.0.0.1 - - [28/Feb/2025 15:03:01] "GET /images/Batch(1)/Results(1)/1_2_3_3_PlotType_federal_taxes/aggregated_federal_taxes_1_2_3_3.png HTTP/1.1" 200 -
+2025-02-28 15:03:01 [INFO] 127.0.0.1 - - [28/Feb/2025 15:03:01] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_PlotType_federal_taxes/aggregated_federal_taxes_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:03:05 [INFO] 127.0.0.1 - - [28/Feb/2025 15:03:05] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_annual_cash_flow_net_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:03:05 [INFO] 127.0.0.1 - - [28/Feb/2025 15:03:05] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_depreciation_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:03:05 [INFO] 127.0.0.1 - - [28/Feb/2025 15:03:05] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_cumulative_cash_flow_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:03:05 [INFO] 127.0.0.1 - - [28/Feb/2025 15:03:05] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_federal_taxes_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:03:05 [INFO] 127.0.0.1 - - [28/Feb/2025 15:03:05] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_operating_expenses_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:03:05 [INFO] 127.0.0.1 - - [28/Feb/2025 15:03:05] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_revenue_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:03:05 [INFO] 127.0.0.1 - - [28/Feb/2025 15:03:05] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_state_taxes_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:03:05 [INFO] 127.0.0.1 - - [28/Feb/2025 15:03:05] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_annual_cash_flow_net_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:03:05 [INFO] 127.0.0.1 - - [28/Feb/2025 15:03:05] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_depreciation_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:03:05 [INFO] 127.0.0.1 - - [28/Feb/2025 15:03:05] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_cumulative_cash_flow_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:03:05 [INFO] 127.0.0.1 - - [28/Feb/2025 15:03:05] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_federal_taxes_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:03:05 [INFO] 127.0.0.1 - - [28/Feb/2025 15:03:05] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_operating_expenses_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:03:05 [INFO] 127.0.0.1 - - [28/Feb/2025 15:03:05] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_revenue_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:03:06 [INFO] 127.0.0.1 - - [28/Feb/2025 15:03:06] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_state_taxes_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:03:19 [INFO] 127.0.0.1 - - [28/Feb/2025 15:03:19] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_PlotType_cumulative_cash_flow/aggregated_cumulative_cash_flow_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:03:19 [INFO] 127.0.0.1 - - [28/Feb/2025 15:03:19] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_PlotType_cumulative_cash_flow/aggregated_cumulative_cash_flow_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:03:22 [INFO] 127.0.0.1 - - [28/Feb/2025 15:03:22] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_PlotType_depreciation/aggregated_depreciation_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:03:22 [INFO] 127.0.0.1 - - [28/Feb/2025 15:03:22] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_PlotType_depreciation/aggregated_depreciation_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:03:24 [INFO] 127.0.0.1 - - [28/Feb/2025 15:03:24] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_PlotType_federal_taxes/aggregated_federal_taxes_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:03:24 [INFO] 127.0.0.1 - - [28/Feb/2025 15:03:24] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_PlotType_federal_taxes/aggregated_federal_taxes_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:10:27 [INFO] 127.0.0.1 - - [28/Feb/2025 15:10:27] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_PlotType_federal_taxes/aggregated_federal_taxes_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:10:27 [INFO] 127.0.0.1 - - [28/Feb/2025 15:10:27] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_PlotType_federal_taxes/aggregated_federal_taxes_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:10:30 [INFO] 127.0.0.1 - - [28/Feb/2025 15:10:30] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_annual_cash_flow_net_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:10:30 [INFO] 127.0.0.1 - - [28/Feb/2025 15:10:30] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_cumulative_cash_flow_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:10:30 [INFO] 127.0.0.1 - - [28/Feb/2025 15:10:30] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_depreciation_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:10:30 [INFO] 127.0.0.1 - - [28/Feb/2025 15:10:30] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_federal_taxes_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:10:30 [INFO] 127.0.0.1 - - [28/Feb/2025 15:10:30] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_operating_expenses_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:10:30 [INFO] 127.0.0.1 - - [28/Feb/2025 15:10:30] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_revenue_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:10:30 [INFO] 127.0.0.1 - - [28/Feb/2025 15:10:30] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_state_taxes_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:10:30 [INFO] 127.0.0.1 - - [28/Feb/2025 15:10:30] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_annual_cash_flow_net_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:10:30 [INFO] 127.0.0.1 - - [28/Feb/2025 15:10:30] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_cumulative_cash_flow_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:10:30 [INFO] 127.0.0.1 - - [28/Feb/2025 15:10:30] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_depreciation_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:10:30 [INFO] 127.0.0.1 - - [28/Feb/2025 15:10:30] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_federal_taxes_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:10:30 [INFO] 127.0.0.1 - - [28/Feb/2025 15:10:30] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_operating_expenses_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:10:30 [INFO] 127.0.0.1 - - [28/Feb/2025 15:10:30] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_revenue_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:10:31 [INFO] 127.0.0.1 - - [28/Feb/2025 15:10:31] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_state_taxes_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:10:43 [INFO] 127.0.0.1 - - [28/Feb/2025 15:10:43] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_PlotType_federal_taxes/aggregated_federal_taxes_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:10:43 [INFO] 127.0.0.1 - - [28/Feb/2025 15:10:43] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_PlotType_federal_taxes/aggregated_federal_taxes_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:10:44 [INFO] 127.0.0.1 - - [28/Feb/2025 15:10:44] "GET /images/Batch(1)/Results(1)/1_2_3_3_PlotType_operating_expenses/aggregated_operating_expenses_1_2_3_3.png HTTP/1.1" 200 -
+2025-02-28 15:10:44 [INFO] 127.0.0.1 - - [28/Feb/2025 15:10:44] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_PlotType_operating_expenses/aggregated_operating_expenses_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:10:46 [INFO] 127.0.0.1 - - [28/Feb/2025 15:10:46] "GET /images/Batch(1)/Results(1)/1_2_3_3_PlotType_revenue/aggregated_revenue_1_2_3_3.png HTTP/1.1" 200 -
+2025-02-28 15:10:46 [INFO] 127.0.0.1 - - [28/Feb/2025 15:10:46] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_PlotType_revenue/aggregated_revenue_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:10:46 [INFO] 127.0.0.1 - - [28/Feb/2025 15:10:46] "GET /images/Batch(1)/Results(1)/1_2_3_3_PlotType_state_taxes/aggregated_state_taxes_1_2_3_3.png HTTP/1.1" 200 -
+2025-02-28 15:10:46 [INFO] 127.0.0.1 - - [28/Feb/2025 15:10:46] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_PlotType_state_taxes/aggregated_state_taxes_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:10:50 [INFO] 127.0.0.1 - - [28/Feb/2025 15:10:50] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_annual_cash_flow_net_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:10:50 [INFO] 127.0.0.1 - - [28/Feb/2025 15:10:50] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_cumulative_cash_flow_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:10:50 [INFO] 127.0.0.1 - - [28/Feb/2025 15:10:50] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_depreciation_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:10:50 [INFO] 127.0.0.1 - - [28/Feb/2025 15:10:50] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_federal_taxes_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:10:50 [INFO] 127.0.0.1 - - [28/Feb/2025 15:10:50] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_operating_expenses_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:10:50 [INFO] 127.0.0.1 - - [28/Feb/2025 15:10:50] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_revenue_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:10:50 [INFO] 127.0.0.1 - - [28/Feb/2025 15:10:50] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_state_taxes_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:10:50 [INFO] 127.0.0.1 - - [28/Feb/2025 15:10:50] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_annual_cash_flow_net_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:10:50 [INFO] 127.0.0.1 - - [28/Feb/2025 15:10:50] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_cumulative_cash_flow_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:10:50 [INFO] 127.0.0.1 - - [28/Feb/2025 15:10:50] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_depreciation_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:10:50 [INFO] 127.0.0.1 - - [28/Feb/2025 15:10:50] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_federal_taxes_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:10:50 [INFO] 127.0.0.1 - - [28/Feb/2025 15:10:50] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_operating_expenses_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:10:50 [INFO] 127.0.0.1 - - [28/Feb/2025 15:10:50] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_revenue_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:10:50 [INFO] 127.0.0.1 - - [28/Feb/2025 15:10:50] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_state_taxes_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:27:43 [INFO] Initialized logging in C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\PNG.log
+2025-02-28 15:27:43 [INFO] Backend directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend
+2025-02-28 15:27:43 [INFO] Script directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Visualization_generators
+2025-02-28 15:27:43 [INFO] Starting PNG visualization server on port 5008
+2025-02-28 15:27:43 [INFO] Serving images from: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original
+2025-02-28 15:27:43 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5008
+2025-02-28 15:27:43 [INFO] [33mPress CTRL+C to quit[0m
+2025-02-28 15:28:16 [INFO] 127.0.0.1 - - [28/Feb/2025 15:28:16] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_annual_cash_flow_net_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:28:16 [INFO] 127.0.0.1 - - [28/Feb/2025 15:28:16] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_cumulative_cash_flow_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:28:16 [INFO] 127.0.0.1 - - [28/Feb/2025 15:28:16] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_depreciation_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:28:16 [INFO] 127.0.0.1 - - [28/Feb/2025 15:28:16] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_federal_taxes_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:28:16 [INFO] 127.0.0.1 - - [28/Feb/2025 15:28:16] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_operating_expenses_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:28:16 [INFO] 127.0.0.1 - - [28/Feb/2025 15:28:16] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_revenue_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:28:16 [INFO] 127.0.0.1 - - [28/Feb/2025 15:28:16] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_state_taxes_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:28:16 [INFO] 127.0.0.1 - - [28/Feb/2025 15:28:16] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_annual_cash_flow_net_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:28:16 [INFO] 127.0.0.1 - - [28/Feb/2025 15:28:16] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_cumulative_cash_flow_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:28:16 [INFO] 127.0.0.1 - - [28/Feb/2025 15:28:16] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_federal_taxes_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:28:16 [INFO] 127.0.0.1 - - [28/Feb/2025 15:28:16] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_depreciation_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:28:16 [INFO] 127.0.0.1 - - [28/Feb/2025 15:28:16] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_operating_expenses_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:28:17 [INFO] 127.0.0.1 - - [28/Feb/2025 15:28:17] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_revenue_1_2_3_3.png HTTP/1.1[0m" 304 -
+2025-02-28 15:28:17 [INFO] 127.0.0.1 - - [28/Feb/2025 15:28:17] "[36mGET /images/Batch(1)/Results(1)/1_2_3_3_AnnotatedStaticPlots/aggregated_state_taxes_1_2_3_3.png HTTP/1.1[0m" 304 -
