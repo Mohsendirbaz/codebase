@@ -6,11 +6,15 @@ import sys
 import importlib.util
 import logging
 import logging.config
-import plotly.express as px
-import matplotlib.pyplot as plt
-from matplotlib import colors as mcolors 
-import matplotlib.patches as patches
-import seaborn as sns
+
+# Import custom modules for plotting and economic summary
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from Visualization_generators.cfa_plotting import (
+    generate_economic_breakdown_pie_chart,
+    generate_operational_cost_pie_chart_dynamic,
+    generate_operational_cost_pie_chart_static
+)
+from Data_processors_and_transformers.economic_summary import generate_economic_summary
 
 # ---------------- Logging Setup Block Start ----------------
 
@@ -58,7 +62,7 @@ def calculate_annual_revenue(numberOfUnitsAmount12, initialSellingPriceAmount13,
 
 def calculate_annual_operating_expenses(
     use_direct_operating_expensesAmount18, 
-    totalOperatingCostPercentageAmount1, 
+    totalOperatingCostPercentageAmount14, 
     variable_costsAmount4, 
     amounts_per_unitAmount5, 
     MaterialInventory, 
@@ -102,7 +106,7 @@ def calculate_annual_operating_expenses(
     if use_direct_operating_expensesAmount18:
         logging.info("Using direct operating expenses calculation")
         expenses = [0] * construction_years + [
-            int(totalOperatingCostPercentageAmount1 * revenue) for revenue in annual_revenue[construction_years:]
+            int(totalOperatingCostPercentageAmount14 * revenue) for revenue in annual_revenue[construction_years:]
         ]
     else:
         logging.info("Using indirect operating expenses calculation")
@@ -272,7 +276,7 @@ def calculate_revenue_and_expenses_from_modules(config_received, config_matrix_d
         start_year = int(row['start']) + construction_years
         end_year = int(row['end']) + construction_years
         length = int(row['end']) - int(row['start']) + 1
-        config_module_file = os.path.join(results_folder, f"{version}_config_module_{row['start']}_{row['end']}.json")
+        config_module_file = os.path.join(results_folder, f"{version}_config_module_{row['start']}.json")
         if not os.path.exists(config_module_file):
             logging.error(f"Missing config module for year {row['start']}")
             continue
@@ -289,7 +293,7 @@ def calculate_revenue_and_expenses_from_modules(config_received, config_matrix_d
 
         annual_operating_expenses, variable_costs, fixed_costs = calculate_annual_operating_expenses(
             config_module['use_direct_operating_expensesAmount18'],
-            config_module['totalOperatingCostPercentageAmount1'],
+            config_module['totalOperatingCostPercentageAmount14'],
             config_module['variable_costsAmount4'],
             config_module['amounts_per_unitAmount5'],
             config_module['rawmaterialAmount34'],
@@ -399,8 +403,11 @@ def calculate_revenue_and_expenses_from_modules(config_received, config_matrix_d
 
     # ---------------- Tax Exemption and Depreciation Calculation Block Start ----------------
 
-    # Create a matrix for distance from paying taxes
-    distance_matrix = pd.DataFrame(0, index=range(len(CFA_matrix)), columns=['Potentially Taxable Income', 'Fraction of TOC'])
+    # Create a matrix for distance from paying taxes with appropriate data types
+    distance_matrix = pd.DataFrame({
+        'Potentially Taxable Income': [0] * len(CFA_matrix),
+        'Fraction of TOC': [0.0] * len(CFA_matrix)  # Use float type for this column
+    })
 
     # Calculate the difference (revenue - operating expenses) and (revenue - operating expenses)/TOC
     for i in range(construction_years, len(CFA_matrix)):
@@ -472,7 +479,7 @@ def calculate_revenue_and_expenses_from_modules(config_received, config_matrix_d
 
     # ---------------- Economic Summary and Plotting Block Start ----------------
 
-    # Calculate economic summary
+    # Calculate economic summary metrics
     operational_years = plant_lifetime
     total_revenue = CFA_matrix.loc[construction_years:, 'Revenue'].sum()
     total_operating_expenses = CFA_matrix.loc[construction_years:, 'Operating Expenses'].sum()
@@ -491,223 +498,37 @@ def calculate_revenue_and_expenses_from_modules(config_received, config_matrix_d
     average_annual_discounted_cash_flow = total_discounted_cash_flow / operational_years
     average_annual_after_tax_cash_flow = total_after_tax_cash_flow / operational_years
 
-    economic_summary = pd.DataFrame({
-        'Metric': [
-            'Internal Rate of Return',
-            'Total Overnight Cost (TOC)',
-            'Average Annual Revenue',
-            'Average Annual Operating Expenses',
-            'Average Annual Depreciation',
-            'Average Annual State Taxes',
-            'Average Annual Federal Taxes',
-            'Average Annual After-Tax Cash Flow',
-            'Cumulative NPV',
-            'Calculation Mode'
-        ],
-        'Value': [
-            f"{config_received.iRRAmount30:.2%}",
-            f"${TOC:,.0f}",
-            f"${average_annual_revenue:,.0f}",
-            f"${average_annual_operating_expenses:,.0f}",
-            f"${average_annual_depreciation:,.0f}",
-            f"${average_annual_state_taxes:,.0f}",
-            f"${average_annual_federal_taxes:,.0f}",
-            f"${average_annual_after_tax_cash_flow:,.0f}",
-            f"${cumulative_npv:,.0f}",
-            selected_calculation_option
-        ]
-    })
+    # Prepare economic data for summary and plotting
+    economic_data = {
+        'iRRAmount30': config_received.iRRAmount30,
+        'TOC': TOC,
+        'average_annual_revenue': average_annual_revenue,
+        'average_annual_operating_expenses': average_annual_operating_expenses,
+        'average_annual_depreciation': average_annual_depreciation,
+        'average_annual_state_taxes': average_annual_state_taxes,
+        'average_annual_federal_taxes': average_annual_federal_taxes,
+        'average_annual_after_tax_cash_flow': average_annual_after_tax_cash_flow,
+        'cumulative_npv': cumulative_npv
+    }
 
-    economic_summary_file = os.path.join(results_folder, f"Economic_Summary({version}).csv")
-    remove_existing_file(economic_summary_file)  # Remove if the file already exists
-    economic_summary.to_csv(economic_summary_file, index=False)
- 
+    # Generate and save economic summary table using the imported module
+    generate_economic_summary(economic_data, selected_calculation_option, results_folder, version)
 
-    # Generate and save the pie chart for relative magnitudes using Plotly
-    labels = [
-        'Annual Revenue',
-        'Annual Operating Expenses',
-        'Annual State Taxes',
-        'Annual Federal Taxes'
-    ]
-    sizes = [
-        average_annual_revenue,
-        average_annual_operating_expenses,
-        average_annual_state_taxes,
-        average_annual_federal_taxes
-    ]
+    # Generate and save economic breakdown pie chart using the imported module
+    generate_economic_breakdown_pie_chart(results_folder, version, economic_data)
 
-   # Create pie chart
-    pie_chart = px.pie(values=sizes, names=labels, title='Economic Breakdown', color_discrete_sequence=px.colors.qualitative.Set3)  # Use a qualitative color set
-    # Customize layout and styling
-    pie_chart.update_layout(
-        title=dict(
-            text='Macro Economics Breakdown', 
-            font=dict(family='Georgia', size=18, color='black'),
-            x=0.5,  # Center title
-            xanchor='center'
-        ),
-        legend=dict(
-            font=dict(family='Georgia', size=12),
-            yanchor='top',
-            y=0.95,
-            xanchor='right',
-            x=1.2,
-            title='Macro Economics Breakdown'
-        ),
-        margin=dict(l=50, r=150, t=50, b=50),  # Add margins for better layout
-        showlegend=True,
-        paper_bgcolor='#f0f0f0'  # Light grey background
-    )
-    # Construct paths for PNG and HTML saving
-    pie_chart_folder = os.path.join(results_folder, f'v{version}_DynamicEconomicBreakdown')
-    pie_chart_file = os.path.join(pie_chart_folder, f"Economic_Breakdown_Pie_Chart({version}).html")
-    # Ensure the directory exists
-    os.makedirs(pie_chart_folder, exist_ok=True)
-    
-    pie_chart.write_html(pie_chart_file)
- 
-   
-    # ---------------- Economic Summary and Plotting Block End ----------------
+    # Prepare operational cost data for plotting
+    operational_costs = {
+        'average_feedstock_cost': average_feedstock_cost_operational,
+        'average_labor_cost': average_labor_cost_operational,
+        'average_utility_cost': average_utility_cost_operational,
+        'average_maintenance_cost': average_maintenance_cost_operational,
+        'average_insurance_cost': average_insurance_cost_operational
+    }
 
-    # Define labels and corresponding average operational costs
-    labels = [
-        'Feedstock Cost',
-        'Labor Cost',
-        'Utility Cost',
-        'Maintenance Cost',
-        'Insurance Cost'
-    ]
-    sizes = [
-        average_feedstock_cost_operational,
-        average_labor_cost_operational,
-        average_utility_cost_operational,
-        average_maintenance_cost_operational,
-        average_insurance_cost_operational
-    ]
-
-    # Generate the pie chart for operational costs with custom styling
-    pie_chart2 = px.pie(
-        values=sizes,
-        names=labels,
-        title='Operational Cost Breakdown',
-        color_discrete_sequence=px.colors.qualitative.Set3  # Use a qualitative color set
-    )
-
-    # Customize layout and styling
-    pie_chart2.update_layout(
-        title=dict(
-            text='Operational Cost Breakdown',
-            font=dict(family='Georgia', size=18, color='black'),
-            x=0.5,  # Center title
-            xanchor='center'
-        ),
-        legend=dict(
-            font=dict(family='Georgia', size=12),
-            yanchor='top',
-            y=0.95,
-            xanchor='right',
-            x=1.2,
-            title='Operational Costs'
-        ),
-        margin=dict(l=50, r=150, t=50, b=50),  # Add margins for better layout
-        showlegend=True,
-        paper_bgcolor='#f0f0f0'  # Light grey background
-    )
-
-    # Construct paths for PNG and HTML saving
-    version_dir = os.path.join(results_folder, f'v{version}_DynamicOperationalCost')
-    html_file = os.path.join(version_dir, f"Operational_Cost_Breakdown_Pie_Chart({version}).html")
-    # Ensure the directory exists
-    os.makedirs(version_dir, exist_ok=True)
-    # Save the pie chart as HTML
-    pie_chart2.write_html(html_file)
-
-
-
-    # Define labels and sizes for the operational cost breakdown
-    operational_labels = [
-        'Feedstock Cost',
-        'Labor Cost',
-        'Utility Cost',
-        'Maintenance Cost',
-        'Insurance Cost'
-    ]
-    operational_sizes = [
-        average_feedstock_cost_operational,
-        average_labor_cost_operational,
-        average_utility_cost_operational,
-        average_maintenance_cost_operational,
-        average_insurance_cost_operational
-    ]
-
-    # Example list of fonts to choose from
-    available_fonts = ['Arial', 'Verdana', 'Helvetica', 'Times New Roman', 'Courier New', 'Georgia']
-
-    # Selected fonts
-    chosen_title_font = 'Georgia'
-    chosen_label_font = 'Georgia'
-    chosen_numbers_font = 'Georgia'
-
-    # Filter labels and sizes based on the 'on' or 'off' status in selected_f
-    filtered_labels = [
-        label for i, label in enumerate(operational_labels) if selected_f.get(f'F{i+1}') == 'on'
-    ]
-    filtered_sizes = [
-        size for i, size in enumerate(operational_sizes) if selected_f.get(f'F{i+1}') == 'on'
-    ]
-
-    # Generate the pie chart
-    fig, ax = plt.subplots(figsize=(8, 8), dpi=300)
-
-    def autopct_filter(pct):
-        """Show percentage only if >= 3%."""
-        return f'{pct:.1f}%' if pct >= 3 else ''
-
-    wedges, texts, autotexts = ax.pie(
-        filtered_sizes,
-        labels=None,  # Labels will be added with arrows
-        autopct=autopct_filter,
-        startangle=45,
-        explode=[0.02] * len(filtered_labels),  # Slight explosion
-        wedgeprops={'linewidth': 0.5, 'edgecolor': 'grey'},
-        radius=0.7  # Smaller pie radius
-    )
-
-    # Set title with chosen font
-    ax.set_title('Operational Cost Breakdown', fontsize=14, fontname=chosen_title_font, pad=25)
-
-    # Annotate labels with arrows pointing outward, using chosen fonts
-    for i, (wedge, label) in enumerate(zip(wedges, filtered_labels)):
-        angle = (wedge.theta2 - wedge.theta1) / 2 + wedge.theta1
-        x, y = np.cos(np.deg2rad(angle)), np.sin(np.deg2rad(angle))
-
-        ax.annotate(
-            f'{label}\n${filtered_sizes[i]:,.0f}',  # Dollar sign, comma formatting, no decimals
-            xy=(x * 0.7, y * 0.7),
-            xytext=(x * 1.2, y * 1.2),
-            arrowprops=dict(facecolor='black', arrowstyle='->', lw=0.7),
-            fontsize=10, ha='center', fontname=chosen_label_font  # Set font for labels
-        )
-
-    # Set font for the numbers in the pie chart (autotexts)
-    for autotext in autotexts:
-        autotext.set_fontname(chosen_numbers_font)
-        autotext.set_fontsize(10)
-
-    # Set background color and adjust layout
-    ax.set_facecolor('#f7f7f7')
-    plt.tight_layout()
-
-    # Save the chart as PNG
-    static_plot=os.path.join(results_folder, f'{version}_PieStaticPlots')
-    os.makedirs(static_plot, exist_ok=True)
-
-    png_path = os.path.join(static_plot, f"Operational_Cost_Breakdown_Pie_Chart({version}).png")
-    plt.savefig(png_path, bbox_inches='tight', dpi=300)
-    plt.close()
-
-    
+    # Generate and save operational cost pie charts (dynamic and static) using the imported modules
+    generate_operational_cost_pie_chart_dynamic(results_folder, version, operational_costs)
+    generate_operational_cost_pie_chart_static(results_folder, version, operational_costs, selected_f)
 
     # ---------------- Economic Summary and Plotting Block End ----------------
 
@@ -719,7 +540,7 @@ def main(version, selected_v, selected_f, selected_calculation_option=None):
     # Set the path to the directory containing the modules
     code_files_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "backend", "Original")
     results_folder = os.path.join(code_files_path, f"Batch({version})", f"Results({version})")
-    config_matrix_file = os.path.join(results_folder, f"Configuration_Matrix({version}).csv")
+    config_matrix_file = os.path.join(results_folder, f"General_Configuration_Matrix({version}).csv")
 
     # Check if the config matrix file exists
     if not os.path.exists(config_matrix_file):
@@ -745,12 +566,45 @@ def main(version, selected_v, selected_f, selected_calculation_option=None):
 
 # Accept version, selected_v, and selected_f as command-line arguments
 if __name__ == "__main__":
-    version = sys.argv[1] if len(sys.argv) > 1 else 1
-    selected_v = json.loads(sys.argv[2]) if len(sys.argv) > 2 else {"V1": "off", "V2": "off", "V3": "off", "V4": "off", "V5": "off", "V6": "off", "V7": "off", "V8": "off", "V9": "off", "V10": "off"}
-    selected_f = json.loads(sys.argv[3]) if len(sys.argv) > 3 else {"F1": "off", "F2": "off", "F3": "off", "F4": "off", "F5": "off"}
-    target_row = int(sys.argv[4]) if len(sys.argv) > 4 else 10
-    selected_calculation_option = sys.argv[5] if len(sys.argv) > 5 else 'calculateforprice'  # Default to calculateforprice
+    try:
+        # Parse command line arguments with proper error handling
+        version = sys.argv[1] if len(sys.argv) > 1 else 1
+        
+        # Handle JSON parsing with better error handling
+        if len(sys.argv) > 2:
+            try:
+                # Try to parse as JSON
+                selected_v = json.loads(sys.argv[2])
+            except json.JSONDecodeError:
+                # If JSON parsing fails, try to evaluate as Python dict
+                logging.warning(f"JSON parsing failed for selected_v, using default values")
+                selected_v = {"V1": "off", "V2": "off", "V3": "off", "V4": "off", "V5": "off", 
+                             "V6": "off", "V7": "off", "V8": "off", "V9": "off", "V10": "off"}
+        else:
+            selected_v = {"V1": "off", "V2": "off", "V3": "off", "V4": "off", "V5": "off", 
+                         "V6": "off", "V7": "off", "V8": "off", "V9": "off", "V10": "off"}
+        
+        if len(sys.argv) > 3:
+            try:
+                # Try to parse as JSON
+                selected_f = json.loads(sys.argv[3])
+            except json.JSONDecodeError:
+                # If JSON parsing fails, try to evaluate as Python dict
+                logging.warning(f"JSON parsing failed for selected_f, using default values")
+                selected_f = {"F1": "off", "F2": "off", "F3": "off", "F4": "off", "F5": "off"}
+        else:
+            selected_f = {"F1": "off", "F2": "off", "F3": "off", "F4": "off", "F5": "off"}
+        
+        target_row = int(sys.argv[4]) if len(sys.argv) > 4 else 10
+        selected_calculation_option = sys.argv[5] if len(sys.argv) > 5 else 'calculateforprice'  # Default to calculateforprice
 
-    logging.info(f"Starting CFA calculation for version {version} with {selected_calculation_option} mode")
-    main(version, selected_v, selected_f, selected_calculation_option)
-    logging.info("CFA calculation completed")
+        logging.info(f"Starting CFA calculation for version {version} with {selected_calculation_option} mode")
+        logging.info(f"Selected V parameters: {selected_v}")
+        logging.info(f"Selected F parameters: {selected_f}")
+        logging.info(f"Target row: {target_row}")
+        
+        main(version, selected_v, selected_f, selected_calculation_option)
+        logging.info("CFA calculation completed")
+    except Exception as e:
+        logging.error(f"Error in CFA calculation: {str(e)}")
+        raise

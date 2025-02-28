@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { VersionStateProvider } from './contexts/VersionStateContext';
+import { VersionStateProvider, useVersionState } from './contexts/VersionStateContext';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import CustomizableImage from './CustomizableImage';
@@ -14,8 +14,12 @@ import './L_1_HomePage.CSS/L_1_HomePage3.css';
 import './L_1_HomePage.CSS/L_1_HomePage4.css';
 import './L_1_HomePage.CSS/L_1_HomePage5.css';
 import './L_1_HomePage.CSS/L_1_HomePage6.css';
+import './L_1_HomePage.CSS/L_1_HomePage_buttons.css';
+import './L_1_HomePage.CSS/L_1_HomePage_monitoring.css';
+import './L_1_HomePage.CSS/L_1_HomePage_selectors.css';
 import './styles/neumorphic-tabs.css';
 import PropertySelector from './PropertySelector.js';
+import MultiVersionSelector from './MultiVersionSelector.js';
 import TodoList from './TodoList.js';
 import VersionSelector from './VersionSelector.js';
 import ModelZone from './components/model/ModelZone';
@@ -25,11 +29,12 @@ import SpatialTransformComponent from './naturalmotion';
 import SensitivityAnalysis from './components/SensitivityAnalysis';
 import useFormValues from './useFormValues.js';
 import TestingZone from './components/TestingZone';
+import CalculationMonitor from './components/CalculationMonitor';
 const L_1_HomePageContent = () => {
+    const { selectedVersions, version: contextVersion, setVersion: setContextVersion } = useVersionState();
     const [activeTab, setActiveTab] = useState('Input');
     const [activeSubTab, setActiveSubTab] = useState('ProjectConfig');
     const [selectedProperties, setSelectedProperties] = useState([]);
-    const [selectedVersions, setSelectedVersions] = useState([]);
     const [season, setSeason] = useState('winter');
     const [S, setS] = useState(() => {
         const initialS = {};
@@ -132,6 +137,7 @@ const L_1_HomePageContent = () => {
     const [version, setVersion] = useState('1');
     const [batchRunning, setBatchRunning] = useState(false);
     const [analysisRunning, setAnalysisRunning] = useState(false);
+    const [monitoringActive, setMonitoringActive] = useState(false);
     const [csvFiles, setCsvFiles] = useState([]);
     const [subTab, setSubTab] = useState('');
     const [albumImages, setAlbumImages] = useState({});
@@ -140,7 +146,7 @@ const L_1_HomePageContent = () => {
     const [selectedHtml, setSelectedHtml] = useState('');
     const [remarks, setRemarks] = useState('off');
     const [customizedFeatures, setcustomizedFeatures] = useState('off');
-    const [selectedCalculationOption, setSelectedCalculationOption] = useState('freeFlowNPV');
+    const [selectedCalculationOption, setSelectedCalculationOption] = useState('calculateForPrice');
     const [target_row, settarget_row] = useState('20');
     const [calculatedPrices, setCalculatedPrices] = useState({});
     const [baseCosts, setBaseCosts] = useState([]);
@@ -149,7 +155,6 @@ const L_1_HomePageContent = () => {
     const [isToggleSectionOpen, setIsToggleSectionOpen] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
     const [popupPosition, setPopupPosition] = useState({ top: 0, left: 0 });
-
     // Extract base costs from Process2Config values
     useEffect(() => {
         const process2Costs = Object.entries(formValues)
@@ -421,65 +426,135 @@ const L_1_HomePageContent = () => {
         }
     };
 
+    /**
+     * Runs Cash Flow Analysis (CFA) calculations for selected versions
+     * Sends configuration parameters to the backend and processes the response
+     */
     const handleRun = async () => {
+        // Set loading state and reset previous results
         setAnalysisRunning(true);
-        setCalculatedPrices({}); // Reset all previous prices at the start of a new run
+        setCalculatedPrices({});
 
         try {
+            // Prepare request payload with all necessary parameters
+            const requestPayload = {
+                selectedVersions,
+                selectedV: V,
+                selectedF: F,
+                selectedCalculationOption,
+                targetRow: target_row,
+                SenParameters: S,
+            };
+
+            console.log('Running CFA with parameters:', requestPayload);
+
+            // Make API request to run calculations
             const response = await fetch('http://127.0.0.1:5007/run', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    selectedVersions,
-                    selectedV: V,
-                    selectedF: F,
-                    selectedCalculationOption: selectedCalculationOption,
-                    targetRow: target_row,
-                    SenParameters: S,
-                }),
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(requestPayload),
             });
 
+            // Process the response
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.error || 'Failed to run calculation');
+            }
+
+            const result = await response.json();
+            console.log('Calculation completed successfully:', result);
+
+            // If price calculation was selected, fetch the calculated prices
             if (selectedCalculationOption === 'calculateForPrice') {
-                // Handle dynamic streaming of prices for each version
-                selectedVersions.forEach((version) => {
-                    const eventSource = new EventSource(
-                        `http://127.0.0.1:5007/stream_price/${version}`
-                    );
+                await fetchCalculatedPrices();
+            }
 
-                    eventSource.onmessage = (event) => {
-                        const data = JSON.parse(event.data);
-                        console.log(`Streamed Price for version ${version}:`, data.price);
-
-                        // Update the specific version's price in state
-                        updatePrice(version, data.price);
-
-                        // Close the stream if the backend signals completion
-                        if (data.complete) {
-                            console.log(`Completed streaming for version ${version}`);
-                            eventSource.close();
-                        }
-                    };
-
-                    eventSource.onerror = (error) => {
-                        console.error(`Error in SSE stream for version ${version}:`, error);
-                        eventSource.close(); // Close the stream on error
-                    };
-                });
-            } else {
-                const result = await response.json();
-                if (response.ok) {
-                    console.log(result.message);
-                } else {
-                    console.error(result.error);
-                }
+            // Start real-time monitoring if calculation was successful
+            if (result.status === 'success') {
+                startRealTimeMonitoring();
             }
         } catch (error) {
-            console.error('Error during analysis:', error);
+            console.error('Error during CFA calculation:', error);
+            // Could add user notification here
         } finally {
             setAnalysisRunning(false);
         }
+    };
+
+    /**
+     * Fetches calculated prices for all selected versions
+     * This is a separate function to keep the main handleRun function focused
+     */
+    const fetchCalculatedPrices = async () => {
+        try {
+            // For each selected version, fetch the calculated price
+            for (const version of selectedVersions) {
+                const priceResponse = await fetch(`http://127.0.0.1:5007/price/${version}`);
+                
+                if (priceResponse.ok) {
+                    const priceData = await priceResponse.json();
+                    updatePrice(version, priceData.price);
+                    console.log(`Fetched price for version ${version}:`, priceData.price);
+                }
+            }
+        } catch (error) {
+            console.error('Error fetching calculated prices:', error);
+        }
+    };
+
+    /**
+     * Starts real-time monitoring of calculation progress
+     * This function connects to a stream for live updates from the calculation process
+     */
+    const startRealTimeMonitoring = () => {
+        // Close any existing stream connections
+        if (window.calculationEventSource) {
+            window.calculationEventSource.close();
+        }
+
+        // For each selected version, set up a stream connection
+        selectedVersions.forEach(version => {
+            // Create a new EventSource connection for streaming updates
+            const eventSource = new EventSource(`http://127.0.0.1:5007/stream_price/${version}`);
+            window.calculationEventSource = eventSource;
+
+            // Handle incoming messages
+            eventSource.onmessage = (event) => {
+                try {
+                    const data = JSON.parse(event.data);
+                    console.log(`Real-time update for version ${version}:`, data);
+                    
+                    // Update price if available
+                    if (data.price) {
+                        updatePrice(version, data.price);
+                    }
+                    
+                    // Close the stream if the backend signals completion
+                    if (data.complete) {
+                        console.log(`Completed streaming for version ${version}`);
+                        eventSource.close();
+                    }
+                } catch (error) {
+                    console.error('Error processing stream data:', error);
+                }
+            };
+
+            // Handle errors
+            eventSource.onerror = (error) => {
+                console.error(`Error in calculation stream for version ${version}:`, error);
+                eventSource.close();
+            };
+        });
+
+        /* 
+        // FUTURE ENHANCEMENTS (commented placeholders):
+        // - Add progress indicators for each calculation step
+        // - Implement real-time visualization updates
+        // - Display performance metrics during calculation
+        // - Show memory usage statistics
+        // - Track and display error rates
+        // - Provide estimated completion time
+        */
     };
 
     const handleRunPNG = async () => {
@@ -1005,14 +1080,6 @@ const L_1_HomePageContent = () => {
                             <button
                                 type="button"
                                 onClick={() => loadConfiguration(version)}
-                                style={{
-                                    backgroundColor: '#5C27cv',
-                                    color: 'white',
-                                    fontWeight: 'bold',
-                                    padding: '10px',
-                                    border: 'none',
-                                    cursor: 'pointer',
-                                }}
                             >
                                 Load Configuration
                             </button>
@@ -1052,14 +1119,6 @@ const L_1_HomePageContent = () => {
                         <div className="tooltip-container">
                             <button
                                 onClick={handleRunPNG}
-                                style={{
-                                    backgroundColor: '#4CAF50',
-                                    color: 'white',
-                                    fontWeight: 'bold',
-                                    padding: '10px',
-                                    border: 'none',
-                                    cursor: 'pointer',
-                                }}
                             >
                                 Generate PNG Plots
                             </button>
@@ -1072,14 +1131,6 @@ const L_1_HomePageContent = () => {
                             <button
                                 type="button"
                                 onClick={handleRunSub}
-                                style={{
-                                    backgroundColor: '#2196F3',
-                                    color: 'white',
-                                    fontWeight: 'bold',
-                                    padding: '10px',
-                                    border: 'none',
-                                    cursor: 'pointer',
-                                }}
                             >
                                 Generate Dynamic Plots
                             </button>
@@ -1089,19 +1140,30 @@ const L_1_HomePageContent = () => {
                             </span>
                         </div>
                     </div>
-
+                    <div className="step-content">
+                <button
+                  className="primary-action"
+                  onClick={createNewBatch}
+                  disabled={batchRunning || analysisRunning}
+                >
+                  {batchRunning ? (
+                    <span className="loading-text">Creating New Batch</span>
+                  ) : (
+                    <span className="action-text">Create New Batch</span>
+                  )}
+                </button>
+                <button
+                  className="secondary-action"
+                  onClick={RemoveBatch}
+                  disabled={batchRunning || analysisRunning}
+                >
+                  <span className="action-text">Remove Current Batch</span>
+                </button>
+              </div>
                     <div className="button-row practical-row">
                         <div className="tooltip-container">
                             <button
                                 onClick={handleRun}
-                                style={{
-                                    backgroundColor: '#FF5722',
-                                    color: 'white',
-                                    fontWeight: 'bold',
-                                    padding: '10px',
-                                    border: 'none',
-                                    cursor: 'pointer',
-                                }}
                             >
                                 Run CFA
                             </button>
@@ -1116,15 +1178,18 @@ const L_1_HomePageContent = () => {
                         </div>
                         <div className="tooltip-container">
                             <button
+                                onClick={() => setMonitoringActive(!monitoringActive)}
+                                className={monitoringActive ? 'active-monitoring' : ''}
+                            >
+                                {monitoringActive ? 'Hide Monitoring' : 'Show Monitoring'}
+                            </button>
+                            <span className="tooltip1">
+                                Toggle real-time calculation monitoring display
+                            </span>
+                        </div>
+                        <div className="tooltip-container">
+                            <button
                                 onClick={handleSubmitCompleteSet}
-                                style={{
-                                    backgroundColor: '#9C27B0',
-                                    color: 'white',
-                                    fontWeight: 'bold',
-                                    padding: '10px',
-                                    border: 'none',
-                                    cursor: 'pointer',
-                                }}
                             >
                                 Submit Complete Set
                             </button>
@@ -1133,20 +1198,19 @@ const L_1_HomePageContent = () => {
                             <button
                                 type="button"
                                 onClick={handleReset}
-                                style={{
-                                    backgroundColor: '#5C27B0',
-                                    color: 'white',
-                                    fontWeight: 'bold',
-                                    padding: '10px',
-                                    border: 'none',
-                                    cursor: 'pointer',
-                                }}
                             >
                                 Reset
                             </button>
                         </div>
                     </div>
                 </div>
+                {monitoringActive && (
+                    <CalculationMonitor 
+                        selectedVersions={selectedVersions}
+                        updatePrice={updatePrice}
+                        isActive={monitoringActive}
+                    />
+                )}
                 <div className="calculation-options">
                     <div className="calculation-row">
                         <div className="calculation-input-group">
@@ -1171,11 +1235,16 @@ const L_1_HomePageContent = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="property-selector-container">
-                        <PropertySelector
-                            selectedProperties={selectedProperties}
-                            setSelectedProperties={setSelectedProperties}
-                        />
+                    <div className="selectors-container">
+                        <div className="property-selector-container">
+                            <PropertySelector
+                                selectedProperties={selectedProperties}
+                                setSelectedProperties={setSelectedProperties}
+                            />
+                        </div>
+                        <div className="version-selector-container">
+                            <MultiVersionSelector maxVersions={20} />
+                        </div>
                     </div>
                 </div>
             </div>

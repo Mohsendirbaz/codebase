@@ -3,6 +3,10 @@ import json
 import logging
 import os
 import pandas as pd
+
+# Set pandas option to handle future behavior for downcasting
+pd.set_option('future.no_silent_downcasting', True)
+
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from Utility_functions.common_utils import property_mapping
 
@@ -74,8 +78,8 @@ def build_and_save_table(version):
         for prop in properties:
             df.loc[start_year, prop['Property Name']] = prop['Value']
     
-    # Forward fill any missing values
-    df = df.ffill()
+    # Forward fill any missing values and handle deprecation warning
+    df = df.ffill().infer_objects(copy=False)
     
     # Save the DataFrame
     save_path = os.path.join(results_folder, f"Variable_Table({version}).csv")

@@ -710,3 +710,125 @@
 2025-02-25 20:05:39,202 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-02-25 20:05:39,231 WARNING  * Debugger is active!
 2025-02-25 20:05:39,235 INFO  * Debugger PIN: 119-059-632
+2025-02-27 13:43:36,182 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-02-27 13:43:36,215 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5007
+2025-02-27 13:43:36,215 INFO [33mPress CTRL+C to quit[0m
+2025-02-27 13:43:36,217 INFO  * Restarting with stat
+2025-02-27 13:43:36,698 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-02-27 13:43:36,727 WARNING  * Debugger is active!
+2025-02-27 13:43:36,734 INFO  * Debugger PIN: 119-059-632
+2025-02-27 13:46:28,325 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations.py', reloading
+2025-02-27 13:46:28,403 INFO  * Restarting with stat
+2025-02-27 13:46:28,909 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-02-27 13:46:28,935 WARNING  * Debugger is active!
+2025-02-27 13:46:28,940 INFO  * Debugger PIN: 119-059-632
+2025-02-27 13:48:03,840 INFO 127.0.0.1 - - [27/Feb/2025 13:48:03] "OPTIONS /run HTTP/1.1" 200 -
+2025-02-27 13:48:03,852 INFO 127.0.0.1 - - [27/Feb/2025 13:48:03] "[35m[1mPOST /run HTTP/1.1[0m" 500 -
+2025-02-27 13:48:06,276 INFO 127.0.0.1 - - [27/Feb/2025 13:48:06] "[35m[1mPOST /run HTTP/1.1[0m" 500 -
+2025-02-27 14:09:02,121 INFO 127.0.0.1 - - [27/Feb/2025 14:09:02] "OPTIONS /run HTTP/1.1" 200 -
+2025-02-27 14:09:02,121 INFO 127.0.0.1 - - [27/Feb/2025 14:09:02] "[35m[1mPOST /run HTTP/1.1[0m" 500 -
+2025-02-27 14:11:06,001 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-02-27 14:11:06,033 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5007
+2025-02-27 14:11:06,033 INFO [33mPress CTRL+C to quit[0m
+2025-02-27 14:11:06,033 INFO  * Restarting with stat
+2025-02-27 14:11:06,401 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-02-27 14:11:06,417 WARNING  * Debugger is active!
+2025-02-27 14:11:06,433 INFO  * Debugger PIN: 119-059-632
+2025-02-27 14:14:24,850 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Create_new_batch.py', reloading
+2025-02-27 14:14:24,926 INFO  * Restarting with stat
+2025-02-27 14:14:25,408 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-02-27 14:14:25,453 WARNING  * Debugger is active!
+2025-02-27 14:14:25,459 INFO  * Debugger PIN: 119-059-632
+2025-02-27 14:14:30,105 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Create_new_batch.py', reloading
+2025-02-27 14:14:30,173 INFO  * Restarting with stat
+2025-02-27 14:14:30,635 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-02-27 14:14:30,672 WARNING  * Debugger is active!
+2025-02-27 14:14:30,677 INFO  * Debugger PIN: 119-059-632
+2025-02-27 14:22:18,744 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Create_new_batch.py', reloading
+2025-02-27 14:22:18,807 INFO  * Restarting with stat
+2025-02-27 14:22:19,278 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-02-27 14:22:19,312 WARNING  * Debugger is active!
+2025-02-27 14:22:19,312 INFO  * Debugger PIN: 119-059-632
+2025-02-27 14:22:35,742 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Create_new_batch.py', reloading
+2025-02-27 14:22:35,808 INFO  * Restarting with stat
+2025-02-27 14:22:36,387 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-02-27 14:22:36,424 WARNING  * Debugger is active!
+2025-02-27 14:22:36,424 INFO  * Debugger PIN: 119-059-632
+2025-02-27 14:35:02,082 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-02-27 14:35:02,137 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5007
+2025-02-27 14:35:02,137 INFO [33mPress CTRL+C to quit[0m
+2025-02-27 14:35:02,137 INFO  * Restarting with stat
+2025-02-27 14:35:03,371 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-02-27 14:35:03,448 WARNING  * Debugger is active!
+2025-02-27 14:35:03,455 INFO  * Debugger PIN: 119-059-632
+2025-02-27 14:51:49,711 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-02-27 14:51:49,729 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5007
+2025-02-27 14:51:49,729 INFO [33mPress CTRL+C to quit[0m
+2025-02-27 14:51:49,745 INFO  * Restarting with stat
+2025-02-27 14:51:50,112 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-02-27 14:51:50,128 WARNING  * Debugger is active!
+2025-02-27 14:51:50,128 INFO  * Debugger PIN: 119-059-632
+2025-02-27 15:08:12,567 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations.py', reloading
+2025-02-27 15:08:12,629 INFO  * Restarting with stat
+2025-02-27 15:08:13,051 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-02-27 15:08:13,083 WARNING  * Debugger is active!
+2025-02-27 15:08:13,083 INFO  * Debugger PIN: 119-059-632
+2025-02-27 15:08:21,687 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations.py', reloading
+2025-02-27 15:08:21,756 INFO  * Restarting with stat
+2025-02-27 15:08:22,227 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-02-27 15:08:22,256 WARNING  * Debugger is active!
+2025-02-27 15:08:22,264 INFO  * Debugger PIN: 119-059-632
+2025-02-27 15:08:42,266 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations.py', reloading
+2025-02-27 15:08:42,323 INFO  * Restarting with stat
+2025-02-27 15:08:42,848 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-02-27 15:08:42,874 WARNING  * Debugger is active!
+2025-02-27 15:08:42,874 INFO  * Debugger PIN: 119-059-632
+2025-02-27 15:08:48,228 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations.py', reloading
+2025-02-27 15:08:48,291 INFO  * Restarting with stat
+2025-02-27 15:08:48,929 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-02-27 15:08:48,963 WARNING  * Debugger is active!
+2025-02-27 15:08:48,969 INFO  * Debugger PIN: 119-059-632
+2025-02-27 15:08:57,421 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations.py', reloading
+2025-02-27 15:08:57,467 INFO  * Restarting with stat
+2025-02-27 15:08:58,087 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-02-27 15:08:58,122 WARNING  * Debugger is active!
+2025-02-27 15:08:58,129 INFO  * Debugger PIN: 119-059-632
+2025-02-27 15:09:07,008 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations.py', reloading
+2025-02-27 15:09:07,086 INFO  * Restarting with stat
+2025-02-27 15:09:07,607 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-02-27 15:09:07,647 WARNING  * Debugger is active!
+2025-02-27 15:09:07,659 INFO  * Debugger PIN: 119-059-632
+2025-02-27 15:09:12,810 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations.py', reloading
+2025-02-27 15:09:13,007 INFO  * Restarting with stat
+2025-02-27 15:09:13,651 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-02-27 15:09:13,697 WARNING  * Debugger is active!
+2025-02-27 15:09:13,702 INFO  * Debugger PIN: 119-059-632
+2025-02-27 15:09:55,523 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations.py', reloading
+2025-02-27 15:09:55,572 INFO  * Restarting with stat
+2025-02-27 15:09:56,069 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-02-27 15:09:56,108 WARNING  * Debugger is active!
+2025-02-27 15:09:56,115 INFO  * Debugger PIN: 119-059-632
+2025-02-27 15:10:09,556 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations.py', reloading
+2025-02-27 15:10:09,634 INFO  * Restarting with stat
+2025-02-27 15:10:10,196 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-02-27 15:10:10,245 WARNING  * Debugger is active!
+2025-02-27 15:10:10,245 INFO  * Debugger PIN: 119-059-632
+2025-02-27 15:10:32,636 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations.py', reloading
+2025-02-27 15:10:32,703 INFO  * Restarting with stat
+2025-02-27 15:10:33,197 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-02-27 15:10:33,235 WARNING  * Debugger is active!
+2025-02-27 15:10:33,235 INFO  * Debugger PIN: 119-059-632
+2025-02-27 15:11:26,815 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-02-27 15:11:26,865 INFO  * Restarting with stat
+2025-02-27 15:11:27,431 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-02-27 15:11:27,451 WARNING  * Debugger is active!
+2025-02-27 15:11:27,465 INFO  * Debugger PIN: 119-059-632
+2025-02-27 15:11:59,251 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations.py', reloading
+2025-02-27 15:11:59,313 INFO  * Restarting with stat
+2025-02-27 15:11:59,808 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-02-27 15:11:59,842 WARNING  * Debugger is active!
+2025-02-27 15:11:59,842 INFO  * Debugger PIN: 119-059-632
