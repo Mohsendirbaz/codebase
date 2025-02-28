@@ -11,3 +11,71 @@
 2025-02-28 15:27:49,205 INFO Found 3 CFA versions: 1, 2, 3
 2025-02-28 15:27:49,225 WARNING  * Debugger is active!
 2025-02-28 15:27:49,240 INFO  * Debugger PIN: 119-059-632
+2025-02-28 16:02:51,206 INFO 127.0.0.1 - - [28/Feb/2025 16:02:51] "OPTIONS /api/versions HTTP/1.1" 200 -
+2025-02-28 16:02:51,206 INFO 127.0.0.1 - - [28/Feb/2025 16:02:51] "OPTIONS /api/versions HTTP/1.1" 200 -
+2025-02-28 16:02:51,462 INFO Searching for CFA files in BASE_PATH: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original
+2025-02-28 16:02:51,462 INFO Directory contents: ['aggregated_data', 'Batch(0)', 'Batch(1)', 'Batch(2)', 'Batch(3)']
+2025-02-28 16:02:51,463 INFO Found batch versions: ['0', '1', '2', '3']
+2025-02-28 16:02:51,463 WARNING Results folder not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(0)\Results(0)
+2025-02-28 16:02:51,464 INFO Found CFA file for version 1 at: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\CFA(1).csv
+2025-02-28 16:02:51,469 INFO Found CFA file for version 2 at: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\CFA(2).csv
+2025-02-28 16:02:51,474 INFO Found CFA file for version 3 at: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(3)\Results(3)\CFA(3).csv
+2025-02-28 16:02:51,478 INFO Total CFA versions found: 3
+2025-02-28 16:02:51,479 INFO 127.0.0.1 - - [28/Feb/2025 16:02:51] "GET /api/versions HTTP/1.1" 200 -
+2025-02-28 16:02:51,522 INFO Searching for CFA files in BASE_PATH: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original
+2025-02-28 16:02:51,522 INFO Directory contents: ['aggregated_data', 'Batch(0)', 'Batch(1)', 'Batch(2)', 'Batch(3)']
+2025-02-28 16:02:51,522 INFO Found batch versions: ['0', '1', '2', '3']
+2025-02-28 16:02:51,523 WARNING Results folder not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(0)\Results(0)
+2025-02-28 16:02:51,523 INFO Found CFA file for version 1 at: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\CFA(1).csv
+2025-02-28 16:02:51,527 INFO Found CFA file for version 2 at: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\CFA(2).csv
+2025-02-28 16:02:51,531 INFO Found CFA file for version 3 at: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(3)\Results(3)\CFA(3).csv
+2025-02-28 16:02:51,535 INFO Total CFA versions found: 3
+2025-02-28 16:02:51,536 INFO 127.0.0.1 - - [28/Feb/2025 16:02:51] "GET /api/versions HTTP/1.1" 200 -
+2025-02-28 16:02:59,743 INFO 127.0.0.1 - - [28/Feb/2025 16:02:59] "OPTIONS /api/consolidate HTTP/1.1" 200 -
+2025-02-28 16:03:00,049 INFO Created consolidation job 1dac69e9-d8be-4c9a-9537-ed89d213e012 for versions: ['1', '2', '3']
+2025-02-28 16:03:00,049 INFO 127.0.0.1 - - [28/Feb/2025 16:03:00] "POST /api/consolidate HTTP/1.1" 200 -
+2025-02-28 16:03:00,312 INFO 127.0.0.1 - - [28/Feb/2025 16:03:00] "OPTIONS /api/consolidate/status/1dac69e9-d8be-4c9a-9537-ed89d213e012 HTTP/1.1" 200 -
+2025-02-28 16:03:00,363 INFO Beginning consolidation of versions: ['1']
+2025-02-28 16:03:00,366 INFO Loaded data from version 1 with 21 rows
+2025-02-28 16:03:00,366 INFO Processing 1 dataframes with years: {np.int64(1), np.int64(2), np.int64(3), np.int64(4), np.int64(5), np.int64(6), np.int64(7), np.int64(8), np.int64(9), np.int64(10), np.int64(11), np.int64(12), np.int64(13), np.int64(14), np.int64(15), np.int64(16), np.int64(17), np.int64(18), np.int64(19), np.int64(20), np.int64(21)}
+2025-02-28 16:03:00,366 INFO Consolidated years range: 1 to 21
+2025-02-28 16:03:00,395 INFO Consolidation complete. Processed 21 years and 9 columns.
+2025-02-28 16:03:00,395 INFO 127.0.0.1 - - [28/Feb/2025 16:03:00] "GET /api/consolidate/status/1dac69e9-d8be-4c9a-9537-ed89d213e012 HTTP/1.1" 200 -
+2025-02-28 16:03:01,408 INFO Beginning consolidation of versions: ['2']
+2025-02-28 16:03:01,408 INFO Loaded data from version 2 with 21 rows
+2025-02-28 16:03:01,408 INFO Processing 1 dataframes with years: {np.int64(1), np.int64(2), np.int64(3), np.int64(4), np.int64(5), np.int64(6), np.int64(7), np.int64(8), np.int64(9), np.int64(10), np.int64(11), np.int64(12), np.int64(13), np.int64(14), np.int64(15), np.int64(16), np.int64(17), np.int64(18), np.int64(19), np.int64(20), np.int64(21)}
+2025-02-28 16:03:01,408 INFO Consolidated years range: 1 to 21
+2025-02-28 16:03:01,424 INFO Consolidation complete. Processed 21 years and 9 columns.
+2025-02-28 16:03:01,424 INFO 127.0.0.1 - - [28/Feb/2025 16:03:01] "GET /api/consolidate/status/1dac69e9-d8be-4c9a-9537-ed89d213e012 HTTP/1.1" 200 -
+2025-02-28 16:03:02,757 INFO Beginning consolidation of versions: ['3']
+2025-02-28 16:03:02,757 INFO Loaded data from version 3 with 21 rows
+2025-02-28 16:03:02,757 INFO Processing 1 dataframes with years: {np.int64(1), np.int64(2), np.int64(3), np.int64(4), np.int64(5), np.int64(6), np.int64(7), np.int64(8), np.int64(9), np.int64(10), np.int64(11), np.int64(12), np.int64(13), np.int64(14), np.int64(15), np.int64(16), np.int64(17), np.int64(18), np.int64(19), np.int64(20), np.int64(21)}
+2025-02-28 16:03:02,757 INFO Consolidated years range: 1 to 21
+2025-02-28 16:03:02,770 INFO Consolidation complete. Processed 21 years and 9 columns.
+2025-02-28 16:03:02,785 INFO 127.0.0.1 - - [28/Feb/2025 16:03:02] "GET /api/consolidate/status/1dac69e9-d8be-4c9a-9537-ed89d213e012 HTTP/1.1" 200 -
+2025-02-28 16:03:03,011 INFO 127.0.0.1 - - [28/Feb/2025 16:03:03] "OPTIONS /api/consolidate/results/1dac69e9-d8be-4c9a-9537-ed89d213e012 HTTP/1.1" 200 -
+2025-02-28 16:03:03,103 INFO 127.0.0.1 - - [28/Feb/2025 16:03:03] "GET /api/consolidate/results/1dac69e9-d8be-4c9a-9537-ed89d213e012 HTTP/1.1" 200 -
+2025-02-28 16:03:32,205 INFO 127.0.0.1 - - [28/Feb/2025 16:03:32] "OPTIONS /api/consolidate HTTP/1.1" 200 -
+2025-02-28 16:03:32,519 INFO Created consolidation job e7230bfb-35d1-417b-a3ec-9b1e69eaf124 for versions: ['1', '2', '3']
+2025-02-28 16:03:32,519 INFO 127.0.0.1 - - [28/Feb/2025 16:03:32] "POST /api/consolidate HTTP/1.1" 200 -
+2025-02-28 16:03:32,774 INFO 127.0.0.1 - - [28/Feb/2025 16:03:32] "OPTIONS /api/consolidate/status/e7230bfb-35d1-417b-a3ec-9b1e69eaf124 HTTP/1.1" 200 -
+2025-02-28 16:03:32,834 INFO Beginning consolidation of versions: ['1']
+2025-02-28 16:03:32,834 INFO Loaded data from version 1 with 21 rows
+2025-02-28 16:03:32,834 INFO Processing 1 dataframes with years: {np.int64(1), np.int64(2), np.int64(3), np.int64(4), np.int64(5), np.int64(6), np.int64(7), np.int64(8), np.int64(9), np.int64(10), np.int64(11), np.int64(12), np.int64(13), np.int64(14), np.int64(15), np.int64(16), np.int64(17), np.int64(18), np.int64(19), np.int64(20), np.int64(21)}
+2025-02-28 16:03:32,834 INFO Consolidated years range: 1 to 21
+2025-02-28 16:03:32,850 INFO Consolidation complete. Processed 21 years and 9 columns.
+2025-02-28 16:03:32,850 INFO 127.0.0.1 - - [28/Feb/2025 16:03:32] "GET /api/consolidate/status/e7230bfb-35d1-417b-a3ec-9b1e69eaf124 HTTP/1.1" 200 -
+2025-02-28 16:03:33,880 INFO Beginning consolidation of versions: ['2']
+2025-02-28 16:03:33,883 INFO Loaded data from version 2 with 21 rows
+2025-02-28 16:03:33,883 INFO Processing 1 dataframes with years: {np.int64(1), np.int64(2), np.int64(3), np.int64(4), np.int64(5), np.int64(6), np.int64(7), np.int64(8), np.int64(9), np.int64(10), np.int64(11), np.int64(12), np.int64(13), np.int64(14), np.int64(15), np.int64(16), np.int64(17), np.int64(18), np.int64(19), np.int64(20), np.int64(21)}
+2025-02-28 16:03:33,883 INFO Consolidated years range: 1 to 21
+2025-02-28 16:03:33,883 INFO Consolidation complete. Processed 21 years and 9 columns.
+2025-02-28 16:03:33,883 INFO 127.0.0.1 - - [28/Feb/2025 16:03:33] "GET /api/consolidate/status/e7230bfb-35d1-417b-a3ec-9b1e69eaf124 HTTP/1.1" 200 -
+2025-02-28 16:03:35,218 INFO Beginning consolidation of versions: ['3']
+2025-02-28 16:03:35,218 INFO Loaded data from version 3 with 21 rows
+2025-02-28 16:03:35,218 INFO Processing 1 dataframes with years: {np.int64(1), np.int64(2), np.int64(3), np.int64(4), np.int64(5), np.int64(6), np.int64(7), np.int64(8), np.int64(9), np.int64(10), np.int64(11), np.int64(12), np.int64(13), np.int64(14), np.int64(15), np.int64(16), np.int64(17), np.int64(18), np.int64(19), np.int64(20), np.int64(21)}
+2025-02-28 16:03:35,218 INFO Consolidated years range: 1 to 21
+2025-02-28 16:03:35,234 INFO Consolidation complete. Processed 21 years and 9 columns.
+2025-02-28 16:03:35,234 INFO 127.0.0.1 - - [28/Feb/2025 16:03:35] "GET /api/consolidate/status/e7230bfb-35d1-417b-a3ec-9b1e69eaf124 HTTP/1.1" 200 -
+2025-02-28 16:03:35,465 INFO 127.0.0.1 - - [28/Feb/2025 16:03:35] "OPTIONS /api/consolidate/results/e7230bfb-35d1-417b-a3ec-9b1e69eaf124 HTTP/1.1" 200 -
+2025-02-28 16:03:35,546 INFO 127.0.0.1 - - [28/Feb/2025 16:03:35] "GET /api/consolidate/results/e7230bfb-35d1-417b-a3ec-9b1e69eaf124 HTTP/1.1" 200 -
