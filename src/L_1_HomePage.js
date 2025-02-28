@@ -545,7 +545,7 @@ const L_1_HomePageContent = () => {
                 eventSource.close();
             };
         });
-
+        
         /* 
         // FUTURE ENHANCEMENTS (commented placeholders):
         // - Add progress indicators for each calculation step
@@ -1209,6 +1209,8 @@ const L_1_HomePageContent = () => {
                         selectedVersions={selectedVersions}
                         updatePrice={updatePrice}
                         isActive={monitoringActive}
+                        currentVersion={version}
+                        onChange={() => {}} // Adding empty function to satisfy prop requirement
                     />
                 )}
                 <div className="calculation-options">
