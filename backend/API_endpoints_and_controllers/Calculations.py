@@ -39,12 +39,12 @@ DEFAULT_DECREASE_RATE = 0.985
 COMMON_PYTHON_SCRIPTS = [
     os.path.join(SCRIPT_DIR, "Configuration_management", 'formatter.py'),
     os.path.join(SCRIPT_DIR, "Configuration_management", 'module1.py'),
-    os.path.join(SCRIPT_DIR, "Configuration_management", 'update_config_modules_with_CFA.py'),
+    os.path.join(SCRIPT_DIR, "Configuration_management", 'config_modules.py'),
     os.path.join(SCRIPT_DIR, "Configuration_management", 'Table.py')
 ]
 
 CALCULATION_SCRIPTS = {
-    'calculateForPrice': os.path.join(SCRIPT_DIR, "Core_calculation_engines", 'update_config_modules_with_CFA_7.py')
+    'calculateForPrice': os.path.join(SCRIPT_DIR, "Core_calculation_engines", 'CFA.py')
 }
 
 # =====================================
@@ -470,7 +470,7 @@ def get_price(version):
         
         # Try both possible file names for the price data
         price_files = [
-            os.path.join(results_folder, f"optimal_price_{version}.json"),  # New format from update_config_modules_with_CFA_7.py
+            os.path.join(results_folder, f"optimal_price_{version}.json"),  # New format from CFA.py
             os.path.join(results_folder, f"optimized_price_{version}.json")  # Old format for backward compatibility
         ]
         

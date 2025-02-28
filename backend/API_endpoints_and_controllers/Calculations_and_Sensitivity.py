@@ -50,13 +50,13 @@ SENSITIVITY_LOG_PATH = os.path.join(LOGS_DIR, "SENSITIVITY.log")
 COMMON_PYTHON_SCRIPTS = [
     os.path.join(SCRIPT_DIR, "Configuration_management", 'formatter.py'),
     os.path.join(SCRIPT_DIR, "Configuration_management", 'module1.py'),
-    os.path.join(SCRIPT_DIR, "Configuration_management", 'update_config_modules_with_CFA.py'),
+    os.path.join(SCRIPT_DIR, "Configuration_management", 'config_modules.py'),
     os.path.join(SCRIPT_DIR, "Configuration_management", 'Table.py')
 ]
 
 def get_calculation_script(version):
     """Get the appropriate calculation script based on version number"""
-    script_name = f'update_config_modules_with_CFA_{version}.py'
+    script_name = f'config_modules_{version}.py'
     script_path = os.path.join(SCRIPT_DIR, "Core_calculation_engines", script_name)
     if os.path.exists(script_path):
         return script_path
