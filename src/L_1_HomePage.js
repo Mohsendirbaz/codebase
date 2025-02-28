@@ -14,6 +14,7 @@ import './L_1_HomePage.CSS/L_1_HomePage3.css';
 import './L_1_HomePage.CSS/L_1_HomePage4.css';
 import './L_1_HomePage.CSS/L_1_HomePage5.css';
 import './L_1_HomePage.CSS/L_1_HomePage6.css';
+import './L_1_HomePage.CSS/L_1_HomePage_AboutUs.css';
 import './L_1_HomePage.CSS/L_1_HomePage_buttons.css';
 import './L_1_HomePage.CSS/L_1_HomePage_monitoring.css';
 import './L_1_HomePage.CSS/L_1_HomePage_selectors.css';
@@ -32,7 +33,7 @@ import TestingZone from './components/TestingZone';
 import CalculationMonitor from './components/CalculationMonitor';
 const L_1_HomePageContent = () => {
     const { selectedVersions, version: contextVersion, setVersion: setContextVersion } = useVersionState();
-    const [activeTab, setActiveTab] = useState('Input');
+    const [activeTab, setActiveTab] = useState('AboutUs');
     const [activeSubTab, setActiveSubTab] = useState('ProjectConfig');
     const [selectedProperties, setSelectedProperties] = useState([]);
     const [season, setSeason] = useState('winter');
@@ -1332,8 +1333,44 @@ const L_1_HomePageContent = () => {
         </div>
     );
 
+    const renderAboutUsContent = () => {
+        return (
+            <div className="about-us-container">
+                <div className="about-us-content">
+                    <div className="about-us-seal"></div>
+                    <h1>About TEA Space</h1>
+                    
+                    <p>Welcome to TEA Space, where Techno-Economic-Social Simulation and Dynamic Modeling converge to revolutionize the way businesses approach cost modeling and economic analysis. Founded in 2025, our platform represents the culmination of years of research and development in economic modeling, data visualization, and user-centered design.</p>
+                    
+                    <div className="decorative-divider">✦ ✦ ✦</div>
+                    
+                    <h2>Our Mission</h2>
+                    <p>TEA Space was established with a singular purpose: to democratize access to sophisticated economic modeling tools. We believe that from the humble lemonade stand to industry giants like Tesla, every business deserves access to powerful, intuitive tools that illuminate the path to financial success and sustainability.</p>
+                    
+                    <h2>Our Approach</h2>
+                    <p>Our platform integrates cutting-edge cash flow analysis, dynamic visualization, and sensitivity testing into a cohesive ecosystem that adapts to your specific needs. By combining technical rigor with an intuitive interface, we've created a solution that speaks the language of both financial analysts and operational decision-makers.</p>
+                    
+                    <h2>Key Features</h2>
+                    <p>TEA Space offers comprehensive tools for project configuration, loan modeling, rate analysis, and process cost optimization. Our dynamic visualization capabilities transform complex data into actionable insights, while our sensitivity analysis tools help you understand how changes in key variables might impact your bottom line.</p>
+                    
+                    <div className="decorative-divider">✦ ✦ ✦</div>
+                    
+                    <h2>Looking Forward</h2>
+                    <p>As we prepare for our grand opening on April 15th, 2025, we invite you to explore the capabilities of TEA Space and envision how our platform can transform your approach to economic modeling and business planning. The future of techno-economic analysis is here, and it's more accessible than ever before.</p>
+                    
+                    <div className="signature-section">
+                        <p>With anticipation for our shared journey,</p>
+                        <p>The TEA Space Team</p>
+                    </div>
+                </div>
+            </div>
+        );
+    };
+
     const renderTabContent = () => {
         switch (activeTab) {
+            case 'AboutUs':
+                return renderAboutUsContent();
             case 'Input':
                 return (
                     <div className="form-content">
@@ -1431,6 +1468,13 @@ const L_1_HomePageContent = () => {
             <div className="main-content">
                 <nav className="L_1_HomePageTabs">
                     <div>
+                        <button
+                            className={`tab-button ${activeTab === 'AboutUs' ? 'active' : ''}`}
+                            onClick={() => setActiveTab('AboutUs')}
+                            data-tab="AboutUs"
+                        >
+                            About Us
+                        </button>
                         <button
                             className={`tab-button ${activeTab === 'Input' ? 'active' : ''}`}
                             onClick={() => setActiveTab('Input')}
