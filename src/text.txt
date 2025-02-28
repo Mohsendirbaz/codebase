@@ -14,13 +14,13 @@ git rev-parse HEAD  # Should show current
 
 git remote -v  # Should show https://github.com/Mohsendirbaz/SF.git
 
-git checkout -b SF.R16
+git checkout -b SF.R17
 
 git add .
 
-git commit -m " fully functional run cfa click, three tabs unavailable, senParams neatly logged"
+git commit -m " fully functional run cfa click, three tabs unavailable, senParams neatly logged with added note"
 
-git push origin SF.R16
+git push origin SF.R17
 
 
 
@@ -54,3 +54,19 @@ Configuration_management:     version = sys.argv[1] if len(sys.argv) > 1 else 1
     selected_calculation_option = sys.argv[5] if len(sys.argv) > 5 else 'calculateforprice'  # Default to calculateforprice
 
 python update_config_modules_with_CFA_7.py "1" '{"V1": "off", "V2": "off", "V3": "off", "V4": "off", "V5": "off", "V6": "off", "V7": "off", "V8": "off", "V9": "off", "V10": "off"}' '{"F1": "off", "F2": "off", "F3": "off", "F4": "off", "F5": "off"}' "10" "calculateforprice"
+
+
+
+
+
+# Create directory for the output if it doesn't exist
+mkdir -p src.sketch.series
+
+# Clone the repository
+git clone -b blueprint-sketch-update1 --depth 1 https://github.com/Mohsendirbaz/TeaSpace.git temp_TeaSpace
+
+# Copy only the src directory to destination
+cp -r temp_TeaSpace/src/* src.sketch.series/
+
+# Remove the temporary repository
+rm -rf temp_TeaSpace

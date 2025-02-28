@@ -192,3 +192,80 @@ Decreasing price to $1.69 due to NPV above tolerance.
 Calculated Current NPV: 369.00 from row 20
 'primary_result': 369,'secondary_result': 19
 NPV is within tolerance bounds. Exiting optimization loop.
+Price optimization started.
+Calculated Current NPV: 159605.00 from row 20
+'primary_result': 159605,'secondary_result': 1
+Initial NPV: $159605.00, Iteration: 1
+Current NPV: $159605.00, Iteration: 1, Price: $2.00
+Decreasing price to $1.97 due to NPV above tolerance.
+Calculated Current NPV: 144093.00 from row 20
+'primary_result': 144093,'secondary_result': 2
+Current NPV: $144093.00, Iteration: 2, Price: $1.97
+Decreasing price to $1.94 due to NPV above tolerance.
+Calculated Current NPV: 128821.00 from row 20
+'primary_result': 128821,'secondary_result': 3
+Current NPV: $128821.00, Iteration: 3, Price: $1.94
+Decreasing price to $1.91 due to NPV above tolerance.
+Calculated Current NPV: 113780.00 from row 20
+'primary_result': 113780,'secondary_result': 4
+Current NPV: $113780.00, Iteration: 4, Price: $1.91
+Decreasing price to $1.88 due to NPV above tolerance.
+Calculated Current NPV: 98963.00 from row 20
+'primary_result': 98963,'secondary_result': 5
+Current NPV: $98963.00, Iteration: 5, Price: $1.88
+Decreasing price to $1.85 due to NPV above tolerance.
+Calculated Current NPV: 84368.00 from row 20
+'primary_result': 84368,'secondary_result': 6
+Current NPV: $84368.00, Iteration: 6, Price: $1.85
+Decreasing price to $1.83 due to NPV above tolerance.
+Calculated Current NPV: 69993.00 from row 20
+'primary_result': 69993,'secondary_result': 7
+Current NPV: $69993.00, Iteration: 7, Price: $1.83
+Decreasing price to $1.80 due to NPV above tolerance.
+Calculated Current NPV: 55834.00 from row 20
+'primary_result': 55834,'secondary_result': 8
+Current NPV: $55834.00, Iteration: 8, Price: $1.80
+Decreasing price to $1.77 due to NPV above tolerance.
+Calculated Current NPV: 41886.00 from row 20
+'primary_result': 41886,'secondary_result': 9
+Current NPV: $41886.00, Iteration: 9, Price: $1.77
+Decreasing price to $1.75 due to NPV above tolerance.
+Calculated Current NPV: 28146.00 from row 20
+'primary_result': 28146,'secondary_result': 10
+Current NPV: $28146.00, Iteration: 10, Price: $1.75
+Decreasing price to $1.72 due to NPV above tolerance.
+Calculated Current NPV: 14614.00 from row 20
+'primary_result': 14614,'secondary_result': 11
+Current NPV: $14614.00, Iteration: 11, Price: $1.72
+Decreasing price to $1.69 due to NPV above tolerance.
+Calculated Current NPV: 1285.00 from row 20
+'primary_result': 1285,'secondary_result': 12
+Current NPV: $1285.00, Iteration: 12, Price: $1.69
+Decreasing price to $1.67 due to NPV above tolerance.
+Calculated Current NPV: -61368.00 from row 20
+'primary_result': -61368,'secondary_result': 13
+Current NPV: $-61368.00, Iteration: 13, Price: $1.67
+Increasing price to $1.70 due to NPV below tolerance.
+Calculated Current NPV: 5398.00 from row 20
+'primary_result': 5398,'secondary_result': 14
+Current NPV: $5398.00, Iteration: 14, Price: $1.70
+Decreasing price to $1.68 due to NPV above tolerance.
+Calculated Current NPV: -7792.00 from row 20
+'primary_result': -7792,'secondary_result': 15
+Current NPV: $-7792.00, Iteration: 15, Price: $1.68
+Increasing price to $1.71 due to NPV below tolerance.
+Calculated Current NPV: 9532.00 from row 20
+'primary_result': 9532,'secondary_result': 16
+Current NPV: $9532.00, Iteration: 16, Price: $1.71
+Decreasing price to $1.68 due to NPV above tolerance.
+Calculated Current NPV: -3720.00 from row 20
+'primary_result': -3720,'secondary_result': 17
+Current NPV: $-3720.00, Iteration: 17, Price: $1.68
+Increasing price to $1.72 due to NPV below tolerance.
+Calculated Current NPV: 13685.00 from row 20
+'primary_result': 13685,'secondary_result': 18
+Current NPV: $13685.00, Iteration: 18, Price: $1.72
+Decreasing price to $1.69 due to NPV above tolerance.
+Calculated Current NPV: 369.00 from row 20
+'primary_result': 369,'secondary_result': 19
+NPV is within tolerance bounds. Exiting optimization loop.
