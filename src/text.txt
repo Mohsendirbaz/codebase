@@ -8,6 +8,7 @@ git remote -v  # Should show https://github.com/Mohsendirbaz/SF.git
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 git checkout -b SConfig.R3
 
 git add .
@@ -23,13 +24,16 @@ git checkout -b SF.R25
 =======
 git checkout -b SF.R26
 >>>>>>> 2d10bdbb (Casino Gate)
+=======
+git checkout -b SF.R27
+>>>>>>> f502a899 (Casino Gate)
 
 git add .
 
 git commit -m "Casino Gate"
 >>>>>>> 99feaad7 (Casino Gate)
 
-git push origin SF.R26
+git push origin SF.R27
 
 
 # Remove existing temp directory (already done)
