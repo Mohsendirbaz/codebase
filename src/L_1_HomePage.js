@@ -7,7 +7,6 @@ import CustomizableTable from './CustomizableTable';
 import ExtendedScaling from './extended_scaling/ExtendedScaling';
 import FormHeader from './FormHeader.js';
 import GeneralFormConfig from './GeneralFormConfig.js';
-import PriceOptimizationConfig from './PriceOptimizationConfig.js';
 import Popup from './Popup.js';
 import './L_1_HomePage.CSS/L_1_HomePage1.css';
 import './L_1_HomePage.CSS/L_1_HomePage2.css';
@@ -31,11 +30,8 @@ import SensitivityAnalysis from './components/SensitivityAnalysis';
 import useFormValues from './useFormValues.js';
 import TestingZone from './components/TestingZone';
 import CalculationMonitor from './components/CalculationMonitor';
-
 const L_1_HomePageContent = () => {
-    // Get version state directly from context
-    const { selectedVersions, version, setVersion, setSelectedVersions } = useVersionState();
-    
+    const { selectedVersions, version: contextVersion, setVersion: setContextVersion } = useVersionState();
     const [activeTab, setActiveTab] = useState('Input');
     const [activeSubTab, setActiveSubTab] = useState('ProjectConfig');
     const [selectedProperties, setSelectedProperties] = useState([]);
@@ -138,6 +134,7 @@ const L_1_HomePageContent = () => {
     }, [season]);
 
     const { formValues, handleInputChange, handleReset, setFormValues } = useFormValues();
+    const [version, setVersion] = useState('1');
     const [batchRunning, setBatchRunning] = useState(false);
     const [analysisRunning, setAnalysisRunning] = useState(false);
     const [monitoringActive, setMonitoringActive] = useState(false);
@@ -152,14 +149,12 @@ const L_1_HomePageContent = () => {
     const [selectedCalculationOption, setSelectedCalculationOption] = useState('calculateForPrice');
     const [target_row, settarget_row] = useState('20');
     const [calculatedPrices, setCalculatedPrices] = useState({});
-    const [optimizationParams, setOptimizationParams] = useState({ global: {} });
     const [baseCosts, setBaseCosts] = useState([]);
     const [scalingGroups, setScalingGroups] = useState([]);
     const [collapsedTabs, setCollapsedTabs] = useState({});
     const [isToggleSectionOpen, setIsToggleSectionOpen] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
     const [popupPosition, setPopupPosition] = useState({ top: 0, left: 0 });
-    
     // Extract base costs from Process2Config values
     useEffect(() => {
         const process2Costs = Object.entries(formValues)
@@ -439,45 +434,30 @@ const L_1_HomePageContent = () => {
         // Set loading state and reset previous results
         setAnalysisRunning(true);
         setCalculatedPrices({});
-        
-        // Automatically show monitoring when running calculations
-        setMonitoringActive(true);
-        console.log("Activating monitoring display");
 
         try {
-            // If no versions are selected, use the current version
-            const currentVersionNum = parseInt(version, 10);
-            const versionsToProcess = selectedVersions.length > 0 ? selectedVersions : [currentVersionNum];
-            
-            console.log(`Processing versions: ${versionsToProcess.join(', ')}`);
-            
             // Prepare request payload with all necessary parameters
             const requestPayload = {
-                selectedVersions: versionsToProcess,
+                selectedVersions,
                 selectedV: V,
                 selectedF: F,
                 selectedCalculationOption,
                 targetRow: target_row,
                 SenParameters: S,
-                optimizationParams: optimizationParams
             };
 
             console.log('Running CFA with parameters:', requestPayload);
 
             // Make API request to run calculations
-            console.log('Sending request to http://127.0.0.1:5007/run');
             const response = await fetch('http://127.0.0.1:5007/run', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(requestPayload),
             });
 
-            console.log('Response status:', response.status);
-            
             // Process the response
             if (!response.ok) {
                 const errorData = await response.json();
-                console.error('Error response:', errorData);
                 throw new Error(errorData.error || 'Failed to run calculation');
             }
 
@@ -486,13 +466,11 @@ const L_1_HomePageContent = () => {
 
             // If price calculation was selected, fetch the calculated prices
             if (selectedCalculationOption === 'calculateForPrice') {
-                console.log('Fetching calculated prices');
                 await fetchCalculatedPrices();
             }
 
             // Start real-time monitoring if calculation was successful
             if (result.status === 'success') {
-                console.log('Starting real-time monitoring');
                 startRealTimeMonitoring();
             }
         } catch (error) {
@@ -510,16 +488,13 @@ const L_1_HomePageContent = () => {
     const fetchCalculatedPrices = async () => {
         try {
             // For each selected version, fetch the calculated price
-            const currentVersionNum = parseInt(version, 10);
-            const versionsToProcess = selectedVersions.length > 0 ? selectedVersions : [currentVersionNum];
-            
-            for (const versionNum of versionsToProcess) {
-                const priceResponse = await fetch(`http://127.0.0.1:5007/price/${versionNum}`);
+            for (const version of selectedVersions) {
+                const priceResponse = await fetch(`http://127.0.0.1:5007/price/${version}`);
                 
                 if (priceResponse.ok) {
                     const priceData = await priceResponse.json();
-                    updatePrice(versionNum, priceData.price);
-                    console.log(`Fetched price for version ${versionNum}:`, priceData.price);
+                    updatePrice(version, priceData.price);
+                    console.log(`Fetched price for version ${version}:`, priceData.price);
                 }
             }
         } catch (error) {
@@ -538,28 +513,25 @@ const L_1_HomePageContent = () => {
         }
 
         // For each selected version, set up a stream connection
-        const currentVersionNum = parseInt(version, 10);
-        const versionsToProcess = selectedVersions.length > 0 ? selectedVersions : [currentVersionNum];
-        
-        versionsToProcess.forEach(versionNum => {
+        selectedVersions.forEach(version => {
             // Create a new EventSource connection for streaming updates
-            const eventSource = new EventSource(`http://127.0.0.1:5007/stream_price/${versionNum}`);
+            const eventSource = new EventSource(`http://127.0.0.1:5007/stream_price/${version}`);
             window.calculationEventSource = eventSource;
 
             // Handle incoming messages
             eventSource.onmessage = (event) => {
                 try {
                     const data = JSON.parse(event.data);
-                    console.log(`Real-time update for version ${versionNum}:`, data);
+                    console.log(`Real-time update for version ${version}:`, data);
                     
                     // Update price if available
                     if (data.price) {
-                        updatePrice(versionNum, data.price);
+                        updatePrice(version, data.price);
                     }
                     
                     // Close the stream if the backend signals completion
                     if (data.complete) {
-                        console.log(`Completed streaming for version ${versionNum}`);
+                        console.log(`Completed streaming for version ${version}`);
                         eventSource.close();
                     }
                 } catch (error) {
@@ -569,22 +541,31 @@ const L_1_HomePageContent = () => {
 
             // Handle errors
             eventSource.onerror = (error) => {
-                console.error(`Error in calculation stream for version ${versionNum}:`, error);
+                console.error(`Error in calculation stream for version ${version}:`, error);
                 eventSource.close();
             };
         });
+
+        /* 
+        // FUTURE ENHANCEMENTS (commented placeholders):
+        // - Add progress indicators for each calculation step
+        // - Implement real-time visualization updates
+        // - Display performance metrics during calculation
+        // - Show memory usage statistics
+        // - Track and display error rates
+        // - Provide estimated completion time
+        */
     };
 
     const handleRunPNG = async () => {
         setAnalysisRunning(true);
         try {
             // Always use current version if no versions selected
-            const currentVersionNum = parseInt(version, 10);
-            const versions = selectedVersions.length > 0 ? selectedVersions : [currentVersionNum];
+            const versions = selectedVersions.length > 0 ? selectedVersions : [version];
             
             // Ensure current version is included
-            if (!versions.includes(currentVersionNum)) {
-                versions.push(currentVersionNum);
+            if (!versions.includes(version)) {
+                versions.push(version);
             }
 
             const response = await fetch('http://127.0.0.1:5008/generate_png_plots', {
@@ -623,17 +604,13 @@ const L_1_HomePageContent = () => {
     const handleRunSub = async () => {
         setAnalysisRunning(true);
         try {
-            // If no versions are selected, use the current version
-            const currentVersionNum = parseInt(version, 10);
-            const versionsToProcess = selectedVersions.length > 0 ? selectedVersions : [currentVersionNum];
-            
             const response = await fetch('http://127.0.0.1:5009/runSub', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    selectedVersions: versionsToProcess,
+                    selectedVersions,
                     selectedProperties,
                     remarks,
                     customizedFeatures,
@@ -730,27 +707,21 @@ const L_1_HomePageContent = () => {
         fetchHtmlFiles();
     }, [version]);
 
-const transformPathToUrlh = (filePath) => {
-    // Check if filePath is defined before attempting to use replace
-    if (!filePath) {
-        console.warn('File path is undefined in transformPathToUrlh');
-        return '';
-    }
-    
-    const normalizedPath = filePath.replace(/\\/g, '/');
-    const baseUrl = `http://localhost:3000/Original`;
+    const transformPathToUrlh = (filePath) => {
+        const normalizedPath = filePath.replace(/\\/g, '/');
+        const baseUrl = `http://localhost:3000/Original`;
 
-    const match = normalizedPath.match(
-        /Batch\((\d+)\)\/Results\(\d+\)\/([^\/]+)\/([^\/]+\.html)$/
-    );
-    if (match) {
-        const version = match[1];
-        const album = match[2];
-        const fileName = normalizedPath.split('/').pop();
-        return `${baseUrl}/Batch(${version})/Results(${version})/${album}/${fileName}`;
-    }
-    return normalizedPath;
-};
+        const match = normalizedPath.match(
+            /Batch\((\d+)\)\/Results\(\d+\)\/([^\/]+)\/([^\/]+\.html)$/
+        );
+        if (match) {
+            const version = match[1];
+            const album = match[2];
+            const fileName = normalizedPath.split('/').pop();
+            return `${baseUrl}/Batch(${version})/Results(${version})/${album}/${fileName}`;
+        }
+        return normalizedPath;
+    };
 
     const transformAlbumName = (album) => {
         // Extract the version numbers and the description part
@@ -770,16 +741,6 @@ const transformPathToUrlh = (filePath) => {
 
         return albumHtmls[selectedHtml].map((html, index) => {
             const htmlUrl = transformPathToUrlh(html.path);
-            
-            // Skip rendering if URL is null
-            if (htmlUrl === null) {
-                return (
-                    <div key={index} className="html-content error-content">
-                        <p>Error: Unable to load HTML content. File path is undefined.</p>
-                    </div>
-                );
-            }
-            
             return (
                 <div key={index} className={`html-content ${iframesLoaded[index] ? 'loaded' : ''}`}>
                     <iframe
@@ -855,13 +816,6 @@ const transformPathToUrlh = (filePath) => {
     }, [version]);
 
     const transformPathToUrl = (filePath) => {
-        // Check if filePath is defined before attempting to use replace
-        if (!filePath) {
-            console.warn('File path is undefined in transformPathToUrl');
-            // Return null to indicate that the path is invalid
-            return null;
-        }
-        
         // Normalize the file path to replace backslashes with forward slashes
         const normalizedPath = filePath.replace(/\\/g, '/');
 
@@ -966,20 +920,8 @@ const transformPathToUrlh = (filePath) => {
         }
     }, [csvFiles, subTab]);
 
-    // Handle version input change
     const handleVersionChange = (event) => {
-        const newVersion = event.target.value;
-        
-        // Update the current version
-        setVersion(newVersion);
-        
-        // Convert to number for consistency
-        const numericVersion = parseInt(newVersion, 10);
-        
-        // Add the version to selectedVersions if it's not already there
-        if (!selectedVersions.includes(numericVersion)) {
-            setSelectedVersions([...selectedVersions, numericVersion]);
-        }
+        setVersion(event.target.value);
     };
 
     const renderCase1Content = () => {
@@ -1267,7 +1209,6 @@ const transformPathToUrlh = (filePath) => {
                         selectedVersions={selectedVersions}
                         updatePrice={updatePrice}
                         isActive={monitoringActive}
-                        currentVersion={version}
                     />
                 )}
                 <div className="calculation-options">
@@ -1294,12 +1235,6 @@ const transformPathToUrlh = (filePath) => {
                             </div>
                         </div>
                     </div>
-                    
-                    <PriceOptimizationConfig 
-                        selectedVersions={selectedVersions}
-                        optimizationParams={optimizationParams}
-                        setOptimizationParams={setOptimizationParams}
-                    />
                     <div className="selectors-container">
                         <div className="property-selector-container">
                             <PropertySelector
@@ -1308,7 +1243,7 @@ const transformPathToUrlh = (filePath) => {
                             />
                         </div>
                         <div className="version-selector-container">
-                            <VersionSelector maxVersions={20} />
+                            <MultiVersionSelector maxVersions={20} />
                         </div>
                     </div>
                 </div>
