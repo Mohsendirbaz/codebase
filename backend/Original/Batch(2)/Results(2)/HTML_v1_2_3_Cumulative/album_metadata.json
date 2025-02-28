@@ -1,0 +1,11 @@
+{
+  "versions": [
+    "1",
+    "2"
+  ],
+  "plot_type": "3_Cumulative",
+  "display_name": "3 Cumulative for versions [1, 2]",
+  "html_files": [
+    "Annual_Cash_Flows_Cumulative_Plot.html"
+  ]
+}

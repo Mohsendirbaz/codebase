@@ -1,0 +1,11 @@
+{
+  "versions": [
+    "1",
+    "2"
+  ],
+  "plot_type": "3_Annual_Cash_Flows",
+  "display_name": "3 Annual Cash Flows for versions [1, 2]",
+  "html_files": [
+    "Annual_Cash_Flows_Plot.html"
+  ]
+}
