@@ -46,10 +46,10 @@ flask_apps = [
     (r"Data_processors_and_transformers\Front_Subtab_HTML.py", 8009),
     (r"API_endpoints_and_controllers\Create_new_batch.py", 8001),
     (r"API_endpoints_and_controllers\Remove_batch.py", 7001),
-    (r"API_endpoints_and_controllers\Calculations_and_Sensitivity.py", 5007),
+    (r"API_endpoints_and_controllers\Calculations.py", 5007),
     (r"API_endpoints_and_controllers\PNG.py", 5008),
     (r"API_endpoints_and_controllers\Sub.py", 5009),
-    (r"Configuration_management\Load.py", 5000),
+    (r"API_endpoints_and_controllers\Load.py", 5000),
 ]
 
 # Base directory where your Node.js scripts are located

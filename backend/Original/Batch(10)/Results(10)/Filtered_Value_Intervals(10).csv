@@ -1,0 +1,42 @@
+ID,Start,End,Value,Remarks
+General Inflation Rate,1,1,0.020,2004
+General Inflation Rate,2,2,0.0424,2005
+General Inflation Rate,3,3,0.0664,2006
+General Inflation Rate,4,4,0.0915,2007
+General Inflation Rate,5,5,0.1323,2008
+General Inflation Rate,6,6,0.1426,2009
+General Inflation Rate,7,7,0.1662,2010
+General Inflation Rate,8,8,0.1980,2011
+General Inflation Rate,9,9,0.2246,2012
+General Inflation Rate,10,10,0.2400,2013
+General Inflation Rate,11,11,0.2424,2014
+General Inflation Rate,12,12,0.2424,2015
+General Inflation Rate,13,13,0.2451,2016
+General Inflation Rate,14,14,0.2668,2017
+General Inflation Rate,15,15,0.2881,2018
+General Inflation Rate,16,16,0.3032,2019
+General Inflation Rate,17,17,0.3104,2020
+General Inflation Rate,18,18,0.3382,2021
+General Inflation Rate,19,19,0.4415,2022
+General Inflation Rate,20,20,0.5035,2023
+Internal Rate of Return,1,1,0.020,2004
+Internal Rate of Return,2,2,0.0404,2005
+Internal Rate of Return,3,3,0.0620,2006
+Internal Rate of Return,4,4,0.0859,2007
+Internal Rate of Return,5,5,0.1126,2008
+Internal Rate of Return,6,6,0.1419,2009
+Internal Rate of Return,7,7,0.1743,2010
+Internal Rate of Return,8,8,0.2099,2011
+Internal Rate of Return,9,9,0.2488,2012
+Internal Rate of Return,10,10,0.2912,2013
+Internal Rate of Return,11,11,0.3372,2014
+Internal Rate of Return,12,12,0.3869,2015
+Internal Rate of Return,13,13,0.4406,2016
+Internal Rate of Return,14,14,0.4983,2017
+Internal Rate of Return,15,15,0.5602,2018
+Internal Rate of Return,16,16,0.6264,2019
+Internal Rate of Return,17,17,0.6970,2020
+Internal Rate of Return,18,18,0.7722,2021
+Internal Rate of Return,19,19,0.8521,2022
+Internal Rate of Return,20,20,0.9369,2023
+Federal Tax Rate,1,1,0.252,

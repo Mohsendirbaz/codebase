@@ -1,0 +1,162 @@
+/* Action Button Palette */
+.L_1_HomePage .form-action-buttons button {
+  font-weight: bold;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 150px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Configuration Row */
+.L_1_HomePage .form-action-buttons .config-row button {
+  background-color: #5C27C3;
+  color: white;
+}
+
+.L_1_HomePage .form-action-buttons .config-row button:hover {
+  background-color: #4a1fa3;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(92, 39, 195, 0.3);
+}
+
+.L_1_HomePage .form-action-buttons .config-row button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(92, 39, 195, 0.4);
+}
+
+/* Visualization Row */
+.L_1_HomePage .form-action-buttons .visualization-row button {
+  background: linear-gradient(45deg, #4CAF50, #2196F3);
+  color: white;
+}
+
+.L_1_HomePage .form-action-buttons .visualization-row button:hover {
+  background: linear-gradient(45deg, #43A047, #1E88E5);
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+}
+
+.L_1_HomePage .form-action-buttons .visualization-row button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.4);
+}
+
+/* Practical Row */
+.L_1_HomePage .form-action-buttons .practical-row button {
+  position: relative;
+}
+
+/* Run CFA Button */
+.L_1_HomePage .form-action-buttons .practical-row button:nth-child(1) {
+  background-color: #FF5722;
+  color: white;
+}
+
+.L_1_HomePage .form-action-buttons .practical-row button:nth-child(1):hover {
+  background-color: #F4511E;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(255, 87, 34, 0.3);
+}
+
+.L_1_HomePage .form-action-buttons .practical-row button:nth-child(1):focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 87, 34, 0.4);
+}
+
+/* Submit Complete Set Button */
+.L_1_HomePage .form-action-buttons .practical-row button:nth-child(2) {
+  background-color: #9C27B0;
+  color: white;
+}
+
+.L_1_HomePage .form-action-buttons .practical-row button:nth-child(2):hover {
+  background-color: #8E24AA;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(156, 39, 176, 0.3);
+}
+
+.L_1_HomePage .form-action-buttons .practical-row button:nth-child(2):focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(156, 39, 176, 0.4);
+}
+
+/* Reset Button */
+.L_1_HomePage .form-action-buttons .practical-row button:nth-child(3) {
+  background-color: #5C27B0;
+  color: white;
+}
+
+.L_1_HomePage .form-action-buttons .practical-row button:nth-child(3):hover {
+  background-color: #512DA8;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(92, 39, 176, 0.3);
+}
+
+.L_1_HomePage .form-action-buttons .practical-row button:nth-child(3):focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(92, 39, 176, 0.4);
+}
+
+/* Batch Operation Buttons */
+.L_1_HomePage .step-content button {
+  margin: 0 10px;
+  min-width: 180px;
+}
+
+/* Create New Batch Button */
+.L_1_HomePage .step-content .primary-action {
+  background-color: #FF2722;
+  color: white;
+}
+
+.L_1_HomePage .step-content .primary-action:hover {
+  background-color: #E61E19;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(255, 39, 34, 0.3);
+}
+
+.L_1_HomePage .step-content .primary-action:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 39, 34, 0.4);
+}
+
+/* Remove Current Batch Button */
+.L_1_HomePage .step-content .secondary-action {
+  background-color: #2fb9b9;
+  color: white;
+}
+
+.L_1_HomePage .step-content .secondary-action:hover {
+  background-color: #2AA3A3;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(47, 185, 185, 0.3);
+}
+
+.L_1_HomePage .step-content .secondary-action:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(47, 185, 185, 0.4);
+}
+
+/* Disabled State */
+.L_1_HomePage .form-action-buttons button:disabled,
+.L_1_HomePage .step-content button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Loading Animation for Run CFA */
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
+.L_1_HomePage .form-action-buttons .practical-row button:nth-child(1)[disabled] {
+  animation: pulse 1.5s infinite;
+}

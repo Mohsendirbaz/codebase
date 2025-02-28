@@ -887,3 +887,90 @@ Visualization processing complete - Run ID: 20250225_180201
 2025-02-25 18:02:01,779 INFO Errors encountered: 5
 2025-02-25 20:05:38,796 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
 2025-02-25 20:05:39,203 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-27 13:43:36,182 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-27 13:43:36,699 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-27 13:46:28,909 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-27 13:48:03,851 INFO 
+================================================================================
+2025-02-27 13:48:03,851 INFO CFA Run Configuration
+2025-02-27 13:48:03,851 INFO ================================================================================
+2025-02-27 13:48:03,851 INFO 
+Basic Configuration:
+2025-02-27 13:48:03,851 INFO Version(s): 
+2025-02-27 13:48:03,851 INFO Calculation Mode: freeFlowNPV
+2025-02-27 13:48:03,851 INFO 
+Parameter States:
+2025-02-27 13:48:03,851 INFO Enabled V Parameters: V1
+2025-02-27 13:48:03,851 INFO Enabled F Parameters: F1, F2, F3, F4, F5
+2025-02-27 13:48:03,851 INFO 
+================================================================================
+
+2025-02-27 13:48:03,851 INFO 
+Executing Configuration Management Scripts:
+2025-02-27 13:48:03,851 INFO 
+Executing: formatter.py
+2025-02-27 13:48:03,851 ERROR Error during orchestrated calculations: list index out of range
+2025-02-27 13:48:06,273 INFO 
+================================================================================
+2025-02-27 13:48:06,273 INFO CFA Run Configuration
+2025-02-27 13:48:06,274 INFO ================================================================================
+2025-02-27 13:48:06,274 INFO 
+Basic Configuration:
+2025-02-27 13:48:06,274 INFO Version(s): 
+2025-02-27 13:48:06,274 INFO Calculation Mode: calculateForPrice
+2025-02-27 13:48:06,274 INFO Target Row: 20
+2025-02-27 13:48:06,274 INFO 
+Parameter States:
+2025-02-27 13:48:06,274 INFO Enabled V Parameters: V1
+2025-02-27 13:48:06,274 INFO Enabled F Parameters: F1, F2, F3, F4, F5
+2025-02-27 13:48:06,275 INFO 
+================================================================================
+
+2025-02-27 13:48:06,275 INFO 
+Executing Configuration Management Scripts:
+2025-02-27 13:48:06,275 INFO 
+Executing: formatter.py
+2025-02-27 13:48:06,275 ERROR Error during orchestrated calculations: list index out of range
+2025-02-27 14:09:02,121 INFO 
+================================================================================
+2025-02-27 14:09:02,121 INFO CFA Run Configuration
+2025-02-27 14:09:02,121 INFO ================================================================================
+2025-02-27 14:09:02,121 INFO 
+Basic Configuration:
+2025-02-27 14:09:02,121 INFO Version(s): 
+2025-02-27 14:09:02,121 INFO Calculation Mode: calculateForPrice
+2025-02-27 14:09:02,121 INFO Target Row: 20
+2025-02-27 14:09:02,121 INFO 
+Parameter States:
+2025-02-27 14:09:02,121 INFO Enabled V Parameters: V1
+2025-02-27 14:09:02,121 INFO Enabled F Parameters: F1, F2, F3, F4, F5
+2025-02-27 14:09:02,121 INFO 
+================================================================================
+
+2025-02-27 14:09:02,121 INFO 
+Executing Configuration Management Scripts:
+2025-02-27 14:09:02,121 INFO 
+Executing: formatter.py
+2025-02-27 14:09:02,121 ERROR Error during orchestrated calculations: list index out of range
+2025-02-27 14:11:06,001 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-27 14:11:06,401 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-27 14:14:25,408 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-27 14:14:30,635 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-27 14:22:19,278 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-27 14:22:36,387 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-27 14:35:02,082 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-27 14:35:03,371 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-27 14:51:49,711 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-27 14:51:50,112 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-27 15:08:13,051 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-27 15:08:22,227 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-27 15:08:42,848 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-27 15:08:48,929 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-27 15:08:58,087 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-27 15:09:07,607 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-27 15:09:13,651 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-27 15:09:56,069 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-27 15:10:10,196 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-27 15:10:33,198 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-27 15:11:27,431 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-02-27 15:11:59,808 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log

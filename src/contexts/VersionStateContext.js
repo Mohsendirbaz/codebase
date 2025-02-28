@@ -16,6 +16,7 @@ export function VersionStateProvider({ children }) {
 
   const value = {
     version,
+    setVersion,
     selectedVersions,
     updateVersion,
     updateSelectedVersions
