@@ -14,13 +14,13 @@ git rev-parse HEAD  # Should show current
 
 git remote -v  # Should show https://github.com/Mohsendirbaz/SF.git
 
-git checkout -b SF.R19
+git checkout -b SF.R20
 
 git add .
 
-git commit -m " SF.R17 benefits plus a working png plot"
+git commit -m "Run cfa and generate PNG restored"
 
-git push origin SF.R19
+git push origin SF.R20
 
 
 

@@ -1,4 +1,0 @@
-start,end,length,filtered_values
-1,2,2,"[{""id"": ""initialSellingPriceAmount13"", ""value"": ""2.4"", ""remarks"": ""a""}]"
-2,8,7,"[{""id"": ""initialSellingPriceAmount13"", ""value"": ""2.4"", ""remarks"": ""a""}]"
-8,20,13,"[{""id"": ""initialSellingPriceAmount13"", ""value"": ""2.4"", ""remarks"": ""a""}]"

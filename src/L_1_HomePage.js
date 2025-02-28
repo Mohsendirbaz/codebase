@@ -708,31 +708,65 @@ const L_1_HomePageContent = () => {
     }, [version]);
 
     const transformPathToUrlh = (filePath) => {
+        // Normalize the file path to replace backslashes with forward slashes
         const normalizedPath = filePath.replace(/\\/g, '/');
         const baseUrl = `http://localhost:3000/Original`;
-
-        const match = normalizedPath.match(
-            /Batch\((\d+)\)\/Results\(\d+\)\/([^\/]+)\/([^\/]+\.html)$/
+    
+        // Handle both organized and non-organized albums
+        // Pattern for HTML_v1_2_PlotType albums
+        const organizedMatch = normalizedPath.match(
+            /Batch\((\d+)\)\/Results\((\d+)\)\/(HTML_v[\d_]+_[^/]+)\/([^/]+\.html)$/
         );
-        if (match) {
-            const version = match[1];
-            const album = match[2];
-            const fileName = normalizedPath.split('/').pop();
+        
+        // Pattern for v1_2_PlotType_Plot albums
+        const legacyMatch = normalizedPath.match(
+            /Batch\((\d+)\)\/Results\((\d+)\)\/(v[\d_]+_[^/]+_Plot)\/([^/]+\.html)$/
+        );
+        
+        // Pattern for any other album structure
+        const regularMatch = normalizedPath.match(
+            /Batch\((\d+)\)\/Results\((\d+)\)\/([^/]+)\/([^/]+\.html)$/
+        );
+        
+        if (organizedMatch) {
+            const version = organizedMatch[1];
+            const album = organizedMatch[2];
+            const fileName = organizedMatch[3];
+            return `${baseUrl}/Batch(${version})/Results(${version})/${album}/${fileName}`;
+        } else if (legacyMatch) {
+            const version = legacyMatch[1];
+            const album = legacyMatch[2];
+            const fileName = legacyMatch[3];
+            return `${baseUrl}/Batch(${version})/Results(${version})/${album}/${fileName}`;
+        } else if (regularMatch) {
+            const version = regularMatch[1];
+            const album = regularMatch[2];
+            const fileName = regularMatch[3];
             return `${baseUrl}/Batch(${version})/Results(${version})/${album}/${fileName}`;
         }
+        
+        // If no pattern matches, return the normalized path
         return normalizedPath;
     };
 
     const transformAlbumName = (album) => {
-        // Extract the version numbers and the description part
-        const match = album.match(/v((\d+_)+)(.+)/);
-        if (match) {
-            // Extract and format the version numbers
-            const versions = match[1].slice(0, -1).replace(/_/g, ', ');
-            // Extract and format the description, adding spaces between capital letters
-            const description = match[3].replace(/_/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2');
+        // Handle HTML_v1_2_PlotType format
+        const htmlMatch = album.match(/HTML_v([\d_]+)_(.+)/);
+        if (htmlMatch) {
+            const versions = htmlMatch[1].replace(/_/g, ', ');
+            const description = htmlMatch[2].replace(/_/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2');
             return `${description} for versions [${versions}]`;
         }
+        
+        // Handle legacy v1_2_PlotType_Plot format
+        const legacyMatch = album.match(/v([\d_]+)_(.+?)(_Plot)?$/);
+        if (legacyMatch) {
+            const versions = legacyMatch[1].replace(/_/g, ', ');
+            const description = legacyMatch[2].replace(/_/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2');
+            return `${description} for versions [${versions}]`;
+        }
+        
+        // Default formatting for other album names
         return album.replace(/_/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2');
     };
 
@@ -847,15 +881,23 @@ const L_1_HomePageContent = () => {
     };
 
     const transformAlbumNamePlot = (album) => {
-        // Extract the version numbers and the description part
-        const match = album.match(/((\d+_)+)(.+)/);
-        if (match) {
-            // Extract and format the version numbers
-            const versions = match[1].slice(0, -1).replace(/_/g, ', ');
-            // Extract and format the description, adding spaces between capital letters
-            const description = match[3].replace(/_/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2');
+        // Handle organized album format (e.g., 1_2_PlotType_PlotAlbum)
+        const organizedMatch = album.match(/([\d_]+)_(.+?)(_PlotAlbum)?$/);
+        if (organizedMatch) {
+            const versions = organizedMatch[1].replace(/_/g, ', ');
+            const description = organizedMatch[2].replace(/_/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2');
             return `${description} for versions [${versions}]`;
         }
+        
+        // Handle legacy format (e.g., AnnotatedStaticPlots)
+        const legacyMatch = album.match(/([\d_]+)_(.+?)$/);
+        if (legacyMatch) {
+            const versions = legacyMatch[1].replace(/_/g, ', ');
+            const description = legacyMatch[2].replace(/_/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2');
+            return `${description} for versions [${versions}]`;
+        }
+        
+        // Default formatting for other album names
         return album.replace(/_/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2');
     };
 

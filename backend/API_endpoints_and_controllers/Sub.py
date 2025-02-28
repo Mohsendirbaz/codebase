@@ -64,6 +64,22 @@ def run_scripts():
                 logging.error(f"Error running {script_filename}: {result.stderr}")
                 return f"Error running {script_filename}: {result.stderr}", 500
 
+        try:
+            # Import and run HTML album organizer
+            organizer_path = os.path.join(os.path.dirname(__file__), 'html_album_organizer.py')
+            if os.path.exists(organizer_path):
+                result = subprocess.run(
+                    ['python', organizer_path],
+                    capture_output=True, text=True
+                )
+                if result.returncode != 0:
+                    logging.error(f"Error running HTML album organizer: {result.stderr}")
+                else:
+                    logging.info("HTML album organization completed")
+        except Exception as e:
+            logging.error(f"Error during HTML album organization: {str(e)}")
+            # Continue with normal flow, don't fail the request
+
     except FileNotFoundError:
         logging.error(f"File not found in directory: {script_dir}")
         return f"File not found in directory: {script_dir}", 404
