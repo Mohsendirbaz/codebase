@@ -1,13 +1,16 @@
-import React, { useMemo, useEffect } from 'react';
+import React, { useMemo } from 'react';
 import { useVersionState } from './contexts/VersionStateContext';
 import './VersionSelector.css';
 
-const VersionSelector = ({ 
-  maxVersions = 20,
-  batchInfo = {}
-}) => {
-  const { selectedVersions, updateSelectedVersions } = useVersionState();
+/**
+ * VersionSelector component
+ * Allows selecting versions from a grouped list
+ */
+const VersionSelector = ({ maxVersions = 20, batchInfo = {} }) => {
+  // Get state and setters directly from context
+  const { selectedVersions, setSelectedVersions } = useVersionState();
 
+  // Group versions into batches
   const batchGroups = useMemo(() => {
     const groups = {};
     Array.from({ length: maxVersions }, (_, i) => i + 1).forEach(version => {
@@ -24,26 +27,29 @@ const VersionSelector = ({
     return Object.values(groups);
   }, [maxVersions, batchInfo]);
 
+  // Toggle a single version selection
   const handleVersionToggle = (version) => {
-    updateSelectedVersions(prev => 
+    setSelectedVersions(prev => 
       prev.includes(version)
         ? prev.filter(v => v !== version)
         : [...prev, version]
     );
   };
 
+  // Toggle all versions in a batch
   const handleBatchSelect = (batchId) => {
     const group = batchGroups.find(g => g.id === batchId);
     if (!group) return;
 
     const allSelected = group.versions.every(v => selectedVersions.includes(v));
     if (allSelected) {
-      updateSelectedVersions(prev => prev.filter(v => !group.versions.includes(v)));
+      setSelectedVersions(prev => prev.filter(v => !group.versions.includes(v)));
     } else {
-      updateSelectedVersions(prev => [...new Set([...prev, ...group.versions])]);
+      setSelectedVersions(prev => [...new Set([...prev, ...group.versions])]);
     }
   };
 
+  // Handle keyboard navigation
   const handleKeyDown = (e, action, type = 'item') => {
     // Enter or Space for selection
     if (e.key === 'Enter' || e.key === ' ') {
@@ -82,20 +88,10 @@ const VersionSelector = ({
         e.preventDefault();
         e.target.parentElement.lastElementChild.focus();
         break;
+      default:
+        break;
     }
   };
-
-  useEffect(() => {
-    // Add keyboard shortcut help to aria-description
-    const selector = document.querySelector('.version-selector');
-    if (selector) {
-      selector.setAttribute('aria-description', 
-        'Use arrow keys to navigate, Enter or Space to select, ' +
-        'Ctrl+A in group header to select all versions in group, ' +
-        'Home and End to jump to first or last item.'
-      );
-    }
-  }, []);
 
   return (
     <div 

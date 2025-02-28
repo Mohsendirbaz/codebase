@@ -6,6 +6,10 @@ import sys
 import importlib.util
 import logging
 import logging.config
+import time
+import threading
+import traceback
+from datetime import datetime
 
 # Import custom modules for plotting and economic summary
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -27,11 +31,26 @@ log_file_path = os.path.join(log_directory, 'CFA_CALC.log')
 logging.basicConfig(
     filename=log_file_path,
     level=logging.INFO,
-    format='%(levelname)s: %(message)s',
+    format='%(asctime)s - %(levelname)s: %(message)s',
     filemode='w'
 )
 
+# Create a separate logger for price optimization
+price_logger = logging.getLogger("price_optimization")
+price_logger.setLevel(logging.INFO)
+price_handler = logging.FileHandler(log_file_path)
+price_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s: %(message)s'))
+price_logger.addHandler(price_handler)
 
+# Ensure logs are immediately written to file
+logging.getLogger().handlers[0].flush()
+price_logger.handlers[0].flush()
+
+# Log script startup
+logging.info("=" * 80)
+logging.info("CFA CALCULATION SCRIPT STARTED")
+logging.info("=" * 80)
+price_logger.info("Price optimization module initialized")
 
 # ---------------- Logging Setup Block End ----------------
 
@@ -121,8 +140,7 @@ def calculate_annual_operating_expenses(
     return expenses, variable_costs_filtered, fixed_costs_filtered
 
 
-
-# ---------------- Revenue and Expense Calculation Block End ----------------import pandas as pd
+# ---------------- Revenue and Expense Calculation Block End ----------------
 
 # ---------------- Opex Table Generation Functions ----------------
 
@@ -199,8 +217,6 @@ def save_opex_tables(fixed_costs_results, variable_costs_results, expenses_resul
     variable_opex_table.to_csv(os.path.join(results_folder, f"Variable_Opex_Table_({version}).csv"), index=False)
     cumulative_opex_table.to_csv(os.path.join(results_folder, f"Cumulative_Opex_Table_({version}).csv"), index=False)
 
-   
-
 
 # Function to calculate state tax
 def calculate_state_tax(revenue, stateTaxRateAmount32, operating_expenses, depreciation):
@@ -229,10 +245,305 @@ def read_config_module(file_path):
 # ---------------- Config Module Handling Block End ----------------
 
 
+# ---------------- Price Optimization Status Tracking Block Start ----------------
+
+def initialize_optimization_status_file(version, target_row, tolerance_lower, tolerance_upper, increase_rate, decrease_rate):
+    """
+    Initialize the price optimization status file at the beginning of the process.
+    
+    Parameters:
+    - version: The batch version number
+    - target_row: The row at which NPV should be zeroed
+    - tolerance_lower: Lower bound of acceptable NPV
+    - tolerance_upper: Upper bound of acceptable NPV
+    - increase_rate: Rate at which to increase price when NPV is too low
+    - decrease_rate: Rate at which to decrease price when NPV is too high
+    
+    Returns:
+    - status_file_path: Path to the created status file
+    """
+    # Enhanced logging for debugging
+    logging.info("=" * 80)
+    logging.info("INITIALIZING PRICE OPTIMIZATION STATUS FILE")
+    logging.info(f"Version: {version}, Target Row: {target_row}")
+    logging.info(f"Tolerance: Lower={tolerance_lower}, Upper={tolerance_upper}")
+    logging.info(f"Adjustment Rates: Increase={increase_rate}, Decrease={decrease_rate}")
+    
+    # Ensure path exists
+    code_files_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "backend", "Original")
+    results_folder = os.path.join(code_files_path, f"Batch({version})", f"Results({version})")
+    
+    logging.info(f"Results folder path: {results_folder}")
+    
+    # Create directory if it doesn't exist
+    try:
+        os.makedirs(results_folder, exist_ok=True)
+        logging.info(f"Ensured results folder exists: {results_folder}")
+    except Exception as e:
+        logging.error(f"Failed to create results folder: {str(e)}")
+        logging.error(traceback.format_exc())
+    
+    # Create status file path
+    status_file_path = os.path.join(results_folder, f"price_optimization_status_{version}.json")
+    logging.info(f"Status file path: {status_file_path}")
+    
+    # Initial status data
+    status_data = {
+        "version": version,
+        "target_row": target_row,
+        "tolerance_lower": tolerance_lower,
+        "tolerance_upper": tolerance_upper,
+        "increase_rate": increase_rate,
+        "decrease_rate": decrease_rate,
+        "start_time": datetime.now().isoformat(),
+        "current_price": None,
+        "current_npv": None,
+        "iteration": 0,
+        "iterations": [],
+        "complete": False,
+        "success": False,
+        "error": None,
+        "last_updated": datetime.now().isoformat()
+    }
+    
+    try:
+        with open(status_file_path, 'w') as f:
+            json.dump(status_data, f, indent=2)
+        logging.info(f"Successfully created price optimization status file: {status_file_path}")
+        
+        # Verify file was created
+        if os.path.exists(status_file_path):
+            file_size = os.path.getsize(status_file_path)
+            logging.info(f"Verified file exists: {status_file_path} (Size: {file_size} bytes)")
+        else:
+            logging.error(f"File creation verification failed: {status_file_path} does not exist")
+    except Exception as e:
+        logging.error(f"Failed to create price optimization status file: {str(e)}")
+        logging.error(traceback.format_exc())
+    
+    # Ensure logs are immediately written to file
+    logging.getLogger().handlers[0].flush()
+    if hasattr(price_logger, 'handlers') and price_logger.handlers:
+        price_logger.handlers[0].flush()
+    
+    return status_file_path
+
+def update_optimization_status(status_file_path, price=None, npv=None, iteration=None, 
+                              complete=None, success=None, error=None):
+    """
+    Update the price optimization status file with new information.
+    
+    Parameters:
+    - status_file_path: Path to the status file
+    - price: Current price being tested
+    - npv: Current NPV result
+    - iteration: Current iteration number
+    - complete: Whether optimization is complete
+    - success: Whether optimization was successful
+    - error: Any error message
+    """
+    if not os.path.exists(status_file_path):
+        logging.error(f"Status file does not exist: {status_file_path}")
+        return
+    
+    try:
+        # Load current status
+        with open(status_file_path, 'r') as f:
+            status_data = json.load(f)
+        
+        # Update fields
+        update_time = datetime.now().isoformat()
+        status_data["last_updated"] = update_time
+        
+        if price is not None:
+            status_data["current_price"] = price
+        
+        if npv is not None:
+            status_data["current_npv"] = npv
+        
+        if iteration is not None:
+            status_data["iteration"] = iteration
+            # Add to iterations history
+            status_data["iterations"].append({
+                "iteration": iteration,
+                "price": price,
+                "npv": npv,
+                "timestamp": update_time
+            })
+        
+        if complete is not None:
+            status_data["complete"] = complete
+        
+        if success is not None:
+            status_data["success"] = success
+        
+        if error is not None:
+            status_data["error"] = error
+        
+        # Write updated status
+        with open(status_file_path, 'w') as f:
+            json.dump(status_data, f, indent=2)
+            
+        # Also log to the standard log file
+        if price is not None and npv is not None:
+            price_logger.info(f"Iteration {iteration}: Price ${price:.2f}, NPV ${npv:.2f}")
+            
+    except Exception as e:
+        logging.error(f"Failed to update price optimization status: {str(e)}")
+        logging.error(traceback.format_exc())
+
+# ---------------- Price Optimization Status Tracking Block End ----------------
+
+# ---------------- Price Optimization Function Block Start ----------------
+def optimize_price(version, config_received, config_matrix_df, results_folder, selected_v, selected_f, 
+                  target_row, tolerance_lower=-1000, tolerance_upper=1000, 
+                  increase_rate=1.02, decrease_rate=0.985):
+    """
+    Iteratively finds the optimal selling price that brings the NPV at target_row close to zero.
+    
+    Parameters:
+    - version: Batch version
+    - config_received: Configuration object
+    - config_matrix_df: Configuration matrix dataframe
+    - results_folder: Folder to store results
+    - selected_v: Dictionary of selected variable costs
+    - selected_f: Dictionary of selected fixed costs
+    - target_row: Row at which NPV should be zeroed
+    - tolerance_lower: Lower bound of acceptable NPV
+    - tolerance_upper: Upper bound of acceptable NPV
+    - increase_rate: Rate at which to increase price when NPV is too low
+    - decrease_rate: Rate at which to decrease price when NPV is too high
+    
+    Returns:
+    - final_price: The optimized selling price
+    """
+    # Initialize status tracking
+    status_file_path = initialize_optimization_status_file(
+        version, target_row, tolerance_lower, tolerance_upper, increase_rate, decrease_rate
+    )
+    
+    # Log start of price optimization
+    logging.info(f"Starting price optimization for version {version}")
+    logging.info(f"Target row: {target_row}, Tolerance: {tolerance_lower} to {tolerance_upper}")
+    logging.info(f"Adjustment rates: Increase {increase_rate}, Decrease {decrease_rate}")
+    price_logger.info(f"Starting price optimization for version {version}")
+    
+    # Get the initial selling price from the first config module
+    first_config_module_file = os.path.join(results_folder, f"{version}_config_module_1.json")
+    
+    try:
+        with open(first_config_module_file, 'r') as f:
+            first_config_module = json.load(f)
+        price = first_config_module['initialSellingPriceAmount13']
+        logging.info(f"Initial selling price: ${price:.2f}")
+    except Exception as e:
+        error_msg = f"Failed to read initial selling price: {str(e)}"
+        logging.error(error_msg)
+        update_optimization_status(status_file_path, error=error_msg, complete=True, success=False)
+        raise ValueError(error_msg)
+    
+    # Initialize variables for the optimization loop
+    iteration = 0
+    npv = None
+    max_iterations = 100  # Safety limit
+    price_history = []
+    
+    # Update status with initial price
+    update_optimization_status(status_file_path, price=price, iteration=iteration)
+    
+    # Start optimization loop
+    while iteration < max_iterations:
+        iteration += 1
+        price_history.append(price)
+        
+        logging.info(f"Iteration {iteration}: Testing price ${price:.2f}")
+        
+        try:
+            # Calculate NPV using current price
+            result = calculate_revenue_and_expenses_from_modules(
+                config_received, config_matrix_df, results_folder, version,
+                selected_v, selected_f, price, target_row, iteration
+            )
+            
+            if result is None:
+                error_msg = "Calculation returned None result"
+                logging.error(error_msg)
+                update_optimization_status(status_file_path, price=price, error=error_msg, 
+                                         complete=True, success=False, iteration=iteration)
+                break
+            
+            npv = result['primary_result']
+            logging.info(f"Iteration {iteration}: NPV = ${npv:.2f}")
+            
+            # Update status with current results
+            update_optimization_status(status_file_path, price=price, npv=npv, iteration=iteration)
+            
+            # Check if NPV is within tolerance bounds
+            if tolerance_lower <= npv <= tolerance_upper:
+                logging.info(f"Optimal price found: ${price:.2f} with NPV ${npv:.2f}")
+                price_logger.info(f"Optimal price found: ${price:.2f} with NPV ${npv:.2f}")
+                update_optimization_status(status_file_path, price=price, npv=npv, 
+                                         complete=True, success=True, iteration=iteration)
+                break
+            
+            # Adjust price based on NPV
+            old_price = price
+            if npv < tolerance_lower:
+                # NPV too low, increase price
+                price = price * increase_rate
+                logging.info(f"NPV too low (${npv:.2f}), increasing price from ${old_price:.2f} to ${price:.2f}")
+            else:
+                # NPV too high, decrease price
+                price = price * decrease_rate
+                logging.info(f"NPV too high (${npv:.2f}), decreasing price from ${old_price:.2f} to ${price:.2f}")
+            
+            # Check for oscillation (if we've seen this price before)
+            if len(price_history) > 3 and any(abs(price - hist_price) < 0.01 for hist_price in price_history[:-1]):
+                logging.warning(f"Price oscillation detected at ${price:.2f}, adjusting approach")
+                # Use a more conservative adjustment
+                if npv < tolerance_lower:
+                    price = old_price * (1 + (increase_rate - 1) / 2)
+                else:
+                    price = old_price * (1 - (1 - decrease_rate) / 2)
+            
+            # Round to 2 decimal places
+            price = round(price, 2)
+            
+        except Exception as e:
+            error_msg = f"Error in price optimization iteration {iteration}: {str(e)}"
+            logging.error(error_msg)
+            logging.error(traceback.format_exc())
+            price_logger.error(error_msg)
+            update_optimization_status(status_file_path, price=price, error=error_msg, 
+                                     complete=True, success=False, iteration=iteration)
+            raise
+    
+    # Check if we reached max iterations
+    if iteration >= max_iterations:
+        logging.warning(f"Reached maximum iterations ({max_iterations}) without convergence")
+        price_logger.warning(f"Reached maximum iterations ({max_iterations}) without convergence")
+        update_optimization_status(status_file_path, price=price, npv=npv, complete=True, 
+                                 success=False, error="Reached maximum iterations", iteration=iteration)
+    
+    # Save the final price to a dedicated file for easy retrieval
+    price_file_path = os.path.join(results_folder, f"optimal_price_{version}.json")
+    try:
+        with open(price_file_path, 'w') as f:
+            json.dump({"price": price, "npv": npv}, f)
+        logging.info(f"Saved optimal price to {price_file_path}")
+    except Exception as e:
+        logging.error(f"Failed to save optimal price file: {str(e)}")
+    
+    return price
+
+# ---------------- Price Optimization Function Block End ----------------
+
 # ---------------- Revenue and Expense Calculation from Config Block Start ----------------
 
-def calculate_revenue_and_expenses_from_modules(config_received, config_matrix_df, results_folder, version, selected_v, selected_f, selected_calculation_option=None):
-    
+def calculate_revenue_and_expenses_from_modules(config_received, config_matrix_df, results_folder, version, selected_v, selected_f, price=None, target_row=None, iteration=0, selected_calculation_option=None):
+    # Add this near the beginning of the function
+    if price is not None and target_row is not None:
+        logging.info(f"Running calculation with price ${price:.2f} for target row {target_row}, iteration {iteration}")
     
     # Extract parameters
     plant_lifetime = config_received.plantLifetimeAmount10
@@ -283,9 +594,23 @@ def calculate_revenue_and_expenses_from_modules(config_received, config_matrix_d
 
         config_module = read_config_module(config_module_file)
 
+        # Determine which price to use based on target_row
+        if price is not None and target_row is not None:
+            if int(row['start'])+1 > target_row:
+                # Use the initial selling price if the period is after the target row
+                selling_price = config_module['initialSellingPriceAmount13']
+                logging.info(f"Using initial selling price ${selling_price:.2f} for period {row['start']}-{row['end']}")
+            else:
+                # Use the calculated price if the period is before or at the target row
+                selling_price = price
+                logging.info(f"Using calculated price ${price:.2f} for period {row['start']}-{row['end']}")
+        else:
+            # Default to initial selling price if no price or target_row provided
+            selling_price = config_module['initialSellingPriceAmount13']
+
         annual_revenue = calculate_annual_revenue(
             config_module['numberOfUnitsAmount12'],
-            config_module['initialSellingPriceAmount13'],
+            selling_price,
             config_module['generalInflationRateAmount23'],
             plant_lifetime + construction_years,
             construction_years
@@ -316,7 +641,7 @@ def calculate_revenue_and_expenses_from_modules(config_received, config_matrix_d
         maintenance_cost_operational[idx] = config_module['maintenanceAmount37'] * adjusted_length_calculation
         insurance_cost_operational[idx] = config_module['insuranceAmount38'] * adjusted_length_calculation
         # Store module selling price for each row
-        module_selling_price_operational[idx] = config_module['initialSellingPriceAmount13'] * adjusted_length_calculation
+        module_selling_price_operational[idx] = selling_price * adjusted_length_calculation
         
         # Calculate running averages for each cost component
         average_feedstock_cost_operational = sum(feedstock_cost_operational.values()) / (idx + 1)
@@ -532,79 +857,180 @@ def calculate_revenue_and_expenses_from_modules(config_received, config_matrix_d
 
     # ---------------- Economic Summary and Plotting Block End ----------------
 
+    # If target_row is provided, return the NPV at that row for price optimization
+    if target_row is not None and price is not None:
+        NPV_year = target_row  # Set the NPV year to the target row
+        npv = CFA_matrix.at[NPV_year, 'Cumulative Cash Flow']
+        logging.info(f"Calculated Current NPV: {npv:.2f} from row {NPV_year}, iteration: {iteration}")
+        price_logger.info(f"Iteration {iteration}: Price ${price:.2f}, NPV ${npv:.2f}")
+        
+        # Flush log handlers to ensure logs are written
+        logging.getLogger().handlers[0].flush()
+        price_logger.handlers[0].flush()
+        
+        # Return the calculated NPV and iteration count
+        return {
+            'primary_result': npv,
+            'secondary_result': iteration,
+        }
+    
+    return None
 
 # ---------------- Main Function Block Start ----------------
 
 # Main function to load config matrix and run the update
-def main(version, selected_v, selected_f, selected_calculation_option=None):
+def main(version, selected_v, selected_f, target_row=None, tolerance_lower=-1000, tolerance_upper=1000, 
+         increase_rate=1.02, decrease_rate=0.985, selected_calculation_option=None, sen_parameters=None):
+    """
+    Main function to load config matrix and run the update with price optimization if requested.
+    
+    Parameters:
+    - version: Batch version
+    - selected_v: Dictionary of selected variable costs
+    - selected_f: Dictionary of selected fixed costs
+    - target_row: Row at which NPV should be zeroed (for price optimization)
+    - tolerance_lower: Lower bound of acceptable NPV
+    - tolerance_upper: Upper bound of acceptable NPV
+    - increase_rate: Rate at which to increase price when NPV is too low
+    - decrease_rate: Rate at which to decrease price when NPV is too high
+    - selected_calculation_option: Calculation option (e.g., 'calculateForPrice')
+    - sen_parameters: Sensitivity parameters
+    """
+    logging.info(f"Starting main function with parameters:")
+    logging.info(f"  - Version: {version}")
+    logging.info(f"  - Selected V: {selected_v}")
+    logging.info(f"  - Selected F: {selected_f}")
+    logging.info(f"  - Target row: {target_row}")
+    logging.info(f"  - Tolerance bounds: {tolerance_lower}/{tolerance_upper}")
+    logging.info(f"  - Adjustment rates: {increase_rate}/{decrease_rate}")
+    logging.info(f"  - Calculation option: {selected_calculation_option}")
+    
     # Set the path to the directory containing the modules
     code_files_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "backend", "Original")
     results_folder = os.path.join(code_files_path, f"Batch({version})", f"Results({version})")
     config_matrix_file = os.path.join(results_folder, f"General_Configuration_Matrix({version}).csv")
+    
+    logging.info(f"Paths:")
+    logging.info(f"  - Code files path: {code_files_path}")
+    logging.info(f"  - Results folder: {results_folder}")
+    logging.info(f"  - Config matrix file: {config_matrix_file}")
 
     # Check if the config matrix file exists
     if not os.path.exists(config_matrix_file):
-
+        logging.error(f"Config matrix file not found: {config_matrix_file}")
         return
 
     # Load the config matrix
-    config_matrix_df = pd.read_csv(config_matrix_file)
-
-
-    # Set the path to the directory containing the configurations
-    config_file = os.path.join(code_files_path,f"Batch({version})", f"ConfigurationPlotSpec({version})", f"configurations({version}).py")
-    if not os.path.exists(config_file):
-        return
-
-    spec = importlib.util.spec_from_file_location("config", config_file)
-    config_received = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(config_received)
-
-
-    # Run the update and calculate revenue and expenses from pre-existing config modules
-    calculate_revenue_and_expenses_from_modules(config_received, config_matrix_df, results_folder, version, selected_v, selected_f, selected_calculation_option)
-
-# Accept version, selected_v, and selected_f as command-line arguments
-if __name__ == "__main__":
     try:
-        # Parse command line arguments with proper error handling
-        version = sys.argv[1] if len(sys.argv) > 1 else 1
-        
-        # Handle JSON parsing with better error handling
-        if len(sys.argv) > 2:
-            try:
-                # Try to parse as JSON
-                selected_v = json.loads(sys.argv[2])
-            except json.JSONDecodeError:
-                # If JSON parsing fails, try to evaluate as Python dict
-                logging.warning(f"JSON parsing failed for selected_v, using default values")
-                selected_v = {"V1": "off", "V2": "off", "V3": "off", "V4": "off", "V5": "off", 
-                             "V6": "off", "V7": "off", "V8": "off", "V9": "off", "V10": "off"}
-        else:
-            selected_v = {"V1": "off", "V2": "off", "V3": "off", "V4": "off", "V5": "off", 
-                         "V6": "off", "V7": "off", "V8": "off", "V9": "off", "V10": "off"}
-        
-        if len(sys.argv) > 3:
-            try:
-                # Try to parse as JSON
-                selected_f = json.loads(sys.argv[3])
-            except json.JSONDecodeError:
-                # If JSON parsing fails, try to evaluate as Python dict
-                logging.warning(f"JSON parsing failed for selected_f, using default values")
-                selected_f = {"F1": "off", "F2": "off", "F3": "off", "F4": "off", "F5": "off"}
-        else:
-            selected_f = {"F1": "off", "F2": "off", "F3": "off", "F4": "off", "F5": "off"}
-        
-        target_row = int(sys.argv[4]) if len(sys.argv) > 4 else 10
-        selected_calculation_option = sys.argv[5] if len(sys.argv) > 5 else 'calculateforprice'  # Default to calculateforprice
-
-        logging.info(f"Starting CFA calculation for version {version} with {selected_calculation_option} mode")
-        logging.info(f"Selected V parameters: {selected_v}")
-        logging.info(f"Selected F parameters: {selected_f}")
-        logging.info(f"Target row: {target_row}")
-        
-        main(version, selected_v, selected_f, selected_calculation_option)
-        logging.info("CFA calculation completed")
+        config_matrix_df = pd.read_csv(config_matrix_file)
+        logging.info(f"Successfully loaded config matrix with {len(config_matrix_df)} rows")
+        logging.info(f"Config matrix columns: {config_matrix_df.columns.tolist()}")
     except Exception as e:
-        logging.error(f"Error in CFA calculation: {str(e)}")
-        raise
+        logging.error(f"Error loading config matrix: {str(e)}")
+        return
+    
+    # Handle price optimization if required
+    if target_row is not None and selected_calculation_option == 'calculateForPrice':
+        logging.info(f"Starting price optimization with target row {target_row}")
+        
+        try:
+            # Load the first config module to get config_received
+            config_module_file = os.path.join(results_folder, f"{version}_config_module_1.json")
+            config_module = read_config_module(config_module_file)
+            
+            # Create config_received object from module file
+            class ConfigObject:
+                def __init__(self, config_dict):
+                    for key, value in config_dict.items():
+                        setattr(self, key, value)
+            
+            config_received = ConfigObject(config_module)
+            
+            # Run price optimization
+            optimal_price = optimize_price(
+                version, config_received, config_matrix_df, results_folder,
+                selected_v, selected_f, int(target_row),
+                tolerance_lower, tolerance_upper,
+                increase_rate, decrease_rate
+            )
+            
+            logging.info(f"Price optimization complete. Optimal price: ${optimal_price:.2f}")
+            
+            # Run final calculation with the optimal price
+            calculate_revenue_and_expenses_from_modules(
+                config_received, config_matrix_df, results_folder, version,
+                selected_v, selected_f, optimal_price, None, 0, selected_calculation_option
+            )
+            
+        except Exception as e:
+            logging.error(f"Error during price optimization: {str(e)}")
+            logging.error(traceback.format_exc())
+            price_logger.error(f"Error during price optimization: {str(e)}")
+    
+    # If not doing price optimization, run a regular calculation
+    else:
+        try:
+            # Load the first config module to get config_received
+            config_module_file = os.path.join(results_folder, f"{version}_config_module_1.json")
+            config_module = read_config_module(config_module_file)
+            
+            # Create config_received object from module file
+            class ConfigObject:
+                def __init__(self, config_dict):
+                    for key, value in config_dict.items():
+                        setattr(self, key, value)
+            
+            config_received = ConfigObject(config_module)
+            
+            # Run regular calculation
+            calculate_revenue_and_expenses_from_modules(
+                config_received, config_matrix_df, results_folder, version,
+                selected_v, selected_f, None, None, 0, selected_calculation_option
+            )
+            
+            logging.info(f"Regular CFA calculation completed for version {version}")
+            
+        except Exception as e:
+            logging.error(f"Error during regular calculation: {str(e)}")
+            logging.error(traceback.format_exc())
+    
+    # Ensure all logs are written
+    logging.getLogger().handlers[0].flush()
+    if price_logger.handlers:
+        price_logger.handlers[0].flush()
+    
+    logging.info("=" * 80)
+    logging.info("CFA CALCULATION SCRIPT COMPLETED")
+    logging.info("=" * 80)
+
+# Run the script if called directly
+if __name__ == "__main__":
+    # Parse command line arguments
+    import argparse
+    parser = argparse.ArgumentParser(description='Run CFA calculation with optional price optimization')
+    parser.add_argument('--version', type=str, required=True, help='Version number')
+    parser.add_argument('--calculation-option', type=str, default=None, help='Calculation option, e.g., calculateForPrice')
+    parser.add_argument('--target-row', type=int, default=None, help='Target row for price optimization')
+    parser.add_argument('--tolerance-lower', type=float, default=-1000, help='Lower tolerance bound for NPV')
+    parser.add_argument('--tolerance-upper', type=float, default=1000, help='Upper tolerance bound for NPV')
+    parser.add_argument('--increase-rate', type=float, default=1.02, help='Rate to increase price when NPV is too low')
+    parser.add_argument('--decrease-rate', type=float, default=0.985, help='Rate to decrease price when NPV is too high')
+    
+    args = parser.parse_args()
+    
+    # Set up default V and F dictionaries for command line mode
+    default_v = {f'V{i}': 'on' if i == 1 else 'off' for i in range(1, 11)}
+    default_f = {f'F{i}': 'on' for i in range(1, 6)}
+    
+    # Call main function with command line arguments
+    main(
+        version=args.version,
+        selected_v=default_v,
+        selected_f=default_f,
+        target_row=args.target_row,
+        tolerance_lower=args.tolerance_lower,
+        tolerance_upper=args.tolerance_upper,
+        increase_rate=args.increase_rate,
+        decrease_rate=args.decrease_rate,
+        selected_calculation_option=args.calculation_option
+    )

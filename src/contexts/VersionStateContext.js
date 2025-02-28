@@ -1,25 +1,22 @@
-import React, { createContext, useContext, useState, useCallback } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
+// Create a context for version state
 const VersionStateContext = createContext(null);
 
+// Provider component that wraps the app and makes version state available
 export function VersionStateProvider({ children }) {
+  // Single source of truth for current version
   const [version, setVersion] = useState('1');
+  
+  // Single source of truth for selected versions
   const [selectedVersions, setSelectedVersions] = useState([]);
 
-  const updateVersion = useCallback((newVersion) => {
-    setVersion(newVersion);
-  }, []);
-
-  const updateSelectedVersions = useCallback((versions) => {
-    setSelectedVersions(versions);
-  }, []);
-
+  // Value object with just the state and setters
   const value = {
     version,
     setVersion,
     selectedVersions,
-    updateVersion,
-    updateSelectedVersions
+    setSelectedVersions
   };
 
   return (
@@ -29,6 +26,7 @@ export function VersionStateProvider({ children }) {
   );
 }
 
+// Custom hook to use the version context
 export function useVersionState() {
   const context = useContext(VersionStateContext);
   if (!context) {
