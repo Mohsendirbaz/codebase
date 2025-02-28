@@ -1,0 +1,10 @@
+{
+  "version": "2",
+  "target_row": 20,
+  "tolerance_lower": -1000.0,
+  "tolerance_upper": 1000.0,
+  "increase_rate": 1.02,
+  "decrease_rate": 0.985,
+  "start_time": "2025-02-27T22:24:34.938462",
+  "current_price": 0.36,
+  "current_npv": 

@@ -730,21 +730,27 @@ const L_1_HomePageContent = () => {
         fetchHtmlFiles();
     }, [version]);
 
-    const transformPathToUrlh = (filePath) => {
-        const normalizedPath = filePath.replace(/\\/g, '/');
-        const baseUrl = `http://localhost:3000/Original`;
+const transformPathToUrlh = (filePath) => {
+    // Check if filePath is defined before attempting to use replace
+    if (!filePath) {
+        console.warn('File path is undefined in transformPathToUrlh');
+        return '';
+    }
+    
+    const normalizedPath = filePath.replace(/\\/g, '/');
+    const baseUrl = `http://localhost:3000/Original`;
 
-        const match = normalizedPath.match(
-            /Batch\((\d+)\)\/Results\(\d+\)\/([^\/]+)\/([^\/]+\.html)$/
-        );
-        if (match) {
-            const version = match[1];
-            const album = match[2];
-            const fileName = normalizedPath.split('/').pop();
-            return `${baseUrl}/Batch(${version})/Results(${version})/${album}/${fileName}`;
-        }
-        return normalizedPath;
-    };
+    const match = normalizedPath.match(
+        /Batch\((\d+)\)\/Results\(\d+\)\/([^\/]+)\/([^\/]+\.html)$/
+    );
+    if (match) {
+        const version = match[1];
+        const album = match[2];
+        const fileName = normalizedPath.split('/').pop();
+        return `${baseUrl}/Batch(${version})/Results(${version})/${album}/${fileName}`;
+    }
+    return normalizedPath;
+};
 
     const transformAlbumName = (album) => {
         // Extract the version numbers and the description part
@@ -764,6 +770,16 @@ const L_1_HomePageContent = () => {
 
         return albumHtmls[selectedHtml].map((html, index) => {
             const htmlUrl = transformPathToUrlh(html.path);
+            
+            // Skip rendering if URL is null
+            if (htmlUrl === null) {
+                return (
+                    <div key={index} className="html-content error-content">
+                        <p>Error: Unable to load HTML content. File path is undefined.</p>
+                    </div>
+                );
+            }
+            
             return (
                 <div key={index} className={`html-content ${iframesLoaded[index] ? 'loaded' : ''}`}>
                     <iframe
@@ -839,6 +855,13 @@ const L_1_HomePageContent = () => {
     }, [version]);
 
     const transformPathToUrl = (filePath) => {
+        // Check if filePath is defined before attempting to use replace
+        if (!filePath) {
+            console.warn('File path is undefined in transformPathToUrl');
+            // Return null to indicate that the path is invalid
+            return null;
+        }
+        
         // Normalize the file path to replace backslashes with forward slashes
         const normalizedPath = filePath.replace(/\\/g, '/');
 
@@ -1272,15 +1295,11 @@ const L_1_HomePageContent = () => {
                         </div>
                     </div>
                     
-                    {/* Add the optimization config component when calculation option is 'calculateForPrice' */}
-                    {selectedCalculationOption === 'calculateForPrice' && (
-                      <PriceOptimizationConfig 
+                    <PriceOptimizationConfig 
                         selectedVersions={selectedVersions}
                         optimizationParams={optimizationParams}
                         setOptimizationParams={setOptimizationParams}
-                      />
-                    )}
-                    
+                    />
                     <div className="selectors-container">
                         <div className="property-selector-container">
                             <PropertySelector

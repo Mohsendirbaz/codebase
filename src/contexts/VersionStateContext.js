@@ -9,6 +9,7 @@ export function VersionStateProvider({ children }) {
   const [version, setVersion] = useState('1');
   
   // Single source of truth for selected versions
+  // Initialize with no versions selected
   const [selectedVersions, setSelectedVersions] = useState([]);
 
   // Value object with just the state and setters

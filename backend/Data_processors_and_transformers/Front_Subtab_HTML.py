@@ -8,7 +8,7 @@ import logging.config
 app = Flask(__name__)
 CORS(app)
 
-BASE_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "backend", "Original")
+BASE_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "public", "Original")
 
 def get_versions(directory: str):
     if not os.path.exists(directory):
@@ -38,7 +38,8 @@ def get_html_files(version: str):
                     html_files.append({
                         "name": file,
                         "content": content,
-                        "album": album
+                        "album": album,
+                        "path": file_path  # Add the file path
                     })
                     logging.info(f"Processed {file}")
                 except Exception as e:

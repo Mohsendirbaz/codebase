@@ -135,7 +135,54 @@ def log_state_parameters(versions, v_states, f_states, calculation_option, targe
 def run_script(script_name, *args, script_type="python"):
     try:
         command = ['python' if script_type == "python" else 'Rscript', script_name]
-        command.extend([str(arg) for arg in args])
+        
+        # Check if it's the CFA_7 script and add the appropriate flags
+        if 'update_config_modules_with_CFA_7.py' in script_name:
+            # Extract arguments
+            version = args[0]
+            selected_v = args[1]
+            selected_f = args[2]
+            target_row = args[3]
+            calculation_option = args[4]
+            tolerance_lower = args[5]
+            tolerance_upper = args[6]
+            increase_rate = args[7]
+            decrease_rate = args[8]
+            sen_parameters = args[9]
+            
+            # Build command with named arguments
+            command.extend([
+                '--version', str(version),
+                '--selected-v', selected_v,
+                '--selected-f', selected_f
+            ])
+            
+            # Add optional arguments if they have values
+            if target_row:
+                command.extend(['--target-row', str(target_row)])
+            
+            if calculation_option:
+                command.extend(['--calculation-option', calculation_option])
+                
+            if tolerance_lower:
+                command.extend(['--tolerance-lower', str(tolerance_lower)])
+                
+            if tolerance_upper:
+                command.extend(['--tolerance-upper', str(tolerance_upper)])
+                
+            if increase_rate:
+                command.extend(['--increase-rate', str(increase_rate)])
+                
+            if decrease_rate:
+                command.extend(['--decrease-rate', str(decrease_rate)])
+                
+            if sen_parameters:
+                command.extend(['--sen-parameters', sen_parameters])
+        else:
+            # For other scripts, just add the arguments as before
+            command.extend([str(arg) for arg in args])
+        
+        logger.info(f"Running command: {' '.join(command)}")
         
         result = subprocess.run(command, capture_output=True, text=True)
         
@@ -499,9 +546,26 @@ def run_scripts():
         
         # Get JSON data from request
         data = request.get_json()
+        
+        # Handle case where data is None
         if not data:
-            logger.error("No data provided in request")
-            return jsonify({"error": "No data provided"}), 400
+            logger.warning("No data provided in request, using default values")
+            data = {
+                'selectedVersions': [1],
+                'selectedV': DEFAULT_V_STATES,
+                'selectedF': DEFAULT_F_STATES,
+                'selectedCalculationOption': DEFAULT_CALCULATION_OPTION,
+                'targetRow': DEFAULT_TARGET_ROW,
+                'SenParameters': {},
+                'optimizationParams': {
+                    'global': {
+                        'toleranceLower': DEFAULT_TOLERANCE_LOWER,
+                        'toleranceUpper': DEFAULT_TOLERANCE_UPPER,
+                        'increaseRate': DEFAULT_INCREASE_RATE,
+                        'decreaseRate': DEFAULT_DECREASE_RATE
+                    }
+                }
+            }
         
         # Log the request data
         logger.info(f"Request data: {json.dumps(data, indent=2)}")
@@ -509,8 +573,8 @@ def run_scripts():
         # Extract and validate parameters with defaults
         selected_versions = data.get('selectedVersions', [1])
         if not selected_versions:
-            logger.error("No versions selected")
-            return jsonify({"error": "No versions selected"}), 400
+            logger.warning("No versions selected, using default version [1]")
+            selected_versions = [1]
 
         # Extract state parameters with defaults
         selected_v = data.get('selectedV', DEFAULT_V_STATES)
