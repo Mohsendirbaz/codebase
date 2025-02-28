@@ -1,4 +1,0 @@
-start,end,length,filtered_values
-1,7,7,"[{""id"": ""initialSellingPriceAmount13"", ""value"": ""4.7"", ""remarks"": ""ab""}, {""id"": ""initialSellingPriceAmount13"", ""value"": ""4.7"", ""remarks"": ""ab""}]"
-7,15,9,"[{""id"": ""initialSellingPriceAmount13"", ""value"": ""4.7"", ""remarks"": ""ab""}, {""id"": ""initialSellingPriceAmount13"", ""value"": ""4.7"", ""remarks"": ""ab""}]"
-15,20,6,"[{""id"": ""initialSellingPriceAmount13"", ""value"": ""4.7"", ""remarks"": ""ab""}, {""id"": ""initialSellingPriceAmount13"", ""value"": ""4.7"", ""remarks"": ""ab""}]"
