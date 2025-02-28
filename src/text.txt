@@ -14,13 +14,13 @@ git rev-parse HEAD  # Should show current
 
 git remote -v  # Should show https://github.com/Mohsendirbaz/SF.git
 
-git checkout -b SF.R14
+git checkout -b SF.R15
 
 git add .
 
-git commit -m " fully functional run cfa click, only dynamic plots missing, three tabs unavailable"
+git commit -m " fully functional run cfa click, three tabs unavailable, senParams neatly logged"
 
-git push origin SF.R14
+git push origin SF.R15
 
 
 
