@@ -11,6 +11,7 @@ git remote -v  # Should show https://github.com/Mohsendirbaz/SF.git
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 git checkout -b SConfig.R3
 
 git add .
@@ -39,13 +40,16 @@ git checkout -b SF.R28
 =======
 git checkout -b SF.R29
 >>>>>>> d7e07e2c (Casino Gate: central logging, sensitivity_integration and adapter added)
+=======
+git checkout -b SF.R30
+>>>>>>> c0ffe0d6 (Casino Gate: central logging, sensitivity_integration and adapter added)
 
 git add .
 
 git commit -m "Casino Gate: central logging, sensitivity_integration and adapter added"
 >>>>>>> 90ee9d89 (Casino Gate: central logging, sensitivity_integration and adapter added)
 
-git push origin SF.R29
+git push origin SF.R30
 
 
 # Remove existing temp directory (already done)
