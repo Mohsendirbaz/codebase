@@ -14,13 +14,13 @@ git rev-parse HEAD  # Should show current
 
 git remote -v  # Should show https://github.com/Mohsendirbaz/SF.git
 
-git checkout -b SF.R29
+git checkout -b SF.R30
 
 git add .
 
 git commit -m "Casino Gate: central logging, sensitivity_integration and adapter added"
 
-git push origin SF.R29
+git push origin SF.R30
 
 
 # Remove existing temp directory (already done)
