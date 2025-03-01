@@ -1,0 +1,447 @@
+import os
+import json
+import shutil
+from datetime import datetime
+from pathlib import Path
+import sys
+import importlib.util
+import numpy as np
+import pandas as pd
+from typing import Dict, List, Any, Optional, Tuple
+
+# Import centralized logging
+from sensitivity_logging import get_manager_logger
+
+# Add the project root to the Python path
+BASE_DIR = Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+if str(BASE_DIR) not in sys.path:
+    sys.path.append(str(BASE_DIR))
+
+# Import utility functions
+try:
+    from backend.Utility_functions.common_utils import property_mapping
+except ImportError:
+    get_manager_logger().warning("Could not import property_mapping, using empty mapping")
+    property_mapping = {}
+
+class SensitivityAnalysisManager:
+    """
+    Unified manager for sensitivity analysis that coordinates calculation results,
+    configuration management, and file organization.
+    """
+    
+    def __init__(self):
+        # Define base directories using Path for cross-platform compatibility
+        self.base_dir = BASE_DIR
+        self.original_dir = self.base_dir / "public" / "Original"
+        self.logs_dir = self.base_dir / "Logs"
+        
+        # Create logging directories
+        os.makedirs(self.logs_dir, exist_ok=True)
+        
+        # Get logger from centralized logging
+        self.logger = get_manager_logger()
+        
+        self.logger.info("Sensitivity Analysis Manager initialized")
+        
+        # Standard directory structure for sensitivity results
+        self.directory_structure = {
+            'Symmetrical': ['waterfall', 'bar', 'point'],
+            'Multipoint': ['waterfall', 'bar', 'point'],
+            'Reports': [],
+            'Configuration': [],
+            'Cache': []
+        }
+    
+    def ensure_sensitivity_directories(self, version: int) -> Dict[str, Path]:
+        """
+        Ensures that all required directories for sensitivity analysis exist.
+        Returns a dictionary of created directory paths.
+        """
+        version_str = str(version)
+        batch_dir = self.original_dir / f"Batch({version_str})"
+        results_dir = batch_dir / f"Results({version_str})"
+        sensitivity_dir = results_dir / "Sensitivity"
+        
+        # Create the main sensitivity directory
+        os.makedirs(sensitivity_dir, exist_ok=True)
+        
+        # Create subdirectories for different analysis types and outputs
+        created_dirs = {'root': sensitivity_dir}
+        
+        for main_dir, sub_dirs in self.directory_structure.items():
+            main_path = sensitivity_dir / main_dir
+            os.makedirs(main_path, exist_ok=True)
+            created_dirs[main_dir.lower()] = main_path
+            
+            # Create sub-directories if needed
+            for sub_dir in sub_dirs:
+                sub_path = main_path / sub_dir
+                os.makedirs(sub_path, exist_ok=True)
+                created_dirs[f"{main_dir.lower()}_{sub_dir}"] = sub_path
+        
+        self.logger.info(f"Created sensitivity directories for version {version}")
+        return created_dirs
+    
+    def get_parameter_info(self, param_id: str) -> Dict:
+        """
+        Gets information about a sensitivity parameter including its mapping.
+        """
+        # Extract parameter number (e.g., S10 -> 10)
+        if not (param_id.startswith('S') and param_id[1:].isdigit()):
+            raise ValueError(f"Invalid parameter ID format: {param_id}")
+        
+        param_num = int(param_id[1:])
+        
+        # Map to property ID based on parameter number
+        param_mappings = {
+            # This mapping connects SXX parameters to their property IDs
+            10: "initialSellingPriceAmount13",
+            11: "variable_costsAmount4",
+            13: "bECAmount11",
+            34: "rawmaterialAmount34",
+            35: "laborAmount35",
+            36: "utilityAmount36",
+            37: "maintenanceAmount37",
+            38: "insuranceAmount38",
+            # Add all other mappings as needed
+        }
+        
+        property_id = param_mappings.get(param_num)
+        if not property_id:
+            self.logger.warning(f"No property mapping found for parameter {param_id}")
+            return {"id": param_id, "property_id": None, "display_name": param_id}
+        
+        # Get display name from property mapping
+        display_name = property_mapping.get(property_id, property_id)
+        
+        return {
+            "id": param_id,
+            "property_id": property_id,
+            "display_name": display_name
+        }
+    
+    def load_config_module(self, version: int, year: int = None) -> Any:
+        """
+        Loads a configuration module for a specific version and year.
+        If year is None, loads the base configuration.
+        """
+        version_str = str(version)
+        
+        # Find the appropriate configuration file
+        if year is None:
+            # Use the main configuration file
+            config_dir = self.base_dir / "backend" / "Configuration_management"
+            config_file = config_dir / f"config_module_{version_str}.py"
+        else:
+            # Use a year-specific configuration file if it exists
+            year_str = str(year)
+            results_dir = self.original_dir / f"Batch({version_str})" / f"Results({version_str})"
+            config_file = results_dir / f"config_module_{version_str}_{year_str}.py"
+            
+            # If year-specific file doesn't exist, fall back to the main config
+            if not os.path.exists(config_file):
+                self.logger.warning(f"Year-specific config {config_file} not found, using main config")
+                config_dir = self.base_dir / "backend" / "Configuration_management"
+                config_file = config_dir / f"config_module_{version_str}.py"
+        
+        if not os.path.exists(config_file):
+            raise FileNotFoundError(f"Config file not found: {config_file}")
+        
+        # Load the configuration module
+        spec = importlib.util.spec_from_file_location("config_module", config_file)
+        config_module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(config_module)
+        
+        return config_module
+    
+    def save_sensitivity_config(self, config_module: Any, version: int, param_id: str, 
+                               mode: str, variation: float, year: int = None) -> Path:
+        """
+        Saves a modified configuration for sensitivity analysis.
+        Returns the path to the saved configuration file.
+        """
+        version_str = str(version)
+        
+        # Ensure directories exist
+        directories = self.ensure_sensitivity_directories(version)
+        config_dir = directories['configuration']
+        
+        # Convert config module to dictionary
+        config_dict = {
+            attr: getattr(config_module, attr) 
+            for attr in dir(config_module) 
+            if not attr.startswith('__')
+        }
+        
+        # Generate filename
+        year_suffix = f"_{year}" if year is not None else ""
+        filename = f"{version_str}_config_{param_id}_{variation:.2f}{year_suffix}.json"
+        filepath = config_dir / filename
+        
+        # Save configuration
+        with open(filepath, 'w') as f:
+            json.dump(config_dict, f, indent=2)
+        
+        self.logger.info(f"Saved sensitivity configuration: {filepath}")
+        return filepath
+    
+    def apply_sensitivity_variation(self, config_module: Any, param_id: str, variation: float) -> Any:
+        """
+        Applies a sensitivity variation to a parameter in the configuration module.
+        Returns the modified configuration module.
+        """
+        param_info = self.get_parameter_info(param_id)
+        property_id = param_info['property_id']
+        
+        if not property_id:
+            raise ValueError(f"Cannot apply variation: No property mapping for {param_id}")
+        
+        # Get the original value
+        if not hasattr(config_module, property_id):
+            raise AttributeError(f"Configuration module has no attribute '{property_id}'")
+        
+        original_value = getattr(config_module, property_id)
+        
+        # Apply the variation
+        if isinstance(original_value, (list, tuple, np.ndarray)):
+            # For vector parameters
+            modified_value = [val * (1 + variation/100) for val in original_value]
+        else:
+            # For scalar parameters
+            modified_value = original_value * (1 + variation/100)
+        
+        # Set the modified value
+        setattr(config_module, property_id, modified_value)
+        
+        self.logger.info(f"Applied {variation}% variation to {property_id} (from {original_value} to {modified_value})")
+        return config_module
+    
+    def generate_sensitivity_configs(self, version: int, param_id: str, mode: str, 
+                                    variations: List[float]) -> List[Dict]:
+        """
+        Generates configuration variations for sensitivity analysis.
+        Returns information about the generated configurations.
+        """
+        self.logger.info(f"Generating sensitivity configs for {param_id} in version {version}, mode: {mode}")
+        
+        # Load the configuration matrix to get year-specific configurations
+        version_str = str(version)
+        results_dir = self.original_dir / f"Batch({version_str})" / f"Results({version_str})"
+        matrix_file = results_dir / f"Configuration_Matrix({version_str}).csv"
+        
+        configs_info = []
+        
+        try:
+            # Check if configuration matrix exists
+            if os.path.exists(matrix_file):
+                matrix_df = pd.read_csv(matrix_file)
+                
+                # Process each year range in the matrix
+                for _, row in matrix_df.iterrows():
+                    start_year = int(row['start'])
+                    end_year = int(row['end'])
+                    
+                    # Load base config for this year range
+                    base_config = self.load_config_module(version, start_year)
+                    
+                    # Apply the filtered values from the configuration matrix
+                    # This step is kept simple here but would need to be expanded
+                    # to properly apply all filtered values from the matrix
+                    
+                    # Generate variations
+                    if mode == 'symmetrical' and variations:
+                        # For symmetrical mode, generate +/- variations
+                        variation = variations[0]
+                        variation_list = [variation, -variation]
+                    else:
+                        # For multipoint mode, use the provided variations
+                        variation_list = variations
+                    
+                    # Create and save configurations for each variation
+                    for var in variation_list:
+                        # Make a deep copy of the configuration
+                        import copy
+                        var_config = copy.deepcopy(base_config)
+                        
+                        # Apply the variation
+                        var_config = self.apply_sensitivity_variation(var_config, param_id, var)
+                        
+                        # Save the configuration
+                        config_path = self.save_sensitivity_config(
+                            var_config, version, param_id, mode, var, start_year
+                        )
+                        
+                        configs_info.append({
+                            'version': version,
+                            'param_id': param_id,
+                            'variation': var,
+                            'year_range': (start_year, end_year),
+                            'config_path': str(config_path)
+                        })
+            else:
+                # If no matrix file, just use the base configuration
+                base_config = self.load_config_module(version)
+                
+                # Generate variations
+                if mode == 'symmetrical' and variations:
+                    variation = variations[0]
+                    variation_list = [variation, -variation]
+                else:
+                    variation_list = variations
+                
+                # Create and save configurations for each variation
+                for var in variation_list:
+                    import copy
+                    var_config = copy.deepcopy(base_config)
+                    var_config = self.apply_sensitivity_variation(var_config, param_id, var)
+                    config_path = self.save_sensitivity_config(
+                        var_config, version, param_id, mode, var
+                    )
+                    
+                    configs_info.append({
+                        'version': version,
+                        'param_id': param_id,
+                        'variation': var,
+                        'year_range': None,
+                        'config_path': str(config_path)
+                    })
+                    
+        except Exception as e:
+            self.logger.error(f"Error generating sensitivity configurations: {str(e)}")
+            raise
+        
+        return configs_info
+    
+    def store_calculation_result(self, version: int, param_id: str, compare_to_key: str,
+                                result_data: Dict, mode: str) -> Path:
+        """
+        Stores sensitivity calculation results in a standardized format.
+        Returns the path to the stored result file.
+        """
+        version_str = str(version)
+        
+        # Ensure directories exist
+        directories = self.ensure_sensitivity_directories(version)
+        mode_dir = directories[mode.lower()]
+        
+        # Prepare metadata
+        metadata = {
+            'version': version,
+            'param_id': param_id,
+            'compare_to_key': compare_to_key,
+            'mode': mode,
+            'timestamp': datetime.now().isoformat(),
+            'property_info': self.get_parameter_info(param_id)
+        }
+        
+        # Combine with calculation results
+        full_data = {
+            'metadata': metadata,
+            'results': result_data
+        }
+        
+        # Generate filename
+        filename = f"{param_id}_vs_{compare_to_key}_{mode.lower()}_results.json"
+        filepath = mode_dir / filename
+        
+        # Save results
+        with open(filepath, 'w') as f:
+            json.dump(full_data, f, indent=2)
+        
+        self.logger.info(f"Stored calculation result: {filepath}")
+        return filepath
+    
+    def generate_plot(self, version: int, param_id: str, compare_to_key: str, 
+                     mode: str, plot_type: str, comparison_type: str,
+                     result_file: Path) -> Path:
+        """
+        Generates a plot visualization for sensitivity analysis results.
+        Returns the path to the generated plot file.
+        """
+        version_str = str(version)
+        
+        # Ensure directories exist
+        directories = self.ensure_sensitivity_directories(version)
+        plot_dir = directories[f"{mode.lower()}_{plot_type}"]
+        
+        # Generate plot filename
+        plot_name = f"{plot_type}_{param_id}_{compare_to_key}_{comparison_type}.png"
+        plot_path = plot_dir / plot_name
+        
+        # In a real implementation, this would call a plotting function or script
+        # For now, we'll just log the information
+        self.logger.info(f"Would generate {plot_type} plot at {plot_path}")
+        self.logger.info(f"  - Data source: {result_file}")
+        self.logger.info(f"  - Parameters: {param_id} vs {compare_to_key} ({comparison_type})")
+        
+        # In a real implementation, return the actual plot path
+        # For now, just return the expected path
+        return plot_path
+    
+    def organize_sensitivity_results(self, version: int) -> Dict:
+        """
+        Organizes all sensitivity results for a version into a structured format
+        suitable for frontend consumption.
+        """
+        version_str = str(version)
+        
+        # Get all sensitivity directories
+        directories = self.ensure_sensitivity_directories(version)
+        
+        # Structure to hold organized results
+        organized_results = {
+            'version': version,
+            'parameters': {},
+            'plots': {},
+            'results': {}
+        }
+        
+        # Scan for result files
+        for mode in ['Symmetrical', 'Multipoint']:
+            mode_dir = directories[mode.lower()]
+            result_files = list(mode_dir.glob(f"*_results.json"))
+            
+            for result_file in result_files:
+                try:
+                    with open(result_file, 'r') as f:
+                        result_data = json.load(f)
+                    
+                    param_id = result_data['metadata']['param_id']
+                    compare_to_key = result_data['metadata']['compare_to_key']
+                    
+                    # Add parameter info if not already present
+                    if param_id not in organized_results['parameters']:
+                        organized_results['parameters'][param_id] = self.get_parameter_info(param_id)
+                    
+                    # Add result data
+                    key = f"{param_id}_vs_{compare_to_key}_{mode.lower()}"
+                    organized_results['results'][key] = result_data['results']
+                    
+                    # Find and add plot information
+                    plot_types = ['waterfall', 'bar', 'point']
+                    for plot_type in plot_types:
+                        plot_dir = directories[f"{mode.lower()}_{plot_type}"]
+                        for comparison_type in ['primary', 'secondary']:
+                            plot_name = f"{plot_type}_{param_id}_{compare_to_key}_{comparison_type}.png"
+                            plot_path = plot_dir / plot_name
+                            
+                            if plot_path.exists():
+                                plot_key = f"{plot_type}_{param_id}_{compare_to_key}_{comparison_type}"
+                                organized_results['plots'][plot_key] = {
+                                    'type': plot_type,
+                                    'param_id': param_id,
+                                    'compare_to_key': compare_to_key,
+                                    'comparison_type': comparison_type,
+                                    'mode': mode.lower(),
+                                    'path': str(plot_path.relative_to(self.original_dir)),
+                                    'url': f"/images/Original/{plot_path.relative_to(self.original_dir)}"
+                                }
+                except Exception as e:
+                    self.logger.error(f"Error processing result file {result_file}: {str(e)}")
+        
+        self.logger.info(f"Organized {len(organized_results['results'])} results and {len(organized_results['plots'])} plots for version {version}")
+        return organized_results
+
+# Create a singleton instance for easy import
+sensitivity_manager = SensitivityAnalysisManager()

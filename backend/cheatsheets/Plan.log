@@ -1,0 +1,701 @@
+# Comprehensive Sensitivity Analysis Integration Plan
+
+Based on the detailed analysis of all provided code files, I'll outline a cohesive plan to integrate the sensitivity analysis system with the existing calculation pipeline, focusing on log management, port configuration, and leveraging the price calculations from the existing system.
+
+## Logging Strategy
+
+### 1. Centralized Logging Configuration
+
+First, let's implement a centralized logging configuration that can be shared across all sensitivity analysis components:
+
+```python
+# sensitivity_logging.py
+import os
+import logging
+from datetime import datetime
+from pathlib import Path
+
+class SensitivityLoggingManager:
+    """Centralizes logging configuration for all sensitivity analysis components."""
+    
+    def __init__(self, base_dir=None):
+        if not base_dir:
+            self.base_dir = Path(os.path.dirname(os.path.abspath(__file__)))
+            self.logs_dir = self.base_dir / "backend" / "Logs" / "Sensitivity"
+        else:
+            self.base_dir = Path(base_dir)
+            self.logs_dir = self.base_dir / "Logs" / "Sensitivity"
+        
+        # Create logs directory structure
+        os.makedirs(self.logs_dir, exist_ok=True)
+        
+        # Log file paths
+        self.log_files = {
+            'manager': self.logs_dir / "sensitivity_manager.log",
+            'plots': self.logs_dir / "sensitivity_plots.log",
+            'html': self.logs_dir / "sensitivity_html.log",
+            'integration': self.logs_dir / "sensitivity_integration.log",
+            'api': self.logs_dir / "sensitivity_api.log",
+            'workflow': self.logs_dir / "sensitivity_workflow.log"
+        }
+        
+        # Create component loggers
+        self.loggers = {}
+        for component, log_file in self.log_files.items():
+            logger = logging.getLogger(f"sensitivity.{component}")
+            logger.setLevel(logging.INFO)
+            
+            # Add file handler if not already added
+            if not logger.handlers:
+                file_handler = logging.FileHandler(str(log_file))
+                formatter = logging.Formatter(
+                    '%(asctime)s - [%(levelname)s] - %(name)s - %(message)s',
+                    datefmt='%Y-%m-%d %H:%M:%S'
+                )
+                file_handler.setFormatter(formatter)
+                logger.addHandler(file_handler)
+            
+            self.loggers[component] = logger
+        
+        # Special setup for workflow logger to capture all component logs
+        workflow_logger = self.loggers['workflow']
+        workflow_logger.setLevel(logging.INFO)
+        
+        # Add handlers to capture logs from all components
+        for component, logger in self.loggers.items():
+            if component != 'workflow':
+                for handler in logger.handlers:
+                    class ComponentFilter(logging.Filter):
+                        def __init__(self, component_name):
+                            super().__init__()
+                            self.component_name = component_name
+                        
+                        def filter(self, record):
+                            record.component = self.component_name
+                            return True
+                    
+                    component_filter = ComponentFilter(component)
+                    handler.addFilter(component_filter)
+                    workflow_logger.addHandler(handler)
+    
+    def get_logger(self, component):
+        """Get a logger for a specific component."""
+        if component not in self.loggers:
+            raise ValueError(f"No logger configured for component: {component}")
+        return self.loggers[component]
+    
+    def add_consolidated_log_handler(self, log_file_path=None):
+        """Add a handler to capture all logs in a single consolidated file."""
+        if not log_file_path:
+            log_file_path = self.logs_dir / f"consolidated_{datetime.now().strftime('%Y%m%d')}.log"
+        
+        # Create handler for consolidated log file
+        file_handler = logging.FileHandler(str(log_file_path))
+        formatter = logging.Formatter(
+            '%(asctime)s - [%(levelname)s] - %(name)s - %(message)s',
+            datefmt='%Y-%m-%d %H:%M:%S'
+        )
+        file_handler.setFormatter(formatter)
+        
+        # Add handler to root logger to capture all logs
+        root_logger = logging.getLogger()
+        root_logger.addHandler(file_handler)
+        
+        return log_file_path
+
+# Create a singleton instance
+logging_manager = SensitivityLoggingManager()
+
+# Convenience functions to get loggers
+def get_manager_logger():
+    return logging_manager.get_logger('manager')
+
+def get_plots_logger():
+    return logging_manager.get_logger('plots')
+
+def get_html_logger():
+    return logging_manager.get_logger('html')
+
+def get_integration_logger():
+    return logging_manager.get_logger('integration')
+
+def get_api_logger():
+    return logging_manager.get_logger('api')
+
+def get_workflow_logger():
+    return logging_manager.get_logger('workflow')
+```
+
+### 2. Integration with Existing Components
+
+Now we need to update the existing components to use our centralized logging configuration:
+
+```python
+# Update sensitivity_analysis_manager.py
+from sensitivity_logging import get_manager_logger
+
+# Replace the logging setup with:
+self.logger = get_manager_logger()
+```
+
+```python
+# Update sensitivity_plot_organizer.py
+from sensitivity_logging import get_plots_logger
+
+# Replace the logging setup with:
+logger = get_plots_logger()
+```
+
+```python
+# Update sensitivity_html_organizer.py
+from sensitivity_logging import get_html_logger
+
+# Replace the logging setup with:
+logger = get_html_logger()
+```
+
+```python
+# Update sensitivity_integration.py
+from sensitivity_logging import get_integration_logger
+
+# Replace the logging setup with:
+self.logger = get_integration_logger()
+```
+
+```python
+# Update updated_sensitivity_routes.py
+from sensitivity_logging import get_api_logger
+
+# Replace logging references with:
+logger = get_api_logger()
+```
+
+## Port Configuration and Integration with Calculations.py
+
+The goal is to leverage the price calculation capabilities from Calculations.py (on port 5007) while maintaining the comprehensive sensitivity functionality in Calculations_and_Sensitivity.py (on port 25007).
+
+### 1. Create a Sensitivity-Specific Integration Module for Calculations.py
+
+```python
+# calculations_sensitivity_adapter.py
+import json
+import logging
+import requests
+from pathlib import Path
+
+from sensitivity_logging import get_integration_logger
+
+logger = get_integration_logger()
+
+class CalculationsSensitivityAdapter:
+    """
+    Adapter to integrate sensitivity analysis with the Calculations module.
+    This class serves as a bridge between the price calculation functionality
+    in Calculations.py and the sensitivity analysis system.
+    """
+    
+    def __init__(self, calculations_url="http://127.0.0.1:5007", sensitivity_url="http://127.0.0.1:25007"):
+        self.calculations_url = calculations_url
+        self.sensitivity_url = sensitivity_url
+    
+    def run_price_calculation(self, version, selected_v, selected_f, target_row, 
+                            tolerance_lower, tolerance_upper, increase_rate, decrease_rate):
+        """
+        Run a price calculation using the Calculations module.
+        
+        Args:
+            version: Version number
+            selected_v, selected_f: V and F state dictionaries
+            target_row: Target row for calculation
+            tolerance_lower, tolerance_upper: Tolerance bounds
+            increase_rate, decrease_rate: Adjustment rates
+            
+        Returns:
+            tuple: (success, price, error_message)
+        """
+        try:
+            logger.info(f"Running price calculation for version {version}")
+            
+            # Prepare the payload for the Calculations module
+            payload = {
+                "selectedVersions": [version],
+                "selectedV": selected_v,
+                "selectedF": selected_f,
+                "selectedCalculationOption": "calculateForPrice",
+                "targetRow": target_row,
+                "optimizationParams": {
+                    "global": {
+                        "toleranceLower": tolerance_lower,
+                        "toleranceUpper": tolerance_upper,
+                        "increaseRate": increase_rate,
+                        "decreaseRate": decrease_rate
+                    }
+                },
+                "SenParameters": {}  # Empty for baseline calculation
+            }
+            
+            # Call the Calculations module
+            response = requests.post(
+                f"{self.calculations_url}/run",
+                json=payload
+            )
+            
+            if response.status_code != 200:
+                error_msg = f"Price calculation failed with status {response.status_code}"
+                if response.text:
+                    try:
+                        error_data = response.json()
+                        if "error" in error_data:
+                            error_msg = f"Price calculation failed: {error_data['error']}"
+                    except:
+                        error_msg = f"Price calculation failed: {response.text}"
+                
+                logger.error(error_msg)
+                return False, None, error_msg
+            
+            # Get the calculated price
+            price_response = requests.get(f"{self.calculations_url}/price/{version}")
+            
+            if price_response.status_code != 200:
+                error_msg = f"Failed to retrieve price with status {price_response.status_code}"
+                logger.error(error_msg)
+                return False, None, error_msg
+            
+            price_data = price_response.json()
+            price = price_data.get("price")
+            
+            logger.info(f"Successfully calculated price for version {version}: {price}")
+            return True, price, None
+            
+        except Exception as e:
+            error_msg = f"Error during price calculation: {str(e)}"
+            logger.exception(error_msg)
+            return False, None, error_msg
+    
+    def run_sensitivity_analysis(self, version, price, param_id, mode, variations,
+                               compare_to_key="S10", comparison_type="primary", 
+                               plot_types=None):
+        """
+        Run sensitivity analysis based on a calculated price.
+        
+        Args:
+            version: Version number
+            price: Calculated price to use as the reference point
+            param_id: Sensitivity parameter ID (e.g., "S34")
+            mode: Analysis mode ("symmetrical" or "multipoint")
+            variations: List of variation percentages
+            compare_to_key: Parameter to compare against (default "S10" for price)
+            comparison_type: Comparison type ("primary" or "secondary")
+            plot_types: List of plot types to generate
+            
+        Returns:
+            tuple: (success, results, error_message)
+        """
+        try:
+            logger.info(f"Running sensitivity analysis for parameter {param_id} vs {compare_to_key}")
+            
+            if plot_types is None:
+                plot_types = ["waterfall", "bar", "point"]
+            
+            # Prepare the payload for the sensitivity analysis
+            payload = {
+                "version": version,
+                "param_id": param_id,
+                "values": variations,
+                "compareToKey": compare_to_key,
+                "comparisonType": comparison_type,
+                "waterfall": "waterfall" in plot_types,
+                "bar": "bar" in plot_types,
+                "point": "point" in plot_types,
+                "price": price  # Pass the calculated price
+            }
+            
+            # Use the appropriate endpoint based on the mode
+            endpoint = f"{self.sensitivity_url}/sensitivity/{mode}"
+            
+            # Call the sensitivity analysis module
+            response = requests.post(endpoint, json=payload)
+            
+            if response.status_code != 200:
+                error_msg = f"Sensitivity analysis failed with status {response.status_code}"
+                if response.text:
+                    try:
+                        error_data = response.json()
+                        if "error" in error_data:
+                            error_msg = f"Sensitivity analysis failed: {error_data['error']}"
+                    except:
+                        error_msg = f"Sensitivity analysis failed: {response.text}"
+                
+                logger.error(error_msg)
+                return False, None, error_msg
+            
+            results = response.json()
+            logger.info(f"Successfully ran sensitivity analysis for {param_id}")
+            return True, results, None
+            
+        except Exception as e:
+            error_msg = f"Error during sensitivity analysis: {str(e)}"
+            logger.exception(error_msg)
+            return False, None, error_msg
+    
+    def process_sensitivity_parameter(self, version, param_id, config,
+                                    selected_v, selected_f, target_row,
+                                    tolerance_lower, tolerance_upper,
+                                    increase_rate, decrease_rate):
+        """
+        Process a single sensitivity parameter from end to end.
+        
+        Args:
+            version: Version number
+            param_id: Sensitivity parameter ID
+            config: Parameter configuration
+            selected_v, selected_f: V and F state dictionaries
+            target_row: Target row for calculation
+            tolerance_lower, tolerance_upper: Tolerance bounds
+            increase_rate, decrease_rate: Adjustment rates
+            
+        Returns:
+            tuple: (success, results, error_message)
+        """
+        try:
+            logger.info(f"Processing sensitivity parameter {param_id} for version {version}")
+            
+            # First, run the base price calculation
+            success, price, error = self.run_price_calculation(
+                version, selected_v, selected_f, target_row,
+                tolerance_lower, tolerance_upper, increase_rate, decrease_rate
+            )
+            
+            if not success:
+                return False, None, f"Base price calculation failed: {error}"
+            
+            # Extract sensitivity configuration
+            mode = config.get('mode')
+            if not mode:
+                return False, None, f"No analysis mode specified for {param_id}"
+                
+            values = config.get('values', [])
+            if mode == 'symmetrical' and (not values or len(values) == 0):
+                values = [10]  # Default to 10% variation for symmetrical mode
+            elif mode == 'multipoint' and (not values or len(values) == 0):
+                return False, None, f"No variation points specified for multipoint analysis of {param_id}"
+                
+            compare_to_key = config.get('compareToKey')
+            if not compare_to_key:
+                compare_to_key = "S10"  # Default to S10 (price) if not specified
+                
+            comparison_type = config.get('comparisonType', 'primary')
+            
+            # Determine plot types
+            plot_types = []
+            if config.get('waterfall'): plot_types.append('waterfall')
+            if config.get('bar'): plot_types.append('bar')
+            if config.get('point'): plot_types.append('point')
+            
+            # Run the sensitivity analysis
+            success, results, error = self.run_sensitivity_analysis(
+                version, price, param_id, mode, values,
+                compare_to_key, comparison_type, plot_types
+            )
+            
+            if not success:
+                return False, None, f"Sensitivity analysis failed: {error}"
+                
+            return True, results, None
+            
+        except Exception as e:
+            error_msg = f"Error processing sensitivity parameter {param_id}: {str(e)}"
+            logger.exception(error_msg)
+            return False, None, error_msg
+
+# Create a singleton instance
+calculation_adapter = CalculationsSensitivityAdapter()
+```
+
+### 2. Modify Calculations.py to Support Sensitivity Analysis
+
+Add the following endpoint to Calculations.py:
+
+```python
+@app.route('/sensitivity/process', methods=['POST'])
+def process_sensitivity():
+    """
+    Process a sensitivity parameter using the existing calculation pipeline.
+    This endpoint leverages the price calculation capabilities of Calculations.py
+    while integrating with the sensitivity analysis system.
+    """
+    try:
+        data = request.get_json()
+        if not data:
+            return jsonify({"error": "No data provided"}), 400
+            
+        # Extract required parameters
+        version = data.get('version')
+        if not version:
+            return jsonify({"error": "No version specified"}), 400
+            
+        param_id = data.get('param_id')
+        if not param_id or not param_id.startswith('S') or not param_id[1:].isdigit():
+            return jsonify({"error": "Invalid parameter ID format"}), 400
+            
+        config = data.get('config', {})
+        selected_v = data.get('selectedV', {})
+        selected_f = data.get('selectedF', {})
+        target_row = data.get('targetRow', 20)
+        tolerance_lower = data.get('toleranceLower', -1000)
+        tolerance_upper = data.get('toleranceUpper', 1000)
+        increase_rate = data.get('increaseRate', 1.02)
+        decrease_rate = data.get('decreaseRate', 0.985)
+        
+        # Import the adapter (ensure the module is accessible)
+        import sys
+        sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+        from calculations_sensitivity_adapter import calculation_adapter
+        
+        # Process the sensitivity parameter
+        success, results, error = calculation_adapter.process_sensitivity_parameter(
+            version, param_id, config,
+            selected_v, selected_f, target_row,
+            tolerance_lower, tolerance_upper,
+            increase_rate, decrease_rate
+        )
+        
+        if not success:
+            return jsonify({"error": error}), 500
+            
+        return jsonify(results)
+        
+    except Exception as e:
+        error_msg = f"Error processing sensitivity parameter: {str(e)}"
+        logger.exception(error_msg)
+        return jsonify({"error": error_msg}), 500
+```
+
+### 3. Update Calculations_and_Sensitivity.py
+
+Modify Calculations_and_Sensitivity.py to use the adapter for price calculations:
+
+```python
+# In the run_calculations function in Calculations_and_Sensitivity.py
+
+@app.route('/run', methods=['POST'])
+def run_calculations():
+    """Orchestrates the execution sequence of configuration updates and calculations."""
+    sensitivity_logger = logging.getLogger('sensitivity')
+    run_id = time.strftime("%Y%m%d_%H%M%S")
+    
+    try:
+        data = request.get_json()
+        if not data:
+            return jsonify({"error": "No data provided"}), 400
+
+        # Extract and validate configuration
+        config = {
+            'versions': data.get('selectedVersions', [1]),
+            'selectedV': data.get('selectedV', {f'V{i+1}': 'off' for i in range(10)}),
+            'selectedF': data.get('selectedF', {f'F{i+1}': 'off' for i in range(5)}),
+            'calculationOption': data.get('selectedCalculationOption', 'freeFlowNPV'),
+            'targetRow': int(data.get('targetRow', 20)),
+            'senParameters': data.get('senParameters', {})
+        }
+        
+        # Log run configuration
+        log_run_configuration(sensitivity_logger, config)
+
+        # For price calculations, use the adapter to leverage Calculations.py
+        if config['calculationOption'] == 'calculateForPrice':
+            from calculations_sensitivity_adapter import calculation_adapter
+            
+            # Run baseline calculation
+            version = config['versions'][0]  # Use the first version
+            success, price, error = calculation_adapter.run_price_calculation(
+                version,
+                config['selectedV'],
+                config['selectedF'],
+                config['targetRow'],
+                -1000,  # Default tolerance_lower
+                1000,   # Default tolerance_upper
+                1.02,   # Default increase_rate
+                0.985   # Default decrease_rate
+            )
+            
+            if not success:
+                return jsonify({"error": f"Baseline calculation failed: {error}"}), 500
+                
+            # Process sensitivity parameters if enabled
+            enabled_params = [k for k, v in config['senParameters'].items() if v.get('enabled')]
+            if enabled_params:
+                for param_id in enabled_params:
+                    param_config = config['senParameters'][param_id]
+                    success, results, error = calculation_adapter.process_sensitivity_parameter(
+                        version,
+                        param_id,
+                        param_config,
+                        config['selectedV'],
+                        config['selectedF'],
+                        config['targetRow'],
+                        -1000,  # Default tolerance_lower
+                        1000,   # Default tolerance_upper
+                        1.02,   # Default increase_rate
+                        0.985   # Default decrease_rate
+                    )
+                    
+                    if not success:
+                        sensitivity_logger.error(f"Error processing {param_id}: {error}")
+                
+            return jsonify({
+                "status": "success",
+                "message": "Calculations completed successfully",
+                "runId": run_id,
+                "price": price
+            })
+        
+        # For other calculation types, use the existing implementation
+        # Rest of the existing code...
+        
+    except Exception as e:
+        error_msg = f"Error during orchestrated calculations: {str(e)}"
+        sensitivity_logger.error(error_msg)
+        return jsonify({
+            "error": error_msg,
+            "runId": run_id
+        }), 500
+```
+
+## Frontend Integration
+
+Modify SensitivityAnalysis.js component to work with our updated backend:
+
+```javascript
+// In SensitivityAnalysis.js
+
+// Add a function to run sensitivity analysis with price calculation
+const runSensitivityAnalysis = async (version, parameters) => {
+  setAnalysisRunning(true);
+  
+  try {
+    // Prepare the request payload
+    const payload = {
+      selectedVersions: [version],
+      selectedV: V,
+      selectedF: F,
+      selectedCalculationOption: 'calculateForPrice',
+      targetRow: 20,
+      senParameters: parameters
+    };
+    
+    // Call the correct endpoint based on availability
+    let endpoint = 'http://127.0.0.1:25007/run';
+    let response;
+    
+    try {
+      // First try the comprehensive endpoint
+      response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      
+      if (!response.ok) {
+        throw new Error(`Failed to call ${endpoint}`);
+      }
+    } catch (error) {
+      console.log(`Falling back to direct calculation endpoint: ${error}`);
+      
+      // Fall back to the direct Calculations.py endpoint
+      endpoint = 'http://127.0.0.1:5007/run';
+      response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      
+      if (!response.ok) {
+        throw new Error(`Failed to call ${endpoint}: ${response.statusText}`);
+      }
+    }
+    
+    const result = await response.json();
+    console.log('Sensitivity analysis completed:', result);
+    
+    // Fetch the visualization data
+    await fetchSensitivityVisualization(version);
+    
+  } catch (error) {
+    console.error('Error running sensitivity analysis:', error);
+    setErrorMessage(`Failed to run analysis: ${error.message}`);
+  } finally {
+    setAnalysisRunning(false);
+  }
+};
+
+// Add a function to fetch sensitivity visualization data
+const fetchSensitivityVisualization = async (version) => {
+  try {
+    // Try the comprehensive endpoint first
+    let endpoint = `http://127.0.0.1:25007/sensitivity/visualization?version=${version}`;
+    let response;
+    
+    try {
+      response = await fetch(endpoint);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch from ${endpoint}`);
+      }
+    } catch (error) {
+      console.log(`Falling back to direct visualization endpoint: ${error}`);
+      
+      // Fall back to the direct endpoint
+      endpoint = `http://127.0.0.1:5007/sensitivity/visualization?version=${version}`;
+      response = await fetch(endpoint);
+      
+      if (!response.ok) {
+        throw new Error(`Failed to fetch from ${endpoint}: ${response.statusText}`);
+      }
+    }
+    
+    const visualizationData = await response.json();
+    setVisualizationData(visualizationData);
+    
+  } catch (error) {
+    console.error('Error fetching sensitivity visualization:', error);
+    setErrorMessage(`Failed to fetch visualization: ${error.message}`);
+  }
+};
+```
+
+## Final Implementation Strategy
+
+### Step 1: Update Logging Configuration
+
+1. Create the `sensitivity_logging.py` module
+2. Update all sensitivity analysis components to use the centralized logging
+
+### Step 2: Create Adapter Module
+
+1. Implement the `calculations_sensitivity_adapter.py` module
+2. Test it by connecting to the Calculations.py server
+
+### Step 3: Update Backend Components
+
+1. Modify Calculations.py to add the `/sensitivity/process` endpoint
+2. Update Calculations_and_Sensitivity.py to use the adapter
+3. Ensure all components can properly communicate
+
+### Step 4: Update Frontend Integration
+
+1. Update the SensitivityAnalysis component to work with both endpoints
+2. Implement fallback logic to ensure the system works regardless of which server is available
+
+### Step 5: Deploy and Test
+
+1. Start both servers (Calculations.py on port 5007 and Calculations_and_Sensitivity.py on port 25007)
+2. Test the frontend integration
+3. Verify that sensitivity analysis results are correctly generated and visualized
+
+## Monitoring and Maintenance
+
+1. Regularly check the consolidated logs for errors or issues
+2. Monitor the API endpoints for performance
+3. Update the adapter as needed to accommodate changes in either system
+
+This comprehensive plan provides a cohesive strategy for integrating sensitivity analysis with the existing calculation pipeline, focusing on log management, port configuration, and leveraging the price calculations from the existing system.
