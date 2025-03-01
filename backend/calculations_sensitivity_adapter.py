@@ -1,223 +1,232 @@
-"""
-Adapter module for sensitivity analysis workflow.
-
-This module provides a simplified interface for the new sensitivity analysis workflow,
-ensuring that configurations are generated and saved before running calculations.
-"""
-
-import requests
 import json
-import time
 import logging
-import os
-import sys
+import requests
+from pathlib import Path
 
-# Set up logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s %(levelname)s %(message)s',
-    handlers=[
-        logging.StreamHandler(sys.stdout)
-    ]
-)
+from sensitivity_logging import get_integration_logger
 
-class SensitivityAdapter:
+logger = get_integration_logger()
+
+class CalculationsSensitivityAdapter:
     """
-    Adapter for the sensitivity analysis workflow.
-    
-    This class ensures that sensitivity configurations are generated and saved
-    before running calculations, following the required sequence.
+    Adapter to integrate sensitivity analysis with the Calculations module.
+    This class serves as a bridge between the price calculation functionality
+    in Calculations.py and the sensitivity analysis system.
     """
     
-    def __init__(self, base_url="http://localhost:25007"):
+    def __init__(self, calculations_url="http://127.0.0.1:5007", sensitivity_url="http://127.0.0.1:25007"):
+        self.calculations_url = calculations_url
+        self.sensitivity_url = sensitivity_url
+    
+    def run_price_calculation(self, version, selected_v, selected_f, target_row, 
+                            tolerance_lower, tolerance_upper, increase_rate, decrease_rate):
         """
-        Initialize the adapter with the base URL of the Flask API.
+        Run a price calculation using the Calculations module.
         
         Args:
-            base_url (str): Base URL of the Flask API
+            version: Version number
+            selected_v, selected_f: V and F state dictionaries
+            target_row: Target row for calculation
+            tolerance_lower, tolerance_upper: Tolerance bounds
+            increase_rate, decrease_rate: Adjustment rates
+            
+        Returns:
+            tuple: (success, price, error_message)
         """
-        self.base_url = base_url
-        self.logger = logging.getLogger(__name__)
-        
-    def run_sensitivity_analysis(self, config_data):
+        try:
+            logger.info(f"Running price calculation for version {version}")
+            
+            # Prepare the payload for the Calculations module
+            payload = {
+                "selectedVersions": [version],
+                "selectedV": selected_v,
+                "selectedF": selected_f,
+                "selectedCalculationOption": "calculateForPrice",
+                "targetRow": target_row,
+                "optimizationParams": {
+                    "global": {
+                        "toleranceLower": tolerance_lower,
+                        "toleranceUpper": tolerance_upper,
+                        "increaseRate": increase_rate,
+                        "decreaseRate": decrease_rate
+                    }
+                },
+                "SenParameters": {}  # Empty for baseline calculation
+            }
+            
+            # Call the Calculations module
+            response = requests.post(
+                f"{self.calculations_url}/run",
+                json=payload
+            )
+            
+            if response.status_code != 200:
+                error_msg = f"Price calculation failed with status {response.status_code}"
+                if response.text:
+                    try:
+                        error_data = response.json()
+                        if "error" in error_data:
+                            error_msg = f"Price calculation failed: {error_data['error']}"
+                    except:
+                        error_msg = f"Price calculation failed: {response.text}"
+                
+                logger.error(error_msg)
+                return False, None, error_msg
+            
+            # Get the calculated price
+            price_response = requests.get(f"{self.calculations_url}/price/{version}")
+            
+            if price_response.status_code != 200:
+                error_msg = f"Failed to retrieve price with status {price_response.status_code}"
+                logger.error(error_msg)
+                return False, None, error_msg
+            
+            price_data = price_response.json()
+            price = price_data.get("price")
+            
+            logger.info(f"Successfully calculated price for version {version}: {price}")
+            return True, price, None
+            
+        except Exception as e:
+            error_msg = f"Error during price calculation: {str(e)}"
+            logger.exception(error_msg)
+            return False, None, error_msg
+    
+    def run_sensitivity_analysis(self, version, price, param_id, mode, variations,
+                               compare_to_key="S10", comparison_type="primary", 
+                               plot_types=None):
         """
-        Run the complete sensitivity analysis workflow.
-        
-        This method ensures the proper sequence:
-        1. Generate and save configurations
-        2. Run sensitivity calculations
-        3. Visualize results (optional)
+        Run sensitivity analysis based on a calculated price.
         
         Args:
-            config_data (dict): Configuration data for sensitivity analysis
+            version: Version number
+            price: Calculated price to use as the reference point
+            param_id: Sensitivity parameter ID (e.g., "S34")
+            mode: Analysis mode ("symmetrical" or "multipoint")
+            variations: List of variation percentages
+            compare_to_key: Parameter to compare against (default "S10" for price)
+            comparison_type: Comparison type ("primary" or "secondary")
+            plot_types: List of plot types to generate
             
         Returns:
-            dict: Results of the sensitivity analysis
+            tuple: (success, results, error_message)
         """
-        self.logger.info("Starting sensitivity analysis workflow")
-        
-        # Step 1: Generate and save configurations
-        self.logger.info("Step 1: Generating and saving sensitivity configurations")
-        config_result = self.generate_configurations(config_data)
-        
-        if not config_result.get('status') == 'success':
-            self.logger.error("Failed to generate configurations: %s", config_result.get('error', 'Unknown error'))
-            return config_result
+        try:
+            logger.info(f"Running sensitivity analysis for parameter {param_id} vs {compare_to_key}")
             
-        self.logger.info("Configurations generated successfully")
-        time.sleep(1)  # Small delay to ensure configurations are saved
-        
-        # Step 2: Run sensitivity calculations
-        self.logger.info("Step 2: Running sensitivity calculations")
-        calc_result = self.run_calculations()
-        
-        if not calc_result.get('status') == 'success':
-            self.logger.error("Failed to run calculations: %s", calc_result.get('error', 'Unknown error'))
-            return calc_result
+            if plot_types is None:
+                plot_types = ["waterfall", "bar", "point"]
             
-        self.logger.info("Calculations completed successfully")
-        
-        # Return the results
-        return {
-            "status": "success",
-            "message": "Sensitivity analysis completed successfully",
-            "configuration": config_result,
-            "calculations": calc_result
-        }
+            # Prepare the payload for the sensitivity analysis
+            payload = {
+                "version": version,
+                "param_id": param_id,
+                "values": variations,
+                "compareToKey": compare_to_key,
+                "comparisonType": comparison_type,
+                "waterfall": "waterfall" in plot_types,
+                "bar": "bar" in plot_types,
+                "point": "point" in plot_types,
+                "price": price  # Pass the calculated price
+            }
+            
+            # Use the appropriate endpoint based on the mode
+            endpoint = f"{self.sensitivity_url}/sensitivity/{mode}"
+            
+            # Call the sensitivity analysis module
+            response = requests.post(endpoint, json=payload)
+            
+            if response.status_code != 200:
+                error_msg = f"Sensitivity analysis failed with status {response.status_code}"
+                if response.text:
+                    try:
+                        error_data = response.json()
+                        if "error" in error_data:
+                            error_msg = f"Sensitivity analysis failed: {error_data['error']}"
+                    except:
+                        error_msg = f"Sensitivity analysis failed: {response.text}"
+                
+                logger.error(error_msg)
+                return False, None, error_msg
+            
+            results = response.json()
+            logger.info(f"Successfully ran sensitivity analysis for {param_id}")
+            return True, results, None
+            
+        except Exception as e:
+            error_msg = f"Error during sensitivity analysis: {str(e)}"
+            logger.exception(error_msg)
+            return False, None, error_msg
     
-    def generate_configurations(self, config_data):
+    def process_sensitivity_parameter(self, version, param_id, config,
+                                    selected_v, selected_f, target_row,
+                                    tolerance_lower, tolerance_upper,
+                                    increase_rate, decrease_rate):
         """
-        Generate and save sensitivity configurations.
+        Process a single sensitivity parameter from end to end.
         
         Args:
-            config_data (dict): Configuration data for sensitivity analysis
+            version: Version number
+            param_id: Sensitivity parameter ID
+            config: Parameter configuration
+            selected_v, selected_f: V and F state dictionaries
+            target_row: Target row for calculation
+            tolerance_lower, tolerance_upper: Tolerance bounds
+            increase_rate, decrease_rate: Adjustment rates
             
         Returns:
-            dict: Result of the configuration generation
+            tuple: (success, results, error_message)
         """
         try:
-            response = requests.post(
-                f"{self.base_url}/sensitivity/configure",
-                json=config_data,
-                headers={"Content-Type": "application/json"}
+            logger.info(f"Processing sensitivity parameter {param_id} for version {version}")
+            
+            # First, run the base price calculation
+            success, price, error = self.run_price_calculation(
+                version, selected_v, selected_f, target_row,
+                tolerance_lower, tolerance_upper, increase_rate, decrease_rate
             )
             
-            response.raise_for_status()
-            return response.json()
+            if not success:
+                return False, None, f"Base price calculation failed: {error}"
             
-        except requests.exceptions.RequestException as e:
-            self.logger.error("Error generating configurations: %s", str(e))
+            # Extract sensitivity configuration
+            mode = config.get('mode')
+            if not mode:
+                return False, None, f"No analysis mode specified for {param_id}"
+                
+            values = config.get('values', [])
+            if mode == 'symmetrical' and (not values or len(values) == 0):
+                values = [10]  # Default to 10% variation for symmetrical mode
+            elif mode == 'multipoint' and (not values or len(values) == 0):
+                return False, None, f"No variation points specified for multipoint analysis of {param_id}"
+                
+            compare_to_key = config.get('compareToKey')
+            if not compare_to_key:
+                compare_to_key = "S10"  # Default to S10 (price) if not specified
+                
+            comparison_type = config.get('comparisonType', 'primary')
             
-            if hasattr(e, 'response') and e.response is not None:
-                try:
-                    return e.response.json()
-                except:
-                    pass
-                    
-            return {
-                "status": "error",
-                "error": str(e)
-            }
-    
-    def run_calculations(self):
-        """
-        Run sensitivity calculations.
-        
-        This method assumes configurations have been generated and saved.
-        
-        Returns:
-            dict: Result of the calculations
-        """
-        try:
-            response = requests.post(
-                f"{self.base_url}/runs",
-                headers={"Content-Type": "application/json"}
+            # Determine plot types
+            plot_types = []
+            if config.get('waterfall'): plot_types.append('waterfall')
+            if config.get('bar'): plot_types.append('bar')
+            if config.get('point'): plot_types.append('point')
+            
+            # Run the sensitivity analysis
+            success, results, error = self.run_sensitivity_analysis(
+                version, price, param_id, mode, values,
+                compare_to_key, comparison_type, plot_types
             )
             
-            response.raise_for_status()
-            return response.json()
+            if not success:
+                return False, None, f"Sensitivity analysis failed: {error}"
+                
+            return True, results, None
             
-        except requests.exceptions.RequestException as e:
-            self.logger.error("Error running calculations: %s", str(e))
-            
-            if hasattr(e, 'response') and e.response is not None:
-                try:
-                    return e.response.json()
-                except:
-                    pass
-                    
-            return {
-                "status": "error",
-                "error": str(e)
-            }
-    
-    def visualize_results(self):
-        """
-        Visualize sensitivity results.
-        
-        This method assumes configurations have been generated and calculations have been run.
-        
-        Returns:
-            dict: Visualization data
-        """
-        try:
-            response = requests.post(
-                f"{self.base_url}/sensitivity/visualization",
-                headers={"Content-Type": "application/json"}
-            )
-            
-            response.raise_for_status()
-            return response.json()
-            
-        except requests.exceptions.RequestException as e:
-            self.logger.error("Error visualizing results: %s", str(e))
-            
-            if hasattr(e, 'response') and e.response is not None:
-                try:
-                    return e.response.json()
-                except:
-                    pass
-                    
-            return {
-                "status": "error",
-                "error": str(e)
-            }
+        except Exception as e:
+            error_msg = f"Error processing sensitivity parameter {param_id}: {str(e)}"
+            logger.exception(error_msg)
+            return False, None, error_msg
 
-# Example usage
-if __name__ == "__main__":
-    # Example configuration data
-    example_config = {
-        "selectedVersions": [1],
-        "selectedV": {"V1": "on", "V2": "off"},
-        "selectedF": {"F1": "on", "F2": "on", "F3": "on", "F4": "on", "F5": "on"},
-        "selectedCalculationOption": "calculateForPrice",
-        "targetRow": 20,
-        "SenParameters": {
-            "S34": {
-                "mode": "symmetrical",
-                "values": [20],
-                "enabled": True,
-                "compareToKey": "S13",
-                "comparisonType": "primary",
-                "waterfall": True,
-                "bar": True,
-                "point": True
-            },
-            "S35": {
-                "mode": "symmetrical",
-                "values": [20],
-                "enabled": True,
-                "compareToKey": "S13",
-                "comparisonType": "primary",
-                "waterfall": True,
-                "bar": True,
-                "point": True
-            }
-        }
-    }
-    
-    # Create adapter and run analysis
-    adapter = SensitivityAdapter()
-    result = adapter.run_sensitivity_analysis(example_config)
-    
-    print(json.dumps(result, indent=2))
+# Create a singleton instance
+calculation_adapter = CalculationsSensitivityAdapter()
