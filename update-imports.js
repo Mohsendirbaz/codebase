@@ -6,11 +6,7 @@
 
 const fs = require('fs').promises;
 const path = require('path');
-const util = require('util');
 const { glob } = require('glob');
-
-// Convert glob to a promise-based function
-const globAsync = util.promisify(glob);
 
 // Parse command line arguments
 const args = process.argv.slice(2);
@@ -365,7 +361,7 @@ Example:
     
     // Find all files in the src directory
     console.log('Finding all files in the src directory...');
-    const allFiles = await globAsync('./src/**/*.{js,jsx,ts,tsx,css}', { ignore: ['**/node_modules/**'] });
+    const allFiles = await glob('./src/**/*.{js,jsx,ts,tsx,css}', { ignore: ['**/node_modules/**'] });
     console.log(`Found ${allFiles.length} files in the src directory`);
     
     // Build a map of original filenames to prefixed filenames

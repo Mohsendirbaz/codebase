@@ -1,0 +1,208 @@
+/* Import base variables and animations */
+@import './base.css''';
+@import './animations.css''';
+
+/* Tooltip Container */
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* Base Tooltip */
+.tooltip {
+  position: absolute;
+  z-index: var(--z-index-tooltip);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--dark-color);
+  color: var(--light-color);
+  border-radius: var(--border-radius-md);
+  font-size: var(--font-size-sm);
+  line-height: 1.4;
+  white-space: nowrap;
+  pointer-events: none;
+  
+  /* GPU acceleration */
+  transform: translateZ(0);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  
+  /* Prevent text selection */
+  -webkit-user-select: none;
+  user-select: none;
+  
+  /* Initial state for animations */
+  opacity: 0;
+  visibility: hidden;
+  
+  /* Shadow */
+  box-shadow: var(--shadow-lg);
+  
+  /* Max width for long content */
+  max-width: 300px;
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+
+/* Tooltip Positions */
+.tooltip[data-position="top"] {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+}
+
+.tooltip[data-position="bottom"] {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+}
+
+.tooltip[data-position="left"] {
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%) translateX(-8px);
+}
+
+.tooltip[data-position="right"] {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%) translateX(8px);
+}
+
+/* Tooltip Arrows */
+.tooltip::before {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: inherit;
+  transform: rotate(45deg);
+}
+
+.tooltip[data-position="top"]::before {
+  bottom: -4px;
+  left: 50%;
+  margin-left: -4px;
+}
+
+.tooltip[data-position="bottom"]::before {
+  top: -4px;
+  left: 50%;
+  margin-left: -4px;
+}
+
+.tooltip[data-position="left"]::before {
+  right: -4px;
+  top: 50%;
+  margin-top: -4px;
+}
+
+.tooltip[data-position="right"]::before {
+  left: -4px;
+  top: 50%;
+  margin-top: -4px;
+}
+
+/* Tooltip Animations */
+.tooltip.visible {
+  opacity: 1;
+  visibility: visible;
+  transition: 
+    opacity var(--transition-normal) var(--transition-spring),
+    transform var(--transition-normal) var(--transition-spring),
+    visibility 0s linear;
+}
+
+/* Tooltip Variants */
+.tooltip.info {
+  background: var(--info-color);
+}
+
+.tooltip.success {
+  background: var(--success-color);
+}
+
+.tooltip.warning {
+  background: var(--warning-color);
+  color: var(--dark-color);
+}
+
+.tooltip.error {
+  background: var(--danger-color);
+}
+
+/* Interactive Tooltip */
+.tooltip.interactive {
+  pointer-events: auto;
+  cursor: default;
+}
+
+/* Rich Content Tooltip */
+.tooltip-content {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.tooltip-icon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+}
+
+.tooltip-title {
+  font-weight: 600;
+  margin-bottom: var(--spacing-xs);
+}
+
+.tooltip-description {
+  font-size: var(--font-size-sm);
+  opacity: 0.9;
+}
+
+/* Glass Effect for Modern Browsers */
+@supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+  .tooltip.glass {
+    background: rgba(0, 0, 0, 0.75);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+}
+
+/* High Contrast Mode */
+@media (forced-colors: active) {
+  .tooltip {
+    border: 1px solid CanvasText;
+  }
+  
+  .tooltip::before {
+    border: 1px solid CanvasText;
+    background: Canvas;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .tooltip {
+    transition: none;
+  }
+  
+  .tooltip.visible {
+    transition: none;
+  }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 640px) {
+  .tooltip {
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    max-width: 250px;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .tooltip {
+    display: none !important;
+  }
+}
