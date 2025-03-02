@@ -54,7 +54,7 @@ class CalculationsSensitivityAdapter:
                 "SenParameters": {}  # Empty for baseline calculation
             }
             
-            # Call the Calculations module
+            # Call the Calculations module (name compatibility and file path adjustment)
             response = requests.post(
                 f"{self.calculations_url}/run",
                 json=payload
