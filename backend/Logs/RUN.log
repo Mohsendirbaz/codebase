@@ -840,3 +840,23 @@
 2025-03-02 12:20:59,285 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-03-02 12:20:59,317 WARNING  * Debugger is active!
 2025-03-02 12:20:59,332 INFO  * Debugger PIN: 119-059-632
+2025-03-02 14:46:26,924 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-03-02 14:46:27,044 INFO  * Restarting with stat
+2025-03-02 14:46:27,772 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-02 14:46:27,803 WARNING  * Debugger is active!
+2025-03-02 14:46:27,813 INFO  * Debugger PIN: 119-059-632
+2025-03-02 15:48:41,863 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\calculations_sensitivity_adapter.py', reloading
+2025-03-02 15:48:41,931 INFO  * Restarting with stat
+2025-03-02 15:48:43,023 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-02 15:48:43,183 WARNING  * Debugger is active!
+2025-03-02 15:48:43,183 INFO  * Debugger PIN: 119-059-632
+2025-03-02 15:48:50,118 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\calculations_sensitivity_adapter.py', reloading
+2025-03-02 15:48:50,203 INFO  * Restarting with stat
+2025-03-02 15:48:51,233 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-02 15:48:51,271 WARNING  * Debugger is active!
+2025-03-02 15:48:51,280 INFO  * Debugger PIN: 119-059-632
+2025-03-02 15:48:58,460 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\calculations_sensitivity_adapter.py', reloading
+2025-03-02 15:48:58,526 INFO  * Restarting with stat
+2025-03-02 15:48:59,464 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-02 15:48:59,496 WARNING  * Debugger is active!
+2025-03-02 15:48:59,512 INFO  * Debugger PIN: 119-059-632
