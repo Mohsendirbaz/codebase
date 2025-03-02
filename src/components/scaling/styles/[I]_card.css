@@ -1,6 +1,6 @@
 /* Import base variables and animations */
-@import './base.css';
-@import './animations.css';
+@import './base.css''';
+@import './animations.css''';
 
 /* Card Container */
 .card {

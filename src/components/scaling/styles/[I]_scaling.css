@@ -1,9 +1,9 @@
 /* Import all component styles */
-@import './base.css';
-@import './animations.css';
-@import './card.css';
-@import './draggable.css';
-@import './tooltip.css';
+@import './base.css''';
+@import './animations.css''';
+@import './card.css''';
+@import './draggable.css''';
+@import './tooltip.css''''''';
 
 /* Scaling Interface Layout */
 .scaling-interface {
