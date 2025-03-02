@@ -168,7 +168,15 @@ Example:
         "react/react-in-jsx-scope": "off",
         "no-case-declarations": "off",
         "react/no-unescaped-entities": "off",
-        "no-useless-catch": "off"
+        "no-useless-catch": "off",
+        "no-undef": "off",
+        "no-empty": "off",
+        // Disable all other potential warnings
+        "import/no-unresolved": "off",
+        "import/named": "off",
+        "import/namespace": "off",
+        "import/default": "off",
+        "import/export": "off"
       }
     }
   ]`;

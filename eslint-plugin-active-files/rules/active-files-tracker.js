@@ -418,6 +418,49 @@ function categorizeByLayer(dependencyLayers) {
 }
 
 /**
+ * Improved CSS import detection to better handle CSS dependencies
+ * @param {string} filePath - The file path to analyze
+ * @returns {string[]} - Array of CSS imports
+ */
+function extractCssImports(filePath) {
+  if (!filePath.toLowerCase().endsWith('.css')) {
+    return [];
+  }
+
+  const imports = [];
+  try {
+    // Get file content (from cache if available)
+    let content;
+    if (fileContentCache.has(filePath)) {
+      content = fileContentCache.get(filePath);
+    } else {
+      content = fs.readFileSync(filePath, "utf8");
+      fileContentCache.set(filePath, content);
+    }
+
+    // CSS @import statements: @import url('./path/file.css') or @import './path/file.css'
+    const cssImportRegex = regexCache.cssImport;
+    cssImportRegex.lastIndex = 0; // Reset regex state
+    
+    let match;
+    while ((match = cssImportRegex.exec(content)) !== null) {
+      const importPath = match[1] || match[2]; // Either from url() or direct import
+      
+      // Skip non-relative imports
+      if (!importPath || !importPath.startsWith('.')) {
+        continue;
+      }
+      
+      imports.push(importPath);
+    }
+  } catch (error) {
+    console.error(`Error extracting CSS imports from ${filePath}:`, error);
+  }
+  
+  return imports;
+}
+
+/**
  * Creates the ESLint rule
  */
 module.exports = {
@@ -435,6 +478,7 @@ module.exports = {
           entryPoint: { type: "string", default: "src/index.js" },
           activeMarker: { type: "string", default: "/* @active */" },
           inactiveMarker: { type: "string", default: "/* @inactive */" },
+          silentMode: { type: "boolean", default: true }
         },
         additionalProperties: false,
       },
@@ -443,6 +487,7 @@ module.exports = {
   create(context) {
     const options = context.options[0] || {};
     const entryPointRelative = options.entryPoint || "src/index.js";
+    const silentMode = options.silentMode !== false; // Default to true if not specified
     
     // Get project root and entry point
     const projectRoot = process.cwd();
@@ -456,9 +501,25 @@ module.exports = {
         // Only run the full analysis when this variable is set
         const shouldRunAnalysis = process.env.ANALYZE_ACTIVE_FILES === 'true';
         
-        // Only run the analysis on the entry point file and when explicitly requested
-        if (currentFilePath === entryPointAbsolute && shouldRunAnalysis) {
+        // Skip all processing during normal development unless explicitly requested
+        if (!shouldRunAnalysis) {
+          // In silent mode, don't report anything during normal development
+          if (silentMode) {
+            return;
+          }
+          
+          // If not in silent mode, just report a simple message without doing analysis
+          context.report({
+            node,
+            message: `Active files tracking is enabled but not running in analysis mode. Run with ANALYZE_ACTIVE_FILES=true to perform full analysis.`,
+          });
+          return;
+        }
+        
+        // Only run the analysis on the entry point file
+        if (currentFilePath === entryPointAbsolute) {
           console.log("Analyzing project from entry point:", entryPointRelative);
+          console.log("This analysis is only running because ANALYZE_ACTIVE_FILES=true");
           
           // Clear caches for fresh analysis
           importCache.clear();
@@ -502,6 +563,36 @@ module.exports = {
           const projectFiles = new Set();
           collectFiles(path.join(projectRoot, "src"), projectFiles);
           
+          // Additional CSS dependency analysis
+          // This ensures CSS files are properly tracked as dependencies
+          console.log("Performing additional CSS dependency analysis...");
+          const cssFiles = Array.from(projectFiles).filter(file => file.toLowerCase().endsWith('.css'));
+          
+          // Process CSS files to find additional dependencies
+          for (const cssFile of cssFiles) {
+            const cssImports = extractCssImports(cssFile);
+            for (const importPath of cssImports) {
+              const resolvedPath = resolveImportPath(importPath, cssFile);
+              if (resolvedPath && activeFiles.has(cssFile)) {
+                // If a CSS file is active and imports another CSS file, that file is also active
+                activeFiles.add(resolvedPath);
+                console.log(`  Marked CSS dependency as active: ${path.basename(resolvedPath)}`);
+                
+                // Update dependency tracking
+                if (!dependencyGraph.has(cssFile)) {
+                  dependencyGraph.set(cssFile, []);
+                }
+                dependencyGraph.get(cssFile).push(resolvedPath);
+                
+                // Update importedBy tracking
+                if (!importedBy.has(resolvedPath)) {
+                  importedBy.set(resolvedPath, new Set());
+                }
+                importedBy.get(resolvedPath).add(cssFile);
+              }
+            }
+          }
+          
           // Convert layer categories to a format suitable for JSON
           const layersData = {};
           for (const [layer, files] of layerCategories.entries()) {
@@ -527,6 +618,91 @@ module.exports = {
             dependencyLayers: layersData,
             importedBy: importedByData
           };
+          
+          // Validate the analysis results
+          if (activeFiles.size === 0) {
+            console.error("ERROR: No active files found. This is likely an error in the analysis.");
+            // Add the entry point as active at minimum
+            activeFiles.add(entryPointAbsolute);
+            reportData.activeFiles.push(path.relative(projectRoot, entryPointAbsolute));
+          } else if (activeFiles.size === 1) {
+            console.error("WARNING: Only one active file found. This is likely an error in the analysis.");
+            // Check if the only active file is the entry point
+            const onlyActiveFile = Array.from(activeFiles)[0];
+            if (onlyActiveFile !== entryPointAbsolute) {
+              console.error(`  The only active file is not the entry point: ${path.basename(onlyActiveFile)}`);
+              // Add the entry point as active
+              activeFiles.add(entryPointAbsolute);
+              reportData.activeFiles.push(path.relative(projectRoot, entryPointAbsolute));
+            }
+          } else if (activeFiles.size < 5 && projectFiles.size > 10) {
+            // If we have very few active files compared to the total, it's likely an error
+            console.warn("WARNING: Very few active files found compared to total files. This might indicate an analysis issue.");
+            
+            // Ensure the entry point is marked as active
+            if (!activeFiles.has(entryPointAbsolute)) {
+              console.error(`  Entry point is not marked as active: ${path.basename(entryPointAbsolute)}`);
+              activeFiles.add(entryPointAbsolute);
+              reportData.activeFiles.push(path.relative(projectRoot, entryPointAbsolute));
+            }
+            
+            // Check for direct imports from the entry point
+            const entryPointImports = dependencyGraph.get(entryPointAbsolute) || [];
+            if (entryPointImports.length > 0 && entryPointImports.length > activeFiles.size - 1) {
+              console.warn(`  Entry point has ${entryPointImports.length} imports but only ${activeFiles.size - 1} other active files.`);
+              
+              // Ensure all direct imports from entry point are marked as active
+              for (const importedFile of entryPointImports) {
+                if (!activeFiles.has(importedFile)) {
+                  console.warn(`  Adding direct import to active files: ${path.basename(importedFile)}`);
+                  activeFiles.add(importedFile);
+                  reportData.activeFiles.push(path.relative(projectRoot, importedFile));
+                }
+              }
+            }
+          }
+          
+          // Enhanced CSS file handling
+          // Ensure CSS files imported by active JS files are also marked as active
+          console.log("Performing enhanced CSS file handling...");
+          const jsFiles = Array.from(activeFiles).filter(file => 
+            file.toLowerCase().endsWith('.js') || 
+            file.toLowerCase().endsWith('.jsx') || 
+            file.toLowerCase().endsWith('.ts') || 
+            file.toLowerCase().endsWith('.tsx')
+          );
+          
+          for (const jsFile of jsFiles) {
+            // Get the imports for this JS file
+            const imports = dependencyGraph.get(jsFile) || [];
+            
+            // Find CSS imports
+            const cssImports = imports.filter(imp => imp.toLowerCase().endsWith('.css'));
+            
+            for (const cssImport of cssImports) {
+              if (!activeFiles.has(cssImport)) {
+                console.log(`  Marking CSS file as active (imported by JS): ${path.basename(cssImport)}`);
+                activeFiles.add(cssImport);
+                reportData.activeFiles.push(path.relative(projectRoot, cssImport));
+                
+                // Also check for CSS files imported by this CSS file
+                const nestedCssImports = extractCssImports(cssImport);
+                for (const nestedImportPath of nestedCssImports) {
+                  const resolvedPath = resolveImportPath(nestedImportPath, cssImport);
+                  if (resolvedPath && !activeFiles.has(resolvedPath)) {
+                    console.log(`  Marking nested CSS dependency as active: ${path.basename(resolvedPath)}`);
+                    activeFiles.add(resolvedPath);
+                    reportData.activeFiles.push(path.relative(projectRoot, resolvedPath));
+                  }
+                }
+              }
+            }
+          }
+          
+          // Update inactive files list after all active file additions
+          reportData.inactiveFiles = Array.from(projectFiles)
+            .filter(file => !activeFiles.has(file))
+            .map(file => path.relative(projectRoot, file));
           
           // Write report to a JSON file
           try {

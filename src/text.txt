@@ -14,13 +14,13 @@ git rev-parse HEAD  # Should show current
 
 git remote -v  # Should show https://github.com/Mohsendirbaz/SF.git
 
-git checkout -b SF.R32
+git checkout -b SF.R33
 
 git add .
 
-git commit -m "ESLint Introduced- starting point of identifying active and inactive variant of app in src"
+git commit -m "ESLint in progress"
 
-git push origin SF.R32
+git push origin SF.R33
 
 
 # Remove existing temp directory (already done)

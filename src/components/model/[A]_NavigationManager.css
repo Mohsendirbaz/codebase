@@ -17,7 +17,27 @@
   background: var(--model-color-background-alt);
   border-radius: var(--model-border-radius-md);
   overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  /* No overscroll-behavior property - using JS solution instead */
+  scroll-behavior: smooth;
+}
+
+/* Create a wrapper for the breadcrumb to handle scroll behavior */
+.navigation-manager {
+  /* Basic touch handling */
+  touch-action: pan-y pinch-zoom;
+}
+
+/* JavaScript solution is required for cross-browser support */
+/* See overscroll-polyfill.js in the same directory */
+.navigation-breadcrumb::before {
+  content: "/* Note: Scroll behavior is handled by overscroll-polyfill.js */";
+  display: none;
+}
+
+/* Style for when the JS solution is applied */
+.navigation-breadcrumb.overscroll-polyfill-applied {
+  /* Visual indicator that the JS solution is active */
+  position: relative;
 }
 
 .breadcrumb-item {

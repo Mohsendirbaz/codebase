@@ -1,29 +1,60 @@
 #!/usr/bin/env node
 /**
  * Script to restore original filenames by removing [A]_ and [I]_ prefixes
- * Optimized for better performance
+ * Optimized for better performance with:
+ * - Configurable prefix removal depth
+ * - Enhanced handling of multiple accumulated prefixes
+ * - Unified file renaming and import cleaning
+ * - Improved restoration reporting
  */
 
 const fs = require('fs');
 const path = require('path');
 const glob = require('glob');
 
-// Configuration - Reduced to a more reasonable value
-const MAX_PREFIX_ITERATIONS = 10; 
+// Parse command line arguments
+const args = process.argv.slice(2);
+const options = {
+  maxPrefixDepth: parseInt(args.find(arg => arg.startsWith('--max-prefix-depth='))?.split('=')[1] || '10', 10),
+  verbose: args.includes('--verbose'),
+  dryRun: args.includes('--dry-run'),
+  force: args.includes('--force'),
+  skipImports: args.includes('--skip-imports'),
+  help: args.includes('--help') || args.includes('-h')
+};
+
+// Helper function to log verbose messages
+const logVerbose = (message) => {
+  if (options.verbose) {
+    console.log(`[VERBOSE] ${message}`);
+  }
+};
 
 /**
  * Systematically cleans a string from prefixes
  * This function handles all types of prefixes in a consistent way
  * @param {string} str - The string to clean
- * @returns {string} - The cleaned string
+ * @param {number} maxDepth - Maximum number of prefix removal iterations
+ * @returns {Object} - The cleaned string and whether any prefixes were removed
  */
-const cleanFromPrefixes = (str) => {
+const cleanFromPrefixes = (str, maxDepth = options.maxPrefixDepth) => {
+  // Track if any prefixes were removed
+  let prefixesRemoved = false;
+  const originalStr = str;
+  
   // Handle known problematic patterns first - using a Map for faster lookups
   const knownPatterns = [
-    { pattern: /Filter\[(A|I)\]_Popup(\.css)?$/, replacement: 'FilterPopup$2' },
-    { pattern: /Model\[(A|I)\]_Card$/, replacement: 'ModelCard' },
-    { pattern: /Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: 'FilterPopup' },
-    { pattern: /Individual\[(A|I)\]_ResultsPanel$/, replacement: 'IndividualResultsPanel' },
+    // Use word boundaries (\b) to prevent partial matches
+    { pattern: /\b(Filter)\[(A|I)\]_Popup\b(\.css)?$/, replacement: '$1Popup$3' },
+    { pattern: /\b(Model)\[(A|I)\]_Card\b$/, replacement: '$1Card' },
+    { pattern: /\b(Filter)\[(A|I)\]_\[(A|I)\]_Popup\b$/, replacement: '$1Popup' },
+    { pattern: /\b(Individual)\[(A|I)\]_ResultsPanel\b$/, replacement: '$1ResultsPanel' },
+    
+    // More specific patterns for problematic files
+    { pattern: /FilterPopup\[(A|I)\]_/, replacement: 'FilterPopup' },
+    { pattern: /ModelCard\[(A|I)\]_/, replacement: 'ModelCard' },
+    { pattern: /IndividualResultsPanel\[(A|I)\]_/, replacement: 'IndividualResultsPanel' },
+    
     // Add patterns for L_1_HomePage.CSS files
     { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'L_1_HomePage.CSS/L_1_HomePage$2.css' },
     { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'L_1_HomePage.CSS/L_1_HomePage_$2.css' }
@@ -32,34 +63,68 @@ const cleanFromPrefixes = (str) => {
   // Try each known pattern
   for (const { pattern, replacement } of knownPatterns) {
     if (pattern.test(str)) {
-      return str.replace(pattern, replacement);
+      const newStr = str.replace(pattern, replacement);
+      if (newStr !== str) {
+        prefixesRemoved = true;
+        return { cleaned: newStr, prefixesRemoved };
+      }
     }
   }
   
   // If no known pattern matched, proceed with systematic cleaning
   let cleaned = str;
   
-  // Step 1: Normalize any duplicate or mixed prefixes
+  // Step 1: Handle multiple accumulated prefixes
+  // This regex matches sequences like [A]_[I]_[A]_[I]_ and normalizes them
+  const multiPrefixRegex = /(\[(A|I)\]_)+/g;
+  const normalizedStr = cleaned.replace(multiPrefixRegex, (match) => {
+    // If we found multiple prefixes, mark that we're removing them
+    if (match.length > 4) { // More than just a single [A]_ or [I]_
+      prefixesRemoved = true;
+      // Active always takes precedence
+      return match.includes('[A]') ? '[A]_' : '[I]_';
+    }
+    return match;
+  });
+  
+  if (normalizedStr !== cleaned) {
+    cleaned = normalizedStr;
+  }
+  
+  // Step 2: Normalize any duplicate or mixed prefixes
   // Handle duplicate prefixes ([A]_[A]_ or [I]_[I]_)
-  cleaned = cleaned.replace(/\[(A|I)\]_\[(A|I)\]_/g, (match) => {
+  const dupPrefixStr = cleaned.replace(/\[(A|I)\]_\[(A|I)\]_/g, (match) => {
+    prefixesRemoved = true;
     return match.includes('[A]') ? '[A]_' : '[I]_';
   });
   
-  // Handle mixed prefixes ([A]_[I]_ or [I]_[A]_) - active always takes precedence
-  cleaned = cleaned.replace(/\[A\]_\[I\]_|\[I\]_\[A\]_/g, '[A]_');
+  if (dupPrefixStr !== cleaned) {
+    cleaned = dupPrefixStr;
+  }
   
-  // Step 2: Identify the structure of the string
+  // Handle mixed prefixes ([A]_[I]_ or [I]_[A]_) - active always takes precedence
+  const mixedPrefixStr = cleaned.replace(/\[A\]_\[I\]_|\[I\]_\[A\]_/g, (match) => {
+    prefixesRemoved = true;
+    return '[A]_';
+  });
+  
+  if (mixedPrefixStr !== cleaned) {
+    cleaned = mixedPrefixStr;
+  }
+  
+  // Step 3: Identify the structure of the string
   // This helps us determine if the prefix is at the beginning, middle, or part of a nested structure
   
   // Case 1: Prefix at the beginning (most common case)
   if (cleaned.match(/^\[(A|I)\]_/)) {
+    prefixesRemoved = true;
     cleaned = cleaned.replace(/^\[(A|I)\]_/, '');
-    return cleaned;
+    return { cleaned, prefixesRemoved };
   }
   
-  // Case 2: Prefix in the middle of a complete name
+  // Case 2: Prefix in the middle of a complete name with word boundaries
   // We need to ensure we're matching a complete name, not a partial one
-  const middlePrefixMatch = cleaned.match(/^(.+?)\[(A|I)\]_(.+)$/);
+  const middlePrefixMatch = cleaned.match(/^(.+?)\b\[(A|I)\]_(.+)$/);
   if (middlePrefixMatch) {
     // Extract the parts before and after the prefix
     const [_, before, type, after] = middlePrefixMatch;
@@ -69,7 +134,8 @@ const cleanFromPrefixes = (str) => {
     const isCompleteName = !before.includes('.') && !after.includes('.');
     
     if (isCompleteName) {
-      return before + after;
+      prefixesRemoved = true;
+      return { cleaned: before + after, prefixesRemoved };
     }
   }
   
@@ -79,15 +145,42 @@ const cleanFromPrefixes = (str) => {
   if (nestedMatch) {
     const [_, basePart, prefixedPart] = nestedMatch;
     // Recursively clean the prefixed part
-    const cleanedPrefixedPart = cleanFromPrefixes(prefixedPart);
-    return basePart + '.' + cleanedPrefixedPart;
+    const { cleaned: cleanedPrefixedPart, prefixesRemoved: nestedPrefixesRemoved } = 
+      cleanFromPrefixes(prefixedPart, maxDepth);
+    
+    if (nestedPrefixesRemoved) {
+      prefixesRemoved = true;
+      return { cleaned: basePart + '.' + cleanedPrefixedPart, prefixesRemoved };
+    }
+  }
+  
+  // Case 4: Handle prefixes that might be in the middle of a filename
+  // This is for cases like "FilterPopup[A]_Component"
+  const inlineMatch = cleaned.match(/^(.+?)\[(A|I)\]_(.+)$/);
+  if (inlineMatch) {
+    const [_, before, type, after] = inlineMatch;
+    // Check for known problematic filenames
+    const knownNames = ['FilterPopup', 'ModelCard', 'IndividualResultsPanel'];
+    for (const name of knownNames) {
+      if (before.endsWith(name)) {
+        prefixesRemoved = true;
+        return { cleaned: before + after, prefixesRemoved };
+      }
+    }
   }
   
   // Apply multiple iterations to handle any remaining prefixes
-  // Using a more reasonable number of iterations
-  for (let i = 0; i < MAX_PREFIX_ITERATIONS; i++) {
+  // Using the configurable maxDepth parameter
+  let iterationsMade = 0;
+  for (let i = 0; i < maxDepth; i++) {
     const previous = cleaned;
     cleaned = cleaned.replace(/\[(A|I)\]_/g, '');
+    
+    // If we made a change, track that prefixes were removed
+    if (previous !== cleaned) {
+      prefixesRemoved = true;
+      iterationsMade++;
+    }
     
     // If no more changes, we're done
     if (previous === cleaned) {
@@ -95,18 +188,66 @@ const cleanFromPrefixes = (str) => {
     }
   }
   
+  if (iterationsMade > 0 && options.verbose) {
+    console.log(`Applied ${iterationsMade} prefix removal iterations to: ${str}`);
+  }
+  
   // Handle double underscores that might result from removing markers
-  cleaned = cleaned.replace(/__+/g, '_');
+  const doubleUnderscoreStr = cleaned.replace(/__+/g, '_');
+  if (doubleUnderscoreStr !== cleaned) {
+    cleaned = doubleUnderscoreStr;
+    prefixesRemoved = true;
+  }
   
   // Remove leading/trailing underscores
-  cleaned = cleaned.replace(/^_+|_+$/g, '');
+  const trimmedStr = cleaned.replace(/^_+|_+$/g, '');
+  if (trimmedStr !== cleaned) {
+    cleaned = trimmedStr;
+    prefixesRemoved = true;
+  }
   
-  return cleaned;
+  return { cleaned, prefixesRemoved };
+};
+
+// Helper function to check if a path is a directory
+const isDirectory = (filePath) => {
+  try {
+    return fs.statSync(filePath).isDirectory();
+  } catch (error) {
+    return false;
+  }
+};
+
+// Helper function to check if a path is a file
+const isFile = (filePath) => {
+  try {
+    return fs.statSync(filePath).isFile();
+  } catch (error) {
+    return false;
+  }
 };
 
 // Function to restore a file to its original name
 const restoreFileName = (filePath) => {
   try {
+    // Skip if the path doesn't exist
+    if (!fs.existsSync(filePath)) {
+      logVerbose(`Path does not exist: ${filePath}`);
+      return null;
+    }
+    
+    // Skip if the path is a directory
+    if (isDirectory(filePath)) {
+      logVerbose(`Skipping directory: ${filePath}`);
+      return null;
+    }
+    
+    // Skip if the path is not a file
+    if (!isFile(filePath)) {
+      logVerbose(`Not a regular file: ${filePath}`);
+      return null;
+    }
+    
     const dirName = path.dirname(filePath);
     const fileName = path.basename(filePath);
     
@@ -116,8 +257,14 @@ const restoreFileName = (filePath) => {
       return null; // No prefix to remove
     }
     
-    // Remove all [A] and [I] markers using the cleanFromPrefixes function
-    let originalFileName = cleanFromPrefixes(fileName);
+    // Remove all [A] and [I] markers using the enhanced cleanFromPrefixes function
+    const { cleaned: originalFileName, prefixesRemoved } = cleanFromPrefixes(fileName);
+    
+    // Skip if no prefixes were removed
+    if (!prefixesRemoved) {
+      logVerbose(`No prefixes to remove from: ${filePath}`);
+      return null;
+    }
     
     const originalFilePath = path.join(dirName, originalFileName);
     
@@ -127,13 +274,18 @@ const restoreFileName = (filePath) => {
       return null;
     }
     
-    // Rename the file
-    fs.renameSync(filePath, originalFilePath);
-    console.log(`✓ Restored ${filePath} to ${originalFilePath}`);
+    // Rename the file if not in dry run mode
+    if (!options.dryRun) {
+      fs.renameSync(filePath, originalFilePath);
+      console.log(`✓ Restored ${filePath} to ${originalFilePath}`);
+    } else {
+      console.log(`[DRY RUN] Would restore ${filePath} to ${originalFilePath}`);
+    }
     
     return {
       oldPath: filePath,
-      newPath: originalFilePath
+      newPath: originalFilePath,
+      prefixesRemoved
     };
   } catch (error) {
     console.error(`Error restoring file ${filePath}:`, error.message);
@@ -149,7 +301,20 @@ const restoreFileName = (filePath) => {
  */
 const cleanImportsInFile = (filePath, forceMode = false) => {
   try {
+    // Skip if the path doesn't exist
     if (!fs.existsSync(filePath)) {
+      return;
+    }
+    
+    // Skip if the path is a directory
+    if (isDirectory(filePath)) {
+      logVerbose(`Skipping directory for import cleaning: ${filePath}`);
+      return;
+    }
+    
+    // Skip if the path is not a file
+    if (!isFile(filePath)) {
+      logVerbose(`Not a regular file for import cleaning: ${filePath}`);
       return;
     }
     
@@ -314,16 +479,39 @@ const processBatchedFiles = (files, processor, batchSize = 50) => {
   }
 };
 
-async function main() {
+function main() {
   try {
-    // Check for force flag
-    const forceMode = process.argv.includes('--force');
+    // Display help if requested
+    if (options.help) {
+      console.log(`
+Usage: node restore-filenames.js [options]
+
+Options:
+  --max-prefix-depth=<n>  Maximum number of prefix removal iterations (default: 10)
+  --verbose               Display more detailed output
+  --dry-run               Show what would be done without making changes
+  --force                 Use force mode for more aggressive restoration
+  --skip-imports          Skip updating import statements
+  --help, -h              Display this help message
+
+Example:
+  node restore-filenames.js --max-prefix-depth=5 --verbose
+`);
+      process.exit(0);
+    }
     
-    console.log(`Starting filename restoration${forceMode ? ' (FORCE MODE)' : ''}...`);
+    console.log(`Starting filename restoration${options.force ? ' (FORCE MODE)' : ''}...`);
+    logVerbose(`Options: ${JSON.stringify(options, null, 2)}`);
     
-    if (forceMode) {
+    if (options.force) {
       console.log('Force mode enabled: Will perform more aggressive restoration');
     }
+    
+    if (options.dryRun) {
+      console.log('Dry run mode: No actual changes will be made');
+    }
+    
+    console.log(`Maximum prefix removal depth: ${options.maxPrefixDepth}`);
     
     // Find all files with [A]_ or [I]_ prefix
     // Include JS, JSX, TS, TSX, and CSS files
@@ -360,47 +548,75 @@ async function main() {
     // Restore filenames
     console.log('\nRestoring filenames...');
     const restoredFiles = [];
+    let totalPrefixesRemoved = 0;
     
     // Process files in batches for better performance
     processBatchedFiles(uniqueFiles, (file) => {
       const result = restoreFileName(file);
       if (result) {
         restoredFiles.push(result);
+        totalPrefixesRemoved++;
       }
     });
     
-    // Update imports in all files
-    console.log('\nUpdating import statements...');
-    const allFiles = glob.sync('./src/**/*.{js,jsx,ts,tsx,css}', { ignore: ['**/node_modules/**'] });
-    console.log(`Found ${allFiles.length} files to check for import updates`);
-    
-    // Special handling for index.js - always process it regardless of other conditions
-    const indexJsPath = path.join(process.cwd(), 'src/index.js');
-    if (fs.existsSync(indexJsPath)) {
-      console.log('\nSpecial handling: Processing index.js imports...');
-      cleanImportsInFile(indexJsPath, true);
-      console.log('✓ Completed special processing of index.js');
+    // Skip import updates if requested
+    if (options.skipImports) {
+      console.log('\nSkipping import updates (--skip-imports flag detected)');
     } else {
-      console.log('Warning: index.js not found at expected path');
-    }
-    
-    // Filter files to only process those that might have imports with prefixes
-    // This avoids unnecessary processing of files that don't have imports with prefixes
-    console.log('\nScanning files for imports with prefixes...');
-    
-    // Process files in batches for better performance
-    processBatchedFiles(allFiles, (file) => {
-      // Skip index.js as it's already been processed
-      if (file === indexJsPath) return;
+      // Update imports in all files
+      console.log('\nUpdating import statements...');
+      const allFiles = glob.sync('./src/**/*.{js,jsx,ts,tsx,css}', { ignore: ['**/node_modules/**'] });
+      console.log(`Found ${allFiles.length} files to check for import updates`);
       
-      cleanImportsInFile(file, forceMode);
-    });
+      // Special handling for index.js - always process it regardless of other conditions
+      const indexJsPath = path.join(process.cwd(), 'src/index.js');
+      if (fs.existsSync(indexJsPath)) {
+        console.log('\nSpecial handling: Processing index.js imports...');
+        cleanImportsInFile(indexJsPath, options.force);
+        console.log('✓ Completed special processing of index.js');
+      } else {
+        console.log('Warning: index.js not found at expected path');
+      }
+      
+      // Filter files to only process those that might have imports with prefixes
+      // This avoids unnecessary processing of files that don't have imports with prefixes
+      console.log('\nScanning files for imports with prefixes...');
+      
+      let importsUpdatedCount = 0;
+      
+      // Process files in batches for better performance
+      processBatchedFiles(allFiles, (file) => {
+        // Skip index.js as it's already been processed
+        if (file === indexJsPath) return;
+        
+        // Track if imports were updated
+        const fileContent = fs.readFileSync(file, 'utf8');
+        const hasMarkers = fileContent.includes('[A]') || fileContent.includes('[I]');
+        
+        if (hasMarkers) {
+          cleanImportsInFile(file, options.force);
+          importsUpdatedCount++;
+        } else {
+          logVerbose(`Skipping ${file} - no markers found`);
+        }
+      });
+      
+      console.log(`\nUpdated imports in ${importsUpdatedCount} files`);
+    }
     
     // Count only files that were actually restored (had prefixes removed)
     const actuallyRestoredCount = restoredFiles.length;
     
-    console.log('\nRestoration complete!');
-    console.log(`Restored ${actuallyRestoredCount} files to their original names.`);
+    console.log('\nRestoration Summary:');
+    console.log(`- Files processed: ${uniqueFiles.length}`);
+    console.log(`- Files restored: ${actuallyRestoredCount}`);
+    console.log(`- Total prefixes removed: ${totalPrefixesRemoved}`);
+    
+    if (options.dryRun) {
+      console.log('\n[DRY RUN] No actual changes were made. Run without --dry-run to apply changes.');
+    } else {
+      console.log('\nRestoration complete!');
+    }
     
   } catch (error) {
     console.error('Error restoring filenames:', error);
@@ -408,4 +624,5 @@ async function main() {
   }
 }
 
+// Run the main function
 main();
