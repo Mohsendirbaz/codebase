@@ -14,7 +14,7 @@ const SensitivityIntegration = ({ version, onError }) => {
   const [selectedAlbum, setSelectedAlbum] = useState(null);
   const [albumContent, setAlbumContent] = useState(null);
   const [serverConfig, setServerConfig] = useState({
-    mainServer: 'http://localhost:25007',
+    mainServer: 'http://localhost:5007',
     fallbackServer: 'http://localhost:25007',
     useMainServer: true
   });
@@ -56,60 +56,16 @@ const SensitivityIntegration = ({ version, onError }) => {
   const runSensitivityAnalysis = async (parameters) => {
     setLoading(true);
     try {
-      // Step 1: Generate and save configurations
-      console.log("Step 1: Generating sensitivity configurations...");
-      const configEndpoint = '/sensitivity/configure';
+      // Determine which endpoint to use based on server
+      const endpoint = serverConfig.useMainServer ? '/sensitivity/run' : '/sensitivity/visualization';
       
-      const configResponse = await axios.post(`${getServerUrl()}${configEndpoint}`, {
-        selectedVersions: [version],
-        selectedV: { V1: "on" },
-        selectedF: { F1: "on", F2: "on", F3: "on", F4: "on", F5: "on" },
-        selectedCalculationOption: "calculateForPrice",
-        targetRow: 20,
-        SenParameters: parameters
+      const response = await axios.post(`${getServerUrl()}${endpoint}`, {
+        version,
+        senParameters: parameters
       });
       
-      if (configResponse.data.status !== 'success') {
-        throw new Error(configResponse.data.error || 'Failed to generate configurations');
-      }
-      
-      console.log("Configurations generated successfully:", configResponse.data);
-      
-      // Step 2: Run calculations
-      console.log("Step 2: Running sensitivity calculations...");
-      const runEndpoint = '/runs';
-      
-      const runResponse = await axios.post(`${getServerUrl()}${runEndpoint}`, {
-        selectedVersions: [version],
-        selectedV: { V1: "on" },
-        selectedF: { F1: "on", F2: "on", F3: "on", F4: "on", F5: "on" },
-        selectedCalculationOption: "calculateForPrice",
-        targetRow: 20,
-        SenParameters: parameters
-      });
-      
-      if (runResponse.data.status !== 'success') {
-        throw new Error(runResponse.data.error || 'Failed to run calculations');
-      }
-      
-      console.log("Calculations completed successfully:", runResponse.data);
-      
-      // Step 3: Generate visualizations
-      console.log("Step 3: Generating visualizations...");
-      const visualizeEndpoint = '/sensitivity/visualize';
-      
-      const visualizeResponse = await axios.post(`${getServerUrl()}${visualizeEndpoint}`, {
-        selectedVersions: [version],
-        selectedV: { V1: "on" },
-        selectedF: { F1: "on", F2: "on", F3: "on", F4: "on", F5: "on" },
-        selectedCalculationOption: "calculateForPrice",
-        targetRow: 20,
-        SenParameters: parameters
-      });
-      
-      setResults(visualizeResponse.data);
-      console.log("Visualizations generated successfully:", visualizeResponse.data);
-      return visualizeResponse.data;
+      setResults(response.data);
+      return response.data;
     } catch (error) {
       console.error('Error running sensitivity analysis:', error);
       
@@ -117,10 +73,12 @@ const SensitivityIntegration = ({ version, onError }) => {
       if (serverConfig.useMainServer) {
         try {
           setServerConfig(prev => ({ ...prev, useMainServer: false }));
-          console.log("Trying fallback server...");
-          
-          // Use the fallback server with the same workflow
-          return await runSensitivityAnalysis(parameters);
+          const fallbackResponse = await axios.post(`${serverConfig.fallbackServer}/sensitivity/visualization`, {
+            version,
+            senParameters: parameters
+          });
+          setResults(fallbackResponse.data);
+          return fallbackResponse.data;
         } catch (fallbackError) {
           console.error('Fallback server also failed:', fallbackError);
           if (onError) {
