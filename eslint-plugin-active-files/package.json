@@ -1,0 +1,12 @@
+{
+  "name": "eslint-plugin-active-files",
+  "version": "1.0.0",
+  "description": "ESLint plugin to differentiate between active and inactive project files",
+  "main": "index.js",
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "eslint": "^8.57.0",
+    "glob": "^10.3.10"
+  }
+}
