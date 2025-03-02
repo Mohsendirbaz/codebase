@@ -56,7 +56,7 @@ COMMON_PYTHON_SCRIPTS = [
 
 def get_calculation_script(version):
     """Get the appropriate calculation script based on version number"""
-    script_name = f'config_modules_{version}.py'
+    script_name = f'CFA.py'
     script_path = os.path.join(SCRIPT_DIR, "Core_calculation_engines", script_name)
     if os.path.exists(script_path):
         return script_path

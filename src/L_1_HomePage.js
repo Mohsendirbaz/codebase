@@ -558,6 +558,135 @@ const L_1_HomePageContent = () => {
         */
     };
 
+
+    const handleRuns = async () => {
+        // Set loading state and reset previous results
+        setAnalysisRunning(true);
+        setCalculatedPrices({});
+
+        try {
+            // Prepare request payload with all necessary parameters
+            const requestPayload = {
+                selectedVersions,
+                selectedV: V,
+                selectedF: F,
+                selectedCalculationOption,
+                targetRow: target_row,
+                SenParameters: S,
+            };
+
+            console.log('Running CFA with parameters:', requestPayload);
+
+            // Make API request to run calculations
+            const response = await fetch('http://127.0.0.1:25007/runs', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(requestPayload),
+            });
+
+            // Process the response
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.error || 'Failed to run calculation');
+            }
+
+            const result = await response.json();
+            console.log('Calculation completed successfully:', result);
+
+            // If price calculation was selected, fetch the calculated prices
+            if (selectedCalculationOption === 'calculateForPrice') {
+                await fetchCalculatedPrices_s();
+            }
+
+            // Start real-time monitoring if calculation was successful
+            if (result.status === 'success') {
+                startRealTimeMonitoring_s();
+            }
+        } catch (error) {
+            console.error('Error during CFA calculation:', error);
+            // Could add user notification here
+        } finally {
+            setAnalysisRunning(false);
+        }
+    };
+
+    /**
+     * Fetches calculated prices for all selected versions
+     * This is a separate function to keep the main handleRun function focused
+     */
+    const fetchCalculatedPrices_s = async () => {
+        try {
+            // For each selected version, fetch the calculated price
+            for (const version of selectedVersions) {
+                const priceResponse = await fetch(`http://127.0.0.1:25007/prices/${version}`);
+                
+                if (priceResponse.ok) {
+                    const priceData = await priceResponse.json();
+                    updatePrice(version, priceData.price);
+                    console.log(`Fetched price for version ${version}:`, priceData.price);
+                }
+            }
+        } catch (error) {
+            console.error('Error fetching calculated prices:', error);
+        }
+    };
+
+    /**
+     * Starts real-time monitoring of calculation progress
+     * This function connects to a stream for live updates from the calculation process
+     */
+    const startRealTimeMonitoring_s = () => {
+        // Close any existing stream connections
+        if (window.calculationEventSource) {
+            window.calculationEventSource.close();
+        }
+
+        // For each selected version, set up a stream connection
+        selectedVersions.forEach(version => {
+            // Create a new EventSource connection for streaming updates
+            const eventSource = new EventSource(`http://127.0.0.1:25007/stream_prices/${version}`);
+            window.calculationEventSource = eventSource;
+
+            // Handle incoming messages
+            eventSource.onmessage = (event) => {
+                try {
+                    const data = JSON.parse(event.data);
+                    console.log(`Real-time update for version ${version}:`, data);
+                    
+                    // Update price if available
+                    if (data.price) {
+                        updatePrice(version, data.price);
+                    }
+                    
+                    // Close the stream if the backend signals completion
+                    if (data.complete) {
+                        console.log(`Completed streaming for version ${version}`);
+                        eventSource.close();
+                    }
+                } catch (error) {
+                    console.error('Error processing stream data:', error);
+                }
+            };
+
+            // Handle errors
+            eventSource.onerror = (error) => {
+                console.error(`Error in calculation stream for version ${version}:`, error);
+                eventSource.close();
+            };
+        });
+        
+        /* 
+        // FUTURE ENHANCEMENTS (commented placeholders):
+        // - Add progress indicators for each calculation step
+        // - Implement real-time visualization updates
+        // - Display performance metrics during calculation
+        // - Show memory usage statistics
+        // - Track and display error rates
+        // - Provide estimated completion time
+        */
+    };
+
+
     const handleRunPNG = async () => {
         setAnalysisRunning(true);
         try {
@@ -1246,6 +1375,11 @@ const L_1_HomePageContent = () => {
                                 onClick={handleRun}
                             >
                                 Run CFA
+                            </button>
+                            <button
+                                onClick={handleRuns}
+                            >
+                                Run CFA & Sensitivity
                             </button>
                             <span className="tooltip1">
                                 <p className="left-aligned-text">
