@@ -14,13 +14,13 @@ git rev-parse HEAD  # Should show current
 
 git remote -v  # Should show https://github.com/Mohsendirbaz/SF.git
 
-git checkout -b SF.R33
+git checkout -b SF.R34
 
 git add .
 
 git commit -m "ESLint in progress"
 
-git push origin SF.R33
+git push origin SF.R34
 
 
 # Remove existing temp directory (already done)
