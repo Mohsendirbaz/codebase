@@ -8,9 +8,11 @@ These components are unusually large and might benefit from being split:
 |-----------|------|--------------|--------------|------------|
 | TooltipWithMore | FormHeader.js | 7468 | 66 | Consider breaking into smaller components for maintainability |
 | GeneralFormConfig | GeneralFormConfig.js | 10637 | 36 | Consider breaking into smaller components for maintainability |
-| L_1_HomePageContent | L_1_HomePage.js | 56333 | 120 | Consider breaking into smaller components for maintainability |
+| L_1_HomePageContent | L_1_HomePage.js | 64041 | 159 | Consider breaking into smaller components for maintainability |
 | Popup | Popup.js | 8215 | 25 | Consider breaking into smaller components for maintainability |
+| PriceOptimizationConfig | PriceOptimizationConfig.js | 11513 | 53 | Consider breaking into smaller components for maintainability |
 | SensitivityVisualization | SensitivityVisualization.js | 3270 | 21 | Consider breaking into smaller components for maintainability |
+| SensitivityIntegration | components/SensitivityIntegration.js | 11629 | 37 | Consider breaking into smaller components for maintainability |
 | Dialog | components/SensitivitySelector.js | 15747 | 47 | Consider breaking into smaller components for maintainability |
 | Tooltip | extended_scaling/ExtendedScaling.js | 22754 | 48 | Consider breaking into smaller components for maintainability |
 | ScalingSummary | extended_scaling/ScalingSummary.js | 22677 | 54 | Consider breaking into smaller components for maintainability |
@@ -38,6 +40,7 @@ These components have multiple props but lack PropTypes or TypeScript interfaces
 | CustomizableImage | CustomizableImage.js | 6 | Consider adding PropTypes or TypeScript interfaces |
 | GeneralFormConfig | GeneralFormConfig.js | 11 | Consider adding PropTypes or TypeScript interfaces |
 | Popup | Popup.js | 9 | Consider adding PropTypes or TypeScript interfaces |
+| CalculationMonitor | components/CalculationMonitor.js | 4 | Consider adding PropTypes or TypeScript interfaces |
 | Dialog | components/SensitivitySelector.js | 5 | Consider adding PropTypes or TypeScript interfaces |
 | ScalingSummary | extended_scaling/ScalingSummary.js | 7 | Consider adding PropTypes or TypeScript interfaces |
 | ActionButtons | components/buttons/ActionButtons.js | 8 | Consider adding PropTypes or TypeScript interfaces |
@@ -68,7 +71,7 @@ These components have high complexity and many dependencies:
 
 | Component | File | Import Count | Suggestion |
 |-----------|------|--------------|------------|
-| L_1_HomePageContent | L_1_HomePage.js | 26 | Consider refactoring into smaller, more focused components |
+| L_1_HomePageContent | L_1_HomePage.js | 33 | Consider refactoring into smaller, more focused components |
 | ModelZone | components/model/ModelZone.js | 14 | Consider refactoring into smaller, more focused components |
 | TabContent | components/tabs/TabContent.js | 18 | Consider refactoring into smaller, more focused components |
 

@@ -11,14 +11,16 @@ L_1_HomePageContent,TooltipWithMore,Imports,L_1_HomePage.js,FormHeader.js
 L_1_HomePageContent,GeneralFormConfig,Imports,L_1_HomePage.js,GeneralFormConfig.js
 L_1_HomePageContent,Popup,Imports,L_1_HomePage.js,Popup.js
 L_1_HomePageContent,PropertySelector,Imports,L_1_HomePage.js,PropertySelector.js
+L_1_HomePageContent,MultiVersionSelector,Imports,L_1_HomePage.js,MultiVersionSelector.js
 L_1_HomePageContent,TodoList,Imports,L_1_HomePage.js,TodoList.js
 L_1_HomePageContent,VersionSelector,Imports,L_1_HomePage.js,VersionSelector.js
 L_1_HomePageContent,useFormValues,Imports,L_1_HomePage.js,useFormValues.js
 L_1_HomePageContent,CustomizableImage,Renders,L_1_HomePage.js,Unknown
 L_1_HomePageContent,CustomizableTable,Renders,L_1_HomePage.js,Unknown
-L_1_HomePageContent,Popup,Renders,L_1_HomePage.js,Unknown
 L_1_HomePageContent,GeneralFormConfig,Renders,L_1_HomePage.js,Unknown
+L_1_HomePageContent,CalculationMonitor,Renders,L_1_HomePage.js,Unknown
 L_1_HomePageContent,PropertySelector,Renders,L_1_HomePage.js,Unknown
+L_1_HomePageContent,MultiVersionSelector,Renders,L_1_HomePage.js,Unknown
 L_1_HomePageContent,ModelZone,Renders,L_1_HomePage.js,Unknown
 L_1_HomePageContent,VersionSelector,Renders,L_1_HomePage.js,Unknown
 L_1_HomePageContent,SpatialTransformComponent,Renders,L_1_HomePage.js,Unknown
