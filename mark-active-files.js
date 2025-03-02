@@ -150,6 +150,10 @@ const renameFile = async (filePath, status, projectRoot) => {
  * Update import statements in a file
  * @param {string} filePath - Path to the file to update
  * @param {Map} renamedFiles - Map of original filenames to prefixed filenames
+ * @returns {boolean} - Whether the file was updated
+ * Update import statements in a file
+ * @param {string} filePath - Path to the file to update
+ * @param {Map} renamedFiles - Map of original filenames to prefixed filenames
  * @param {Object} importedByMap - Map from the report showing which files import each file
  * @returns {boolean} - Whether the file was updated
  */
