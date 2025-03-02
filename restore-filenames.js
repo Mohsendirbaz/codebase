@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Script to restore original filenames by removing [A]_ and [I]_ prefixes
+ * Script to restore original filenames by removing [A] and [I] prefixes
  * Optimized for better performance with:
  * - Configurable prefix removal depth
  * - Enhanced handling of multiple accumulated prefixes
@@ -409,7 +409,8 @@ const cleanImportsInFile = (filePath, forceMode = false) => {
             return segment;
           }
           
-          return cleanFromPrefixes(segment);
+          const { cleaned } = cleanFromPrefixes(segment);
+          return cleaned;
         });
         
         // Rejoin the segments
@@ -565,21 +566,24 @@ Example:
     } else {
       // Update imports in all files
       console.log('\nUpdating import statements...');
-      const allFiles = glob.sync('./src/**/*.{js,jsx,ts,tsx,css}', { ignore: ['**/node_modules/**'] });
+      
+      // Get a list of all files, ensuring we only match actual files, not directories
+      const allFilesRaw = glob.sync('./src/**/*.{js,jsx,ts,tsx,css}', { ignore: ['**/node_modules/**'] });
+      const allFiles = allFilesRaw.filter(file => isFile(file)); // This is critical to avoid the EISDIR error
+      
       console.log(`Found ${allFiles.length} files to check for import updates`);
       
       // Special handling for index.js - always process it regardless of other conditions
       const indexJsPath = path.join(process.cwd(), 'src/index.js');
-      if (fs.existsSync(indexJsPath)) {
+      if (fs.existsSync(indexJsPath) && isFile(indexJsPath)) {
         console.log('\nSpecial handling: Processing index.js imports...');
         cleanImportsInFile(indexJsPath, options.force);
         console.log('✓ Completed special processing of index.js');
       } else {
-        console.log('Warning: index.js not found at expected path');
+        console.log('Warning: index.js not found at expected path or is not a file');
       }
       
       // Filter files to only process those that might have imports with prefixes
-      // This avoids unnecessary processing of files that don't have imports with prefixes
       console.log('\nScanning files for imports with prefixes...');
       
       let importsUpdatedCount = 0;
@@ -589,15 +593,29 @@ Example:
         // Skip index.js as it's already been processed
         if (file === indexJsPath) return;
         
-        // Track if imports were updated
-        const fileContent = fs.readFileSync(file, 'utf8');
-        const hasMarkers = fileContent.includes('[A]') || fileContent.includes('[I]');
+        // Skip directories to avoid EISDIR error
+        if (isDirectory(file)) {
+          logVerbose(`Skipping directory: ${file}`);
+          return;
+        }
         
-        if (hasMarkers) {
-          cleanImportsInFile(file, options.force);
-          importsUpdatedCount++;
-        } else {
-          logVerbose(`Skipping ${file} - no markers found`);
+        try {
+          // Track if imports were updated
+          const fileContent = fs.readFileSync(file, 'utf8');
+          const hasMarkers = fileContent.includes('[A]') || fileContent.includes('[I]');
+          
+          if (hasMarkers) {
+            cleanImportsInFile(file, options.force);
+            importsUpdatedCount++;
+          } else {
+            logVerbose(`Skipping ${file} - no markers found`);
+          }
+        } catch (error) {
+          if (error.code === 'EISDIR') {
+            logVerbose(`Skipping directory (caught error): ${file}`);
+          } else {
+            console.error(`Error processing file ${file}:`, error.message);
+          }
         }
       });
       

@@ -14,13 +14,13 @@ git rev-parse HEAD  # Should show current
 
 git remote -v  # Should show https://github.com/Mohsendirbaz/SF.git
 
-git checkout -b SF.R36
+git checkout -b SF.R37
 
 git add .
 
-git commit -m "ESLint in progress-mark-active-file imported from claude3.7 outside"
+git commit -m "Functional ESLint node run-active-files-analysis.js and node restore-filenames.js and node run-active-files-analysis.js"
 
-git push origin SF.R36
+git push origin SF.R37
 
 
 # Remove existing temp directory (already done)
