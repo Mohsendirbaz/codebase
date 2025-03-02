@@ -149,7 +149,13 @@ async function main() {
       overrideConfig: {
         rules: {
           // Temporarily set the rule to "warn" for analysis
-          'active-files/active-files-tracker': ['warn', { entryPoint: 'src/index.js' }]
+          'active-files/active-files-tracker': [
+            'warn', 
+            { 
+              entryPoint: 'src/index.js',
+              silentMode: false // Explicitly disable silent mode for analysis
+            }
+          ]
         }
       }
     });

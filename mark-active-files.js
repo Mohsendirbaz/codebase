@@ -14,8 +14,8 @@
 const fs = require('fs').promises;
 const fsSync = require('fs');
 const path = require('path');
-const glob = require('glob');
 const util = require('util');
+const { glob } = require('glob');
 
 // Convert glob to a promise-based function
 const globAsync = util.promisify(glob);
@@ -91,95 +91,11 @@ const renameFile = async (filePath, status, projectRoot) => {
 };
 
 /**
- * Systematically analyzes and cleans import paths with prefixes
- * This function handles all types of prefixes in a consistent way
- * @param {string} importPath - The import path to clean
- * @returns {string} - The cleaned import path
+ * Update import statements in a file
+ * @param {string} filePath - Path to the file to update
+ * @param {Map} renamedFiles - Map of original filenames to prefixed filenames
+ * @returns {boolean} - Whether the file was updated
  */
-const cleanImportPath = (importPath) => {
-  // Handle known problematic patterns first
-  const knownPatterns = [
-    { pattern: /\.\/Filter\[(A|I)\]_Popup(\.css)?$/, replacement: './FilterPopup$2' },
-    { pattern: /\.\/Model\[(A|I)\]_Card$/, replacement: './ModelCard' },
-    { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
-    { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
-    // Add patterns for L_1_HomePage.CSS files
-    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage_$2.css' }
-  ];
-  
-  // Try each known pattern
-  for (const { pattern, replacement } of knownPatterns) {
-    if (pattern.test(importPath)) {
-      return importPath.replace(pattern, replacement);
-    }
-  }
-  
-  // If no known pattern matched, proceed with systematic cleaning
-  // Split the path into segments for systematic processing
-  const segments = importPath.split('/');
-  
-  // Process each segment individually using a systematic approach
-  const processedSegments = segments.map(segment => {
-    // Skip segments without prefixes
-    if (!segment.includes('[A]_') && !segment.includes('[I]_')) {
-      return segment;
-    }
-    
-    // Step 1: Normalize any duplicate or mixed prefixes
-    let normalizedSegment = segment;
-    
-    // Handle duplicate prefixes ([A]_[A]_ or [I]_[I]_)
-    normalizedSegment = normalizedSegment.replace(/\[(A|I)\]_\[(A|I)\]_/g, (match) => {
-      return match.includes('[A]') ? '[A]_' : '[I]_';
-    });
-    
-    // Handle mixed prefixes ([A]_[I]_ or [I]_[A]_) - active always takes precedence
-    normalizedSegment = normalizedSegment.replace(/\[A\]_\[I\]_|\[I\]_\[A\]_/g, '[A]_');
-    
-    // Step 2: Identify the structure of the segment
-    // This helps us determine if the prefix is at the beginning, middle, or part of a nested structure
-    
-    // Case 1: Prefix at the beginning (most common case)
-    if (normalizedSegment.match(/^\[(A|I)\]_/)) {
-      return normalizedSegment.replace(/^\[(A|I)\]_/, '');
-    }
-    
-    // Case 2: Prefix in the middle of a complete name
-    // We need to ensure we're matching a complete name, not a partial one
-    const middlePrefixMatch = normalizedSegment.match(/^(.+?)\[(A|I)\]_(.+)$/);
-    if (middlePrefixMatch) {
-      // Extract the parts before and after the prefix
-      const [_, before, type, after] = middlePrefixMatch;
-      
-      // Check if this is a complete name by looking for delimiters
-      // In a file path, delimiters would be characters like '.', '_', etc.
-      const isCompleteName = !before.includes('.') && !after.includes('.');
-      
-      if (isCompleteName) {
-        return before + after;
-      }
-    }
-    
-    // Case 3: Nested structure with prefixes
-    // Handle cases like "dir/[A]_file" or "dir.[A]_subdir"
-    const nestedMatch = normalizedSegment.match(/^(.+?)[._/](\[(A|I)\]_.+)$/);
-    if (nestedMatch) {
-      const [_, basePart, prefixedPart] = nestedMatch;
-      // Recursively clean the prefixed part
-      const cleanedPrefixedPart = cleanImportPath(prefixedPart);
-      return basePart + '.' + cleanedPrefixedPart;
-    }
-    
-    // If we couldn't determine a specific case, return the segment as is
-    return normalizedSegment;
-  });
-  
-  // Rejoin the segments to form the cleaned path
-  return processedSegments.join('/');
-};
-
-// Function to update imports in a file after renaming
 const updateImportsInFile = async (filePath, renamedFiles) => {
   try {
     if (!await fileExists(filePath)) {
@@ -189,99 +105,335 @@ const updateImportsInFile = async (filePath, renamedFiles) => {
     let content = await fs.readFile(filePath, 'utf8');
     let updated = false;
     
-    // First, build a map of file status (active or inactive)
-    const fileStatusMap = new Map();
-    for (const [oldPath, newPath] of renamedFiles) {
-      // Determine if the file is active or inactive based on its new name
-      const isActive = path.basename(newPath).startsWith('[A]_');
-      fileStatusMap.set(oldPath, isActive);
-    }
+    // Create a more comprehensive lookup map for faster access
+    const directLookup = new Map();
+    const filesByBaseName = new Map();
+    const filesByName = new Map();
     
-    // Update import statements to reflect renamed files
-    for (const [oldRelativePath, newRelativePath] of renamedFiles) {
-      // Skip if the paths are the same
-      if (oldRelativePath === newRelativePath) continue;
+    // Process the renamed files map to create a more comprehensive lookup
+    for (const [oldPath, newPath] of renamedFiles.entries()) {
+      // Skip if the paths are the same or if either is not a string
+      if (oldPath === newPath || typeof oldPath !== 'string' || typeof newPath !== 'string') continue;
       
-      const oldImportPath = oldRelativePath.replace(/\\/g, '/');
-      const newImportPath = newRelativePath.replace(/\\/g, '/');
+      // Normalize paths for consistent comparison (always use forward slashes)
+      const oldNormPath = oldPath.replace(/\\/g, '/');
+      const newNormPath = typeof newPath === 'string' ? newPath.replace(/\\/g, '/') : newPath;
       
-      // Extract directory and filename parts
-      const oldDir = path.dirname(oldImportPath);
-      const oldFileName = path.basename(oldImportPath, path.extname(oldImportPath));
-      const oldExt = path.extname(oldImportPath);
+      // Get the prefix ([A]_ or [I]_) from the new path
+      let prefix = '';
+      if (typeof newNormPath === 'string') {
+        const baseName = path.basename(newNormPath);
+        if (baseName.startsWith('[A]_')) {
+          prefix = '[A]_';
+        } else if (baseName.startsWith('[I]_')) {
+          prefix = '[I]_';
+        }
+      }
       
-      const newDir = path.dirname(newImportPath);
-      const newFileName = path.basename(newImportPath);
+      if (!prefix) continue; // Skip if we couldn't determine the prefix
       
-      // Determine if the file is active or inactive
-      const isActive = newFileName.startsWith('[A]_');
-      const prefix = isActive ? '[A]_' : '[I]_';
+      // Extract file information
+      const oldBaseName = path.basename(oldNormPath);
+      const oldFileName = path.basename(oldNormPath, path.extname(oldNormPath));
+      const oldExt = path.extname(oldNormPath);
       
-      // For import paths, we need to add the prefix to the filename part
-      // but keep the directory structure the same
-      if (filePath.toLowerCase().endsWith('.css')) {
-        // Handle CSS @import statements: @import url('./path/file.css')
-        const cssAtImportRegex = new RegExp(`@import\\s+url\\(['"](\\.\\./|\\./)?${oldDir !== '.' ? oldDir + '/' : ''}(${oldFileName})(${oldExt}['"]\\))`, 'g');
-        content = content.replace(cssAtImportRegex, (match, leadingDots, fileName, ext) => {
-          const dots = leadingDots || './';
-          const dir = oldDir !== '.' ? oldDir + '/' : '';
-          updated = true;
-          return `@import url('${dots}${dir}${prefix}${fileName}${ext}`;
-        });
-        
-        // Handle CSS @import statements without url(): @import './path/file.css'
-        const cssAtImportNoUrlRegex = new RegExp(`@import\\s+['"](\\.\\./|\\./)?${oldDir !== '.' ? oldDir + '/' : ''}(${oldFileName})(${oldExt}['"])`, 'g');
-        content = content.replace(cssAtImportNoUrlRegex, (match, leadingDots, fileName, ext) => {
-          const dots = leadingDots || './';
-          const dir = oldDir !== '.' ? oldDir + '/' : '';
-          updated = true;
-          return `@import '${dots}${dir}${prefix}${fileName}${ext}`;
-        });
-      } else {
-        // JS/TS files
-        
-        // Replace import statements - handle both ES6 imports and CSS imports
-        // ES6 imports: import X from './path/file'
-        const importRegex = new RegExp(`from\\s+['"](\\.\\./|\\./)?${oldDir !== '.' ? oldDir + '/' : ''}(${oldFileName})(['"])`, 'g');
-        content = content.replace(importRegex, (match, leadingDots, fileName, quote) => {
-          const dots = leadingDots || './';
-          const dir = oldDir !== '.' ? oldDir + '/' : '';
-          updated = true;
-          return `from '${dots}${dir}${prefix}${fileName}${quote}`;
-        });
-        
-        // CSS imports: import './path/file.css'
-        const cssImportRegex = new RegExp(`import\\s+['"](\\.\\./|\\./)?${oldDir !== '.' ? oldDir + '/' : ''}(${oldFileName})(${oldExt}['"])`, 'g');
-        content = content.replace(cssImportRegex, (match, leadingDots, fileName, ext) => {
-          const dots = leadingDots || './';
-          const dir = oldDir !== '.' ? oldDir + '/' : '';
-          updated = true;
-          return `import '${dots}${dir}${prefix}${fileName}${ext}`;
-        });
-        
-        // Handle require statements: require('./path/file')
-        const requireRegex = new RegExp(`require\\s*\\(['"](\\.\\./|\\./)?${oldDir !== '.' ? oldDir + '/' : ''}(${oldFileName})(['"])\\)`, 'g');
-        content = content.replace(requireRegex, (match, leadingDots, fileName, quote) => {
-          const dots = leadingDots || './';
-          const dir = oldDir !== '.' ? oldDir + '/' : '';
-          updated = true;
-          return `require('${dots}${dir}${prefix}${fileName}${quote})`;
-        });
+      // Store in multiple maps for different lookup strategies
+      
+      // 1. Full path map (with all variations of path format)
+      directLookup.set(oldNormPath, { newPath: newNormPath, prefix, fileName: oldFileName, ext: oldExt });
+      directLookup.set(oldNormPath.replace(/^\.\//, ''), { newPath: newNormPath, prefix, fileName: oldFileName, ext: oldExt });
+      if (!oldNormPath.startsWith('./')) {
+        directLookup.set(`./${oldNormPath}`, { newPath: newNormPath, prefix, fileName: oldFileName, ext: oldExt });
+      }
+      
+      // 2. Basename map (for files with the same name in different directories)
+      if (!filesByBaseName.has(oldBaseName)) {
+        filesByBaseName.set(oldBaseName, []);
+      }
+      filesByBaseName.get(oldBaseName).push({ 
+        oldPath: oldNormPath, 
+        newPath: newNormPath, 
+        prefix, 
+        fileName: oldFileName, 
+        ext: oldExt 
+      });
+      
+      // 3. Filename map (without extension)
+      if (!filesByName.has(oldFileName)) {
+        filesByName.set(oldFileName, []);
+      }
+      filesByName.get(oldFileName).push({ 
+        oldPath: oldNormPath, 
+        newPath: newNormPath, 
+        prefix, 
+        fileName: oldFileName, 
+        ext: oldExt 
+      });
+      
+      // 4. Special handling for extensions
+      if (oldExt) {
+        // Without extension
+        const withoutExt = oldNormPath.substring(0, oldNormPath.length - oldExt.length);
+        directLookup.set(withoutExt, { newPath: newNormPath, prefix, fileName: oldFileName, ext: oldExt });
+        directLookup.set(withoutExt.replace(/^\.\//, ''), { newPath: newNormPath, prefix, fileName: oldFileName, ext: oldExt });
+        if (!withoutExt.startsWith('./')) {
+          directLookup.set(`./${withoutExt}`, { newPath: newNormPath, prefix, fileName: oldFileName, ext: oldExt });
+        }
       }
     }
     
-    // Special handling for L_1_HomePage.CSS imports
-    const l1HomePageCssRegex = /import\s+['"]\.\/L_1_HomePage\.CSS\/([^'"]+)['"]|from\s+['"]\.\/L_1_HomePage\.CSS\/([^'"]+)['"]/g;
+    // Log the lookup maps for debugging
+    if (options.verbose) {
+      console.log(`\nDirect lookup map for ${filePath} has ${directLookup.size} entries`);
+      console.log(`Basename map has ${filesByBaseName.size} entries`);
+      console.log(`Filename map has ${filesByName.size} entries`);
+    }
+    
+    // Helper function to find the best match for an import path
+    const findBestMatch = (importPath) => {
+      // Normalize the import path
+      const normImportPath = importPath.replace(/\\/g, '/');
+      
+      // Try direct lookup first (most precise)
+      if (directLookup.has(normImportPath)) {
+        return directLookup.get(normImportPath);
+      }
+      
+      // Parse the import path
+      const importDir = path.dirname(normImportPath);
+      const importBaseName = path.basename(normImportPath);
+      const importExt = path.extname(normImportPath);
+      const importFileName = importExt ? path.basename(normImportPath, importExt) : importBaseName;
+      
+      // Try by basename if we have an extension
+      if (importExt && filesByBaseName.has(importBaseName)) {
+        const candidates = filesByBaseName.get(importBaseName);
+        
+        // If there's only one candidate, use it
+        if (candidates.length === 1) {
+          return candidates[0];
+        }
+        
+        // If there are multiple candidates, try to find the best match by directory
+        for (const candidate of candidates) {
+          const candidateDir = path.dirname(candidate.oldPath);
+          if (candidateDir === importDir || candidateDir.endsWith(`/${importDir}`)) {
+            return candidate;
+          }
+        }
+        
+        // If no good match by directory, just use the first one
+        return candidates[0];
+      }
+      
+      // Try by filename without extension
+      if (filesByName.has(importFileName)) {
+        const candidates = filesByName.get(importFileName);
+        
+        // If there's only one candidate, use it
+        if (candidates.length === 1) {
+          return candidates[0];
+        }
+        
+        // If there are multiple candidates, try to find the best match by directory
+        for (const candidate of candidates) {
+          const candidateDir = path.dirname(candidate.oldPath);
+          if (candidateDir === importDir || candidateDir.endsWith(`/${importDir}`)) {
+            return candidate;
+          }
+        }
+        
+        // If no good match by directory, just use the first one
+        return candidates[0];
+      }
+      
+      // No match found
+      return null;
+    };
+    
+    // Process different types of imports
+    
+    // 1. Handle ES6 imports: import X from './path/file'
+    const es6ImportRegex = /import\s+(?:(?:{[^}]*}|\*\s+as\s+\w+|\w+)(?:\s*,\s*(?:{[^}]*}|\*\s+as\s+\w+|\w+))*\s+from\s+)?['"]([^'"]+)['"]/g;
     let match;
-    while ((match = l1HomePageCssRegex.exec(content)) !== null) {
-      const cssFile = match[1] || match[2];
-      if (!cssFile.startsWith('[A]_') && !cssFile.startsWith('[I]_')) {
-        // Determine if this CSS file is active or inactive
-        // For simplicity, we'll mark all CSS files as active
-        const prefix = '[A]_';
-        const newImport = match[0].replace(`./L_1_HomePage.CSS/${cssFile}`, `./L_1_HomePage.CSS/${prefix}${cssFile}`);
-        content = content.replace(match[0], newImport);
+    
+    // Reset regex lastIndex
+    es6ImportRegex.lastIndex = 0;
+    
+    while ((match = es6ImportRegex.exec(content)) !== null) {
+      const importPath = match[1];
+      const originalImport = match[0];
+      
+      // Skip node_modules imports
+      if (importPath.startsWith('@') || (!importPath.startsWith('.') && !importPath.includes('/'))) {
+        continue;
+      }
+      
+      // Find the best match for this import path
+      const fileInfo = findBestMatch(importPath);
+      
+      // If we found a match, update the import
+      if (fileInfo) {
+        // Parse the import path
+        const importDir = path.dirname(importPath);
+        const importExt = path.extname(importPath) || fileInfo.ext || '.js'; // Use the extension from the import path, or the file info, or default to .js
+        
+        // Construct the new import path
+        let newImportPath;
+        
+        if (importDir === '.') {
+          // Direct import from current directory
+          newImportPath = `./${fileInfo.prefix}${fileInfo.fileName}${importExt}`;
+        } else {
+          // Import from subdirectory
+          newImportPath = `${importDir}/${fileInfo.prefix}${fileInfo.fileName}${importExt}`;
+        }
+        
+        // Replace the import statement
+        const newImport = originalImport.replace(importPath, newImportPath);
+        content = content.replace(originalImport, newImport);
         updated = true;
+        
+        console.log(`Updated import in ${filePath}: ${originalImport} -> ${newImport}`);
+      }
+    }
+    
+    // 2. Handle CSS imports: import './path/file.css'
+    const cssImportRegex = /import\s+['"]([^'"]+\.css)['"]/g;
+    
+    // Reset regex lastIndex
+    cssImportRegex.lastIndex = 0;
+    
+    while ((match = cssImportRegex.exec(content)) !== null) {
+      const importPath = match[1];
+      const originalImport = match[0];
+      
+      // Skip node_modules imports
+      if (!importPath.startsWith('.') && !importPath.includes('/')) {
+        continue;
+      }
+      
+      // Find the best match for this import path
+      const fileInfo = findBestMatch(importPath);
+      
+      // If we found a match, update the import
+      if (fileInfo) {
+        // Parse the import path
+        const importDir = path.dirname(importPath);
+        
+        // Construct the new import path
+        let newImportPath;
+        
+        if (importDir === '.') {
+          // Direct import from current directory
+          newImportPath = `./${fileInfo.prefix}${fileInfo.fileName}.css`;
+        } else {
+          // Import from subdirectory
+          newImportPath = `${importDir}/${fileInfo.prefix}${fileInfo.fileName}.css`;
+        }
+        
+        // Replace the import statement
+        const newImport = originalImport.replace(importPath, newImportPath);
+        content = content.replace(originalImport, newImport);
+        updated = true;
+        
+        console.log(`Updated CSS import in ${filePath}: ${originalImport} -> ${newImport}`);
+      }
+    }
+    
+    // 3. Handle require statements: require('./path/file')
+    const requireRegex = /require\s*\(\s*['"]([^'"]+)['"]\s*\)/g;
+    
+    // Reset regex lastIndex
+    requireRegex.lastIndex = 0;
+    
+    while ((match = requireRegex.exec(content)) !== null) {
+      const importPath = match[1];
+      const originalRequire = match[0];
+      
+      // Skip node_modules imports
+      if (!importPath.startsWith('.') && !importPath.includes('/')) {
+        continue;
+      }
+      
+      // Find the best match for this import path
+      const fileInfo = findBestMatch(importPath);
+      
+      // If we found a match, update the import
+      if (fileInfo) {
+        // Parse the import path
+        const importDir = path.dirname(importPath);
+        const importExt = path.extname(importPath) || fileInfo.ext || '.js'; // Use the extension from the import path, or the file info, or default to .js
+        
+        // Construct the new import path
+        let newImportPath;
+        
+        if (importDir === '.') {
+          // Direct import from current directory
+          newImportPath = `./${fileInfo.prefix}${fileInfo.fileName}${importExt}`;
+        } else {
+          // Import from subdirectory
+          newImportPath = `${importDir}/${fileInfo.prefix}${fileInfo.fileName}${importExt}`;
+        }
+        
+        // Replace the require statement
+        const newRequire = originalRequire.replace(importPath, newImportPath);
+        content = content.replace(originalRequire, newRequire);
+        updated = true;
+        
+        console.log(`Updated require in ${filePath}: ${originalRequire} -> ${newRequire}`);
+      }
+    }
+    
+    // 4. Special handling for CSS @import statements
+    const cssAtImportRegex = /@import\s+(?:url\(['"]?([^'")]+)['"]?\)|['"]([^'"]+)['"]);/g;
+    
+    // Reset regex lastIndex
+    cssAtImportRegex.lastIndex = 0;
+    
+    while ((match = cssAtImportRegex.exec(content)) !== null) {
+      const importPath = match[1] || match[2];
+      const originalImport = match[0];
+      
+      // Skip absolute URLs or node_modules imports
+      if (!importPath || (!importPath.startsWith('.') && !importPath.includes('/'))) {
+        continue;
+      }
+      
+      // Find the best match for this import path
+      const fileInfo = findBestMatch(importPath);
+      
+      // If we found a match, update the import
+      if (fileInfo) {
+        // Parse the import path
+        const importDir = path.dirname(importPath);
+        const importExt = path.extname(importPath) || fileInfo.ext || '.css'; // Use the extension from the import path, or the file info, or default to .css
+        
+        // Construct the new import path
+        let newImportPath;
+        
+        if (importDir === '.') {
+          // Direct import from current directory
+          newImportPath = `./${fileInfo.prefix}${fileInfo.fileName}${importExt}`;
+        } else {
+          // Import from subdirectory
+          newImportPath = `${importDir}/${fileInfo.prefix}${fileInfo.fileName}${importExt}`;
+        }
+        
+        // Replace the import statement
+        let newImport;
+        if (match[1]) {
+          // url() format
+          newImport = originalImport.replace(importPath, newImportPath);
+        } else {
+          // direct string format
+          newImport = originalImport.replace(importPath, newImportPath);
+        }
+        
+        content = content.replace(originalImport, newImport);
+        updated = true;
+        
+        console.log(`Updated CSS @import in ${filePath}: ${originalImport} -> ${newImport}`);
       }
     }
     
@@ -293,6 +445,8 @@ const updateImportsInFile = async (filePath, renamedFiles) => {
         console.log(`[DRY RUN] Would update imports in ${filePath}`);
       }
       return true;
+    } else {
+      logVerbose(`No imports updated in ${filePath}`);
     }
     
     return false;
@@ -397,7 +551,30 @@ Example:
       const filePath = path.join(projectRoot, file);
       const result = await renameFile(filePath, 'active', projectRoot);
       if (result) {
-        renamedFiles.set(file, path.relative(projectRoot, result.newPath));
+        // Store both the full path and the relative path
+        const oldRelativePath = file;
+        const newRelativePath = path.relative(projectRoot, result.newPath);
+        
+        // Store with multiple keys for better matching
+        renamedFiles.set(oldRelativePath, newRelativePath);
+        
+        // Also store by basename for simpler lookups
+        const oldBaseName = path.basename(oldRelativePath);
+        const newBaseName = path.basename(newRelativePath);
+        renamedFiles.set(oldBaseName, newBaseName);
+        
+        // And store without extension
+        const oldFileNameNoExt = path.basename(oldRelativePath, path.extname(oldRelativePath));
+        const newFileNameNoExt = path.basename(newRelativePath, path.extname(newRelativePath));
+        if (oldFileNameNoExt !== oldBaseName) {
+          renamedFiles.set(oldFileNameNoExt, newFileNameNoExt);
+        }
+        
+        logVerbose(`Added to rename map: ${oldRelativePath} -> ${newRelativePath}`);
+        logVerbose(`Also added: ${oldBaseName} -> ${newBaseName}`);
+        if (oldFileNameNoExt !== oldBaseName) {
+          logVerbose(`Also added: ${oldFileNameNoExt} -> ${newFileNameNoExt}`);
+        }
       }
     });
     
@@ -407,19 +584,114 @@ Example:
       const filePath = path.join(projectRoot, file);
       const result = await renameFile(filePath, 'inactive', projectRoot);
       if (result) {
-        renamedFiles.set(file, path.relative(projectRoot, result.newPath));
+        // Store both the full path and the relative path
+        const oldRelativePath = file;
+        const newRelativePath = path.relative(projectRoot, result.newPath);
+        
+        // Store with multiple keys for better matching
+        renamedFiles.set(oldRelativePath, newRelativePath);
+        
+        // Also store by basename for simpler lookups
+        const oldBaseName = path.basename(oldRelativePath);
+        const newBaseName = path.basename(newRelativePath);
+        renamedFiles.set(oldBaseName, newBaseName);
+        
+        // And store without extension
+        const oldFileNameNoExt = path.basename(oldRelativePath, path.extname(oldRelativePath));
+        const newFileNameNoExt = path.basename(newRelativePath, path.extname(newRelativePath));
+        if (oldFileNameNoExt !== oldBaseName) {
+          renamedFiles.set(oldFileNameNoExt, newFileNameNoExt);
+        }
+        
+        logVerbose(`Added to rename map: ${oldRelativePath} -> ${newRelativePath}`);
+        logVerbose(`Also added: ${oldBaseName} -> ${newBaseName}`);
+        if (oldFileNameNoExt !== oldBaseName) {
+          logVerbose(`Also added: ${oldFileNameNoExt} -> ${newFileNameNoExt}`);
+        }
       }
     });
     
-    // Update imports in all files to reflect the renamed files
-    if (!options.skipImports) {
-      console.log('\nUpdating import statements...');
-      const allFiles = await globAsync('./src/**/*.{js,jsx,ts,tsx,css}', { ignore: ['**/node_modules/**'] });
-      console.log(`Found ${allFiles.length} files to check for import updates`);
-      
-      await processBatchedFiles(allFiles, async (file) => {
-        await updateImportsInFile(file, renamedFiles);
-      });
+    // Log the rename map for debugging
+    if (options.verbose) {
+      console.log('\nRename map:');
+      for (const [oldPath, newPath] of renamedFiles.entries()) {
+        console.log(`  ${oldPath} -> ${newPath}`);
+      }
+    }
+    
+      // Update imports in all files to reflect the renamed files
+      if (!options.skipImports) {
+        console.log('\nUpdating import statements...');
+        const allFiles = await globAsync('./src/**/*.{js,jsx,ts,tsx,css}', { ignore: ['**/node_modules/**'] });
+        console.log(`Found ${allFiles.length} files to check for import updates`);
+        
+        // First, ensure we have a complete map of all renamed files
+        console.log('Building comprehensive rename map...');
+        
+        // Add entries for all active files (even if they weren't renamed)
+        for (const file of activeFiles) {
+          const filePath = path.join(projectRoot, file);
+          const dirName = path.dirname(filePath);
+          const fileName = path.basename(filePath);
+          const cleanFileName = fileName.replace(/^\[(A|I)\]_/, '');
+          const prefixedFileName = `[A]_${cleanFileName}`;
+          
+          // Only add if not already in the map
+          if (!renamedFiles.has(cleanFileName)) {
+            renamedFiles.set(cleanFileName, prefixedFileName);
+            logVerbose(`Added active file to rename map: ${cleanFileName} -> ${prefixedFileName}`);
+          }
+          
+          // Also add without extension
+          const fileExt = path.extname(fileName);
+          if (fileExt) {
+            const fileNameNoExt = cleanFileName.slice(0, -fileExt.length);
+            const prefixedFileNameNoExt = `[A]_${fileNameNoExt}`;
+            if (!renamedFiles.has(fileNameNoExt)) {
+              renamedFiles.set(fileNameNoExt, prefixedFileNameNoExt);
+              logVerbose(`Added active file (no ext) to rename map: ${fileNameNoExt} -> ${prefixedFileNameNoExt}`);
+            }
+          }
+        }
+        
+        // Add entries for all inactive files (even if they weren't renamed)
+        for (const file of inactiveFiles) {
+          const filePath = path.join(projectRoot, file);
+          const dirName = path.dirname(filePath);
+          const fileName = path.basename(filePath);
+          const cleanFileName = fileName.replace(/^\[(A|I)\]_/, '');
+          const prefixedFileName = `[I]_${cleanFileName}`;
+          
+          // Only add if not already in the map
+          if (!renamedFiles.has(cleanFileName)) {
+            renamedFiles.set(cleanFileName, prefixedFileName);
+            logVerbose(`Added inactive file to rename map: ${cleanFileName} -> ${prefixedFileName}`);
+          }
+          
+          // Also add without extension
+          const fileExt = path.extname(fileName);
+          if (fileExt) {
+            const fileNameNoExt = cleanFileName.slice(0, -fileExt.length);
+            const prefixedFileNameNoExt = `[I]_${fileNameNoExt}`;
+            if (!renamedFiles.has(fileNameNoExt)) {
+              renamedFiles.set(fileNameNoExt, prefixedFileNameNoExt);
+              logVerbose(`Added inactive file (no ext) to rename map: ${fileNameNoExt} -> ${prefixedFileNameNoExt}`);
+            }
+          }
+        }
+        
+        // Log the enhanced rename map for debugging
+        if (options.verbose) {
+          console.log('\nEnhanced rename map:');
+          for (const [oldPath, newPath] of renamedFiles.entries()) {
+            console.log(`  ${oldPath} -> ${newPath}`);
+          }
+        }
+        
+        // Now update all import statements
+        await processBatchedFiles(allFiles, async (file) => {
+          await updateImportsInFile(file, renamedFiles);
+        });
     } else {
       console.log('\nSkipping import updates (--skip-imports flag detected)');
     }
