@@ -1,12 +1,16 @@
 {
   "project_name": "Backend Structure",
-  "analysis_date": "2025-02-24 15:30:59",
+  "analysis_date": "2025-03-02 11:13:31",
   "version": 1,
   "directories": {
     "API_endpoints_and_controllers": {
       "files": [
+        "API_endpoints_and_controllers\\album_organizer.py",
+        "API_endpoints_and_controllers\\Calculations.py",
         "API_endpoints_and_controllers\\Calculations_and_Sensitivity.py",
         "API_endpoints_and_controllers\\Create_new_batch.py",
+        "API_endpoints_and_controllers\\html_album_organizer.py",
+        "API_endpoints_and_controllers\\Load.py",
         "API_endpoints_and_controllers\\PNG.py",
         "API_endpoints_and_controllers\\Remove_batch.py",
         "API_endpoints_and_controllers\\Sensitivity_File_Manager.py",
@@ -14,50 +18,53 @@
         "API_endpoints_and_controllers\\Sen_Config.py",
         "API_endpoints_and_controllers\\Sub.py"
       ],
-      "import_count": 8
+      "import_count": 12
     },
     "API_endpoints_and_controllers\\__pycache__": {
       "files": [
+        "API_endpoints_and_controllers\\__pycache__\\album_organizer.cpython-312.pyc",
+        "API_endpoints_and_controllers\\__pycache__\\Calculations.cpython-312.pyc",
         "API_endpoints_and_controllers\\__pycache__\\Dashboard.cpython-312.pyc"
       ],
-      "import_count": 1
+      "import_count": 3
     },
     "Configuration_management": {
       "files": [
         "Configuration_management\\app_CFA.log",
+        "Configuration_management\\config_modules.py",
         "Configuration_management\\formatter.py",
-        "Configuration_management\\Load.py",
         "Configuration_management\\LogName.log",
         "Configuration_management\\module.log",
         "Configuration_management\\module1.py",
         "Configuration_management\\Table.log",
-        "Configuration_management\\Table.py",
-        "Configuration_management\\config_modules.py"
+        "Configuration_management\\Table.py"
       ],
-      "import_count": 9
+      "import_count": 8
     },
     "Core_calculation_engines": {
       "files": [
         "Core_calculation_engines\\CFA.py",
-        "Core_calculation_engines\\config_modules_8.py"
+        "Core_calculation_engines\\Old_Script.py"
       ],
       "import_count": 2
     },
     "Data_processors_and_transformers": {
       "files": [
+        "Data_processors_and_transformers\\economic_summary.py",
         "Data_processors_and_transformers\\file_utils.py",
         "Data_processors_and_transformers\\Front_Subtab_HTML.py",
         "Data_processors_and_transformers\\Front_Subtab_Plot.py",
         "Data_processors_and_transformers\\Front_Subtab_Table.py"
       ],
-      "import_count": 4
+      "import_count": 5
     },
     "Data_processors_and_transformers\\__pycache__": {
       "files": [
+        "Data_processors_and_transformers\\__pycache__\\economic_summary.cpython-312.pyc",
         "Data_processors_and_transformers\\__pycache__\\file_utils.cpython-312.pyc",
         "Data_processors_and_transformers\\__pycache__\\file_utils.cpython-39.pyc"
       ],
-      "import_count": 2
+      "import_count": 3
     },
     "Logs": {
       "files": [
@@ -96,10 +103,18 @@
     "Visualization_generators": {
       "files": [
         "Visualization_generators\\AggregatedSubPlots.py",
+        "Visualization_generators\\app_executionSub.log",
+        "Visualization_generators\\cfa_plotting.py",
         "Visualization_generators\\generate_pie_chart.R",
         "Visualization_generators\\PNG_PLOT.py"
       ],
-      "import_count": 3
+      "import_count": 5
+    },
+    "Visualization_generators\\__pycache__": {
+      "files": [
+        "Visualization_generators\\__pycache__\\cfa_plotting.cpython-312.pyc"
+      ],
+      "import_count": 1
     }
   }
 }

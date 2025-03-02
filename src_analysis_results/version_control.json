@@ -1,7 +1,7 @@
 {
   "project_name": "src",
-  "analysis_date": "2025-02-26 14:45:08",
-  "version": 2,
+  "analysis_date": "2025-03-02 11:09:36",
+  "version": 3,
   "directories": {
     ".": {
       "files": [
@@ -16,10 +16,13 @@
         "index.css",
         "index.js",
         "L_1_HomePage.js",
+        "MultiVersionSelector.js",
         "naturalmotion.css",
         "naturalmotion.js",
         "Popup.css",
         "Popup.js",
+        "PriceOptimizationConfig.css",
+        "PriceOptimizationConfig.js",
         "PropertySelector.js",
         "SensitivityVisualization.css",
         "SensitivityVisualization.js",
@@ -29,19 +32,23 @@
         "VersionSelector.css",
         "VersionSelector.js"
       ],
-      "import_count": 67
+      "import_count": 78
     },
     "components": {
       "files": [
+        "components/CalculationMonitor.css",
+        "components/CalculationMonitor.js",
         "components/ErrorBoundary.js",
         "components/SensitivityAnalysis.css",
         "components/SensitivityAnalysis.js",
+        "components/SensitivityIntegration.js",
         "components/SensitivitySelector.css",
         "components/SensitivitySelector.js",
+        "components/SensitivityVisualization.css",
         "components/TestingZone.css",
         "components/TestingZone.js"
       ],
-      "import_count": 10
+      "import_count": 15
     },
     "contexts": {
       "files": [
@@ -70,6 +77,22 @@
       ],
       "import_count": 9
     },
+    "L_1_HomePage.CSS": {
+      "files": [
+        "L_1_HomePage.CSS/L_1_HomePage1.css",
+        "L_1_HomePage.CSS/L_1_HomePage2.css",
+        "L_1_HomePage.CSS/L_1_HomePage3.css",
+        "L_1_HomePage.CSS/L_1_HomePage4.css",
+        "L_1_HomePage.CSS/L_1_HomePage5.css",
+        "L_1_HomePage.CSS/L_1_HomePage6.css",
+        "L_1_HomePage.CSS/L_1_HomePage_AboutUs.css",
+        "L_1_HomePage.CSS/L_1_HomePage_buttons.css",
+        "L_1_HomePage.CSS/L_1_HomePage_monitoring.css",
+        "L_1_HomePage.CSS/L_1_HomePage_Neumorphic.css",
+        "L_1_HomePage.CSS/L_1_HomePage_selectors.css"
+      ],
+      "import_count": 0
+    },
     "services": {
       "files": [
         "services/apiService.js",
@@ -89,6 +112,7 @@
     "styles": {
       "files": [
         "styles/fall.css",
+        "styles/neumorphic-tabs.css",
         "styles/winter.css"
       ],
       "import_count": 0
@@ -175,6 +199,7 @@
         "components/model/OptimizationEngine.js",
         "components/model/OverlayController.css",
         "components/model/OverlayController.js",
+        "components/model/overscroll-polyfill.js",
         "components/model/RiskAssessment.css",
         "components/model/RiskAssessment.js",
         "components/model/SensitivityEngine.css",
@@ -349,6 +374,7 @@
         "./GeneralFormConfig.js",
         "./Popup.js",
         "./PropertySelector.js",
+        "./MultiVersionSelector.js",
         "./TodoList.js",
         "./VersionSelector.js",
         "./components/model/ModelZone",
@@ -358,6 +384,7 @@
         "./components/SensitivityAnalysis",
         "./useFormValues.js",
         "./components/TestingZone",
+        "./components/CalculationMonitor",
         "react",
         "./contexts/VersionStateContext",
         "react-tabs",
@@ -367,10 +394,26 @@
         "./L_1_HomePage.CSS/L_1_HomePage3.css",
         "./L_1_HomePage.CSS/L_1_HomePage4.css",
         "./L_1_HomePage.CSS/L_1_HomePage5.css",
-        "./L_1_HomePage.CSS/L_1_HomePage6.css"
+        "./L_1_HomePage.CSS/L_1_HomePage6.css",
+        "./L_1_HomePage.CSS/L_1_HomePage_AboutUs.css",
+        "./L_1_HomePage.CSS/L_1_HomePage_buttons.css",
+        "./L_1_HomePage.CSS/L_1_HomePage_monitoring.css",
+        "./L_1_HomePage.CSS/L_1_HomePage_selectors.css",
+        "./styles/neumorphic-tabs.css"
       ],
       "exports": [
         "L_1_HomePage (default)"
+      ]
+    },
+    "MultiVersionSelector.js": {
+      "type": ".js",
+      "directory": ".",
+      "imports": [
+        "react",
+        "./contexts/VersionStateContext"
+      ],
+      "exports": [
+        "MultiVersionSelector (default)"
       ]
     },
     "naturalmotion.css": {
@@ -405,6 +448,23 @@
       ],
       "exports": [
         "Popup (default)"
+      ]
+    },
+    "PriceOptimizationConfig.css": {
+      "type": ".css",
+      "directory": ".",
+      "imports": [],
+      "exports": []
+    },
+    "PriceOptimizationConfig.js": {
+      "type": ".js",
+      "directory": ".",
+      "imports": [
+        "react",
+        "./PriceOptimizationConfig.css"
+      ],
+      "exports": [
+        "PriceOptimizationConfig (default)"
       ]
     },
     "PropertySelector.js": {
@@ -485,6 +545,23 @@
         "VersionSelector (default)"
       ]
     },
+    "components/CalculationMonitor.css": {
+      "type": ".css",
+      "directory": "components",
+      "imports": [],
+      "exports": []
+    },
+    "components/CalculationMonitor.js": {
+      "type": ".js",
+      "directory": "components",
+      "imports": [
+        "react",
+        "./CalculationMonitor.css"
+      ],
+      "exports": [
+        "CalculationMonitor (default)"
+      ]
+    },
     "components/ErrorBoundary.js": {
       "type": ".js",
       "directory": "components",
@@ -514,6 +591,18 @@
         "SensitivityAnalysis (default)"
       ]
     },
+    "components/SensitivityIntegration.js": {
+      "type": ".js",
+      "directory": "components",
+      "imports": [
+        "axios",
+        "react",
+        "./SensitivityVisualization.css"
+      ],
+      "exports": [
+        "SensitivityIntegration (default)"
+      ]
+    },
     "components/SensitivitySelector.css": {
       "type": ".css",
       "directory": "components",
@@ -530,6 +619,12 @@
       "exports": [
         "SensitivityAnalysisSelector (default)"
       ]
+    },
+    "components/SensitivityVisualization.css": {
+      "type": ".css",
+      "directory": "components",
+      "imports": [],
+      "exports": []
     },
     "components/TestingZone.css": {
       "type": ".css",
@@ -695,6 +790,72 @@
         "useVersion (default)"
       ]
     },
+    "L_1_HomePage.CSS/L_1_HomePage1.css": {
+      "type": ".css",
+      "directory": "L_1_HomePage.CSS",
+      "imports": [],
+      "exports": []
+    },
+    "L_1_HomePage.CSS/L_1_HomePage2.css": {
+      "type": ".css",
+      "directory": "L_1_HomePage.CSS",
+      "imports": [],
+      "exports": []
+    },
+    "L_1_HomePage.CSS/L_1_HomePage3.css": {
+      "type": ".css",
+      "directory": "L_1_HomePage.CSS",
+      "imports": [],
+      "exports": []
+    },
+    "L_1_HomePage.CSS/L_1_HomePage4.css": {
+      "type": ".css",
+      "directory": "L_1_HomePage.CSS",
+      "imports": [],
+      "exports": []
+    },
+    "L_1_HomePage.CSS/L_1_HomePage5.css": {
+      "type": ".css",
+      "directory": "L_1_HomePage.CSS",
+      "imports": [],
+      "exports": []
+    },
+    "L_1_HomePage.CSS/L_1_HomePage6.css": {
+      "type": ".css",
+      "directory": "L_1_HomePage.CSS",
+      "imports": [],
+      "exports": []
+    },
+    "L_1_HomePage.CSS/L_1_HomePage_AboutUs.css": {
+      "type": ".css",
+      "directory": "L_1_HomePage.CSS",
+      "imports": [],
+      "exports": []
+    },
+    "L_1_HomePage.CSS/L_1_HomePage_buttons.css": {
+      "type": ".css",
+      "directory": "L_1_HomePage.CSS",
+      "imports": [],
+      "exports": []
+    },
+    "L_1_HomePage.CSS/L_1_HomePage_monitoring.css": {
+      "type": ".css",
+      "directory": "L_1_HomePage.CSS",
+      "imports": [],
+      "exports": []
+    },
+    "L_1_HomePage.CSS/L_1_HomePage_Neumorphic.css": {
+      "type": ".css",
+      "directory": "L_1_HomePage.CSS",
+      "imports": [],
+      "exports": []
+    },
+    "L_1_HomePage.CSS/L_1_HomePage_selectors.css": {
+      "type": ".css",
+      "directory": "L_1_HomePage.CSS",
+      "imports": [],
+      "exports": []
+    },
     "services/apiService.js": {
       "type": ".js",
       "directory": "services",
@@ -759,6 +920,12 @@
       ]
     },
     "styles/fall.css": {
+      "type": ".css",
+      "directory": "styles",
+      "imports": [],
+      "exports": []
+    },
+    "styles/neumorphic-tabs.css": {
       "type": ".css",
       "directory": "styles",
       "imports": [],
@@ -1177,6 +1344,14 @@
         "OverlayController (default)"
       ]
     },
+    "components/model/overscroll-polyfill.js": {
+      "type": ".js",
+      "directory": "components/model",
+      "imports": [],
+      "exports": [
+        "applyOverscrollPolyfill"
+      ]
+    },
     "components/model/RiskAssessment.css": {
       "type": ".css",
       "directory": "components/model",
@@ -1442,193 +1617,52 @@
   },
   "changes": {
     "added_files": [
-      "Editable.css",
-      "components/scaling/styles/animations.css",
-      "components/scaling/styles/base.css",
-      "components/L_1_HomePage.CSS/L_1_HomePage1.css",
-      "components/scaling/MotionTooltip.js",
-      "components/scaling/MotionDraggableIte.js",
-      "components/layout/HeaderSection.css",
-      "components/L_1_HomePage.CSS/L_1_HomePage2.css",
-      "extended_scaling/ScalingSummary.js",
-      "components/layout/theme/ThemeSelector.js",
-      "components/scaling/MathProcessor.js",
-      "components/buttons/ActionButtons.css",
-      "SensitivityVisualization.js",
-      "SensitivityVisualization.css",
-      "components/L_1_HomePage.CSS/L_1_HomePage3.css",
-      "components/SensitivitySelector.js",
-      "components/SensitivitySelector.css",
-      "components/scaling/Card.js",
-      "components/scaling/styles/tooltip.css",
-      "components/L_1_HomePage.CSS/L_1_HomePage4.css",
-      "components/scaling/MotionScalingSummary.js",
-      "components/scaling/styles/card.css",
-      "extended_scaling/Card.js",
-      "components/L_1_HomePage.CSS/L_1_HomePage5.css",
-      "components/L_1_HomePage.CSS/L_1_HomePage6.css",
-      "components/scaling/ScalingTab.js",
-      "components/scaling/styles/draggable.css",
-      "extended_scaling/ExtendedScaling.js",
-      "components/scaling/styles/scaling.css"
-    ],
-    "removed_files": [
-      "L_1_HomePage6.css",
+      "L_1_HomePage.CSS/L_1_HomePage1.css",
+      "L_1_HomePage.CSS/L_1_HomePage2.css",
+      "L_1_HomePage.CSS/L_1_HomePage_AboutUs.css",
+      "L_1_HomePage.CSS/L_1_HomePage4.css",
+      "components/model/overscroll-polyfill.js",
+      "L_1_HomePage.CSS/L_1_HomePage_buttons.css",
+      "L_1_HomePage.CSS/L_1_HomePage_Neumorphic.css",
+      "L_1_HomePage.CSS/L_1_HomePage6.css",
+      "L_1_HomePage.CSS/L_1_HomePage_monitoring.css",
+      "components/CalculationMonitor.css",
+      "components/CalculationMonitor.js",
+      "PriceOptimizationConfig.css",
+      "L_1_HomePage.CSS/L_1_HomePage_selectors.css",
+      "styles/neumorphic-tabs.css",
       "components/SensitivityVisualization.css",
-      "L_1_HomePage5.css",
-      "ExtendedScaling.js",
-      "components/theme/ThemeSelector.js",
-      "ScalingSummary.js",
-      "utils/math-processor.js",
-      "SensitivitySelector.js",
-      "Card.js",
-      "components/SensitivityVisualization.js",
-      "L_1_HomePage3.css",
-      "sensitivitySelector.css",
-      "L_1_HomePage4.css",
-      "L_1_HomePage1.css",
-      "L_1_HomePage2.css"
+      "L_1_HomePage.CSS/L_1_HomePage3.css",
+      "MultiVersionSelector.js",
+      "L_1_HomePage.CSS/L_1_HomePage5.css",
+      "PriceOptimizationConfig.js",
+      "components/SensitivityIntegration.js"
     ],
+    "removed_files": [],
     "modified_files": [
-      "GeneralFormConfig.js",
-      "L_1_HomePage.js",
-      "components/layout/HeaderSection.js",
-      "App.js",
-      "components/buttons/ActionButtons.js",
-      "components/tabs/TabContent.js",
-      "Editable.js",
-      "components/SensitivityAnalysis.js"
+      "L_1_HomePage.js"
     ],
     "import_changes": [
       {
-        "file": "GeneralFormConfig.js",
-        "added_imports": [
-          "./components/SensitivitySelector"
-        ],
-        "removed_imports": [
-          "./SensitivitySelector"
-        ]
-      },
-      {
         "file": "L_1_HomePage.js",
         "added_imports": [
-          "./useFormValues.js",
-          "./L_1_HomePage.CSS/L_1_HomePage6.css",
-          "./Popup.js",
-          "./FormHeader.js",
-          "./components/SensitivityAnalysis",
-          "./L_1_HomePage.CSS/L_1_HomePage5.css",
-          "./extended_scaling/ExtendedScaling",
-          "./PropertySelector.js",
-          "./L_1_HomePage.CSS/L_1_HomePage3.css",
-          "./TodoList.js",
-          "./L_1_HomePage.CSS/L_1_HomePage1.css",
-          "./GeneralFormConfig.js",
-          "./L_1_HomePage.CSS/L_1_HomePage4.css",
-          "./components/TestingZone",
-          "./L_1_HomePage.CSS/L_1_HomePage2.css",
-          "./VersionSelector.js"
-        ],
-        "removed_imports": [
-          "./components/tabs/PlotContentTab",
-          "./TodoList",
-          "./L_1_HomePage5.css",
-          "./ExtendedScaling",
-          "./components/navigation/TabNavigation",
-          "./L_1_HomePage6.css",
-          "./hooks",
-          "./components/tabs/CsvContentTab",
-          "./services",
-          "./Popup",
-          "./GeneralFormConfig",
-          "./PropertySelector",
-          "./components/layout/HeaderSection",
-          "./components/tabs/HtmlContentTab",
-          "./VersionSelector",
-          "./components/buttons/ActionButtons",
-          "./L_1_HomePage4.css",
-          "./FormHeader",
-          "./components/forms/InputForm",
-          "./L_1_HomePage2.css",
-          "./L_1_HomePage3.css",
-          "./L_1_HomePage1.css"
-        ]
-      },
-      {
-        "file": "components/layout/HeaderSection.js",
-        "added_imports": [
-          "./HeaderSection.css",
-          "./theme/ThemeSelector"
-        ],
-        "removed_imports": [
-          "../theme/ThemeSelector"
-        ]
-      },
-      {
-        "file": "App.js",
-        "added_imports": [
-          "./L_1_HomePage"
-        ],
-        "removed_imports": [
-          "./hooks",
-          "./components/tabs/TabContent",
-          "./components/version/VersionControl",
-          "./components/navigation/TabNavigation",
-          "./components/model/ModelZone",
-          "./components/theme/ThemeSelector"
-        ]
-      },
-      {
-        "file": "components/buttons/ActionButtons.js",
-        "added_imports": [
-          "./ActionButtons.css"
+          "./L_1_HomePage.CSS/L_1_HomePage_selectors.css",
+          "./L_1_HomePage.CSS/L_1_HomePage_buttons.css",
+          "./components/CalculationMonitor",
+          "./styles/neumorphic-tabs.css",
+          "./MultiVersionSelector.js",
+          "./L_1_HomePage.CSS/L_1_HomePage_monitoring.css",
+          "./L_1_HomePage.CSS/L_1_HomePage_AboutUs.css"
         ],
         "removed_imports": []
-      },
-      {
-        "file": "components/tabs/TabContent.js",
-        "added_imports": [
-          "framer-motion",
-          "../buttons/ActionButtons",
-          "../scaling/MotionDraggableIte",
-          "../scaling/MotionScalingSummary",
-          "../scaling/MotionTooltip",
-          "../scaling/ScalingTab"
-        ],
-        "removed_imports": [
-          "../../ExtendedScaling",
-          "react-tabs"
-        ]
-      },
-      {
-        "file": "Editable.js",
-        "added_imports": [
-          "./Editable.css"
-        ],
-        "removed_imports": []
-      },
-      {
-        "file": "components/SensitivityAnalysis.js",
-        "added_imports": [
-          "../SensitivityVisualization"
-        ],
-        "removed_imports": [
-          "./SensitivityVisualization"
-        ]
       }
     ],
     "component_changes": [],
     "directory_changes": {
       "added": [
-        "extended_scaling",
-        "components/scaling",
-        "components/layout/theme",
-        "components/scaling/styles",
-        "components/L_1_HomePage.CSS"
+        "L_1_HomePage.CSS"
       ],
-      "removed": [
-        "components/theme"
-      ]
+      "removed": []
     }
   }
 }

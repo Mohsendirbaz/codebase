@@ -7,18 +7,22 @@ EditableHierarchicalList,functional,,"items, draggedId, editingId, editText","us
 TooltipWithMore,functional,"initialContent, extendedContent",showMore,useState,,"ChevronDownIcon, TooltipProvider, BuildingIcon, Tooltip, TooltipTrigger, InfoIcon, TooltipContent, MinusIcon, PlusIcon"
 GeneralFormConfig,functional,"formValues, handleInputChange, version, filterKeyword, V, toggleV, F, toggleF, S, setS, setVersion","showPopup, popupPosition, selectedItemId, editingLabel, tempLabel","useState, useState, useState, useState, useState",,"FontAwesomeIcon, SensitivityAnalysisSelector, Popup"
 Index,unknown,,,,,
-L_1_HomePageContent,functional,,"activeTab, activeSubTab, selectedProperties, selectedVersions, season, S, loadingStates, contentLoaded, iframesLoaded, imagesLoaded, contentLoadingState, version, batchRunning, analysisRunning, csvFiles, subTab, albumImages, selectedAlbum, albumHtmls, selectedHtml, remarks, customizedFeatures, selectedCalculationOption, target_row, calculatedPrices, baseCosts, scalingGroups, collapsedTabs, isToggleSectionOpen, showPopup, popupPosition, F, V","useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState",,"Tabs, TabList, Tab, TabPanel, CustomizableImage, CustomizableTable, FormHeader, Popup, GeneralFormConfig, PropertySelector, ModelZone, VersionSelector, SpatialTransformComponent, ExtendedScaling, EditableHierarchicalList, TodoList, SensitivityAnalysis, TestingZone, VersionStateProvider"
+L_1_HomePageContent,functional,,"activeTab, activeSubTab, selectedProperties, season, S, loadingStates, contentLoaded, iframesLoaded, imagesLoaded, contentLoadingState, version, batchRunning, analysisRunning, monitoringActive, csvFiles, subTab, albumImages, selectedAlbum, albumHtmls, selectedHtml, remarks, customizedFeatures, selectedCalculationOption, target_row, calculatedPrices, baseCosts, scalingGroups, collapsedTabs, isToggleSectionOpen, showPopup, popupPosition, F, V","useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState, useState",,"Tabs, TabList, Tab, TabPanel, CustomizableImage, CustomizableTable, GeneralFormConfig, CalculationMonitor, PropertySelector, MultiVersionSelector, ModelZone, VersionSelector, SpatialTransformComponent, ExtendedScaling, EditableHierarchicalList, TodoList, SensitivityAnalysis, TestingZone, VersionStateProvider"
+MultiVersionSelector,functional,maxVersions = 20,,,,
 Naturalmotion,unknown,,,,,
 SpatialTransformComponent,functional,,interactionState,useState,,
 Popup,functional,"show, position, onClose, formValues, handleInputChange, id, version, itemId, onVersionChange","sliderValues, isSubmitting, submitError, submitSuccess, isClosing","useState, useState, useState, useState, useState",,
+PriceOptimizationConfig,functional,"selectedVersions, optimizationParams, setOptimizationParams","globalParams, versionParams, showAdvanced, activeTab","useState, useState, useState, useState, useEffect",,
 PropertySelector,functional,"selectedProperties, setSelectedProperties",,,,
-SensitivityVisualization,functional,visualizationData,,,,
+SensitivityVisualization,unknown,,,,,
 TodoList,functional,,"items, draggedId, editingId, editText, newItemType","useState, useState, useState, useState, useState",,"Plus, GripVertical, Check, X, Trash2"
 TodoList2,functional,,"items, draggedId, editingId, editText, newItemType","useState, useState, useState, useState, useState",,"Plus, GripVertical, Check, X, Trash2"
 useFormValues,hook,,formValues,useState,,
 VersionSelector,functional,,,useMemo,,
+CalculationMonitor,functional,"selectedVersions, updatePrice, isActive, currentVersion",monitorData,"useState, useRef, useRef",,
 ErrorBoundary,class,,"hasError, error, errorInfo",,,
 SensitivityAnalysis,functional,,"visualizationData, isLoading, error","useState, useState, useState",,SensitivityVisualization
+SensitivityIntegration,functional,"version, onError","loading, results, albums, selectedAlbum, albumContent, serverConfig","useState, useState, useState, useState, useState, useState, useEffect",,
 SensitivitySelector,unknown,,,,,
 Dialog,functional,"show, onClose, children, triggerRef, isClosing","position, showDialog, isClosing","useState, useState, useState, useRef, useRef",,
 TestingZone,functional,,,,,CFAConsolidationUI
@@ -32,11 +36,23 @@ useFeatureToggles,hook,,"remarks, customizedFeatures, F, V","useState, useState,
 useSensitivity,hook,,S,useState,,
 useTheme,hook,,season,useState,,
 useVersion,hook,,"version, batchRunning, csvFiles, albumHtmls, albumImages, error, isLoading, retryCount, lastSuccessfulFetch","useState, useState, useState, useState, useState, useState, useState, useState, useState, useCallback, useCallback, useCallback, useCallback, useCallback, useCallback, useCallback",,
+L_1_HomePage1,unknown,,,,,
+L_1_HomePage2,unknown,,,,,
+L_1_HomePage3,unknown,,,,,
+L_1_HomePage4,unknown,,,,,
+L_1_HomePage5,unknown,,,,,
+L_1_HomePage6,unknown,,,,,
+L_1_HomePage_AboutUs,unknown,,,,,
+L_1_HomePage_buttons,unknown,,,,,
+L_1_HomePage_monitoring,unknown,,,,,
+L_1_HomePage_Neumorphic,unknown,,,,,
+L_1_HomePage_selectors,unknown,,,,,
 ApiService,unknown,,,,,
 BatchService,unknown,,,,,
 ConfigService,unknown,,,,,
 ContentService,unknown,,,,,
 Fall,unknown,,,,,
+NeumorphicTabs,unknown,,,,,
 Winter,unknown,,,,,
 TooltipProvider,functional,children,isVisible,useState,,
 TooltipContent,unknown,,,,,TooltipPrimitive
@@ -49,12 +65,6 @@ ResultsPanel,functional,"data, selectedCell, inspectorVisible, inspectorPosition
 SelectionPanel,functional,"available, selected, filtered, searchQuery, error, loading, onSelect, onSelectAll, onSelectNone, onSearch, onRefresh",,,,
 InputForm,functional,"activeSubTab, setActiveSubTab, formValues, handleInputChange, version, S, setS, F, toggleF, V, toggleV, setVersion, handleReset, handleRun, handleSubmitCompleteSet, selectedCalculationOption, handleOptionChange, target_row, handleTargetRowChange, remarks, toggleRemarks, customizedFeatures, toggleCustomizedFeatures, selectedProperties, setSelectedProperties",,,,"PropertySelector, GeneralFormConfig"
 HeaderSection,functional,"season, handleThemeChange",,,,ThemeSelector
-L_1_HomePage1,unknown,,,,,
-L_1_HomePage2,unknown,,,,,
-L_1_HomePage3,unknown,,,,,
-L_1_HomePage4,unknown,,,,,
-L_1_HomePage5,unknown,,,,,
-L_1_HomePage6,unknown,,,,,
 AnalysisChart,functional,,,"useRef, useRef",,
 AnalysisVisualizationIntegration,functional,"onAnalysisUpdate, onVisualizationUpdate, children",,"useCallback, useCallback, useRef, useRef, useCallback, useCallback",,
 DecisionEngine,functional,"model, baseModel, scenarios, optimizationResults, riskMetrics, sensitivityData, onApply, onClose","recommendations, selectedRecommendation, isAnalyzing","useState, useState, useState, useCallback, useCallback, useCallback, useCallback",,AnalysisChart
@@ -66,6 +76,7 @@ ModelZone,functional,,"activeModel, activeDialog, scenarios, optimizationResults
 NavigationManager,functional,"activeModel, activeOverlay, onNavigate, onClose","navigationHistory, currentLevel, isTransitioning","useState, useState, useState, useCallback, useCallback, useCallback",,React
 OptimizationEngine,functional,"model, baseModel, scenarios, constraints, onUpdate, onClose","activeOptimization, objectiveFunction, solutions, isOptimizing, optimizationParams","useState, useState, useState, useState, useState, useCallback",,AnalysisChart
 OverlayController,functional,"activeModel, activeOverlay, children, onNavigate, onClose","isTransitioning, currentContent, nextContent","useState, useState, useState, useCallback, useCallback",,NavigationManager
+OverscrollPolyfill,functional,,,,,
 RiskAssessment,functional,"model, baseModel, scenarios, onUpdate, onClose","activeRiskType, riskMetrics, isCalculating, optimizationTarget","useState, useState, useState, useState, useCallback",,AnalysisChart
 SensitivityEngine,functional,"model, baseModel, onUpdate, onClose","activeSimulation, parameters, results, isCalculating","useState, useState, useState, useState, useCallback, useCallback",,AnalysisChart
 TabNavigation,functional,"activeTab, setActiveTab",,,,
