@@ -120,4 +120,18 @@ explain if by during development you mean npm start
 
 
 Modify the active-files-tracker rule to only run its full analysis when explicitly called, not during normal development.
-lets preserve the main ESLint configuration, since its a gateway to use of ESLint has to offer, instead treat the npm start by least intrusive method, Make the ESLint rule conditional: Modify the active-files-tracker rule to only run its full analysis when explicitly called, not during normal development.
+lets preserve the main ESLint configuration, since its a gateway to use of ESLint has to offer, instead treat the npm start by least intrusive method, Make the ESLint rule conditional: Modify the active-files-tracker rule to only run its full analysis when explicitly called, not during normal development.2025-03-02 16:46:42,128 filtered_values: []
+2025-03-02 16:46:42,128 general_year_sorted_list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+2025-03-02 16:46:42,128 sorted_points: [1, 20]
+2025-03-02 16:46:42,128 general_intervals: [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8), (8, 9), (9, 10), (10, 11), (11, 12), (12, 13), (13, 14), (14, 15), (15, 16), (16, 17), (17, 18), (18, 19), (19, 20), (20, 21)]
+2025-03-02 16:46:42,128 intervals: [(1, 20)]
+2025-03-02 17:29:36,704 filtered_values: []
+2025-03-02 17:29:36,704 general_year_sorted_list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+2025-03-02 17:29:36,704 sorted_points: [1, 20]
+2025-03-02 17:29:36,704 general_intervals: [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8), (8, 9), (9, 10), (10, 11), (11, 12), (12, 13), (13, 14), (14, 15), (15, 16), (16, 17), (17, 18), (18, 19), (19, 20), (20, 21)]
+2025-03-02 17:29:36,704 intervals: [(1, 20)]
+2025-03-02 17:47:37,035 filtered_values: []
+2025-03-02 17:47:37,035 general_year_sorted_list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+2025-03-02 17:47:37,035 sorted_points: [1, 20]
+2025-03-02 17:47:37,035 general_intervals: [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8), (8, 9), (9, 10), (10, 11), (11, 12), (12, 13), (13, 14), (14, 15), (15, 16), (16, 17), (17, 18), (18, 19), (19, 20), (20, 21)]
+2025-03-02 17:47:37,035 intervals: [(1, 20)]
