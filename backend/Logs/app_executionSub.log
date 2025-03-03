@@ -836,3 +836,69 @@ PermissionError: [WinError 5] Access is denied: 'C:\\Users\\md8w7'
 2025-03-02 17:46:25,139 DEBUG Logging is configured and working correctly.
 2025-03-02 17:46:25,157 WARNING  * Debugger is active!
 2025-03-02 17:46:25,173 INFO  * Debugger PIN: 119-059-632
+2025-03-02 19:04:37,894 DEBUG Logging is configured and working correctly.
+2025-03-02 19:04:37,944 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5009
+2025-03-02 19:04:37,944 INFO [33mPress CTRL+C to quit[0m
+2025-03-02 19:04:37,946 INFO  * Restarting with stat
+2025-03-02 19:04:38,411 DEBUG Logging is configured and working correctly.
+2025-03-02 19:04:38,428 WARNING  * Debugger is active!
+2025-03-02 19:04:38,444 INFO  * Debugger PIN: 119-059-632
+2025-03-02 19:42:32,482 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-03-02 19:42:32,561 INFO  * Restarting with stat
+2025-03-02 19:42:33,096 DEBUG Logging is configured and working correctly.
+2025-03-02 19:42:33,127 WARNING  * Debugger is active!
+2025-03-02 19:42:33,127 INFO  * Debugger PIN: 119-059-632
+2025-03-02 19:42:40,958 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-03-02 19:42:41,073 INFO  * Restarting with stat
+2025-03-02 19:42:41,992 DEBUG Logging is configured and working correctly.
+2025-03-02 19:42:42,041 WARNING  * Debugger is active!
+2025-03-02 19:42:42,048 INFO  * Debugger PIN: 119-059-632
+2025-03-02 19:42:48,304 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-03-02 19:42:48,396 INFO  * Restarting with stat
+2025-03-02 19:42:49,540 DEBUG Logging is configured and working correctly.
+2025-03-02 19:42:49,589 WARNING  * Debugger is active!
+2025-03-02 19:42:49,606 INFO  * Debugger PIN: 119-059-632
+2025-03-02 19:43:00,900 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-03-02 19:43:00,964 INFO  * Restarting with stat
+2025-03-02 19:43:01,632 DEBUG Logging is configured and working correctly.
+2025-03-02 19:43:01,666 WARNING  * Debugger is active!
+2025-03-02 19:43:01,674 INFO  * Debugger PIN: 119-059-632
+2025-03-02 19:43:07,608 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-03-02 19:43:07,670 INFO  * Restarting with stat
+2025-03-02 19:43:08,169 DEBUG Logging is configured and working correctly.
+2025-03-02 19:43:08,200 WARNING  * Debugger is active!
+2025-03-02 19:43:08,204 INFO  * Debugger PIN: 119-059-632
+2025-03-02 19:43:14,813 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-03-02 19:43:14,857 INFO  * Restarting with stat
+2025-03-02 19:43:15,280 DEBUG Logging is configured and working correctly.
+2025-03-02 19:43:15,296 WARNING  * Debugger is active!
+2025-03-02 19:43:15,314 INFO  * Debugger PIN: 119-059-632
+2025-03-02 19:43:29,201 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-03-02 19:43:29,271 INFO  * Restarting with stat
+2025-03-02 19:43:29,820 DEBUG Logging is configured and working correctly.
+2025-03-02 19:43:29,854 WARNING  * Debugger is active!
+2025-03-02 19:43:29,869 INFO  * Debugger PIN: 119-059-632
+2025-03-02 19:43:36,254 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-03-02 19:43:36,450 INFO  * Restarting with stat
+2025-03-02 19:43:37,379 DEBUG Logging is configured and working correctly.
+2025-03-02 19:43:37,418 WARNING  * Debugger is active!
+2025-03-02 19:43:37,425 INFO  * Debugger PIN: 119-059-632
+2025-03-02 21:18:17,393 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-03-02 21:18:17,496 INFO  * Restarting with stat
+2025-03-02 21:18:18,623 DEBUG Logging is configured and working correctly.
+2025-03-02 21:18:18,664 WARNING  * Debugger is active!
+2025-03-02 21:18:18,671 INFO  * Debugger PIN: 119-059-632
+2025-03-02 21:18:46,159 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-03-02 21:18:46,278 INFO  * Restarting with stat
+2025-03-02 21:18:46,871 DEBUG Logging is configured and working correctly.
+2025-03-02 21:18:46,901 WARNING  * Debugger is active!
+2025-03-02 21:18:46,912 INFO  * Debugger PIN: 119-059-632
+2025-03-02 21:23:33,948 DEBUG Logging is configured and working correctly.
+2025-03-02 21:23:33,980 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5009
+2025-03-02 21:23:33,980 INFO [33mPress CTRL+C to quit[0m
+2025-03-02 21:23:33,980 INFO  * Restarting with stat
+2025-03-02 21:23:34,413 DEBUG Logging is configured and working correctly.
+2025-03-02 21:23:34,429 WARNING  * Debugger is active!
+2025-03-02 21:23:34,444 INFO  * Debugger PIN: 119-059-632
