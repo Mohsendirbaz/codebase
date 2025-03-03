@@ -14,13 +14,13 @@ git rev-parse HEAD  # Should show current
 
 git remote -v  # Should show https://github.com/Mohsendirbaz/SF.git
 
-git checkout -b SF.R52
+git checkout -b SF.R53
 
 git add .
 
-git commit -m "granular config folders"
+git commit -m "test passed"
 
-git push origin SF.R52
+git push origin SF.R53
 
 
 # Remove existing temp directory (already done)

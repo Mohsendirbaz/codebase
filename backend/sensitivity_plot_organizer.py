@@ -1,173 +1,167 @@
+"""
+Organizer module for sensitivity plots.
+
+This module provides functions for organizing and managing sensitivity plots,
+including creating directories, naming plots, and tracking plot metadata.
+"""
+
 import os
-import shutil
-from pathlib import Path
-import re
 import json
-from datetime import datetime
+import time
+import logging
+from sensitivity_logging import log_execution_flow
 
-# Import centralized logging
-from sensitivity_logging import get_plots_logger
+# Configure logging
+logger = logging.getLogger(__name__)
 
-# Get logger from centralized logging
-logger = get_plots_logger()
-
-def organize_sensitivity_plots(base_dir=None):
-    """
-    Organizes plot files related to sensitivity analysis into standardized 
-    album directories for easier frontend consumption.
+class SensitivityPlotOrganizer:
+    """Organizer for sensitivity plots."""
     
-    Args:
-        base_dir: Optional base directory path. If not provided, uses default path.
-        
-    Returns:
-        dict: Statistics about the organization process
-    """
-    # Determine base directory
-    if not base_dir:
-        # Use backend/Original instead of public/Original
-        backend_dir = Path(os.path.dirname(os.path.abspath(__file__)))
-        base_dir = backend_dir / 'Original'  # This resolves to backend/Original
-    
-    if not os.path.exists(base_dir):
-        logger.error(f"Base directory does not exist: {base_dir}")
-        return {"error": f"Base directory does not exist: {base_dir}"}
-    
-    # Get all version directories
-    logger.info(f"Scanning for version directories in {base_dir}")
-    batches = [d for d in os.listdir(base_dir) if d.startswith("Batch(") and d.endswith(")")]
-    
-    if not batches:
-        logger.warning("No batch directories found")
-        return {"error": "No batch directories found"}
-    
-    # Track statistics
-    stats = {
-        "versions_processed": 0,
-        "plots_organized": 0,
-        "albums_created": 0,
-        "errors": []
-    }
-    
-    for batch in batches:
-        # Extract version number
-        version_match = re.match(r"Batch\((\d+)\)", batch)
-        if not version_match:
-            logger.warning(f"Invalid batch directory format: {batch}")
-            stats["errors"].append(f"Invalid batch directory format: {batch}")
-            continue
+    def __init__(self, base_dir=None, version=1):
+        """Initialize the organizer with the base directory and version."""
+        if base_dir is None:
+            # Use default directory structure
+            self.base_dir = os.path.join(
+                os.path.dirname(__file__),
+                'Original',
+                f'Batch({version})',
+                f'Results({version})',
+                'Sensitivity'
+            )
+        else:
+            self.base_dir = base_dir
             
-        version = version_match.group(1)
-        results_dir = os.path.join(base_dir, batch, f"Results({version})")
+        self.version = version
+        self.logger = logger
         
-        if not os.path.exists(results_dir):
-            logger.warning(f"Results directory not found: {results_dir}")
-            stats["errors"].append(f"Results directory not found: {results_dir}")
-            continue
+        # Create base directory if it doesn't exist
+        os.makedirs(self.base_dir, exist_ok=True)
+        self.logger.info(f"Using sensitivity directory: {self.base_dir}")
         
-        # Look for Sensitivity directory
-        sensitivity_dir = os.path.join(results_dir, "Sensitivity")
-        if not os.path.exists(sensitivity_dir):
-            logger.info(f"No Sensitivity directory found for version {version}")
-            continue
+        # Create metadata file path
+        self.metadata_file = os.path.join(self.base_dir, 'plot_metadata.json')
         
-        # Create plot albums directory
-        plot_albums_dir = os.path.join(results_dir, "SensitivityPlots")
+        # Load existing metadata if available
+        self.metadata = self._load_metadata()
         
-        # Import directory operation functions
-        from sensitivity_logging import directory_operation, log_directory_check
-        
-        # Log directory check and creation
-        with directory_operation('check', plot_albums_dir):
-            log_directory_check(plot_albums_dir, os.path.exists(plot_albums_dir))
-        
-        # Create the directory if it doesn't exist
-        with directory_operation('create', plot_albums_dir):
-            os.makedirs(plot_albums_dir, exist_ok=True)
-            logger.info(f"Created/verified plot albums directory: {plot_albums_dir}")
-        
-        # Process different analysis modes
-        for mode in ["Symmetrical", "Multipoint"]:
-            mode_dir = os.path.join(sensitivity_dir, mode)
-            if not os.path.exists(mode_dir):
-                continue
+    def _load_metadata(self):
+        """Load plot metadata from file."""
+        if os.path.exists(self.metadata_file):
+            try:
+                with open(self.metadata_file, 'r') as f:
+                    return json.load(f)
+            except Exception as e:
+                self.logger.error(f"Error loading plot metadata: {str(e)}")
+                return {}
+        else:
+            return {}
             
-            # Process different plot types
-            for plot_type in ["waterfall", "bar", "point"]:
-                plot_type_dir = os.path.join(mode_dir, plot_type)
+    def _save_metadata(self):
+        """Save plot metadata to file."""
+        try:
+            with open(self.metadata_file, 'w') as f:
+                json.dump(self.metadata, f, indent=2)
+            return True
+        except Exception as e:
+            self.logger.error(f"Error saving plot metadata: {str(e)}")
+            return False
+            
+    def create_plot_directories(self, modes=None, plot_types=None):
+        """Create directories for sensitivity plots."""
+        if modes is None:
+            modes = ['Symmetrical', 'Multipoint']
+            
+        if plot_types is None:
+            plot_types = ['waterfall', 'bar', 'point']
+            
+        # Create directories for each mode
+        for mode in modes:
+            mode_dir = os.path.join(self.base_dir, mode)
+            os.makedirs(mode_dir, exist_ok=True)
+            
+            # Create directories for each plot type
+            for plot_type in plot_types:
+                plot_dir = os.path.join(mode_dir, plot_type)
+                os.makedirs(plot_dir, exist_ok=True)
                 
-                # If the specific subdirectory doesn't exist, look for plots directly in the mode directory
-                if not os.path.exists(plot_type_dir):
-                    plot_type_dir = mode_dir
-                
-                # Find all PNG files of this plot type
-                png_files = []
-                for root, _, files in os.walk(plot_type_dir):
-                    for file in files:
-                        if file.lower().endswith('.png') and plot_type in file.lower():
-                            png_files.append((os.path.join(root, file), file))
-                
-                if not png_files:
-                    continue
-                
-                # Create album for this plot type
-                album_name = f"Sensitivity_{mode}_{plot_type}"
-                album_dir = os.path.join(plot_albums_dir, album_name)
-                
-                # Log directory check and creation
-                with directory_operation('check', album_dir):
-                    log_directory_check(album_dir, os.path.exists(album_dir))
-                
-                # Create the directory if it doesn't exist
-                with directory_operation('create', album_dir):
-                    os.makedirs(album_dir, exist_ok=True)
-                    logger.info(f"Created/verified album directory: {album_dir}")
-                
-                stats["albums_created"] += 1
-                
-                # Process each plot file
-                for file_path, file_name in png_files:
-                    # Extract parameter info from filename
-                    param_match = re.match(r"(.+)_([^_]+)_([^_]+)_(.+)\.png", file_name)
-                    if param_match:
-                        # Extracted components (may vary depending on naming convention)
-                        # In this case: plot_type_paramID_compareToKey_comparisonType.png
-                        extracted_plot_type = param_match.group(1)
-                        param_id = param_match.group(2)
-                        compare_to = param_match.group(3)
-                        comparison_type = param_match.group(4)
-                        
-                        # Create a standardized name
-                        new_name = f"{param_id}_vs_{compare_to}_{comparison_type}.png"
-                    else:
-                        # If pattern doesn't match, keep original name
-                        new_name = file_name
-                    
-                    # Copy the file to the album directory
-                    dest_path = os.path.join(album_dir, new_name)
-                    if not os.path.exists(dest_path) or os.path.getmtime(file_path) > os.path.getmtime(dest_path):
-                        shutil.copy2(file_path, dest_path)
-                        logger.info(f"Copied {file_name} to album {album_name} as {new_name}")
-                        stats["plots_organized"] += 1
-                
-                # Create metadata file for the album
-                metadata = {
-                    "version": version,
-                    "mode": mode,
-                    "plot_type": plot_type,
-                    "files": [os.path.basename(f[0]) for f in png_files],
-                    "display_name": f"Sensitivity Analysis - {mode} - {plot_type.capitalize()} Plots",
-                    "organized_at": datetime.now().isoformat()
-                }
-                
-                with open(os.path.join(album_dir, "metadata.json"), 'w') as f:
-                    json.dump(metadata, f, indent=2)
+        # Create additional directories
+        os.makedirs(os.path.join(self.base_dir, 'Configuration'), exist_ok=True)
+        os.makedirs(os.path.join(self.base_dir, 'Reports'), exist_ok=True)
+        os.makedirs(os.path.join(self.base_dir, 'Cache'), exist_ok=True)
         
-        stats["versions_processed"] += 1
-    
-    # Log summary statistics
-    logger.info(f"Sensitivity plot organization complete: {stats['versions_processed']} versions, "
-                f"{stats['albums_created']} albums, {stats['plots_organized']} plots organized")
-    return stats
+        self.logger.info(f"Created plot directories in {self.base_dir}")
+        return True
+        
+    def get_plot_path(self, param_id, compare_to_key, plot_type, mode, comparison_type='primary'):
+        """Get the path for a sensitivity plot."""
+        # Determine the mode directory
+        if mode.lower() == 'symmetrical':
+            mode_dir = os.path.join(self.base_dir, 'Symmetrical')
+        else:
+            mode_dir = os.path.join(self.base_dir, 'Multipoint')
+            
+        # Determine the plot type directory
+        plot_dir = os.path.join(mode_dir, plot_type)
+        
+        # Create the plot filename
+        plot_name = f"{plot_type}_{param_id}_{compare_to_key}_{comparison_type}.png"
+        
+        # Return the full path
+        return os.path.join(plot_dir, plot_name)
+        
+    def register_plot(self, param_id, compare_to_key, plot_type, mode, plot_path, comparison_type='primary'):
+        """Register a plot in the metadata."""
+        # Create parameter entry if it doesn't exist
+        if param_id not in self.metadata:
+            self.metadata[param_id] = {
+                'id': param_id,
+                'plots': {}
+            }
+            
+        # Create plot type entry if it doesn't exist
+        if plot_type not in self.metadata[param_id]['plots']:
+            self.metadata[param_id]['plots'][plot_type] = {}
+            
+        # Add plot metadata
+        self.metadata[param_id]['plots'][plot_type][compare_to_key] = {
+            'path': plot_path,
+            'mode': mode,
+            'comparisonType': comparison_type,
+            'timestamp': time.strftime("%Y-%m-%d %H:%M:%S")
+        }
+        
+        # Save metadata
+        self._save_metadata()
+        
+        self.logger.info(f"Registered plot: {plot_type} for {param_id} vs {compare_to_key}")
+        return True
+        
+    def get_plots_for_parameter(self, param_id):
+        """Get all plots for a parameter."""
+        if param_id in self.metadata:
+            return self.metadata[param_id]
+        else:
+            return None
+            
+    def get_all_plots(self):
+        """Get all registered plots."""
+        return self.metadata
 
+# Example usage
 if __name__ == "__main__":
-    organize_sensitivity_plots()
+    # Create organizer
+    organizer = SensitivityPlotOrganizer()
+    
+    # Create plot directories
+    organizer.create_plot_directories()
+    
+    # Get plot path
+    plot_path = organizer.get_plot_path('S34', 'S13', 'waterfall', 'symmetrical')
+    print(f"Plot path: {plot_path}")
+    
+    # Register a plot
+    organizer.register_plot('S34', 'S13', 'waterfall', 'symmetrical', plot_path)
+    
+    # Get plots for parameter
+    plots = organizer.get_plots_for_parameter('S34')
+    print(f"Plots for S34: {plots}")

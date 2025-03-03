@@ -1,274 +1,758 @@
-2025-03-03 03:19:22,104 INFO Created main sensitivity directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity
-2025-03-03 03:19:22,105 INFO Created sensitivity mode directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-03-03 03:19:22,105 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\waterfall
-2025-03-03 03:19:22,106 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\bar
-2025-03-03 03:19:22,108 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\point
-2025-03-03 03:19:22,109 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration
-2025-03-03 03:19:22,112 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S34_+20.00
-2025-03-03 03:19:22,113 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S34_-20.00
-2025-03-03 03:19:22,113 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S35_+20.00
-2025-03-03 03:19:22,115 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S35_-20.00
-2025-03-03 03:19:22,115 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S36_+20.00
-2025-03-03 03:19:22,116 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S36_-20.00
-2025-03-03 03:19:22,116 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S37_+20.00
-2025-03-03 03:19:22,117 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S37_-20.00
-2025-03-03 03:19:22,117 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S38_+20.00
-2025-03-03 03:19:22,118 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S38_-20.00
-2025-03-03 03:19:22,118 INFO Created sensitivity mode directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint
-2025-03-03 03:19:22,119 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\waterfall
-2025-03-03 03:19:22,119 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\bar
-2025-03-03 03:19:22,119 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\point
-2025-03-03 03:19:22,120 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\Configuration
-2025-03-03 03:19:22,120 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\Configuration\S34_+20.00
-2025-03-03 03:19:22,121 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\Configuration\S35_+20.00
-2025-03-03 03:19:22,122 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\Configuration\S36_+20.00
-2025-03-03 03:19:22,122 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\Configuration\S37_+20.00
-2025-03-03 03:19:22,123 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\Configuration\S38_+20.00
-2025-03-03 03:19:22,123 INFO Created standalone Configuration directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Configuration
-2025-03-03 03:19:22,126 INFO Created sensitivity extra directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Reports
-2025-03-03 03:19:22,128 INFO Created sensitivity extra directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Cache
-2025-03-03 03:19:22,128 INFO 
+2025-03-03 04:51:06,939 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-03-03 04:51:06,939 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-03-03 04:52:03,306 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-03-03 04:52:03,306 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-03-03 04:53:17,547 INFO 
 ================================================================================
-2025-03-03 03:19:22,128 INFO CFA Run Configuration
-2025-03-03 03:19:22,128 INFO ================================================================================
-2025-03-03 03:19:22,128 INFO 
+2025-03-03 04:53:17,547 INFO 
+================================================================================
+2025-03-03 04:53:17,547 INFO Sensitivity Configuration Generation - Run ID: 20250303_045317
+2025-03-03 04:53:17,547 INFO Sensitivity Configuration Generation - Run ID: 20250303_045317
+2025-03-03 04:53:17,556 INFO ================================================================================
+2025-03-03 04:53:17,556 INFO ================================================================================
+2025-03-03 04:53:17,556 INFO Version: 1
+2025-03-03 04:53:17,556 INFO Version: 1
+2025-03-03 04:53:17,556 INFO Calculation Mode: calculateForPrice
+2025-03-03 04:53:17,556 INFO Calculation Mode: calculateForPrice
+2025-03-03 04:53:17,556 INFO Target Row: 20
+2025-03-03 04:53:17,556 INFO Target Row: 20
+2025-03-03 04:53:17,557 INFO Created main sensitivity directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity
+2025-03-03 04:53:17,557 INFO Created main sensitivity directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity
+2025-03-03 04:53:17,557 INFO Created Reports directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Reports
+2025-03-03 04:53:17,557 INFO Created Reports directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Reports
+2025-03-03 04:53:17,558 INFO Created parameter directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S34
+2025-03-03 04:53:17,558 INFO Created parameter directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S34
+2025-03-03 04:53:17,559 INFO Created mode directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S34\symmetrical
+2025-03-03 04:53:17,559 INFO Created mode directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S34\symmetrical
+2025-03-03 04:53:17,559 INFO Created variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S34\symmetrical\+20.00
+2025-03-03 04:53:17,559 INFO Created variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S34\symmetrical\+20.00
+2025-03-03 04:53:17,560 INFO Created variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S34\symmetrical\-20.00
+2025-03-03 04:53:17,560 INFO Created variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S34\symmetrical\-20.00
+2025-03-03 04:53:17,560 INFO Created parameter directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S35
+2025-03-03 04:53:17,560 INFO Created parameter directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S35
+2025-03-03 04:53:17,561 INFO Created mode directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S35\symmetrical
+2025-03-03 04:53:17,561 INFO Created mode directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S35\symmetrical
+2025-03-03 04:53:17,561 INFO Created variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S35\symmetrical\+20.00
+2025-03-03 04:53:17,561 INFO Created variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S35\symmetrical\+20.00
+2025-03-03 04:53:17,563 INFO Created variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S35\symmetrical\-20.00
+2025-03-03 04:53:17,563 INFO Created variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S35\symmetrical\-20.00
+2025-03-03 04:53:17,563 INFO Created parameter directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S36
+2025-03-03 04:53:17,563 INFO Created parameter directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S36
+2025-03-03 04:53:17,564 INFO Created mode directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S36\symmetrical
+2025-03-03 04:53:17,564 INFO Created mode directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S36\symmetrical
+2025-03-03 04:53:17,564 INFO Created variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S36\symmetrical\+20.00
+2025-03-03 04:53:17,564 INFO Created variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S36\symmetrical\+20.00
+2025-03-03 04:53:17,565 INFO Created variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S36\symmetrical\-20.00
+2025-03-03 04:53:17,565 INFO Created variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S36\symmetrical\-20.00
+2025-03-03 04:53:17,565 INFO Created parameter directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S37
+2025-03-03 04:53:17,565 INFO Created parameter directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S37
+2025-03-03 04:53:17,566 INFO Created mode directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S37\symmetrical
+2025-03-03 04:53:17,566 INFO Created mode directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S37\symmetrical
+2025-03-03 04:53:17,566 INFO Created variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S37\symmetrical\+20.00
+2025-03-03 04:53:17,566 INFO Created variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S37\symmetrical\+20.00
+2025-03-03 04:53:17,568 INFO Created variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S37\symmetrical\-20.00
+2025-03-03 04:53:17,568 INFO Created variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S37\symmetrical\-20.00
+2025-03-03 04:53:17,568 INFO Created parameter directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S38
+2025-03-03 04:53:17,568 INFO Created parameter directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S38
+2025-03-03 04:53:17,570 INFO Created mode directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S38\symmetrical
+2025-03-03 04:53:17,570 INFO Created mode directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S38\symmetrical
+2025-03-03 04:53:17,570 INFO Created variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S38\symmetrical\+20.00
+2025-03-03 04:53:17,570 INFO Created variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S38\symmetrical\+20.00
+2025-03-03 04:53:17,571 INFO Created variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S38\symmetrical\-20.00
+2025-03-03 04:53:17,571 INFO Created variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S38\symmetrical\-20.00
+2025-03-03 04:53:17,571 INFO 
+================================================================================
+2025-03-03 04:53:17,571 INFO 
+================================================================================
+2025-03-03 04:53:17,572 INFO CFA Run Configuration
+2025-03-03 04:53:17,572 INFO CFA Run Configuration
+2025-03-03 04:53:17,572 INFO ================================================================================
+2025-03-03 04:53:17,572 INFO ================================================================================
+2025-03-03 04:53:17,572 INFO 
 Basic Configuration:
-2025-03-03 03:19:22,128 INFO Version(s): 1
-2025-03-03 03:19:22,129 INFO Calculation Mode: calculateForPrice
-2025-03-03 03:19:22,129 INFO Target Row: 20
-2025-03-03 03:19:22,129 INFO 
+2025-03-03 04:53:17,572 INFO 
+Basic Configuration:
+2025-03-03 04:53:17,572 INFO Version(s): 1
+2025-03-03 04:53:17,572 INFO Version(s): 1
+2025-03-03 04:53:17,573 INFO Calculation Mode: calculateForPrice
+2025-03-03 04:53:17,573 INFO Calculation Mode: calculateForPrice
+2025-03-03 04:53:17,573 INFO Target Row: 20
+2025-03-03 04:53:17,573 INFO Target Row: 20
+2025-03-03 04:53:17,573 INFO 
 Parameter States:
-2025-03-03 03:19:22,129 INFO Enabled V Parameters: V1
-2025-03-03 03:19:22,129 INFO Enabled F Parameters: F1, F2, F3, F4, F5
-2025-03-03 03:19:22,129 INFO 
+2025-03-03 04:53:17,573 INFO 
+Parameter States:
+2025-03-03 04:53:17,573 INFO Enabled V Parameters: V1
+2025-03-03 04:53:17,573 INFO Enabled V Parameters: V1
+2025-03-03 04:53:17,574 INFO Enabled F Parameters: F1, F2, F3, F4, F5
+2025-03-03 04:53:17,574 INFO Enabled F Parameters: F1, F2, F3, F4, F5
+2025-03-03 04:53:17,574 INFO 
 Sensitivity Analysis Configuration:
-2025-03-03 03:19:22,129 INFO Enabled Parameters: S34, S35, S36, S37, S38
-2025-03-03 03:19:22,129 INFO 
+2025-03-03 04:53:17,574 INFO 
+Sensitivity Analysis Configuration:
+2025-03-03 04:53:17,574 INFO Enabled Parameters: S34, S35, S36, S37, S38
+2025-03-03 04:53:17,574 INFO Enabled Parameters: S34, S35, S36, S37, S38
+2025-03-03 04:53:17,574 INFO 
 S34 Configuration:
-2025-03-03 03:19:22,130 INFO   Mode: symmetrical
-2025-03-03 03:19:22,130 INFO   Values: [20]
-2025-03-03 03:19:22,130 INFO   Comparison:
-2025-03-03 03:19:22,130 INFO     Target: S13
-2025-03-03 03:19:22,130 INFO     Type: primary
-2025-03-03 03:19:22,130 INFO     Plot Types: waterfall, bar, point
-2025-03-03 03:19:22,130 INFO 
+2025-03-03 04:53:17,574 INFO 
+S34 Configuration:
+2025-03-03 04:53:17,574 INFO   Mode: symmetrical
+2025-03-03 04:53:17,574 INFO   Mode: symmetrical
+2025-03-03 04:53:17,575 INFO   Values: [20]
+2025-03-03 04:53:17,575 INFO   Values: [20]
+2025-03-03 04:53:17,575 INFO   Comparison:
+2025-03-03 04:53:17,575 INFO   Comparison:
+2025-03-03 04:53:17,575 INFO     Target: S13
+2025-03-03 04:53:17,575 INFO     Target: S13
+2025-03-03 04:53:17,575 INFO     Type: primary
+2025-03-03 04:53:17,575 INFO     Type: primary
+2025-03-03 04:53:17,575 INFO     Plot Types: waterfall, bar, point
+2025-03-03 04:53:17,575 INFO     Plot Types: waterfall, bar, point
+2025-03-03 04:53:17,576 INFO 
 S35 Configuration:
-2025-03-03 03:19:22,130 INFO   Mode: symmetrical
-2025-03-03 03:19:22,131 INFO   Values: [20]
-2025-03-03 03:19:22,131 INFO   Comparison:
-2025-03-03 03:19:22,131 INFO     Target: S13
-2025-03-03 03:19:22,131 INFO     Type: primary
-2025-03-03 03:19:22,131 INFO     Plot Types: waterfall, bar, point
-2025-03-03 03:19:22,131 INFO 
+2025-03-03 04:53:17,576 INFO 
+S35 Configuration:
+2025-03-03 04:53:17,576 INFO   Mode: symmetrical
+2025-03-03 04:53:17,576 INFO   Mode: symmetrical
+2025-03-03 04:53:17,576 INFO   Values: [20]
+2025-03-03 04:53:17,576 INFO   Values: [20]
+2025-03-03 04:53:17,576 INFO   Comparison:
+2025-03-03 04:53:17,576 INFO   Comparison:
+2025-03-03 04:53:17,576 INFO     Target: S13
+2025-03-03 04:53:17,576 INFO     Target: S13
+2025-03-03 04:53:17,576 INFO     Type: primary
+2025-03-03 04:53:17,576 INFO     Type: primary
+2025-03-03 04:53:17,577 INFO     Plot Types: waterfall, bar, point
+2025-03-03 04:53:17,577 INFO     Plot Types: waterfall, bar, point
+2025-03-03 04:53:17,577 INFO 
 S36 Configuration:
-2025-03-03 03:19:22,131 INFO   Mode: symmetrical
-2025-03-03 03:19:22,131 INFO   Values: [20]
-2025-03-03 03:19:22,131 INFO   Comparison:
-2025-03-03 03:19:22,132 INFO     Target: S13
-2025-03-03 03:19:22,132 INFO     Type: primary
-2025-03-03 03:19:22,132 INFO     Plot Types: waterfall, bar, point
-2025-03-03 03:19:22,132 INFO 
+2025-03-03 04:53:17,577 INFO 
+S36 Configuration:
+2025-03-03 04:53:17,577 INFO   Mode: symmetrical
+2025-03-03 04:53:17,577 INFO   Mode: symmetrical
+2025-03-03 04:53:17,577 INFO   Values: [20]
+2025-03-03 04:53:17,577 INFO   Values: [20]
+2025-03-03 04:53:17,577 INFO   Comparison:
+2025-03-03 04:53:17,577 INFO   Comparison:
+2025-03-03 04:53:17,577 INFO     Target: S13
+2025-03-03 04:53:17,577 INFO     Target: S13
+2025-03-03 04:53:17,577 INFO     Type: primary
+2025-03-03 04:53:17,577 INFO     Type: primary
+2025-03-03 04:53:17,577 INFO     Plot Types: waterfall, bar, point
+2025-03-03 04:53:17,577 INFO     Plot Types: waterfall, bar, point
+2025-03-03 04:53:17,577 INFO 
 S37 Configuration:
-2025-03-03 03:19:22,132 INFO   Mode: symmetrical
-2025-03-03 03:19:22,132 INFO   Values: [20]
-2025-03-03 03:19:22,132 INFO   Comparison:
-2025-03-03 03:19:22,132 INFO     Target: S13
-2025-03-03 03:19:22,133 INFO     Type: primary
-2025-03-03 03:19:22,133 INFO     Plot Types: waterfall, bar, point
-2025-03-03 03:19:22,133 INFO 
+2025-03-03 04:53:17,577 INFO 
+S37 Configuration:
+2025-03-03 04:53:17,577 INFO   Mode: symmetrical
+2025-03-03 04:53:17,577 INFO   Mode: symmetrical
+2025-03-03 04:53:17,579 INFO   Values: [20]
+2025-03-03 04:53:17,579 INFO   Values: [20]
+2025-03-03 04:53:17,579 INFO   Comparison:
+2025-03-03 04:53:17,579 INFO   Comparison:
+2025-03-03 04:53:17,579 INFO     Target: S13
+2025-03-03 04:53:17,579 INFO     Target: S13
+2025-03-03 04:53:17,579 INFO     Type: primary
+2025-03-03 04:53:17,579 INFO     Type: primary
+2025-03-03 04:53:17,580 INFO     Plot Types: waterfall, bar, point
+2025-03-03 04:53:17,580 INFO     Plot Types: waterfall, bar, point
+2025-03-03 04:53:17,580 INFO 
 S38 Configuration:
-2025-03-03 03:19:22,133 INFO   Mode: symmetrical
-2025-03-03 03:19:22,133 INFO   Values: [20]
-2025-03-03 03:19:22,133 INFO   Comparison:
-2025-03-03 03:19:22,133 INFO     Target: S13
-2025-03-03 03:19:22,133 INFO     Type: primary
-2025-03-03 03:19:22,134 INFO     Plot Types: waterfall, bar, point
-2025-03-03 03:19:22,134 INFO 
+2025-03-03 04:53:17,580 INFO 
+S38 Configuration:
+2025-03-03 04:53:17,580 INFO   Mode: symmetrical
+2025-03-03 04:53:17,580 INFO   Mode: symmetrical
+2025-03-03 04:53:17,580 INFO   Values: [20]
+2025-03-03 04:53:17,580 INFO   Values: [20]
+2025-03-03 04:53:17,580 INFO   Comparison:
+2025-03-03 04:53:17,580 INFO   Comparison:
+2025-03-03 04:53:17,580 INFO     Target: S13
+2025-03-03 04:53:17,580 INFO     Target: S13
+2025-03-03 04:53:17,581 INFO     Type: primary
+2025-03-03 04:53:17,581 INFO     Type: primary
+2025-03-03 04:53:17,581 INFO     Plot Types: waterfall, bar, point
+2025-03-03 04:53:17,581 INFO     Plot Types: waterfall, bar, point
+2025-03-03 04:53:17,581 INFO 
 ================================================================================
 
-2025-03-03 03:19:22,134 INFO 
+2025-03-03 04:53:17,581 INFO 
+================================================================================
+
+2025-03-03 04:53:17,586 INFO Saved main configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Reports\sensitivity_config.json
+2025-03-03 04:53:17,586 INFO Saved main configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Reports\sensitivity_config.json
+2025-03-03 04:53:17,587 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S34\symmetrical\+20.00\S34_config.json
+2025-03-03 04:53:17,587 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S34\symmetrical\+20.00\S34_config.json
+2025-03-03 04:53:17,589 INFO Saved config module copy: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S34\symmetrical\+20.00\1_config_module_3.json
+2025-03-03 04:53:17,589 INFO Saved config module copy: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S34\symmetrical\+20.00\1_config_module_3.json
+2025-03-03 04:53:17,590 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S34\symmetrical\-20.00\S34_config.json
+2025-03-03 04:53:17,590 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S34\symmetrical\-20.00\S34_config.json
+2025-03-03 04:53:17,592 INFO Saved config module copy: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S34\symmetrical\-20.00\1_config_module_3.json
+2025-03-03 04:53:17,592 INFO Saved config module copy: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S34\symmetrical\-20.00\1_config_module_3.json
+2025-03-03 04:53:17,593 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S35\symmetrical\+20.00\S35_config.json
+2025-03-03 04:53:17,593 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S35\symmetrical\+20.00\S35_config.json
+2025-03-03 04:53:17,595 INFO Saved config module copy: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S35\symmetrical\+20.00\1_config_module_3.json
+2025-03-03 04:53:17,595 INFO Saved config module copy: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S35\symmetrical\+20.00\1_config_module_3.json
+2025-03-03 04:53:17,597 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S35\symmetrical\-20.00\S35_config.json
+2025-03-03 04:53:17,597 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S35\symmetrical\-20.00\S35_config.json
+2025-03-03 04:53:17,599 INFO Saved config module copy: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S35\symmetrical\-20.00\1_config_module_3.json
+2025-03-03 04:53:17,599 INFO Saved config module copy: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S35\symmetrical\-20.00\1_config_module_3.json
+2025-03-03 04:53:17,600 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S36\symmetrical\+20.00\S36_config.json
+2025-03-03 04:53:17,600 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S36\symmetrical\+20.00\S36_config.json
+2025-03-03 04:53:17,602 INFO Saved config module copy: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S36\symmetrical\+20.00\1_config_module_3.json
+2025-03-03 04:53:17,602 INFO Saved config module copy: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S36\symmetrical\+20.00\1_config_module_3.json
+2025-03-03 04:53:17,603 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S36\symmetrical\-20.00\S36_config.json
+2025-03-03 04:53:17,603 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S36\symmetrical\-20.00\S36_config.json
+2025-03-03 04:53:17,605 INFO Saved config module copy: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S36\symmetrical\-20.00\1_config_module_3.json
+2025-03-03 04:53:17,605 INFO Saved config module copy: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S36\symmetrical\-20.00\1_config_module_3.json
+2025-03-03 04:53:17,606 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S37\symmetrical\+20.00\S37_config.json
+2025-03-03 04:53:17,606 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S37\symmetrical\+20.00\S37_config.json
+2025-03-03 04:53:17,607 INFO Saved config module copy: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S37\symmetrical\+20.00\1_config_module_3.json
+2025-03-03 04:53:17,607 INFO Saved config module copy: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S37\symmetrical\+20.00\1_config_module_3.json
+2025-03-03 04:53:17,609 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S37\symmetrical\-20.00\S37_config.json
+2025-03-03 04:53:17,609 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S37\symmetrical\-20.00\S37_config.json
+2025-03-03 04:53:17,610 INFO Saved config module copy: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S37\symmetrical\-20.00\1_config_module_3.json
+2025-03-03 04:53:17,610 INFO Saved config module copy: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S37\symmetrical\-20.00\1_config_module_3.json
+2025-03-03 04:53:17,611 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S38\symmetrical\+20.00\S38_config.json
+2025-03-03 04:53:17,611 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S38\symmetrical\+20.00\S38_config.json
+2025-03-03 04:53:17,615 INFO Saved config module copy: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S38\symmetrical\+20.00\1_config_module_3.json
+2025-03-03 04:53:17,615 INFO Saved config module copy: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S38\symmetrical\+20.00\1_config_module_3.json
+2025-03-03 04:53:17,616 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S38\symmetrical\-20.00\S38_config.json
+2025-03-03 04:53:17,616 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S38\symmetrical\-20.00\S38_config.json
+2025-03-03 04:53:17,618 INFO Saved config module copy: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S38\symmetrical\-20.00\1_config_module_3.json
+2025-03-03 04:53:17,618 INFO Saved config module copy: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S38\symmetrical\-20.00\1_config_module_3.json
+2025-03-03 04:53:17,619 INFO 
+Sensitivity configuration completed successfully
+2025-03-03 04:53:17,619 INFO 
+Sensitivity configuration completed successfully
+2025-03-03 04:53:17,619 INFO Configuration files saved: 21
+2025-03-03 04:53:17,619 INFO Configuration files saved: 21
+2025-03-03 04:53:17,619 INFO Configuration status saved to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\sensitivity_config_status.json
+2025-03-03 04:53:17,619 INFO Configuration status saved to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\sensitivity_config_status.json
+2025-03-03 04:53:17,620 INFO ================================================================================
+
+2025-03-03 04:53:17,620 INFO ================================================================================
+
+2025-03-03 04:53:17,722 INFO Using saved sensitivity configuration data
+2025-03-03 04:53:17,722 INFO Using saved sensitivity configuration data
+2025-03-03 04:53:17,722 INFO Using sensitivity directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity
+2025-03-03 04:53:17,722 INFO Using sensitivity directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity
+2025-03-03 04:53:17,722 INFO 
+================================================================================
+2025-03-03 04:53:17,722 INFO 
+================================================================================
+2025-03-03 04:53:17,723 INFO Sensitivity Calculation Run - ID: 20250303_045317
+2025-03-03 04:53:17,723 INFO Sensitivity Calculation Run - ID: 20250303_045317
+2025-03-03 04:53:17,723 INFO ================================================================================
+2025-03-03 04:53:17,723 INFO ================================================================================
+2025-03-03 04:53:17,723 INFO 
+================================================================================
+2025-03-03 04:53:17,723 INFO 
+================================================================================
+2025-03-03 04:53:17,723 INFO CFA Run Configuration
+2025-03-03 04:53:17,723 INFO CFA Run Configuration
+2025-03-03 04:53:17,724 INFO ================================================================================
+2025-03-03 04:53:17,724 INFO ================================================================================
+2025-03-03 04:53:17,724 INFO 
+Basic Configuration:
+2025-03-03 04:53:17,724 INFO 
+Basic Configuration:
+2025-03-03 04:53:17,724 INFO Version(s): 1
+2025-03-03 04:53:17,724 INFO Version(s): 1
+2025-03-03 04:53:17,724 INFO Calculation Mode: calculateForPrice
+2025-03-03 04:53:17,724 INFO Calculation Mode: calculateForPrice
+2025-03-03 04:53:17,724 INFO Target Row: 20
+2025-03-03 04:53:17,724 INFO Target Row: 20
+2025-03-03 04:53:17,724 INFO 
+Parameter States:
+2025-03-03 04:53:17,724 INFO 
+Parameter States:
+2025-03-03 04:53:17,725 INFO Enabled V Parameters: V1
+2025-03-03 04:53:17,725 INFO Enabled V Parameters: V1
+2025-03-03 04:53:17,725 INFO Enabled F Parameters: F1, F2, F3, F4, F5
+2025-03-03 04:53:17,725 INFO Enabled F Parameters: F1, F2, F3, F4, F5
+2025-03-03 04:53:17,725 INFO 
+Sensitivity Analysis Configuration:
+2025-03-03 04:53:17,725 INFO 
+Sensitivity Analysis Configuration:
+2025-03-03 04:53:17,725 INFO Enabled Parameters: S34, S35, S36, S37, S38
+2025-03-03 04:53:17,725 INFO Enabled Parameters: S34, S35, S36, S37, S38
+2025-03-03 04:53:17,727 INFO 
+S34 Configuration:
+2025-03-03 04:53:17,727 INFO 
+S34 Configuration:
+2025-03-03 04:53:17,729 INFO   Mode: symmetrical
+2025-03-03 04:53:17,729 INFO   Mode: symmetrical
+2025-03-03 04:53:17,729 INFO   Values: [20]
+2025-03-03 04:53:17,729 INFO   Values: [20]
+2025-03-03 04:53:17,730 INFO   Comparison:
+2025-03-03 04:53:17,730 INFO   Comparison:
+2025-03-03 04:53:17,730 INFO     Target: S13
+2025-03-03 04:53:17,730 INFO     Target: S13
+2025-03-03 04:53:17,730 INFO     Type: primary
+2025-03-03 04:53:17,730 INFO     Type: primary
+2025-03-03 04:53:17,730 INFO     Plot Types: waterfall, bar, point
+2025-03-03 04:53:17,730 INFO     Plot Types: waterfall, bar, point
+2025-03-03 04:53:17,731 INFO 
+S35 Configuration:
+2025-03-03 04:53:17,731 INFO 
+S35 Configuration:
+2025-03-03 04:53:17,731 INFO   Mode: symmetrical
+2025-03-03 04:53:17,731 INFO   Mode: symmetrical
+2025-03-03 04:53:17,731 INFO   Values: [20]
+2025-03-03 04:53:17,731 INFO   Values: [20]
+2025-03-03 04:53:17,732 INFO   Comparison:
+2025-03-03 04:53:17,732 INFO   Comparison:
+2025-03-03 04:53:17,732 INFO     Target: S13
+2025-03-03 04:53:17,732 INFO     Target: S13
+2025-03-03 04:53:17,732 INFO     Type: primary
+2025-03-03 04:53:17,732 INFO     Type: primary
+2025-03-03 04:53:17,733 INFO     Plot Types: waterfall, bar, point
+2025-03-03 04:53:17,733 INFO     Plot Types: waterfall, bar, point
+2025-03-03 04:53:17,733 INFO 
+S36 Configuration:
+2025-03-03 04:53:17,733 INFO 
+S36 Configuration:
+2025-03-03 04:53:17,733 INFO   Mode: symmetrical
+2025-03-03 04:53:17,733 INFO   Mode: symmetrical
+2025-03-03 04:53:17,733 INFO   Values: [20]
+2025-03-03 04:53:17,733 INFO   Values: [20]
+2025-03-03 04:53:17,733 INFO   Comparison:
+2025-03-03 04:53:17,733 INFO   Comparison:
+2025-03-03 04:53:17,733 INFO     Target: S13
+2025-03-03 04:53:17,733 INFO     Target: S13
+2025-03-03 04:53:17,734 INFO     Type: primary
+2025-03-03 04:53:17,734 INFO     Type: primary
+2025-03-03 04:53:17,734 INFO     Plot Types: waterfall, bar, point
+2025-03-03 04:53:17,734 INFO     Plot Types: waterfall, bar, point
+2025-03-03 04:53:17,734 INFO 
+S37 Configuration:
+2025-03-03 04:53:17,734 INFO 
+S37 Configuration:
+2025-03-03 04:53:17,734 INFO   Mode: symmetrical
+2025-03-03 04:53:17,734 INFO   Mode: symmetrical
+2025-03-03 04:53:17,734 INFO   Values: [20]
+2025-03-03 04:53:17,734 INFO   Values: [20]
+2025-03-03 04:53:17,734 INFO   Comparison:
+2025-03-03 04:53:17,734 INFO   Comparison:
+2025-03-03 04:53:17,735 INFO     Target: S13
+2025-03-03 04:53:17,735 INFO     Target: S13
+2025-03-03 04:53:17,735 INFO     Type: primary
+2025-03-03 04:53:17,735 INFO     Type: primary
+2025-03-03 04:53:17,735 INFO     Plot Types: waterfall, bar, point
+2025-03-03 04:53:17,735 INFO     Plot Types: waterfall, bar, point
+2025-03-03 04:53:17,735 INFO 
+S38 Configuration:
+2025-03-03 04:53:17,735 INFO 
+S38 Configuration:
+2025-03-03 04:53:17,735 INFO   Mode: symmetrical
+2025-03-03 04:53:17,735 INFO   Mode: symmetrical
+2025-03-03 04:53:17,735 INFO   Values: [20]
+2025-03-03 04:53:17,735 INFO   Values: [20]
+2025-03-03 04:53:17,736 INFO   Comparison:
+2025-03-03 04:53:17,736 INFO   Comparison:
+2025-03-03 04:53:17,736 INFO     Target: S13
+2025-03-03 04:53:17,736 INFO     Target: S13
+2025-03-03 04:53:17,736 INFO     Type: primary
+2025-03-03 04:53:17,736 INFO     Type: primary
+2025-03-03 04:53:17,736 INFO     Plot Types: waterfall, bar, point
+2025-03-03 04:53:17,736 INFO     Plot Types: waterfall, bar, point
+2025-03-03 04:53:17,736 INFO 
+================================================================================
+
+2025-03-03 04:53:17,736 INFO 
+================================================================================
+
+2025-03-03 04:53:17,737 INFO 
 Executing Configuration Management Scripts:
-2025-03-03 03:19:22,134 INFO 
+2025-03-03 04:53:17,737 INFO 
+Executing Configuration Management Scripts:
+2025-03-03 04:53:17,737 INFO 
 Executing: formatter.py
-2025-03-03 03:19:22,512 INFO Completed formatter.py in 0.38s
-2025-03-03 03:19:23,013 INFO 
+2025-03-03 04:53:17,737 INFO 
+Executing: formatter.py
+2025-03-03 04:53:17,906 INFO Completed formatter.py in 0.17s
+2025-03-03 04:53:17,906 INFO Completed formatter.py in 0.17s
+2025-03-03 04:53:18,410 INFO 
 Executing: module1.py
-2025-03-03 03:19:24,723 INFO Completed module1.py in 1.71s
-2025-03-03 03:19:25,237 INFO 
+2025-03-03 04:53:18,410 INFO 
+Executing: module1.py
+2025-03-03 04:53:20,978 INFO Completed module1.py in 2.57s
+2025-03-03 04:53:20,978 INFO Completed module1.py in 2.57s
+2025-03-03 04:53:21,482 INFO 
 Executing: config_modules.py
-2025-03-03 03:19:27,890 INFO Completed config_modules.py in 2.65s
-2025-03-03 03:19:28,400 INFO 
+2025-03-03 04:53:21,482 INFO 
+Executing: config_modules.py
+2025-03-03 04:53:23,093 INFO Completed config_modules.py in 1.61s
+2025-03-03 04:53:23,093 INFO Completed config_modules.py in 1.61s
+2025-03-03 04:53:23,598 INFO 
 Executing: Table.py
-2025-03-03 03:19:30,004 INFO Completed Table.py in 1.60s
-2025-03-03 03:19:30,507 INFO 
-Configuration scripts completed in 8.37s
-2025-03-03 03:19:30,507 INFO 
+2025-03-03 04:53:23,598 INFO 
+Executing: Table.py
+2025-03-03 04:53:26,509 INFO Completed Table.py in 2.91s
+2025-03-03 04:53:26,509 INFO Completed Table.py in 2.91s
+2025-03-03 04:53:27,013 INFO 
+Configuration scripts completed in 9.28s
+2025-03-03 04:53:27,013 INFO 
+Configuration scripts completed in 9.28s
+2025-03-03 04:53:27,013 INFO 
 Processing Calculations:
-2025-03-03 03:19:30,507 INFO Using calculation script: CFA.py
-2025-03-03 03:19:30,507 INFO 
+2025-03-03 04:53:27,013 INFO 
+Processing Calculations:
+2025-03-03 04:53:27,013 INFO Using calculation script: CFA.py
+2025-03-03 04:53:27,013 INFO Using calculation script: CFA.py
+2025-03-03 04:53:27,013 INFO 
 Executing baseline calculation:
-2025-03-03 03:19:51,831 INFO Baseline calculation completed successfully
-2025-03-03 03:19:51,831 INFO 
+2025-03-03 04:53:27,013 INFO 
+Executing baseline calculation:
+2025-03-03 04:53:47,516 INFO Baseline calculation completed successfully
+2025-03-03 04:53:47,516 INFO Baseline calculation completed successfully
+2025-03-03 04:53:47,516 INFO 
 Processing 5 sensitivity parameters:
-2025-03-03 03:19:51,831 INFO 
+2025-03-03 04:53:47,516 INFO 
+Processing 5 sensitivity parameters:
+2025-03-03 04:53:47,516 INFO 
 Processing S34:
-2025-03-03 03:19:51,831 INFO Mode: symmetrical
-2025-03-03 03:19:51,831 INFO Values: [20]
-2025-03-03 03:20:13,138 INFO Completed S34 in 21.31s
-2025-03-03 03:20:13,138 INFO 
+2025-03-03 04:53:47,516 INFO 
+Processing S34:
+2025-03-03 04:53:47,516 INFO Mode: symmetrical
+2025-03-03 04:53:47,516 INFO Mode: symmetrical
+2025-03-03 04:53:47,516 INFO Values: [20]
+2025-03-03 04:53:47,516 INFO Values: [20]
+2025-03-03 04:54:07,189 INFO Completed S34 in 19.67s
+2025-03-03 04:54:07,189 INFO Completed S34 in 19.67s
+2025-03-03 04:54:07,189 INFO 
 Processing S35:
-2025-03-03 03:20:13,139 INFO Mode: symmetrical
-2025-03-03 03:20:13,139 INFO Values: [20]
-2025-03-03 03:20:33,412 INFO Completed S35 in 20.27s
-2025-03-03 03:20:33,412 INFO 
+2025-03-03 04:54:07,189 INFO 
+Processing S35:
+2025-03-03 04:54:07,189 INFO Mode: symmetrical
+2025-03-03 04:54:07,189 INFO Mode: symmetrical
+2025-03-03 04:54:07,189 INFO Values: [20]
+2025-03-03 04:54:07,189 INFO Values: [20]
+2025-03-03 04:54:28,047 INFO Completed S35 in 20.86s
+2025-03-03 04:54:28,047 INFO Completed S35 in 20.86s
+2025-03-03 04:54:28,047 INFO 
 Processing S36:
-2025-03-03 03:20:33,412 INFO Mode: symmetrical
-2025-03-03 03:20:33,412 INFO Values: [20]
-2025-03-03 03:20:52,787 INFO Completed S36 in 19.37s
-2025-03-03 03:20:52,787 INFO 
+2025-03-03 04:54:28,047 INFO 
+Processing S36:
+2025-03-03 04:54:28,047 INFO Mode: symmetrical
+2025-03-03 04:54:28,047 INFO Mode: symmetrical
+2025-03-03 04:54:28,047 INFO Values: [20]
+2025-03-03 04:54:28,047 INFO Values: [20]
+2025-03-03 04:54:47,772 INFO Completed S36 in 19.72s
+2025-03-03 04:54:47,772 INFO Completed S36 in 19.72s
+2025-03-03 04:54:47,772 INFO 
 Processing S37:
-2025-03-03 03:20:52,787 INFO Mode: symmetrical
-2025-03-03 03:20:52,787 INFO Values: [20]
-2025-03-03 03:21:12,572 INFO Completed S37 in 19.79s
-2025-03-03 03:21:12,572 INFO 
+2025-03-03 04:54:47,772 INFO 
+Processing S37:
+2025-03-03 04:54:47,772 INFO Mode: symmetrical
+2025-03-03 04:54:47,772 INFO Mode: symmetrical
+2025-03-03 04:54:47,772 INFO Values: [20]
+2025-03-03 04:54:47,772 INFO Values: [20]
+2025-03-03 04:55:08,783 INFO Completed S37 in 21.01s
+2025-03-03 04:55:08,783 INFO Completed S37 in 21.01s
+2025-03-03 04:55:08,784 INFO 
 Processing S38:
-2025-03-03 03:21:12,572 INFO Mode: symmetrical
-2025-03-03 03:21:12,572 INFO Values: [20]
-2025-03-03 03:21:32,983 INFO Completed S38 in 20.41s
-2025-03-03 03:21:32,983 INFO 
+2025-03-03 04:55:08,784 INFO 
+Processing S38:
+2025-03-03 04:55:08,784 INFO Mode: symmetrical
+2025-03-03 04:55:08,784 INFO Mode: symmetrical
+2025-03-03 04:55:08,784 INFO Values: [20]
+2025-03-03 04:55:08,784 INFO Values: [20]
+2025-03-03 04:55:29,510 INFO Completed S38 in 20.73s
+2025-03-03 04:55:29,510 INFO Completed S38 in 20.73s
+2025-03-03 04:55:29,511 INFO 
 ================================================================================
-2025-03-03 03:21:32,984 INFO Run Summary - ID: 20250303_031922
-2025-03-03 03:21:32,984 INFO Total execution time: 130.85s
-2025-03-03 03:21:32,984 INFO Configuration scripts: 8.37s
-2025-03-03 03:21:32,984 INFO Calculations completed: 6
-2025-03-03 03:21:32,984 INFO ================================================================================
+2025-03-03 04:55:29,511 INFO 
+================================================================================
+2025-03-03 04:55:29,511 INFO Run Summary - ID: 20250303_045317
+2025-03-03 04:55:29,511 INFO Run Summary - ID: 20250303_045317
+2025-03-03 04:55:29,511 INFO Total execution time: 131.77s
+2025-03-03 04:55:29,511 INFO Total execution time: 131.77s
+2025-03-03 04:55:29,511 INFO Configuration scripts: 9.28s
+2025-03-03 04:55:29,511 INFO Configuration scripts: 9.28s
+2025-03-03 04:55:29,511 INFO Calculations completed: 6
+2025-03-03 04:55:29,511 INFO Calculations completed: 6
+2025-03-03 04:55:29,511 INFO ================================================================================
 
-2025-03-03 03:21:33,085 INFO [ENTER] Processing visualization request - Run ID: 20250303_032133
-2025-03-03 03:21:33,085 INFO 
-Processing visualization request - Run ID: 20250303_032133
-2025-03-03 03:21:33,085 INFO Version: 1
-2025-03-03 03:21:33,085 INFO Parameters: ['S10', 'S11', 'S12', 'S13', 'S14', 'S15', 'S16', 'S17', 'S18', 'S19', 'S20', 'S21', 'S22', 'S23', 'S24', 'S25', 'S26', 'S27', 'S28', 'S29', 'S30', 'S31', 'S32', 'S33', 'S34', 'S35', 'S36', 'S37', 'S38', 'S39', 'S40', 'S41', 'S42', 'S43', 'S44', 'S45', 'S46', 'S47', 'S48', 'S49', 'S50', 'S51', 'S52', 'S53', 'S54', 'S55', 'S56', 'S57', 'S58', 'S59', 'S60', 'S61']
-2025-03-03 03:21:33,086 INFO Created main sensitivity directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity
-2025-03-03 03:21:33,086 INFO Created sensitivity mode directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-03-03 03:21:33,087 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\waterfall
-2025-03-03 03:21:33,087 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\bar
-2025-03-03 03:21:33,088 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\point
-2025-03-03 03:21:33,088 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration
-2025-03-03 03:21:33,089 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S34_+20.00
-2025-03-03 03:21:33,089 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S34_-20.00
-2025-03-03 03:21:33,090 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S35_+20.00
-2025-03-03 03:21:33,091 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S35_-20.00
-2025-03-03 03:21:33,091 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S36_+20.00
-2025-03-03 03:21:33,091 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S36_-20.00
-2025-03-03 03:21:33,091 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S37_+20.00
-2025-03-03 03:21:33,091 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S37_-20.00
-2025-03-03 03:21:33,091 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S38_+20.00
-2025-03-03 03:21:33,091 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S38_-20.00
-2025-03-03 03:21:33,091 INFO Created sensitivity mode directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint
-2025-03-03 03:21:33,091 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\waterfall
-2025-03-03 03:21:33,091 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\bar
-2025-03-03 03:21:33,091 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\point
-2025-03-03 03:21:33,091 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\Configuration
-2025-03-03 03:21:33,091 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\Configuration\S34_+20.00
-2025-03-03 03:21:33,098 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\Configuration\S35_+20.00
-2025-03-03 03:21:33,099 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\Configuration\S36_+20.00
-2025-03-03 03:21:33,100 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\Configuration\S37_+20.00
-2025-03-03 03:21:33,101 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\Configuration\S38_+20.00
-2025-03-03 03:21:33,101 INFO Created standalone Configuration directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Configuration
-2025-03-03 03:21:33,102 INFO Created sensitivity extra directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Reports
-2025-03-03 03:21:33,103 INFO Created sensitivity extra directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Cache
-2025-03-03 03:21:33,103 INFO [CHECKPOINT] Processing parameter S34
-2025-03-03 03:21:33,103 INFO 
+2025-03-03 04:55:29,511 INFO ================================================================================
+
+2025-03-03 04:55:29,626 INFO Using saved version from configuration
+2025-03-03 04:55:29,626 INFO Using saved version from configuration
+2025-03-03 04:55:29,627 INFO Using saved sensitivity parameters from configuration
+2025-03-03 04:55:29,627 INFO Using saved sensitivity parameters from configuration
+2025-03-03 04:55:29,627 INFO [ENTER] Processing visualization request - Run ID: 20250303_045529
+2025-03-03 04:55:29,627 INFO [ENTER] Processing visualization request - Run ID: 20250303_045529
+2025-03-03 04:55:29,628 INFO 
+Processing visualization request - Run ID: 20250303_045529
+2025-03-03 04:55:29,628 INFO 
+Processing visualization request - Run ID: 20250303_045529
+2025-03-03 04:55:29,628 INFO Version: 1
+2025-03-03 04:55:29,628 INFO Version: 1
+2025-03-03 04:55:29,628 INFO Parameters: ['S10', 'S11', 'S12', 'S13', 'S14', 'S15', 'S16', 'S17', 'S18', 'S19', 'S20', 'S21', 'S22', 'S23', 'S24', 'S25', 'S26', 'S27', 'S28', 'S29', 'S30', 'S31', 'S32', 'S33', 'S34', 'S35', 'S36', 'S37', 'S38', 'S39', 'S40', 'S41', 'S42', 'S43', 'S44', 'S45', 'S46', 'S47', 'S48', 'S49', 'S50', 'S51', 'S52', 'S53', 'S54', 'S55', 'S56', 'S57', 'S58', 'S59', 'S60', 'S61']
+2025-03-03 04:55:29,628 INFO Parameters: ['S10', 'S11', 'S12', 'S13', 'S14', 'S15', 'S16', 'S17', 'S18', 'S19', 'S20', 'S21', 'S22', 'S23', 'S24', 'S25', 'S26', 'S27', 'S28', 'S29', 'S30', 'S31', 'S32', 'S33', 'S34', 'S35', 'S36', 'S37', 'S38', 'S39', 'S40', 'S41', 'S42', 'S43', 'S44', 'S45', 'S46', 'S47', 'S48', 'S49', 'S50', 'S51', 'S52', 'S53', 'S54', 'S55', 'S56', 'S57', 'S58', 'S59', 'S60', 'S61']
+2025-03-03 04:55:29,628 INFO Created main sensitivity directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity
+2025-03-03 04:55:29,628 INFO Created main sensitivity directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity
+2025-03-03 04:55:29,629 INFO Created sensitivity mode directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-03-03 04:55:29,629 INFO Created sensitivity mode directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-03-03 04:55:29,629 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\waterfall
+2025-03-03 04:55:29,629 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\waterfall
+2025-03-03 04:55:29,630 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\bar
+2025-03-03 04:55:29,630 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\bar
+2025-03-03 04:55:29,630 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\point
+2025-03-03 04:55:29,630 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\point
+2025-03-03 04:55:29,631 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration
+2025-03-03 04:55:29,631 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration
+2025-03-03 04:55:29,632 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S34_+20.00
+2025-03-03 04:55:29,632 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S34_+20.00
+2025-03-03 04:55:29,632 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S34_-20.00
+2025-03-03 04:55:29,632 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S34_-20.00
+2025-03-03 04:55:29,633 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S35_+20.00
+2025-03-03 04:55:29,633 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S35_+20.00
+2025-03-03 04:55:29,633 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S35_-20.00
+2025-03-03 04:55:29,633 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S35_-20.00
+2025-03-03 04:55:29,634 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S36_+20.00
+2025-03-03 04:55:29,634 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S36_+20.00
+2025-03-03 04:55:29,635 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S36_-20.00
+2025-03-03 04:55:29,635 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S36_-20.00
+2025-03-03 04:55:29,637 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S37_+20.00
+2025-03-03 04:55:29,637 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S37_+20.00
+2025-03-03 04:55:29,637 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S37_-20.00
+2025-03-03 04:55:29,637 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S37_-20.00
+2025-03-03 04:55:29,638 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S38_+20.00
+2025-03-03 04:55:29,638 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S38_+20.00
+2025-03-03 04:55:29,638 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S38_-20.00
+2025-03-03 04:55:29,638 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S38_-20.00
+2025-03-03 04:55:29,639 INFO Created sensitivity mode directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint
+2025-03-03 04:55:29,639 INFO Created sensitivity mode directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint
+2025-03-03 04:55:29,639 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\waterfall
+2025-03-03 04:55:29,639 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\waterfall
+2025-03-03 04:55:29,640 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\bar
+2025-03-03 04:55:29,640 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\bar
+2025-03-03 04:55:29,640 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\point
+2025-03-03 04:55:29,640 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\point
+2025-03-03 04:55:29,641 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\Configuration
+2025-03-03 04:55:29,641 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\Configuration
+2025-03-03 04:55:29,642 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\Configuration\S34_+20.00
+2025-03-03 04:55:29,642 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\Configuration\S34_+20.00
+2025-03-03 04:55:29,642 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\Configuration\S35_+20.00
+2025-03-03 04:55:29,642 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\Configuration\S35_+20.00
+2025-03-03 04:55:29,643 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\Configuration\S36_+20.00
+2025-03-03 04:55:29,643 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\Configuration\S36_+20.00
+2025-03-03 04:55:29,644 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\Configuration\S37_+20.00
+2025-03-03 04:55:29,644 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\Configuration\S37_+20.00
+2025-03-03 04:55:29,644 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\Configuration\S38_+20.00
+2025-03-03 04:55:29,644 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\Configuration\S38_+20.00
+2025-03-03 04:55:29,645 INFO Created standalone Configuration directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Configuration
+2025-03-03 04:55:29,645 INFO Created standalone Configuration directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Configuration
+2025-03-03 04:55:29,645 INFO Created sensitivity extra directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Reports
+2025-03-03 04:55:29,645 INFO Created sensitivity extra directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Reports
+2025-03-03 04:55:29,646 INFO Created sensitivity extra directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Cache
+2025-03-03 04:55:29,646 INFO Created sensitivity extra directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Cache
+2025-03-03 04:55:29,647 INFO [CHECKPOINT] Processing parameter S34
+2025-03-03 04:55:29,647 INFO [CHECKPOINT] Processing parameter S34
+2025-03-03 04:55:29,647 INFO 
 Processing S34:
-2025-03-03 03:21:33,103 INFO S34 identified as special case (vs S13)
-2025-03-03 03:21:33,103 INFO Added relationship: S34 -> S13 (primary)
-2025-03-03 03:21:33,104 INFO PLOT GENERATION STARTED: waterfall plot for S34 vs S13 (symmetrical)
-2025-03-03 03:21:33,104 WARNING Plot not found: waterfall_S34_S13_primary
-2025-03-03 03:21:33,104 ERROR PLOT GENERATION FAILED: waterfall plot for S34 vs S13 (symmetrical) - Plot not found: waterfall_S34_S13_primary
-2025-03-03 03:21:33,105 ERROR DATA LOADING FAILED: S34 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S34_vs_S13_symmetrical_results.json - Result data file not found
-2025-03-03 03:21:33,105 INFO PLOT GENERATION STARTED: bar plot for S34 vs S13 (symmetrical)
-2025-03-03 03:21:33,105 WARNING Plot not found: bar_S34_S13_primary
-2025-03-03 03:21:33,105 ERROR PLOT GENERATION FAILED: bar plot for S34 vs S13 (symmetrical) - Plot not found: bar_S34_S13_primary
-2025-03-03 03:21:33,106 ERROR DATA LOADING FAILED: S34 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S34_vs_S13_symmetrical_results.json - Result data file not found
-2025-03-03 03:21:33,106 INFO PLOT GENERATION STARTED: point plot for S34 vs S13 (symmetrical)
-2025-03-03 03:21:33,106 WARNING Plot not found: point_S34_S13_primary
-2025-03-03 03:21:33,106 ERROR PLOT GENERATION FAILED: point plot for S34 vs S13 (symmetrical) - Plot not found: point_S34_S13_primary
-2025-03-03 03:21:33,107 ERROR DATA LOADING FAILED: S34 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S34_vs_S13_symmetrical_results.json - Result data file not found
-2025-03-03 03:21:33,107 INFO [CHECKPOINT] Completed processing parameter S34
-2025-03-03 03:21:33,107 INFO [CHECKPOINT] Processing parameter S35
-2025-03-03 03:21:33,107 INFO 
+2025-03-03 04:55:29,647 INFO 
+Processing S34:
+2025-03-03 04:55:29,647 INFO S34 identified as special case (vs S13)
+2025-03-03 04:55:29,647 INFO S34 identified as special case (vs S13)
+2025-03-03 04:55:29,647 INFO Added relationship: S34 -> S13 (primary)
+2025-03-03 04:55:29,647 INFO Added relationship: S34 -> S13 (primary)
+2025-03-03 04:55:29,647 INFO PLOT GENERATION STARTED: waterfall plot for S34 vs S13 (symmetrical)
+2025-03-03 04:55:29,647 INFO PLOT GENERATION STARTED: waterfall plot for S34 vs S13 (symmetrical)
+2025-03-03 04:55:29,647 WARNING Plot not found: waterfall_S34_S13_primary
+2025-03-03 04:55:29,647 WARNING Plot not found: waterfall_S34_S13_primary
+2025-03-03 04:55:29,648 ERROR PLOT GENERATION FAILED: waterfall plot for S34 vs S13 (symmetrical) - Plot not found: waterfall_S34_S13_primary
+2025-03-03 04:55:29,648 ERROR PLOT GENERATION FAILED: waterfall plot for S34 vs S13 (symmetrical) - Plot not found: waterfall_S34_S13_primary
+2025-03-03 04:55:29,648 ERROR DATA LOADING FAILED: S34 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S34_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 04:55:29,648 ERROR DATA LOADING FAILED: S34 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S34_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 04:55:29,648 INFO PLOT GENERATION STARTED: bar plot for S34 vs S13 (symmetrical)
+2025-03-03 04:55:29,648 INFO PLOT GENERATION STARTED: bar plot for S34 vs S13 (symmetrical)
+2025-03-03 04:55:29,648 WARNING Plot not found: bar_S34_S13_primary
+2025-03-03 04:55:29,648 WARNING Plot not found: bar_S34_S13_primary
+2025-03-03 04:55:29,648 ERROR PLOT GENERATION FAILED: bar plot for S34 vs S13 (symmetrical) - Plot not found: bar_S34_S13_primary
+2025-03-03 04:55:29,648 ERROR PLOT GENERATION FAILED: bar plot for S34 vs S13 (symmetrical) - Plot not found: bar_S34_S13_primary
+2025-03-03 04:55:29,649 ERROR DATA LOADING FAILED: S34 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S34_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 04:55:29,649 ERROR DATA LOADING FAILED: S34 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S34_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 04:55:29,649 INFO PLOT GENERATION STARTED: point plot for S34 vs S13 (symmetrical)
+2025-03-03 04:55:29,649 INFO PLOT GENERATION STARTED: point plot for S34 vs S13 (symmetrical)
+2025-03-03 04:55:29,649 WARNING Plot not found: point_S34_S13_primary
+2025-03-03 04:55:29,649 WARNING Plot not found: point_S34_S13_primary
+2025-03-03 04:55:29,649 ERROR PLOT GENERATION FAILED: point plot for S34 vs S13 (symmetrical) - Plot not found: point_S34_S13_primary
+2025-03-03 04:55:29,649 ERROR PLOT GENERATION FAILED: point plot for S34 vs S13 (symmetrical) - Plot not found: point_S34_S13_primary
+2025-03-03 04:55:29,650 ERROR DATA LOADING FAILED: S34 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S34_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 04:55:29,650 ERROR DATA LOADING FAILED: S34 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S34_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 04:55:29,650 INFO [CHECKPOINT] Completed processing parameter S34
+2025-03-03 04:55:29,650 INFO [CHECKPOINT] Completed processing parameter S34
+2025-03-03 04:55:29,650 INFO [CHECKPOINT] Processing parameter S35
+2025-03-03 04:55:29,650 INFO [CHECKPOINT] Processing parameter S35
+2025-03-03 04:55:29,650 INFO 
 Processing S35:
-2025-03-03 03:21:33,107 INFO S35 identified as special case (vs S13)
-2025-03-03 03:21:33,107 INFO Added relationship: S35 -> S13 (primary)
-2025-03-03 03:21:33,108 INFO PLOT GENERATION STARTED: waterfall plot for S35 vs S13 (symmetrical)
-2025-03-03 03:21:33,108 WARNING Plot not found: waterfall_S35_S13_primary
-2025-03-03 03:21:33,108 ERROR PLOT GENERATION FAILED: waterfall plot for S35 vs S13 (symmetrical) - Plot not found: waterfall_S35_S13_primary
-2025-03-03 03:21:33,108 ERROR DATA LOADING FAILED: S35 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S35_vs_S13_symmetrical_results.json - Result data file not found
-2025-03-03 03:21:33,108 INFO PLOT GENERATION STARTED: bar plot for S35 vs S13 (symmetrical)
-2025-03-03 03:21:33,109 WARNING Plot not found: bar_S35_S13_primary
-2025-03-03 03:21:33,109 ERROR PLOT GENERATION FAILED: bar plot for S35 vs S13 (symmetrical) - Plot not found: bar_S35_S13_primary
-2025-03-03 03:21:33,109 ERROR DATA LOADING FAILED: S35 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S35_vs_S13_symmetrical_results.json - Result data file not found
-2025-03-03 03:21:33,109 INFO PLOT GENERATION STARTED: point plot for S35 vs S13 (symmetrical)
-2025-03-03 03:21:33,110 WARNING Plot not found: point_S35_S13_primary
-2025-03-03 03:21:33,110 ERROR PLOT GENERATION FAILED: point plot for S35 vs S13 (symmetrical) - Plot not found: point_S35_S13_primary
-2025-03-03 03:21:33,110 ERROR DATA LOADING FAILED: S35 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S35_vs_S13_symmetrical_results.json - Result data file not found
-2025-03-03 03:21:33,110 INFO [CHECKPOINT] Completed processing parameter S35
-2025-03-03 03:21:33,110 INFO [CHECKPOINT] Processing parameter S36
-2025-03-03 03:21:33,111 INFO 
+2025-03-03 04:55:29,650 INFO 
+Processing S35:
+2025-03-03 04:55:29,650 INFO S35 identified as special case (vs S13)
+2025-03-03 04:55:29,650 INFO S35 identified as special case (vs S13)
+2025-03-03 04:55:29,650 INFO Added relationship: S35 -> S13 (primary)
+2025-03-03 04:55:29,650 INFO Added relationship: S35 -> S13 (primary)
+2025-03-03 04:55:29,651 INFO PLOT GENERATION STARTED: waterfall plot for S35 vs S13 (symmetrical)
+2025-03-03 04:55:29,651 INFO PLOT GENERATION STARTED: waterfall plot for S35 vs S13 (symmetrical)
+2025-03-03 04:55:29,651 WARNING Plot not found: waterfall_S35_S13_primary
+2025-03-03 04:55:29,651 WARNING Plot not found: waterfall_S35_S13_primary
+2025-03-03 04:55:29,651 ERROR PLOT GENERATION FAILED: waterfall plot for S35 vs S13 (symmetrical) - Plot not found: waterfall_S35_S13_primary
+2025-03-03 04:55:29,651 ERROR PLOT GENERATION FAILED: waterfall plot for S35 vs S13 (symmetrical) - Plot not found: waterfall_S35_S13_primary
+2025-03-03 04:55:29,652 ERROR DATA LOADING FAILED: S35 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S35_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 04:55:29,652 ERROR DATA LOADING FAILED: S35 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S35_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 04:55:29,652 INFO PLOT GENERATION STARTED: bar plot for S35 vs S13 (symmetrical)
+2025-03-03 04:55:29,652 INFO PLOT GENERATION STARTED: bar plot for S35 vs S13 (symmetrical)
+2025-03-03 04:55:29,652 WARNING Plot not found: bar_S35_S13_primary
+2025-03-03 04:55:29,652 WARNING Plot not found: bar_S35_S13_primary
+2025-03-03 04:55:29,652 ERROR PLOT GENERATION FAILED: bar plot for S35 vs S13 (symmetrical) - Plot not found: bar_S35_S13_primary
+2025-03-03 04:55:29,652 ERROR PLOT GENERATION FAILED: bar plot for S35 vs S13 (symmetrical) - Plot not found: bar_S35_S13_primary
+2025-03-03 04:55:29,652 ERROR DATA LOADING FAILED: S35 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S35_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 04:55:29,652 ERROR DATA LOADING FAILED: S35 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S35_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 04:55:29,652 INFO PLOT GENERATION STARTED: point plot for S35 vs S13 (symmetrical)
+2025-03-03 04:55:29,652 INFO PLOT GENERATION STARTED: point plot for S35 vs S13 (symmetrical)
+2025-03-03 04:55:29,653 WARNING Plot not found: point_S35_S13_primary
+2025-03-03 04:55:29,653 WARNING Plot not found: point_S35_S13_primary
+2025-03-03 04:55:29,653 ERROR PLOT GENERATION FAILED: point plot for S35 vs S13 (symmetrical) - Plot not found: point_S35_S13_primary
+2025-03-03 04:55:29,653 ERROR PLOT GENERATION FAILED: point plot for S35 vs S13 (symmetrical) - Plot not found: point_S35_S13_primary
+2025-03-03 04:55:29,653 ERROR DATA LOADING FAILED: S35 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S35_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 04:55:29,653 ERROR DATA LOADING FAILED: S35 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S35_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 04:55:29,654 INFO [CHECKPOINT] Completed processing parameter S35
+2025-03-03 04:55:29,654 INFO [CHECKPOINT] Completed processing parameter S35
+2025-03-03 04:55:29,654 INFO [CHECKPOINT] Processing parameter S36
+2025-03-03 04:55:29,654 INFO [CHECKPOINT] Processing parameter S36
+2025-03-03 04:55:29,655 INFO 
 Processing S36:
-2025-03-03 03:21:33,111 INFO S36 identified as special case (vs S13)
-2025-03-03 03:21:33,111 INFO Added relationship: S36 -> S13 (primary)
-2025-03-03 03:21:33,111 INFO PLOT GENERATION STARTED: waterfall plot for S36 vs S13 (symmetrical)
-2025-03-03 03:21:33,111 WARNING Plot not found: waterfall_S36_S13_primary
-2025-03-03 03:21:33,111 ERROR PLOT GENERATION FAILED: waterfall plot for S36 vs S13 (symmetrical) - Plot not found: waterfall_S36_S13_primary
-2025-03-03 03:21:33,112 ERROR DATA LOADING FAILED: S36 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S36_vs_S13_symmetrical_results.json - Result data file not found
-2025-03-03 03:21:33,112 INFO PLOT GENERATION STARTED: bar plot for S36 vs S13 (symmetrical)
-2025-03-03 03:21:33,112 WARNING Plot not found: bar_S36_S13_primary
-2025-03-03 03:21:33,112 ERROR PLOT GENERATION FAILED: bar plot for S36 vs S13 (symmetrical) - Plot not found: bar_S36_S13_primary
-2025-03-03 03:21:33,113 ERROR DATA LOADING FAILED: S36 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S36_vs_S13_symmetrical_results.json - Result data file not found
-2025-03-03 03:21:33,113 INFO PLOT GENERATION STARTED: point plot for S36 vs S13 (symmetrical)
-2025-03-03 03:21:33,113 WARNING Plot not found: point_S36_S13_primary
-2025-03-03 03:21:33,113 ERROR PLOT GENERATION FAILED: point plot for S36 vs S13 (symmetrical) - Plot not found: point_S36_S13_primary
-2025-03-03 03:21:33,114 ERROR DATA LOADING FAILED: S36 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S36_vs_S13_symmetrical_results.json - Result data file not found
-2025-03-03 03:21:33,114 INFO [CHECKPOINT] Completed processing parameter S36
-2025-03-03 03:21:33,114 INFO [CHECKPOINT] Processing parameter S37
-2025-03-03 03:21:33,114 INFO 
+2025-03-03 04:55:29,655 INFO 
+Processing S36:
+2025-03-03 04:55:29,655 INFO S36 identified as special case (vs S13)
+2025-03-03 04:55:29,655 INFO S36 identified as special case (vs S13)
+2025-03-03 04:55:29,655 INFO Added relationship: S36 -> S13 (primary)
+2025-03-03 04:55:29,655 INFO Added relationship: S36 -> S13 (primary)
+2025-03-03 04:55:29,655 INFO PLOT GENERATION STARTED: waterfall plot for S36 vs S13 (symmetrical)
+2025-03-03 04:55:29,655 INFO PLOT GENERATION STARTED: waterfall plot for S36 vs S13 (symmetrical)
+2025-03-03 04:55:29,655 WARNING Plot not found: waterfall_S36_S13_primary
+2025-03-03 04:55:29,655 WARNING Plot not found: waterfall_S36_S13_primary
+2025-03-03 04:55:29,655 ERROR PLOT GENERATION FAILED: waterfall plot for S36 vs S13 (symmetrical) - Plot not found: waterfall_S36_S13_primary
+2025-03-03 04:55:29,655 ERROR PLOT GENERATION FAILED: waterfall plot for S36 vs S13 (symmetrical) - Plot not found: waterfall_S36_S13_primary
+2025-03-03 04:55:29,656 ERROR DATA LOADING FAILED: S36 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S36_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 04:55:29,656 ERROR DATA LOADING FAILED: S36 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S36_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 04:55:29,656 INFO PLOT GENERATION STARTED: bar plot for S36 vs S13 (symmetrical)
+2025-03-03 04:55:29,656 INFO PLOT GENERATION STARTED: bar plot for S36 vs S13 (symmetrical)
+2025-03-03 04:55:29,656 WARNING Plot not found: bar_S36_S13_primary
+2025-03-03 04:55:29,656 WARNING Plot not found: bar_S36_S13_primary
+2025-03-03 04:55:29,656 ERROR PLOT GENERATION FAILED: bar plot for S36 vs S13 (symmetrical) - Plot not found: bar_S36_S13_primary
+2025-03-03 04:55:29,656 ERROR PLOT GENERATION FAILED: bar plot for S36 vs S13 (symmetrical) - Plot not found: bar_S36_S13_primary
+2025-03-03 04:55:29,656 ERROR DATA LOADING FAILED: S36 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S36_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 04:55:29,656 ERROR DATA LOADING FAILED: S36 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S36_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 04:55:29,656 INFO PLOT GENERATION STARTED: point plot for S36 vs S13 (symmetrical)
+2025-03-03 04:55:29,656 INFO PLOT GENERATION STARTED: point plot for S36 vs S13 (symmetrical)
+2025-03-03 04:55:29,657 WARNING Plot not found: point_S36_S13_primary
+2025-03-03 04:55:29,657 WARNING Plot not found: point_S36_S13_primary
+2025-03-03 04:55:29,657 ERROR PLOT GENERATION FAILED: point plot for S36 vs S13 (symmetrical) - Plot not found: point_S36_S13_primary
+2025-03-03 04:55:29,657 ERROR PLOT GENERATION FAILED: point plot for S36 vs S13 (symmetrical) - Plot not found: point_S36_S13_primary
+2025-03-03 04:55:29,657 ERROR DATA LOADING FAILED: S36 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S36_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 04:55:29,657 ERROR DATA LOADING FAILED: S36 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S36_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 04:55:29,657 INFO [CHECKPOINT] Completed processing parameter S36
+2025-03-03 04:55:29,657 INFO [CHECKPOINT] Completed processing parameter S36
+2025-03-03 04:55:29,657 INFO [CHECKPOINT] Processing parameter S37
+2025-03-03 04:55:29,657 INFO [CHECKPOINT] Processing parameter S37
+2025-03-03 04:55:29,658 INFO 
 Processing S37:
-2025-03-03 03:21:33,114 INFO S37 identified as special case (vs S13)
-2025-03-03 03:21:33,114 INFO Added relationship: S37 -> S13 (primary)
-2025-03-03 03:21:33,115 INFO PLOT GENERATION STARTED: waterfall plot for S37 vs S13 (symmetrical)
-2025-03-03 03:21:33,115 WARNING Plot not found: waterfall_S37_S13_primary
-2025-03-03 03:21:33,115 ERROR PLOT GENERATION FAILED: waterfall plot for S37 vs S13 (symmetrical) - Plot not found: waterfall_S37_S13_primary
-2025-03-03 03:21:33,115 ERROR DATA LOADING FAILED: S37 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S37_vs_S13_symmetrical_results.json - Result data file not found
-2025-03-03 03:21:33,115 INFO PLOT GENERATION STARTED: bar plot for S37 vs S13 (symmetrical)
-2025-03-03 03:21:33,116 WARNING Plot not found: bar_S37_S13_primary
-2025-03-03 03:21:33,116 ERROR PLOT GENERATION FAILED: bar plot for S37 vs S13 (symmetrical) - Plot not found: bar_S37_S13_primary
-2025-03-03 03:21:33,116 ERROR DATA LOADING FAILED: S37 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S37_vs_S13_symmetrical_results.json - Result data file not found
-2025-03-03 03:21:33,116 INFO PLOT GENERATION STARTED: point plot for S37 vs S13 (symmetrical)
-2025-03-03 03:21:33,117 WARNING Plot not found: point_S37_S13_primary
-2025-03-03 03:21:33,117 ERROR PLOT GENERATION FAILED: point plot for S37 vs S13 (symmetrical) - Plot not found: point_S37_S13_primary
-2025-03-03 03:21:33,117 ERROR DATA LOADING FAILED: S37 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S37_vs_S13_symmetrical_results.json - Result data file not found
-2025-03-03 03:21:33,117 INFO [CHECKPOINT] Completed processing parameter S37
-2025-03-03 03:21:33,117 INFO [CHECKPOINT] Processing parameter S38
-2025-03-03 03:21:33,118 INFO 
+2025-03-03 04:55:29,658 INFO 
+Processing S37:
+2025-03-03 04:55:29,658 INFO S37 identified as special case (vs S13)
+2025-03-03 04:55:29,658 INFO S37 identified as special case (vs S13)
+2025-03-03 04:55:29,658 INFO Added relationship: S37 -> S13 (primary)
+2025-03-03 04:55:29,658 INFO Added relationship: S37 -> S13 (primary)
+2025-03-03 04:55:29,658 INFO PLOT GENERATION STARTED: waterfall plot for S37 vs S13 (symmetrical)
+2025-03-03 04:55:29,658 INFO PLOT GENERATION STARTED: waterfall plot for S37 vs S13 (symmetrical)
+2025-03-03 04:55:29,658 WARNING Plot not found: waterfall_S37_S13_primary
+2025-03-03 04:55:29,658 WARNING Plot not found: waterfall_S37_S13_primary
+2025-03-03 04:55:29,659 ERROR PLOT GENERATION FAILED: waterfall plot for S37 vs S13 (symmetrical) - Plot not found: waterfall_S37_S13_primary
+2025-03-03 04:55:29,659 ERROR PLOT GENERATION FAILED: waterfall plot for S37 vs S13 (symmetrical) - Plot not found: waterfall_S37_S13_primary
+2025-03-03 04:55:29,659 ERROR DATA LOADING FAILED: S37 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S37_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 04:55:29,659 ERROR DATA LOADING FAILED: S37 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S37_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 04:55:29,659 INFO PLOT GENERATION STARTED: bar plot for S37 vs S13 (symmetrical)
+2025-03-03 04:55:29,659 INFO PLOT GENERATION STARTED: bar plot for S37 vs S13 (symmetrical)
+2025-03-03 04:55:29,659 WARNING Plot not found: bar_S37_S13_primary
+2025-03-03 04:55:29,659 WARNING Plot not found: bar_S37_S13_primary
+2025-03-03 04:55:29,659 ERROR PLOT GENERATION FAILED: bar plot for S37 vs S13 (symmetrical) - Plot not found: bar_S37_S13_primary
+2025-03-03 04:55:29,659 ERROR PLOT GENERATION FAILED: bar plot for S37 vs S13 (symmetrical) - Plot not found: bar_S37_S13_primary
+2025-03-03 04:55:29,660 ERROR DATA LOADING FAILED: S37 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S37_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 04:55:29,660 ERROR DATA LOADING FAILED: S37 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S37_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 04:55:29,660 INFO PLOT GENERATION STARTED: point plot for S37 vs S13 (symmetrical)
+2025-03-03 04:55:29,660 INFO PLOT GENERATION STARTED: point plot for S37 vs S13 (symmetrical)
+2025-03-03 04:55:29,660 WARNING Plot not found: point_S37_S13_primary
+2025-03-03 04:55:29,660 WARNING Plot not found: point_S37_S13_primary
+2025-03-03 04:55:29,660 ERROR PLOT GENERATION FAILED: point plot for S37 vs S13 (symmetrical) - Plot not found: point_S37_S13_primary
+2025-03-03 04:55:29,660 ERROR PLOT GENERATION FAILED: point plot for S37 vs S13 (symmetrical) - Plot not found: point_S37_S13_primary
+2025-03-03 04:55:29,660 ERROR DATA LOADING FAILED: S37 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S37_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 04:55:29,660 ERROR DATA LOADING FAILED: S37 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S37_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 04:55:29,662 INFO [CHECKPOINT] Completed processing parameter S37
+2025-03-03 04:55:29,662 INFO [CHECKPOINT] Completed processing parameter S37
+2025-03-03 04:55:29,662 INFO [CHECKPOINT] Processing parameter S38
+2025-03-03 04:55:29,662 INFO [CHECKPOINT] Processing parameter S38
+2025-03-03 04:55:29,662 INFO 
 Processing S38:
-2025-03-03 03:21:33,118 INFO S38 identified as special case (vs S13)
-2025-03-03 03:21:33,118 INFO Added relationship: S38 -> S13 (primary)
-2025-03-03 03:21:33,118 INFO PLOT GENERATION STARTED: waterfall plot for S38 vs S13 (symmetrical)
-2025-03-03 03:21:33,119 WARNING Plot not found: waterfall_S38_S13_primary
-2025-03-03 03:21:33,119 ERROR PLOT GENERATION FAILED: waterfall plot for S38 vs S13 (symmetrical) - Plot not found: waterfall_S38_S13_primary
-2025-03-03 03:21:33,119 ERROR DATA LOADING FAILED: S38 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S38_vs_S13_symmetrical_results.json - Result data file not found
-2025-03-03 03:21:33,119 INFO PLOT GENERATION STARTED: bar plot for S38 vs S13 (symmetrical)
-2025-03-03 03:21:33,119 WARNING Plot not found: bar_S38_S13_primary
-2025-03-03 03:21:33,119 ERROR PLOT GENERATION FAILED: bar plot for S38 vs S13 (symmetrical) - Plot not found: bar_S38_S13_primary
-2025-03-03 03:21:33,119 ERROR DATA LOADING FAILED: S38 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S38_vs_S13_symmetrical_results.json - Result data file not found
-2025-03-03 03:21:33,120 INFO PLOT GENERATION STARTED: point plot for S38 vs S13 (symmetrical)
-2025-03-03 03:21:33,120 WARNING Plot not found: point_S38_S13_primary
-2025-03-03 03:21:33,120 ERROR PLOT GENERATION FAILED: point plot for S38 vs S13 (symmetrical) - Plot not found: point_S38_S13_primary
-2025-03-03 03:21:33,120 ERROR DATA LOADING FAILED: S38 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S38_vs_S13_symmetrical_results.json - Result data file not found
-2025-03-03 03:21:33,120 INFO [CHECKPOINT] Completed processing parameter S38
-2025-03-03 03:21:33,121 INFO 
-Visualization processing complete - Run ID: 20250303_032133
-2025-03-03 03:21:33,121 INFO Processing time: 0.04s
-2025-03-03 03:21:33,121 INFO Plots generated: 0
-2025-03-03 03:21:33,121 INFO [EXIT] Visualization processing complete - Run ID: 20250303_032133
+2025-03-03 04:55:29,662 INFO 
+Processing S38:
+2025-03-03 04:55:29,662 INFO S38 identified as special case (vs S13)
+2025-03-03 04:55:29,662 INFO S38 identified as special case (vs S13)
+2025-03-03 04:55:29,663 INFO Added relationship: S38 -> S13 (primary)
+2025-03-03 04:55:29,663 INFO Added relationship: S38 -> S13 (primary)
+2025-03-03 04:55:29,663 INFO PLOT GENERATION STARTED: waterfall plot for S38 vs S13 (symmetrical)
+2025-03-03 04:55:29,663 INFO PLOT GENERATION STARTED: waterfall plot for S38 vs S13 (symmetrical)
+2025-03-03 04:55:29,663 WARNING Plot not found: waterfall_S38_S13_primary
+2025-03-03 04:55:29,663 WARNING Plot not found: waterfall_S38_S13_primary
+2025-03-03 04:55:29,664 ERROR PLOT GENERATION FAILED: waterfall plot for S38 vs S13 (symmetrical) - Plot not found: waterfall_S38_S13_primary
+2025-03-03 04:55:29,664 ERROR PLOT GENERATION FAILED: waterfall plot for S38 vs S13 (symmetrical) - Plot not found: waterfall_S38_S13_primary
+2025-03-03 04:55:29,664 ERROR DATA LOADING FAILED: S38 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S38_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 04:55:29,664 ERROR DATA LOADING FAILED: S38 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S38_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 04:55:29,664 INFO PLOT GENERATION STARTED: bar plot for S38 vs S13 (symmetrical)
+2025-03-03 04:55:29,664 INFO PLOT GENERATION STARTED: bar plot for S38 vs S13 (symmetrical)
+2025-03-03 04:55:29,665 WARNING Plot not found: bar_S38_S13_primary
+2025-03-03 04:55:29,665 WARNING Plot not found: bar_S38_S13_primary
+2025-03-03 04:55:29,665 ERROR PLOT GENERATION FAILED: bar plot for S38 vs S13 (symmetrical) - Plot not found: bar_S38_S13_primary
+2025-03-03 04:55:29,665 ERROR PLOT GENERATION FAILED: bar plot for S38 vs S13 (symmetrical) - Plot not found: bar_S38_S13_primary
+2025-03-03 04:55:29,665 ERROR DATA LOADING FAILED: S38 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S38_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 04:55:29,665 ERROR DATA LOADING FAILED: S38 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S38_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 04:55:29,665 INFO PLOT GENERATION STARTED: point plot for S38 vs S13 (symmetrical)
+2025-03-03 04:55:29,665 INFO PLOT GENERATION STARTED: point plot for S38 vs S13 (symmetrical)
+2025-03-03 04:55:29,666 WARNING Plot not found: point_S38_S13_primary
+2025-03-03 04:55:29,666 WARNING Plot not found: point_S38_S13_primary
+2025-03-03 04:55:29,666 ERROR PLOT GENERATION FAILED: point plot for S38 vs S13 (symmetrical) - Plot not found: point_S38_S13_primary
+2025-03-03 04:55:29,666 ERROR PLOT GENERATION FAILED: point plot for S38 vs S13 (symmetrical) - Plot not found: point_S38_S13_primary
+2025-03-03 04:55:29,666 ERROR DATA LOADING FAILED: S38 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S38_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 04:55:29,666 ERROR DATA LOADING FAILED: S38 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S38_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 04:55:29,666 INFO [CHECKPOINT] Completed processing parameter S38
+2025-03-03 04:55:29,666 INFO [CHECKPOINT] Completed processing parameter S38
+2025-03-03 04:55:29,666 INFO 
+Visualization processing complete - Run ID: 20250303_045529
+2025-03-03 04:55:29,666 INFO 
+Visualization processing complete - Run ID: 20250303_045529
+2025-03-03 04:55:29,667 INFO Processing time: 0.04s
+2025-03-03 04:55:29,667 INFO Processing time: 0.04s
+2025-03-03 04:55:29,667 INFO Plots generated: 0
+2025-03-03 04:55:29,667 INFO Plots generated: 0
+2025-03-03 04:55:29,667 INFO [EXIT] Visualization processing complete - Run ID: 20250303_045529
+2025-03-03 04:55:29,667 INFO [EXIT] Visualization processing complete - Run ID: 20250303_045529
+2025-03-03 04:58:55,727 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-03-03 04:58:55,727 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-03-03 05:29:07,402 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-03-03 05:29:07,402 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-03-03 05:29:54,588 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-03-03 05:29:54,588 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-03-03 05:30:52,510 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-03-03 05:30:52,510 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-03-03 05:31:29,291 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-03-03 05:31:29,291 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-03-03 05:32:52,302 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-03-03 05:32:52,302 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-03-03 05:33:25,418 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-03-03 05:33:25,418 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-03-03 05:37:53,551 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-03-03 05:37:53,551 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-03-03 05:39:49,881 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-03-03 05:39:49,881 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log

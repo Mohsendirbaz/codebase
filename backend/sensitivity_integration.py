@@ -1,360 +1,226 @@
+"""
+Integration module for sensitivity analysis.
+
+This module provides a high-level interface for integrating the new sensitivity
+workflow with the existing system, making it easier for the frontend to use.
+"""
+
 import os
 import json
-import subprocess
-from pathlib import Path
-from datetime import datetime
+import logging
+import time
+from calculations_sensitivity_adapter import SensitivityAdapter
 
-# Import our custom modules
-from sensitivity_analysis_manager import sensitivity_manager
-from sensitivity_plot_organizer import organize_sensitivity_plots
-from sensitivity_html_organizer import organize_sensitivity_html
-from calculations_sensitivity_adapter import calculation_adapter
-from sensitivity_logging import get_integration_logger
-
-# Get logger from centralized logging
-logger = get_integration_logger()
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s %(levelname)s %(message)s',
+    filename=os.path.join(os.path.dirname(__file__), 'Logs', 'sensitivity_integration.log'),
+    filemode='a'
+)
 
 class SensitivityIntegration:
     """
-    Integrates sensitivity analysis with the main calculation pipeline.
-    This class serves as the central coordinator for all sensitivity-related operations.
+    Integration class for sensitivity analysis.
+    
+    This class provides a high-level interface for the frontend to use,
+    ensuring that the sensitivity workflow is followed correctly.
     """
     
-    def __init__(self):
-        self.manager = sensitivity_manager
-        self.base_dir = Path(os.path.dirname(os.path.abspath(__file__)))
-        self.original_dir = self.base_dir / 'Original'  # Use backend/Original instead of public/Original
-        self.logger = get_integration_logger()
-        self.calculation_adapter = calculation_adapter
-    
-    def process_sensitivity_request(self, version, sensitivity_params):
+    def __init__(self, api_base_url="http://localhost:25007"):
         """
-        Process a complete sensitivity analysis request.
-        This handles the end-to-end flow from parameter processing to visualization.
+        Initialize the integration with the API base URL.
         
         Args:
-            version: The version number to process
-            sensitivity_params: Dictionary of sensitivity parameters with their configurations
+            api_base_url (str): Base URL of the Flask API
+        """
+        self.adapter = SensitivityAdapter(api_base_url)
+        self.logger = logging.getLogger(__name__)
+        self.config_status_path = os.path.join(
+            os.path.dirname(__file__), 
+            'Logs', 
+            'sensitivity_config_status.json'
+        )
+        
+    def is_configured(self):
+        """
+        Check if sensitivity configurations have been generated and saved.
         
         Returns:
-            dict: Results of the processing operation
+            bool: True if configurations exist, False otherwise
         """
-        from sensitivity_logging import track_method, log_directory_check, log_directory_create, directory_operation
-        
-        self.logger.info(f"Processing sensitivity request for version {version}")
-        
-        # Ensure sensitivity directories exist before any processing
+        if not os.path.exists(self.config_status_path):
+            return False
+            
         try:
-            self.logger.info(f"Ensuring sensitivity directories exist for version {version}")
-            
-            # Log directory check before creation
-            sensitivity_dir = self.original_dir / f"Batch({version})" / f"Results({version})" / "Sensitivity"
-            log_directory_check(sensitivity_dir, os.path.exists(sensitivity_dir))
-            
-            # Create directories with enhanced logging
-            created_dirs = self.manager.ensure_sensitivity_directories(version)
-            self.logger.info(f"Created/verified sensitivity directories: {list(created_dirs.keys())}")
+            with open(self.config_status_path, 'r') as f:
+                status = json.load(f)
+                return status.get('configured', False)
         except Exception as e:
-            self.logger.error(f"Error creating sensitivity directories: {str(e)}")
-            return {
-                "version": version,
-                "timestamp": datetime.now().isoformat(),
-                "error": f"Failed to create sensitivity directories: {str(e)}"
-            }
+            self.logger.error(f"Error checking configuration status: {str(e)}")
+            return False
+            
+    def process_sensitivity_request(self, request_data):
+        """
+        Process a sensitivity analysis request from the frontend.
         
-        results = {
-            "version": version,
-            "timestamp": datetime.now().isoformat(),
-            "parameters_processed": [],
-            "errors": []
-        }
+        This method ensures that the proper workflow is followed:
+        1. If configurations don't exist, generate them
+        2. Run sensitivity calculations
+        3. Return the results
         
-        # Filter enabled parameters
-        enabled_params = {k: v for k, v in sensitivity_params.items() if v.get('enabled', True)}
+        Args:
+            request_data (dict): Request data from the frontend
+            
+        Returns:
+            dict: Results of the sensitivity analysis
+        """
+        self.logger.info("Processing sensitivity request")
         
-        if not enabled_params:
-            self.logger.info("No enabled sensitivity parameters found")
-            return results
-        
-        # Process each enabled parameter
-        for param_id, config in enabled_params.items():
-            try:
-                self.logger.info(f"Processing parameter {param_id}")
-                
-                # Validate parameter format
-                if not param_id.startswith('S') or not param_id[1:].isdigit():
-                    error = f"Invalid parameter ID format: {param_id}"
-                    self.logger.error(error)
-                    results["errors"].append({"param_id": param_id, "error": error})
-                    continue
-                
-                # Extract and validate configuration
-                mode = config.get('mode')
-                if not mode:
-                    error = f"No analysis mode specified for {param_id}"
-                    self.logger.error(error)
-                    results["errors"].append({"param_id": param_id, "error": error})
-                    continue
-                
-                compare_to_key = config.get('compareToKey')
-                if not compare_to_key:
-                    error = f"No comparison key specified for {param_id}"
-                    self.logger.error(error)
-                    results["errors"].append({"param_id": param_id, "error": error})
-                    continue
-                
-                values = config.get('values', [])
-                if mode == 'symmetrical' and (not values or len(values) == 0):
-                    # Default value for symmetrical mode
-                    values = [10]  # Default to 10% variation
-                elif mode == 'multipoint' and (not values or len(values) == 0):
-                    error = f"No variation points specified for multipoint analysis of {param_id}"
-                    self.logger.error(error)
-                    results["errors"].append({"param_id": param_id, "error": error})
-                    continue
-                
-                # Ensure mode-specific directories exist
-                try:
-                    mode_dir = self.original_dir / f"Batch({version})" / f"Results({version})" / "Sensitivity" / (
-                        "Symmetrical" if mode == "symmetrical" else "Multipoint"
-                    )
-                    
-                    # Log directory check and creation
-                    with directory_operation('check', mode_dir):
-                        log_directory_check(mode_dir, os.path.exists(mode_dir))
-                    
-                    # Create the directory if it doesn't exist
-                    with directory_operation('create', mode_dir):
-                        os.makedirs(mode_dir, exist_ok=True)
-                        self.logger.info(f"Created/verified mode directory: {mode_dir}")
-                    
-                    # Create subdirectories for plot types and configuration
-                    for subdir in ['waterfall', 'bar', 'point', 'Configuration']:
-                        subdir_path = mode_dir / subdir
-                        
-                        # Log directory check and creation
-                        with directory_operation('check', subdir_path):
-                            log_directory_check(subdir_path, os.path.exists(subdir_path))
-                        
-                        # Create the subdirectory if it doesn't exist
-                        with directory_operation('create', subdir_path):
-                            os.makedirs(subdir_path, exist_ok=True)
-                            self.logger.info(f"Created/verified subdirectory: {subdir_path}")
-                except Exception as e:
-                    error = f"Error creating mode-specific directories for {param_id}: {str(e)}"
-                    self.logger.error(error)
-                    results["errors"].append({"param_id": param_id, "error": error})
-                    continue
-                
-                # Generate sensitivity configurations
-                try:
-                    configs = self.manager.generate_sensitivity_configs(
-                        version, param_id, mode, values
-                    )
-                    self.logger.info(f"Generated {len(configs)} sensitivity configurations for {param_id}")
-                except Exception as e:
-                    error = f"Error generating sensitivity configurations for {param_id}: {str(e)}"
-                    self.logger.error(error)
-                    results["errors"].append({"param_id": param_id, "error": error})
-                    continue
-                
-                # Skip API-based calculations and directly use the generated configs
-                # This is a fallback approach since the 404 errors indicate API endpoints may not be available
-                
-                # Store a calculation result for reference
-                dummy_result_data = {
-                    "param_id": param_id,
-                    "mode": mode,
-                    "compareToKey": compare_to_key,
-                    "variations": values if mode == 'multiple' else [values[0], -values[0]],
-                    "impacts": [(v/10) for v in values] if mode == 'multiple' 
-                              else [(values[0]/10), (-values[0]/10)],  # Dummy impact values
-                    "baseValue": 100.0,  # Dummy base value
-                    "results": [(100.0 * (1 + v/100)) for v in values] if mode == 'multiple'
-                              else [(100.0 * (1 + values[0]/100)), (100.0 * (1 - values[0]/100))]
+        # Check if configurations exist
+        if not self.is_configured():
+            self.logger.info("Configurations don't exist, generating them first")
+            config_result = self.adapter.generate_configurations(request_data)
+            
+            if not config_result.get('status') == 'success':
+                self.logger.error(f"Failed to generate configurations: {config_result.get('error', 'Unknown error')}")
+                return {
+                    "status": "error",
+                    "error": "Failed to generate configurations",
+                    "details": config_result
                 }
                 
-                try:
-                    result_path = self.manager.store_calculation_result(
-                        version, param_id, compare_to_key, dummy_result_data, mode
-                    )
-                    self.logger.info(f"Stored dummy calculation result for {param_id} at {result_path}")
-                except Exception as e:
-                    error = f"Error storing calculation result for {param_id}: {str(e)}"
-                    self.logger.error(error)
-                    results["errors"].append({"param_id": param_id, "error": error})
-                
-                # Generate requested plot types
-                plot_paths = []
-                plot_types = []
-                if config.get('waterfall'): plot_types.append('waterfall')
-                if config.get('bar'): plot_types.append('bar')
-                if config.get('point'): plot_types.append('point')
-                
-                comparison_type = config.get('comparisonType', 'primary')
-                
-                for plot_type in plot_types:
-                    try:
-                        # Generate a placeholder plot using the manager
-                        plot_path = self.manager.generate_plot(
-                            version, param_id, compare_to_key, mode, 
-                            plot_type, comparison_type, result_path
-                        )
-                        plot_paths.append(str(plot_path))
-                        self.logger.info(f"Generated placeholder {plot_type} plot for {param_id} vs {compare_to_key}")
-                    except Exception as e:
-                        error = f"Error generating {plot_type} plot for {param_id}: {str(e)}"
-                        self.logger.error(error)
-                        results["errors"].append({"param_id": param_id, "error": error})
-                
-                # Record successful processing
-                results["parameters_processed"].append({
-                    "param_id": param_id,
-                    "configs": len(configs),
-                    "calculations": 1,  # We're just storing a dummy result
-                    "plots": len(plot_paths)
-                })
-                
-            except Exception as e:
-                error = f"Unexpected error processing {param_id}: {str(e)}"
-                self.logger.error(error)
-                results["errors"].append({"param_id": param_id, "error": error})
-        
-        # Organize all sensitivity outputs
-        try:
-            organize_plots_result = organize_sensitivity_plots(self.original_dir)
-            organize_html_result = organize_sensitivity_html(self.original_dir)
+            self.logger.info("Configurations generated successfully")
+            time.sleep(1)  # Small delay to ensure configurations are saved
+        else:
+            self.logger.info("Using existing configurations")
             
-            results["organization"] = {
-                "plots": organize_plots_result,
-                "html": organize_html_result
+        # Run sensitivity calculations
+        self.logger.info("Running sensitivity calculations")
+        calc_result = self.adapter.run_calculations()
+        
+        if not calc_result.get('status') == 'success':
+            self.logger.error(f"Failed to run calculations: {calc_result.get('error', 'Unknown error')}")
+            return {
+                "status": "error",
+                "error": "Failed to run calculations",
+                "details": calc_result
             }
-        except Exception as e:
-            error = f"Error organizing sensitivity outputs: {str(e)}"
-            self.logger.error(error)
-            results["errors"].append({"component": "organization", "error": error})
-        
-        return results
-    
-    def run_calculation_with_sensitivity(self, version, calculation_script_path, selected_v, selected_f, 
-                                        target_row, calculation_option, tolerance_lower, tolerance_upper, 
-                                        increase_rate, decrease_rate, sensitivity_params):
-        """
-        Run a calculation that includes sensitivity analysis.
-        This is meant to be called from the main Calculations.py script.
-        
-        Args:
-            version: Version number
-            calculation_script_path: Path to the calculation script
-            selected_v, selected_f: V and F state dictionaries
-            target_row: Target row for calculation
-            calculation_option: Calculation option (e.g., 'calculateForPrice')
-            tolerance_lower, tolerance_upper: Tolerance bounds
-            increase_rate, decrease_rate: Adjustment rates
-            sensitivity_params: Sensitivity parameters
             
-        Returns:
-            tuple: (success, error_message)
+        self.logger.info("Calculations completed successfully")
+        
+        # Return the results
+        return {
+            "status": "success",
+            "message": "Sensitivity analysis completed successfully",
+            "calculations": calc_result
+        }
+        
+    def get_visualization_data(self):
         """
-        from sensitivity_logging import track_method, log_directory_check, log_directory_create, directory_operation
+        Get visualization data for sensitivity results.
+        
+        Returns:
+            dict: Visualization data
+        """
+        self.logger.info("Getting visualization data")
+        
+        # Check if configurations exist
+        if not self.is_configured():
+            self.logger.error("Cannot get visualization data: configurations don't exist")
+            return {
+                "status": "error",
+                "error": "Sensitivity configurations must be generated first",
+                "message": "Please generate sensitivity configurations before visualizing results"
+            }
+            
+        # Get visualization data
+        vis_result = self.adapter.visualize_results()
+        
+        if 'error' in vis_result:
+            self.logger.error(f"Failed to get visualization data: {vis_result.get('error', 'Unknown error')}")
+            return {
+                "status": "error",
+                "error": "Failed to get visualization data",
+                "details": vis_result
+            }
+            
+        self.logger.info("Visualization data retrieved successfully")
+        return vis_result
+        
+    def reset_configuration(self):
+        """
+        Reset sensitivity configuration status.
+        
+        This method is useful for testing or when you want to force
+        regeneration of configurations.
+        
+        Returns:
+            bool: True if reset was successful, False otherwise
+        """
+        self.logger.info("Resetting sensitivity configuration status")
         
         try:
-            # Log execution flow
-            self.logger.info(f"Running sensitivity analysis for version {version} using direct file access")
-            
-            # If no sensitivity parameters, we're done
-            if not sensitivity_params:
-                self.logger.info("No sensitivity parameters provided, skipping sensitivity analysis")
-                return True, None
-                
-            # Ensure sensitivity directories exist before any processing
-            try:
-                self.logger.info(f"Ensuring sensitivity directories exist for version {version}")
-                
-                # Log directory check before creation
-                sensitivity_dir = self.original_dir / f"Batch({version})" / f"Results({version})" / "Sensitivity"
-                log_directory_check(sensitivity_dir, os.path.exists(sensitivity_dir))
-                
-                # Create directories with enhanced logging
-                created_dirs = self.manager.ensure_sensitivity_directories(version)
-                self.logger.info(f"Created/verified sensitivity directories: {list(created_dirs.keys())}")
-            except Exception as e:
-                error_msg = f"Error creating sensitivity directories: {str(e)}"
-                self.logger.error(error_msg)
-                return False, error_msg
-                
-            # Process the sensitivity parameters directly using the manager
-            enabled_params = {k: v for k, v in sensitivity_params.items() if v.get('enabled', True)}
-            
-            if not enabled_params:
-                self.logger.info("No enabled sensitivity parameters found")
-                return True, None
-            
-            for param_id, config in enabled_params.items():
-                try:
-                    self.logger.info(f"Processing parameter {param_id}")
+            if os.path.exists(self.config_status_path):
+                with open(self.config_status_path, 'w') as f:
+                    json.dump({
+                        'configured': False,
+                        'timestamp': time.strftime("%Y-%m-%d %H:%M:%S"),
+                        'message': "Configuration status reset manually"
+                    }, f, indent=2)
                     
-                    # Extract and validate configuration
-                    mode = config.get('mode')
-                    if not mode:
-                        self.logger.warning(f"No analysis mode specified for {param_id}, skipping")
-                        continue
-                    
-                    values = config.get('values', [])
-                    if mode == 'symmetrical' and (not values or len(values) == 0):
-                        values = [10]  # Default to 10% variation
-                    elif mode == 'multipoint' and (not values or len(values) == 0):
-                        self.logger.warning(f"No variation points specified for {param_id}, skipping")
-                        continue
-                    
-                    # Ensure mode-specific directories exist
-                    try:
-                        mode_dir = self.original_dir / f"Batch({version})" / f"Results({version})" / "Sensitivity" / (
-                            "Symmetrical" if mode == "symmetrical" else "Multipoint"
-                        )
-                        
-                        # Log directory check and creation
-                        with directory_operation('check', mode_dir):
-                            log_directory_check(mode_dir, os.path.exists(mode_dir))
-                        
-                        # Create the directory if it doesn't exist
-                        with directory_operation('create', mode_dir):
-                            os.makedirs(mode_dir, exist_ok=True)
-                            self.logger.info(f"Created/verified mode directory: {mode_dir}")
-                        
-                        # Create subdirectories for plot types and configuration
-                        for subdir in ['waterfall', 'bar', 'point', 'Configuration']:
-                            subdir_path = mode_dir / subdir
-                            
-                            # Log directory check and creation
-                            with directory_operation('check', subdir_path):
-                                log_directory_check(subdir_path, os.path.exists(subdir_path))
-                            
-                            # Create the subdirectory if it doesn't exist
-                            with directory_operation('create', subdir_path):
-                                os.makedirs(subdir_path, exist_ok=True)
-                                self.logger.info(f"Created/verified subdirectory: {subdir_path}")
-                    except Exception as e:
-                        error_msg = f"Error creating mode-specific directories for {param_id}: {str(e)}"
-                        self.logger.error(error_msg)
-                        continue
-                    
-                    # Generate sensitivity configurations
-                    configs = self.manager.generate_sensitivity_configs(
-                        version, param_id, mode, values
-                    )
-                    self.logger.info(f"Generated {len(configs)} sensitivity configurations for {param_id}")
-                    
-                except Exception as e:
-                    self.logger.error(f"Error processing sensitivity parameter {param_id}: {str(e)}")
-                    # Continue with other parameters
-            
-            return True, None
+            self.logger.info("Configuration status reset successfully")
+            return True
             
         except Exception as e:
-            error_msg = f"Error running calculation with sensitivity: {str(e)}"
-            self.logger.exception(error_msg)
-            return False, error_msg
+            self.logger.error(f"Error resetting configuration status: {str(e)}")
+            return False
 
-# Create a singleton instance
-sensitivity_integration = SensitivityIntegration()
+# Example usage
+if __name__ == "__main__":
+    # Example request data
+    example_request = {
+        "selectedVersions": [1],
+        "selectedV": {"V1": "on", "V2": "off"},
+        "selectedF": {"F1": "on", "F2": "on", "F3": "on", "F4": "on", "F5": "on"},
+        "selectedCalculationOption": "calculateForPrice",
+        "targetRow": 20,
+        "SenParameters": {
+            "S34": {
+                "mode": "symmetrical",
+                "values": [20],
+                "enabled": True,
+                "compareToKey": "S13",
+                "comparisonType": "primary",
+                "waterfall": True,
+                "bar": True,
+                "point": True
+            },
+            "S35": {
+                "mode": "symmetrical",
+                "values": [20],
+                "enabled": True,
+                "compareToKey": "S13",
+                "comparisonType": "primary",
+                "waterfall": True,
+                "bar": True,
+                "point": True
+            }
+        }
+    }
+    
+    # Create integration and process request
+    integration = SensitivityIntegration()
+    
+    # Optional: Reset configuration status for testing
+    # integration.reset_configuration()
+    
+    # Process request
+    result = integration.process_sensitivity_request(example_request)
+    
+    print(json.dumps(result, indent=2))
+    
+    # Get visualization data
+    vis_data = integration.get_visualization_data()
+    
+    print("Visualization data available:", "plots" in vis_data)
