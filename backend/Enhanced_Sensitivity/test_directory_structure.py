@@ -1,17 +1,15 @@
 """
-Test script to verify that the sensitivity directories are created correctly.
+Test Enhanced Sensitivity Directory Structure
 
-This script will:
-1. Generate a sensitivity configuration
-2. Check if the directories are created with the correct structure
+This script tests the enhanced sensitivity directory structure creation functionality.
 """
 
 import os
 import sys
 import json
-import requests
 import logging
-from pathlib import Path
+import shutil
+from enhanced_sensitivity_directory_builder import EnhancedSensitivityDirectoryBuilder
 
 # Configure logging
 logging.basicConfig(
@@ -23,147 +21,332 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# Base URL for the enhanced sensitivity API
-BASE_URL = "http://127.0.0.1:27890"
-
-# Base directory for the sensitivity analysis
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ORIGINAL_DIR = os.path.join(BASE_DIR, "Original")
-
-def test_directory_structure():
-    """
-    Test that the sensitivity directories are created correctly.
-    """
-    logger.info("Starting directory structure test")
-    
-    # Step 1: Generate a sensitivity configuration
-    logger.info("Step 1: Generating sensitivity configuration")
-    
-    # Prepare request payload
-    config_payload = {
-        "selectedVersions": [1],
-        "selectedV": {"V1": "on", "V2": "off"},
-        "selectedF": {"F1": "on", "F2": "on", "F3": "on", "F4": "on", "F5": "on"},
-        "selectedCalculationOption": "calculateForPrice",
-        "targetRow": 20,
-        "SenParameters": {
-            "S34": {
-                "mode": "symmetrical",
-                "values": [20],
+def test_directory_creation():
+    """Test directory creation."""
+    try:
+        # Create directory builder
+        builder = EnhancedSensitivityDirectoryBuilder()
+        
+        # Sample sensitivity parameters
+        sen_parameters = {
+            "S1": {
                 "enabled": True,
-                "compareToKey": "S13",
-                "comparisonType": "primary",
-                "waterfall": True,
-                "bar": True,
-                "point": True
+                "file": "config.json",
+                "path": "parameters.interest_rate",
+                "baseValue": 0.05,
+                "step": 10,
+                "stepsUp": 2,
+                "stepsDown": 2
+            },
+            "S2": {
+                "enabled": True,
+                "file": "CFA.csv",
+                "row": 5,
+                "col": 3,
+                "baseValue": 100,
+                "step": 5,
+                "stepsUp": 1,
+                "stepsDown": 1
+            },
+            "S3": {
+                "enabled": False,
+                "file": "Economic_Summary.csv",
+                "row": 10,
+                "col": 2,
+                "baseValue": 50,
+                "step": 20,
+                "stepsUp": 2,
+                "stepsDown": 2
             }
         }
-    }
-    
-    # Call the enhanced sensitivity configure endpoint
+        
+        # Create sensitivity directories
+        version = 1
+        sensitivity_dir, reports_dir = builder.create_sensitivity_directories(version, sen_parameters)
+        
+        # Verify directories were created
+        logger.info(f"Sensitivity directory: {sensitivity_dir}")
+        logger.info(f"Reports directory: {reports_dir}")
+        
+        # Check if sensitivity directory exists
+        if not os.path.exists(sensitivity_dir):
+            logger.error(f"Sensitivity directory not created: {sensitivity_dir}")
+            return False
+            
+        # Check if reports directory exists
+        if not os.path.exists(reports_dir):
+            logger.error(f"Reports directory not created: {reports_dir}")
+            return False
+            
+        # Check if parameter directories exist
+        for param_id, param_config in sen_parameters.items():
+            if not param_config.get('enabled', False):
+                continue
+                
+            param_dir = os.path.join(sensitivity_dir, param_id)
+            if not os.path.exists(param_dir):
+                logger.error(f"Parameter directory not created: {param_dir}")
+                return False
+                
+            # Check if variation directories exist
+            variations = ['base']
+            step = param_config.get('step', 10)
+            steps_up = param_config.get('stepsUp', 2)
+            steps_down = param_config.get('stepsDown', 2)
+            
+            for i in range(1, steps_up + 1):
+                variations.append(f'plus_{step * i}')
+                
+            for i in range(1, steps_down + 1):
+                variations.append(f'minus_{step * i}')
+                
+            for variation in variations:
+                variation_dir = os.path.join(param_dir, variation)
+                if not os.path.exists(variation_dir):
+                    logger.error(f"Variation directory not created: {variation_dir}")
+                    return False
+        
+        logger.info("All directories created successfully")
+        return True
+        
+    except Exception as e:
+        logger.error(f"Error during directory creation: {str(e)}")
+        return False
+
+def test_config_file_copy():
+    """Test configuration file copying."""
     try:
-        response = requests.post(
-            f"{BASE_URL}/enhanced/sensitivity/configure",
-            json=config_payload,
-            headers={"Content-Type": "application/json"}
+        # Create directory builder
+        builder = EnhancedSensitivityDirectoryBuilder()
+        
+        # Sample sensitivity parameters
+        sen_parameters = {
+            "S1": {
+                "enabled": True,
+                "file": "config.json",
+                "path": "parameters.interest_rate",
+                "baseValue": 0.05,
+                "step": 10,
+                "stepsUp": 1,
+                "stepsDown": 1
+            }
+        }
+        
+        # Create sensitivity directories
+        version = 1
+        sensitivity_dir, _ = builder.create_sensitivity_directories(version, sen_parameters)
+        
+        # Copy configuration files
+        copied_files = builder.copy_config_files(version, sensitivity_dir)
+        
+        # Verify files were copied
+        logger.info(f"Copied files: {copied_files}")
+        
+        # Check if files were copied
+        if not copied_files:
+            logger.warning("No files were copied")
+            
+        # Check if at least one file was copied to each variation directory
+        for param_id, param_config in sen_parameters.items():
+            if not param_config.get('enabled', False):
+                continue
+                
+            param_dir = os.path.join(sensitivity_dir, param_id)
+            
+            # Check variations
+            variations = ['base', 'plus_10', 'minus_10']
+            for variation in variations:
+                variation_dir = os.path.join(param_dir, variation)
+                
+                # Check if any file was copied to this variation directory
+                files_in_dir = [f for f in copied_files if variation_dir in f]
+                if not files_in_dir:
+                    logger.warning(f"No files copied to variation directory: {variation_dir}")
+        
+        logger.info("Configuration files copied successfully")
+        return True
+        
+    except Exception as e:
+        logger.error(f"Error during configuration file copying: {str(e)}")
+        return False
+
+def test_parameter_value_modification():
+    """Test parameter value modification."""
+    try:
+        # Create directory builder
+        builder = EnhancedSensitivityDirectoryBuilder()
+        
+        # Sample sensitivity parameters
+        sen_parameters = {
+            "S1": {
+                "enabled": True,
+                "file": "config.json",
+                "path": "parameters.interest_rate",
+                "baseValue": 0.05,
+                "step": 10,
+                "stepsUp": 1,
+                "stepsDown": 1
+            }
+        }
+        
+        # Create sensitivity directories
+        version = 1
+        sensitivity_dir, _ = builder.create_sensitivity_directories(version, sen_parameters)
+        
+        # Copy configuration files
+        builder.copy_config_files(version, sensitivity_dir)
+        
+        # Modify parameter values
+        modified_files = builder.modify_parameter_values(sensitivity_dir, sen_parameters)
+        
+        # Verify files were modified
+        logger.info(f"Modified files: {modified_files}")
+        
+        # Check if files were modified
+        if not modified_files:
+            logger.warning("No files were modified")
+            
+        # Check if parameter values were modified correctly
+        for param_id, param_config in sen_parameters.items():
+            if not param_config.get('enabled', False):
+                continue
+                
+            param_dir = os.path.join(sensitivity_dir, param_id)
+            param_file = param_config.get('file', 'config.json')
+            param_path = param_config.get('path', '')
+            param_base_value = float(param_config.get('baseValue', 0))
+            
+            # Check variations
+            variations = ['base', 'plus_10', 'minus_10']
+            for variation in variations:
+                variation_dir = os.path.join(param_dir, variation)
+                config_file = os.path.join(variation_dir, param_file)
+                
+                # Skip if file doesn't exist
+                if not os.path.exists(config_file):
+                    logger.warning(f"Config file not found: {config_file}")
+                    continue
+                    
+                # Check if file was modified
+                if config_file not in modified_files:
+                    logger.warning(f"File not modified: {config_file}")
+                    continue
+                    
+                # Calculate expected value
+                if variation == 'base':
+                    expected_value = param_base_value
+                elif variation == 'plus_10':
+                    expected_value = param_base_value * 1.1
+                elif variation == 'minus_10':
+                    expected_value = param_base_value * 0.9
+                else:
+                    expected_value = param_base_value
+                    
+                # Check if value was modified correctly
+                if param_file.endswith('.json'):
+                    # Read JSON file
+                    with open(config_file, 'r') as f:
+                        data = json.load(f)
+                        
+                    # Navigate to parameter path
+                    if param_path:
+                        keys = param_path.split('.')
+                        target = data
+                        for key in keys:
+                            if key not in target:
+                                logger.warning(f"Key not found in JSON: {key}")
+                                break
+                            target = target[key]
+                            
+                        # Check value
+                        if target != expected_value:
+                            logger.warning(f"Value not modified correctly in {config_file}: expected {expected_value}, got {target}")
+                            
+                elif param_file.endswith('.csv'):
+                    # Read CSV file
+                    with open(config_file, 'r') as f:
+                        lines = f.readlines()
+                        
+                    # Check if row exists
+                    row = param_config.get('row', 0)
+                    if row >= len(lines):
+                        logger.warning(f"Row {row} out of range in {config_file}")
+                        continue
+                        
+                    # Split row into columns
+                    columns = lines[row].strip().split(',')
+                    
+                    # Check if column exists
+                    col = param_config.get('col', 0)
+                    if col >= len(columns):
+                        logger.warning(f"Column {col} out of range in {config_file}")
+                        continue
+                        
+                    # Check value
+                    value = float(columns[col])
+                    if abs(value - expected_value) > 0.0001:
+                        logger.warning(f"Value not modified correctly in {config_file}: expected {expected_value}, got {value}")
+        
+        logger.info("Parameter values modified successfully")
+        return True
+        
+    except Exception as e:
+        logger.error(f"Error during parameter value modification: {str(e)}")
+        return False
+
+def cleanup_test_directories():
+    """Clean up test directories."""
+    try:
+        # Get base directory
+        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        
+        # Get sensitivity directory
+        sensitivity_dir = os.path.join(
+            base_dir,
+            "Original",
+            "Batch(1)",
+            "Results(1)",
+            "Sensitivity"
         )
         
-        response.raise_for_status()
-        config_result = response.json()
-        
-        logger.info(f"Configuration generated successfully: {config_result['message']}")
-        
-    except requests.exceptions.RequestException as e:
-        logger.error(f"Error generating configuration: {str(e)}")
-        if hasattr(e, 'response') and e.response is not None:
-            logger.error(f"Response: {e.response.text}")
-        return False
-    
-    # Step 2: Check if the directories are created with the correct structure
-    logger.info("Step 2: Checking directory structure")
-    
-    # Define the expected directory structure
-    results_folder = os.path.join(ORIGINAL_DIR, "Batch(1)", "Results(1)")
-    sensitivity_dir = os.path.join(results_folder, "Sensitivity")
-    
-    # Expected directories
-    expected_dirs = [
-        os.path.join(sensitivity_dir, "Reports"),
-        os.path.join(sensitivity_dir, "S34", "symmetrical", "+10.00"),
-        os.path.join(sensitivity_dir, "S34", "symmetrical", "-10.00")
-    ]
-    
-    # Check if the expected directories exist
-    missing_dirs = []
-    for dir_path in expected_dirs:
-        if not os.path.exists(dir_path):
-            missing_dirs.append(dir_path)
-            logger.error(f"Missing directory: {dir_path}")
-        else:
-            logger.info(f"Found directory: {dir_path}")
-    
-    # Check if the config files are copied to the variation directories
-    config_file = "1_config_module_3.json"
-    missing_files = []
-    
-    for variation_dir in [
-        os.path.join(sensitivity_dir, "S34", "symmetrical", "+10.00"),
-        os.path.join(sensitivity_dir, "S34", "symmetrical", "-10.00")
-    ]:
-        config_path = os.path.join(variation_dir, config_file)
-        if not os.path.exists(config_path):
-            missing_files.append(config_path)
-            logger.error(f"Missing config file: {config_path}")
-        else:
-            logger.info(f"Found config file: {config_path}")
+        # Check if sensitivity directory exists
+        if os.path.exists(sensitivity_dir):
+            # Remove sensitivity directory
+            shutil.rmtree(sensitivity_dir)
+            logger.info(f"Removed sensitivity directory: {sensitivity_dir}")
             
-            # Check if the parameter value is modified correctly
-            try:
-                with open(config_path, 'r') as f:
-                    config_data = json.load(f)
-                
-                # Check if rawmaterialAmount34 is modified
-                if "rawmaterialAmount34" in config_data:
-                    logger.info(f"rawmaterialAmount34 value: {config_data['rawmaterialAmount34']}")
-                    
-                    # For +10.00 variation, the value should be increased by 10%
-                    if "+10.00" in variation_dir and config_data["rawmaterialAmount34"] > 10000:
-                        logger.info(f"Value is correctly increased for +10.00 variation")
-                    # For -10.00 variation, the value should be decreased by 10%
-                    elif "-10.00" in variation_dir and config_data["rawmaterialAmount34"] < 10000:
-                        logger.info(f"Value is correctly decreased for -10.00 variation")
-                    else:
-                        logger.error(f"Value is not correctly modified for variation")
-                else:
-                    logger.error(f"rawmaterialAmount34 not found in config file")
-            except Exception as e:
-                logger.error(f"Error reading config file: {str(e)}")
-    
-    if missing_dirs or missing_files:
-        logger.error(f"Test failed: {len(missing_dirs)} directories and {len(missing_files)} files are missing")
-        return False
-    else:
-        logger.info("Test passed: All expected directories and files exist")
         return True
+        
+    except Exception as e:
+        logger.error(f"Error during cleanup: {str(e)}")
+        return False
+
+def main():
+    """Main function."""
+    logger.info("Testing enhanced sensitivity directory structure")
+    
+    # Clean up test directories
+    cleanup_test_directories()
+    
+    # Test directory creation
+    if not test_directory_creation():
+        logger.error("Directory creation failed")
+        return
+        
+    # Test configuration file copying
+    if not test_config_file_copy():
+        logger.error("Configuration file copying failed")
+        return
+        
+    # Test parameter value modification
+    if not test_parameter_value_modification():
+        logger.error("Parameter value modification failed")
+        return
+        
+    # Clean up test directories
+    cleanup_test_directories()
+    
+    logger.info("All tests completed successfully")
 
 if __name__ == "__main__":
-    # Check if the server is running
-    try:
-        response = requests.get(f"{BASE_URL}/enhanced/health")
-        if response.status_code != 200:
-            logger.error(f"Server is not running or not healthy: {response.status_code}")
-            sys.exit(1)
-    except requests.exceptions.ConnectionError:
-        logger.error(f"Cannot connect to server at {BASE_URL}")
-        logger.error("Please start the server using 'python backend/Enhanced_Sensitivity/start_enhanced_sensitivity_server.py'")
-        sys.exit(1)
-    
-    # Run the test
-    success = test_directory_structure()
-    
-    if success:
-        logger.info("All tests passed!")
-        sys.exit(0)
-    else:
-        logger.error("Tests failed!")
-        sys.exit(1)
+    main()

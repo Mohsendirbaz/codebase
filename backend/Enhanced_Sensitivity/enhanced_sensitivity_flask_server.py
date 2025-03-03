@@ -11,7 +11,7 @@ import logging
 import time
 import sys
 import pickle
-from flask import Flask, request, jsonify, Response, stream_with_context
+from flask import Flask, request, jsonify, Response, stream_with_context, send_file
 from flask_cors import CORS
 
 # Add parent directory to path to allow imports
@@ -389,6 +389,396 @@ def stream_prices(version):
     
     return Response(stream_with_context(generate()), mimetype='text/event-stream')
 
+@app.route('/enhanced/sensitivity/visualize', methods=['POST'])
+def visualize_sensitivity():
+    """
+    Generate visualizations for sensitivity analysis results.
+    Supports point, bar, and waterfall plots based on the sensitivity parameters.
+    """
+    run_id = time.strftime("%Y%m%d_%H%M%S")
+    
+    try:
+        # Check if sensitivity calculations have been run
+        if not os.path.exists(SENSITIVITY_CONFIG_STATUS_PATH):
+            return jsonify({
+                "error": "Sensitivity configurations have not been generated yet",
+                "message": "Please call /enhanced/sensitivity/configure endpoint first",
+                "nextStep": "Call /enhanced/sensitivity/configure endpoint first"
+            }), 400
+            
+        with open(SENSITIVITY_CONFIG_STATUS_PATH, 'r') as f:
+            status = json.load(f)
+            
+        if not status.get('configured', False):
+            return jsonify({
+                "error": "Sensitivity configurations have not been generated yet",
+                "message": "Please call /enhanced/sensitivity/configure endpoint first",
+                "nextStep": "Call /enhanced/sensitivity/configure endpoint first"
+            }), 400
+            
+        # Load configuration data
+        if not os.path.exists(SENSITIVITY_CONFIG_DATA_PATH):
+            return jsonify({
+                "error": "Configuration data not found",
+                "message": "Please call /enhanced/sensitivity/configure endpoint first",
+                "nextStep": "Call /enhanced/sensitivity/configure endpoint first"
+            }), 400
+            
+        with open(SENSITIVITY_CONFIG_DATA_PATH, 'rb') as f:
+            config = pickle.load(f)
+            
+        # Get sensitivity parameters
+        sen_parameters = config.get('SenParameters', {})
+        
+        # Get version
+        version = config['versions'][0]
+        
+        # Get sensitivity directory
+        sensitivity_dir = os.path.join(
+            BASE_DIR,
+            "Original",
+            f"Batch({version})",
+            f"Results({version})",
+            "Sensitivity"
+        )
+        
+        # Get reports directory
+        reports_dir = os.path.join(sensitivity_dir, "Reports")
+        
+        # Check if summary report exists
+        summary_report_path = os.path.join(reports_dir, "sensitivity_summary.json")
+        if not os.path.exists(summary_report_path):
+            return jsonify({
+                "error": "Summary report not found",
+                "message": "Please call /enhanced/runs endpoint first",
+                "nextStep": "Call /enhanced/runs endpoint first"
+            }), 400
+            
+        # Load summary report
+        with open(summary_report_path, 'r') as f:
+            report_data = json.load(f)
+            
+        # Generate visualizations directory
+        visualizations_dir = os.path.join(reports_dir, "Visualizations")
+        os.makedirs(visualizations_dir, exist_ok=True)
+        
+        # Generate visualizations for each parameter
+        visualization_paths = {}
+        
+        import matplotlib
+        matplotlib.use('Agg')  # Use non-interactive backend
+        import matplotlib.pyplot as plt
+        import numpy as np
+        
+        for param_id, param_config in sen_parameters.items():
+            if not param_config.get('enabled', False):
+                continue
+                
+            # Skip parameters that don't have any visualization type enabled
+            if not (param_config.get('point', False) or 
+                   param_config.get('bar', False) or 
+                   param_config.get('waterfall', False)):
+                continue
+                
+            # Get parameter data from report
+            if param_id not in report_data.get('parameters', {}):
+                logger.warning(f"No data found for parameter {param_id}")
+                continue
+                
+            param_data = report_data['parameters'][param_id]
+            
+            # Generate point plot if enabled
+            if param_config.get('point', False):
+                try:
+                    point_plot_path = os.path.join(visualizations_dir, f"{param_id}_point.png")
+                    
+                    plt.figure(figsize=(10, 6))
+                    
+                    for mode, variations in param_data.items():
+                        x_values = []
+                        y_values = []
+                        
+                        for variation, price in variations.items():
+                            # Extract variation value (assuming format like 'minus_20' or 'plus_20')
+                            if 'minus_' in variation:
+                                x_value = -float(variation.replace('minus_', ''))
+                            elif 'plus_' in variation:
+                                x_value = float(variation.replace('plus_', ''))
+                            else:
+                                x_value = float(variation)
+                                
+                            x_values.append(x_value)
+                            y_values.append(price)
+                            
+                        # Sort points by x value
+                        points = sorted(zip(x_values, y_values))
+                        x_values = [p[0] for p in points]
+                        y_values = [p[1] for p in points]
+                        
+                        plt.plot(x_values, y_values, 'o-', label=f"{mode}")
+                        
+                    plt.title(f"Sensitivity Analysis - {param_id} (Point Plot)")
+                    plt.xlabel("Parameter Variation (%)")
+                    plt.ylabel("Price ($)")
+                    plt.grid(True)
+                    plt.legend()
+                    
+                    plt.savefig(point_plot_path)
+                    plt.close()
+                    
+                    visualization_paths[f"{param_id}_point"] = point_plot_path
+                    logger.info(f"Generated point plot for {param_id}: {point_plot_path}")
+                    
+                except Exception as e:
+                    logger.error(f"Error generating point plot for {param_id}: {str(e)}")
+            
+            # Generate bar plot if enabled
+            if param_config.get('bar', False):
+                try:
+                    bar_plot_path = os.path.join(visualizations_dir, f"{param_id}_bar.png")
+                    
+                    plt.figure(figsize=(12, 6))
+                    
+                    all_variations = []
+                    all_prices = []
+                    all_labels = []
+                    
+                    for mode, variations in param_data.items():
+                        for variation, price in variations.items():
+                            # Extract variation value
+                            if 'minus_' in variation:
+                                label = f"-{variation.replace('minus_', '')}%"
+                            elif 'plus_' in variation:
+                                label = f"+{variation.replace('plus_', '')}%"
+                            else:
+                                label = f"{variation}%"
+                                
+                            all_variations.append(variation)
+                            all_prices.append(price)
+                            all_labels.append(f"{mode} {label}")
+                    
+                    # Sort by price
+                    sorted_data = sorted(zip(all_variations, all_prices, all_labels), key=lambda x: x[1])
+                    all_variations = [d[0] for d in sorted_data]
+                    all_prices = [d[1] for d in sorted_data]
+                    all_labels = [d[2] for d in sorted_data]
+                    
+                    plt.bar(all_labels, all_prices)
+                    plt.title(f"Sensitivity Analysis - {param_id} (Bar Plot)")
+                    plt.xlabel("Parameter Variation")
+                    plt.ylabel("Price ($)")
+                    plt.xticks(rotation=45, ha='right')
+                    plt.tight_layout()
+                    
+                    plt.savefig(bar_plot_path)
+                    plt.close()
+                    
+                    visualization_paths[f"{param_id}_bar"] = bar_plot_path
+                    logger.info(f"Generated bar plot for {param_id}: {bar_plot_path}")
+                    
+                except Exception as e:
+                    logger.error(f"Error generating bar plot for {param_id}: {str(e)}")
+            
+            # Generate waterfall plot if enabled
+            if param_config.get('waterfall', False):
+                try:
+                    waterfall_plot_path = os.path.join(visualizations_dir, f"{param_id}_waterfall.png")
+                    
+                    plt.figure(figsize=(12, 6))
+                    
+                    # Get baseline price (assuming it's the first price in the first mode)
+                    baseline_price = None
+                    for mode, variations in param_data.items():
+                        for variation, price in variations.items():
+                            baseline_price = price
+                            break
+                        if baseline_price is not None:
+                            break
+                            
+                    if baseline_price is None:
+                        logger.warning(f"No baseline price found for {param_id}")
+                        continue
+                        
+                    # Prepare data for waterfall plot
+                    all_variations = []
+                    all_diffs = []
+                    all_labels = []
+                    
+                    for mode, variations in param_data.items():
+                        for variation, price in variations.items():
+                            # Skip baseline
+                            if price == baseline_price:
+                                continue
+                                
+                            # Extract variation value
+                            if 'minus_' in variation:
+                                label = f"-{variation.replace('minus_', '')}%"
+                            elif 'plus_' in variation:
+                                label = f"+{variation.replace('plus_', '')}%"
+                            else:
+                                label = f"{variation}%"
+                                
+                            all_variations.append(variation)
+                            all_diffs.append(price - baseline_price)
+                            all_labels.append(f"{mode} {label}")
+                    
+                    # Sort by absolute difference
+                    sorted_data = sorted(zip(all_variations, all_diffs, all_labels), key=lambda x: abs(x[1]), reverse=True)
+                    all_variations = [d[0] for d in sorted_data]
+                    all_diffs = [d[1] for d in sorted_data]
+                    all_labels = [d[2] for d in sorted_data]
+                    
+                    # Limit to top 10 for readability
+                    if len(all_variations) > 10:
+                        all_variations = all_variations[:10]
+                        all_diffs = all_diffs[:10]
+                        all_labels = all_labels[:10]
+                    
+                    # Create waterfall plot
+                    fig, ax = plt.subplots(figsize=(12, 6))
+                    
+                    # Start with baseline
+                    ax.bar(0, baseline_price, bottom=0, color='blue', label='Baseline')
+                    ax.text(0, baseline_price/2, f"Baseline\n${baseline_price:.2f}", ha='center', va='center', color='white')
+                    
+                    # Add each variation
+                    for i, (label, diff) in enumerate(zip(all_labels, all_diffs)):
+                        color = 'green' if diff > 0 else 'red'
+                        ax.bar(i+1, diff, bottom=baseline_price, color=color)
+                        ax.text(i+1, baseline_price + diff/2, f"{label}\n${diff:.2f}", ha='center', va='center', color='white')
+                    
+                    # Add final price
+                    final_price = baseline_price + sum(all_diffs)
+                    ax.bar(len(all_labels)+1, final_price, bottom=0, color='purple', label='Final')
+                    ax.text(len(all_labels)+1, final_price/2, f"Final\n${final_price:.2f}", ha='center', va='center', color='white')
+                    
+                    ax.set_title(f"Sensitivity Analysis - {param_id} (Waterfall Plot)")
+                    ax.set_ylabel("Price ($)")
+                    ax.set_xticks([])
+                    ax.grid(axis='y')
+                    
+                    plt.tight_layout()
+                    plt.savefig(waterfall_plot_path)
+                    plt.close()
+                    
+                    visualization_paths[f"{param_id}_waterfall"] = waterfall_plot_path
+                    logger.info(f"Generated waterfall plot for {param_id}: {waterfall_plot_path}")
+                    
+                except Exception as e:
+                    logger.error(f"Error generating waterfall plot for {param_id}: {str(e)}")
+        
+        # Create visualization index
+        visualization_index_path = os.path.join(visualizations_dir, "visualization_index.json")
+        with open(visualization_index_path, 'w') as f:
+            json.dump({
+                "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
+                "runId": run_id,
+                "version": version,
+                "visualizations": visualization_paths
+            }, f, indent=2)
+            
+        logger.info(f"Generated visualization index: {visualization_index_path}")
+        
+        return jsonify({
+            "status": "success",
+            "message": "Sensitivity visualizations generated successfully",
+            "runId": run_id,
+            "version": version,
+            "visualizationsDir": visualizations_dir,
+            "visualizationCount": len(visualization_paths),
+            "visualizationIndex": visualization_index_path
+        })
+        
+    except Exception as e:
+        error_msg = f"Error generating sensitivity visualizations: {str(e)}"
+        logger.error(error_msg)
+        
+        return jsonify({
+            "error": error_msg,
+            "runId": run_id
+        }), 500
+
+@app.route('/enhanced/sensitivity/visualization/<param_id>/<plot_type>', methods=['GET'])
+def get_sensitivity_visualization(param_id, plot_type):
+    """
+    Get a specific sensitivity visualization.
+    
+    Args:
+        param_id (str): Parameter ID (e.g., S34)
+        plot_type (str): Plot type (point, bar, or waterfall)
+    """
+    try:
+        # Get version from query parameter or use the first available version
+        version = request.args.get('version')
+        if version:
+            version = int(version)
+        else:
+            # Check if sensitivity configurations have been generated
+            if not os.path.exists(SENSITIVITY_CONFIG_STATUS_PATH):
+                return jsonify({
+                    "error": "Sensitivity configurations have not been generated yet",
+                    "message": "Please call /enhanced/sensitivity/configure endpoint first",
+                    "nextStep": "Call /enhanced/sensitivity/configure endpoint first"
+                }), 400
+                
+            with open(SENSITIVITY_CONFIG_STATUS_PATH, 'r') as f:
+                status = json.load(f)
+                
+            if not status.get('configured', False):
+                return jsonify({
+                    "error": "Sensitivity configurations have not been generated yet",
+                    "message": "Please call /enhanced/sensitivity/configure endpoint first",
+                    "nextStep": "Call /enhanced/sensitivity/configure endpoint first"
+                }), 400
+                
+            # Load configuration data
+            if not os.path.exists(SENSITIVITY_CONFIG_DATA_PATH):
+                return jsonify({
+                    "error": "Configuration data not found",
+                    "message": "Please call /enhanced/sensitivity/configure endpoint first",
+                    "nextStep": "Call /enhanced/sensitivity/configure endpoint first"
+                }), 400
+                
+            with open(SENSITIVITY_CONFIG_DATA_PATH, 'rb') as f:
+                config = pickle.load(f)
+                
+            version = config['versions'][0]
+            
+        # Get sensitivity directory
+        sensitivity_dir = os.path.join(
+            BASE_DIR,
+            "Original",
+            f"Batch({version})",
+            f"Results({version})",
+            "Sensitivity"
+        )
+        
+        # Get reports directory
+        reports_dir = os.path.join(sensitivity_dir, "Reports")
+        
+        # Get visualizations directory
+        visualizations_dir = os.path.join(reports_dir, "Visualizations")
+        
+        # Check if visualization exists
+        visualization_path = os.path.join(visualizations_dir, f"{param_id}_{plot_type}.png")
+        if not os.path.exists(visualization_path):
+            return jsonify({
+                "error": f"Visualization not found: {param_id}_{plot_type}",
+                "message": "Please call /enhanced/sensitivity/visualize endpoint first",
+                "nextStep": "Call /enhanced/sensitivity/visualize endpoint first"
+            }), 404
+            
+        # Return the visualization
+        return send_file(visualization_path, mimetype='image/png')
+        
+    except Exception as e:
+        error_msg = f"Error getting sensitivity visualization: {str(e)}"
+        logger.error(error_msg)
+        
+        return jsonify({
+            "error": error_msg
+        }), 500
+
 @app.route('/enhanced/health', methods=['GET'])
 def health_check():
     """
@@ -404,8 +794,4 @@ def health_check():
 
 # Application entry point
 if __name__ == '__main__':
-    # Create logs directory if it doesn't exist
-    os.makedirs(LOGS_DIR, exist_ok=True)
-    
-    # Run the Flask application
-    app.run(debug=True, port=27890)
+    app.run(host='0.0.0.0', port=25007, debug=True)

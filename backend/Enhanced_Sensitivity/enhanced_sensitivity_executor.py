@@ -1,133 +1,83 @@
 """
 Enhanced Sensitivity Executor
 
-This module handles running the 4 common scripts and CFA.py for the baseline,
-running CFA.py for each variation, and extracting and storing the "Average Selling Price"
-from Economic_Summary.csv.
+This module provides functionality for executing sensitivity calculations
+and generating summary reports.
 """
 
 import os
 import json
 import csv
-import subprocess
 import logging
+import subprocess
 import time
-import sys
-from pathlib import Path
+import re
+from collections import defaultdict
 
-# Add parent directory to path to allow imports
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s %(levelname)s %(message)s',
-    handlers=[
-        logging.StreamHandler(sys.stdout),
-        logging.FileHandler(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'enhanced_sensitivity.log'))
-    ]
-)
 logger = logging.getLogger(__name__)
 
 class EnhancedSensitivityExecutor:
     """
-    Handles running the 4 common scripts and CFA.py for the baseline,
-    running CFA.py for each variation, and extracting and storing the
-    "Average Selling Price" from Economic_Summary.csv.
+    Class for executing sensitivity calculations and generating reports.
     """
     
-    def __init__(self, base_dir=None):
+    def __init__(self):
         """
-        Initialize the executor with the base directory.
-        
-        Args:
-            base_dir (str, optional): Base directory for sensitivity analysis.
-                If not provided, uses the default directory structure.
+        Initialize the executor.
         """
-        if base_dir:
-            self.base_dir = base_dir
-        else:
-            # Default directory structure
-            current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-            self.base_dir = current_dir
-            
-        # Define script paths
-        self.script_dir = os.path.join(self.base_dir, "Configuration_management")
-        self.calculation_dir = os.path.join(self.base_dir, "Core_calculation_engines")
+        self.base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         
-        # Define common scripts
-        self.common_scripts = [
-            os.path.join(self.script_dir, "formatter.py"),
-            os.path.join(self.script_dir, "module1.py"),
-            os.path.join(self.script_dir, "config_modules.py"),
-            os.path.join(self.script_dir, "Table.py")
-        ]
-        
-        # Define calculation script
-        self.calculation_script = os.path.join(self.calculation_dir, "CFA.py")
-        
-        logger.info(f"Initialized EnhancedSensitivityExecutor with base directory: {self.base_dir}")
-        logger.info(f"Common scripts: {self.common_scripts}")
-        logger.info(f"Calculation script: {self.calculation_script}")
-    
     def run_baseline_calculation(self, version, selected_v, selected_f, target_row, calculation_option):
         """
-        Run the 4 common scripts and CFA.py for the baseline calculation.
+        Run baseline calculation for sensitivity analysis.
         
         Args:
             version (int): Version number
-            selected_v (dict): Dictionary of selected V parameters
-            selected_f (dict): Dictionary of selected F parameters
-            target_row (int): Target row for calculation
-            calculation_option (str): Calculation option (e.g., "calculateForPrice")
+            selected_v (dict): Selected V parameters
+            selected_f (dict): Selected F parameters
+            target_row (int): Target row for price extraction
+            calculation_option (str): Calculation option
             
         Returns:
             bool: True if successful, False otherwise
         """
-        logger.info(f"Running baseline calculation for version {version}")
-        
         try:
-            # Run common scripts
-            for script in self.common_scripts:
-                script_name = os.path.basename(script)
-                logger.info(f"Running common script: {script_name}")
-                
-                result = subprocess.run(
-                    ["python", script, str(version)],
-                    capture_output=True,
-                    text=True
-                )
-                
-                if result.returncode != 0:
-                    logger.error(f"Error running {script_name}: {result.stderr}")
-                    return False
-                
-                logger.info(f"Successfully ran {script_name}")
-                time.sleep(0.5)  # Small delay to ensure proper sequencing
-            
-            # Run calculation script
-            logger.info(f"Running calculation script: {os.path.basename(self.calculation_script)}")
-            
-            result = subprocess.run(
-                [
-                    "python",
-                    self.calculation_script,
-                    str(version),
-                    json.dumps(selected_v),
-                    json.dumps(selected_f),
-                    str(target_row),
-                    calculation_option,
-                    "{}"  # Empty SenParameters for baseline
-                ],
-                capture_output=True,
-                text=True
+            # Get calculation script path
+            calculation_script = os.path.join(
+                self.base_dir,
+                "API_endpoints_and_controllers",
+                "Calculations_and_Sensitivity.py"
             )
             
-            if result.returncode != 0:
-                logger.error(f"Error running calculation script: {result.stderr}")
-                return False
+            # Prepare command arguments
+            args = [
+                "python",
+                calculation_script,
+                "--version", str(version),
+                "--calculation", calculation_option,
+                "--target-row", str(target_row)
+            ]
             
-            logger.info("Successfully ran baseline calculation")
+            # Add V parameters
+            for v_name, v_value in selected_v.items():
+                if v_value != 'off':
+                    args.extend(["--" + v_name.lower(), v_value])
+                    
+            # Add F parameters
+            for f_name, f_value in selected_f.items():
+                if f_value != 'off':
+                    args.extend(["--" + f_name.lower(), f_value])
+            
+            # Run calculation
+            logger.info(f"Running baseline calculation: {' '.join(args)}")
+            result = subprocess.run(args, capture_output=True, text=True)
+            
+            # Check result
+            if result.returncode != 0:
+                logger.error(f"Baseline calculation failed: {result.stderr}")
+                return False
+                
+            logger.info(f"Baseline calculation completed: {result.stdout}")
             return True
             
         except Exception as e:
@@ -136,205 +86,207 @@ class EnhancedSensitivityExecutor:
     
     def run_variation_calculations(self, version, sensitivity_dir, selected_v, selected_f, target_row, calculation_option):
         """
-        Run CFA.py for each variation and extract the "Average Selling Price" from Economic_Summary.csv.
+        Run variation calculations for sensitivity analysis.
         
         Args:
             version (int): Version number
-            sensitivity_dir (str): Path to the sensitivity directory
-            selected_v (dict): Dictionary of selected V parameters
-            selected_f (dict): Dictionary of selected F parameters
-            target_row (int): Target row for calculation
-            calculation_option (str): Calculation option (e.g., "calculateForPrice")
+            sensitivity_dir (str): Path to sensitivity directory
+            selected_v (dict): Selected V parameters
+            selected_f (dict): Selected F parameters
+            target_row (int): Target row for price extraction
+            calculation_option (str): Calculation option
             
         Returns:
-            dict: Dictionary of calculated prices for each variation
+            dict: Dictionary of calculated prices
         """
-        logger.info(f"Running variation calculations for version {version}")
-        
-        # Dictionary to store calculated prices
         calculated_prices = {}
         
-        # Iterate through all subdirectories in the sensitivity directory
-        for root, dirs, files in os.walk(sensitivity_dir):
-            # Skip the Reports directory
-            if os.path.basename(root) == "Reports":
+        # Get calculation script path
+        calculation_script = os.path.join(
+            self.base_dir,
+            "API_endpoints_and_controllers",
+            "Calculations_and_Sensitivity.py"
+        )
+        
+        # Process each parameter directory
+        for param_dir in os.listdir(sensitivity_dir):
+            # Skip Reports directory
+            if param_dir == "Reports":
                 continue
                 
-            # Check if this is a variation directory (has 3 levels of nesting)
-            # Sensitivity/param_id/mode/variation
-            rel_path = os.path.relpath(root, sensitivity_dir)
-            if rel_path != '.' and len(Path(rel_path).parts) == 3:
-                # Extract parameter ID, mode, and variation from the path
-                param_id, mode, variation_str = Path(rel_path).parts
+            param_path = os.path.join(sensitivity_dir, param_dir)
+            
+            # Skip if not a directory
+            if not os.path.isdir(param_path):
+                continue
                 
-                # Create a unique key for this variation
-                variation_key = f"{param_id}_{mode}_{variation_str}"
+            # Process each variation directory
+            for variation in os.listdir(param_path):
+                variation_path = os.path.join(param_path, variation)
                 
-                logger.info(f"Running calculation for variation: {variation_key}")
+                # Skip if not a directory
+                if not os.path.isdir(variation_path):
+                    continue
+                    
+                # Prepare command arguments
+                args = [
+                    "python",
+                    calculation_script,
+                    "--version", str(version),
+                    "--calculation", calculation_option,
+                    "--target-row", str(target_row),
+                    "--config-dir", variation_path
+                ]
+                
+                # Add V parameters
+                for v_name, v_value in selected_v.items():
+                    if v_value != 'off':
+                        args.extend(["--" + v_name.lower(), v_value])
+                        
+                # Add F parameters
+                for f_name, f_value in selected_f.items():
+                    if f_value != 'off':
+                        args.extend(["--" + f_name.lower(), f_value])
+                
+                # Run calculation
+                logger.info(f"Running calculation for {param_dir}/{variation}: {' '.join(args)}")
                 
                 try:
-                    # Change to the variation directory
-                    original_dir = os.getcwd()
-                    os.chdir(root)
+                    result = subprocess.run(args, capture_output=True, text=True)
                     
-                    # Run calculation script
-                    result = subprocess.run(
-                        [
-                            "python",
-                            self.calculation_script,
-                            str(version),
-                            json.dumps(selected_v),
-                            json.dumps(selected_f),
-                            str(target_row),
-                            calculation_option,
-                            "{}"  # Empty SenParameters since we've already modified the config
-                        ],
-                        capture_output=True,
-                        text=True
-                    )
-                    
-                    # Change back to the original directory
-                    os.chdir(original_dir)
-                    
+                    # Check result
                     if result.returncode != 0:
-                        logger.error(f"Error running calculation for {variation_key}: {result.stderr}")
+                        logger.error(f"Calculation failed for {param_dir}/{variation}: {result.stderr}")
                         continue
+                        
+                    # Extract price from output
+                    price = self._extract_price_from_output(result.stdout)
                     
-                    # Extract the "Average Selling Price" from Economic_Summary.csv
-                    economic_summary_path = os.path.join(root, f"Economic_Summary({version}).csv")
-                    if os.path.exists(economic_summary_path):
-                        price = self.extract_average_selling_price(economic_summary_path)
-                        if price is not None:
-                            calculated_prices[variation_key] = price
-                            logger.info(f"Calculated price for {variation_key}: {price}")
-                            
-                            # Save the price to a JSON file in the variation directory
-                            price_file = os.path.join(root, "calculated_price.json")
-                            with open(price_file, 'w') as f:
-                                json.dump({
-                                    "parameter_id": param_id,
-                                    "mode": mode,
-                                    "variation": variation_str,
-                                    "price": price
-                                }, f, indent=4)
-                            
-                            logger.info(f"Saved price to {price_file}")
-                    else:
-                        logger.warning(f"Economic_Summary({version}).csv not found in {root}")
+                    # Store price
+                    key = f"{param_dir}_{variation}"
+                    calculated_prices[key] = price
+                    
+                    logger.info(f"Calculation completed for {param_dir}/{variation}: Price = {price}")
                     
                 except Exception as e:
-                    logger.error(f"Error running calculation for {variation_key}: {str(e)}")
-                    continue
+                    logger.error(f"Error running calculation for {param_dir}/{variation}: {str(e)}")
         
-        logger.info(f"Completed {len(calculated_prices)} variation calculations")
         return calculated_prices
-    
-    def extract_average_selling_price(self, economic_summary_path):
-        """
-        Extract the "Average Selling Price" from Economic_Summary.csv.
-        
-        Args:
-            economic_summary_path (str): Path to the Economic_Summary.csv file
-            
-        Returns:
-            float: Average Selling Price, or None if not found
-        """
-        try:
-            with open(economic_summary_path, 'r') as f:
-                reader = csv.reader(f)
-                for row in reader:
-                    if len(row) >= 2 and row[0] == "Average Selling Price (Project Life Cycle)":
-                        # Remove $ and convert to float
-                        price_str = row[1].replace('$', '').replace(',', '')
-                        return float(price_str)
-            
-            logger.warning(f"Average Selling Price not found in {economic_summary_path}")
-            return None
-            
-        except Exception as e:
-            logger.error(f"Error extracting Average Selling Price from {economic_summary_path}: {str(e)}")
-            return None
     
     def generate_summary_report(self, sensitivity_dir, calculated_prices):
         """
-        Generate a summary report of all calculated prices.
+        Generate summary report for sensitivity analysis.
         
         Args:
-            sensitivity_dir (str): Path to the sensitivity directory
-            calculated_prices (dict): Dictionary of calculated prices for each variation
+            sensitivity_dir (str): Path to sensitivity directory
+            calculated_prices (dict): Dictionary of calculated prices
             
         Returns:
-            str: Path to the generated report
+            str: Path to summary report
         """
-        logger.info("Generating summary report")
-        
-        # Create the report directory if it doesn't exist
+        # Create reports directory if it doesn't exist
         reports_dir = os.path.join(sensitivity_dir, "Reports")
         os.makedirs(reports_dir, exist_ok=True)
         
-        # Create the report file
-        report_path = os.path.join(reports_dir, "sensitivity_summary.json")
-        
-        # Group prices by parameter
-        grouped_prices = {}
-        for key, price in calculated_prices.items():
-            param_id, mode, variation_str = key.split('_')
-            
-            if param_id not in grouped_prices:
-                grouped_prices[param_id] = {}
-                
-            if mode not in grouped_prices[param_id]:
-                grouped_prices[param_id][mode] = {}
-                
-            grouped_prices[param_id][mode][variation_str] = price
-        
-        # Create the report data
+        # Prepare report data
         report_data = {
             "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
-            "parameters": grouped_prices,
-            "raw_prices": calculated_prices
+            "parameters": defaultdict(lambda: defaultdict(dict))
         }
         
-        # Save the report
+        # Process calculated prices
+        for key, price in calculated_prices.items():
+            # Parse key to get parameter and variation
+            parts = key.split('_')
+            if len(parts) < 2:
+                continue
+                
+            param_id = parts[0]
+            variation = '_'.join(parts[1:])
+            
+            # Determine mode based on variation
+            if variation == 'base':
+                mode = 'base'
+            elif variation.startswith('plus_'):
+                mode = 'increase'
+            elif variation.startswith('minus_'):
+                mode = 'decrease'
+            else:
+                mode = 'other'
+                
+            # Add to report data
+            report_data["parameters"][param_id][mode][variation] = price
+        
+        # Write summary report
+        report_path = os.path.join(reports_dir, "sensitivity_summary.json")
         with open(report_path, 'w') as f:
-            json.dump(report_data, f, indent=4)
+            json.dump(report_data, f, indent=2)
             
         logger.info(f"Generated summary report: {report_path}")
+        
+        # Generate CSV report
+        csv_report_path = os.path.join(reports_dir, "sensitivity_summary.csv")
+        self._generate_csv_report(csv_report_path, report_data)
+        
         return report_path
-
-# Example usage
-if __name__ == "__main__":
-    # Create executor
-    executor = EnhancedSensitivityExecutor()
     
-    # Example configuration
-    version = 1
-    selected_v = {"V1": "on", "V2": "off"}
-    selected_f = {"F1": "on", "F2": "on", "F3": "on", "F4": "on", "F5": "on"}
-    target_row = 20
-    calculation_option = "calculateForPrice"
+    def _extract_price_from_output(self, output):
+        """
+        Extract price from calculation output.
+        
+        Args:
+            output (str): Calculation output
+            
+        Returns:
+            float: Extracted price
+        """
+        try:
+            # Look for price in output
+            price_match = re.search(r'Price:\s*(\d+\.\d+)', output)
+            if price_match:
+                return float(price_match.group(1))
+                
+            # If no price found, look for any float
+            float_match = re.search(r'(\d+\.\d+)', output)
+            if float_match:
+                return float(float_match.group(1))
+                
+            # If no float found, return 0
+            return 0.0
+            
+        except Exception as e:
+            logger.error(f"Error extracting price from output: {str(e)}")
+            return 0.0
     
-    # Run baseline calculation
-    executor.run_baseline_calculation(version, selected_v, selected_f, target_row, calculation_option)
-    
-    # Get sensitivity directory
-    sensitivity_dir = os.path.join(
-        executor.base_dir,
-        "Original",
-        f"Batch({version})",
-        f"Results({version})",
-        "Sensitivity"
-    )
-    
-    # Run variation calculations
-    calculated_prices = executor.run_variation_calculations(
-        version,
-        sensitivity_dir,
-        selected_v,
-        selected_f,
-        target_row,
-        calculation_option
-    )
-    
-    # Generate summary report
-    executor.generate_summary_report(sensitivity_dir, calculated_prices)
+    def _generate_csv_report(self, csv_path, report_data):
+        """
+        Generate CSV report from report data.
+        
+        Args:
+            csv_path (str): Path to CSV report
+            report_data (dict): Report data
+        """
+        try:
+            # Prepare CSV data
+            csv_data = []
+            
+            # Add header row
+            header = ["Parameter", "Mode", "Variation", "Price"]
+            csv_data.append(header)
+            
+            # Add data rows
+            for param_id, modes in report_data["parameters"].items():
+                for mode, variations in modes.items():
+                    for variation, price in variations.items():
+                        row = [param_id, mode, variation, price]
+                        csv_data.append(row)
+            
+            # Write CSV file
+            with open(csv_path, 'w', newline='') as f:
+                writer = csv.writer(f)
+                writer.writerows(csv_data)
+                
+            logger.info(f"Generated CSV report: {csv_path}")
+            
+        except Exception as e:
+            logger.error(f"Error generating CSV report: {str(e)}")

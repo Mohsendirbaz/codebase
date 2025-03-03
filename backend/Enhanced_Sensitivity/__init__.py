@@ -7,40 +7,35 @@ This package provides enhanced sensitivity analysis functionality.
 from .enhanced_sensitivity_directory_builder import EnhancedSensitivityDirectoryBuilder
 from .enhanced_sensitivity_executor import EnhancedSensitivityExecutor
 from .enhanced_sensitivity_file_operations import (
-    ensure_directory_exists, copy_file, copy_directory,
-    load_json_file, save_json_file, load_csv_file, save_csv_file,
-    find_files_by_extension, find_files_by_pattern,
-    modify_json_property, extract_value_from_csv
-)
-from .enhanced_sensitivity_data_structures import (
-    SensitivityParameter, SensitivityVariation, SensitivityConfiguration,
-    validate_parameter_id, validate_mode, validate_values,
-    validate_parameter, validate_configuration,
-    get_property_id, get_display_name
+    ensure_directory_exists,
+    read_json_file,
+    write_json_file,
+    read_csv_file,
+    write_csv_file,
+    copy_file,
+    get_file_modification_time,
+    find_files_by_pattern,
+    read_file_content,
+    write_file_content,
+    append_file_content,
+    delete_file,
+    delete_directory
 )
 
 __all__ = [
     'EnhancedSensitivityDirectoryBuilder',
     'EnhancedSensitivityExecutor',
     'ensure_directory_exists',
+    'read_json_file',
+    'write_json_file',
+    'read_csv_file',
+    'write_csv_file',
     'copy_file',
-    'copy_directory',
-    'load_json_file',
-    'save_json_file',
-    'load_csv_file',
-    'save_csv_file',
-    'find_files_by_extension',
+    'get_file_modification_time',
     'find_files_by_pattern',
-    'modify_json_property',
-    'extract_value_from_csv',
-    'SensitivityParameter',
-    'SensitivityVariation',
-    'SensitivityConfiguration',
-    'validate_parameter_id',
-    'validate_mode',
-    'validate_values',
-    'validate_parameter',
-    'validate_configuration',
-    'get_property_id',
-    'get_display_name'
+    'read_file_content',
+    'write_file_content',
+    'append_file_content',
+    'delete_file',
+    'delete_directory'
 ]

@@ -14,3 +14,11 @@
 2025-03-03 04:07:56 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on http://127.0.0.1:5008
 2025-03-03 04:07:56 [INFO] [33mPress CTRL+C to quit[0m
+2025-03-03 07:00:49 [INFO] Initialized logging in C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\PNG.log
+2025-03-03 07:00:49 [INFO] Backend directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend
+2025-03-03 07:00:49 [INFO] Script directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Visualization_generators
+2025-03-03 07:00:49 [INFO] Starting PNG visualization server on port 5008
+2025-03-03 07:00:49 [INFO] Serving images from: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original
+2025-03-03 07:00:49 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5008
+2025-03-03 07:00:49 [INFO] [33mPress CTRL+C to quit[0m

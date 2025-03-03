@@ -727,12 +727,29 @@ def calculate_revenue_and_expenses_from_modules(config_received, config_matrix_d
     plt.tight_layout()
 
     # Save the chart as PNG
-    static_plot=os.path.join(results_folder, f'{version}_PieStaticPlots')
-    os.makedirs(static_plot, exist_ok=True)
-
-    png_path = os.path.join(static_plot, f"Operational_Cost_Breakdown_Pie_Chart({version}).png")
-    plt.savefig(png_path, bbox_inches='tight', dpi=300)
-    plt.close()
+    try:
+        # Create a valid directory name without special characters
+        static_plot_dir = os.path.join(results_folder, f'{version}_PieStaticPlots')
+        os.makedirs(static_plot_dir, exist_ok=True)
+        
+        # Create a valid file name without special characters
+        png_filename = f"Operational_Cost_Breakdown_Pie_Chart_{version}.png"
+        png_path = os.path.join(static_plot_dir, png_filename)
+        
+        # Ensure the directory exists before saving
+        os.makedirs(os.path.dirname(png_path), exist_ok=True)
+        
+        # Save the figure with error handling
+        try:
+            plt.savefig(png_path, bbox_inches='tight', dpi=300)
+            logging.info(f"Successfully saved pie chart to {png_path}")
+        except Exception as save_error:
+            logging.error(f"Error saving figure to {png_path}: {str(save_error)}")
+    except Exception as e:
+        logging.error(f"Error preparing to save pie chart: {str(e)}")
+    finally:
+        # Always close the plot to prevent memory leaks
+        plt.close()
 
     # ---------------- Economic Summary and Plotting Block End ----------------
     

@@ -54,7 +54,7 @@ const EnhancedSensitivityIntegration = () => {
             console.log('Generating sensitivity configurations:', requestPayload);
             
             // Call the enhanced sensitivity configure endpoint
-            const response = await fetch('http://127.0.0.1:27890/enhanced/sensitivity/configure', {
+            const response = await fetch('http://127.0.0.1:25007/enhanced/sensitivity/configure', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(requestPayload),
@@ -89,7 +89,7 @@ const EnhancedSensitivityIntegration = () => {
             console.log('Running sensitivity calculations...');
             
             // Call the enhanced sensitivity runs endpoint
-            const response = await fetch('http://127.0.0.1:27890/enhanced/runs', {
+            const response = await fetch('http://127.0.0.1:25007/enhanced/runs', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
             });
@@ -123,7 +123,7 @@ const EnhancedSensitivityIntegration = () => {
             console.log('Fetching sensitivity results...');
             
             // Call the enhanced sensitivity results endpoint
-            const response = await fetch('http://127.0.0.1:27890/enhanced/sensitivity/results');
+            const response = await fetch('http://127.0.0.1:25007/enhanced/sensitivity/results');
             
             // Process the response
             if (!response.ok) {

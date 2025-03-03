@@ -47,12 +47,14 @@ flask_apps = [
     (r"API_endpoints_and_controllers\Create_new_batch.py", 8001),
     (r"API_endpoints_and_controllers\Remove_batch.py", 7001),
     (r"API_endpoints_and_controllers\Calculations.py", 5007),
-    (r"API_endpoints_and_controllers\Calculations_and_Sensitivity.py", 25007),
+    # Comment out the original sensitivity server to avoid port conflict
+    # (r"API_endpoints_and_controllers\Calculations_and_Sensitivity.py", 25007),
     (r"API_endpoints_and_controllers\PNG.py", 5008),
     (r"API_endpoints_and_controllers\Sub.py", 5009),
     (r"API_endpoints_and_controllers\Load.py", 5000),
     (r"cfa_list.py", 456),
-    (r"Enhanced_Sensitivity\start_enhanced_sensitivity_server.py", 27890),
+    # Use only the enhanced sensitivity server
+    (r"Enhanced_Sensitivity\start_enhanced_sensitivity_server.py", 25007),
 ]
 
 # Base directory where your Node.js scripts are located

@@ -581,7 +581,7 @@ const L_1_HomePageContent = () => {
             
             // STEP 1: First generate and save sensitivity configurations
             console.log('Step 1: Generating sensitivity configurations...');
-            const configResponse = await fetch('http://127.0.0.1:25007/sensitivity/configure', {
+            const configResponse = await fetch('http://127.0.0.1:25007/enhanced/sensitivity/configure', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(requestPayload),
@@ -598,7 +598,7 @@ const L_1_HomePageContent = () => {
             
             // STEP 2: Now run the calculations
             console.log('Step 2: Running CFA calculations...');
-            const response = await fetch('http://127.0.0.1:25007/runs', {
+            const response = await fetch('http://127.0.0.1:25007/enhanced/runs', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(requestPayload),
@@ -626,7 +626,7 @@ const L_1_HomePageContent = () => {
                 try {
                     console.log('Step 3: Fetching sensitivity visualization data...');
                     
-                    const visualizationResponse = await fetch('http://127.0.0.1:25007/sensitivity/visualize', {
+                    const visualizationResponse = await fetch('http://127.0.0.1:25007/enhanced/sensitivity/visualize', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(requestPayload), // Reuse the same payload

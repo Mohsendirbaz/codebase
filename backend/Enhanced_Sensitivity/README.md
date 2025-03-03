@@ -1,126 +1,141 @@
 # Enhanced Sensitivity Analysis
 
-This package provides an enhanced implementation of sensitivity analysis for the CFA application. It addresses the requirements to generate and save sensitivity configurations first, before running sensitivity calculations.
+This module provides enhanced sensitivity analysis functionality for the CFA application.
 
-## Features
+## Overview
 
-- Simplified directory structure for sensitivity analysis
-- Proper sequencing of configuration generation and calculation execution
-- Extraction and storage of calculated prices
-- REST API endpoints for configuring, running, and retrieving results
-- Comprehensive logging and error handling
+The enhanced sensitivity analysis allows users to:
 
-## Directory Structure
+1. Configure sensitivity parameters with their applied variations
+2. Run sensitivity calculations for all variations
+3. View sensitivity results and visualizations
 
-The enhanced sensitivity analysis creates a simplified directory structure:
+## Architecture
 
-```
-Sensitivity/
-├── Reports/
-│   └── sensitivity_summary.json
-├── S34/
-│   └── symmetrical/
-│       ├── +10.00/
-│       │   ├── calculated_price.json
-│       │   ├── 1_config_module_3.json (modified)
-│       │   └── ... (other config files)
-│       └── -10.00/
-│           ├── calculated_price.json
-│           ├── 1_config_module_3.json (modified)
-│           └── ... (other config files)
-└── S35/
-    └── ...
-```
+The enhanced sensitivity analysis consists of the following components:
 
-This structure organizes the sensitivity analysis by:
-1. Parameter ID (e.g., S34)
-2. Mode (symmetrical or multipoint)
-3. Variation percentage (e.g., +10.00%)
+- **Flask Server**: Provides API endpoints for configuring, running, and getting results
+- **Directory Builder**: Creates sensitivity directories and modifies parameter values
+- **Executor**: Runs calculations and generates summary reports
+- **File Operations**: Utility functions for file operations
 
 ## API Endpoints
 
-The enhanced sensitivity analysis provides the following API endpoints:
+### Configuration
 
-- `POST /enhanced/sensitivity/configure`: Generate and save sensitivity configurations
-- `POST /enhanced/runs`: Run sensitivity calculations
-- `GET /enhanced/sensitivity/results`: Get sensitivity results
-- `GET /enhanced/prices/:version`: Get calculated prices for a specific version
-- `GET /enhanced/stream_prices/:version`: Stream calculated prices for a specific version
-- `GET /enhanced/health`: Health check endpoint
+- `POST /enhanced/sensitivity/configure`: Generate and save sensitivity configurations with their applied variations
+
+### Execution
+
+- `POST /enhanced/runs`: Run sensitivity calculations for all variations
+
+### Results
+
+- `GET /enhanced/sensitivity/results`: Get sensitivity results for all variations
+- `GET /enhanced/prices/<version>`: Get calculated prices for a specific version
+- `GET /enhanced/stream_prices/<version>`: Stream calculated prices for a specific version
+
+### Visualization
+
+- `POST /enhanced/sensitivity/visualize`: Generate visualizations for sensitivity analysis results
+- `GET /enhanced/sensitivity/visualization/<param_id>/<plot_type>`: Get a specific sensitivity visualization
+
+### Health Check
+
+- `GET /enhanced/health`: Health check endpoint for server detection
 
 ## Usage
 
-### Starting the Server
-
-The enhanced sensitivity server runs on port 27890. You can start it using:
+1. Start the enhanced sensitivity server:
 
 ```bash
-python backend/Enhanced_Sensitivity/start_enhanced_sensitivity_server.py
+python start_enhanced_sensitivity_server.py
 ```
 
-Or use the updated `start_servers.py` script which includes the enhanced sensitivity server.
+2. Configure sensitivity parameters:
 
-### API Usage
-
-1. **Generate Configurations**
-
-```javascript
-const configResponse = await fetch('http://127.0.0.1:27890/enhanced/sensitivity/configure', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-        selectedVersions: [1],
-        selectedV: { V1: "on", V2: "off" },
-        selectedF: { F1: "on", F2: "on", F3: "on", F4: "on", F5: "on" },
-        selectedCalculationOption: "calculateForPrice",
-        targetRow: 20,
-        SenParameters: {
-            S34: {
-                mode: "symmetrical",
-                values: [20],
-                enabled: true,
-                compareToKey: "S13",
-                comparisonType: "primary",
-                waterfall: true,
-                bar: true,
-                point: true
-            }
-        }
-    })
-});
+```bash
+curl -X POST http://localhost:25007/enhanced/sensitivity/configure \
+  -H "Content-Type: application/json" \
+  -d '{
+    "selectedVersions": [1],
+    "selectedV": {"V1": "on", "V2": "off"},
+    "selectedF": {"F1": "on", "F2": "off"},
+    "selectedCalculationOption": "freeFlowNPV",
+    "targetRow": 20,
+    "SenParameters": {
+      "S1": {
+        "enabled": true,
+        "file": "config.json",
+        "path": "parameters.interest_rate",
+        "baseValue": 0.05,
+        "step": 10,
+        "stepsUp": 2,
+        "stepsDown": 2,
+        "point": true,
+        "bar": true,
+        "waterfall": true
+      }
+    }
+  }'
 ```
 
-2. **Run Calculations**
+3. Run sensitivity calculations:
 
-```javascript
-const response = await fetch('http://127.0.0.1:27890/enhanced/runs', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' }
-});
+```bash
+curl -X POST http://localhost:25007/enhanced/runs
 ```
 
-3. **Get Results**
+4. Get sensitivity results:
 
-```javascript
-const resultsResponse = await fetch('http://127.0.0.1:27890/enhanced/sensitivity/results');
-const results = await resultsResponse.json();
+```bash
+curl -X GET http://localhost:25007/enhanced/sensitivity/results
 ```
 
-## Implementation Details
+5. Generate visualizations:
 
-The enhanced sensitivity analysis is implemented using the following components:
+```bash
+curl -X POST http://localhost:25007/enhanced/sensitivity/visualize
+```
 
-1. **Directory Builder**: Creates the directory structure and copies configuration files
-2. **Executor**: Runs the calculations and extracts the results
-3. **Flask Server**: Provides the API endpoints
-4. **File Operations**: Utility functions for file operations
-5. **Data Structures**: Data models and validation functions
+## Important Notes
 
-## Key Improvements
+- Sensitivity configurations must be generated and saved first with their applied variations before running sensitivity calculations.
+- The enhanced sensitivity analysis uses the existing calculation engine from the API_endpoints_and_controllers/Calculations_and_Sensitivity.py module.
+- Visualizations are generated using matplotlib and saved as PNG files.
 
-1. **Proper Sequencing**: Ensures that configurations are generated and saved before running calculations
-2. **Simplified Directory Structure**: Organizes the sensitivity analysis in a more logical way
-3. **Comprehensive Logging**: Provides detailed logs for debugging and monitoring
-4. **Error Handling**: Robust error handling and reporting
-5. **Data Validation**: Validates input data to prevent errors
-6. **Symmetrical Variations**: For symmetrical mode, uses 50% of the specified value for variations (e.g., ±10% for a value of 20%)
+## Integration with Main Application
+
+To integrate the enhanced sensitivity analysis with the main application:
+
+1. Add the enhanced sensitivity server to the start_servers.py script:
+
+```python
+# Start enhanced sensitivity server
+subprocess.Popen([
+    "python",
+    os.path.join(BASE_DIR, "Enhanced_Sensitivity", "start_enhanced_sensitivity_server.py")
+])
+```
+
+2. Update the frontend to use the enhanced sensitivity API endpoints.
+
+## File Structure
+
+```
+Enhanced_Sensitivity/
+├── enhanced_sensitivity_flask_server.py   # Flask server with API endpoints
+├── enhanced_sensitivity_directory_builder.py  # Directory builder for sensitivity analysis
+├── enhanced_sensitivity_executor.py       # Executor for sensitivity calculations
+├── enhanced_sensitivity_file_operations.py  # Utility functions for file operations
+├── start_enhanced_sensitivity_server.py   # Script to start the server
+└── README.md                             # Documentation
+```
+
+## Development
+
+To add new features to the enhanced sensitivity analysis:
+
+1. Update the API endpoints in enhanced_sensitivity_flask_server.py
+2. Add new functionality to the appropriate module
+3. Update the documentation in README.md

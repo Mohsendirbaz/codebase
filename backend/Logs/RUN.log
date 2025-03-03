@@ -114,3 +114,206 @@
 2025-03-03 05:39:49,881 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-03-03 05:39:49,917 WARNING  * Debugger is active!
 2025-03-03 05:39:49,922 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:09:39,228 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\CFA.py', reloading
+2025-03-03 06:09:39,300 INFO  * Restarting with stat
+2025-03-03 06:09:41,547 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 06:09:41,644 WARNING  * Debugger is active!
+2025-03-03 06:09:41,652 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:10:06,444 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\enhanced_sensitivity_flask_server.py', reloading
+2025-03-03 06:10:06,528 INFO  * Restarting with stat
+2025-03-03 06:10:07,280 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 06:10:07,305 WARNING  * Debugger is active!
+2025-03-03 06:10:07,312 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:10:30,879 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\start_enhanced_sensitivity_server.py', reloading
+2025-03-03 06:10:30,943 INFO  * Restarting with stat
+2025-03-03 06:10:31,607 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 06:10:31,657 WARNING  * Debugger is active!
+2025-03-03 06:10:31,657 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:27:09,565 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\CFA.py', reloading
+2025-03-03 06:27:09,688 INFO  * Restarting with stat
+2025-03-03 06:27:11,552 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 06:27:11,611 WARNING  * Debugger is active!
+2025-03-03 06:27:11,619 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:33:50,574 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\enhanced_sensitivity_flask_server.py', reloading
+2025-03-03 06:33:50,689 INFO  * Restarting with stat
+2025-03-03 06:33:52,660 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 06:33:52,834 WARNING  * Debugger is active!
+2025-03-03 06:33:52,846 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:34:02,640 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\enhanced_sensitivity_flask_server.py', reloading
+2025-03-03 06:34:02,867 INFO  * Restarting with stat
+2025-03-03 06:34:04,025 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 06:34:04,143 WARNING  * Debugger is active!
+2025-03-03 06:34:04,150 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:34:14,301 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\enhanced_sensitivity_flask_server.py', reloading
+2025-03-03 06:34:14,385 INFO  * Restarting with stat
+2025-03-03 06:34:15,595 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 06:34:15,643 WARNING  * Debugger is active!
+2025-03-03 06:34:15,651 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:34:22,485 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\enhanced_sensitivity_flask_server.py', reloading
+2025-03-03 06:34:22,553 INFO  * Restarting with stat
+2025-03-03 06:34:23,260 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 06:34:23,368 WARNING  * Debugger is active!
+2025-03-03 06:34:23,377 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:34:29,606 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\enhanced_sensitivity_flask_server.py', reloading
+2025-03-03 06:34:29,689 INFO  * Restarting with stat
+2025-03-03 06:34:30,981 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 06:34:31,184 WARNING  * Debugger is active!
+2025-03-03 06:34:31,192 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:34:40,114 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\enhanced_sensitivity_flask_server.py', reloading
+2025-03-03 06:34:40,189 INFO  * Restarting with stat
+2025-03-03 06:34:41,409 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 06:34:41,454 WARNING  * Debugger is active!
+2025-03-03 06:34:41,461 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:34:49,833 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\enhanced_sensitivity_flask_server.py', reloading
+2025-03-03 06:34:49,911 INFO  * Restarting with stat
+2025-03-03 06:34:51,341 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 06:34:51,388 WARNING  * Debugger is active!
+2025-03-03 06:34:51,395 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:34:58,626 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\enhanced_sensitivity_flask_server.py', reloading
+2025-03-03 06:34:58,705 INFO  * Restarting with stat
+2025-03-03 06:34:59,593 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 06:34:59,837 WARNING  * Debugger is active!
+2025-03-03 06:34:59,845 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:35:07,985 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\enhanced_sensitivity_flask_server.py', reloading
+2025-03-03 06:35:08,096 INFO  * Restarting with stat
+2025-03-03 06:35:09,074 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 06:35:09,112 WARNING  * Debugger is active!
+2025-03-03 06:35:09,118 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:35:15,751 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\enhanced_sensitivity_flask_server.py', reloading
+2025-03-03 06:35:15,804 INFO  * Restarting with stat
+2025-03-03 06:35:16,571 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 06:35:16,641 WARNING  * Debugger is active!
+2025-03-03 06:35:16,649 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:35:25,058 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\enhanced_sensitivity_flask_server.py', reloading
+2025-03-03 06:35:25,197 INFO  * Restarting with stat
+2025-03-03 06:35:26,719 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 06:35:26,774 WARNING  * Debugger is active!
+2025-03-03 06:35:26,783 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:35:34,151 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\enhanced_sensitivity_flask_server.py', reloading
+2025-03-03 06:35:34,228 INFO  * Restarting with stat
+2025-03-03 06:35:36,186 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 06:35:36,249 WARNING  * Debugger is active!
+2025-03-03 06:35:36,257 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:35:43,030 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\enhanced_sensitivity_flask_server.py', reloading
+2025-03-03 06:35:43,124 INFO  * Restarting with stat
+2025-03-03 06:35:44,404 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 06:35:44,494 WARNING  * Debugger is active!
+2025-03-03 06:35:44,501 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:35:52,658 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\enhanced_sensitivity_flask_server.py', reloading
+2025-03-03 06:35:52,810 INFO  * Restarting with stat
+2025-03-03 06:35:54,337 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 06:35:54,410 WARNING  * Debugger is active!
+2025-03-03 06:35:54,418 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:36:02,906 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\enhanced_sensitivity_flask_server.py', reloading
+2025-03-03 06:36:02,978 INFO  * Restarting with stat
+2025-03-03 06:36:03,864 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 06:36:03,911 WARNING  * Debugger is active!
+2025-03-03 06:36:03,918 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:36:12,235 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\enhanced_sensitivity_flask_server.py', reloading
+2025-03-03 06:36:12,311 INFO  * Restarting with stat
+2025-03-03 06:36:13,714 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 06:36:13,759 WARNING  * Debugger is active!
+2025-03-03 06:36:13,766 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:36:21,076 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\enhanced_sensitivity_flask_server.py', reloading
+2025-03-03 06:36:21,145 INFO  * Restarting with stat
+2025-03-03 06:36:22,843 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 06:36:22,900 WARNING  * Debugger is active!
+2025-03-03 06:36:22,907 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:36:31,632 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\enhanced_sensitivity_flask_server.py', reloading
+2025-03-03 06:36:31,708 INFO  * Restarting with stat
+2025-03-03 06:36:32,132 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 06:36:32,160 WARNING  * Debugger is active!
+2025-03-03 06:36:32,165 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:36:40,847 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\enhanced_sensitivity_flask_server.py', reloading
+2025-03-03 06:36:40,919 INFO  * Restarting with stat
+2025-03-03 06:36:42,239 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 06:36:42,283 WARNING  * Debugger is active!
+2025-03-03 06:36:42,290 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:36:50,069 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\enhanced_sensitivity_flask_server.py', reloading
+2025-03-03 06:36:50,130 INFO  * Restarting with stat
+2025-03-03 06:36:50,852 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 06:36:50,889 WARNING  * Debugger is active!
+2025-03-03 06:36:50,897 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:36:59,670 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\enhanced_sensitivity_flask_server.py', reloading
+2025-03-03 06:36:59,770 INFO  * Restarting with stat
+2025-03-03 06:37:01,111 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 06:37:01,154 WARNING  * Debugger is active!
+2025-03-03 06:37:01,161 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:37:08,723 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\enhanced_sensitivity_flask_server.py', reloading
+2025-03-03 06:37:08,838 INFO  * Restarting with stat
+2025-03-03 06:37:10,976 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 06:37:11,022 WARNING  * Debugger is active!
+2025-03-03 06:37:11,030 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:37:19,705 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\enhanced_sensitivity_flask_server.py', reloading
+2025-03-03 06:37:19,769 INFO  * Restarting with stat
+2025-03-03 06:37:21,974 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 06:37:22,033 WARNING  * Debugger is active!
+2025-03-03 06:37:22,041 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:37:28,422 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\enhanced_sensitivity_flask_server.py', reloading
+2025-03-03 06:37:28,498 INFO  * Restarting with stat
+2025-03-03 06:37:29,676 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 06:37:29,773 WARNING  * Debugger is active!
+2025-03-03 06:37:29,780 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:37:36,393 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\enhanced_sensitivity_flask_server.py', reloading
+2025-03-03 06:37:36,496 INFO  * Restarting with stat
+2025-03-03 06:37:37,447 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 06:37:37,482 WARNING  * Debugger is active!
+2025-03-03 06:37:37,490 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:38:19,501 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\enhanced_sensitivity_flask_server.py', reloading
+2025-03-03 06:38:19,580 INFO  * Restarting with stat
+2025-03-03 06:38:20,637 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 06:38:20,938 WARNING  * Debugger is active!
+2025-03-03 06:38:20,945 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:38:28,624 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\enhanced_sensitivity_flask_server.py', reloading
+2025-03-03 06:38:28,731 INFO  * Restarting with stat
+2025-03-03 06:38:29,927 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 06:38:29,968 WARNING  * Debugger is active!
+2025-03-03 06:38:29,976 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:38:38,230 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\enhanced_sensitivity_flask_server.py', reloading
+2025-03-03 06:38:38,336 INFO  * Restarting with stat
+2025-03-03 06:38:40,448 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 06:38:40,515 WARNING  * Debugger is active!
+2025-03-03 06:38:40,525 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:38:50,078 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\enhanced_sensitivity_flask_server.py', reloading
+2025-03-03 06:38:50,158 INFO  * Restarting with stat
+2025-03-03 06:38:52,135 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 06:38:52,332 WARNING  * Debugger is active!
+2025-03-03 06:38:52,339 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:39:01,409 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\enhanced_sensitivity_flask_server.py', reloading
+2025-03-03 06:39:01,502 INFO  * Restarting with stat
+2025-03-03 06:39:03,189 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 06:39:03,232 WARNING  * Debugger is active!
+2025-03-03 06:39:03,238 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:39:13,058 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\enhanced_sensitivity_flask_server.py', reloading
+2025-03-03 06:39:13,211 INFO  * Restarting with stat
+2025-03-03 06:39:16,738 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 06:39:16,965 WARNING  * Debugger is active!
+2025-03-03 06:39:16,973 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:39:27,748 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\enhanced_sensitivity_flask_server.py', reloading
+2025-03-03 06:39:27,926 INFO  * Restarting with stat
+2025-03-03 06:39:30,931 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 06:39:31,054 WARNING  * Debugger is active!
+2025-03-03 06:39:31,065 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:39:40,798 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\enhanced_sensitivity_flask_server.py', reloading
+2025-03-03 06:39:40,884 INFO  * Restarting with stat
+2025-03-03 06:39:42,698 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 06:39:42,826 WARNING  * Debugger is active!
+2025-03-03 06:39:42,834 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:39:58,074 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\enhanced_sensitivity_flask_server.py', reloading
+2025-03-03 06:39:58,158 INFO  * Restarting with stat
+2025-03-03 06:39:58,937 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 06:39:58,970 WARNING  * Debugger is active!
+2025-03-03 06:39:58,970 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:40:05,569 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\enhanced_sensitivity_flask_server.py', reloading
+2025-03-03 06:40:05,672 INFO  * Restarting with stat
+2025-03-03 06:40:07,193 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 06:40:07,438 WARNING  * Debugger is active!
+2025-03-03 06:40:07,445 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:40:16,429 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\enhanced_sensitivity_flask_server.py', reloading
+2025-03-03 06:40:16,512 INFO  * Restarting with stat
+2025-03-03 06:40:17,133 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 06:40:17,160 WARNING  * Debugger is active!
+2025-03-03 06:40:17,169 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:40:25,776 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\enhanced_sensitivity_flask_server.py', reloading
+2025-03-03 06:40:25,890 INFO  * Restarting with stat
+2025-03-03 06:40:27,458 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log

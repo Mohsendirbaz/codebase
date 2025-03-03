@@ -397,3 +397,71 @@ Enhanced sensitivity calculations completed successfully
 
 2025-03-03 05:59:15,483 INFO 127.0.0.1 - - [03/Mar/2025 05:59:15] "POST /enhanced/runs HTTP/1.1" 200 -
 2025-03-03 05:59:15,510 INFO 127.0.0.1 - - [03/Mar/2025 05:59:15] "GET /enhanced/sensitivity/results HTTP/1.1" 200 -
+2025-03-03 06:09:39,397 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\CFA.py', reloading
+2025-03-03 06:09:39,488 INFO  * Restarting with stat
+2025-03-03 06:09:41,401 INFO Initialized EnhancedSensitivityDirectoryBuilder with base directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original
+2025-03-03 06:09:41,405 INFO Initialized EnhancedSensitivityExecutor with base directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend
+2025-03-03 06:09:41,406 INFO Common scripts: ['C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\formatter.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\module1.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\config_modules.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\Table.py']
+2025-03-03 06:09:41,407 INFO Calculation script: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Core_calculation_engines\CFA.py
+2025-03-03 06:09:41,432 INFO Starting Enhanced Sensitivity Server on port 27890
+2025-03-03 06:09:41,710 WARNING  * Debugger is active!
+2025-03-03 06:09:41,718 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:10:07,535 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\enhanced_sensitivity_flask_server.py', reloading
+2025-03-03 06:10:07,591 INFO  * Restarting with stat
+2025-03-03 06:10:08,490 INFO Initialized EnhancedSensitivityDirectoryBuilder with base directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original
+2025-03-03 06:10:08,490 INFO Initialized EnhancedSensitivityExecutor with base directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend
+2025-03-03 06:10:08,490 INFO Common scripts: ['C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\formatter.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\module1.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\config_modules.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\Table.py']
+2025-03-03 06:10:08,490 INFO Calculation script: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Core_calculation_engines\CFA.py
+2025-03-03 06:10:08,503 INFO Starting Enhanced Sensitivity Server on port 27890
+2025-03-03 06:10:08,533 WARNING  * Debugger is active!
+2025-03-03 06:10:08,552 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:10:33,839 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\start_enhanced_sensitivity_server.py', reloading
+2025-03-03 06:10:34,001 INFO  * Restarting with stat
+2025-03-03 06:10:35,474 INFO Initialized EnhancedSensitivityDirectoryBuilder with base directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original
+2025-03-03 06:10:35,474 INFO Initialized EnhancedSensitivityExecutor with base directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend
+2025-03-03 06:10:35,474 INFO Common scripts: ['C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\formatter.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\module1.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\config_modules.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\Table.py']
+2025-03-03 06:10:35,474 INFO Calculation script: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Core_calculation_engines\CFA.py
+2025-03-03 06:10:35,497 INFO Starting Enhanced Sensitivity Server on port 25007
+2025-03-03 06:10:35,725 WARNING  * Debugger is active!
+2025-03-03 06:10:35,740 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:27:09,896 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Core_calculation_engines\\CFA.py', reloading
+2025-03-03 06:27:09,986 INFO  * Restarting with stat
+2025-03-03 06:27:11,728 INFO Initialized EnhancedSensitivityDirectoryBuilder with base directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original
+2025-03-03 06:27:11,728 INFO Initialized EnhancedSensitivityExecutor with base directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend
+2025-03-03 06:27:11,728 INFO Common scripts: ['C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\formatter.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\module1.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\config_modules.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\Table.py']
+2025-03-03 06:27:11,728 INFO Calculation script: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Core_calculation_engines\CFA.py
+2025-03-03 06:27:11,736 INFO Starting Enhanced Sensitivity Server on port 25007
+2025-03-03 06:27:11,835 WARNING  * Debugger is active!
+2025-03-03 06:27:11,852 INFO  * Debugger PIN: 119-059-632
+2025-03-03 06:33:54,791 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\enhanced_sensitivity_flask_server.py', reloading
+2025-03-03 06:33:54,900 INFO  * Restarting with stat
+2025-03-03 07:01:01,022 INFO Initialized EnhancedSensitivityDirectoryBuilder with base directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original
+2025-03-03 07:01:01,022 INFO Initialized EnhancedSensitivityExecutor with base directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend
+2025-03-03 07:01:01,022 INFO Common scripts: ['C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\formatter.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\module1.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\config_modules.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\Table.py']
+2025-03-03 07:01:01,022 INFO Calculation script: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Core_calculation_engines\CFA.py
+2025-03-03 07:01:01,058 INFO Starting Enhanced Sensitivity Server on port 25007
+2025-03-03 07:01:01,575 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:25007
+ * Running on http://128.206.16.228:25007
+2025-03-03 07:01:01,575 INFO [33mPress CTRL+C to quit[0m
+2025-03-03 07:01:01,625 INFO  * Restarting with stat
+2025-03-03 07:01:07,818 INFO Initialized EnhancedSensitivityDirectoryBuilder with base directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original
+2025-03-03 07:01:07,818 INFO Initialized EnhancedSensitivityExecutor with base directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend
+2025-03-03 07:01:07,818 INFO Common scripts: ['C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\formatter.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\module1.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\config_modules.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\Table.py']
+2025-03-03 07:01:07,819 INFO Calculation script: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Core_calculation_engines\CFA.py
+2025-03-03 07:01:07,833 INFO Starting Enhanced Sensitivity Server on port 25007
+2025-03-03 07:01:08,290 WARNING  * Debugger is active!
+2025-03-03 07:01:08,298 INFO  * Debugger PIN: 119-059-632
+2025-03-03 07:01:46,957 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\enhanced_sensitivity_flask_server.py', reloading
+2025-03-03 07:01:47,046 INFO  * Restarting with stat
+2025-03-03 07:13:50,268 INFO Starting enhanced sensitivity server on port 25007
+2025-03-03 07:13:50,323 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:25007
+ * Running on http://128.206.16.228:25007
+2025-03-03 07:13:50,325 INFO [33mPress CTRL+C to quit[0m
+2025-03-03 07:13:50,329 INFO  * Restarting with stat
+2025-03-03 07:13:51,341 INFO Starting enhanced sensitivity server on port 25007
+2025-03-03 07:13:51,379 WARNING  * Debugger is active!
+2025-03-03 07:13:51,388 INFO  * Debugger PIN: 119-059-632

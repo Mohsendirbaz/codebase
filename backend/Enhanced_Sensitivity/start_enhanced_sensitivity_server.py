@@ -1,7 +1,8 @@
+#!/usr/bin/env python
 """
 Start Enhanced Sensitivity Server
 
-This script starts the enhanced sensitivity analysis server.
+This script starts the enhanced sensitivity Flask server.
 """
 
 import os
@@ -20,9 +21,15 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     try:
-        logger.info("Starting Enhanced Sensitivity Server on port 27890")
-        app.run(host='0.0.0.0', port=27890, debug=True)
+        # Get port from command line arguments
+        port = int(sys.argv[1]) if len(sys.argv) > 1 else 25007
+        
+        # Start server
+        logger.info(f"Starting enhanced sensitivity server on port {port}")
+        app.run(host='0.0.0.0', port=port, debug=True)
+        
     except Exception as e:
-        logger.error(f"Error starting server: {str(e)}")
+        logger.error(f"Error starting enhanced sensitivity server: {str(e)}")
+        sys.exit(1)
