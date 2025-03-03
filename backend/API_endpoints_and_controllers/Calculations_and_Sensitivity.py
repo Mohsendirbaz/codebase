@@ -24,6 +24,8 @@ import logging
 import json
 import time
 import sys
+import shutil
+import pickle
 
 base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(base_dir)
@@ -49,6 +51,10 @@ os.makedirs(LOGS_DIR, exist_ok=True)
 
 LOG_FILE_PATH = os.path.join(LOGS_DIR, "RUN.log")
 SENSITIVITY_LOG_PATH = os.path.join(LOGS_DIR, "SENSITIVITY.log")
+
+# Sensitivity configuration status file
+SENSITIVITY_CONFIG_STATUS_PATH = os.path.join(LOGS_DIR, "sensitivity_config_status.json")
+SENSITIVITY_CONFIG_DATA_PATH = os.path.join(LOGS_DIR, "sensitivity_config_data.pkl")
 
 # =====================================
 # Script Configurations
@@ -198,6 +204,165 @@ def log_run_configuration(logger, config):
     
     logger.info("\n" + "="*80 + "\n")
 
+def create_sensitivity_directories(version, SenParameters):
+    """
+    Create directory structure for sensitivity analysis.
+    
+    Args:
+        version (int): Version number
+        SenParameters (dict): Dictionary containing sensitivity parameters
+        
+    Returns:
+        tuple: (sensitivity_dir, reports_dir) - Paths to the main sensitivity directory and reports directory
+    """
+    sensitivity_logger = logging.getLogger('sensitivity')
+    
+    # Create sensitivity directories
+    base_dir = os.path.join(BASE_DIR, 'backend', 'Original')
+    results_folder = os.path.join(base_dir, f'Batch({version})', f'Results({version})')
+    sensitivity_dir = os.path.join(results_folder, 'Sensitivity')
+    
+    # Create main sensitivity directory
+    os.makedirs(sensitivity_dir, exist_ok=True)
+    sensitivity_logger.info(f"Created main sensitivity directory: {sensitivity_dir}")
+    
+    # Create Reports directory (only additional folder in Sensitivity)
+    reports_dir = os.path.join(sensitivity_dir, "Reports")
+    os.makedirs(reports_dir, exist_ok=True)
+    sensitivity_logger.info(f"Created Reports directory: {reports_dir}")
+    
+    # Create parameter-specific directories with mode and variation
+    for param_id, param_config in SenParameters.items():
+        if not param_config.get('enabled'):
+            continue
+            
+        # Get variation values
+        values = param_config.get('values', [])
+        if not values:
+            continue
+            
+        # Get mode (symmetrical or multipoint)
+        mode = param_config.get('mode', 'symmetrical')
+        
+        # Determine variation list based on mode
+        if mode.lower() == 'symmetrical':
+            # For symmetrical, use first value to create +/- variations
+            base_variation = values[0]
+            variation_list = [base_variation, -base_variation]
+        else:  # 'multipoint' mode
+            # For multipoint, use all values directly
+            variation_list = values
+            
+        # Create a directory for each variation
+        for variation in variation_list:
+            # Format the variation string (e.g., "+20.00" or "-20.00")
+            var_str = f"{variation:+.2f}"
+            
+            # Create the full directory path: Sensitivity/param_id/mode/variation
+            var_dir = os.path.join(sensitivity_dir, param_id, mode, var_str)
+            os.makedirs(var_dir, exist_ok=True)
+            sensitivity_logger.info(f"Created directory: {var_dir}")
+    
+    # Return the sensitivity directory and reports directory
+    return sensitivity_dir, reports_dir
+
+def save_sensitivity_config_files(version, reports_dir, SenParameters):
+    """
+    Save sensitivity configuration files to the appropriate directories.
+    
+    Args:
+        version (int): Version number
+        reports_dir (str): Path to the reports directory
+        SenParameters (dict): Dictionary containing sensitivity parameters
+        
+    Returns:
+        list: List of saved configuration file paths
+    """
+    sensitivity_logger = logging.getLogger('sensitivity')
+    saved_files = []
+    
+    try:
+        # Get base directory
+        base_dir = os.path.join(BASE_DIR, 'backend', 'Original')
+        results_folder = os.path.join(base_dir, f'Batch({version})', f'Results({version})')
+        sensitivity_dir = os.path.join(results_folder, 'Sensitivity')
+        
+        # Save main configuration file in reports directory
+        config_file = os.path.join(reports_dir, "sensitivity_config.json")
+        with open(config_file, 'w') as f:
+            json.dump({
+                'version': version,
+                'timestamp': time.strftime("%Y-%m-%d %H:%M:%S"),
+                'parameters': SenParameters
+            }, f, indent=2)
+        saved_files.append(config_file)
+        sensitivity_logger.info(f"Saved main configuration file: {config_file}")
+        
+        # Save individual parameter configuration files in their respective directories
+        for param_id, param_config in SenParameters.items():
+            if not param_config.get('enabled'):
+                continue
+                
+            # Get mode and values
+            mode = param_config.get('mode', 'symmetrical')
+            values = param_config.get('values', [])
+            
+            if not values:
+                continue
+                
+            # Determine variation list based on mode
+            if mode.lower() == 'symmetrical':
+                # For symmetrical, use first value to create +/- variations
+                base_variation = values[0]
+                variation_list = [base_variation, -base_variation]
+            else:  # 'multipoint' mode
+                # For multipoint, use all values directly
+                variation_list = values
+                
+            # Save configuration for each variation
+            for variation in variation_list:
+                # Format the variation string (e.g., "+10.00" or "-5.00")
+                var_str = f"{variation:+.2f}"
+                
+                # Create path to variation directory
+                var_dir = os.path.join(sensitivity_dir, param_id, mode, var_str)
+                
+                # Save configuration file
+                param_file = os.path.join(var_dir, f"{param_id}_config.json")
+                with open(param_file, 'w') as f:
+                    json.dump({
+                        'parameter': param_id,
+                        'config': param_config,
+                        'variation': variation,
+                        'variation_str': var_str,
+                        'mode': mode,
+                        'version': version,
+                        'timestamp': time.strftime("%Y-%m-%d %H:%M:%S")
+                    }, f, indent=2)
+                saved_files.append(param_file)
+                sensitivity_logger.info(f"Saved parameter configuration file: {param_file}")
+                
+                # Create a deep copy of the config module for this variation
+                config_module_path = os.path.join(results_folder, f"{version}_config_module_3.json")
+                if os.path.exists(config_module_path):
+                    # Load the config module
+                    with open(config_module_path, 'r') as f:
+                        config_module = json.load(f)
+                    
+                    # Save a copy in the variation directory
+                    var_config_path = os.path.join(var_dir, f"{version}_config_module_3.json")
+                    with open(var_config_path, 'w') as f:
+                        json.dump(config_module, f, indent=4)
+                    saved_files.append(var_config_path)
+                    sensitivity_logger.info(f"Saved config module copy: {var_config_path}")
+            
+        return saved_files
+        
+    except Exception as e:
+        error_msg = f"Error saving configuration files: {str(e)}"
+        sensitivity_logger.exception(error_msg)
+        raise
+
 def process_sensitivity_visualization(SenParameters):
     """
     Process sensitivity parameters for visualization.
@@ -293,6 +458,34 @@ def process_sensitivity_visualization(SenParameters):
         sensitivity_logger.exception(error_msg)
         raise
 
+def check_sensitivity_config_status():
+    """
+    Check if sensitivity configurations have been generated and saved.
+    
+    Returns:
+        tuple: (is_configured, config_data) - Boolean indicating if configurations are ready and the configuration data
+    """
+    if not os.path.exists(SENSITIVITY_CONFIG_STATUS_PATH):
+        return False, None
+        
+    try:
+        with open(SENSITIVITY_CONFIG_STATUS_PATH, 'r') as f:
+            status = json.load(f)
+            
+        if not status.get('configured', False):
+            return False, None
+            
+        if os.path.exists(SENSITIVITY_CONFIG_DATA_PATH):
+            with open(SENSITIVITY_CONFIG_DATA_PATH, 'rb') as f:
+                config_data = pickle.load(f)
+            return True, config_data
+            
+        return True, None
+        
+    except Exception as e:
+        logging.error(f"Error checking sensitivity configuration status: {str(e)}")
+        return False, None
+
 # =====================================
 # Flask Application Initialization
 # =====================================
@@ -306,6 +499,100 @@ def initialize_app():
 app = initialize_app()
 
 # =====================================
+# Sensitivity Configuration Endpoint
+# =====================================
+
+@app.route('/sensitivity/configure', methods=['POST'])
+def configure_sensitivity():
+    """
+    Generate and save sensitivity configurations with their applied variations.
+    This must be called before running sensitivity calculations.
+    """
+    sensitivity_logger = logging.getLogger('sensitivity')
+    run_id = time.strftime("%Y%m%d_%H%M%S")
+    
+    try:
+        data = request.get_json()
+        if not data:
+            return jsonify({"error": "No data provided"}), 400
+
+        # Extract configuration
+        config = {
+            'versions': data.get('selectedVersions', [1]),
+            'selectedV': data.get('selectedV', {f'V{i+1}': 'off' for i in range(10)}),
+            'selectedF': data.get('selectedF', {f'F{i+1}': 'off' for i in range(5)}),
+            'calculationOption': data.get('selectedCalculationOption', 'freeFlowNPV'),
+            'targetRow': int(data.get('targetRow', 20)),
+            'SenParameters': data.get('SenParameters', {})
+        }
+        
+        version = config['versions'][0]
+        
+        sensitivity_logger.info(f"\n{'='*80}")
+        sensitivity_logger.info(f"Sensitivity Configuration Generation - Run ID: {run_id}")
+        sensitivity_logger.info(f"{'='*80}")
+        sensitivity_logger.info(f"Version: {version}")
+        sensitivity_logger.info(f"Calculation Mode: {config['calculationOption']}")
+        sensitivity_logger.info(f"Target Row: {config['targetRow']}")
+        
+        # Create sensitivity directories
+        sensitivity_dir, config_dir = create_sensitivity_directories(version, config['SenParameters'])
+        
+        # Log run configuration
+        log_run_configuration(sensitivity_logger, config)
+        
+        # Save configuration files
+        saved_files = save_sensitivity_config_files(version, config_dir, config['SenParameters'])
+        
+        # Save configuration status
+        with open(SENSITIVITY_CONFIG_STATUS_PATH, 'w') as f:
+            json.dump({
+                'configured': True,
+                'timestamp': time.strftime("%Y-%m-%d %H:%M:%S"),
+                'runId': run_id,
+                'version': version,
+                'configDir': config_dir,
+                'sensitivityDir': sensitivity_dir
+            }, f, indent=2)
+            
+        # Save configuration data for later use
+        with open(SENSITIVITY_CONFIG_DATA_PATH, 'wb') as f:
+            pickle.dump(config, f)
+            
+        sensitivity_logger.info(f"\nSensitivity configuration completed successfully")
+        sensitivity_logger.info(f"Configuration files saved: {len(saved_files)}")
+        sensitivity_logger.info(f"Configuration status saved to: {SENSITIVITY_CONFIG_STATUS_PATH}")
+        sensitivity_logger.info(f"{'='*80}\n")
+        
+        return jsonify({
+            "status": "success",
+            "message": "Sensitivity configurations generated and saved successfully",
+            "runId": run_id,
+            "configDir": config_dir,
+            "sensitivityDir": sensitivity_dir,
+            "savedFiles": len(saved_files),
+            "nextStep": "Visit /runs to execute sensitivity calculations"
+        })
+        
+    except Exception as e:
+        error_msg = f"Error generating sensitivity configurations: {str(e)}"
+        sensitivity_logger.error(error_msg)
+        
+        # Update configuration status to indicate failure
+        with open(SENSITIVITY_CONFIG_STATUS_PATH, 'w') as f:
+            json.dump({
+                'configured': False,
+                'timestamp': time.strftime("%Y-%m-%d %H:%M:%S"),
+                'runId': run_id,
+                'error': error_msg
+            }, f, indent=2)
+            
+        return jsonify({
+            "error": error_msg,
+            "runId": run_id
+        }), 500
+
+# =====================================
 # Route Handlers
 # =====================================
 
@@ -316,88 +603,61 @@ def run_calculations():
     run_id = time.strftime("%Y%m%d_%H%M%S")
     
     try:
-        data = request.get_json()
-        if not data:
-            return jsonify({"error": "No data provided"}), 400
-
-        # Extract and validate configuration
-        config = {
-            'versions': data.get('selectedVersions', [1]),
-            'selectedV': data.get('selectedV', {f'V{i+1}': 'off' for i in range(10)}),
-            'selectedF': data.get('selectedF', {f'F{i+1}': 'off' for i in range(5)}),
-            'calculationOption': data.get('selectedCalculationOption', 'freeFlowNPV'),
-            'targetRow': int(data.get('targetRow', 20)),
-            'SenParameters': data.get('SenParameters', {})
-        }
+        # Check if sensitivity configurations have been generated
+        is_configured, saved_config = check_sensitivity_config_status()
         
-        # Create sensitivity directories early in the process
+        # If sensitivity configurations haven't been generated, return an error
+        if not is_configured:
+            sensitivity_logger.warning("Sensitivity configurations have not been generated yet")
+            return jsonify({
+                "error": "Sensitivity configurations must be generated first",
+                "message": "Please call /sensitivity/configure endpoint to generate and save sensitivity configurations before running calculations",
+                "nextStep": "Call /sensitivity/configure endpoint first"
+            }), 400
+            
+        # Use the saved configuration data if available, otherwise use the request data
+        data = request.get_json()
+        if saved_config:
+            config = saved_config
+            sensitivity_logger.info("Using saved sensitivity configuration data")
+        elif data:
+            config = {
+                'versions': data.get('selectedVersions', [1]),
+                'selectedV': data.get('selectedV', {f'V{i+1}': 'off' for i in range(10)}),
+                'selectedF': data.get('selectedF', {f'F{i+1}': 'off' for i in range(5)}),
+                'calculationOption': data.get('selectedCalculationOption', 'freeFlowNPV'),
+                'targetRow': int(data.get('targetRow', 20)),
+                'SenParameters': data.get('SenParameters', {})
+            }
+            sensitivity_logger.info("Using request data for configuration")
+        else:
+            return jsonify({"error": "No configuration data available"}), 400
+            
+        # Get version and paths
         version = config['versions'][0]
-        base_dir = os.path.join(BASE_DIR, 'backend', 'Original')  # Use backend/Original instead of public/Original
+        base_dir = os.path.join(BASE_DIR, 'backend', 'Original')
         results_folder = os.path.join(base_dir, f'Batch({version})', f'Results({version})')
         sensitivity_dir = os.path.join(results_folder, 'Sensitivity')
         
-        # Create main sensitivity directory
-        os.makedirs(sensitivity_dir, exist_ok=True)
-        sensitivity_logger.info(f"Created main sensitivity directory: {sensitivity_dir}")
-        
-        # Create subdirectories for different analysis types
-        for mode in ['Symmetrical', 'Multipoint']:
-            mode_dir = os.path.join(sensitivity_dir, mode)
-            os.makedirs(mode_dir, exist_ok=True)
-            sensitivity_logger.info(f"Created sensitivity mode directory: {mode_dir}")
+        # Verify that sensitivity directories exist
+        if not os.path.exists(sensitivity_dir):
+            error_msg = f"Sensitivity directory not found: {sensitivity_dir}"
+            sensitivity_logger.error(error_msg)
+            return jsonify({
+                "error": error_msg,
+                "message": "Please call /sensitivity/configure endpoint to generate and save sensitivity configurations",
+                "nextStep": "Call /sensitivity/configure endpoint first"
+            }), 400
             
-            # Create subdirectories for plot types and configuration
-            for subdir in ['waterfall', 'bar', 'point', 'Configuration']:
-                subdir_path = os.path.join(mode_dir, subdir)
-                os.makedirs(subdir_path, exist_ok=True)
-                sensitivity_logger.info(f"Created sensitivity subdirectory: {subdir_path}")
-                
-                # Create parameter-specific variation directories for Configuration
-                if subdir == 'Configuration':
-                    # For each enabled parameter, create variation directories
-                    for param_id, param_config in config['SenParameters'].items():
-                        if not param_config.get('enabled'):
-                            continue
-                            
-                        # Get variation values
-                        values = param_config.get('values', [])
-                        if not values:
-                            continue
-                            
-                        # Determine variation list based on mode
-                        if mode.lower() == 'symmetrical':
-                            # For symmetrical, use first value to create +/- variations
-                            base_variation = values[0]
-                            variation_list = [base_variation, -base_variation]
-                        else:  # 'multiple' mode
-                            # For multiple, use all values directly
-                            variation_list = values
-                            
-                        # Create a directory for each variation
-                        for variation in variation_list:
-                            # Format the variation string (e.g., "+10.00" or "-5.00")
-                            var_str = f"{variation:+.2f}"
-                            
-                            # Create a subdirectory for this specific parameter and variation
-                            param_var_dir = os.path.join(subdir_path, f"{param_id}_{var_str}")
-                            os.makedirs(param_var_dir, exist_ok=True)
-                            sensitivity_logger.info(f"Created parameter variation directory: {param_var_dir}")
-        
-        # Create standalone Configuration directory
-        config_dir = os.path.join(sensitivity_dir, "Configuration")
-        os.makedirs(config_dir, exist_ok=True)
-        sensitivity_logger.info(f"Created standalone Configuration directory: {config_dir}")
-        
-        # Create Reports and Cache directories
-        for extra_dir in ['Reports', 'Cache']:
-            extra_path = os.path.join(sensitivity_dir, extra_dir)
-            os.makedirs(extra_path, exist_ok=True)
-            sensitivity_logger.info(f"Created sensitivity extra directory: {extra_path}")
+        sensitivity_logger.info(f"Using sensitivity directory: {sensitivity_dir}")
         
         # Log run configuration
+        sensitivity_logger.info(f"\n{'='*80}")
+        sensitivity_logger.info(f"Sensitivity Calculation Run - ID: {run_id}")
+        sensitivity_logger.info(f"{'='*80}")
         log_run_configuration(sensitivity_logger, config)
 
-        # Step 1: Execute configuration management scripts
+        # Execute configuration management scripts
         sensitivity_logger.info("\nExecuting Configuration Management Scripts:")
         start_time = time.time()
         
@@ -407,7 +667,7 @@ def run_calculations():
             sensitivity_logger.info(f"\nExecuting: {script_name}")
             
             result = subprocess.run(
-                ['python', script, str(config['versions'][0])],
+                ['python', script, str(version)],
                 capture_output=True,
                 text=True
             )
@@ -525,19 +785,42 @@ def run_calculations():
             "runId": run_id
         }), 500
 
-@app.route('/sensitivity/visualization', methods=['POST'])
+@app.route('/sensitivity/visualize', methods=['POST'])
 def get_sensitivity_visualization():
     sensitivity_logger = logging.getLogger('sensitivity')
     run_id = time.strftime("%Y%m%d_%H%M%S")
     start_time = time.time()
     
     try:
+        # Check if sensitivity configurations have been generated
+        is_configured, saved_config = check_sensitivity_config_status()
+        
+        # If sensitivity configurations haven't been generated, return an error
+        if not is_configured:
+            sensitivity_logger.warning("Sensitivity configurations have not been generated yet")
+            return jsonify({
+                "error": "Sensitivity configurations must be generated first",
+                "message": "Please call /sensitivity/configure endpoint to generate and save sensitivity configurations before visualizing results",
+                "nextStep": "Call /sensitivity/configure endpoint first"
+            }), 400
+        
         data = request.get_json()
         if not data:
             return jsonify({"error": "No data provided"}), 400
             
-        version = data.get('selectedVersions', [1])[0]
-        sen_parameters = data.get('SenParameters', {})
+        # Use saved version if available, otherwise use request data
+        if saved_config and 'versions' in saved_config:
+            version = saved_config['versions'][0]
+            sensitivity_logger.info("Using saved version from configuration")
+        else:
+            version = data.get('selectedVersions', [1])[0]
+            
+        # Use saved parameters if available, otherwise use request data
+        if saved_config and 'SenParameters' in saved_config:
+            sen_parameters = saved_config['SenParameters']
+            sensitivity_logger.info("Using saved sensitivity parameters from configuration")
+        else:
+            sen_parameters = data.get('SenParameters', {})
 
         log_execution_flow('enter', f"Processing visualization request - Run ID: {run_id}")
         sensitivity_logger.info(f"\nProcessing visualization request - Run ID: {run_id}")
@@ -779,6 +1062,23 @@ def get_sensitivity_visualization():
             "error": error_msg,
             "runId": run_id
         }), 500
+
+# =====================================
+# Health Check Endpoint
+# =====================================
+
+@app.route('/health', methods=['GET'])
+def health_check():
+    """
+    Health check endpoint for server detection.
+    Returns a 200 OK response with basic server information.
+    """
+    return jsonify({
+        "status": "ok",
+        "server": "sensitivity-analysis-server",
+        "version": "1.0.0",
+        "timestamp": time.strftime("%Y-%m-%d %H:%M:%S")
+    })
 
 # =====================================
 # Application Entry Point

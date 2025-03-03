@@ -31,7 +31,7 @@ import SensitivityAnalysis from './components/SensitivityAnalysis';
 import useFormValues from './useFormValues.js';
 import TestingZone from './components/TestingZone';
 import CalculationMonitor from './components/CalculationMonitor';
-import SensitivityIntegration from './components/SensitivityIntegration';
+import EnhancedSensitivityIntegration from './components/EnhancedSensitivityIntegration';
 const L_1_HomePageContent = () => {
     const { selectedVersions, version: contextVersion, setVersion: setContextVersion } = useVersionState();
     const [activeTab, setActiveTab] = useState('AboutUs');
@@ -578,8 +578,26 @@ const L_1_HomePageContent = () => {
             };
     
             console.log('Running CFA with parameters:', requestPayload);
-    
-            // Make API request to run calculations
+            
+            // STEP 1: First generate and save sensitivity configurations
+            console.log('Step 1: Generating sensitivity configurations...');
+            const configResponse = await fetch('http://127.0.0.1:25007/sensitivity/configure', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(requestPayload),
+            });
+            
+            // Check if configuration was successful
+            if (!configResponse.ok) {
+                const configErrorData = await configResponse.json();
+                throw new Error(configErrorData.error || 'Failed to generate sensitivity configurations');
+            }
+            
+            const configResult = await configResponse.json();
+            console.log('Sensitivity configurations generated successfully:', configResult);
+            
+            // STEP 2: Now run the calculations
+            console.log('Step 2: Running CFA calculations...');
             const response = await fetch('http://127.0.0.1:25007/runs', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -604,11 +622,11 @@ const L_1_HomePageContent = () => {
             if (result.status === 'success') {
                 startRealTimeMonitoring_s();
                 
-                // NEW CODE: Fetch sensitivity visualization data
+                // STEP 3: Fetch sensitivity visualization data
                 try {
-                    console.log('Fetching sensitivity visualization data...');
+                    console.log('Step 3: Fetching sensitivity visualization data...');
                     
-                    const visualizationResponse = await fetch('http://127.0.0.1:25007/sensitivity/visualization', {
+                    const visualizationResponse = await fetch('http://127.0.0.1:25007/sensitivity/visualize', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(requestPayload), // Reuse the same payload
@@ -1590,7 +1608,7 @@ const L_1_HomePageContent = () => {
             case 'TestingZone':
             return <TestingZone />;
             case 'SensitivityIntegration':
-            return <SensitivityIntegration />;
+            return <EnhancedSensitivityIntegration />;
         default:
             return null;
         }

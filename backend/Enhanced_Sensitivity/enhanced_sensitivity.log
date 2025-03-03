@@ -1,0 +1,399 @@
+2025-03-03 05:38:04,402 INFO Initialized EnhancedSensitivityDirectoryBuilder with base directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original
+2025-03-03 05:38:04,404 INFO Initialized EnhancedSensitivityExecutor with base directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend
+2025-03-03 05:38:04,405 INFO Common scripts: ['C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\formatter.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\module1.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\config_modules.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\Table.py']
+2025-03-03 05:38:04,406 INFO Calculation script: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Core_calculation_engines\CFA.py
+2025-03-03 05:38:04,415 INFO Starting Enhanced Sensitivity Server on port 27890
+2025-03-03 05:38:04,483 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:27890
+ * Running on http://128.206.16.228:27890
+2025-03-03 05:38:04,485 INFO [33mPress CTRL+C to quit[0m
+2025-03-03 05:38:04,488 INFO  * Restarting with stat
+2025-03-03 05:38:05,437 INFO Initialized EnhancedSensitivityDirectoryBuilder with base directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original
+2025-03-03 05:38:05,450 INFO Initialized EnhancedSensitivityExecutor with base directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend
+2025-03-03 05:38:05,450 INFO Common scripts: ['C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\formatter.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\module1.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\config_modules.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\Table.py']
+2025-03-03 05:38:05,472 INFO Calculation script: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Core_calculation_engines\CFA.py
+2025-03-03 05:38:05,551 INFO Starting Enhanced Sensitivity Server on port 27890
+2025-03-03 05:38:05,799 WARNING  * Debugger is active!
+2025-03-03 05:38:05,806 INFO  * Debugger PIN: 119-059-632
+2025-03-03 05:38:24,543 INFO 127.0.0.1 - - [03/Mar/2025 05:38:24] "GET /enhanced/health HTTP/1.1" 200 -
+2025-03-03 05:38:24,547 INFO 
+================================================================================
+2025-03-03 05:38:24,548 INFO Enhanced Sensitivity Configuration Generation - Run ID: 20250303_053824
+2025-03-03 05:38:24,549 INFO ================================================================================
+2025-03-03 05:38:24,549 INFO Version: 1
+2025-03-03 05:38:24,550 INFO Calculation Mode: calculateForPrice
+2025-03-03 05:38:24,550 INFO Target Row: 20
+2025-03-03 05:38:24,550 INFO Creating sensitivity directories for version 1
+2025-03-03 05:38:24,551 INFO Created main sensitivity directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity
+2025-03-03 05:38:24,552 INFO Created Reports directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Reports
+2025-03-03 05:38:24,553 INFO Using symmetrical variations: +/-10.0% (50% of 20%)
+2025-03-03 05:38:24,554 INFO Created directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S34\symmetrical\+10.00
+2025-03-03 05:38:24,555 INFO Created directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S34\symmetrical\-10.00
+2025-03-03 05:38:24,555 INFO Copying configuration files for version 1
+2025-03-03 05:38:24,556 INFO Found 20 JSON files in Results folder
+2025-03-03 05:38:24,560 INFO Copying files to variation directory: Multipoint\Configuration\S34_+20.00
+2025-03-03 05:38:24,595 INFO Copying files to variation directory: Multipoint\Configuration\S35_+20.00
+2025-03-03 05:38:24,629 INFO Copying files to variation directory: Multipoint\Configuration\S36_+20.00
+2025-03-03 05:38:24,663 INFO Copying files to variation directory: Multipoint\Configuration\S37_+20.00
+2025-03-03 05:38:24,695 INFO Copying files to variation directory: Multipoint\Configuration\S38_+20.00
+2025-03-03 05:38:24,729 INFO Copying files to variation directory: S34\symmetrical\+10.00
+2025-03-03 05:38:24,760 INFO Copying files to variation directory: S34\symmetrical\-10.00
+2025-03-03 05:38:24,797 INFO Copying files to variation directory: Symmetrical\Configuration\S34_+20.00
+2025-03-03 05:38:24,830 INFO Copying files to variation directory: Symmetrical\Configuration\S34_-20.00
+2025-03-03 05:38:24,863 INFO Copying files to variation directory: Symmetrical\Configuration\S35_+20.00
+2025-03-03 05:38:24,900 INFO Copying files to variation directory: Symmetrical\Configuration\S35_-20.00
+2025-03-03 05:38:24,932 INFO Copying files to variation directory: Symmetrical\Configuration\S36_+20.00
+2025-03-03 05:38:24,986 INFO Copying files to variation directory: Symmetrical\Configuration\S36_-20.00
+2025-03-03 05:38:25,023 INFO Copying files to variation directory: Symmetrical\Configuration\S37_+20.00
+2025-03-03 05:38:25,056 INFO Copying files to variation directory: Symmetrical\Configuration\S37_-20.00
+2025-03-03 05:38:25,097 INFO Copying files to variation directory: Symmetrical\Configuration\S38_+20.00
+2025-03-03 05:38:25,131 INFO Copying files to variation directory: Symmetrical\Configuration\S38_-20.00
+2025-03-03 05:38:25,187 INFO Copied 527 files to variation directories
+2025-03-03 05:38:25,188 INFO Modifying parameter values in configuration files
+2025-03-03 05:38:25,208 INFO Modified rawmaterialAmount34 in 1_config_module_3.json: 10000 -> 11000.0 (+10.00%)
+2025-03-03 05:38:25,213 INFO Modified rawmaterialAmount34 in 1_config_module_3.json: 10000 -> 9000.0 (-10.00%)
+2025-03-03 05:38:25,223 INFO Modified 2 configuration files
+2025-03-03 05:38:25,225 INFO 
+Enhanced sensitivity configuration completed successfully
+2025-03-03 05:38:25,226 INFO Files copied: 527
+2025-03-03 05:38:25,226 INFO Files modified: 2
+2025-03-03 05:38:25,226 INFO Configuration status saved to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Enhanced_Sensitivity\Logs\enhanced_sensitivity_config_status.json
+2025-03-03 05:38:25,227 INFO ================================================================================
+
+2025-03-03 05:38:25,228 INFO 127.0.0.1 - - [03/Mar/2025 05:38:25] "POST /enhanced/sensitivity/configure HTTP/1.1" 200 -
+2025-03-03 05:38:25,687 INFO 
+================================================================================
+2025-03-03 05:38:25,839 INFO Enhanced Sensitivity Calculation Run - Run ID: 20250303_053825
+2025-03-03 05:38:25,943 INFO ================================================================================
+2025-03-03 05:38:25,992 INFO Version: 1
+2025-03-03 05:38:25,992 INFO Calculation Mode: calculateForPrice
+2025-03-03 05:38:25,992 INFO Target Row: 20
+2025-03-03 05:38:25,993 INFO 
+Running baseline calculation...
+2025-03-03 05:38:25,993 INFO Running baseline calculation for version 1
+2025-03-03 05:38:25,994 INFO Running common script: formatter.py
+2025-03-03 05:38:27,012 INFO Successfully ran formatter.py
+2025-03-03 05:38:27,539 INFO Running common script: module1.py
+2025-03-03 05:38:30,794 INFO Successfully ran module1.py
+2025-03-03 05:38:31,318 INFO Running common script: config_modules.py
+2025-03-03 05:38:33,992 INFO Successfully ran config_modules.py
+2025-03-03 05:38:34,507 INFO Running common script: Table.py
+2025-03-03 05:38:36,606 INFO Successfully ran Table.py
+2025-03-03 05:38:37,108 INFO Running calculation script: CFA.py
+2025-03-03 05:38:50,752 ERROR Error running calculation script: 2025-03-03 05:38:45,699 - Price optimization started.
+2025-03-03 05:38:45,699 - CFA process initiated.
+2025-03-03 05:38:45,699 - Script started with version: 1, V selections: {'V1': 'on', 'V2': 'off'}, F selections: {'F1': 'on', 'F2': 'on', 'F3': 'on', 'F4': 'on', 'F5': 'on'}, Target row: 20
+2025-03-03 05:38:45,724 - Filtered variable costs: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-03-03 05:38:45,724 - Filtered amounts per unit: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-03-03 05:38:45,724 - Filtered fixed costs: [10000, 24000, 5000, 2500, 500]
+2025-03-03 05:38:45,724 - Total fixed costs: 42000
+2025-03-03 05:38:45,724 - Using indirect calculation for operating expenses.
+2025-03-03 05:38:45,724 - Annual variable costs: 1
+2025-03-03 05:38:45,725 - Operating expenses (indirect method): [0, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001]
+2025-03-03 05:38:45,725 - Final operating expenses: [0, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001]
+2025-03-03 05:38:45,725 - Filtered variable costs returned: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-03-03 05:38:45,725 - Filtered fixed costs returned: [10000, 24000, 5000, 2500, 500]
+2025-03-03 05:38:45,725 - total units sold: 600000.0
+C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Core_calculation_engines\CFA.py:494: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '0.089995' has dtype incompatible with int64, please explicitly cast to a compatible dtype first.
+  distance_matrix.at[i, 'Fraction of TOC'] = round((revenue - operating_expenses) / TOC, 9)
+2025-03-03 05:38:45,977 - Finished CFA calculation
+2025-03-03 05:38:45,977 - Finished CFA calculation
+2025-03-03 05:38:45,977 - Finished CFA calculation
+2025-03-03 05:38:45,977 - Finished CFA calculation
+2025-03-03 05:38:45,986 - Finished CFA calculation
+2025-03-03 05:38:45,986 - Finished CFA calculation
+2025-03-03 05:38:45,986 - Finished CFA calculation
+2025-03-03 05:38:45,987 - Finished CFA calculation
+2025-03-03 05:38:45,987 - Finished CFA calculation
+2025-03-03 05:38:45,987 - Finished CFA calculation
+2025-03-03 05:38:45,987 - Finished CFA calculation
+2025-03-03 05:38:46,003 - total_units_sold: 600000.0
+2025-03-03 05:38:47,802 - Calculated Current NPV: 103224.00 from row 20
+2025-03-03 05:38:47,802 - 'primary_result': 103224,'secondary_result': 1
+2025-03-03 05:38:47,802 - Initial NPV: $103224.00, Iteration: 1
+2025-03-03 05:38:47,802 - Current NPV: $103224.00, Iteration: 1, Price: $2.00
+2025-03-03 05:38:47,803 - Decreasing price to $1.97 due to NPV above tolerance.
+2025-03-03 05:38:47,804 - Filtered variable costs: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-03-03 05:38:47,804 - Filtered amounts per unit: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-03-03 05:38:47,805 - Filtered fixed costs: [10000, 24000, 5000, 2500, 500]
+2025-03-03 05:38:47,805 - Total fixed costs: 42000
+2025-03-03 05:38:47,805 - Using indirect calculation for operating expenses.
+2025-03-03 05:38:47,805 - Annual variable costs: 1
+2025-03-03 05:38:47,805 - Operating expenses (indirect method): [0, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001]
+2025-03-03 05:38:47,805 - Final operating expenses: [0, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001]
+2025-03-03 05:38:47,805 - Filtered variable costs returned: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-03-03 05:38:47,805 - Filtered fixed costs returned: [10000, 24000, 5000, 2500, 500]
+2025-03-03 05:38:47,806 - total units sold: 600000.0
+C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Core_calculation_engines\CFA.py:494: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '0.085495' has dtype incompatible with int64, please explicitly cast to a compatible dtype first.
+  distance_matrix.at[i, 'Fraction of TOC'] = round((revenue - operating_expenses) / TOC, 9)
+2025-03-03 05:38:48,091 - Finished CFA calculation
+2025-03-03 05:38:48,091 - Finished CFA calculation
+2025-03-03 05:38:48,092 - Finished CFA calculation
+2025-03-03 05:38:48,092 - Finished CFA calculation
+2025-03-03 05:38:48,092 - Finished CFA calculation
+2025-03-03 05:38:48,092 - Finished CFA calculation
+2025-03-03 05:38:48,092 - Finished CFA calculation
+2025-03-03 05:38:48,093 - Finished CFA calculation
+2025-03-03 05:38:48,093 - Finished CFA calculation
+2025-03-03 05:38:48,093 - Finished CFA calculation
+2025-03-03 05:38:48,093 - Finished CFA calculation
+2025-03-03 05:38:48,108 - total_units_sold: 600000.0
+2025-03-03 05:38:49,326 - Calculated Current NPV: 90538.00 from row 20
+2025-03-03 05:38:49,326 - 'primary_result': 90538,'secondary_result': 2
+2025-03-03 05:38:49,327 - Current NPV: $90538.00, Iteration: 2, Price: $1.97
+2025-03-03 05:38:49,327 - Decreasing price to $1.94 due to NPV above tolerance.
+2025-03-03 05:38:49,329 - Filtered variable costs: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-03-03 05:38:49,329 - Filtered amounts per unit: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-03-03 05:38:49,329 - Filtered fixed costs: [10000, 24000, 5000, 2500, 500]
+2025-03-03 05:38:49,329 - Total fixed costs: 42000
+2025-03-03 05:38:49,329 - Using indirect calculation for operating expenses.
+2025-03-03 05:38:49,329 - Annual variable costs: 1
+2025-03-03 05:38:49,330 - Operating expenses (indirect method): [0, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001]
+2025-03-03 05:38:49,330 - Final operating expenses: [0, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001, 42001]
+2025-03-03 05:38:49,330 - Filtered variable costs returned: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-03-03 05:38:49,330 - Filtered fixed costs returned: [10000, 24000, 5000, 2500, 500]
+2025-03-03 05:38:49,330 - total units sold: 600000.0
+C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Core_calculation_engines\CFA.py:494: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '0.08106' has dtype incompatible with int64, please explicitly cast to a compatible dtype first.
+  distance_matrix.at[i, 'Fraction of TOC'] = round((revenue - operating_expenses) / TOC, 9)
+2025-03-03 05:38:49,615 - Finished CFA calculation
+2025-03-03 05:38:49,615 - Finished CFA calculation
+2025-03-03 05:38:49,616 - Finished CFA calculation
+2025-03-03 05:38:49,616 - Finished CFA calculation
+2025-03-03 05:38:49,616 - Finished CFA calculation
+2025-03-03 05:38:49,616 - Finished CFA calculation
+2025-03-03 05:38:49,616 - Finished CFA calculation
+2025-03-03 05:38:49,617 - Finished CFA calculation
+2025-03-03 05:38:49,617 - Finished CFA calculation
+2025-03-03 05:38:49,617 - Finished CFA calculation
+2025-03-03 05:38:49,617 - Finished CFA calculation
+2025-03-03 05:38:49,617 - Finished CFA calculation
+2025-03-03 05:38:49,633 - total_units_sold: 600000.0
+Traceback (most recent call last):
+  File "C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Core_calculation_engines\CFA.py", line 820, in <module>
+    main(version, selected_v, selected_f, target_row)
+  File "C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Core_calculation_engines\CFA.py", line 799, in main
+    results = calculate_revenue_and_expenses_from_modules(config_received, config_matrix_df, results_folder, version, selected_v, selected_f, price, target_row, iteration)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Core_calculation_engines\CFA.py", line 734, in calculate_revenue_and_expenses_from_modules
+    plt.savefig(png_path, bbox_inches='tight', dpi=300)
+  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\matplotlib\pyplot.py", line 1243, in savefig
+    res = fig.savefig(*args, **kwargs)  # type: ignore[func-returns-value]
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\matplotlib\figure.py", line 3490, in savefig
+    self.canvas.print_figure(fname, **kwargs)
+  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\matplotlib\backend_bases.py", line 2184, in print_figure
+    result = print_method(
+             ^^^^^^^^^^^^^
+  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\matplotlib\backend_bases.py", line 2040, in <lambda>
+    print_method = functools.wraps(meth)(lambda *args, **kwargs: meth(
+                                                                 ^^^^^
+  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\matplotlib\backends\backend_agg.py", line 481, in print_png
+    self._print_pil(filename_or_obj, "png", pil_kwargs, metadata)
+  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\matplotlib\backends\backend_agg.py", line 430, in _print_pil
+    mpl.image.imsave(
+  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\matplotlib\image.py", line 1634, in imsave
+    image.save(fname, **pil_kwargs)
+  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\PIL\Image.py", line 2591, in save
+    fp = builtins.open(filename, "w+b")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 22] Invalid argument: 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Original\\Batch(1)\\Results(1)\\1_PieStaticPlots\\Operational_Cost_Breakdown_Pie_Chart(1).png'
+
+2025-03-03 05:38:50,775 INFO 127.0.0.1 - - [03/Mar/2025 05:38:50] "[35m[1mPOST /enhanced/runs HTTP/1.1[0m" 500 -
+2025-03-03 05:39:48,772 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Enhanced_Sensitivity\\test_directory_structure.py', reloading
+2025-03-03 05:39:48,966 INFO  * Restarting with stat
+2025-03-03 05:39:49,688 INFO Initialized EnhancedSensitivityDirectoryBuilder with base directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original
+2025-03-03 05:39:49,691 INFO Initialized EnhancedSensitivityExecutor with base directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend
+2025-03-03 05:39:49,692 INFO Common scripts: ['C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\formatter.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\module1.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\config_modules.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\Configuration_management\\Table.py']
+2025-03-03 05:39:49,693 INFO Calculation script: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Core_calculation_engines\CFA.py
+2025-03-03 05:39:49,705 INFO Starting Enhanced Sensitivity Server on port 27890
+2025-03-03 05:39:49,759 WARNING  * Debugger is active!
+2025-03-03 05:39:49,768 INFO  * Debugger PIN: 119-059-632
+2025-03-03 05:39:56,755 INFO 127.0.0.1 - - [03/Mar/2025 05:39:56] "GET /enhanced/health HTTP/1.1" 200 -
+2025-03-03 05:39:56,773 INFO 
+================================================================================
+2025-03-03 05:39:56,774 INFO Enhanced Sensitivity Configuration Generation - Run ID: 20250303_053956
+2025-03-03 05:39:56,774 INFO ================================================================================
+2025-03-03 05:39:56,775 INFO Version: 1
+2025-03-03 05:39:56,775 INFO Calculation Mode: calculateForPrice
+2025-03-03 05:39:56,775 INFO Target Row: 20
+2025-03-03 05:39:56,775 INFO Creating sensitivity directories for version 1
+2025-03-03 05:39:56,776 INFO Created main sensitivity directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity
+2025-03-03 05:39:56,777 INFO Created Reports directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Reports
+2025-03-03 05:39:56,778 INFO Using symmetrical variations: +/-10.0% (50% of 20%)
+2025-03-03 05:39:56,779 INFO Created directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S34\symmetrical\+10.00
+2025-03-03 05:39:56,780 INFO Created directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S34\symmetrical\-10.00
+2025-03-03 05:39:56,780 INFO Copying configuration files for version 1
+2025-03-03 05:39:56,781 INFO Found 20 JSON files in Results folder
+2025-03-03 05:39:56,784 INFO Copying files to variation directory: S34\symmetrical\+10.00
+2025-03-03 05:39:56,817 INFO Copying files to variation directory: S34\symmetrical\-10.00
+2025-03-03 05:39:56,854 INFO Copying files to variation directory: Symmetrical\Configuration\S34_+20.00
+2025-03-03 05:39:56,885 INFO Copying files to variation directory: Symmetrical\Configuration\S34_-20.00
+2025-03-03 05:39:56,928 INFO Copying files to variation directory: Symmetrical\Configuration\S35_+20.00
+2025-03-03 05:39:56,974 INFO Copying files to variation directory: Symmetrical\Configuration\S35_-20.00
+2025-03-03 05:39:57,007 INFO Copying files to variation directory: Symmetrical\Configuration\S36_+20.00
+2025-03-03 05:39:57,036 INFO Copying files to variation directory: Symmetrical\Configuration\S36_-20.00
+2025-03-03 05:39:57,066 INFO Copying files to variation directory: Symmetrical\Configuration\S37_+20.00
+2025-03-03 05:39:57,099 INFO Copying files to variation directory: Symmetrical\Configuration\S37_-20.00
+2025-03-03 05:39:57,134 INFO Copying files to variation directory: Symmetrical\Configuration\S38_+20.00
+2025-03-03 05:39:57,167 INFO Copying files to variation directory: Symmetrical\Configuration\S38_-20.00
+2025-03-03 05:39:57,195 INFO Copied 372 files to variation directories
+2025-03-03 05:39:57,195 INFO Modifying parameter values in configuration files
+2025-03-03 05:39:57,212 INFO Modified rawmaterialAmount34 in 1_config_module_3.json: 10000 -> 11000.0 (+10.00%)
+2025-03-03 05:39:57,216 INFO Modified rawmaterialAmount34 in 1_config_module_3.json: 10000 -> 9000.0 (-10.00%)
+2025-03-03 05:39:57,225 INFO Modified 2 configuration files
+2025-03-03 05:39:57,229 INFO 
+Enhanced sensitivity configuration completed successfully
+2025-03-03 05:39:57,230 INFO Files copied: 372
+2025-03-03 05:39:57,230 INFO Files modified: 2
+2025-03-03 05:39:57,230 INFO Configuration status saved to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Enhanced_Sensitivity\Logs\enhanced_sensitivity_config_status.json
+2025-03-03 05:39:57,231 INFO ================================================================================
+
+2025-03-03 05:39:57,271 INFO 127.0.0.1 - - [03/Mar/2025 05:39:57] "POST /enhanced/sensitivity/configure HTTP/1.1" 200 -
+2025-03-03 05:48:14,473 INFO 127.0.0.1 - - [03/Mar/2025 05:48:14] "OPTIONS /enhanced/sensitivity/configure HTTP/1.1" 200 -
+2025-03-03 05:48:14,480 INFO 
+================================================================================
+2025-03-03 05:48:14,481 INFO Enhanced Sensitivity Configuration Generation - Run ID: 20250303_054814
+2025-03-03 05:48:14,482 INFO ================================================================================
+2025-03-03 05:48:14,482 INFO Version: 1
+2025-03-03 05:48:14,483 INFO Calculation Mode: calculateForPrice
+2025-03-03 05:48:14,483 INFO Target Row: 20
+2025-03-03 05:48:14,483 INFO Creating sensitivity directories for version 1
+2025-03-03 05:48:14,484 INFO Created main sensitivity directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity
+2025-03-03 05:48:14,486 INFO Created Reports directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Reports
+2025-03-03 05:48:14,487 INFO Using symmetrical variations: +/-10.0% (50% of 20%)
+2025-03-03 05:48:14,487 INFO Created directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S34\symmetrical\+10.00
+2025-03-03 05:48:14,488 INFO Created directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S34\symmetrical\-10.00
+2025-03-03 05:48:14,489 INFO Copying configuration files for version 1
+2025-03-03 05:48:14,489 INFO Found 20 JSON files in Results folder
+2025-03-03 05:48:14,492 INFO Copying files to variation directory: S34\symmetrical\+10.00
+2025-03-03 05:48:14,522 INFO Copying files to variation directory: S34\symmetrical\-10.00
+2025-03-03 05:48:14,555 INFO Copying files to variation directory: Symmetrical\Configuration\S34_+20.00
+2025-03-03 05:48:14,588 INFO Copying files to variation directory: Symmetrical\Configuration\S34_-20.00
+2025-03-03 05:48:14,622 INFO Copying files to variation directory: Symmetrical\Configuration\S35_+20.00
+2025-03-03 05:48:14,656 INFO Copying files to variation directory: Symmetrical\Configuration\S35_-20.00
+2025-03-03 05:48:14,686 INFO Copying files to variation directory: Symmetrical\Configuration\S36_+20.00
+2025-03-03 05:48:14,715 INFO Copying files to variation directory: Symmetrical\Configuration\S36_-20.00
+2025-03-03 05:48:14,743 INFO Copying files to variation directory: Symmetrical\Configuration\S37_+20.00
+2025-03-03 05:48:14,772 INFO Copying files to variation directory: Symmetrical\Configuration\S37_-20.00
+2025-03-03 05:48:14,800 INFO Copying files to variation directory: Symmetrical\Configuration\S38_+20.00
+2025-03-03 05:48:14,827 INFO Copying files to variation directory: Symmetrical\Configuration\S38_-20.00
+2025-03-03 05:48:14,855 INFO Copied 372 files to variation directories
+2025-03-03 05:48:14,856 INFO Modifying parameter values in configuration files
+2025-03-03 05:48:14,863 INFO Modified rawmaterialAmount34 in 1_config_module_3.json: 10000 -> 11000.0 (+10.00%)
+2025-03-03 05:48:14,867 INFO Modified rawmaterialAmount34 in 1_config_module_3.json: 10000 -> 9000.0 (-10.00%)
+2025-03-03 05:48:14,885 INFO Modified 2 configuration files
+2025-03-03 05:48:14,886 INFO 
+Enhanced sensitivity configuration completed successfully
+2025-03-03 05:48:14,887 INFO Files copied: 372
+2025-03-03 05:48:14,888 INFO Files modified: 2
+2025-03-03 05:48:14,888 INFO Configuration status saved to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Enhanced_Sensitivity\Logs\enhanced_sensitivity_config_status.json
+2025-03-03 05:48:14,888 INFO ================================================================================
+
+2025-03-03 05:48:14,890 INFO 127.0.0.1 - - [03/Mar/2025 05:48:14] "POST /enhanced/sensitivity/configure HTTP/1.1" 200 -
+2025-03-03 05:48:32,530 INFO 127.0.0.1 - - [03/Mar/2025 05:48:32] "OPTIONS /enhanced/runs HTTP/1.1" 200 -
+2025-03-03 05:48:32,549 INFO 
+================================================================================
+2025-03-03 05:48:32,551 INFO Enhanced Sensitivity Calculation Run - Run ID: 20250303_054832
+2025-03-03 05:48:32,551 INFO ================================================================================
+2025-03-03 05:48:32,552 INFO Version: 1
+2025-03-03 05:48:32,552 INFO Calculation Mode: calculateForPrice
+2025-03-03 05:48:32,553 INFO Target Row: 20
+2025-03-03 05:48:32,553 INFO 
+Running baseline calculation...
+2025-03-03 05:48:32,554 INFO Running baseline calculation for version 1
+2025-03-03 05:48:32,559 INFO Running common script: formatter.py
+2025-03-03 05:48:32,899 INFO Successfully ran formatter.py
+2025-03-03 05:48:33,401 INFO Running common script: module1.py
+2025-03-03 05:48:35,063 INFO Successfully ran module1.py
+2025-03-03 05:48:35,565 INFO Running common script: config_modules.py
+2025-03-03 05:48:37,553 INFO Successfully ran config_modules.py
+2025-03-03 05:48:38,057 INFO Running common script: Table.py
+2025-03-03 05:48:39,578 INFO Successfully ran Table.py
+2025-03-03 05:48:40,080 INFO Running calculation script: CFA.py
+2025-03-03 05:49:02,177 INFO Successfully ran baseline calculation
+2025-03-03 05:49:02,183 INFO Baseline calculation completed successfully
+2025-03-03 05:49:02,184 INFO 
+Running variation calculations...
+2025-03-03 05:49:02,185 INFO Running variation calculations for version 1
+2025-03-03 05:49:02,186 INFO Completed 0 variation calculations
+2025-03-03 05:49:02,187 INFO 
+Generating summary report...
+2025-03-03 05:49:02,187 INFO Generating summary report
+2025-03-03 05:49:02,190 INFO Generated summary report: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Reports\sensitivity_summary.json
+2025-03-03 05:49:02,192 INFO 
+Enhanced sensitivity calculations completed successfully
+2025-03-03 05:49:02,196 INFO Calculated prices: 0
+2025-03-03 05:49:02,196 INFO Summary report: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Reports\sensitivity_summary.json
+2025-03-03 05:49:02,197 INFO ================================================================================
+
+2025-03-03 05:49:02,198 INFO 127.0.0.1 - - [03/Mar/2025 05:49:02] "POST /enhanced/runs HTTP/1.1" 200 -
+2025-03-03 05:58:25,218 INFO 127.0.0.1 - - [03/Mar/2025 05:58:25] "OPTIONS /enhanced/sensitivity/configure HTTP/1.1" 200 -
+2025-03-03 05:58:25,233 INFO 
+================================================================================
+2025-03-03 05:58:25,235 INFO Enhanced Sensitivity Configuration Generation - Run ID: 20250303_055825
+2025-03-03 05:58:25,240 INFO ================================================================================
+2025-03-03 05:58:25,243 INFO Version: 1
+2025-03-03 05:58:25,243 INFO Calculation Mode: calculateForPrice
+2025-03-03 05:58:25,244 INFO Target Row: 20
+2025-03-03 05:58:25,245 INFO Creating sensitivity directories for version 1
+2025-03-03 05:58:25,245 INFO Created main sensitivity directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity
+2025-03-03 05:58:25,246 INFO Created Reports directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Reports
+2025-03-03 05:58:25,247 INFO Using symmetrical variations: +/-10.0% (50% of 20%)
+2025-03-03 05:58:25,251 INFO Created directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S34\symmetrical\+10.00
+2025-03-03 05:58:25,259 INFO Created directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\S34\symmetrical\-10.00
+2025-03-03 05:58:25,261 INFO Copying configuration files for version 1
+2025-03-03 05:58:25,262 INFO Found 20 JSON files in Results folder
+2025-03-03 05:58:25,264 INFO Copying files to variation directory: S34\symmetrical\+10.00
+2025-03-03 05:58:25,331 INFO Copying files to variation directory: S34\symmetrical\-10.00
+2025-03-03 05:58:25,473 INFO Copied 62 files to variation directories
+2025-03-03 05:58:25,474 INFO Modifying parameter values in configuration files
+2025-03-03 05:58:25,534 INFO Modified rawmaterialAmount34 in 1_config_module_3.json: 10000 -> 11000.0 (+10.00%)
+2025-03-03 05:58:25,563 INFO Modified rawmaterialAmount34 in 1_config_module_3.json: 10000 -> 9000.0 (-10.00%)
+2025-03-03 05:58:25,566 INFO Modified 2 configuration files
+2025-03-03 05:58:25,568 INFO 
+Enhanced sensitivity configuration completed successfully
+2025-03-03 05:58:25,574 INFO Files copied: 62
+2025-03-03 05:58:25,581 INFO Files modified: 2
+2025-03-03 05:58:25,586 INFO Configuration status saved to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Enhanced_Sensitivity\Logs\enhanced_sensitivity_config_status.json
+2025-03-03 05:58:25,596 INFO ================================================================================
+
+2025-03-03 05:58:25,601 INFO 127.0.0.1 - - [03/Mar/2025 05:58:25] "POST /enhanced/sensitivity/configure HTTP/1.1" 200 -
+2025-03-03 05:58:46,646 INFO 127.0.0.1 - - [03/Mar/2025 05:58:46] "OPTIONS /enhanced/runs HTTP/1.1" 200 -
+2025-03-03 05:58:46,656 INFO 
+================================================================================
+2025-03-03 05:58:46,657 INFO Enhanced Sensitivity Calculation Run - Run ID: 20250303_055846
+2025-03-03 05:58:46,658 INFO ================================================================================
+2025-03-03 05:58:46,658 INFO Version: 1
+2025-03-03 05:58:46,658 INFO Calculation Mode: calculateForPrice
+2025-03-03 05:58:46,659 INFO Target Row: 20
+2025-03-03 05:58:46,659 INFO 
+Running baseline calculation...
+2025-03-03 05:58:46,661 INFO Running baseline calculation for version 1
+2025-03-03 05:58:46,662 INFO Running common script: formatter.py
+2025-03-03 05:58:46,872 INFO Successfully ran formatter.py
+2025-03-03 05:58:47,375 INFO Running common script: module1.py
+2025-03-03 05:58:48,655 INFO Successfully ran module1.py
+2025-03-03 05:58:49,158 INFO Running common script: config_modules.py
+2025-03-03 05:58:50,830 INFO Successfully ran config_modules.py
+2025-03-03 05:58:51,344 INFO Running common script: Table.py
+2025-03-03 05:58:52,852 INFO Successfully ran Table.py
+2025-03-03 05:58:53,354 INFO Running calculation script: CFA.py
+2025-03-03 05:59:15,472 INFO Successfully ran baseline calculation
+2025-03-03 05:59:15,475 INFO Baseline calculation completed successfully
+2025-03-03 05:59:15,475 INFO 
+Running variation calculations...
+2025-03-03 05:59:15,475 INFO Running variation calculations for version 1
+2025-03-03 05:59:15,476 INFO Completed 0 variation calculations
+2025-03-03 05:59:15,476 INFO 
+Generating summary report...
+2025-03-03 05:59:15,477 INFO Generating summary report
+2025-03-03 05:59:15,479 INFO Generated summary report: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Reports\sensitivity_summary.json
+2025-03-03 05:59:15,480 INFO 
+Enhanced sensitivity calculations completed successfully
+2025-03-03 05:59:15,481 INFO Calculated prices: 0
+2025-03-03 05:59:15,482 INFO Summary report: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Reports\sensitivity_summary.json
+2025-03-03 05:59:15,482 INFO ================================================================================
+
+2025-03-03 05:59:15,483 INFO 127.0.0.1 - - [03/Mar/2025 05:59:15] "POST /enhanced/runs HTTP/1.1" 200 -
+2025-03-03 05:59:15,510 INFO 127.0.0.1 - - [03/Mar/2025 05:59:15] "GET /enhanced/sensitivity/results HTTP/1.1" 200 -
