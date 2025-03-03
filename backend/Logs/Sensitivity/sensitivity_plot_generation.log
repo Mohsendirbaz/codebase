@@ -1,0 +1,30 @@
+2025-03-03 03:21:33 - [INFO] - sensitivity.plot_generation - PLOT GENERATION STARTED: waterfall plot for S34 vs S13 (symmetrical)
+2025-03-03 03:21:33 - [ERROR] - sensitivity.plot_generation - PLOT GENERATION FAILED: waterfall plot for S34 vs S13 (symmetrical) - Plot not found: waterfall_S34_S13_primary
+2025-03-03 03:21:33 - [INFO] - sensitivity.plot_generation - PLOT GENERATION STARTED: bar plot for S34 vs S13 (symmetrical)
+2025-03-03 03:21:33 - [ERROR] - sensitivity.plot_generation - PLOT GENERATION FAILED: bar plot for S34 vs S13 (symmetrical) - Plot not found: bar_S34_S13_primary
+2025-03-03 03:21:33 - [INFO] - sensitivity.plot_generation - PLOT GENERATION STARTED: point plot for S34 vs S13 (symmetrical)
+2025-03-03 03:21:33 - [ERROR] - sensitivity.plot_generation - PLOT GENERATION FAILED: point plot for S34 vs S13 (symmetrical) - Plot not found: point_S34_S13_primary
+2025-03-03 03:21:33 - [INFO] - sensitivity.plot_generation - PLOT GENERATION STARTED: waterfall plot for S35 vs S13 (symmetrical)
+2025-03-03 03:21:33 - [ERROR] - sensitivity.plot_generation - PLOT GENERATION FAILED: waterfall plot for S35 vs S13 (symmetrical) - Plot not found: waterfall_S35_S13_primary
+2025-03-03 03:21:33 - [INFO] - sensitivity.plot_generation - PLOT GENERATION STARTED: bar plot for S35 vs S13 (symmetrical)
+2025-03-03 03:21:33 - [ERROR] - sensitivity.plot_generation - PLOT GENERATION FAILED: bar plot for S35 vs S13 (symmetrical) - Plot not found: bar_S35_S13_primary
+2025-03-03 03:21:33 - [INFO] - sensitivity.plot_generation - PLOT GENERATION STARTED: point plot for S35 vs S13 (symmetrical)
+2025-03-03 03:21:33 - [ERROR] - sensitivity.plot_generation - PLOT GENERATION FAILED: point plot for S35 vs S13 (symmetrical) - Plot not found: point_S35_S13_primary
+2025-03-03 03:21:33 - [INFO] - sensitivity.plot_generation - PLOT GENERATION STARTED: waterfall plot for S36 vs S13 (symmetrical)
+2025-03-03 03:21:33 - [ERROR] - sensitivity.plot_generation - PLOT GENERATION FAILED: waterfall plot for S36 vs S13 (symmetrical) - Plot not found: waterfall_S36_S13_primary
+2025-03-03 03:21:33 - [INFO] - sensitivity.plot_generation - PLOT GENERATION STARTED: bar plot for S36 vs S13 (symmetrical)
+2025-03-03 03:21:33 - [ERROR] - sensitivity.plot_generation - PLOT GENERATION FAILED: bar plot for S36 vs S13 (symmetrical) - Plot not found: bar_S36_S13_primary
+2025-03-03 03:21:33 - [INFO] - sensitivity.plot_generation - PLOT GENERATION STARTED: point plot for S36 vs S13 (symmetrical)
+2025-03-03 03:21:33 - [ERROR] - sensitivity.plot_generation - PLOT GENERATION FAILED: point plot for S36 vs S13 (symmetrical) - Plot not found: point_S36_S13_primary
+2025-03-03 03:21:33 - [INFO] - sensitivity.plot_generation - PLOT GENERATION STARTED: waterfall plot for S37 vs S13 (symmetrical)
+2025-03-03 03:21:33 - [ERROR] - sensitivity.plot_generation - PLOT GENERATION FAILED: waterfall plot for S37 vs S13 (symmetrical) - Plot not found: waterfall_S37_S13_primary
+2025-03-03 03:21:33 - [INFO] - sensitivity.plot_generation - PLOT GENERATION STARTED: bar plot for S37 vs S13 (symmetrical)
+2025-03-03 03:21:33 - [ERROR] - sensitivity.plot_generation - PLOT GENERATION FAILED: bar plot for S37 vs S13 (symmetrical) - Plot not found: bar_S37_S13_primary
+2025-03-03 03:21:33 - [INFO] - sensitivity.plot_generation - PLOT GENERATION STARTED: point plot for S37 vs S13 (symmetrical)
+2025-03-03 03:21:33 - [ERROR] - sensitivity.plot_generation - PLOT GENERATION FAILED: point plot for S37 vs S13 (symmetrical) - Plot not found: point_S37_S13_primary
+2025-03-03 03:21:33 - [INFO] - sensitivity.plot_generation - PLOT GENERATION STARTED: waterfall plot for S38 vs S13 (symmetrical)
+2025-03-03 03:21:33 - [ERROR] - sensitivity.plot_generation - PLOT GENERATION FAILED: waterfall plot for S38 vs S13 (symmetrical) - Plot not found: waterfall_S38_S13_primary
+2025-03-03 03:21:33 - [INFO] - sensitivity.plot_generation - PLOT GENERATION STARTED: bar plot for S38 vs S13 (symmetrical)
+2025-03-03 03:21:33 - [ERROR] - sensitivity.plot_generation - PLOT GENERATION FAILED: bar plot for S38 vs S13 (symmetrical) - Plot not found: bar_S38_S13_primary
+2025-03-03 03:21:33 - [INFO] - sensitivity.plot_generation - PLOT GENERATION STARTED: point plot for S38 vs S13 (symmetrical)
+2025-03-03 03:21:33 - [ERROR] - sensitivity.plot_generation - PLOT GENERATION FAILED: point plot for S38 vs S13 (symmetrical) - Plot not found: point_S38_S13_primary
