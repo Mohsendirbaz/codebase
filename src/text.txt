@@ -14,13 +14,13 @@ git rev-parse HEAD  # Should show current
 
 git remote -v  # Should show https://github.com/Mohsendirbaz/SF.git
 
-git checkout -b SF.R47
+git checkout -b SF.R48
 
 git add .
 
-git commit -m "SCHOOLED AI"
+git commit -m "right before major changes cline made"
 
-git push origin SF.R47
+git push origin SF.R48
 
 
 # Remove existing temp directory (already done)
