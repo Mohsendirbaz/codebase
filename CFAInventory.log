@@ -1,11 +1,12 @@
-2025-03-02 18:36:22,724 INFO Searching for CFA files in BASE_PATH: C:\Users\Mohse\OneDrive\Desktop\public\Original
-2025-03-02 18:36:22,724 WARNING Base directory not found: C:\Users\Mohse\OneDrive\Desktop\public\Original
-2025-03-02 18:36:22,731 INFO Found alternative path: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original
-2025-03-02 18:36:22,731 INFO Directory contents: ['aggregated_data', 'Batch(0)', 'Batch(1)']
-2025-03-02 18:36:22,731 INFO Found batch versions: ['0', '1']
-2025-03-02 18:36:22,731 WARNING Results folder not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(0)\Results(0)
-2025-03-02 18:36:22,732 INFO Found CFA file for version 1 at: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\CFA(1).csv
-2025-03-02 18:36:22,732 INFO Total CFA versions found: 1
-2025-03-02 18:36:22,732 INFO Found 1 CFA versions: 1
-2025-03-02 18:36:22,766 WARNING  * Debugger is active!
-2025-03-02 18:36:22,769 INFO  * Debugger PIN: 119-059-632
+2025-03-03 00:56:28,220 INFO Searching for CFA files in BASE_PATH: C:\Users\Mohse\OneDrive\Desktop\public\Original
+2025-03-03 00:56:28,220 WARNING Base directory not found: C:\Users\Mohse\OneDrive\Desktop\public\Original
+2025-03-03 00:56:28,220 INFO Found alternative path: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original
+2025-03-03 00:56:28,220 INFO Directory contents: ['aggregated_data', 'Batch(0)', 'Batch(1)', 'Batch(2)']
+2025-03-03 00:56:28,220 INFO Found batch versions: ['0', '1', '2']
+2025-03-03 00:56:28,220 WARNING Results folder not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(0)\Results(0)
+2025-03-03 00:56:28,235 INFO Found CFA file for version 1 at: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\CFA(1).csv
+2025-03-03 00:56:28,235 INFO Found CFA file for version 2 at: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\CFA(2).csv
+2025-03-03 00:56:28,235 INFO Total CFA versions found: 2
+2025-03-03 00:56:28,235 INFO Found 2 CFA versions: 1, 2
+2025-03-03 00:56:28,280 WARNING  * Debugger is active!
+2025-03-03 00:56:28,286 INFO  * Debugger PIN: 119-059-632
