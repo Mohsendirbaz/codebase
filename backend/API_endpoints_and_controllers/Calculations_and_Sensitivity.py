@@ -124,7 +124,7 @@ def run_script(script_name, *args, script_type="python"):
         return False, error_msg
 
 def process_version(version, calculation_script, selected_v, selected_f, target_row, 
-                   calculation_option, senParameters):
+                   calculation_option, SenParameters):
     try:
         for script in COMMON_PYTHON_SCRIPTS:
             success, error = run_script(script, version)
@@ -138,7 +138,7 @@ def process_version(version, calculation_script, selected_v, selected_f, target_
             json.dumps(selected_f),
             json.dumps(target_row),
             calculation_option,
-            json.dumps(senParameters)
+            json.dumps(SenParameters)
         )
         if not success:
             return error
@@ -170,12 +170,12 @@ def log_run_configuration(logger, config):
     logger.info(f"Enabled F Parameters: {', '.join(f_enabled) if f_enabled else 'None'}")
     
     # Sensitivity Configuration (if enabled)
-    enabled_params = [k for k, v in config['senParameters'].items() if v.get('enabled')]
+    enabled_params = [k for k, v in config['SenParameters'].items() if v.get('enabled')]
     if enabled_params:
         logger.info("\nSensitivity Analysis Configuration:")
         logger.info(f"Enabled Parameters: {', '.join(enabled_params)}")
         for param_id in enabled_params:
-            param_config = config['senParameters'][param_id]
+            param_config = config['SenParameters'][param_id]
             logger.info(f"\n{param_id} Configuration:")
             logger.info(f"  Mode: {param_config.get('mode')}")
             logger.info(f"  Values: {param_config.get('values')}")
@@ -191,12 +191,12 @@ def log_run_configuration(logger, config):
     
     logger.info("\n" + "="*80 + "\n")
 
-def process_sensitivity_visualization(senParameters):
+def process_sensitivity_visualization(SenParameters):
     """
     Process sensitivity parameters for visualization.
     
     Args:
-        senParameters (dict): Dictionary containing sensitivity parameters in format:
+        SenParameters (dict): Dictionary containing sensitivity parameters in format:
             {
                 'S10': {
                     'mode': str,
@@ -223,7 +223,7 @@ def process_sensitivity_visualization(senParameters):
         sensitivity_logger.info(f"\n{'='*80}\nNew Sensitivity Analysis Run - ID: {run_id}\n{'='*80}")
         
         # Process each parameter (S10 through S61)
-        for param_key, config in senParameters.items():
+        for param_key, config in SenParameters.items():
             if not config.get('enabled', False):
                 continue
                 
@@ -302,7 +302,7 @@ app = initialize_app()
 # Route Handlers
 # =====================================
 
-@app.route('/run', methods=['POST'])
+@app.route('/runs', methods=['POST'])
 def run_calculations():
     """Orchestrates the execution sequence of configuration updates and calculations."""
     sensitivity_logger = logging.getLogger('sensitivity')
@@ -320,7 +320,7 @@ def run_calculations():
             'selectedF': data.get('selectedF', {f'F{i+1}': 'off' for i in range(5)}),
             'calculationOption': data.get('selectedCalculationOption', 'freeFlowNPV'),
             'targetRow': int(data.get('targetRow', 20)),
-            'senParameters': data.get('senParameters', {})
+            'SenParameters': data.get('SenParameters', {})
         }
         
         # Log run configuration
@@ -376,7 +376,7 @@ def run_calculations():
                 json.dumps(config['selectedF']),
                 str(config['targetRow']),
                 config['calculationOption'],
-                '{}'  # Empty senParameters for baseline
+                '{}'  # Empty SenParameters for baseline
             ],
             capture_output=True,
             text=True
@@ -390,11 +390,11 @@ def run_calculations():
         sensitivity_logger.info("Baseline calculation completed successfully")
 
         # Step 3: Process sensitivity parameters if enabled
-        enabled_params = [k for k, v in config['senParameters'].items() if v.get('enabled')]
+        enabled_params = [k for k, v in config['SenParameters'].items() if v.get('enabled')]
         if enabled_params:
             sensitivity_logger.info(f"\nProcessing {len(enabled_params)} sensitivity parameters:")
             
-            for param_id, param_config in config['senParameters'].items():
+            for param_id, param_config in config['SenParameters'].items():
                 if not param_config.get('enabled'):
                     continue
                     
@@ -466,7 +466,7 @@ def get_sensitivity_visualization():
             return jsonify({"error": "No data provided"}), 400
             
         version = data.get('selectedVersions', [1])[0]
-        sen_parameters = data.get('senParameters', {})
+        sen_parameters = data.get('SenParameters', {})
 
         sensitivity_logger.info(f"\nProcessing visualization request - Run ID: {run_id}")
         sensitivity_logger.info(f"Version: {version}")

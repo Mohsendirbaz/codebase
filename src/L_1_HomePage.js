@@ -31,6 +31,7 @@ import SensitivityAnalysis from './components/SensitivityAnalysis';
 import useFormValues from './useFormValues.js';
 import TestingZone from './components/TestingZone';
 import CalculationMonitor from './components/CalculationMonitor';
+import SensitivityIntegration from './components/SensitivityIntegration';
 const L_1_HomePageContent = () => {
     const { selectedVersions, version: contextVersion, setVersion: setContextVersion } = useVersionState();
     const [activeTab, setActiveTab] = useState('AboutUs');
@@ -57,6 +58,7 @@ const L_1_HomePageContent = () => {
             initialS[`S${i}`] = {
                 ...initialS[`S${i}`],
                 mode: 'symmetrical',
+                values: [20],
                 enabled: true,
                 compareToKey: 'S13',
                 comparisonType: 'primary',
@@ -563,7 +565,7 @@ const L_1_HomePageContent = () => {
         // Set loading state and reset previous results
         setAnalysisRunning(true);
         setCalculatedPrices({});
-
+    
         try {
             // Prepare request payload with all necessary parameters
             const requestPayload = {
@@ -574,33 +576,59 @@ const L_1_HomePageContent = () => {
                 targetRow: target_row,
                 SenParameters: S,
             };
-
+    
             console.log('Running CFA with parameters:', requestPayload);
-
+    
             // Make API request to run calculations
             const response = await fetch('http://127.0.0.1:25007/runs', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(requestPayload),
             });
-
+    
             // Process the response
             if (!response.ok) {
                 const errorData = await response.json();
                 throw new Error(errorData.error || 'Failed to run calculation');
             }
-
+    
             const result = await response.json();
             console.log('Calculation completed successfully:', result);
-
+    
             // If price calculation was selected, fetch the calculated prices
             if (selectedCalculationOption === 'calculateForPrice') {
                 await fetchCalculatedPrices_s();
             }
-
+    
             // Start real-time monitoring if calculation was successful
             if (result.status === 'success') {
                 startRealTimeMonitoring_s();
+                
+                // NEW CODE: Fetch sensitivity visualization data
+                try {
+                    console.log('Fetching sensitivity visualization data...');
+                    
+                    const visualizationResponse = await fetch('http://127.0.0.1:25007/sensitivity/visualization', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(requestPayload), // Reuse the same payload
+                    });
+                    
+                    if (visualizationResponse.ok) {
+                        const visualizationData = await visualizationResponse.json();
+                        console.log('Visualization data received:', visualizationData);
+                        
+                        // Store visualization data in state or process it as needed
+                        // For example, you could add a setSensitivityVisualizations state setter
+                        // setSensitivityVisualizations(visualizationData);
+                    } else {
+                        console.warn('Visualization endpoint returned non-OK response:', 
+                                    await visualizationResponse.text());
+                    }
+                } catch (vizError) {
+                    console.error('Error fetching sensitivity visualizations:', vizError);
+                    // Don't throw this error - we don't want it to affect the main flow
+                }
             }
         } catch (error) {
             console.error('Error during CFA calculation:', error);
@@ -609,7 +637,7 @@ const L_1_HomePageContent = () => {
             setAnalysisRunning(false);
         }
     };
-
+    
     /**
      * Fetches calculated prices for all selected versions
      * This is a separate function to keep the main handleRun function focused
@@ -630,7 +658,7 @@ const L_1_HomePageContent = () => {
             console.error('Error fetching calculated prices:', error);
         }
     };
-
+    
     /**
      * Starts real-time monitoring of calculation progress
      * This function connects to a stream for live updates from the calculation process
@@ -640,13 +668,13 @@ const L_1_HomePageContent = () => {
         if (window.calculationEventSource) {
             window.calculationEventSource.close();
         }
-
+    
         // For each selected version, set up a stream connection
         selectedVersions.forEach(version => {
             // Create a new EventSource connection for streaming updates
             const eventSource = new EventSource(`http://127.0.0.1:25007/stream_prices/${version}`);
             window.calculationEventSource = eventSource;
-
+    
             // Handle incoming messages
             eventSource.onmessage = (event) => {
                 try {
@@ -667,7 +695,7 @@ const L_1_HomePageContent = () => {
                     console.error('Error processing stream data:', error);
                 }
             };
-
+    
             // Handle errors
             eventSource.onerror = (error) => {
                 console.error(`Error in calculation stream for version ${version}:`, error);
@@ -675,7 +703,7 @@ const L_1_HomePageContent = () => {
             };
         });
         
-        /* 
+        /*
         // FUTURE ENHANCEMENTS (commented placeholders):
         // - Add progress indicators for each calculation step
         // - Implement real-time visualization updates
@@ -685,6 +713,7 @@ const L_1_HomePageContent = () => {
         // - Provide estimated completion time
         */
     };
+    
 
 
     const handleRunPNG = async () => {
@@ -1560,6 +1589,8 @@ const L_1_HomePageContent = () => {
            
             case 'TestingZone':
             return <TestingZone />;
+            case 'SensitivityIntegration':
+            return <SensitivityIntegration />;
         default:
             return null;
         }
@@ -1662,6 +1693,12 @@ const L_1_HomePageContent = () => {
                             onClick={() => setActiveTab('TestingZone')}
                         >
                             Testing Zone
+                        </button>
+                        <button
+                            className={`tab-button ${activeTab === 'SensitivityIntegration' ? 'active' : ''}`}
+                            onClick={() => setActiveTab('SensitivityIntegration')}
+                        >
+                            Sensitivity Integration
                         </button>
                     </div>
                 </nav>

@@ -14,7 +14,7 @@ class CalculationsSensitivityAdapter:
     in Calculations.py and the sensitivity analysis system.
     """
     
-    def __init__(self, calculations_url="http://127.0.0.1:5007", sensitivity_url="http://127.0.0.1:25007"):
+    def __init__(self, calculations_url="http://127.0.0.1:25007", sensitivity_url="http://127.0.0.1:25007"):
         self.calculations_url = calculations_url
         self.sensitivity_url = sensitivity_url
     

@@ -1,982 +1,119 @@
-2025-02-23 17:18:24,444 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:18:25,176 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:18:53,697 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:18:56,276 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:21:43,138 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:21:47,774 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:23:07,268 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:23:09,252 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:25:33,845 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:25:36,944 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:27:15,865 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:27:16,315 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:27:26,417 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:27:27,677 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:27:57,889 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:27:58,872 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:29:33,228 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:30:29,561 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:30:30,685 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:32:00,542 INFO 
+2025-03-02 17:46:22,331 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-03-02 17:46:22,746 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-03-02 17:47:35,172 INFO 
 ================================================================================
-2025-02-23 17:32:00,542 INFO CFA Run Configuration
-2025-02-23 17:32:00,542 INFO ================================================================================
-2025-02-23 17:32:00,542 INFO 
+2025-03-02 17:47:35,172 INFO CFA Run Configuration
+2025-03-02 17:47:35,172 INFO ================================================================================
+2025-03-02 17:47:35,172 INFO 
 Basic Configuration:
-2025-02-23 17:32:00,542 INFO Version(s): 8
-2025-02-23 17:32:00,542 INFO Calculation Mode: calculateForPrice
-2025-02-23 17:32:00,542 INFO Target Row: 20
-2025-02-23 17:32:00,542 INFO 
+2025-03-02 17:47:35,172 INFO Version(s): 1
+2025-03-02 17:47:35,172 INFO Calculation Mode: calculateForPrice
+2025-03-02 17:47:35,173 INFO Target Row: 20
+2025-03-02 17:47:35,173 INFO 
 Parameter States:
-2025-02-23 17:32:00,542 INFO Enabled V Parameters: None
-2025-02-23 17:32:00,542 INFO Enabled F Parameters: None
-2025-02-23 17:32:00,542 INFO 
-================================================================================
-
-2025-02-23 17:32:00,542 INFO 
-Executing Configuration Management Scripts:
-2025-02-23 17:32:00,542 INFO 
-Executing: formatter.py
-2025-02-23 17:32:00,845 INFO Completed formatter.py in 0.30s
-2025-02-23 17:32:01,355 INFO 
-Executing: module1.py
-2025-02-23 17:32:03,885 INFO Completed module1.py in 2.53s
-2025-02-23 17:32:04,391 INFO 
-Executing: config_modules.py
-2025-02-23 17:32:07,369 ERROR Script execution failed: config_modules.py
-Error: Traceback (most recent call last):
-  File "C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Configuration_management\config_modules.py", line 139, in <module>
-    main(version)
-  File "C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Configuration_management\config_modules.py", line 125, in main
-    config_matrix_df = pd.read_csv(config_matrix_file)
-                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
-    return _read(filepath_or_buffer, kwds)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 620, in _read
-    parser = TextFileReader(filepath_or_buffer, **kwds)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 1620, in __init__
-    self._engine = self._make_engine(f, self.engine)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 1880, in _make_engine
-    self.handles = get_handle(
-                   ^^^^^^^^^^^
-  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\common.py", line 873, in get_handle
-    handle = open(
-             ^^^^^
-FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\md8w7\\OneDrive University of Missouri\\Desktop\\ImportantFiles\\Milestone4\\backend\\Original\\Batch(8)\\Results(8)\\General_Configuration_Matrix(8).csv'
-
-2025-02-23 17:32:07,369 ERROR Error during orchestrated calculations: Script execution failed: config_modules.py
-Error: Traceback (most recent call last):
-  File "C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Configuration_management\config_modules.py", line 139, in <module>
-    main(version)
-  File "C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Configuration_management\config_modules.py", line 125, in main
-    config_matrix_df = pd.read_csv(config_matrix_file)
-                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
-    return _read(filepath_or_buffer, kwds)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 620, in _read
-    parser = TextFileReader(filepath_or_buffer, **kwds)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 1620, in __init__
-    self._engine = self._make_engine(f, self.engine)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 1880, in _make_engine
-    self.handles = get_handle(
-                   ^^^^^^^^^^^
-  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\common.py", line 873, in get_handle
-    handle = open(
-             ^^^^^
-FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\md8w7\\OneDrive University of Missouri\\Desktop\\ImportantFiles\\Milestone4\\backend\\Original\\Batch(8)\\Results(8)\\General_Configuration_Matrix(8).csv'
-
-2025-02-23 17:38:18,947 INFO 
-================================================================================
-2025-02-23 17:38:18,947 INFO CFA Run Configuration
-2025-02-23 17:38:18,947 INFO ================================================================================
-2025-02-23 17:38:18,947 INFO 
-Basic Configuration:
-2025-02-23 17:38:18,947 INFO Version(s): 7
-2025-02-23 17:38:18,947 INFO Calculation Mode: calculateForPrice
-2025-02-23 17:38:18,948 INFO Target Row: 20
-2025-02-23 17:38:18,948 INFO 
-Parameter States:
-2025-02-23 17:38:18,948 INFO Enabled V Parameters: None
-2025-02-23 17:38:18,948 INFO Enabled F Parameters: None
-2025-02-23 17:38:18,948 INFO 
-================================================================================
-
-2025-02-23 17:38:18,948 INFO 
-Executing Configuration Management Scripts:
-2025-02-23 17:38:18,948 INFO 
-Executing: formatter.py
-2025-02-23 17:38:19,258 INFO Completed formatter.py in 0.31s
-2025-02-23 17:38:19,775 INFO 
-Executing: module1.py
-2025-02-23 17:38:20,671 INFO Completed module1.py in 0.90s
-2025-02-23 17:38:21,197 INFO 
-Executing: config_modules.py
-2025-02-23 17:38:25,002 ERROR Script execution failed: config_modules.py
-Error: Traceback (most recent call last):
-  File "C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Configuration_management\config_modules.py", line 139, in <module>
-    main(version)
-  File "C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Configuration_management\config_modules.py", line 125, in main
-    config_matrix_df = pd.read_csv(config_matrix_file)
-                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
-    return _read(filepath_or_buffer, kwds)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 620, in _read
-    parser = TextFileReader(filepath_or_buffer, **kwds)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 1620, in __init__
-    self._engine = self._make_engine(f, self.engine)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 1880, in _make_engine
-    self.handles = get_handle(
-                   ^^^^^^^^^^^
-  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\common.py", line 873, in get_handle
-    handle = open(
-             ^^^^^
-FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\md8w7\\OneDrive University of Missouri\\Desktop\\ImportantFiles\\Milestone4\\backend\\Original\\Batch(7)\\Results(7)\\General_Configuration_Matrix(7).csv'
-
-2025-02-23 17:38:25,002 ERROR Error during orchestrated calculations: Script execution failed: config_modules.py
-Error: Traceback (most recent call last):
-  File "C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Configuration_management\config_modules.py", line 139, in <module>
-    main(version)
-  File "C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Configuration_management\config_modules.py", line 125, in main
-    config_matrix_df = pd.read_csv(config_matrix_file)
-                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
-    return _read(filepath_or_buffer, kwds)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 620, in _read
-    parser = TextFileReader(filepath_or_buffer, **kwds)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 1620, in __init__
-    self._engine = self._make_engine(f, self.engine)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 1880, in _make_engine
-    self.handles = get_handle(
-                   ^^^^^^^^^^^
-  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\common.py", line 873, in get_handle
-    handle = open(
-             ^^^^^
-FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\md8w7\\OneDrive University of Missouri\\Desktop\\ImportantFiles\\Milestone4\\backend\\Original\\Batch(7)\\Results(7)\\General_Configuration_Matrix(7).csv'
-
-2025-02-23 17:42:18,791 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:44:20,173 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:45:31,533 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:46:34,960 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:47:33,228 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:47:47,332 INFO 
-================================================================================
-2025-02-23 17:47:47,333 INFO CFA Run Configuration
-2025-02-23 17:47:47,333 INFO ================================================================================
-2025-02-23 17:47:47,333 INFO 
-Basic Configuration:
-2025-02-23 17:47:47,334 INFO Version(s): 9
-2025-02-23 17:47:47,334 INFO Calculation Mode: calculateForPrice
-2025-02-23 17:47:47,334 INFO Target Row: 20
-2025-02-23 17:47:47,334 INFO 
-Parameter States:
-2025-02-23 17:47:47,334 INFO Enabled V Parameters: None
-2025-02-23 17:47:47,334 INFO Enabled F Parameters: None
-2025-02-23 17:47:47,334 INFO 
-================================================================================
-
-2025-02-23 17:47:47,334 INFO 
-Executing Configuration Management Scripts:
-2025-02-23 17:47:47,334 INFO 
-Executing: formatter.py
-2025-02-23 17:47:47,704 INFO Completed formatter.py in 0.37s
-2025-02-23 17:47:48,217 INFO 
-Executing: module1.py
-2025-02-23 17:47:50,925 INFO Completed module1.py in 2.71s
-2025-02-23 17:47:51,434 INFO 
-Executing: config_modules.py
-2025-02-23 17:47:53,040 INFO Completed config_modules.py in 1.61s
-2025-02-23 17:47:53,544 INFO 
-Executing: Table.py
-2025-02-23 17:47:55,839 INFO Completed Table.py in 2.30s
-2025-02-23 17:47:56,350 INFO 
-Configuration scripts completed in 9.02s
-2025-02-23 17:47:56,350 INFO 
-Processing Calculations:
-2025-02-23 17:47:56,350 ERROR Error during orchestrated calculations: Calculation script not found for version 9
-2025-02-23 17:50:04,206 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:53:24,919 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:57:01,296 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:58:35,136 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 18:00:24,682 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 18:03:53,839 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 18:07:01,197 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 18:08:18,166 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 18:08:59,246 INFO 
-================================================================================
-2025-02-23 18:08:59,247 INFO CFA Run Configuration
-2025-02-23 18:08:59,247 INFO ================================================================================
-2025-02-23 18:08:59,247 INFO 
-Basic Configuration:
-2025-02-23 18:08:59,247 INFO Version(s): 10
-2025-02-23 18:08:59,247 INFO Calculation Mode: freeFlowNPV
-2025-02-23 18:08:59,247 INFO 
-Parameter States:
-2025-02-23 18:08:59,247 INFO Enabled V Parameters: None
-2025-02-23 18:08:59,247 INFO Enabled F Parameters: None
-2025-02-23 18:08:59,248 INFO 
-================================================================================
-
-2025-02-23 18:08:59,248 INFO 
-Executing Configuration Management Scripts:
-2025-02-23 18:08:59,248 INFO 
-Executing: formatter.py
-2025-02-23 18:08:59,394 INFO Completed formatter.py in 0.15s
-2025-02-23 18:08:59,904 INFO 
-Executing: module1.py
-2025-02-23 18:09:01,759 INFO Completed module1.py in 1.86s
-2025-02-23 18:09:02,272 INFO 
-Executing: config_modules.py
-2025-02-23 18:09:03,256 INFO Completed config_modules.py in 0.98s
-2025-02-23 18:09:03,768 INFO 
-Executing: Table.py
-2025-02-23 18:09:04,971 INFO Completed Table.py in 1.20s
-2025-02-23 18:09:05,482 INFO 
-Configuration scripts completed in 6.23s
-2025-02-23 18:09:05,482 INFO 
-Processing Calculations:
-2025-02-23 18:09:05,482 ERROR Error during orchestrated calculations: Calculation script not found for version 10
-2025-02-23 18:09:38,944 INFO 
-================================================================================
-2025-02-23 18:09:38,946 INFO CFA Run Configuration
-2025-02-23 18:09:38,946 INFO ================================================================================
-2025-02-23 18:09:38,946 INFO 
-Basic Configuration:
-2025-02-23 18:09:38,946 INFO Version(s): 11
-2025-02-23 18:09:38,946 INFO Calculation Mode: calculateForPrice
-2025-02-23 18:09:38,947 INFO Target Row: 20
-2025-02-23 18:09:38,947 INFO 
-Parameter States:
-2025-02-23 18:09:38,947 INFO Enabled V Parameters: None
-2025-02-23 18:09:38,947 INFO Enabled F Parameters: None
-2025-02-23 18:09:38,947 INFO 
-================================================================================
-
-2025-02-23 18:09:38,947 INFO 
-Executing Configuration Management Scripts:
-2025-02-23 18:09:38,947 INFO 
-Executing: formatter.py
-2025-02-23 18:09:39,046 INFO Completed formatter.py in 0.10s
-2025-02-23 18:09:39,554 INFO 
-Executing: module1.py
-2025-02-23 18:09:40,635 INFO Completed module1.py in 1.08s
-2025-02-23 18:09:41,149 INFO 
-Executing: config_modules.py
-2025-02-23 18:09:42,046 INFO Completed config_modules.py in 0.90s
-2025-02-23 18:09:42,553 INFO 
-Executing: Table.py
-2025-02-23 18:09:43,777 INFO Completed Table.py in 1.22s
-2025-02-23 18:09:44,277 INFO 
-Configuration scripts completed in 5.33s
-2025-02-23 18:09:44,277 INFO 
-Processing Calculations:
-2025-02-23 18:09:44,277 ERROR Error during orchestrated calculations: Calculation script not found for version 11
-2025-02-23 18:11:22,339 INFO 
-================================================================================
-2025-02-23 18:11:22,339 INFO CFA Run Configuration
-2025-02-23 18:11:22,339 INFO ================================================================================
-2025-02-23 18:11:22,339 INFO 
-Basic Configuration:
-2025-02-23 18:11:22,339 INFO Version(s): 12
-2025-02-23 18:11:22,339 INFO Calculation Mode: calculateForPrice
-2025-02-23 18:11:22,339 INFO Target Row: 20
-2025-02-23 18:11:22,339 INFO 
-Parameter States:
-2025-02-23 18:11:22,340 INFO Enabled V Parameters: None
-2025-02-23 18:11:22,340 INFO Enabled F Parameters: None
-2025-02-23 18:11:22,340 INFO 
+2025-03-02 17:47:35,173 INFO Enabled V Parameters: V1
+2025-03-02 17:47:35,173 INFO Enabled F Parameters: F1, F2, F3, F4, F5
+2025-03-02 17:47:35,173 INFO 
 Sensitivity Analysis Configuration:
-2025-02-23 18:11:22,340 INFO Enabled Parameters: S17
-2025-02-23 18:11:22,340 INFO 
-S17 Configuration:
-2025-02-23 18:11:22,340 INFO   Mode: symmetrical
-2025-02-23 18:11:22,340 INFO   Values: []
-2025-02-23 18:11:22,340 INFO 
+2025-03-02 17:47:35,173 INFO Enabled Parameters: S34, S35, S36, S37, S38
+2025-03-02 17:47:35,173 INFO 
+S34 Configuration:
+2025-03-02 17:47:35,173 INFO   Mode: symmetrical
+2025-03-02 17:47:35,174 INFO   Values: [20]
+2025-03-02 17:47:35,174 INFO   Comparison:
+2025-03-02 17:47:35,174 INFO     Target: S13
+2025-03-02 17:47:35,174 INFO     Type: primary
+2025-03-02 17:47:35,174 INFO     Plot Types: waterfall, bar, point
+2025-03-02 17:47:35,174 INFO 
+S35 Configuration:
+2025-03-02 17:47:35,174 INFO   Mode: symmetrical
+2025-03-02 17:47:35,175 INFO   Values: [20]
+2025-03-02 17:47:35,175 INFO   Comparison:
+2025-03-02 17:47:35,175 INFO     Target: S13
+2025-03-02 17:47:35,175 INFO     Type: primary
+2025-03-02 17:47:35,175 INFO     Plot Types: waterfall, bar, point
+2025-03-02 17:47:35,175 INFO 
+S36 Configuration:
+2025-03-02 17:47:35,175 INFO   Mode: symmetrical
+2025-03-02 17:47:35,176 INFO   Values: [20]
+2025-03-02 17:47:35,176 INFO   Comparison:
+2025-03-02 17:47:35,176 INFO     Target: S13
+2025-03-02 17:47:35,176 INFO     Type: primary
+2025-03-02 17:47:35,176 INFO     Plot Types: waterfall, bar, point
+2025-03-02 17:47:35,176 INFO 
+S37 Configuration:
+2025-03-02 17:47:35,176 INFO   Mode: symmetrical
+2025-03-02 17:47:35,176 INFO   Values: [20]
+2025-03-02 17:47:35,177 INFO   Comparison:
+2025-03-02 17:47:35,177 INFO     Target: S13
+2025-03-02 17:47:35,177 INFO     Type: primary
+2025-03-02 17:47:35,177 INFO     Plot Types: waterfall, bar, point
+2025-03-02 17:47:35,177 INFO 
+S38 Configuration:
+2025-03-02 17:47:35,178 INFO   Mode: symmetrical
+2025-03-02 17:47:35,178 INFO   Values: [20]
+2025-03-02 17:47:35,178 INFO   Comparison:
+2025-03-02 17:47:35,178 INFO     Target: S13
+2025-03-02 17:47:35,178 INFO     Type: primary
+2025-03-02 17:47:35,178 INFO     Plot Types: waterfall, bar, point
+2025-03-02 17:47:35,178 INFO 
 ================================================================================
 
-2025-02-23 18:11:22,340 INFO 
+2025-03-02 17:47:35,178 INFO 
 Executing Configuration Management Scripts:
-2025-02-23 18:11:22,341 INFO 
+2025-03-02 17:47:35,178 INFO 
 Executing: formatter.py
-2025-02-23 18:11:22,462 INFO Completed formatter.py in 0.12s
-2025-02-23 18:11:22,979 INFO 
+2025-03-02 17:47:35,297 INFO Completed formatter.py in 0.12s
+2025-03-02 17:47:35,803 INFO 
 Executing: module1.py
-2025-02-23 18:11:24,461 INFO Completed module1.py in 1.48s
-2025-02-23 18:11:24,977 INFO 
+2025-03-02 17:47:37,150 INFO Completed module1.py in 1.35s
+2025-03-02 17:47:37,656 INFO 
 Executing: config_modules.py
-2025-02-23 18:11:26,002 INFO Completed config_modules.py in 1.02s
-2025-02-23 18:11:26,513 INFO 
+2025-03-02 17:47:39,025 INFO Completed config_modules.py in 1.37s
+2025-03-02 17:47:39,533 INFO 
 Executing: Table.py
-2025-02-23 18:11:27,549 INFO Completed Table.py in 1.04s
-2025-02-23 18:11:28,058 INFO 
-Configuration scripts completed in 5.72s
-2025-02-23 18:11:28,058 INFO 
+2025-03-02 17:47:41,626 INFO Completed Table.py in 2.09s
+2025-03-02 17:47:42,127 INFO 
+Configuration scripts completed in 6.95s
+2025-03-02 17:47:42,127 INFO 
 Processing Calculations:
-2025-02-23 18:11:28,058 ERROR Error during orchestrated calculations: Calculation script not found for version 12
-2025-02-23 18:11:35,204 INFO 
+2025-03-02 17:47:42,127 INFO Using calculation script: CFA.py
+2025-03-02 17:47:42,127 INFO 
+Executing baseline calculation:
+2025-03-02 17:48:02,790 INFO Baseline calculation completed successfully
+2025-03-02 17:48:02,790 INFO 
+Processing 5 sensitivity parameters:
+2025-03-02 17:48:02,790 INFO 
+Processing S34:
+2025-03-02 17:48:02,790 INFO Mode: symmetrical
+2025-03-02 17:48:02,790 INFO Values: [20]
+2025-03-02 17:48:22,356 INFO Completed S34 in 19.57s
+2025-03-02 17:48:22,356 INFO 
+Processing S35:
+2025-03-02 17:48:22,356 INFO Mode: symmetrical
+2025-03-02 17:48:22,356 INFO Values: [20]
+2025-03-02 17:48:40,478 INFO Completed S35 in 18.12s
+2025-03-02 17:48:40,478 INFO 
+Processing S36:
+2025-03-02 17:48:40,478 INFO Mode: symmetrical
+2025-03-02 17:48:40,478 INFO Values: [20]
+2025-03-02 17:48:57,872 INFO Completed S36 in 17.39s
+2025-03-02 17:48:57,872 INFO 
+Processing S37:
+2025-03-02 17:48:57,872 INFO Mode: symmetrical
+2025-03-02 17:48:57,872 INFO Values: [20]
+2025-03-02 17:49:15,381 INFO Completed S37 in 17.51s
+2025-03-02 17:49:15,381 INFO 
+Processing S38:
+2025-03-02 17:49:15,381 INFO Mode: symmetrical
+2025-03-02 17:49:15,381 INFO Values: [20]
+2025-03-02 17:49:33,277 INFO Completed S38 in 17.90s
+2025-03-02 17:49:33,277 INFO 
 ================================================================================
-2025-02-23 18:11:35,206 INFO CFA Run Configuration
-2025-02-23 18:11:35,206 INFO ================================================================================
-2025-02-23 18:11:35,206 INFO 
-Basic Configuration:
-2025-02-23 18:11:35,206 INFO Version(s): 12
-2025-02-23 18:11:35,206 INFO Calculation Mode: calculateForPrice
-2025-02-23 18:11:35,206 INFO Target Row: 20
-2025-02-23 18:11:35,206 INFO 
-Parameter States:
-2025-02-23 18:11:35,207 INFO Enabled V Parameters: None
-2025-02-23 18:11:35,207 INFO Enabled F Parameters: None
-2025-02-23 18:11:35,207 INFO 
-Sensitivity Analysis Configuration:
-2025-02-23 18:11:35,207 INFO Enabled Parameters: S17
-2025-02-23 18:11:35,207 INFO 
-S17 Configuration:
-2025-02-23 18:11:35,207 INFO   Mode: symmetrical
-2025-02-23 18:11:35,207 INFO   Values: []
-2025-02-23 18:11:35,207 INFO 
-================================================================================
+2025-03-02 17:49:33,277 INFO Run Summary - ID: 20250302_174735
+2025-03-02 17:49:33,277 INFO Total execution time: 118.10s
+2025-03-02 17:49:33,277 INFO Configuration scripts: 6.95s
+2025-03-02 17:49:33,277 INFO Calculations completed: 6
+2025-03-02 17:49:33,277 INFO ================================================================================
 
-2025-02-23 18:11:35,207 INFO 
-Executing Configuration Management Scripts:
-2025-02-23 18:11:35,207 INFO 
-Executing: formatter.py
-2025-02-23 18:11:35,303 INFO Completed formatter.py in 0.10s
-2025-02-23 18:11:35,810 INFO 
-Executing: module1.py
-2025-02-23 18:11:36,703 INFO Completed module1.py in 0.89s
-2025-02-23 18:11:37,209 INFO 
-Executing: config_modules.py
-2025-02-23 18:11:38,374 INFO Completed config_modules.py in 1.16s
-2025-02-23 18:11:38,875 INFO 
-Executing: Table.py
-2025-02-23 18:11:39,802 INFO Completed Table.py in 0.93s
-2025-02-23 18:11:40,310 INFO 
-Configuration scripts completed in 5.10s
-2025-02-23 18:11:40,310 INFO 
-Processing Calculations:
-2025-02-23 18:11:40,310 ERROR Error during orchestrated calculations: Calculation script not found for version 12
-2025-02-23 18:18:03,598 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 18:19:29,150 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 22:07:20,024 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 22:07:20,405 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 22:11:13,700 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 22:11:14,152 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 22:11:31,852 INFO 
-================================================================================
-2025-02-23 22:11:31,852 INFO CFA Run Configuration
-2025-02-23 22:11:31,852 INFO ================================================================================
-2025-02-23 22:11:31,852 INFO 
-Basic Configuration:
-2025-02-23 22:11:31,852 INFO Version(s): 13
-2025-02-23 22:11:31,852 INFO Calculation Mode: calculateForPrice
-2025-02-23 22:11:31,852 INFO Target Row: 20
-2025-02-23 22:11:31,852 INFO 
-Parameter States:
-2025-02-23 22:11:31,852 INFO Enabled V Parameters: None
-2025-02-23 22:11:31,852 INFO Enabled F Parameters: None
-2025-02-23 22:11:31,852 INFO 
-================================================================================
-
-2025-02-23 22:11:31,859 INFO 
-Executing Configuration Management Scripts:
-2025-02-23 22:11:31,859 INFO 
-Executing: formatter.py
-2025-02-23 22:11:32,277 INFO Completed formatter.py in 0.42s
-2025-02-23 22:11:32,785 INFO 
-Executing: module1.py
-2025-02-23 22:11:34,546 INFO Completed module1.py in 1.76s
-2025-02-23 22:11:35,056 INFO 
-Executing: config_modules.py
-2025-02-23 22:11:35,991 INFO Completed config_modules.py in 0.94s
-2025-02-23 22:11:36,502 INFO 
-Executing: Table.py
-2025-02-23 22:11:37,709 INFO Completed Table.py in 1.21s
-2025-02-23 22:11:38,210 INFO 
-Configuration scripts completed in 6.35s
-2025-02-23 22:11:38,210 INFO 
-Processing Calculations:
-2025-02-23 22:11:38,210 ERROR Error during orchestrated calculations: Calculation script not found for version 13
-2025-02-23 22:24:32,508 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 22:26:16,609 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 22:27:05,193 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 22:28:48,290 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 22:29:09,260 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 22:29:16,699 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 22:30:25,926 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 22:31:05,715 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 22:32:03,354 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 22:32:34,271 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 22:32:41,623 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 22:34:01,551 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 22:34:14,495 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 22:35:43,490 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 22:37:16,975 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 22:43:00,708 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 22:43:17,946 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 22:44:24,469 INFO 
-================================================================================
-2025-02-23 22:44:24,469 INFO CFA Run Configuration
-2025-02-23 22:44:24,470 INFO ================================================================================
-2025-02-23 22:44:24,470 INFO 
-Basic Configuration:
-2025-02-23 22:44:24,470 INFO Version(s): 14
-2025-02-23 22:44:24,470 INFO Calculation Mode: calculateForPrice
-2025-02-23 22:44:24,470 INFO Target Row: 20
-2025-02-23 22:44:24,470 INFO 
-Parameter States:
-2025-02-23 22:44:24,470 INFO Enabled V Parameters: None
-2025-02-23 22:44:24,470 INFO Enabled F Parameters: None
-2025-02-23 22:44:24,470 INFO 
-================================================================================
-
-2025-02-23 22:44:24,471 INFO 
-Executing Configuration Management Scripts:
-2025-02-23 22:44:24,471 INFO 
-Executing: formatter.py
-2025-02-23 22:44:24,594 INFO Completed formatter.py in 0.12s
-2025-02-23 22:44:25,094 INFO 
-Executing: module1.py
-2025-02-23 22:44:26,586 INFO Completed module1.py in 1.49s
-2025-02-23 22:44:27,088 INFO 
-Executing: config_modules.py
-2025-02-23 22:44:28,485 INFO Completed config_modules.py in 1.40s
-2025-02-23 22:44:28,986 INFO 
-Executing: Table.py
-2025-02-23 22:44:29,860 INFO Completed Table.py in 0.87s
-2025-02-23 22:44:30,362 INFO 
-Configuration scripts completed in 5.89s
-2025-02-23 22:44:30,362 INFO 
-Processing Calculations:
-2025-02-23 22:44:30,362 ERROR Error during orchestrated calculations: Calculation script not found for version 14
-2025-02-23 22:45:15,148 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 22:46:44,458 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 22:54:45,401 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 22:55:03,996 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 22:55:10,196 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 22:55:19,387 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 22:55:28,154 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 22:55:51,713 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 22:58:16,417 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 22:58:55,478 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 22:59:28,600 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 22:59:41,923 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 23:00:04,741 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 23:00:41,021 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 23:01:45,486 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 23:02:11,572 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 23:02:32,480 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 23:02:55,712 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 23:03:13,868 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 23:03:30,980 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 23:03:45,382 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 23:04:02,305 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 23:04:16,395 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 23:04:34,008 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 23:04:51,565 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 23:05:06,434 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 23:05:24,407 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 23:05:39,379 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 23:06:15,695 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 23:06:33,323 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 23:06:50,557 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 23:07:05,183 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 23:07:28,683 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 23:08:05,599 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 23:09:05,550 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 23:09:51,102 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 23:10:32,218 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-24 07:05:39,457 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-24 07:05:39,844 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-24 08:13:10,812 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-24 08:13:30,819 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-24 08:13:54,491 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-24 08:14:00,256 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-24 08:14:11,352 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-24 08:15:18,105 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-24 08:15:18,657 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-24 08:22:41,237 INFO 
-Processing visualization request - Run ID: 20250224_082241
-2025-02-24 08:22:41,237 INFO Version: 1
-2025-02-24 08:22:41,238 INFO Parameters: ['S34', 'S35', 'S36', 'S37', 'S38']
-2025-02-24 08:22:41,239 INFO 
-Processing S34:
-2025-02-24 08:22:41,239 INFO S34 identified as special case (vs S13)
-2025-02-24 08:22:41,239 INFO 
-Processing visualization request - Run ID: 20250224_082241
-2025-02-24 08:22:41,239 INFO Added relationship: S34 -> S13 (primary)
-2025-02-24 08:22:41,239 INFO Version: 1
-2025-02-24 08:22:41,240 INFO Parameters: ['S34', 'S35', 'S36', 'S37', 'S38']
-2025-02-24 08:22:41,240 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-24 08:22:41,240 INFO 
-Processing S34:
-2025-02-24 08:22:41,240 INFO 
-Processing S35:
-2025-02-24 08:22:41,240 INFO S34 identified as special case (vs S13)
-2025-02-24 08:22:41,240 INFO S35 identified as special case (vs S13)
-2025-02-24 08:22:41,240 INFO Added relationship: S34 -> S13 (primary)
-2025-02-24 08:22:41,240 INFO Added relationship: S35 -> S13 (primary)
-2025-02-24 08:22:41,240 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-24 08:22:41,241 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-24 08:22:41,241 INFO 
-Processing S35:
-2025-02-24 08:22:41,241 INFO 
-Processing S36:
-2025-02-24 08:22:41,241 INFO S35 identified as special case (vs S13)
-2025-02-24 08:22:41,241 INFO S36 identified as special case (vs S13)
-2025-02-24 08:22:41,241 INFO Added relationship: S35 -> S13 (primary)
-2025-02-24 08:22:41,241 INFO Added relationship: S36 -> S13 (primary)
-2025-02-24 08:22:41,241 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-24 08:22:41,241 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-24 08:22:41,241 INFO 
-Processing S36:
-2025-02-24 08:22:41,241 INFO 
-Processing S37:
-2025-02-24 08:22:41,242 INFO S36 identified as special case (vs S13)
-2025-02-24 08:22:41,242 INFO S37 identified as special case (vs S13)
-2025-02-24 08:22:41,242 INFO Added relationship: S36 -> S13 (primary)
-2025-02-24 08:22:41,242 INFO Added relationship: S37 -> S13 (primary)
-2025-02-24 08:22:41,242 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-24 08:22:41,242 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-24 08:22:41,243 INFO 
-Processing S38:
-2025-02-24 08:22:41,243 INFO S38 identified as special case (vs S13)
-2025-02-24 08:22:41,243 INFO 
-Processing S37:
-2025-02-24 08:22:41,243 INFO S37 identified as special case (vs S13)
-2025-02-24 08:22:41,243 INFO Added relationship: S37 -> S13 (primary)
-2025-02-24 08:22:41,243 INFO Added relationship: S38 -> S13 (primary)
-2025-02-24 08:22:41,244 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-24 08:22:41,244 INFO 
-Processing S38:
-2025-02-24 08:22:41,244 INFO S38 identified as special case (vs S13)
-2025-02-24 08:22:41,244 INFO Added relationship: S38 -> S13 (primary)
-2025-02-24 08:22:41,244 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-24 08:22:41,244 INFO 
-Visualization processing complete - Run ID: 20250224_082241
-2025-02-24 08:22:41,244 INFO Processing time: 0.01s
-2025-02-24 08:22:41,245 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-24 08:22:41,245 INFO Plots generated: 0
-2025-02-24 08:22:41,245 INFO 
-Visualization processing complete - Run ID: 20250224_082241
-2025-02-24 08:22:41,245 INFO Errors encountered: 5
-2025-02-24 08:22:41,245 INFO Processing time: 0.01s
-2025-02-24 08:22:41,246 INFO Plots generated: 0
-2025-02-24 08:22:41,246 INFO Errors encountered: 5
-2025-02-24 15:15:51,686 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-24 15:15:52,158 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-24 15:25:03,557 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-24 15:41:48,146 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-24 15:44:11,561 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-24 15:44:38,872 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-24 16:08:37,647 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-24 16:10:47,766 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-24 16:23:27,828 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-24 16:41:10,985 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-24 16:41:11,397 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-24 16:52:13,569 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-24 16:52:14,068 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-24 17:08:48,121 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-24 17:09:13,908 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-24 18:59:19,747 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-24 18:59:55,160 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-24 19:04:43,104 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-24 19:06:13,895 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-24 19:06:58,737 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-24 19:10:30,978 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-24 19:15:44,269 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-24 19:16:09,211 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-24 19:16:32,098 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-24 19:16:56,151 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-24 19:20:57,340 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-24 19:23:07,754 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-24 19:23:51,131 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-24 19:24:14,021 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-24 19:24:49,826 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-24 19:25:56,286 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-25 14:06:11,884 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-25 14:06:12,367 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-25 14:14:42,185 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-25 14:16:30,396 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-25 14:18:16,055 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-25 15:29:05,335 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-25 15:29:05,808 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-25 17:14:05,448 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-25 17:14:05,930 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-25 17:42:33,927 INFO 
-Processing visualization request - Run ID: 20250225_174233
-2025-02-25 17:42:33,927 INFO Version: 1
-2025-02-25 17:42:33,927 INFO Parameters: ['S34', 'S35', 'S36', 'S37', 'S38']
-2025-02-25 17:42:33,927 INFO 
-Processing S34:
-2025-02-25 17:42:33,927 INFO S34 identified as special case (vs S13)
-2025-02-25 17:42:33,927 INFO 
-Processing visualization request - Run ID: 20250225_174233
-2025-02-25 17:42:33,927 INFO Added relationship: S34 -> S13 (primary)
-2025-02-25 17:42:33,927 INFO Version: 1
-2025-02-25 17:42:33,927 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-25 17:42:33,927 INFO Parameters: ['S34', 'S35', 'S36', 'S37', 'S38']
-2025-02-25 17:42:33,927 INFO 
-Processing S35:
-2025-02-25 17:42:33,927 INFO 
-Processing S34:
-2025-02-25 17:42:33,927 INFO S35 identified as special case (vs S13)
-2025-02-25 17:42:33,927 INFO S34 identified as special case (vs S13)
-2025-02-25 17:42:33,927 INFO Added relationship: S35 -> S13 (primary)
-2025-02-25 17:42:33,927 INFO Added relationship: S34 -> S13 (primary)
-2025-02-25 17:42:33,927 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-25 17:42:33,927 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-25 17:42:33,927 INFO 
-Processing S36:
-2025-02-25 17:42:33,927 INFO 
-Processing S35:
-2025-02-25 17:42:33,927 INFO S36 identified as special case (vs S13)
-2025-02-25 17:42:33,927 INFO S35 identified as special case (vs S13)
-2025-02-25 17:42:33,927 INFO Added relationship: S36 -> S13 (primary)
-2025-02-25 17:42:33,927 INFO Added relationship: S35 -> S13 (primary)
-2025-02-25 17:42:33,927 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-25 17:42:33,927 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-25 17:42:33,927 INFO 
-Processing S37:
-2025-02-25 17:42:33,927 INFO 
-Processing S36:
-2025-02-25 17:42:33,927 INFO S37 identified as special case (vs S13)
-2025-02-25 17:42:33,927 INFO S36 identified as special case (vs S13)
-2025-02-25 17:42:33,927 INFO Added relationship: S37 -> S13 (primary)
-2025-02-25 17:42:33,927 INFO Added relationship: S36 -> S13 (primary)
-2025-02-25 17:42:33,927 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-25 17:42:33,927 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-25 17:42:33,927 INFO 
-Processing S38:
-2025-02-25 17:42:33,927 INFO 
-Processing S37:
-2025-02-25 17:42:33,927 INFO S38 identified as special case (vs S13)
-2025-02-25 17:42:33,927 INFO S37 identified as special case (vs S13)
-2025-02-25 17:42:33,927 INFO Added relationship: S38 -> S13 (primary)
-2025-02-25 17:42:33,927 INFO Added relationship: S37 -> S13 (primary)
-2025-02-25 17:42:33,927 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-25 17:42:33,927 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-25 17:42:33,927 INFO 
-Visualization processing complete - Run ID: 20250225_174233
-2025-02-25 17:42:33,936 INFO 
-Processing S38:
-2025-02-25 17:42:33,936 INFO Processing time: 0.00s
-2025-02-25 17:42:33,936 INFO S38 identified as special case (vs S13)
-2025-02-25 17:42:33,936 INFO Plots generated: 0
-2025-02-25 17:42:33,936 INFO Added relationship: S38 -> S13 (primary)
-2025-02-25 17:42:33,936 INFO Errors encountered: 5
-2025-02-25 17:42:33,938 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-25 17:42:33,939 INFO 
-Visualization processing complete - Run ID: 20250225_174233
-2025-02-25 17:42:33,939 INFO Processing time: 0.01s
-2025-02-25 17:42:33,939 INFO Plots generated: 0
-2025-02-25 17:42:33,939 INFO Errors encountered: 5
-2025-02-25 17:48:57,332 INFO 
-Processing visualization request - Run ID: 20250225_174857
-2025-02-25 17:48:57,332 INFO Version: 1
-2025-02-25 17:48:57,332 INFO Parameters: ['S34', 'S35', 'S36', 'S37', 'S38']
-2025-02-25 17:48:57,332 INFO 
-Processing S34:
-2025-02-25 17:48:57,332 INFO S34 identified as special case (vs S13)
-2025-02-25 17:48:57,332 INFO Added relationship: S34 -> S13 (primary)
-2025-02-25 17:48:57,332 INFO 
-Processing visualization request - Run ID: 20250225_174857
-2025-02-25 17:48:57,332 INFO Version: 1
-2025-02-25 17:48:57,332 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-25 17:48:57,332 INFO Parameters: ['S34', 'S35', 'S36', 'S37', 'S38']
-2025-02-25 17:48:57,332 INFO 
-Processing S35:
-2025-02-25 17:48:57,332 INFO 
-Processing S34:
-2025-02-25 17:48:57,332 INFO S35 identified as special case (vs S13)
-2025-02-25 17:48:57,332 INFO S34 identified as special case (vs S13)
-2025-02-25 17:48:57,332 INFO Added relationship: S35 -> S13 (primary)
-2025-02-25 17:48:57,332 INFO Added relationship: S34 -> S13 (primary)
-2025-02-25 17:48:57,332 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-25 17:48:57,332 INFO 
-Processing S36:
-2025-02-25 17:48:57,332 INFO S36 identified as special case (vs S13)
-2025-02-25 17:48:57,332 INFO Added relationship: S36 -> S13 (primary)
-2025-02-25 17:48:57,332 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-25 17:48:57,332 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-25 17:48:57,332 INFO 
-Processing S37:
-2025-02-25 17:48:57,332 INFO 
-Processing S35:
-2025-02-25 17:48:57,332 INFO S37 identified as special case (vs S13)
-2025-02-25 17:48:57,332 INFO S35 identified as special case (vs S13)
-2025-02-25 17:48:57,332 INFO Added relationship: S37 -> S13 (primary)
-2025-02-25 17:48:57,332 INFO Added relationship: S35 -> S13 (primary)
-2025-02-25 17:48:57,332 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-25 17:48:57,332 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-25 17:48:57,332 INFO 
-Processing S38:
-2025-02-25 17:48:57,332 INFO 
-Processing S36:
-2025-02-25 17:48:57,332 INFO S38 identified as special case (vs S13)
-2025-02-25 17:48:57,332 INFO S36 identified as special case (vs S13)
-2025-02-25 17:48:57,332 INFO Added relationship: S38 -> S13 (primary)
-2025-02-25 17:48:57,332 INFO Added relationship: S36 -> S13 (primary)
-2025-02-25 17:48:57,332 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-25 17:48:57,332 INFO 
-Visualization processing complete - Run ID: 20250225_174857
-2025-02-25 17:48:57,332 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-25 17:48:57,346 INFO Processing time: 0.00s
-2025-02-25 17:48:57,346 INFO 
-Processing S37:
-2025-02-25 17:48:57,346 INFO Plots generated: 0
-2025-02-25 17:48:57,346 INFO S37 identified as special case (vs S13)
-2025-02-25 17:48:57,346 INFO Errors encountered: 5
-2025-02-25 17:48:57,346 INFO Added relationship: S37 -> S13 (primary)
-2025-02-25 17:48:57,348 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-25 17:48:57,348 INFO 
-Processing S38:
-2025-02-25 17:48:57,348 INFO S38 identified as special case (vs S13)
-2025-02-25 17:48:57,348 INFO Added relationship: S38 -> S13 (primary)
-2025-02-25 17:48:57,349 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-25 17:48:57,349 INFO 
-Visualization processing complete - Run ID: 20250225_174857
-2025-02-25 17:48:57,349 INFO Processing time: 0.02s
-2025-02-25 17:48:57,349 INFO Plots generated: 0
-2025-02-25 17:48:57,350 INFO Errors encountered: 5
-2025-02-25 17:55:21,963 INFO 
-Processing visualization request - Run ID: 20250225_175521
-2025-02-25 17:55:21,963 INFO Version: 1
-2025-02-25 17:55:21,963 INFO Parameters: ['S34', 'S35', 'S36', 'S37', 'S38']
-2025-02-25 17:55:21,963 INFO 
-Processing S34:
-2025-02-25 17:55:21,963 INFO S34 identified as special case (vs S13)
-2025-02-25 17:55:21,963 INFO Added relationship: S34 -> S13 (primary)
-2025-02-25 17:55:21,964 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-25 17:55:21,964 INFO 
-Processing visualization request - Run ID: 20250225_175521
-2025-02-25 17:55:21,965 INFO 
-Processing S35:
-2025-02-25 17:55:21,965 INFO Version: 1
-2025-02-25 17:55:21,965 INFO S35 identified as special case (vs S13)
-2025-02-25 17:55:21,965 INFO Parameters: ['S34', 'S35', 'S36', 'S37', 'S38']
-2025-02-25 17:55:21,965 INFO Added relationship: S35 -> S13 (primary)
-2025-02-25 17:55:21,965 INFO 
-Processing S34:
-2025-02-25 17:55:21,965 INFO S34 identified as special case (vs S13)
-2025-02-25 17:55:21,966 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-25 17:55:21,966 INFO Added relationship: S34 -> S13 (primary)
-2025-02-25 17:55:21,966 INFO 
-Processing S36:
-2025-02-25 17:55:21,966 INFO S36 identified as special case (vs S13)
-2025-02-25 17:55:21,967 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-25 17:55:21,967 INFO Added relationship: S36 -> S13 (primary)
-2025-02-25 17:55:21,967 INFO 
-Processing S35:
-2025-02-25 17:55:21,967 INFO S35 identified as special case (vs S13)
-2025-02-25 17:55:21,967 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-25 17:55:21,967 INFO Added relationship: S35 -> S13 (primary)
-2025-02-25 17:55:21,967 INFO 
-Processing S37:
-2025-02-25 17:55:21,967 INFO S37 identified as special case (vs S13)
-2025-02-25 17:55:21,968 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-25 17:55:21,968 INFO Added relationship: S37 -> S13 (primary)
-2025-02-25 17:55:21,968 INFO 
-Processing S36:
-2025-02-25 17:55:21,968 INFO S36 identified as special case (vs S13)
-2025-02-25 17:55:21,968 INFO Added relationship: S36 -> S13 (primary)
-2025-02-25 17:55:21,968 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-25 17:55:21,968 INFO 
-Processing S38:
-2025-02-25 17:55:21,968 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-25 17:55:21,969 INFO S38 identified as special case (vs S13)
-2025-02-25 17:55:21,969 INFO 
-Processing S37:
-2025-02-25 17:55:21,969 INFO Added relationship: S38 -> S13 (primary)
-2025-02-25 17:55:21,969 INFO S37 identified as special case (vs S13)
-2025-02-25 17:55:21,969 INFO Added relationship: S37 -> S13 (primary)
-2025-02-25 17:55:21,969 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-25 17:55:21,969 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-25 17:55:21,969 INFO 
-Processing S38:
-2025-02-25 17:55:21,970 INFO 
-Visualization processing complete - Run ID: 20250225_175521
-2025-02-25 17:55:21,970 INFO S38 identified as special case (vs S13)
-2025-02-25 17:55:21,970 INFO Processing time: 0.01s
-2025-02-25 17:55:21,970 INFO Added relationship: S38 -> S13 (primary)
-2025-02-25 17:55:21,970 INFO Plots generated: 0
-2025-02-25 17:55:21,970 INFO Errors encountered: 5
-2025-02-25 17:55:21,970 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-25 17:55:21,972 INFO 
-Visualization processing complete - Run ID: 20250225_175521
-2025-02-25 17:55:21,972 INFO Processing time: 0.01s
-2025-02-25 17:55:21,972 INFO Plots generated: 0
-2025-02-25 17:55:21,973 INFO Errors encountered: 5
-2025-02-25 18:02:01,767 INFO 
-Processing visualization request - Run ID: 20250225_180201
-2025-02-25 18:02:01,767 INFO Version: 1
-2025-02-25 18:02:01,768 INFO Parameters: ['S34', 'S35', 'S36', 'S37', 'S38']
-2025-02-25 18:02:01,770 INFO 
-Processing S34:
-2025-02-25 18:02:01,770 INFO S34 identified as special case (vs S13)
-2025-02-25 18:02:01,771 INFO 
-Processing visualization request - Run ID: 20250225_180201
-2025-02-25 18:02:01,771 INFO Added relationship: S34 -> S13 (primary)
-2025-02-25 18:02:01,771 INFO Version: 1
-2025-02-25 18:02:01,771 INFO Parameters: ['S34', 'S35', 'S36', 'S37', 'S38']
-2025-02-25 18:02:01,771 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-25 18:02:01,772 INFO 
-Processing S34:
-2025-02-25 18:02:01,772 INFO 
-Processing S35:
-2025-02-25 18:02:01,772 INFO S34 identified as special case (vs S13)
-2025-02-25 18:02:01,772 INFO S35 identified as special case (vs S13)
-2025-02-25 18:02:01,772 INFO Added relationship: S34 -> S13 (primary)
-2025-02-25 18:02:01,772 INFO Added relationship: S35 -> S13 (primary)
-2025-02-25 18:02:01,773 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-25 18:02:01,773 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-25 18:02:01,773 INFO 
-Processing S35:
-2025-02-25 18:02:01,773 INFO 
-Processing S36:
-2025-02-25 18:02:01,773 INFO S35 identified as special case (vs S13)
-2025-02-25 18:02:01,773 INFO S36 identified as special case (vs S13)
-2025-02-25 18:02:01,773 INFO Added relationship: S35 -> S13 (primary)
-2025-02-25 18:02:01,774 INFO Added relationship: S36 -> S13 (primary)
-2025-02-25 18:02:01,774 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-25 18:02:01,774 INFO 
-Processing S36:
-2025-02-25 18:02:01,774 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-25 18:02:01,774 INFO S36 identified as special case (vs S13)
-2025-02-25 18:02:01,774 INFO 
-Processing S37:
-2025-02-25 18:02:01,774 INFO Added relationship: S36 -> S13 (primary)
-2025-02-25 18:02:01,775 INFO S37 identified as special case (vs S13)
-2025-02-25 18:02:01,775 INFO Added relationship: S37 -> S13 (primary)
-2025-02-25 18:02:01,775 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-25 18:02:01,775 INFO 
-Processing S37:
-2025-02-25 18:02:01,775 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-25 18:02:01,775 INFO S37 identified as special case (vs S13)
-2025-02-25 18:02:01,775 INFO 
-Processing S38:
-2025-02-25 18:02:01,776 INFO Added relationship: S37 -> S13 (primary)
-2025-02-25 18:02:01,776 INFO S38 identified as special case (vs S13)
-2025-02-25 18:02:01,776 INFO Added relationship: S38 -> S13 (primary)
-2025-02-25 18:02:01,776 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-25 18:02:01,776 INFO 
-Processing S38:
-2025-02-25 18:02:01,776 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-25 18:02:01,776 INFO S38 identified as special case (vs S13)
-2025-02-25 18:02:01,776 INFO 
-Visualization processing complete - Run ID: 20250225_180201
-2025-02-25 18:02:01,777 INFO Added relationship: S38 -> S13 (primary)
-2025-02-25 18:02:01,777 INFO Processing time: 0.01s
-2025-02-25 18:02:01,777 INFO Plots generated: 0
-2025-02-25 18:02:01,777 INFO Errors encountered: 5
-2025-02-25 18:02:01,777 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-02-25 18:02:01,778 INFO 
-Visualization processing complete - Run ID: 20250225_180201
-2025-02-25 18:02:01,779 INFO Processing time: 0.01s
-2025-02-25 18:02:01,779 INFO Plots generated: 0
-2025-02-25 18:02:01,779 INFO Errors encountered: 5
-2025-02-25 20:05:38,796 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-25 20:05:39,203 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 13:43:36,182 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 13:43:36,699 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 13:46:28,909 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 13:48:03,851 INFO 
-================================================================================
-2025-02-27 13:48:03,851 INFO CFA Run Configuration
-2025-02-27 13:48:03,851 INFO ================================================================================
-2025-02-27 13:48:03,851 INFO 
-Basic Configuration:
-2025-02-27 13:48:03,851 INFO Version(s): 
-2025-02-27 13:48:03,851 INFO Calculation Mode: freeFlowNPV
-2025-02-27 13:48:03,851 INFO 
-Parameter States:
-2025-02-27 13:48:03,851 INFO Enabled V Parameters: V1
-2025-02-27 13:48:03,851 INFO Enabled F Parameters: F1, F2, F3, F4, F5
-2025-02-27 13:48:03,851 INFO 
-================================================================================
-
-2025-02-27 13:48:03,851 INFO 
-Executing Configuration Management Scripts:
-2025-02-27 13:48:03,851 INFO 
-Executing: formatter.py
-2025-02-27 13:48:03,851 ERROR Error during orchestrated calculations: list index out of range
-2025-02-27 13:48:06,273 INFO 
-================================================================================
-2025-02-27 13:48:06,273 INFO CFA Run Configuration
-2025-02-27 13:48:06,274 INFO ================================================================================
-2025-02-27 13:48:06,274 INFO 
-Basic Configuration:
-2025-02-27 13:48:06,274 INFO Version(s): 
-2025-02-27 13:48:06,274 INFO Calculation Mode: calculateForPrice
-2025-02-27 13:48:06,274 INFO Target Row: 20
-2025-02-27 13:48:06,274 INFO 
-Parameter States:
-2025-02-27 13:48:06,274 INFO Enabled V Parameters: V1
-2025-02-27 13:48:06,274 INFO Enabled F Parameters: F1, F2, F3, F4, F5
-2025-02-27 13:48:06,275 INFO 
-================================================================================
-
-2025-02-27 13:48:06,275 INFO 
-Executing Configuration Management Scripts:
-2025-02-27 13:48:06,275 INFO 
-Executing: formatter.py
-2025-02-27 13:48:06,275 ERROR Error during orchestrated calculations: list index out of range
-2025-02-27 14:09:02,121 INFO 
-================================================================================
-2025-02-27 14:09:02,121 INFO CFA Run Configuration
-2025-02-27 14:09:02,121 INFO ================================================================================
-2025-02-27 14:09:02,121 INFO 
-Basic Configuration:
-2025-02-27 14:09:02,121 INFO Version(s): 
-2025-02-27 14:09:02,121 INFO Calculation Mode: calculateForPrice
-2025-02-27 14:09:02,121 INFO Target Row: 20
-2025-02-27 14:09:02,121 INFO 
-Parameter States:
-2025-02-27 14:09:02,121 INFO Enabled V Parameters: V1
-2025-02-27 14:09:02,121 INFO Enabled F Parameters: F1, F2, F3, F4, F5
-2025-02-27 14:09:02,121 INFO 
-================================================================================
-
-2025-02-27 14:09:02,121 INFO 
-Executing Configuration Management Scripts:
-2025-02-27 14:09:02,121 INFO 
-Executing: formatter.py
-2025-02-27 14:09:02,121 ERROR Error during orchestrated calculations: list index out of range
-2025-02-27 14:11:06,001 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 14:11:06,401 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 14:14:25,408 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 14:14:30,635 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 14:22:19,278 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 14:22:36,387 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 14:35:02,082 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 14:35:03,371 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 14:51:49,711 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 14:51:50,112 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 15:08:13,051 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 15:08:22,227 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 15:08:42,848 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 15:08:48,929 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 15:08:58,087 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 15:09:07,607 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 15:09:13,651 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 15:09:56,069 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 15:10:10,196 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 15:10:33,198 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 15:11:27,431 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 15:11:59,808 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-03-02 12:20:58,812 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-03-02 12:20:59,285 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-03-02 14:46:27,772 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-03-02 15:48:43,023 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-03-02 15:48:51,233 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-03-02 15:48:59,464 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-03-02 18:36:21,132 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
