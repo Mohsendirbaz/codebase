@@ -14,13 +14,13 @@ git rev-parse HEAD  # Should show current
 
 git remote -v  # Should show https://github.com/Mohsendirbaz/SF.git
 
-git checkout -b SF.R43
+git checkout -b SF.R44
 
 git add .
 
 git commit -m "separate run cfa (flask:5007)and run cfa & sensitivity (flask:25007), main and fallback is 25007"
 
-git push origin SF.R43
+git push origin SF.R44
 
 
 # Remove existing temp directory (already done)
