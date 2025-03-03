@@ -14,13 +14,13 @@ git rev-parse HEAD  # Should show current
 
 git remote -v  # Should show https://github.com/Mohsendirbaz/SF.git
 
-git checkout -b SF.R49
+git checkout -b SF.R50
 
 git add .
 
-git commit -m "right before major changes cline made"
+git commit -m "ReadCommit50"
 
-git push origin SF.R49
+git push origin SF.R50
 
 
 # Remove existing temp directory (already done)

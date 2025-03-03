@@ -1,454 +1,189 @@
-2025-03-03 00:45:22,042 INFO 
+2025-03-03 02:10:25,542 INFO Created main sensitivity directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity
+2025-03-03 02:10:25,542 INFO Created sensitivity mode directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-03-03 02:10:25,543 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\waterfall
+2025-03-03 02:10:25,544 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\bar
+2025-03-03 02:10:25,544 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\point
+2025-03-03 02:10:25,545 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration
+2025-03-03 02:10:25,546 INFO Created sensitivity mode directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Multipoint
+2025-03-03 02:10:25,546 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\waterfall
+2025-03-03 02:10:25,547 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\bar
+2025-03-03 02:10:25,547 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\point
+2025-03-03 02:10:25,548 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\Configuration
+2025-03-03 02:10:25,548 INFO Created sensitivity extra directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Reports
+2025-03-03 02:10:25,549 INFO Created sensitivity extra directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Cache
+2025-03-03 02:10:25,549 INFO 
 ================================================================================
-2025-03-03 00:45:22,042 INFO CFA Run Configuration
-2025-03-03 00:45:22,042 INFO ================================================================================
-2025-03-03 00:45:22,043 INFO 
+2025-03-03 02:10:25,549 INFO CFA Run Configuration
+2025-03-03 02:10:25,549 INFO ================================================================================
+2025-03-03 02:10:25,549 INFO 
 Basic Configuration:
-2025-03-03 00:45:22,043 INFO Version(s): 2
-2025-03-03 00:45:22,043 INFO Calculation Mode: calculateForPrice
-2025-03-03 00:45:22,043 INFO Target Row: 20
-2025-03-03 00:45:22,043 INFO 
+2025-03-03 02:10:25,549 INFO Version(s): 1
+2025-03-03 02:10:25,549 INFO Calculation Mode: calculateForPrice
+2025-03-03 02:10:25,550 INFO Target Row: 20
+2025-03-03 02:10:25,550 INFO 
 Parameter States:
-2025-03-03 00:45:22,043 INFO Enabled V Parameters: V1
-2025-03-03 00:45:22,043 INFO Enabled F Parameters: F1, F2, F3, F4, F5
-2025-03-03 00:45:22,043 INFO 
+2025-03-03 02:10:25,550 INFO Enabled V Parameters: V1
+2025-03-03 02:10:25,550 INFO Enabled F Parameters: F1, F2, F3, F4, F5
+2025-03-03 02:10:25,550 INFO 
 Sensitivity Analysis Configuration:
-2025-03-03 00:45:22,044 INFO Enabled Parameters: S34, S35, S36, S37, S38
-2025-03-03 00:45:22,044 INFO 
+2025-03-03 02:10:25,550 INFO Enabled Parameters: S34, S35, S36, S37, S38
+2025-03-03 02:10:25,550 INFO 
 S34 Configuration:
-2025-03-03 00:45:22,044 INFO   Mode: symmetrical
-2025-03-03 00:45:22,044 INFO   Values: [20]
-2025-03-03 00:45:22,044 INFO   Comparison:
-2025-03-03 00:45:22,044 INFO     Target: S13
-2025-03-03 00:45:22,044 INFO     Type: primary
-2025-03-03 00:45:22,044 INFO     Plot Types: waterfall, bar, point
-2025-03-03 00:45:22,045 INFO 
+2025-03-03 02:10:25,550 INFO   Mode: symmetrical
+2025-03-03 02:10:25,550 INFO   Values: [20]
+2025-03-03 02:10:25,550 INFO   Comparison:
+2025-03-03 02:10:25,551 INFO     Target: S13
+2025-03-03 02:10:25,551 INFO     Type: primary
+2025-03-03 02:10:25,551 INFO     Plot Types: waterfall, bar, point
+2025-03-03 02:10:25,551 INFO 
 S35 Configuration:
-2025-03-03 00:45:22,045 INFO   Mode: symmetrical
-2025-03-03 00:45:22,045 INFO   Values: [20]
-2025-03-03 00:45:22,045 INFO   Comparison:
-2025-03-03 00:45:22,045 INFO     Target: S13
-2025-03-03 00:45:22,045 INFO     Type: primary
-2025-03-03 00:45:22,045 INFO     Plot Types: waterfall, bar, point
-2025-03-03 00:45:22,045 INFO 
+2025-03-03 02:10:25,551 INFO   Mode: symmetrical
+2025-03-03 02:10:25,551 INFO   Values: [20]
+2025-03-03 02:10:25,551 INFO   Comparison:
+2025-03-03 02:10:25,551 INFO     Target: S13
+2025-03-03 02:10:25,551 INFO     Type: primary
+2025-03-03 02:10:25,551 INFO     Plot Types: waterfall, bar, point
+2025-03-03 02:10:25,552 INFO 
 S36 Configuration:
-2025-03-03 00:45:22,046 INFO   Mode: symmetrical
-2025-03-03 00:45:22,046 INFO   Values: [20]
-2025-03-03 00:45:22,046 INFO   Comparison:
-2025-03-03 00:45:22,046 INFO     Target: S13
-2025-03-03 00:45:22,046 INFO     Type: primary
-2025-03-03 00:45:22,046 INFO     Plot Types: waterfall, bar, point
-2025-03-03 00:45:22,046 INFO 
+2025-03-03 02:10:25,552 INFO   Mode: symmetrical
+2025-03-03 02:10:25,552 INFO   Values: [20]
+2025-03-03 02:10:25,552 INFO   Comparison:
+2025-03-03 02:10:25,552 INFO     Target: S13
+2025-03-03 02:10:25,552 INFO     Type: primary
+2025-03-03 02:10:25,552 INFO     Plot Types: waterfall, bar, point
+2025-03-03 02:10:25,552 INFO 
 S37 Configuration:
-2025-03-03 00:45:22,046 INFO   Mode: symmetrical
-2025-03-03 00:45:22,046 INFO   Values: [20]
-2025-03-03 00:45:22,047 INFO   Comparison:
-2025-03-03 00:45:22,047 INFO     Target: S13
-2025-03-03 00:45:22,047 INFO     Type: primary
-2025-03-03 00:45:22,047 INFO     Plot Types: waterfall, bar, point
-2025-03-03 00:45:22,047 INFO 
+2025-03-03 02:10:25,552 INFO   Mode: symmetrical
+2025-03-03 02:10:25,553 INFO   Values: [20]
+2025-03-03 02:10:25,553 INFO   Comparison:
+2025-03-03 02:10:25,553 INFO     Target: S13
+2025-03-03 02:10:25,553 INFO     Type: primary
+2025-03-03 02:10:25,553 INFO     Plot Types: waterfall, bar, point
+2025-03-03 02:10:25,553 INFO 
 S38 Configuration:
-2025-03-03 00:45:22,047 INFO   Mode: symmetrical
-2025-03-03 00:45:22,047 INFO   Values: [20]
-2025-03-03 00:45:22,048 INFO   Comparison:
-2025-03-03 00:45:22,048 INFO     Target: S13
-2025-03-03 00:45:22,048 INFO     Type: primary
-2025-03-03 00:45:22,048 INFO     Plot Types: waterfall, bar, point
-2025-03-03 00:45:22,048 INFO 
+2025-03-03 02:10:25,554 INFO   Mode: symmetrical
+2025-03-03 02:10:25,554 INFO   Values: [20]
+2025-03-03 02:10:25,554 INFO   Comparison:
+2025-03-03 02:10:25,554 INFO     Target: S13
+2025-03-03 02:10:25,554 INFO     Type: primary
+2025-03-03 02:10:25,554 INFO     Plot Types: waterfall, bar, point
+2025-03-03 02:10:25,555 INFO 
 ================================================================================
 
-2025-03-03 00:45:22,048 INFO 
+2025-03-03 02:10:25,555 INFO 
 Executing Configuration Management Scripts:
-2025-03-03 00:45:22,049 INFO 
+2025-03-03 02:10:25,555 INFO 
 Executing: formatter.py
-2025-03-03 00:45:22,173 INFO Completed formatter.py in 0.12s
-2025-03-03 00:45:22,677 INFO 
+2025-03-03 02:10:26,070 INFO Completed formatter.py in 0.51s
+2025-03-03 02:10:26,571 INFO 
 Executing: module1.py
-2025-03-03 00:45:23,951 INFO Completed module1.py in 1.27s
-2025-03-03 00:45:24,452 INFO 
+2025-03-03 02:10:27,886 INFO Completed module1.py in 1.32s
+2025-03-03 02:10:28,399 INFO 
 Executing: config_modules.py
-2025-03-03 00:45:25,748 INFO Completed config_modules.py in 1.30s
-2025-03-03 00:45:26,259 INFO 
+2025-03-03 02:10:32,296 INFO Completed config_modules.py in 3.90s
+2025-03-03 02:10:32,804 INFO 
 Executing: Table.py
-2025-03-03 00:45:27,749 INFO Completed Table.py in 1.49s
-2025-03-03 00:45:28,251 INFO 
-Configuration scripts completed in 6.20s
-2025-03-03 00:45:28,251 INFO 
+2025-03-03 02:10:34,366 INFO Completed Table.py in 1.56s
+2025-03-03 02:10:34,867 INFO 
+Configuration scripts completed in 9.31s
+2025-03-03 02:10:34,867 INFO 
 Processing Calculations:
-2025-03-03 00:45:28,251 INFO Using calculation script: CFA.py
-2025-03-03 00:45:28,251 INFO 
+2025-03-03 02:10:34,867 INFO Using calculation script: CFA.py
+2025-03-03 02:10:34,867 INFO 
 Executing baseline calculation:
-2025-03-03 00:45:59,140 INFO Baseline calculation completed successfully
-2025-03-03 00:45:59,143 INFO 
+2025-03-03 02:10:57,933 INFO Baseline calculation completed successfully
+2025-03-03 02:10:57,933 INFO 
 Processing 5 sensitivity parameters:
-2025-03-03 00:45:59,143 INFO 
+2025-03-03 02:10:57,933 INFO 
 Processing S34:
-2025-03-03 00:45:59,143 INFO Mode: symmetrical
-2025-03-03 00:45:59,143 INFO Values: [20]
-2025-03-03 00:46:17,969 INFO Completed S34 in 18.83s
-2025-03-03 00:46:17,970 INFO 
+2025-03-03 02:10:57,933 INFO Mode: symmetrical
+2025-03-03 02:10:57,933 INFO Values: [20]
+2025-03-03 02:11:19,158 INFO Completed S34 in 21.22s
+2025-03-03 02:11:19,158 INFO 
 Processing S35:
-2025-03-03 00:46:17,970 INFO Mode: symmetrical
-2025-03-03 00:46:17,970 INFO Values: [20]
-2025-03-03 00:46:37,290 INFO Completed S35 in 19.32s
-2025-03-03 00:46:37,290 INFO 
+2025-03-03 02:11:19,158 INFO Mode: symmetrical
+2025-03-03 02:11:19,158 INFO Values: [20]
+2025-03-03 02:11:41,202 INFO Completed S35 in 22.04s
+2025-03-03 02:11:41,202 INFO 
 Processing S36:
-2025-03-03 00:46:37,290 INFO Mode: symmetrical
-2025-03-03 00:46:37,290 INFO Values: [20]
-2025-03-03 00:46:54,784 INFO Completed S36 in 17.49s
-2025-03-03 00:46:54,790 INFO 
+2025-03-03 02:11:41,202 INFO Mode: symmetrical
+2025-03-03 02:11:41,202 INFO Values: [20]
+2025-03-03 02:12:01,209 INFO Completed S36 in 20.01s
+2025-03-03 02:12:01,209 INFO 
 Processing S37:
-2025-03-03 00:46:54,790 INFO Mode: symmetrical
-2025-03-03 00:46:54,790 INFO Values: [20]
-2025-03-03 00:47:11,959 INFO Completed S37 in 17.17s
-2025-03-03 00:47:11,959 INFO 
+2025-03-03 02:12:01,209 INFO Mode: symmetrical
+2025-03-03 02:12:01,209 INFO Values: [20]
+2025-03-03 02:12:21,281 INFO Completed S37 in 20.07s
+2025-03-03 02:12:21,281 INFO 
 Processing S38:
-2025-03-03 00:47:11,959 INFO Mode: symmetrical
-2025-03-03 00:47:11,959 INFO Values: [20]
-2025-03-03 00:47:29,249 INFO Completed S38 in 17.29s
-2025-03-03 00:47:29,249 INFO 
+2025-03-03 02:12:21,281 INFO Mode: symmetrical
+2025-03-03 02:12:21,282 INFO Values: [20]
+2025-03-03 02:12:41,865 INFO Completed S38 in 20.58s
+2025-03-03 02:12:41,865 INFO 
 ================================================================================
-2025-03-03 00:47:29,249 INFO Run Summary - ID: 20250303_004522
-2025-03-03 00:47:29,249 INFO Total execution time: 127.20s
-2025-03-03 00:47:29,249 INFO Configuration scripts: 6.20s
-2025-03-03 00:47:29,249 INFO Calculations completed: 6
-2025-03-03 00:47:29,249 INFO ================================================================================
+2025-03-03 02:12:41,865 INFO Run Summary - ID: 20250303_021025
+2025-03-03 02:12:41,865 INFO Total execution time: 136.31s
+2025-03-03 02:12:41,865 INFO Configuration scripts: 9.31s
+2025-03-03 02:12:41,865 INFO Calculations completed: 6
+2025-03-03 02:12:41,865 INFO ================================================================================
 
-2025-03-03 00:47:29,311 INFO 
-Processing visualization request - Run ID: 20250303_004729
-2025-03-03 00:47:29,311 INFO Version: 2
-2025-03-03 00:47:29,311 INFO Parameters: ['S10', 'S11', 'S12', 'S13', 'S14', 'S15', 'S16', 'S17', 'S18', 'S19', 'S20', 'S21', 'S22', 'S23', 'S24', 'S25', 'S26', 'S27', 'S28', 'S29', 'S30', 'S31', 'S32', 'S33', 'S34', 'S35', 'S36', 'S37', 'S38', 'S39', 'S40', 'S41', 'S42', 'S43', 'S44', 'S45', 'S46', 'S47', 'S48', 'S49', 'S50', 'S51', 'S52', 'S53', 'S54', 'S55', 'S56', 'S57', 'S58', 'S59', 'S60', 'S61']
-2025-03-03 00:47:29,311 INFO 
+2025-03-03 02:12:41,931 INFO 
+Processing visualization request - Run ID: 20250303_021241
+2025-03-03 02:12:41,931 INFO Version: 1
+2025-03-03 02:12:41,931 INFO Parameters: ['S10', 'S11', 'S12', 'S13', 'S14', 'S15', 'S16', 'S17', 'S18', 'S19', 'S20', 'S21', 'S22', 'S23', 'S24', 'S25', 'S26', 'S27', 'S28', 'S29', 'S30', 'S31', 'S32', 'S33', 'S34', 'S35', 'S36', 'S37', 'S38', 'S39', 'S40', 'S41', 'S42', 'S43', 'S44', 'S45', 'S46', 'S47', 'S48', 'S49', 'S50', 'S51', 'S52', 'S53', 'S54', 'S55', 'S56', 'S57', 'S58', 'S59', 'S60', 'S61']
+2025-03-03 02:12:41,931 INFO Created main sensitivity directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity
+2025-03-03 02:12:41,931 INFO Created sensitivity mode directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-03-03 02:12:41,931 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\waterfall
+2025-03-03 02:12:41,931 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\bar
+2025-03-03 02:12:41,931 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\point
+2025-03-03 02:12:41,931 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration
+2025-03-03 02:12:41,931 INFO Created sensitivity mode directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Multipoint
+2025-03-03 02:12:41,931 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\waterfall
+2025-03-03 02:12:41,931 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\bar
+2025-03-03 02:12:41,931 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\point
+2025-03-03 02:12:41,931 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\Configuration
+2025-03-03 02:12:41,931 INFO Created sensitivity extra directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Reports
+2025-03-03 02:12:41,931 INFO Created sensitivity extra directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Cache
+2025-03-03 02:12:41,931 INFO 
 Processing S34:
-2025-03-03 00:47:29,311 INFO S34 identified as special case (vs S13)
-2025-03-03 00:47:29,311 INFO Added relationship: S34 -> S13 (primary)
-2025-03-03 00:47:29,311 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\Sensitivity\Symmetrical
-2025-03-03 00:47:29,311 INFO 
+2025-03-03 02:12:41,931 INFO S34 identified as special case (vs S13)
+2025-03-03 02:12:41,931 INFO Added relationship: S34 -> S13 (primary)
+2025-03-03 02:12:41,947 WARNING Plot not found: waterfall_S34_S13_primary
+2025-03-03 02:12:41,947 WARNING Plot not found: bar_S34_S13_primary
+2025-03-03 02:12:41,947 WARNING Plot not found: point_S34_S13_primary
+2025-03-03 02:12:41,947 INFO 
 Processing S35:
-2025-03-03 00:47:29,311 INFO S35 identified as special case (vs S13)
-2025-03-03 00:47:29,311 INFO Added relationship: S35 -> S13 (primary)
-2025-03-03 00:47:29,311 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\Sensitivity\Symmetrical
-2025-03-03 00:47:29,311 INFO 
+2025-03-03 02:12:41,947 INFO S35 identified as special case (vs S13)
+2025-03-03 02:12:41,947 INFO Added relationship: S35 -> S13 (primary)
+2025-03-03 02:12:41,947 WARNING Plot not found: waterfall_S35_S13_primary
+2025-03-03 02:12:41,947 WARNING Plot not found: bar_S35_S13_primary
+2025-03-03 02:12:41,947 WARNING Plot not found: point_S35_S13_primary
+2025-03-03 02:12:41,947 INFO 
 Processing S36:
-2025-03-03 00:47:29,311 INFO S36 identified as special case (vs S13)
-2025-03-03 00:47:29,311 INFO Added relationship: S36 -> S13 (primary)
-2025-03-03 00:47:29,311 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\Sensitivity\Symmetrical
-2025-03-03 00:47:29,311 INFO 
+2025-03-03 02:12:41,947 INFO S36 identified as special case (vs S13)
+2025-03-03 02:12:41,947 INFO Added relationship: S36 -> S13 (primary)
+2025-03-03 02:12:41,947 WARNING Plot not found: waterfall_S36_S13_primary
+2025-03-03 02:12:41,947 WARNING Plot not found: bar_S36_S13_primary
+2025-03-03 02:12:41,947 WARNING Plot not found: point_S36_S13_primary
+2025-03-03 02:12:41,947 INFO 
 Processing S37:
-2025-03-03 00:47:29,311 INFO S37 identified as special case (vs S13)
-2025-03-03 00:47:29,311 INFO Added relationship: S37 -> S13 (primary)
-2025-03-03 00:47:29,311 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\Sensitivity\Symmetrical
-2025-03-03 00:47:29,311 INFO 
+2025-03-03 02:12:41,947 INFO S37 identified as special case (vs S13)
+2025-03-03 02:12:41,947 INFO Added relationship: S37 -> S13 (primary)
+2025-03-03 02:12:41,947 WARNING Plot not found: waterfall_S37_S13_primary
+2025-03-03 02:12:41,947 WARNING Plot not found: bar_S37_S13_primary
+2025-03-03 02:12:41,947 WARNING Plot not found: point_S37_S13_primary
+2025-03-03 02:12:41,947 INFO 
 Processing S38:
-2025-03-03 00:47:29,311 INFO S38 identified as special case (vs S13)
-2025-03-03 00:47:29,311 INFO Added relationship: S38 -> S13 (primary)
-2025-03-03 00:47:29,311 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\Sensitivity\Symmetrical
-2025-03-03 00:47:29,311 INFO 
-Visualization processing complete - Run ID: 20250303_004729
-2025-03-03 00:47:29,311 INFO Processing time: 0.00s
-2025-03-03 00:47:29,311 INFO Plots generated: 0
-2025-03-03 00:47:29,322 INFO Errors encountered: 5
-2025-03-03 00:48:40,079 INFO 
-================================================================================
-2025-03-03 00:48:40,079 INFO CFA Run Configuration
-2025-03-03 00:48:40,079 INFO ================================================================================
-2025-03-03 00:48:40,079 INFO 
-Basic Configuration:
-2025-03-03 00:48:40,079 INFO Version(s): 2
-2025-03-03 00:48:40,079 INFO Calculation Mode: calculateForPrice
-2025-03-03 00:48:40,080 INFO Target Row: 20
-2025-03-03 00:48:40,080 INFO 
-Parameter States:
-2025-03-03 00:48:40,080 INFO Enabled V Parameters: V1
-2025-03-03 00:48:40,080 INFO Enabled F Parameters: F1, F2, F3, F4, F5
-2025-03-03 00:48:40,080 INFO 
-Sensitivity Analysis Configuration:
-2025-03-03 00:48:40,080 INFO Enabled Parameters: S34, S35, S36, S37, S38
-2025-03-03 00:48:40,080 INFO 
-S34 Configuration:
-2025-03-03 00:48:40,080 INFO   Mode: symmetrical
-2025-03-03 00:48:40,080 INFO   Values: [20]
-2025-03-03 00:48:40,081 INFO   Comparison:
-2025-03-03 00:48:40,081 INFO     Target: S13
-2025-03-03 00:48:40,081 INFO     Type: primary
-2025-03-03 00:48:40,081 INFO     Plot Types: waterfall, bar, point
-2025-03-03 00:48:40,081 INFO 
-S35 Configuration:
-2025-03-03 00:48:40,081 INFO   Mode: symmetrical
-2025-03-03 00:48:40,081 INFO   Values: [20]
-2025-03-03 00:48:40,081 INFO   Comparison:
-2025-03-03 00:48:40,081 INFO     Target: S13
-2025-03-03 00:48:40,082 INFO     Type: primary
-2025-03-03 00:48:40,082 INFO     Plot Types: waterfall, bar, point
-2025-03-03 00:48:40,082 INFO 
-S36 Configuration:
-2025-03-03 00:48:40,083 INFO   Mode: symmetrical
-2025-03-03 00:48:40,083 INFO   Values: [20]
-2025-03-03 00:48:40,083 INFO   Comparison:
-2025-03-03 00:48:40,083 INFO     Target: S13
-2025-03-03 00:48:40,083 INFO     Type: primary
-2025-03-03 00:48:40,083 INFO     Plot Types: waterfall, bar, point
-2025-03-03 00:48:40,083 INFO 
-S37 Configuration:
-2025-03-03 00:48:40,083 INFO   Mode: symmetrical
-2025-03-03 00:48:40,083 INFO   Values: [20]
-2025-03-03 00:48:40,083 INFO   Comparison:
-2025-03-03 00:48:40,083 INFO     Target: S13
-2025-03-03 00:48:40,084 INFO     Type: primary
-2025-03-03 00:48:40,084 INFO     Plot Types: waterfall, bar, point
-2025-03-03 00:48:40,084 INFO 
-S38 Configuration:
-2025-03-03 00:48:40,084 INFO   Mode: symmetrical
-2025-03-03 00:48:40,084 INFO   Values: [20]
-2025-03-03 00:48:40,084 INFO   Comparison:
-2025-03-03 00:48:40,084 INFO     Target: S13
-2025-03-03 00:48:40,084 INFO     Type: primary
-2025-03-03 00:48:40,084 INFO     Plot Types: waterfall, bar, point
-2025-03-03 00:48:40,085 INFO 
-================================================================================
-
-2025-03-03 00:48:40,085 INFO 
-Executing Configuration Management Scripts:
-2025-03-03 00:48:40,085 INFO 
-Executing: formatter.py
-2025-03-03 00:48:40,264 INFO Completed formatter.py in 0.18s
-2025-03-03 00:48:40,786 INFO 
-Executing: module1.py
-2025-03-03 00:48:42,635 INFO Completed module1.py in 1.85s
-2025-03-03 00:48:43,142 INFO 
-Executing: config_modules.py
-2025-03-03 00:48:44,398 INFO Completed config_modules.py in 1.26s
-2025-03-03 00:48:44,918 INFO 
-Executing: Table.py
-2025-03-03 00:48:47,913 INFO Completed Table.py in 3.00s
-2025-03-03 00:48:48,439 INFO 
-Configuration scripts completed in 8.35s
-2025-03-03 00:48:48,439 INFO 
-Processing Calculations:
-2025-03-03 00:48:48,439 INFO Using calculation script: CFA.py
-2025-03-03 00:48:48,439 INFO 
-Executing baseline calculation:
-2025-03-03 00:49:12,566 INFO Baseline calculation completed successfully
-2025-03-03 00:49:12,567 INFO 
-Processing 5 sensitivity parameters:
-2025-03-03 00:49:12,567 INFO 
-Processing S34:
-2025-03-03 00:49:12,567 INFO Mode: symmetrical
-2025-03-03 00:49:12,567 INFO Values: [20]
-2025-03-03 00:49:34,915 INFO Completed S34 in 22.35s
-2025-03-03 00:49:34,915 INFO 
-Processing S35:
-2025-03-03 00:49:34,915 INFO Mode: symmetrical
-2025-03-03 00:49:34,915 INFO Values: [20]
-2025-03-03 00:49:57,132 INFO Completed S35 in 22.22s
-2025-03-03 00:49:57,132 INFO 
-Processing S36:
-2025-03-03 00:49:57,132 INFO Mode: symmetrical
-2025-03-03 00:49:57,132 INFO Values: [20]
-2025-03-03 00:50:19,014 INFO Completed S36 in 21.88s
-2025-03-03 00:50:19,014 INFO 
-Processing S37:
-2025-03-03 00:50:19,014 INFO Mode: symmetrical
-2025-03-03 00:50:19,014 INFO Values: [20]
-2025-03-03 00:50:42,927 INFO Completed S37 in 23.91s
-2025-03-03 00:50:42,927 INFO 
-Processing S38:
-2025-03-03 00:50:42,927 INFO Mode: symmetrical
-2025-03-03 00:50:42,927 INFO Values: [20]
-2025-03-03 00:51:05,300 INFO Completed S38 in 22.37s
-2025-03-03 00:51:05,300 INFO 
-================================================================================
-2025-03-03 00:51:05,300 INFO Run Summary - ID: 20250303_004840
-2025-03-03 00:51:05,300 INFO Total execution time: 145.21s
-2025-03-03 00:51:05,300 INFO Configuration scripts: 8.35s
-2025-03-03 00:51:05,300 INFO Calculations completed: 6
-2025-03-03 00:51:05,300 INFO ================================================================================
-
-2025-03-03 00:51:05,331 INFO 
-Processing visualization request - Run ID: 20250303_005105
-2025-03-03 00:51:05,334 INFO Version: 2
-2025-03-03 00:51:05,334 INFO Parameters: ['S10', 'S11', 'S12', 'S13', 'S14', 'S15', 'S16', 'S17', 'S18', 'S19', 'S20', 'S21', 'S22', 'S23', 'S24', 'S25', 'S26', 'S27', 'S28', 'S29', 'S30', 'S31', 'S32', 'S33', 'S34', 'S35', 'S36', 'S37', 'S38', 'S39', 'S40', 'S41', 'S42', 'S43', 'S44', 'S45', 'S46', 'S47', 'S48', 'S49', 'S50', 'S51', 'S52', 'S53', 'S54', 'S55', 'S56', 'S57', 'S58', 'S59', 'S60', 'S61']
-2025-03-03 00:51:05,335 INFO 
-Processing S34:
-2025-03-03 00:51:05,335 INFO S34 identified as special case (vs S13)
-2025-03-03 00:51:05,335 INFO Added relationship: S34 -> S13 (primary)
-2025-03-03 00:51:05,335 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\Sensitivity\Symmetrical
-2025-03-03 00:51:05,335 INFO 
-Processing S35:
-2025-03-03 00:51:05,336 INFO S35 identified as special case (vs S13)
-2025-03-03 00:51:05,336 INFO Added relationship: S35 -> S13 (primary)
-2025-03-03 00:51:05,336 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\Sensitivity\Symmetrical
-2025-03-03 00:51:05,336 INFO 
-Processing S36:
-2025-03-03 00:51:05,336 INFO S36 identified as special case (vs S13)
-2025-03-03 00:51:05,336 INFO Added relationship: S36 -> S13 (primary)
-2025-03-03 00:51:05,337 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\Sensitivity\Symmetrical
-2025-03-03 00:51:05,337 INFO 
-Processing S37:
-2025-03-03 00:51:05,337 INFO S37 identified as special case (vs S13)
-2025-03-03 00:51:05,337 INFO Added relationship: S37 -> S13 (primary)
-2025-03-03 00:51:05,337 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\Sensitivity\Symmetrical
-2025-03-03 00:51:05,337 INFO 
-Processing S38:
-2025-03-03 00:51:05,337 INFO S38 identified as special case (vs S13)
-2025-03-03 00:51:05,337 INFO Added relationship: S38 -> S13 (primary)
-2025-03-03 00:51:05,337 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(2)\Results(2)\Sensitivity\Symmetrical
-2025-03-03 00:51:05,337 INFO 
-Visualization processing complete - Run ID: 20250303_005105
-2025-03-03 00:51:05,338 INFO Processing time: 0.01s
-2025-03-03 00:51:05,338 INFO Plots generated: 0
-2025-03-03 00:51:05,338 INFO Errors encountered: 5
-2025-03-03 00:55:08,796 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-03-03 00:55:49,993 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-03-03 00:56:20,229 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-03-03 00:56:20,671 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-03-03 00:56:59,126 INFO 
-================================================================================
-2025-03-03 00:56:59,126 INFO CFA Run Configuration
-2025-03-03 00:56:59,126 INFO ================================================================================
-2025-03-03 00:56:59,126 INFO 
-Basic Configuration:
-2025-03-03 00:56:59,126 INFO Version(s): 1
-2025-03-03 00:56:59,127 INFO Calculation Mode: calculateForPrice
-2025-03-03 00:56:59,127 INFO Target Row: 20
-2025-03-03 00:56:59,127 INFO 
-Parameter States:
-2025-03-03 00:56:59,127 INFO Enabled V Parameters: V1
-2025-03-03 00:56:59,127 INFO Enabled F Parameters: F1, F2, F3, F4, F5
-2025-03-03 00:56:59,127 INFO 
-Sensitivity Analysis Configuration:
-2025-03-03 00:56:59,127 INFO Enabled Parameters: S34, S35, S36, S37, S38
-2025-03-03 00:56:59,128 INFO 
-S34 Configuration:
-2025-03-03 00:56:59,128 INFO   Mode: symmetrical
-2025-03-03 00:56:59,128 INFO   Values: [20]
-2025-03-03 00:56:59,128 INFO   Comparison:
-2025-03-03 00:56:59,128 INFO     Target: S13
-2025-03-03 00:56:59,128 INFO     Type: primary
-2025-03-03 00:56:59,128 INFO     Plot Types: waterfall, bar, point
-2025-03-03 00:56:59,128 INFO 
-S35 Configuration:
-2025-03-03 00:56:59,129 INFO   Mode: symmetrical
-2025-03-03 00:56:59,129 INFO   Values: [20]
-2025-03-03 00:56:59,129 INFO   Comparison:
-2025-03-03 00:56:59,129 INFO     Target: S13
-2025-03-03 00:56:59,129 INFO     Type: primary
-2025-03-03 00:56:59,129 INFO     Plot Types: waterfall, bar, point
-2025-03-03 00:56:59,129 INFO 
-S36 Configuration:
-2025-03-03 00:56:59,129 INFO   Mode: symmetrical
-2025-03-03 00:56:59,130 INFO   Values: [20]
-2025-03-03 00:56:59,130 INFO   Comparison:
-2025-03-03 00:56:59,130 INFO     Target: S13
-2025-03-03 00:56:59,130 INFO     Type: primary
-2025-03-03 00:56:59,130 INFO     Plot Types: waterfall, bar, point
-2025-03-03 00:56:59,130 INFO 
-S37 Configuration:
-2025-03-03 00:56:59,130 INFO   Mode: symmetrical
-2025-03-03 00:56:59,130 INFO   Values: [20]
-2025-03-03 00:56:59,130 INFO   Comparison:
-2025-03-03 00:56:59,131 INFO     Target: S13
-2025-03-03 00:56:59,131 INFO     Type: primary
-2025-03-03 00:56:59,131 INFO     Plot Types: waterfall, bar, point
-2025-03-03 00:56:59,131 INFO 
-S38 Configuration:
-2025-03-03 00:56:59,131 INFO   Mode: symmetrical
-2025-03-03 00:56:59,131 INFO   Values: [20]
-2025-03-03 00:56:59,131 INFO   Comparison:
-2025-03-03 00:56:59,131 INFO     Target: S13
-2025-03-03 00:56:59,131 INFO     Type: primary
-2025-03-03 00:56:59,132 INFO     Plot Types: waterfall, bar, point
-2025-03-03 00:56:59,132 INFO 
-================================================================================
-
-2025-03-03 00:56:59,132 INFO 
-Executing Configuration Management Scripts:
-2025-03-03 00:56:59,132 INFO 
-Executing: formatter.py
-2025-03-03 00:56:59,242 INFO Completed formatter.py in 0.11s
-2025-03-03 00:56:59,754 INFO 
-Executing: module1.py
-2025-03-03 00:57:01,067 INFO Completed module1.py in 1.31s
-2025-03-03 00:57:01,574 INFO 
-Executing: config_modules.py
-2025-03-03 00:57:02,866 INFO Completed config_modules.py in 1.29s
-2025-03-03 00:57:03,379 INFO 
-Executing: Table.py
-2025-03-03 00:57:04,668 INFO Completed Table.py in 1.29s
-2025-03-03 00:57:05,170 INFO 
-Configuration scripts completed in 6.04s
-2025-03-03 00:57:05,170 INFO 
-Processing Calculations:
-2025-03-03 00:57:05,170 INFO Using calculation script: CFA.py
-2025-03-03 00:57:05,170 INFO 
-Executing baseline calculation:
-2025-03-03 00:57:24,136 INFO Baseline calculation completed successfully
-2025-03-03 00:57:24,136 INFO 
-Processing 5 sensitivity parameters:
-2025-03-03 00:57:24,136 INFO 
-Processing S34:
-2025-03-03 00:57:24,136 INFO Mode: symmetrical
-2025-03-03 00:57:24,136 INFO Values: [20]
-2025-03-03 00:57:43,403 INFO Completed S34 in 19.27s
-2025-03-03 00:57:43,403 INFO 
-Processing S35:
-2025-03-03 00:57:43,403 INFO Mode: symmetrical
-2025-03-03 00:57:43,403 INFO Values: [20]
-2025-03-03 00:58:06,542 INFO Completed S35 in 23.14s
-2025-03-03 00:58:06,542 INFO 
-Processing S36:
-2025-03-03 00:58:06,542 INFO Mode: symmetrical
-2025-03-03 00:58:06,542 INFO Values: [20]
-2025-03-03 00:58:26,891 INFO Completed S36 in 20.35s
-2025-03-03 00:58:26,891 INFO 
-Processing S37:
-2025-03-03 00:58:26,895 INFO Mode: symmetrical
-2025-03-03 00:58:26,895 INFO Values: [20]
-2025-03-03 00:58:51,448 INFO Completed S37 in 24.56s
-2025-03-03 00:58:51,448 INFO 
-Processing S38:
-2025-03-03 00:58:51,448 INFO Mode: symmetrical
-2025-03-03 00:58:51,448 INFO Values: [20]
-2025-03-03 00:59:12,016 INFO Completed S38 in 20.57s
-2025-03-03 00:59:12,016 INFO 
-================================================================================
-2025-03-03 00:59:12,016 INFO Run Summary - ID: 20250303_005659
-2025-03-03 00:59:12,016 INFO Total execution time: 132.88s
-2025-03-03 00:59:12,016 INFO Configuration scripts: 6.04s
-2025-03-03 00:59:12,016 INFO Calculations completed: 6
-2025-03-03 00:59:12,016 INFO ================================================================================
-
-2025-03-03 00:59:12,109 INFO 
-Processing visualization request - Run ID: 20250303_005912
-2025-03-03 00:59:12,109 INFO Version: 1
-2025-03-03 00:59:12,109 INFO Parameters: ['S10', 'S11', 'S12', 'S13', 'S14', 'S15', 'S16', 'S17', 'S18', 'S19', 'S20', 'S21', 'S22', 'S23', 'S24', 'S25', 'S26', 'S27', 'S28', 'S29', 'S30', 'S31', 'S32', 'S33', 'S34', 'S35', 'S36', 'S37', 'S38', 'S39', 'S40', 'S41', 'S42', 'S43', 'S44', 'S45', 'S46', 'S47', 'S48', 'S49', 'S50', 'S51', 'S52', 'S53', 'S54', 'S55', 'S56', 'S57', 'S58', 'S59', 'S60', 'S61']
-2025-03-03 00:59:12,117 INFO 
-Processing S34:
-2025-03-03 00:59:12,117 INFO S34 identified as special case (vs S13)
-2025-03-03 00:59:12,117 INFO Added relationship: S34 -> S13 (primary)
-2025-03-03 00:59:12,117 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-03-03 00:59:12,117 INFO 
-Processing S35:
-2025-03-03 00:59:12,117 INFO S35 identified as special case (vs S13)
-2025-03-03 00:59:12,117 INFO Added relationship: S35 -> S13 (primary)
-2025-03-03 00:59:12,117 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-03-03 00:59:12,117 INFO 
-Processing S36:
-2025-03-03 00:59:12,117 INFO S36 identified as special case (vs S13)
-2025-03-03 00:59:12,117 INFO Added relationship: S36 -> S13 (primary)
-2025-03-03 00:59:12,117 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-03-03 00:59:12,117 INFO 
-Processing S37:
-2025-03-03 00:59:12,117 INFO S37 identified as special case (vs S13)
-2025-03-03 00:59:12,117 INFO Added relationship: S37 -> S13 (primary)
-2025-03-03 00:59:12,117 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-03-03 00:59:12,117 INFO 
-Processing S38:
-2025-03-03 00:59:12,117 INFO S38 identified as special case (vs S13)
-2025-03-03 00:59:12,117 INFO Added relationship: S38 -> S13 (primary)
-2025-03-03 00:59:12,117 ERROR Sensitivity directory not found: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
-2025-03-03 00:59:12,117 INFO 
-Visualization processing complete - Run ID: 20250303_005912
-2025-03-03 00:59:12,117 INFO Processing time: 0.01s
-2025-03-03 00:59:12,117 INFO Plots generated: 0
-2025-03-03 00:59:12,117 INFO Errors encountered: 5
+2025-03-03 02:12:41,947 INFO S38 identified as special case (vs S13)
+2025-03-03 02:12:41,947 INFO Added relationship: S38 -> S13 (primary)
+2025-03-03 02:12:41,947 WARNING Plot not found: waterfall_S38_S13_primary
+2025-03-03 02:12:41,947 WARNING Plot not found: bar_S38_S13_primary
+2025-03-03 02:12:41,947 WARNING Plot not found: point_S38_S13_primary
+2025-03-03 02:12:41,947 INFO 
+Visualization processing complete - Run ID: 20250303_021241
+2025-03-03 02:12:41,947 INFO Processing time: 0.02s
+2025-03-03 02:12:41,947 INFO Plots generated: 0
+2025-03-03 02:19:05,770 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-03-03 02:19:30,575 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-03-03 02:19:55,500 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-03-03 02:21:12,545 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log

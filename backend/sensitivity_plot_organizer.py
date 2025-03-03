@@ -72,7 +72,18 @@ def organize_sensitivity_plots(base_dir=None):
         
         # Create plot albums directory
         plot_albums_dir = os.path.join(results_dir, "SensitivityPlots")
-        os.makedirs(plot_albums_dir, exist_ok=True)
+        
+        # Import directory operation functions
+        from sensitivity_logging import directory_operation, log_directory_check
+        
+        # Log directory check and creation
+        with directory_operation('check', plot_albums_dir):
+            log_directory_check(plot_albums_dir, os.path.exists(plot_albums_dir))
+        
+        # Create the directory if it doesn't exist
+        with directory_operation('create', plot_albums_dir):
+            os.makedirs(plot_albums_dir, exist_ok=True)
+            logger.info(f"Created/verified plot albums directory: {plot_albums_dir}")
         
         # Process different analysis modes
         for mode in ["Symmetrical", "Multipoint"]:
@@ -101,7 +112,16 @@ def organize_sensitivity_plots(base_dir=None):
                 # Create album for this plot type
                 album_name = f"Sensitivity_{mode}_{plot_type}"
                 album_dir = os.path.join(plot_albums_dir, album_name)
-                os.makedirs(album_dir, exist_ok=True)
+                
+                # Log directory check and creation
+                with directory_operation('check', album_dir):
+                    log_directory_check(album_dir, os.path.exists(album_dir))
+                
+                # Create the directory if it doesn't exist
+                with directory_operation('create', album_dir):
+                    os.makedirs(album_dir, exist_ok=True)
+                    logger.info(f"Created/verified album directory: {album_dir}")
+                
                 stats["albums_created"] += 1
                 
                 # Process each plot file

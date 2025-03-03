@@ -38,6 +38,8 @@ class CalculationsSensitivityAdapter:
         Returns:
             tuple: (success, price, error_message)
         """
+        from sensitivity_logging import track_method, log_directory_check, log_directory_access, directory_operation
+        
         try:
             logger.info(f"Running price calculation for version {version}")
             
@@ -45,6 +47,10 @@ class CalculationsSensitivityAdapter:
             if self.direct_file_access:
                 try:
                     price_file = os.path.join(self.base_dir, f"Batch({version})", f"Results({version})", "price.json")
+                    
+                    # Log directory access attempt
+                    log_directory_access(os.path.dirname(price_file), os.path.exists(os.path.dirname(price_file)))
+                    
                     if os.path.exists(price_file):
                         with open(price_file, 'r') as f:
                             price_data = json.load(f)
@@ -180,15 +186,26 @@ class CalculationsSensitivityAdapter:
         Returns:
             tuple: (success, results, error_message)
         """
+        from sensitivity_logging import track_method, log_directory_check, log_directory_access, directory_operation
+        
         try:
             logger.info(f"Running sensitivity analysis for parameter {param_id} vs {compare_to_key}")
             
             if plot_types is None:
                 plot_types = ["waterfall", "bar", "point"]
             
+            # Check if sensitivity directories exist
+            sensitivity_dir = os.path.join(self.base_dir, f"Batch({version})", f"Results({version})", "Sensitivity")
+            log_directory_check(sensitivity_dir, os.path.exists(sensitivity_dir))
+            
             # For direct file-based sensitivity analysis, skip API calls
             if self.direct_file_access:
                 logger.info("Using direct file-based sensitivity analysis")
+                
+                # Check if mode-specific directory exists
+                mode_dir = os.path.join(sensitivity_dir, mode.capitalize())
+                log_directory_check(mode_dir, os.path.exists(mode_dir))
+                
                 # Generate dummy results since we're actually generating configs in the manager
                 dummy_results = {
                     "param_id": param_id,
@@ -293,16 +310,26 @@ class CalculationsSensitivityAdapter:
         Returns:
             tuple: (success, results, error_message)
         """
+        from sensitivity_logging import track_method, log_directory_check, log_directory_access, directory_operation
+        from sensitivity_logging import log_execution_flow
+        
         try:
-            logger.info(f"Processing sensitivity parameter {param_id} for version {version}")
+            # Log execution flow
+            log_execution_flow('enter', f"Processing sensitivity parameter {param_id} for version {version}")
+            
+            # Check if sensitivity directories exist
+            sensitivity_dir = os.path.join(self.base_dir, f"Batch({version})", f"Results({version})", "Sensitivity")
+            log_directory_check(sensitivity_dir, os.path.exists(sensitivity_dir))
             
             # First, run the base price calculation
+            log_execution_flow('checkpoint', f"Running base price calculation for {param_id}")
             success, price, error = self.run_price_calculation(
                 version, selected_v, selected_f, target_row,
                 tolerance_lower, tolerance_upper, increase_rate, decrease_rate
             )
             
             if not success:
+                log_execution_flow('error', f"Base price calculation failed: {error}")
                 return False, None, f"Base price calculation failed: {error}"
             
             # Extract sensitivity configuration
