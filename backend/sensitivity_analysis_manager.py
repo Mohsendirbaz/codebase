@@ -36,7 +36,7 @@ class SensitivityAnalysisManager:
     def __init__(self):
         # Define base directories using Path for cross-platform compatibility
         self.base_dir = BASE_DIR
-        self.original_dir = self.base_dir / "public" / "Original"
+        self.original_dir = self.base_dir / "Original"  # Use backend/Original instead of public/Original
         self.logs_dir = self.base_dir / "Logs"
         
         # Create logging directories
@@ -110,6 +110,10 @@ class SensitivityAnalysisManager:
         
         # Explicitly create the Configuration directory in each main directory
         for main_dir in self.directory_structure.keys():
+            # Skip the standalone Configuration directory as it's already created above
+            if main_dir == 'Configuration':
+                continue
+                
             config_dir = sensitivity_dir / main_dir / "Configuration"
             
             # Log the directory check operation
@@ -120,6 +124,13 @@ class SensitivityAnalysisManager:
                 os.makedirs(config_dir, exist_ok=True)
             
             created_dirs[f"{main_dir.lower()}_configuration"] = config_dir
+            
+        # Ensure the standalone Configuration directory exists and is properly logged
+        config_dir = sensitivity_dir / "Configuration"
+        log_directory_check(config_dir, os.path.exists(config_dir))
+        with directory_operation('create', config_dir):
+            os.makedirs(config_dir, exist_ok=True)
+        self.logger.info(f"Created/verified standalone Configuration directory: {config_dir}")
         
         self.logger.info(f"Created/verified sensitivity directories for version {version}: {list(created_dirs.keys())}")
         return created_dirs

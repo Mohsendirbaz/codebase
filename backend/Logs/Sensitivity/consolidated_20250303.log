@@ -1,0 +1,6 @@
+2025-03-03 03:19:22 - [INFO] - werkzeug - 127.0.0.1 - - [03/Mar/2025 03:19:22] "OPTIONS /runs HTTP/1.1" 200 -
+2025-03-03 03:21:32 - [INFO] - werkzeug - 127.0.0.1 - - [03/Mar/2025 03:21:32] "POST /runs HTTP/1.1" 200 -
+2025-03-03 03:21:33 - [INFO] - werkzeug - 127.0.0.1 - - [03/Mar/2025 03:21:33] "[33mGET /prices/1 HTTP/1.1[0m" 404 -
+2025-03-03 03:21:33 - [INFO] - werkzeug - 127.0.0.1 - - [03/Mar/2025 03:21:33] "OPTIONS /sensitivity/visualization HTTP/1.1" 200 -
+2025-03-03 03:21:33 - [INFO] - werkzeug - 127.0.0.1 - - [03/Mar/2025 03:21:33] "[33mGET /stream_prices/1 HTTP/1.1[0m" 404 -
+2025-03-03 03:21:33 - [INFO] - werkzeug - 127.0.0.1 - - [03/Mar/2025 03:21:33] "POST /sensitivity/visualization HTTP/1.1" 200 -
