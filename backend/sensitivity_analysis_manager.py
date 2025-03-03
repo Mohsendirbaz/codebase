@@ -8,6 +8,8 @@ import importlib.util
 import numpy as np
 import pandas as pd
 from typing import Dict, List, Any, Optional, Tuple
+import re  # For regular expression parsing
+
 
 # Import centralized logging
 from sensitivity_logging import get_manager_logger
@@ -93,19 +95,8 @@ class SensitivityAnalysisManager:
         
         param_num = int(param_id[1:])
         
-        # Map to property ID based on parameter number
-        param_mappings = {
-            # This mapping connects SXX parameters to their property IDs
-            10: "initialSellingPriceAmount13",
-            11: "variable_costsAmount4",
-            13: "bECAmount11",
-            34: "rawmaterialAmount34",
-            35: "laborAmount35",
-            36: "utilityAmount36",
-            37: "maintenanceAmount37",
-            38: "insuranceAmount38",
-            # Add all other mappings as needed
-        }
+        # Get dynamic parameter mappings
+        param_mappings = self._get_dynamic_param_mappings()
         
         property_id = param_mappings.get(param_num)
         if not property_id:
@@ -120,6 +111,134 @@ class SensitivityAnalysisManager:
             "property_id": property_id,
             "display_name": display_name
         }
+
+    def _get_dynamic_param_mappings(self) -> Dict[int, str]:
+        """
+        Dynamically generates parameter mappings from common_utils.py and frontend code.
+        This ensures consistency between frontend and backend parameter definitions.
+        
+        Returns:
+            dict: Mapping from parameter numbers (SXX) to property IDs
+        """
+        # Check if we've already cached the mappings
+        if hasattr(self, '_param_mappings_cache'):
+            return self._param_mappings_cache
+        
+        # Standard mappings as fallback
+        standard_mappings = {
+            10: "plantLifetimeAmount10",
+            11: "bECAmount11",
+            12: "numberOfUnitsAmount12",
+            13: "initialSellingPriceAmount13",
+            14: "totalOperatingCostPercentageAmount14",
+            15: "engineering_Procurement_and_Construction_EPC_Amount15",
+            16: "process_contingency_PC_Amount16",
+            17: "project_Contingency_PT_BEC_EPC_PCAmount17",
+            18: "use_direct_operating_expensesAmount18",
+            20: "depreciationMethodAmount20",
+            21: "loanTypeAmount21",
+            22: "interestTypeAmount22",
+            23: "generalInflationRateAmount23",
+            24: "interestProportionAmount24",
+            25: "principalProportionAmount25",
+            26: "loanPercentageAmount26",
+            27: "repaymentPercentageOfRevenueAmount27",
+            28: "numberofconstructionYearsAmount28",
+            30: "iRRAmount30",
+            31: "annualInterestRateAmount31",
+            32: "stateTaxRateAmount32",
+            33: "federalTaxRateAmount33",
+            34: "rawmaterialAmount34",
+            35: "laborAmount35",
+            36: "utilityAmount36",
+            37: "maintenanceAmount37",
+            38: "insuranceAmount38",
+            40: "vAmount40",
+            41: "vAmount41",
+            42: "vAmount42",
+            43: "vAmount43",
+            44: "vAmount44",
+            45: "vAmount45",
+            46: "vAmount46",
+            47: "vAmount47",
+            48: "vAmount48",
+            49: "vAmount49",
+            50: "vAmount50",
+            51: "vAmount51",
+            52: "vAmount52",
+            53: "vAmount53",
+            54: "vAmount54",
+            55: "vAmount55",
+            56: "vAmount56",
+            57: "vAmount57",
+            58: "vAmount58",
+            59: "vAmount59",
+            60: "vAmount60",
+            61: "vAmount61"
+        }
+        
+        try:
+            # Try to extract from property_mapping in common_utils.py
+            dynamic_mappings = {}
+            for prop_id in property_mapping.keys():
+                # Extract the parameter number from property names like "vAmount45" or "bECAmount11"
+                match = re.search(r'Amount(\d+)$', prop_id)
+                if match:
+                    param_num = int(match.group(1))
+                    dynamic_mappings[param_num] = prop_id
+            
+            # If we found mappings, use them; otherwise use standard mappings
+            result_mappings = dynamic_mappings if dynamic_mappings else standard_mappings
+            
+            # Try to enhance with frontend mappings if available
+            try:
+                # Path to useFormValues.js relative to backend directory
+                frontend_path = os.path.join(
+                    os.path.dirname(os.path.dirname(self.base_dir)), 
+                    'src', 'useFormValues.js'
+                )
+                
+                if os.path.exists(frontend_path):
+                    with open(frontend_path, 'r', encoding='utf-8') as f:
+                        content = f.read()
+                        
+                        # Find the property mapping section
+                        start_marker = 'const propertyMapping = {'
+                        end_marker = '};'
+                        start_idx = content.find(start_marker)
+                        
+                        if start_idx != -1:
+                            # Extract property mapping block
+                            start_idx += len(start_marker)
+                            end_idx = content.find(end_marker, start_idx)
+                            mapping_block = content[start_idx:end_idx].strip()
+                            
+                            # Parse each property mapping line
+                            for line in mapping_block.split('\n'):
+                                line = line.strip()
+                                if not line or line.startswith('//') or ':' not in line:
+                                    continue
+                                    
+                                # Extract property ID
+                                property_id = line.split(':', 1)[0].strip().strip('"\'')
+                                
+                                # Extract parameter number from property ID
+                                match = re.search(r'Amount(\d+)$', property_id)
+                                if match:
+                                    param_num = int(match.group(1))
+                                    result_mappings[param_num] = property_id
+            except Exception as frontend_error:
+                self.logger.warning(f"Could not extract mappings from frontend: {str(frontend_error)}")
+            
+            # Cache the mappings for future use
+            self._param_mappings_cache = result_mappings
+            self.logger.info(f"Generated {len(result_mappings)} parameter mappings")
+            return result_mappings
+            
+        except Exception as e:
+            self.logger.error(f"Error generating parameter mappings: {str(e)}")
+            # Fall back to standard mappings
+            return standard_mappings
     
     def load_config_module(self, version: int, year: int = None) -> Any:
         """
