@@ -14,7 +14,7 @@ const SensitivityIntegration = ({ version, onError }) => {
   const [selectedAlbum, setSelectedAlbum] = useState(null);
   const [albumContent, setAlbumContent] = useState(null);
   const [serverConfig, setServerConfig] = useState({
-    mainServer: 'http://localhost:5007',
+    mainServer: 'http://localhost:25007',
     fallbackServer: 'http://localhost:25007',
     useMainServer: true
   });

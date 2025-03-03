@@ -1,9 +1,24 @@
+2025-03-02 17:46:22,331 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-03-02 17:46:22,746 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-03-02 17:47:35,172 INFO 
 2025-03-03 04:51:06,939 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
 2025-03-03 04:51:06,939 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
 2025-03-03 04:52:03,306 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
 2025-03-03 04:52:03,306 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
 2025-03-03 04:53:17,547 INFO 
 ================================================================================
+2025-03-02 17:47:35,172 INFO CFA Run Configuration
+2025-03-02 17:47:35,172 INFO ================================================================================
+2025-03-02 17:47:35,172 INFO 
+Basic Configuration:
+2025-03-02 17:47:35,172 INFO Version(s): 1
+2025-03-02 17:47:35,172 INFO Calculation Mode: calculateForPrice
+2025-03-02 17:47:35,173 INFO Target Row: 20
+2025-03-02 17:47:35,173 INFO 
+Parameter States:
+2025-03-02 17:47:35,173 INFO Enabled V Parameters: V1
+2025-03-02 17:47:35,173 INFO Enabled F Parameters: F1, F2, F3, F4, F5
+2025-03-02 17:47:35,173 INFO 
 2025-03-03 04:53:17,547 INFO 
 ================================================================================
 
@@ -330,32 +345,75 @@ Parameter States:
 2025-02-23 18:11:22,340 INFO Enabled F Parameters: None
 2025-02-23 18:11:22,340 INFO 
 Sensitivity Analysis Configuration:
-2025-02-23 18:11:22,340 INFO Enabled Parameters: S17
-2025-02-23 18:11:22,340 INFO 
-S17 Configuration:
-2025-02-23 18:11:22,340 INFO   Mode: symmetrical
-2025-02-23 18:11:22,340 INFO   Values: []
-2025-02-23 18:11:22,340 INFO 
+2025-03-02 17:47:35,173 INFO Enabled Parameters: S34, S35, S36, S37, S38
+2025-03-02 17:47:35,173 INFO 
+S34 Configuration:
+2025-03-02 17:47:35,173 INFO   Mode: symmetrical
+2025-03-02 17:47:35,174 INFO   Values: [20]
+2025-03-02 17:47:35,174 INFO   Comparison:
+2025-03-02 17:47:35,174 INFO     Target: S13
+2025-03-02 17:47:35,174 INFO     Type: primary
+2025-03-02 17:47:35,174 INFO     Plot Types: waterfall, bar, point
+2025-03-02 17:47:35,174 INFO 
+S35 Configuration:
+2025-03-02 17:47:35,174 INFO   Mode: symmetrical
+2025-03-02 17:47:35,175 INFO   Values: [20]
+2025-03-02 17:47:35,175 INFO   Comparison:
+2025-03-02 17:47:35,175 INFO     Target: S13
+2025-03-02 17:47:35,175 INFO     Type: primary
+2025-03-02 17:47:35,175 INFO     Plot Types: waterfall, bar, point
+2025-03-02 17:47:35,175 INFO 
+S36 Configuration:
+2025-03-02 17:47:35,175 INFO   Mode: symmetrical
+2025-03-02 17:47:35,176 INFO   Values: [20]
+2025-03-02 17:47:35,176 INFO   Comparison:
+2025-03-02 17:47:35,176 INFO     Target: S13
+2025-03-02 17:47:35,176 INFO     Type: primary
+2025-03-02 17:47:35,176 INFO     Plot Types: waterfall, bar, point
+2025-03-02 17:47:35,176 INFO 
+S37 Configuration:
+2025-03-02 17:47:35,176 INFO   Mode: symmetrical
+2025-03-02 17:47:35,176 INFO   Values: [20]
+2025-03-02 17:47:35,177 INFO   Comparison:
+2025-03-02 17:47:35,177 INFO     Target: S13
+2025-03-02 17:47:35,177 INFO     Type: primary
+2025-03-02 17:47:35,177 INFO     Plot Types: waterfall, bar, point
+2025-03-02 17:47:35,177 INFO 
+S38 Configuration:
+2025-03-02 17:47:35,178 INFO   Mode: symmetrical
+2025-03-02 17:47:35,178 INFO   Values: [20]
+2025-03-02 17:47:35,178 INFO   Comparison:
+2025-03-02 17:47:35,178 INFO     Target: S13
+2025-03-02 17:47:35,178 INFO     Type: primary
+2025-03-02 17:47:35,178 INFO     Plot Types: waterfall, bar, point
+2025-03-02 17:47:35,178 INFO 
 ================================================================================
 
-2025-02-23 18:11:22,340 INFO 
+2025-03-02 17:47:35,178 INFO 
 Executing Configuration Management Scripts:
-2025-02-23 18:11:22,341 INFO 
+2025-03-02 17:47:35,178 INFO 
 Executing: formatter.py
-2025-02-23 18:11:22,462 INFO Completed formatter.py in 0.12s
-2025-02-23 18:11:22,979 INFO 
+2025-03-02 17:47:35,297 INFO Completed formatter.py in 0.12s
+2025-03-02 17:47:35,803 INFO 
 Executing: module1.py
-2025-02-23 18:11:24,461 INFO Completed module1.py in 1.48s
-2025-02-23 18:11:24,977 INFO 
+2025-03-02 17:47:37,150 INFO Completed module1.py in 1.35s
+2025-03-02 17:47:37,656 INFO 
 Executing: config_modules.py
-2025-02-23 18:11:26,002 INFO Completed config_modules.py in 1.02s
-2025-02-23 18:11:26,513 INFO 
+2025-03-02 17:47:39,025 INFO Completed config_modules.py in 1.37s
+2025-03-02 17:47:39,533 INFO 
 Executing: Table.py
-2025-02-23 18:11:27,549 INFO Completed Table.py in 1.04s
-2025-02-23 18:11:28,058 INFO 
-Configuration scripts completed in 5.72s
-2025-02-23 18:11:28,058 INFO 
+2025-03-02 17:47:41,626 INFO Completed Table.py in 2.09s
+2025-03-02 17:47:42,127 INFO 
+Configuration scripts completed in 6.95s
+2025-03-02 17:47:42,127 INFO 
 Processing Calculations:
+2025-03-02 17:47:42,127 INFO Using calculation script: CFA.py
+2025-03-02 17:47:42,127 INFO 
+Executing baseline calculation:
+2025-03-02 17:48:02,790 INFO Baseline calculation completed successfully
+2025-03-02 17:48:02,790 INFO 
+Processing 5 sensitivity parameters:
+2025-03-02 17:48:02,790 INFO 
 2025-02-23 18:11:28,058 ERROR Error during orchestrated calculations: Calculation script not found for version 12
 2025-02-23 18:11:35,204 INFO 
 ================================================================================
@@ -588,6 +646,10 @@ Processing 5 sensitivity parameters:
 Processing 5 sensitivity parameters:
 2025-03-03 04:53:47,516 INFO 
 Processing S34:
+2025-03-02 17:48:02,790 INFO Mode: symmetrical
+2025-03-02 17:48:02,790 INFO Values: [20]
+2025-03-02 17:48:22,356 INFO Completed S34 in 19.57s
+2025-03-02 17:48:22,356 INFO 
 2025-03-03 04:53:47,516 INFO 
 Processing S34:
 2025-03-03 04:53:47,516 INFO Mode: symmetrical
@@ -598,6 +660,10 @@ Processing S34:
 2025-03-03 04:54:07,189 INFO Completed S34 in 19.67s
 2025-03-03 04:54:07,189 INFO 
 Processing S35:
+2025-03-02 17:48:22,356 INFO Mode: symmetrical
+2025-03-02 17:48:22,356 INFO Values: [20]
+2025-03-02 17:48:40,478 INFO Completed S35 in 18.12s
+2025-03-02 17:48:40,478 INFO 
 2025-03-03 04:54:07,189 INFO 
 Processing S35:
 2025-03-03 04:54:07,189 INFO Mode: symmetrical
@@ -608,6 +674,10 @@ Processing S35:
 2025-03-03 04:54:28,047 INFO Completed S35 in 20.86s
 2025-03-03 04:54:28,047 INFO 
 Processing S36:
+2025-03-02 17:48:40,478 INFO Mode: symmetrical
+2025-03-02 17:48:40,478 INFO Values: [20]
+2025-03-02 17:48:57,872 INFO Completed S36 in 17.39s
+2025-03-02 17:48:57,872 INFO 
 2025-03-03 04:54:28,047 INFO 
 Processing S36:
 2025-03-03 04:54:28,047 INFO Mode: symmetrical
@@ -618,6 +688,21 @@ Processing S36:
 2025-03-03 04:54:47,772 INFO Completed S36 in 19.72s
 2025-03-03 04:54:47,772 INFO 
 Processing S37:
+2025-03-02 17:48:57,872 INFO Mode: symmetrical
+2025-03-02 17:48:57,872 INFO Values: [20]
+2025-03-02 17:49:15,381 INFO Completed S37 in 17.51s
+2025-03-02 17:49:15,381 INFO 
+Processing S38:
+2025-03-02 17:49:15,381 INFO Mode: symmetrical
+2025-03-02 17:49:15,381 INFO Values: [20]
+2025-03-02 17:49:33,277 INFO Completed S38 in 17.90s
+2025-03-02 17:49:33,277 INFO 
+================================================================================
+2025-03-02 17:49:33,277 INFO Run Summary - ID: 20250302_174735
+2025-03-02 17:49:33,277 INFO Total execution time: 118.10s
+2025-03-02 17:49:33,277 INFO Configuration scripts: 6.95s
+2025-03-02 17:49:33,277 INFO Calculations completed: 6
+2025-03-02 17:49:33,277 INFO ================================================================================
 2025-03-03 04:54:47,772 INFO 
 Processing S37:
 2025-03-03 04:54:47,772 INFO Mode: symmetrical
@@ -933,78 +1018,4 @@ Visualization processing complete - Run ID: 20250303_045529
 2025-03-03 05:39:49,881 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
 2025-03-03 05:39:49,881 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
 
-2025-02-27 13:48:03,851 INFO 
-Executing Configuration Management Scripts:
-2025-02-27 13:48:03,851 INFO 
-Executing: formatter.py
-2025-02-27 13:48:03,851 ERROR Error during orchestrated calculations: list index out of range
-2025-02-27 13:48:06,273 INFO 
-================================================================================
-2025-02-27 13:48:06,273 INFO CFA Run Configuration
-2025-02-27 13:48:06,274 INFO ================================================================================
-2025-02-27 13:48:06,274 INFO 
-Basic Configuration:
-2025-02-27 13:48:06,274 INFO Version(s): 
-2025-02-27 13:48:06,274 INFO Calculation Mode: calculateForPrice
-2025-02-27 13:48:06,274 INFO Target Row: 20
-2025-02-27 13:48:06,274 INFO 
-Parameter States:
-2025-02-27 13:48:06,274 INFO Enabled V Parameters: V1
-2025-02-27 13:48:06,274 INFO Enabled F Parameters: F1, F2, F3, F4, F5
-2025-02-27 13:48:06,275 INFO 
-================================================================================
-
-2025-02-27 13:48:06,275 INFO 
-Executing Configuration Management Scripts:
-2025-02-27 13:48:06,275 INFO 
-Executing: formatter.py
-2025-02-27 13:48:06,275 ERROR Error during orchestrated calculations: list index out of range
-2025-02-27 14:09:02,121 INFO 
-================================================================================
-2025-02-27 14:09:02,121 INFO CFA Run Configuration
-2025-02-27 14:09:02,121 INFO ================================================================================
-2025-02-27 14:09:02,121 INFO 
-Basic Configuration:
-2025-02-27 14:09:02,121 INFO Version(s): 
-2025-02-27 14:09:02,121 INFO Calculation Mode: calculateForPrice
-2025-02-27 14:09:02,121 INFO Target Row: 20
-2025-02-27 14:09:02,121 INFO 
-Parameter States:
-2025-02-27 14:09:02,121 INFO Enabled V Parameters: V1
-2025-02-27 14:09:02,121 INFO Enabled F Parameters: F1, F2, F3, F4, F5
-2025-02-27 14:09:02,121 INFO 
-================================================================================
-
-2025-02-27 14:09:02,121 INFO 
-Executing Configuration Management Scripts:
-2025-02-27 14:09:02,121 INFO 
-Executing: formatter.py
-2025-02-27 14:09:02,121 ERROR Error during orchestrated calculations: list index out of range
-2025-02-27 14:11:06,001 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 14:11:06,401 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 14:14:25,408 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 14:14:30,635 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 14:22:19,278 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 14:22:36,387 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 14:35:02,082 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 14:35:03,371 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 14:51:49,711 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 14:51:50,112 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 15:08:13,051 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 15:08:22,227 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 15:08:42,848 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 15:08:48,929 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 15:08:58,087 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 15:09:07,607 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 15:09:13,651 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 15:09:56,069 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 15:10:10,196 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 15:10:33,198 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 15:11:27,431 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-27 15:11:59,808 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-03-02 12:20:58,812 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-03-02 12:20:59,285 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-03-02 14:46:27,772 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-03-02 15:48:43,023 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-03-02 15:48:51,233 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-03-02 15:48:59,464 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-03-02 18:36:21,132 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
