@@ -18,7 +18,8 @@ class CalculationsSensitivityAdapter:
     def __init__(self, base_url="http://127.0.0.1:25007", direct_file_access=True):
         self.base_url = base_url
         self.direct_file_access = direct_file_access
-        self.base_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'public', 'Original')
+        # Use backend/Original instead of public/Original
+        self.base_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'Original')
         logger.info(f"Initialized CalculationsSensitivityAdapter with base URL: {base_url}")
         logger.info(f"Direct file access: {direct_file_access}")
         logger.info(f"Base directory: {self.base_dir}")

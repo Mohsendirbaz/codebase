@@ -332,7 +332,7 @@ def run_calculations():
         
         # Create sensitivity directories early in the process
         version = config['versions'][0]
-        base_dir = os.path.join(BASE_DIR, 'public', 'Original')
+        base_dir = os.path.join(BASE_DIR, 'backend', 'Original')  # Use backend/Original instead of public/Original
         results_folder = os.path.join(base_dir, f'Batch({version})', f'Results({version})')
         sensitivity_dir = os.path.join(results_folder, 'Sensitivity')
         
@@ -351,6 +351,42 @@ def run_calculations():
                 subdir_path = os.path.join(mode_dir, subdir)
                 os.makedirs(subdir_path, exist_ok=True)
                 sensitivity_logger.info(f"Created sensitivity subdirectory: {subdir_path}")
+                
+                # Create parameter-specific variation directories for Configuration
+                if subdir == 'Configuration':
+                    # For each enabled parameter, create variation directories
+                    for param_id, param_config in config['SenParameters'].items():
+                        if not param_config.get('enabled'):
+                            continue
+                            
+                        # Get variation values
+                        values = param_config.get('values', [])
+                        if not values:
+                            continue
+                            
+                        # Determine variation list based on mode
+                        if mode.lower() == 'symmetrical':
+                            # For symmetrical, use first value to create +/- variations
+                            base_variation = values[0]
+                            variation_list = [base_variation, -base_variation]
+                        else:  # 'multiple' mode
+                            # For multiple, use all values directly
+                            variation_list = values
+                            
+                        # Create a directory for each variation
+                        for variation in variation_list:
+                            # Format the variation string (e.g., "+10.00" or "-5.00")
+                            var_str = f"{variation:+.2f}"
+                            
+                            # Create a subdirectory for this specific parameter and variation
+                            param_var_dir = os.path.join(subdir_path, f"{param_id}_{var_str}")
+                            os.makedirs(param_var_dir, exist_ok=True)
+                            sensitivity_logger.info(f"Created parameter variation directory: {param_var_dir}")
+        
+        # Create standalone Configuration directory
+        config_dir = os.path.join(sensitivity_dir, "Configuration")
+        os.makedirs(config_dir, exist_ok=True)
+        sensitivity_logger.info(f"Created standalone Configuration directory: {config_dir}")
         
         # Create Reports and Cache directories
         for extra_dir in ['Reports', 'Cache']:
@@ -521,7 +557,7 @@ def get_sensitivity_visualization():
             }
         }
 
-        base_dir = os.path.join(BASE_DIR, 'public', 'Original')
+        base_dir = os.path.join(BASE_DIR, 'backend', 'Original')  # Use backend/Original instead of public/Original
         results_folder = os.path.join(base_dir, f'Batch({version})', f'Results({version})')
         
         # Create sensitivity directories early in the process
@@ -542,6 +578,42 @@ def get_sensitivity_visualization():
                 subdir_path = os.path.join(mode_dir, subdir)
                 os.makedirs(subdir_path, exist_ok=True)
                 sensitivity_logger.info(f"Created sensitivity subdirectory: {subdir_path}")
+                
+                # Create parameter-specific variation directories for Configuration
+                if subdir == 'Configuration':
+                    # For each enabled parameter, create variation directories
+                    for param_id, param_config in sen_parameters.items():
+                        if not param_config.get('enabled'):
+                            continue
+                            
+                        # Get variation values
+                        values = param_config.get('values', [])
+                        if not values:
+                            continue
+                            
+                        # Determine variation list based on mode
+                        if mode.lower() == 'symmetrical':
+                            # For symmetrical, use first value to create +/- variations
+                            base_variation = values[0]
+                            variation_list = [base_variation, -base_variation]
+                        else:  # 'multiple' mode
+                            # For multiple, use all values directly
+                            variation_list = values
+                            
+                        # Create a directory for each variation
+                        for variation in variation_list:
+                            # Format the variation string (e.g., "+10.00" or "-5.00")
+                            var_str = f"{variation:+.2f}"
+                            
+                            # Create a subdirectory for this specific parameter and variation
+                            param_var_dir = os.path.join(subdir_path, f"{param_id}_{var_str}")
+                            os.makedirs(param_var_dir, exist_ok=True)
+                            sensitivity_logger.info(f"Created parameter variation directory: {param_var_dir}")
+        
+        # Create standalone Configuration directory
+        config_dir = os.path.join(sensitivity_dir, "Configuration")
+        os.makedirs(config_dir, exist_ok=True)
+        sensitivity_logger.info(f"Created standalone Configuration directory: {config_dir}")
         
         # Create Reports and Cache directories
         for extra_dir in ['Reports', 'Cache']:

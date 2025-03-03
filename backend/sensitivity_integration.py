@@ -23,7 +23,7 @@ class SensitivityIntegration:
     def __init__(self):
         self.manager = sensitivity_manager
         self.base_dir = Path(os.path.dirname(os.path.abspath(__file__)))
-        self.original_dir = self.base_dir.parent / 'public' / 'Original'
+        self.original_dir = self.base_dir / 'Original'  # Use backend/Original instead of public/Original
         self.logger = get_integration_logger()
         self.calculation_adapter = calculation_adapter
     

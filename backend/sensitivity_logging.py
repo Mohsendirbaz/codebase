@@ -449,3 +449,15 @@ def log_result_saving(result_file, success=True, error_msg=None):
         logger.info(f"RESULT SAVED: {result_file}")
     else:
         logger.error(f"RESULT SAVING FAILED: {result_file} - {error_msg}")
+
+# Standalone function for logging execution flow
+def log_execution_flow(event, message, component='execution_flow'):
+    """
+    Log execution flow events with sequence tracking.
+    
+    Args:
+        event: Type of event ('enter', 'exit', 'checkpoint', 'error')
+        message: Description of the event
+        component: Logger component to use
+    """
+    logging_manager.log_execution_flow(event, message, component)

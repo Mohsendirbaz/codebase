@@ -24,9 +24,9 @@ def organize_sensitivity_plots(base_dir=None):
     """
     # Determine base directory
     if not base_dir:
-        # Use same path logic as in the main scripts
+        # Use backend/Original instead of public/Original
         backend_dir = Path(os.path.dirname(os.path.abspath(__file__)))
-        base_dir = backend_dir.parent / 'public' / 'Original'
+        base_dir = backend_dir / 'Original'  # This resolves to backend/Original
     
     if not os.path.exists(base_dir):
         logger.error(f"Base directory does not exist: {base_dir}")

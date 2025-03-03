@@ -24,9 +24,9 @@ def organize_sensitivity_html(base_dir=None):
     """
     # Determine base directory
     if not base_dir:
-        # Use same path logic as in the main scripts
+        # Use backend/Original instead of public/Original
         backend_dir = Path(os.path.dirname(os.path.abspath(__file__)))
-        base_dir = backend_dir.parent / 'public' / 'Original'
+        base_dir = backend_dir / 'Original'  # This resolves to backend/Original
     
     if not os.path.exists(base_dir):
         logger.error(f"Base directory does not exist: {base_dir}")
@@ -72,7 +72,18 @@ def organize_sensitivity_html(base_dir=None):
         
         # Create HTML albums directory
         html_albums_dir = os.path.join(results_dir, "SensitivityHTML")
-        os.makedirs(html_albums_dir, exist_ok=True)
+        
+        # Import directory operation functions
+        from sensitivity_logging import directory_operation, log_directory_check
+        
+        # Log directory check and creation
+        with directory_operation('check', html_albums_dir):
+            log_directory_check(html_albums_dir, os.path.exists(html_albums_dir))
+        
+        # Create the directory if it doesn't exist
+        with directory_operation('create', html_albums_dir):
+            os.makedirs(html_albums_dir, exist_ok=True)
+            logger.info(f"Created/verified HTML albums directory: {html_albums_dir}")
         
         # Process different analysis modes
         for mode in ["Symmetrical", "Multipoint"]:
@@ -94,7 +105,16 @@ def organize_sensitivity_html(base_dir=None):
             # Create a mode-specific album
             album_name = f"HTML_Sensitivity_{mode}"
             album_dir = os.path.join(html_albums_dir, album_name)
-            os.makedirs(album_dir, exist_ok=True)
+            
+            # Log directory check and creation
+            with directory_operation('check', album_dir):
+                log_directory_check(album_dir, os.path.exists(album_dir))
+            
+            # Create the directory if it doesn't exist
+            with directory_operation('create', album_dir):
+                os.makedirs(album_dir, exist_ok=True)
+                logger.info(f"Created/verified album directory: {album_dir}")
+            
             stats["albums_created"] += 1
             
             # Copy HTML files to the album
