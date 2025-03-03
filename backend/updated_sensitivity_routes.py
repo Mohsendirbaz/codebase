@@ -71,6 +71,16 @@ def handle_symmetrical_analysis():
         version = data["version"]
         comparison_type = data.get('comparisonType', 'primary')
         
+        # Ensure sensitivity directories exist before any processing
+        try:
+            logger.info(f"Ensuring sensitivity directories exist for version {version}")
+            created_dirs = sensitivity_manager.ensure_sensitivity_directories(version)
+            logger.info(f"Created/verified sensitivity directories: {list(created_dirs.keys())}")
+        except Exception as e:
+            error_msg = f"Error creating sensitivity directories: {str(e)}"
+            logger.error(error_msg)
+            return jsonify({"error": error_msg}), 500
+        
         # Generate configurations using the manager
         configs = sensitivity_manager.generate_sensitivity_configs(
             version, param_id, 'symmetrical', [variation]
@@ -139,6 +149,16 @@ def handle_multipoint_analysis():
         version = data["version"]
         comparison_type = data.get('comparisonType', 'primary')
         
+        # Ensure sensitivity directories exist before any processing
+        try:
+            logger.info(f"Ensuring sensitivity directories exist for version {version}")
+            created_dirs = sensitivity_manager.ensure_sensitivity_directories(version)
+            logger.info(f"Created/verified sensitivity directories: {list(created_dirs.keys())}")
+        except Exception as e:
+            error_msg = f"Error creating sensitivity directories: {str(e)}"
+            logger.error(error_msg)
+            return jsonify({"error": error_msg}), 500
+        
         # Generate configurations using the manager
         configs = sensitivity_manager.generate_sensitivity_configs(
             version, param_id, 'multipoint', variations
@@ -197,6 +217,18 @@ def get_sensitivity_albums(version):
     This consolidates both plot and HTML albums in one response.
     """
     try:
+        version_int = int(version)
+        
+        # Ensure sensitivity directories exist before any processing
+        try:
+            logger.info(f"Ensuring sensitivity directories exist for version {version_int}")
+            created_dirs = sensitivity_manager.ensure_sensitivity_directories(version_int)
+            logger.info(f"Created/verified sensitivity directories: {list(created_dirs.keys())}")
+        except Exception as e:
+            error_msg = f"Error creating sensitivity directories: {str(e)}"
+            logger.error(error_msg)
+            return jsonify({"error": error_msg}), 500
+        
         # Paths to the album directories
         base_dir = sensitivity_integration.original_dir
         results_dir = base_dir / f"Batch({version})" / f"Results({version})"
@@ -272,6 +304,18 @@ def get_sensitivity_plots(version, album_name):
     Get all plots in a specific sensitivity album.
     """
     try:
+        version_int = int(version)
+        
+        # Ensure sensitivity directories exist before any processing
+        try:
+            logger.info(f"Ensuring sensitivity directories exist for version {version_int}")
+            created_dirs = sensitivity_manager.ensure_sensitivity_directories(version_int)
+            logger.info(f"Created/verified sensitivity directories: {list(created_dirs.keys())}")
+        except Exception as e:
+            error_msg = f"Error creating sensitivity directories: {str(e)}"
+            logger.error(error_msg)
+            return jsonify({"error": error_msg}), 500
+        
         base_dir = sensitivity_integration.original_dir
         album_dir = base_dir / f"Batch({version})" / f"Results({version})" / "SensitivityPlots" / album_name
         
@@ -336,6 +380,18 @@ def get_sensitivity_html(version, album_name):
     Get all HTML files in a specific sensitivity album.
     """
     try:
+        version_int = int(version)
+        
+        # Ensure sensitivity directories exist before any processing
+        try:
+            logger.info(f"Ensuring sensitivity directories exist for version {version_int}")
+            created_dirs = sensitivity_manager.ensure_sensitivity_directories(version_int)
+            logger.info(f"Created/verified sensitivity directories: {list(created_dirs.keys())}")
+        except Exception as e:
+            error_msg = f"Error creating sensitivity directories: {str(e)}"
+            logger.error(error_msg)
+            return jsonify({"error": error_msg}), 500
+        
         base_dir = sensitivity_integration.original_dir
         album_dir = base_dir / f"Batch({version})" / f"Results({version})" / "SensitivityHTML" / album_name
         
@@ -408,8 +464,20 @@ def get_sensitivity_results(version):
     Get consolidated results of all sensitivity analyses for a version.
     """
     try:
+        version_int = int(version)
+        
+        # Ensure sensitivity directories exist before any processing
+        try:
+            logger.info(f"Ensuring sensitivity directories exist for version {version_int}")
+            created_dirs = sensitivity_manager.ensure_sensitivity_directories(version_int)
+            logger.info(f"Created/verified sensitivity directories: {list(created_dirs.keys())}")
+        except Exception as e:
+            error_msg = f"Error creating sensitivity directories: {str(e)}"
+            logger.error(error_msg)
+            return jsonify({"error": error_msg}), 500
+        
         # Use the manager to organize results
-        organized_results = sensitivity_manager.organize_sensitivity_results(int(version))
+        organized_results = sensitivity_manager.organize_sensitivity_results(version_int)
         return jsonify(organized_results)
         
     except Exception as e:
@@ -422,6 +490,18 @@ def serve_sensitivity_plot(version, plot_path):
     Serve a specific sensitivity plot file.
     """
     try:
+        version_int = int(version)
+        
+        # Ensure sensitivity directories exist before any processing
+        try:
+            logger.info(f"Ensuring sensitivity directories exist for version {version_int}")
+            created_dirs = sensitivity_manager.ensure_sensitivity_directories(version_int)
+            logger.info(f"Created/verified sensitivity directories: {list(created_dirs.keys())}")
+        except Exception as e:
+            error_msg = f"Error creating sensitivity directories: {str(e)}"
+            logger.error(error_msg)
+            return jsonify({"error": error_msg}), 500
+        
         base_dir = sensitivity_integration.original_dir
         full_path = base_dir / plot_path
         
@@ -441,7 +521,19 @@ def get_sensitivity_visualization():
     """
     try:
         version = request.args.get('version', '1')
-        organized_results = sensitivity_manager.organize_sensitivity_results(int(version))
+        version_int = int(version)
+        
+        # Ensure sensitivity directories exist before any processing
+        try:
+            logger.info(f"Ensuring sensitivity directories exist for version {version_int}")
+            created_dirs = sensitivity_manager.ensure_sensitivity_directories(version_int)
+            logger.info(f"Created/verified sensitivity directories: {list(created_dirs.keys())}")
+        except Exception as e:
+            error_msg = f"Error creating sensitivity directories: {str(e)}"
+            logger.error(error_msg)
+            return jsonify({"error": error_msg}), 500
+        
+        organized_results = sensitivity_manager.organize_sensitivity_results(version_int)
         return jsonify(organized_results)
         
     except Exception as e:

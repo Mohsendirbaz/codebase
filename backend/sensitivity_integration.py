@@ -39,7 +39,28 @@ class SensitivityIntegration:
         Returns:
             dict: Results of the processing operation
         """
+        from sensitivity_logging import track_method, log_directory_check, log_directory_create, directory_operation
+        
         self.logger.info(f"Processing sensitivity request for version {version}")
+        
+        # Ensure sensitivity directories exist before any processing
+        try:
+            self.logger.info(f"Ensuring sensitivity directories exist for version {version}")
+            
+            # Log directory check before creation
+            sensitivity_dir = self.original_dir / f"Batch({version})" / f"Results({version})" / "Sensitivity"
+            log_directory_check(sensitivity_dir, os.path.exists(sensitivity_dir))
+            
+            # Create directories with enhanced logging
+            created_dirs = self.manager.ensure_sensitivity_directories(version)
+            self.logger.info(f"Created/verified sensitivity directories: {list(created_dirs.keys())}")
+        except Exception as e:
+            self.logger.error(f"Error creating sensitivity directories: {str(e)}")
+            return {
+                "version": version,
+                "timestamp": datetime.now().isoformat(),
+                "error": f"Failed to create sensitivity directories: {str(e)}"
+            }
         
         results = {
             "version": version,
@@ -88,6 +109,39 @@ class SensitivityIntegration:
                     values = [10]  # Default to 10% variation
                 elif mode == 'multipoint' and (not values or len(values) == 0):
                     error = f"No variation points specified for multipoint analysis of {param_id}"
+                    self.logger.error(error)
+                    results["errors"].append({"param_id": param_id, "error": error})
+                    continue
+                
+                # Ensure mode-specific directories exist
+                try:
+                    mode_dir = self.original_dir / f"Batch({version})" / f"Results({version})" / "Sensitivity" / (
+                        "Symmetrical" if mode == "symmetrical" else "Multipoint"
+                    )
+                    
+                    # Log directory check and creation
+                    with directory_operation('check', mode_dir):
+                        log_directory_check(mode_dir, os.path.exists(mode_dir))
+                    
+                    # Create the directory if it doesn't exist
+                    with directory_operation('create', mode_dir):
+                        os.makedirs(mode_dir, exist_ok=True)
+                        self.logger.info(f"Created/verified mode directory: {mode_dir}")
+                    
+                    # Create subdirectories for plot types and configuration
+                    for subdir in ['waterfall', 'bar', 'point', 'Configuration']:
+                        subdir_path = mode_dir / subdir
+                        
+                        # Log directory check and creation
+                        with directory_operation('check', subdir_path):
+                            log_directory_check(subdir_path, os.path.exists(subdir_path))
+                        
+                        # Create the subdirectory if it doesn't exist
+                        with directory_operation('create', subdir_path):
+                            os.makedirs(subdir_path, exist_ok=True)
+                            self.logger.info(f"Created/verified subdirectory: {subdir_path}")
+                except Exception as e:
+                    error = f"Error creating mode-specific directories for {param_id}: {str(e)}"
                     self.logger.error(error)
                     results["errors"].append({"param_id": param_id, "error": error})
                     continue
@@ -202,14 +256,32 @@ class SensitivityIntegration:
         Returns:
             tuple: (success, error_message)
         """
+        from sensitivity_logging import track_method, log_directory_check, log_directory_create, directory_operation
+        
         try:
-            # Use direct configuration file modification for sensitivity analysis
+            # Log execution flow
             self.logger.info(f"Running sensitivity analysis for version {version} using direct file access")
             
             # If no sensitivity parameters, we're done
             if not sensitivity_params:
                 self.logger.info("No sensitivity parameters provided, skipping sensitivity analysis")
                 return True, None
+                
+            # Ensure sensitivity directories exist before any processing
+            try:
+                self.logger.info(f"Ensuring sensitivity directories exist for version {version}")
+                
+                # Log directory check before creation
+                sensitivity_dir = self.original_dir / f"Batch({version})" / f"Results({version})" / "Sensitivity"
+                log_directory_check(sensitivity_dir, os.path.exists(sensitivity_dir))
+                
+                # Create directories with enhanced logging
+                created_dirs = self.manager.ensure_sensitivity_directories(version)
+                self.logger.info(f"Created/verified sensitivity directories: {list(created_dirs.keys())}")
+            except Exception as e:
+                error_msg = f"Error creating sensitivity directories: {str(e)}"
+                self.logger.error(error_msg)
+                return False, error_msg
                 
             # Process the sensitivity parameters directly using the manager
             enabled_params = {k: v for k, v in sensitivity_params.items() if v.get('enabled', True)}
@@ -233,6 +305,38 @@ class SensitivityIntegration:
                         values = [10]  # Default to 10% variation
                     elif mode == 'multipoint' and (not values or len(values) == 0):
                         self.logger.warning(f"No variation points specified for {param_id}, skipping")
+                        continue
+                    
+                    # Ensure mode-specific directories exist
+                    try:
+                        mode_dir = self.original_dir / f"Batch({version})" / f"Results({version})" / "Sensitivity" / (
+                            "Symmetrical" if mode == "symmetrical" else "Multipoint"
+                        )
+                        
+                        # Log directory check and creation
+                        with directory_operation('check', mode_dir):
+                            log_directory_check(mode_dir, os.path.exists(mode_dir))
+                        
+                        # Create the directory if it doesn't exist
+                        with directory_operation('create', mode_dir):
+                            os.makedirs(mode_dir, exist_ok=True)
+                            self.logger.info(f"Created/verified mode directory: {mode_dir}")
+                        
+                        # Create subdirectories for plot types and configuration
+                        for subdir in ['waterfall', 'bar', 'point', 'Configuration']:
+                            subdir_path = mode_dir / subdir
+                            
+                            # Log directory check and creation
+                            with directory_operation('check', subdir_path):
+                                log_directory_check(subdir_path, os.path.exists(subdir_path))
+                            
+                            # Create the subdirectory if it doesn't exist
+                            with directory_operation('create', subdir_path):
+                                os.makedirs(subdir_path, exist_ok=True)
+                                self.logger.info(f"Created/verified subdirectory: {subdir_path}")
+                    except Exception as e:
+                        error_msg = f"Error creating mode-specific directories for {param_id}: {str(e)}"
+                        self.logger.error(error_msg)
                         continue
                     
                     # Generate sensitivity configurations

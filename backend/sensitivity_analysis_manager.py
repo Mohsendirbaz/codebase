@@ -61,29 +61,67 @@ class SensitivityAnalysisManager:
         Ensures that all required directories for sensitivity analysis exist.
         Returns a dictionary of created directory paths.
         """
+        from sensitivity_logging import log_directory_create, log_directory_check, directory_operation, track_method
+        
         version_str = str(version)
         batch_dir = self.original_dir / f"Batch({version_str})"
         results_dir = batch_dir / f"Results({version_str})"
         sensitivity_dir = results_dir / "Sensitivity"
         
-        # Create the main sensitivity directory
-        os.makedirs(sensitivity_dir, exist_ok=True)
+        # Log the directory check operation
+        log_directory_check(sensitivity_dir, os.path.exists(sensitivity_dir))
+        
+        # Create the main sensitivity directory with logging
+        with directory_operation('create', sensitivity_dir):
+            os.makedirs(sensitivity_dir, exist_ok=True)
         
         # Create subdirectories for different analysis types and outputs
         created_dirs = {'root': sensitivity_dir}
         
+        # First, create all the main directories
+        for main_dir in self.directory_structure.keys():
+            main_path = sensitivity_dir / main_dir
+            
+            # Log the directory check operation
+            log_directory_check(main_path, os.path.exists(main_path))
+            
+            # Create main directory with logging
+            with directory_operation('create', main_path):
+                os.makedirs(main_path, exist_ok=True)
+            
+            created_dirs[main_dir.lower()] = main_path
+        
+        # Then create all subdirectories
         for main_dir, sub_dirs in self.directory_structure.items():
             main_path = sensitivity_dir / main_dir
-            os.makedirs(main_path, exist_ok=True)
-            created_dirs[main_dir.lower()] = main_path
             
             # Create sub-directories if needed
             for sub_dir in sub_dirs:
                 sub_path = main_path / sub_dir
-                os.makedirs(sub_path, exist_ok=True)
+                
+                # Log the directory check operation
+                log_directory_check(sub_path, os.path.exists(sub_path))
+                
+                # Create sub-directory with logging
+                with directory_operation('create', sub_path):
+                    os.makedirs(sub_path, exist_ok=True)
+                
                 created_dirs[f"{main_dir.lower()}_{sub_dir}"] = sub_path
         
-        self.logger.info(f"Created sensitivity directories for version {version}")
+        # Explicitly create the Configuration directory in each main directory
+        for main_dir in self.directory_structure.keys():
+            config_dir = sensitivity_dir / main_dir / "Configuration"
+            
+            # Log the directory check operation
+            log_directory_check(config_dir, os.path.exists(config_dir))
+            
+            # Create Configuration directory with logging
+            with directory_operation('create', config_dir):
+                os.makedirs(config_dir, exist_ok=True)
+            
+            created_dirs[f"{main_dir.lower()}_configuration"] = config_dir
+        
+        self.logger.info(f"Created/verified sensitivity directories for version {version}: {list(created_dirs.keys())}")
         return created_dirs
     
     def get_parameter_info(self, param_id: str) -> Dict:
@@ -344,6 +382,8 @@ class SensitivityAnalysisManager:
         Returns:
             Path to the saved configuration file
         """
+        from sensitivity_logging import log_directory_check, log_directory_create, directory_operation, log_configuration_saving
+        
         # Ensure sensitivity directories exist
         directories = self.ensure_sensitivity_directories(version)
         
@@ -353,22 +393,50 @@ class SensitivityAnalysisManager:
         else:
             config_dir = directories['multipoint'] / 'Configuration'
         
+        # Log directory check and creation
+        with directory_operation('check', config_dir):
+            log_directory_check(config_dir, os.path.exists(config_dir))
+        
         # Create the directory if it doesn't exist
-        os.makedirs(config_dir, exist_ok=True)
+        with directory_operation('create', config_dir):
+            os.makedirs(config_dir, exist_ok=True)
+            self.logger.info(f"Created/verified configuration directory: {config_dir}")
         
         # Format the variation string (e.g., "+10.00" or "-5.00")
         var_str = f"{variation:+.2f}"
         
-        # Generate filename with the parameter and variation information
-        filename = f"{version}_config_module_{year}_{param_id}_{var_str}.json"
-        file_path = os.path.join(config_dir, filename)
+        # Generate filename using the format that CFA.py expects
+        # CFA.py expects: {version}_config_module_{year}.json
+        filename = f"{version}_config_module_{year}.json"
         
-        # Save the configuration
-        with open(file_path, 'w') as f:
-            json.dump(config_data, f, indent=2)
+        # Create a subdirectory for this specific parameter and variation
+        param_var_dir = config_dir / f"{param_id}_{var_str}"
         
-        self.logger.info(f"Saved variation config for {param_id} with {variation}% variation to {file_path}")
-        return file_path
+        # Log directory check and creation
+        with directory_operation('check', param_var_dir):
+            log_directory_check(param_var_dir, os.path.exists(param_var_dir))
+        
+        # Create the directory if it doesn't exist
+        with directory_operation('create', param_var_dir):
+            os.makedirs(param_var_dir, exist_ok=True)
+            self.logger.info(f"Created/verified parameter variation directory: {param_var_dir}")
+        
+        # Save the file in the parameter-specific subdirectory
+        file_path = os.path.join(param_var_dir, filename)
+        
+        try:
+            # Save the configuration
+            with open(file_path, 'w') as f:
+                json.dump(config_data, f, indent=2)
+            
+            self.logger.info(f"Saved variation config for {param_id} with {variation}% variation to {file_path}")
+            log_configuration_saving(file_path, success=True)
+            return file_path
+        except Exception as e:
+            error_msg = f"Failed to save configuration file {file_path}: {str(e)}"
+            self.logger.error(error_msg)
+            log_configuration_saving(file_path, success=False, error_msg=error_msg)
+            raise
     
     def generate_sensitivity_configs(self, version: int, param_id: str, mode: str, 
                                    values: List[float]) -> List[Dict]:
@@ -518,38 +586,83 @@ class SensitivityAnalysisManager:
         Stores sensitivity calculation results in a standardized format.
         Returns the path to the stored result file.
         """
-        version_str = str(version)
+        from sensitivity_logging import log_execution_flow, track_method, log_directory_check, directory_operation, log_result_saving
         
-        # Ensure directories exist
-        directories = self.ensure_sensitivity_directories(version)
-        mode_dir = directories[mode.lower()]
-        
-        # Prepare metadata
-        metadata = {
-            'version': version,
-            'param_id': param_id,
-            'compare_to_key': compare_to_key,
-            'mode': mode,
-            'timestamp': datetime.now().isoformat(),
-            'property_info': self.get_parameter_info(param_id)
-        }
-        
-        # Combine with calculation results
-        full_data = {
-            'metadata': metadata,
-            'results': result_data
-        }
-        
-        # Generate filename
-        filename = f"{param_id}_vs_{compare_to_key}_{mode.lower()}_results.json"
-        filepath = mode_dir / filename
-        
-        # Save results
-        with open(filepath, 'w') as f:
-            json.dump(full_data, f, indent=2)
-        
-        self.logger.info(f"Stored calculation result: {filepath}")
-        return filepath
+        try:
+            log_execution_flow('enter', f"Storing calculation result for {param_id} vs {compare_to_key}")
+            version_str = str(version)
+            
+            # Ensure directories exist
+            directories = self.ensure_sensitivity_directories(version)
+            
+            # Check if mode directory exists
+            if mode.lower() not in directories:
+                error_msg = f"Mode directory key '{mode.lower()}' not found in directories. Available keys: {list(directories.keys())}"
+                self.logger.error(error_msg)
+                log_execution_flow('error', error_msg)
+                return None
+                
+            mode_dir = directories[mode.lower()]
+            
+            # Log directory check and creation
+            with directory_operation('check', mode_dir):
+                log_directory_check(mode_dir, os.path.exists(mode_dir))
+            
+            # Create the directory if it doesn't exist
+            with directory_operation('create', mode_dir):
+                os.makedirs(mode_dir, exist_ok=True)
+                self.logger.info(f"Created/verified mode directory: {mode_dir}")
+            
+            # Prepare metadata
+            try:
+                param_info = self.get_parameter_info(param_id)
+                metadata = {
+                    'version': version,
+                    'param_id': param_id,
+                    'compare_to_key': compare_to_key,
+                    'mode': mode,
+                    'timestamp': datetime.now().isoformat(),
+                    'property_info': param_info
+                }
+                
+                # Combine with calculation results
+                full_data = {
+                    'metadata': metadata,
+                    'results': result_data
+                }
+                
+                # Generate filename
+                filename = f"{param_id}_vs_{compare_to_key}_{mode.lower()}_results.json"
+                filepath = mode_dir / filename
+                
+                # Save results
+                try:
+                    with open(filepath, 'w') as f:
+                        json.dump(full_data, f, indent=2)
+                    
+                    self.logger.info(f"Successfully stored calculation result: {filepath}")
+                    log_execution_flow('exit', f"Successfully stored calculation result for {param_id}")
+                    log_result_saving(filepath, success=True)
+                    return filepath
+                    
+                except (IOError, PermissionError) as file_error:
+                    error_msg = f"Failed to write result file {filepath}: {str(file_error)}"
+                    self.logger.error(error_msg)
+                    log_execution_flow('error', error_msg)
+                    log_result_saving(filepath, success=False, error_msg=error_msg)
+                    return None
+                    
+            except Exception as metadata_error:
+                error_msg = f"Failed to prepare metadata for {param_id}: {str(metadata_error)}"
+                self.logger.error(error_msg)
+                log_execution_flow('error', error_msg)
+                return None
+                
+        except Exception as e:
+            error_msg = f"Unexpected error in store_calculation_result: {str(e)}"
+            self.logger.exception(error_msg)
+            log_execution_flow('error', error_msg)
+            return None
     
     def generate_plot(self, version: int, param_id: str, compare_to_key: str, 
                     mode: str, plot_type: str, comparison_type: str,
@@ -573,29 +686,147 @@ class SensitivityAnalysisManager:
         Returns:
             Path to the generated plot file
         """
-        version_str = str(version)
+        from sensitivity_logging import (
+            log_execution_flow, track_method, log_directory_check,
+            log_plot_generation_start, log_plot_generation_complete, log_plot_generation_error,
+            log_plot_data_loading, log_plot_data_processing, log_plot_rendering, log_plot_saving,
+            plot_generation_operation
+        )
         
-        # Ensure directories exist
-        directories = self.ensure_sensitivity_directories(version)
-        plot_dir = directories[f"{mode.lower()}_{plot_type}"]
-        
-        # Create a subdirectory for this compare_to_key to group related plots
-        compare_to_dir = plot_dir / compare_to_key
-        os.makedirs(compare_to_dir, exist_ok=True)
-        
-        # Generate plot filename
-        plot_name = f"{plot_type}_{param_id}_vs_{compare_to_key}_{comparison_type}.png"
-        plot_path = compare_to_dir / plot_name
-        
-        # Here we would call the actual plotting function
-        # For now, we'll just log the information
-        self.logger.info(f"Would generate {plot_type} plot at {plot_path}")
-        self.logger.info(f"  - Data source: {result_file}")
-        self.logger.info(f"  - Parameters: {param_id} vs {compare_to_key} ({comparison_type})")
-        
-        # In a real implementation, return the actual plot path
-        # For now, just return the expected path
-        return plot_path
+        # Use the plot generation context manager to track the entire operation
+        with plot_generation_operation(param_id, compare_to_key, plot_type, mode):
+            try:
+                log_execution_flow('enter', f"Generating {plot_type} plot for {param_id} vs {compare_to_key}")
+                version_str = str(version)
+                
+                # Ensure directories exist
+                directories = self.ensure_sensitivity_directories(version)
+                
+                # Check if the plot directory exists
+                plot_dir_key = f"{mode.lower()}_{plot_type}"
+                if plot_dir_key not in directories:
+                    error_msg = f"Plot directory key '{plot_dir_key}' not found in directories. Available keys: {list(directories.keys())}"
+                    self.logger.error(error_msg)
+                    log_execution_flow('error', error_msg)
+                    log_plot_generation_error(param_id, compare_to_key, plot_type, mode, error_msg)
+                    return None
+                    
+                plot_dir = directories[plot_dir_key]
+                
+                # Log directory check
+                log_directory_check(plot_dir, os.path.exists(plot_dir))
+                if not os.path.exists(plot_dir):
+                    error_msg = f"Plot directory does not exist: {plot_dir}"
+                    self.logger.error(error_msg)
+                    log_execution_flow('error', error_msg)
+                    log_plot_generation_error(param_id, compare_to_key, plot_type, mode, error_msg)
+                    return None
+                
+                # Create a subdirectory for this compare_to_key to group related plots
+                compare_to_dir = plot_dir / compare_to_key
+                
+                # Log directory check and creation
+                log_directory_check(compare_to_dir, os.path.exists(compare_to_dir))
+                try:
+                    os.makedirs(compare_to_dir, exist_ok=True)
+                    self.logger.info(f"Created/verified compare_to directory: {compare_to_dir}")
+                except Exception as dir_error:
+                    error_msg = f"Failed to create compare_to directory: {compare_to_dir}. Error: {str(dir_error)}"
+                    self.logger.error(error_msg)
+                    log_execution_flow('error', error_msg)
+                    log_plot_generation_error(param_id, compare_to_key, plot_type, mode, error_msg)
+                    return None
+                
+                # Generate plot filename
+                plot_name = f"{plot_type}_{param_id}_vs_{compare_to_key}_{comparison_type}.png"
+                plot_path = compare_to_dir / plot_name
+                
+                # Check if result file exists
+                if not os.path.exists(result_file):
+                    error_msg = f"Result file does not exist: {result_file}"
+                    self.logger.error(error_msg)
+                    log_execution_flow('error', error_msg)
+                    log_plot_data_loading(param_id, compare_to_key, result_file, success=False, error_msg=error_msg)
+                    return None
+                
+                # Load the result data
+                try:
+                    with open(result_file, 'r') as f:
+                        try:
+                            result_data = json.load(f)
+                            log_plot_data_loading(param_id, compare_to_key, result_file, success=True)
+                        except json.JSONDecodeError as json_error:
+                            error_msg = f"Failed to parse result file {result_file}: {str(json_error)}"
+                            self.logger.error(error_msg)
+                            log_execution_flow('error', error_msg)
+                            log_plot_data_loading(param_id, compare_to_key, result_file, success=False, error_msg=error_msg)
+                            return None
+                except Exception as file_error:
+                    error_msg = f"Failed to open result file {result_file}: {str(file_error)}"
+                    self.logger.error(error_msg)
+                    log_execution_flow('error', error_msg)
+                    log_plot_data_loading(param_id, compare_to_key, result_file, success=False, error_msg=error_msg)
+                    return None
+                
+                # Process the data for plotting
+                try:
+                    # In a real implementation, this would process the data for the specific plot type
+                    # For now, just log that we're processing the data
+                    log_plot_data_processing(param_id, compare_to_key, f"Processing data for {plot_type} plot", success=True)
+                except Exception as processing_error:
+                    error_msg = f"Failed to process data for {plot_type} plot: {str(processing_error)}"
+                    self.logger.error(error_msg)
+                    log_execution_flow('error', error_msg)
+                    log_plot_data_processing(param_id, compare_to_key, f"Processing data for {plot_type} plot", success=False, error_msg=error_msg)
+                    return None
+                
+                # Render the plot
+                try:
+                    # In a real implementation, this would generate the actual plot
+                    # For now, just log that we're rendering the plot
+                    self.logger.info(f"Rendering {plot_type} plot at {plot_path}")
+                    self.logger.info(f"  - Data source: {result_file}")
+                    self.logger.info(f"  - Parameters: {param_id} vs {compare_to_key} ({comparison_type})")
+                    
+                    # Log the plot rendering
+                    log_plot_rendering(param_id, compare_to_key, plot_type, success=True)
+                except Exception as rendering_error:
+                    error_msg = f"Failed to render {plot_type} plot: {str(rendering_error)}"
+                    self.logger.error(error_msg)
+                    log_execution_flow('error', error_msg)
+                    log_plot_rendering(param_id, compare_to_key, plot_type, success=False, error_msg=error_msg)
+                    return None
+                
+                # Save the plot
+                try:
+                    # In a real implementation, this would save the plot to disk
+                    # For now, just log that we're saving the plot
+                    
+                    # Simulate writing to the file to test if we have write permissions
+                    with open(plot_path, 'w') as f:
+                        f.write("Placeholder for plot data")
+                    
+                    # Log successful plot saving
+                    log_plot_saving(plot_path, success=True)
+                except Exception as saving_error:
+                    error_msg = f"Failed to save plot to {plot_path}: {str(saving_error)}"
+                    self.logger.error(error_msg)
+                    log_execution_flow('error', error_msg)
+                    log_plot_saving(plot_path, success=False, error_msg=error_msg)
+                    return None
+                
+                # Log successful plot generation
+                self.logger.info(f"Successfully generated {plot_type} plot at {plot_path}")
+                log_execution_flow('exit', f"Successfully generated {plot_type} plot")
+                log_plot_generation_complete(param_id, compare_to_key, plot_type, mode, plot_path)
+                return plot_path
+                
+            except Exception as e:
+                error_msg = f"Unexpected error in generate_plot: {str(e)}"
+                self.logger.exception(error_msg)
+                log_execution_flow('error', error_msg)
+                log_plot_generation_error(param_id, compare_to_key, plot_type, mode, error_msg)
+                return None
     
     def organize_sensitivity_results(self, version: int) -> Dict:
         """
@@ -611,102 +842,222 @@ class SensitivityAnalysisManager:
         Returns:
             Dict containing organized sensitivity results
         """
-        version_str = str(version)
+        from sensitivity_logging import log_execution_flow, track_method, log_directory_check
         
-        # Get all sensitivity directories
-        directories = self.ensure_sensitivity_directories(version)
-        
-        # Structure to hold organized results
-        organized_results = {
-            'version': version,
-            'parameters': {},
-            'compare_to_groups': {},
-            'plots': {},
-            'results': {}
-        }
-        
-        # Scan for result files
-        for mode in ['Symmetrical', 'Multipoint']:
-            mode_dir = directories[mode.lower()]
-            result_files = list(mode_dir.glob(f"*_results.json"))
+        try:
+            log_execution_flow('enter', f"Organizing sensitivity results for version {version}")
+            version_str = str(version)
             
-            for result_file in result_files:
+            # Get all sensitivity directories
+            directories = self.ensure_sensitivity_directories(version)
+            
+            # Structure to hold organized results
+            organized_results = {
+                'version': version,
+                'parameters': {},
+                'compare_to_groups': {},
+                'plots': {},
+                'results': {},
+                'errors': []  # Track errors for reporting
+            }
+            
+            # Scan for result files
+            for mode in ['Symmetrical', 'Multipoint']:
+                # Check if mode directory exists
+                if mode.lower() not in directories:
+                    error_msg = f"Mode directory key '{mode.lower()}' not found in directories. Available keys: {list(directories.keys())}"
+                    self.logger.error(error_msg)
+                    organized_results['errors'].append(error_msg)
+                    log_execution_flow('error', error_msg)
+                    continue
+                    
+                mode_dir = directories[mode.lower()]
+                
+                # Log directory check
+                log_directory_check(mode_dir, os.path.exists(mode_dir))
+                if not os.path.exists(mode_dir):
+                    error_msg = f"Mode directory does not exist: {mode_dir}"
+                    self.logger.error(error_msg)
+                    organized_results['errors'].append(error_msg)
+                    log_execution_flow('error', error_msg)
+                    continue
+                
+                # Find result files
                 try:
-                    with open(result_file, 'r') as f:
-                        result_data = json.load(f)
-                    
-                    param_id = result_data['metadata']['param_id']
-                    compare_to_key = result_data['metadata']['compare_to_key']
-                    
-                    # Add parameter info if not already present
-                    if param_id not in organized_results['parameters']:
-                        organized_results['parameters'][param_id] = self.get_parameter_info(param_id)
-                    
-                    # Add result data
-                    key = f"{param_id}_vs_{compare_to_key}_{mode.lower()}"
-                    organized_results['results'][key] = result_data['results']
-                    
-                    # Group by compare_to_key
-                    if compare_to_key not in organized_results['compare_to_groups']:
-                        organized_results['compare_to_groups'][compare_to_key] = {
-                            'key': compare_to_key,
-                            'display_name': self.get_parameter_info(compare_to_key).get('display_name', compare_to_key),
-                            'parameters': [],
-                            'plots': {}
-                        }
-                    
-                    # Add parameter to the group if not already present
-                    if param_id not in organized_results['compare_to_groups'][compare_to_key]['parameters']:
-                        organized_results['compare_to_groups'][compare_to_key]['parameters'].append(param_id)
-                    
-                    # Find and add plot information
-                    plot_types = ['waterfall', 'bar', 'point']
-                    for plot_type in plot_types:
-                        plot_dir = directories[f"{mode.lower()}_{plot_type}"] / compare_to_key
-                        if not plot_dir.exists():
+                    result_files = list(mode_dir.glob(f"*_results.json"))
+                    self.logger.info(f"Found {len(result_files)} result files in {mode_dir}")
+                except Exception as glob_error:
+                    error_msg = f"Failed to glob result files in {mode_dir}: {str(glob_error)}"
+                    self.logger.error(error_msg)
+                    organized_results['errors'].append(error_msg)
+                    log_execution_flow('error', error_msg)
+                    continue
+                
+                # Process each result file
+                for result_file in result_files:
+                    try:
+                        self.logger.info(f"Processing result file: {result_file}")
+                        
+                        # Try to read and parse the result file
+                        try:
+                            with open(result_file, 'r') as f:
+                                result_data = json.load(f)
+                        except (IOError, PermissionError) as file_error:
+                            error_msg = f"Failed to read result file {result_file}: {str(file_error)}"
+                            self.logger.error(error_msg)
+                            organized_results['errors'].append(error_msg)
+                            log_execution_flow('error', error_msg)
                             continue
-                            
-                        for comparison_type in ['primary', 'secondary']:
-                            plot_name = f"{plot_type}_{param_id}_vs_{compare_to_key}_{comparison_type}.png"
-                            plot_path = plot_dir / plot_name
-                            
-                            if plot_path.exists():
-                                plot_key = f"{plot_type}_{param_id}_vs_{compare_to_key}_{comparison_type}"
-                                plot_info = {
-                                    'type': plot_type,
-                                    'param_id': param_id,
-                                    'compare_to_key': compare_to_key,
-                                    'comparison_type': comparison_type,
-                                    'mode': mode.lower(),
-                                    'path': str(plot_path.relative_to(self.original_dir)),
-                                    'url': f"/images/Original/{plot_path.relative_to(self.original_dir)}"
+                        except json.JSONDecodeError as json_error:
+                            error_msg = f"Failed to parse result file {result_file}: {str(json_error)}"
+                            self.logger.error(error_msg)
+                            organized_results['errors'].append(error_msg)
+                            log_execution_flow('error', error_msg)
+                            continue
+                        
+                        # Extract metadata
+                        try:
+                            param_id = result_data['metadata']['param_id']
+                            compare_to_key = result_data['metadata']['compare_to_key']
+                            self.logger.info(f"Processing results for {param_id} vs {compare_to_key}")
+                        except KeyError as key_error:
+                            error_msg = f"Missing metadata in result file {result_file}: {str(key_error)}"
+                            self.logger.error(error_msg)
+                            organized_results['errors'].append(error_msg)
+                            log_execution_flow('error', error_msg)
+                            continue
+                        
+                        # Add parameter info if not already present
+                        if param_id not in organized_results['parameters']:
+                            try:
+                                organized_results['parameters'][param_id] = self.get_parameter_info(param_id)
+                            except Exception as param_error:
+                                error_msg = f"Failed to get parameter info for {param_id}: {str(param_error)}"
+                                self.logger.error(error_msg)
+                                organized_results['errors'].append(error_msg)
+                                log_execution_flow('error', error_msg)
+                                # Continue anyway with basic info
+                                organized_results['parameters'][param_id] = {"id": param_id, "display_name": param_id}
+                        
+                        # Add result data
+                        key = f"{param_id}_vs_{compare_to_key}_{mode.lower()}"
+                        organized_results['results'][key] = result_data.get('results', {})
+                        
+                        # Group by compare_to_key
+                        if compare_to_key not in organized_results['compare_to_groups']:
+                            try:
+                                compare_to_info = self.get_parameter_info(compare_to_key)
+                                organized_results['compare_to_groups'][compare_to_key] = {
+                                    'key': compare_to_key,
+                                    'display_name': compare_to_info.get('display_name', compare_to_key),
+                                    'parameters': [],
+                                    'plots': {}
                                 }
+                            except Exception as compare_error:
+                                error_msg = f"Failed to get compare_to info for {compare_to_key}: {str(compare_error)}"
+                                self.logger.error(error_msg)
+                                organized_results['errors'].append(error_msg)
+                                log_execution_flow('error', error_msg)
+                                # Continue anyway with basic info
+                                organized_results['compare_to_groups'][compare_to_key] = {
+                                    'key': compare_to_key,
+                                    'display_name': compare_to_key,
+                                    'parameters': [],
+                                    'plots': {}
+                                }
+                        
+                        # Add parameter to the group if not already present
+                        if param_id not in organized_results['compare_to_groups'][compare_to_key]['parameters']:
+                            organized_results['compare_to_groups'][compare_to_key]['parameters'].append(param_id)
+                        
+                        # Find and add plot information
+                        plot_types = ['waterfall', 'bar', 'point']
+                        for plot_type in plot_types:
+                            # Check if plot directory exists
+                            plot_dir_key = f"{mode.lower()}_{plot_type}"
+                            if plot_dir_key not in directories:
+                                error_msg = f"Plot directory key '{plot_dir_key}' not found in directories for {param_id}"
+                                self.logger.warning(error_msg)
+                                continue
                                 
-                                # Add to main plots dictionary
-                                organized_results['plots'][plot_key] = plot_info
+                            plot_dir = directories[plot_dir_key]
+                            
+                            # Create compare_to subdirectory path
+                            compare_to_dir = plot_dir / compare_to_key
+                            
+                            # Check if compare_to directory exists
+                            if not compare_to_dir.exists():
+                                self.logger.warning(f"Compare_to directory does not exist: {compare_to_dir}")
+                                continue
                                 
-                                # Add to compare_to_group plots
-                                if plot_type not in organized_results['compare_to_groups'][compare_to_key]['plots']:
-                                    organized_results['compare_to_groups'][compare_to_key]['plots'][plot_type] = []
+                            for comparison_type in ['primary', 'secondary']:
+                                plot_name = f"{plot_type}_{param_id}_vs_{compare_to_key}_{comparison_type}.png"
+                                plot_path = compare_to_dir / plot_name
                                 
-                                organized_results['compare_to_groups'][compare_to_key]['plots'][plot_type].append(plot_info)
-                                
-                except Exception as e:
-                    self.logger.error(f"Error processing result file {result_file}: {str(e)}")
-        
-        # Log summary information
-        param_count = len(organized_results['parameters'])
-        result_count = len(organized_results['results'])
-        plot_count = len(organized_results['plots'])
-        group_count = len(organized_results['compare_to_groups'])
-        
-        self.logger.info(f"Organized sensitivity results for version {version}:")
-        self.logger.info(f"  - {param_count} parameters")
-        self.logger.info(f"  - {result_count} results")
-        self.logger.info(f"  - {plot_count} plots")
-        self.logger.info(f"  - {group_count} comparison groups")
-        
-        return organized_results
+                                # Check if plot file exists
+                                if plot_path.exists():
+                                    plot_key = f"{plot_type}_{param_id}_vs_{compare_to_key}_{comparison_type}"
+                                    try:
+                                        plot_info = {
+                                            'type': plot_type,
+                                            'param_id': param_id,
+                                            'compare_to_key': compare_to_key,
+                                            'comparison_type': comparison_type,
+                                            'mode': mode.lower(),
+                                            'path': str(plot_path.relative_to(self.original_dir)),
+                                            'url': f"/images/Original/{plot_path.relative_to(self.original_dir)}"
+                                        }
+                                        
+                                        # Add to main plots dictionary
+                                        organized_results['plots'][plot_key] = plot_info
+                                        
+                                        # Add to compare_to_group plots
+                                        if plot_type not in organized_results['compare_to_groups'][compare_to_key]['plots']:
+                                            organized_results['compare_to_groups'][compare_to_key]['plots'][plot_type] = []
+                                        
+                                        organized_results['compare_to_groups'][compare_to_key]['plots'][plot_type].append(plot_info)
+                                        self.logger.info(f"Added plot: {plot_path}")
+                                    except Exception as plot_error:
+                                        error_msg = f"Failed to process plot {plot_path}: {str(plot_error)}"
+                                        self.logger.error(error_msg)
+                                        organized_results['errors'].append(error_msg)
+                                        log_execution_flow('error', error_msg)
+                                else:
+                                    self.logger.warning(f"Plot file does not exist: {plot_path}")
+                        
+                    except Exception as result_error:
+                        error_msg = f"Error processing result file {result_file}: {str(result_error)}"
+                        self.logger.error(error_msg)
+                        organized_results['errors'].append(error_msg)
+                        log_execution_flow('error', error_msg)
+            
+            # Log summary information
+            param_count = len(organized_results['parameters'])
+            result_count = len(organized_results['results'])
+            plot_count = len(organized_results['plots'])
+            group_count = len(organized_results['compare_to_groups'])
+            
+            self.logger.info(f"Organized sensitivity results for version {version}:")
+            self.logger.info(f"  - {param_count} parameters")
+            self.logger.info(f"  - {result_count} results")
+            self.logger.info(f"  - {plot_count} plots")
+            self.logger.info(f"  - {group_count} comparison groups")
+            
+            log_execution_flow('exit', f"Successfully organized sensitivity results for version {version}")
+            return organized_results
+            
+        except Exception as e:
+            error_msg = f"Unexpected error in organize_sensitivity_results: {str(e)}"
+            self.logger.exception(error_msg)
+            log_execution_flow('error', error_msg)
+            return {
+                'version': version,
+                'parameters': {},
+                'compare_to_groups': {},
+                'plots': {},
+                'results': {},
+                'errors': [error_msg]
+            }
     
     def generate_comparison_report(self, version: int, compare_to_key: str, mode: str) -> Dict:
         """

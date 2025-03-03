@@ -175,3 +175,226 @@
 2025-03-03 00:59:12,103 INFO 127.0.0.1 - - [03/Mar/2025 00:59:12] "OPTIONS /sensitivity/visualization HTTP/1.1" 200 -
 2025-03-03 00:59:12,103 INFO 127.0.0.1 - - [03/Mar/2025 00:59:12] "[33mGET /stream_prices/1 HTTP/1.1[0m" 404 -
 2025-03-03 00:59:12,117 INFO 127.0.0.1 - - [03/Mar/2025 00:59:12] "POST /sensitivity/visualization HTTP/1.1" 200 -
+2025-03-03 01:10:28,512 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\sensitivity_integration.py', reloading
+2025-03-03 01:10:28,612 INFO  * Restarting with stat
+2025-03-03 01:10:29,793 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 01:10:29,837 WARNING  * Debugger is active!
+2025-03-03 01:10:29,847 INFO  * Debugger PIN: 119-059-632
+2025-03-03 01:10:57,094 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\sensitivity_integration.py', reloading
+2025-03-03 01:10:57,168 INFO  * Restarting with stat
+2025-03-03 01:10:57,815 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 01:10:58,135 WARNING  * Debugger is active!
+2025-03-03 01:10:58,143 INFO  * Debugger PIN: 119-059-632
+2025-03-03 01:11:37,629 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\updated_sensitivity_routes.py', reloading
+2025-03-03 01:11:37,698 INFO  * Restarting with stat
+2025-03-03 01:11:38,655 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 01:11:38,712 WARNING  * Debugger is active!
+2025-03-03 01:11:38,727 INFO  * Debugger PIN: 119-059-632
+2025-03-03 01:12:11,797 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\updated_sensitivity_routes.py', reloading
+2025-03-03 01:12:11,858 INFO  * Restarting with stat
+2025-03-03 01:12:12,322 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 01:12:12,354 WARNING  * Debugger is active!
+2025-03-03 01:12:12,369 INFO  * Debugger PIN: 119-059-632
+2025-03-03 01:12:38,289 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\updated_sensitivity_routes.py', reloading
+2025-03-03 01:12:38,380 INFO  * Restarting with stat
+2025-03-03 01:12:39,250 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 01:12:39,313 WARNING  * Debugger is active!
+2025-03-03 01:12:39,313 INFO  * Debugger PIN: 119-059-632
+2025-03-03 01:13:12,233 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\updated_sensitivity_routes.py', reloading
+2025-03-03 01:13:12,348 INFO  * Restarting with stat
+2025-03-03 01:13:14,060 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 01:13:14,130 WARNING  * Debugger is active!
+2025-03-03 01:13:14,146 INFO  * Debugger PIN: 119-059-632
+2025-03-03 01:13:46,273 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\updated_sensitivity_routes.py', reloading
+2025-03-03 01:13:46,506 INFO  * Restarting with stat
+2025-03-03 01:13:48,458 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 01:13:48,512 WARNING  * Debugger is active!
+2025-03-03 01:13:48,514 INFO  * Debugger PIN: 119-059-632
+2025-03-03 01:14:24,531 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\updated_sensitivity_routes.py', reloading
+2025-03-03 01:14:24,614 INFO  * Restarting with stat
+2025-03-03 01:14:26,031 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 01:14:26,114 WARNING  * Debugger is active!
+2025-03-03 01:14:26,114 INFO  * Debugger PIN: 119-059-632
+2025-03-03 01:14:55,052 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\updated_sensitivity_routes.py', reloading
+2025-03-03 01:14:55,136 INFO  * Restarting with stat
+2025-03-03 01:14:56,229 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 01:14:56,310 WARNING  * Debugger is active!
+2025-03-03 01:14:56,310 INFO  * Debugger PIN: 119-059-632
+2025-03-03 01:15:28,669 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\updated_sensitivity_routes.py', reloading
+2025-03-03 01:15:28,757 INFO  * Restarting with stat
+2025-03-03 01:15:29,994 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 01:15:30,099 WARNING  * Debugger is active!
+2025-03-03 01:15:30,114 INFO  * Debugger PIN: 119-059-632
+2025-03-03 01:16:11,272 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 01:16:11,303 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:25007
+2025-03-03 01:16:11,303 INFO [33mPress CTRL+C to quit[0m
+2025-03-03 01:16:11,303 INFO  * Restarting with stat
+2025-03-03 01:16:11,680 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 01:16:11,695 WARNING  * Debugger is active!
+2025-03-03 01:16:11,695 INFO  * Debugger PIN: 119-059-632
+2025-03-03 01:18:08,306 INFO 127.0.0.1 - - [03/Mar/2025 01:18:08] "OPTIONS /runs HTTP/1.1" 200 -
+2025-03-03 01:20:17,218 INFO 127.0.0.1 - - [03/Mar/2025 01:20:17] "POST /runs HTTP/1.1" 200 -
+2025-03-03 01:20:17,286 INFO 127.0.0.1 - - [03/Mar/2025 01:20:17] "[33mGET /prices/1 HTTP/1.1[0m" 404 -
+2025-03-03 01:20:17,288 INFO 127.0.0.1 - - [03/Mar/2025 01:20:17] "OPTIONS /sensitivity/visualization HTTP/1.1" 200 -
+2025-03-03 01:20:17,305 INFO 127.0.0.1 - - [03/Mar/2025 01:20:17] "[33mGET /stream_prices/1 HTTP/1.1[0m" 404 -
+2025-03-03 01:20:17,309 INFO 127.0.0.1 - - [03/Mar/2025 01:20:17] "POST /sensitivity/visualization HTTP/1.1" 200 -
+2025-03-03 01:28:14,888 INFO 127.0.0.1 - - [03/Mar/2025 01:28:14] "[33mGET /health HTTP/1.1[0m" 404 -
+2025-03-03 01:28:15,144 INFO 127.0.0.1 - - [03/Mar/2025 01:28:15] "[33mGET /health HTTP/1.1[0m" 404 -
+2025-03-03 01:28:15,205 INFO 127.0.0.1 - - [03/Mar/2025 01:28:15] "[33mGET /health HTTP/1.1[0m" 404 -
+2025-03-03 01:28:15,477 INFO 127.0.0.1 - - [03/Mar/2025 01:28:15] "[33mGET /health HTTP/1.1[0m" 404 -
+2025-03-03 01:28:28,689 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\sensitivity_logging.py', reloading
+2025-03-03 01:28:28,798 INFO  * Restarting with stat
+2025-03-03 01:28:30,736 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 01:28:30,807 WARNING  * Debugger is active!
+2025-03-03 01:28:30,819 INFO  * Debugger PIN: 119-059-632
+2025-03-03 01:28:42,201 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\sensitivity_logging.py', reloading
+2025-03-03 01:28:42,326 INFO  * Restarting with stat
+2025-03-03 01:28:44,940 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 01:28:44,978 WARNING  * Debugger is active!
+2025-03-03 01:28:44,990 INFO  * Debugger PIN: 119-059-632
+2025-03-03 01:29:50,694 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\sensitivity_analysis_manager.py', reloading
+2025-03-03 01:29:50,803 INFO  * Restarting with stat
+2025-03-03 01:29:52,317 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 01:29:52,410 WARNING  * Debugger is active!
+2025-03-03 01:29:52,412 INFO  * Debugger PIN: 119-059-632
+2025-03-03 01:30:20,585 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\sensitivity_integration.py', reloading
+2025-03-03 01:30:20,627 INFO  * Restarting with stat
+2025-03-03 01:30:21,058 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 01:30:21,096 WARNING  * Debugger is active!
+2025-03-03 01:30:21,103 INFO  * Debugger PIN: 119-059-632
+2025-03-03 01:30:44,221 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\sensitivity_integration.py', reloading
+2025-03-03 01:30:44,401 INFO  * Restarting with stat
+2025-03-03 01:30:47,293 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 01:30:47,821 WARNING  * Debugger is active!
+2025-03-03 01:30:47,836 INFO  * Debugger PIN: 119-059-632
+2025-03-03 01:30:55,815 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\sensitivity_integration.py', reloading
+2025-03-03 01:30:55,894 INFO  * Restarting with stat
+2025-03-03 01:30:58,078 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 01:30:58,112 WARNING  * Debugger is active!
+2025-03-03 01:30:58,129 INFO  * Debugger PIN: 119-059-632
+2025-03-03 01:31:44,720 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\sensitivity_integration.py', reloading
+2025-03-03 01:31:44,886 INFO  * Restarting with stat
+2025-03-03 01:31:46,585 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 01:31:46,635 WARNING  * Debugger is active!
+2025-03-03 01:31:46,643 INFO  * Debugger PIN: 119-059-632
+2025-03-03 01:31:56,700 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\sensitivity_integration.py', reloading
+2025-03-03 01:31:56,785 INFO  * Restarting with stat
+2025-03-03 01:31:59,485 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 01:31:59,785 WARNING  * Debugger is active!
+2025-03-03 01:31:59,819 INFO  * Debugger PIN: 119-059-632
+2025-03-03 01:32:20,667 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\sensitivity_integration.py', reloading
+2025-03-03 01:32:20,747 INFO  * Restarting with stat
+2025-03-03 01:32:21,524 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 01:32:21,571 WARNING  * Debugger is active!
+2025-03-03 01:32:21,571 INFO  * Debugger PIN: 119-059-632
+2025-03-03 01:33:02,679 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\calculations_sensitivity_adapter.py', reloading
+2025-03-03 01:33:02,756 INFO  * Restarting with stat
+2025-03-03 01:33:04,206 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 01:33:04,273 WARNING  * Debugger is active!
+2025-03-03 01:33:04,273 INFO  * Debugger PIN: 119-059-632
+2025-03-03 01:33:29,843 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\calculations_sensitivity_adapter.py', reloading
+2025-03-03 01:33:29,910 INFO  * Restarting with stat
+2025-03-03 01:33:30,464 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 01:33:30,482 WARNING  * Debugger is active!
+2025-03-03 01:33:30,498 INFO  * Debugger PIN: 119-059-632
+2025-03-03 01:34:05,554 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\calculations_sensitivity_adapter.py', reloading
+2025-03-03 01:34:05,628 INFO  * Restarting with stat
+2025-03-03 01:34:08,534 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 01:34:08,633 WARNING  * Debugger is active!
+2025-03-03 01:34:08,633 INFO  * Debugger PIN: 119-059-632
+2025-03-03 01:34:50,763 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 01:34:50,794 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:25007
+2025-03-03 01:34:50,794 INFO [33mPress CTRL+C to quit[0m
+2025-03-03 01:34:50,794 INFO  * Restarting with stat
+2025-03-03 01:34:51,196 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 01:34:51,212 WARNING  * Debugger is active!
+2025-03-03 01:34:51,228 INFO  * Debugger PIN: 119-059-632
+2025-03-03 01:36:11,647 INFO 127.0.0.1 - - [03/Mar/2025 01:36:11] "OPTIONS /runs HTTP/1.1" 200 -
+2025-03-03 01:38:23,153 INFO 127.0.0.1 - - [03/Mar/2025 01:38:23] "POST /runs HTTP/1.1" 200 -
+2025-03-03 01:38:23,228 INFO 127.0.0.1 - - [03/Mar/2025 01:38:23] "[33mGET /prices/1 HTTP/1.1[0m" 404 -
+2025-03-03 01:38:23,244 INFO 127.0.0.1 - - [03/Mar/2025 01:38:23] "OPTIONS /sensitivity/visualization HTTP/1.1" 200 -
+2025-03-03 01:38:23,244 INFO 127.0.0.1 - - [03/Mar/2025 01:38:23] "[33mGET /stream_prices/1 HTTP/1.1[0m" 404 -
+2025-03-03 01:38:23,260 INFO 127.0.0.1 - - [03/Mar/2025 01:38:23] "POST /sensitivity/visualization HTTP/1.1" 200 -
+2025-03-03 01:48:59,772 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-03-03 01:48:59,888 INFO  * Restarting with stat
+2025-03-03 01:49:01,237 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 01:49:01,304 WARNING  * Debugger is active!
+2025-03-03 01:49:01,313 INFO  * Debugger PIN: 119-059-632
+2025-03-03 01:49:51,765 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\sensitivity_analysis_manager.py', reloading
+2025-03-03 01:49:51,881 INFO  * Restarting with stat
+2025-03-03 01:49:53,593 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 01:49:53,635 WARNING  * Debugger is active!
+2025-03-03 01:49:53,647 INFO  * Debugger PIN: 119-059-632
+2025-03-03 01:50:27,963 INFO 127.0.0.1 - - [03/Mar/2025 01:50:27] "OPTIONS /runs HTTP/1.1" 200 -
+2025-03-03 01:52:40,963 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\sensitivity_analysis_manager.py', reloading
+2025-03-03 01:52:41,018 INFO  * Restarting with stat
+2025-03-03 01:52:41,418 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 01:52:41,451 WARNING  * Debugger is active!
+2025-03-03 01:52:41,451 INFO  * Debugger PIN: 119-059-632
+2025-03-03 01:53:22,485 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-03-03 01:53:22,697 INFO  * Restarting with stat
+2025-03-03 01:53:25,674 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 01:53:25,846 WARNING  * Debugger is active!
+2025-03-03 01:53:25,862 INFO  * Debugger PIN: 119-059-632
+2025-03-03 01:53:50,983 INFO 127.0.0.1 - - [03/Mar/2025 01:53:50] "OPTIONS /runs HTTP/1.1" 200 -
+2025-03-03 01:56:01,702 INFO 127.0.0.1 - - [03/Mar/2025 01:56:01] "POST /runs HTTP/1.1" 200 -
+2025-03-03 01:56:01,765 INFO 127.0.0.1 - - [03/Mar/2025 01:56:01] "[33mGET /prices/1 HTTP/1.1[0m" 404 -
+2025-03-03 01:56:01,769 INFO 127.0.0.1 - - [03/Mar/2025 01:56:01] "OPTIONS /sensitivity/visualization HTTP/1.1" 200 -
+2025-03-03 01:56:01,769 INFO 127.0.0.1 - - [03/Mar/2025 01:56:01] "[33mGET /stream_prices/1 HTTP/1.1[0m" 404 -
+2025-03-03 01:56:01,800 INFO 127.0.0.1 - - [03/Mar/2025 01:56:01] "POST /sensitivity/visualization HTTP/1.1" 200 -
+2025-03-03 02:00:05,891 INFO 127.0.0.1 - - [03/Mar/2025 02:00:05] "OPTIONS /runs HTTP/1.1" 200 -
+2025-03-03 02:02:24,865 INFO 127.0.0.1 - - [03/Mar/2025 02:02:24] "POST /runs HTTP/1.1" 200 -
+2025-03-03 02:02:24,911 INFO 127.0.0.1 - - [03/Mar/2025 02:02:24] "[33mGET /prices/1 HTTP/1.1[0m" 404 -
+2025-03-03 02:02:24,927 INFO 127.0.0.1 - - [03/Mar/2025 02:02:24] "OPTIONS /sensitivity/visualization HTTP/1.1" 200 -
+2025-03-03 02:02:24,943 INFO 127.0.0.1 - - [03/Mar/2025 02:02:24] "[33mGET /stream_prices/1 HTTP/1.1[0m" 404 -
+2025-03-03 02:02:24,958 INFO 127.0.0.1 - - [03/Mar/2025 02:02:24] "POST /sensitivity/visualization HTTP/1.1" 200 -
+2025-03-03 02:05:29,706 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\sensitivity_analysis_manager.py', reloading
+2025-03-03 02:05:29,788 INFO  * Restarting with stat
+2025-03-03 02:05:30,428 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 02:05:30,471 WARNING  * Debugger is active!
+2025-03-03 02:05:30,478 INFO  * Debugger PIN: 119-059-632
+2025-03-03 02:06:30,507 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\sensitivity_analysis_manager.py', reloading
+2025-03-03 02:06:30,577 INFO  * Restarting with stat
+2025-03-03 02:06:31,454 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 02:06:31,491 WARNING  * Debugger is active!
+2025-03-03 02:06:31,506 INFO  * Debugger PIN: 119-059-632
+2025-03-03 02:07:48,308 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\sensitivity_analysis_manager.py', reloading
+2025-03-03 02:07:48,392 INFO  * Restarting with stat
+2025-03-03 02:07:50,024 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 02:07:50,182 WARNING  * Debugger is active!
+2025-03-03 02:07:50,191 INFO  * Debugger PIN: 119-059-632
+2025-03-03 02:09:20,353 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\sensitivity_analysis_manager.py', reloading
+2025-03-03 02:09:20,417 INFO  * Restarting with stat
+2025-03-03 02:09:22,650 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 02:09:23,189 WARNING  * Debugger is active!
+2025-03-03 02:09:23,199 INFO  * Debugger PIN: 119-059-632
+2025-03-03 02:10:25,532 INFO 127.0.0.1 - - [03/Mar/2025 02:10:25] "OPTIONS /runs HTTP/1.1" 200 -
+2025-03-03 02:12:41,865 INFO 127.0.0.1 - - [03/Mar/2025 02:12:41] "POST /runs HTTP/1.1" 200 -
+2025-03-03 02:12:41,912 INFO 127.0.0.1 - - [03/Mar/2025 02:12:41] "[33mGET /prices/1 HTTP/1.1[0m" 404 -
+2025-03-03 02:12:41,931 INFO 127.0.0.1 - - [03/Mar/2025 02:12:41] "OPTIONS /sensitivity/visualization HTTP/1.1" 200 -
+2025-03-03 02:12:41,931 INFO 127.0.0.1 - - [03/Mar/2025 02:12:41] "[33mGET /stream_prices/1 HTTP/1.1[0m" 404 -
+2025-03-03 02:12:41,947 INFO 127.0.0.1 - - [03/Mar/2025 02:12:41] "POST /sensitivity/visualization HTTP/1.1" 200 -
+2025-03-03 02:19:02,961 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\sensitivity_logging.py', reloading
+2025-03-03 02:19:03,038 INFO  * Restarting with stat
+2025-03-03 02:19:05,770 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 02:19:05,986 WARNING  * Debugger is active!
+2025-03-03 02:19:05,986 INFO  * Debugger PIN: 119-059-632
+2025-03-03 02:19:29,143 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\sensitivity_logging.py', reloading
+2025-03-03 02:19:29,276 INFO  * Restarting with stat
+2025-03-03 02:19:30,575 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 02:19:30,659 WARNING  * Debugger is active!
+2025-03-03 02:19:30,659 INFO  * Debugger PIN: 119-059-632
+2025-03-03 02:19:54,540 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\sensitivity_logging.py', reloading
+2025-03-03 02:19:54,613 INFO  * Restarting with stat
+2025-03-03 02:19:55,500 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 02:19:55,545 WARNING  * Debugger is active!
+2025-03-03 02:19:55,552 INFO  * Debugger PIN: 119-059-632
+2025-03-03 02:21:11,884 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\sensitivity_analysis_manager.py', reloading
+2025-03-03 02:21:11,938 INFO  * Restarting with stat
+2025-03-03 02:21:12,545 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
+2025-03-03 02:21:12,600 WARNING  * Debugger is active!
+2025-03-03 02:21:12,608 INFO  * Debugger PIN: 119-059-632
+2025-03-03 02:22:52,569 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-03-03 02:22:52,720 INFO  * Restarting with stat

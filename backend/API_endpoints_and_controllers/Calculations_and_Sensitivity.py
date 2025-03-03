@@ -28,6 +28,13 @@ import sys
 base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(base_dir)
 
+# Import plot generation logging functions
+from sensitivity_logging import (
+    log_plot_generation_start, log_plot_generation_complete, log_plot_generation_error,
+    log_plot_data_loading, log_plot_data_processing, log_plot_rendering, log_plot_saving,
+    plot_generation_operation, log_execution_flow
+)
+
 # =====================================
 # Configuration Constants
 # =====================================
@@ -323,6 +330,34 @@ def run_calculations():
             'SenParameters': data.get('SenParameters', {})
         }
         
+        # Create sensitivity directories early in the process
+        version = config['versions'][0]
+        base_dir = os.path.join(BASE_DIR, 'public', 'Original')
+        results_folder = os.path.join(base_dir, f'Batch({version})', f'Results({version})')
+        sensitivity_dir = os.path.join(results_folder, 'Sensitivity')
+        
+        # Create main sensitivity directory
+        os.makedirs(sensitivity_dir, exist_ok=True)
+        sensitivity_logger.info(f"Created main sensitivity directory: {sensitivity_dir}")
+        
+        # Create subdirectories for different analysis types
+        for mode in ['Symmetrical', 'Multipoint']:
+            mode_dir = os.path.join(sensitivity_dir, mode)
+            os.makedirs(mode_dir, exist_ok=True)
+            sensitivity_logger.info(f"Created sensitivity mode directory: {mode_dir}")
+            
+            # Create subdirectories for plot types and configuration
+            for subdir in ['waterfall', 'bar', 'point', 'Configuration']:
+                subdir_path = os.path.join(mode_dir, subdir)
+                os.makedirs(subdir_path, exist_ok=True)
+                sensitivity_logger.info(f"Created sensitivity subdirectory: {subdir_path}")
+        
+        # Create Reports and Cache directories
+        for extra_dir in ['Reports', 'Cache']:
+            extra_path = os.path.join(sensitivity_dir, extra_dir)
+            os.makedirs(extra_path, exist_ok=True)
+            sensitivity_logger.info(f"Created sensitivity extra directory: {extra_path}")
+        
         # Log run configuration
         log_run_configuration(sensitivity_logger, config)
 
@@ -468,6 +503,7 @@ def get_sensitivity_visualization():
         version = data.get('selectedVersions', [1])[0]
         sen_parameters = data.get('SenParameters', {})
 
+        log_execution_flow('enter', f"Processing visualization request - Run ID: {run_id}")
         sensitivity_logger.info(f"\nProcessing visualization request - Run ID: {run_id}")
         sensitivity_logger.info(f"Version: {version}")
         sensitivity_logger.info(f"Parameters: {list(sen_parameters.keys())}")
@@ -488,12 +524,39 @@ def get_sensitivity_visualization():
         base_dir = os.path.join(BASE_DIR, 'public', 'Original')
         results_folder = os.path.join(base_dir, f'Batch({version})', f'Results({version})')
         
+        # Create sensitivity directories early in the process
+        sensitivity_dir = os.path.join(results_folder, 'Sensitivity')
+        
+        # Create main sensitivity directory
+        os.makedirs(sensitivity_dir, exist_ok=True)
+        sensitivity_logger.info(f"Created main sensitivity directory: {sensitivity_dir}")
+        
+        # Create subdirectories for different analysis types
+        for mode in ['Symmetrical', 'Multipoint']:
+            mode_dir = os.path.join(sensitivity_dir, mode)
+            os.makedirs(mode_dir, exist_ok=True)
+            sensitivity_logger.info(f"Created sensitivity mode directory: {mode_dir}")
+            
+            # Create subdirectories for plot types and configuration
+            for subdir in ['waterfall', 'bar', 'point', 'Configuration']:
+                subdir_path = os.path.join(mode_dir, subdir)
+                os.makedirs(subdir_path, exist_ok=True)
+                sensitivity_logger.info(f"Created sensitivity subdirectory: {subdir_path}")
+        
+        # Create Reports and Cache directories
+        for extra_dir in ['Reports', 'Cache']:
+            extra_path = os.path.join(sensitivity_dir, extra_dir)
+            os.makedirs(extra_path, exist_ok=True)
+            sensitivity_logger.info(f"Created sensitivity extra directory: {extra_path}")
+        
         plots_generated = 0
         
         for param_id, config in sen_parameters.items():
             if not config.get('enabled'):
                 continue
 
+            # Log the start of processing for this parameter
+            log_execution_flow('checkpoint', f"Processing parameter {param_id}")
             sensitivity_logger.info(f"\nProcessing {param_id}:")
             
             mode = config.get('mode')
@@ -547,24 +610,34 @@ def get_sensitivity_visualization():
                 'Symmetrical' if mode == 'symmetrical' else 'Multipoint'
             )
 
+            # Check if sensitivity directory exists
             if not os.path.exists(sensitivity_dir):
                 error_msg = f"Sensitivity directory not found: {sensitivity_dir}"
                 sensitivity_logger.error(error_msg)
+                log_execution_flow('error', error_msg)
                 visualization_data['parameters'][param_id]['status']['error'] = error_msg
                 visualization_data['metadata']['errors'].append(error_msg)
                 continue
 
+            # Process each plot type
             for plot_type in plot_types:
+                # Log the start of plot generation attempt
+                log_plot_generation_start(param_id, config['compareToKey'], plot_type, mode)
+                
+                # Construct the plot name and path
                 plot_name = f"{plot_type}_{param_id}_{config['compareToKey']}_{config.get('comparisonType', 'primary')}"
                 plot_path = os.path.join(sensitivity_dir, f"{plot_name}.png")
                 
+                # Initialize plot status
                 plot_status = {
                     'status': 'error',
                     'path': None,
                     'error': None
                 }
 
+                # Check if the plot file exists
                 if os.path.exists(plot_path):
+                    # Plot exists, log success
                     relative_path = os.path.relpath(plot_path, base_dir)
                     plot_status.update({
                         'status': 'ready',
@@ -573,15 +646,36 @@ def get_sensitivity_visualization():
                     })
                     plots_generated += 1
                     sensitivity_logger.info(f"Found {plot_type} plot: {relative_path}")
+                    log_plot_generation_complete(param_id, config['compareToKey'], plot_type, mode, plot_path)
                 else:
+                    # Plot doesn't exist, log the error
                     error_msg = f"Plot not found: {plot_name}"
                     plot_status['error'] = error_msg
                     sensitivity_logger.warning(error_msg)
+                    
+                    # Log detailed information about the missing plot
+                    log_plot_generation_error(param_id, config['compareToKey'], plot_type, mode, error_msg)
+                    
+                    # Check if result data exists for this parameter
+                    result_file_name = f"{param_id}_vs_{config['compareToKey']}_{mode.lower()}_results.json"
+                    result_file_path = os.path.join(sensitivity_dir, result_file_name)
+                    
+                    if os.path.exists(result_file_path):
+                        # Result data exists but plot wasn't generated
+                        log_plot_data_loading(param_id, config['compareToKey'], result_file_path, success=True)
+                        log_plot_rendering(param_id, config['compareToKey'], plot_type, success=False, 
+                                          error_msg="Plot generation was not attempted or failed")
+                    else:
+                        # Result data doesn't exist
+                        log_plot_data_loading(param_id, config['compareToKey'], result_file_path, success=False, 
+                                             error_msg="Result data file not found")
 
+                # Add plot status to visualization data
                 visualization_data['plots'][param_id][plot_type] = plot_status
 
             # Update parameter processing status
             visualization_data['parameters'][param_id]['status']['processed'] = True
+            log_execution_flow('checkpoint', f"Completed processing parameter {param_id}")
 
         # Update metadata
         processing_time = time.time() - start_time
@@ -595,12 +689,14 @@ def get_sensitivity_visualization():
         sensitivity_logger.info(f"Plots generated: {plots_generated}")
         if visualization_data['metadata']['errors']:
             sensitivity_logger.info(f"Errors encountered: {len(visualization_data['metadata']['errors'])}")
-
+        
+        log_execution_flow('exit', f"Visualization processing complete - Run ID: {run_id}")
         return jsonify(visualization_data)
 
     except Exception as e:
         error_msg = f"Error generating visualization data: {str(e)}"
         sensitivity_logger.exception(error_msg)
+        log_execution_flow('error', error_msg)
         
         # Return partial data if available, along with error
         if 'visualization_data' in locals():
