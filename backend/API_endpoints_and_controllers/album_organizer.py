@@ -22,7 +22,7 @@ def organize_plot_albums(base_dir=None):
     if not base_dir:
         # Same path logic as in the main scripts
         backend_dir = Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-        base_dir = backend_dir.parent / 'public' / 'Original'
+        base_dir = backend_dir.parent /'Original'
     
     if not os.path.exists(base_dir):
         logger.error(f"Base directory does not exist: {base_dir}")

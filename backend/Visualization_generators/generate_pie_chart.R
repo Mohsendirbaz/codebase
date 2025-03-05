@@ -19,7 +19,7 @@ if (length(args) == 0) {
 # Iterate over versions and generate plots
 for (version in version_list) {
 # Define file paths based on dynamic version
-code_files_path <- "C:/Users/md8w7/OneDrive University of Missouri/Desktop/ImportantFiles/Milestone4/backend/Original"
+code_files_path <- "C:/Users/md8w7/OneDrive University of Missouri/Desktop/ImportantFiles/Milestone4/Original"
 results_folder <- file.path(code_files_path, paste0("Batch(", version, ")"), paste0("Results(", version, ")"))
 data_csv_path <- file.path(results_folder, paste0("Fixed_Opex_Table_(", version, ").csv"))
 plot_folder <- file.path(results_folder, paste0(version, "_PieStaticPlots_R"))

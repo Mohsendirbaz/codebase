@@ -7,7 +7,7 @@ import pandas as pd
 app = Flask(__name__)
 CORS(app)
 
-BASE_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "public", "Original")
+BASE_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "Original")
 
 def get_versions(directory: str):
     if not os.path.exists(directory):

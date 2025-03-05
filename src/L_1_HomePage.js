@@ -241,11 +241,25 @@ const L_1_HomePageContent = () => {
         setcustomizedFeatures((prevState) => (prevState === 'off' ? 'on' : 'off'));
     };
 
+    // State to track refresh operations
+    const [isRefreshing, setIsRefreshing] = useState(false);
+    
     const handleRefresh = () => {
+        // Store the current version
+        const currentVersion = version;
+        
+        // Set refreshing state to true
+        setIsRefreshing(true);
+        
+        // Force a re-fetch by setting a different version temporarily
+        // Using '0' instead of empty string to ensure it's a valid version number
         setVersion('0');
+        
+        // Set it back to the current version after a short delay
         setTimeout(() => {
-            setVersion(version);
-        }, 1);
+            setVersion(currentVersion);
+            setIsRefreshing(false);
+        }, 100);
     };
 
     const updatePrice = (version, price) => {
@@ -852,6 +866,12 @@ const L_1_HomePageContent = () => {
     // Fetch HTML files based on version
     useEffect(() => {
         const fetchHtmlFiles = async () => {
+            // Skip API call if version is empty (during refresh)
+            if (!version) {
+                console.log('Skipping HTML fetch - version is empty (refresh in progress)');
+                return;
+            }
+            
             try {
                 console.log(`Fetching HTML files for version: ${version}`);
                 const response = await fetch(`http://localhost:8009/api/album_html/${version}`);
@@ -870,6 +890,26 @@ const L_1_HomePageContent = () => {
                     return;
                 }
 
+                // Log the raw data to see what's being returned
+                console.log(`Raw HTML data:`, data);
+                
+                // Check if data is an array and has elements
+                if (!Array.isArray(data) || data.length === 0) {
+                    console.log(`No HTML files returned from API for version ${version}`);
+                    setAlbumHtmls({});
+                    return;
+                }
+                
+                // Log the first item in the data array
+                console.log(`First HTML file:`, data[0]);
+                
+                // Check if the data has the expected structure
+                if (!data[0].album || !data[0].content) {
+                    console.log(`HTML data does not have the expected structure:`, data[0]);
+                    setAlbumHtmls({});
+                    return;
+                }
+                
                 // Group HTML files by album
                 const albumGroupedHtmls = data.reduce((acc, html) => {
                     const { album } = html;
@@ -888,6 +928,12 @@ const L_1_HomePageContent = () => {
                 console.log(`First album with HTML files:`, firstAlbumWithHtml);
                 if (firstAlbumWithHtml) {
                     setSelectedHtml(firstAlbumWithHtml);
+                    
+                    // Log the HTML content of the first file in the first album
+                    if (albumGroupedHtmls[firstAlbumWithHtml] && albumGroupedHtmls[firstAlbumWithHtml][0]) {
+                        console.log(`HTML content of first file:`, albumGroupedHtmls[firstAlbumWithHtml][0].content);
+                        console.log(`HTML content length:`, albumGroupedHtmls[firstAlbumWithHtml][0].content.length);
+                    }
                 }
             } catch (error) {
                 console.error('Error fetching HTML files:', error);
@@ -902,7 +948,6 @@ const L_1_HomePageContent = () => {
     const transformPathToUrlh = (filePath) => {
         // Normalize the file path to replace backslashes with forward slashes
         const normalizedPath = filePath.replace(/\\/g, '/');
-        const baseUrl = `http://localhost:3000/Original`;
         
         // Extract the batch version using a simpler regex that just looks for the number in Batch(X)
         const batchMatch = normalizedPath.match(/Batch\((\d+)\)/);
@@ -920,7 +965,8 @@ const L_1_HomePageContent = () => {
         const album = pathParts[pathParts.length - 2];
         
         // Construct the URL using the extracted parts
-        return `${baseUrl}/Batch(${version})/Results(${version})/${album}/${fileName}`;
+        // Use the Flask server that's serving the HTML files (port 8009)
+        return `http://localhost:8009/static/html/${version}/${album}/${fileName}`;
     };
 
     const transformAlbumName = (album) => {
@@ -929,7 +975,7 @@ const L_1_HomePageContent = () => {
         if (htmlMatch) {
             const versions = htmlMatch[1].replace(/_/g, ', ');
             const description = htmlMatch[2].replace(/_/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2');
-            return `${description} for versions [${versions}]`;
+            return `${description} for versions [${versions}] (Current: ${version})`;
         }
         
         // Handle legacy v1_2_PlotType_Plot format
@@ -937,30 +983,30 @@ const L_1_HomePageContent = () => {
         if (legacyMatch) {
             const versions = legacyMatch[1].replace(/_/g, ', ');
             const description = legacyMatch[2].replace(/_/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2');
-            return `${description} for versions [${versions}]`;
+            return `${description} for versions [${versions}] (Current: ${version})`;
         }
         
         // Default formatting for other album names
-        return album.replace(/_/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2');
+        return `${album.replace(/_/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2')} (Version ${version})`;
     };
 
     const renderHtmlContent = () => {
         if (!selectedHtml || !albumHtmls[selectedHtml]) return null;
 
         return albumHtmls[selectedHtml].map((html, index) => {
-            const htmlUrl = transformPathToUrlh(html.path);
             return (
                 <div key={index} className={`html-content ${iframesLoaded[index] ? 'loaded' : ''}`}>
                     <iframe
-                        src={htmlUrl}
-                        title={html.name}
-                        width="100%"
-                        height="600px"
-                        style={{ margin: '10px' }}
+                        srcDoc={html.content}
+                        style={{ margin: '10px', width: '100%', height: '600px', border: 'none' }}
                         onLoad={() => {
                             setIframesLoaded((prev) => ({ ...prev, [index]: true }));
+                            console.log(`Iframe ${index} loaded successfully`);
                         }}
                         className={iframesLoaded[index] ? 'loaded' : ''}
+                        title={`HTML Content ${index}`}
+                        allowFullScreen={true}
+                        allow="fullscreen"
                     />
                 </div>
             );
@@ -968,9 +1014,6 @@ const L_1_HomePageContent = () => {
     };
 
     const renderCase2Content = () => {
-        if (!albumHtmls || Object.keys(albumHtmls).length === 0)
-            return <div>No HTML files available</div>;
-
         return (
             <div>
                 <div className="version-input-container">
@@ -982,20 +1025,32 @@ const L_1_HomePageContent = () => {
                         value={version}
                         onChange={handleVersionChange}
                     />
+                    <button 
+                        className="refresh-button"
+                        onClick={handleRefresh}
+                        title="Refresh visualization"
+                    >
+                        ↻
+                    </button>
                 </div>
-                <Tabs
-                    selectedIndex={Object.keys(albumHtmls).indexOf(selectedHtml)}
-                    onSelect={(index) => setSelectedHtml(Object.keys(albumHtmls)[index])}
-                >
-                    <TabList>
+                
+                {(!albumHtmls || Object.keys(albumHtmls).length === 0) ? (
+                    <div>No HTML files available</div>
+                ) : (
+                    <Tabs
+                        selectedIndex={Object.keys(albumHtmls).indexOf(selectedHtml)}
+                        onSelect={(index) => setSelectedHtml(Object.keys(albumHtmls)[index])}
+                    >
+                        <TabList>
+                            {Object.keys(albumHtmls).map((album) => (
+                                <Tab key={album}>{transformAlbumName(album)}</Tab>
+                            ))}
+                        </TabList>
                         {Object.keys(albumHtmls).map((album) => (
-                            <Tab key={album}>{transformAlbumName(album)}</Tab>
+                            <TabPanel key={album}>{renderHtmlContent()}</TabPanel>
                         ))}
-                    </TabList>
-                    {Object.keys(albumHtmls).map((album) => (
-                        <TabPanel key={album}>{renderHtmlContent()}</TabPanel>
-                    ))}
-                </Tabs>
+                    </Tabs>
+                )}
             </div>
         );
     };
@@ -1003,7 +1058,14 @@ const L_1_HomePageContent = () => {
     // Fetch album images based on version
     useEffect(() => {
         const fetchImages = async () => {
+            // Skip API call if version is empty (during refresh)
+            if (!version) {
+                console.log('Skipping image fetch - version is empty (refresh in progress)');
+                return;
+            }
+            
             try {
+                console.log(`Fetching images for version: ${version}`);
                 const response = await fetch(`http://localhost:8008/api/album/${version}`);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
@@ -1064,7 +1126,7 @@ const L_1_HomePageContent = () => {
         if (organizedMatch) {
             const versions = organizedMatch[1].replace(/_/g, ', ');
             const description = organizedMatch[2].replace(/_/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2');
-            return `${description} for versions [${versions}]`;
+            return `${description} for versions [${versions}] (Current: ${version})`;
         }
         
         // Handle legacy format (e.g., AnnotatedStaticPlots)
@@ -1072,11 +1134,11 @@ const L_1_HomePageContent = () => {
         if (legacyMatch) {
             const versions = legacyMatch[1].replace(/_/g, ', ');
             const description = legacyMatch[2].replace(/_/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2');
-            return `${description} for versions [${versions}]`;
+            return `${description} for versions [${versions}] (Current: ${version})`;
         }
         
         // Default formatting for other album names
-        return album.replace(/_/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2');
+        return `${album.replace(/_/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2')} (Version ${version})`;
     };
 
     const renderPlotContent1 = () => {
@@ -1117,6 +1179,13 @@ const L_1_HomePageContent = () => {
                         value={version}
                         onChange={handleVersionChange}
                     />
+                    <button 
+                        className="refresh-button"
+                        onClick={handleRefresh}
+                        title="Refresh visualization"
+                    >
+                        ↻
+                    </button>
                 </div>
                 <Tabs
                     selectedIndex={Object.keys(albumImages).indexOf(selectedAlbum)}
@@ -1138,7 +1207,14 @@ const L_1_HomePageContent = () => {
     // Fetch CSV files based on version
     useEffect(() => {
         const fetchCsvFiles = async () => {
+            // Skip API call if version is empty (during refresh)
+            if (!version) {
+                console.log('Skipping CSV fetch - version is empty (refresh in progress)');
+                return;
+            }
+            
             try {
+                console.log(`Fetching CSV files for version: ${version}`);
                 const response = await fetch(`http://localhost:8007/api/csv-files/${version}`);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
@@ -1171,16 +1247,16 @@ const L_1_HomePageContent = () => {
     const renderCase1Content = () => {
         // Name mapping for specific files to more presentable names
         const nameMapping = {
-            [`CFA(${version}).csv`]: 'Cash Flow Analysis',
-            [`Economic_Summary(${version}).csv`]: 'Economic Summary',
-            [`Cumulative_Opex_Table_(${version}).csv`]: 'Cumulative Opex Table',
-            [`Filtered_Value_Intervals(${version}).csv`]: 'Filtered Value Intervals',
-            [`Fixed_Opex_Table_(${version}).csv`]: 'Fixed Opex Table',
-            [`Variable_Opex_Table_(${version}).csv`]: 'Variable Opex Table',
-            [`Configuration_Matrix(${version}).csv`]: 'Configuration Matrix',
-            [`Distance_From_Paying_Taxes(${version}).csv`]: 'Distance from Paying Taxes',
-            [`Sorted_Points(${version}).csv`]: 'Sorted Points',
-            [`Variable_Table(${version}).csv`]: 'Variable Table',
+            [`CFA(${version}).csv`]: `Cash Flow Analysis (Version ${version})`,
+            [`Economic_Summary(${version}).csv`]: `Economic Summary (Version ${version})`,
+            [`Cumulative_Opex_Table_(${version}).csv`]: `Cumulative Opex Table (Version ${version})`,
+            [`Filtered_Value_Intervals(${version}).csv`]: `Filtered Value Intervals (Version ${version})`,
+            [`Fixed_Opex_Table_(${version}).csv`]: `Fixed Opex Table (Version ${version})`,
+            [`Variable_Opex_Table_(${version}).csv`]: `Variable Opex Table (Version ${version})`,
+            [`Configuration_Matrix(${version}).csv`]: `Configuration Matrix (Version ${version})`,
+            [`Distance_From_Paying_Taxes(${version}).csv`]: `Distance from Paying Taxes (Version ${version})`,
+            [`Sorted_Points(${version}).csv`]: `Sorted Points (Version ${version})`,
+            [`Variable_Table(${version}).csv`]: `Variable Table (Version ${version})`,
         };
 
         // Exclude these files from display (if any)
@@ -1209,6 +1285,13 @@ const L_1_HomePageContent = () => {
                         value={version}
                         onChange={handleVersionChange}
                     />
+                    <button 
+                        className="refresh-button"
+                        onClick={handleRefresh}
+                        title="Refresh visualization"
+                    >
+                        ↻
+                    </button>
                 </div>
                 <Tabs
                     selectedIndex={sortedCsvFiles.findIndex((file) => file.name === subTab)}
@@ -1297,7 +1380,7 @@ const L_1_HomePageContent = () => {
                         version={version}
                         filterKeyword="Amount3"
                         F={F}
-                        setF={setF}
+                        toggleF={toggleF}
                         S={S || {}}
                         setS={setS}
                         setVersion={setVersion}
@@ -1310,7 +1393,7 @@ const L_1_HomePageContent = () => {
                         version={version}
                         filterKeyword="Amount4"
                         V={V}
-                        setV={setV}
+                        toggleV={toggleV}
                         S={S || {}}
                         setS={setS}
                         setVersion={setVersion}
@@ -1323,7 +1406,7 @@ const L_1_HomePageContent = () => {
                         version={version}
                         filterKeyword="Amount5"
                         V={V}
-                        setV={setV}
+                        toggleV={toggleV}
                         S={S || {}}
                         setS={setS}
                         setVersion={setVersion}

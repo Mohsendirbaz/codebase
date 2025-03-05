@@ -6,6 +6,7 @@ start,end,length,filtered_values
 5,5,1,[]
 6,6,1,[]
 7,7,1,[]
+<<<<<<< HEAD
 8,8,1,[]
 9,9,1,[]
 10,10,1,[]
@@ -19,3 +20,18 @@ start,end,length,filtered_values
 18,18,1,[]
 19,19,1,[]
 20,20,1,[]
+=======
+8,8,1,"[{""id"": ""initialSellingPriceAmount13"", ""value"": ""2.4"", ""remarks"": ""a""}]"
+9,9,1,"[{""id"": ""initialSellingPriceAmount13"", ""value"": ""2.4"", ""remarks"": ""a""}]"
+10,10,1,"[{""id"": ""initialSellingPriceAmount13"", ""value"": ""2.4"", ""remarks"": ""a""}]"
+11,11,1,"[{""id"": ""initialSellingPriceAmount13"", ""value"": ""2.4"", ""remarks"": ""a""}]"
+12,12,1,"[{""id"": ""initialSellingPriceAmount13"", ""value"": ""2.4"", ""remarks"": ""a""}]"
+13,13,1,"[{""id"": ""initialSellingPriceAmount13"", ""value"": ""2.4"", ""remarks"": ""a""}]"
+14,14,1,"[{""id"": ""initialSellingPriceAmount13"", ""value"": ""2.4"", ""remarks"": ""a""}]"
+15,15,1,"[{""id"": ""initialSellingPriceAmount13"", ""value"": ""2.4"", ""remarks"": ""a""}]"
+16,16,1,"[{""id"": ""initialSellingPriceAmount13"", ""value"": ""2.4"", ""remarks"": ""a""}]"
+17,17,1,"[{""id"": ""initialSellingPriceAmount13"", ""value"": ""2.4"", ""remarks"": ""a""}]"
+18,18,1,"[{""id"": ""initialSellingPriceAmount13"", ""value"": ""2.4"", ""remarks"": ""a""}]"
+19,19,1,"[{""id"": ""initialSellingPriceAmount13"", ""value"": ""2.4"", ""remarks"": ""a""}]"
+20,20,1,"[{""id"": ""initialSellingPriceAmount13"", ""value"": ""2.4"", ""remarks"": ""a""}]"
+>>>>>>> 62283430 (fixed rendering of table, dynamic and png)

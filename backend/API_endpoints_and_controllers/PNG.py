@@ -15,7 +15,7 @@ CORS(app)  # Enable CORS for all routes
 # Path Configuration
 ORIGINAL_DIR = Path(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 BACKEND_DIR = Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-PUBLIC_DIR = ORIGINAL_DIR / 'public' / 'Original'
+PUBLIC_DIR = ORIGINAL_DIR / 'Original'
 LOG_DIR = BACKEND_DIR / "Logs"
 SCRIPT_DIR = BACKEND_DIR / "Visualization_generators"
 LOG_FILE = LOG_DIR / "PNG.log"

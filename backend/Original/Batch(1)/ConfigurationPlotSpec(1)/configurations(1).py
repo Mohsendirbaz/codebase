@@ -25,6 +25,7 @@ laborAmount35=24000
 utilityAmount36=5000
 maintenanceAmount37=2500
 insuranceAmount38=500
+<<<<<<< HEAD
 vAmount40=1
 vAmount41=1
 vAmount42=1
@@ -51,4 +52,33 @@ variable_costsAmount4=[1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 amounts_per_unitAmount5=[1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 
 filtered_values_json=[
+=======
+vAmount40=0
+vAmount41=0
+vAmount42=0
+vAmount43=0
+vAmount44=0
+vAmount45=0
+vAmount46=0
+vAmount47=0
+vAmount48=0
+vAmount49=0
+vAmount50=0
+vAmount51=0
+vAmount52=0
+vAmount53=0
+vAmount54=0
+vAmount55=0
+vAmount56=0
+vAmount57=0
+vAmount58=0
+vAmount59=0
+vAmount60=0
+vAmount61=0
+variable_costsAmount4=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+amounts_per_unitAmount5=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+filtered_values_json=[
+   '{"filteredValue":{"id":"initialSellingPriceAmount13","value":"2.4","start":"8","end":"20","remarks":"a"}}',
+>>>>>>> 62283430 (fixed rendering of table, dynamic and png)
 ]
