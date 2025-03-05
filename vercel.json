@@ -1,23 +1,17 @@
 {
   "version": 2,
-  "public": true,
-  "cleanUrls": true,
-  "trailingSlash": false,
-  "github": {
-    "silent": true
-  },
   "builds": [
     {
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "public",
-        "buildCommand": "mkdir -p public/Original && echo '<!DOCTYPE html><html><body><h1>Hello World</h1></body></html>' > public/index.html"
+        "zeroConfig": true,
+        "buildCommand": "mkdir -p public/Original && npm run build"
       }
     }
   ],
   "routes": [
     { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "/index.html" }
+    { "src": "/(.*)", "destination": "/index.html" }
   ]
 }
