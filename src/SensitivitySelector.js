@@ -17,7 +17,7 @@ const Dialog = ({ show, onClose, children, triggerRef, isClosing }) => {
             const spaceAbove = buttonRect.top;
 
             // Default to showing below the button
-            let top = buttonRect.bottom + 8;
+            let top = buttonRect.bottom + 140;
 
             // If not enough space below, show above
             if (spaceBelow < 400 && spaceAbove > spaceBelow) {

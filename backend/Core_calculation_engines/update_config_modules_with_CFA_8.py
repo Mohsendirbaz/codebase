@@ -630,6 +630,10 @@ def calculate_revenue_and_expenses_from_modules(config_received, config_matrix_d
 
    # Create pie chart
     pie_chart = px.pie(values=sizes, names=labels, title='Economic Breakdown', color_discrete_sequence=px.colors.qualitative.Set3)  # Use a qualitative color set
+    # Add CDN script with specific version
+    pie_chart.add_html_head("""
+        <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    """)
     # Customize layout and styling
     pie_chart.update_layout(
         title=dict(
@@ -684,6 +688,10 @@ def calculate_revenue_and_expenses_from_modules(config_received, config_matrix_d
         title='Operational Cost Breakdown',
         color_discrete_sequence=px.colors.qualitative.Set3  # Use a qualitative color set
     )
+    # Add CDN script with specific version
+    pie_chart2.add_html_head("""
+        <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    """)
 
     # Customize layout and styling
     pie_chart2.update_layout(
@@ -822,7 +830,7 @@ def calculate_revenue_and_expenses_from_modules(config_received, config_matrix_d
 # Main function to load config matrix and run the update
 def main(version, selected_v, selected_f, target_row):
     # Set up paths for modules and results
-    code_files_path = r"C:\Users\md8w7\OneDrive University of Missouri\Desktop\ImportantFiles\Milestone4\backend\Original"
+    code_files_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "backend", "Original")
     results_folder = os.path.join(code_files_path, f"Batch({version})", f"Results({version})")
     config_matrix_file = os.path.join(results_folder, f"Configuration_Matrix({version}).csv")
     
@@ -876,7 +884,7 @@ if __name__ == "__main__":
     selected_v = json.loads(sys.argv[2]) if len(sys.argv) > 2 else {f'V{i+1}': 'off' for i in range(10)}
     selected_f = json.loads(sys.argv[3]) if len(sys.argv) > 3 else {f'F{i+1}': 'off' for i in range(5)}
     target_row = int(sys.argv[4]) if len(sys.argv) > 4 else 10
-    selected_calculation_option=sys.argv[5]
+    selected_calculation_option = sys.argv[5] if len(sys.argv) > 5 else 'calculateforprice'  # Default to calculateforprice
     senParameters = json.loads(sys.argv[6]) if len(sys.argv) > 6 else {}  
 
     cfa_logger.info(f"Script started with version: {version}, V selections: {selected_v}, F selections: {selected_f}, Target row: {target_row}")

@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Card, CardHeader, CardContent } from './Card';
 import { motion, AnimatePresence } from 'framer-motion';
+import './L_1_HomePage4.css';
 
 /**
  * @typedef {Object} SummaryItem
@@ -82,11 +83,159 @@ const ScalingSummary = ({
   const [frozenItems, setFrozenItems] = useState({});
   const [scalingConfig] = useState({ factor: 1 });
   const [lastUpdated, setLastUpdated] = useState(null);
+  const [intermediateResults, setIntermediateResults] = useState({});
 
+  // Immediately update base values when items change
   useEffect(() => {
-    // Trigger animation when values change
+    const newResults = {};
+    items.forEach(item => {
+      // Store initial values from process costs
+      newResults[item.id] = {
+        baseValue: item.originalValue,
+        currentValue: item.originalValue,
+        steps: []
+      };
+    });
+    setIntermediateResults(newResults);
     setLastUpdated(Date.now());
-  }, [items, sequentialOperations]);
+  }, [items]);
+
+  // Calculate intermediate results based on operations
+  const MAX_SAFE_VALUE = 1e10;
+  const MIN_SAFE_VALUE = -1e10;
+
+  const validateOperation = (operation, value, operand) => {
+    switch(operation) {
+      case 'add':
+        if (value + operand > MAX_SAFE_VALUE) {
+          throw new Error('Result exceeds maximum allowed value');
+        }
+        if (value + operand < MIN_SAFE_VALUE) {
+          throw new Error('Result below minimum allowed value');
+        }
+        break;
+      case 'subtract':
+        if (value - operand < MIN_SAFE_VALUE) {
+          throw new Error('Operation results in value below minimum');
+        }
+        break;
+      case 'multiply':
+        if (Math.abs(value * operand) > MAX_SAFE_VALUE) {
+          throw new Error('Product exceeds maximum allowed value');
+        }
+        break;
+      case 'divide':
+        if (Math.abs(operand) < 1e-4) {
+          throw new Error('Cannot divide by zero or very small values (< 0.0001)');
+        }
+        break;
+      case 'power':
+        if (value < 0 && !Number.isInteger(operand)) {
+          throw new Error('Invalid negative base with fractional exponent');
+        }
+        if (Math.abs(Math.pow(value, operand)) > MAX_SAFE_VALUE) {
+          throw new Error('Power operation result too large');
+        }
+        break;
+      case 'log':
+        if (value <= 0) {
+          throw new Error('Cannot compute logarithm of zero or negative number');
+        }
+        break;
+      case 'exponential':
+        if (Math.abs(Math.exp(value * operand)) > MAX_SAFE_VALUE) {
+          throw new Error('Exponential result exceeds maximum allowed value');
+        }
+        break;
+    }
+  };
+
+  const calculateIntermediateResults = useCallback((itemId, operations) => {
+    const item = items.find(i => i.id === itemId);
+    if (!item) return null;
+
+    let currentValue = item.originalValue;
+    const steps = [];
+
+    operations.forEach((op, index) => {
+      const prevValue = currentValue;
+      const tabValue = item.scaledValues[tabConfigs[index]?.id] || item.originalValue;
+
+      try {
+        validateOperation(op.type, currentValue, tabValue);
+
+        switch(op.type) {
+          case 'multiply':
+            currentValue *= tabValue;
+            break;
+          case 'divide':
+            currentValue /= tabValue;
+            break;
+          case 'add':
+            currentValue += tabValue;
+            break;
+          case 'subtract':
+            currentValue -= tabValue;
+            break;
+          case 'power':
+            currentValue = Math.pow(currentValue, tabValue);
+            break;
+          case 'log':
+            currentValue = Math.log(currentValue);
+            break;
+          case 'exponential':
+            currentValue = Math.exp(currentValue * tabValue);
+            break;
+        }
+
+        steps.push({
+          operation: op.type,
+          prevValue,
+          opValue: tabValue,
+          result: currentValue,
+          error: null
+        });
+      } catch (error) {
+        steps.push({
+          operation: op.type,
+          prevValue,
+          opValue: tabValue,
+          result: prevValue,
+          error: error.message
+        });
+        throw error;
+      }
+    });
+
+    return { currentValue, steps };
+  }, [items, tabConfigs]);
+
+  // Update results when operations change
+  useEffect(() => {
+    const newResults = { ...intermediateResults };
+    
+    items.forEach(item => {
+      try {
+        const result = calculateIntermediateResults(item.id, sequentialOperations);
+        if (result) {
+          newResults[item.id] = {
+            ...newResults[item.id],
+            currentValue: result.currentValue,
+            steps: result.steps
+          };
+        }
+      } catch (error) {
+        console.error(`Calculation error for ${item.label}:`, error);
+        newResults[item.id] = {
+          ...newResults[item.id],
+          error: error.message
+        };
+      }
+    });
+
+    setIntermediateResults(newResults);
+    setLastUpdated(Date.now());
+  }, [items, sequentialOperations, calculateIntermediateResults]);
 
   /**
    * Check if parenthesis can be closed at given index
@@ -98,6 +247,18 @@ const ScalingSummary = ({
     const openCount = prevOps.filter(op => op.type === 'openParen').length;
     const closeCount = prevOps.filter(op => op.type === 'closeParen').length;
     return openCount > closeCount;
+  };
+
+  /**
+   * Check if column is within parentheses
+   * @param {number} index - Column index
+   * @returns {boolean}
+   */
+  const isInParenthesis = (index) => {
+    const groups = getParenthesisGroups();
+    return groups.some(
+      group => index > group.openIndex && index <= group.closeIndex
+    );
   };
 
   /**
@@ -113,17 +274,47 @@ const ScalingSummary = ({
     
     try {
       const item = items.find(i => i.id === itemId);
-      if (!item) return;
+      if (!item) {
+        throw new Error('Item not found');
+      }
 
       const values = {
         original: item.originalValue || 0,
         ...item.scaledValues
       };
 
-      // Enhanced expression validation
-      if (expression && !expression.match(/^[0-9+\-*/().^e\s]+$/)) {
-        throw new Error('Invalid expression');
+      if (!expression) {
+        return; // Empty expression is allowed
       }
+
+      // Validate expression format
+      if (!expression.match(/^[0-9+\-*/().^e\s]+$/)) {
+        throw new Error('Expression contains invalid characters');
+      }
+
+      // Check for balanced parentheses
+      const openCount = (expression.match(/\(/g) || []).length;
+      const closeCount = (expression.match(/\)/g) || []).length;
+      if (openCount !== closeCount) {
+        throw new Error('Missing opening or closing parenthesis');
+      }
+
+      // Check for invalid operator sequences
+      if (expression.match(/[+\-*/^]{2,}/)) {
+        throw new Error('Invalid sequence of operators');
+      }
+
+      // Validate each number in the expression
+      const numbers = expression.match(/\d+\.?\d*/g) || [];
+      numbers.forEach(num => {
+        const value = parseFloat(num);
+        if (!Number.isFinite(value)) {
+          throw new Error('Invalid numeric value');
+        }
+        if (Math.abs(value) > MAX_SAFE_VALUE) {
+          throw new Error('Numeric value exceeds allowed range');
+        }
+      });
 
       onSequentialOperationChange(items.length - 1, {
         type: 'expression',
@@ -134,7 +325,12 @@ const ScalingSummary = ({
         onExpressionChange(itemId, expression);
       }
     } catch (error) {
-      console.error('Expression evaluation failed:', error);
+      console.error('Expression validation failed:', error.message);
+      const newResults = { ...intermediateResults };
+      if (newResults[itemId]) {
+        newResults[itemId].error = error.message;
+        setIntermediateResults(newResults);
+      }
     }
   };
 
@@ -144,31 +340,69 @@ const ScalingSummary = ({
    * @param {string} operation - New operation type
    */
   const handleOperationChange = (index, operation) => {
-    let newConfigs = [...tabConfigs];
-    let newOperations = [...sequentialOperations];
+    try {
+      let newConfigs = [...tabConfigs];
+      let newOperations = [...sequentialOperations];
 
-    if (operation === 'openParen') {
-      newConfigs.splice(index, 0, {
-        id: `paren_open_${Date.now()}`,
-        label: '(',
-        isParenthesis: true
+      // Validate operation before applying
+      items.forEach(item => {
+        const currentValue = intermediateResults[item.id]?.currentValue;
+        if (typeof currentValue === 'number') {
+          const tabValue = item.scaledValues[tabConfigs[index]?.id] || item.originalValue;
+          
+          switch(operation) {
+            case 'divide':
+              if (Math.abs(tabValue) < 1e-10) {
+                throw new Error('Division by near-zero value');
+              }
+              break;
+            case 'log':
+              if (currentValue <= 0) {
+                throw new Error('Log of non-positive number');
+              }
+              break;
+            case 'power':
+              if (!Number.isFinite(Math.pow(currentValue, tabValue))) {
+                throw new Error('Power operation result too large');
+              }
+              break;
+          }
+        }
       });
-      newOperations.splice(index, 0, { type: 'multiply', value: 1 });
-      onTabConfigsChange(newConfigs);
-    } else if (operation === 'closeParen' && canCloseParenthesis(index)) {
-      newConfigs.splice(index + 1, 0, {
-        id: `paren_close_${Date.now()}`,
-        label: ')',
-        isParenthesis: true
+
+      if (operation === 'openParen') {
+        newConfigs.splice(index, 0, {
+          id: `paren_open_${Date.now()}`,
+          label: '(',
+          isParenthesis: true
+        });
+        newOperations.splice(index, 0, { type: 'multiply', value: 1 });
+        onTabConfigsChange(newConfigs);
+      } else if (operation === 'closeParen' && canCloseParenthesis(index)) {
+        newConfigs.splice(index + 1, 0, {
+          id: `paren_close_${Date.now()}`,
+          label: ')',
+          isParenthesis: true
+        });
+        newOperations.splice(index, 0, { type: operation, value: 1 });
+        onTabConfigsChange(newConfigs);
+      }
+      
+      onSequentialOperationChange(index, {
+        type: operation,
+        value: scalingConfig.factor
       });
-      newOperations.splice(index, 0, { type: operation, value: 1 });
-      onTabConfigsChange(newConfigs);
+    } catch (error) {
+      console.error('Operation validation failed:', error);
+      // Update UI to show error
+      const affectedItems = items.filter(item => 
+        intermediateResults[item.id]?.error === error.message
+      );
+      affectedItems.forEach(item => {
+        intermediateResults[item.id].error = error.message;
+      });
+      setLastUpdated(Date.now());
     }
-    
-    onSequentialOperationChange(index, {
-      type: operation,
-      value: scalingConfig.factor
-    });
   };
 
   /**
@@ -189,24 +423,6 @@ const ScalingSummary = ({
     });
 
     return groups;
-  };
-
-  /**
-   * Get column style based on parenthesis grouping
-   * @param {number} index - Column index
-   * @returns {Object} Style object
-   */
-  const getColumnStyle = (index) => {
-    const groups = getParenthesisGroups();
-    const isInParenthesis = groups.some(
-      group => index > group.openIndex && index <= group.closeIndex
-    );
-
-    return {
-      backgroundColor: isInParenthesis ? 'rgba(59, 130, 246, 0.05)' : undefined,
-      position: 'relative',
-      transition: 'all 0.3s ease'
-    };
   };
 
   /**
@@ -237,26 +453,26 @@ const ScalingSummary = ({
   return (
     <Card className="scaling-summary">
       <CardHeader>
-        <h3 className="text-lg font-medium">Scaling Summary</h3>
+        <h3 className="scaling-summary-title">Scaling Summary</h3>
       </CardHeader>
       <CardContent>
-        <div className="overflow-x-auto">
-          <table className="min-w-full">
+        <div className="scaling-summary-container">
+          <table className="scaling-summary-table">
             <thead>
-              <tr className="border-b">
-                <th className="text-left py-2 px-4">Item</th>
-                <th className="text-center py-2 px-4 w-16">Free</th>
-                <th className="text-right py-2 px-4">Original</th>
+              <tr className="scaling-summary-header">
+                <th className="scaling-summary-cell">Item</th>
+                <th className="scaling-summary-cell scaling-summary-cell-center">Free</th>
+                <th className="scaling-summary-cell scaling-summary-cell-right">Original</th>
                 {tabConfigs.map((tab, index) => (
                   <React.Fragment key={tab.id}>
-                    <th className="text-right py-2 px-4" style={getColumnStyle(index)}>
+                    <th className={`scaling-summary-cell scaling-summary-cell-right ${isInParenthesis(index) ? 'scaling-summary-parenthesis' : ''}`}>
                       {tab.label || `Scale ${tab.id}`}
                     </th>
-                    <th className="text-center py-2 px-2 w-20">
+                    <th className="scaling-summary-cell scaling-summary-cell-center">
                       <select
                         value={sequentialOperations[index]?.type || 'multiply'}
                         onChange={(e) => handleOperationChange(index, e.target.value)}
-                        className="operation-select"
+                        className="scaling-summary-operation-select"
                       >
                         {getAvailableOperations(index).map(op => (
                           <option key={op} value={op}>
@@ -267,8 +483,8 @@ const ScalingSummary = ({
                     </th>
                   </React.Fragment>
                 ))}
-                <th className="text-right py-2 px-4">Expression</th>
-                <th className="text-right py-2 px-4 bg-gray-50">Result</th>
+                <th className="scaling-summary-cell scaling-summary-cell-right">Expression</th>
+                <th className="scaling-summary-cell scaling-summary-cell-right scaling-summary-result">Result</th>
               </tr>
             </thead>
             <tbody>
@@ -280,88 +496,113 @@ const ScalingSummary = ({
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.2 }}
-                    className={`border-b ${item.isFrozen ? 'bg-gray-50' : ''}`}
+                    className={`scaling-summary-row ${item.isFrozen ? 'scaling-summary-row-frozen' : ''}`}
                   >
-                    <td className="py-2 px-4">{item.label}</td>
-                    <td className="text-center py-2 px-4">
+                    <td className="scaling-summary-cell">{item.label}</td>
+                    <td className="scaling-summary-cell scaling-summary-cell-center">
                       <input
                         type="checkbox"
                         checked={frozenItems[item.id] || false}
                         onChange={() => handleFreezeToggle(item.id)}
-                        className="w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500"
+                        className="scaling-summary-cell-checkbox"
                       />
                     </td>
-                    <td className="text-right py-2 px-4">
+                    <td className="scaling-summary-cell scaling-summary-cell-right">
                       <motion.span
                         key={`${item.id}-original-${lastUpdated}`}
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="mathematical-result"
                       >
                         {item.originalValue.toFixed(2)}
                       </motion.span>
                     </td>
                     {tabConfigs.map((tab, index) => (
                       <React.Fragment key={tab.id}>
-                        <td className="text-right py-2 px-4" style={getColumnStyle(index)}>
+                        <td className={`scaling-summary-cell scaling-summary-cell-right ${isInParenthesis(index) ? 'scaling-summary-parenthesis' : ''}`}>
                           <motion.span
                             key={`${item.id}-${tab.id}-${lastUpdated}`}
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="mathematical-result"
                           >
                             {(item.scaledValues[tab.id] || item.originalValue).toFixed(2)}
                           </motion.span>
                           {item.isFrozen && (
-                            <span className="text-xs text-blue-500 ml-1">*</span>
+                            <span className="scaling-summary-cell-frozen-indicator">*</span>
                           )}
                         </td>
-                        <td className="text-center py-2 px-2 text-gray-500">
+                        <td className="scaling-summary-cell scaling-summary-cell-center">
                           <motion.span
                             initial={{ scale: 0.8, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
-                            className="operation-symbol"
+                            className="scaling-summary-operator"
                           >
                             {getOperationSymbol(sequentialOperations[index]?.type || 'multiply')}
                           </motion.span>
                         </td>
                       </React.Fragment>
                     ))}
-                    <td className="py-2 px-4">
+                    <td className="scaling-summary-cell">
                       <input
                         type="text"
-                        className="w-full px-2 py-1 border rounded mathematical-input"
+                        className="scaling-summary-expression-input"
                         placeholder="Enter formula"
                         value={itemExpressions[item.id] || ''}
                         onChange={(e) => handleExpressionChange(item.id, e.target.value)}
                       />
                     </td>
-                    <td className="text-right py-2 px-4 bg-gray-50 font-medium">
-                      {item.calculationError ? (
-                        <motion.div
-                          className="text-red-500"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                        >
-                          <span>{item.sequentialResult.toFixed(2)}</span>
-                          <motion.span
-                            className="text-xs block"
-                            initial={{ opacity: 0, y: -5 }}
-                            animate={{ opacity: 1, y: 0 }}
+                    <td className="scaling-summary-cell scaling-summary-cell-right scaling-summary-result">
+                      <div className="scaling-summary-result-container">
+                        {intermediateResults[item.id]?.error ? (
+                          <motion.div
+                            className="scaling-summary-error"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
                           >
-                            {item.suggestion}
-                          </motion.span>
-                        </motion.div>
-                      ) : (
-                        <motion.span
-                          key={`${item.id}-result-${lastUpdated}`}
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          className="mathematical-result"
-                        >
-                          {item.sequentialResult.toFixed(2)}
-                        </motion.span>
-                      )}
+                            <span>
+                              {intermediateResults[item.id].currentValue?.toFixed(2) || '---'}
+                            </span>
+                            <motion.span
+                              className="scaling-summary-error-message"
+                              initial={{ opacity: 0, y: -5 }}
+                              animate={{ opacity: 1, y: 0 }}
+                            >
+                              {intermediateResults[item.id].error}
+                            </motion.span>
+                          </motion.div>
+                        ) : (
+                          <>
+                            <motion.span
+                              key={`${item.id}-result-${lastUpdated}`}
+                              initial={{ opacity: 0, scale: 0.9 }}
+                              animate={{ opacity: 1, scale: 1 }}
+                            >
+                              {intermediateResults[item.id]?.currentValue?.toFixed(2) || item.sequentialResult.toFixed(2)}
+                            </motion.span>
+                            {intermediateResults[item.id]?.steps?.length > 0 && (
+                              <motion.div
+                                className="scaling-summary-steps"
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: 'auto' }}
+                              >
+                                {intermediateResults[item.id].steps.map((step, idx) => (
+                                  <div key={idx} className="scaling-summary-step">
+                                    <span>{step.prevValue.toFixed(2)}</span>
+                                    <span className={step.error ? 'scaling-summary-operator-error' : 'scaling-summary-operator'}>
+                                      {getOperationSymbol(step.operation)}
+                                    </span>
+                                    <span>{step.opValue.toFixed(2)}</span>
+                                    <span>=</span>
+                                    <span>{step.result.toFixed(2)}</span>
+                                    {step.error && (
+                                      <span className="scaling-summary-error">(!)</span>
+                                    )}
+                                  </div>
+                                ))}
+                              </motion.div>
+                            )}
+                          </>
+                        )}
+                      </div>
                     </td>
                   </motion.tr>
                 ))}
@@ -369,8 +610,11 @@ const ScalingSummary = ({
             </tbody>
           </table>
         </div>
-        <div className="text-xs text-gray-500 mt-2">
-          * Indicates a free item that maintains its original value in scaling operations
+        <div className="scaling-summary-footer">
+          <div className="scaling-summary-footer-item">* Indicates a free item that maintains its original value in scaling operations</div>
+          <div className="scaling-summary-footer-item">Base values are inherited from process costs</div>
+          <div className="scaling-summary-footer-item">Click on a row to show calculation steps</div>
+          <div className="scaling-summary-footer-item">Hover over error indicators (!) for detailed messages</div>
         </div>
       </CardContent>
     </Card>

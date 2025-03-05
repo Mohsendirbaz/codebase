@@ -14,41 +14,18 @@ import seaborn as sns
 
 # ---------------- Logging Setup Block Start ----------------
 
-# Determine the current working directory for logging
-log_directory = os.getcwd()
-log_file_path = os.path.join(log_directory, 'app_CFA.log')
+# Set up logging for CFA calculations
+log_directory = os.path.join(os.path.dirname(os.path.dirname(__file__)), "Logs")
+os.makedirs(log_directory, exist_ok=True)
+log_file_path = os.path.join(log_directory, 'CFA_CALC.log')
 
-# Logging configuration dictionary
-LOGGING_CONFIG = {
-    'version': 1,
-    'disable_existing_loggers': True,
-    'formatters': {
-        'standard': {
-            'format': '%(asctime)s %(levelname)s %(message)s',
-        },
-    },
-    'handlers': {
-        'file': {
-            'level': 'DEBUG',
-            'formatter': 'standard',
-            'class': 'logging.FileHandler',
-            'filename': log_file_path,
-            'mode': 'w',  # 'w' for write mode to create a new log file on each run
-        },
-        'console': {
-            'level': 'DEBUG',
-            'formatter': 'standard',
-            'class': 'logging.StreamHandler',
-        },
-    },
-    'root': {
-        'handlers': ['file', 'console'],
-        'level': 'DEBUG',
-    },
-}
-
-# Apply the logging configuration
-logging.config.dictConfig(LOGGING_CONFIG)
+# Configure logging to focus on critical calculation steps
+logging.basicConfig(
+    filename=log_file_path,
+    level=logging.INFO,
+    format='%(levelname)s: %(message)s',
+    filemode='w'
+)
 
 
 
@@ -76,7 +53,6 @@ def calculate_annual_revenue(numberOfUnitsAmount1, initialSellingPriceAmount1, g
         int(numberOfUnitsAmount1 * initialSellingPriceAmount1 * (1 + generalInflationRateAmount2)) 
         for year in range(construction_years, years)
     ]
-    logging.debug(f"Annual Revenue: {revenue}")
     return revenue
 
 
@@ -112,9 +88,6 @@ def calculate_annual_operating_expenses(
         amount if selected_v.get(f'V{i+1}') == 'on' else 0 for i, amount in enumerate(amounts_per_unitAmount5)
     ]
 
-    logging.info(f"Filtered variable costs: {variable_costs_filtered}")
-    logging.info(f"Filtered amounts per unit: {amounts_per_unit_filtered}")
-
     # Filter fixed costs based on selected_f
     # If 'off', set corresponding value to 0
     fixed_costs_filtered = [
@@ -122,38 +95,24 @@ def calculate_annual_operating_expenses(
     for i, cost in enumerate(fixed_costs)
 ]
 
-    logging.info(f"Filtered fixed costs: {fixed_costs_filtered}")
-
     # Calculate total fixed cost
     total_fixed_cost = sum(fixed_costs_filtered)
-    logging.info(f"Total fixed costs: {total_fixed_cost}")
 
-    # If direct operating expenses are used, calculate using total operating cost percentage
+    # Calculate expenses based on method
     if use_direct_operating_expensesAmount1:
-    
+        logging.info("Using direct operating expenses calculation")
         expenses = [0] * construction_years + [
             int(totalOperatingCostPercentageAmount1 * revenue) for revenue in annual_revenue[construction_years:]
         ]
-        logging.info(f"Operating expenses (direct method): {expenses}")
     else:
-        logging.info("Using indirect calculation for operating expenses.")
-        # Calculate total variable costs (filtered based on selected_v)
+        logging.info("Using indirect operating expenses calculation")
         annual_variable_cost = np.sum([
             cost * amount for cost, amount in zip(variable_costs_filtered, amounts_per_unit_filtered)
         ])
-        logging.info(f"Annual variable costs: {annual_variable_cost}")
-
-        # Calculate the total expenses over the years, applying inflation after construction years
         expenses = [0] * construction_years + [
             int((annual_variable_cost + total_fixed_cost) * (1 + generalInflationRateAmount2)) 
             for year in range(construction_years, years)
         ]
-        logging.info(f"Operating expenses (indirect method): {expenses}")
-
-    # Log the final result
-    logging.info(f"Final operating expenses: {expenses}")
-    logging.info(f"Filtered variable costs returned: {variable_costs_filtered}")
-    logging.info(f"Filtered fixed costs returned: {fixed_costs_filtered}")
 
     return expenses, variable_costs_filtered, fixed_costs_filtered
 
@@ -282,7 +241,7 @@ def calculate_revenue_and_expenses_from_modules(config_received, config_matrix_d
 
     TOC = BEC + EPC * BEC + PC * (BEC + EPC * BEC) + PT * (BEC + EPC * BEC + PC * (BEC + EPC * BEC))
 
-    logging.debug(f"Total Overnight Cost (TOC) calculated: {TOC}")
+    logging.info(f"TOC calculated: ${TOC:,.2f}")
 
     CFA_matrix = pd.DataFrame(np.zeros(((plant_lifetime + construction_years), 10)),
                               columns=['Year', 'Revenue', 'Operating Expenses', 'Loan', 'Depreciation', 'State Taxes', 'Federal Taxes', 'After-Tax Cash Flow','Discounted Cash Flow' ,'Cumulative Cash Flow'])
@@ -315,7 +274,7 @@ def calculate_revenue_and_expenses_from_modules(config_received, config_matrix_d
         length = int(row['end']) - int(row['start']) + 1
         config_module_file = os.path.join(results_folder, f"{version}_config_module_{row['start']}_{row['end']}.json")
         if not os.path.exists(config_module_file):
-            logging.warning(f"Config module file not found: {config_module_file}")
+            logging.error(f"Missing config module for year {row['start']}")
             continue
 
         config_module = read_config_module(config_module_file)
@@ -352,7 +311,6 @@ def calculate_revenue_and_expenses_from_modules(config_received, config_matrix_d
         utility_cost_operational[idx] = config_module['utilityAmount3'] * adjusted_length_calculation
         maintenance_cost_operational[idx] = config_module['maintenanceAmount3'] * adjusted_length_calculation
         insurance_cost_operational[idx] = config_module['insuranceAmount3'] * adjusted_length_calculation
-        logging.info(f"feedstock_cost_operational: {feedstock_cost_operational} labor_cost_operational{labor_cost_operational} ")
         # Store module selling price for each row
         module_selling_price_operational[idx] = config_module['initialSellingPriceAmount1'] * adjusted_length_calculation
         
@@ -582,6 +540,10 @@ def calculate_revenue_and_expenses_from_modules(config_received, config_matrix_d
 
    # Create pie chart
     pie_chart = px.pie(values=sizes, names=labels, title='Economic Breakdown', color_discrete_sequence=px.colors.qualitative.Set3)  # Use a qualitative color set
+    # Add CDN script with specific version
+    pie_chart.add_html_head("""
+        <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    """)
     # Customize layout and styling
     pie_chart.update_layout(
         title=dict(
@@ -636,6 +598,10 @@ def calculate_revenue_and_expenses_from_modules(config_received, config_matrix_d
         title='Operational Cost Breakdown',
         color_discrete_sequence=px.colors.qualitative.Set3  # Use a qualitative color set
     )
+    # Add CDN script with specific version
+    pie_chart2.add_html_head("""
+        <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    """)
 
     # Customize layout and styling
     pie_chart2.update_layout(
@@ -760,7 +726,7 @@ def calculate_revenue_and_expenses_from_modules(config_received, config_matrix_d
 # Main function to load config matrix and run the update
 def main(version, selected_v, selected_f):
     # Set the path to the directory containing the modules
-    code_files_path = r"C:\Users\md8w7\OneDrive University of Missouri\Desktop\ImportantFiles\Milestone4\backend\Original"
+    code_files_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "backend", "Original")
     results_folder = os.path.join(code_files_path, f"Batch({version})", f"Results({version})")
     config_matrix_file = os.path.join(results_folder, f"Configuration_Matrix({version}).csv")
 
@@ -792,9 +758,8 @@ if __name__ == "__main__":
     selected_v = json.loads(sys.argv[2]) if len(sys.argv) > 2 else [0] * 10  # Default to mask with 10 zeros for V
     selected_f = json.loads(sys.argv[3]) if len(sys.argv) > 3 else [0] * 5  # Default to mask with 5 zeros for F
     target_row = int(sys.argv[4]) if len(sys.argv) > 4 else 10
-    selected_calculation_option=sys.argv[5] 
+    selected_calculation_option = sys.argv[5] if len(sys.argv) > 5 else 'calculateforprice'  # Default to calculateforprice
 
-    logging.info(f"Script started with version: {version}, V selections: {selected_v}, F selections: {selected_f}, Target row: {target_row}, Calculation option: {selected_calculation_option}")
-   
+    logging.info(f"Starting CFA calculation for version {version} with {selected_calculation_option} mode")
     main(version, selected_v, selected_f)
-    logging.info("Script finished execution.")
+    logging.info("CFA calculation completed")

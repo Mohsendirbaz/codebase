@@ -5,13 +5,13 @@ import propertyMapping from './useFormValues.js';  // Correctly importing proper
 const CustomizableTable = ({
   data,
   fileName,
-  columns,
-  renderCell,
-  tableClassName,
-  headerClassName,
-  rowClassName,
-  cellClassName,
-  numberFormatOptions,
+  columns = null,
+  renderCell = null,
+  tableClassName = '',
+  headerClassName = '',
+  rowClassName = '',
+  cellClassName = '',
+  numberFormatOptions = { minimumFractionDigits: 2, maximumFractionDigits: 2 }
 }) => {
   if (!data || data.length === 0) {
     return <div>No data available</div>;
@@ -134,16 +134,6 @@ CustomizableTable.propTypes = {
   rowClassName: PropTypes.string,
   cellClassName: PropTypes.string,
   numberFormatOptions: PropTypes.object,
-};
-
-CustomizableTable.defaultProps = {
-  columns: null,
-  renderCell: null,
-  tableClassName: '',
-  headerClassName: '',
-  rowClassName: '',
-  cellClassName: '',
-  numberFormatOptions: { minimumFractionDigits: 2, maximumFractionDigits: 2 },
 };
 
 export default CustomizableTable;
