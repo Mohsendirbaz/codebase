@@ -1,160 +1,365 @@
+"""
+HTML organizer module for sensitivity analysis.
+
+This module provides functions for generating and organizing HTML reports
+for sensitivity analysis results.
+"""
+
 import os
-import shutil
-from pathlib import Path
-import re
 import json
+import time
+import logging
 from datetime import datetime
 
-# Import centralized logging
-from sensitivity_logging import get_html_logger
+# Configure logging
+logger = logging.getLogger(__name__)
 
-# Get logger from centralized logging
-logger = get_html_logger()
-
-def organize_sensitivity_html(base_dir=None):
-    """
-    Organizes HTML files related to sensitivity analysis into standardized 
-    album directories for easier frontend consumption.
+class SensitivityHTMLOrganizer:
+    """Organizer for sensitivity HTML reports."""
     
-    Args:
-        base_dir: Optional base directory path. If not provided, uses default path.
+    def __init__(self, base_dir=None, version=1):
+        """Initialize the organizer with the base directory and version."""
+        if base_dir is None:
+            # Use default directory structure
+            self.base_dir = os.path.join(
+                os.path.dirname(__file__),
+                'Original',
+                f'Batch({version})',
+                f'Results({version})',
+                'Sensitivity',
+                'Reports'
+            )
+        else:
+            self.base_dir = base_dir
+            
+        self.version = version
+        self.logger = logger
         
-    Returns:
-        dict: Statistics about the organization process
-    """
-    # Determine base directory
-    if not base_dir:
-        # Use backend/Original instead of public/Original
-        backend_dir = Path(os.path.dirname(os.path.abspath(__file__)))
-        base_dir = backend_dir / 'Original'  # This resolves to backend/Original
+        # Create base directory if it doesn't exist
+        os.makedirs(self.base_dir, exist_ok=True)
+        self.logger.info(f"Using reports directory: {self.base_dir}")
+        
+        # Create templates directory
+        self.templates_dir = os.path.join(self.base_dir, 'templates')
+        os.makedirs(self.templates_dir, exist_ok=True)
+        
+        # Create default templates if they don't exist
+        self._create_default_templates()
+        
+    def _create_default_templates(self):
+        """Create default HTML templates."""
+        # Main report template
+        main_template = os.path.join(self.templates_dir, 'main.html')
+        if not os.path.exists(main_template):
+            with open(main_template, 'w') as f:
+                f.write("""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensitivity Analysis Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header {
+            background-color: #f8f9fa;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .parameter-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .plot-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .plot-item {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            margin-bottom: 20px;
+        }
+        .plot-item img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+        }
+        .metadata {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f8f9fa;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Sensitivity Analysis Report</h1>
+            <p>Version: {{version}}</p>
+            <p>Generated: {{timestamp}}</p>
+        </div>
+        
+        <div class="content">
+            {{content}}
+        </div>
+    </div>
+</body>
+</html>""")
+                
+        # Parameter template
+        param_template = os.path.join(self.templates_dir, 'parameter.html')
+        if not os.path.exists(param_template):
+            with open(param_template, 'w') as f:
+                f.write("""<div class="parameter-section">
+    <h2>Parameter: {{param_id}}</h2>
+    <p>Mode: {{mode}}</p>
+    <p>Values: {{values}}</p>
     
-    if not os.path.exists(base_dir):
-        logger.error(f"Base directory does not exist: {base_dir}")
-        return {"error": f"Base directory does not exist: {base_dir}"}
+    <h3>Plots</h3>
+    <div class="plot-container">
+        {{plots}}
+    </div>
     
-    # Get all version directories
-    logger.info(f"Scanning for version directories in {base_dir}")
-    batches = [d for d in os.listdir(base_dir) if d.startswith("Batch(") and d.endswith(")")]
+    <h3>Results</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Variation</th>
+                <th>Value</th>
+                <th>Change</th>
+                <th>% Change</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{results}}
+        </tbody>
+    </table>
+</div>""")
+                
+        # Plot template
+        plot_template = os.path.join(self.templates_dir, 'plot.html')
+        if not os.path.exists(plot_template):
+            with open(plot_template, 'w') as f:
+                f.write("""<div class="plot-item">
+    <h4>{{plot_type}} Plot: {{param_id}} vs {{compare_to_key}}</h4>
+    <img src="{{plot_path}}" alt="{{plot_type}} plot for {{param_id}} vs {{compare_to_key}}">
+    <div class="metadata">
+        <p>Mode: {{mode}}</p>
+        <p>Comparison Type: {{comparison_type}}</p>
+    </div>
+</div>""")
+                
+        self.logger.info("Created default HTML templates")
+        
+    def _read_template(self, template_name):
+        """Read a template file."""
+        template_path = os.path.join(self.templates_dir, f"{template_name}.html")
+        try:
+            with open(template_path, 'r') as f:
+                return f.read()
+        except Exception as e:
+            self.logger.error(f"Error reading template {template_name}: {str(e)}")
+            return ""
+            
+    def _replace_placeholders(self, template, replacements):
+        """Replace placeholders in a template."""
+        for key, value in replacements.items():
+            placeholder = f"{{{{{key}}}}}"
+            template = template.replace(placeholder, str(value))
+        return template
+        
+    def generate_parameter_html(self, param_id, param_data, plots_data):
+        """Generate HTML for a parameter."""
+        # Get parameter template
+        template = self._read_template('parameter')
+        
+        # Generate plots HTML
+        plots_html = ""
+        for plot_type, plot_info in plots_data.get('plots', {}).items():
+            for compare_to_key, plot_data in plot_info.items():
+                plot_template = self._read_template('plot')
+                plot_html = self._replace_placeholders(plot_template, {
+                    'plot_type': plot_type.capitalize(),
+                    'param_id': param_id,
+                    'compare_to_key': compare_to_key,
+                    'plot_path': plot_data.get('path', ''),
+                    'mode': plot_data.get('mode', ''),
+                    'comparison_type': plot_data.get('comparisonType', 'primary')
+                })
+                plots_html += plot_html
+                
+        # Generate results HTML
+        results_html = ""
+        for variation, result in param_data.get('results', {}).items():
+            results_html += f"""<tr>
+                <td>{variation}</td>
+                <td>{result.get('value', '')}</td>
+                <td>{result.get('change', '')}</td>
+                <td>{result.get('percentChange', '')}%</td>
+            </tr>"""
+            
+        # Replace placeholders
+        return self._replace_placeholders(template, {
+            'param_id': param_id,
+            'mode': param_data.get('mode', ''),
+            'values': ', '.join(map(str, param_data.get('values', []))),
+            'plots': plots_html,
+            'results': results_html
+        })
+        
+    def generate_report(self, sensitivity_data, plots_data, output_file=None):
+        """Generate a complete HTML report."""
+        # Get main template
+        template = self._read_template('main')
+        
+        # Generate content HTML
+        content_html = ""
+        for param_id, param_data in sensitivity_data.get('parameters', {}).items():
+            if param_id in plots_data:
+                param_html = self.generate_parameter_html(param_id, param_data, plots_data[param_id])
+                content_html += param_html
+                
+        # Replace placeholders
+        report_html = self._replace_placeholders(template, {
+            'version': self.version,
+            'timestamp': datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            'content': content_html
+        })
+        
+        # Save report if output file is specified
+        if output_file:
+            try:
+                with open(output_file, 'w') as f:
+                    f.write(report_html)
+                self.logger.info(f"Saved report to {output_file}")
+            except Exception as e:
+                self.logger.error(f"Error saving report: {str(e)}")
+                
+        return report_html
+        
+    def generate_summary_report(self, sensitivity_data, output_file=None):
+        """Generate a summary HTML report."""
+        # Get main template
+        template = self._read_template('main')
+        
+        # Generate content HTML
+        content_html = """<div class="parameter-section">
+            <h2>Sensitivity Analysis Summary</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Mode</th>
+                        <th>Values</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>"""
+                
+        for param_id, param_data in sensitivity_data.get('parameters', {}).items():
+            content_html += f"""<tr>
+                <td>{param_id}</td>
+                <td>{param_data.get('mode', '')}</td>
+                <td>{', '.join(map(str, param_data.get('values', [])))}</td>
+                <td>{param_data.get('status', {}).get('processed', False)}</td>
+            </tr>"""
+            
+        content_html += """</tbody>
+            </table>
+        </div>"""
+        
+        # Replace placeholders
+        report_html = self._replace_placeholders(template, {
+            'version': self.version,
+            'timestamp': datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            'content': content_html
+        })
+        
+        # Save report if output file is specified
+        if output_file:
+            try:
+                with open(output_file, 'w') as f:
+                    f.write(report_html)
+                self.logger.info(f"Saved summary report to {output_file}")
+            except Exception as e:
+                self.logger.error(f"Error saving summary report: {str(e)}")
+                
+        return report_html
+
+# Example usage
+if __name__ == "__main__":
+    # Create organizer
+    organizer = SensitivityHTMLOrganizer()
     
-    if not batches:
-        logger.warning("No batch directories found")
-        return {"error": "No batch directories found"}
-    
-    # Track statistics
-    stats = {
-        "versions_processed": 0,
-        "html_files_organized": 0,
-        "albums_created": 0,
-        "errors": []
+    # Example sensitivity data
+    sensitivity_data = {
+        'parameters': {
+            'S34': {
+                'mode': 'symmetrical',
+                'values': [20],
+                'results': {
+                    '+20%': {'value': 120, 'change': 20, 'percentChange': 20},
+                    '-20%': {'value': 80, 'change': -20, 'percentChange': -20}
+                }
+            }
+        }
     }
     
-    for batch in batches:
-        # Extract version number
-        version_match = re.match(r"Batch\((\d+)\)", batch)
-        if not version_match:
-            logger.warning(f"Invalid batch directory format: {batch}")
-            stats["errors"].append(f"Invalid batch directory format: {batch}")
-            continue
-            
-        version = version_match.group(1)
-        results_dir = os.path.join(base_dir, batch, f"Results({version})")
-        
-        if not os.path.exists(results_dir):
-            logger.warning(f"Results directory not found: {results_dir}")
-            stats["errors"].append(f"Results directory not found: {results_dir}")
-            continue
-        
-        # Look for Sensitivity directory
-        sensitivity_dir = os.path.join(results_dir, "Sensitivity")
-        if not os.path.exists(sensitivity_dir):
-            logger.info(f"No Sensitivity directory found for version {version}")
-            continue
-        
-        # Create HTML albums directory
-        html_albums_dir = os.path.join(results_dir, "SensitivityHTML")
-        
-        # Import directory operation functions
-        from sensitivity_logging import directory_operation, log_directory_check
-        
-        # Log directory check and creation
-        with directory_operation('check', html_albums_dir):
-            log_directory_check(html_albums_dir, os.path.exists(html_albums_dir))
-        
-        # Create the directory if it doesn't exist
-        with directory_operation('create', html_albums_dir):
-            os.makedirs(html_albums_dir, exist_ok=True)
-            logger.info(f"Created/verified HTML albums directory: {html_albums_dir}")
-        
-        # Process different analysis modes
-        for mode in ["Symmetrical", "Multipoint"]:
-            mode_dir = os.path.join(sensitivity_dir, mode)
-            if not os.path.exists(mode_dir):
-                continue
-                
-            # Process HTML files in this mode directory
-            html_files = []
-            for root, _, files in os.walk(mode_dir):
-                for file in files:
-                    if file.lower().endswith('.html'):
-                        html_files.append((os.path.join(root, file), file))
-            
-            if not html_files:
-                logger.info(f"No HTML files found in {mode_dir}")
-                continue
-            
-            # Create a mode-specific album
-            album_name = f"HTML_Sensitivity_{mode}"
-            album_dir = os.path.join(html_albums_dir, album_name)
-            
-            # Log directory check and creation
-            with directory_operation('check', album_dir):
-                log_directory_check(album_dir, os.path.exists(album_dir))
-            
-            # Create the directory if it doesn't exist
-            with directory_operation('create', album_dir):
-                os.makedirs(album_dir, exist_ok=True)
-                logger.info(f"Created/verified album directory: {album_dir}")
-            
-            stats["albums_created"] += 1
-            
-            # Copy HTML files to the album
-            for file_path, file_name in html_files:
-                # Extract parameter info from filename if possible
-                param_match = re.match(r"(.+)_vs_(.+)_(.+)\.html", file_name)
-                if param_match:
-                    param_id = param_match.group(1)
-                    compare_to = param_match.group(2)
-                    plot_type = param_match.group(3)
-                    
-                    # Create a better name for the file
-                    new_name = f"{param_id}_vs_{compare_to}_{plot_type}.html"
-                else:
-                    new_name = file_name
-                
-                dest_path = os.path.join(album_dir, new_name)
-                if not os.path.exists(dest_path) or os.path.getmtime(file_path) > os.path.getmtime(dest_path):
-                    shutil.copy2(file_path, dest_path)
-                    logger.info(f"Copied {file_name} to album {album_name} as {new_name}")
-                    stats["html_files_organized"] += 1
-            
-            # Create metadata file for the album
-            metadata = {
-                "version": version,
-                "mode": mode,
-                "files": [os.path.basename(f[0]) for f in html_files],
-                "display_name": f"Sensitivity Analysis - {mode} - HTML Reports",
-                "organized_at": datetime.now().isoformat()
+    # Example plots data
+    plots_data = {
+        'S34': {
+            'id': 'S34',
+            'plots': {
+                'waterfall': {
+                    'S13': {
+                        'path': '../Symmetrical/waterfall/waterfall_S34_S13_primary.png',
+                        'mode': 'symmetrical',
+                        'comparisonType': 'primary'
+                    }
+                }
             }
-            
-            with open(os.path.join(album_dir, "metadata.json"), 'w') as f:
-                json.dump(metadata, f, indent=2)
-        
-        stats["versions_processed"] += 1
+        }
+    }
     
-    # Log summary statistics
-    logger.info(f"Sensitivity HTML organization complete: {stats['versions_processed']} versions, "
-                f"{stats['albums_created']} albums, {stats['html_files_organized']} HTML files organized")
-    return stats
-
-if __name__ == "__main__":
-    organize_sensitivity_html()
+    # Generate report
+    report_path = os.path.join(organizer.base_dir, 'sensitivity_report.html')
+    organizer.generate_report(sensitivity_data, plots_data, report_path)
+    
+    # Generate summary report
+    summary_path = os.path.join(organizer.base_dir, 'sensitivity_summary.html')
+    organizer.generate_summary_report(sensitivity_data, summary_path)

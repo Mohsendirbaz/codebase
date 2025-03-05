@@ -52,6 +52,7 @@ flask_apps = [
     (r"API_endpoints_and_controllers\Sub.py", 5009),
     (r"API_endpoints_and_controllers\Load.py", 5000),
     (r"cfa_list.py", 456),
+    (r"Enhanced_Sensitivity\start_enhanced_sensitivity_server.py", 27890),
 ]
 
 # Base directory where your Node.js scripts are located

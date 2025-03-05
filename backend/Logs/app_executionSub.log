@@ -16,3 +16,76 @@
 2025-03-03 03:17:52,683 DEBUG Logging is configured and working correctly.
 2025-03-03 03:17:52,712 WARNING  * Debugger is active!
 2025-03-03 03:17:52,714 INFO  * Debugger PIN: 119-059-632
+2025-03-03 03:39:05,403 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-03-03 03:39:05,486 INFO  * Restarting with stat
+2025-03-03 03:39:06,802 DEBUG Logging is configured and working correctly.
+2025-03-03 03:39:07,527 WARNING  * Debugger is active!
+2025-03-03 03:39:07,540 INFO  * Debugger PIN: 119-059-632
+2025-03-03 03:39:51,848 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-03-03 03:39:51,998 INFO  * Restarting with stat
+2025-03-03 03:39:54,108 DEBUG Logging is configured and working correctly.
+2025-03-03 03:39:54,158 WARNING  * Debugger is active!
+2025-03-03 03:39:54,170 INFO  * Debugger PIN: 119-059-632
+2025-03-03 03:40:11,610 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-03-03 03:40:11,776 INFO  * Restarting with stat
+2025-03-03 03:40:14,305 DEBUG Logging is configured and working correctly.
+2025-03-03 03:40:14,541 WARNING  * Debugger is active!
+2025-03-03 03:40:14,557 INFO  * Debugger PIN: 119-059-632
+2025-03-03 03:40:23,399 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-03-03 03:40:23,616 INFO  * Restarting with stat
+2025-03-03 03:40:25,137 DEBUG Logging is configured and working correctly.
+2025-03-03 03:40:25,316 WARNING  * Debugger is active!
+2025-03-03 03:40:25,316 INFO  * Debugger PIN: 119-059-632
+2025-03-03 03:40:49,911 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-03-03 03:40:49,989 INFO  * Restarting with stat
+2025-03-03 03:40:50,588 DEBUG Logging is configured and working correctly.
+2025-03-03 03:40:50,623 WARNING  * Debugger is active!
+2025-03-03 03:40:50,630 INFO  * Debugger PIN: 119-059-632
+2025-03-03 03:41:36,808 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-03-03 03:41:36,859 INFO  * Restarting with stat
+2025-03-03 03:41:37,393 DEBUG Logging is configured and working correctly.
+2025-03-03 03:41:37,427 WARNING  * Debugger is active!
+2025-03-03 03:41:37,434 INFO  * Debugger PIN: 119-059-632
+2025-03-03 03:42:39,134 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-03-03 03:42:39,229 INFO  * Restarting with stat
+2025-03-03 03:42:41,088 DEBUG Logging is configured and working correctly.
+2025-03-03 03:42:41,221 WARNING  * Debugger is active!
+2025-03-03 03:42:41,238 INFO  * Debugger PIN: 119-059-632
+2025-03-03 03:43:19,157 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-03-03 03:43:19,220 INFO  * Restarting with stat
+2025-03-03 03:43:19,737 DEBUG Logging is configured and working correctly.
+2025-03-03 03:43:19,771 WARNING  * Debugger is active!
+2025-03-03 03:43:19,787 INFO  * Debugger PIN: 119-059-632
+2025-03-03 04:07:57,510 DEBUG Logging is configured and working correctly.
+2025-03-03 04:07:57,550 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5009
+2025-03-03 04:07:57,550 INFO [33mPress CTRL+C to quit[0m
+2025-03-03 04:07:57,550 INFO  * Restarting with stat
+2025-03-03 04:07:58,146 DEBUG Logging is configured and working correctly.
+2025-03-03 04:07:58,177 WARNING  * Debugger is active!
+2025-03-03 04:07:58,193 INFO  * Debugger PIN: 119-059-632
+2025-03-03 04:13:05,761 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-03-03 04:13:05,850 INFO  * Restarting with stat
+2025-03-03 04:13:07,403 DEBUG Logging is configured and working correctly.
+2025-03-03 04:13:07,445 WARNING  * Debugger is active!
+2025-03-03 04:13:07,463 INFO  * Debugger PIN: 119-059-632
+2025-03-03 04:20:54,529 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-03-03 04:20:54,604 INFO  * Restarting with stat
+2025-03-03 04:20:55,517 DEBUG Logging is configured and working correctly.
+2025-03-03 04:20:55,556 WARNING  * Debugger is active!
+2025-03-03 04:20:55,556 INFO  * Debugger PIN: 119-059-632
+2025-03-03 04:51:05,061 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-03-03 04:51:05,176 INFO  * Restarting with stat
+2025-03-03 04:51:07,072 DEBUG Logging is configured and working correctly.
+2025-03-03 04:51:07,190 WARNING  * Debugger is active!
+2025-03-03 04:51:07,190 INFO  * Debugger PIN: 119-059-632
+2025-03-03 04:52:02,477 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-03-03 04:52:02,549 INFO  * Restarting with stat
+2025-03-03 04:52:03,259 DEBUG Logging is configured and working correctly.
+2025-03-03 04:52:03,328 WARNING  * Debugger is active!
+2025-03-03 04:52:03,328 INFO  * Debugger PIN: 119-059-632
+2025-03-03 04:58:54,364 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-03-03 04:58:54,436 INFO  * Restarting with stat
+2025-03-03 04:58:55,052 DEBUG Logging is configured and working correctly.
+2025-03-03 04:58:55,101 WARNING  * Debugger is active!
+2025-03-03 04:58:55,109 INFO  * Debugger PIN: 119-059-632
