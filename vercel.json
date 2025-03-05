@@ -6,7 +6,7 @@
       "use": "@vercel/static-build",
       "config": {
         "zeroConfig": true,
-        "buildCommand": "mkdir -p public/Original && npm run build"
+        "buildCommand": "sh -c 'mkdir -p public/Original; npm run build'"
       }
     }
   ],
