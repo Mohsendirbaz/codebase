@@ -1,0 +1,131 @@
+/* L_1_HomePage_AboutUs.css */
+
+/* Styling for the About Us tab content */
+.about-us-container {
+  background-color: #f5f2b5; /* Mellow yellow background */
+  background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='smallGrid' width='10' height='10' patternUnits='userSpaceOnUse'%3E%3Cpath d='M 10 0 L 0 0 0 10' fill='none' stroke='%23e8e090' stroke-width='0.5'/%3E%3C/pattern%3E%3Cpattern id='grid' width='100' height='100' patternUnits='userSpaceOnUse'%3E%3Crect width='100' height='100' fill='url(%23smallGrid)'/%3E%3Cpath d='M 100 0 L 0 0 0 100' fill='none' stroke='%23d8d080' stroke-width='1'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23grid)' /%3E%3C/svg%3E");
+  border: 12px solid transparent;
+  border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='none' stroke='%23d4ca56' stroke-width='2' d='M0,0 L100,0 L100,100 L0,100 Z M20,20 L80,20 L80,80 L20,80 Z'/%3E%3Cpath fill='none' stroke='%23d4ca56' stroke-width='1' d='M0,0 L20,20 M100,0 L80,20 M0,100 L20,80 M100,100 L80,80'/%3E%3C/svg%3E") 12;
+  padding: 40px;
+  margin: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+  font-family: 'Libre Baskerville', Georgia, serif;
+  color: #3a3426;
+  overflow: auto;
+  max-height: calc(100vh - 200px);
+}
+
+/* Add a subtle texture overlay */
+.about-us-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeBlend mode='multiply' in='SourceGraphic'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.about-us-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Heading styles */
+.about-us-container h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #5c4b24;
+  font-weight: normal;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-bottom: 2px solid #a89e7a;
+  padding-bottom: 15px;
+}
+
+.about-us-container h2 {
+  font-size: 1.8rem;
+  color: #5c4b24;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  font-weight: normal;
+}
+
+/* Paragraph styles */
+.about-us-container p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  text-align: justify;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+/* First letter styling (drop cap) */
+.about-us-container p:first-of-type::first-letter {
+  font-size: 3.5rem;
+  float: left;
+  line-height: 0.8;
+  margin-right: 10px;
+  color: #5c4b24;
+  font-family: 'Libre Baskerville', Georgia, serif;
+}
+
+/* Signature section */
+.signature-section {
+  text-align: right;
+  margin-top: 40px;
+  font-style: italic;
+}
+
+/* Decorative elements */
+.decorative-divider {
+  text-align: center;
+  margin: 30px 0;
+  color: #a89e7a;
+  font-size: 1.5rem;
+}
+
+/* Seal/logo styling */
+.about-us-seal {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 30px;
+  display: block;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='none' stroke='%235c4b24' stroke-width='2'/%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='%235c4b24' stroke-width='1'/%3E%3Ctext x='50' y='55' text-anchor='middle' font-family='serif' font-size='12' fill='%235c4b24'%3ETEA Space%3C/text%3E%3Ctext x='50' y='40' text-anchor='middle' font-family='serif' font-size='8' fill='%235c4b24'%3EEstablished%3C/text%3E%3Ctext x='50' y='65' text-anchor='middle' font-family='serif' font-size='8' fill='%235c4b24'%3E2025%3C/text%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.8;
+}
+
+/* Special styling for when the About Us tab is active */
+.tab-button.active[data-tab="AboutUs"] {
+  background-color: #f5f2b5; /* Match the mellow yellow background */
+  border-bottom: 3px solid #d4ca56; /* Match the border color */
+  color: #5c4b24;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .about-us-container {
+    padding: 20px;
+    margin: 10px;
+  }
+  
+  .about-us-container h1 {
+    font-size: 2rem;
+  }
+  
+  .about-us-container h2 {
+    font-size: 1.5rem;
+  }
+  
+  .about-us-container p {
+    font-size: 1rem;
+  }
+}

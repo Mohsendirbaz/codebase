@@ -1,0 +1,270 @@
+.sensitivity-module {
+    display: inline-block;
+}
+
+.sensitivity-btn1 {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.sensitivity-btn1:hover {
+    opacity: 0.9;
+}
+
+.sensitivity-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.sensitivity-dialog {
+    position: absolute;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 500px;
+    max-width: 90vw;
+    animation: slideIn 0.3s ease-out;
+    z-index: 1001;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.sensitivity-dialog.closing {
+    animation: slideOut 0.3s ease-in;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+    to {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+}
+
+.sensitivity-dialog-inner {
+    padding: 20px;
+}
+
+.sensitivity-content {
+    color: var(--text-color);
+}
+
+.sensitivity-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.sensitivity-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.parameter-key {
+    margin-left: 8px;
+    color: var(--primary-color);
+}
+
+.close-button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+
+.mode-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.mode-box {
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.mode-box.selected {
+    border-color: var(--primary-color);
+    background-color: rgba(59, 130, 246, 0.05);
+}
+
+.mode-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.mode-checkbox {
+    width: 16px;
+    height: 16px;
+}
+
+.value-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: #ffffff;
+    color: #333;
+}
+
+.points-grid {
+    display: grid;
+    gap: 10px;
+}
+
+.point-inputs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.additional-settings {
+    border-top: 1px solid var(--border-color);
+    padding-top: 20px;
+    margin-top: 20px;
+}
+
+.settings-row {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.compare-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.compare-select {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: #ffffff;
+    color: #333;
+}
+
+.axis-section {
+    display: flex;
+    gap: 20px;
+}
+
+.axis-radio {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.plot-section {
+    display: flex;
+    gap: 20px;
+}
+
+.plot-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.sensitivity-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.reset-button,
+.cancel-button,
+.save-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.reset-button {
+    background-color: #ef4444;
+    color: white;
+}
+
+.cancel-button {
+    background-color: var(--border-color);
+    color: var(--text-color);
+}
+
+.save-button {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.sensitivity-results {
+    padding: 20px;
+    background: var(--bg-color);
+}
+
+.sensitivity-parameter-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.sensitivity-plots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.sensitivity-plot {
+    padding: 15px;
+    background: var(--bg-color-secondary);
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.sensitivity-plot h4 {
+    margin: 0 0 10px 0;
+    color: var(--text-color-primary);
+}

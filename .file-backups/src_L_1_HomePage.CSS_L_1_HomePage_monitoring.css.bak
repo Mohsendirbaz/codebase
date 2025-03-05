@@ -1,0 +1,21 @@
+/* Monitoring button styles */
+button.active-monitoring {
+    background-color: #2196f3;
+    color: white;
+    border-color: #1976d2;
+}
+
+button.active-monitoring:hover {
+    background-color: #1976d2;
+}
+
+/* Animation for active monitoring */
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(33, 150, 243, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(33, 150, 243, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(33, 150, 243, 0); }
+}
+
+button.active-monitoring {
+    animation: pulse 2s infinite;
+}

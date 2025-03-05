@@ -9,7 +9,7 @@ EXCLUDED_PHRASES = ["PyScanner", "ID_Replace_Python", "ID_Replace_Python_Final"]
 
 # === New Configuration: Specific targets ===
 SPECIFIC = True  # Set this to True to enable specific file matching
-SPECIFIC_TARGET_FILES = ["update_config_modules_with_CFA_7 copy.py", "example2.py"]  # List of specific files to search
+SPECIFIC_TARGET_FILES = ["CFA copy.py", "example2.py"]  # List of specific files to search
 
 # === Log file path ===
 LOG_FILE_PATH = os.path.join(DESTINATION_DIRECTORY, 'ID_Replace_Python.log')

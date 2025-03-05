@@ -8,8 +8,10 @@ app = Flask(__name__)
 CORS(app)
 
 # Define the base directory of the project
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
-STATIC_FOLDER = os.path.join(BASE_DIR, 'public', 'Original')
+# Define path directly from project root
+BASE_DIR = os.path.join(os.path.dirname(__file__), '..', '..')
+STATIC_FOLDER = os.path.join(BASE_DIR, 'backend', 'Original')
+
 
 # Ensure the static/uploads directory exists
 if not os.path.exists(STATIC_FOLDER):

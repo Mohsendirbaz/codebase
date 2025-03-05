@@ -1,0 +1,1879 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dependency Graph Visualization</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    h1, h2, h3 {
+      color: #444;
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .layers-container {
+      flex: 1;
+      min-width: 300px;
+      border-right: 1px solid #ccc;
+      padding-right: 20px;
+    }
+    .details-container {
+      flex: 2;
+      min-width: 400px;
+      padding-left: 20px;
+    }
+    .layer {
+      margin-bottom: 20px;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border-radius: 5px;
+    }
+    .layer h3 {
+      margin-top: 0;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 5px;
+    }
+    .layer ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    .layer li {
+      padding: 5px 10px;
+      margin: 5px 0;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .active {
+      background-color: #e6f7e6;
+      border-left: 4px solid #4CAF50;
+    }
+    .inactive {
+      background-color: #f7e6e6;
+      border-left: 4px solid #F44336;
+    }
+    .standalone {
+      font-style: italic;
+    }
+    .file-details {
+      display: none;
+      padding: 15px;
+      background-color: #f5f5f5;
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+    .file-details h3 {
+      margin-top: 0;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 5px;
+    }
+    .summary {
+      background-color: #f0f0f0;
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+    .legend {
+      display: flex;
+      margin-bottom: 20px;
+    }
+    .legend-item {
+      margin-right: 20px;
+      display: flex;
+      align-items: center;
+    }
+    .legend-color {
+      width: 20px;
+      height: 20px;
+      margin-right: 5px;
+      border-radius: 3px;
+    }
+    .search-container {
+      margin-bottom: 20px;
+    }
+    #search-input {
+      padding: 8px;
+      width: 100%;
+      max-width: 300px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Dependency Graph Visualization</h1>
+  
+  <div class="summary">
+    <h2>Summary</h2>
+    <p>Total Files: 139</p>
+    <p>Active Files: 84</p>
+    <p>Inactive Files: 55</p>
+    <p>Standalone Files: 46</p>
+    <p>Dependency Layers: 7</p>
+  </div>
+  
+  <div class="legend">
+    <div class="legend-item">
+      <div class="legend-color active"></div>
+      <span>Active File</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-color inactive"></div>
+      <span>Inactive File</span>
+    </div>
+  </div>
+  
+  <div class="search-container">
+    <input type="text" id="search-input" placeholder="Search files...">
+  </div>
+  
+  <div class="container">
+    <div class="layers-container">
+      <h2>Dependency Layers</h2>
+      
+      <div class="layer">
+        <h3>Layer 0</h3>
+        <ul>
+          <li class="active " data-file="src\index.js">
+              index.js
+              
+            </li>
+        </ul>
+      </div>
+    
+      <div class="layer">
+        <h3>Layer 1</h3>
+        <ul>
+          <li class="active " data-file="src\App.js">
+              App.js
+              
+            </li><li class="active standalone" data-file="src\index.css">
+              index.css
+               (Standalone)
+            </li>
+        </ul>
+      </div>
+    
+      <div class="layer">
+        <h3>Layer 2</h3>
+        <ul>
+          <li class="active " data-file="src\L_1_HomePage.js">
+              L_1_HomePage.js
+              
+            </li><li class="active standalone" data-file="src\contexts\VersionStateContext.js">
+              VersionStateContext.js
+               (Standalone)
+            </li><li class="active standalone" data-file="src\components\ErrorBoundary.js">
+              ErrorBoundary.js
+               (Standalone)
+            </li>
+        </ul>
+      </div>
+    
+      <div class="layer">
+        <h3>Layer 3</h3>
+        <ul>
+          <li class="active standalone" data-file="src\CustomizableImage.js">
+              CustomizableImage.js
+               (Standalone)
+            </li><li class="active " data-file="src\CustomizableTable.js">
+              CustomizableTable.js
+              
+            </li><li class="active standalone" data-file="src\useFormValues.js">
+              useFormValues.js
+               (Standalone)
+            </li><li class="active " data-file="src\extended_scaling\ExtendedScaling.js">
+              ExtendedScaling.js
+              
+            </li><li class="active " data-file="src\FormHeader.js">
+              FormHeader.js
+              
+            </li><li class="active " data-file="src\GeneralFormConfig.js">
+              GeneralFormConfig.js
+              
+            </li><li class="active " data-file="src\Popup.js">
+              Popup.js
+              
+            </li><li class="active standalone" data-file="src\L_1_HomePage.CSS\L_1_HomePage1.css">
+              L_1_HomePage1.css
+               (Standalone)
+            </li><li class="active standalone" data-file="src\L_1_HomePage.CSS\L_1_HomePage2.css">
+              L_1_HomePage2.css
+               (Standalone)
+            </li><li class="active standalone" data-file="src\L_1_HomePage.CSS\L_1_HomePage3.css">
+              L_1_HomePage3.css
+               (Standalone)
+            </li><li class="active standalone" data-file="src\L_1_HomePage.CSS\L_1_HomePage4.css">
+              L_1_HomePage4.css
+               (Standalone)
+            </li><li class="active standalone" data-file="src\L_1_HomePage.CSS\L_1_HomePage5.css">
+              L_1_HomePage5.css
+               (Standalone)
+            </li><li class="active standalone" data-file="src\L_1_HomePage.CSS\L_1_HomePage6.css">
+              L_1_HomePage6.css
+               (Standalone)
+            </li><li class="active standalone" data-file="src\L_1_HomePage.CSS\L_1_HomePage_AboutUs.css">
+              L_1_HomePage_AboutUs.css
+               (Standalone)
+            </li><li class="active standalone" data-file="src\L_1_HomePage.CSS\L_1_HomePage_buttons.css">
+              L_1_HomePage_buttons.css
+               (Standalone)
+            </li><li class="active standalone" data-file="src\L_1_HomePage.CSS\L_1_HomePage_monitoring.css">
+              L_1_HomePage_monitoring.css
+               (Standalone)
+            </li><li class="active standalone" data-file="src\L_1_HomePage.CSS\L_1_HomePage_selectors.css">
+              L_1_HomePage_selectors.css
+               (Standalone)
+            </li><li class="active standalone" data-file="src\styles\neumorphic-tabs.css">
+              neumorphic-tabs.css
+               (Standalone)
+            </li><li class="active " data-file="src\PropertySelector.js">
+              PropertySelector.js
+              
+            </li><li class="active " data-file="src\MultiVersionSelector.js">
+              MultiVersionSelector.js
+              
+            </li><li class="active standalone" data-file="src\TodoList.js">
+              TodoList.js
+               (Standalone)
+            </li><li class="active " data-file="src\VersionSelector.js">
+              VersionSelector.js
+              
+            </li><li class="active " data-file="src\components\model\ModelZone.js">
+              ModelZone.js
+              
+            </li><li class="active " data-file="src\components\version\VersionControl.js">
+              VersionControl.js
+              
+            </li><li class="active " data-file="src\Editable.js">
+              Editable.js
+              
+            </li><li class="active " data-file="src\naturalmotion.js">
+              naturalmotion.js
+              
+            </li><li class="active " data-file="src\components\SensitivityAnalysis.js">
+              SensitivityAnalysis.js
+              
+            </li><li class="active " data-file="src\components\TestingZone.js">
+              TestingZone.js
+              
+            </li><li class="active " data-file="src\components\CalculationMonitor.js">
+              CalculationMonitor.js
+              
+            </li>
+        </ul>
+      </div>
+    
+      <div class="layer">
+        <h3>Layer 4</h3>
+        <ul>
+          <li class="active " data-file="src\extended_scaling\ScalingSummary.js">
+              ScalingSummary.js
+              
+            </li><li class="active standalone" data-file="src\components\L_1_HomePage.CSS\L_1_HomePage4.css">
+              L_1_HomePage4.css
+               (Standalone)
+            </li><li class="active standalone" data-file="src\ui\tooltip.js">
+              tooltip.js
+               (Standalone)
+            </li><li class="active " data-file="src\components\SensitivitySelector.js">
+              SensitivitySelector.js
+              
+            </li><li class="active standalone" data-file="src\VersionSelector.css">
+              VersionSelector.css
+               (Standalone)
+            </li><li class="active standalone" data-file="src\components\model\ModelZone.css">
+              ModelZone.css
+               (Standalone)
+            </li><li class="active standalone" data-file="src\components\model\FilterPopup.css">
+              FilterPopup.css
+               (Standalone)
+            </li><li class="active " data-file="src\components\model\ModelCard.js">
+              ModelCard.js
+              
+            </li><li class="active " data-file="src\components\model\FilterPopup.js">
+              FilterPopup.js
+              
+            </li><li class="active " data-file="src\components\model\InheritanceControl.js">
+              InheritanceControl.js
+              
+            </li><li class="active " data-file="src\components\model\ImpactAnalysis.js">
+              ImpactAnalysis.js
+              
+            </li><li class="active " data-file="src\components\model\SensitivityEngine.js">
+              SensitivityEngine.js
+              
+            </li><li class="active " data-file="src\components\model\RiskAssessment.js">
+              RiskAssessment.js
+              
+            </li><li class="active " data-file="src\components\model\OptimizationEngine.js">
+              OptimizationEngine.js
+              
+            </li><li class="active " data-file="src\components\model\DecisionEngine.js">
+              DecisionEngine.js
+              
+            </li><li class="active " data-file="src\components\model\OverlayController.js">
+              OverlayController.js
+              
+            </li><li class="active " data-file="src\components\model\AnalysisVisualizationIntegration.js">
+              AnalysisVisualizationIntegration.js
+              
+            </li><li class="active standalone" data-file="src\components\version\VersionControl.css">
+              VersionControl.css
+               (Standalone)
+            </li><li class="active standalone" data-file="src\Editable.css">
+              Editable.css
+               (Standalone)
+            </li><li class="active standalone" data-file="src\naturalmotion.css">
+              naturalmotion.css
+               (Standalone)
+            </li><li class="active standalone" data-file="src\SensitivityVisualization.js">
+              SensitivityVisualization.js
+               (Standalone)
+            </li><li class="active standalone" data-file="src\components\SensitivityAnalysis.css">
+              SensitivityAnalysis.css
+               (Standalone)
+            </li><li class="active standalone" data-file="src\components\TestingZone.css">
+              TestingZone.css
+               (Standalone)
+            </li><li class="active " data-file="src\components\cfa\CFAConsolidationUI.js">
+              CFAConsolidationUI.js
+              
+            </li><li class="active standalone" data-file="src\components\CalculationMonitor.css">
+              CalculationMonitor.css
+               (Standalone)
+            </li>
+        </ul>
+      </div>
+    
+      <div class="layer">
+        <h3>Layer 5</h3>
+        <ul>
+          <li class="active " data-file="src\extended_scaling\Card.js">
+              Card.js
+              
+            </li><li class="active standalone" data-file="src\Popup.css">
+              Popup.css
+               (Standalone)
+            </li><li class="active standalone" data-file="src\components\SensitivitySelector.css">
+              SensitivitySelector.css
+               (Standalone)
+            </li><li class="active standalone" data-file="src\components\model\ModelCard.css">
+              ModelCard.css
+               (Standalone)
+            </li><li class="active standalone" data-file="src\components\model\InheritanceControl.css">
+              InheritanceControl.css
+               (Standalone)
+            </li><li class="active standalone" data-file="src\components\model\ImpactAnalysis.css">
+              ImpactAnalysis.css
+               (Standalone)
+            </li><li class="active standalone" data-file="src\components\model\SensitivityEngine.css">
+              SensitivityEngine.css
+               (Standalone)
+            </li><li class="active " data-file="src\components\model\AnalysisChart.js">
+              AnalysisChart.js
+              
+            </li><li class="active standalone" data-file="src\components\model\RiskAssessment.css">
+              RiskAssessment.css
+               (Standalone)
+            </li><li class="active standalone" data-file="src\components\model\OptimizationEngine.css">
+              OptimizationEngine.css
+               (Standalone)
+            </li><li class="active standalone" data-file="src\components\model\DecisionEngine.css">
+              DecisionEngine.css
+               (Standalone)
+            </li><li class="active standalone" data-file="src\components\model\OverlayController.css">
+              OverlayController.css
+               (Standalone)
+            </li><li class="active " data-file="src\components\model\NavigationManager.js">
+              NavigationManager.js
+              
+            </li><li class="active standalone" data-file="src\components\model\AnalysisVisualizationIntegration.css">
+              AnalysisVisualizationIntegration.css
+               (Standalone)
+            </li><li class="active standalone" data-file="src\components\cfa\CFAConsolidationUI.css">
+              CFAConsolidationUI.css
+               (Standalone)
+            </li><li class="active " data-file="src\components\cfa\SelectionPanel.js">
+              SelectionPanel.js
+              
+            </li><li class="active " data-file="src\components\cfa\ProcessingPanel.js">
+              ProcessingPanel.js
+              
+            </li><li class="active " data-file="src\components\cfa\ResultsPanel.js">
+              ResultsPanel.js
+              
+            </li><li class="active " data-file="src\components\cfa\IndividualResultsPanel.js">
+              IndividualResultsPanel.js
+              
+            </li>
+        </ul>
+      </div>
+    
+      <div class="layer">
+        <h3>Layer 6</h3>
+        <ul>
+          <li class="active standalone" data-file="src\components\model\AnalysisChart.css">
+              AnalysisChart.css
+               (Standalone)
+            </li><li class="active standalone" data-file="src\components\model\NavigationManager.css">
+              NavigationManager.css
+               (Standalone)
+            </li><li class="active standalone" data-file="src\components\cfa\SelectionPanel.css">
+              SelectionPanel.css
+               (Standalone)
+            </li><li class="active standalone" data-file="src\components\cfa\ProcessingPanel.css">
+              ProcessingPanel.css
+               (Standalone)
+            </li><li class="active standalone" data-file="src\components\cfa\ResultsPanel.css">
+              ResultsPanel.css
+               (Standalone)
+            </li>
+        </ul>
+      </div>
+    
+    </div>
+    
+    <div class="details-container">
+      <h2>File Details</h2>
+      <p>Click on a file to see details</p>
+      
+      <div class="file-details" id="details-src-App-css">
+        <h3>src\App.css</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-App-js">
+        <h3>src\App.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>src\index.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-CustomizableImage-js">
+        <h3>src\CustomizableImage.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\L_1_HomePage.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-CustomizableTable-js">
+        <h3>src\CustomizableTable.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>src\L_1_HomePage.js</li><li>src\components\cfa\IndividualResultsPanel.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-Editable-css">
+        <h3>src\Editable.css</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\Editable.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-Editable-js">
+        <h3>src\Editable.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>src\L_1_HomePage.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-FormHeader-js">
+        <h3>src\FormHeader.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>src\L_1_HomePage.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-GeneralFormConfig-js">
+        <h3>src\GeneralFormConfig.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>src\L_1_HomePage.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-L-1-HomePage-CSS-L-1-HomePage1-css">
+        <h3>src\L_1_HomePage.CSS\L_1_HomePage1.css</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\L_1_HomePage.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-L-1-HomePage-CSS-L-1-HomePage2-css">
+        <h3>src\L_1_HomePage.CSS\L_1_HomePage2.css</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\L_1_HomePage.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-L-1-HomePage-CSS-L-1-HomePage3-css">
+        <h3>src\L_1_HomePage.CSS\L_1_HomePage3.css</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\L_1_HomePage.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-L-1-HomePage-CSS-L-1-HomePage4-css">
+        <h3>src\L_1_HomePage.CSS\L_1_HomePage4.css</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\L_1_HomePage.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-L-1-HomePage-CSS-L-1-HomePage5-css">
+        <h3>src\L_1_HomePage.CSS\L_1_HomePage5.css</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\L_1_HomePage.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-L-1-HomePage-CSS-L-1-HomePage6-css">
+        <h3>src\L_1_HomePage.CSS\L_1_HomePage6.css</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\L_1_HomePage.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-L-1-HomePage-CSS-L-1-HomePage-AboutUs-css">
+        <h3>src\L_1_HomePage.CSS\L_1_HomePage_AboutUs.css</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\L_1_HomePage.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-L-1-HomePage-CSS-L-1-HomePage-Neumorphic-css">
+        <h3>src\L_1_HomePage.CSS\L_1_HomePage_Neumorphic.css</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-L-1-HomePage-CSS-L-1-HomePage-buttons-css">
+        <h3>src\L_1_HomePage.CSS\L_1_HomePage_buttons.css</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\L_1_HomePage.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-L-1-HomePage-CSS-L-1-HomePage-monitoring-css">
+        <h3>src\L_1_HomePage.CSS\L_1_HomePage_monitoring.css</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\L_1_HomePage.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-L-1-HomePage-CSS-L-1-HomePage-selectors-css">
+        <h3>src\L_1_HomePage.CSS\L_1_HomePage_selectors.css</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\L_1_HomePage.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-L-1-HomePage-js">
+        <h3>src\L_1_HomePage.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>src\App.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-MultiVersionSelector-js">
+        <h3>src\MultiVersionSelector.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>src\L_1_HomePage.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-Popup-css">
+        <h3>src\Popup.css</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\Popup.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-Popup-js">
+        <h3>src\Popup.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>src\GeneralFormConfig.js</li><li>src\L_1_HomePage.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-PriceOptimizationConfig-css">
+        <h3>src\PriceOptimizationConfig.css</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-PriceOptimizationConfig-js">
+        <h3>src\PriceOptimizationConfig.js</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-PropertySelector-js">
+        <h3>src\PropertySelector.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>src\L_1_HomePage.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-SensitivityVisualization-css">
+        <h3>src\SensitivityVisualization.css</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-SensitivityVisualization-js">
+        <h3>src\SensitivityVisualization.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\components\SensitivityAnalysis.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-TodoList-js">
+        <h3>src\TodoList.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\L_1_HomePage.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-TodoList2-js">
+        <h3>src\TodoList2.js</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-VersionSelector-css">
+        <h3>src\VersionSelector.css</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\VersionSelector.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-VersionSelector-js">
+        <h3>src\VersionSelector.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>src\L_1_HomePage.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-CalculationMonitor-css">
+        <h3>src\components\CalculationMonitor.css</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\components\CalculationMonitor.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-CalculationMonitor-js">
+        <h3>src\components\CalculationMonitor.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>src\L_1_HomePage.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-ErrorBoundary-js">
+        <h3>src\components\ErrorBoundary.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\App.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-L-1-HomePage-CSS-L-1-HomePage1-css">
+        <h3>src\components\L_1_HomePage.CSS\L_1_HomePage1.css</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-L-1-HomePage-CSS-L-1-HomePage2-css">
+        <h3>src\components\L_1_HomePage.CSS\L_1_HomePage2.css</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-L-1-HomePage-CSS-L-1-HomePage3-css">
+        <h3>src\components\L_1_HomePage.CSS\L_1_HomePage3.css</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-L-1-HomePage-CSS-L-1-HomePage4-css">
+        <h3>src\components\L_1_HomePage.CSS\L_1_HomePage4.css</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\extended_scaling\Card.js</li><li>src\extended_scaling\ExtendedScaling.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-L-1-HomePage-CSS-L-1-HomePage5-css">
+        <h3>src\components\L_1_HomePage.CSS\L_1_HomePage5.css</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-L-1-HomePage-CSS-L-1-HomePage6-css">
+        <h3>src\components\L_1_HomePage.CSS\L_1_HomePage6.css</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-SensitivityAnalysis-css">
+        <h3>src\components\SensitivityAnalysis.css</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\components\SensitivityAnalysis.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-SensitivityAnalysis-js">
+        <h3>src\components\SensitivityAnalysis.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>src\L_1_HomePage.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-SensitivityIntegration-js">
+        <h3>src\components\SensitivityIntegration.js</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-SensitivitySelector-css">
+        <h3>src\components\SensitivitySelector.css</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\components\SensitivitySelector.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-SensitivitySelector-js">
+        <h3>src\components\SensitivitySelector.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>src\GeneralFormConfig.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-SensitivityVisualization-css">
+        <h3>src\components\SensitivityVisualization.css</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-TestingZone-css">
+        <h3>src\components\TestingZone.css</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\components\TestingZone.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-TestingZone-js">
+        <h3>src\components\TestingZone.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>src\L_1_HomePage.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-buttons-ActionButtons-css">
+        <h3>src\components\buttons\ActionButtons.css</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-buttons-ActionButtons-js">
+        <h3>src\components\buttons\ActionButtons.js</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-cfa-CFAConsolidationUI-css">
+        <h3>src\components\cfa\CFAConsolidationUI.css</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\components\cfa\CFAConsolidationUI.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-cfa-CFAConsolidationUI-js">
+        <h3>src\components\cfa\CFAConsolidationUI.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>src\components\TestingZone.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-cfa-IndividualResultsPanel-js">
+        <h3>src\components\cfa\IndividualResultsPanel.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>src\components\cfa\CFAConsolidationUI.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-cfa-ProcessingPanel-css">
+        <h3>src\components\cfa\ProcessingPanel.css</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\components\cfa\ProcessingPanel.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-cfa-ProcessingPanel-js">
+        <h3>src\components\cfa\ProcessingPanel.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>src\components\cfa\CFAConsolidationUI.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-cfa-ResultsPanel-css">
+        <h3>src\components\cfa\ResultsPanel.css</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\components\cfa\ResultsPanel.js</li><li>src\components\cfa\IndividualResultsPanel.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-cfa-ResultsPanel-js">
+        <h3>src\components\cfa\ResultsPanel.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>src\components\cfa\CFAConsolidationUI.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-cfa-SelectionPanel-css">
+        <h3>src\components\cfa\SelectionPanel.css</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\components\cfa\SelectionPanel.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-cfa-SelectionPanel-js">
+        <h3>src\components\cfa\SelectionPanel.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>src\components\cfa\CFAConsolidationUI.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-forms-InputForm-js">
+        <h3>src\components\forms\InputForm.js</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-layout-HeaderSection-css">
+        <h3>src\components\layout\HeaderSection.css</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-layout-HeaderSection-js">
+        <h3>src\components\layout\HeaderSection.js</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-layout-theme-ThemeSelector-js">
+        <h3>src\components\layout\theme\ThemeSelector.js</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-model-AnalysisChart-css">
+        <h3>src\components\model\AnalysisChart.css</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\components\model\AnalysisChart.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-model-AnalysisChart-js">
+        <h3>src\components\model\AnalysisChart.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>src\components\model\SensitivityEngine.js</li><li>src\components\model\RiskAssessment.js</li><li>src\components\model\OptimizationEngine.js</li><li>src\components\model\DecisionEngine.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-model-AnalysisVisualizationIntegration-css">
+        <h3>src\components\model\AnalysisVisualizationIntegration.css</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\components\model\AnalysisVisualizationIntegration.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-model-AnalysisVisualizationIntegration-js">
+        <h3>src\components\model\AnalysisVisualizationIntegration.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>src\components\model\ModelZone.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-model-DecisionEngine-css">
+        <h3>src\components\model\DecisionEngine.css</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\components\model\DecisionEngine.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-model-DecisionEngine-js">
+        <h3>src\components\model\DecisionEngine.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>src\components\model\ModelZone.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-model-FilterPopup-css">
+        <h3>src\components\model\FilterPopup.css</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\components\model\ModelZone.js</li><li>src\components\model\FilterPopup.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-model-FilterPopup-js">
+        <h3>src\components\model\FilterPopup.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>src\components\model\ModelZone.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-model-ImpactAnalysis-css">
+        <h3>src\components\model\ImpactAnalysis.css</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\components\model\ImpactAnalysis.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-model-ImpactAnalysis-js">
+        <h3>src\components\model\ImpactAnalysis.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>src\components\model\ModelZone.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-model-InheritanceControl-css">
+        <h3>src\components\model\InheritanceControl.css</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\components\model\InheritanceControl.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-model-InheritanceControl-js">
+        <h3>src\components\model\InheritanceControl.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>src\components\model\ModelZone.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-model-ModelCard-css">
+        <h3>src\components\model\ModelCard.css</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\components\model\ModelCard.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-model-ModelCard-js">
+        <h3>src\components\model\ModelCard.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>src\components\model\ModelZone.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-model-ModelZone-css">
+        <h3>src\components\model\ModelZone.css</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\components\model\ModelZone.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-model-ModelZone-js">
+        <h3>src\components\model\ModelZone.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>src\L_1_HomePage.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-model-NavigationManager-css">
+        <h3>src\components\model\NavigationManager.css</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\components\model\NavigationManager.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-model-NavigationManager-js">
+        <h3>src\components\model\NavigationManager.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>src\components\model\OverlayController.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-model-OptimizationEngine-css">
+        <h3>src\components\model\OptimizationEngine.css</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\components\model\OptimizationEngine.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-model-OptimizationEngine-js">
+        <h3>src\components\model\OptimizationEngine.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>src\components\model\ModelZone.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-model-OverlayController-css">
+        <h3>src\components\model\OverlayController.css</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\components\model\OverlayController.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-model-OverlayController-js">
+        <h3>src\components\model\OverlayController.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>src\components\model\ModelZone.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-model-RiskAssessment-css">
+        <h3>src\components\model\RiskAssessment.css</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\components\model\RiskAssessment.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-model-RiskAssessment-js">
+        <h3>src\components\model\RiskAssessment.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>src\components\model\ModelZone.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-model-SensitivityEngine-css">
+        <h3>src\components\model\SensitivityEngine.css</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\components\model\SensitivityEngine.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-model-SensitivityEngine-js">
+        <h3>src\components\model\SensitivityEngine.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>src\components\model\ModelZone.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-model-overscroll-polyfill-js">
+        <h3>src\components\model\overscroll-polyfill.js</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-navigation-TabNavigation-js">
+        <h3>src\components\navigation\TabNavigation.js</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-scaling-Card-js">
+        <h3>src\components\scaling\Card.js</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-scaling-MathProcessor-js">
+        <h3>src\components\scaling\MathProcessor.js</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-scaling-MotionDraggableIte-js">
+        <h3>src\components\scaling\MotionDraggableIte.js</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-scaling-MotionScalingSummary-js">
+        <h3>src\components\scaling\MotionScalingSummary.js</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-scaling-MotionTooltip-js">
+        <h3>src\components\scaling\MotionTooltip.js</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-scaling-ScalingTab-js">
+        <h3>src\components\scaling\ScalingTab.js</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-scaling-styles-animations-css">
+        <h3>src\components\scaling\styles\animations.css</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-scaling-styles-base-css">
+        <h3>src\components\scaling\styles\base.css</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-scaling-styles-card-css">
+        <h3>src\components\scaling\styles\card.css</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-scaling-styles-draggable-css">
+        <h3>src\components\scaling\styles\draggable.css</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-scaling-styles-scaling-css">
+        <h3>src\components\scaling\styles\scaling.css</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-scaling-styles-tooltip-css">
+        <h3>src\components\scaling\styles\tooltip.css</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-tabs-CsvContentTab-js">
+        <h3>src\components\tabs\CsvContentTab.js</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-tabs-HtmlContentTab-js">
+        <h3>src\components\tabs\HtmlContentTab.js</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-tabs-PlotContentTab-js">
+        <h3>src\components\tabs\PlotContentTab.js</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-tabs-TabContent-js">
+        <h3>src\components\tabs\TabContent.js</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-version-VersionControl-css">
+        <h3>src\components\version\VersionControl.css</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\components\version\VersionControl.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-components-version-VersionControl-js">
+        <h3>src\components\version\VersionControl.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>src\L_1_HomePage.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-contexts-VersionStateContext-js">
+        <h3>src\contexts\VersionStateContext.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\L_1_HomePage.js</li><li>src\MultiVersionSelector.js</li><li>src\VersionSelector.js</li><li>src\components\model\ModelZone.js</li><li>src\components\SensitivityAnalysis.js</li><li>src\App.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-extended-scaling-Card-js">
+        <h3>src\extended_scaling\Card.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>src\extended_scaling\ScalingSummary.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-extended-scaling-ExtendedScaling-js">
+        <h3>src\extended_scaling\ExtendedScaling.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>src\L_1_HomePage.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-extended-scaling-ScalingSummary-js">
+        <h3>src\extended_scaling\ScalingSummary.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>src\extended_scaling\ExtendedScaling.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-hooks-index-js">
+        <h3>src\hooks\index.js</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-hooks-useAnalysis-js">
+        <h3>src\hooks\useAnalysis.js</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-hooks-useContentLoading-js">
+        <h3>src\hooks\useContentLoading.js</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-hooks-useFeatureToggles-js">
+        <h3>src\hooks\useFeatureToggles.js</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-hooks-useFormValues-js">
+        <h3>src\hooks\useFormValues.js</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-hooks-useSensitivity-js">
+        <h3>src\hooks\useSensitivity.js</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-hooks-useTheme-js">
+        <h3>src\hooks\useTheme.js</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-hooks-useVersion-js">
+        <h3>src\hooks\useVersion.js</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-index-css">
+        <h3>src\index.css</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\index.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-index-js">
+        <h3>src\index.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-naturalmotion-css">
+        <h3>src\naturalmotion.css</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\naturalmotion.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-naturalmotion-js">
+        <h3>src\naturalmotion.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>src\L_1_HomePage.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-services-apiService-js">
+        <h3>src\services\apiService.js</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-services-batchService-js">
+        <h3>src\services\batchService.js</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-services-configService-js">
+        <h3>src\services\configService.js</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-services-contentService-js">
+        <h3>src\services\contentService.js</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-services-index-js">
+        <h3>src\services\index.js</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-state-VersionStateManager-js">
+        <h3>src\state\VersionStateManager.js</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-styles-fall-css">
+        <h3>src\styles\fall.css</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-styles-neumorphic-tabs-css">
+        <h3>src\styles\neumorphic-tabs.css</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\L_1_HomePage.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-styles-winter-css">
+        <h3>src\styles\winter.css</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-ui-tooltip-js">
+        <h3>src\ui\tooltip.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\FormHeader.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-ui-tooltip-jsx">
+        <h3>src\ui\tooltip.jsx</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-useFormValues-js">
+        <h3>src\useFormValues.js</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <p>This is a standalone file (no further imports)</p>
+        <p>Imported by:</p>
+        <ul>
+          <li>src\CustomizableTable.js</li><li>src\GeneralFormConfig.js</li><li>src\PropertySelector.js</li><li>src\L_1_HomePage.js</li>
+        </ul>
+      </div>
+    
+      <div class="file-details" id="details-src-utils-pathTransformers-js">
+        <h3>src\utils\pathTransformers.js</h3>
+        <p>Status: <span class="inactive">Inactive</span></p>
+        
+        <p>Imported by:</p>
+        <ul>
+          <li>No files import this file</li>
+        </ul>
+      </div>
+    
+    </div>
+  </div>
+  
+  <script>
+    // Add click event listeners to file items
+    document.querySelectorAll('.layer li').forEach(item => {
+      item.addEventListener('click', function() {
+        // Hide all file details
+        document.querySelectorAll('.file-details').forEach(detail => {
+          detail.style.display = 'none';
+        });
+        
+        // Show the selected file's details
+        const file = this.getAttribute('data-file');
+        const detailsId = 'details-' + file.replace(/[^a-zA-Z0-9]/g, '-');
+        const detailsElement = document.getElementById(detailsId);
+        if (detailsElement) {
+          detailsElement.style.display = 'block';
+        }
+      });
+    });
+    
+    // Add search functionality
+    document.getElementById('search-input').addEventListener('input', function() {
+      const searchTerm = this.value.toLowerCase();
+      
+      document.querySelectorAll('.layer li').forEach(item => {
+        const fileName = item.textContent.toLowerCase();
+        const filePath = item.getAttribute('data-file').toLowerCase();
+        
+        if (fileName.includes(searchTerm) || filePath.includes(searchTerm)) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+  

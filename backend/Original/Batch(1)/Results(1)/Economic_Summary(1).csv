@@ -1,12 +1,12 @@
 Metric,Value
 Internal Rate of Return,5.00%
-Average Selling Price (Project Life Cycle),$0.53
-Total Overnight Cost (TOC),"$300,000"
-Average Annual Revenue,"$15,998"
-Average Annual Operating Expenses,$0
-Average Annual Depreciation,"$15,000"
-Average Annual State Taxes,$50
-Average Annual Federal Taxes,$209
-Average Annual After-Tax Cash Flow,"$15,738"
-Cumulative NPV,$-223
+Average Selling Price (Project Life Cycle),$1.75
+Total Overnight Cost (TOC),"$200,000"
+Average Annual Revenue,"$52,615"
+Average Annual Operating Expenses,"$42,001"
+Average Annual Depreciation,"$10,000"
+Average Annual State Taxes,$31
+Average Annual Federal Taxes,$129
+Average Annual After-Tax Cash Flow,"$10,454"
+Cumulative NPV,$-869
 Calculation Mode,calculateForPrice

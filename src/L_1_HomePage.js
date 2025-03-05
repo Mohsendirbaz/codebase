@@ -1,35 +1,43 @@
 import { useEffect, useState } from 'react';
-import { VersionStateProvider } from './contexts/VersionStateContext';
+import { VersionStateProvider, useVersionState } from './contexts/VersionStateContext';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import CustomizableImage from './CustomizableImage';
 import CustomizableTable from './CustomizableTable';
-import ExtendedScaling from './ExtendedScaling';
+import ExtendedScaling from './extended_scaling/ExtendedScaling';
 import FormHeader from './FormHeader.js';
 import GeneralFormConfig from './GeneralFormConfig.js';
 import Popup from './Popup.js';
-import './L_1_HomePage1.css';
-import './L_1_HomePage2.css';
-import './L_1_HomePage3.css';
-import './L_1_HomePage4.css';
-import './L_1_HomePage5.css';
-import './L_1_HomePage6.css';
+import './L_1_HomePage.CSS/L_1_HomePage1.css';
+import './L_1_HomePage.CSS/L_1_HomePage2.css';
+import './L_1_HomePage.CSS/L_1_HomePage3.css';
+import './L_1_HomePage.CSS/L_1_HomePage4.css';
+import './L_1_HomePage.CSS/L_1_HomePage5.css';
+import './L_1_HomePage.CSS/L_1_HomePage6.css';
+import './L_1_HomePage.CSS/L_1_HomePage_AboutUs.css';
+import './L_1_HomePage.CSS/L_1_HomePage_buttons.css';
+import './L_1_HomePage.CSS/L_1_HomePage_monitoring.css';
+import './L_1_HomePage.CSS/L_1_HomePage_selectors.css';
+import './styles/neumorphic-tabs.css';
 import PropertySelector from './PropertySelector.js';
+import MultiVersionSelector from './MultiVersionSelector.js';
 import TodoList from './TodoList.js';
 import VersionSelector from './VersionSelector.js';
 import ModelZone from './components/model/ModelZone';
 import VersionControl from './components/version/VersionControl';
 import EditableHierarchicalList from './Editable';
 import SpatialTransformComponent from './naturalmotion';
+import SensitivityAnalysis from './components/SensitivityAnalysis';
 import useFormValues from './useFormValues.js';
-
+import TestingZone from './components/TestingZone';
+import CalculationMonitor from './components/CalculationMonitor';
+import SensitivityIntegration from './components/SensitivityIntegration';
 const L_1_HomePageContent = () => {
-    const [activeTab, setActiveTab] = useState('Input');
+    const { selectedVersions, version: contextVersion, setVersion: setContextVersion } = useVersionState();
+    const [activeTab, setActiveTab] = useState('AboutUs');
     const [activeSubTab, setActiveSubTab] = useState('ProjectConfig');
     const [selectedProperties, setSelectedProperties] = useState([]);
-    const [selectedVersions, setSelectedVersions] = useState([]);  // Add state for selected versions
-    const [season, setSeason] = useState('winter'); // 'winter', 'fall', or 'dark'
-    // Sensitivity Analysis State
+    const [season, setSeason] = useState('winter');
     const [S, setS] = useState(() => {
         const initialS = {};
         for (let i = 10; i <= 61; i++) {
@@ -44,6 +52,22 @@ const L_1_HomePageContent = () => {
                 point: false,
             };
         }
+        
+        // Enable and configure S34-S38
+        for (let i = 34; i <= 38; i++) {
+            initialS[`S${i}`] = {
+                ...initialS[`S${i}`],
+                mode: 'symmetrical',
+                values: [20],
+                enabled: true,
+                compareToKey: 'S13',
+                comparisonType: 'primary',
+                waterfall: true,
+                bar: true,
+                point: true,
+            };
+        }
+        
         return initialS;
     });
 
@@ -66,10 +90,6 @@ const L_1_HomePageContent = () => {
         images: {},
         content: {},
     });
-
-    // Add new state for sensitivity results
-    const [sensitivityResults, setSensitivityResults] = useState({});
-    const [showSensitivityTab, setShowSensitivityTab] = useState(false);
 
     // Effect for tab transitions
     useEffect(() => {
@@ -99,18 +119,14 @@ const L_1_HomePageContent = () => {
 
     // Theme management
     useEffect(() => {
-        // Remove previous theme data attribute
         document.documentElement.removeAttribute('data-theme');
-        // Set new theme
         document.documentElement.setAttribute('data-theme', season);
 
-        // Load theme CSS if it exists (for fall/winter themes)
         if (season !== 'dark') {
             const link = document.createElement('link');
             link.rel = 'stylesheet';
             link.href = `${process.env.PUBLIC_URL}/styles/${season}.css`;
 
-            // Remove any existing theme stylesheets
             const oldLink = document.querySelector('link[href*="/styles/"][href$=".css"]');
             if (oldLink) {
                 oldLink.remove();
@@ -118,12 +134,13 @@ const L_1_HomePageContent = () => {
 
             document.head.appendChild(link);
         }
-    }, [season]); // Update whenever season changes
+    }, [season]);
 
     const { formValues, handleInputChange, handleReset, setFormValues } = useFormValues();
     const [version, setVersion] = useState('1');
     const [batchRunning, setBatchRunning] = useState(false);
     const [analysisRunning, setAnalysisRunning] = useState(false);
+    const [monitoringActive, setMonitoringActive] = useState(false);
     const [csvFiles, setCsvFiles] = useState([]);
     const [subTab, setSubTab] = useState('');
     const [albumImages, setAlbumImages] = useState({});
@@ -141,7 +158,6 @@ const L_1_HomePageContent = () => {
     const [isToggleSectionOpen, setIsToggleSectionOpen] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
     const [popupPosition, setPopupPosition] = useState({ top: 0, left: 0 });
-
     // Extract base costs from Process2Config values
     useEffect(() => {
         const process2Costs = Object.entries(formValues)
@@ -149,7 +165,6 @@ const L_1_HomePageContent = () => {
             .map(([key, value]) => ({
                 id: key,
                 label: value.label || 'Unnamed Cost',
-                value: value.value,
                 baseValue: parseFloat(value.value) || 0,
             }));
         setBaseCosts(process2Costs);
@@ -241,9 +256,9 @@ const L_1_HomePageContent = () => {
     };
 
     // States for F1-F5 and V1-V10
-    const [F, setF] = useState({ F1: 'off', F2: 'off', F3: 'off', F4: 'off', F5: 'off' });
+    const [F, setF] = useState({ F1: 'on', F2: 'on', F3: 'on', F4: 'on', F5: 'on' });
     const [V, setV] = useState({
-        V1: 'off',
+        V1: 'on',
         V2: 'off',
         V3: 'off',
         V4: 'off',
@@ -265,24 +280,26 @@ const L_1_HomePageContent = () => {
         const targetButton =
             newSeason === 'dark' ? buttons[2] : newSeason === 'fall' ? buttons[0] : buttons[1];
 
-        // Prevent multiple transitions
         if (themeRibbon && themeRibbon.classList.contains('theme-transition')) {
             return;
         }
 
-        // Add direction-based class for transition effects
         if (themeRibbon) {
-            // Calculate button positions and set transition properties
             const targetButtonRect = targetButton?.getBoundingClientRect();
             const ribbonRect = themeRibbon.getBoundingClientRect();
             const creativeButton = buttons[0]?.getBoundingClientRect();
 
             if (targetButtonRect && ribbonRect && creativeButton) {
-                // Calculate horizontal and vertical distances for diagonal movement
                 const startX = ribbonRect.right - targetButtonRect.right + 35;
                 const startY = ribbonRect.bottom - targetButtonRect.bottom;
                 const endX = ribbonRect.right - creativeButton.right + 35;
                 const endY = ribbonRect.bottom - creativeButton.bottom;
+
+                themeRibbon.style.setProperty('--glow-start-x', `${startX}px`);
+                // Calculate horizontal and vertical distances for diagonal movement
+                themeRibbon.style.setProperty('--glow-start-y', `${startY}px`);
+                themeRibbon.style.setProperty('--glow-end-x', `${endX}px`);
+                themeRibbon.style.setProperty('--glow-end-y', `${endY}px`);
 
                 // Set position variables for the glow effect
                 themeRibbon.style.setProperty('--glow-start-x', `${startX}px`);
@@ -412,87 +429,292 @@ const L_1_HomePageContent = () => {
         }
     };
 
+    /**
+     * Runs Cash Flow Analysis (CFA) calculations for selected versions
+     * Sends configuration parameters to the backend and processes the response
+     */
     const handleRun = async () => {
+        // Set loading state and reset previous results
         setAnalysisRunning(true);
-        setCalculatedPrices({}); // Reset all previous prices at the start of a new run
+        setCalculatedPrices({});
 
         try {
+            // Prepare request payload with all necessary parameters
+            const requestPayload = {
+                selectedVersions,
+                selectedV: V,
+                selectedF: F,
+                selectedCalculationOption,
+                targetRow: target_row,
+                SenParameters: S,
+            };
+
+            console.log('Running CFA with parameters:', requestPayload);
+
+            // Make API request to run calculations
             const response = await fetch('http://127.0.0.1:5007/run', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    selectedVersions: selectedVersions.length > 0 ? selectedVersions : [version],
-                    selectedV: V,
-                    selectedF: F,
-                    selectedCalculationOption,
-                    targetRow: target_row,
-                    senParameters: S,
-                }),
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(requestPayload),
             });
 
+            // Process the response
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.error || 'Failed to run calculation');
+            }
+
+            const result = await response.json();
+            console.log('Calculation completed successfully:', result);
+
+            // If price calculation was selected, fetch the calculated prices
             if (selectedCalculationOption === 'calculateForPrice') {
-                // Handle dynamic streaming of prices for each version
-                selectedVersions.forEach((version) => {
-                    const eventSource = new EventSource(
-                        `http://127.0.0.1:5007/stream_price/${version}`
-                    );
+                await fetchCalculatedPrices();
+            }
 
-                    eventSource.onmessage = (event) => {
-                        const data = JSON.parse(event.data);
-                        console.log(`Streamed Price for version ${version}:`, data.price);
-
-                        // Update the specific version's price in state
-                        updatePrice(version, data.price);
-
-                        // Close the stream if the backend signals completion
-                        if (data.complete) {
-                            console.log(`Completed streaming for version ${version}`);
-                            eventSource.close();
-                        }
-                    };
-
-                    eventSource.onerror = (error) => {
-                        console.error(`Error in SSE stream for version ${version}:`, error);
-                        eventSource.close(); // Close the stream on error
-                    };
-                });
-            } else {
-                const result = await response.json();
-                if (response.ok) {
-                    // Process sensitivity results if they exist
-                    if (Object.keys(S).some(key => S[key].enabled)) {
-                        const vizResponse = await fetch('http://127.0.0.1:5007/sensitivity/visualization', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                            body: JSON.stringify({
-                                selectedVersions,
-                                senParameters: S
-                            }),
-                        });
-                        
-                        if (vizResponse.ok) {
-                            const vizData = await vizResponse.json();
-                            setSensitivityResults(vizData);
-                            setShowSensitivityTab(true);
-                            setActiveTab('Sensitivity');
-                        }
-                    }
-
-                    console.log(result.message);
-                } else {
-                    console.error(result.error);
-                }
+            // Start real-time monitoring if calculation was successful
+            if (result.status === 'success') {
+                startRealTimeMonitoring();
             }
         } catch (error) {
-            console.error('Error during analysis:', error);
+            console.error('Error during CFA calculation:', error);
+            // Could add user notification here
         } finally {
             setAnalysisRunning(false);
         }
     };
+
+    /**
+     * Fetches calculated prices for all selected versions
+     * This is a separate function to keep the main handleRun function focused
+     */
+    const fetchCalculatedPrices = async () => {
+        try {
+            // For each selected version, fetch the calculated price
+            for (const version of selectedVersions) {
+                const priceResponse = await fetch(`http://127.0.0.1:5007/price/${version}`);
+                
+                if (priceResponse.ok) {
+                    const priceData = await priceResponse.json();
+                    updatePrice(version, priceData.price);
+                    console.log(`Fetched price for version ${version}:`, priceData.price);
+                }
+            }
+        } catch (error) {
+            console.error('Error fetching calculated prices:', error);
+        }
+    };
+
+    /**
+     * Starts real-time monitoring of calculation progress
+     * This function connects to a stream for live updates from the calculation process
+     */
+    const startRealTimeMonitoring = () => {
+        // Close any existing stream connections
+        if (window.calculationEventSource) {
+            window.calculationEventSource.close();
+        }
+
+        // For each selected version, set up a stream connection
+        selectedVersions.forEach(version => {
+            // Create a new EventSource connection for streaming updates
+            const eventSource = new EventSource(`http://127.0.0.1:5007/stream_price/${version}`);
+            window.calculationEventSource = eventSource;
+
+            // Handle incoming messages
+            eventSource.onmessage = (event) => {
+                try {
+                    const data = JSON.parse(event.data);
+                    console.log(`Real-time update for version ${version}:`, data);
+                    
+                    // Update price if available
+                    if (data.price) {
+                        updatePrice(version, data.price);
+                    }
+                    
+                    // Close the stream if the backend signals completion
+                    if (data.complete) {
+                        console.log(`Completed streaming for version ${version}`);
+                        eventSource.close();
+                    }
+                } catch (error) {
+                    console.error('Error processing stream data:', error);
+                }
+            };
+
+            // Handle errors
+            eventSource.onerror = (error) => {
+                console.error(`Error in calculation stream for version ${version}:`, error);
+                eventSource.close();
+            };
+        });
+        
+        /* 
+        // FUTURE ENHANCEMENTS (commented placeholders):
+        // - Add progress indicators for each calculation step
+        // - Implement real-time visualization updates
+        // - Display performance metrics during calculation
+        // - Show memory usage statistics
+        // - Track and display error rates
+        // - Provide estimated completion time
+        */
+    };
+
+
+    const handleRuns = async () => {
+        // Set loading state and reset previous results
+        setAnalysisRunning(true);
+        setCalculatedPrices({});
+    
+        try {
+            // Prepare request payload with all necessary parameters
+            const requestPayload = {
+                selectedVersions,
+                selectedV: V,
+                selectedF: F,
+                selectedCalculationOption,
+                targetRow: target_row,
+                SenParameters: S,
+            };
+    
+            console.log('Running CFA with parameters:', requestPayload);
+    
+            // Make API request to run calculations
+            const response = await fetch('http://127.0.0.1:25007/runs', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(requestPayload),
+            });
+    
+            // Process the response
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.error || 'Failed to run calculation');
+            }
+    
+            const result = await response.json();
+            console.log('Calculation completed successfully:', result);
+    
+            // If price calculation was selected, fetch the calculated prices
+            if (selectedCalculationOption === 'calculateForPrice') {
+                await fetchCalculatedPrices_s();
+            }
+    
+            // Start real-time monitoring if calculation was successful
+            if (result.status === 'success') {
+                startRealTimeMonitoring_s();
+                
+                // NEW CODE: Fetch sensitivity visualization data
+                try {
+                    console.log('Fetching sensitivity visualization data...');
+                    
+                    const visualizationResponse = await fetch('http://127.0.0.1:25007/sensitivity/visualization', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(requestPayload), // Reuse the same payload
+                    });
+                    
+                    if (visualizationResponse.ok) {
+                        const visualizationData = await visualizationResponse.json();
+                        console.log('Visualization data received:', visualizationData);
+                        
+                        // Store visualization data in state or process it as needed
+                        // For example, you could add a setSensitivityVisualizations state setter
+                        // setSensitivityVisualizations(visualizationData);
+                    } else {
+                        console.warn('Visualization endpoint returned non-OK response:', 
+                                    await visualizationResponse.text());
+                    }
+                } catch (vizError) {
+                    console.error('Error fetching sensitivity visualizations:', vizError);
+                    // Don't throw this error - we don't want it to affect the main flow
+                }
+            }
+        } catch (error) {
+            console.error('Error during CFA calculation:', error);
+            // Could add user notification here
+        } finally {
+            setAnalysisRunning(false);
+        }
+    };
+    
+    /**
+     * Fetches calculated prices for all selected versions
+     * This is a separate function to keep the main handleRun function focused
+     */
+    const fetchCalculatedPrices_s = async () => {
+        try {
+            // For each selected version, fetch the calculated price
+            for (const version of selectedVersions) {
+                const priceResponse = await fetch(`http://127.0.0.1:25007/prices/${version}`);
+                
+                if (priceResponse.ok) {
+                    const priceData = await priceResponse.json();
+                    updatePrice(version, priceData.price);
+                    console.log(`Fetched price for version ${version}:`, priceData.price);
+                }
+            }
+        } catch (error) {
+            console.error('Error fetching calculated prices:', error);
+        }
+    };
+    
+    /**
+     * Starts real-time monitoring of calculation progress
+     * This function connects to a stream for live updates from the calculation process
+     */
+    const startRealTimeMonitoring_s = () => {
+        // Close any existing stream connections
+        if (window.calculationEventSource) {
+            window.calculationEventSource.close();
+        }
+    
+        // For each selected version, set up a stream connection
+        selectedVersions.forEach(version => {
+            // Create a new EventSource connection for streaming updates
+            const eventSource = new EventSource(`http://127.0.0.1:25007/stream_prices/${version}`);
+            window.calculationEventSource = eventSource;
+    
+            // Handle incoming messages
+            eventSource.onmessage = (event) => {
+                try {
+                    const data = JSON.parse(event.data);
+                    console.log(`Real-time update for version ${version}:`, data);
+                    
+                    // Update price if available
+                    if (data.price) {
+                        updatePrice(version, data.price);
+                    }
+                    
+                    // Close the stream if the backend signals completion
+                    if (data.complete) {
+                        console.log(`Completed streaming for version ${version}`);
+                        eventSource.close();
+                    }
+                } catch (error) {
+                    console.error('Error processing stream data:', error);
+                }
+            };
+    
+            // Handle errors
+            eventSource.onerror = (error) => {
+                console.error(`Error in calculation stream for version ${version}:`, error);
+                eventSource.close();
+            };
+        });
+        
+        /*
+        // FUTURE ENHANCEMENTS (commented placeholders):
+        // - Add progress indicators for each calculation step
+        // - Implement real-time visualization updates
+        // - Display performance metrics during calculation
+        // - Show memory usage statistics
+        // - Track and display error rates
+        // - Provide estimated completion time
+        */
+    };
+    
+
 
     const handleRunPNG = async () => {
         setAnalysisRunning(true);
@@ -613,11 +835,22 @@ const L_1_HomePageContent = () => {
     useEffect(() => {
         const fetchHtmlFiles = async () => {
             try {
+                console.log(`Fetching HTML files for version: ${version}`);
                 const response = await fetch(`http://localhost:8009/api/album_html/${version}`);
+                console.log(`Response status:`, response.status);
+                
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
+                
                 const data = await response.json();
+                console.log(`API response data:`, data);
+
+                if (!data || data.length === 0) {
+                    console.log(`No HTML files returned from API for version ${version}`);
+                    setAlbumHtmls({});
+                    return;
+                }
 
                 // Group HTML files by album
                 const albumGroupedHtmls = data.reduce((acc, html) => {
@@ -629,15 +862,19 @@ const L_1_HomePageContent = () => {
                     return acc;
                 }, {});
 
+                console.log(`Grouped HTML files by album:`, albumGroupedHtmls);
                 setAlbumHtmls(albumGroupedHtmls); // Update the HTML paths for the specified version
 
                 // Automatically select the first album that has HTML files
                 const firstAlbumWithHtml = Object.keys(albumGroupedHtmls)[0];
+                console.log(`First album with HTML files:`, firstAlbumWithHtml);
                 if (firstAlbumWithHtml) {
                     setSelectedHtml(firstAlbumWithHtml);
                 }
             } catch (error) {
                 console.error('Error fetching HTML files:', error);
+                console.error('Error details:', error.message);
+                setAlbumHtmls({});
             }
         };
 
@@ -645,31 +882,47 @@ const L_1_HomePageContent = () => {
     }, [version]);
 
     const transformPathToUrlh = (filePath) => {
+        // Normalize the file path to replace backslashes with forward slashes
         const normalizedPath = filePath.replace(/\\/g, '/');
         const baseUrl = `http://localhost:3000/Original`;
-
-        const match = normalizedPath.match(
-            /Batch\((\d+)\)\/Results\(\d+\)\/([^\/]+)\/([^\/]+\.html)$/
-        );
-        if (match) {
-            const version = match[1];
-            const album = match[2];
-            const fileName = normalizedPath.split('/').pop();
-            return `${baseUrl}/Batch(${version})/Results(${version})/${album}/${fileName}`;
-        }
-        return normalizedPath;
+        
+        // Extract the batch version using a simpler regex that just looks for the number in Batch(X)
+        const batchMatch = normalizedPath.match(/Batch\((\d+)\)/);
+        if (!batchMatch) return normalizedPath; // If no batch number found, return original path
+        
+        const version = batchMatch[1];
+        
+        // Split the path by '/' to extract album and filename more reliably
+        const pathParts = normalizedPath.split('/');
+        
+        // The HTML file should be the last part
+        const fileName = pathParts[pathParts.length - 1];
+        
+        // The album should be the second-to-last directory
+        const album = pathParts[pathParts.length - 2];
+        
+        // Construct the URL using the extracted parts
+        return `${baseUrl}/Batch(${version})/Results(${version})/${album}/${fileName}`;
     };
 
     const transformAlbumName = (album) => {
-        // Extract the version numbers and the description part
-        const match = album.match(/v((\d+_)+)(.+)/);
-        if (match) {
-            // Extract and format the version numbers
-            const versions = match[1].slice(0, -1).replace(/_/g, ', ');
-            // Extract and format the description, adding spaces between capital letters
-            const description = match[3].replace(/_/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2');
+        // Handle HTML_v1_2_PlotType format
+        const htmlMatch = album.match(/HTML_v([\d_]+)_(.+)/);
+        if (htmlMatch) {
+            const versions = htmlMatch[1].replace(/_/g, ', ');
+            const description = htmlMatch[2].replace(/_/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2');
             return `${description} for versions [${versions}]`;
         }
+        
+        // Handle legacy v1_2_PlotType_Plot format
+        const legacyMatch = album.match(/v([\d_]+)_(.+?)(_Plot)?$/);
+        if (legacyMatch) {
+            const versions = legacyMatch[1].replace(/_/g, ', ');
+            const description = legacyMatch[2].replace(/_/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2');
+            return `${description} for versions [${versions}]`;
+        }
+        
+        // Default formatting for other album names
         return album.replace(/_/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2');
     };
 
@@ -701,19 +954,31 @@ const L_1_HomePageContent = () => {
             return <div>No HTML files available</div>;
 
         return (
-            <Tabs
-                selectedIndex={Object.keys(albumHtmls).indexOf(selectedHtml)}
-                onSelect={(index) => setSelectedHtml(Object.keys(albumHtmls)[index])}
-            >
-                <TabList>
+            <div>
+                <div className="version-input-container">
+                    <input
+                        id="versionNumber"
+                        type="number"
+                        className="version-input"
+                        placeholder="1"
+                        value={version}
+                        onChange={handleVersionChange}
+                    />
+                </div>
+                <Tabs
+                    selectedIndex={Object.keys(albumHtmls).indexOf(selectedHtml)}
+                    onSelect={(index) => setSelectedHtml(Object.keys(albumHtmls)[index])}
+                >
+                    <TabList>
+                        {Object.keys(albumHtmls).map((album) => (
+                            <Tab key={album}>{transformAlbumName(album)}</Tab>
+                        ))}
+                    </TabList>
                     {Object.keys(albumHtmls).map((album) => (
-                        <Tab key={album}>{transformAlbumName(album)}</Tab>
+                        <TabPanel key={album}>{renderHtmlContent()}</TabPanel>
                     ))}
-                </TabList>
-                {Object.keys(albumHtmls).map((album) => (
-                    <TabPanel key={album}>{renderHtmlContent()}</TabPanel>
-                ))}
-            </Tabs>
+                </Tabs>
+            </div>
         );
     };
 
@@ -755,32 +1020,44 @@ const L_1_HomePageContent = () => {
     const transformPathToUrl = (filePath) => {
         // Normalize the file path to replace backslashes with forward slashes
         const normalizedPath = filePath.replace(/\\/g, '/');
-
-        // Extract version and album from the normalized path
-        const match = normalizedPath.match(
-            /Batch\((\d+)\)\/Results\(\d+\)\/([^\/]+)\/([^\/]+\.png)$/
-        );
-
-        if (match) {
-            const version = match[1];
-            const album = match[2];
-            const fileName = match[3];
-            // Use the PNG server's image endpoint
-            return `http://localhost:5008/images/Batch(${version})/Results(${version})/${album}/${fileName}`;
-        }
-        return normalizedPath;
+        
+        // Extract the batch version using a simpler regex that just looks for the number in Batch(X)
+        const batchMatch = normalizedPath.match(/Batch\((\d+)\)/);
+        if (!batchMatch) return normalizedPath; // If no batch number found, return original path
+        
+        const version = batchMatch[1];
+        
+        // Split the path by '/' to extract album and filename more reliably
+        const pathParts = normalizedPath.split('/');
+        
+        // The PNG file should be the last part
+        const fileName = pathParts[pathParts.length - 1];
+        
+        // The album should be the second-to-last directory
+        const album = pathParts[pathParts.length - 2];
+        
+        // Construct the URL using the extracted parts
+        return `http://localhost:5008/images/Batch(${version})/Results(${version})/${album}/${fileName}`;
     };
 
     const transformAlbumNamePlot = (album) => {
-        // Extract the version numbers and the description part
-        const match = album.match(/((\d+_)+)(.+)/);
-        if (match) {
-            // Extract and format the version numbers
-            const versions = match[1].slice(0, -1).replace(/_/g, ', ');
-            // Extract and format the description, adding spaces between capital letters
-            const description = match[3].replace(/_/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2');
+        // Handle organized album format (e.g., 1_2_PlotType_PlotAlbum)
+        const organizedMatch = album.match(/([\d_]+)_(.+?)(_PlotAlbum)?$/);
+        if (organizedMatch) {
+            const versions = organizedMatch[1].replace(/_/g, ', ');
+            const description = organizedMatch[2].replace(/_/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2');
             return `${description} for versions [${versions}]`;
         }
+        
+        // Handle legacy format (e.g., AnnotatedStaticPlots)
+        const legacyMatch = album.match(/([\d_]+)_(.+?)$/);
+        if (legacyMatch) {
+            const versions = legacyMatch[1].replace(/_/g, ', ');
+            const description = legacyMatch[2].replace(/_/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2');
+            return `${description} for versions [${versions}]`;
+        }
+        
+        // Default formatting for other album names
         return album.replace(/_/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2');
     };
 
@@ -812,19 +1089,31 @@ const L_1_HomePageContent = () => {
             return <div>No PNG files available</div>;
 
         return (
-            <Tabs
-                selectedIndex={Object.keys(albumImages).indexOf(selectedAlbum)}
-                onSelect={(index) => setSelectedAlbum(Object.keys(albumImages)[index])}
-            >
-                <TabList>
+            <div>
+                <div className="version-input-container">
+                    <input
+                        id="versionNumber"
+                        type="number"
+                        className="version-input"
+                        placeholder="1"
+                        value={version}
+                        onChange={handleVersionChange}
+                    />
+                </div>
+                <Tabs
+                    selectedIndex={Object.keys(albumImages).indexOf(selectedAlbum)}
+                    onSelect={(index) => setSelectedAlbum(Object.keys(albumImages)[index])}
+                >
+                    <TabList>
+                        {Object.keys(albumImages).map((album) => (
+                            <Tab key={album}>{transformAlbumNamePlot(album)}</Tab>
+                        ))}
+                    </TabList>
                     {Object.keys(albumImages).map((album) => (
-                        <Tab key={album}>{transformAlbumNamePlot(album)}</Tab>
+                        <TabPanel key={album}>{renderPlotContent1()}</TabPanel>
                     ))}
-                </TabList>
-                {Object.keys(albumImages).map((album) => (
-                    <TabPanel key={album}>{renderPlotContent1()}</TabPanel>
-                ))}
-            </Tabs>
+                </Tabs>
+            </div>
         );
     };
 
@@ -892,10 +1181,21 @@ const L_1_HomePageContent = () => {
             .sort((a, b) => a.name.localeCompare(b.name)); // Sort files alphabetically
 
         return (
-            <Tabs
-                selectedIndex={sortedCsvFiles.findIndex((file) => file.name === subTab)}
-                onSelect={(index) => setSubTab(sortedCsvFiles[index]?.name || '')}
-            >
+            <div>
+                <div className="version-input-container">
+                    <input
+                        id="versionNumber"
+                        type="number"
+                        className="version-input"
+                        placeholder="1"
+                        value={version}
+                        onChange={handleVersionChange}
+                    />
+                </div>
+                <Tabs
+                    selectedIndex={sortedCsvFiles.findIndex((file) => file.name === subTab)}
+                    onSelect={(index) => setSubTab(sortedCsvFiles[index]?.name || '')}
+                >
                 <TabList>
                     {sortedCsvFiles.map((file) => (
                         <Tab key={file.name}>
@@ -910,6 +1210,7 @@ const L_1_HomePageContent = () => {
                     </TabPanel>
                 ))}
             </Tabs>
+            </div>
         );
     };
 
@@ -948,46 +1249,7 @@ const L_1_HomePageContent = () => {
                 </button>
             </div>
             <div className="form-content">
-                {activeSubTab && (
-                    <>
-                        <FormHeader
-                            onSensitivityClick={() => {
-                                const sKey = `S${activeSubTab === 'ProjectConfig' ? '10' : 
-                                            activeSubTab === 'LoanConfig' ? '20' : 
-                                            activeSubTab === 'RatesConfig' ? '30' : 
-                                            activeSubTab === 'Process1Config' ? '40' : '50'}`;
-                                setS(prev => ({
-                                    ...prev,
-                                    [sKey]: {
-                                        ...prev[sKey],
-                                        enabled: true,
-                                        mode: 'symmetrical'
-                                    }
-                                }));
-                            }}
-                            onEfficacyPeriodClick={(e) => {
-                                const rect = e.target.getBoundingClientRect();
-                                setPopupPosition({
-                                    top: rect.top + window.scrollY,
-                                    left: rect.left + rect.width
-                                });
-                                setShowPopup(true);
-                            }}
-                            onFactualPrecedenceClick={() => {}}
-                        />
-                        {showPopup && (
-                            <Popup
-                                show={showPopup}
-                                onClose={() => setShowPopup(false)}
-                                formValues={formValues}
-                                handleInputChange={handleInputChange}
-                                id={activeSubTab}
-                                version={version}
-                                itemId={activeSubTab}
-                            />
-                        )}
-                    </>
-                )}
+                
                 {activeSubTab === 'ProjectConfig' && (
                     <GeneralFormConfig
                         formValues={formValues}
@@ -1056,7 +1318,6 @@ const L_1_HomePageContent = () => {
                             <button
                                 type="button"
                                 onClick={() => loadConfiguration(version)}
-                                className="form-action-button load-config"
                             >
                                 Load Configuration
                             </button>
@@ -1096,7 +1357,6 @@ const L_1_HomePageContent = () => {
                         <div className="tooltip-container">
                             <button
                                 onClick={handleRunPNG}
-                                className="form-action-button generate-png"
                             >
                                 Generate PNG Plots
                             </button>
@@ -1109,7 +1369,6 @@ const L_1_HomePageContent = () => {
                             <button
                                 type="button"
                                 onClick={handleRunSub}
-                                className="form-action-button generate-dynamic"
                             >
                                 Generate Dynamic Plots
                             </button>
@@ -1119,32 +1378,37 @@ const L_1_HomePageContent = () => {
                             </span>
                         </div>
                     </div>
-
+                    <div className="step-content">
+                <button
+                  className="primary-action"
+                  onClick={createNewBatch}
+                  disabled={batchRunning || analysisRunning}
+                >
+                  {batchRunning ? (
+                    <span className="loading-text">Creating New Batch</span>
+                  ) : (
+                    <span className="action-text">Create New Batch</span>
+                  )}
+                </button>
+                <button
+                  className="secondary-action"
+                  onClick={RemoveBatch}
+                  disabled={batchRunning || analysisRunning}
+                >
+                  <span className="action-text">Remove Current Batch</span>
+                </button>
+              </div>
                     <div className="button-row practical-row">
                         <div className="tooltip-container">
                             <button
-                                onClick={createNewBatch}
-                                disabled={batchRunning}
-                                className="form-action-button create-batch"
-                            >
-                                Create New Batch
-                            </button>
-                        </div>
-                        <div className="tooltip-container">
-                            <button
-                                onClick={RemoveBatch}
-                                className="form-action-button remove-batch"
-                            >
-                                Remove Batch
-                            </button>
-                        </div>
-                        <div className="tooltip-container">
-                            <button
                                 onClick={handleRun}
-                                className="form-action-button run-cfa"
-                                disabled={analysisRunning}
                             >
-                                {analysisRunning ? 'Running CFA...' : 'Run CFA'}
+                                Run CFA
+                            </button>
+                            <button
+                                onClick={handleRuns}
+                            >
+                                Run CFA & Sensitivity
                             </button>
                             <span className="tooltip1">
                                 <p className="left-aligned-text">
@@ -1157,8 +1421,18 @@ const L_1_HomePageContent = () => {
                         </div>
                         <div className="tooltip-container">
                             <button
+                                onClick={() => setMonitoringActive(!monitoringActive)}
+                                className={monitoringActive ? 'active-monitoring' : ''}
+                            >
+                                {monitoringActive ? 'Hide Monitoring' : 'Show Monitoring'}
+                            </button>
+                            <span className="tooltip1">
+                                Toggle real-time calculation monitoring display
+                            </span>
+                        </div>
+                        <div className="tooltip-container">
+                            <button
                                 onClick={handleSubmitCompleteSet}
-                                className="form-action-button submit-set"
                             >
                                 Submit Complete Set
                             </button>
@@ -1167,26 +1441,24 @@ const L_1_HomePageContent = () => {
                             <button
                                 type="button"
                                 onClick={handleReset}
-                                className="form-action-button reset"
                             >
                                 Reset
                             </button>
                         </div>
                     </div>
                 </div>
+                {monitoringActive && (
+                    <CalculationMonitor 
+                        selectedVersions={selectedVersions}
+                        updatePrice={updatePrice}
+                        isActive={monitoringActive}
+                        currentVersion={version}
+                        onChange={() => {}} // Adding empty function to satisfy prop requirement
+                    />
+                )}
                 <div className="calculation-options">
                     <div className="calculation-row">
                         <div className="calculation-input-group">
-                            <label className="radio-label">
-                                <input
-                                    type="radio"
-                                    name="calculationOption"
-                                    value="freeFlowNPV"
-                                    checked={selectedCalculationOption === 'freeFlowNPV'}
-                                    onChange={handleOptionChange}
-                                />
-                                Free Flow NPV
-                            </label>
                             <label className="radio-label">
                                 <input
                                     type="radio"
@@ -1196,35 +1468,88 @@ const L_1_HomePageContent = () => {
                                     onChange={handleOptionChange}
                                 />
                                 Calculate for Price, Zeroing NPV at Year
-                                {selectedCalculationOption === 'calculateForPrice' && (
-                                    <div className="target-row-container">
-                                        <input
-                                            type="number"
-                                            className="target-row-input"
-                                            placeholder="Enter Year"
-                                            value={target_row}
-                                            onChange={handleTargetRowChange}
-                                        />
-                                    </div>
-                                )}
                             </label>
+                            <div className="target-row-container">
+                                <input
+                                    type="number"
+                                    className="target-row-input"
+                                    placeholder="Enter Year"
+                                    value={target_row}
+                                    onChange={handleTargetRowChange}
+                                />
+                            </div>
                         </div>
                     </div>
-                    <div className="property-selector-container">
-                        <PropertySelector
-                            selectedProperties={selectedProperties}
-                            setSelectedProperties={setSelectedProperties}
-                        />
+                    <div className="selectors-container">
+                        <div className="property-selector-container">
+                            <PropertySelector
+                                selectedProperties={selectedProperties}
+                                setSelectedProperties={setSelectedProperties}
+                            />
+                        </div>
+                        <div className="version-selector-container">
+                            <MultiVersionSelector maxVersions={20} />
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     );
 
+    const renderAboutUsContent = () => {
+        return (
+            <div className="about-us-container">
+                <div className="about-us-content">
+                    <div className="about-us-seal"></div>
+                    <h1>About TEA Space</h1>
+                    
+                    <p>Welcome to TEA Space, where Techno-Economic-Social Simulation and Dynamic Modeling converge to revolutionize the way businesses approach cost modeling and economic analysis. Founded in 2025, our platform represents the culmination of years of research and development in economic modeling, data visualization, and user-centered design.</p>
+                    
+                    <div className="decorative-divider">✦ ✦ ✦</div>
+                    
+                    <h2>Our Mission</h2>
+                    <p>TEA Space was established with a singular purpose: to democratize access to sophisticated economic modeling tools. We believe that from the humble lemonade stand to industry giants like Tesla, every business deserves access to powerful, intuitive tools that illuminate the path to financial success and sustainability.</p>
+                    
+                    <h2>Our Approach</h2>
+                    <p>Our platform integrates cutting-edge cash flow analysis, dynamic visualization, and sensitivity testing into a cohesive ecosystem that adapts to your specific needs. By combining technical rigor with an intuitive interface, we've created a solution that speaks the language of both financial analysts and operational decision-makers.</p>
+                    
+                    <h2>Key Features</h2>
+                    <p>TEA Space offers comprehensive tools for project configuration, loan modeling, rate analysis, and process cost optimization. Our dynamic visualization capabilities transform complex data into actionable insights, while our sensitivity analysis tools help you understand how changes in key variables might impact your bottom line.</p>
+                    
+                    <div className="decorative-divider">✦ ✦ ✦</div>
+                    
+                    <h2>Looking Forward</h2>
+                    <p>As we prepare for our grand opening on April 15th, 2025, we invite you to explore the capabilities of TEA Space and envision how our platform can transform your approach to economic modeling and business planning. The future of techno-economic analysis is here, and it's more accessible than ever before.</p>
+                    
+                    <div className="signature-section">
+                        <p>With anticipation for our shared journey,</p>
+                        <p>The TEA Space Team</p>
+                    </div>
+                </div>
+            </div>
+        );
+    };
+
     const renderTabContent = () => {
         switch (activeTab) {
+            case 'AboutUs':
+                return renderAboutUsContent();
             case 'Input':
-                return renderForm();
+                return (
+                    <div className="form-content">
+                        {renderForm()}
+                    </div>
+                );
+            case 'ModelZone':
+                return (
+                    <div className="model-zone">
+                        <ModelZone />
+                        <div className="model-selection">
+                            <VersionSelector />
+                            <SpatialTransformComponent />
+                        </div>
+                    </div>
+                );
             case 'Case1':
                 return renderCase1Content();
             case 'Case2':
@@ -1259,42 +1584,16 @@ const L_1_HomePageContent = () => {
                         </Tabs>
                     </div>
                 );
-            case 'Sensitivity':
-                return renderSensitivityContent();
-            default:
-                return null;
+            case 'SensitivityAnalysis':
+                return <SensitivityAnalysis />;
+           
+            case 'TestingZone':
+            return <TestingZone />;
+            case 'SensitivityIntegration':
+            return <SensitivityIntegration />;
+        default:
+            return null;
         }
-    };
-
-    // Add sensitivity results rendering function
-    const renderSensitivityContent = () => {
-        if (!sensitivityResults || Object.keys(sensitivityResults).length === 0) {
-            return <div>No sensitivity analysis results available</div>;
-        }
-
-        return (
-            <div className="sensitivity-results">
-                <h2>Sensitivity Analysis Results</h2>
-                {Object.entries(sensitivityResults.parameters || {}).map(([paramId, param]) => (
-                    <div key={paramId} className="sensitivity-parameter-section">
-                        <h3>Parameter: {paramId}</h3>
-                        <div className="sensitivity-plots-grid">
-                            {sensitivityResults.plots[paramId] && 
-                             Object.entries(sensitivityResults.plots[paramId]).map(([plotType, plotPath]) => (
-                                <div key={plotType} className="sensitivity-plot">
-                                    <h4>{plotType.charAt(0).toUpperCase() + plotType.slice(1)} Plot</h4>
-                                    <img 
-                                        src={`http://localhost:5007/sensitivity/plots/${plotPath}`}
-                                        alt={`${plotType} plot for ${paramId}`}
-                                        style={{ maxWidth: '100%', height: 'auto' }}
-                                    />
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                ))}
-            </div>
-        );
     };
 
     return (
@@ -1335,6 +1634,13 @@ const L_1_HomePageContent = () => {
                 <nav className="L_1_HomePageTabs">
                     <div>
                         <button
+                            className={`tab-button ${activeTab === 'AboutUs' ? 'active' : ''}`}
+                            onClick={() => setActiveTab('AboutUs')}
+                            data-tab="AboutUs"
+                        >
+                            About Us
+                        </button>
+                        <button
                             className={`tab-button ${activeTab === 'Input' ? 'active' : ''}`}
                             onClick={() => setActiveTab('Input')}
                         >
@@ -1371,31 +1677,34 @@ const L_1_HomePageContent = () => {
                             Editable
                         </button>
                         <button
-                            className={`tab-button ${activeTab === 'Sensitivity' ? 'active' : ''}`}
-                            onClick={() => setActiveTab('Sensitivity')}
+                            className={`tab-button ${activeTab === 'ModelZone' ? 'active' : ''}`}
+                            onClick={() => setActiveTab('ModelZone')}
+                        >
+                            Model Zone
+                        </button>
+                        <button
+                            className={`tab-button ${activeTab === 'SensitivityAnalysis' ? 'active' : ''}`}
+                            onClick={() => setActiveTab('SensitivityAnalysis')}
                         >
                             Sensitivity Analysis
                         </button>
+                        <button
+                            className={`tab-button ${activeTab === 'TestingZone' ? 'active' : ''}`}
+                            onClick={() => setActiveTab('TestingZone')}
+                        >
+                            Testing Zone
+                        </button>
+                        <button
+                            className={`tab-button ${activeTab === 'SensitivityIntegration' ? 'active' : ''}`}
+                            onClick={() => setActiveTab('SensitivityIntegration')}
+                        >
+                            Sensitivity Integration
+                        </button>
                     </div>
                 </nav>
-                {activeTab === 'Input' ? (
-                    <div className="form-content">
-                        {renderForm()}
-                    </div>
-                ) : (
-                    <div className="content-wrapper">
-                        <div className="model-zone">
-                            <ModelZone />
-                            <div className="model-selection">
-                                <VersionSelector />
-                                <SpatialTransformComponent />
-                            </div>
-                        </div>
-                        <div className="L_1_HomePageTabContent">
-                            {renderTabContent()}
-                        </div>
-                    </div>
-                )}
+                <div className="L_1_HomePageTabContent">
+                    {renderTabContent()}
+                </div>
             </div>
         </div>
     );

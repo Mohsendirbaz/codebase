@@ -1,3 +1,21 @@
+"""
+Orchestrates the execution sequence of configuration updates and calculations.
+
+This function is the main entry point for the 'run' route in the Flask application.
+It handles the following steps:
+1. Extracts and validates the configuration data from the request.
+2. Executes the configuration management scripts.
+3. Processes the calculations based on the selected calculation mode.
+4. If sensitivity analysis is enabled, processes the sensitivity parameters and executes the corresponding calculations.
+5. Logs the run configuration and timing information.
+6. Returns a success response with timing details, or an error response if any exceptions occur.
+
+Args:
+    None
+
+Returns:
+    A JSON response with the status, message, run ID, and timing information.
+"""
 from flask import Flask, request, Response, jsonify
 from flask_cors import CORS
 import subprocess
@@ -9,6 +27,13 @@ import sys
 
 base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(base_dir)
+
+# Import plot generation logging functions
+from sensitivity_logging import (
+    log_plot_generation_start, log_plot_generation_complete, log_plot_generation_error,
+    log_plot_data_loading, log_plot_data_processing, log_plot_rendering, log_plot_saving,
+    plot_generation_operation, log_execution_flow
+)
 
 # =====================================
 # Configuration Constants
@@ -32,13 +57,13 @@ SENSITIVITY_LOG_PATH = os.path.join(LOGS_DIR, "SENSITIVITY.log")
 COMMON_PYTHON_SCRIPTS = [
     os.path.join(SCRIPT_DIR, "Configuration_management", 'formatter.py'),
     os.path.join(SCRIPT_DIR, "Configuration_management", 'module1.py'),
-    os.path.join(SCRIPT_DIR, "Configuration_management", 'update_config_modules_with_CFA.py'),
+    os.path.join(SCRIPT_DIR, "Configuration_management", 'config_modules.py'),
     os.path.join(SCRIPT_DIR, "Configuration_management", 'Table.py')
 ]
 
 def get_calculation_script(version):
     """Get the appropriate calculation script based on version number"""
-    script_name = f'update_config_modules_with_CFA_{version}.py'
+    script_name = f'CFA.py'
     script_path = os.path.join(SCRIPT_DIR, "Core_calculation_engines", script_name)
     if os.path.exists(script_path):
         return script_path
@@ -106,7 +131,7 @@ def run_script(script_name, *args, script_type="python"):
         return False, error_msg
 
 def process_version(version, calculation_script, selected_v, selected_f, target_row, 
-                   calculation_option, senParameters):
+                   calculation_option, SenParameters):
     try:
         for script in COMMON_PYTHON_SCRIPTS:
             success, error = run_script(script, version)
@@ -120,7 +145,7 @@ def process_version(version, calculation_script, selected_v, selected_f, target_
             json.dumps(selected_f),
             json.dumps(target_row),
             calculation_option,
-            json.dumps(senParameters)
+            json.dumps(SenParameters)
         )
         if not success:
             return error
@@ -152,12 +177,12 @@ def log_run_configuration(logger, config):
     logger.info(f"Enabled F Parameters: {', '.join(f_enabled) if f_enabled else 'None'}")
     
     # Sensitivity Configuration (if enabled)
-    enabled_params = [k for k, v in config['senParameters'].items() if v.get('enabled')]
+    enabled_params = [k for k, v in config['SenParameters'].items() if v.get('enabled')]
     if enabled_params:
         logger.info("\nSensitivity Analysis Configuration:")
         logger.info(f"Enabled Parameters: {', '.join(enabled_params)}")
         for param_id in enabled_params:
-            param_config = config['senParameters'][param_id]
+            param_config = config['SenParameters'][param_id]
             logger.info(f"\n{param_id} Configuration:")
             logger.info(f"  Mode: {param_config.get('mode')}")
             logger.info(f"  Values: {param_config.get('values')}")
@@ -173,12 +198,12 @@ def log_run_configuration(logger, config):
     
     logger.info("\n" + "="*80 + "\n")
 
-def process_sensitivity_visualization(senParameters):
+def process_sensitivity_visualization(SenParameters):
     """
     Process sensitivity parameters for visualization.
     
     Args:
-        senParameters (dict): Dictionary containing sensitivity parameters in format:
+        SenParameters (dict): Dictionary containing sensitivity parameters in format:
             {
                 'S10': {
                     'mode': str,
@@ -205,7 +230,7 @@ def process_sensitivity_visualization(senParameters):
         sensitivity_logger.info(f"\n{'='*80}\nNew Sensitivity Analysis Run - ID: {run_id}\n{'='*80}")
         
         # Process each parameter (S10 through S61)
-        for param_key, config in senParameters.items():
+        for param_key, config in SenParameters.items():
             if not config.get('enabled', False):
                 continue
                 
@@ -284,7 +309,7 @@ app = initialize_app()
 # Route Handlers
 # =====================================
 
-@app.route('/run', methods=['POST'])
+@app.route('/runs', methods=['POST'])
 def run_calculations():
     """Orchestrates the execution sequence of configuration updates and calculations."""
     sensitivity_logger = logging.getLogger('sensitivity')
@@ -302,8 +327,72 @@ def run_calculations():
             'selectedF': data.get('selectedF', {f'F{i+1}': 'off' for i in range(5)}),
             'calculationOption': data.get('selectedCalculationOption', 'freeFlowNPV'),
             'targetRow': int(data.get('targetRow', 20)),
-            'senParameters': data.get('senParameters', {})
+            'SenParameters': data.get('SenParameters', {})
         }
+        
+        # Create sensitivity directories early in the process
+        version = config['versions'][0]
+        base_dir = os.path.join(BASE_DIR, 'backend', 'Original')  # Use backend/Original instead of public/Original
+        results_folder = os.path.join(base_dir, f'Batch({version})', f'Results({version})')
+        sensitivity_dir = os.path.join(results_folder, 'Sensitivity')
+        
+        # Create main sensitivity directory
+        os.makedirs(sensitivity_dir, exist_ok=True)
+        sensitivity_logger.info(f"Created main sensitivity directory: {sensitivity_dir}")
+        
+        # Create subdirectories for different analysis types
+        for mode in ['Symmetrical', 'Multipoint']:
+            mode_dir = os.path.join(sensitivity_dir, mode)
+            os.makedirs(mode_dir, exist_ok=True)
+            sensitivity_logger.info(f"Created sensitivity mode directory: {mode_dir}")
+            
+            # Create subdirectories for plot types and configuration
+            for subdir in ['waterfall', 'bar', 'point', 'Configuration']:
+                subdir_path = os.path.join(mode_dir, subdir)
+                os.makedirs(subdir_path, exist_ok=True)
+                sensitivity_logger.info(f"Created sensitivity subdirectory: {subdir_path}")
+                
+                # Create parameter-specific variation directories for Configuration
+                if subdir == 'Configuration':
+                    # For each enabled parameter, create variation directories
+                    for param_id, param_config in config['SenParameters'].items():
+                        if not param_config.get('enabled'):
+                            continue
+                            
+                        # Get variation values
+                        values = param_config.get('values', [])
+                        if not values:
+                            continue
+                            
+                        # Determine variation list based on mode
+                        if mode.lower() == 'symmetrical':
+                            # For symmetrical, use first value to create +/- variations
+                            base_variation = values[0]
+                            variation_list = [base_variation, -base_variation]
+                        else:  # 'multiple' mode
+                            # For multiple, use all values directly
+                            variation_list = values
+                            
+                        # Create a directory for each variation
+                        for variation in variation_list:
+                            # Format the variation string (e.g., "+10.00" or "-5.00")
+                            var_str = f"{variation:+.2f}"
+                            
+                            # Create a subdirectory for this specific parameter and variation
+                            param_var_dir = os.path.join(subdir_path, f"{param_id}_{var_str}")
+                            os.makedirs(param_var_dir, exist_ok=True)
+                            sensitivity_logger.info(f"Created parameter variation directory: {param_var_dir}")
+        
+        # Create standalone Configuration directory
+        config_dir = os.path.join(sensitivity_dir, "Configuration")
+        os.makedirs(config_dir, exist_ok=True)
+        sensitivity_logger.info(f"Created standalone Configuration directory: {config_dir}")
+        
+        # Create Reports and Cache directories
+        for extra_dir in ['Reports', 'Cache']:
+            extra_path = os.path.join(sensitivity_dir, extra_dir)
+            os.makedirs(extra_path, exist_ok=True)
+            sensitivity_logger.info(f"Created sensitivity extra directory: {extra_path}")
         
         # Log run configuration
         log_run_configuration(sensitivity_logger, config)
@@ -358,7 +447,7 @@ def run_calculations():
                 json.dumps(config['selectedF']),
                 str(config['targetRow']),
                 config['calculationOption'],
-                '{}'  # Empty senParameters for baseline
+                '{}'  # Empty SenParameters for baseline
             ],
             capture_output=True,
             text=True
@@ -372,11 +461,11 @@ def run_calculations():
         sensitivity_logger.info("Baseline calculation completed successfully")
 
         # Step 3: Process sensitivity parameters if enabled
-        enabled_params = [k for k, v in config['senParameters'].items() if v.get('enabled')]
+        enabled_params = [k for k, v in config['SenParameters'].items() if v.get('enabled')]
         if enabled_params:
             sensitivity_logger.info(f"\nProcessing {len(enabled_params)} sensitivity parameters:")
             
-            for param_id, param_config in config['senParameters'].items():
+            for param_id, param_config in config['SenParameters'].items():
                 if not param_config.get('enabled'):
                     continue
                     
@@ -438,75 +527,262 @@ def run_calculations():
 
 @app.route('/sensitivity/visualization', methods=['POST'])
 def get_sensitivity_visualization():
+    sensitivity_logger = logging.getLogger('sensitivity')
+    run_id = time.strftime("%Y%m%d_%H%M%S")
+    start_time = time.time()
+    
     try:
         data = request.get_json()
         if not data:
             return jsonify({"error": "No data provided"}), 400
             
         version = data.get('selectedVersions', [1])[0]
-        sen_parameters = data.get('senParameters', {})
+        sen_parameters = data.get('SenParameters', {})
+
+        log_execution_flow('enter', f"Processing visualization request - Run ID: {run_id}")
+        sensitivity_logger.info(f"\nProcessing visualization request - Run ID: {run_id}")
+        sensitivity_logger.info(f"Version: {version}")
+        sensitivity_logger.info(f"Parameters: {list(sen_parameters.keys())}")
 
         visualization_data = {
             'parameters': {},
             'relationships': [],
-            'plots': {}
+            'plots': {},
+            'metadata': {
+                'version': str(version),
+                'runId': run_id,
+                'processingTime': 0,
+                'plotsGenerated': 0,
+                'errors': []
+            }
         }
 
-        base_dir = os.path.join(BASE_DIR, 'public', 'Original')
+        base_dir = os.path.join(BASE_DIR, 'backend', 'Original')  # Use backend/Original instead of public/Original
         results_folder = os.path.join(base_dir, f'Batch({version})', f'Results({version})')
-
+        
+        # Create sensitivity directories early in the process
+        sensitivity_dir = os.path.join(results_folder, 'Sensitivity')
+        
+        # Create main sensitivity directory
+        os.makedirs(sensitivity_dir, exist_ok=True)
+        sensitivity_logger.info(f"Created main sensitivity directory: {sensitivity_dir}")
+        
+        # Create subdirectories for different analysis types
+        for mode in ['Symmetrical', 'Multipoint']:
+            mode_dir = os.path.join(sensitivity_dir, mode)
+            os.makedirs(mode_dir, exist_ok=True)
+            sensitivity_logger.info(f"Created sensitivity mode directory: {mode_dir}")
+            
+            # Create subdirectories for plot types and configuration
+            for subdir in ['waterfall', 'bar', 'point', 'Configuration']:
+                subdir_path = os.path.join(mode_dir, subdir)
+                os.makedirs(subdir_path, exist_ok=True)
+                sensitivity_logger.info(f"Created sensitivity subdirectory: {subdir_path}")
+                
+                # Create parameter-specific variation directories for Configuration
+                if subdir == 'Configuration':
+                    # For each enabled parameter, create variation directories
+                    for param_id, param_config in sen_parameters.items():
+                        if not param_config.get('enabled'):
+                            continue
+                            
+                        # Get variation values
+                        values = param_config.get('values', [])
+                        if not values:
+                            continue
+                            
+                        # Determine variation list based on mode
+                        if mode.lower() == 'symmetrical':
+                            # For symmetrical, use first value to create +/- variations
+                            base_variation = values[0]
+                            variation_list = [base_variation, -base_variation]
+                        else:  # 'multiple' mode
+                            # For multiple, use all values directly
+                            variation_list = values
+                            
+                        # Create a directory for each variation
+                        for variation in variation_list:
+                            # Format the variation string (e.g., "+10.00" or "-5.00")
+                            var_str = f"{variation:+.2f}"
+                            
+                            # Create a subdirectory for this specific parameter and variation
+                            param_var_dir = os.path.join(subdir_path, f"{param_id}_{var_str}")
+                            os.makedirs(param_var_dir, exist_ok=True)
+                            sensitivity_logger.info(f"Created parameter variation directory: {param_var_dir}")
+        
+        # Create standalone Configuration directory
+        config_dir = os.path.join(sensitivity_dir, "Configuration")
+        os.makedirs(config_dir, exist_ok=True)
+        sensitivity_logger.info(f"Created standalone Configuration directory: {config_dir}")
+        
+        # Create Reports and Cache directories
+        for extra_dir in ['Reports', 'Cache']:
+            extra_path = os.path.join(sensitivity_dir, extra_dir)
+            os.makedirs(extra_path, exist_ok=True)
+            sensitivity_logger.info(f"Created sensitivity extra directory: {extra_path}")
+        
+        plots_generated = 0
+        
         for param_id, config in sen_parameters.items():
             if not config.get('enabled'):
                 continue
 
+            # Log the start of processing for this parameter
+            log_execution_flow('checkpoint', f"Processing parameter {param_id}")
+            sensitivity_logger.info(f"\nProcessing {param_id}:")
+            
             mode = config.get('mode')
             plot_types = []
             if config.get('waterfall'): plot_types.append('waterfall')
             if config.get('bar'): plot_types.append('bar')
             if config.get('point'): plot_types.append('point')
 
-            # Add parameter metadata
+            # Special handling for S34-S38 against S13
+            is_special_case = (
+                param_id >= 'S34' and param_id <= 'S38' and 
+                config.get('compareToKey') == 'S13'
+            )
+            
+            if is_special_case:
+                sensitivity_logger.info(f"{param_id} identified as special case (vs S13)")
+
+            # Add parameter metadata with status
             visualization_data['parameters'][param_id] = {
                 'id': param_id,
                 'mode': mode,
-                'enabled': True
+                'enabled': True,
+                'status': {
+                    'processed': False,
+                    'error': None,
+                    'isSpecialCase': is_special_case
+                }
             }
 
             # Add relationship data
             if config.get('compareToKey'):
-                visualization_data['relationships'].append({
+                relationship = {
                     'source': param_id,
                     'target': config['compareToKey'],
                     'type': config.get('comparisonType', 'primary'),
                     'plotTypes': plot_types
-                })
+                }
+                visualization_data['relationships'].append(relationship)
+                sensitivity_logger.info(
+                    f"Added relationship: {param_id} -> {config['compareToKey']} "
+                    f"({config.get('comparisonType', 'primary')})"
+                )
 
-            # Collect plot paths
+            # Initialize plot data structure
+            visualization_data['plots'][param_id] = {}
+            
+            # Collect plot paths with status
             sensitivity_dir = os.path.join(
                 results_folder,
                 'Sensitivity',
                 'Symmetrical' if mode == 'symmetrical' else 'Multipoint'
             )
 
-            plot_paths = {}
+            # Check if sensitivity directory exists
+            if not os.path.exists(sensitivity_dir):
+                error_msg = f"Sensitivity directory not found: {sensitivity_dir}"
+                sensitivity_logger.error(error_msg)
+                log_execution_flow('error', error_msg)
+                visualization_data['parameters'][param_id]['status']['error'] = error_msg
+                visualization_data['metadata']['errors'].append(error_msg)
+                continue
+
+            # Process each plot type
             for plot_type in plot_types:
+                # Log the start of plot generation attempt
+                log_plot_generation_start(param_id, config['compareToKey'], plot_type, mode)
+                
+                # Construct the plot name and path
                 plot_name = f"{plot_type}_{param_id}_{config['compareToKey']}_{config.get('comparisonType', 'primary')}"
                 plot_path = os.path.join(sensitivity_dir, f"{plot_name}.png")
                 
+                # Initialize plot status
+                plot_status = {
+                    'status': 'error',
+                    'path': None,
+                    'error': None
+                }
+
+                # Check if the plot file exists
                 if os.path.exists(plot_path):
-                    plot_paths[plot_type] = os.path.relpath(plot_path, base_dir)
+                    # Plot exists, log success
+                    relative_path = os.path.relpath(plot_path, base_dir)
+                    plot_status.update({
+                        'status': 'ready',
+                        'path': relative_path,
+                        'error': None
+                    })
+                    plots_generated += 1
+                    sensitivity_logger.info(f"Found {plot_type} plot: {relative_path}")
+                    log_plot_generation_complete(param_id, config['compareToKey'], plot_type, mode, plot_path)
+                else:
+                    # Plot doesn't exist, log the error
+                    error_msg = f"Plot not found: {plot_name}"
+                    plot_status['error'] = error_msg
+                    sensitivity_logger.warning(error_msg)
+                    
+                    # Log detailed information about the missing plot
+                    log_plot_generation_error(param_id, config['compareToKey'], plot_type, mode, error_msg)
+                    
+                    # Check if result data exists for this parameter
+                    result_file_name = f"{param_id}_vs_{config['compareToKey']}_{mode.lower()}_results.json"
+                    result_file_path = os.path.join(sensitivity_dir, result_file_name)
+                    
+                    if os.path.exists(result_file_path):
+                        # Result data exists but plot wasn't generated
+                        log_plot_data_loading(param_id, config['compareToKey'], result_file_path, success=True)
+                        log_plot_rendering(param_id, config['compareToKey'], plot_type, success=False, 
+                                          error_msg="Plot generation was not attempted or failed")
+                    else:
+                        # Result data doesn't exist
+                        log_plot_data_loading(param_id, config['compareToKey'], result_file_path, success=False, 
+                                             error_msg="Result data file not found")
 
-            visualization_data['plots'][param_id] = plot_paths
+                # Add plot status to visualization data
+                visualization_data['plots'][param_id][plot_type] = plot_status
 
+            # Update parameter processing status
+            visualization_data['parameters'][param_id]['status']['processed'] = True
+            log_execution_flow('checkpoint', f"Completed processing parameter {param_id}")
+
+        # Update metadata
+        processing_time = time.time() - start_time
+        visualization_data['metadata'].update({
+            'processingTime': round(processing_time, 2),
+            'plotsGenerated': plots_generated
+        })
+
+        sensitivity_logger.info(f"\nVisualization processing complete - Run ID: {run_id}")
+        sensitivity_logger.info(f"Processing time: {processing_time:.2f}s")
+        sensitivity_logger.info(f"Plots generated: {plots_generated}")
+        if visualization_data['metadata']['errors']:
+            sensitivity_logger.info(f"Errors encountered: {len(visualization_data['metadata']['errors'])}")
+        
+        log_execution_flow('exit', f"Visualization processing complete - Run ID: {run_id}")
         return jsonify(visualization_data)
 
     except Exception as e:
-        logging.error(f"Error generating visualization data: {str(e)}")
-        return jsonify({"error": str(e)}), 500
+        error_msg = f"Error generating visualization data: {str(e)}"
+        sensitivity_logger.exception(error_msg)
+        log_execution_flow('error', error_msg)
+        
+        # Return partial data if available, along with error
+        if 'visualization_data' in locals():
+            visualization_data['metadata']['errors'].append(error_msg)
+            return jsonify(visualization_data)
+            
+        return jsonify({
+            "error": error_msg,
+            "runId": run_id
+        }), 500
 
 # =====================================
 # Application Entry Point
 # =====================================
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5007)
+    app.run(debug=True, port=25007)

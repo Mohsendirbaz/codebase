@@ -1,70 +1,18 @@
-2025-02-23 17:18:53,713 DEBUG Logging is configured and working correctly.
-2025-02-23 17:18:53,864 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+2025-03-03 03:16:25,919 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-03-03 03:16:25,985 INFO  * Restarting with stat
+2025-03-03 03:16:26,607 DEBUG Logging is configured and working correctly.
+2025-03-03 03:16:26,638 WARNING  * Debugger is active!
+2025-03-03 03:16:26,638 INFO  * Debugger PIN: 119-059-632
+2025-03-03 03:17:16,382 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-03-03 03:17:16,462 INFO  * Restarting with stat
+2025-03-03 03:17:17,107 DEBUG Logging is configured and working correctly.
+2025-03-03 03:17:17,130 WARNING  * Debugger is active!
+2025-03-03 03:17:17,146 INFO  * Debugger PIN: 119-059-632
+2025-03-03 03:17:52,197 DEBUG Logging is configured and working correctly.
+2025-03-03 03:17:52,232 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on http://127.0.0.1:5009
-2025-02-23 17:18:53,864 INFO [33mPress CTRL+C to quit[0m
-2025-02-23 17:18:53,882 INFO  * Restarting with stat
-2025-02-23 17:18:56,286 DEBUG Logging is configured and working correctly.
-2025-02-23 17:18:56,389 WARNING  * Debugger is active!
-2025-02-23 17:18:56,396 INFO  * Debugger PIN: 119-059-632
-2025-02-23 17:21:45,899 DEBUG Logging is configured and working correctly.
-2025-02-23 17:21:46,515 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5009
-2025-02-23 17:21:46,515 INFO [33mPress CTRL+C to quit[0m
-2025-02-23 17:21:46,515 INFO  * Restarting with stat
-2025-02-23 17:21:49,730 DEBUG Logging is configured and working correctly.
-2025-02-23 17:21:49,963 WARNING  * Debugger is active!
-2025-02-23 17:21:49,980 INFO  * Debugger PIN: 119-059-632
-2025-02-23 17:23:14,755 DEBUG Logging is configured and working correctly.
-2025-02-23 17:23:14,860 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5009
-2025-02-23 17:23:14,860 INFO [33mPress CTRL+C to quit[0m
-2025-02-23 17:23:14,860 INFO  * Restarting with stat
-2025-02-23 17:23:16,591 DEBUG Logging is configured and working correctly.
-2025-02-23 17:23:16,696 WARNING  * Debugger is active!
-2025-02-23 17:23:16,696 INFO  * Debugger PIN: 119-059-632
-2025-02-23 17:25:37,860 DEBUG Logging is configured and working correctly.
-2025-02-23 17:25:38,060 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5009
-2025-02-23 17:25:38,060 INFO [33mPress CTRL+C to quit[0m
-2025-02-23 17:25:38,060 INFO  * Restarting with stat
-2025-02-23 17:25:39,382 DEBUG Logging is configured and working correctly.
-2025-02-23 17:25:39,426 WARNING  * Debugger is active!
-2025-02-23 17:25:39,426 INFO  * Debugger PIN: 119-059-632
-2025-02-23 17:27:18,414 DEBUG Logging is configured and working correctly.
-2025-02-23 17:27:18,464 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5009
-2025-02-23 17:27:18,464 INFO [33mPress CTRL+C to quit[0m
-2025-02-23 17:27:18,464 INFO  * Restarting with stat
-2025-02-23 17:27:19,097 DEBUG Logging is configured and working correctly.
-2025-02-23 17:27:19,131 WARNING  * Debugger is active!
-2025-02-23 17:27:19,131 INFO  * Debugger PIN: 119-059-632
-2025-02-23 17:27:30,076 DEBUG Logging is configured and working correctly.
-2025-02-23 17:27:30,191 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5009
-2025-02-23 17:27:30,192 INFO [33mPress CTRL+C to quit[0m
-2025-02-23 17:27:30,192 INFO  * Restarting with stat
-2025-02-23 17:27:31,408 DEBUG Logging is configured and working correctly.
-2025-02-23 17:27:31,470 WARNING  * Debugger is active!
-2025-02-23 17:27:31,475 INFO  * Debugger PIN: 119-059-632
-2025-02-23 17:28:00,677 DEBUG Logging is configured and working correctly.
-2025-02-23 17:28:00,730 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5009
-2025-02-23 17:28:00,730 INFO [33mPress CTRL+C to quit[0m
-2025-02-23 17:28:00,746 INFO  * Restarting with stat
-2025-02-23 17:28:02,244 DEBUG Logging is configured and working correctly.
-2025-02-23 17:28:02,294 WARNING  * Debugger is active!
-2025-02-23 17:28:02,296 INFO  * Debugger PIN: 119-059-632
-2025-02-23 17:30:32,096 DEBUG Logging is configured and working correctly.
-2025-02-23 17:30:32,155 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5009
-2025-02-23 17:30:32,155 INFO [33mPress CTRL+C to quit[0m
-2025-02-23 17:30:32,161 INFO  * Restarting with stat
-2025-02-23 17:30:33,609 DEBUG Logging is configured and working correctly.
-2025-02-23 17:30:33,676 WARNING  * Debugger is active!
-2025-02-23 17:30:33,692 INFO  * Debugger PIN: 119-059-632
-2025-02-23 18:00:24,093 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
-2025-02-23 18:00:24,179 INFO  * Restarting with stat
-2025-02-23 18:00:24,655 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
-2025-02-23 18:00:25,019 DEBUG Logging is configured and working correctly.
-2025-02-23 18:00:25,053 WARNING  * Debugger is active!
-2025-02-23 18:00:25,061 INFO  * Debugger PIN: 119-059-632
+2025-03-03 03:17:52,232 INFO [33mPress CTRL+C to quit[0m
+2025-03-03 03:17:52,232 INFO  * Restarting with stat
+2025-03-03 03:17:52,683 DEBUG Logging is configured and working correctly.
+2025-03-03 03:17:52,712 WARNING  * Debugger is active!
+2025-03-03 03:17:52,714 INFO  * Debugger PIN: 119-059-632

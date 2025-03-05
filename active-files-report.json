@@ -1,0 +1,560 @@
+{
+  "activeFiles": [
+    "src\\index.js",
+    "src\\App.js",
+    "src\\L_1_HomePage.js",
+    "src\\contexts\\VersionStateContext.js",
+    "src\\CustomizableImage.js",
+    "src\\CustomizableTable.js",
+    "src\\useFormValues.js",
+    "src\\extended_scaling\\ExtendedScaling.js",
+    "src\\extended_scaling\\ScalingSummary.js",
+    "src\\extended_scaling\\Card.js",
+    "src\\components\\L_1_HomePage.CSS\\L_1_HomePage4.css",
+    "src\\FormHeader.js",
+    "src\\ui\\tooltip.js",
+    "src\\GeneralFormConfig.js",
+    "src\\Popup.js",
+    "src\\Popup.css",
+    "src\\components\\SensitivitySelector.js",
+    "src\\components\\SensitivitySelector.css",
+    "src\\L_1_HomePage.CSS\\L_1_HomePage1.css",
+    "src\\L_1_HomePage.CSS\\L_1_HomePage2.css",
+    "src\\L_1_HomePage.CSS\\L_1_HomePage3.css",
+    "src\\L_1_HomePage.CSS\\L_1_HomePage4.css",
+    "src\\L_1_HomePage.CSS\\L_1_HomePage5.css",
+    "src\\L_1_HomePage.CSS\\L_1_HomePage6.css",
+    "src\\L_1_HomePage.CSS\\L_1_HomePage_AboutUs.css",
+    "src\\L_1_HomePage.CSS\\L_1_HomePage_buttons.css",
+    "src\\L_1_HomePage.CSS\\L_1_HomePage_monitoring.css",
+    "src\\L_1_HomePage.CSS\\L_1_HomePage_selectors.css",
+    "src\\styles\\neumorphic-tabs.css",
+    "src\\PropertySelector.js",
+    "src\\MultiVersionSelector.js",
+    "src\\TodoList.js",
+    "src\\VersionSelector.js",
+    "src\\VersionSelector.css",
+    "src\\components\\model\\ModelZone.js",
+    "src\\components\\model\\ModelZone.css",
+    "src\\components\\model\\FilterPopup.css",
+    "src\\components\\model\\ModelCard.js",
+    "src\\components\\model\\ModelCard.css",
+    "src\\components\\model\\FilterPopup.js",
+    "src\\components\\model\\InheritanceControl.js",
+    "src\\components\\model\\InheritanceControl.css",
+    "src\\components\\model\\ImpactAnalysis.js",
+    "src\\components\\model\\ImpactAnalysis.css",
+    "src\\components\\model\\SensitivityEngine.js",
+    "src\\components\\model\\SensitivityEngine.css",
+    "src\\components\\model\\AnalysisChart.js",
+    "src\\components\\model\\AnalysisChart.css",
+    "src\\components\\model\\RiskAssessment.js",
+    "src\\components\\model\\RiskAssessment.css",
+    "src\\components\\model\\OptimizationEngine.js",
+    "src\\components\\model\\OptimizationEngine.css",
+    "src\\components\\model\\DecisionEngine.js",
+    "src\\components\\model\\DecisionEngine.css",
+    "src\\components\\model\\OverlayController.js",
+    "src\\components\\model\\OverlayController.css",
+    "src\\components\\model\\NavigationManager.js",
+    "src\\components\\model\\NavigationManager.css",
+    "src\\components\\model\\AnalysisVisualizationIntegration.js",
+    "src\\components\\model\\AnalysisVisualizationIntegration.css",
+    "src\\components\\version\\VersionControl.js",
+    "src\\components\\version\\VersionControl.css",
+    "src\\Editable.js",
+    "src\\Editable.css",
+    "src\\naturalmotion.js",
+    "src\\naturalmotion.css",
+    "src\\components\\SensitivityAnalysis.js",
+    "src\\SensitivityVisualization.js",
+    "src\\components\\SensitivityAnalysis.css",
+    "src\\components\\TestingZone.js",
+    "src\\components\\TestingZone.css",
+    "src\\components\\cfa\\CFAConsolidationUI.js",
+    "src\\components\\cfa\\CFAConsolidationUI.css",
+    "src\\components\\cfa\\SelectionPanel.js",
+    "src\\components\\cfa\\SelectionPanel.css",
+    "src\\components\\cfa\\ProcessingPanel.js",
+    "src\\components\\cfa\\ProcessingPanel.css",
+    "src\\components\\cfa\\ResultsPanel.js",
+    "src\\components\\cfa\\ResultsPanel.css",
+    "src\\components\\cfa\\IndividualResultsPanel.js",
+    "src\\components\\CalculationMonitor.js",
+    "src\\components\\CalculationMonitor.css",
+    "src\\components\\ErrorBoundary.js",
+    "src\\index.css"
+  ],
+  "inactiveFiles": [
+    "src\\App.css",
+    "src\\components\\buttons\\ActionButtons.css",
+    "src\\components\\buttons\\ActionButtons.js",
+    "src\\components\\forms\\InputForm.js",
+    "src\\components\\layout\\HeaderSection.css",
+    "src\\components\\layout\\HeaderSection.js",
+    "src\\components\\layout\\theme\\ThemeSelector.js",
+    "src\\components\\L_1_HomePage.CSS\\L_1_HomePage1.css",
+    "src\\components\\L_1_HomePage.CSS\\L_1_HomePage2.css",
+    "src\\components\\L_1_HomePage.CSS\\L_1_HomePage3.css",
+    "src\\components\\L_1_HomePage.CSS\\L_1_HomePage5.css",
+    "src\\components\\L_1_HomePage.CSS\\L_1_HomePage6.css",
+    "src\\components\\model\\overscroll-polyfill.js",
+    "src\\components\\navigation\\TabNavigation.js",
+    "src\\components\\scaling\\Card.js",
+    "src\\components\\scaling\\MathProcessor.js",
+    "src\\components\\scaling\\MotionDraggableIte.js",
+    "src\\components\\scaling\\MotionScalingSummary.js",
+    "src\\components\\scaling\\MotionTooltip.js",
+    "src\\components\\scaling\\ScalingTab.js",
+    "src\\components\\scaling\\styles\\animations.css",
+    "src\\components\\scaling\\styles\\base.css",
+    "src\\components\\scaling\\styles\\card.css",
+    "src\\components\\scaling\\styles\\draggable.css",
+    "src\\components\\scaling\\styles\\scaling.css",
+    "src\\components\\scaling\\styles\\tooltip.css",
+    "src\\components\\SensitivityIntegration.js",
+    "src\\components\\SensitivityVisualization.css",
+    "src\\components\\tabs\\CsvContentTab.js",
+    "src\\components\\tabs\\HtmlContentTab.js",
+    "src\\components\\tabs\\PlotContentTab.js",
+    "src\\components\\tabs\\TabContent.js",
+    "src\\hooks\\index.js",
+    "src\\hooks\\useAnalysis.js",
+    "src\\hooks\\useContentLoading.js",
+    "src\\hooks\\useFeatureToggles.js",
+    "src\\hooks\\useFormValues.js",
+    "src\\hooks\\useSensitivity.js",
+    "src\\hooks\\useTheme.js",
+    "src\\hooks\\useVersion.js",
+    "src\\L_1_HomePage.CSS\\L_1_HomePage_Neumorphic.css",
+    "src\\PriceOptimizationConfig.css",
+    "src\\PriceOptimizationConfig.js",
+    "src\\SensitivityVisualization.css",
+    "src\\services\\apiService.js",
+    "src\\services\\batchService.js",
+    "src\\services\\configService.js",
+    "src\\services\\contentService.js",
+    "src\\services\\index.js",
+    "src\\state\\VersionStateManager.js",
+    "src\\styles\\fall.css",
+    "src\\styles\\winter.css",
+    "src\\TodoList2.js",
+    "src\\ui\\tooltip.jsx",
+    "src\\utils\\pathTransformers.js"
+  ],
+  "standaloneFiles": [
+    "src\\contexts\\VersionStateContext.js",
+    "src\\CustomizableImage.js",
+    "src\\useFormValues.js",
+    "src\\components\\L_1_HomePage.CSS\\L_1_HomePage4.css",
+    "src\\ui\\tooltip.js",
+    "src\\Popup.css",
+    "src\\components\\SensitivitySelector.css",
+    "src\\L_1_HomePage.CSS\\L_1_HomePage1.css",
+    "src\\L_1_HomePage.CSS\\L_1_HomePage2.css",
+    "src\\L_1_HomePage.CSS\\L_1_HomePage3.css",
+    "src\\L_1_HomePage.CSS\\L_1_HomePage4.css",
+    "src\\L_1_HomePage.CSS\\L_1_HomePage5.css",
+    "src\\L_1_HomePage.CSS\\L_1_HomePage6.css",
+    "src\\L_1_HomePage.CSS\\L_1_HomePage_AboutUs.css",
+    "src\\L_1_HomePage.CSS\\L_1_HomePage_buttons.css",
+    "src\\L_1_HomePage.CSS\\L_1_HomePage_monitoring.css",
+    "src\\L_1_HomePage.CSS\\L_1_HomePage_selectors.css",
+    "src\\styles\\neumorphic-tabs.css",
+    "src\\TodoList.js",
+    "src\\VersionSelector.css",
+    "src\\components\\model\\ModelZone.css",
+    "src\\components\\model\\FilterPopup.css",
+    "src\\components\\model\\ModelCard.css",
+    "src\\components\\model\\InheritanceControl.css",
+    "src\\components\\model\\ImpactAnalysis.css",
+    "src\\components\\model\\SensitivityEngine.css",
+    "src\\components\\model\\AnalysisChart.css",
+    "src\\components\\model\\RiskAssessment.css",
+    "src\\components\\model\\OptimizationEngine.css",
+    "src\\components\\model\\DecisionEngine.css",
+    "src\\components\\model\\OverlayController.css",
+    "src\\components\\model\\NavigationManager.css",
+    "src\\components\\model\\AnalysisVisualizationIntegration.css",
+    "src\\components\\version\\VersionControl.css",
+    "src\\Editable.css",
+    "src\\naturalmotion.css",
+    "src\\SensitivityVisualization.js",
+    "src\\components\\SensitivityAnalysis.css",
+    "src\\components\\TestingZone.css",
+    "src\\components\\cfa\\CFAConsolidationUI.css",
+    "src\\components\\cfa\\SelectionPanel.css",
+    "src\\components\\cfa\\ProcessingPanel.css",
+    "src\\components\\cfa\\ResultsPanel.css",
+    "src\\components\\CalculationMonitor.css",
+    "src\\components\\ErrorBoundary.js",
+    "src\\index.css"
+  ],
+  "dependencyLayers": {
+    "0": [
+      "src\\index.js"
+    ],
+    "1": [
+      "src\\App.js",
+      "src\\index.css"
+    ],
+    "2": [
+      "src\\L_1_HomePage.js",
+      "src\\contexts\\VersionStateContext.js",
+      "src\\components\\ErrorBoundary.js"
+    ],
+    "3": [
+      "src\\CustomizableImage.js",
+      "src\\CustomizableTable.js",
+      "src\\useFormValues.js",
+      "src\\extended_scaling\\ExtendedScaling.js",
+      "src\\FormHeader.js",
+      "src\\GeneralFormConfig.js",
+      "src\\Popup.js",
+      "src\\L_1_HomePage.CSS\\L_1_HomePage1.css",
+      "src\\L_1_HomePage.CSS\\L_1_HomePage2.css",
+      "src\\L_1_HomePage.CSS\\L_1_HomePage3.css",
+      "src\\L_1_HomePage.CSS\\L_1_HomePage4.css",
+      "src\\L_1_HomePage.CSS\\L_1_HomePage5.css",
+      "src\\L_1_HomePage.CSS\\L_1_HomePage6.css",
+      "src\\L_1_HomePage.CSS\\L_1_HomePage_AboutUs.css",
+      "src\\L_1_HomePage.CSS\\L_1_HomePage_buttons.css",
+      "src\\L_1_HomePage.CSS\\L_1_HomePage_monitoring.css",
+      "src\\L_1_HomePage.CSS\\L_1_HomePage_selectors.css",
+      "src\\styles\\neumorphic-tabs.css",
+      "src\\PropertySelector.js",
+      "src\\MultiVersionSelector.js",
+      "src\\TodoList.js",
+      "src\\VersionSelector.js",
+      "src\\components\\model\\ModelZone.js",
+      "src\\components\\version\\VersionControl.js",
+      "src\\Editable.js",
+      "src\\naturalmotion.js",
+      "src\\components\\SensitivityAnalysis.js",
+      "src\\components\\TestingZone.js",
+      "src\\components\\CalculationMonitor.js"
+    ],
+    "4": [
+      "src\\extended_scaling\\ScalingSummary.js",
+      "src\\components\\L_1_HomePage.CSS\\L_1_HomePage4.css",
+      "src\\ui\\tooltip.js",
+      "src\\components\\SensitivitySelector.js",
+      "src\\VersionSelector.css",
+      "src\\components\\model\\ModelZone.css",
+      "src\\components\\model\\FilterPopup.css",
+      "src\\components\\model\\ModelCard.js",
+      "src\\components\\model\\FilterPopup.js",
+      "src\\components\\model\\InheritanceControl.js",
+      "src\\components\\model\\ImpactAnalysis.js",
+      "src\\components\\model\\SensitivityEngine.js",
+      "src\\components\\model\\RiskAssessment.js",
+      "src\\components\\model\\OptimizationEngine.js",
+      "src\\components\\model\\DecisionEngine.js",
+      "src\\components\\model\\OverlayController.js",
+      "src\\components\\model\\AnalysisVisualizationIntegration.js",
+      "src\\components\\version\\VersionControl.css",
+      "src\\Editable.css",
+      "src\\naturalmotion.css",
+      "src\\SensitivityVisualization.js",
+      "src\\components\\SensitivityAnalysis.css",
+      "src\\components\\TestingZone.css",
+      "src\\components\\cfa\\CFAConsolidationUI.js",
+      "src\\components\\CalculationMonitor.css"
+    ],
+    "5": [
+      "src\\extended_scaling\\Card.js",
+      "src\\Popup.css",
+      "src\\components\\SensitivitySelector.css",
+      "src\\components\\model\\ModelCard.css",
+      "src\\components\\model\\InheritanceControl.css",
+      "src\\components\\model\\ImpactAnalysis.css",
+      "src\\components\\model\\SensitivityEngine.css",
+      "src\\components\\model\\AnalysisChart.js",
+      "src\\components\\model\\RiskAssessment.css",
+      "src\\components\\model\\OptimizationEngine.css",
+      "src\\components\\model\\DecisionEngine.css",
+      "src\\components\\model\\OverlayController.css",
+      "src\\components\\model\\NavigationManager.js",
+      "src\\components\\model\\AnalysisVisualizationIntegration.css",
+      "src\\components\\cfa\\CFAConsolidationUI.css",
+      "src\\components\\cfa\\SelectionPanel.js",
+      "src\\components\\cfa\\ProcessingPanel.js",
+      "src\\components\\cfa\\ResultsPanel.js",
+      "src\\components\\cfa\\IndividualResultsPanel.js"
+    ],
+    "6": [
+      "src\\components\\model\\AnalysisChart.css",
+      "src\\components\\model\\NavigationManager.css",
+      "src\\components\\cfa\\SelectionPanel.css",
+      "src\\components\\cfa\\ProcessingPanel.css",
+      "src\\components\\cfa\\ResultsPanel.css"
+    ]
+  },
+  "importedBy": {
+    "src\\App.js": [
+      "src\\index.js"
+    ],
+    "src\\L_1_HomePage.js": [
+      "src\\App.js"
+    ],
+    "src\\contexts\\VersionStateContext.js": [
+      "src\\L_1_HomePage.js",
+      "src\\MultiVersionSelector.js",
+      "src\\VersionSelector.js",
+      "src\\components\\model\\ModelZone.js",
+      "src\\components\\SensitivityAnalysis.js",
+      "src\\App.js"
+    ],
+    "src\\CustomizableImage.js": [
+      "src\\L_1_HomePage.js"
+    ],
+    "src\\CustomizableTable.js": [
+      "src\\L_1_HomePage.js",
+      "src\\components\\cfa\\IndividualResultsPanel.js"
+    ],
+    "src\\useFormValues.js": [
+      "src\\CustomizableTable.js",
+      "src\\GeneralFormConfig.js",
+      "src\\PropertySelector.js",
+      "src\\L_1_HomePage.js"
+    ],
+    "src\\extended_scaling\\ExtendedScaling.js": [
+      "src\\L_1_HomePage.js"
+    ],
+    "src\\extended_scaling\\ScalingSummary.js": [
+      "src\\extended_scaling\\ExtendedScaling.js"
+    ],
+    "src\\extended_scaling\\Card.js": [
+      "src\\extended_scaling\\ScalingSummary.js"
+    ],
+    "src\\components\\L_1_HomePage.CSS\\L_1_HomePage4.css": [
+      "src\\extended_scaling\\Card.js",
+      "src\\extended_scaling\\ExtendedScaling.js"
+    ],
+    "src\\FormHeader.js": [
+      "src\\L_1_HomePage.js"
+    ],
+    "src\\ui\\tooltip.js": [
+      "src\\FormHeader.js"
+    ],
+    "src\\GeneralFormConfig.js": [
+      "src\\L_1_HomePage.js"
+    ],
+    "src\\Popup.js": [
+      "src\\GeneralFormConfig.js",
+      "src\\L_1_HomePage.js"
+    ],
+    "src\\Popup.css": [
+      "src\\Popup.js"
+    ],
+    "src\\components\\SensitivitySelector.js": [
+      "src\\GeneralFormConfig.js"
+    ],
+    "src\\components\\SensitivitySelector.css": [
+      "src\\components\\SensitivitySelector.js"
+    ],
+    "src\\L_1_HomePage.CSS\\L_1_HomePage1.css": [
+      "src\\L_1_HomePage.js"
+    ],
+    "src\\L_1_HomePage.CSS\\L_1_HomePage2.css": [
+      "src\\L_1_HomePage.js"
+    ],
+    "src\\L_1_HomePage.CSS\\L_1_HomePage3.css": [
+      "src\\L_1_HomePage.js"
+    ],
+    "src\\L_1_HomePage.CSS\\L_1_HomePage4.css": [
+      "src\\L_1_HomePage.js"
+    ],
+    "src\\L_1_HomePage.CSS\\L_1_HomePage5.css": [
+      "src\\L_1_HomePage.js"
+    ],
+    "src\\L_1_HomePage.CSS\\L_1_HomePage6.css": [
+      "src\\L_1_HomePage.js"
+    ],
+    "src\\L_1_HomePage.CSS\\L_1_HomePage_AboutUs.css": [
+      "src\\L_1_HomePage.js"
+    ],
+    "src\\L_1_HomePage.CSS\\L_1_HomePage_buttons.css": [
+      "src\\L_1_HomePage.js"
+    ],
+    "src\\L_1_HomePage.CSS\\L_1_HomePage_monitoring.css": [
+      "src\\L_1_HomePage.js"
+    ],
+    "src\\L_1_HomePage.CSS\\L_1_HomePage_selectors.css": [
+      "src\\L_1_HomePage.js"
+    ],
+    "src\\styles\\neumorphic-tabs.css": [
+      "src\\L_1_HomePage.js"
+    ],
+    "src\\PropertySelector.js": [
+      "src\\L_1_HomePage.js"
+    ],
+    "src\\MultiVersionSelector.js": [
+      "src\\L_1_HomePage.js"
+    ],
+    "src\\TodoList.js": [
+      "src\\L_1_HomePage.js"
+    ],
+    "src\\VersionSelector.js": [
+      "src\\L_1_HomePage.js"
+    ],
+    "src\\VersionSelector.css": [
+      "src\\VersionSelector.js"
+    ],
+    "src\\components\\model\\ModelZone.js": [
+      "src\\L_1_HomePage.js"
+    ],
+    "src\\components\\model\\ModelZone.css": [
+      "src\\components\\model\\ModelZone.js"
+    ],
+    "src\\components\\model\\FilterPopup.css": [
+      "src\\components\\model\\ModelZone.js",
+      "src\\components\\model\\FilterPopup.js"
+    ],
+    "src\\components\\model\\ModelCard.js": [
+      "src\\components\\model\\ModelZone.js"
+    ],
+    "src\\components\\model\\ModelCard.css": [
+      "src\\components\\model\\ModelCard.js"
+    ],
+    "src\\components\\model\\FilterPopup.js": [
+      "src\\components\\model\\ModelZone.js"
+    ],
+    "src\\components\\model\\InheritanceControl.js": [
+      "src\\components\\model\\ModelZone.js"
+    ],
+    "src\\components\\model\\InheritanceControl.css": [
+      "src\\components\\model\\InheritanceControl.js"
+    ],
+    "src\\components\\model\\ImpactAnalysis.js": [
+      "src\\components\\model\\ModelZone.js"
+    ],
+    "src\\components\\model\\ImpactAnalysis.css": [
+      "src\\components\\model\\ImpactAnalysis.js"
+    ],
+    "src\\components\\model\\SensitivityEngine.js": [
+      "src\\components\\model\\ModelZone.js"
+    ],
+    "src\\components\\model\\SensitivityEngine.css": [
+      "src\\components\\model\\SensitivityEngine.js"
+    ],
+    "src\\components\\model\\AnalysisChart.js": [
+      "src\\components\\model\\SensitivityEngine.js",
+      "src\\components\\model\\RiskAssessment.js",
+      "src\\components\\model\\OptimizationEngine.js",
+      "src\\components\\model\\DecisionEngine.js"
+    ],
+    "src\\components\\model\\AnalysisChart.css": [
+      "src\\components\\model\\AnalysisChart.js"
+    ],
+    "src\\components\\model\\RiskAssessment.js": [
+      "src\\components\\model\\ModelZone.js"
+    ],
+    "src\\components\\model\\RiskAssessment.css": [
+      "src\\components\\model\\RiskAssessment.js"
+    ],
+    "src\\components\\model\\OptimizationEngine.js": [
+      "src\\components\\model\\ModelZone.js"
+    ],
+    "src\\components\\model\\OptimizationEngine.css": [
+      "src\\components\\model\\OptimizationEngine.js"
+    ],
+    "src\\components\\model\\DecisionEngine.js": [
+      "src\\components\\model\\ModelZone.js"
+    ],
+    "src\\components\\model\\DecisionEngine.css": [
+      "src\\components\\model\\DecisionEngine.js"
+    ],
+    "src\\components\\model\\OverlayController.js": [
+      "src\\components\\model\\ModelZone.js"
+    ],
+    "src\\components\\model\\OverlayController.css": [
+      "src\\components\\model\\OverlayController.js"
+    ],
+    "src\\components\\model\\NavigationManager.js": [
+      "src\\components\\model\\OverlayController.js"
+    ],
+    "src\\components\\model\\NavigationManager.css": [
+      "src\\components\\model\\NavigationManager.js"
+    ],
+    "src\\components\\model\\AnalysisVisualizationIntegration.js": [
+      "src\\components\\model\\ModelZone.js"
+    ],
+    "src\\components\\model\\AnalysisVisualizationIntegration.css": [
+      "src\\components\\model\\AnalysisVisualizationIntegration.js"
+    ],
+    "src\\components\\version\\VersionControl.js": [
+      "src\\L_1_HomePage.js"
+    ],
+    "src\\components\\version\\VersionControl.css": [
+      "src\\components\\version\\VersionControl.js"
+    ],
+    "src\\Editable.js": [
+      "src\\L_1_HomePage.js"
+    ],
+    "src\\Editable.css": [
+      "src\\Editable.js"
+    ],
+    "src\\naturalmotion.js": [
+      "src\\L_1_HomePage.js"
+    ],
+    "src\\naturalmotion.css": [
+      "src\\naturalmotion.js"
+    ],
+    "src\\components\\SensitivityAnalysis.js": [
+      "src\\L_1_HomePage.js"
+    ],
+    "src\\SensitivityVisualization.js": [
+      "src\\components\\SensitivityAnalysis.js"
+    ],
+    "src\\components\\SensitivityAnalysis.css": [
+      "src\\components\\SensitivityAnalysis.js"
+    ],
+    "src\\components\\TestingZone.js": [
+      "src\\L_1_HomePage.js"
+    ],
+    "src\\components\\TestingZone.css": [
+      "src\\components\\TestingZone.js"
+    ],
+    "src\\components\\cfa\\CFAConsolidationUI.js": [
+      "src\\components\\TestingZone.js"
+    ],
+    "src\\components\\cfa\\CFAConsolidationUI.css": [
+      "src\\components\\cfa\\CFAConsolidationUI.js"
+    ],
+    "src\\components\\cfa\\SelectionPanel.js": [
+      "src\\components\\cfa\\CFAConsolidationUI.js"
+    ],
+    "src\\components\\cfa\\SelectionPanel.css": [
+      "src\\components\\cfa\\SelectionPanel.js"
+    ],
+    "src\\components\\cfa\\ProcessingPanel.js": [
+      "src\\components\\cfa\\CFAConsolidationUI.js"
+    ],
+    "src\\components\\cfa\\ProcessingPanel.css": [
+      "src\\components\\cfa\\ProcessingPanel.js"
+    ],
+    "src\\components\\cfa\\ResultsPanel.js": [
+      "src\\components\\cfa\\CFAConsolidationUI.js"
+    ],
+    "src\\components\\cfa\\ResultsPanel.css": [
+      "src\\components\\cfa\\ResultsPanel.js",
+      "src\\components\\cfa\\IndividualResultsPanel.js"
+    ],
+    "src\\components\\cfa\\IndividualResultsPanel.js": [
+      "src\\components\\cfa\\CFAConsolidationUI.js"
+    ],
+    "src\\components\\CalculationMonitor.js": [
+      "src\\L_1_HomePage.js"
+    ],
+    "src\\components\\CalculationMonitor.css": [
+      "src\\components\\CalculationMonitor.js"
+    ],
+    "src\\components\\ErrorBoundary.js": [
+      "src\\App.js"
+    ],
+    "src\\index.css": [
+      "src\\index.js"
+    ]
+  }
+}

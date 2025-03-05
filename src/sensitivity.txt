@@ -1,0 +1,13 @@
+sensitivity module key Points
+(to serve for enhancments and upgrades in the next few weeks)
+
+Results\Batch\'Symmetrical': ['waterfall', 'bar', 'point'],         plot_name = f"{plot_type}_{param_id}_{compare_to_key}_{comparison_type}.png"
+
+              'Multipoint': ['waterfall', 'bar', 'point'],
+              'Reports': [],
+              'Configuration': [],
+              'Cache': []
+
+              (requires removal of parallel directory creation via calculation_and_sensitivity and rerouting status and error messages to the above)
+
+

@@ -1,370 +1,274 @@
-2025-02-23 17:18:24,444 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:18:25,176 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:18:53,697 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:18:56,276 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:21:43,138 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:21:47,774 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:23:07,268 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:23:09,252 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:25:33,845 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:25:36,944 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:27:15,865 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:27:16,315 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:27:26,417 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:27:27,677 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:27:57,889 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:27:58,872 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:29:33,228 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:30:29,561 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:30:30,685 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:32:00,542 INFO 
+2025-03-03 03:19:22,104 INFO Created main sensitivity directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity
+2025-03-03 03:19:22,105 INFO Created sensitivity mode directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-03-03 03:19:22,105 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\waterfall
+2025-03-03 03:19:22,106 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\bar
+2025-03-03 03:19:22,108 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\point
+2025-03-03 03:19:22,109 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration
+2025-03-03 03:19:22,112 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S34_+20.00
+2025-03-03 03:19:22,113 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S34_-20.00
+2025-03-03 03:19:22,113 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S35_+20.00
+2025-03-03 03:19:22,115 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S35_-20.00
+2025-03-03 03:19:22,115 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S36_+20.00
+2025-03-03 03:19:22,116 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S36_-20.00
+2025-03-03 03:19:22,116 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S37_+20.00
+2025-03-03 03:19:22,117 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S37_-20.00
+2025-03-03 03:19:22,117 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S38_+20.00
+2025-03-03 03:19:22,118 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S38_-20.00
+2025-03-03 03:19:22,118 INFO Created sensitivity mode directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint
+2025-03-03 03:19:22,119 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\waterfall
+2025-03-03 03:19:22,119 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\bar
+2025-03-03 03:19:22,119 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\point
+2025-03-03 03:19:22,120 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\Configuration
+2025-03-03 03:19:22,120 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\Configuration\S34_+20.00
+2025-03-03 03:19:22,121 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\Configuration\S35_+20.00
+2025-03-03 03:19:22,122 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\Configuration\S36_+20.00
+2025-03-03 03:19:22,122 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\Configuration\S37_+20.00
+2025-03-03 03:19:22,123 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\Configuration\S38_+20.00
+2025-03-03 03:19:22,123 INFO Created standalone Configuration directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Configuration
+2025-03-03 03:19:22,126 INFO Created sensitivity extra directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Reports
+2025-03-03 03:19:22,128 INFO Created sensitivity extra directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Cache
+2025-03-03 03:19:22,128 INFO 
 ================================================================================
-2025-02-23 17:32:00,542 INFO CFA Run Configuration
-2025-02-23 17:32:00,542 INFO ================================================================================
-2025-02-23 17:32:00,542 INFO 
+2025-03-03 03:19:22,128 INFO CFA Run Configuration
+2025-03-03 03:19:22,128 INFO ================================================================================
+2025-03-03 03:19:22,128 INFO 
 Basic Configuration:
-2025-02-23 17:32:00,542 INFO Version(s): 8
-2025-02-23 17:32:00,542 INFO Calculation Mode: calculateForPrice
-2025-02-23 17:32:00,542 INFO Target Row: 20
-2025-02-23 17:32:00,542 INFO 
+2025-03-03 03:19:22,128 INFO Version(s): 1
+2025-03-03 03:19:22,129 INFO Calculation Mode: calculateForPrice
+2025-03-03 03:19:22,129 INFO Target Row: 20
+2025-03-03 03:19:22,129 INFO 
 Parameter States:
-2025-02-23 17:32:00,542 INFO Enabled V Parameters: None
-2025-02-23 17:32:00,542 INFO Enabled F Parameters: None
-2025-02-23 17:32:00,542 INFO 
-================================================================================
-
-2025-02-23 17:32:00,542 INFO 
-Executing Configuration Management Scripts:
-2025-02-23 17:32:00,542 INFO 
-Executing: formatter.py
-2025-02-23 17:32:00,845 INFO Completed formatter.py in 0.30s
-2025-02-23 17:32:01,355 INFO 
-Executing: module1.py
-2025-02-23 17:32:03,885 INFO Completed module1.py in 2.53s
-2025-02-23 17:32:04,391 INFO 
-Executing: update_config_modules_with_CFA.py
-2025-02-23 17:32:07,369 ERROR Script execution failed: update_config_modules_with_CFA.py
-Error: Traceback (most recent call last):
-  File "C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Configuration_management\update_config_modules_with_CFA.py", line 139, in <module>
-    main(version)
-  File "C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Configuration_management\update_config_modules_with_CFA.py", line 125, in main
-    config_matrix_df = pd.read_csv(config_matrix_file)
-                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
-    return _read(filepath_or_buffer, kwds)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 620, in _read
-    parser = TextFileReader(filepath_or_buffer, **kwds)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 1620, in __init__
-    self._engine = self._make_engine(f, self.engine)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 1880, in _make_engine
-    self.handles = get_handle(
-                   ^^^^^^^^^^^
-  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\common.py", line 873, in get_handle
-    handle = open(
-             ^^^^^
-FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\md8w7\\OneDrive University of Missouri\\Desktop\\ImportantFiles\\Milestone4\\backend\\Original\\Batch(8)\\Results(8)\\General_Configuration_Matrix(8).csv'
-
-2025-02-23 17:32:07,369 ERROR Error during orchestrated calculations: Script execution failed: update_config_modules_with_CFA.py
-Error: Traceback (most recent call last):
-  File "C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Configuration_management\update_config_modules_with_CFA.py", line 139, in <module>
-    main(version)
-  File "C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Configuration_management\update_config_modules_with_CFA.py", line 125, in main
-    config_matrix_df = pd.read_csv(config_matrix_file)
-                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
-    return _read(filepath_or_buffer, kwds)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 620, in _read
-    parser = TextFileReader(filepath_or_buffer, **kwds)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 1620, in __init__
-    self._engine = self._make_engine(f, self.engine)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 1880, in _make_engine
-    self.handles = get_handle(
-                   ^^^^^^^^^^^
-  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\common.py", line 873, in get_handle
-    handle = open(
-             ^^^^^
-FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\md8w7\\OneDrive University of Missouri\\Desktop\\ImportantFiles\\Milestone4\\backend\\Original\\Batch(8)\\Results(8)\\General_Configuration_Matrix(8).csv'
-
-2025-02-23 17:38:18,947 INFO 
-================================================================================
-2025-02-23 17:38:18,947 INFO CFA Run Configuration
-2025-02-23 17:38:18,947 INFO ================================================================================
-2025-02-23 17:38:18,947 INFO 
-Basic Configuration:
-2025-02-23 17:38:18,947 INFO Version(s): 7
-2025-02-23 17:38:18,947 INFO Calculation Mode: calculateForPrice
-2025-02-23 17:38:18,948 INFO Target Row: 20
-2025-02-23 17:38:18,948 INFO 
-Parameter States:
-2025-02-23 17:38:18,948 INFO Enabled V Parameters: None
-2025-02-23 17:38:18,948 INFO Enabled F Parameters: None
-2025-02-23 17:38:18,948 INFO 
-================================================================================
-
-2025-02-23 17:38:18,948 INFO 
-Executing Configuration Management Scripts:
-2025-02-23 17:38:18,948 INFO 
-Executing: formatter.py
-2025-02-23 17:38:19,258 INFO Completed formatter.py in 0.31s
-2025-02-23 17:38:19,775 INFO 
-Executing: module1.py
-2025-02-23 17:38:20,671 INFO Completed module1.py in 0.90s
-2025-02-23 17:38:21,197 INFO 
-Executing: update_config_modules_with_CFA.py
-2025-02-23 17:38:25,002 ERROR Script execution failed: update_config_modules_with_CFA.py
-Error: Traceback (most recent call last):
-  File "C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Configuration_management\update_config_modules_with_CFA.py", line 139, in <module>
-    main(version)
-  File "C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Configuration_management\update_config_modules_with_CFA.py", line 125, in main
-    config_matrix_df = pd.read_csv(config_matrix_file)
-                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
-    return _read(filepath_or_buffer, kwds)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 620, in _read
-    parser = TextFileReader(filepath_or_buffer, **kwds)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 1620, in __init__
-    self._engine = self._make_engine(f, self.engine)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 1880, in _make_engine
-    self.handles = get_handle(
-                   ^^^^^^^^^^^
-  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\common.py", line 873, in get_handle
-    handle = open(
-             ^^^^^
-FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\md8w7\\OneDrive University of Missouri\\Desktop\\ImportantFiles\\Milestone4\\backend\\Original\\Batch(7)\\Results(7)\\General_Configuration_Matrix(7).csv'
-
-2025-02-23 17:38:25,002 ERROR Error during orchestrated calculations: Script execution failed: update_config_modules_with_CFA.py
-Error: Traceback (most recent call last):
-  File "C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Configuration_management\update_config_modules_with_CFA.py", line 139, in <module>
-    main(version)
-  File "C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Configuration_management\update_config_modules_with_CFA.py", line 125, in main
-    config_matrix_df = pd.read_csv(config_matrix_file)
-                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
-    return _read(filepath_or_buffer, kwds)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 620, in _read
-    parser = TextFileReader(filepath_or_buffer, **kwds)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 1620, in __init__
-    self._engine = self._make_engine(f, self.engine)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\parsers\readers.py", line 1880, in _make_engine
-    self.handles = get_handle(
-                   ^^^^^^^^^^^
-  File "C:\Users\Mohse\AppData\Roaming\Python\Python312\site-packages\pandas\io\common.py", line 873, in get_handle
-    handle = open(
-             ^^^^^
-FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\md8w7\\OneDrive University of Missouri\\Desktop\\ImportantFiles\\Milestone4\\backend\\Original\\Batch(7)\\Results(7)\\General_Configuration_Matrix(7).csv'
-
-2025-02-23 17:42:18,791 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:44:20,173 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:45:31,533 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:46:34,960 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:47:33,228 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:47:47,332 INFO 
-================================================================================
-2025-02-23 17:47:47,333 INFO CFA Run Configuration
-2025-02-23 17:47:47,333 INFO ================================================================================
-2025-02-23 17:47:47,333 INFO 
-Basic Configuration:
-2025-02-23 17:47:47,334 INFO Version(s): 9
-2025-02-23 17:47:47,334 INFO Calculation Mode: calculateForPrice
-2025-02-23 17:47:47,334 INFO Target Row: 20
-2025-02-23 17:47:47,334 INFO 
-Parameter States:
-2025-02-23 17:47:47,334 INFO Enabled V Parameters: None
-2025-02-23 17:47:47,334 INFO Enabled F Parameters: None
-2025-02-23 17:47:47,334 INFO 
-================================================================================
-
-2025-02-23 17:47:47,334 INFO 
-Executing Configuration Management Scripts:
-2025-02-23 17:47:47,334 INFO 
-Executing: formatter.py
-2025-02-23 17:47:47,704 INFO Completed formatter.py in 0.37s
-2025-02-23 17:47:48,217 INFO 
-Executing: module1.py
-2025-02-23 17:47:50,925 INFO Completed module1.py in 2.71s
-2025-02-23 17:47:51,434 INFO 
-Executing: update_config_modules_with_CFA.py
-2025-02-23 17:47:53,040 INFO Completed update_config_modules_with_CFA.py in 1.61s
-2025-02-23 17:47:53,544 INFO 
-Executing: Table.py
-2025-02-23 17:47:55,839 INFO Completed Table.py in 2.30s
-2025-02-23 17:47:56,350 INFO 
-Configuration scripts completed in 9.02s
-2025-02-23 17:47:56,350 INFO 
-Processing Calculations:
-2025-02-23 17:47:56,350 ERROR Error during orchestrated calculations: Calculation script not found for version 9
-2025-02-23 17:50:04,206 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:53:24,919 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:57:01,296 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 17:58:35,136 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 18:00:24,682 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 18:03:53,839 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 18:07:01,197 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 18:08:18,166 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 18:08:59,246 INFO 
-================================================================================
-2025-02-23 18:08:59,247 INFO CFA Run Configuration
-2025-02-23 18:08:59,247 INFO ================================================================================
-2025-02-23 18:08:59,247 INFO 
-Basic Configuration:
-2025-02-23 18:08:59,247 INFO Version(s): 10
-2025-02-23 18:08:59,247 INFO Calculation Mode: freeFlowNPV
-2025-02-23 18:08:59,247 INFO 
-Parameter States:
-2025-02-23 18:08:59,247 INFO Enabled V Parameters: None
-2025-02-23 18:08:59,247 INFO Enabled F Parameters: None
-2025-02-23 18:08:59,248 INFO 
-================================================================================
-
-2025-02-23 18:08:59,248 INFO 
-Executing Configuration Management Scripts:
-2025-02-23 18:08:59,248 INFO 
-Executing: formatter.py
-2025-02-23 18:08:59,394 INFO Completed formatter.py in 0.15s
-2025-02-23 18:08:59,904 INFO 
-Executing: module1.py
-2025-02-23 18:09:01,759 INFO Completed module1.py in 1.86s
-2025-02-23 18:09:02,272 INFO 
-Executing: update_config_modules_with_CFA.py
-2025-02-23 18:09:03,256 INFO Completed update_config_modules_with_CFA.py in 0.98s
-2025-02-23 18:09:03,768 INFO 
-Executing: Table.py
-2025-02-23 18:09:04,971 INFO Completed Table.py in 1.20s
-2025-02-23 18:09:05,482 INFO 
-Configuration scripts completed in 6.23s
-2025-02-23 18:09:05,482 INFO 
-Processing Calculations:
-2025-02-23 18:09:05,482 ERROR Error during orchestrated calculations: Calculation script not found for version 10
-2025-02-23 18:09:38,944 INFO 
-================================================================================
-2025-02-23 18:09:38,946 INFO CFA Run Configuration
-2025-02-23 18:09:38,946 INFO ================================================================================
-2025-02-23 18:09:38,946 INFO 
-Basic Configuration:
-2025-02-23 18:09:38,946 INFO Version(s): 11
-2025-02-23 18:09:38,946 INFO Calculation Mode: calculateForPrice
-2025-02-23 18:09:38,947 INFO Target Row: 20
-2025-02-23 18:09:38,947 INFO 
-Parameter States:
-2025-02-23 18:09:38,947 INFO Enabled V Parameters: None
-2025-02-23 18:09:38,947 INFO Enabled F Parameters: None
-2025-02-23 18:09:38,947 INFO 
-================================================================================
-
-2025-02-23 18:09:38,947 INFO 
-Executing Configuration Management Scripts:
-2025-02-23 18:09:38,947 INFO 
-Executing: formatter.py
-2025-02-23 18:09:39,046 INFO Completed formatter.py in 0.10s
-2025-02-23 18:09:39,554 INFO 
-Executing: module1.py
-2025-02-23 18:09:40,635 INFO Completed module1.py in 1.08s
-2025-02-23 18:09:41,149 INFO 
-Executing: update_config_modules_with_CFA.py
-2025-02-23 18:09:42,046 INFO Completed update_config_modules_with_CFA.py in 0.90s
-2025-02-23 18:09:42,553 INFO 
-Executing: Table.py
-2025-02-23 18:09:43,777 INFO Completed Table.py in 1.22s
-2025-02-23 18:09:44,277 INFO 
-Configuration scripts completed in 5.33s
-2025-02-23 18:09:44,277 INFO 
-Processing Calculations:
-2025-02-23 18:09:44,277 ERROR Error during orchestrated calculations: Calculation script not found for version 11
-2025-02-23 18:11:22,339 INFO 
-================================================================================
-2025-02-23 18:11:22,339 INFO CFA Run Configuration
-2025-02-23 18:11:22,339 INFO ================================================================================
-2025-02-23 18:11:22,339 INFO 
-Basic Configuration:
-2025-02-23 18:11:22,339 INFO Version(s): 12
-2025-02-23 18:11:22,339 INFO Calculation Mode: calculateForPrice
-2025-02-23 18:11:22,339 INFO Target Row: 20
-2025-02-23 18:11:22,339 INFO 
-Parameter States:
-2025-02-23 18:11:22,340 INFO Enabled V Parameters: None
-2025-02-23 18:11:22,340 INFO Enabled F Parameters: None
-2025-02-23 18:11:22,340 INFO 
+2025-03-03 03:19:22,129 INFO Enabled V Parameters: V1
+2025-03-03 03:19:22,129 INFO Enabled F Parameters: F1, F2, F3, F4, F5
+2025-03-03 03:19:22,129 INFO 
 Sensitivity Analysis Configuration:
-2025-02-23 18:11:22,340 INFO Enabled Parameters: S17
-2025-02-23 18:11:22,340 INFO 
-S17 Configuration:
-2025-02-23 18:11:22,340 INFO   Mode: symmetrical
-2025-02-23 18:11:22,340 INFO   Values: []
-2025-02-23 18:11:22,340 INFO 
+2025-03-03 03:19:22,129 INFO Enabled Parameters: S34, S35, S36, S37, S38
+2025-03-03 03:19:22,129 INFO 
+S34 Configuration:
+2025-03-03 03:19:22,130 INFO   Mode: symmetrical
+2025-03-03 03:19:22,130 INFO   Values: [20]
+2025-03-03 03:19:22,130 INFO   Comparison:
+2025-03-03 03:19:22,130 INFO     Target: S13
+2025-03-03 03:19:22,130 INFO     Type: primary
+2025-03-03 03:19:22,130 INFO     Plot Types: waterfall, bar, point
+2025-03-03 03:19:22,130 INFO 
+S35 Configuration:
+2025-03-03 03:19:22,130 INFO   Mode: symmetrical
+2025-03-03 03:19:22,131 INFO   Values: [20]
+2025-03-03 03:19:22,131 INFO   Comparison:
+2025-03-03 03:19:22,131 INFO     Target: S13
+2025-03-03 03:19:22,131 INFO     Type: primary
+2025-03-03 03:19:22,131 INFO     Plot Types: waterfall, bar, point
+2025-03-03 03:19:22,131 INFO 
+S36 Configuration:
+2025-03-03 03:19:22,131 INFO   Mode: symmetrical
+2025-03-03 03:19:22,131 INFO   Values: [20]
+2025-03-03 03:19:22,131 INFO   Comparison:
+2025-03-03 03:19:22,132 INFO     Target: S13
+2025-03-03 03:19:22,132 INFO     Type: primary
+2025-03-03 03:19:22,132 INFO     Plot Types: waterfall, bar, point
+2025-03-03 03:19:22,132 INFO 
+S37 Configuration:
+2025-03-03 03:19:22,132 INFO   Mode: symmetrical
+2025-03-03 03:19:22,132 INFO   Values: [20]
+2025-03-03 03:19:22,132 INFO   Comparison:
+2025-03-03 03:19:22,132 INFO     Target: S13
+2025-03-03 03:19:22,133 INFO     Type: primary
+2025-03-03 03:19:22,133 INFO     Plot Types: waterfall, bar, point
+2025-03-03 03:19:22,133 INFO 
+S38 Configuration:
+2025-03-03 03:19:22,133 INFO   Mode: symmetrical
+2025-03-03 03:19:22,133 INFO   Values: [20]
+2025-03-03 03:19:22,133 INFO   Comparison:
+2025-03-03 03:19:22,133 INFO     Target: S13
+2025-03-03 03:19:22,133 INFO     Type: primary
+2025-03-03 03:19:22,134 INFO     Plot Types: waterfall, bar, point
+2025-03-03 03:19:22,134 INFO 
 ================================================================================
 
-2025-02-23 18:11:22,340 INFO 
+2025-03-03 03:19:22,134 INFO 
 Executing Configuration Management Scripts:
-2025-02-23 18:11:22,341 INFO 
+2025-03-03 03:19:22,134 INFO 
 Executing: formatter.py
-2025-02-23 18:11:22,462 INFO Completed formatter.py in 0.12s
-2025-02-23 18:11:22,979 INFO 
+2025-03-03 03:19:22,512 INFO Completed formatter.py in 0.38s
+2025-03-03 03:19:23,013 INFO 
 Executing: module1.py
-2025-02-23 18:11:24,461 INFO Completed module1.py in 1.48s
-2025-02-23 18:11:24,977 INFO 
-Executing: update_config_modules_with_CFA.py
-2025-02-23 18:11:26,002 INFO Completed update_config_modules_with_CFA.py in 1.02s
-2025-02-23 18:11:26,513 INFO 
+2025-03-03 03:19:24,723 INFO Completed module1.py in 1.71s
+2025-03-03 03:19:25,237 INFO 
+Executing: config_modules.py
+2025-03-03 03:19:27,890 INFO Completed config_modules.py in 2.65s
+2025-03-03 03:19:28,400 INFO 
 Executing: Table.py
-2025-02-23 18:11:27,549 INFO Completed Table.py in 1.04s
-2025-02-23 18:11:28,058 INFO 
-Configuration scripts completed in 5.72s
-2025-02-23 18:11:28,058 INFO 
+2025-03-03 03:19:30,004 INFO Completed Table.py in 1.60s
+2025-03-03 03:19:30,507 INFO 
+Configuration scripts completed in 8.37s
+2025-03-03 03:19:30,507 INFO 
 Processing Calculations:
-2025-02-23 18:11:28,058 ERROR Error during orchestrated calculations: Calculation script not found for version 12
-2025-02-23 18:11:35,204 INFO 
+2025-03-03 03:19:30,507 INFO Using calculation script: CFA.py
+2025-03-03 03:19:30,507 INFO 
+Executing baseline calculation:
+2025-03-03 03:19:51,831 INFO Baseline calculation completed successfully
+2025-03-03 03:19:51,831 INFO 
+Processing 5 sensitivity parameters:
+2025-03-03 03:19:51,831 INFO 
+Processing S34:
+2025-03-03 03:19:51,831 INFO Mode: symmetrical
+2025-03-03 03:19:51,831 INFO Values: [20]
+2025-03-03 03:20:13,138 INFO Completed S34 in 21.31s
+2025-03-03 03:20:13,138 INFO 
+Processing S35:
+2025-03-03 03:20:13,139 INFO Mode: symmetrical
+2025-03-03 03:20:13,139 INFO Values: [20]
+2025-03-03 03:20:33,412 INFO Completed S35 in 20.27s
+2025-03-03 03:20:33,412 INFO 
+Processing S36:
+2025-03-03 03:20:33,412 INFO Mode: symmetrical
+2025-03-03 03:20:33,412 INFO Values: [20]
+2025-03-03 03:20:52,787 INFO Completed S36 in 19.37s
+2025-03-03 03:20:52,787 INFO 
+Processing S37:
+2025-03-03 03:20:52,787 INFO Mode: symmetrical
+2025-03-03 03:20:52,787 INFO Values: [20]
+2025-03-03 03:21:12,572 INFO Completed S37 in 19.79s
+2025-03-03 03:21:12,572 INFO 
+Processing S38:
+2025-03-03 03:21:12,572 INFO Mode: symmetrical
+2025-03-03 03:21:12,572 INFO Values: [20]
+2025-03-03 03:21:32,983 INFO Completed S38 in 20.41s
+2025-03-03 03:21:32,983 INFO 
 ================================================================================
-2025-02-23 18:11:35,206 INFO CFA Run Configuration
-2025-02-23 18:11:35,206 INFO ================================================================================
-2025-02-23 18:11:35,206 INFO 
-Basic Configuration:
-2025-02-23 18:11:35,206 INFO Version(s): 12
-2025-02-23 18:11:35,206 INFO Calculation Mode: calculateForPrice
-2025-02-23 18:11:35,206 INFO Target Row: 20
-2025-02-23 18:11:35,206 INFO 
-Parameter States:
-2025-02-23 18:11:35,207 INFO Enabled V Parameters: None
-2025-02-23 18:11:35,207 INFO Enabled F Parameters: None
-2025-02-23 18:11:35,207 INFO 
-Sensitivity Analysis Configuration:
-2025-02-23 18:11:35,207 INFO Enabled Parameters: S17
-2025-02-23 18:11:35,207 INFO 
-S17 Configuration:
-2025-02-23 18:11:35,207 INFO   Mode: symmetrical
-2025-02-23 18:11:35,207 INFO   Values: []
-2025-02-23 18:11:35,207 INFO 
-================================================================================
+2025-03-03 03:21:32,984 INFO Run Summary - ID: 20250303_031922
+2025-03-03 03:21:32,984 INFO Total execution time: 130.85s
+2025-03-03 03:21:32,984 INFO Configuration scripts: 8.37s
+2025-03-03 03:21:32,984 INFO Calculations completed: 6
+2025-03-03 03:21:32,984 INFO ================================================================================
 
-2025-02-23 18:11:35,207 INFO 
-Executing Configuration Management Scripts:
-2025-02-23 18:11:35,207 INFO 
-Executing: formatter.py
-2025-02-23 18:11:35,303 INFO Completed formatter.py in 0.10s
-2025-02-23 18:11:35,810 INFO 
-Executing: module1.py
-2025-02-23 18:11:36,703 INFO Completed module1.py in 0.89s
-2025-02-23 18:11:37,209 INFO 
-Executing: update_config_modules_with_CFA.py
-2025-02-23 18:11:38,374 INFO Completed update_config_modules_with_CFA.py in 1.16s
-2025-02-23 18:11:38,875 INFO 
-Executing: Table.py
-2025-02-23 18:11:39,802 INFO Completed Table.py in 0.93s
-2025-02-23 18:11:40,310 INFO 
-Configuration scripts completed in 5.10s
-2025-02-23 18:11:40,310 INFO 
-Processing Calculations:
-2025-02-23 18:11:40,310 ERROR Error during orchestrated calculations: Calculation script not found for version 12
-2025-02-23 18:18:03,598 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
-2025-02-23 18:19:29,150 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\SENSITIVITY.log
+2025-03-03 03:21:33,085 INFO [ENTER] Processing visualization request - Run ID: 20250303_032133
+2025-03-03 03:21:33,085 INFO 
+Processing visualization request - Run ID: 20250303_032133
+2025-03-03 03:21:33,085 INFO Version: 1
+2025-03-03 03:21:33,085 INFO Parameters: ['S10', 'S11', 'S12', 'S13', 'S14', 'S15', 'S16', 'S17', 'S18', 'S19', 'S20', 'S21', 'S22', 'S23', 'S24', 'S25', 'S26', 'S27', 'S28', 'S29', 'S30', 'S31', 'S32', 'S33', 'S34', 'S35', 'S36', 'S37', 'S38', 'S39', 'S40', 'S41', 'S42', 'S43', 'S44', 'S45', 'S46', 'S47', 'S48', 'S49', 'S50', 'S51', 'S52', 'S53', 'S54', 'S55', 'S56', 'S57', 'S58', 'S59', 'S60', 'S61']
+2025-03-03 03:21:33,086 INFO Created main sensitivity directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity
+2025-03-03 03:21:33,086 INFO Created sensitivity mode directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical
+2025-03-03 03:21:33,087 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\waterfall
+2025-03-03 03:21:33,087 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\bar
+2025-03-03 03:21:33,088 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\point
+2025-03-03 03:21:33,088 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration
+2025-03-03 03:21:33,089 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S34_+20.00
+2025-03-03 03:21:33,089 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S34_-20.00
+2025-03-03 03:21:33,090 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S35_+20.00
+2025-03-03 03:21:33,091 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S35_-20.00
+2025-03-03 03:21:33,091 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S36_+20.00
+2025-03-03 03:21:33,091 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S36_-20.00
+2025-03-03 03:21:33,091 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S37_+20.00
+2025-03-03 03:21:33,091 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S37_-20.00
+2025-03-03 03:21:33,091 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S38_+20.00
+2025-03-03 03:21:33,091 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\Configuration\S38_-20.00
+2025-03-03 03:21:33,091 INFO Created sensitivity mode directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint
+2025-03-03 03:21:33,091 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\waterfall
+2025-03-03 03:21:33,091 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\bar
+2025-03-03 03:21:33,091 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\point
+2025-03-03 03:21:33,091 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\Configuration
+2025-03-03 03:21:33,091 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\Configuration\S34_+20.00
+2025-03-03 03:21:33,098 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\Configuration\S35_+20.00
+2025-03-03 03:21:33,099 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\Configuration\S36_+20.00
+2025-03-03 03:21:33,100 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\Configuration\S37_+20.00
+2025-03-03 03:21:33,101 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Multipoint\Configuration\S38_+20.00
+2025-03-03 03:21:33,101 INFO Created standalone Configuration directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Configuration
+2025-03-03 03:21:33,102 INFO Created sensitivity extra directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Reports
+2025-03-03 03:21:33,103 INFO Created sensitivity extra directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Cache
+2025-03-03 03:21:33,103 INFO [CHECKPOINT] Processing parameter S34
+2025-03-03 03:21:33,103 INFO 
+Processing S34:
+2025-03-03 03:21:33,103 INFO S34 identified as special case (vs S13)
+2025-03-03 03:21:33,103 INFO Added relationship: S34 -> S13 (primary)
+2025-03-03 03:21:33,104 INFO PLOT GENERATION STARTED: waterfall plot for S34 vs S13 (symmetrical)
+2025-03-03 03:21:33,104 WARNING Plot not found: waterfall_S34_S13_primary
+2025-03-03 03:21:33,104 ERROR PLOT GENERATION FAILED: waterfall plot for S34 vs S13 (symmetrical) - Plot not found: waterfall_S34_S13_primary
+2025-03-03 03:21:33,105 ERROR DATA LOADING FAILED: S34 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S34_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 03:21:33,105 INFO PLOT GENERATION STARTED: bar plot for S34 vs S13 (symmetrical)
+2025-03-03 03:21:33,105 WARNING Plot not found: bar_S34_S13_primary
+2025-03-03 03:21:33,105 ERROR PLOT GENERATION FAILED: bar plot for S34 vs S13 (symmetrical) - Plot not found: bar_S34_S13_primary
+2025-03-03 03:21:33,106 ERROR DATA LOADING FAILED: S34 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S34_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 03:21:33,106 INFO PLOT GENERATION STARTED: point plot for S34 vs S13 (symmetrical)
+2025-03-03 03:21:33,106 WARNING Plot not found: point_S34_S13_primary
+2025-03-03 03:21:33,106 ERROR PLOT GENERATION FAILED: point plot for S34 vs S13 (symmetrical) - Plot not found: point_S34_S13_primary
+2025-03-03 03:21:33,107 ERROR DATA LOADING FAILED: S34 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S34_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 03:21:33,107 INFO [CHECKPOINT] Completed processing parameter S34
+2025-03-03 03:21:33,107 INFO [CHECKPOINT] Processing parameter S35
+2025-03-03 03:21:33,107 INFO 
+Processing S35:
+2025-03-03 03:21:33,107 INFO S35 identified as special case (vs S13)
+2025-03-03 03:21:33,107 INFO Added relationship: S35 -> S13 (primary)
+2025-03-03 03:21:33,108 INFO PLOT GENERATION STARTED: waterfall plot for S35 vs S13 (symmetrical)
+2025-03-03 03:21:33,108 WARNING Plot not found: waterfall_S35_S13_primary
+2025-03-03 03:21:33,108 ERROR PLOT GENERATION FAILED: waterfall plot for S35 vs S13 (symmetrical) - Plot not found: waterfall_S35_S13_primary
+2025-03-03 03:21:33,108 ERROR DATA LOADING FAILED: S35 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S35_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 03:21:33,108 INFO PLOT GENERATION STARTED: bar plot for S35 vs S13 (symmetrical)
+2025-03-03 03:21:33,109 WARNING Plot not found: bar_S35_S13_primary
+2025-03-03 03:21:33,109 ERROR PLOT GENERATION FAILED: bar plot for S35 vs S13 (symmetrical) - Plot not found: bar_S35_S13_primary
+2025-03-03 03:21:33,109 ERROR DATA LOADING FAILED: S35 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S35_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 03:21:33,109 INFO PLOT GENERATION STARTED: point plot for S35 vs S13 (symmetrical)
+2025-03-03 03:21:33,110 WARNING Plot not found: point_S35_S13_primary
+2025-03-03 03:21:33,110 ERROR PLOT GENERATION FAILED: point plot for S35 vs S13 (symmetrical) - Plot not found: point_S35_S13_primary
+2025-03-03 03:21:33,110 ERROR DATA LOADING FAILED: S35 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S35_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 03:21:33,110 INFO [CHECKPOINT] Completed processing parameter S35
+2025-03-03 03:21:33,110 INFO [CHECKPOINT] Processing parameter S36
+2025-03-03 03:21:33,111 INFO 
+Processing S36:
+2025-03-03 03:21:33,111 INFO S36 identified as special case (vs S13)
+2025-03-03 03:21:33,111 INFO Added relationship: S36 -> S13 (primary)
+2025-03-03 03:21:33,111 INFO PLOT GENERATION STARTED: waterfall plot for S36 vs S13 (symmetrical)
+2025-03-03 03:21:33,111 WARNING Plot not found: waterfall_S36_S13_primary
+2025-03-03 03:21:33,111 ERROR PLOT GENERATION FAILED: waterfall plot for S36 vs S13 (symmetrical) - Plot not found: waterfall_S36_S13_primary
+2025-03-03 03:21:33,112 ERROR DATA LOADING FAILED: S36 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S36_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 03:21:33,112 INFO PLOT GENERATION STARTED: bar plot for S36 vs S13 (symmetrical)
+2025-03-03 03:21:33,112 WARNING Plot not found: bar_S36_S13_primary
+2025-03-03 03:21:33,112 ERROR PLOT GENERATION FAILED: bar plot for S36 vs S13 (symmetrical) - Plot not found: bar_S36_S13_primary
+2025-03-03 03:21:33,113 ERROR DATA LOADING FAILED: S36 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S36_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 03:21:33,113 INFO PLOT GENERATION STARTED: point plot for S36 vs S13 (symmetrical)
+2025-03-03 03:21:33,113 WARNING Plot not found: point_S36_S13_primary
+2025-03-03 03:21:33,113 ERROR PLOT GENERATION FAILED: point plot for S36 vs S13 (symmetrical) - Plot not found: point_S36_S13_primary
+2025-03-03 03:21:33,114 ERROR DATA LOADING FAILED: S36 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S36_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 03:21:33,114 INFO [CHECKPOINT] Completed processing parameter S36
+2025-03-03 03:21:33,114 INFO [CHECKPOINT] Processing parameter S37
+2025-03-03 03:21:33,114 INFO 
+Processing S37:
+2025-03-03 03:21:33,114 INFO S37 identified as special case (vs S13)
+2025-03-03 03:21:33,114 INFO Added relationship: S37 -> S13 (primary)
+2025-03-03 03:21:33,115 INFO PLOT GENERATION STARTED: waterfall plot for S37 vs S13 (symmetrical)
+2025-03-03 03:21:33,115 WARNING Plot not found: waterfall_S37_S13_primary
+2025-03-03 03:21:33,115 ERROR PLOT GENERATION FAILED: waterfall plot for S37 vs S13 (symmetrical) - Plot not found: waterfall_S37_S13_primary
+2025-03-03 03:21:33,115 ERROR DATA LOADING FAILED: S37 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S37_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 03:21:33,115 INFO PLOT GENERATION STARTED: bar plot for S37 vs S13 (symmetrical)
+2025-03-03 03:21:33,116 WARNING Plot not found: bar_S37_S13_primary
+2025-03-03 03:21:33,116 ERROR PLOT GENERATION FAILED: bar plot for S37 vs S13 (symmetrical) - Plot not found: bar_S37_S13_primary
+2025-03-03 03:21:33,116 ERROR DATA LOADING FAILED: S37 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S37_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 03:21:33,116 INFO PLOT GENERATION STARTED: point plot for S37 vs S13 (symmetrical)
+2025-03-03 03:21:33,117 WARNING Plot not found: point_S37_S13_primary
+2025-03-03 03:21:33,117 ERROR PLOT GENERATION FAILED: point plot for S37 vs S13 (symmetrical) - Plot not found: point_S37_S13_primary
+2025-03-03 03:21:33,117 ERROR DATA LOADING FAILED: S37 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S37_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 03:21:33,117 INFO [CHECKPOINT] Completed processing parameter S37
+2025-03-03 03:21:33,117 INFO [CHECKPOINT] Processing parameter S38
+2025-03-03 03:21:33,118 INFO 
+Processing S38:
+2025-03-03 03:21:33,118 INFO S38 identified as special case (vs S13)
+2025-03-03 03:21:33,118 INFO Added relationship: S38 -> S13 (primary)
+2025-03-03 03:21:33,118 INFO PLOT GENERATION STARTED: waterfall plot for S38 vs S13 (symmetrical)
+2025-03-03 03:21:33,119 WARNING Plot not found: waterfall_S38_S13_primary
+2025-03-03 03:21:33,119 ERROR PLOT GENERATION FAILED: waterfall plot for S38 vs S13 (symmetrical) - Plot not found: waterfall_S38_S13_primary
+2025-03-03 03:21:33,119 ERROR DATA LOADING FAILED: S38 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S38_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 03:21:33,119 INFO PLOT GENERATION STARTED: bar plot for S38 vs S13 (symmetrical)
+2025-03-03 03:21:33,119 WARNING Plot not found: bar_S38_S13_primary
+2025-03-03 03:21:33,119 ERROR PLOT GENERATION FAILED: bar plot for S38 vs S13 (symmetrical) - Plot not found: bar_S38_S13_primary
+2025-03-03 03:21:33,119 ERROR DATA LOADING FAILED: S38 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S38_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 03:21:33,120 INFO PLOT GENERATION STARTED: point plot for S38 vs S13 (symmetrical)
+2025-03-03 03:21:33,120 WARNING Plot not found: point_S38_S13_primary
+2025-03-03 03:21:33,120 ERROR PLOT GENERATION FAILED: point plot for S38 vs S13 (symmetrical) - Plot not found: point_S38_S13_primary
+2025-03-03 03:21:33,120 ERROR DATA LOADING FAILED: S38 vs S13 from C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Original\Batch(1)\Results(1)\Sensitivity\Symmetrical\S38_vs_S13_symmetrical_results.json - Result data file not found
+2025-03-03 03:21:33,120 INFO [CHECKPOINT] Completed processing parameter S38
+2025-03-03 03:21:33,121 INFO 
+Visualization processing complete - Run ID: 20250303_032133
+2025-03-03 03:21:33,121 INFO Processing time: 0.04s
+2025-03-03 03:21:33,121 INFO Plots generated: 0
+2025-03-03 03:21:33,121 INFO [EXIT] Visualization processing complete - Run ID: 20250303_032133

@@ -1,96 +1,98 @@
 {
   "project_name": "Backend Structure",
-  "analysis_date": "2025-01-24 16:55:20",
+  "analysis_date": "2025-03-02 11:13:31",
   "version": 1,
   "directories": {
     "API_endpoints_and_controllers": {
       "files": [
+        "API_endpoints_and_controllers\\album_organizer.py",
         "API_endpoints_and_controllers\\Calculations.py",
         "API_endpoints_and_controllers\\Calculations_and_Sensitivity.py",
         "API_endpoints_and_controllers\\Create_new_batch.py",
-        "API_endpoints_and_controllers\\Dashboard.py",
+        "API_endpoints_and_controllers\\html_album_organizer.py",
+        "API_endpoints_and_controllers\\Load.py",
         "API_endpoints_and_controllers\\PNG.py",
         "API_endpoints_and_controllers\\Remove_batch.py",
         "API_endpoints_and_controllers\\Sensitivity_File_Manager.py",
         "API_endpoints_and_controllers\\sensitivity_Routes.py",
         "API_endpoints_and_controllers\\Sen_Config.py",
-        "API_endpoints_and_controllers\\Sub.py",
-        "API_endpoints_and_controllers\\Table.py"
+        "API_endpoints_and_controllers\\Sub.py"
       ],
-      "import_count": 11
-    },
-    "API_endpoints_and_controllers\\Logs": {
-      "files": [
-        "API_endpoints_and_controllers\\Logs\\RUN.log",
-        "API_endpoints_and_controllers\\Logs\\SENSITIVITY.log"
-      ],
-      "import_count": 2
+      "import_count": 12
     },
     "API_endpoints_and_controllers\\__pycache__": {
       "files": [
+        "API_endpoints_and_controllers\\__pycache__\\album_organizer.cpython-312.pyc",
+        "API_endpoints_and_controllers\\__pycache__\\Calculations.cpython-312.pyc",
         "API_endpoints_and_controllers\\__pycache__\\Dashboard.cpython-312.pyc"
       ],
-      "import_count": 1
+      "import_count": 3
     },
     "Configuration_management": {
       "files": [
+        "Configuration_management\\app_CFA.log",
+        "Configuration_management\\config_modules.py",
         "Configuration_management\\formatter.py",
-        "Configuration_management\\Load.py",
         "Configuration_management\\LogName.log",
         "Configuration_management\\module.log",
         "Configuration_management\\module1.py",
-        "Configuration_management\\update_config_modules_with_CFA.py"
+        "Configuration_management\\Table.log",
+        "Configuration_management\\Table.py"
       ],
-      "import_count": 6
+      "import_count": 8
     },
     "Core_calculation_engines": {
       "files": [
-        "Core_calculation_engines\\update_config_modules_with_CFA_7.py",
-        "Core_calculation_engines\\update_config_modules_with_CFA_8.py"
+        "Core_calculation_engines\\CFA.py",
+        "Core_calculation_engines\\Old_Script.py"
       ],
       "import_count": 2
     },
     "Data_processors_and_transformers": {
       "files": [
+        "Data_processors_and_transformers\\economic_summary.py",
         "Data_processors_and_transformers\\file_utils.py",
         "Data_processors_and_transformers\\Front_Subtab_HTML.py",
         "Data_processors_and_transformers\\Front_Subtab_Plot.py",
         "Data_processors_and_transformers\\Front_Subtab_Table.py"
       ],
-      "import_count": 4
-    },
-    "Data_processors_and_transformers\\Logs": {
-      "files": [],
-      "import_count": 0
+      "import_count": 5
     },
     "Data_processors_and_transformers\\__pycache__": {
       "files": [
-        "Data_processors_and_transformers\\__pycache__\\file_utils.cpython-312.pyc"
+        "Data_processors_and_transformers\\__pycache__\\economic_summary.cpython-312.pyc",
+        "Data_processors_and_transformers\\__pycache__\\file_utils.cpython-312.pyc",
+        "Data_processors_and_transformers\\__pycache__\\file_utils.cpython-39.pyc"
       ],
-      "import_count": 1
+      "import_count": 3
     },
     "Logs": {
       "files": [
         "Logs\\app_executionSub.log",
+        "Logs\\CFA_CALC.log",
         "Logs\\PNG.log",
         "Logs\\RUN.log",
-        "Logs\\SENSITIVITY.log",
-        "Logs\\server_manager.log"
+        "Logs\\SENSITIVITY.log"
       ],
       "import_count": 5
+    },
+    "templates": {
+      "files": [
+        "templates\\index.html"
+      ],
+      "import_count": 1
     },
     "Utility_functions": {
       "files": [
         "Utility_functions\\Clone.py",
         "Utility_functions\\common_utils.py",
-        "Utility_functions\\common_utils.py.backup",
         "Utility_functions\\Configuration_Differences.py",
         "Utility_functions\\ID_Replace_Python.py",
         "Utility_functions\\ID_Replace_Python_Final.py",
         "Utility_functions\\property_mapping_service.py",
         "Utility_functions\\PyScanner.py"
       ],
-      "import_count": 8
+      "import_count": 7
     },
     "Utility_functions\\__pycache__": {
       "files": [
@@ -102,10 +104,17 @@
       "files": [
         "Visualization_generators\\AggregatedSubPlots.py",
         "Visualization_generators\\app_executionSub.log",
+        "Visualization_generators\\cfa_plotting.py",
         "Visualization_generators\\generate_pie_chart.R",
         "Visualization_generators\\PNG_PLOT.py"
       ],
-      "import_count": 4
+      "import_count": 5
+    },
+    "Visualization_generators\\__pycache__": {
+      "files": [
+        "Visualization_generators\\__pycache__\\cfa_plotting.cpython-312.pyc"
+      ],
+      "import_count": 1
     }
   }
 }

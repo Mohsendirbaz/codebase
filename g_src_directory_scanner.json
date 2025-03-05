@@ -1,601 +1,978 @@
 {
   "project_name": "src",
-  "analysis_date": "2025-01-25 14:14:00",
+  "analysis_date": "2025-03-01 09:40:36",
   "version": 6,
   "directories": {
     ".": {
       "files": [
+        "App.css",
+        "App.js",
+        "CustomizableImage.js",
+        "CustomizableTable.js",
+        "Editable.css",
+        "Editable.js",
+        "FormHeader.js",
+        "GeneralFormConfig.js",
         "index.css",
-        "index.js"
+        "index.js",
+        "L_1_HomePage copy.js",
+        "L_1_HomePage.js",
+        "MultiVersionSelector.js",
+        "naturalmotion.css",
+        "naturalmotion.js",
+        "Popup.css",
+        "Popup.js",
+        "PriceOptimizationConfig.css",
+        "PriceOptimizationConfig.js",
+        "PropertySelector.js",
+        "SensitivityVisualization.css",
+        "SensitivityVisualization.js",
+        "text.txt",
+        "TodoList.js",
+        "TodoList2.js",
+        "useFormValues.js",
+        "VersionSelector.css",
+        "VersionSelector.js"
       ],
-      "import_count": 1
+      "import_count": 19
     },
-    "components": {
-      "files": [],
+    "asset": {
+      "files": [
+        "asset\\Blue Parrot.png",
+        "asset\\check.png",
+        "asset\\MU.png",
+        "asset\\US_biomass.png"
+      ],
       "import_count": 0
     },
-    "components\\Display": {
+    "components": {
       "files": [
-        "components\\Display\\CostAnalysisDashboard copy.js",
-        "components\\Display\\CostAnalysisDashboard.css",
-        "components\\Display\\CostAnalysisDashboard.js",
-        "components\\Display\\CustomizableImage.css",
-        "components\\Display\\CustomizableImage.js",
-        "components\\Display\\CustomizableTable.css",
-        "components\\Display\\CustomizableTable.js",
-        "components\\Display\\PriceDisplay.css",
-        "components\\Display\\PriceDisplay.js",
-        "components\\Display\\ProcessExtensionTab.tsx",
-        "components\\Display\\TechnicalTable.css",
-        "components\\Display\\TechnicalTable.js"
+        "components\\CalculationMonitor.css",
+        "components\\CalculationMonitor.js",
+        "components\\ErrorBoundary.js",
+        "components\\SensitivityAnalysis.css",
+        "components\\SensitivityAnalysis.js",
+        "components\\SensitivityIntegration.js",
+        "components\\SensitivitySelector.css",
+        "components\\SensitivitySelector.js",
+        "components\\SensitivityVisualization.css",
+        "components\\TestingZone.css",
+        "components\\TestingZone.js"
       ],
       "import_count": 6
     },
-    "components\\Display core": {
+    "components\\buttons": {
       "files": [
-        "components\\Display core\\CustomizableImage.css",
-        "components\\Display core\\CustomizableImage.js",
-        "components\\Display core\\CustomizableTable.css",
-        "components\\Display core\\CustomizableTable.js",
-        "components\\Display core\\PriceDisplay.css",
-        "components\\Display core\\PriceDisplay.js"
-      ],
-      "import_count": 3
-    },
-    "components\\Form": {
-      "files": [
-        "components\\Form\\Efficacy.css",
-        "components\\Form\\Efficacy.js",
-        "components\\Form\\FormHeader.css",
-        "components\\Form\\FormHeader.js",
-        "components\\Form\\GeneralFormConfig.css",
-        "components\\Form\\GeneralFormConfig.js",
-        "components\\Form\\SensitivitySelector copy.js",
-        "components\\Form\\SensitivitySelector.css",
-        "components\\Form\\SensitivitySelector.js"
-      ],
-      "import_count": 5
-    },
-    "components\\Form core": {
-      "files": [
-        "components\\Form core\\Efficacy.css",
-        "components\\Form core\\Efficacy.js",
-        "components\\Form core\\FormHeader.css",
-        "components\\Form core\\FormHeader.js",
-        "components\\Form core\\GeneralFormConfig.css",
-        "components\\Form core\\GeneralFormConfig.js",
-        "components\\Form core\\SensitivitySelector.css",
-        "components\\Form core\\SensitivitySelector.js"
-      ],
-      "import_count": 4
-    },
-    "components\\Palette": {
-      "files": [
-        "components\\Palette\\ConfigurationPalette.css",
-        "components\\Palette\\ConfigurationPalette.js",
-        "components\\Palette\\PlottingPalette.css",
-        "components\\Palette\\PlottingPalette.js"
-      ],
-      "import_count": 2
-    },
-    "components\\Palette core": {
-      "files": [
-        "components\\Palette core\\ConfigurationPalette.css",
-        "components\\Palette core\\ConfigurationPalette.js",
-        "components\\Palette core\\PlottingPalette.css",
-        "components\\Palette core\\PlottingPalette.js"
-      ],
-      "import_count": 2
-    },
-    "components\\Selector": {
-      "files": [
-        "components\\Selector\\PropertySelector.css",
-        "components\\Selector\\PropertySelector.js",
-        "components\\Selector\\VersionSelector.css",
-        "components\\Selector\\VersionSelector.js"
-      ],
-      "import_count": 2
-    },
-    "components\\Selector core": {
-      "files": [
-        "components\\Selector core\\PropertySelector.css",
-        "components\\Selector core\\PropertySelector.js",
-        "components\\Selector core\\VersionSelector.css",
-        "components\\Selector core\\VersionSelector.js"
-      ],
-      "import_count": 2
-    },
-    "components\\Sensitivity": {
-      "files": [
-        "components\\Sensitivity\\ComparisonPanel.css",
-        "components\\Sensitivity\\ComparisonPanel.js",
-        "components\\Sensitivity\\SensitivityVisualization.css",
-        "components\\Sensitivity\\SensitivityVisualization.js"
-      ],
-      "import_count": 2
-    },
-    "components\\Sensitivity core": {
-      "files": [
-        "components\\Sensitivity core\\ComparisonPanel.css",
-        "components\\Sensitivity core\\ComparisonPanel.js",
-        "components\\Sensitivity core\\SensitivityVisualization.css",
-        "components\\Sensitivity core\\SensitivityVisualization.js"
-      ],
-      "import_count": 2
-    },
-    "hooks": {
-      "files": [
-        "hooks\\UseFormValues.js"
+        "components\\buttons\\ActionButtons.css",
+        "components\\buttons\\ActionButtons.js"
       ],
       "import_count": 1
     },
-    "hooks\\ui": {
+    "components\\cfa": {
       "files": [
-        "hooks\\ui\\card.tsx",
-        "hooks\\ui\\tooltip.jsx"
-      ],
-      "import_count": 0
-    },
-    "styles": {
-      "files": [
-        "styles\\Global.css",
-        "styles\\Layout.css",
-        "styles\\New Text Document.txt",
-        "styles\\Reset.css"
-      ],
-      "import_count": 0
-    },
-    "styles\\Themes": {
-      "files": [
-        "styles\\Themes\\Winter.css"
-      ],
-      "import_count": 0
-    },
-    "utils": {
-      "files": [
-        "utils\\App.css",
-        "utils\\App.js",
-        "utils\\calc-transform.ts",
-        "utils\\HP copy 2.js",
-        "utils\\HP copy.js",
-        "utils\\HP.css",
-        "utils\\HP.js"
-      ],
-      "import_count": 4
-    },
-    "utils\\api": {
-      "files": [
-        "utils\\api\\apiService.js",
-        "utils\\api\\buildErrorHandler.js",
-        "utils\\api\\devErrorToolkit.js",
-        "utils\\api\\errorBoundary.js",
-        "utils\\api\\errorHandlerInstance.js"
+        "components\\cfa\\CFAConsolidationUI.css",
+        "components\\cfa\\CFAConsolidationUI.js",
+        "components\\cfa\\IndividualResultsPanel.js",
+        "components\\cfa\\ProcessingPanel.css",
+        "components\\cfa\\ProcessingPanel.js",
+        "components\\cfa\\ResultsPanel.css",
+        "components\\cfa\\ResultsPanel.js",
+        "components\\cfa\\SelectionPanel.css",
+        "components\\cfa\\SelectionPanel.js"
       ],
       "import_count": 5
     },
-    "utils core": {
+    "components\\forms": {
       "files": [
-        "utils core\\App.css",
-        "utils core\\App.js",
-        "utils core\\HP.css",
-        "utils core\\Hp.js"
+        "components\\forms\\InputForm.js"
       ],
-      "import_count": 2
+      "import_count": 1
     },
-    "utils core\\api core": {
+    "components\\layout": {
+      "files": [
+        "components\\layout\\HeaderSection.css",
+        "components\\layout\\HeaderSection.js"
+      ],
+      "import_count": 1
+    },
+    "components\\layout\\theme": {
+      "files": [
+        "components\\layout\\theme\\ThemeSelector.js"
+      ],
+      "import_count": 1
+    },
+    "components\\L_1_HomePage.CSS": {
+      "files": [
+        "components\\L_1_HomePage.CSS\\L_1_HomePage1.css",
+        "components\\L_1_HomePage.CSS\\L_1_HomePage2.css",
+        "components\\L_1_HomePage.CSS\\L_1_HomePage3.css",
+        "components\\L_1_HomePage.CSS\\L_1_HomePage4.css",
+        "components\\L_1_HomePage.CSS\\L_1_HomePage5.css",
+        "components\\L_1_HomePage.CSS\\L_1_HomePage6.css"
+      ],
+      "import_count": 0
+    },
+    "components\\model": {
+      "files": [
+        "components\\model\\AnalysisChart.css",
+        "components\\model\\AnalysisChart.js",
+        "components\\model\\AnalysisVisualizationIntegration.css",
+        "components\\model\\AnalysisVisualizationIntegration.js",
+        "components\\model\\DecisionEngine.css",
+        "components\\model\\DecisionEngine.js",
+        "components\\model\\FilterPopup.css",
+        "components\\model\\FilterPopup.js",
+        "components\\model\\ImpactAnalysis.css",
+        "components\\model\\ImpactAnalysis.js",
+        "components\\model\\InheritanceControl.css",
+        "components\\model\\InheritanceControl.js",
+        "components\\model\\InheritanceControl.md",
+        "components\\model\\ModelCard.css",
+        "components\\model\\ModelCard.js",
+        "components\\model\\ModelZone.css",
+        "components\\model\\ModelZone.js",
+        "components\\model\\NavigationManager.css",
+        "components\\model\\NavigationManager.js",
+        "components\\model\\OptimizationEngine.css",
+        "components\\model\\OptimizationEngine.js",
+        "components\\model\\OverlayController.css",
+        "components\\model\\OverlayController.js",
+        "components\\model\\RiskAssessment.css",
+        "components\\model\\RiskAssessment.js",
+        "components\\model\\SensitivityEngine.css",
+        "components\\model\\SensitivityEngine.js"
+      ],
+      "import_count": 13
+    },
+    "components\\model\\styles": {
       "files": [],
       "import_count": 0
+    },
+    "components\\navigation": {
+      "files": [
+        "components\\navigation\\TabNavigation.js"
+      ],
+      "import_count": 1
+    },
+    "components\\scaling": {
+      "files": [
+        "components\\scaling\\Card.js",
+        "components\\scaling\\MathProcessor.js",
+        "components\\scaling\\MotionDraggableIte.js",
+        "components\\scaling\\MotionScalingSummary.js",
+        "components\\scaling\\MotionTooltip.js",
+        "components\\scaling\\ScalingTab.js"
+      ],
+      "import_count": 6
+    },
+    "components\\scaling\\styles": {
+      "files": [
+        "components\\scaling\\styles\\animations.css",
+        "components\\scaling\\styles\\base.css",
+        "components\\scaling\\styles\\card.css",
+        "components\\scaling\\styles\\draggable.css",
+        "components\\scaling\\styles\\scaling.css",
+        "components\\scaling\\styles\\tooltip.css"
+      ],
+      "import_count": 0
+    },
+    "components\\tabs": {
+      "files": [
+        "components\\tabs\\CsvContentTab.js",
+        "components\\tabs\\HtmlContentTab.js",
+        "components\\tabs\\PlotContentTab.js",
+        "components\\tabs\\TabContent.js"
+      ],
+      "import_count": 4
+    },
+    "components\\version": {
+      "files": [
+        "components\\version\\VersionControl.css",
+        "components\\version\\VersionControl.js"
+      ],
+      "import_count": 1
+    },
+    "contexts": {
+      "files": [
+        "contexts\\VersionStateContext.js",
+        "contexts\\VersionStateContext.md"
+      ],
+      "import_count": 1
+    },
+    "extended_scaling": {
+      "files": [
+        "extended_scaling\\Card.js",
+        "extended_scaling\\ExtendedScaling.js",
+        "extended_scaling\\ScalingSummary.js"
+      ],
+      "import_count": 3
+    },
+    "hooks": {
+      "files": [
+        "hooks\\index.js",
+        "hooks\\useAnalysis.js",
+        "hooks\\useContentLoading.js",
+        "hooks\\useFeatureToggles.js",
+        "hooks\\useFormValues.js",
+        "hooks\\useSensitivity.js",
+        "hooks\\useTheme.js",
+        "hooks\\useVersion.js"
+      ],
+      "import_count": 8
+    },
+    "L_1_HomePage.CSS": {
+      "files": [
+        "L_1_HomePage.CSS\\L_1_HomePage1.css",
+        "L_1_HomePage.CSS\\L_1_HomePage2.css",
+        "L_1_HomePage.CSS\\L_1_HomePage3.css",
+        "L_1_HomePage.CSS\\L_1_HomePage4.css",
+        "L_1_HomePage.CSS\\L_1_HomePage5.css",
+        "L_1_HomePage.CSS\\L_1_HomePage6.css",
+        "L_1_HomePage.CSS\\L_1_HomePage_AboutUs.css",
+        "L_1_HomePage.CSS\\L_1_HomePage_buttons.css",
+        "L_1_HomePage.CSS\\L_1_HomePage_monitoring.css",
+        "L_1_HomePage.CSS\\L_1_HomePage_Neumorphic.css",
+        "L_1_HomePage.CSS\\L_1_HomePage_selectors.css"
+      ],
+      "import_count": 0
+    },
+    "services": {
+      "files": [
+        "services\\apiService.js",
+        "services\\batchService.js",
+        "services\\configService.js",
+        "services\\contentService.js",
+        "services\\index.js"
+      ],
+      "import_count": 5
+    },
+    "state": {
+      "files": [
+        "state\\VersionStateManager.js"
+      ],
+      "import_count": 1
+    },
+    "styles": {
+      "files": [
+        "styles\\fall.css",
+        "styles\\neumorphic-tabs.css",
+        "styles\\winter.css"
+      ],
+      "import_count": 0
+    },
+    "ui": {
+      "files": [
+        "ui\\tooltip.js",
+        "ui\\tooltip.jsx"
+      ],
+      "import_count": 1
+    },
+    "utils": {
+      "files": [
+        "utils\\pathTransformers.js"
+      ],
+      "import_count": 1
     }
   },
   "files_by_extension": {
     "js": [
       {
+        "name": "App.js",
+        "path": ".\\App.js",
+        "size": 582
+      },
+      {
+        "name": "CustomizableImage.js",
+        "path": ".\\CustomizableImage.js",
+        "size": 2571
+      },
+      {
+        "name": "CustomizableTable.js",
+        "path": ".\\CustomizableTable.js",
+        "size": 4365
+      },
+      {
+        "name": "Editable.js",
+        "path": ".\\Editable.js",
+        "size": 6830
+      },
+      {
+        "name": "FormHeader.js",
+        "path": ".\\FormHeader.js",
+        "size": 7683
+      },
+      {
+        "name": "GeneralFormConfig.js",
+        "path": ".\\GeneralFormConfig.js",
+        "size": 10938
+      },
+      {
         "name": "index.js",
         "path": ".\\index.js",
-        "size": 299
+        "size": 294
       },
       {
-        "name": "CostAnalysisDashboard copy.js",
-        "path": "components\\Display\\CostAnalysisDashboard copy.js",
-        "size": 2475
+        "name": "L_1_HomePage copy.js",
+        "path": ".\\L_1_HomePage copy.js",
+        "size": 12020
       },
       {
-        "name": "CostAnalysisDashboard.js",
-        "path": "components\\Display\\CostAnalysisDashboard.js",
-        "size": 13050
+        "name": "L_1_HomePage.js",
+        "path": ".\\L_1_HomePage.js",
+        "size": 65617
       },
       {
-        "name": "CustomizableImage.js",
-        "path": "components\\Display\\CustomizableImage.js",
-        "size": 1368
+        "name": "MultiVersionSelector.js",
+        "path": ".\\MultiVersionSelector.js",
+        "size": 1777
       },
       {
-        "name": "CustomizableTable.js",
-        "path": "components\\Display\\CustomizableTable.js",
-        "size": 4636
+        "name": "naturalmotion.js",
+        "path": ".\\naturalmotion.js",
+        "size": 2659
       },
       {
-        "name": "PriceDisplay.js",
-        "path": "components\\Display\\PriceDisplay.js",
-        "size": 1098
+        "name": "Popup.js",
+        "path": ".\\Popup.js",
+        "size": 8509
       },
       {
-        "name": "TechnicalTable.js",
-        "path": "components\\Display\\TechnicalTable.js",
-        "size": 6367
-      },
-      {
-        "name": "CustomizableImage.js",
-        "path": "components\\Display core\\CustomizableImage.js",
-        "size": 777
-      },
-      {
-        "name": "CustomizableTable.js",
-        "path": "components\\Display core\\CustomizableTable.js",
-        "size": 3017
-      },
-      {
-        "name": "PriceDisplay.js",
-        "path": "components\\Display core\\PriceDisplay.js",
-        "size": 925
-      },
-      {
-        "name": "Efficacy.js",
-        "path": "components\\Form\\Efficacy.js",
-        "size": 8526
-      },
-      {
-        "name": "FormHeader.js",
-        "path": "components\\Form\\FormHeader.js",
-        "size": 8729
-      },
-      {
-        "name": "GeneralFormConfig.js",
-        "path": "components\\Form\\GeneralFormConfig.js",
-        "size": 13905
-      },
-      {
-        "name": "SensitivitySelector copy.js",
-        "path": "components\\Form\\SensitivitySelector copy.js",
-        "size": 18937
-      },
-      {
-        "name": "SensitivitySelector.js",
-        "path": "components\\Form\\SensitivitySelector.js",
-        "size": 12164
-      },
-      {
-        "name": "Efficacy.js",
-        "path": "components\\Form core\\Efficacy.js",
-        "size": 8520
-      },
-      {
-        "name": "FormHeader.js",
-        "path": "components\\Form core\\FormHeader.js",
-        "size": 2251
-      },
-      {
-        "name": "GeneralFormConfig.js",
-        "path": "components\\Form core\\GeneralFormConfig.js",
-        "size": 7535
-      },
-      {
-        "name": "SensitivitySelector.js",
-        "path": "components\\Form core\\SensitivitySelector.js",
-        "size": 12224
-      },
-      {
-        "name": "ConfigurationPalette.js",
-        "path": "components\\Palette\\ConfigurationPalette.js",
-        "size": 11200
-      },
-      {
-        "name": "PlottingPalette.js",
-        "path": "components\\Palette\\PlottingPalette.js",
-        "size": 4471
-      },
-      {
-        "name": "ConfigurationPalette.js",
-        "path": "components\\Palette core\\ConfigurationPalette.js",
-        "size": 6716
-      },
-      {
-        "name": "PlottingPalette.js",
-        "path": "components\\Palette core\\PlottingPalette.js",
-        "size": 3694
+        "name": "PriceOptimizationConfig.js",
+        "path": ".\\PriceOptimizationConfig.js",
+        "size": 11827
       },
       {
         "name": "PropertySelector.js",
-        "path": "components\\Selector\\PropertySelector.js",
-        "size": 1163
-      },
-      {
-        "name": "VersionSelector.js",
-        "path": "components\\Selector\\VersionSelector.js",
-        "size": 1188
-      },
-      {
-        "name": "PropertySelector.js",
-        "path": "components\\Selector core\\PropertySelector.js",
-        "size": 1007
-      },
-      {
-        "name": "VersionSelector.js",
-        "path": "components\\Selector core\\VersionSelector.js",
-        "size": 973
-      },
-      {
-        "name": "ComparisonPanel.js",
-        "path": "components\\Sensitivity\\ComparisonPanel.js",
-        "size": 2957
+        "path": ".\\PropertySelector.js",
+        "size": 1153
       },
       {
         "name": "SensitivityVisualization.js",
-        "path": "components\\Sensitivity\\SensitivityVisualization.js",
-        "size": 5810
+        "path": ".\\SensitivityVisualization.js",
+        "size": 3361
       },
       {
-        "name": "ComparisonPanel.js",
-        "path": "components\\Sensitivity core\\ComparisonPanel.js",
-        "size": 2819
+        "name": "TodoList.js",
+        "path": ".\\TodoList.js",
+        "size": 6369
       },
       {
-        "name": "SensitivityVisualization.js",
-        "path": "components\\Sensitivity core\\SensitivityVisualization.js",
-        "size": 5289
+        "name": "TodoList2.js",
+        "path": ".\\TodoList2.js",
+        "size": 5826
       },
       {
-        "name": "UseFormValues.js",
-        "path": "hooks\\UseFormValues.js",
-        "size": 13216
+        "name": "useFormValues.js",
+        "path": ".\\useFormValues.js",
+        "size": 9005
       },
       {
-        "name": "App.js",
-        "path": "utils\\App.js",
-        "size": 4293
+        "name": "VersionSelector.js",
+        "path": ".\\VersionSelector.js",
+        "size": 5773
       },
       {
-        "name": "HP copy 2.js",
-        "path": "utils\\HP copy 2.js",
-        "size": 8268
+        "name": "CalculationMonitor.js",
+        "path": "components\\CalculationMonitor.js",
+        "size": 8168
       },
       {
-        "name": "HP copy.js",
-        "path": "utils\\HP copy.js",
-        "size": 34564
+        "name": "ErrorBoundary.js",
+        "path": "components\\ErrorBoundary.js",
+        "size": 2463
       },
       {
-        "name": "HP.js",
-        "path": "utils\\HP.js",
-        "size": 34401
+        "name": "SensitivityAnalysis.js",
+        "path": "components\\SensitivityAnalysis.js",
+        "size": 2945
+      },
+      {
+        "name": "SensitivityIntegration.js",
+        "path": "components\\SensitivityIntegration.js",
+        "size": 11629
+      },
+      {
+        "name": "SensitivitySelector.js",
+        "path": "components\\SensitivitySelector.js",
+        "size": 16150
+      },
+      {
+        "name": "TestingZone.js",
+        "path": "components\\TestingZone.js",
+        "size": 538
+      },
+      {
+        "name": "ActionButtons.js",
+        "path": "components\\buttons\\ActionButtons.js",
+        "size": 1405
+      },
+      {
+        "name": "CFAConsolidationUI.js",
+        "path": "components\\cfa\\CFAConsolidationUI.js",
+        "size": 12779
+      },
+      {
+        "name": "IndividualResultsPanel.js",
+        "path": "components\\cfa\\IndividualResultsPanel.js",
+        "size": 11711
+      },
+      {
+        "name": "ProcessingPanel.js",
+        "path": "components\\cfa\\ProcessingPanel.js",
+        "size": 4489
+      },
+      {
+        "name": "ResultsPanel.js",
+        "path": "components\\cfa\\ResultsPanel.js",
+        "size": 7413
+      },
+      {
+        "name": "SelectionPanel.js",
+        "path": "components\\cfa\\SelectionPanel.js",
+        "size": 2617
+      },
+      {
+        "name": "InputForm.js",
+        "path": "components\\forms\\InputForm.js",
+        "size": 10150
+      },
+      {
+        "name": "HeaderSection.js",
+        "path": "components\\layout\\HeaderSection.js",
+        "size": 809
+      },
+      {
+        "name": "ThemeSelector.js",
+        "path": "components\\layout\\theme\\ThemeSelector.js",
+        "size": 1067
+      },
+      {
+        "name": "AnalysisChart.js",
+        "path": "components\\model\\AnalysisChart.js",
+        "size": 7271
+      },
+      {
+        "name": "AnalysisVisualizationIntegration.js",
+        "path": "components\\model\\AnalysisVisualizationIntegration.js",
+        "size": 12092
+      },
+      {
+        "name": "DecisionEngine.js",
+        "path": "components\\model\\DecisionEngine.js",
+        "size": 12965
+      },
+      {
+        "name": "FilterPopup.js",
+        "path": "components\\model\\FilterPopup.js",
+        "size": 9655
+      },
+      {
+        "name": "ImpactAnalysis.js",
+        "path": "components\\model\\ImpactAnalysis.js",
+        "size": 8482
+      },
+      {
+        "name": "InheritanceControl.js",
+        "path": "components\\model\\InheritanceControl.js",
+        "size": 8949
+      },
+      {
+        "name": "ModelCard.js",
+        "path": "components\\model\\ModelCard.js",
+        "size": 6226
+      },
+      {
+        "name": "ModelZone.js",
+        "path": "components\\model\\ModelZone.js",
+        "size": 10976
+      },
+      {
+        "name": "NavigationManager.js",
+        "path": "components\\model\\NavigationManager.js",
+        "size": 6195
+      },
+      {
+        "name": "OptimizationEngine.js",
+        "path": "components\\model\\OptimizationEngine.js",
+        "size": 12307
+      },
+      {
+        "name": "OverlayController.js",
+        "path": "components\\model\\OverlayController.js",
+        "size": 2929
+      },
+      {
+        "name": "RiskAssessment.js",
+        "path": "components\\model\\RiskAssessment.js",
+        "size": 8558
+      },
+      {
+        "name": "SensitivityEngine.js",
+        "path": "components\\model\\SensitivityEngine.js",
+        "size": 12194
+      },
+      {
+        "name": "TabNavigation.js",
+        "path": "components\\navigation\\TabNavigation.js",
+        "size": 2627
+      },
+      {
+        "name": "Card.js",
+        "path": "components\\scaling\\Card.js",
+        "size": 565
+      },
+      {
+        "name": "MathProcessor.js",
+        "path": "components\\scaling\\MathProcessor.js",
+        "size": 7656
+      },
+      {
+        "name": "MotionDraggableIte.js",
+        "path": "components\\scaling\\MotionDraggableIte.js",
+        "size": 2339
+      },
+      {
+        "name": "MotionScalingSummary.js",
+        "path": "components\\scaling\\MotionScalingSummary.js",
+        "size": 4787
+      },
+      {
+        "name": "MotionTooltip.js",
+        "path": "components\\scaling\\MotionTooltip.js",
+        "size": 2826
+      },
+      {
+        "name": "ScalingTab.js",
+        "path": "components\\scaling\\ScalingTab.js",
+        "size": 13992
+      },
+      {
+        "name": "CsvContentTab.js",
+        "path": "components\\tabs\\CsvContentTab.js",
+        "size": 2370
+      },
+      {
+        "name": "HtmlContentTab.js",
+        "path": "components\\tabs\\HtmlContentTab.js",
+        "size": 1946
+      },
+      {
+        "name": "PlotContentTab.js",
+        "path": "components\\tabs\\PlotContentTab.js",
+        "size": 2017
+      },
+      {
+        "name": "TabContent.js",
+        "path": "components\\tabs\\TabContent.js",
+        "size": 7073
+      },
+      {
+        "name": "VersionControl.js",
+        "path": "components\\version\\VersionControl.js",
+        "size": 2446
+      },
+      {
+        "name": "VersionStateContext.js",
+        "path": "contexts\\VersionStateContext.js",
+        "size": 1101
+      },
+      {
+        "name": "Card.js",
+        "path": "extended_scaling\\Card.js",
+        "size": 593
+      },
+      {
+        "name": "ExtendedScaling.js",
+        "path": "extended_scaling\\ExtendedScaling.js",
+        "size": 23440
+      },
+      {
+        "name": "ScalingSummary.js",
+        "path": "extended_scaling\\ScalingSummary.js",
+        "size": 23305
+      },
+      {
+        "name": "index.js",
+        "path": "hooks\\index.js",
+        "size": 425
+      },
+      {
+        "name": "useAnalysis.js",
+        "path": "hooks\\useAnalysis.js",
+        "size": 4616
+      },
+      {
+        "name": "useContentLoading.js",
+        "path": "hooks\\useContentLoading.js",
+        "size": 1748
+      },
+      {
+        "name": "useFeatureToggles.js",
+        "path": "hooks\\useFeatureToggles.js",
+        "size": 1285
+      },
+      {
+        "name": "useFormValues.js",
+        "path": "hooks\\useFormValues.js",
+        "size": 1911
+      },
+      {
+        "name": "useSensitivity.js",
+        "path": "hooks\\useSensitivity.js",
+        "size": 1346
+      },
+      {
+        "name": "useTheme.js",
+        "path": "hooks\\useTheme.js",
+        "size": 3475
+      },
+      {
+        "name": "useVersion.js",
+        "path": "hooks\\useVersion.js",
+        "size": 5971
       },
       {
         "name": "apiService.js",
-        "path": "utils\\api\\apiService.js",
-        "size": 1404
+        "path": "services\\apiService.js",
+        "size": 5907
       },
       {
-        "name": "buildErrorHandler.js",
-        "path": "utils\\api\\buildErrorHandler.js",
-        "size": 8059
+        "name": "batchService.js",
+        "path": "services\\batchService.js",
+        "size": 2195
       },
       {
-        "name": "devErrorToolkit.js",
-        "path": "utils\\api\\devErrorToolkit.js",
-        "size": 8869
+        "name": "configService.js",
+        "path": "services\\configService.js",
+        "size": 1857
       },
       {
-        "name": "errorBoundary.js",
-        "path": "utils\\api\\errorBoundary.js",
-        "size": 1414
+        "name": "contentService.js",
+        "path": "services\\contentService.js",
+        "size": 4039
       },
       {
-        "name": "errorHandlerInstance.js",
-        "path": "utils\\api\\errorHandlerInstance.js",
-        "size": 576
+        "name": "index.js",
+        "path": "services\\index.js",
+        "size": 652
       },
       {
-        "name": "App.js",
-        "path": "utils core\\App.js",
-        "size": 3402
+        "name": "VersionStateManager.js",
+        "path": "state\\VersionStateManager.js",
+        "size": 3784
       },
       {
-        "name": "Hp.js",
-        "path": "utils core\\Hp.js",
-        "size": 30681
+        "name": "tooltip.js",
+        "path": "ui\\tooltip.js",
+        "size": 916
+      },
+      {
+        "name": "pathTransformers.js",
+        "path": "utils\\pathTransformers.js",
+        "size": 2634
       }
     ],
     "css": [
+      {
+        "name": "App.css",
+        "path": ".\\App.css",
+        "size": 6563
+      },
+      {
+        "name": "Editable.css",
+        "path": ".\\Editable.css",
+        "size": 1371
+      },
       {
         "name": "index.css",
         "path": ".\\index.css",
         "size": 0
       },
       {
-        "name": "CostAnalysisDashboard.css",
-        "path": "components\\Display\\CostAnalysisDashboard.css",
-        "size": 5353
+        "name": "naturalmotion.css",
+        "path": ".\\naturalmotion.css",
+        "size": 2872
       },
       {
-        "name": "CustomizableImage.css",
-        "path": "components\\Display\\CustomizableImage.css",
-        "size": 1434
+        "name": "Popup.css",
+        "path": ".\\Popup.css",
+        "size": 3978
       },
       {
-        "name": "CustomizableTable.css",
-        "path": "components\\Display\\CustomizableTable.css",
-        "size": 1446
-      },
-      {
-        "name": "PriceDisplay.css",
-        "path": "components\\Display\\PriceDisplay.css",
-        "size": 1120
-      },
-      {
-        "name": "TechnicalTable.css",
-        "path": "components\\Display\\TechnicalTable.css",
-        "size": 3196
-      },
-      {
-        "name": "CustomizableImage.css",
-        "path": "components\\Display core\\CustomizableImage.css",
-        "size": 0
-      },
-      {
-        "name": "CustomizableTable.css",
-        "path": "components\\Display core\\CustomizableTable.css",
-        "size": 0
-      },
-      {
-        "name": "PriceDisplay.css",
-        "path": "components\\Display core\\PriceDisplay.css",
-        "size": 0
-      },
-      {
-        "name": "Efficacy.css",
-        "path": "components\\Form\\Efficacy.css",
-        "size": 5236
-      },
-      {
-        "name": "FormHeader.css",
-        "path": "components\\Form\\FormHeader.css",
-        "size": 922
-      },
-      {
-        "name": "GeneralFormConfig.css",
-        "path": "components\\Form\\GeneralFormConfig.css",
-        "size": 1356
-      },
-      {
-        "name": "SensitivitySelector.css",
-        "path": "components\\Form\\SensitivitySelector.css",
-        "size": 0
-      },
-      {
-        "name": "Efficacy.css",
-        "path": "components\\Form core\\Efficacy.css",
-        "size": 0
-      },
-      {
-        "name": "FormHeader.css",
-        "path": "components\\Form core\\FormHeader.css",
-        "size": 0
-      },
-      {
-        "name": "GeneralFormConfig.css",
-        "path": "components\\Form core\\GeneralFormConfig.css",
-        "size": 0
-      },
-      {
-        "name": "SensitivitySelector.css",
-        "path": "components\\Form core\\SensitivitySelector.css",
-        "size": 0
-      },
-      {
-        "name": "ConfigurationPalette.css",
-        "path": "components\\Palette\\ConfigurationPalette.css",
-        "size": 3501
-      },
-      {
-        "name": "PlottingPalette.css",
-        "path": "components\\Palette\\PlottingPalette.css",
-        "size": 1933
-      },
-      {
-        "name": "ConfigurationPalette.css",
-        "path": "components\\Palette core\\ConfigurationPalette.css",
-        "size": 0
-      },
-      {
-        "name": "PlottingPalette.css",
-        "path": "components\\Palette core\\PlottingPalette.css",
-        "size": 0
-      },
-      {
-        "name": "PropertySelector.css",
-        "path": "components\\Selector\\PropertySelector.css",
-        "size": 1517
-      },
-      {
-        "name": "VersionSelector.css",
-        "path": "components\\Selector\\VersionSelector.css",
-        "size": 1666
-      },
-      {
-        "name": "PropertySelector.css",
-        "path": "components\\Selector core\\PropertySelector.css",
-        "size": 0
-      },
-      {
-        "name": "VersionSelector.css",
-        "path": "components\\Selector core\\VersionSelector.css",
-        "size": 0
-      },
-      {
-        "name": "ComparisonPanel.css",
-        "path": "components\\Sensitivity\\ComparisonPanel.css",
-        "size": 1685
+        "name": "PriceOptimizationConfig.css",
+        "path": ".\\PriceOptimizationConfig.css",
+        "size": 2911
       },
       {
         "name": "SensitivityVisualization.css",
-        "path": "components\\Sensitivity\\SensitivityVisualization.css",
-        "size": 1861
+        "path": ".\\SensitivityVisualization.css",
+        "size": 2131
       },
       {
-        "name": "ComparisonPanel.css",
-        "path": "components\\Sensitivity core\\ComparisonPanel.css",
-        "size": 0
+        "name": "VersionSelector.css",
+        "path": ".\\VersionSelector.css",
+        "size": 2501
+      },
+      {
+        "name": "CalculationMonitor.css",
+        "path": "components\\CalculationMonitor.css",
+        "size": 3258
+      },
+      {
+        "name": "SensitivityAnalysis.css",
+        "path": "components\\SensitivityAnalysis.css",
+        "size": 1888
+      },
+      {
+        "name": "SensitivitySelector.css",
+        "path": "components\\SensitivitySelector.css",
+        "size": 4835
       },
       {
         "name": "SensitivityVisualization.css",
-        "path": "components\\Sensitivity core\\SensitivityVisualization.css",
-        "size": 0
+        "path": "components\\SensitivityVisualization.css",
+        "size": 7734
       },
       {
-        "name": "Global.css",
-        "path": "styles\\Global.css",
-        "size": 4167
+        "name": "TestingZone.css",
+        "path": "components\\TestingZone.css",
+        "size": 1151
       },
       {
-        "name": "Layout.css",
-        "path": "styles\\Layout.css",
-        "size": 1372
+        "name": "ActionButtons.css",
+        "path": "components\\buttons\\ActionButtons.css",
+        "size": 2354
       },
       {
-        "name": "Reset.css",
-        "path": "styles\\Reset.css",
-        "size": 209
+        "name": "CFAConsolidationUI.css",
+        "path": "components\\cfa\\CFAConsolidationUI.css",
+        "size": 10125
       },
       {
-        "name": "Winter.css",
-        "path": "styles\\Themes\\Winter.css",
-        "size": 53041
+        "name": "ProcessingPanel.css",
+        "path": "components\\cfa\\ProcessingPanel.css",
+        "size": 6657
       },
       {
-        "name": "App.css",
-        "path": "utils\\App.css",
-        "size": 0
+        "name": "ResultsPanel.css",
+        "path": "components\\cfa\\ResultsPanel.css",
+        "size": 6710
       },
       {
-        "name": "HP.css",
-        "path": "utils\\HP.css",
-        "size": 0
+        "name": "SelectionPanel.css",
+        "path": "components\\cfa\\SelectionPanel.css",
+        "size": 6001
       },
       {
-        "name": "App.css",
-        "path": "utils core\\App.css",
-        "size": 0
+        "name": "HeaderSection.css",
+        "path": "components\\layout\\HeaderSection.css",
+        "size": 1113
       },
       {
-        "name": "HP.css",
-        "path": "utils core\\HP.css",
-        "size": 2451
+        "name": "L_1_HomePage1.css",
+        "path": "components\\L_1_HomePage.CSS\\L_1_HomePage1.css",
+        "size": 4089
+      },
+      {
+        "name": "L_1_HomePage2.css",
+        "path": "components\\L_1_HomePage.CSS\\L_1_HomePage2.css",
+        "size": 1919
+      },
+      {
+        "name": "L_1_HomePage3.css",
+        "path": "components\\L_1_HomePage.CSS\\L_1_HomePage3.css",
+        "size": 2816
+      },
+      {
+        "name": "L_1_HomePage4.css",
+        "path": "components\\L_1_HomePage.CSS\\L_1_HomePage4.css",
+        "size": 9759
+      },
+      {
+        "name": "L_1_HomePage5.css",
+        "path": "components\\L_1_HomePage.CSS\\L_1_HomePage5.css",
+        "size": 9032
+      },
+      {
+        "name": "L_1_HomePage6.css",
+        "path": "components\\L_1_HomePage.CSS\\L_1_HomePage6.css",
+        "size": 4051
+      },
+      {
+        "name": "AnalysisChart.css",
+        "path": "components\\model\\AnalysisChart.css",
+        "size": 2962
+      },
+      {
+        "name": "AnalysisVisualizationIntegration.css",
+        "path": "components\\model\\AnalysisVisualizationIntegration.css",
+        "size": 5458
+      },
+      {
+        "name": "DecisionEngine.css",
+        "path": "components\\model\\DecisionEngine.css",
+        "size": 7962
+      },
+      {
+        "name": "FilterPopup.css",
+        "path": "components\\model\\FilterPopup.css",
+        "size": 7947
+      },
+      {
+        "name": "ImpactAnalysis.css",
+        "path": "components\\model\\ImpactAnalysis.css",
+        "size": 4967
+      },
+      {
+        "name": "InheritanceControl.css",
+        "path": "components\\model\\InheritanceControl.css",
+        "size": 5690
+      },
+      {
+        "name": "ModelCard.css",
+        "path": "components\\model\\ModelCard.css",
+        "size": 9007
+      },
+      {
+        "name": "ModelZone.css",
+        "path": "components\\model\\ModelZone.css",
+        "size": 4802
+      },
+      {
+        "name": "NavigationManager.css",
+        "path": "components\\model\\NavigationManager.css",
+        "size": 6392
+      },
+      {
+        "name": "OptimizationEngine.css",
+        "path": "components\\model\\OptimizationEngine.css",
+        "size": 8242
+      },
+      {
+        "name": "OverlayController.css",
+        "path": "components\\model\\OverlayController.css",
+        "size": 3940
+      },
+      {
+        "name": "RiskAssessment.css",
+        "path": "components\\model\\RiskAssessment.css",
+        "size": 5914
+      },
+      {
+        "name": "SensitivityEngine.css",
+        "path": "components\\model\\SensitivityEngine.css",
+        "size": 7586
+      },
+      {
+        "name": "animations.css",
+        "path": "components\\scaling\\styles\\animations.css",
+        "size": 4244
+      },
+      {
+        "name": "base.css",
+        "path": "components\\scaling\\styles\\base.css",
+        "size": 2973
+      },
+      {
+        "name": "card.css",
+        "path": "components\\scaling\\styles\\card.css",
+        "size": 4132
+      },
+      {
+        "name": "draggable.css",
+        "path": "components\\scaling\\styles\\draggable.css",
+        "size": 4523
+      },
+      {
+        "name": "scaling.css",
+        "path": "components\\scaling\\styles\\scaling.css",
+        "size": 4474
+      },
+      {
+        "name": "tooltip.css",
+        "path": "components\\scaling\\styles\\tooltip.css",
+        "size": 4003
+      },
+      {
+        "name": "VersionControl.css",
+        "path": "components\\version\\VersionControl.css",
+        "size": 2770
+      },
+      {
+        "name": "L_1_HomePage1.css",
+        "path": "L_1_HomePage.CSS\\L_1_HomePage1.css",
+        "size": 4089
+      },
+      {
+        "name": "L_1_HomePage2.css",
+        "path": "L_1_HomePage.CSS\\L_1_HomePage2.css",
+        "size": 1919
+      },
+      {
+        "name": "L_1_HomePage3.css",
+        "path": "L_1_HomePage.CSS\\L_1_HomePage3.css",
+        "size": 2816
+      },
+      {
+        "name": "L_1_HomePage4.css",
+        "path": "L_1_HomePage.CSS\\L_1_HomePage4.css",
+        "size": 2149
+      },
+      {
+        "name": "L_1_HomePage5.css",
+        "path": "L_1_HomePage.CSS\\L_1_HomePage5.css",
+        "size": 2620
+      },
+      {
+        "name": "L_1_HomePage6.css",
+        "path": "L_1_HomePage.CSS\\L_1_HomePage6.css",
+        "size": 3180
+      },
+      {
+        "name": "L_1_HomePage_AboutUs.css",
+        "path": "L_1_HomePage.CSS\\L_1_HomePage_AboutUs.css",
+        "size": 4718
+      },
+      {
+        "name": "L_1_HomePage_buttons.css",
+        "path": "L_1_HomePage.CSS\\L_1_HomePage_buttons.css",
+        "size": 4282
+      },
+      {
+        "name": "L_1_HomePage_monitoring.css",
+        "path": "L_1_HomePage.CSS\\L_1_HomePage_monitoring.css",
+        "size": 518
+      },
+      {
+        "name": "L_1_HomePage_Neumorphic.css",
+        "path": "L_1_HomePage.CSS\\L_1_HomePage_Neumorphic.css",
+        "size": 11718
+      },
+      {
+        "name": "L_1_HomePage_selectors.css",
+        "path": "L_1_HomePage.CSS\\L_1_HomePage_selectors.css",
+        "size": 1237
+      },
+      {
+        "name": "fall.css",
+        "path": "styles\\fall.css",
+        "size": 27717
+      },
+      {
+        "name": "neumorphic-tabs.css",
+        "path": "styles\\neumorphic-tabs.css",
+        "size": 2185
+      },
+      {
+        "name": "winter.css",
+        "path": "styles\\winter.css",
+        "size": 40946
       }
     ],
     "jsx": [
       {
         "name": "tooltip.jsx",
-        "path": "hooks\\ui\\tooltip.jsx",
+        "path": "ui\\tooltip.jsx",
         "size": 882
       }
     ]
