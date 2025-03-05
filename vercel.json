@@ -6,7 +6,7 @@
       "use": "@vercel/static-build",
       "config": {
         "zeroConfig": true,
-        "buildCommand": "sh -c 'mkdir -p public/Original; npm run build'"
+        "buildCommand": "node fix-symlink.js && npm run build"
       }
     }
   ],
