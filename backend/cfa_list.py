@@ -13,7 +13,7 @@ CORS(app)
 
 # Configuration
 # Use the same BASE_PATH as the original script
-BASE_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "public", "Original")
+BASE_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "Original")
 PORT = 456
 CFA_PREFIX = "CFA"
 

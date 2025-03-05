@@ -759,7 +759,7 @@ def calculate_revenue_and_expenses_from_modules(config_received, config_matrix_d
 # Main function to load config matrix and run the update
 def main(version, selected_v, selected_f, target_row):
     # Set up paths for modules and results
-    code_files_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "backend", "Original")
+    code_files_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "Original")
     results_folder = os.path.join(code_files_path, f"Batch({version})", f"Results({version})")
     config_matrix_file = os.path.join(results_folder, f"Configuration_Matrix({version}).csv")
     

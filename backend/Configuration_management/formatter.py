@@ -5,7 +5,7 @@ from pathlib import Path
 
 # Configuration and Setup
 script_dir = Path(__file__).resolve().parent.parent
-UPLOAD_DIR = script_dir / "Original"
+UPLOAD_DIR = script_dir.parent / "Original"
 
 def check_write_permissions(directory):
     """Verify write permissions for the target directory."""

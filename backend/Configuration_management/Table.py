@@ -55,7 +55,7 @@ def load_config_modules(results_folder, version):
     return sorted(config_modules, key=lambda x: x[0])
 
 def build_and_save_table(version):
-    code_files_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "backend", "Original")
+    code_files_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "Original")
     results_folder = os.path.join(code_files_path, f'Batch({version})', f'Results({version})')
     
     # Load all config modules

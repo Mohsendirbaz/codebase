@@ -12,7 +12,7 @@ from Utility_functions.common_utils import property_mapping
 
 # Get the directory where this script is located
 script_dir = Path(__file__).resolve().parent.parent
-uploads_dir = script_dir / "Original"
+uploads_dir = script_dir.parent / "Original"
 code_files_path = uploads_dir  # Maintain the same variable name for compatibility
 
 # Initialize logging

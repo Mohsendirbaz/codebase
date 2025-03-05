@@ -14,7 +14,7 @@ if str(BACKEND_DIR) not in sys.path:
     sys.path.append(str(BACKEND_DIR))
 
 # Base paths
-PUBLIC_DIR = BACKEND_DIR.parent / 'public' / 'Original'
+PUBLIC_DIR = BACKEND_DIR.parent / 'Original'
 # Try to import property_mapping, use empty dict if not available
 try:
     from Utility_functions.common_utils import property_mapping
