@@ -1,7 +1,0 @@
-start,end,length,filtered_values
-<<<<<<< HEAD
-1,20,20,[]
-=======
-1,8,8,"[{""id"": ""initialSellingPriceAmount13"", ""value"": ""2.4"", ""remarks"": ""a""}]"
-8,20,13,"[{""id"": ""initialSellingPriceAmount13"", ""value"": ""2.4"", ""remarks"": ""a""}]"
->>>>>>> 62283430 (fixed rendering of table, dynamic and png)
