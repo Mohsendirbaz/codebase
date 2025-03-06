@@ -4,7 +4,6 @@ import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import CustomizableImage from './CustomizableImage';
 import CustomizableTable from './CustomizableTable';
-import ExtendedScaling from './extended_scaling/ExtendedScaling';
 import FormHeader from './FormHeader.js';
 import GeneralFormConfig from './GeneralFormConfig.js';
 import Popup from './Popup.js';
@@ -14,6 +13,7 @@ import './L_1_HomePage.CSS/L_1_HomePage3.css';
 import './L_1_HomePage.CSS/L_1_HomePage4.css';
 import './L_1_HomePage.CSS/L_1_HomePage5.css';
 import './L_1_HomePage.CSS/L_1_HomePage6.css';
+import './L_1_HomePage.CSS/L_1_HomePage7.css';
 import './L_1_HomePage.CSS/L_1_HomePage_AboutUs.css';
 import './L_1_HomePage.CSS/L_1_HomePage_buttons.css';
 import './L_1_HomePage.CSS/L_1_HomePage_monitoring.css';
@@ -31,6 +31,7 @@ import SensitivityAnalysis from './components/SensitivityAnalysis';
 import useFormValues from './useFormValues.js';
 import TestingZone from './components/TestingZone';
 import CalculationMonitor from './components/CalculationMonitor';
+import ExtendedScaling from './extended_scaling/ExtendedScaling';
 const L_1_HomePageContent = () => {
     const { selectedVersions, version: contextVersion, setVersion: setContextVersion } = useVersionState();
     const [activeTab, setActiveTab] = useState('AboutUs');
@@ -1478,12 +1479,14 @@ const L_1_HomePageContent = () => {
                 return renderCase3Content();
             case 'Scaling':
                 return (
-                    <ExtendedScaling
-                        baseCosts={baseCosts}
-                        onScaledValuesChange={handleScaledValuesChange}
-                        initialScalingGroups={scalingGroups}
-                        onScalingGroupsChange={handleScalingGroupsChange}
-                    />
+                    <div>
+                        <ExtendedScaling
+                            baseCosts={baseCosts}
+                            onScaledValuesChange={handleScaledValuesChange}
+                            initialScalingGroups={scalingGroups}
+                            onScalingGroupsChange={handleScalingGroupsChange}
+                        />
+                    </div>
                 );
             case 'Editable':
                 return (
