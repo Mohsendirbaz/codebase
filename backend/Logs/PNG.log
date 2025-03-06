@@ -1479,3 +1479,25 @@ INFO:root:All plots completed successfully.
 2025-03-05 16:13:12 [INFO] 127.0.0.1 - - [05/Mar/2025 16:13:12] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_federal_taxes_1.png HTTP/1.1[0m" 304 -
 2025-03-05 16:13:12 [INFO] 127.0.0.1 - - [05/Mar/2025 16:13:12] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_operating_expenses_1.png HTTP/1.1[0m" 304 -
 2025-03-05 16:13:12 [INFO] 127.0.0.1 - - [05/Mar/2025 16:13:12] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_state_taxes_1.png HTTP/1.1[0m" 304 -
+2025-03-06 09:08:00 [INFO] Initialized logging in C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\PNG.log
+2025-03-06 09:08:00 [INFO] Backend directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend
+2025-03-06 09:08:00 [INFO] Script directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Visualization_generators
+2025-03-06 09:08:00 [INFO] Starting PNG visualization server on port 5008
+2025-03-06 09:08:00 [INFO] Serving images from: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\Original
+2025-03-06 09:08:00 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5008
+2025-03-06 09:08:00 [INFO] [33mPress CTRL+C to quit[0m
+2025-03-06 09:09:27 [INFO] 127.0.0.1 - - [06/Mar/2025 09:09:27] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_depreciation_1.png HTTP/1.1[0m" 304 -
+2025-03-06 09:09:27 [INFO] 127.0.0.1 - - [06/Mar/2025 09:09:27] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_annual_cash_flow_net_1.png HTTP/1.1[0m" 304 -
+2025-03-06 09:09:27 [INFO] 127.0.0.1 - - [06/Mar/2025 09:09:27] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_federal_taxes_1.png HTTP/1.1[0m" 304 -
+2025-03-06 09:09:27 [INFO] 127.0.0.1 - - [06/Mar/2025 09:09:27] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_cumulative_cash_flow_1.png HTTP/1.1[0m" 304 -
+2025-03-06 09:09:27 [INFO] 127.0.0.1 - - [06/Mar/2025 09:09:27] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_revenue_1.png HTTP/1.1[0m" 304 -
+2025-03-06 09:09:27 [INFO] 127.0.0.1 - - [06/Mar/2025 09:09:27] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_operating_expenses_1.png HTTP/1.1[0m" 304 -
+2025-03-06 09:09:27 [INFO] 127.0.0.1 - - [06/Mar/2025 09:09:27] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_state_taxes_1.png HTTP/1.1[0m" 304 -
+2025-03-06 09:09:28 [INFO] 127.0.0.1 - - [06/Mar/2025 09:09:28] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_depreciation_1.png HTTP/1.1[0m" 304 -
+2025-03-06 09:09:28 [INFO] 127.0.0.1 - - [06/Mar/2025 09:09:28] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_annual_cash_flow_net_1.png HTTP/1.1[0m" 304 -
+2025-03-06 09:09:28 [INFO] 127.0.0.1 - - [06/Mar/2025 09:09:28] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_federal_taxes_1.png HTTP/1.1[0m" 304 -
+2025-03-06 09:09:28 [INFO] 127.0.0.1 - - [06/Mar/2025 09:09:28] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_cumulative_cash_flow_1.png HTTP/1.1[0m" 304 -
+2025-03-06 09:09:28 [INFO] 127.0.0.1 - - [06/Mar/2025 09:09:28] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_revenue_1.png HTTP/1.1[0m" 304 -
+2025-03-06 09:09:28 [INFO] 127.0.0.1 - - [06/Mar/2025 09:09:28] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_operating_expenses_1.png HTTP/1.1[0m" 304 -
+2025-03-06 09:09:28 [INFO] 127.0.0.1 - - [06/Mar/2025 09:09:28] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_state_taxes_1.png HTTP/1.1[0m" 304 -
