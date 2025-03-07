@@ -250,6 +250,7 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
                       }}
                       S={S}
                       setS={setS}
+                      version={version}
                     />
                   )}
                   <button
