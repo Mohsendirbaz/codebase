@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import './Popup.css';
 
 const Popup = ({ show, position, onClose, formValues, handleInputChange, id, version, itemId, onVersionChange}) => {
@@ -6,7 +6,8 @@ const Popup = ({ show, position, onClose, formValues, handleInputChange, id, ver
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState(null);
   const [submitSuccess, setSubmitSuccess] = useState(false);
-  const [isClosing, setIsClosing] = useState(false);  // Add this line
+  const [isClosing, setIsClosing] = useState(false);
+  const popupRef = useRef(null);
 
   const getPlantLifetime = () => {
     const plantLifetimeItem = Object.values(formValues)
@@ -16,6 +17,23 @@ const Popup = ({ show, position, onClose, formValues, handleInputChange, id, ver
       ? Math.max(1, parseInt(value)) 
       : 40;
   };
+
+  // Add click outside handler
+  useEffect(() => {
+    if (show) {
+      const handleClickOutside = (event) => {
+        if (popupRef.current && !popupRef.current.contains(event.target)) {
+          onClose();
+        }
+      };
+      
+      document.addEventListener('mousedown', handleClickOutside);
+      
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }
+  }, [show, onClose]);
 
   useEffect(() => {
     const currentPlantLifetime = getPlantLifetime();
@@ -185,16 +203,21 @@ const Popup = ({ show, position, onClose, formValues, handleInputChange, id, ver
   const currentPlantLifetime = getPlantLifetime();
   const { startPercent, widthPercent } = getPercentages();
 
+  // Calculate adjusted position (move left by 3x the popup width)
+  const adjustedPosition = {
+    top: position.top,
+    left: position.left - 1200 // 3 * 400px (popup width from CSS)
+  };
+
   return (
     <div 
-    className={`popup-container ${show ? 'active-popup' : ''} ${isClosing ? 'closing' : ''}`} 
-    style={{
-        top: position.top,
-        left: position.left
-    }}
->
-     
-
+      ref={popupRef}
+      className={`popup-container ${show ? 'active-popup' : ''} ${isClosing ? 'closing' : ''}`} 
+      style={{
+          top: adjustedPosition.top,
+          left: adjustedPosition.left
+      }}
+    >
       <div className="popup-content">
         <button className="popup-close" onClick={onClose}>×</button>
         <div className="duration-display">

@@ -6,7 +6,21 @@ const Dialog = ({ show, onClose, children, triggerRef, isClosing }) => {
 
     const [position, setPosition] = useState({ top: 0, left: 0 });
 
-    useEffect(() => {
+    // Debounce function to prevent rapid position updates
+    const debounce = (func, wait) => {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    };
+
+    // Debounced position calculation
+    const calculatePosition = debounce(() => {
         if (show && triggerRef.current) {
             const buttonRect = triggerRef.current.getBoundingClientRect();
             const viewportHeight = window.innerHeight;
@@ -25,9 +39,24 @@ const Dialog = ({ show, onClose, children, triggerRef, isClosing }) => {
             }
 
             // Center horizontally relative to button
-            let left = buttonRect.left *0.3+ (buttonRect.width / 2);
+            let left = buttonRect.left * 0.3 + (buttonRect.width / 2);
 
             setPosition({ top, left });
+        }
+    }, 50); // 50ms debounce time
+
+    useEffect(() => {
+        if (show) {
+            // Initial position calculation
+            calculatePosition();
+            
+            // Add resize listener with debounce
+            window.addEventListener('resize', calculatePosition);
+            
+            // Cleanup
+            return () => {
+                window.removeEventListener('resize', calculatePosition);
+            };
         }
     }, [show, triggerRef]);
 
@@ -36,10 +65,8 @@ const Dialog = ({ show, onClose, children, triggerRef, isClosing }) => {
             <div
                 className={`sensitivity-dialog ${isClosing ? 'closing' : ''}`}
                 style={{
-                    position: 'fixed',
                     top: `${position.top}px`,
                     left: `${position.left}px`,
-                    transform: 'translateX(-50%)'
                 }}
             >
                 <div className="sensitivity-dialog-inner" onClick={(e) => e.stopPropagation()}>{children}</div>
@@ -251,8 +278,8 @@ const SensitivityAnalysisSelector = ({ sKey = '', onSensitivityChange = () => {}
                 triggerRef={triggerButtonRef}
                 isClosing={isClosing}
             >
-                <div className="sensitivity-content">
-                    <div className="sensitivity-header">
+                <div className="sensitivity-selector-content">
+                    <div className="sensitivity-selector-header">
                         <h2 className="sensitivity-title">
                             Sensitivity Analysis
                             <span className="parameter-key">{sKey}</span>
@@ -366,6 +393,9 @@ const SensitivityAnalysisSelector = ({ sKey = '', onSensitivityChange = () => {}
                     )}
 
                     <div className="sensitivity-footer">
+                        <button onClick={handleSaveChanges} className="save-button">
+                            Save Changes
+                        </button>
                         {currentS.mode && (
                             <button onClick={handleReset} className="reset-button">
                                 Reset
@@ -373,9 +403,6 @@ const SensitivityAnalysisSelector = ({ sKey = '', onSensitivityChange = () => {}
                         )}
                         <button onClick={handleClose} className="cancel-button">
                             Cancel
-                        </button>
-                        <button onClick={handleSaveChanges} className="save-button">
-                            Save Changes
                         </button>
                     </div>
                 </div>
