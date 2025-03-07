@@ -17,7 +17,7 @@ const Dialog = ({ show, onClose, children, triggerRef, isClosing }) => {
             const spaceAbove = buttonRect.top;
 
             // Default to showing below the button
-            let top = buttonRect.bottom + 140;
+            let top = buttonRect.bottom + 8;
 
             // If not enough space below, show above
             if (spaceBelow < 400 && spaceAbove > spaceBelow) {
@@ -36,8 +36,10 @@ const Dialog = ({ show, onClose, children, triggerRef, isClosing }) => {
             <div
                 className={`sensitivity-dialog ${isClosing ? 'closing' : ''}`}
                 style={{
+                    position: 'fixed',
                     top: `${position.top}px`,
-                    left: `${position.left}px`
+                    left: `${position.left}px`,
+                    transform: 'translateX(-50%)'
                 }}
             >
                 <div className="sensitivity-dialog-inner" onClick={(e) => e.stopPropagation()}>{children}</div>
@@ -51,8 +53,34 @@ const SensitivityAnalysisSelector = ({ sKey = '', onSensitivityChange = () => {}
     const [showDialog, setShowDialog] = useState(false);
     const [isClosing, setIsClosing] = useState(false);
 
-    // Use the state from S prop directly
-    const currentS = S[sKey];
+    // Default state object
+    const defaultState = {
+        mode: null,
+        values: [],
+        enabled: false,
+        compareToKey: '',
+        comparisonType: null,
+        waterfall: false,
+        bar: false,
+        point: false
+    };
+
+    // Use the state from S prop with fallback to default state
+    const currentS = (S && S[sKey]) || defaultState;
+    
+    // Convert symmetrical mode to multiple mode for backward compatibility
+    useEffect(() => {
+        if (S && S[sKey] && S[sKey].mode === 'symmetrical') {
+            // Convert symmetrical mode to multiple
+            setS(prev => ({
+                ...prev,
+                [sKey]: {
+                    ...prev[sKey],
+                    mode: 'multiple'
+                }
+            }));
+        }
+    }, [S, sKey, setS]);
 
     const handleClose = () => {
         setIsClosing(true);
@@ -64,47 +92,37 @@ const SensitivityAnalysisSelector = ({ sKey = '', onSensitivityChange = () => {}
 
     const handleModeToggle = (mode) => {
         setS(prev => {
-            const currentS = prev[sKey];
+            const currentS = prev[sKey] || defaultState;
             const currentMode = currentS.mode;
 
             if (mode === currentMode) {
-                // Reset to initial state structure while preserving other fields
                 return {
                     ...prev,
-                    [sKey]: {
-                        ...currentS,
-                        mode: null,
-                        values: [],
-                        enabled: false
-                    }
+                    [sKey]: defaultState
                 };
             }
-
-            // For S34-S38, set value to 20 when switching to symmetrical mode
-            const values = mode === 'symmetrical' 
-                ? (sKey >= 'S34' && sKey <= 'S38' ? [20] : [])
-                : (currentS.values || []);
 
             return {
                 ...prev,
                 [sKey]: {
                     ...currentS,
                     mode,
-                    values,
+                    values: currentS.values || [],
                     enabled: true
                 }
             };
         });
     };
 
+    // Keep this function for backward compatibility but now it sets mode to 'multiple'
     const handleSymmetricalChange = (value) => {
         setS(prev => {
-            const currentS = prev[sKey];
+            const currentS = prev[sKey] || defaultState;
             return {
                 ...prev,
                 [sKey]: {
                     ...currentS,
-                    mode: 'symmetrical',
+                    mode: 'multiple',  // Changed from 'symmetrical' to 'multiple'
                     values: [value],
                     enabled: true
                 }
@@ -114,7 +132,7 @@ const SensitivityAnalysisSelector = ({ sKey = '', onSensitivityChange = () => {}
 
     const handleMultiplePointChange = (idx, value) => {
         setS(prev => {
-            const currentS = prev[sKey];
+            const currentS = prev[sKey] || defaultState;
             const currentValues = currentS.values || [];
             const newValues = Array(6).fill('');
 
@@ -148,7 +166,7 @@ const SensitivityAnalysisSelector = ({ sKey = '', onSensitivityChange = () => {}
 
     const handleCompareToChange = (value) => {
         setS(prev => {
-            const currentS = prev[sKey];
+            const currentS = prev[sKey] || defaultState;
             return {
                 ...prev,
                 [sKey]: {
@@ -161,7 +179,7 @@ const SensitivityAnalysisSelector = ({ sKey = '', onSensitivityChange = () => {}
 
     const handleComparisonTypeChange = (type) => {
         setS(prev => {
-            const currentS = prev[sKey];
+            const currentS = prev[sKey] || defaultState;
             return {
                 ...prev,
                 [sKey]: {
@@ -174,7 +192,7 @@ const SensitivityAnalysisSelector = ({ sKey = '', onSensitivityChange = () => {}
 
     const handlePlotTypeChange = (plotType) => {
         setS(prev => {
-            const currentS = prev[sKey];
+            const currentS = prev[sKey] || defaultState;
             return {
                 ...prev,
                 [sKey]: {
@@ -186,12 +204,13 @@ const SensitivityAnalysisSelector = ({ sKey = '', onSensitivityChange = () => {}
     };
 
     const handleSaveChanges = () => {
-        const currentS = S[sKey];
-        
-        // Preserve the existing state structure while updating
+        const currentS = S[sKey] || defaultState;
+
+        // Ensure mode is 'multiple' if it was 'symmetrical'
+        const mode = currentS.mode === 'symmetrical' ? 'multiple' : currentS.mode;
+
         onSensitivityChange(sKey, {
-            ...currentS,  // Keep all existing properties
-            mode: currentS.mode,
+            mode,
             values: currentS.values || [],
             enabled: true,
             compareToKey: currentS.compareToKey || '',
@@ -205,23 +224,15 @@ const SensitivityAnalysisSelector = ({ sKey = '', onSensitivityChange = () => {}
     };
 
     const handleReset = () => {
-        // Reset to the initial state structure from HomePage
         setS(prev => ({
             ...prev,
-            [sKey]: {
-                mode: null,
-                values: [],
-                enabled: false,
-                compareToKey: '',
-                comparisonType: null,
-                waterfall: false,
-                bar: false,
-                point: false
-            }
+            [sKey]: defaultState
         }));
+
+        onSensitivityChange(sKey, defaultState);
     };
 
-    const compareOptions = Array.from({ length: 52 }, (_, i) => `S${i + 10}`)
+    const compareOptions = Array.from({ length: 70 }, (_, i) => `S${i + 10}`)
         .filter(option => option !== sKey);
 
     return (
@@ -251,44 +262,19 @@ const SensitivityAnalysisSelector = ({ sKey = '', onSensitivityChange = () => {}
 
                     <div className="mode-selection">
                         <div
-                            className={`mode-box ${currentS.mode === 'symmetrical' ? 'selected' : ''}`}
-                            onClick={() => handleModeToggle('symmetrical')}
-                        >
-                            <div className="mode-header">
-                                <input
-                                    type="checkbox"
-                                    checked={currentS.mode === 'symmetrical'}
-                                    onChange={() => {}}
-                                    className="mode-checkbox"
-                                />
-                                <span>Symmetrical (±n%)</span>
-                            </div>
-                            {currentS.mode === 'symmetrical' && (
-                                <input
-                                    type="number"
-                                    value={sKey >= 'S34' && sKey <= 'S38' ? 20 : (currentS.values?.[0] || '')}
-                                    onChange={(e) => handleSymmetricalChange(e.target.value)}
-                                    placeholder="Enter percentage"
-                                    className="value-input"
-                                    onClick={(e) => e.stopPropagation()}
-                                />
-                            )}
-                        </div>
-
-                        <div
-                            className={`mode-box ${currentS.mode === 'multiple' ? 'selected' : ''}`}
+                            className={`mode-box ${currentS.mode === 'multiple' || currentS.mode === 'symmetrical' ? 'selected' : ''}`}
                             onClick={() => handleModeToggle('multiple')}
                         >
                             <div className="mode-header">
                                 <input
                                     type="checkbox"
-                                    checked={currentS.mode === 'multiple'}
+                                    checked={currentS.mode === 'multiple' || currentS.mode === 'symmetrical'}
                                     onChange={() => {}}
                                     className="mode-checkbox"
                                 />
                                 <span>Multiple Points (must be ascending)</span>
                             </div>
-                            {currentS.mode === 'multiple' && (
+                            {(currentS.mode === 'multiple' || currentS.mode === 'symmetrical') && (
                                 <div className="points-grid" onClick={(e) => e.stopPropagation()}>
                                     <div className="point-inputs">
                                         {Array(6).fill(null).map((_, idx) => (

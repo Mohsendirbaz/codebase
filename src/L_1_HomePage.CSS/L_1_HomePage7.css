@@ -213,7 +213,6 @@
     display: flex !important;
     gap: var(--spacing-md) !important;
     overflow-x: auto !important;
-    scrollbar-width: none !important;
     -ms-overflow-style: none !important;
     }
     
@@ -688,7 +687,6 @@
       display: flex !important;
       gap: var(--spacing-md) !important;
       overflow-x: auto !important;
-      scrollbar-width: none !important;
       -ms-overflow-style: none !important;
       padding: var(--spacing-md) !important;
       background: var(--app-background) !important;
@@ -791,7 +789,6 @@
       font-size: 0.875rem !important;
       cursor: pointer !important;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-      backdrop-filter: blur(8px) !important;
     }
     
     html body .scaling-operation-select:hover:not(#_):not(#_):not(#_) {
@@ -809,7 +806,6 @@
       color: var(--text-color) !important;
       font-size: 0.875rem !important;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-      backdrop-filter: blur(8px) !important;
     }
     
     html body .scaling-factor-input:focus:not(#_):not(#_):not(#_) {
@@ -860,7 +856,6 @@
       position: sticky !important;
       top: 0 !important;
       z-index: 10 !important;
-      backdrop-filter: blur(8px) !important;
     }
     
     html body .scaling-summary th:not(#_):not(#_):not(#_) {
@@ -936,8 +931,6 @@
       cursor: pointer !important;
       transition: all 0.2s ease !important;
       position: relative !important;
-      appearance: none !important;
-      -webkit-appearance: none !important;
       background: var(--app-background) !important;
     }
     

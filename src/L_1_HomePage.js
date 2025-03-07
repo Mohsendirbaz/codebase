@@ -4,6 +4,7 @@ import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import CustomizableImage from './CustomizableImage';
 import CustomizableTable from './CustomizableTable';
+import ExtendedScaling from './extended_scaling/ExtendedScaling';
 import FormHeader from './FormHeader.js';
 import GeneralFormConfig from './GeneralFormConfig.js';
 import Popup from './Popup.js';
@@ -13,12 +14,14 @@ import './L_1_HomePage.CSS/L_1_HomePage3.css';
 import './L_1_HomePage.CSS/L_1_HomePage4.css';
 import './L_1_HomePage.CSS/L_1_HomePage5.css';
 import './L_1_HomePage.CSS/L_1_HomePage6.css';
-import './L_1_HomePage.CSS/L_1_HomePage7.css';
 import './L_1_HomePage.CSS/L_1_HomePage_AboutUs.css';
 import './L_1_HomePage.CSS/L_1_HomePage_buttons.css';
 import './L_1_HomePage.CSS/L_1_HomePage_monitoring.css';
 import './L_1_HomePage.CSS/L_1_HomePage_selectors.css';
 import './styles/neumorphic-tabs.css';
+import './styles/dark-theme.css';
+import './styles/normal-theme.css';
+import './styles/creative-theme.css';
 import PropertySelector from './PropertySelector.js';
 import MultiVersionSelector from './MultiVersionSelector.js';
 import TodoList from './TodoList.js';
@@ -31,7 +34,6 @@ import SensitivityAnalysis from './components/SensitivityAnalysis';
 import useFormValues from './useFormValues.js';
 import TestingZone from './components/TestingZone';
 import CalculationMonitor from './components/CalculationMonitor';
-import ExtendedScaling from './extended_scaling/ExtendedScaling';
 const L_1_HomePageContent = () => {
     const { selectedVersions, version: contextVersion, setVersion: setContextVersion } = useVersionState();
     const [activeTab, setActiveTab] = useState('AboutUs');
@@ -40,30 +42,13 @@ const L_1_HomePageContent = () => {
     const [season, setSeason] = useState('winter');
     const [S, setS] = useState(() => {
         const initialS = {};
-        for (let i = 10; i <= 61; i++) {
+        for (let i = 10; i <= 79; i++) {
             initialS[`S${i}`] = {
                 mode: null,
                 values: [],
                 enabled: false,
                 compareToKey: '',
                 comparisonType: null,
-                waterfall: false,
-                bar: false,
-                point: false,
-            };
-        }
-        
-        // Enable and configure S34-S38
-        for (let i = 34; i <= 38; i++) {
-            initialS[`S${i}`] = {
-                ...initialS[`S${i}`],
-                mode: 'symmetrical',
-                enabled: true,
-                compareToKey: 'S13',
-                comparisonType: 'primary',
-                waterfall: true,
-                bar: true,
-                point: true,
             };
         }
         
@@ -118,20 +103,29 @@ const L_1_HomePageContent = () => {
 
     // Theme management
     useEffect(() => {
-        document.documentElement.removeAttribute('data-theme');
+        // Remove all theme classes
+        document.documentElement.classList.remove('dark-theme', 'normal-theme', 'creative-theme');
+        
+        // Map season to theme class
+        const themeMap = {
+            'dark': 'dark-theme',
+            'winter': 'normal-theme',
+            'fall': 'creative-theme'
+        };
+        
+        // Add the appropriate theme class
+        document.documentElement.classList.add(themeMap[season]);
+        
+        // Set data-theme attribute for backward compatibility
         document.documentElement.setAttribute('data-theme', season);
-
-        if (season !== 'dark') {
-            const link = document.createElement('link');
-            link.rel = 'stylesheet';
-            link.href = `${process.env.PUBLIC_URL}/styles/${season}.css`;
-
-            const oldLink = document.querySelector('link[href*="/styles/"][href$=".css"]');
-            if (oldLink) {
-                oldLink.remove();
-            }
-
-            document.head.appendChild(link);
+        
+        // Apply theme-specific colors
+        if (season === 'dark') {
+            document.documentElement.style.setProperty('--primary-color', '#1a237e'); // Rich dark blue
+        } else if (season === 'fall') {
+            document.documentElement.style.setProperty('--primary-color', '#8a2be2'); // Vibrant purple
+        } else {
+            document.documentElement.style.setProperty('--primary-color', '#4a90e2'); // Clean blue
         }
     }, [season]);
 
@@ -356,11 +350,11 @@ const L_1_HomePageContent = () => {
 
         // Apply theme-specific styles
         if (newSeason === 'dark') {
-            document.documentElement.style.setProperty('--primary-color', '#2196F3');
+            document.documentElement.style.setProperty('--primary-color', '#1a237e'); // Rich dark blue
         } else if (newSeason === 'fall') {
-            document.documentElement.style.setProperty('--primary-color', '#FF9800');
+            document.documentElement.style.setProperty('--primary-color', '#8a2be2'); // Vibrant purple
         } else {
-            document.documentElement.style.setProperty('--primary-color', '#4CAF50');
+            document.documentElement.style.setProperty('--primary-color', '#4a90e2'); // Clean blue
         }
     };
 
@@ -647,7 +641,7 @@ const L_1_HomePageContent = () => {
     const handleSubmitCompleteSet = async () => {
         const formItems = Object.keys(formValues)
             .filter((key) =>
-                ['Amount1', 'Amount2', 'Amount3', 'Amount4', 'Amount5', 'Amount6'].some((amt) =>
+                ['Amount1', 'Amount2', 'Amount3', 'Amount4', 'Amount5', 'Amount6', 'Amount7'].some((amt) =>
                     key.includes(amt)
                 )
             )
@@ -1173,6 +1167,18 @@ const L_1_HomePageContent = () => {
                 >
                     Process Costs <br /> (Vs, $ / unit)
                 </button>
+                <button
+                    className={`sub-tab-button ${activeSubTab === 'Revenue1Config' ? 'active' : ''}`}
+                    onClick={() => setActiveSubTab('Revenue1Config')}
+                >
+                    Additional Revenue Streams Quantities<br /> (Rs, units)
+                </button>
+                <button
+                    className={`sub-tab-button ${activeSubTab === 'Revenue2Config' ? 'active' : ''}`}
+                    onClick={() => setActiveSubTab('Revenue2Config')}
+                >
+                    Additional Revenue Streams Prices <br /> (Rs, $ / unit)
+                </button>
             </div>
             <div className="form-content">
                 
@@ -1237,7 +1243,32 @@ const L_1_HomePageContent = () => {
                         setVersion={setVersion}
                     />
                 )}
-
+                {activeSubTab === 'Revenue1Config' && (
+                    <GeneralFormConfig
+                        formValues={formValues}
+                        handleInputChange={handleInputChange}
+                        version={version}
+                        filterKeyword="Amount6"
+                        V={V}
+                        toggleV={toggleV}
+                        S={S || {}}
+                        setS={setS}
+                        setVersion={setVersion}
+                    />
+                )}
+                {activeSubTab === 'Revenue2Config' && (
+                    <GeneralFormConfig
+                        formValues={formValues}
+                        handleInputChange={handleInputChange}
+                        version={version}
+                        filterKeyword="Amount7"
+                        V={V}
+                        toggleV={toggleV}
+                        S={S || {}}
+                        setS={setS}
+                        setVersion={setVersion}
+                    />
+                )}
                 <div className="form-action-buttons">
                     <div className="button-row config-row">
                         <div className="tooltip-container">
@@ -1479,14 +1510,12 @@ const L_1_HomePageContent = () => {
                 return renderCase3Content();
             case 'Scaling':
                 return (
-                    <div>
-                        <ExtendedScaling
-                            baseCosts={baseCosts}
-                            onScaledValuesChange={handleScaledValuesChange}
-                            initialScalingGroups={scalingGroups}
-                            onScalingGroupsChange={handleScalingGroupsChange}
-                        />
-                    </div>
+                    <ExtendedScaling
+                        baseCosts={baseCosts}
+                        onScaledValuesChange={handleScaledValuesChange}
+                        initialScalingGroups={scalingGroups}
+                        onScalingGroupsChange={handleScalingGroupsChange}
+                    />
                 );
             case 'Editable':
                 return (
