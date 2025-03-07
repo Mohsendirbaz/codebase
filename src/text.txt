@@ -14,13 +14,13 @@ git rev-parse HEAD  # Should show current
 
 git remote -v  # Should show https://github.com/Mohsendirbaz/SF.git
 
-git checkout -b SF.R54
+git checkout -b SF.R25
 
 git add .
 
-git commit -m "test passed"
+git commit -m "well positioned efficacy box and senistivity vertically stacked, with minor vibrations when hovering outside box"
 
-git push origin SF.R54
+git push codebase SF.R25
 
 
 # Remove existing temp directory (already done)
