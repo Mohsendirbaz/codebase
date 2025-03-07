@@ -1783,3 +1783,11 @@ INFO:root:All plots completed successfully.
 2025-03-07 12:37:01 [INFO] 127.0.0.1 - - [07/Mar/2025 12:37:01] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_operating_expenses_1.png HTTP/1.1[0m" 304 -
 2025-03-07 12:37:01 [INFO] 127.0.0.1 - - [07/Mar/2025 12:37:01] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_revenue_1.png HTTP/1.1[0m" 304 -
 2025-03-07 12:37:01 [INFO] 127.0.0.1 - - [07/Mar/2025 12:37:01] "[36mGET /images/Batch(1)/Results(1)/1_AnnotatedStaticPlots/aggregated_state_taxes_1.png HTTP/1.1[0m" 304 -
+2025-03-07 12:56:19 [INFO] Initialized logging in C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\PNG.log
+2025-03-07 12:56:19 [INFO] Backend directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend
+2025-03-07 12:56:19 [INFO] Script directory: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Visualization_generators
+2025-03-07 12:56:19 [INFO] Starting PNG visualization server on port 5008
+2025-03-07 12:56:19 [INFO] Serving images from: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\Original
+2025-03-07 12:56:19 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5008
+2025-03-07 12:56:19 [INFO] [33mPress CTRL+C to quit[0m

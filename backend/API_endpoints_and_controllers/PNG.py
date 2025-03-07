@@ -29,14 +29,36 @@ if not LOG_DIR.exists():
         print(f"Failed to create log directory: {e}")
         sys.exit(1)
 
-# Initialize logging
-logging.basicConfig(
-    filename=LOG_FILE,
-    level=logging.INFO,
-    format='%(asctime)s [%(levelname)s] %(message)s',
-    datefmt='%Y-%m-%d %H:%M:%S'
-)
+# Custom handler that closes file after each write
+class ImmediateFileHandler(logging.FileHandler):
+    def emit(self, record):
+        super().emit(record)
+        self.close()
+        # Reopen for next write
+        self.stream = self._open()
+
+# Initialize logging to console instead of file
+console_handler = logging.StreamHandler(sys.stdout)
+console_handler.setLevel(logging.INFO)
+console_handler.setFormatter(logging.Formatter(
+    '%(asctime)s [%(levelname)s] %(message)s',
+    '%Y-%m-%d %H:%M:%S'
+))
+
+# Logger configuration
 logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+logger.addHandler(console_handler)
+
+# Commented out file logging that was causing the Git stash issue
+# If file logging is needed, use the ImmediateFileHandler instead
+# file_handler = ImmediateFileHandler(LOG_FILE)
+# file_handler.setLevel(logging.INFO)
+# file_handler.setFormatter(logging.Formatter(
+#     '%(asctime)s [%(levelname)s] %(message)s',
+#     '%Y-%m-%d %H:%M:%S'
+# ))
+# logger.addHandler(file_handler)
 
 # Log initialization status
 logger.info(f"Initialized logging in {LOG_FILE}")
