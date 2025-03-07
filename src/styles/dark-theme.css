@@ -1,0 +1,106 @@
+/* Dark Theme with Rich Dark Blue */
+:root.dark-theme {
+    --primary-color: #1a237e;
+    --secondary-color: #00897b;
+    --text-color: #e0e0e0;
+    --background-color: #121a2e;
+    --sidebar-background: #1e2746;
+    --card-background: #1e2746;
+    --border-color: #2a3356;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #17a2b8;
+    --light-color: #343a40;
+    --dark-color: #f8f9fa;
+    --text-secondary: #adb5bd;
+    --input-background: #1e2746;
+    --input-border: #2a3356;
+    --shadow-dark: rgba(0, 0, 0, 0.3);
+    --shadow-light: rgba(40, 53, 105, 0.2);
+}
+
+/* Action Button Styles */
+.dark-theme .action-button.primary {
+    background-color: var(--primary-color);
+    color: white;
+    border: 2px solid #2a3356;
+    box-shadow: 3px 3px 6px var(--shadow-dark), -3px -3px 6px var(--shadow-light);
+    transition: all 0.3s ease;
+}
+
+.dark-theme .action-button.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
+    border-color: #3f51b5;
+}
+
+.dark-theme .action-button.primary:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.4);
+}
+
+/* Remarks Input Styles */
+.dark-theme .remarks-input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 2px solid var(--border-color);
+    border-radius: 0.25rem;
+    background-color: var(--input-background);
+    color: var(--text-color);
+    box-shadow: inset 2px 2px 5px var(--shadow-dark), inset -2px -2px 5px var(--shadow-light);
+}
+
+.dark-theme .remarks-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: inset 2px 2px 5px var(--shadow-dark), inset -2px -2px 5px var(--shadow-light), 0 0 0 3px rgba(26, 35, 126, 0.25);
+}
+
+/* Tab Styles with Depth Perception */
+.dark-theme .L_1_HomePageTabs .tab-button {
+    background: linear-gradient(145deg, #1e2746, #121a2e);
+    border-radius: 10px;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3), -3px -3px 6px rgba(40, 53, 105, 0.2);
+    color: var(--text-color);
+}
+
+.dark-theme .L_1_HomePageTabs .tab-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4), -4px -4px 8px rgba(40, 53, 105, 0.3);
+}
+
+.dark-theme .L_1_HomePageTabs .tab-button.active {
+    background: linear-gradient(145deg, #2a3356, #1e2746);
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.3), inset -2px -2px 5px rgba(40, 53, 105, 0.2);
+    color: #4a90e2;
+}
+
+/* Form Container */
+.dark-theme .form-container {
+    background-color: var(--sidebar-background);
+    border-radius: 10px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3), -4px -4px 8px rgba(40, 53, 105, 0.2);
+    padding: 20px;
+}
+
+/* Form Items */
+.dark-theme .form-item-container {
+    background-color: var(--card-background);
+    border-left: 6px solid var(--primary-color);
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2), -2px -2px 5px rgba(40, 53, 105, 0.1);
+    margin-bottom: 15px;
+    padding: 15px;
+    transition: all 0.3s ease;
+}
+
+.dark-theme .form-item-container:hover {
+    transform: translateY(-2px);
+    box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.3), -3px -3px 7px rgba(40, 53, 105, 0.2);
+}
+
+.dark-theme .form-item-container.highlighted-container {
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 10px rgba(26, 35, 126, 0.3);
+}

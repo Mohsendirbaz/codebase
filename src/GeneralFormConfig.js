@@ -25,7 +25,7 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
     if (!match) return null;
 
     const num = parseInt(match[1]);
-    if (num >= 10 && num <= 61) return `S${num}`; // S10-S61
+    if (num >= 10 && num <= 79) return `S${num}`; // S10-S79
     return null;
   };
 
@@ -36,6 +36,9 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
     const num = parseInt(vAmountNum);
     if (num >= 40 && num <= 49) return `V${num - 39}`;
     if (num >= 50 && num <= 59) return `V${num - 49}`;
+    if (num >= 50 && num <= 69) return `R${num - 59}`;
+    if (num >= 50 && num <= 79) return `R${num - 69}`;
+
     return null;
   };
 

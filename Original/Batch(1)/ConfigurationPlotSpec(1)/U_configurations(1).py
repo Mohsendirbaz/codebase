@@ -2,3 +2,4 @@
 
 
 {"filteredValue":{"id":"initialSellingPriceAmount13","value":2.4,"start":8,"end":20,"remarks":"a"}}
+{"filteredValue":{"id":"vAmount71","value":1.2,"start":1,"end":5,"remarks":""}}
