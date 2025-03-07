@@ -26,19 +26,20 @@ except ImportError:
 from matplotlib import font_manager
 import matplotlib.ticker as ticker
 
-# Configure logging
-LOG_DIR = BACKEND_DIR / "Logs"
-LOG_DIR.mkdir(exist_ok=True)
-log_file_path = LOG_DIR / "PNG.log"
-
+# Configure logging to use console instead of file to avoid Git stashing issues
 logging.basicConfig(
-    filename=str(log_file_path),
     level=logging.INFO,
-    filemode='a'
+    format='%(asctime)s [%(levelname)s] %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S',
+    handlers=[logging.StreamHandler(sys.stdout)]
 )
 
 logging.info("Script started.")
 logger = logging.getLogger(__name__)
+
+# Create log directory for future use if needed, but don't log to file
+LOG_DIR = BACKEND_DIR / "Logs"
+LOG_DIR.mkdir(exist_ok=True)
 
 # Ensure base directory exists
 os.makedirs(PUBLIC_DIR, exist_ok=True)
