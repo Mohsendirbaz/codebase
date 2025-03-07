@@ -1,21 +1,30 @@
-/* Monitoring button styles */
-button.active-monitoring {
-    background-color: #2196f3;
-    color: white;
-    border-color: #1976d2;
+/* L_1_HomePage_monitoring.css */
+.content-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 
-button.active-monitoring:hover {
-    background-color: #1976d2;
+.L_1_HomePageTabContent {
+  flex: 1;
+  overflow: auto;
+  position: relative;
 }
 
-/* Animation for active monitoring */
-@keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(33, 150, 243, 0.4); }
-    70% { box-shadow: 0 0 0 10px rgba(33, 150, 243, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(33, 150, 243, 0); }
-}
-
-button.active-monitoring {
-    animation: pulse 2s infinite;
+/* Media query for responsive layout */
+@media screen and (max-width: 768px) {
+  .content-container {
+    flex-direction: column;
+  }
+  
+  .sensitivity-monitor.expanded {
+    width: 100%;
+    height: 250px;
+  }
+  
+  .sensitivity-monitor.collapsed {
+    width: 100%;
+    height: 40px;
+  }
 }

@@ -75,7 +75,7 @@ const Dialog = ({ show, onClose, children, triggerRef, isClosing }) => {
     );
 };
 
-const SensitivityAnalysisSelector = ({ sKey = '', onSensitivityChange = () => {}, S, setS }) => {
+const SensitivityAnalysisSelector = ({ sKey = '', onSensitivityChange = () => {}, S, setS, version }) => {
     const triggerButtonRef = useRef(null);
     const [showDialog, setShowDialog] = useState(false);
     const [isClosing, setIsClosing] = useState(false);
@@ -235,8 +235,9 @@ const SensitivityAnalysisSelector = ({ sKey = '', onSensitivityChange = () => {}
 
         // Ensure mode is 'multiple' if it was 'symmetrical'
         const mode = currentS.mode === 'symmetrical' ? 'multiple' : currentS.mode;
-
-        onSensitivityChange(sKey, {
+        
+        // Create configuration object
+        const configData = {
             mode,
             values: currentS.values || [],
             enabled: true,
@@ -245,8 +246,25 @@ const SensitivityAnalysisSelector = ({ sKey = '', onSensitivityChange = () => {}
             waterfall: currentS.waterfall || false,
             bar: currentS.bar || false,
             point: currentS.point || false
-        });
+        };
+        
+        // Log/register this change if version is provided
+        if (version) {
+            fetch('http://localhost:5000/register_sensitivity_change', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    sKey,
+                    configData,
+                    version,
+                    timestamp: new Date().toISOString(),
+                })
+            }).catch(error => {
+                console.error('Error registering sensitivity change:', error);
+            });
+        }
 
+        onSensitivityChange(sKey, configData);
         handleClose();
     };
 
