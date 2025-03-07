@@ -35,6 +35,7 @@ import useFormValues from './useFormValues.js';
 import TestingZone from './components/TestingZone';
 import CalculationMonitor from './components/CalculationMonitor';
 import SensitivityMonitor from './components/SensitivityMonitor';
+import ConfigurationMonitor from './components/ConfigurationMonitor';
 const L_1_HomePageContent = () => {
     const { selectedVersions, version: contextVersion, setVersion: setContextVersion } = useVersionState();
     const [activeTab, setActiveTab] = useState('AboutUs');
@@ -1836,11 +1837,16 @@ const L_1_HomePageContent = () => {
                 </nav>
                 <div className="content-container">
                     {activeTab !== 'AboutUs' && (
-                        <SensitivityMonitor 
-                            S={S}
-                            version={version}
-                            activeTab={activeTab}
-                        />
+                        <>
+                            <SensitivityMonitor 
+                                S={S}
+                                version={version}
+                                activeTab={activeTab}
+                            />
+                            <ConfigurationMonitor 
+                                version={version}
+                            />
+                        </>
                     )}
                     <div className="L_1_HomePageTabContent">
                         {renderTabContent()}
