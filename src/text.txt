@@ -14,13 +14,13 @@ git rev-parse HEAD  # Should show current
 
 git remote -v  # Should show https://github.com/Mohsendirbaz/SF.git
 
-git checkout -b SF.R24
+git checkout -b SF.R25
 
 git add .
 
-git commit -m "Run cfa and generate PNG restored, generate dynamic plots and their respective tabs restored"
+git commit -m "well positioned efficacy box and senistivity vertically stacked, with minor vibrations when hovering outside box"
 
-git push origin SF.R24
+git push codebase SF.R25
 
 
 
