@@ -1859,8 +1859,12 @@ const L_1_HomePageContent = () => {
                                 activeTab={activeTab}
                             />
                             <ConfigurationMonitor 
-                                version={version}
-                            />
+            version={version}
+            onDataFetched={(data) => {
+                console.log(`ConfigurationMonitor: Fetched ${data.standard.length} standard parameters and ${data.timeDependent.length} time-dependent parameters`);
+                // Optional: You can update any parent state or trigger actions based on the fetched data
+            }}
+        />
                         </>
                     )}
                     <div className="L_1_HomePageTabContent">
