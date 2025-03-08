@@ -1,9 +1,15 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import './ConfigurationMonitor.css';
+// Import propertyMapping from the central file
+import useFormValues from '../useFormValues';
 
 /**
  * ConfigurationMonitor component displays configuration values from U_configurations
  * Provides searching and filtering of configuration parameters
+ * Shows both standard and time-dependent parameter variations
+ * 
+ * @param {Object} props Component props
+ * @param {string|number} props.version Current configuration version to display
  */
 const ConfigurationMonitor = ({ version }) => {
   // Component state
@@ -11,46 +17,15 @@ const ConfigurationMonitor = ({ version }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [filterByGroup, setFilterByGroup] = useState('all');
   const [configData, setConfigData] = useState([]);
+  const [timeDependentData, setTimeDependentData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [lastFetchTime, setLastFetchTime] = useState(null);
 
-  // Property mapping for human-readable names
-  const propertyMapping = {
-    // Amount10-19 group
-    "plantLifetimeAmount10": "Plant Lifetime",
-    "bECAmount11": "Bare Erected Cost",
-    "numberOfUnitsAmount12": "Number of Units",
-    "initialSellingPriceAmount13": "Price",
-    "totalOperatingCostPercentageAmount14": "Direct Total Operating Cost Percentage as % of Revenue",
-    "engineering_Procurement_and_Construction_EPC_Amount15": "Engineering Procurement and Construction as % of BEC",
-    "process_contingency_PC_Amount16": "Process Contingency as % of BEC",
-    "project_Contingency_PT_BEC_EPC_PCAmount17": "Project Contingency as % of BEC, EPC, PC",
-    "use_direct_operating_expensesAmount18": "Use Direct Operating Expenses",
+  // Get propertyMapping from the central file
+  const { propertyMapping } = useFormValues();
 
-    // Amount20-29 group
-    "depreciationMethodAmount20": "Depreciation Method",
-    "loanTypeAmount21": "Loan Type",
-    "interestTypeAmount22": "Interest Type",
-    "generalInflationRateAmount23": "General Inflation Rate",
-    "interestProportionAmount24": "Interest Proportion",
-    "principalProportionAmount25": "Principal Proportion",
-    "loanPercentageAmount26": "Loan Percentage of TOC",
-    "repaymentPercentageOfRevenueAmount27": "Repayment Percentage Of Revenue",
-    "numberofconstructionYearsAmount28": "Number of Construction Years",
-
-    // Amount30-39 group
-    "iRRAmount30": "Internal Rate of Return",
-    "annualInterestRateAmount31": "Annual Interest Rate",
-    "stateTaxRateAmount32": "State Tax Rate",
-    "federalTaxRateAmount33": "Federal Tax Rate",
-    "rawmaterialAmount34": "Feedstock Cost",
-    "laborAmount35": "Labor Cost",
-    "utilityAmount36": "Utility Cost",
-    "maintenanceAmount37": "Maintenance Cost",
-    "insuranceAmount38": "Insurance Cost",
-  };
-
-  // Helper function to categorize parameters by their group (Amount10-19, Amount20-29, etc.)
+  // Helper function to categorize parameters by their group
   const categorizeParam = (id) => {
     if (id.includes('Amount1')) return 'Project Settings';
     if (id.includes('Amount2')) return 'Loan Settings';
@@ -62,78 +37,198 @@ const ConfigurationMonitor = ({ version }) => {
     return 'Other';
   };
 
-  // Fetch configuration data from backend when version changes
-  useEffect(() => {
-    if (!version) return;
+  /**
+   * Fetch configuration data from backend when version changes
+   * Uses dedicated ConfigurationMonitor API endpoints
+   */
+  const fetchConfigData = async () => {
+    // Skip fetch if version is empty/invalid
+    if (!version) {
+      console.log('ConfigurationMonitor: Skipping fetch - no version provided');
+      return;
+    }
     
-    const fetchConfigData = async () => {
-      setIsLoading(true);
-      setError(null);
+    setIsLoading(true);
+    setError(null);
+    
+    try {
+      console.log(`ConfigurationMonitor: Fetching configuration for version ${version}`);
+      
+      // Fetch standard parameters from dedicated endpoint
+      const response = await fetch(`http://localhost:5001/config_monitor/standard/${version}`);
+      
+      if (!response.ok) {
+        throw new Error(`Failed to fetch standard configuration data: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      
+      // Extract standard parameters from filteredValues
+      if (data.filteredValues && Array.isArray(data.filteredValues)) {
+        const standardParams = data.filteredValues.map(item => ({
+          id: item.id,
+          value: typeof item.value === 'string' ? 
+                (isNaN(item.value) ? item.value : parseFloat(item.value)) : 
+                item.value,
+          remarks: item.remarks || ''
+        }));
+        
+        setConfigData(standardParams);
+        console.log(`ConfigurationMonitor: Processed ${standardParams.length} standard parameters`);
+      }
+      
+      // Fetch time-dependent parameters from dedicated endpoint
       try {
-        const response = await fetch('http://localhost:5000/load_configuration', {
+        const tdResponse = await fetch(`http://localhost:5001/config_monitor/time_dependent/${version}`);
+        
+        if (tdResponse.ok) {
+          const tdData = await tdResponse.json();
+          
+          if (tdData.timeDependent && Array.isArray(tdData.timeDependent)) {
+            setTimeDependentData(tdData.timeDependent);
+            console.log(`ConfigurationMonitor: Processed ${tdData.timeDependent.length} time-dependent parameters`);
+          }
+        } else {
+          console.warn(`Failed to fetch time-dependent parameters: ${tdResponse.status}`);
+        }
+      } catch (tdError) {
+        console.warn('Unable to fetch time-dependent parameters:', tdError);
+      }
+      
+      setLastFetchTime(new Date());
+      
+    } catch (error) {
+      console.error('Error fetching configuration data:', error);
+      setError(`Failed to load configuration data: ${error.message}`);
+      
+      // Fallback to existing endpoint if the dedicated server is not available
+      try {
+        console.log('Attempting fallback to existing load_configuration endpoint');
+        
+        const fallbackResponse = await fetch('http://localhost:5000/load_configuration', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ version })
         });
         
-        if (!response.ok) {
-          throw new Error(`Failed to fetch configuration data: ${response.status}`);
+        if (fallbackResponse.ok) {
+          const fallbackData = await fallbackResponse.json();
+          
+          if (fallbackData.filteredValues && Array.isArray(fallbackData.filteredValues)) {
+            const standardParams = fallbackData.filteredValues.map(item => ({
+              id: item.id,
+              value: typeof item.value === 'string' ? 
+                    (isNaN(item.value) ? item.value : parseFloat(item.value)) : 
+                    item.value,
+              remarks: item.remarks || ''
+            }));
+            
+            setConfigData(standardParams);
+            setError(null); // Clear error since fallback succeeded
+            setLastFetchTime(new Date());
+            console.log(`Fallback successful: Processed ${standardParams.length} standard parameters`);
+          }
+        } else {
+          console.error('Fallback also failed:', fallbackResponse.status);
         }
-        
-        const data = await response.json();
-        setConfigData(data.filteredValues || []);
-      } catch (error) {
-        console.error('Error fetching configuration data:', error);
-        setError('Failed to load configuration data. Please try again.');
-      } finally {
-        setIsLoading(false);
+      } catch (fallbackError) {
+        console.error('Fallback attempt failed:', fallbackError);
       }
-    };
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
+  // Fetch data when version changes
+  useEffect(() => {
     fetchConfigData();
   }, [version]);
 
-  // Process and group configuration data
-  const groupedParams = useMemo(() => {
-    if (!configData || configData.length === 0) return {};
+  // Organize configurations by parameter ID to group standard and time-dependent variants
+  const organizedParams = useMemo(() => {
+    const result = {};
     
-    // Filter based on search term and group filter
-    const filteredParams = configData.filter(param => {
-      const matchesSearch = searchTerm === '' || 
-        param.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        (propertyMapping[param.id] && propertyMapping[param.id].toLowerCase().includes(searchTerm.toLowerCase())) ||
-        (param.remarks && param.remarks.toLowerCase().includes(searchTerm.toLowerCase()));
-      
-      const category = categorizeParam(param.id);
-      const matchesGroup = filterByGroup === 'all' || category === filterByGroup;
-      
-      return matchesSearch && matchesGroup;
+    // First, add all standard parameters
+    configData.forEach(param => {
+      if (!result[param.id]) {
+        result[param.id] = {
+          id: param.id,
+          name: propertyMapping[param.id] || param.id,
+          category: categorizeParam(param.id),
+          standard: param,
+          timeVariants: []
+        };
+      }
     });
     
-    // Group by category
-    return filteredParams.reduce((groups, param) => {
-      const category = categorizeParam(param.id);
-      
-      if (!groups[category]) {
-        groups[category] = [];
+    // Then add time-dependent variants
+    timeDependentData.forEach(param => {
+      if (!result[param.id]) {
+        // Create entry if it doesn't exist (shouldn't happen normally, but for robustness)
+        result[param.id] = {
+          id: param.id,
+          name: propertyMapping[param.id] || param.id,
+          category: categorizeParam(param.id),
+          standard: null,
+          timeVariants: []
+        };
       }
       
-      groups[category].push(param);
-      return groups;
-    }, {});
-  }, [configData, searchTerm, filterByGroup]);
+      result[param.id].timeVariants.push(param);
+    });
+    
+    return result;
+  }, [configData, timeDependentData, propertyMapping]);
+
+  // Filter and group parameters based on search and category filter
+  const filteredGroupedParams = useMemo(() => {
+    const groups = {};
+    
+    Object.values(organizedParams).forEach(param => {
+      // Skip if it doesn't match search term
+      const matchesSearch = searchTerm === '' || 
+        param.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        param.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (param.standard?.remarks && param.standard.remarks.toLowerCase().includes(searchTerm.toLowerCase())) ||
+        param.timeVariants.some(v => v.remarks && v.remarks.toLowerCase().includes(searchTerm.toLowerCase()));
+      
+      if (!matchesSearch) return;
+      
+      // Skip if it doesn't match category filter
+      if (filterByGroup !== 'all' && param.category !== filterByGroup) return;
+      
+      // Add to the appropriate group
+      if (!groups[param.category]) {
+        groups[param.category] = [];
+      }
+      
+      groups[param.category].push(param);
+    });
+    
+    // Sort parameters within each group
+    Object.keys(groups).forEach(category => {
+      groups[category].sort((a, b) => a.id.localeCompare(b.id));
+    });
+    
+    return groups;
+  }, [organizedParams, searchTerm, filterByGroup]);
 
   // Format value for display based on type
   const formatValue = (value) => {
     if (value === null || value === undefined) return 'N/A';
     if (typeof value === 'number') {
       // Format numbers with appropriate precision
-      return Math.abs(value) < 0.01 ? value.toString() : value.toLocaleString(undefined, {
+      return Math.abs(value) < 0.01 ? value.toFixed(4) : value.toLocaleString(undefined, {
         minimumFractionDigits: 0,
         maximumFractionDigits: 2
       });
     }
     return value.toString();
+  };
+
+  // Manual refresh handler
+  const handleManualRefresh = () => {
+    fetchConfigData();
   };
 
   return (
@@ -142,13 +237,23 @@ const ConfigurationMonitor = ({ version }) => {
         {isExpanded ? (
           <>
             <h3>Configuration Monitor</h3>
-            <button 
-              className="toggle-button" 
-              onClick={() => setIsExpanded(false)}
-              title="Collapse panel"
-            >
-              ◀
-            </button>
+            <div className="header-controls">
+              <button 
+                className="refresh-button" 
+                onClick={handleManualRefresh}
+                title="Refresh configuration data"
+                disabled={isLoading}
+              >
+                ↻
+              </button>
+              <button 
+                className="toggle-button" 
+                onClick={() => setIsExpanded(false)}
+                title="Collapse panel"
+              >
+                ◀
+              </button>
+            </div>
           </>
         ) : (
           <button 
@@ -194,7 +299,15 @@ const ConfigurationMonitor = ({ version }) => {
           <div className="config-status">
             <div className="version-info">Version: {version}</div>
             <div className="param-count">
-              {configData.length} parameters
+              <span>{configData.length} parameters</span>
+              {timeDependentData.length > 0 && (
+                <span> • {timeDependentData.length} time variations</span>
+              )}
+              {lastFetchTime && (
+                <span className="last-updated">
+                  • Updated: {lastFetchTime.toLocaleTimeString()}
+                </span>
+              )}
             </div>
           </div>
           
@@ -207,43 +320,68 @@ const ConfigurationMonitor = ({ version }) => {
             <div className="error-message">{error}</div>
           )}
           
-          {/* Parameters list - grouped by category */}
+          {/* Integrated parameters list - grouped by category */}
           {!isLoading && !error && (
             <div className="parameters-list">
-              {Object.keys(groupedParams).length === 0 ? (
+              {Object.keys(filteredGroupedParams).length === 0 ? (
                 <div className="empty-state">
-                  {configData.length === 0 
+                  {Object.keys(organizedParams).length === 0
                     ? "No configuration data available" 
                     : "No parameters match your filters"}
                 </div>
               ) : (
-                Object.entries(groupedParams).map(([groupName, params]) => (
+                Object.entries(filteredGroupedParams).map(([groupName, params]) => (
                   <div key={groupName} className="param-group">
                     <div className="group-header">{groupName}</div>
                     
                     {params.map(param => (
-                      <div key={param.id} className="parameter-item">
-                        <div className="parameter-header">
-                          <span className="param-id">{propertyMapping[param.id] || param.id}</span>
-                          <span className="param-value">{formatValue(param.value)}</span>
+                      <div key={param.id} className="parameter-container">
+                        <div className="parameter-id-header">
+                          <span className="param-name">{param.name}</span>
+                          <span className="param-technical-id">ID: {param.id}</span>
                         </div>
                         
-                        {param.remarks && (
-                          <div className="param-remarks">
-                            <span>Note: {param.remarks}</span>
+                        {/* Standard parameter value */}
+                        {param.standard && (
+                          <div className="parameter-standard">
+                            <div className="parameter-value-row">
+                              <span className="param-value-label">Base Value:</span>
+                              <span className="param-value">{formatValue(param.standard.value)}</span>
+                            </div>
+                            
+                            {param.standard.remarks && (
+                              <div className="param-remarks">
+                                <span>Note: {param.standard.remarks}</span>
+                              </div>
+                            )}
                           </div>
                         )}
                         
-                        {/* If this parameter has start/end values */}
-                        {(param.start !== undefined || param.end !== undefined) && (
-                          <div className="param-period">
-                            <span>Period: {param.start || 0} to {param.end || 'End'}</span>
+                        {/* Time-dependent variations */}
+                        {param.timeVariants.length > 0 && (
+                          <div className="parameter-time-variants">
+                            <div className="time-variants-header">
+                              Time-Dependent Values:
+                            </div>
+                            <div className="time-variants-list">
+                              {param.timeVariants.map((variant, idx) => (
+                                <div key={`${param.id}-tv-${idx}`} className="time-variant-item">
+                                  <div className="time-variant-period">
+                                    Years {variant.start} to {variant.end}:
+                                  </div>
+                                  <div className="time-variant-value">
+                                    {formatValue(variant.value)}
+                                  </div>
+                                  {variant.remarks && (
+                                    <div className="time-variant-remarks">
+                                      {variant.remarks}
+                                    </div>
+                                  )}
+                                </div>
+                              ))}
+                            </div>
                           </div>
                         )}
-                        
-                        <div className="param-technical-id">
-                          <span>ID: {param.id}</span>
-                        </div>
                       </div>
                     ))}
                   </div>
