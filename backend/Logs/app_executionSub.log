@@ -1259,3 +1259,11 @@ PermissionError: [WinError 5] Access is denied: 'C:\\Users\\md8w7'
 2025-03-08 14:43:49,884 DEBUG Logging is configured and working correctly.
 2025-03-08 14:43:49,914 WARNING  * Debugger is active!
 2025-03-08 14:43:49,920 INFO  * Debugger PIN: 119-059-632
+2025-03-08 15:03:40,151 DEBUG Logging is configured and working correctly.
+2025-03-08 15:03:40,194 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5009
+2025-03-08 15:03:40,194 INFO [33mPress CTRL+C to quit[0m
+2025-03-08 15:03:40,197 INFO  * Restarting with stat
+2025-03-08 15:03:40,678 DEBUG Logging is configured and working correctly.
+2025-03-08 15:03:40,708 WARNING  * Debugger is active!
+2025-03-08 15:03:40,714 INFO  * Debugger PIN: 119-059-632

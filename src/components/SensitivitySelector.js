@@ -287,7 +287,8 @@ const SensitivityAnalysisSelector = ({ sKey = '', onSensitivityChange = () => {}
                 className="sensitivity-btn1 primary-btn1"
                 onClick={() => setShowDialog(true)}
             >
-                Sensitivity
+                Sensitivity Analysis<br/>
+                (allows analysis of multiple basevalues at once)
             </button>
 
             <Dialog

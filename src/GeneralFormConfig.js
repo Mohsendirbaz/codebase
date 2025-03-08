@@ -233,12 +233,6 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
     </div>
                 {/* Action Buttons */}
                 <div className="action-buttons">
-                  <button
-                    className="action-button primary"
-                    onClick={(e) => handleScheduleClick(e, item.id)}
-                  >
-                    Specify Efficacy Period
-                  </button>
                   {item.sKey && (
                     <SensitivityAnalysisSelector
                       sKey={item.sKey}
@@ -253,6 +247,13 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
                       version={version}
                     />
                   )}
+                  <button
+                    className="action-button primary"
+                    onClick={(e) => handleScheduleClick(e, item.id)}
+                  >
+                    Specify Efficacy Period<br/>
+                    (overrides basevalues for speified intervals)
+                  </button>
                   <button
                     className="action-button factual"
                     onClick={(e) => handleScheduleClick(e, item.id)}
@@ -292,12 +293,6 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
                 
                 {/* Action Buttons */}
                 <div className="action-buttons">
-                  <button
-                    className="action-button primary"
-                    onClick={(e) => handleScheduleClick(e, item.id)}
-                  >
-                    Specify Efficacy Period
-                  </button>
                   {item.sKey && (
                     <SensitivityAnalysisSelector
                       sKey={item.sKey}
@@ -312,6 +307,13 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
                       version={version}
                     />
                   )}
+                  <button
+                    className="action-button primary"
+                    onClick={(e) => handleScheduleClick(e, item.id)}
+                  >
+                    Specify Efficacy Period<br/>
+                    (overrides basevalues for speified intervals)
+                  </button>
                   <button
                     className="action-button factual"
                     onClick={(e) => handleScheduleClick(e, item.id)}
