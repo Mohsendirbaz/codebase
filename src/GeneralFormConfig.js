@@ -265,16 +265,61 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
 
             {/* Select Input */}
             {item.type === 'select' && (
-              <select
-                id={item.id}
-                value={item.value || ''}
-                onChange={(e) => handleInputChange(e, item.id, 'value')}
-                className="select-input"
-              >
-                {item.options.map((option, index) => (
-                  <option key={index} value={option}>{option}</option>
-                ))}
-              </select>
+              <div className="input-controls-section">
+                <div className="value-container">
+                  <select
+                    id={item.id}
+                    value={item.value || ''}
+                    onChange={(e) => handleInputChange(e, item.id, 'value')}
+                    className="select-input"
+                  >
+                    {item.options.map((option, index) => (
+                      <option key={index} value={option}>{option}</option>
+                    ))}
+                  </select>
+                </div>
+                
+                <div className="remarks-container">
+                  <input
+                    type="text"
+                    id={`${item.id}-remarks`}
+                    value={item.remarks || ''}
+                    onChange={(e) => handleInputChange({ target: { value: e.target.value } }, item.id, 'remarks')}
+                    placeholder="Add remarks"
+                    className="remarks-input remarks-important"
+                  />
+                </div>
+                
+                {/* Action Buttons */}
+                <div className="action-buttons">
+                  <button
+                    className="action-button primary"
+                    onClick={(e) => handleScheduleClick(e, item.id)}
+                  >
+                    Specify Efficacy Period
+                  </button>
+                  {item.sKey && (
+                    <SensitivityAnalysisSelector
+                      sKey={item.sKey}
+                      onSensitivityChange={(sKey, config) => {
+                        setS(prev => ({
+                          ...prev,
+                          [sKey]: config
+                        }));
+                      }}
+                      S={S}
+                      setS={setS}
+                      version={version}
+                    />
+                  )}
+                  <button
+                    className="action-button factual"
+                    onClick={(e) => handleScheduleClick(e, item.id)}
+                  >
+                    Find Factual Precedence
+                  </button>
+                </div>
+              </div>
             )}
           </div>
         </div>

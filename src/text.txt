@@ -1,13 +1,5 @@
 
 
-
-import './L_1_HomePage1.css';
-import './L_1_HomePage2.css';
-import './L_1_HomePage3.css';
-import './L_1_HomePage4.css';
-import './L_1_HomePage5.css';
-import './L_1_HomePage6.css';
-
 git status
 
 git rev-parse HEAD  # Should show current

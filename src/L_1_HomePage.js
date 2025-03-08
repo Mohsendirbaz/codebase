@@ -5,6 +5,8 @@ import 'react-tabs/style/react-tabs.css';
 import CustomizableImage from './CustomizableImage';
 import CustomizableTable from './CustomizableTable';
 import ExtendedScaling from './extended_scaling/ExtendedScaling';
+import FactEngine from './FactEngine';
+import FactEngineAdmin from './FactEngineAdmin';
 import FormHeader from './FormHeader.js';
 import GeneralFormConfig from './GeneralFormConfig.js';
 import Popup from './Popup.js';
@@ -18,6 +20,8 @@ import './L_1_HomePage.CSS/L_1_HomePage_AboutUs.css';
 import './L_1_HomePage.CSS/L_1_HomePage_buttons.css';
 import './L_1_HomePage.CSS/L_1_HomePage_monitoring.css';
 import './L_1_HomePage.CSS/L_1_HomePage_selectors.css';
+import './L_1_HomePage.CSS/L_1_HomePage_FactEngine.css';
+import './L_1_HomePage.CSS/L_1_HomePage_FactAdmin.css';
 import './styles/neumorphic-tabs.css';
 import './styles/dark-theme.css';
 import './styles/normal-theme.css';
@@ -1664,6 +1668,7 @@ const L_1_HomePageContent = () => {
                     
                     <p>We invite you to join us in this journey toward a more financially literate world—one where economic empowerment is accessible to all who seek it.</p>
                 </div>
+                
             </div>
         );
     };
@@ -1727,9 +1732,14 @@ const L_1_HomePageContent = () => {
            
             case 'TestingZone':
             return <TestingZone />;
-            case 'SensitivityIntegration':
-            return <EnhancedSensitivityIntegration />;
-        default:
+                    case 'FactAdmin':
+                        return (
+                            <div>
+                                <FactEngine />
+                                <FactEngineAdmin />
+                            </div>
+                        );
+                    default:
             return null;
         }
     };
@@ -1745,7 +1755,7 @@ const L_1_HomePageContent = () => {
                     <h2 className="h2-small">Grand opening April 15th 2025</h2>
                 </div>
                 <div className="theme-ribbon">
-                    <div className="logo-container"></div>
+                    
                     <div className="theme-buttons">
                         <button
                             className={`theme-button ${season === 'fall' ? 'active' : ''}`}
@@ -1833,10 +1843,10 @@ const L_1_HomePageContent = () => {
                             Testing Zone
                         </button>
                         <button
-                            className={`tab-button ${activeTab === 'SensitivityIntegration' ? 'active' : ''}`}
-                            onClick={() => setActiveTab('SensitivityIntegration')}
+                            className={`tab-button ${activeTab === 'FactAdmin' ? 'active' : ''}`}
+                            onClick={() => setActiveTab('FactAdmin')}
                         >
-                            Sensitivity Integration
+                            Admin
                         </button>
                     </div>
                 </nav>
