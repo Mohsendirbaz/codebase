@@ -1,0 +1,306 @@
+.fact-admin-container {
+  padding: 20px;
+  background-color: var(--bg-color, #ffffff);
+  border-radius: 8px;
+  box-shadow: var(--card-shadow, 0 4px 15px rgba(0, 0, 0, 0.1));
+}
+
+.fact-admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--border-color, #eee);
+}
+
+.fact-admin-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-color, #333);
+  margin: 0;
+}
+
+.facts-summary {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.summary-card {
+  flex: 1;
+  background-color: var(--card-bg-color, #f9f9f9);
+  border-radius: 8px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--card-shadow, 0 2px 8px rgba(0, 0, 0, 0.1));
+}
+
+.summary-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-color, #4a90e2);
+}
+
+.summary-label {
+  font-size: 0.9rem;
+  color: var(--secondary-text, #666);
+  margin-top: 5px;
+}
+
+.reset-all-btn {
+  padding: 8px 16px;
+  background-color: var(--danger-color, #dc3545);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.reset-all-btn:hover {
+  background-color: var(--danger-hover, #bd2130);
+}
+
+.add-fact-section {
+  margin-bottom: 30px;
+}
+
+.add-fact-form {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.add-fact-form textarea {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid var(--border-color, #ddd);
+  border-radius: 4px;
+  resize: vertical;
+  min-height: 80px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  background-color: var(--input-bg, #fff);
+  color: var(--text-color, #333);
+}
+
+.add-fact-form textarea:focus {
+  outline: none;
+  border-color: var(--primary-color, #4a90e2);
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.25);
+}
+
+.add-fact-btn {
+  padding: 12px 20px;
+  background-color: var(--success-color, #28a745);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  height: 80px;
+  transition: background-color 0.2s;
+}
+
+.add-fact-btn:hover {
+  background-color: var(--success-hover, #218838);
+}
+
+.facts-list-section h3 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: var(--text-color, #333);
+}
+
+.fact-admin-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.fact-admin-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: var(--card-bg-color, #f9f9f9);
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-shadow: var(--card-shadow, 0 2px 8px rgba(0, 0, 0, 0.1));
+}
+
+.fact-admin-content {
+  flex: 1;
+  margin-right: 15px;
+}
+
+.fact-admin-text {
+  margin: 0 0 8px 0;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: var(--text-color, #333);
+}
+
+.fact-admin-stats {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 0.9rem;
+  color: var(--secondary-text, #666);
+}
+
+.fact-admin-agrees {
+  display: flex;
+  align-items: center;
+}
+
+.fact-admin-agrees-icon {
+  margin-right: 5px;
+  color: var(--primary-color, #4a90e2);
+}
+
+.fact-admin-pinned {
+  display: flex;
+  align-items: center;
+  color: var(--pin-color, #ffc107);
+}
+
+.fact-admin-pinned-icon {
+  margin-right: 5px;
+}
+
+.fact-admin-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.fact-admin-btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.fact-admin-edit-btn {
+  background-color: var(--primary-color, #4a90e2);
+  color: white;
+}
+
+.fact-admin-edit-btn:hover {
+  background-color: var(--primary-hover, #3a7dce);
+}
+
+.fact-admin-reset-btn {
+  background-color: var(--warning-color, #ffc107);
+  color: #000;
+}
+
+.fact-admin-reset-btn:hover {
+  background-color: var(--warning-hover, #e0a800);
+}
+
+.fact-admin-delete-btn {
+  background-color: var(--danger-color, #dc3545);
+  color: white;
+}
+
+.fact-admin-delete-btn:hover {
+  background-color: var(--danger-hover, #bd2130);
+}
+
+.fact-edit-form {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+}
+
+.fact-edit-form textarea {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid var(--border-color, #ddd);
+  border-radius: 4px;
+  resize: vertical;
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+.fact-edit-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.fact-save-btn {
+  background-color: var(--success-color, #28a745);
+  color: white;
+}
+
+.fact-save-btn:hover {
+  background-color: var(--success-hover, #218838);
+}
+
+.fact-cancel-btn {
+  background-color: var(--secondary-color, #6c757d);
+  color: white;
+}
+
+.fact-cancel-btn:hover {
+  background-color: var(--secondary-hover, #5a6268);
+}
+
+/* No facts message */
+.no-facts-message {
+  text-align: center;
+  padding: 30px;
+  color: var(--secondary-text, #666);
+  font-style: italic;
+}
+
+/* Dark theme compatibility */
+.dark-theme .fact-admin-container {
+  background-color: #2a2a2a;
+}
+
+.dark-theme .fact-admin-title,
+.dark-theme .fact-admin-text {
+  color: #e0e0e0;
+}
+
+.dark-theme .summary-card,
+.dark-theme .fact-admin-item {
+  background-color: #333;
+}
+
+.dark-theme .add-fact-form textarea {
+  background-color: #333;
+  color: #e0e0e0;
+  border-color: #444;
+}
+
+.dark-theme .summary-label,
+.dark-theme .fact-admin-stats {
+  color: #aaa;
+}
+
+/* Animation for item changes */
+@keyframes highlight {
+  0% { background-color: var(--highlight-color, rgba(74, 144, 226, 0.3)); }
+  100% { background-color: var(--card-bg-color, #f9f9f9); }
+}
+
+.fact-admin-item.highlight {
+  animation: highlight 2s ease;
+}
+
+.dark-theme .fact-admin-item.highlight {
+  animation: highlight 2s ease;
+  --highlight-color: rgba(74, 144, 226, 0.5);
+  --card-bg-color: #333;
+}

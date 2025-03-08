@@ -1,0 +1,208 @@
+.fact-engine-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 350px;
+  background-color: var(--bg-color, #ffffff);
+  border-radius: 12px;
+  box-shadow: var(--card-shadow, 0 4px 20px rgba(0, 0, 0, 0.15));
+  transition: all 0.3s ease;
+  overflow: hidden;
+  z-index: 100;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.fact-engine-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px;
+  background-color: var(--primary-color, #4a90e2);
+  color: white;
+  cursor: pointer;
+  border-radius: 12px 12px 0 0;
+}
+
+.fact-engine-header h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.fact-engine-toggle {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s;
+}
+
+.fact-engine-toggle.collapsed {
+  transform: rotate(180deg);
+}
+
+.fact-engine-body {
+  padding: 15px;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.fact-engine-body.collapsed {
+  max-height: 0;
+  padding: 0 15px;
+  overflow: hidden;
+}
+
+.fact-card {
+  background-color: var(--card-bg-color, #f9f9f9);
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-left: 4px solid var(--primary-color, #4a90e2);
+  position: relative;
+}
+
+.fact-card.pinned {
+  border-left-color: var(--pin-color, #ffc107);
+  background-color: var(--pinned-bg, rgba(255, 193, 7, 0.1));
+}
+
+.fact-text {
+  margin: 0 0 10px 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: var(--text-color, #333);
+}
+
+.fact-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+.agree-count {
+  display: flex;
+  align-items: center;
+  color: var(--secondary-text, #666);
+}
+
+.agree-count-icon {
+  margin-right: 5px;
+  color: var(--secondary-color, #6c757d);
+}
+
+.fact-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.fact-btn {
+  font-size: 0.8rem;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s;
+}
+
+.agree-btn {
+  background-color: var(--primary-color, #4a90e2);
+  color: white;
+}
+
+.agree-btn:hover {
+  background-color: var(--primary-hover, #3a7dce);
+}
+
+.pin-btn {
+  background-color: var(--pin-color, #ffc107);
+  color: #000;
+}
+
+.pin-btn:hover {
+  background-color: var(--pin-hover, #e5ac06);
+}
+
+.unpin-btn {
+  background-color: var(--secondary-color, #6c757d);
+  color: white;
+}
+
+.unpin-btn:hover {
+  background-color: var(--secondary-hover, #5a6268);
+}
+
+.generate-btn {
+  width: 100%;
+  margin-top: 15px;
+  padding: 8px;
+  background-color: var(--primary-color, #4a90e2);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.generate-btn:hover {
+  background-color: var(--primary-hover, #3a7dce);
+}
+
+.pinned-facts-section {
+  margin-top: 15px;
+  border-top: 1px solid var(--border-color, #ddd);
+  padding-top: 15px;
+}
+
+.pinned-facts-header {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--text-color, #333);
+}
+
+/* Animation for when a new fact is generated */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fact-card.new-fact {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .fact-engine-container {
+    width: calc(100% - 40px);
+    right: 20px;
+    top: 70px;
+  }
+}
+
+/* Dark theme compatibility */
+.dark-theme .fact-engine-container {
+  background-color: #2a2a2a;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.dark-theme .fact-card {
+  background-color: #333;
+}
+
+.dark-theme .fact-text {
+  color: #e0e0e0;
+}
+
+.dark-theme .agree-count {
+  color: #aaa;
+}
+
+.dark-theme .fact-card.pinned {
+  background-color: rgba(255, 193, 7, 0.15);
+}
