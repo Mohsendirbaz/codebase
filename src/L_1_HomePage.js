@@ -38,7 +38,7 @@ import SensitivityMonitor from './components/SensitivityMonitor';
 import ConfigurationMonitor from './components/ConfigurationMonitor';
 const L_1_HomePageContent = () => {
     const { selectedVersions, version: contextVersion, setVersion: setContextVersion } = useVersionState();
-    const [activeTab, setActiveTab] = useState('AboutUs');
+    const [activeTab, setActiveTab] = useState('Input');
     const [activeSubTab, setActiveSubTab] = useState('ProjectConfig');
     const [selectedProperties, setSelectedProperties] = useState([]);
     const [season, setSeason] = useState('winter');
@@ -1634,30 +1634,35 @@ const L_1_HomePageContent = () => {
             <div className="about-us-container">
                 <div className="about-us-content">
                     <div className="about-us-seal"></div>
-                    <h1>About TEA Space</h1>
+                    <h1>The Transformative Power of Financial Literacy: A Foundation for Economic Empowerment</h1>
                     
-                    <p>Welcome to TEA Space, where Techno-Economic-Social Simulation and Dynamic Modeling converge to revolutionize the way businesses approach cost modeling and economic analysis. Founded in 2025, our platform represents the culmination of years of research and development in economic modeling, data visualization, and user-centered design.</p>
-                    
-                    <div className="decorative-divider">✦ ✦ ✦</div>
-                    
-                    <h2>Our Mission</h2>
-                    <p>TEA Space was established with a singular purpose: to democratize access to sophisticated economic modeling tools. We believe that from the humble lemonade stand to industry giants like Tesla, every business deserves access to powerful, intuitive tools that illuminate the path to financial success and sustainability.</p>
-                    
-                    <h2>Our Approach</h2>
-                    <p>Our platform integrates cutting-edge cash flow analysis, dynamic visualization, and sensitivity testing into a cohesive ecosystem that adapts to your specific needs. By combining technical rigor with an intuitive interface, we've created a solution that speaks the language of both financial analysts and operational decision-makers.</p>
-                    
-                    <h2>Key Features</h2>
-                    <p>TEA Space offers comprehensive tools for project configuration, loan modeling, rate analysis, and process cost optimization. Our dynamic visualization capabilities transform complex data into actionable insights, while our sensitivity analysis tools help you understand how changes in key variables might impact your bottom line.</p>
+                    <p>Financial literacy stands as the cornerstone of personal and professional empowerment in today's complex economic landscape. Beyond basic numeracy, true financial literacy encompasses the ability to synthesize multiple variables, understand their interrelationships, and project their impact across time—skills essential for navigating the increasingly sophisticated financial world we inhabit.</p>
                     
                     <div className="decorative-divider">✦ ✦ ✦</div>
                     
-                    <h2>Looking Forward</h2>
-                    <p>As we prepare for our grand opening on April 15th, 2025, we invite you to explore the capabilities of TEA Space and envision how our platform can transform your approach to economic modeling and business planning. The future of techno-economic analysis is here, and it's more accessible than ever before.</p>
+                    <h2>Bridging the Knowledge Gap</h2>
+                    <p>The absence of comprehensive financial education creates a significant divide in society. Those equipped with robust financial modeling capabilities can anticipate market shifts, optimize resource allocation, and build sustainable wealth. Conversely, individuals lacking these skills often find themselves at a distinct disadvantage, making decisions based on incomplete information and missing opportunities for financial advancement.</p>
                     
-                    <div className="signature-section">
-                        <p>With anticipation for our shared journey,</p>
-                        <p>The TEA Space Team</p>
-                    </div>
+                    <p>Our platform addresses this critical gap by providing learners with sophisticated tools that mirror real-world financial complexities. By enabling users to specify parameter fluctuations at any interval within a project lifecycle, we create an environment where dynamic financial thinking becomes second nature rather than an abstract concept.</p>
+                    
+                    <h2>Beyond Static Analysis</h2>
+                    <p>Traditional financial education often relies on static models that fail to capture the fluid nature of economic realities. Our approach revolutionizes this paradigm by facilitating both backward and forward factorization of cost components with comprehensive historical tracking. Each cell in our cash flow analysis tables contains not merely a value, but a complete narrative of its evolution—providing unprecedented transparency and learning opportunities.</p>
+                    
+                    <p>The ability to build and maintain multiple configurations without losing track of variations creates a framework for understanding how small changes propagate throughout complex financial systems. This dynamic perspective transforms abstract financial concepts into tangible relationships that learners can manipulate, analyze, and internalize.</p>
+                    
+                    <h2>Cultivating Integrated Financial Thinkers</h2>
+                    <p>The merging of techno-economic analyses on our platform serves as the foundation for developing professionals who transcend traditional financial roles. Our graduates emerge with capabilities that extend far beyond conventional financial literacy:</p>
+                    
+                    <p>They approach problems through integrated lenses, recognizing the interconnectedness of financial decisions with technological, social, and environmental factors. Their experience with hierarchical configuration management translates into superior prioritization skills applicable across disciplines and industries. The compositional artistry developed through financial modeling creates professionals who can synthesize disparate elements into cohesive strategies. Perhaps most importantly, they become makers—individuals capable of constructing innovative financial frameworks rather than merely implementing existing ones.</p>
+                    
+                    <div className="decorative-divider">✦ ✦ ✦</div>
+                    
+                    <h2>Reimagining Financial Education</h2>
+                    <p>True financial literacy requires more than memorization of formulas or concepts. It demands immersion in environments that challenge assumptions, reward creative thinking, and provide immediate feedback on financial hypotheses. Our platform creates precisely this environment, offering unparalleled flexibility to construct, test, and refine financial cases that reflect the nuanced realities of modern economic systems.</p>
+                    
+                    <p>By elevating financial literacy from a basic skill to a comprehensive framework for decision-making, we empower individuals to navigate economic uncertainties with confidence and precision. The result is not merely better financial outcomes, but a transformation in how people perceive and interact with the economic dimensions of their lives.</p>
+                    
+                    <p>We invite you to join us in this journey toward a more financially literate world—one where economic empowerment is accessible to all who seek it.</p>
                 </div>
             </div>
         );
