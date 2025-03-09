@@ -104,3 +104,58 @@
     border: 2px solid var(--primary-color);
     box-shadow: 0 0 10px rgba(74, 144, 226, 0.3);
 }
+
+/* Version Selector Normal Theme */
+.normal-theme .version-selector {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    box-shadow: 2px 2px 5px rgba(166, 180, 200, 0.3), -2px -2px 5px rgba(255, 255, 255, 0.8);
+}
+
+.normal-theme .group-header {
+    background-color: var(--sidebar-background);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.normal-theme .group-header:hover {
+    background-color: var(--input-background);
+    transform: translateY(-1px);
+    box-shadow: 2px 2px 4px rgba(166, 180, 200, 0.2);
+}
+
+.normal-theme .group-header.all-selected {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.normal-theme .version-item {
+    transition: all 0.3s ease;
+}
+
+.normal-theme .version-item:hover {
+    background-color: var(--input-background);
+    transform: translateX(2px);
+}
+
+.normal-theme .version-item.selected {
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: 1px 1px 3px rgba(166, 180, 200, 0.3);
+}
+
+.normal-theme .version-checkbox::before {
+    border-color: var(--border-color);
+    background-color: var(--input-background);
+    transition: all 0.3s ease;
+}
+
+.normal-theme .version-item.selected .version-checkbox::before {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.normal-theme .version-item.selected .version-checkbox::after {
+    border-color: white;
+}

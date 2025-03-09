@@ -3,8 +3,8 @@ import sys
 import logging
 from logging.handlers import RotatingFileHandler
 from dotenv import load_dotenv
-import eventlet
-eventlet.monkey_patch()
+from gevent import monkey
+monkey.patch_all()
 
 # Add the backend directory to the Python path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), 'backend')))
@@ -65,7 +65,7 @@ def load_environment():
     os.environ.setdefault('FLASK_ENV', 'development')
     os.environ.setdefault('FLASK_DEBUG', 'False')
     os.environ.setdefault('FLASK_HOST', '0.0.0.0')
-    os.environ.setdefault('FLASK_PORT', '5000')
+    os.environ.setdefault('FLASK_PORT', '5050')
     os.environ.setdefault('SECRET_KEY', 'dev')
 
 def main():

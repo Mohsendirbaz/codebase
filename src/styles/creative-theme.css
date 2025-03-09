@@ -151,3 +151,21 @@
     transform: translateY(-1px);
     box-shadow: 3px 3px 6px rgba(166, 180, 200, 0.6), -3px -3px 6px rgba(255, 255, 255, 1);
 }
+
+/* Version Selector Creative Theme */
+.creative-theme .version-selector {
+    background: linear-gradient(145deg, var(--card-background), var(--sidebar-background));
+    border: none;
+    box-shadow: 0 4px 8px var(--shadow-dark);
+}
+
+.creative-theme .group-header {
+    background: linear-gradient(145deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+}
+
+.creative-theme .version-item.selected {
+    background: linear-gradient(145deg, var(--primary-color), var(--secondary-color));
+    box-shadow: 0 2px 4px var(--shadow-dark);
+}

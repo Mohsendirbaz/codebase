@@ -33,14 +33,6 @@
   color: var(--label-color, #555);
 }
 
-/* Dark mode adjustments */
-[data-theme="dark"] .property-selector-container select,
-[data-theme="dark"] .version-selector-container select {
-  background-color: var(--input-bg-color, #333);
-  color: var(--text-color, #eee);
-  border-color: var(--border-color, #555);
-}
-
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .selectors-container {

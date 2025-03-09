@@ -1523,8 +1523,8 @@ const L_1_HomePageContent = () => {
                     />
                 )}
                 <div className="form-action-buttons">
-                    <div className="button-row config-row">
-                        <div className="tooltip-container">
+                    <div className="button-row config-row load-config-section">
+                        <div className="tooltip-container load-config-button">
                             <button
                                 type="button"
                                 onClick={() => loadConfiguration(version)}
@@ -1532,25 +1532,26 @@ const L_1_HomePageContent = () => {
                                 Load Configuration
                             </button>
                         </div>
-                <div className="version-input-container">
-                    <input
-                        id="versionNumber"
-                        type="number"
-                        className="version-input"
-                        placeholder="1"
-                        value={version}
-                        onChange={handleVersionChange}
-                    />
-                    <input
-                        id="versionExtension"
-                        type="number"
-                        className="version-input"
-                        placeholder="1"
-                        value={versionExtension}
-                        onChange={handleVersionExtensionChange}
-                        aria-label="version extension"
-                    />
-                </div>
+                        <div className="version-inputs-wrapper">
+                            <span className="version-label">Version</span>
+                            <input
+                                id="versionNumber"
+                                type="number"
+                                className="version-input"
+                                placeholder="1"
+                                value={version}
+                                onChange={handleVersionChange}
+                            />
+                            <span className="version-label">Extension</span>
+                            <input
+                                id="versionExtension"
+                                type="number"
+                                className="version-input"
+                                placeholder="1"
+                                value={versionExtension}
+                                onChange={handleVersionExtensionChange}
+                            />
+                        </div>
                     </div>
 
                     <div className="button-row checkbox-row">

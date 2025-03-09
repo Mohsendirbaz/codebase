@@ -1,16 +1,17 @@
 /* ConfigurationMonitor styles */
 
 .config-monitor {
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-color);
   border-radius: 4px;
   margin: 10px;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: var(--card-background);
+  box-shadow: 0 2px 4px var(--shadow-dark);
   transition: all 0.3s ease;
   max-width: 400px;
   max-height: 80vh;
   overflow: hidden;
   position: relative;
+  color: var(--text-color);
 }
 
 .config-monitor.expanded {
@@ -28,14 +29,15 @@
   justify-content: space-between;
   align-items: center;
   padding: 8px 12px;
-  background-color: #f5f5f5;
-  border-bottom: 1px solid #ddd;
+  background-color: var(--sidebar-background);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .config-header h3 {
   margin: 0;
   font-size: 14px;
   font-weight: 600;
+  color: var(--text-color);
 }
 
 .header-controls {
@@ -51,10 +53,7 @@
   padding: 4px 6px;
   margin-left: 5px;
   transition: color 0.2s;
-}
-
-.toggle-button:hover, .refresh-button:hover {
-  color: #0056b3;
+  color: var(--text-color);
 }
 
 .refresh-button {
@@ -62,7 +61,7 @@
 }
 
 .refresh-button:disabled {
-  color: #ccc;
+  color: var(--text-secondary);
   cursor: not-allowed;
 }
 
@@ -85,6 +84,7 @@
   white-space: nowrap;
   margin-bottom: 10px;
   font-size: 12px;
+  color: var(--text-color);
 }
 
 .config-content {
@@ -100,10 +100,26 @@
   margin-bottom: 12px;
 }
 
-.search-input, .group-filter {
+.search-input, 
+.group-filter,
+.enabled-filter {
   padding: 6px 8px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-color);
   border-radius: 4px;
+  font-size: 13px;
+  background-color: var(--input-background);
+  color: var(--text-color);
+}
+
+.enabled-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+}
+
+.enabled-container label {
+  color: var(--text-color);
   font-size: 13px;
 }
 
@@ -111,26 +127,27 @@
   display: flex;
   justify-content: space-between;
   font-size: 12px;
-  color: #666;
+  color: var(--text-color);
   margin-bottom: 10px;
 }
 
 .last-updated {
   margin-left: 5px;
   font-style: italic;
+  color: var(--text-color);
 }
 
 .loading-indicator {
   padding: 10px;
   text-align: center;
-  color: #666;
+  color: var(--text-color);
   font-style: italic;
 }
 
 .error-message {
   padding: 10px;
-  color: #d32f2f;
-  background-color: #ffebee;
+  color: var(--danger-color);
+  background-color: var(--danger-color-light);
   border-radius: 4px;
   margin-bottom: 10px;
 }
@@ -142,23 +159,25 @@
 }
 
 .param-group {
-  border: 1px solid #eee;
+  border: 1px solid var(--border-color);
   border-radius: 4px;
   overflow: hidden;
   margin-bottom: 8px;
+  background-color: var(--card-background);
 }
 
 .group-header {
   padding: 8px 12px;
-  background-color: #f9f9f9;
+  background-color: var(--sidebar-background);
   font-weight: 600;
   font-size: 13px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-color);
 }
 
 .parameter-container {
   padding: 10px;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--border-color);
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -177,13 +196,13 @@
 .param-name {
   font-weight: 600;
   font-size: 13px;
-  color: #333;
+  color: var(--text-color);
   margin-bottom: 2px;
 }
 
 .param-technical-id {
   font-size: 11px;
-  color: #777;
+  color: var(--text-secondary);
 }
 
 .parameter-standard {
@@ -191,9 +210,9 @@
   flex-direction: column;
   gap: 4px;
   padding: 6px 8px;
-  background-color: #f9f9f9;
+  background-color: var(--sidebar-background);
   border-radius: 4px;
-  border-left: 3px solid #4caf50;
+  border-left: 3px solid var(--success-color);
 }
 
 .parameter-value-row {
@@ -204,17 +223,18 @@
 
 .param-value-label {
   font-size: 12px;
-  color: #666;
+  color: var(--text-color);
 }
 
 .param-value {
   font-weight: 600;
   font-size: 13px;
+  color: var(--text-color);
 }
 
 .param-remarks {
   font-size: 12px;
-  color: #666;
+  color: var(--text-secondary);
   font-style: italic;
 }
 
@@ -223,12 +243,14 @@
   flex-direction: column;
   gap: 6px;
   padding: 6px 0;
+  color: var(--text-color);
+  background-color: rgb(224, 231, 242);
 }
 
 .time-variants-header {
   font-size: 12px;
   font-weight: 600;
-  color: #0056b3;
+  color: var(--text-color);
   margin-bottom: 2px;
 }
 
@@ -240,34 +262,36 @@
 
 .time-variant-item {
   padding: 6px 8px;
-  background-color: #e3f2fd;
+  background-color: var(--input-background);
   border-radius: 4px;
-  border-left: 3px solid #2196f3;
+  border-left: 3px solid var(--primary-color);
   display: flex;
   flex-direction: column;
   gap: 2px;
+  color: var(--text-color);
 }
 
 .time-variant-period {
   font-size: 12px;
-  font-weight: 500;
-  color: #0056b3;
+  font-weight: 600;
+  color: var(--text-color);
 }
 
 .time-variant-value {
   font-weight: 600;
   font-size: 13px;
+  color: var(--text-color);
 }
 
 .time-variant-remarks {
   font-size: 11px;
   font-style: italic;
-  color: #666;
+  color: var(--text-secondary);
 }
 
 .empty-state {
   padding: 20px;
   text-align: center;
-  color: #666;
+  color: var(--text-secondary);
   font-style: italic;
 }
