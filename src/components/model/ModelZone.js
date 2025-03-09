@@ -1,9 +1,8 @@
 import React, { useState, useCallback } from 'react';
-import './ModelZone.css';
-import './FilterPopup.css';
+import './neumorphic-modelzone.css';
 import ModelCard from './ModelCard';
 import FilterPopup from './FilterPopup';
-import InheritanceControl from './InheritanceControl';
+import EnhancedInheritanceControl from './EnhancedInheritanceControl';
 import ImpactAnalysis from './ImpactAnalysis';
 import SensitivityEngine from './SensitivityEngine';
 import RiskAssessment from './RiskAssessment';
@@ -12,6 +11,7 @@ import DecisionEngine from './DecisionEngine';
 import OverlayController from './OverlayController';
 import AnalysisVisualizationIntegration from './AnalysisVisualizationIntegration';
 import { useVersionState } from '../../contexts/VersionStateContext';
+import useFormValues from '../../useFormValues';
 
 // Dialog layer types
 const DIALOG_LAYERS = {
@@ -157,6 +157,9 @@ const ModelZone = () => {
   const activeModelData = activeModel 
     ? modelSettings.find(m => m.id === activeModel)
     : null;
+
+  // Get form values and property mapping from the useFormValues hook
+  const { formValues, propertyMapping } = useFormValues();
 
   // Get overlay content based on active dialog
   const getOverlayContent = () => {
@@ -314,11 +317,13 @@ const ModelZone = () => {
         </OverlayController>
       )}
 
-      {/* Inheritance Visualization */}
+      {/* Enhanced Inheritance Visualization */}
       <div className="inheritance-visualization">
-        <InheritanceControl
+        <EnhancedInheritanceControl
           models={modelSettings}
           onUpdate={handleFilterUpdate}
+          propertyMapping={propertyMapping}
+          formValues={formValues}
         />
       </div>
 

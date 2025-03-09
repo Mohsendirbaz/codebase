@@ -1,0 +1,184 @@
+/* Neumorphic design system for Analysis Visualization Integration */
+
+:root {
+  /* Base colors */
+  --shadow-distance: 6px;
+  --shadow-blur: 12px;
+  --shadow-color-light: rgba(255, 255, 255, 0.8);
+  --shadow-color-dark: rgba(0, 0, 0, 0.1);
+  --inner-shadow-distance: 2px;
+  --inner-shadow-blur: 4px;
+  --inner-shadow-color-light: rgba(255, 255, 255, 0.7);
+  --inner-shadow-color-dark: rgba(0, 0, 0, 0.07);
+  --transition-speed: 0.3s;
+  
+  /* Analysis states */
+  --status-idle: #6c757d;
+  --status-running: #3b82f6;
+  --status-paused: #f59e0b;
+  --status-error: #ef4444;
+}
+
+.analysis-visualization-integration {
+  position: relative;
+  padding: var(--model-spacing-lg);
+  background: var(--model-color-background);
+  border-radius: var(--model-border-radius-lg);
+  box-shadow: 
+    var(--shadow-distance) var(--shadow-distance) var(--shadow-blur) var(--shadow-color-dark),
+    calc(-1 * var(--shadow-distance)) calc(-1 * var(--shadow-distance)) var(--shadow-blur) var(--shadow-color-light);
+  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+  overflow: hidden;
+}
+
+/* Status Indicators */
+.analysis-status {
+  display: flex;
+  align-items: center;
+  gap: var(--model-spacing-md);
+  padding: var(--model-spacing-md);
+  margin-bottom: var(--model-spacing-lg);
+  background: var(--model-color-background-alt);
+  border-radius: var(--model-border-radius-md);
+  box-shadow: 
+    inset var(--inner-shadow-distance) var(--inner-shadow-distance) var(--inner-shadow-blur) var(--inner-shadow-color-dark),
+    inset calc(-1 * var(--inner-shadow-distance)) calc(-1 * var(--inner-shadow-distance)) var(--inner-shadow-blur) var(--inner-shadow-color-light);
+}
+
+.status-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: var(--model-border-radius-full);
+  box-shadow: 
+    var(--shadow-distance) var(--shadow-distance) var(--shadow-blur) var(--shadow-color-dark),
+    calc(-1 * var(--shadow-distance)) calc(-1 * var(--shadow-distance)) var(--shadow-blur) var(--shadow-color-light);
+}
+
+.status-indicator.idle { background: var(--status-idle); }
+.status-indicator.running { background: var(--status-running); }
+.status-indicator.paused { background: var(--status-paused); }
+.status-indicator.error { background: var(--status-error); }
+
+/* Progress Bar */
+.progress-container {
+  height: 8px;
+  background: var(--model-color-background);
+  border-radius: var(--model-border-radius-full);
+  overflow: hidden;
+  box-shadow: 
+    inset var(--inner-shadow-distance) var(--inner-shadow-distance) var(--inner-shadow-blur) var(--inner-shadow-color-dark),
+    inset calc(-1 * var(--inner-shadow-distance)) calc(-1 * var(--inner-shadow-distance)) var(--inner-shadow-blur) var(--inner-shadow-color-light);
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--model-color-primary-light), var(--model-color-primary));
+  border-radius: var(--model-border-radius-full);
+  transition: width var(--transition-speed) ease;
+}
+
+/* Parameter Grid */
+.parameter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--model-spacing-md);
+  margin-bottom: var(--model-spacing-lg);
+}
+
+.parameter-item {
+  padding: var(--model-spacing-md);
+  background: var(--model-color-background);
+  border-radius: var(--model-border-radius-md);
+  box-shadow: 
+    var(--shadow-distance) var(--shadow-distance) var(--shadow-blur) var(--shadow-color-dark),
+    calc(-1 * var(--shadow-distance)) calc(-1 * var(--shadow-distance)) var(--shadow-blur) var(--shadow-color-light);
+  transition: all var(--transition-speed) ease;
+}
+
+.parameter-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    calc(var(--shadow-distance) + 2px) calc(var(--shadow-distance) + 2px) calc(var(--shadow-blur) + 4px) var(--shadow-color-dark),
+    calc(-1 * var(--shadow-distance) - 2px) calc(-1 * var(--shadow-distance) - 2px) calc(var(--shadow-blur) + 4px) var(--shadow-color-light);
+}
+
+.parameter-item.active {
+  background: var(--model-color-primary);
+  color: white;
+  box-shadow: 
+    inset var(--inner-shadow-distance) var(--inner-shadow-distance) var(--inner-shadow-blur) var(--inner-shadow-color-dark),
+    inset calc(-1 * var(--inner-shadow-distance)) calc(-1 * var(--inner-shadow-distance)) var(--inner-shadow-blur) var(--inner-shadow-color-light);
+}
+
+/* Results Display */
+.results-container {
+  padding: var(--model-spacing-lg);
+  background: var(--model-color-background-alt);
+  border-radius: var(--model-border-radius-lg);
+  box-shadow: 
+    inset var(--inner-shadow-distance) var(--inner-shadow-distance) var(--inner-shadow-blur) var(--inner-shadow-color-dark),
+    inset calc(-1 * var(--inner-shadow-distance)) calc(-1 * var(--inner-shadow-distance)) var(--inner-shadow-blur) var(--inner-shadow-color-light);
+}
+
+.result-item {
+  margin-bottom: var(--model-spacing-md);
+  padding: var(--model-spacing-md);
+  background: var(--model-color-background);
+  border-radius: var(--model-border-radius-md);
+  box-shadow: 
+    var(--shadow-distance) var(--shadow-distance) var(--shadow-blur) var(--shadow-color-dark),
+    calc(-1 * var(--shadow-distance)) calc(-1 * var(--shadow-distance)) var(--shadow-blur) var(--shadow-color-light);
+}
+
+/* Error States */
+.error-container {
+  padding: var(--model-spacing-md);
+  background: rgba(239, 68, 68, 0.1);
+  border-radius: var(--model-border-radius-md);
+  color: var(--status-error);
+  box-shadow: 
+    inset var(--inner-shadow-distance) var(--inner-shadow-distance) var(--inner-shadow-blur) rgba(239, 68, 68, 0.1),
+    inset calc(-1 * var(--inner-shadow-distance)) calc(-1 * var(--inner-shadow-distance)) var(--inner-shadow-blur) rgba(255, 255, 255, 0.1);
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --shadow-color-light: rgba(255, 255, 255, 0.05);
+    --shadow-color-dark: rgba(0, 0, 0, 0.3);
+    --inner-shadow-color-light: rgba(255, 255, 255, 0.03);
+    --inner-shadow-color-dark: rgba(0, 0, 0, 0.2);
+  }
+
+  .analysis-visualization-integration {
+    background: var(--model-color-background-dark);
+  }
+
+  .analysis-status,
+  .results-container {
+    background: rgba(30, 40, 55, 0.6);
+  }
+
+  .parameter-item {
+    background: var(--model-color-background-dark);
+  }
+
+  .error-container {
+    background: rgba(239, 68, 68, 0.2);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .analysis-visualization-integration {
+    padding: var(--model-spacing-md);
+  }
+
+  .parameter-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .results-container {
+    padding: var(--model-spacing-md);
+  }
+}

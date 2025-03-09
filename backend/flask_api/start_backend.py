@@ -1,149 +1,100 @@
-#!/usr/bin/env python
-"""
-Startup script for the Flask API backend
-This script starts the Flask API server for supporting the ModelZone component
-with sensitivity analysis and price efficacy features
-"""
-
+#!/usr/bin/env python3
 import os
 import sys
-import subprocess
-import time
 import logging
-import argparse
-from pathlib import Path
+from logging.handlers import RotatingFileHandler
+from dotenv import load_dotenv
+import eventlet
+eventlet.monkey_patch()
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler('backend/flask_api/startup.log'),
-        logging.StreamHandler()
+# Add the backend directory to the Python path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from flask_api.app import create_app, run_app
+
+def setup_logging():
+    """Configure logging for the application"""
+    # Create logs directory if it doesn't exist
+    if not os.path.exists('logs'):
+        os.makedirs('logs')
+
+    # Configure file handler
+    file_handler = RotatingFileHandler(
+        'logs/flask_api.log',
+        maxBytes=1024 * 1024,  # 1MB
+        backupCount=10
+    )
+    file_handler.setFormatter(logging.Formatter(
+        '%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'
+    ))
+    file_handler.setLevel(logging.INFO)
+
+    # Configure console handler
+    console_handler = logging.StreamHandler()
+    console_handler.setFormatter(logging.Formatter(
+        '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    ))
+    console_handler.setLevel(logging.INFO)
+
+    # Configure root logger
+    root_logger = logging.getLogger()
+    root_logger.setLevel(logging.INFO)
+    root_logger.addHandler(file_handler)
+    root_logger.addHandler(console_handler)
+
+    # Configure specific loggers
+    loggers = [
+        'werkzeug',
+        'flask_api',
+        'engineio',
+        'socketio'
     ]
-)
-logger = logging.getLogger(__name__)
+    
+    for logger_name in loggers:
+        logger = logging.getLogger(logger_name)
+        logger.setLevel(logging.INFO)
+        logger.addHandler(file_handler)
+        logger.addHandler(console_handler)
 
-def check_requirements():
-    """Check if required packages are installed"""
-    logger.info("Checking required packages...")
-    
-    requirements_path = Path('backend/flask_api/requirements.txt')
-    
-    if not requirements_path.exists():
-        logger.error(f"Requirements file not found at {requirements_path}")
-        return False
-    
-    try:
-        result = subprocess.run(
-            [sys.executable, '-m', 'pip', 'install', '-r', str(requirements_path)],
-            check=True,
-            capture_output=True,
-            text=True
-        )
-        logger.info("Requirements installed successfully")
-        return True
-    except subprocess.CalledProcessError as e:
-        logger.error(f"Failed to install requirements: {e}")
-        logger.error(f"Error output: {e.stderr}")
-        return False
+def load_environment():
+    """Load environment variables"""
+    # Load .env file if it exists
+    env_path = os.path.join(os.path.dirname(__file__), '.env')
+    load_dotenv(env_path)
 
-def start_flask_server(host="0.0.0.0", port=5000, debug=True):
-    """Start the Flask API server"""
-    logger.info(f"Starting Flask API server on {host}:{port}...")
-    
-    # Check if app.py exists
-    app_path = Path('backend/flask_api/app.py')
-    if not app_path.exists():
-        logger.error(f"Flask app not found at {app_path}")
-        return None
-    
-    # Set environment variables
-    env = os.environ.copy()
-    env['FLASK_APP'] = str(app_path)
-    env['FLASK_ENV'] = 'development' if debug else 'production'
-    
-    # Start Flask server
-    try:
-        flask_process = subprocess.Popen(
-            [sys.executable, '-m', 'flask', 'run', '--host', host, '--port', str(port)],
-            env=env,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            text=True
-        )
-        
-        # Wait a bit to ensure the server starts
-        time.sleep(2)
-        
-        # Check if process is still running
-        if flask_process.poll() is not None:
-            stdout, stderr = flask_process.communicate()
-            logger.error(f"Flask server failed to start: {stderr}")
-            return None
-        
-        logger.info(f"Flask API server started (PID: {flask_process.pid})")
-        return flask_process
-    
-    except Exception as e:
-        logger.error(f"Error starting Flask server: {e}")
-        return None
+    # Set default values for required environment variables
+    os.environ.setdefault('FLASK_ENV', 'development')
+    os.environ.setdefault('FLASK_DEBUG', 'False')
+    os.environ.setdefault('FLASK_HOST', '0.0.0.0')
+    os.environ.setdefault('FLASK_PORT', '5000')
+    os.environ.setdefault('SECRET_KEY', 'dev')
 
 def main():
-    """Main function to start all servers"""
-    parser = argparse.ArgumentParser(description='Start the ModelZone backend server')
-    parser.add_argument('--host', default='0.0.0.0', help='Host to bind the server to')
-    parser.add_argument('--port', type=int, default=5000, help='Port to bind the server to')
-    parser.add_argument('--no-check', action='store_true', help='Skip requirements check')
-    parser.add_argument('--production', action='store_true', help='Run in production mode')
-    
-    args = parser.parse_args()
-    
-    logger.info("Starting the ModelZone backend...")
-    
-    # Check requirements
-    if not args.no_check:
-        if not check_requirements():
-            logger.error("Failed to install requirements. Exiting.")
-            return 1
-    
-    # Start Flask server
-    flask_process = start_flask_server(
-        host=args.host,
-        port=args.port,
-        debug=not args.production
-    )
-    
-    if not flask_process:
-        logger.error("Failed to start Flask server. Exiting.")
-        return 1
-    
-    logger.info("All servers started successfully!")
-    logger.info(f"API server available at http://{args.host}:{args.port}/")
-    
+    """Main entry point for the application"""
     try:
-        # Wait for Flask server to exit
-        stdout, stderr = flask_process.communicate()
+        # Setup logging
+        setup_logging()
+        logger = logging.getLogger(__name__)
+        logger.info('Starting Flask API server...')
+
+        # Load environment variables
+        load_environment()
         
-        if flask_process.returncode != 0:
-            logger.error(f"Flask server exited with error: {stderr}")
-            return 1
+        # Create and configure the Flask application
+        app = create_app()
         
-    except KeyboardInterrupt:
-        logger.info("Shutting down servers...")
+        # Log startup configuration
+        logger.info(f"Environment: {os.getenv('FLASK_ENV')}")
+        logger.info(f"Debug mode: {os.getenv('FLASK_DEBUG')}")
+        logger.info(f"Host: {os.getenv('FLASK_HOST')}")
+        logger.info(f"Port: {os.getenv('FLASK_PORT')}")
         
-        # Terminate Flask server
-        try:
-            flask_process.terminate()
-            flask_process.wait(timeout=5)
-            logger.info("Flask server shut down")
-        except subprocess.TimeoutExpired:
-            flask_process.kill()
-            logger.info("Flask server killed")
+        # Run the application
+        run_app(app)
         
-        logger.info("All servers shut down")
-    
-    return 0
+    except Exception as e:
+        logger.error(f'Error starting server: {str(e)}', exc_info=True)
+        sys.exit(1)
 
 if __name__ == '__main__':
-    sys.exit(main())
+    main()

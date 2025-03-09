@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/PriceEfficacy.css';
+import './neumorphic-efficacy.css';
 
 /**
  * EfficacyIndicator Component

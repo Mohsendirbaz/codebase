@@ -1,5 +1,7 @@
 import React, { useEffect, useCallback, useRef } from 'react';
-import './AnalysisVisualizationIntegration.css';
+import './neumorphic-visualization.css';
+import { useVersionState } from '../../contexts/VersionStateContext';
+import useFormValues from '../../useFormValues';
 
 // Analysis state types
 const ANALYSIS_STATUS = {

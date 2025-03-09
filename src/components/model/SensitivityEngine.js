@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import './SensitivityEngine.css';
-import './css/PriceEfficacy.css';
+import './neumorphic-sensitivity.css';
 import AnalysisChart from './AnalysisChart';
 import EfficacyIndicator from './EfficacyIndicator';
 import { runSensitivityAnalysis, runMonteCarloSimulation } from './services/apiService';

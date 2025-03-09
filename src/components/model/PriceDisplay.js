@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import '../css/PriceEfficacy.css';
-import { fetchCombinedPriceData, formatPrice, calculatePriceChange } from '../services/integrationService';
+import './neumorphic-efficacy.css';
+import { fetchCombinedPriceData, formatPrice, calculatePriceChange } from './services/integrationService';
 
 /**
  * PriceDisplay Component

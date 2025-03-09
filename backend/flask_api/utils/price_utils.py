@@ -1,190 +1,271 @@
-"""
-Utilities for price data processing and calculations
-"""
-
-import csv
+import numpy as np
+from typing import Dict, List, Optional, Any, Tuple
+from dataclasses import dataclass
 import logging
-import statistics
-from pathlib import Path
-from typing import Dict, Any, List
+from scipy import optimize, stats
+from concurrent.futures import ThreadPoolExecutor
+import os
 
-# Configure logger
 logger = logging.getLogger(__name__)
 
-def parse_csv_for_price(file_path: Path) -> Dict[str, Any]:
-    """
-    Parse CSV file to extract price information
-    
-    Args:
-        file_path (Path): Path to the Economic_Summary CSV file
-    
-    Returns:
-        Dict: Price data including average selling price and flags
-    """
-    logger.info(f"Parsing CSV for price data: {file_path}")
-    
-    try:
-        with open(file_path, 'r') as f:
-            csv_content = f.read()
-            
-        lines = csv_content.strip().split('\n')
-        
-        # Initialize result
-        result = {
-            "averageSellingPrice": 0,
-            "isEstimate": True
-        }
-        
-        # Parse CSV to get price information
-        price_line = next((line for line in lines if "Average Selling Price" in line), None)
-        total_revenue_line = next((line for line in lines if "Total Revenue" in line), None)
-        total_output_line = next((line for line in lines if "Total Output" in line), None)
-        
-        if price_line:
-            parts = price_line.split(',')
-            if len(parts) > 1:
-                try:
-                    result["averageSellingPrice"] = float(parts[1])
-                    result["isEstimate"] = False
-                except ValueError:
-                    logger.warning(f"Failed to parse average selling price: {parts[1]}")
-        
-        # If average selling price not found, try to calculate from revenue and output
-        elif total_revenue_line and total_output_line:
-            try:
-                revenue_parts = total_revenue_line.split(',')
-                output_parts = total_output_line.split(',')
+@dataclass
+class PriceAnalysisResult:
+    version: str
+    base_price: float
+    optimized_price: float
+    price_elasticity: float
+    revenue_impact: float
+    confidence_interval: Tuple[float, float]
+    market_position: Dict[str, float]
+    sensitivity_metrics: Dict[str, float]
+    metadata: Dict[str, Any]
+
+class PriceAnalyzer:
+    def __init__(self, worker_threads: int = None):
+        """Initialize the price analyzer"""
+        self.worker_threads = worker_threads or int(os.getenv('WORKER_THREADS', 4))
+        self.executor = ThreadPoolExecutor(max_workers=self.worker_threads)
+
+    def analyze_price_impact(
+        self,
+        base_price: float,
+        parameters: List[Dict[str, Any]],
+        market_data: Optional[Dict[str, Any]] = None,
+        constraints: Optional[Dict[str, Any]] = None
+    ) -> PriceAnalysisResult:
+        """Analyze price impact with parameter changes"""
+        try:
+            # Calculate optimized price
+            optimized_price = self._optimize_price(
+                base_price,
+                parameters,
+                constraints
+            )
+
+            # Calculate price elasticity
+            elasticity = self._calculate_price_elasticity(
+                base_price,
+                optimized_price,
+                parameters
+            )
+
+            # Calculate revenue impact
+            revenue_impact = self._calculate_revenue_impact(
+                base_price,
+                optimized_price,
+                elasticity
+            )
+
+            # Calculate confidence intervals
+            confidence_interval = self._calculate_confidence_interval(
+                base_price,
+                optimized_price,
+                parameters
+            )
+
+            # Analyze market position
+            market_position = self._analyze_market_position(
+                optimized_price,
+                market_data
+            ) if market_data else {}
+
+            # Calculate sensitivity metrics
+            sensitivity_metrics = self._calculate_sensitivity_metrics(
+                base_price,
+                parameters
+            )
+
+            return PriceAnalysisResult(
+                version=str(np.datetime64('now')),
+                base_price=float(base_price),
+                optimized_price=float(optimized_price),
+                price_elasticity=float(elasticity),
+                revenue_impact=float(revenue_impact),
+                confidence_interval=(
+                    float(confidence_interval[0]),
+                    float(confidence_interval[1])
+                ),
+                market_position=market_position,
+                sensitivity_metrics=sensitivity_metrics,
+                metadata={
+                    'analysis_timestamp': str(np.datetime64('now')),
+                    'parameter_count': len(parameters),
+                    'constraints_applied': bool(constraints),
+                    'market_data_used': bool(market_data)
+                }
+            )
+
+        except Exception as e:
+            logger.error(f"Error in price analysis: {str(e)}", exc_info=True)
+            raise
+
+    def _optimize_price(
+        self,
+        base_price: float,
+        parameters: List[Dict[str, Any]],
+        constraints: Optional[Dict[str, Any]] = None
+    ) -> float:
+        """Optimize price based on parameters and constraints"""
+        try:
+            # Define objective function for optimization
+            def objective(price):
+                total_impact = 0
+                for param in parameters:
+                    weight = param.get('weight', 1.0)
+                    sensitivity = param.get('sensitivity', 1.0)
+                    total_impact += weight * sensitivity * (price - base_price)
+                return -total_impact  # Negative for maximization
+
+            # Define constraint bounds
+            bounds = [(base_price * 0.5, base_price * 2.0)]  # Default bounds
+            if constraints:
+                min_price = constraints.get('min_price', base_price * 0.5)
+                max_price = constraints.get('max_price', base_price * 2.0)
+                bounds = [(float(min_price), float(max_price))]
+
+            # Optimize price
+            result = optimize.minimize(
+                objective,
+                x0=[base_price],
+                bounds=bounds,
+                method='L-BFGS-B'
+            )
+
+            return result.x[0]
+
+        except Exception as e:
+            logger.error(f"Error optimizing price: {str(e)}", exc_info=True)
+            return base_price
+
+    def _calculate_price_elasticity(
+        self,
+        base_price: float,
+        optimized_price: float,
+        parameters: List[Dict[str, Any]]
+    ) -> float:
+        """Calculate price elasticity of demand"""
+        try:
+            # Calculate weighted average elasticity
+            total_weight = 0
+            weighted_elasticity = 0
+
+            for param in parameters:
+                weight = param.get('weight', 1.0)
+                sensitivity = param.get('sensitivity', 1.0)
                 
-                if len(revenue_parts) > 1 and len(output_parts) > 1:
-                    revenue = float(revenue_parts[1])
-                    output = float(output_parts[1])
-                    
-                    if output > 0:
-                        result["averageSellingPrice"] = revenue / output
-                        result["isEstimate"] = True  # Mark as estimate since it's calculated
-            except ValueError:
-                logger.warning("Failed to calculate average selling price from revenue and output")
-        
-        return result
-    
-    except Exception as e:
-        logger.error(f"Error parsing CSV for price data: {str(e)}")
-        return {
-            "averageSellingPrice": 0,
-            "isEstimate": True,
-            "error": str(e)
-        }
+                # Calculate point elasticity
+                price_change = (optimized_price - base_price) / base_price
+                demand_change = -sensitivity * price_change  # Assume linear demand response
+                
+                if abs(price_change) > 1e-6:  # Avoid division by zero
+                    point_elasticity = demand_change / price_change
+                    weighted_elasticity += weight * point_elasticity
+                    total_weight += weight
 
-def calculate_price_range(file_path: Path, avg_price: float) -> Dict[str, float]:
-    """
-    Calculate price range (min/max) from economic data
-    
-    Args:
-        file_path (Path): Path to the Economic_Summary CSV file
-        avg_price (float): Average selling price
-    
-    Returns:
-        Dict: Min and max prices
-    """
-    logger.info(f"Calculating price range from: {file_path}")
-    
-    try:
-        # Default variation around average
-        default_variation = 0.15  # 15% variation by default
-        
-        # Try to extract actual min/max from CSV
-        with open(file_path, 'r') as f:
-            csv_content = f.read()
+            return weighted_elasticity / total_weight if total_weight > 0 else -1.0
+
+        except Exception as e:
+            logger.error(f"Error calculating price elasticity: {str(e)}", exc_info=True)
+            return -1.0
+
+    def _calculate_revenue_impact(
+        self,
+        base_price: float,
+        optimized_price: float,
+        elasticity: float
+    ) -> float:
+        """Calculate revenue impact of price change"""
+        try:
+            price_change = (optimized_price - base_price) / base_price
+            demand_change = elasticity * price_change
             
-        lines = csv_content.strip().split('\n')
-        
-        # Look for specific min/max price lines
-        min_price_line = next((line for line in lines if "Minimum Price" in line), None)
-        max_price_line = next((line for line in lines if "Maximum Price" in line), None)
-        
-        min_price = 0
-        max_price = 0
-        
-        if min_price_line:
-            parts = min_price_line.split(',')
-            if len(parts) > 1:
-                try:
-                    min_price = float(parts[1])
-                except ValueError:
-                    logger.warning(f"Failed to parse minimum price: {parts[1]}")
-        
-        if max_price_line:
-            parts = max_price_line.split(',')
-            if len(parts) > 1:
-                try:
-                    max_price = float(parts[1])
-                except ValueError:
-                    logger.warning(f"Failed to parse maximum price: {parts[1]}")
-        
-        # If min/max not found in file, estimate based on average
-        if min_price <= 0 or max_price <= 0:
-            min_price = avg_price * (1 - default_variation)
-            max_price = avg_price * (1 + default_variation)
-        
-        return {
-            "minimumPrice": min_price,
-            "maximumPrice": max_price
-        }
-    
-    except Exception as e:
-        logger.error(f"Error calculating price range: {str(e)}")
-        # Fallback to estimated range
-        return {
-            "minimumPrice": avg_price * 0.85,
-            "maximumPrice": avg_price * 1.15
-        }
+            # Calculate revenue change using mid-point formula
+            new_revenue = optimized_price * (1 + demand_change)
+            base_revenue = base_price
+            
+            revenue_impact = (new_revenue - base_revenue) / base_revenue
+            return revenue_impact
 
-def calculate_price_impact(base_price: float, parameters: List[Dict[str, Any]]) -> Dict[str, Any]:
-    """
-    Calculate price impact from parameter changes and their elasticity
-    
-    Args:
-        base_price (float): Base price to calculate impacts from
-        parameters (List[Dict]): List of parameter changes and elasticity
-            Each parameter should have:
-            - name: Parameter name
-            - change: Percentage change in the parameter
-            - elasticity: Price elasticity for this parameter
-    
-    Returns:
-        Dict: Price impact analysis
-    """
-    logger.info(f"Calculating price impact for {len(parameters)} parameters")
-    
-    # Calculate individual parameter impacts
-    parameter_impacts = []
-    total_impact = 0
-    
-    for param in parameters:
-        name = param.get('name')
-        change = param.get('change', 0)
-        elasticity = param.get('elasticity', 1.0)
-        
-        # Calculate price impact using elasticity formula
-        # Impact = Elasticity * Change * Base Price
-        impact = (elasticity * change / 100) * base_price
-        total_impact += impact
-        
-        parameter_impacts.append({
-            "parameter": name,
-            "change": change,
-            "elasticity": elasticity,
-            "impact": impact
-        })
-    
-    # Calculate new price and percentage change
-    new_price = base_price + total_impact
-    percent_change = (total_impact / base_price) * 100 if base_price > 0 else 0
-    
-    return {
-        "basePrice": base_price,
-        "newPrice": new_price,
-        "totalImpact": total_impact,
-        "percentChange": round(percent_change, 2),
-        "parameterImpacts": sorted(parameter_impacts, key=lambda x: abs(x.get('impact', 0)), reverse=True)
-    }
+        except Exception as e:
+            logger.error(f"Error calculating revenue impact: {str(e)}", exc_info=True)
+            return 0.0
+
+    def _calculate_confidence_interval(
+        self,
+        base_price: float,
+        optimized_price: float,
+        parameters: List[Dict[str, Any]],
+        confidence_level: float = 0.95
+    ) -> Tuple[float, float]:
+        """Calculate confidence interval for optimized price"""
+        try:
+            # Calculate standard error
+            variances = []
+            for param in parameters:
+                sensitivity = param.get('sensitivity', 1.0)
+                uncertainty = param.get('uncertainty', 0.1)
+                variances.append((sensitivity * uncertainty * base_price) ** 2)
+
+            std_error = np.sqrt(np.sum(variances))
+            
+            # Calculate confidence interval
+            z_score = stats.norm.ppf((1 + confidence_level) / 2)
+            margin = z_score * std_error
+            
+            return (optimized_price - margin, optimized_price + margin)
+
+        except Exception as e:
+            logger.error(f"Error calculating confidence interval: {str(e)}", exc_info=True)
+            return (optimized_price * 0.9, optimized_price * 1.1)
+
+    def _analyze_market_position(
+        self,
+        optimized_price: float,
+        market_data: Dict[str, Any]
+    ) -> Dict[str, float]:
+        """Analyze market position relative to competitors"""
+        try:
+            competitor_prices = market_data.get('competitor_prices', [])
+            if not competitor_prices:
+                return {}
+
+            prices = np.array(competitor_prices)
+            
+            return {
+                'percentile': float(stats.percentileofscore(prices, optimized_price)),
+                'relative_position': float((optimized_price - np.mean(prices)) / np.std(prices)),
+                'market_share_estimate': float(1 / (1 + np.exp(np.mean(prices) - optimized_price)))
+            }
+
+        except Exception as e:
+            logger.error(f"Error analyzing market position: {str(e)}", exc_info=True)
+            return {}
+
+    def _calculate_sensitivity_metrics(
+        self,
+        base_price: float,
+        parameters: List[Dict[str, Any]]
+    ) -> Dict[str, float]:
+        """Calculate sensitivity metrics for parameters"""
+        try:
+            metrics = {}
+            total_sensitivity = sum(p.get('sensitivity', 1.0) for p in parameters)
+
+            for param in parameters:
+                param_id = param.get('id', 'unknown')
+                sensitivity = param.get('sensitivity', 1.0)
+                weight = param.get('weight', 1.0)
+                
+                metrics[f"{param_id}_impact"] = float(
+                    sensitivity * weight / total_sensitivity
+                )
+
+            return metrics
+
+        except Exception as e:
+            logger.error(f"Error calculating sensitivity metrics: {str(e)}", exc_info=True)
+            return {}
+
+    def cleanup(self):
+        """Cleanup resources"""
+        self.executor.shutdown(wait=True)

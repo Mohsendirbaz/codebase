@@ -1,0 +1,248 @@
+/* Neumorphic design system for Navigation Manager */
+
+:root {
+  /* Base colors */
+  --shadow-distance: 6px;
+  --shadow-blur: 12px;
+  --shadow-color-light: rgba(255, 255, 255, 0.8);
+  --shadow-color-dark: rgba(0, 0, 0, 0.1);
+  --inner-shadow-distance: 2px;
+  --inner-shadow-blur: 4px;
+  --inner-shadow-color-light: rgba(255, 255, 255, 0.7);
+  --inner-shadow-color-dark: rgba(0, 0, 0, 0.07);
+  --transition-speed: 0.3s;
+}
+
+.navigation-manager {
+  position: relative;
+  padding: var(--model-spacing-lg);
+  background: var(--model-color-background);
+  border-radius: var(--model-border-radius-lg);
+  box-shadow: 
+    var(--shadow-distance) var(--shadow-distance) var(--shadow-blur) var(--shadow-color-dark),
+    calc(-1 * var(--shadow-distance)) calc(-1 * var(--shadow-distance)) var(--shadow-blur) var(--shadow-color-light);
+  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+  overflow: hidden;
+}
+
+/* Breadcrumb Navigation */
+.navigation-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--model-spacing-sm);
+  margin-bottom: var(--model-spacing-lg);
+  padding: var(--model-spacing-sm) var(--model-spacing-md);
+  background: var(--model-color-background-alt);
+  border-radius: var(--model-border-radius-md);
+  box-shadow: 
+    inset var(--inner-shadow-distance) var(--inner-shadow-distance) var(--inner-shadow-blur) var(--inner-shadow-color-dark),
+    inset calc(-1 * var(--inner-shadow-distance)) calc(-1 * var(--inner-shadow-distance)) var(--inner-shadow-blur) var(--inner-shadow-color-light);
+}
+
+.breadcrumb-item {
+  padding: var(--model-spacing-xs) var(--model-spacing-sm);
+  border: none;
+  border-radius: var(--model-border-radius-sm);
+  background: var(--model-color-background);
+  color: var(--model-color-text);
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 
+    var(--shadow-distance) var(--shadow-distance) var(--shadow-blur) var(--shadow-color-dark),
+    calc(-1 * var(--shadow-distance)) calc(-1 * var(--shadow-distance)) var(--shadow-blur) var(--shadow-color-light);
+  transition: all var(--transition-speed) ease;
+}
+
+.breadcrumb-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    calc(var(--shadow-distance) + 2px) calc(var(--shadow-distance) + 2px) calc(var(--shadow-blur) + 4px) var(--shadow-color-dark),
+    calc(-1 * var(--shadow-distance) - 2px) calc(-1 * var(--shadow-distance) - 2px) calc(var(--shadow-blur) + 4px) var(--shadow-color-light);
+}
+
+.breadcrumb-separator {
+  color: var(--model-color-text-light);
+  font-size: 1.2rem;
+}
+
+/* Action Grid */
+.action-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--model-spacing-md);
+  margin-bottom: var(--model-spacing-lg);
+  transition: opacity var(--transition-speed) ease;
+}
+
+.action-grid.transitioning {
+  opacity: 0;
+}
+
+.action-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--model-spacing-sm);
+  padding: var(--model-spacing-md);
+  border: none;
+  border-radius: var(--model-border-radius-md);
+  background: var(--model-color-background);
+  color: var(--model-color-text);
+  cursor: pointer;
+  box-shadow: 
+    var(--shadow-distance) var(--shadow-distance) var(--shadow-blur) var(--shadow-color-dark),
+    calc(-1 * var(--shadow-distance)) calc(-1 * var(--shadow-distance)) var(--shadow-blur) var(--shadow-color-light);
+  transition: all var(--transition-speed) ease;
+}
+
+.action-button:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    calc(var(--shadow-distance) + 2px) calc(var(--shadow-distance) + 2px) calc(var(--shadow-blur) + 4px) var(--shadow-color-dark),
+    calc(-1 * var(--shadow-distance) - 2px) calc(-1 * var(--shadow-distance) - 2px) calc(var(--shadow-blur) + 4px) var(--shadow-color-light);
+}
+
+.action-button.active {
+  background: var(--model-color-primary);
+  color: white;
+  box-shadow: 
+    inset var(--inner-shadow-distance) var(--inner-shadow-distance) var(--inner-shadow-blur) var(--inner-shadow-color-dark),
+    inset calc(-1 * var(--inner-shadow-distance)) calc(-1 * var(--inner-shadow-distance)) var(--inner-shadow-blur) var(--inner-shadow-color-light);
+  transform: translateY(0);
+}
+
+.action-icon {
+  font-size: 1.5rem;
+}
+
+.action-label {
+  font-weight: 500;
+}
+
+.back-button {
+  grid-column: 1 / -1;
+  padding: var(--model-spacing-sm) var(--model-spacing-md);
+  border: none;
+  border-radius: var(--model-border-radius-md);
+  background: var(--model-color-background);
+  color: var(--model-color-text);
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 
+    var(--shadow-distance) var(--shadow-distance) var(--shadow-blur) var(--shadow-color-dark),
+    calc(-1 * var(--shadow-distance)) calc(-1 * var(--shadow-distance)) var(--shadow-blur) var(--shadow-color-light);
+  transition: all var(--transition-speed) ease;
+}
+
+.back-button:hover {
+  transform: translateX(-4px);
+  box-shadow: 
+    calc(var(--shadow-distance) + 2px) calc(var(--shadow-distance) + 2px) calc(var(--shadow-blur) + 4px) var(--shadow-color-dark),
+    calc(-1 * var(--shadow-distance) - 2px) calc(-1 * var(--shadow-distance) - 2px) calc(var(--shadow-blur) + 4px) var(--shadow-color-light);
+}
+
+/* Context Help */
+.context-help {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--model-spacing-md);
+  background: var(--model-color-background-alt);
+  border-radius: var(--model-border-radius-md);
+  box-shadow: 
+    inset var(--inner-shadow-distance) var(--inner-shadow-distance) var(--inner-shadow-blur) var(--inner-shadow-color-dark),
+    inset calc(-1 * var(--inner-shadow-distance)) calc(-1 * var(--inner-shadow-distance)) var(--inner-shadow-blur) var(--inner-shadow-color-light);
+}
+
+.help-button {
+  display: flex;
+  align-items: center;
+  gap: var(--model-spacing-sm);
+  padding: var(--model-spacing-xs) var(--model-spacing-sm);
+  border: none;
+  border-radius: var(--model-border-radius-sm);
+  background: var(--model-color-background);
+  color: var(--model-color-text);
+  cursor: pointer;
+  box-shadow: 
+    var(--shadow-distance) var(--shadow-distance) var(--shadow-blur) var(--shadow-color-dark),
+    calc(-1 * var(--shadow-distance)) calc(-1 * var(--shadow-distance)) var(--shadow-blur) var(--shadow-color-light);
+  transition: all var(--transition-speed) ease;
+}
+
+.help-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    calc(var(--shadow-distance) + 2px) calc(var(--shadow-distance) + 2px) calc(var(--shadow-blur) + 4px) var(--shadow-color-dark),
+    calc(-1 * var(--shadow-distance) - 2px) calc(-1 * var(--shadow-distance) - 2px) calc(var(--shadow-blur) + 4px) var(--shadow-color-light);
+}
+
+.keyboard-shortcuts {
+  display: flex;
+  align-items: center;
+  gap: var(--model-spacing-sm);
+}
+
+.shortcut-label {
+  padding: var(--model-spacing-xs) var(--model-spacing-sm);
+  background: var(--model-color-background);
+  border-radius: var(--model-border-radius-sm);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--model-color-text);
+  box-shadow: 
+    var(--inner-shadow-distance) var(--inner-shadow-distance) var(--inner-shadow-blur) var(--shadow-color-dark),
+    calc(-1 * var(--inner-shadow-distance)) calc(-1 * var(--inner-shadow-distance)) var(--inner-shadow-blur) var(--shadow-color-light);
+}
+
+.shortcut-description {
+  font-size: 0.875rem;
+  color: var(--model-color-text-light);
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --shadow-color-light: rgba(255, 255, 255, 0.05);
+    --shadow-color-dark: rgba(0, 0, 0, 0.3);
+    --inner-shadow-color-light: rgba(255, 255, 255, 0.03);
+    --inner-shadow-color-dark: rgba(0, 0, 0, 0.2);
+  }
+
+  .navigation-manager {
+    background: var(--model-color-background-dark);
+  }
+
+  .navigation-breadcrumb,
+  .context-help {
+    background: rgba(30, 40, 55, 0.6);
+  }
+
+  .action-button,
+  .back-button,
+  .help-button,
+  .shortcut-label {
+    background: var(--model-color-background-dark);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .navigation-manager {
+    padding: var(--model-spacing-md);
+  }
+
+  .action-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .context-help {
+    flex-direction: column;
+    gap: var(--model-spacing-md);
+  }
+
+  .keyboard-shortcuts {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

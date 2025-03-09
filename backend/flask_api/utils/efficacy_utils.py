@@ -1,254 +1,358 @@
-"""
-Utilities for calculating efficacy metrics from sensitivity and price data
-"""
-
-import logging
 import numpy as np
-from typing import Dict, Any, List, Optional
+from typing import Dict, List, Optional, Any, Tuple
+from dataclasses import dataclass
+import logging
+from scipy import stats
+from concurrent.futures import ThreadPoolExecutor
+import os
 
-# Configure logger
 logger = logging.getLogger(__name__)
 
-def calculate_efficacy_metrics(
+@dataclass
+class EfficacyMetrics:
+    overall_score: float
+    confidence_score: float
+    stability_score: float
+    accuracy_metrics: Dict[str, float]
+    performance_metrics: Dict[str, float]
+    validation_results: Dict[str, Any]
+    metadata: Dict[str, Any]
+
+class EfficacyAnalyzer:
+    def __init__(self, worker_threads: int = None):
+        """Initialize the efficacy analyzer"""
+        self.worker_threads = worker_threads or int(os.getenv('WORKER_THREADS', 4))
+        self.executor = ThreadPoolExecutor(max_workers=self.worker_threads)
+
+    def calculate_efficacy_metrics(
+        self,
+        sensitivity_data: Dict[str, Any],
+        price_data: Dict[str, Any],
+        validation_data: Optional[Dict[str, Any]] = None
+    ) -> EfficacyMetrics:
+        """Calculate comprehensive efficacy metrics"""
+        try:
+            # Calculate accuracy metrics
+            accuracy_metrics = self._calculate_accuracy_metrics(
+                sensitivity_data,
+                price_data,
+                validation_data
+            )
+
+            # Calculate performance metrics
+            performance_metrics = self._calculate_performance_metrics(
+                sensitivity_data,
+                price_data
+            )
+
+            # Calculate stability score
+            stability_score = self._calculate_stability_score(
+                sensitivity_data,
+                price_data
+            )
+
+            # Calculate confidence score
+            confidence_score = self._calculate_confidence_score(
+                accuracy_metrics,
+                performance_metrics,
+                stability_score
+            )
+
+            # Perform validation if data is available
+            validation_results = self._validate_results(
+                sensitivity_data,
+                price_data,
+                validation_data
+            ) if validation_data else {}
+
+            # Calculate overall efficacy score
+            overall_score = self._calculate_overall_score(
+                accuracy_metrics,
+                performance_metrics,
+                stability_score,
+                confidence_score
+            )
+
+            return EfficacyMetrics(
+                overall_score=float(overall_score),
+                confidence_score=float(confidence_score),
+                stability_score=float(stability_score),
+                accuracy_metrics=accuracy_metrics,
+                performance_metrics=performance_metrics,
+                validation_results=validation_results,
+                metadata={
+                    'analysis_timestamp': str(np.datetime64('now')),
+                    'data_points': len(sensitivity_data.get('points', [])),
+                    'validation_performed': bool(validation_data)
+                }
+            )
+
+        except Exception as e:
+            logger.error(f"Error calculating efficacy metrics: {str(e)}", exc_info=True)
+            raise
+
+    def _calculate_accuracy_metrics(
+        self,
+        sensitivity_data: Dict[str, Any],
+        price_data: Dict[str, Any],
+        validation_data: Optional[Dict[str, Any]] = None
+    ) -> Dict[str, float]:
+        """Calculate accuracy-related metrics"""
+        try:
+            metrics = {}
+            
+            # Calculate prediction error metrics
+            if validation_data:
+                predicted = np.array(sensitivity_data.get('predictions', []))
+                actual = np.array(validation_data.get('actual_values', []))
+                
+                if len(predicted) > 0 and len(actual) > 0:
+                    # Mean Absolute Error
+                    metrics['mae'] = float(np.mean(np.abs(predicted - actual)))
+                    
+                    # Root Mean Square Error
+                    metrics['rmse'] = float(np.sqrt(np.mean((predicted - actual) ** 2)))
+                    
+                    # R-squared
+                    ss_res = np.sum((actual - predicted) ** 2)
+                    ss_tot = np.sum((actual - np.mean(actual)) ** 2)
+                    metrics['r_squared'] = float(1 - (ss_res / ss_tot))
+
+            # Calculate consistency score
+            sensitivity_points = sensitivity_data.get('points', [])
+            if sensitivity_points:
+                diffs = np.diff([p.get('value', 0) for p in sensitivity_points])
+                metrics['consistency'] = float(1 - np.std(diffs) / np.mean(np.abs(diffs)))
+
+            # Calculate price alignment score
+            price_points = price_data.get('points', [])
+            if price_points and sensitivity_points:
+                correlation = np.corrcoef(
+                    [p.get('value', 0) for p in sensitivity_points],
+                    [p.get('price', 0) for p in price_points]
+                )[0, 1]
+                metrics['price_alignment'] = float(max(0, correlation))
+
+            return metrics
+
+        except Exception as e:
+            logger.error(f"Error calculating accuracy metrics: {str(e)}", exc_info=True)
+            return {}
+
+    def _calculate_performance_metrics(
+        self,
         sensitivity_data: Dict[str, Any],
         price_data: Dict[str, Any]
-    ) -> Dict[str, Any]:
-    """
-    Calculate efficacy metrics from sensitivity data and price data
-    
-    Args:
-        sensitivity_data (Dict): Sensitivity data with parameters and derivatives
-            Should have:
-            - parameters: List of parameter names
-            - derivatives: List of objects with parameter name and impact data
-        price_data (Dict): Price data with average selling price
-            Should have:
-            - averageSellingPrice: Average selling price
-    
-    Returns:
-        Dict: Calculated efficacy metrics
-    """
-    logger.info("Calculating efficacy metrics")
-    
-    # Extract average selling price
-    avg_price = price_data.get('averageSellingPrice', 0)
-    if not avg_price or avg_price <= 0:
-        logger.warning("Average selling price is zero or negative, can't calculate efficacy")
-        return {
-            "score": 0,
-            "sensitivity": 0,
-            "elasticity": 0,
-            "parameterImpacts": []
-        }
-    
-    # Extract derivatives
-    derivatives = sensitivity_data.get('derivatives', [])
-    if not derivatives:
-        logger.warning("No derivatives data provided, can't calculate efficacy")
-        return {
-            "score": 0,
-            "sensitivity": 0,
-            "elasticity": 0,
-            "parameterImpacts": []
-        }
-    
-    # Calculate parameter impacts
-    parameter_impacts = []
-    
-    for derivative in derivatives:
-        param_name = derivative.get('parameter', '')
-        impact_data = derivative.get('data', [])
-        
-        if not impact_data:
-            continue
-        
-        # Calculate average absolute impact
-        impacts = [abs(point.get('impact', 0)) for point in impact_data]
-        if not impacts:
-            continue
-        
-        avg_impact = sum(impacts) / len(impacts)
-        
-        # Calculate price impact and elasticity
-        price_impact = avg_impact * avg_price
-        elasticity = price_impact / avg_price if avg_price > 0 else 0
-        
-        # Calculate impact level
-        if elasticity > 0.8:
-            impact_level = "high"
-        elif elasticity > 0.3:
-            impact_level = "medium"
-        else:
-            impact_level = "low"
-        
-        # Add to parameter impacts
-        parameter_impacts.append({
-            "parameter": param_name,
-            "priceImpact": price_impact,
-            "elasticity": elasticity,
-            "impactLevel": impact_level
-        })
-    
-    # Sort parameter impacts by price impact (descending)
-    parameter_impacts.sort(key=lambda x: abs(x.get('priceImpact', 0)), reverse=True)
-    
-    # Calculate overall metrics
-    total_impact = sum(param.get('priceImpact', 0) for param in parameter_impacts)
-    max_impact = max((abs(param.get('priceImpact', 0)) for param in parameter_impacts), default=0)
-    
-    # Calculate overall score, sensitivity, and elasticity
-    score = total_impact / avg_price if avg_price > 0 else 0
-    sensitivity = max_impact / avg_price if avg_price > 0 else 0
-    elasticity = score / len(parameter_impacts) if parameter_impacts else 0
-    
-    # Determine overall efficacy level
-    if score > 0.5:
-        efficacy_level = "high"
-    elif score > 0.2:
-        efficacy_level = "medium"
-    else:
-        efficacy_level = "low"
-    
-    # Determine market implications
-    if efficacy_level == "high":
-        market_implications = "Highly responsive to parameter changes, suggesting flexible pricing strategies"
-    elif efficacy_level == "medium":
-        market_implications = "Moderately responsive to parameter changes, balanced pricing approach recommended"
-    else:
-        market_implications = "Low responsiveness to parameter changes, consider value-based pricing"
-    
-    return {
-        "score": score,
-        "sensitivity": sensitivity,
-        "elasticity": elasticity,
-        "efficacyLevel": efficacy_level,
-        "marketImplications": market_implications,
-        "parameterImpacts": parameter_impacts
-    }
-
-def calculate_combined_efficacy(
-        base_efficacy: Dict[str, Any],
-        variant_efficacies: List[Dict[str, Any]]
-    ) -> Dict[str, Any]:
-    """
-    Calculate combined efficacy metrics from multiple model variants
-    
-    Args:
-        base_efficacy (Dict): Base model efficacy metrics
-        variant_efficacies (List[Dict]): List of variant model efficacy metrics
-    
-    Returns:
-        Dict: Combined efficacy metrics with comparison
-    """
-    logger.info(f"Calculating combined efficacy for base model and {len(variant_efficacies)} variants")
-    
-    if not base_efficacy:
-        logger.warning("No base efficacy provided")
-        return {}
-    
-    if not variant_efficacies:
-        logger.warning("No variant efficacies provided")
-        return base_efficacy
-    
-    # Extract base metrics
-    base_score = base_efficacy.get('score', 0)
-    base_sensitivity = base_efficacy.get('sensitivity', 0)
-    base_elasticity = base_efficacy.get('elasticity', 0)
-    base_parameter_impacts = base_efficacy.get('parameterImpacts', [])
-    
-    # Collect all parameter impacts across all variants
-    all_parameters = set()
-    for param_impact in base_parameter_impacts:
-        all_parameters.add(param_impact.get('parameter', ''))
-    
-    for variant in variant_efficacies:
-        for param_impact in variant.get('parameterImpacts', []):
-            all_parameters.add(param_impact.get('parameter', ''))
-    
-    # Create parameter comparison map
-    parameter_comparison = {}
-    
-    for param in all_parameters:
-        # Find parameter in base model
-        base_param = next((p for p in base_parameter_impacts if p.get('parameter') == param), None)
-        
-        # Collect variant data for this parameter
-        variant_data = []
-        for i, variant in enumerate(variant_efficacies):
-            variant_params = variant.get('parameterImpacts', [])
-            variant_param = next((p for p in variant_params if p.get('parameter') == param), None)
+    ) -> Dict[str, float]:
+        """Calculate performance-related metrics"""
+        try:
+            metrics = {}
             
-            if variant_param:
-                variant_data.append({
-                    "variantIndex": i,
-                    "elasticity": variant_param.get('elasticity', 0),
-                    "priceImpact": variant_param.get('priceImpact', 0),
-                    "impactLevel": variant_param.get('impactLevel', 'low')
-                })
-        
-        parameter_comparison[param] = {
-            "base": base_param,
-            "variants": variant_data
-        }
-    
-    # Calculate average scores across variants
-    variant_scores = [v.get('score', 0) for v in variant_efficacies]
-    variant_sensitivities = [v.get('sensitivity', 0) for v in variant_efficacies]
-    variant_elasticities = [v.get('elasticity', 0) for v in variant_efficacies]
-    
-    avg_variant_score = sum(variant_scores) / len(variant_scores) if variant_scores else 0
-    avg_variant_sensitivity = sum(variant_sensitivities) / len(variant_sensitivities) if variant_sensitivities else 0
-    avg_variant_elasticity = sum(variant_elasticities) / len(variant_elasticities) if variant_elasticities else 0
-    
-    # Calculate score differences
-    score_diff = avg_variant_score - base_score
-    sensitivity_diff = avg_variant_sensitivity - base_sensitivity
-    elasticity_diff = avg_variant_elasticity - base_elasticity
-    
-    # Generate insights
-    insights = []
-    
-    if abs(score_diff) > 0.1:
-        direction = "higher" if score_diff > 0 else "lower"
-        insights.append(f"Variants show {direction} overall price efficacy than base model")
-    
-    if abs(sensitivity_diff) > 0.1:
-        direction = "more" if sensitivity_diff > 0 else "less"
-        insights.append(f"Variants are {direction} sensitive to parameter changes")
-    
-    # Find parameters with biggest differences
-    param_diffs = []
-    for param, data in parameter_comparison.items():
-        base_elasticity = data['base'].get('elasticity', 0) if data['base'] else 0
-        variant_elasticities = [v.get('elasticity', 0) for v in data['variants']]
-        avg_variant_elasticity = sum(variant_elasticities) / len(variant_elasticities) if variant_elasticities else 0
-        diff = avg_variant_elasticity - base_elasticity
-        
-        param_diffs.append({
-            "parameter": param,
-            "difference": diff
-        })
-    
-    param_diffs.sort(key=lambda x: abs(x.get('difference', 0)), reverse=True)
-    
-    for i, param_diff in enumerate(param_diffs[:3]):  # Top 3 differences
-        if abs(param_diff.get('difference', 0)) > 0.1:
-            param = param_diff.get('parameter', '')
-            diff = param_diff.get('difference', 0)
-            direction = "more" if diff > 0 else "less"
-            insights.append(f"{param} parameter is {direction} influential in variants")
-    
-    return {
-        "base": base_efficacy,
-        "variants": variant_efficacies,
-        "comparison": {
-            "avgVariantScore": avg_variant_score,
-            "avgVariantSensitivity": avg_variant_sensitivity,
-            "avgVariantElasticity": avg_variant_elasticity,
-            "scoreDifference": score_diff,
-            "sensitivityDifference": sensitivity_diff,
-            "elasticityDifference": elasticity_diff,
-            "parameterComparison": parameter_comparison
-        },
-        "insights": insights
-    }
+            # Calculate convergence rate
+            iterations = sensitivity_data.get('iterations', [])
+            if iterations:
+                convergence_values = [it.get('error', 0) for it in iterations]
+                if len(convergence_values) > 1:
+                    convergence_rate = np.mean(np.diff(convergence_values))
+                    metrics['convergence_rate'] = float(convergence_rate)
+
+            # Calculate stability metrics
+            sensitivity_points = sensitivity_data.get('points', [])
+            if sensitivity_points:
+                values = [p.get('value', 0) for p in sensitivity_points]
+                metrics['value_range'] = float(max(values) - min(values))
+                metrics['value_std'] = float(np.std(values))
+
+            # Calculate efficiency metrics
+            computation_time = sensitivity_data.get('computation_time', 0)
+            if computation_time > 0:
+                metrics['points_per_second'] = float(
+                    len(sensitivity_points) / computation_time
+                )
+
+            return metrics
+
+        except Exception as e:
+            logger.error(f"Error calculating performance metrics: {str(e)}", exc_info=True)
+            return {}
+
+    def _calculate_stability_score(
+        self,
+        sensitivity_data: Dict[str, Any],
+        price_data: Dict[str, Any]
+    ) -> float:
+        """Calculate stability score"""
+        try:
+            scores = []
+            
+            # Calculate sensitivity stability
+            sensitivity_points = sensitivity_data.get('points', [])
+            if sensitivity_points:
+                values = [p.get('value', 0) for p in sensitivity_points]
+                scores.append(1 / (1 + np.std(values) / np.mean(np.abs(values))))
+
+            # Calculate price stability
+            price_points = price_data.get('points', [])
+            if price_points:
+                prices = [p.get('price', 0) for p in price_points]
+                scores.append(1 / (1 + np.std(prices) / np.mean(np.abs(prices))))
+
+            # Calculate correlation stability
+            if sensitivity_points and price_points:
+                windows = np.array_split(range(len(sensitivity_points)), 4)
+                correlations = []
+                
+                for window in windows:
+                    if len(window) > 1:
+                        correlation = np.corrcoef(
+                            [sensitivity_points[i].get('value', 0) for i in window],
+                            [price_points[i].get('price', 0) for i in window]
+                        )[0, 1]
+                        correlations.append(correlation)
+                
+                if correlations:
+                    scores.append(1 - np.std(correlations))
+
+            return float(np.mean(scores)) if scores else 0.5
+
+        except Exception as e:
+            logger.error(f"Error calculating stability score: {str(e)}", exc_info=True)
+            return 0.5
+
+    def _calculate_confidence_score(
+        self,
+        accuracy_metrics: Dict[str, float],
+        performance_metrics: Dict[str, float],
+        stability_score: float
+    ) -> float:
+        """Calculate confidence score"""
+        try:
+            scores = []
+            
+            # Add accuracy-based confidence
+            if 'r_squared' in accuracy_metrics:
+                scores.append(accuracy_metrics['r_squared'])
+            if 'consistency' in accuracy_metrics:
+                scores.append(accuracy_metrics['consistency'])
+
+            # Add performance-based confidence
+            if 'convergence_rate' in performance_metrics:
+                scores.append(1 / (1 + abs(performance_metrics['convergence_rate'])))
+
+            # Add stability-based confidence
+            scores.append(stability_score)
+
+            # Calculate weighted average
+            weights = [0.4, 0.2, 0.2, 0.2]  # Adjust weights as needed
+            weights = weights[:len(scores)]
+            
+            if weights:
+                weights = np.array(weights) / sum(weights)
+                return float(np.average(scores, weights=weights))
+            
+            return 0.5
+
+        except Exception as e:
+            logger.error(f"Error calculating confidence score: {str(e)}", exc_info=True)
+            return 0.5
+
+    def _validate_results(
+        self,
+        sensitivity_data: Dict[str, Any],
+        price_data: Dict[str, Any],
+        validation_data: Dict[str, Any]
+    ) -> Dict[str, Any]:
+        """Validate results against validation data"""
+        try:
+            validation_results = {}
+            
+            # Validate predictions
+            predicted = np.array(sensitivity_data.get('predictions', []))
+            actual = np.array(validation_data.get('actual_values', []))
+            
+            if len(predicted) > 0 and len(actual) > 0:
+                # Calculate prediction metrics
+                validation_results['prediction_metrics'] = {
+                    'mae': float(np.mean(np.abs(predicted - actual))),
+                    'rmse': float(np.sqrt(np.mean((predicted - actual) ** 2))),
+                    'mape': float(np.mean(np.abs((actual - predicted) / actual)) * 100)
+                }
+
+                # Perform statistical tests
+                t_stat, p_value = stats.ttest_ind(predicted, actual)
+                validation_results['statistical_tests'] = {
+                    't_statistic': float(t_stat),
+                    'p_value': float(p_value)
+                }
+
+            # Validate trends
+            if 'trends' in validation_data:
+                actual_trends = validation_data['trends']
+                predicted_trends = sensitivity_data.get('trends', [])
+                
+                if predicted_trends:
+                    trend_accuracy = sum(
+                        1 for a, p in zip(actual_trends, predicted_trends)
+                        if a == p
+                    ) / len(actual_trends)
+                    
+                    validation_results['trend_accuracy'] = float(trend_accuracy)
+
+            return validation_results
+
+        except Exception as e:
+            logger.error(f"Error validating results: {str(e)}", exc_info=True)
+            return {}
+
+    def _calculate_overall_score(
+        self,
+        accuracy_metrics: Dict[str, float],
+        performance_metrics: Dict[str, float],
+        stability_score: float,
+        confidence_score: float
+    ) -> float:
+        """Calculate overall efficacy score"""
+        try:
+            components = []
+            
+            # Accuracy component
+            if accuracy_metrics:
+                accuracy_score = np.mean([
+                    v for v in accuracy_metrics.values()
+                    if isinstance(v, (int, float))
+                ])
+                components.append(accuracy_score)
+
+            # Performance component
+            if performance_metrics:
+                perf_values = [
+                    v for v in performance_metrics.values()
+                    if isinstance(v, (int, float))
+                ]
+                if perf_values:
+                    performance_score = 1 / (1 + np.mean(np.abs(perf_values)))
+                    components.append(performance_score)
+
+            # Stability component
+            components.append(stability_score)
+
+            # Confidence component
+            components.append(confidence_score)
+
+            # Calculate weighted average
+            weights = [0.3, 0.2, 0.25, 0.25]  # Adjust weights as needed
+            weights = weights[:len(components)]
+            
+            if weights:
+                weights = np.array(weights) / sum(weights)
+                return float(np.average(components, weights=weights))
+            
+            return 0.5
+
+        except Exception as e:
+            logger.error(f"Error calculating overall score: {str(e)}", exc_info=True)
+            return 0.5
+
+    def cleanup(self):
+        """Cleanup resources"""
+        self.executor.shutdown(wait=True)
