@@ -1,0 +1,208 @@
+/* Neumorphic Sensitivity Engine */
+
+.sensitivity-engine {
+  --shadow-distance: 8px;
+  --shadow-blur: 16px;
+  --shadow-color-light: rgba(255, 255, 255, 0.8);
+  --shadow-color-dark: rgba(0, 0, 0, 0.1);
+  --inner-shadow-distance: 3px;
+  --inner-shadow-blur: 6px;
+  --inner-shadow-color-light: rgba(255, 255, 255, 0.7);
+  --inner-shadow-color-dark: rgba(0, 0, 0, 0.07);
+  --card-padding: 1.5rem;
+  --card-radius: 16px;
+  
+  padding: var(--card-padding);
+}
+
+/* Connection Status */
+.connection-status {
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  background: var(--model-color-warning-light);
+  border-radius: var(--card-radius);
+  color: var(--model-color-warning);
+  text-align: center;
+  font-weight: 500;
+  box-shadow: 
+    inset var(--inner-shadow-distance) var(--inner-shadow-distance) var(--inner-shadow-blur) rgba(214, 158, 46, 0.1),
+    inset calc(-1 * var(--inner-shadow-distance)) calc(-1 * var(--inner-shadow-distance)) var(--inner-shadow-blur) rgba(255, 255, 255, 0.1);
+}
+
+/* Parameters Grid */
+.parameters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Parameter Card */
+.parameter-card {
+  padding: var(--card-padding);
+  background: var(--model-color-background);
+  border-radius: var(--card-radius);
+  box-shadow: 
+    var(--shadow-distance) var(--shadow-distance) var(--shadow-blur) var(--shadow-color-dark),
+    calc(-1 * var(--shadow-distance)) calc(-1 * var(--shadow-distance)) var(--shadow-blur) var(--shadow-color-light);
+}
+
+.parameter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.parameter-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--model-color-text);
+}
+
+.parameter-type {
+  padding: 0.25rem 0.75rem;
+  background: var(--model-color-background-alt);
+  border-radius: 12px;
+  font-size: 0.875rem;
+  color: var(--model-color-text-light);
+  box-shadow: 
+    inset var(--inner-shadow-distance) var(--inner-shadow-distance) var(--inner-shadow-blur) var(--inner-shadow-color-dark),
+    inset calc(-1 * var(--inner-shadow-distance)) calc(-1 * var(--inner-shadow-distance)) var(--inner-shadow-blur) var(--inner-shadow-color-light);
+}
+
+.parameter-range {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background: var(--model-color-background-alt);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  color: var(--model-color-text-light);
+  box-shadow: 
+    inset var(--inner-shadow-distance) var(--inner-shadow-distance) var(--inner-shadow-blur) var(--inner-shadow-color-dark),
+    inset calc(-1 * var(--inner-shadow-distance)) calc(-1 * var(--inner-shadow-distance)) var(--inner-shadow-blur) var(--inner-shadow-color-light);
+}
+
+/* Analyze Button */
+.analyze-button {
+  width: 100%;
+  padding: 0.75rem;
+  margin: 1rem 0;
+  border: none;
+  border-radius: 8px;
+  background: var(--model-color-primary);
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 
+    var(--shadow-distance) var(--shadow-distance) var(--shadow-blur) var(--shadow-color-dark),
+    calc(-1 * var(--shadow-distance)) calc(-1 * var(--shadow-distance)) var(--shadow-blur) var(--shadow-color-light);
+  transition: all 0.3s ease;
+}
+
+.analyze-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 
+    calc(var(--shadow-distance) + 2px) calc(var(--shadow-distance) + 2px) calc(var(--shadow-blur) + 4px) var(--shadow-color-dark),
+    calc(-1 * var(--shadow-distance) - 2px) calc(-1 * var(--shadow-distance) - 2px) calc(var(--shadow-blur) + 4px) var(--shadow-color-light);
+}
+
+.analyze-button:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 
+    inset var(--inner-shadow-distance) var(--inner-shadow-distance) var(--inner-shadow-blur) rgba(0, 0, 0, 0.2),
+    inset calc(-1 * var(--inner-shadow-distance)) calc(-1 * var(--inner-shadow-distance)) var(--inner-shadow-blur) rgba(255, 255, 255, 0.1);
+}
+
+.analyze-button:disabled {
+  background: var(--model-color-text-lighter);
+  cursor: not-allowed;
+}
+
+/* Analysis Results */
+.analysis-results {
+  margin-top: 1.5rem;
+  padding: var(--card-padding);
+  background: var(--model-color-background-alt);
+  border-radius: var(--card-radius);
+  box-shadow: 
+    inset var(--inner-shadow-distance) var(--inner-shadow-distance) var(--inner-shadow-blur) var(--inner-shadow-color-dark),
+    inset calc(-1 * var(--inner-shadow-distance)) calc(-1 * var(--inner-shadow-distance)) var(--inner-shadow-blur) var(--inner-shadow-color-light);
+}
+
+/* Metrics Grid */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.metric-card {
+  padding: 0.75rem;
+  background: var(--model-color-background);
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 
+    var(--shadow-distance) var(--shadow-distance) var(--shadow-blur) var(--shadow-color-dark),
+    calc(-1 * var(--shadow-distance)) calc(-1 * var(--shadow-distance)) var(--shadow-blur) var(--shadow-color-light);
+}
+
+.metric-label {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--model-color-text-light);
+  margin-bottom: 0.25rem;
+}
+
+.metric-value {
+  display: block;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--model-color-text);
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  .sensitivity-engine {
+    --shadow-color-light: rgba(255, 255, 255, 0.05);
+    --shadow-color-dark: rgba(0, 0, 0, 0.3);
+    --inner-shadow-color-light: rgba(255, 255, 255, 0.03);
+    --inner-shadow-color-dark: rgba(0, 0, 0, 0.2);
+  }
+
+  .parameter-card {
+    background: var(--model-color-background-dark);
+  }
+
+  .parameter-type,
+  .parameter-range {
+    background: rgba(30, 40, 55, 0.6);
+  }
+
+  .analysis-results {
+    background: rgba(30, 40, 55, 0.6);
+  }
+
+  .metric-card {
+    background: var(--model-color-background-dark);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .parameters-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .parameter-range {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+}

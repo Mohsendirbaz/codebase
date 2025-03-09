@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import './css/PriceEfficacy.css';
+import './neumorphic-modelcard.css';
+import { useVersionState } from '../../contexts/VersionStateContext';
+import useFormValues from '../../useFormValues';
 import PriceDisplay from './PriceDisplay';
 import EfficacyIndicator from './EfficacyIndicator';
 import { loadSensitivityData, calculateEfficacyMetrics } from './utils/dataProcessing';
-import './ModelCard.css';
 
 const ModelCard = ({ 
   type, 

@@ -1,150 +1,236 @@
-# Flask API Backend for ModelZone
+# Flask API with WebSocket Support
 
-This backend provides API endpoints to support the ModelZone component, sensitivity analysis, and price efficacy features in the frontend application.
+This Flask API provides real-time analysis capabilities through WebSocket connections and RESTful endpoints for the Model Zone application.
 
-## Overview
+## Features
 
-The backend serves several key functions:
-1. **File Access**: Provides endpoints for accessing files from the server
-2. **Sensitivity Analysis**: Performs parameter sensitivity analysis and Monte Carlo simulations
-3. **Price Data**: Fetches and processes price information from economic summary files
-4. **Efficacy Metrics**: Calculates price efficacy metrics based on sensitivity and price data
+- Real-time sensitivity analysis with progress updates
+- WebSocket-based communication for long-running calculations
+- RESTful endpoints for price and sensitivity data
+- Automatic retry mechanisms for failed operations
+- Comprehensive logging system
+- Environment-based configuration
 
-## Installation
+## Setup
 
-1. Install Python 3.8+ if not already installed
-2. Install the required dependencies:
-
+1. Create a virtual environment:
 ```bash
-cd backend/flask_api
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+
+2. Install dependencies:
+```bash
 pip install -r requirements.txt
+```
+
+3. Create a `.env` file in the `flask_api` directory:
+```env
+FLASK_ENV=development
+FLASK_DEBUG=True
+FLASK_HOST=0.0.0.0
+FLASK_PORT=5000
+SECRET_KEY=your-secret-key-here
 ```
 
 ## Running the Server
 
-To run the server:
-
+Start the server using:
 ```bash
-cd backend/flask_api
-python app.py
+python start_backend.py
 ```
 
-The server will start on `http://localhost:5000` by default.
+The server will start with WebSocket support on the configured host and port.
 
 ## API Endpoints
 
-### File API
+### Sensitivity Analysis
 
-- **GET /api/file**: Get a file from the server
-  - Query params: `path` (required) - Path to the file
-  - Returns: File content
+- `POST /sensitivity/analyze`
+  - Analyze parameter sensitivity
+  - Requires parameter configuration in request body
+  - Returns analysis results with confidence intervals
 
-- **GET /api/file/list**: List files in a directory
-  - Query params: 
-    - `path` (required) - Path to the directory
-    - `recursive` (optional) - Whether to list files recursively
-  - Returns: JSON array of files
+- `POST /sensitivity/monte-carlo`
+  - Run Monte Carlo simulations
+  - Accepts simulation parameters and iteration count
+  - Returns probability distributions
 
-- **GET /api/file/exists**: Check if a file exists
-  - Query params: `path` (required) - Path to check
-  - Returns: JSON with existence info
+- `GET /sensitivity/derivatives/<parameter>`
+  - Get derivative data for specific parameter
+  - Supports version and extension query parameters
+  - Returns derivative calculations with metadata
 
-### Sensitivity API
+- `POST /sensitivity/efficacy`
+  - Calculate efficacy metrics
+  - Requires sensitivity and price data
+  - Returns combined efficacy scores
 
-- **POST /api/sensitivity/analyze**: Run sensitivity analysis
-  - Body: JSON with parameters configuration
-  - Returns: Sensitivity analysis results
+### Price Analysis
 
-- **POST /api/sensitivity/monte-carlo**: Run Monte Carlo simulation
-  - Body: JSON with parameters configuration
-  - Returns: Monte Carlo simulation results
+- `GET /price/data`
+  - Get price data for specific model version
+  - Supports version and extension query parameters
+  - Returns comprehensive price metrics
 
-- **GET /api/sensitivity/derivatives/{parameter}**: Get derivatives data for a parameter
-  - Path params: `parameter` (required) - Parameter name
-  - Query params:
-    - `version` (required) - Model version
-    - `extension` (optional) - Model extension
-  - Returns: Derivatives data
+- `POST /price/comparison`
+  - Compare prices between model variants
+  - Accepts base version and variant configurations
+  - Returns detailed comparison metrics
 
-- **POST /api/sensitivity/efficacy**: Calculate efficacy metrics
-  - Body: JSON with sensitivity data and price data
-  - Returns: Efficacy metrics
+- `POST /price/impact`
+  - Calculate parameter impact on pricing
+  - Requires base price and parameter changes
+  - Returns impact analysis results
 
-### Price API
+## WebSocket Events
 
-- **GET /api/price/data**: Get price data for a model version
-  - Query params:
-    - `version` (required) - Model version
-    - `extension` (optional) - Model extension
-  - Returns: Price data with average selling price
+### Client to Server
 
-- **POST /api/price/comparison**: Compare prices between variants
-  - Body: JSON with base version and variants
-  - Returns: Price comparison data
-
-- **POST /api/price/impact**: Calculate price impact of parameter changes
-  - Body: JSON with base price and parameters
-  - Returns: Price impact analysis
-
-## Integrating with the Frontend
-
-The frontend should use the following base URL for API requests:
-```javascript
-const API_BASE_URL = 'http://localhost:5000/api';
-```
-
-Example usage in a service file:
-```javascript
-async function fetchPriceData(version, extension) {
-  const url = `${API_BASE_URL}/price/data?version=${version}${extension ? `&extension=${extension}` : ''}`;
-  const response = await fetch(url);
-  
-  if (!response.ok) {
-    throw new Error('Failed to fetch price data');
+- `start_analysis`
+  ```typescript
+  {
+    analysis_id: string;
+    type: 'sensitivity' | 'monte_carlo' | 'optimization';
+    parameters: any[];
+    total_steps: number;
   }
-  
-  return await response.json();
-}
+  ```
 
-async function runSensitivityAnalysis(parameters) {
-  const url = `${API_BASE_URL}/sensitivity/analyze`;
-  const response = await fetch(url, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ parameters })
-  });
-  
-  if (!response.ok) {
-    throw new Error('Sensitivity analysis failed');
+- `update_progress`
+  ```typescript
+  {
+    analysis_id: string;
+    step: number;
+    status: 'running' | 'complete' | 'error';
+    results?: any;
+    error?: string;
   }
-  
-  return await response.json();
-}
-```
+  ```
+
+- `cancel_analysis`
+  ```typescript
+  {
+    analysis_id: string;
+  }
+  ```
+
+### Server to Client
+
+- `analysis_started`
+  ```typescript
+  {
+    analysis_id: string;
+    status: 'started';
+    timestamp: string;
+  }
+  ```
+
+- `progress_update`
+  ```typescript
+  {
+    analysis_id: string;
+    progress: number;
+    step: number;
+    total_steps: number;
+    status: string;
+    time_remaining: number | null;
+    has_errors: boolean;
+    latest_results: any;
+  }
+  ```
+
+- `analysis_complete`
+  ```typescript
+  {
+    analysis_id: string;
+    status: 'complete' | 'error';
+    results: any;
+    errors: string[];
+    timestamp: string;
+  }
+  ```
 
 ## Error Handling
 
-The API returns appropriate HTTP status codes:
+The API uses standard HTTP status codes:
 - 200: Success
-- 400: Bad request (invalid parameters)
-- 404: Not found
-- 500: Server error
+- 400: Bad Request (invalid parameters)
+- 404: Not Found (resource doesn't exist)
+- 500: Internal Server Error
 
-Error responses include a JSON object with an "error" property:
-```json
+WebSocket errors are emitted as error events:
+```typescript
 {
-  "error": "Error message"
+  type: 'error';
+  message: string;
+  code?: string;
+  details?: any;
 }
 ```
 
 ## Logging
 
-The backend logs all API requests and errors to:
-- Console output
-- `backend/flask_api/api.log` file
+Logs are stored in the `logs` directory:
+- `flask_api.log`: Main application log
+- Rotated automatically at 1MB
+- Keeps 10 backup files
 
-## Security Notes
+Log levels:
+- INFO: Normal operations
+- WARNING: Potential issues
+- ERROR: Operation failures
+- DEBUG: Detailed debugging (when FLASK_DEBUG=True)
 
-- The file API includes basic protection against path traversal attacks
-- In a production environment, additional security measures should be implemented
-- CORS is configured to allow requests from any origin for development
+## Development
+
+1. Enable debug mode in `.env`:
+```env
+FLASK_DEBUG=True
+```
+
+2. Run tests:
+```bash
+pytest tests/
+```
+
+3. Check code style:
+```bash
+flake8 .
+black .
+mypy .
+```
+
+## Production Deployment
+
+1. Update `.env` for production:
+```env
+FLASK_ENV=production
+FLASK_DEBUG=False
+```
+
+2. Use Gunicorn with eventlet worker:
+```bash
+gunicorn --worker-class eventlet -w 1 'flask_api.app:create_app()'
+```
+
+3. Configure reverse proxy (e.g., Nginx) for WebSocket support:
+```nginx
+location /socket.io {
+    proxy_pass http://localhost:5000/socket.io;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "Upgrade";
+    proxy_set_header Host $host;
+}
+```
+
+## Security Considerations
+
+1. Set a strong SECRET_KEY in production
+2. Enable CORS only for trusted origins
+3. Rate limit WebSocket connections
+4. Validate all input data
+5. Use HTTPS in production
+6. Monitor server resources
+7. Implement authentication for sensitive operations

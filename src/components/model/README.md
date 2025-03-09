@@ -1,143 +1,158 @@
-# Model Zone Integration with Sensitivity and Price Efficacy Features
+# Model Zone Component Styling Guide
 
-This document explains the integration between the ModelZone component, Sensitivity Analysis, and Price Efficacy features.
+This document outlines the neumorphic design system used across the Model Zone components.
 
-## Overview
+## Design Philosophy
 
-The integration allows users to:
+The neumorphic design system creates a soft, modern UI that emphasizes depth and tactility through the careful use of shadows and highlights. The design aims to make complex model analysis tools feel more approachable and intuitive.
 
-1. View price data for each model variant
-2. Calculate and visualize efficacy metrics based on sensitivity analysis
-3. See how parameter changes affect pricing
-4. Make informed decisions based on sensitivity and efficacy metrics
+## CSS Variables
 
-## Key Components
+All components share a common set of CSS variables for consistency:
 
-### 1. Data Processing Utilities
-
-The `dataProcessing.js` utility provides:
-
-- `fetchPriceData`: Extracts price information from Economic_Summary CSV files
-- `loadSensitivityData`: Loads sensitivity data from Multipoint derivatives
-- `calculateEfficacyMetrics`: Calculates efficacy metrics based on sensitivity and price data
-- `calculatePriceChange`: Calculates price change percentage
-- `formatPrice`: Formats price values as currency
-
-### 2. New UI Components
-
-- `PriceDisplay`: Shows price information with comparisons to the base model
-- `EfficacyIndicator`: Displays efficacy metrics with visual indicators for impact level
-
-### 3. Integration Points
-
-#### ModelCard Integration
-- Displays price information for each model variant
-- Shows efficacy indicators when sensitivity analysis has been run
-- Links sensitivity button to efficacy metrics
-
-#### ModelZone Integration
-- Provides base model settings to variant model cards
-- Handles sensitivity data loading and distribution
-- Uses event-driven approach to share price data across components
-
-#### SensitivityEngine Integration
-- Displays efficacy summary based on sensitivity and price data
-- Shows parameter-specific elasticity values
-- Provides price impact visualization
-
-## Data Flow
-
-```
-┌─────────────────┐       ┌─────────────────┐
-│   ModelZone     │◄──────┤  ModelCard      │
-│                 │       │                 │
-└────────┬────────┘       └────────┬────────┘
-         │                         │
-         ▼                         ▼
-┌─────────────────┐       ┌─────────────────┐
-│ Economic_Summary │       │  PriceDisplay   │
-│      CSV         │       │                 │
-└────────┬────────┘       └────────┬────────┘
-         │                         │
-         │                         │
-         │        ┌────────────────┼─────────────┐
-         │        │                │             │
-         ▼        ▼                ▼             │
-┌─────────────────┐       ┌─────────────────┐    │
-│ SensitivityData │──────►│ EfficacyMetrics │◄───┘
-│                 │       │                 │
-└────────┬────────┘       └────────┬────────┘
-         │                         │
-         ▼                         ▼
-┌─────────────────┐       ┌─────────────────┐
-│SensitivityEngine│       │EfficacyIndicator│
-└─────────────────┘       └─────────────────┘
+```css
+:root {
+  /* Base shadows */
+  --shadow-distance: 6px;
+  --shadow-blur: 12px;
+  --shadow-color-light: rgba(255, 255, 255, 0.8);
+  --shadow-color-dark: rgba(0, 0, 0, 0.1);
+  
+  /* Inner shadows */
+  --inner-shadow-distance: 2px;
+  --inner-shadow-blur: 4px;
+  --inner-shadow-color-light: rgba(255, 255, 255, 0.7);
+  --inner-shadow-color-dark: rgba(0, 0, 0, 0.07);
+  
+  /* Animation */
+  --transition-speed: 0.3s;
+  
+  /* Spacing */
+  --model-spacing-xs: 4px;
+  --model-spacing-sm: 8px;
+  --model-spacing-md: 16px;
+  --model-spacing-lg: 24px;
+  --model-spacing-xl: 32px;
+  
+  /* Border radius */
+  --model-border-radius-sm: 8px;
+  --model-border-radius-md: 12px;
+  --model-border-radius-lg: 16px;
+  --model-border-radius-full: 50%;
+}
 ```
 
-## How to Use
+## Component-Specific Styles
 
-1. **View Price Data**: 
-   - Price information is automatically displayed in each model card
-   - Comparisons between variant models and base model are shown
-   
-2. **Run Sensitivity Analysis**:
-   - Click the "Sensitivity" button on any model card
-   - Configure parameters and run the analysis
-   - Efficacy metrics will be calculated and displayed
-   
-3. **Interpret Efficacy Metrics**:
-   - Overall Efficacy Score: Higher values indicate greater price impact
-   - Parameter Elasticity: Shows which parameters have the biggest effect on price
-   - Color coding indicates impact level (high/medium/low)
+Each component has its own CSS file with neumorphic styling:
 
-4. **Make Informed Decisions**:
-   - Use efficacy insights to optimize your sensitivity parameters
-   - Focus on high-impact parameters for more efficient analysis
-   - Compare efficacy across different model variants
+- `neumorphic-modelzone.css`: Main container and layout styles
+- `neumorphic-modelcard.css`: Model card component styles
+- `neumorphic-charts.css`: Analysis chart styles
+- `neumorphic-impact.css`: Impact analysis styles
+- `neumorphic-optimization.css`: Optimization engine styles
+- `neumorphic-sensitivity.css`: Sensitivity analysis styles
+- `neumorphic-navigation.css`: Navigation controls styles
+- `neumorphic-visualization.css`: Visualization integration styles
+- `neumorphic-efficacy.css`: Efficacy indicator styles
 
-## Implementation Details
+## Common Patterns
 
-### Event-Driven Communication
+### Raised Elements
+```css
+.raised-element {
+  box-shadow: 
+    var(--shadow-distance) var(--shadow-distance) var(--shadow-blur) var(--shadow-color-dark),
+    calc(-1 * var(--shadow-distance)) calc(-1 * var(--shadow-distance)) var(--shadow-blur) var(--shadow-color-light);
+}
+```
 
-The integration uses a custom event system to share data between components:
+### Pressed Elements
+```css
+.pressed-element {
+  box-shadow: 
+    inset var(--inner-shadow-distance) var(--inner-shadow-distance) var(--inner-shadow-blur) var(--inner-shadow-color-dark),
+    inset calc(-1 * var(--inner-shadow-distance)) calc(-1 * var(--inner-shadow-distance)) var(--inner-shadow-blur) var(--inner-shadow-color-light);
+}
+```
 
-```javascript
-// In PriceDisplay.js - Broadcasting price data
-const event = new CustomEvent('priceDataLoaded', {
-  detail: {
-    version,
-    extension,
-    priceData: data
+### Interactive Elements
+```css
+.interactive-element {
+  transition: all var(--transition-speed) ease;
+}
+
+.interactive-element:hover {
+  transform: translateY(-2px);
+  box-shadow: /* Enhanced raised shadow */
+}
+
+.interactive-element:active {
+  transform: translateY(1px);
+  box-shadow: /* Reduced shadow */
+}
+```
+
+## Dark Mode Support
+
+All components include dark mode adjustments:
+
+```css
+@media (prefers-color-scheme: dark) {
+  :root {
+    --shadow-color-light: rgba(255, 255, 255, 0.05);
+    --shadow-color-dark: rgba(0, 0, 0, 0.3);
+    --inner-shadow-color-light: rgba(255, 255, 255, 0.03);
+    --inner-shadow-color-dark: rgba(0, 0, 0, 0.2);
   }
-});
-window.dispatchEvent(event);
-
-// In other components - Listening for price data
-window.addEventListener('priceDataLoaded', handlePriceDataLoaded);
+}
 ```
 
-### Efficacy Calculation
+## Responsive Design
 
-Efficacy metrics are calculated using:
+Components adapt to different screen sizes:
 
-1. Price data from Economic_Summary files
-2. Sensitivity data with parameter impacts
-3. Calculation algorithms that measure:
-   - Price elasticity for each parameter
-   - Overall price efficacy score
-   - Parameter-specific impact values
+```css
+@media (max-width: 768px) {
+  /* Reduced spacing */
+  /* Simplified layouts */
+  /* Adjusted font sizes */
+}
+```
 
-## Future Enhancements
+## Usage Guidelines
 
-Potential improvements for the integration:
+1. Always use the provided CSS variables for consistency
+2. Maintain the neumorphic effect by using both light and dark shadows
+3. Use appropriate transitions for interactive elements
+4. Consider dark mode implications when adding new styles
+5. Ensure responsive behavior for all new components
+6. Keep shadows subtle - the effect should enhance usability without being distracting
 
-1. Real-time efficacy calculations during parameter adjustments
-2. Historical efficacy tracking across multiple analyses
-3. AI-powered recommendations based on efficacy metrics
-4. Export capabilities for efficacy reports
+## Integration Points
 
-## Troubleshooting
+The styling system is designed to work seamlessly with:
 
-- If price data isn't displaying, check Economic_Summary CSV file format
-- If efficacy metrics aren't calculating, ensure sensitivity analysis has been run
-- If parameter impacts seem incorrect, verify departure values in model settings
+- React component lifecycle
+- Dynamic data updates
+- Interactive visualizations
+- Real-time analysis tools
+- User input controls
+
+## Accessibility
+
+The neumorphic design maintains accessibility through:
+
+- Sufficient color contrast
+- Clear visual hierarchy
+- Obvious interactive states
+- Readable text sizes
+- Keyboard navigation support
+
+## Performance Considerations
+
+- Use CSS transforms for animations when possible
+- Limit shadow complexity for better rendering performance
+- Optimize transitions for smooth interactions
+- Use will-change hints judiciously
+- Consider reducing effects on mobile devices

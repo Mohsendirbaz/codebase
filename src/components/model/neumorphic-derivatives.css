@@ -1,0 +1,250 @@
+/* Neumorphic design system for Derivatives Panel */
+
+:root {
+  /* Base shadows */
+  --shadow-distance: 6px;
+  --shadow-blur: 12px;
+  --shadow-color-light: rgba(255, 255, 255, 0.8);
+  --shadow-color-dark: rgba(0, 0, 0, 0.1);
+  --inner-shadow-distance: 2px;
+  --inner-shadow-blur: 4px;
+  --inner-shadow-color-light: rgba(255, 255, 255, 0.7);
+  --inner-shadow-color-dark: rgba(0, 0, 0, 0.07);
+  --transition-speed: 0.3s;
+}
+
+.derivatives-panel {
+  position: relative;
+  padding: var(--model-spacing-lg);
+  background: var(--model-color-background);
+  border-radius: var(--model-border-radius-lg);
+  box-shadow: 
+    var(--shadow-distance) var(--shadow-distance) var(--shadow-blur) var(--shadow-color-dark),
+    calc(-1 * var(--shadow-distance)) calc(-1 * var(--shadow-distance)) var(--shadow-blur) var(--shadow-color-light);
+  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+/* Loading State */
+.loading-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--model-spacing-md);
+  padding: var(--model-spacing-xl);
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--model-color-background);
+  border-top-color: var(--model-color-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  box-shadow: 
+    var(--shadow-distance) var(--shadow-distance) var(--shadow-blur) var(--shadow-color-dark),
+    calc(-1 * var(--shadow-distance)) calc(-1 * var(--shadow-distance)) var(--shadow-blur) var(--shadow-color-light);
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Parameter Selector */
+.parameter-selector {
+  margin-bottom: var(--model-spacing-lg);
+  padding: var(--model-spacing-lg);
+  background: var(--model-color-background-alt);
+  border-radius: var(--model-border-radius-lg);
+  box-shadow: 
+    inset var(--inner-shadow-distance) var(--inner-shadow-distance) var(--inner-shadow-blur) var(--inner-shadow-color-dark),
+    inset calc(-1 * var(--inner-shadow-distance)) calc(-1 * var(--inner-shadow-distance)) var(--inner-shadow-blur) var(--inner-shadow-color-light);
+}
+
+.parameter-selector h4 {
+  margin: 0 0 var(--model-spacing-md);
+  color: var(--model-color-text);
+  font-size: 1rem;
+  text-shadow: 1px 1px 1px var(--shadow-color-light),
+               -1px -1px 1px var(--shadow-color-dark);
+}
+
+.parameter-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--model-spacing-sm);
+}
+
+.parameter-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--model-spacing-sm) var(--model-spacing-md);
+  border: none;
+  border-radius: var(--model-border-radius-md);
+  background: var(--model-color-background);
+  color: var(--model-color-text);
+  cursor: pointer;
+  box-shadow: 
+    var(--shadow-distance) var(--shadow-distance) var(--shadow-blur) var(--shadow-color-dark),
+    calc(-1 * var(--shadow-distance)) calc(-1 * var(--shadow-distance)) var(--shadow-blur) var(--shadow-color-light);
+  transition: all var(--transition-speed) ease;
+}
+
+.parameter-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    calc(var(--shadow-distance) + 2px) calc(var(--shadow-distance) + 2px) calc(var(--shadow-blur) + 4px) var(--shadow-color-dark),
+    calc(-1 * var(--shadow-distance) - 2px) calc(-1 * var(--shadow-distance) - 2px) calc(var(--shadow-blur) + 4px) var(--shadow-color-light);
+}
+
+.parameter-button.active {
+  background: var(--model-color-primary);
+  color: white;
+  box-shadow: 
+    inset var(--inner-shadow-distance) var(--inner-shadow-distance) var(--inner-shadow-blur) var(--inner-shadow-color-dark),
+    inset calc(-1 * var(--inner-shadow-distance)) calc(-1 * var(--inner-shadow-distance)) var(--inner-shadow-blur) var(--inner-shadow-color-light);
+  transform: translateY(0);
+}
+
+/* Derivatives Visualization */
+.derivatives-visualization {
+  margin-bottom: var(--model-spacing-lg);
+  padding: var(--model-spacing-lg);
+  background: var(--model-color-background);
+  border-radius: var(--model-border-radius-lg);
+  box-shadow: 
+    var(--shadow-distance) var(--shadow-distance) var(--shadow-blur) var(--shadow-color-dark),
+    calc(-1 * var(--shadow-distance)) calc(-1 * var(--shadow-distance)) var(--shadow-blur) var(--shadow-color-light);
+}
+
+.visualization-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--model-spacing-md);
+}
+
+.impact-metrics {
+  display: flex;
+  gap: var(--model-spacing-md);
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.metric-label {
+  font-size: 0.875rem;
+  color: var(--model-color-text-light);
+}
+
+.metric-value {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+/* Impact Distribution */
+.impact-distribution {
+  margin-bottom: var(--model-spacing-lg);
+  padding: var(--model-spacing-lg);
+  background: var(--model-color-background);
+  border-radius: var(--model-border-radius-lg);
+  box-shadow: 
+    var(--shadow-distance) var(--shadow-distance) var(--shadow-blur) var(--shadow-color-dark),
+    calc(-1 * var(--shadow-distance)) calc(-1 * var(--shadow-distance)) var(--shadow-blur) var(--shadow-color-light);
+}
+
+/* Sensitivity Metrics */
+.sensitivity-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--model-spacing-md);
+}
+
+.metric-card {
+  padding: var(--model-spacing-md);
+  background: var(--model-color-background-alt);
+  border-radius: var(--model-border-radius-md);
+  box-shadow: 
+    inset var(--inner-shadow-distance) var(--inner-shadow-distance) var(--inner-shadow-blur) var(--inner-shadow-color-dark),
+    inset calc(-1 * var(--inner-shadow-distance)) calc(-1 * var(--inner-shadow-distance)) var(--inner-shadow-blur) var(--inner-shadow-color-light);
+}
+
+.metric-card h4 {
+  margin: 0 0 var(--model-spacing-sm);
+  color: var(--model-color-text);
+  font-size: 0.875rem;
+  text-shadow: 1px 1px 1px var(--shadow-color-light),
+               -1px -1px 1px var(--shadow-color-dark);
+}
+
+.metric-card .metric-value {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--model-color-text);
+  margin-bottom: var(--model-spacing-xs);
+}
+
+.metric-card .metric-description {
+  font-size: 0.75rem;
+  color: var(--model-color-text-light);
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --shadow-color-light: rgba(255, 255, 255, 0.05);
+    --shadow-color-dark: rgba(0, 0, 0, 0.3);
+    --inner-shadow-color-light: rgba(255, 255, 255, 0.03);
+    --inner-shadow-color-dark: rgba(0, 0, 0, 0.2);
+  }
+
+  .derivatives-panel {
+    background: var(--model-color-background-dark);
+  }
+
+  .parameter-selector {
+    background: rgba(30, 40, 55, 0.6);
+  }
+
+  .parameter-button {
+    background: var(--model-color-background-dark);
+  }
+
+  .derivatives-visualization,
+  .impact-distribution {
+    background: var(--model-color-background-dark);
+  }
+
+  .metric-card {
+    background: rgba(45, 55, 72, 0.8);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .derivatives-panel {
+    padding: var(--model-spacing-md);
+  }
+
+  .parameter-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .visualization-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--model-spacing-md);
+  }
+
+  .impact-metrics {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .sensitivity-metrics {
+    grid-template-columns: 1fr;
+  }
+}
