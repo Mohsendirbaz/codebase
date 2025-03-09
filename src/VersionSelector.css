@@ -1,12 +1,13 @@
 .version-selector {
   max-height: 300px;
   overflow-y: auto;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-color, #ddd);
   border-radius: 4px;
-  background-color: #fff;
+  background-color: var(--card-background, #fff);
   margin-bottom: 15px;
   padding: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px var(--shadow-dark, rgba(0, 0, 0, 0.1));
+  color: var(--text-color, #333);
 }
 
 /* Styles for when the selector is in the form container */
@@ -21,11 +22,12 @@
   justify-content: space-between;
   align-items: center;
   padding: 8px 12px;
-  background-color: #f5f5f5;
+  background-color: var(--sidebar-background, #f5f5f5);
   border-radius: 4px;
   margin-bottom: 8px;
   cursor: pointer;
   transition: background-color 0.2s;
+  color: var(--text-color, #333);
 }
 
 .version-selector-container .group-header {
@@ -34,11 +36,12 @@
 }
 
 .group-header:hover {
-  background-color: #e9e9e9;
+  background-color: var(--input-background, #e9e9e9);
 }
 
 .group-header.all-selected {
-  background-color: #e3f2fd;
+  background-color: var(--primary-color, #e3f2fd);
+  color: var(--text-color, #fff);
 }
 
 .group-title {
@@ -49,11 +52,12 @@
 
 .group-name {
   font-weight: 500;
+  color: var(--text-color, #333);
 }
 
 .group-count {
   font-size: 0.85em;
-  color: #666;
+  color: var(--text-color, #666);
 }
 
 .version-list {
@@ -75,6 +79,7 @@
   margin-bottom: 4px;
   cursor: pointer;
   transition: background-color 0.2s;
+  color: var(--text-color, #333);
 }
 
 .version-selector-container .version-item {
@@ -83,11 +88,12 @@
 }
 
 .version-item:hover {
-  background-color: #f0f0f0;
+  background-color: var(--input-background, #f0f0f0);
 }
 
 .version-item.selected {
-  background-color: #e3f2fd;
+  background-color: var(--primary-color, #e3f2fd);
+  color: var(--text-color, #fff);
 }
 
 .version-info {
@@ -97,11 +103,12 @@
 
 .version-number {
   font-weight: 500;
+  color: var(--text-color, #333);
 }
 
 .version-description {
   font-size: 0.8em;
-  color: #666;
+  color: var(--text-color, #666);
   margin-top: 2px;
 }
 
@@ -118,14 +125,14 @@
   left: 0;
   width: 18px;
   height: 18px;
-  border: 2px solid #aaa;
+  border: 2px solid var(--border-color, #aaa);
   border-radius: 3px;
-  background-color: #fff;
+  background-color: var(--input-background, #fff);
 }
 
 .version-item.selected .version-checkbox::before {
-  background-color: #2196F3;
-  border-color: #2196F3;
+  background-color: var(--primary-color, #2196F3);
+  border-color: var(--primary-color, #2196F3);
 }
 
 .version-item.selected .version-checkbox::after {
@@ -135,12 +142,12 @@
   left: 7px;
   width: 4px;
   height: 8px;
-  border: solid white;
+  border: solid var(--text-color, white);
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }
 
-/* Added styles for version input container */
+/* Version input container */
 .version-input-container {
   display: flex;
   align-items: center;
@@ -150,8 +157,10 @@
 .version-input {
   width: 60px;
   padding: 5px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-color, #ccc);
   border-radius: 4px;
   margin-right: 10px;
   text-align: center;
+  background-color: var(--input-background, #fff);
+  color: var(--text-color, #333);
 }
