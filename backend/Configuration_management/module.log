@@ -384,3 +384,25 @@
 2025-03-08 20:52:32,274 fv_tuple: 10
 2025-03-08 20:52:32,274 fv_tuple: 5
 2025-03-08 20:52:32,274 fv_tuple: 10
+2025-03-09 14:07:42,296 filtered_values: [{'filteredValue': {'id': 'initialSellingPriceAmount13', 'value': '5.4', 'start': '5', 'end': '10', 'remarks': '3x higher prices in years 5-10'}}, {'filteredValue': {'id': 'initialSellingPriceAmount13', 'value': '8.8', 'start': '10', 'end': '20', 'remarks': '5x higher multiplier in years 10-20'}}]
+2025-03-09 14:07:42,296 general_year_sorted_list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+2025-03-09 14:07:42,296 start_end_points: {1, 10, 20, 5}
+2025-03-09 14:07:42,296 start_end_points: {1, 10, 20, 5}
+2025-03-09 14:07:42,296 sorted_points: [1, 5, 10, 20]
+2025-03-09 14:07:42,296 general_intervals: [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8), (8, 9), (9, 10), (10, 11), (11, 12), (12, 13), (13, 14), (14, 15), (15, 16), (16, 17), (17, 18), (18, 19), (19, 20), (20, 21)]
+2025-03-09 14:07:42,296 intervals: [(1, 5), (5, 10), (10, 20)]
+2025-03-09 14:07:42,296 fv_tuple: 5
+2025-03-09 14:07:42,296 fv_tuple: 10
+2025-03-09 14:07:42,296 fv_tuple: 5
+2025-03-09 14:07:42,296 fv_tuple: 10
+2025-03-09 14:08:02,244 filtered_values: [{'filteredValue': {'id': 'initialSellingPriceAmount13', 'value': '5.4', 'start': '5', 'end': '10', 'remarks': '3x higher prices in years 5-10'}}, {'filteredValue': {'id': 'initialSellingPriceAmount13', 'value': '8.8', 'start': '10', 'end': '20', 'remarks': '5x higher multiplier in years 10-20'}}]
+2025-03-09 14:08:02,244 general_year_sorted_list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+2025-03-09 14:08:02,244 start_end_points: {1, 10, 20, 5}
+2025-03-09 14:08:02,244 start_end_points: {1, 10, 20, 5}
+2025-03-09 14:08:02,244 sorted_points: [1, 5, 10, 20]
+2025-03-09 14:08:02,244 general_intervals: [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8), (8, 9), (9, 10), (10, 11), (11, 12), (12, 13), (13, 14), (14, 15), (15, 16), (16, 17), (17, 18), (18, 19), (19, 20), (20, 21)]
+2025-03-09 14:08:02,244 intervals: [(1, 5), (5, 10), (10, 20)]
+2025-03-09 14:08:02,244 fv_tuple: 5
+2025-03-09 14:08:02,244 fv_tuple: 10
+2025-03-09 14:08:02,244 fv_tuple: 5
+2025-03-09 14:08:02,244 fv_tuple: 10
