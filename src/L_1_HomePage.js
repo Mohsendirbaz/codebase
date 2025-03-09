@@ -137,6 +137,7 @@ const L_1_HomePageContent = () => {
 
     const { formValues, handleInputChange, handleReset, setFormValues } = useFormValues();
     const [version, setVersion] = useState('1');
+    const [versionExtension, setVersionExtension] = useState('1');
     const [batchRunning, setBatchRunning] = useState(false);
     const [analysisRunning, setAnalysisRunning] = useState(false);
     const [monitoringActive, setMonitoringActive] = useState(false);
@@ -1242,6 +1243,78 @@ const L_1_HomePageContent = () => {
     const handleVersionChange = (event) => {
         setVersion(event.target.value);
     };
+    
+    const handleVersionExtensionChange = (event) => {
+        setVersionExtension(event.target.value);
+    };
+    
+    const createBatchExtension = async () => {
+        try {
+            // Show a loading indicator or message
+            setBatchRunning(true);
+            
+            const response = await fetch('http://127.0.0.1:8002/create_batch_extension', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ 
+                    version: version,
+                    extension: versionExtension
+                }),
+            });
+
+            const result = await response.json();
+            if (response.ok) {
+                console.log(result.message);
+                // Display a detailed success message to the user
+                alert(`Successfully created batch extension (${version}.${versionExtension}) with adapted scripts.\n\nThis includes custom versions of formatter, module1, and config handling scripts to work with the extension structure.`);
+            } else {
+                console.error(result.error);
+                alert(`Error: ${result.error}`);
+            }
+        } catch (error) {
+            console.error('Batch extension creation failed', error);
+            alert('Failed to create batch extension. Check console for details.');
+        } finally {
+            // Hide the loading indicator
+            setBatchRunning(false);
+        }
+    };
+    
+    const removeBatchExtension = async () => {
+        try {
+            // Show a loading indicator or message
+            setBatchRunning(true);
+            
+            const response = await fetch('http://127.0.0.1:8002/remove_batch_extension', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ 
+                    version: version,
+                    extension: versionExtension
+                }),
+            });
+
+            const result = await response.json();
+            if (response.ok) {
+                console.log(result.message);
+                // Display a success message to the user
+                alert(`Successfully removed batch extension (${version}.${versionExtension}).`);
+            } else {
+                console.error(result.error);
+                alert(`Error: ${result.error}`);
+            }
+        } catch (error) {
+            console.error('Batch extension removal failed', error);
+            alert('Failed to remove batch extension. Check console for details.');
+        } finally {
+            // Hide the loading indicator
+            setBatchRunning(false);
+        }
+    };
 
     const renderCase1Content = () => {
         // Name mapping for specific files to more presentable names
@@ -1459,16 +1532,25 @@ const L_1_HomePageContent = () => {
                                 Load Configuration
                             </button>
                         </div>
-                        <div className="version-input-container">
-                            <input
-                                id="versionNumber"
-                                type="number"
-                                className="version-input"
-                                placeholder="1"
-                                value={version}
-                                onChange={handleVersionChange}
-                            />
-                        </div>
+                <div className="version-input-container">
+                    <input
+                        id="versionNumber"
+                        type="number"
+                        className="version-input"
+                        placeholder="1"
+                        value={version}
+                        onChange={handleVersionChange}
+                    />
+                    <input
+                        id="versionExtension"
+                        type="number"
+                        className="version-input"
+                        placeholder="1"
+                        value={versionExtension}
+                        onChange={handleVersionExtensionChange}
+                        aria-label="version extension"
+                    />
+                </div>
                     </div>
 
                     <div className="button-row checkbox-row">
@@ -1533,6 +1615,20 @@ const L_1_HomePageContent = () => {
                   disabled={batchRunning || analysisRunning}
                 >
                   <span className="action-text">Remove Current Batch</span>
+                </button>
+                <button
+                  className="primary-action"
+                  onClick={createBatchExtension}
+                  disabled={batchRunning || analysisRunning}
+                >
+                  <span className="action-text">Create Batch Extension</span>
+                </button>
+                <button
+                  className="secondary-action"
+                  onClick={removeBatchExtension}
+                  disabled={batchRunning || analysisRunning}
+                >
+                  <span className="action-text">Remove Batch Extension</span>
                 </button>
               </div>
                     <div className="button-row practical-row">

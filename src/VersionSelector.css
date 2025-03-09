@@ -139,3 +139,19 @@
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }
+
+/* Added styles for version input container */
+.version-input-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.version-input {
+  width: 60px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+  text-align: center;
+}

@@ -45,6 +45,7 @@ flask_apps = [
     (r"Data_processors_and_transformers\Front_Subtab_Plot.py", 8008),
     (r"Data_processors_and_transformers\Front_Subtab_HTML.py", 8009),
     (r"API_endpoints_and_controllers\Create_new_batch.py", 8001),
+    (r"API_endpoints_and_controllers\Create_batch_extension.py", 8002),
     (r"API_endpoints_and_controllers\Remove_batch.py", 7001),
     (r"API_endpoints_and_controllers\Calculations.py", 5007),
     (r"API_endpoints_and_controllers\Calculations_and_Sensitivity.py", 25007),
