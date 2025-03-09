@@ -1,0 +1,123 @@
+/* PriceDisplay Styles */
+
+.price-display {
+  background: var(--model-color-background-alt, #f8fafc);
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 16px;
+  border-top: 1px solid var(--model-color-border, #e2e8f0);
+  transition: all 0.3s ease;
+}
+
+.price-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.price-header h4 {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--model-color-text, #1a202c);
+  font-weight: 600;
+}
+
+.price-badge {
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  background: var(--model-color-primary-light, #ebf5ff);
+  color: var(--model-color-primary, #3b82f6);
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.price-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--model-color-primary, #3b82f6);
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.price-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.details-button {
+  padding: 8px 16px;
+  background: none;
+  border: 1px solid var(--model-color-primary, #3b82f6);
+  color: var(--model-color-primary, #3b82f6);
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  text-align: center;
+}
+
+.details-button:hover {
+  background: var(--model-color-primary, #3b82f6);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.details-button:active {
+  transform: translateY(0);
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .price-display {
+    background: var(--model-color-background-alt-dark, #2d3748);
+    border-color: var(--model-color-border-dark, #4a5568);
+  }
+
+  .price-header h4 {
+    color: var(--model-color-text-dark, #f7fafc);
+  }
+
+  .price-badge {
+    background: var(--model-color-primary-dark, #2563eb);
+    color: var(--model-color-text-dark, #f7fafc);
+  }
+
+  .price-value {
+    color: var(--model-color-primary-light, #93c5fd);
+  }
+
+  .details-button {
+    border-color: var(--model-color-primary-light, #93c5fd);
+    color: var(--model-color-primary-light, #93c5fd);
+  }
+
+  .details-button:hover {
+    background: var(--model-color-primary-dark, #2563eb);
+    color: white;
+  }
+}
+
+/* Model Card Integration Styles */
+.model-card .price-display {
+  margin-top: 0;
+  padding: 12px;
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+}
+
+.model-card .price-value {
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+}
+
+.model-card .price-header h4 {
+  font-size: 0.85rem;
+}
+
+.model-card .details-button {
+  font-size: 0.75rem;
+  padding: 6px 12px;
+}

@@ -1,3 +1,4 @@
+/* Main Container */
 .sensitivity-engine {
   padding: var(--model-spacing-lg);
   max-width: 1200px;
@@ -50,6 +51,21 @@
   grid-template-columns: 300px 1fr;
   gap: var(--model-spacing-lg);
   align-items: start;
+}
+
+/* Efficacy Summary */
+.efficacy-summary {
+  background: var(--model-color-background-alt);
+  border-radius: var(--model-border-radius-lg);
+  padding: var(--model-spacing-lg);
+  margin-bottom: var(--model-spacing-lg);
+  border: 1px solid var(--model-color-border);
+}
+
+.efficacy-summary h3 {
+  margin: 0 0 var(--model-spacing-md);
+  color: var(--model-color-text);
+  font-size: var(--model-font-size-lg);
 }
 
 /* Parameters Panel */
@@ -215,6 +231,12 @@
   gap: var(--model-spacing-sm);
 }
 
+.parameter-efficacy {
+  font-size: var(--model-font-size-sm);
+  font-weight: normal;
+  color: var(--model-color-text-light);
+}
+
 .parameter-result h4::before {
   content: '';
   display: block;
@@ -261,10 +283,53 @@
   transform: translateY(-2px);
 }
 
+/* Price Impact Analysis */
+.analysis-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--model-spacing-lg);
+  padding-top: var(--model-spacing-lg);
+  border-top: 1px solid var(--model-color-border);
+}
+
+.price-impact-summary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--model-spacing-sm);
+}
+
+.price-impact-summary h4 {
+  margin: 0;
+  font-size: var(--model-font-size-md);
+  color: var(--model-color-text);
+}
+
+.price-impact-metrics {
+  display: flex;
+  gap: var(--model-spacing-md);
+}
+
+.price-impact-metric {
+  display: flex;
+  gap: var(--model-spacing-sm);
+  align-items: center;
+}
+
+.metric-label {
+  color: var(--model-color-text-light);
+}
+
+.metric-value {
+  font-weight: 500;
+  color: var(--model-color-primary);
+}
+
 /* Dark Mode Support */
 @media (prefers-color-scheme: dark) {
   .parameters-panel,
-  .results-panel {
+  .results-panel,
+  .efficacy-summary {
     background: var(--model-color-background-alt-dark);
   }
 
@@ -315,6 +380,12 @@
     position: sticky;
     top: 0;
     z-index: 1;
+  }
+  
+  .analysis-actions {
+    flex-direction: column;
+    gap: var(--model-spacing-md);
+    align-items: stretch;
   }
 }
 
