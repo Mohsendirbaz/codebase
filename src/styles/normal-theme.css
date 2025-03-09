@@ -1,5 +1,13 @@
 /* Normal Theme - Professional & Clean */
 :root.normal-theme {
+    /* Neumorphic specific variables */
+    --neumorphic-bg: #ffffff;
+    --neumorphic-shadow-dark: rgba(166, 180, 200, 0.5);
+    --neumorphic-shadow-light: rgba(255, 255, 255, 0.8);
+    --neumorphic-gradient: linear-gradient(145deg, #ffffff, #f0f0f0);
+    --neumorphic-text: #333;
+    --neumorphic-active-text: #4a90e2;
+
     --primary-color: #4a90e2;
     --secondary-color: #66bb6a;
     --text-color: #333333;

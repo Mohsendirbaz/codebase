@@ -30,11 +30,65 @@
 /* About Us Section */
 .L_1_HomePageSectionA {
     padding: 20px;
-    background-color: var(--app-background);
+    background: var(--neumorphic-bg);
+    border-radius: 15px;
+    box-shadow: 
+        8px 8px 16px var(--neumorphic-shadow-dark),
+        -8px -8px 16px var(--neumorphic-shadow-light);
+}
+
+.about-us-image1 {
+    border-radius: 15px;
+    background: var(--neumorphic-gradient);
+    box-shadow: 
+        inset 4px 4px 8px var(--neumorphic-shadow-dark),
+        inset -4px -4px 8px var(--neumorphic-shadow-light);
+    margin-bottom: 20px;
 }
 
 .L_1_HomePageSectionT {
     margin-bottom: 20px;
+    color: var(--neumorphic-text);
+}
+
+.L_1_HomePageSectionT h2 {
+    color: var(--neumorphic-text);
+    margin-bottom: 15px;
+}
+
+.theme-ribbon {
+    margin-top: 20px;
+}
+
+.theme-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.theme-button {
+    background: var(--neumorphic-bg);
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    color: var(--neumorphic-text);
+    box-shadow: 
+        5px 5px 10px var(--neumorphic-shadow-dark),
+        -5px -5px 10px var(--neumorphic-shadow-light);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.theme-button:hover {
+    transform: translateY(-2px);
+}
+
+.theme-button.active {
+    color: var(--neumorphic-active-text);
+    box-shadow: 
+        inset 3px 3px 6px var(--neumorphic-shadow-dark),
+        inset -3px -3px 6px var(--neumorphic-shadow-light);
+    transform: translateY(1px);
 }
 
 /* Content Loading */
