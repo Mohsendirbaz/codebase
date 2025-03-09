@@ -1,6 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import './SensitivityEngine.css';
+import './css/PriceEfficacy.css';
 import AnalysisChart from './AnalysisChart';
+import EfficacyIndicator from './EfficacyIndicator';
+import { runSensitivityAnalysis, runMonteCarloSimulation } from './services/apiService';
+import { calculateEfficacyMetrics } from './services/integrationService';
 
 const SIMULATION_TYPES = {
   SENSITIVITY: 'sensitivity',
@@ -19,12 +23,40 @@ const PARAMETER_COLORS = {
   process: '#f59e0b'
 };
 
-const SensitivityEngine = ({ model, baseModel, onUpdate, onClose }) => {
+const SensitivityEngine = ({ 
+  model, 
+  baseModel, 
+  sensitivityData: initialSensitivityData,
+  onUpdate, 
+  onClose 
+}) => {
   const [activeSimulation, setActiveSimulation] = useState(SIMULATION_TYPES.SENSITIVITY);
   const [parameters, setParameters] = useState([]);
   const [results, setResults] = useState(null);
   const [isCalculating, setIsCalculating] = useState(false);
+  const [efficacyMetrics, setEfficacyMetrics] = useState(null);
+  const [priceData, setPriceData] = useState(null);
 
+  // Listen for price data events to calculate efficacy
+  useEffect(() => {
+    const handlePriceDataLoaded = (event) => {
+      const { version, extension, priceData } = event.detail;
+      
+      // Only process events for this model
+      if (version !== model.version || extension !== model.extension) return;
+      
+      // Store price data for efficacy calculations
+      setPriceData(priceData);
+    };
+    
+    // Listen for price data loaded events
+    window.addEventListener('priceDataLoaded', handlePriceDataLoaded);
+    
+    return () => {
+      window.removeEventListener('priceDataLoaded', handlePriceDataLoaded);
+    };
+  }, [model]);
+  
   // Initialize parameters based on model filters
   useEffect(() => {
     const initializeParameters = () => {
@@ -44,13 +76,43 @@ const SensitivityEngine = ({ model, baseModel, onUpdate, onClose }) => {
       }));
 
       setParameters(params);
+      
+      // Use initial sensitivity data if provided
+      if (initialSensitivityData?.derivatives) {
+        updateEfficacyMetrics(initialSensitivityData, priceData);
+      }
     };
 
     initializeParameters();
-  }, [model]);
+  }, [model, initialSensitivityData, priceData]);
+  
+  // Update efficacy metrics when sensitivity data and price data are available
+  const updateEfficacyMetrics = useCallback((sensitivityData, priceData) => {
+    if (sensitivityData?.derivatives && priceData) {
+      // Use the integrationService for efficacy calculations
+      const metrics = calculateEfficacyMetrics(sensitivityData, priceData);
+      setEfficacyMetrics(metrics);
+    }
+  }, []);
+
+  // Update efficacy metrics when price data changes
+  useEffect(() => {
+    if (results && priceData) {
+      // Create sensitivity data structure from results
+      const sensitivityData = {
+        parameters: results.results?.map(r => r.parameter) || [],
+        derivatives: results.results?.map(r => ({
+          parameter: r.parameter,
+          data: r.values.map(v => ({ impact: v.impact }))
+        })) || []
+      };
+      
+      updateEfficacyMetrics(sensitivityData, priceData);
+    }
+  }, [results, priceData, updateEfficacyMetrics]);
 
   // Run sensitivity analysis
-  const runSensitivityAnalysis = useCallback(async () => {
+  const handleSensitivityAnalysis = useCallback(async () => {
     setIsCalculating(true);
     try {
       // Prepare parameters for analysis
@@ -62,18 +124,26 @@ const SensitivityEngine = ({ model, baseModel, onUpdate, onClose }) => {
           steps: p.steps
         }));
 
-      // Mock API call - replace with actual backend call
-      const results = await mockSensitivityCalculation(analysisParams);
+      // Use the API service instead of mock function
+      const results = await runSensitivityAnalysis(analysisParams);
       setResults(results);
+      
+      // Update parent component with results
+      if (onUpdate) {
+        onUpdate({
+          results: results,
+          efficacyReady: true
+        });
+      }
     } catch (error) {
       console.error('Sensitivity analysis failed:', error);
     } finally {
       setIsCalculating(false);
     }
-  }, [parameters]);
+  }, [parameters, onUpdate]);
 
   // Run Monte Carlo simulation
-  const runMonteCarloSimulation = useCallback(async () => {
+  const handleMonteCarloSimulation = useCallback(async () => {
     setIsCalculating(true);
     try {
       // Prepare parameters for simulation
@@ -85,15 +155,23 @@ const SensitivityEngine = ({ model, baseModel, onUpdate, onClose }) => {
           range: p.range
         }));
 
-      // Mock API call - replace with actual backend call
-      const results = await mockMonteCarloSimulation(simulationParams);
+      // Use the API service instead of mock function
+      const results = await runMonteCarloSimulation(simulationParams);
       setResults(results);
+      
+      // Update parent component with results
+      if (onUpdate) {
+        onUpdate({
+          results: results,
+          efficacyReady: false // Monte Carlo doesn't calculate efficacy
+        });
+      }
     } catch (error) {
       console.error('Monte Carlo simulation failed:', error);
     } finally {
       setIsCalculating(false);
     }
-  }, [parameters]);
+  }, [parameters, onUpdate]);
 
   // Update parameter settings
   const handleParameterUpdate = (index, updates) => {
@@ -107,45 +185,6 @@ const SensitivityEngine = ({ model, baseModel, onUpdate, onClose }) => {
   // Helper function to get consistent colors for parameters
   const getParameterColor = (parameter) => {
     return PARAMETER_COLORS[parameter] || '#64748b';
-  };
-
-  // Mock calculation functions - replace with actual API calls
-  const mockSensitivityCalculation = async (params) => {
-    // Simulate API delay
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    return {
-      type: 'sensitivity',
-      parameters: params,
-      results: params.map(p => ({
-        parameter: p.type,
-        values: Array.from({ length: p.steps }, (_, i) => ({
-          value: p.range.min + (p.range.max - p.range.min) * (i / (p.steps - 1)),
-          impact: Math.random() * 2 - 1
-        }))
-      }))
-    };
-  };
-
-  const mockMonteCarloSimulation = async (params) => {
-    // Simulate API delay
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    return {
-      type: 'monteCarlo',
-      parameters: params,
-      iterations: 1000,
-      results: {
-        npv: Array.from({ length: 1000 }, () => ({
-          value: Math.random() * 1000000,
-          probability: Math.random()
-        })),
-        irr: Array.from({ length: 1000 }, () => ({
-          value: Math.random() * 0.2,
-          probability: Math.random()
-        }))
-      }
-    };
   };
 
   return (
@@ -168,6 +207,18 @@ const SensitivityEngine = ({ model, baseModel, onUpdate, onClose }) => {
         </div>
         <button className="close-button" onClick={onClose}>×</button>
       </div>
+      
+      {/* Display efficacy metrics if available */}
+      {efficacyMetrics && (
+        <div className="efficacy-summary">
+          <h3>Price Efficacy Analysis</h3>
+          <EfficacyIndicator
+            efficacyMetrics={efficacyMetrics}
+            showDetails={true}
+            maxImpacts={5}
+          />
+        </div>
+      )}
 
       <div className="sensitivity-content">
         <div className="parameters-panel">
@@ -256,7 +307,16 @@ const SensitivityEngine = ({ model, baseModel, onUpdate, onClose }) => {
                 <div className="sensitivity-results">
                   {results.results.map(paramResult => (
                     <div key={paramResult.parameter} className="parameter-result">
-                      <h4>{paramResult.parameter} Sensitivity</h4>
+                      <h4 style={{ color: getParameterColor(paramResult.parameter) }}>
+                        {paramResult.parameter.charAt(0).toUpperCase() + paramResult.parameter.slice(1)} Sensitivity
+                        {efficacyMetrics && (
+                          <span className="parameter-efficacy">
+                            {' • '}
+                            {efficacyMetrics.parameterImpacts.find(p => p.parameter === paramResult.parameter)?.elasticity.toFixed(2) || 0}
+                            {' elasticity'}
+                          </span>
+                        )}
+                      </h4>
                       <AnalysisChart
                         type="sensitivity"
                         data={{
@@ -269,22 +329,26 @@ const SensitivityEngine = ({ model, baseModel, onUpdate, onClose }) => {
                       />
                     </div>
                   ))}
-                  <AnalysisChart
-                    type="tornado"
-                    data={{
-                      parameters: parameters
-                        .filter(p => p.isEnabled)
-                        .map(p => ({
-                          name: p.type,
-                          low: -p.range.min / 100,
-                          high: p.range.max / 100
-                        }))
-                    }}
-                    options={{
-                      negativeColor: 'rgba(239, 68, 68, 0.2)',
-                      positiveColor: 'rgba(34, 197, 94, 0.2)'
-                    }}
-                  />
+                  
+                  <div className="tornado-chart">
+                    <h4>Parameter Impact Analysis</h4>
+                    <AnalysisChart
+                      type="tornado"
+                      data={{
+                        parameters: parameters
+                          .filter(p => p.isEnabled)
+                          .map(p => ({
+                            name: p.type.charAt(0).toUpperCase() + p.type.slice(1),
+                            low: -p.range.min / 100,
+                            high: p.range.max / 100
+                          }))
+                      }}
+                      options={{
+                        negativeColor: 'rgba(239, 68, 68, 0.2)',
+                        positiveColor: 'rgba(34, 197, 94, 0.2)'
+                      }}
+                    />
+                  </div>
                 </div>
               )}
 
@@ -320,13 +384,38 @@ const SensitivityEngine = ({ model, baseModel, onUpdate, onClose }) => {
                   </div>
                 </div>
               )}
+              
+              <div className="analysis-actions">
+                <button
+                  className="run-analysis-button"
+                  onClick={activeSimulation === SIMULATION_TYPES.SENSITIVITY ? handleSensitivityAnalysis : handleMonteCarloSimulation}
+                >
+                  Recalculate {activeSimulation === SIMULATION_TYPES.SENSITIVITY ? 'Sensitivity Analysis' : 'Monte Carlo Simulation'}
+                </button>
+                
+                {efficacyMetrics && (
+                  <div className="price-impact-summary">
+                    <h4>Price Impact Summary</h4>
+                    <div className="price-impact-metrics">
+                      <div className="price-impact-metric">
+                        <span className="metric-label">Overall Elasticity:</span>
+                        <span className="metric-value">{efficacyMetrics.elasticity.toFixed(2)}</span>
+                      </div>
+                      <div className="price-impact-metric">
+                        <span className="metric-label">Price Sensitivity:</span>
+                        <span className="metric-value">{(efficacyMetrics.sensitivity * 100).toFixed(0)}%</span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           ) : (
             <div className="no-results">
               <p>Configure parameters and run analysis to see results</p>
               <button
                 className="run-analysis-button"
-                onClick={activeSimulation === SIMULATION_TYPES.SENSITIVITY ? runSensitivityAnalysis : runMonteCarloSimulation}
+                onClick={activeSimulation === SIMULATION_TYPES.SENSITIVITY ? handleSensitivityAnalysis : handleMonteCarloSimulation}
               >
                 Run {activeSimulation === SIMULATION_TYPES.SENSITIVITY ? 'Sensitivity Analysis' : 'Monte Carlo Simulation'}
               </button>

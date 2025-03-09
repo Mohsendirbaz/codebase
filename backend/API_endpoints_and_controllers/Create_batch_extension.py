@@ -1,3 +1,15 @@
+"""
+Create a batch extension directory and copy configuration files.
+
+Args:
+    version (str): The original version number
+    extension (str): The extension number
+
+Returns:
+    dict: A dictionary with status and message keys, indicating the result of the operation.
+"""
+def create_batch_extension(version, extension):
+    pass
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 import os

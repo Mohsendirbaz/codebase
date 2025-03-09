@@ -88,10 +88,32 @@ const ModelZone = () => {
     setActiveDialog(DIALOG_LAYERS.IMPACT);
   }, []);
 
-  const handleSensitivityAnalysis = useCallback((modelId) => {
+  const handleSensitivityAnalysis = useCallback(async (modelId) => {
     setActiveModel(modelId);
     setActiveDialog(DIALOG_LAYERS.SENSITIVITY);
-  }, []);
+    
+    // Prepare sensitivity data with efficacy metrics for SensitivityEngine
+    const model = modelSettings.find(m => m.id === modelId);
+    if (!model) return;
+    
+    try {
+      // Load utility functions dynamically to avoid circular dependencies
+      const { loadSensitivityData, calculateEfficacyMetrics } = await import('./utils/dataProcessing');
+      
+      // Load sensitivity data
+      const sensitivityData = await loadSensitivityData(model);
+      
+      // Prepare data for SensitivityEngine
+      // (Efficacy metrics will be calculated in the ModelCard via the custom event)
+      setSensitivityData({
+        parameters: sensitivityData.parameters,
+        derivatives: sensitivityData.derivatives,
+        efficacyReady: true
+      });
+    } catch (error) {
+      console.error('Error loading sensitivity data:', error);
+    }
+  }, [modelSettings]);
 
   const handleRiskAssessment = useCallback((modelId) => {
     setActiveModel(modelId);
@@ -275,6 +297,7 @@ const ModelZone = () => {
             onRiskAssessment={() => handleRiskAssessment(model.id)}
             onOptimization={() => handleOptimization(model.id)}
             onDecisionSupport={() => handleDecisionSupport(model.id)}
+            baseSettings={model.type !== 'base' ? modelSettings.find(m => m.id === 'base') : null}
           />
         ))}
       </div>

@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './SensitivitySelector.css';
+import useFormValues from '../useFormValues';
 
 const Dialog = ({ show, onClose, children, triggerRef, isClosing }) => {
     if (!show) return null;
@@ -79,6 +80,7 @@ const SensitivityAnalysisSelector = ({ sKey = '', onSensitivityChange = () => {}
     const triggerButtonRef = useRef(null);
     const [showDialog, setShowDialog] = useState(false);
     const [isClosing, setIsClosing] = useState(false);
+    const { propertyMapping } = useFormValues();
 
     // Default state object
     const defaultState = {
@@ -277,8 +279,10 @@ const SensitivityAnalysisSelector = ({ sKey = '', onSensitivityChange = () => {}
         onSensitivityChange(sKey, defaultState);
     };
 
-    const compareOptions = Array.from({ length: 70 }, (_, i) => `S${i + 10}`)
-        .filter(option => option !== sKey);
+    // Get compare options from property mapping
+    const compareOptions = Object.keys(propertyMapping)
+        .filter(key => key !== sKey)
+        .map(key => ({ key, label: propertyMapping[key] }));
 
     return (
         <div className="sensitivity-module">
@@ -351,7 +355,9 @@ const SensitivityAnalysisSelector = ({ sKey = '', onSensitivityChange = () => {}
                                     >
                                         <option value="">Select parameter</option>
                                         {compareOptions.map(option => (
-                                            <option key={option} value={option}>{option}</option>
+                                            <option key={option.key} value={option.key}>
+                                                {option.label} ({option.key})
+                                            </option>
                                         ))}
                                     </select>
                                 </div>
