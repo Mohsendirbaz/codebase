@@ -1,5 +1,13 @@
 /* Dark Theme with Rich Dark Blue */
 :root.dark-theme {
+    /* Neumorphic specific variables */
+    --neumorphic-bg: #1e2746;
+    --neumorphic-shadow-dark: rgba(0, 0, 0, 0.3);
+    --neumorphic-shadow-light: rgba(40, 53, 105, 0.2);
+    --neumorphic-gradient: linear-gradient(145deg, #232d52, #1a243f);
+    --neumorphic-text: #e0e0e0;
+    --neumorphic-active-text: #4a90e2;
+
     /* Core colors */
     --primary-color: #1a237e;
     --secondary-color: #00897b;

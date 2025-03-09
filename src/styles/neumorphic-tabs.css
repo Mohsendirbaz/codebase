@@ -1,14 +1,14 @@
 .L_1_HomePageTabs .tab-button,
 .sub-tab-buttons .sub-tab-button {
-  background: linear-gradient(145deg, #e6e6e6, #ffffff);
+  background: var(--neumorphic-gradient);
   border-radius: 10px;
-  box-shadow: 8px 8px 16px #d1d1d1,
-              -8px -8px 16px #ffffff;
+  box-shadow: 8px 8px 16px var(--neumorphic-shadow-dark),
+              -8px -8px 16px var(--neumorphic-shadow-light);
   padding: 15px 25px;
   margin: 10px;
   font-size: 16px;
   font-weight: 500;
-  color: #333;
+  color: var(--neumorphic-text);
   text-align: center;
   transition: all 0.3s ease;
   cursor: pointer;
@@ -35,25 +35,25 @@
 .L_1_HomePageTabs .tab-button:hover,
 .sub-tab-buttons .sub-tab-button:hover {
   transform: translateY(-2px);
-  box-shadow: 10px 10px 20px #c3c3c3,
-              -10px -10px 20px #ffffff;
+  box-shadow: 10px 10px 20px var(--neumorphic-shadow-dark),
+              -10px -10px 20px var(--neumorphic-shadow-light);
 }
 
 .L_1_HomePageTabs .tab-button:focus,
 .sub-tab-buttons .sub-tab-button:focus {
   outline: none;
-  box-shadow: 12px 12px 24px #b8b8b8,
-              -12px -12px 24px #ffffff;
+  box-shadow: 12px 12px 24px var(--neumorphic-shadow-dark),
+              -12px -12px 24px var(--neumorphic-shadow-light);
   transform: translateY(-3px);
 }
 
 .L_1_HomePageTabs .tab-button.active,
 .sub-tab-buttons .sub-tab-button.active {
-  background: linear-gradient(145deg, #ffffff, #f0f0f0);
-  box-shadow: inset 4px 4px 8px #d1d1d1,
-              inset -4px -4px 8px #ffffff;
+  background: var(--neumorphic-gradient);
+  box-shadow: inset 4px 4px 8px var(--neumorphic-shadow-dark),
+              inset -4px -4px 8px var(--neumorphic-shadow-light);
   transform: translateY(0);
-  color:darkblue;
+  color: var(--neumorphic-active-text);
 }
 
 .L_1_HomePageTabs {
@@ -62,7 +62,7 @@
   justify-content: center;
   gap: 15px;
   padding: 20px;
-  background: #f8f8f8;
+  background: var(--neumorphic-bg);
   border-radius: 15px;
   margin-bottom: 20px;
 }

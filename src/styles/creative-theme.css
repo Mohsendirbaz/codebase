@@ -1,5 +1,13 @@
 /* Creative Theme - Vibrant & Energetic */
 :root.creative-theme {
+    /* Neumorphic specific variables */
+    --neumorphic-bg: #f0f0f0;
+    --neumorphic-shadow-dark: rgba(166, 180, 200, 0.6);
+    --neumorphic-shadow-light: rgba(255, 255, 255, 0.9);
+    --neumorphic-gradient: linear-gradient(145deg, #f0f0f0, #e6e9f0);
+    --neumorphic-text: #424242;
+    --neumorphic-active-text: #8a2be2;
+
     --primary-color: #8a2be2;
     --secondary-color: #00bcd4;
     --text-color: #424242;
