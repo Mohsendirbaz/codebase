@@ -219,9 +219,9 @@
 }
 
 .reset-button {
-    background: #f44336 !important;
+    background: #6b6d6f !important;
     color: white !important;
-    border-color: #d32f2f !important;
+    border-color:#6b6d6f !important;
 }
 
 .reset-button:hover {

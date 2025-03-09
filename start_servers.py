@@ -62,7 +62,7 @@ node_base_dir = r"C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy"
 node_scripts = [
     ("submit_parameter_append.js", 3040),
     ("submitCompleteSet.js", 3052),
-  
+    ("labelUpdate.js", 3060)
 ]
 
 def verify_python_installation():

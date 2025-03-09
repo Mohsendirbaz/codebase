@@ -8,6 +8,7 @@ import ExtendedScaling from './extended_scaling/ExtendedScaling';
 import FactEngine from './FactEngine';
 import FactEngineAdmin from './FactEngineAdmin';
 import FormHeader from './FormHeader.js';
+import './label.css';
 import GeneralFormConfig from './GeneralFormConfig.js';
 import Popup from './Popup.js';
 import './L_1_HomePage.CSS/L_1_HomePage1.css';
