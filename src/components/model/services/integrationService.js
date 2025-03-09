@@ -1,4 +1,4 @@
-/**
+K/**
  * Integration Service
  * Centralizes integration between Model components and Refined_Integration_Plan components
  */
@@ -58,7 +58,7 @@ export const fetchCombinedPriceData = async (modelConfig) => {
     let refinedData = null;
     try {
       // Import dynamically to avoid circular dependencies
-      const refinedService = await import('../../../Refined_Integration_Plan/services/priceDataService');
+      const refinedService = await import('./priceDataService');
       refinedData = await refinedService.getPriceData({
         version: modelConfig.version,
         extension: modelConfig.extension
@@ -99,7 +99,7 @@ export const fetchCombinedSensitivityData = async (modelConfig) => {
     let refinedData = null;
     try {
       // Import dynamically to avoid circular dependencies
-      const refinedService = await import('../../../Refined_Integration_Plan/services/derivativesService');
+      const refinedService = await import('./derivativesService');
       refinedData = await refinedService.getDerivativesData({
         version: modelConfig.version,
         extension: modelConfig.extension,
@@ -163,7 +163,7 @@ export const calculateEfficacyMetrics = (sensitivityData, priceData) => {
   if (sensitivityData?.hasEnrichedData && priceData?.hasEnrichedData) {
     try {
       // Import dynamically
-      return import('../../../Refined_Integration_Plan/services/derivativesService')
+      return import('./derivativesService')
         .then(refinedService => {
           return refinedService.calculatePriceImpact(sensitivityData, priceData);
         })

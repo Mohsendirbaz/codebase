@@ -1,198 +1,337 @@
+import { LinearRetryStrategy } from './retryStrategy';
+
 /**
- * API Service for Model Zone Integration
- * Centralizes all API calls for model data, sensitivity analysis and pricing
+ * @typedef {Object} ApiConfig
+ * @property {number} [retryAttempts] - Number of retry attempts
+ * @property {number} [timeout] - Request timeout in milliseconds
+ * @property {function(Error): void} [errorCallback] - Error callback function
  */
 
-// Base API URL - adjust based on your backend configuration
-const API_BASE_URL = '/api';
+/**
+ * @template T
+ * @typedef {Object} ApiResponse
+ * @property {T} data - Response data
+ * @property {number} status - HTTP status code
+ * @property {Headers} headers - Response headers
+ */
 
 /**
- * Fetch price data for a model version from economic summary
- * @param {string} version - Model version
- * @param {string|null} extension - Version extension (if applicable)
- * @returns {Promise<Object>} - Price data
+ * Custom API error class
+ */
+export class ApiError extends Error {
+  /**
+   * @param {string} message - Error message
+   * @param {number} [status] - HTTP status code
+   * @param {*} [response] - Error response data
+   */
+  constructor(message, status, response) {
+    super(message);
+    this.name = 'ApiError';
+    this.status = status;
+    this.response = response;
+  }
+}
+
+/**
+ * Enhanced API service with retry and WebSocket support
+ */
+export class EnhancedApiService {
+  static instance;
+  
+  constructor() {
+    /** @private */
+    this.retryStrategy = new LinearRetryStrategy();
+    /** @private */
+    this.websocketConnection = null;
+    /** @private */
+    this.baseUrl = 'http://localhost:5000';
+    /** @private */
+    this.wsUrl = 'ws://localhost:5000/realtime';
+
+    this.initializeWebSocket();
+  }
+
+  /**
+   * Get singleton instance
+   * @returns {EnhancedApiService}
+   */
+  static getInstance() {
+    if (!EnhancedApiService.instance) {
+      EnhancedApiService.instance = new EnhancedApiService();
+    }
+    return EnhancedApiService.instance;
+  }
+
+  /**
+   * Initialize WebSocket connection
+   * @private
+   */
+  initializeWebSocket() {
+    try {
+      this.websocketConnection = new WebSocket(this.wsUrl);
+      this.setupWebSocketHandlers();
+    } catch (error) {
+      console.error('WebSocket initialization failed:', error);
+    }
+  }
+
+  /**
+   * Setup WebSocket event handlers
+   * @private
+   */
+  setupWebSocketHandlers() {
+    if (!this.websocketConnection) return;
+
+    this.websocketConnection.onopen = () => {
+      console.log('WebSocket connection established');
+    };
+
+    this.websocketConnection.onmessage = (event) => {
+      try {
+        const data = JSON.parse(event.data);
+        this.handleWebSocketMessage(data);
+      } catch (error) {
+        console.error('Error processing WebSocket message:', error);
+      }
+    };
+
+    this.websocketConnection.onerror = (error) => {
+      console.error('WebSocket error:', error);
+      this.reconnectWebSocket();
+    };
+
+    this.websocketConnection.onclose = () => {
+      console.log('WebSocket connection closed');
+      this.reconnectWebSocket();
+    };
+  }
+
+  /**
+   * Attempt to reconnect WebSocket
+   * @private
+   */
+  reconnectWebSocket() {
+    setTimeout(() => {
+      console.log('Attempting to reconnect WebSocket...');
+      this.initializeWebSocket();
+    }, 5000);
+  }
+
+  /**
+   * Handle incoming WebSocket messages
+   * @private
+   * @param {*} data - Message data
+   */
+  handleWebSocketMessage(data) {
+    switch (data.type) {
+      case 'analysis_progress':
+        this.emit('analysisProgress', data.progress);
+        break;
+      case 'calculation_complete':
+        this.emit('calculationComplete', data.results);
+        break;
+      case 'error':
+        this.emit('error', new ApiError(data.message));
+        break;
+    }
+  }
+
+  /**
+   * Emit custom event
+   * @private
+   * @param {string} event - Event name
+   * @param {*} data - Event data
+   */
+  emit(event, data) {
+    const customEvent = new CustomEvent(event, { detail: data });
+    window.dispatchEvent(customEvent);
+  }
+
+  /**
+   * Make API request with retry support
+   * @template T
+   * @param {string} endpoint - API endpoint
+   * @param {RequestInit} [options] - Fetch options
+   * @param {ApiConfig} [config] - API configuration
+   * @returns {Promise<ApiResponse<T>>}
+   */
+  async request(endpoint, options = {}, config = {}) {
+    const { retryAttempts = 3, timeout = 30000, errorCallback } = config;
+
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), timeout);
+
+    try {
+      const response = await this.retryStrategy.execute(
+        async () => {
+          const fetchResponse = await fetch(`${this.baseUrl}${endpoint}`, {
+            ...options,
+            signal: controller.signal,
+            headers: {
+              'Content-Type': 'application/json',
+              ...options.headers,
+            },
+          });
+
+          if (!fetchResponse.ok) {
+            throw new ApiError(
+              `API request failed: ${fetchResponse.statusText}`,
+              fetchResponse.status,
+              await fetchResponse.json()
+            );
+          }
+
+          const data = await fetchResponse.json();
+          return {
+            data,
+            status: fetchResponse.status,
+            headers: fetchResponse.headers,
+          };
+        },
+        retryAttempts
+      );
+
+      return response;
+    } catch (error) {
+      if (errorCallback) {
+        errorCallback(error);
+      }
+      throw error;
+    } finally {
+      clearTimeout(timeoutId);
+    }
+  }
+
+  /**
+   * Run sensitivity analysis
+   * @param {Array} parameters - Analysis parameters
+   * @returns {Promise<ApiResponse<*>>}
+   */
+  async runSensitivityAnalysis(parameters) {
+    return this.request('/sensitivity/analyze', {
+      method: 'POST',
+      body: JSON.stringify({ parameters }),
+    });
+  }
+
+  /**
+   * Run Monte Carlo simulation
+   * @param {Array} parameters - Simulation parameters
+   * @param {number} iterations - Number of iterations
+   * @returns {Promise<ApiResponse<*>>}
+   */
+  async runMonteCarloSimulation(parameters, iterations) {
+    return this.request('/sensitivity/monte-carlo', {
+      method: 'POST',
+      body: JSON.stringify({ parameters, iterations }),
+    });
+  }
+
+  /**
+   * Get derivatives data
+   * @param {string} parameter - Parameter name
+   * @param {string} version - Version identifier
+   * @param {string} [extension] - Optional extension
+   * @returns {Promise<ApiResponse<*>>}
+   */
+  async getDerivatives(parameter, version, extension) {
+    const queryParams = new URLSearchParams({
+      version,
+      ...(extension && { extension }),
+    });
+    return this.request(`/sensitivity/derivatives/${parameter}?${queryParams}`);
+  }
+
+  /**
+   * Get price data
+   * @param {string} version - Version identifier
+   * @param {string} [extension] - Optional extension
+   * @returns {Promise<ApiResponse<*>>}
+   */
+  async getPriceData(version, extension) {
+    const queryParams = new URLSearchParams({
+      version,
+      ...(extension && { extension }),
+    });
+    return this.request(`/price/data?${queryParams}`);
+  }
+
+  /**
+   * Compare prices
+   * @param {string} baseVersion - Base version for comparison
+   * @param {Array} variants - Price variants to compare
+   * @returns {Promise<ApiResponse<*>>}
+   */
+  async comparePrices(baseVersion, variants) {
+    return this.request('/price/comparison', {
+      method: 'POST',
+      body: JSON.stringify({
+        baseVersion,
+        variants,
+      }),
+    });
+  }
+
+  /**
+   * Calculate price impact
+   * @param {number} basePrice - Base price
+   * @param {Array} parameters - Impact parameters
+   * @returns {Promise<ApiResponse<*>>}
+   */
+  async calculatePriceImpact(basePrice, parameters) {
+    return this.request('/price/impact', {
+      method: 'POST',
+      body: JSON.stringify({
+        basePrice,
+        parameters,
+      }),
+    });
+  }
+
+  /**
+   * Calculate efficacy
+   * @param {*} sensitivityData - Sensitivity analysis data
+   * @param {*} priceData - Price data
+   * @returns {Promise<ApiResponse<*>>}
+   */
+  async calculateEfficacy(sensitivityData, priceData) {
+    return this.request('/sensitivity/efficacy', {
+      method: 'POST',
+      body: JSON.stringify({
+        sensitivityData,
+        priceData,
+      }),
+    });
+  }
+}
+
+/**
+ * Fetch price data for a specific version
+ * @param {string} version - Version identifier
+ * @param {string} [extension] - Optional extension
+ * @returns {Promise<Object>} Price data
  */
 export const fetchPriceData = async (version, extension) => {
-  try {
-    const versionPath = extension 
-      ? `Batch(${version}.${extension})`
-      : `Batch(${version})`;
-    
-    const csvPath = `Original/${versionPath}/Results(${version})/Economic_Summary(${version}).csv`;
-    const url = `${API_BASE_URL}/file?path=${encodeURIComponent(csvPath)}`;
-    
-    const response = await fetch(url);
-    
-    if (!response.ok) {
-      console.warn(`Failed to fetch Economic_Summary for ${version}${extension ? '.' + extension : ''}`);
-      return { averageSellingPrice: 0, isEstimate: true };
-    }
-    
-    const csvText = await response.text();
-    return parsePriceData(csvText);
-  } catch (error) {
-    console.error('Error fetching price data:', error);
-    return { averageSellingPrice: 0, isEstimate: true, error: error.message };
-  }
+  const service = EnhancedApiService.getInstance();
+  const response = await service.getPriceData(version, extension);
+  return response.data;
 };
 
 /**
- * Parse CSV data to extract price information
- * @param {string} csvText - Raw CSV text
- * @returns {Object} - Parsed price data
+ * Fetch sensitivity data for a model configuration
+ * @param {Object} modelConfig - Model configuration
+ * @returns {Promise<Object>} Sensitivity data
  */
-const parsePriceData = (csvText) => {
-  const lines = csvText.split('\n');
-  
-  // Parse CSV to get price information
-  const priceLine = lines.find(line => line.includes('Average Selling Price'));
-  const totalRevenueLine = lines.find(line => line.includes('Total Revenue'));
-  const totalOutputLine = lines.find(line => line.includes('Total Output'));
-  
-  let averageSellingPrice = 0;
-  
-  if (priceLine) {
-    const parts = priceLine.split(',');
-    if (parts.length > 1) {
-      averageSellingPrice = parseFloat(parts[1]);
+export const fetchSensitivityData = async (modelConfig) => {
+  const service = EnhancedApiService.getInstance();
+  const response = await service.runSensitivityAnalysis([
+    {
+      version: modelConfig.version,
+      extension: modelConfig.extension,
+      filters: modelConfig.filters
     }
-  } else if (totalRevenueLine && totalOutputLine) {
-    // If ASP is not directly available, calculate from revenue and output
-    const revenue = parseFloat(totalRevenueLine.split(',')[1]);
-    const output = parseFloat(totalOutputLine.split(',')[1]);
-    
-    if (output > 0) {
-      averageSellingPrice = revenue / output;
-    }
-  }
-  
-  return {
-    averageSellingPrice,
-    isEstimate: !priceLine
-  };
+  ]);
+  return response.data;
 };
 
-/**
- * Fetch sensitivity data for a model
- * @param {Object} model - Model object with version and filters
- * @returns {Promise<Object>} - Sensitivity data object
- */
-export const fetchSensitivityData = async (model) => {
-  try {
-    const versionPath = model.extension 
-      ? `Batch(${model.version}.${model.extension})`
-      : `Batch(${model.version})`;
-    
-    // Fetch multipoint derivative data
-    const derivatives = [];
-    for (const paramType of Object.keys(model.filters)) {
-      if (!model.filters[paramType]) continue;
-      
-      const path = `Original/${versionPath}/Results(${model.version})/Sensitivity/Multipoint/${paramType}_derivatives.json`;
-      try {
-        const url = `${API_BASE_URL}/file?path=${encodeURIComponent(path)}`;
-        const response = await fetch(url);
-        
-        if (response.ok) {
-          const data = await response.json();
-          derivatives.push({
-            parameter: paramType,
-            data: data
-          });
-        }
-      } catch (err) {
-        console.warn(`Failed to load derivatives for ${paramType}:`, err);
-      }
-    }
-    
-    return {
-      parameters: derivatives.map(d => d.parameter),
-      derivatives: derivatives
-    };
-  } catch (error) {
-    console.error('Error loading sensitivity data:', error);
-    return { parameters: [], derivatives: [] };
-  }
-};
-
-/**
- * Run sensitivity analysis for specified parameters
- * @param {Array} parameters - Analysis parameters
- * @returns {Promise<Object>} - Analysis results
- */
-export const runSensitivityAnalysis = async (parameters) => {
-  try {
-    // In a real implementation, this would call your backend API
-    // For now, it returns simulated data
-    const url = `${API_BASE_URL}/sensitivity/analyze`;
-    
-    // Simulated API call - replace with actual fetch
-    //const response = await fetch(url, {
-    //  method: 'POST',
-    //  headers: { 'Content-Type': 'application/json' },
-    //  body: JSON.stringify({ parameters })
-    //});
-    //return await response.json();
-    
-    // Simulated response
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    return {
-      type: 'sensitivity',
-      parameters: parameters,
-      results: parameters.map(p => ({
-        parameter: p.type,
-        values: Array.from({ length: p.steps }, (_, i) => ({
-          value: p.range.min + (p.range.max - p.range.min) * (i / (p.steps - 1)),
-          impact: Math.random() * 2 - 1
-        }))
-      }))
-    };
-  } catch (error) {
-    console.error('Sensitivity analysis failed:', error);
-    throw error;
-  }
-};
-
-/**
- * Run Monte Carlo simulation for specified parameters
- * @param {Array} parameters - Simulation parameters
- * @returns {Promise<Object>} - Simulation results
- */
-export const runMonteCarloSimulation = async (parameters) => {
-  try {
-    // In a real implementation, this would call your backend API
-    // For now, it returns simulated data
-    const url = `${API_BASE_URL}/sensitivity/monte-carlo`;
-    
-    // Simulated API call - replace with actual fetch
-    //const response = await fetch(url, {
-    //  method: 'POST',
-    //  headers: { 'Content-Type': 'application/json' },
-    //  body: JSON.stringify({ parameters })
-    //});
-    //return await response.json();
-    
-    // Simulated response
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    return {
-      type: 'monteCarlo',
-      parameters: parameters,
-      iterations: 1000,
-      results: {
-        npv: Array.from({ length: 1000 }, () => ({
-          value: Math.random() * 1000000,
-          probability: Math.random()
-        })),
-        irr: Array.from({ length: 1000 }, () => ({
-          value: Math.random() * 0.2,
-          probability: Math.random()
-        }))
-      }
-    };
-  } catch (error) {
-    console.error('Monte Carlo simulation failed:', error);
-    throw error;
-  }
-};
+export const apiService = EnhancedApiService.getInstance();
