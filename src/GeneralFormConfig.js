@@ -328,10 +328,10 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
                     onClick={(e) => handleScheduleClick(e, item.id)}
                   >
                     Specify Efficacy Period<br/>
-                    (overrides basevalues for specified intervals)
+                    
                   </button>
                   <button
-                    className="action-button factual"
+                    className="action-button primary"
                     onClick={(e) => handleScheduleClick(e, item.id)}
                   >
                     Find Factual Precedence
@@ -388,10 +388,10 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
                     onClick={(e) => handleScheduleClick(e, item.id)}
                   >
                     Specify Efficacy Period<br/>
-                    (overrides basevalues for specified intervals)
+                   
                   </button>
                   <button
-                    className="action-button factual"
+                    className="action-button primary"
                     onClick={(e) => handleScheduleClick(e, item.id)}
                   >
                     Find Factual Precedence

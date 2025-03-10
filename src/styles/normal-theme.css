@@ -1,4 +1,3 @@
-/* Normal Theme - Professional & Clean */
 :root.normal-theme {
     /* Neumorphic specific variables */
     --neumorphic-bg: #ffffff;
@@ -8,26 +7,39 @@
     --neumorphic-text: #333;
     --neumorphic-active-text: #4a90e2;
 
+    /* Core colors */
     --primary-color: #4a90e2;
     --secondary-color: #66bb6a;
     --text-color: #333333;
+    --text-color-on-light: #333333;
+    --text-color-on-dark: #e0e0e0;
     --background-color: #f5f7fa;
     --sidebar-background: #ffffff;
     --card-background: #ffffff;
     --border-color: #e0e0e0;
+    --input-background: #ffffff;
+    --input-border: #ced4da;
+    --custom-color: #f2a5e2;
+    
+    /* Status colors */
     --success-color: #28a745;
     --danger-color: #dc3545;
+    --danger-color-light: #ffebee;
     --warning-color: #ffc107;
     --info-color: #17a2b8;
     --light-color: #f8f9fa;
     --dark-color: #343a40;
     --text-secondary: #6c757d;
-    --input-background: #ffffff;
-    --input-border: #ced4da;
+    --sen-color: #009688;
+    --eff-color: #b9d2d0;
+    --fac-color: #2b2f2f;
+
+    /* Shadows */
     --shadow-dark: rgba(166, 180, 200, 0.7);
     --shadow-light: rgba(255, 255, 255, 0.8);
+    --shadow-input: inset 2px 2px 4px rgba(0, 0, 0, 0.1),
+                   inset -2px -2px 4px rgba(255, 255, 255, 0.7);
 }
-
 /* Action Button Styles */
 .normal-theme .action-button.primary {
     background-color: var(--primary-color);

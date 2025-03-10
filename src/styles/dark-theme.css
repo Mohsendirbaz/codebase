@@ -20,7 +20,8 @@
     --border-color: #2a3356;
     --input-background: #ffffff;
     --input-border: #2a3356;
-
+    --custom-color: #cbafeb;
+    
     /* Status colors */
     --success-color: #28a745;
     --danger-color: #dc3545;
@@ -30,6 +31,9 @@
     --light-color: #343a40;
     --dark-color: #f8f9fa;
     --text-secondary: #adb5bd;
+    --sen-color: #009688;
+    --eff-color: #b9d2d0;
+    --fac-color: #2b2f2f;
 
     /* Shadows */
     --shadow-dark: rgba(0, 0, 0, 0.3);
@@ -548,9 +552,6 @@
     background-color: var(--sidebar-background);
 }
 
-.dark-theme .parameter-time-variants {
-    background-color: rgba(224, 231, 242, 0.05);
-}
 
 .dark-theme .time-variant-item {
     background-color: var(--sidebar-background);

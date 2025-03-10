@@ -522,46 +522,46 @@ const L_1_HomePageContent = () => {
 
     /**
      * Starts real-time monitoring of calculation progress
-     * This function connects to a stream for live updates from the calculation process
+     * This function connects to Socket.IO for live updates from the calculation process
      */
     const startRealTimeMonitoring = () => {
-        // Close any existing stream connections
-        if (window.calculationEventSource) {
-            window.calculationEventSource.close();
-        }
+        // Initialize WebSocket connection
+        apiService.initializeWebSocket();
 
-        // For each selected version, set up a stream connection
+        // For each selected version, set up monitoring
         selectedVersions.forEach(version => {
-            // Create a new EventSource connection for streaming updates
-            const eventSource = new EventSource(`http://127.0.0.1:5007/stream_price/${version}`);
-            window.calculationEventSource = eventSource;
+            const analysisId = `calculation_${version}`;
+            
+            // Start analysis monitoring
+            apiService.websocket.startAnalysis(analysisId, 'calculation', {
+                version,
+                selectedCalculationOption,
+                targetRow: target_row
+            }, 100); // Assuming 100 steps for progress tracking
 
-            // Handle incoming messages
-            eventSource.onmessage = (event) => {
-                try {
-                    const data = JSON.parse(event.data);
+            // Handle progress updates
+            apiService.websocket.onProgressUpdate((data) => {
+                if (data.analysis_id === analysisId) {
                     console.log(`Real-time update for version ${version}:`, data);
                     
-                    // Update price if available
-                    if (data.price) {
-                        updatePrice(version, data.price);
+                    // Update price if available in the results
+                    if (data.latest_results && data.latest_results.price) {
+                        updatePrice(version, data.latest_results.price);
                     }
-                    
-                    // Close the stream if the backend signals completion
-                    if (data.complete) {
-                        console.log(`Completed streaming for version ${version}`);
-                        eventSource.close();
-                    }
-                } catch (error) {
-                    console.error('Error processing stream data:', error);
                 }
-            };
+            });
 
-            // Handle errors
-            eventSource.onerror = (error) => {
-                console.error(`Error in calculation stream for version ${version}:`, error);
-                eventSource.close();
-            };
+            // Handle analysis completion
+            apiService.websocket.onAnalysisComplete((data) => {
+                if (data.analysis_id === analysisId) {
+                    console.log(`Completed calculation for version ${version}`);
+                    
+                    // Update final price if available
+                    if (data.results && data.results.price) {
+                        updatePrice(version, data.results.price);
+                    }
+                }
+            });
         });
         
         /* 
