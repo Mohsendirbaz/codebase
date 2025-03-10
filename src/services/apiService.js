@@ -1,4 +1,8 @@
+import websocketService from './websocketService';
+
 export const apiService = {
+  websocket: websocketService,
+
   async fetchData(url, options = {}) {
     const MAX_RETRIES = 3;
     const TIMEOUT = 5000; // 5 seconds timeout
@@ -131,6 +135,10 @@ export const apiService = {
         await new Promise(resolve => setTimeout(resolve, 1000 * attempt)); // Exponential backoff
       }
     }
+  },
+
+  initializeWebSocket() {
+    this.websocket.connect();
   },
 
   createEventSource(url) {

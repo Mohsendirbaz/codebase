@@ -288,11 +288,10 @@ const SensitivityAnalysisSelector = ({ sKey = '', onSensitivityChange = () => {}
         <div className="sensitivity-module">
             <button
                 ref={triggerButtonRef}
-                className="sensitivity-btn1 primary-btn1"
+                className="action-button primary"
                 onClick={() => setShowDialog(true)}
             >
                 Sensitivity Analysis<br/>
-                (allows analysis of multiple basevalues at once)
             </button>
 
             <Dialog

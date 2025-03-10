@@ -41,6 +41,7 @@ flask_base_dir = r"C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend"
 
 # List of Flask apps with their subdirectories and ports
 flask_apps = [
+    (r"flask_api\app.py", 5000),  # Main Flask app with WebSocket support
     (r"Data_processors_and_transformers\Front_Subtab_Table.py", 8007),
     (r"Data_processors_and_transformers\Front_Subtab_Plot.py", 8008),
     (r"Data_processors_and_transformers\Front_Subtab_HTML.py", 8009),
@@ -51,7 +52,7 @@ flask_apps = [
     (r"API_endpoints_and_controllers\Calculations_and_Sensitivity.py", 25007),
     (r"API_endpoints_and_controllers\PNG.py", 5008),
     (r"API_endpoints_and_controllers\Sub.py", 5009),
-    (r"API_endpoints_and_controllers\Load.py", 5000),
+    (r"API_endpoints_and_controllers\Load.py", 5002),  # Changed port since 5000 is now used by main Flask app
     (r"API_endpoints_and_controllers\config_monitor.py", 5001),
     (r"cfa_list.py", 456),
     (r"Enhanced_Sensitivity\start_enhanced_sensitivity_server.py", 27890),

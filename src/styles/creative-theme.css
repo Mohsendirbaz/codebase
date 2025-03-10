@@ -1,4 +1,3 @@
-/* Creative Theme - Vibrant & Energetic */
 :root.creative-theme {
     /* Neumorphic specific variables */
     --neumorphic-bg: #f0f0f0;
@@ -6,27 +5,41 @@
     --neumorphic-shadow-light: rgba(255, 255, 255, 0.9);
     --neumorphic-gradient: linear-gradient(145deg, #f0f0f0, #e6e9f0);
     --neumorphic-text: #424242;
-    --neumorphic-active-text: #8a2be2;
+    --neumorphic-active-text: #00429d;
 
-    --primary-color: #8a2be2;
-    --secondary-color: #00bcd4;
+    /* Core colors */
+    --primary-color: #00429d;
+    --secondary-color: #4771b2;
     --text-color: #424242;
+    --text-color-on-light: #333333;
+    --text-color-on-dark: #e0e0e0;
     --background-color: #f8f9fa;
     --sidebar-background: #ffffff;
     --card-background: #ffffff;
-    --border-color: #e0e0e0;
+    --border-color: #73a2c6;
+    --input-background: #ffffff;
+    --input-border: #8abccf;
+    --custom-color: #a5d5d8;
+    
+    /* Status colors */
     --success-color: #28a745;
     --danger-color: #dc3545;
+    --danger-color-light: #ffebee;
     --warning-color: #ffc107;
     --info-color: #17a2b8;
     --light-color: #f8f9fa;
     --dark-color: #343a40;
     --text-secondary: #6c757d;
-    --input-background: #ffffff;
-    --input-border: #ced4da;
+    --sen-color: #009688;
+    --eff-color: #b9d2d0;
+    --fac-color: #2b2f2f;
+
+    /* Shadows */
     --shadow-dark: rgba(166, 180, 200, 0.8);
     --shadow-light: rgba(255, 255, 255, 0.9);
-    --gradient-primary: linear-gradient(145deg, #9333ea, #7928ca);
+    --shadow-input: inset 2px 2px 4px rgba(0, 0, 0, 0.1),
+                   inset -2px -2px 4px rgba(255, 255, 255, 0.7);
+    --gradient-primary: linear-gradient(145deg, #2e59a8, #00429d);
 }
 
 /* Action Button Styles */
