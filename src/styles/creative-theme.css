@@ -1,4 +1,7 @@
 :root.creative-theme {
+    /* Tab text color */
+    --tab-text-color: darkblue;
+
     /* Neumorphic specific variables */
     --neumorphic-bg: #f0f0f0;
     --neumorphic-shadow-dark: rgba(166, 180, 200, 0.6);
@@ -84,7 +87,7 @@
     background: linear-gradient(145deg, #f0f0f0, #e6e9f0);
     border-radius: 10px;
     box-shadow: 3px 3px 6px rgba(166, 180, 200, 0.6), -3px -3px 6px rgba(255, 255, 255, 0.9);
-    color: var(--text-color);
+    color: var(--tab-text-color);
     position: relative;
     overflow: hidden;
 }
@@ -108,7 +111,7 @@
 .creative-theme .L_1_HomePageTabs .tab-button.active {
     background: linear-gradient(145deg, #ffffff, #f5f5f5);
     box-shadow: inset 3px 3px 6px rgba(166, 180, 200, 0.4), inset -3px -3px 6px rgba(255, 255, 255, 1);
-    color: var(--primary-color);
+    color: var(--tab-text-color);
 }
 
 /* Form Container */

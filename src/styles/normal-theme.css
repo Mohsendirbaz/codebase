@@ -1,4 +1,7 @@
 :root.normal-theme {
+    /* Tab text color */
+    --tab-text-color: darkblue;
+
     /* Neumorphic specific variables */
     --neumorphic-bg: #ffffff;
     --neumorphic-shadow-dark: rgba(166, 180, 200, 0.5);
@@ -67,7 +70,7 @@
     border: 2px solid var(--border-color);
     border-radius: 0.25rem;
     background-color: var(--input-background);
-    color: var(--text-color);
+    color: var(--tab-text-color);
     box-shadow: inset 2px 2px 5px rgba(166, 180, 200, 0.2), inset -2px -2px 5px rgba(255, 255, 255, 0.7);
 }
 
@@ -82,7 +85,7 @@
     background: linear-gradient(145deg, #ffffff, #f0f0f0);
     border-radius: 10px;
     box-shadow: 3px 3px 6px rgba(166, 180, 200, 0.5), -3px -3px 6px rgba(255, 255, 255, 0.8);
-    color: var(--text-color);
+    color: var(--tab-text-color);
 }
 
 .normal-theme .L_1_HomePageTabs .tab-button:hover {
@@ -93,7 +96,7 @@
 .normal-theme .L_1_HomePageTabs .tab-button.active {
     background: linear-gradient(145deg, #f0f0f0, #ffffff);
     box-shadow: inset 2px 2px 5px rgba(166, 180, 200, 0.3), inset -2px -2px 5px rgba(255, 255, 255, 0.9);
-    color: var(--primary-color);
+    color: var(--tab-text-color);
 }
 
 /* Form Container */

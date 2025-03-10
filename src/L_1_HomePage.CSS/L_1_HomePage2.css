@@ -16,14 +16,14 @@
     border: 1px solid var(--border-color);
     border-radius: 4px;
     background-color: var(--sidebar-background);
-    color: var(--text-color);
+    color: var(--tab-text-color);
     cursor: pointer;
     transition: all 0.2s ease;
 }
 
 .react-tabs__tab--selected {
     background-color: var(--primary-color);
-    color: white;
+    color: var(--tab-text-color);
     border-color: var(--primary-color);
 }
 
