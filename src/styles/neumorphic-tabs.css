@@ -8,7 +8,7 @@
   margin: 10px;
   font-size: 16px;
   font-weight: 500;
-  color: var(--neumorphic-text);
+  color: var(--tab-text-color);
   text-align: center;
   transition: all 0.3s ease;
   cursor: pointer;
@@ -53,7 +53,7 @@
   box-shadow: inset 4px 4px 8px var(--neumorphic-shadow-dark),
               inset -4px -4px 8px var(--neumorphic-shadow-light);
   transform: translateY(0);
-  color: var(--neumorphic-active-text);
+  color: var(--tab-text-color);
 }
 
 .L_1_HomePageTabs {

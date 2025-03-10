@@ -4,6 +4,7 @@
   flex-direction: row;
   height: 100%;
   overflow: hidden;
+  align-items: flex-start;
 }
 
 .L_1_HomePageTabContent {
@@ -16,6 +17,9 @@
 .sensitivity-monitor,
 .config-monitor {
   flex-shrink: 0;
+  margin: 10px;
+  height: calc(100vh - 200px);
+  max-height: 85vh;
 }
 
 /* Responsive behavior for smaller screens */

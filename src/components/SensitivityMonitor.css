@@ -2,16 +2,22 @@
 .sensitivity-monitor {
   position: relative;
   height: 100%;
-  transition: width 0.3s ease;
-  background-color: var(--background-color, #f7f7f7);
-  border-right: 1px solid var(--border-color, #e0e0e0);
+  transition: all 0.3s ease;
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
   overflow: hidden;
   width: 300px;
-  box-shadow: 3px 0 6px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  max-height: 80vh;
+  margin: 10px;
+  box-shadow: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
+  color: var(--text-color);
 }
 
 .sensitivity-monitor.collapsed {
-  width: 40px;
+  width: 30px;
+  height: 200px;
 }
 
 .expand-button {
@@ -20,51 +26,58 @@
   background: none;
   border: none;
   cursor: pointer;
-  padding: 10px 2px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  color: var(--accent-color, #007bff);
+  align-items: center;
+  padding: 0;
 }
 
 .vertical-text {
-  writing-mode: vertical-rl;
+  writing-mode: vertical-lr;
   transform: rotate(180deg);
   white-space: nowrap;
   margin-bottom: 10px;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 1px;
+  font-size: 12px;
+  color: var(--text-color);
 }
 
 .monitor-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  border-bottom: 1px solid var(--border-color, #e0e0e0);
-  background-color: var(--header-background, #f0f0f0);
+  padding: 8px 12px;
+  background-color: var(--sidebar-background);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .monitor-header h3 {
   margin: 0;
-  font-size: 16px;
-  color: var(--text-color, #333);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-color);
 }
 
 .toggle-button {
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 18px;
-  color: var(--accent-color, #007bff);
+  font-size: 14px;
+  padding: 4px 6px;
+  margin-left: 5px;
+  transition: all 0.2s ease;
+  color: var(--text-color);
+}
+
+.toggle-button:hover {
+  color: var(--tab-text-color);
+  transform: translateY(-1px);
 }
 
 .monitor-content {
+  padding: 12px;
   overflow-y: auto;
-  height: calc(100% - 41px);
-  padding: 10px;
+  max-height: calc(80vh - 40px);
 }
 
 /* Search and filters */

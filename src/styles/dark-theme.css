@@ -1,5 +1,8 @@
 /* Dark Theme with Rich Dark Blue */
 :root.dark-theme {
+    /* Tab text color */
+    --tab-text-color: white;
+
     /* Neumorphic specific variables */
     --neumorphic-bg: #1e2746;
     --neumorphic-shadow-dark: rgba(0, 0, 0, 0.3);
@@ -40,6 +43,25 @@
     --shadow-light: rgba(40, 53, 105, 0.2);
     --shadow-input: inset 2px 2px 4px rgba(0, 0, 0, 0.2),
                    inset -2px -2px 4px rgba(255, 255, 255, 0.1);
+}
+
+/* Tab Styles */
+.dark-theme .L_1_HomePageTabs .tab-button {
+    background: linear-gradient(145deg, #232d52, #1a243f);
+    border-radius: 10px;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3), -3px -3px 6px rgba(40, 53, 105, 0.2);
+    color: var(--tab-text-color);
+}
+
+.dark-theme .L_1_HomePageTabs .tab-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4), -4px -4px 8px rgba(40, 53, 105, 0.3);
+}
+
+.dark-theme .L_1_HomePageTabs .tab-button.active {
+    background: linear-gradient(145deg, #1a243f, #232d52);
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.3), inset -2px -2px 5px rgba(40, 53, 105, 0.2);
+    color: var(--tab-text-color);
 }
 
 /* Load Config Section */
@@ -148,9 +170,10 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
-    padding: 16px;
+    padding: 20px;
     background: var(--card-background);
-    border-radius: 4px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
 }
 
 .dark-theme .L_1_HomePage .form-action-buttons .button-row {
@@ -210,10 +233,11 @@
 
 /* Calculation Options */
 .dark-theme .L_1_HomePage .calculation-options {
-    padding: 16px;
+    padding: 20px;
     background: var(--card-background);
-    border-radius: 4px;
+    border-radius: 10px;
     margin-top: 16px;
+    box-shadow: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
 }
 
 .dark-theme .L_1_HomePage .calculation-row {
@@ -367,16 +391,6 @@
     color: var(--text-color-on-dark);
 }
 
-.dark-theme .sensitivity-monitor button {
-    background-color: var(--input-background);
-    color: var(--text-color-on-light);
-    border: 1px solid var(--border-color);
-}
-
-.dark-theme .sensitivity-monitor button:hover {
-    background-color: var(--primary-color);
-    color: white;
-}
 
 /* Property and Version Selectors */
 .dark-theme .L_1_HomePage .property-selector-container select,

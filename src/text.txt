@@ -6,13 +6,13 @@ git rev-parse HEAD  # Should show current
 
 git remote -v  # Should show https://github.com/Mohsendirbaz/SF.git
 
-git checkout -b SConfig.R2
+git checkout -b SConfig.R3
 
 git add .
 
-git commit -m "model zone heavily gone under change, before including main css files"
+git commit -m "Themes "
 
-git push codebase SConfig.R2
+git push codebase SConfig.R3
 
 
 
