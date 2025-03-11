@@ -1,0 +1,92 @@
+:root.theme-template {
+    /* Core Colors - Editable */
+    --primary-color: #00429d;
+    --primary-color-light: #4771b2;
+    --primary-color-dark: #002e6d;
+    --primary-color-alpha: rgba(0, 66, 157, 0.7);
+    --secondary-color: #4771b2;
+    --secondary-color-light: #8abccf;
+    --secondary-color-dark: #2e59a8;
+
+    /* Text Colors - Editable */
+    --text-color: #424242;
+    --text-color-on-light: #333333;
+    --text-color-on-dark: #e0e0e0;
+    --text-secondary: #6c757d;
+    --tab-text-color: darkblue;
+    --link-color: #4771b2;
+    --link-hover-color: #00429d;
+    --label-color: #6c757d;
+
+    /* Background Colors - Editable */
+    --background-color: #f8f9fa;
+    --app-background: #f8f9fa;
+    --sidebar-background: #ffffff;
+    --card-background: #ffffff;
+    --input-background: #ffffff;
+    --bg-color: #f0f0f0;
+    --disabled-background: #e9ecef;
+    --scaling-container-bg: #ffffff;
+    --scaling-item-bg: #f0f0f0;
+    --fact-engine-header-bg: #00429d;
+    --table-header-bg: #00429d;
+    --table-row-even-bg: #ffffff;
+    --table-row-hover-bg: rgba(71, 113, 178, 0.1);
+    --version-background: #ffffff;
+
+    /* Layout Properties - Constant */
+    --spacing-unit: 1rem;
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    
+    --input-height: 2.5rem;
+    --input-width: 100%;
+    --button-min-width: 150px;
+    --fact-engine-width: 350px;
+    --fact-engine-max-height: 500px;
+    --progress-height: 8px;
+    --scaling-factor-width: 120px;
+    --scaling-operation-min-width: 150px;
+    --scaling-notes-height: 60px;
+    
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 12px;
+    --border-radius-xl: 16px;
+    --border-radius-circle: 50%;
+    
+    --z-index-dropdown: 1000;
+    --z-index-sticky: 1020;
+    --z-index-fixed: 1030;
+    --z-index-modal-backdrop: 1040;
+    --z-index-modal: 1050;
+    --z-index-popover: 1060;
+    --z-index-tooltip: 1070;
+    
+    /* Typography - Constant */
+    --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-md: 1rem;
+    --font-size-lg: 1.25rem;
+    --font-size-xl: 1.5rem;
+    --font-weight-light: 300;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    
+    /* Animation Properties - Constant */
+    --transition-fast: 0.2s ease;
+    --transition-medium: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    --transition-bounce: 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    --animation-duration-short: 0.3s;
+    --animation-duration-medium: 0.5s;
+    --animation-duration-long: 0.8s;
+    --disabled-opacity: 0.65;
+}
