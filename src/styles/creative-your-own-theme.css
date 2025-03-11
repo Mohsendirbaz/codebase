@@ -61,10 +61,7 @@
     --input-border-width: 1px;
     --table-border-width: 1px;
     --scrollbar-border-width: 2px;
-    --homepage-tab-list-border: 1px solid #73a2c6;
-    --version-border: 1px solid #73a2c6;
-    --fact-card-border: 4px solid #00429d;
-    --fact-card-pinned-border: 4px solid #ffc107;
+   
     
     /* Border Radius */
     --border-radius-sm: 4px;
@@ -167,7 +164,10 @@
     --custom-color: #a5d5d8;
     --table-border-color: #73a2c6;
     --scrollbar-border-color: #f0f0f0;
-    
+    --homepage-tab-list-border: 1px solid #2a3356;
+    --version-border: 1px solid #2a3356;
+    --fact-card-border: 4px solid #1a237e;
+    --fact-card-pinned-border: 4px solid #ffc107;
     /* Status Colors */
     --success-color: #28a745;
     --success-hover: #218838;
