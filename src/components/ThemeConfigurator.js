@@ -48,66 +48,106 @@ const ThemeConfigurator = () => {
     useEffect(() => {
         const loadTemplateCSS = async () => {
             try {
-                // Import the template CSS
-                const response = await fetch('/src/styles/theme-template.css');
-                if (!response.ok) {
-                    throw new Error(`Failed to fetch template CSS: ${response.statusText}`);
-                }
-                
-                const templateCSS = await response.text();
-                setOriginalCSS(templateCSS);
-                
-                // Parse color blocks from template
-                const parsedBlocks = ThemeGenerator.parseThemeColors(templateCSS);
-                
-                // Fallback to defaults if parsing fails
-                if (!parsedBlocks || !parsedBlocks.core || Object.keys(parsedBlocks.core).length === 0) {
-                    setColorBlocks({
-                        core: {
-                            'primary-color': '#00429d',
-                            'primary-color-light': '#4771b2',
-                            'primary-color-dark': '#002e6d',
-                            'secondary-color': '#4771b2'
-                        },
-                        text: {
-                            'text-color': '#424242',
-                            'text-color-on-light': '#333333',
-                            'text-color-on-dark': '#e0e0e0'
-                        },
-                        background: {
-                            'background-color': '#f8f9fa',
-                            'card-background': '#ffffff'
+                // Import the template CSS directly as a module
+                import('../styles/theme-template.css')
+                    .then(module => {
+                        // Get CSS content from computed styles
+                        const templateCSS = getComputedThemeCSS('theme-template');
+                        setOriginalCSS(templateCSS);
+                        
+                        // Parse color blocks from template
+                        const parsedBlocks = ThemeGenerator.parseThemeColors(templateCSS);
+                        
+                        // Apply the blocks if parsing succeeded
+                        if (parsedBlocks && parsedBlocks.core && Object.keys(parsedBlocks.core).length > 0) {
+                            console.log("Successfully parsed theme template colors:", 
+                                Object.keys(parsedBlocks.core).length, "core colors,",
+                                Object.keys(parsedBlocks.text).length, "text colors,",
+                                Object.keys(parsedBlocks.background).length, "background colors");
+                            
+                            // Store both as current and default colors
+                            setColorBlocks(parsedBlocks);
+                            setDefaultColorBlocks(JSON.parse(JSON.stringify(parsedBlocks)));
+                        } else {
+                            console.warn("Failed to parse theme colors, using fallback values");
+                            useFallbackColors();
                         }
+                    })
+                    .catch(error => {
+                        console.error("Error importing CSS module:", error);
+                        useFallbackColors();
                     });
-                } else {
-                    setColorBlocks(parsedBlocks);
-                }
-
+                
                 // Apply template class to get base styles
                 const themeNames = ThemeGenerator.getThemeNames();
                 document.documentElement.classList.add(`${themeNames.template}-theme`);
             } catch (error) {
-                console.error('Failed to load template CSS:', error);
-                
-                // Use fallback values if loading fails
-                setColorBlocks({
-                    core: {
-                        'primary-color': '#00429d',
-                        'primary-color-light': '#4771b2',
-                        'primary-color-dark': '#002e6d',
-                        'secondary-color': '#4771b2'
-                    },
-                    text: {
-                        'text-color': '#424242',
-                        'text-color-on-light': '#333333',
-                        'text-color-on-dark': '#e0e0e0'
-                    },
-                    background: {
-                        'background-color': '#f8f9fa',
-                        'card-background': '#ffffff'
-                    }
-                });
+                console.error('Failed to process template CSS:', error);
+                useFallbackColors();
             }
+        };
+        
+        // Helper to extract CSS from computed styles
+        const getComputedThemeCSS = (themeName) => {
+            // Find the theme's CSS rules
+            let cssText = '';
+            const styleSheets = document.styleSheets;
+            for (let i = 0; i < styleSheets.length; i++) {
+                try {
+                    const rules = styleSheets[i].cssRules || styleSheets[i].rules;
+                    if (!rules) continue;
+                    
+                    for (let j = 0; j < rules.length; j++) {
+                        const rule = rules[j];
+                        if (rule.selectorText && rule.selectorText.includes(`.${themeName}`)) {
+                            cssText += rule.cssText;
+                        }
+                    }
+                } catch (e) {
+                    console.warn('Error accessing stylesheet rules:', e);
+                }
+            }
+            return cssText;
+        };
+        
+        // Helper for fallback colors
+        const useFallbackColors = () => {
+            const fallbackColors = {
+                core: {
+                    'primary-color': '#00429d',
+                    'primary-color-light': '#4771b2',
+                    'primary-color-dark': '#002e6d',
+                    'primary-color-alpha': 'rgba(0, 66, 157, 0.7)',
+                    'secondary-color': '#4771b2',
+                    'secondary-color-light': '#8abccf',
+                    'secondary-color-dark': '#2e59a8',
+                },
+                text: {
+                    'text-color': '#424242',
+                    'text-color-on-light': '#333333',
+                    'text-color-on-dark': '#e0e0e0',
+                    'text-secondary': '#6c757d',
+                    'tab-text-color': 'darkblue',
+                    'link-color': '#4771b2',
+                    'link-hover-color': '#00429d',
+                    'label-color': '#6c757d',
+                },
+                background: {
+                    'background-color': '#f8f9fa',
+                    'app-background': '#f8f9fa',
+                    'sidebar-background': '#ffffff',
+                    'card-background': '#ffffff',
+                    'input-background': '#ffffff',
+                    'bg-color': '#f0f0f0',
+                    'disabled-background': '#e9ecef',
+                    'scaling-container-bg': '#ffffff',
+                    'scaling-item-bg': '#f0f0f0'
+                }
+            };
+            
+            // Set both current and default colors
+            setColorBlocks(fallbackColors);
+            setDefaultColorBlocks(JSON.parse(JSON.stringify(fallbackColors)));
         };
         
         loadTemplateCSS();
@@ -163,6 +203,13 @@ const ThemeConfigurator = () => {
         document.body.className = 'fall';
     };
 
+    // Store original/default values for reset functionality
+    const [defaultColorBlocks, setDefaultColorBlocks] = useState({
+        core: {},
+        text: {},
+        background: {}
+    });
+
     // Handler for direct color changes
     const handleDirectColorChange = (category, colorName, newValue) => {
         if (ThemeGenerator.isValidColor(newValue)) {
@@ -190,6 +237,24 @@ const ThemeConfigurator = () => {
         }
     };
 
+    // Reset a single color to its default value
+    const handleResetColor = (category, colorName) => {
+        const defaultValue = defaultColorBlocks[category]?.[colorName];
+        if (defaultValue) {
+            handleDirectColorChange(category, colorName, defaultValue);
+        }
+    };
+
+    // Reset all colors in a category
+    const handleResetCategory = (category) => {
+        const defaults = defaultColorBlocks[category];
+        if (defaults) {
+            Object.entries(defaults).forEach(([colorName, value]) => {
+                handleDirectColorChange(category, colorName, value);
+            });
+        }
+    };
+
     // Render color blocks for direct editing
     const renderColorBlocks = (category) => {
         if (!colorBlocks[category] || Object.keys(colorBlocks[category]).length === 0) {
@@ -197,62 +262,114 @@ const ThemeConfigurator = () => {
         }
 
         return (
-            <div className="color-block-container">
-                {Object.entries(colorBlocks[category]).map(([colorName, colorValue]) => (
-                    <div 
-                        key={colorName} 
-                        className="color-block-item"
-                        onMouseEnter={() => setHoveredColor(colorName)}
-                        onMouseLeave={() => setHoveredColor(null)}
+            <>
+                <div className="category-header">
+                    <h3>{category.charAt(0).toUpperCase() + category.slice(1)} Colors</h3>
+                    <button 
+                        className="reset-category-button"
+                        onClick={() => handleResetCategory(category)}
+                        title={`Reset all ${category} colors to default`}
                     >
+                        Reset All {category.charAt(0).toUpperCase() + category.slice(1)} Colors
+                    </button>
+                </div>
+                <div className="color-block-container">
+                    {Object.entries(colorBlocks[category]).map(([colorName, colorValue]) => (
                         <div 
-                            className="color-block-preview" 
-                            style={{ backgroundColor: colorValue }}
+                            key={colorName} 
+                            className="color-block-item"
+                            onMouseEnter={() => setHoveredColor(colorName)}
+                            onMouseLeave={() => setHoveredColor(null)}
                         >
-                            {hoveredColor === colorName && (
-                                <div className="color-block-name">{colorName}</div>
-                            )}
+                            <div className="color-block-header">
+                                <span className="color-name">{colorName}</span>
+                                <button
+                                    className="reset-color-button"
+                                    onClick={() => handleResetColor(category, colorName)}
+                                    title={`Reset to default: ${defaultColorBlocks[category]?.[colorName] || 'unknown'}`}
+                                >
+                                    ↺
+                                </button>
+                            </div>
+                            <div 
+                                className="color-block-preview" 
+                                style={{ backgroundColor: colorValue }}
+                            >
+                                {hoveredColor === colorName && (
+                                    <div className="color-block-name">{colorName}</div>
+                                )}
+                            </div>
+                            <div className="color-inputs-row">
+                                <div className="color-picker-container">
+                                    <input
+                                        type="color"
+                                        value={colorValue.startsWith('#') ? colorValue : '#ffffff'}
+                                        onChange={(e) => handleDirectColorChange(category, colorName, e.target.value)}
+                                        className="color-picker-input"
+                                        title="Click to open color picker"
+                                    />
+                                    <div 
+                                        className="color-picker-overlay"
+                                        style={{ 
+                                            backgroundColor: colorValue.startsWith('#') ? colorValue : '#ffffff',
+                                            color: chroma(colorValue).luminance() > 0.5 ? '#000000' : '#ffffff'
+                                        }}
+                                    >
+                                        <span>🎨</span>
+                                    </div>
+                                </div>
+                                <input
+                                    type="text"
+                                    value={colorValue}
+                                    onChange={(e) => handleDirectColorChange(category, colorName, e.target.value)}
+                                    className="color-block-text-input"
+                                />
+                            </div>
                         </div>
-                        <input
-                            type="color"
-                            value={colorValue.startsWith('#') ? colorValue : '#ffffff'}
-                            onChange={(e) => handleDirectColorChange(category, colorName, e.target.value)}
-                            title={`${colorName}: ${colorValue}`}
-                        />
-                        <input
-                            type="text"
-                            value={colorValue}
-                            onChange={(e) => handleDirectColorChange(category, colorName, e.target.value)}
-                            className="color-block-text-input"
-                        />
-                    </div>
-                ))}
-            </div>
+                    ))}
+                </div>
+            </>
         );
+    };
+
+    // Reset all colors to defaults
+    const handleResetAllColors = () => {
+        Object.keys(defaultColorBlocks).forEach(category => {
+            handleResetCategory(category);
+        });
     };
 
     const renderStep = () => {
         if (editMode === 'direct') {
             return (
                 <div className="direct-edit-container">
-                    <div className="color-category-tabs">
+                    <div className="editor-header">
+                        <div className="color-category-tabs">
+                            <button 
+                                className={activeColorTab === 'core' ? 'active' : ''}
+                                onClick={() => setActiveColorTab('core')}
+                            >
+                                Core Colors
+                            </button>
+                            <button 
+                                className={activeColorTab === 'text' ? 'active' : ''}
+                                onClick={() => setActiveColorTab('text')}
+                            >
+                                Text Colors
+                            </button>
+                            <button 
+                                className={activeColorTab === 'background' ? 'active' : ''}
+                                onClick={() => setActiveColorTab('background')}
+                            >
+                                Background Colors
+                            </button>
+                        </div>
                         <button 
-                            className={activeColorTab === 'core' ? 'active' : ''}
-                            onClick={() => setActiveColorTab('core')}
+                            className="reset-all-button"
+                            onClick={handleResetAllColors}
+                            title="Reset all colors to default values"
                         >
-                            Core Colors
-                        </button>
-                        <button 
-                            className={activeColorTab === 'text' ? 'active' : ''}
-                            onClick={() => setActiveColorTab('text')}
-                        >
-                            Text Colors
-                        </button>
-                        <button 
-                            className={activeColorTab === 'background' ? 'active' : ''}
-                            onClick={() => setActiveColorTab('background')}
-                        >
-                            Background Colors
+                            Reset All Colors
                         </button>
                     </div>
                     
