@@ -110,7 +110,7 @@
 .search-input, 
 .group-filter,
 .enabled-filter {
-  padding: 6px 8px;
+  padding: 6px 0px;
   border: 1px solid var(--border-color);
   border-radius: 4px;
   font-size: 13px;

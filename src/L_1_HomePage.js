@@ -7,13 +7,14 @@ import CustomizableTable from './CustomizableTable';
 import ExtendedScaling from './extended_scaling/ExtendedScaling';
 import FactEngine from './FactEngine';
 import FactEngineAdmin from './FactEngineAdmin';
-import FormHeader from './FormHeader.js';
 import './label.css';
 import GeneralFormConfig from './GeneralFormConfig.js';
-import Popup from './Popup.js';
+import ThemeGenerator from './utils/ThemeGenerator';
+import ThemeConfigurator from './components/ThemeConfigurator';
 import './L_1_HomePage.CSS/L_1_HomePage1.css';
 import './L_1_HomePage.CSS/L_1_HomePage2.css';
 import './L_1_HomePage.CSS/L_1_HomePage3.css';
+import './L_1_HomePage.CSS/L_1_HomePage_theme.css';
 import './L_1_HomePage.CSS/L_1_HomePage4.css';
 import './L_1_HomePage.CSS/L_1_HomePage5.css';
 import './L_1_HomePage.CSS/L_1_HomePage6.css';
@@ -26,15 +27,13 @@ import './L_1_HomePage.CSS/L_1_HomePage_FactAdmin.css';
 import './styles/neumorphic-tabs.css';
 import './styles/dark-theme.css';
 import './styles/normal-theme.css';
-import './styles/creative-theme.css';
+import './styles/creative-your-own-theme.css';
 import PropertySelector from './PropertySelector.js';
 import MultiVersionSelector from './MultiVersionSelector.js';
 import TodoList from './TodoList.js';
 import VersionSelector from './VersionSelector.js';
 import ModelZone from './components/model/ModelZone';
-import VersionControl from './components/version/VersionControl';
 import EditableHierarchicalList from './Editable';
-import SpatialTransformComponent from './naturalmotion';
 import SensitivityAnalysis from './components/SensitivityAnalysis';
 import useFormValues from './useFormValues.js';
 import TestingZone from './components/TestingZone';
@@ -110,30 +109,29 @@ const L_1_HomePageContent = () => {
 
     // Theme management
     useEffect(() => {
-        // Remove all theme classes
-        document.documentElement.classList.remove('dark-theme', 'normal-theme', 'creative-theme');
-        
-        // Map season to theme class
+        // Map season to theme name
         const themeMap = {
-            'dark': 'dark-theme',
-            'winter': 'normal-theme',
-            'fall': 'creative-theme'
+            'dark': ThemeGenerator.getThemeNames().dark,
+            'fall': ThemeGenerator.getThemeNames().template,
+            'winter': ThemeGenerator.getThemeNames().normal
         };
-        
-        // Add the appropriate theme class
-        document.documentElement.classList.add(themeMap[season]);
-        
+
+        // Get base colors from ThemeGenerator and apply theme
+        const baseTheme = themeMap[season];
+        if (baseTheme === ThemeGenerator.getThemeNames().template) {
+            // For custom theme, use the template and let ThemeConfigurator handle colors
+            const themeClasses = Object.values(ThemeGenerator.getThemeNames()).map(name => `${name}-theme`);
+            document.documentElement.classList.remove(...themeClasses);
+            document.documentElement.classList.add(`${baseTheme}-theme`);
+        } else {
+            // For built-in themes, use the standard approach
+            const baseColors = ThemeGenerator.baseThemes[baseTheme];
+            const colors = ThemeGenerator.generatePalette([baseColors.primary], 5, 'sequential');
+            ThemeGenerator.applyThemeToDOM(colors, baseTheme);
+        }
+
         // Set data-theme attribute for backward compatibility
         document.documentElement.setAttribute('data-theme', season);
-        
-        // Apply theme-specific colors
-        if (season === 'dark') {
-            document.documentElement.style.setProperty('--primary-color', '#1a237e'); // Rich dark blue
-        } else if (season === 'fall') {
-            document.documentElement.style.setProperty('--primary-color', '#8a2be2'); // Vibrant purple
-        } else {
-            document.documentElement.style.setProperty('--primary-color', '#4a90e2'); // Clean blue
-        }
     }, [season]);
 
     const { formValues, handleInputChange, handleReset, setFormValues } = useFormValues();
@@ -311,40 +309,34 @@ const L_1_HomePageContent = () => {
                 const endY = ribbonRect.bottom - creativeButton.bottom;
 
                 themeRibbon.style.setProperty('--glow-start-x', `${startX}px`);
-                // Calculate horizontal and vertical distances for diagonal movement
-                themeRibbon.style.setProperty('--glow-start-y', `${startY}px`);
-                themeRibbon.style.setProperty('--glow-end-x', `${endX}px`);
-                themeRibbon.style.setProperty('--glow-end-y', `${endY}px`);
-
-                // Set position variables for the glow effect
-                themeRibbon.style.setProperty('--glow-start-x', `${startX}px`);
                 themeRibbon.style.setProperty('--glow-start-y', `${startY}px`);
                 themeRibbon.style.setProperty('--glow-end-x', `${endX}px`);
                 themeRibbon.style.setProperty('--glow-end-y', `${endY}px`);
                 themeRibbon.style.setProperty('--transition-duration', '1.2s');
             }
 
-            // Add transition classes with proper timing
             requestAnimationFrame(() => {
-                themeRibbon.classList.add(newSeason === 'dark' ? 'to-dark' : 'to-light');
+                const themeNames = ThemeGenerator.getThemeNames();
+                const toClass = newSeason === 'dark' ? `to-${themeNames.dark}` : 
+                              newSeason === 'fall' ? `to-${themeNames.template}` : 
+                              `to-${themeNames.normal}`;
+                themeRibbon.classList.add(toClass);
                 themeRibbon.classList.add('theme-transition');
 
-                // Handle logo transition with proper timing
                 if (currentLogo) {
                     currentLogo.classList.add('fade-out');
                     currentLogo.classList.remove('active');
                 }
 
-                // Delay the new logo appearance to sync with the theme transition
                 if (newLogo) {
                     setTimeout(() => {
                         newLogo.classList.add('active');
                     }, 300);
                 }
 
-                // Clean up classes after all transitions complete
                 setTimeout(() => {
-                    themeRibbon.classList.remove('theme-transition', 'to-dark', 'to-light');
+                    const allThemeClasses = Object.values(themeNames).map(name => `to-${name}`);
+                    themeRibbon.classList.remove('theme-transition', ...allThemeClasses);
                     if (currentLogo) {
                         currentLogo.classList.remove('fade-out');
                     }
@@ -356,14 +348,17 @@ const L_1_HomePageContent = () => {
         setSeason(newSeason);
         document.body.className = newSeason;
 
-        // Apply theme-specific styles
-        if (newSeason === 'dark') {
-            document.documentElement.style.setProperty('--primary-color', '#1a237e'); // Rich dark blue
-        } else if (newSeason === 'fall') {
-            document.documentElement.style.setProperty('--primary-color', '#8a2be2'); // Vibrant purple
-        } else {
-            document.documentElement.style.setProperty('--primary-color', '#4a90e2'); // Clean blue
-        }
+        // Map season to theme name and apply theme
+        const themeMap = {
+            'dark': ThemeGenerator.getThemeNames().dark,
+            'fall': ThemeGenerator.getThemeNames().template,
+            'winter': ThemeGenerator.getThemeNames().normal
+        };
+
+        const baseTheme = themeMap[newSeason];
+        const baseColors = ThemeGenerator.baseThemes[baseTheme];
+        const colors = ThemeGenerator.generatePalette([baseColors.primary], 5, 'sequential');
+        ThemeGenerator.applyThemeToDOM(colors, baseTheme);
     };
 
     const toggleF = (key) => {
@@ -1557,7 +1552,7 @@ const L_1_HomePageContent = () => {
             <div className="about-us-container">
                 <div className="about-us-content">
                     <div className="about-us-seal"></div>
-                    <h1>The Transformative Power of Financial Literacy: A Foundation for Economic Empowerment</h1>
+                    <h1>Financial Literacy<br /> A Foundation for Economic Empowerment</h1>
                     
                     <p>Financial literacy stands as the cornerstone of personal and professional empowerment in today's complex economic landscape. Beyond basic numeracy, true financial literacy encompasses the ability to synthesize multiple variables, understand their interrelationships, and project their impact across time—skills essential for navigating the increasingly sophisticated financial world we inhabit.</p>
                     
@@ -1608,7 +1603,6 @@ const L_1_HomePageContent = () => {
                         <ModelZone />
                         <div className="model-selection">
                             <VersionSelector />
-                            <SpatialTransformComponent />
                         </div>
                     </div>
                 );
@@ -1673,28 +1667,26 @@ const L_1_HomePageContent = () => {
                     <h2 className="h2-small">From lemonad stand to Tesla, TEA Space accomodates your complex cost modeling scenarios</h2>
                     <h2 className="h2-small">Grand opening April 15th 2025</h2>
                 </div>
-                <div className="theme-ribbon">
-                    
-                    <div className="theme-buttons">
-                        <button
-                            className={`theme-button ${season === 'fall' ? 'active' : ''}`}
-                            onClick={() => handleThemeChange('fall')}
-                        >
-                            Creative
-                        </button>
-                        <button
-                            className={`theme-button ${season === 'winter' ? 'active' : ''}`}
-                            onClick={() => handleThemeChange('winter')}
-                        >
-                            Normal
-                        </button>
-                        <button
-                            className={`theme-button ${season === 'dark' ? 'active' : ''}`}
-                            onClick={() => handleThemeChange('dark')}
-                        >
-                            Dark
-                        </button>
-                    </div>
+                <div className="theme-controls">
+                    <button
+                        className={`theme-button ${season === 'fall' ? 'active' : ''}`}
+                        onClick={() => handleThemeChange('fall')}
+                    >
+                        Creative
+                    </button>
+                    <button
+                        className={`theme-button ${season === 'winter' ? 'active' : ''}`}
+                        onClick={() => handleThemeChange('winter')}
+                    >
+                        Normal
+                    </button>
+                    <button
+                        className={`theme-button ${season === 'dark' ? 'active' : ''}`}
+                        onClick={() => handleThemeChange('dark')}
+                    >
+                        Dark
+                    </button>
+                    <ThemeConfigurator />
                 </div>
             </div>
             <div className="main-content">
@@ -1774,6 +1766,7 @@ const L_1_HomePageContent = () => {
                         <>
                             <SensitivityMonitor 
                                 S={S}
+                                setS={setS}
                                 version={version}
                                 activeTab={activeTab}
                             />
