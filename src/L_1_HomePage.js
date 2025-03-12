@@ -32,7 +32,7 @@ import PropertySelector from './PropertySelector.js';
 import MultiVersionSelector from './MultiVersionSelector.js';
 import TodoList from './TodoList.js';
 import VersionSelector from './VersionSelector.js';
-import ModelZone from './components/model/ModelZone';
+/*import ModelZone from './components/model/ModelZone';*/
 import EditableHierarchicalList from './Editable';
 import SensitivityAnalysis from './components/SensitivityAnalysis';
 import useFormValues from './useFormValues.js';

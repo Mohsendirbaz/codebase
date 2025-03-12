@@ -39,6 +39,31 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Appearance property with vendor prefixes */
+.appearance-none {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.appearance-button {
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+}
+
+.appearance-textfield {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.appearance-menulist {
+  -webkit-appearance: menulist;
+  -moz-appearance: menulist;
+  appearance: menulist;
+}
+
 /* Frosted glass panels */
 .frosted-panel {
   background: rgba(255, 255, 255, 0.7);

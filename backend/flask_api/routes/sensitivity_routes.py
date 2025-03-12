@@ -1,10 +1,21 @@
 from flask import Blueprint, request, jsonify
-from marshmallow import Schema, fields, validate
-from ..utils.validation import validate_json_payload
-from ..utils.sensitivity_utils import SensitivityAnalyzer
-from ..utils.price_utils import PriceAnalyzer
-from ..utils.efficacy_utils import EfficacyAnalyzer
-from ..websocket import emit_calculation_progress
+# Use local mocked marshmallow instead of the real package
+from marshmallow.marshmallow import Schema, fields, validate  
+import os
+import sys
+
+# Add necessary paths
+current_dir = os.path.dirname(os.path.abspath(__file__))
+flask_api_dir = os.path.dirname(current_dir)
+if flask_api_dir not in sys.path:
+    sys.path.insert(0, flask_api_dir)
+
+# Direct imports
+from utils.validation import validate_json_payload
+from utils.sensitivity_utils import SensitivityAnalyzer
+from utils.price_utils import PriceAnalyzer
+from utils.efficacy_utils import EfficacyAnalyzer
+from websocket import emit_calculation_progress
 import logging
 import uuid
 
