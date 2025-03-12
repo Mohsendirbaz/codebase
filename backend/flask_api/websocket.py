@@ -1,4 +1,5 @@
 from flask_socketio import SocketIO, emit
+from flask import request
 from typing import Dict, Any, Optional
 import logging
 import json

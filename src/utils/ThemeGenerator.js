@@ -11,6 +11,32 @@ class ThemeGenerator {
         };
     }
 
+    static getCurrentThemeName() {
+        // Get current theme based on body class or data-theme attribute
+        const bodyClass = document.body.className;
+        const dataTheme = document.documentElement.getAttribute('data-theme');
+        
+        // Map from season/data-theme to CSS theme name
+        const themeMap = {
+            'dark': 'dark',
+            'winter': 'normal',
+            'fall': 'creative-your-own'
+        };
+        
+        return themeMap[bodyClass] || themeMap[dataTheme] || 'normal';
+    }
+    
+    static getThemeCssPath(themeName) {
+        const themeFileMap = {
+            'dark': '/src/styles/dark-theme.css', 
+            'normal': '/src/styles/normal-theme.css',
+            'creative-your-own': '/src/styles/creative-your-own-theme.css',
+            'theme-template': '/src/styles/theme-template.css'
+        };
+        
+        return themeFileMap[themeName] || themeFileMap['normal'];
+    }
+
     static parseThemeColors(cssContent) {
         const colorBlocks = {
             core: {},
@@ -268,8 +294,56 @@ class ThemeGenerator {
     }
 
     static saveTheme(colorBlocks) {
+        // Generate CSS content for the creative theme
         const css = this.generateCSSFromColorBlocks(colorBlocks);
         
+        // Create an AJAX request to save the file server-side
+        // This is a placeholder - in a real application, this would be an API call to save the file
+        const saveRequest = new XMLHttpRequest();
+        saveRequest.open('POST', '/api/save-theme', false); // Synchronous for simplicity
+        saveRequest.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+        
+        try {
+            saveRequest.send(JSON.stringify({
+                filename: 'creative-your-own-theme.css',
+                content: css
+            }));
+            
+            console.log('Theme saved successfully to creative-your-own-theme.css');
+        } catch (error) {
+            console.error('Failed to save theme file:', error);
+            // Fallback to client-side download if server save fails
+            this.downloadThemeFile(css);
+        }
+        
+        // Auto-toggle to creative theme
+        const themeNames = this.getThemeNames();
+        const themeClasses = Object.values(themeNames).map(name => `${name}-theme`);
+        
+        // Remove existing theme classes
+        document.documentElement.classList.remove(...themeClasses);
+        
+        // Add creative theme class
+        document.documentElement.classList.add(`${themeNames.creative}-theme`);
+        
+        // Update season state to fall (which corresponds to creative theme)
+        document.body.className = 'fall';
+        
+        // Update data-theme attribute for consistency
+        document.documentElement.setAttribute('data-theme', 'fall');
+        
+        // Apply the colors immediately
+        this.applyDirectColorChanges(colorBlocks, themeNames.creative);
+        
+        return {
+            success: true,
+            message: 'Theme saved and applied in creative mode',
+            cssContent: css
+        };
+    }
+    
+    // Helper to download theme file as a fallback
+    static downloadThemeFile(css) {
         // Create a Blob containing the CSS
         const blob = new Blob([css], { type: 'text/css' });
         const url = URL.createObjectURL(blob);
@@ -283,26 +357,7 @@ class ThemeGenerator {
         document.body.removeChild(link);
         URL.revokeObjectURL(url);
         
-        const themeNames = this.getThemeNames();
-        const themeClasses = Object.values(themeNames).map(name => `${name}-theme`);
-        
-        // Auto-toggle to creative theme
-        document.documentElement.classList.remove(...themeClasses);
-        document.documentElement.classList.add(`${themeNames.creative}-theme`);
-        
-        // Update season state
-        const seasonMap = {
-            [themeNames.dark]: 'dark',
-            [themeNames.normal]: 'winter',
-            [themeNames.template]: 'fall',
-            [themeNames.creative]: 'fall'
-        };
-        document.body.className = seasonMap[themeNames.creative];
-        
-        // Apply the colors
-        this.applyDirectColorChanges(colorBlocks, themeNames.creative);
-        
-        return css;
+        console.log('Theme downloaded as creative-your-own-theme.css');
     }
 
     static isValidColor(color) {

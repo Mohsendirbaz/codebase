@@ -41,7 +41,7 @@ flask_base_dir = r"C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend"
 
 # List of Flask apps with their subdirectories and ports
 flask_apps = [
-    (r"flask_api\app.py", 5000),  # Main Flask app with WebSocket support
+    (r"flask_api\minimal_api.py", 8080),  # Minimal Flask app with no dependencies
     (r"Data_processors_and_transformers\Front_Subtab_Table.py", 8007),
     (r"Data_processors_and_transformers\Front_Subtab_Plot.py", 8008),
     (r"Data_processors_and_transformers\Front_Subtab_HTML.py", 8009),
@@ -97,7 +97,7 @@ def start_flask_apps():
         
         try:
             process = subprocess.Popen(
-                ["python", app_path, "--port", str(port)],
+                ["python", app_path],  # Removed --port argument since simple_run.py doesn't accept it
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
                 universal_newlines=True

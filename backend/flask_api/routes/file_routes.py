@@ -1,6 +1,16 @@
 from flask import Blueprint, request, jsonify, send_file
 from marshmallow import Schema, fields, validate
-from ..utils.validation import validate_json_payload, validate_file_extension
+import os
+import sys
+
+# Add necessary paths
+current_dir = os.path.dirname(os.path.abspath(__file__))
+flask_api_dir = os.path.dirname(current_dir)
+if flask_api_dir not in sys.path:
+    sys.path.insert(0, flask_api_dir)
+
+# Direct imports
+from utils.validation import validate_json_payload, validate_file_extension
 from werkzeug.utils import secure_filename
 import os
 import json

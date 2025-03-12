@@ -1,9 +1,19 @@
 from flask import Flask
 from flask_cors import CORS
-from .websocket import socketio
-from .routes.sensitivity_routes import sensitivity_bp
-from .routes.price_routes import price_bp
-from .routes.file_routes import file_bp
+import os
+import sys
+
+# Add the current directory to the Python path
+current_dir = os.path.dirname(os.path.abspath(__file__))
+if current_dir not in sys.path:
+    sys.path.insert(0, current_dir)
+
+# Direct imports
+from websocket import socketio
+from routes.sensitivity_routes import sensitivity_bp
+from routes.price_routes import price_bp
+from routes.file_routes import file_bp
+from routes.theme_routes import theme_routes
 import logging
 from logging.handlers import RotatingFileHandler
 import os
@@ -52,6 +62,7 @@ def create_app(config=None):
     app.register_blueprint(sensitivity_bp, url_prefix='/sensitivity')
     app.register_blueprint(price_bp, url_prefix='/price')
     app.register_blueprint(file_bp, url_prefix='/file')
+    app.register_blueprint(theme_routes, url_prefix='')
 
     # Error handlers
     @app.errorhandler(404)

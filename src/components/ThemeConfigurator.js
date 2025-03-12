@@ -44,45 +44,127 @@ const ThemeConfigurator = () => {
         setResultingPalette(palette);
     }, [numColors, paletteType, inputColors]);
 
-    // Load template CSS and parse color blocks on component mount
+    // Load current theme's CSS and parse color blocks on component mount
     useEffect(() => {
-        const loadTemplateCSS = async () => {
+        const loadThemeCSS = async () => {
             try {
-                // Import the template CSS directly as a module
-                import('../styles/theme-template.css')
-                    .then(module => {
-                        // Get CSS content from computed styles
-                        const templateCSS = getComputedThemeCSS('theme-template');
-                        setOriginalCSS(templateCSS);
+                // Get the current theme name based on body class or data attribute
+                const currentThemeName = ThemeGenerator.getCurrentThemeName();
+                console.log("Current theme detected:", currentThemeName);
+                
+                // Get the CSS for the current theme
+                const themeCSS = getComputedThemeCSS(currentThemeName);
+                
+                if (themeCSS) {
+                    setOriginalCSS(themeCSS);
+                    
+                    // Parse color blocks from the theme CSS
+                    const parsedBlocks = ThemeGenerator.parseThemeColors(themeCSS);
+                    
+                    // Apply the blocks if parsing succeeded
+                    if (parsedBlocks && parsedBlocks.core && Object.keys(parsedBlocks.core).length > 0) {
+                        console.log(`Successfully parsed ${currentThemeName} theme colors:`, 
+                            Object.keys(parsedBlocks.core).length, "core colors,",
+                            Object.keys(parsedBlocks.text).length, "text colors,",
+                            Object.keys(parsedBlocks.background).length, "background colors");
                         
-                        // Parse color blocks from template
-                        const parsedBlocks = ThemeGenerator.parseThemeColors(templateCSS);
-                        
-                        // Apply the blocks if parsing succeeded
+                        // Store both as current and default colors
+                        setColorBlocks(parsedBlocks);
+                        setDefaultColorBlocks(JSON.parse(JSON.stringify(parsedBlocks)));
+                    } else {
+                        console.warn(`Failed to parse ${currentThemeName} theme colors, trying to load from file`);
+                        await loadThemeFromFile(currentThemeName);
+                    }
+                } else {
+                    console.warn("Couldn't get computed CSS, trying to load from file");
+                    await loadThemeFromFile(currentThemeName);
+                }
+            } catch (error) {
+                console.error('Failed to process theme CSS:', error);
+                useFallbackColors();
+            }
+        };
+        
+        // Helper to load theme from file
+        const loadThemeFromFile = async (themeName) => {
+            try {
+                // Get the CSS file path for the theme
+                const cssPath = ThemeGenerator.getThemeCssPath(themeName).replace(/^\//, '');
+                console.log(`Loading theme CSS from file: ${cssPath}`);
+                
+                // Try to import the CSS file
+                const cssModule = await import(`../${cssPath}`);
+                
+                // Wait a moment for styles to apply, then get computed CSS
+                setTimeout(() => {
+                    const computedCSS = getComputedThemeCSS(themeName);
+                    if (computedCSS) {
+                        const parsedBlocks = ThemeGenerator.parseThemeColors(computedCSS);
                         if (parsedBlocks && parsedBlocks.core && Object.keys(parsedBlocks.core).length > 0) {
-                            console.log("Successfully parsed theme template colors:", 
-                                Object.keys(parsedBlocks.core).length, "core colors,",
-                                Object.keys(parsedBlocks.text).length, "text colors,",
-                                Object.keys(parsedBlocks.background).length, "background colors");
-                            
-                            // Store both as current and default colors
                             setColorBlocks(parsedBlocks);
                             setDefaultColorBlocks(JSON.parse(JSON.stringify(parsedBlocks)));
                         } else {
-                            console.warn("Failed to parse theme colors, using fallback values");
                             useFallbackColors();
                         }
-                    })
-                    .catch(error => {
-                        console.error("Error importing CSS module:", error);
+                    } else {
                         useFallbackColors();
-                    });
-                
-                // Apply template class to get base styles
-                const themeNames = ThemeGenerator.getThemeNames();
-                document.documentElement.classList.add(`${themeNames.template}-theme`);
+                    }
+                }, 300);
             } catch (error) {
-                console.error('Failed to process template CSS:', error);
+                console.error(`Failed to load theme file for ${themeName}:`, error);
+                extractColorsFromDOM(themeName);
+            }
+        };
+        
+        // Extract colors from DOM as a last resort
+        const extractColorsFromDOM = (themeName) => {
+            console.log("Extracting colors from DOM computed styles");
+            const colorBlocks = {
+                core: {},
+                text: {},
+                background: {}
+            };
+            
+            // Try to get core color variables
+            const coreColors = [
+                'primary-color', 'primary-color-light', 'primary-color-dark', 
+                'secondary-color', 'secondary-color-light', 'secondary-color-dark'
+            ];
+            
+            const textColors = [
+                'text-color', 'text-color-on-light', 'text-color-on-dark', 
+                'text-secondary', 'link-color', 'label-color'
+            ];
+            
+            const bgColors = [
+                'background-color', 'app-background', 'card-background', 
+                'sidebar-background', 'input-background'
+            ];
+            
+            const style = getComputedStyle(document.documentElement);
+            
+            // Extract core colors
+            coreColors.forEach(color => {
+                const value = style.getPropertyValue(`--${color}`).trim();
+                if (value) colorBlocks.core[color] = value;
+            });
+            
+            // Extract text colors
+            textColors.forEach(color => {
+                const value = style.getPropertyValue(`--${color}`).trim();
+                if (value) colorBlocks.text[color] = value;
+            });
+            
+            // Extract background colors
+            bgColors.forEach(color => {
+                const value = style.getPropertyValue(`--${color}`).trim();
+                if (value) colorBlocks.background[color] = value;
+            });
+            
+            if (Object.keys(colorBlocks.core).length > 0) {
+                setColorBlocks(colorBlocks);
+                setDefaultColorBlocks(JSON.parse(JSON.stringify(colorBlocks)));
+            } else {
                 useFallbackColors();
             }
         };
@@ -150,19 +232,18 @@ const ThemeConfigurator = () => {
             setDefaultColorBlocks(JSON.parse(JSON.stringify(fallbackColors)));
         };
         
-        loadTemplateCSS();
+        loadThemeCSS();
         generatePalette();
 
-        // Cleanup function to remove template class
+        // Cleanup function to remove any temporary theme classes
         return () => {
-            const themeNames = ThemeGenerator.getThemeNames();
-            document.documentElement.classList.remove(`${themeNames.template}-theme`);
+            // No cleanup needed - we didn't add any temporary classes
         };
     }, [generatePalette]);
 
     const handleApply = () => {
         if (editMode === 'palette') {
-            // Apply palette-based theme
+            // For palette generator mode
             const currentTheme = document.documentElement.getAttribute('data-theme');
             const themeMap = {
                 'dark': 'dark',
@@ -173,23 +254,46 @@ const ThemeConfigurator = () => {
             const baseTheme = themeMap[currentTheme] || 'light';
             ThemeGenerator.applyThemeToDOM(resultingPalette, baseTheme);
         } else {
-            // Save theme and auto-toggle to creative mode
-            ThemeGenerator.saveTheme(colorBlocks);
+            // For direct editor mode:
+            // 1. Save the current state as the new creative theme
+            const saveResult = ThemeGenerator.saveTheme(colorBlocks);
             
-            // Update season state in parent component if available
+            // 2. Switch to creative/fall mode to show the new theme
             if (window.setSeason) {
                 window.setSeason('fall');
+            } else {
+                document.body.className = 'fall';
+                document.documentElement.setAttribute('data-theme', 'fall');
             }
+            
+            // 3. Show a brief toast confirmation (in future enhancement)
+            console.log('Theme saved and switched to creative mode');
         }
         
+        // Close the configurator dialog
         setIsOpen(false);
+        
+        // Reset the unsaved changes flag
+        setHasUnsavedChanges(false);
     };
 
+    // Preview in Creative Mode without saving
     const handlePreview = () => {
-        // Apply direct color changes and ensure theme classes are set
+        // Remember current theme/mode so we can switch back
+        const currentBodyClass = document.body.className;
+        const currentDataTheme = document.documentElement.getAttribute('data-theme');
+        
+        // Store these for switching back
+        const previewInfo = {
+            originalMode: currentBodyClass || currentDataTheme || 'winter',
+            timestamp: Date.now()
+        };
+        localStorage.setItem('themePreviewInfo', JSON.stringify(previewInfo));
+        
+        // Apply the current color changes to the creative theme
         ThemeGenerator.applyDirectColorChanges(colorBlocks);
         
-        // Ensure creative theme classes are added
+        // Switch to creative theme to preview
         const themeNames = ThemeGenerator.getThemeNames();
         const themeClasses = Object.values(themeNames).map(name => `${name}-theme`);
         
@@ -199,8 +303,67 @@ const ThemeConfigurator = () => {
         // Add creative theme class
         document.documentElement.classList.add(`${themeNames.creative}-theme`);
         
-        // Update season state
+        // Update season state to fall (creative)
         document.body.className = 'fall';
+        document.documentElement.setAttribute('data-theme', 'fall');
+        
+        // Set preview status message
+        setLiveUpdateStatus('Previewing in Creative Mode - changes not saved yet');
+        
+        // Auto-hide this message after 3 seconds
+        if (statusTimeoutRef.current) {
+            clearTimeout(statusTimeoutRef.current);
+        }
+        statusTimeoutRef.current = setTimeout(() => {
+            setLiveUpdateStatus(null);
+        }, 3000);
+    };
+    
+    // Return from preview mode to original mode
+    const handleCancelPreview = () => {
+        // Get stored preview info
+        const previewInfoStr = localStorage.getItem('themePreviewInfo');
+        if (!previewInfoStr) return;
+        
+        try {
+            const previewInfo = JSON.parse(previewInfoStr);
+            const originalMode = previewInfo.originalMode;
+            
+            // Map mode back to proper theme class
+            const modeToTheme = {
+                'dark': 'dark',
+                'winter': 'normal',
+                'fall': 'creative-your-own'
+            };
+            
+            const themeClass = modeToTheme[originalMode] || 'normal';
+            const themeNames = ThemeGenerator.getThemeNames();
+            const themeClasses = Object.values(themeNames).map(name => `${name}-theme`);
+            
+            // Remove creative theme class
+            document.documentElement.classList.remove(...themeClasses);
+            
+            // Add original theme class back
+            document.documentElement.classList.add(`${themeClass}-theme`);
+            
+            // Restore original body class/mode
+            document.body.className = originalMode;
+            document.documentElement.setAttribute('data-theme', originalMode);
+            
+            // Clear preview info
+            localStorage.removeItem('themePreviewInfo');
+            
+            // Notify user
+            setLiveUpdateStatus(`Returned to ${originalMode} mode - edits preserved`);
+            if (statusTimeoutRef.current) {
+                clearTimeout(statusTimeoutRef.current);
+            }
+            statusTimeoutRef.current = setTimeout(() => {
+                setLiveUpdateStatus(null);
+            }, 2000);
+        } catch (e) {
+            console.error("Error returning from preview:", e);
+        }
     };
 
     // Store original/default values for reset functionality
@@ -209,6 +372,14 @@ const ThemeConfigurator = () => {
         text: {},
         background: {}
     });
+
+    // Tracks if the user has made changes that need saving
+    const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
+    // Tracks when changes are applied to the live theme
+    const [liveUpdateStatus, setLiveUpdateStatus] = useState(null);
+    
+    // Live update timeout
+    const statusTimeoutRef = useRef(null);
 
     // Handler for direct color changes
     const handleDirectColorChange = (category, colorName, newValue) => {
@@ -221,8 +392,20 @@ const ThemeConfigurator = () => {
                 return newBlocks;
             });
             
-            // Apply immediately
+            // Mark that there are unsaved changes
+            setHasUnsavedChanges(true);
+            
+            // Apply immediately to the active theme
             document.documentElement.style.setProperty(`--${colorName}`, newValue);
+            
+            // Show real-time update status
+            if (statusTimeoutRef.current) {
+                clearTimeout(statusTimeoutRef.current);
+            }
+            setLiveUpdateStatus(`${colorName} updated live`);
+            statusTimeoutRef.current = setTimeout(() => {
+                setLiveUpdateStatus(null);
+            }, 2000);
             
             // Update related colors if needed
             if (colorName === 'primary-color') {
@@ -488,6 +671,13 @@ const ThemeConfigurator = () => {
                         </div>
                         
                         <div className="dialog-footer">
+                            {liveUpdateStatus && (
+                                <div className="live-update-status">
+                                    <span className="pulse-dot"></span>
+                                    {liveUpdateStatus}
+                                </div>
+                            )}
+                            
                             {editMode === 'palette' ? (
                                 <>
                                     {currentStep > 1 && (
@@ -507,18 +697,34 @@ const ThemeConfigurator = () => {
                                 </>
                             ) : (
                                 <div className="direct-edit-actions">
-                                    <button 
-                                        className="preview-button"
-                                        onClick={handlePreview}
-                                    >
-                                        Preview
-                                    </button>
-                                    <button 
-                                        className="apply-button"
-                                        onClick={handleApply}
-                                    >
-                                        Save Theme
-                                    </button>
+                                    <div className="live-mode-indicator">
+                                        <span className="live-dot"></span>
+                                        <span>Live mode active - changes apply immediately</span>
+                                    </div>
+                                    <div className="button-group">
+                                        {localStorage.getItem('themePreviewInfo') ? (
+                                            <button 
+                                                className="cancel-preview-button"
+                                                onClick={handleCancelPreview}
+                                            >
+                                                Return to Edit Mode
+                                            </button>
+                                        ) : (
+                                            <button 
+                                                className="preview-button"
+                                                onClick={handlePreview}
+                                            >
+                                                Preview in Creative Mode
+                                            </button>
+                                        )}
+                                        <button 
+                                            className="apply-button"
+                                            onClick={handleApply}
+                                            disabled={!hasUnsavedChanges}
+                                        >
+                                            Save to Creative Theme
+                                        </button>
+                                    </div>
                                 </div>
                             )}
                         </div>
