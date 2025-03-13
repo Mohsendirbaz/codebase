@@ -15,42 +15,39 @@
 .L_1_HomePage .form-action-buttons .config-row button {
   background-color: #5C27C3;
   color: white;
-  box-shadow: var(--form-item-shadow);
 }
 
 .L_1_HomePage .form-action-buttons .config-row button:hover {
   background-color: #4a1fa3;
   transform: translateY(-2px);
-  box-shadow: var(--form-item-hover-shadow);
+  box-shadow: 0 2px 8px rgba(92, 39, 195, 0.3);
 }
 
 .L_1_HomePage .form-action-buttons .config-row button:focus {
   outline: none;
-  box-shadow: var(--input-field-shadow), 0 0 0 3px rgba(92, 39, 195, 0.4);
+  box-shadow: 0 0 0 3px rgba(92, 39, 195, 0.4);
 }
 
 /* Visualization Row */
 .L_1_HomePage .form-action-buttons .visualization-row button {
   background: linear-gradient(45deg, #4CAF50, #2196F3);
   color: white;
-  box-shadow: var(--form-item-shadow);
 }
 
 .L_1_HomePage .form-action-buttons .visualization-row button:hover {
   background: linear-gradient(45deg, #43A047, #1E88E5);
   transform: translateY(-2px);
-  box-shadow: var(--form-item-hover-shadow);
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
 }
 
 .L_1_HomePage .form-action-buttons .visualization-row button:focus {
   outline: none;
-  box-shadow: var(--input-field-shadow), 0 0 0 3px rgba(76, 175, 80, 0.4);
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.4);
 }
 
 /* Practical Row */
 .L_1_HomePage .form-action-buttons .practical-row button {
   position: relative;
-  box-shadow: var(--form-item-shadow);
 }
 
 /* Run CFA Button */
@@ -62,12 +59,12 @@
 .L_1_HomePage .form-action-buttons .practical-row button:nth-child(1):hover {
   background-color: #F4511E;
   transform: translateY(-2px);
-  box-shadow: var(--form-item-hover-shadow);
+  box-shadow: 0 2px 8px rgba(255, 87, 34, 0.3);
 }
 
 .L_1_HomePage .form-action-buttons .practical-row button:nth-child(1):focus {
   outline: none;
-  box-shadow: var(--input-field-shadow), 0 0 0 3px rgba(255, 87, 34, 0.4);
+  box-shadow: 0 0 0 3px rgba(255, 87, 34, 0.4);
 }
 
 /* Submit Complete Set Button */
@@ -79,12 +76,12 @@
 .L_1_HomePage .form-action-buttons .practical-row button:nth-child(2):hover {
   background-color: #8E24AA;
   transform: translateY(-2px);
-  box-shadow: var(--form-item-hover-shadow);
+  box-shadow: 0 2px 8px rgba(156, 39, 176, 0.3);
 }
 
 .L_1_HomePage .form-action-buttons .practical-row button:nth-child(2):focus {
   outline: none;
-  box-shadow: var(--input-field-shadow), 0 0 0 3px rgba(156, 39, 176, 0.4);
+  box-shadow: 0 0 0 3px rgba(156, 39, 176, 0.4);
 }
 
 /* Reset Button */
@@ -96,19 +93,18 @@
 .L_1_HomePage .form-action-buttons .practical-row button:nth-child(3):hover {
   background-color: #512DA8;
   transform: translateY(-2px);
-  box-shadow: var(--form-item-hover-shadow);
+  box-shadow: 0 2px 8px rgba(92, 39, 176, 0.3);
 }
 
 .L_1_HomePage .form-action-buttons .practical-row button:nth-child(3):focus {
   outline: none;
-  box-shadow: var(--input-field-shadow), 0 0 0 3px rgba(92, 39, 176, 0.4);
+  box-shadow: 0 0 0 3px rgba(92, 39, 176, 0.4);
 }
 
 /* Batch Operation Buttons */
 .L_1_HomePage .step-content button {
   margin: 0 10px;
   min-width: 180px;
-  box-shadow: var(--form-item-shadow);
 }
 
 /* Create New Batch Button */
@@ -120,12 +116,12 @@
 .L_1_HomePage .step-content .primary-action:hover {
   background-color: #E61E19;
   transform: translateY(-2px);
-  box-shadow: var(--form-item-hover-shadow);
+  box-shadow: 0 2px 8px rgba(255, 39, 34, 0.3);
 }
 
 .L_1_HomePage .step-content .primary-action:focus {
   outline: none;
-  box-shadow: var(--input-field-shadow), 0 0 0 3px rgba(255, 39, 34, 0.4);
+  box-shadow: 0 0 0 3px rgba(255, 39, 34, 0.4);
 }
 
 /* Remove Current Batch Button */
@@ -137,12 +133,12 @@
 .L_1_HomePage .step-content .secondary-action:hover {
   background-color: #2AA3A3;
   transform: translateY(-2px);
-  box-shadow: var(--form-item-hover-shadow);
+  box-shadow: 0 2px 8px rgba(47, 185, 185, 0.3);
 }
 
 .L_1_HomePage .step-content .secondary-action:focus {
   outline: none;
-  box-shadow: var(--input-field-shadow), 0 0 0 3px rgba(47, 185, 185, 0.4);
+  box-shadow: 0 0 0 3px rgba(47, 185, 185, 0.4);
 }
 
 /* Disabled State */

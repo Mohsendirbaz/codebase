@@ -1,273 +1,106 @@
-/* Normal Theme with Clean Blues - Organized by Layout and Non-Layout Variables */
+/* Normal Theme - Professional & Clean */
 :root.normal-theme {
-    /*==============================================================
-     * LAYOUT-RELATED VARIABLES
-     *==============================================================*/
-    
-    /* Spacing and Sizing */
-    --spacing-unit: 1rem;
-    --spacing-xs: 0.25rem;
-    --spacing-sm: 0.5rem;
-    --spacing-md: 1rem;
-    --spacing-lg: 1.5rem;
-    --spacing-xl: 2rem;
-    
-    /* Dimensions and Positioning */
-    --input-height: 2.5rem;
-    --input-width: 100%;
-    --button-min-width: 150px;
-    --fact-engine-width: 350px;
-    --fact-engine-max-height: 500px;
-    --progress-height: 8px;
-    --scaling-factor-width: 120px;
-    --scaling-operation-min-width: 150px;
-    --scaling-notes-height: 60px;
-    --homepage-model-zone-width: 300px;
-    --about-us-max-width: 1200px;
-    --homepage-layout-max-width: 1200px;
-    --homepage-layout-header-height: 60px;
-    --scrollbar-width: 8px;
-    
-    /* Margin and Padding */
-    --input-padding: 0.5rem 0.75rem;
-    --button-padding: 10px 20px;
-    --fact-btn-padding: 6px 10px;
-    --table-cell-padding: 12px;
-    --notification-padding: 15px;
-    --form-item-margin: 0 0 15px 0;
-    --form-label-margin: 0 0 5px 0;
-    --notification-margin: 10px 0;
-    --fact-card-margin: 10px 0;
-    --fact-text-margin: 0 0 10px 0;
-    --tab-margin: 0 0.5rem 0 0;
-    --version-margin: 0.5rem 0;
-    --about-us-margin: 40px auto;
-    --about-us-padding: 40px 60px;
-    --tab-padding: 0.75rem 1.25rem;
-    --version-item-padding: 0.5rem 1rem;
-    --fact-card-padding: 12px;
-    --scaling-panel-padding: 15px;
-    --scaling-tab-padding: 0.75rem 1rem;
-    --homepage-padding: 20px;
-    
-    /* Spacing Between Items */
-    --form-gap: 1rem;
-    --homepage-tab-gap: 10px;
-    --homepage-section-gap: 20px;
-    --homepage-content-gap: 20px;
-    --homepage-theme-button-gap: 10px;
-    
-    /* Border Properties */
-    --input-border-width: 1px;
-    --table-border-width: 1px;
-    --scrollbar-border-width: 2px;
-    
-    /* Border Radius */
-    --border-radius-sm: 4px;
-    --border-radius-md: 8px;
-    --border-radius-lg: 12px;
-    --border-radius-xl: 16px;
-    --border-radius-circle: 50%;
-    --button-border-radius: 4px;
-    --input-radius: 4px;
-    --notification-border-radius: 4px;
-    --progress-radius: 4px;
-    --tab-border-radius: 10px;
-    --scrollbar-border-radius: 8px;
-    
-    /* Z-index Layers */
-    --z-index-dropdown: 1000;
-    --z-index-sticky: 1020;
-    --z-index-fixed: 1030;
-    --z-index-modal-backdrop: 1040;
-    --z-index-modal: 1050;
-    --z-index-popover: 1060;
-    --z-index-tooltip: 1070;
-    
-    /* Positioning */
-    --fact-engine-position-top: 20px;
-    --fact-engine-position-right: 20px;
-    --tab-hover-transform: translateY(-2px);
-    --button-hover-transform: translateY(-2px);
-    
-    /* Typography Layout */
-    --font-size-xs: 0.75rem;
-    --font-size-sm: 0.875rem;
-    --font-size-md: 1rem;
-    --font-size-lg: 1.25rem;
-    --font-size-xl: 1.5rem;
-    --font-weight-light: 300;
-    --font-weight-normal: 400;
-    --font-weight-medium: 500;
-    --font-weight-semibold: 600;
-    --font-weight-bold: 700;
-    --form-label-font-weight: 500;
-    --about-us-h1-size: 5rem;
-    --about-us-h2-size: 3.6rem;
-    --about-us-p-size: 2.2rem;
-    --about-us-firstletter-size: 7rem;
-    --fact-text-line-height: 1.4;
-    
-    /* Scaling */
-    --control-small-scale: 0.875;
-    --control-large-scale: 1.25;
-    --focus-ring-width: 3px;
-    
-    /*==============================================================
-     * NON-LAYOUT RELATED VARIABLES (COLORS, EFFECTS, ANIMATIONS)
-     *==============================================================*/
-    
-    /* Core Colors */
     --primary-color: #4a90e2;
-    --primary-color-light: #6da5e8;
-    --primary-color-dark: #3a7bc8;
-    --primary-color-alpha: rgba(74, 144, 226, 0.7);
     --secondary-color: #66bb6a;
-    --secondary-color-light: #88cc8c;
-    --secondary-color-dark: #4c9a50;
-    
-    /* Text Colors */
     --text-color: #333333;
-    --text-color-on-light: #333333;
-    --text-color-on-dark: #e0e0e0;
-    --text-secondary: #6c757d;
-    --tab-text-color: darkblue;
-    --link-color: #4a90e2;
-    --link-hover-color: #3a7bc8;
-    --label-color: #6c757d;
-    --disabled-text: #868e96;
-    --scaling-add-button-color: #333333;
-    
-    /* Background Colors */
     --background-color: #f5f7fa;
-    --app-background: #f5f7fa;
     --sidebar-background: #ffffff;
     --card-background: #ffffff;
-    --input-background: #ffffff;
-    --bg-color: #f8f9fa;
-    --disabled-background: #e9ecef;
-    --scaling-container-bg: #ffffff;
-    --scaling-item-bg: #f8f9fa;
-    --fact-engine-header-bg: #4a90e2;
-    --table-header-bg: #4a90e2;
-    --table-row-even-bg: #ffffff;
-    --table-row-hover-bg: rgba(74, 144, 226, 0.1);
-    --version-background: #ffffff;
-    --version-selected-background: #4a90e2;
-    --progress-bg: #f8f9fa;
-    --progress-fill-bg: #4a90e2;
-    
-    /* Border Colors */
     --border-color: #e0e0e0;
-    --input-border: #ced4da;
-    --custom-color: #f2a5e2;
-    --table-border-color: #e0e0e0;
-    --scrollbar-border-color: #f8f9fa;
-    --homepage-tab-list-border: 1px solid #2a3356;
-    --version-border: 1px solid #2a3356;
-    --fact-card-border: 4px solid #1a237e;
-    --fact-card-pinned-border: 4px solid #ffc107;
-    /* Status Colors */
     --success-color: #28a745;
-    --success-hover: #218838;
     --danger-color: #dc3545;
-    --danger-hover: #bd2130;
-    --danger-color-light: #ffebee;
     --warning-color: #ffc107;
-    --warning-hover: #e5ac06;
     --info-color: #17a2b8;
     --light-color: #f8f9fa;
     --dark-color: #343a40;
-    
-    /* Special Colors */
-    --mode-text-color: #333;
-    --mode-tag-background: #e9ecef;
-    --mode-active-background: #28a745;
-    --sen-color: #009688;
-    --eff-color: #b9d2d0;
-    --fac-color: #2b2f2f;
-    --highlight-color: rgba(74, 144, 226, 0.1);
-    --pinned-bg: rgba(255, 193, 7, 0.15);
-    --pin-color: #ffc107;
-    --pin-hover: #e5ac06;
-    --primary-hover: #3a7bc8;
-    --secondary-hover: #6c757d;
-    --version-hover-opacity: 0.9;
-    --button-primary-bg: #4a90e2;
-    --button-primary-hover-bg: #3a7bc8;
-    --button-secondary-bg: #66bb6a;
-    --button-secondary-hover-bg: #4c9a50;
-    --button-danger-bg: #dc3545;
-    --button-danger-hover-bg: #bd2130;
-    --button-warning-bg: #ffc107;
-    --button-warning-hover-bg: #e5ac06;
-    --notification-info-bg: rgba(23, 162, 184, 0.1);
-    --notification-success-bg: rgba(40, 167, 69, 0.1);
-    --notification-warning-bg: rgba(255, 193, 7, 0.1);
-    --notification-error-bg: rgba(220, 53, 69, 0.1);
-    --scrollbar-track: #f8f9fa;
-    --scrollbar-thumb: #d0d4d9;
-    --scrollbar-thumb-hover: #b0b4b9;
-    --focus-ring-color: rgba(74, 144, 226, 0.4);
-    
-    /* Gradients */
-    --gradient-primary: linear-gradient(145deg, #3a7bc8, #4a90e2);
-    --gradient-secondary: linear-gradient(145deg, #4c9a50, #66bb6a);
-    --gradient-success: linear-gradient(145deg, #28a745, #218838);
-    --gradient-danger: linear-gradient(145deg, #dc3545, #bd2130);
-    --gradient-warning: linear-gradient(145deg, #ffc107, #e5ac06);
-    --gradient-info: linear-gradient(145deg, #17a2b8, #138496);
-    --gradient-light: linear-gradient(145deg, #ffffff, #f5f7fa);
-    --gradient-dark: linear-gradient(145deg, #495057, #343a40);
-    --gradient-button-hover: linear-gradient(145deg, #4a90e2, #6da5e8);
-    --tab-background: linear-gradient(145deg, #f8f9fa, #f0f0f0);
-    --tab-active-background: linear-gradient(145deg, #f0f0f0, #f8f9fa);
-    
-    /* Shadow Effects */
-    --form-container-shadow: 4px 4px 8px rgba(166, 180, 200, 0.5), -4px -4px 8px rgba(255, 255, 255, 0.8);
-    --form-item-shadow: 2px 2px 5px rgba(166, 180, 200, 0.3), -2px -2px 5px rgba(255, 255, 255, 0.8);
-    --form-item-hover-shadow: 3px 3px 7px rgba(166, 180, 200, 0.4), -3px -3px 7px rgba(255, 255, 255, 0.9);
-    --tab-button-shadow: 3px 3px 6px rgba(166, 180, 200, 0.5), -3px -3px 6px rgba(255, 255, 255, 0.8);
-    --tab-button-hover-shadow: 4px 4px 8px rgba(166, 180, 200, 0.6), -4px -4px 8px rgba(255, 255, 255, 0.9);
-    --tab-button-active-shadow: inset 2px 2px 5px rgba(166, 180, 200, 0.3), inset -2px -2px 5px rgba(255, 255, 255, 0.9);
-    --input-field-shadow: inset 2px 2px 5px rgba(166, 180, 200, 0.2), inset -2px -2px 5px rgba(255, 255, 255, 0.7);
+    --text-secondary: #6c757d;
+    --input-background: #ffffff;
+    --input-border: #ced4da;
     --shadow-dark: rgba(166, 180, 200, 0.7);
     --shadow-light: rgba(255, 255, 255, 0.8);
-    --shadow-input: inset 2px 2px 4px rgba(0, 0, 0, 0.1), inset -2px -2px 4px rgba(255, 255, 255, 0.7);
-    --card-shadow: 0 4px 20px rgba(166, 180, 200, 0.2);
-    --input-focus-shadow: 0 0 0 3px rgba(74, 144, 226, 0.4);
-    
-    /* Elevation Levels (Shadows) */
-    --elevation-1: 0 1px 3px rgba(166, 180, 200, 0.1), 0 1px 2px rgba(166, 180, 200, 0.2);
-    --elevation-2: 0 3px 6px rgba(166, 180, 200, 0.12), 0 2px 4px rgba(166, 180, 200, 0.1);
-    --elevation-3: 0 10px 20px rgba(166, 180, 200, 0.12), 0 3px 6px rgba(166, 180, 200, 0.08);
-    --elevation-4: 0 15px 25px rgba(166, 180, 200, 0.12), 0 5px 10px rgba(166, 180, 200, 0.04);
-    --elevation-5: 0 20px 40px rgba(166, 180, 200, 0.16);
-    
-    /* Animation and Transitions */
-    --transition-fast: 0.2s ease;
-    --transition-medium: 0.3s ease;
-    --transition-slow: 0.5s ease;
-    --transition-bounce: 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-    --animation-duration-short: 0.3s;
-    --animation-duration-medium: 0.5s;
-    --animation-duration-long: 0.8s;
-    --disabled-opacity: 0.65;
-    --input-transition: all 0.3s ease;
-    --button-transition: all 0.3s ease;
-    --tab-transition: all 0.3s ease;
-    --progress-transition: width 0.3s ease;
-    --homepage-fade-in-duration: 0.5s;
-    
-    /* Font Families */
-    --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    
-    /* Neumorphic Styles */
-    --neumorphic-bg: #ffffff;
-    --neumorphic-shadow-dark: rgba(166, 180, 200, 0.5);
-    --neumorphic-shadow-light: rgba(255, 255, 255, 0.8);
-    --neumorphic-gradient: linear-gradient(145deg, #ffffff, #f0f0f0);
-    --neumorphic-text: #333;
-    --neumorphic-active-text: #4a90e2;
+}
+
+/* Action Button Styles */
+.normal-theme .action-button.primary {
+    background-color: var(--primary-color);
+    color: white;
+    border: 2px solid #3a7bc8;
+    box-shadow: 3px 3px 6px var(--shadow-dark), -3px -3px 6px var(--shadow-light);
+    transition: all 0.3s ease;
+}
+
+.normal-theme .action-button.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
+    border-color: #2a70c2;
+}
+
+.normal-theme .action-button.primary:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.4);
+}
+
+/* Remarks Input Styles */
+.normal-theme .remarks-input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 2px solid var(--border-color);
+    border-radius: 0.25rem;
+    background-color: var(--input-background);
+    color: var(--text-color);
+    box-shadow: inset 2px 2px 5px rgba(166, 180, 200, 0.2), inset -2px -2px 5px rgba(255, 255, 255, 0.7);
+}
+
+.normal-theme .remarks-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: inset 2px 2px 5px rgba(166, 180, 200, 0.2), inset -2px -2px 5px rgba(255, 255, 255, 0.7), 0 0 0 3px rgba(74, 144, 226, 0.25);
+}
+
+/* Tab Styles with Depth Perception */
+.normal-theme .L_1_HomePageTabs .tab-button {
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
+    border-radius: 10px;
+    box-shadow: 3px 3px 6px rgba(166, 180, 200, 0.5), -3px -3px 6px rgba(255, 255, 255, 0.8);
+    color: var(--text-color);
+}
+
+.normal-theme .L_1_HomePageTabs .tab-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 8px rgba(166, 180, 200, 0.6), -4px -4px 8px rgba(255, 255, 255, 0.9);
+}
+
+.normal-theme .L_1_HomePageTabs .tab-button.active {
+    background: linear-gradient(145deg, #f0f0f0, #ffffff);
+    box-shadow: inset 2px 2px 5px rgba(166, 180, 200, 0.3), inset -2px -2px 5px rgba(255, 255, 255, 0.9);
+    color: var(--primary-color);
+}
+
+/* Form Container */
+.normal-theme .form-container {
+    background-color: var(--sidebar-background);
+    border-radius: 10px;
+    box-shadow: 4px 4px 8px rgba(166, 180, 200, 0.5), -4px -4px 8px rgba(255, 255, 255, 0.8);
+    padding: 20px;
+}
+
+/* Form Items */
+.normal-theme .form-item-container {
+    background-color: var(--card-background);
+    border-left: 6px solid var(--primary-color);
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px rgba(166, 180, 200, 0.3), -2px -2px 5px rgba(255, 255, 255, 0.8);
+    margin-bottom: 15px;
+    padding: 15px;
+    transition: all 0.3s ease;
+}
+
+.normal-theme .form-item-container:hover {
+    transform: translateY(-2px);
+    box-shadow: 3px 3px 7px rgba(166, 180, 200, 0.4), -3px -3px 7px rgba(255, 255, 255, 0.9);
+}
+
+.normal-theme .form-item-container.highlighted-container {
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 10px rgba(74, 144, 226, 0.3);
 }

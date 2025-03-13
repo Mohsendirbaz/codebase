@@ -1,73 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import './neumorphic-modelcard.css';
-import { useVersionState } from '../../contexts/VersionStateContext';
-import useFormValues from '../../useFormValues';
-import PriceDisplay from './PriceDisplay';
-import EfficacyIndicator from './EfficacyIndicator';
-import { loadSensitivityData, calculateEfficacyMetrics } from './utils/dataProcessing';
+import React from 'react';
+import './ModelCard.css';
 
-const ModelCard = ({ 
-  type, 
-  settings, 
-  onClick, 
-  isActive, 
-  onViewImpact, 
-  onSensitivityAnalysis, 
-  onRiskAssessment, 
-  onOptimization, 
-  onDecisionSupport,
-  baseSettings // Base model settings for comparison
-}) => {
-  const [efficacyMetrics, setEfficacyMetrics] = useState(null);
-  const [sensitivityData, setSensitivityData] = useState(null);
-  const [isLoadingEfficacy, setIsLoadingEfficacy] = useState(false);
-  // Load sensitivity data and calculate efficacy metrics when model changes
-  useEffect(() => {
-    const fetchSensitivityAndEfficacy = async () => {
-      // Only perform calculation for non-base models with active filters
-      if (type === 'base' || getFilterCount() === 0) return;
-      
-      setIsLoadingEfficacy(true);
-      
-      try {
-        // Load sensitivity data
-        const data = await loadSensitivityData(settings);
-        setSensitivityData(data);
-        
-        // We'll add the efficacy calculation in a subsequent effect
-      } catch (error) {
-        console.error('Error loading sensitivity data:', error);
-      } finally {
-        setIsLoadingEfficacy(false);
-      }
-    };
-    
-    fetchSensitivityAndEfficacy();
-  }, [type, settings]);
-  
-  // Calculate efficacy metrics when price data is available (in PriceDisplay)
-  // This is handled via a custom event listener to avoid prop drilling
-  useEffect(() => {
-    const handlePriceDataLoaded = (event) => {
-      const { version, extension, priceData } = event.detail;
-      
-      // Only process events for this model
-      if (version !== settings.version || extension !== settings.extension) return;
-      
-      if (sensitivityData && priceData) {
-        const metrics = calculateEfficacyMetrics(sensitivityData, priceData);
-        setEfficacyMetrics(metrics);
-      }
-    };
-    
-    // Listen for price data loaded events
-    window.addEventListener('priceDataLoaded', handlePriceDataLoaded);
-    
-    return () => {
-      window.removeEventListener('priceDataLoaded', handlePriceDataLoaded);
-    };
-  }, [sensitivityData, settings]);
-  
+const ModelCard = ({ type, settings, onClick, isActive, onViewImpact, onSensitivityAnalysis, onRiskAssessment, onOptimization, onDecisionSupport }) => {
   const getFilterCount = () => {
     return Object.values(settings.filters).filter(Boolean).length;
   };
@@ -147,22 +81,6 @@ const ModelCard = ({
             </span>
           </span>
         </div>
-        
-        {/* Price Display Integration */}
-        <PriceDisplay 
-          version={settings.version}
-          extension={settings.extension}
-          baseVersion={type !== 'base' && baseSettings ? baseSettings.version : null}
-          baseExtension={type !== 'base' && baseSettings ? baseSettings.extension : null}
-        />
-        
-        {/* Efficacy Indicator Integration */}
-        {efficacyMetrics && (
-          <EfficacyIndicator
-            efficacyMetrics={efficacyMetrics}
-            showDetails={isActive}
-          />
-        )}
       </div>
 
       <div className="model-card-footer">
@@ -195,7 +113,6 @@ const ModelCard = ({
                       e.stopPropagation();
                       onSensitivityAnalysis();
                     }}
-                    title={efficacyMetrics ? `Price Efficacy: ${(efficacyMetrics.score * 100).toFixed(0)}%` : "Run sensitivity analysis"}
                   >
                     Sensitivity
                   </button>
@@ -256,7 +173,6 @@ const ModelCard = ({
             </div>
             <span className="impact-label">
               {settings.departure}% Impact
-              {efficacyMetrics && ` • ${(efficacyMetrics.score * 100).toFixed(0)}% Efficacy`}
             </span>
           </div>
         )}

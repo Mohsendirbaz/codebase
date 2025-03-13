@@ -1,274 +1,106 @@
-/* Dark Theme with Rich Dark Blue - Organized by Layout and Non-Layout Variables */
+/* Dark Theme with Rich Dark Blue */
 :root.dark-theme {
-    /*==============================================================
-     * LAYOUT-RELATED VARIABLES
-     *==============================================================*/
-    
-    /* Spacing and Sizing */
-    --spacing-unit: 1rem;
-    --spacing-xs: 0.25rem;
-    --spacing-sm: 0.5rem;
-    --spacing-md: 1rem;
-    --spacing-lg: 1.5rem;
-    --spacing-xl: 2rem;
-    
-    /* Dimensions and Positioning */
-    --input-height: 2.5rem;
-    --input-width: 100%;
-    --button-min-width: 150px;
-    --fact-engine-width: 350px;
-    --fact-engine-max-height: 500px;
-    --progress-height: 8px;
-    --scaling-factor-width: 120px;
-    --scaling-operation-min-width: 150px;
-    --scaling-notes-height: 60px;
-    --homepage-model-zone-width: 300px;
-    --about-us-max-width: 1200px;
-    --homepage-layout-max-width: 1200px;
-    --homepage-layout-header-height: 60px;
-    --scrollbar-width: 8px;
-    
-    /* Margin and Padding */
-    --input-padding: 0.5rem 0.75rem;
-    --button-padding: 10px 20px;
-    --fact-btn-padding: 6px 10px;
-    --table-cell-padding: 12px;
-    --notification-padding: 15px;
-    --form-item-margin: 0 0 15px 0;
-    --form-label-margin: 0 0 5px 0;
-    --notification-margin: 10px 0;
-    --fact-card-margin: 10px 0;
-    --fact-text-margin: 0 0 10px 0;
-    --tab-margin: 0 0.5rem 0 0;
-    --version-margin: 0.5rem 0;
-    --about-us-margin: 40px auto;
-    --about-us-padding: 40px 60px;
-    --tab-padding: 0.75rem 1.25rem;
-    --version-item-padding: 0.5rem 1rem;
-    --fact-card-padding: 12px;
-    --scaling-panel-padding: 15px;
-    --scaling-tab-padding: 0.75rem 1rem;
-    --homepage-padding: 20px;
-    
-    /* Spacing Between Items */
-    --form-gap: 1rem;
-    --homepage-tab-gap: 10px;
-    --homepage-section-gap: 20px;
-    --homepage-content-gap: 20px;
-    --homepage-theme-button-gap: 10px;
-    
-    /* Border Properties */
-    --input-border-width: 1px;
-    --table-border-width: 1px;
-    --scrollbar-border-width: 2px;
-   
-    
-    /* Border Radius */
-    --border-radius-sm: 4px;
-    --border-radius-md: 8px;
-    --border-radius-lg: 12px;
-    --border-radius-xl: 16px;
-    --border-radius-circle: 50%;
-    --button-border-radius: 4px;
-    --input-radius: 4px;
-    --notification-border-radius: 4px;
-    --progress-radius: 4px;
-    --tab-border-radius: 10px;
-    --scrollbar-border-radius: 8px;
-    
-    /* Z-index Layers */
-    --z-index-dropdown: 1000;
-    --z-index-sticky: 1020;
-    --z-index-fixed: 1030;
-    --z-index-modal-backdrop: 1040;
-    --z-index-modal: 1050;
-    --z-index-popover: 1060;
-    --z-index-tooltip: 1070;
-    
-    /* Positioning */
-    --fact-engine-position-top: 20px;
-    --fact-engine-position-right: 20px;
-    --tab-hover-transform: translateY(-2px);
-    --button-hover-transform: translateY(-2px);
-    
-    /* Typography Layout */
-    --font-size-xs: 0.75rem;
-    --font-size-sm: 0.875rem;
-    --font-size-md: 1rem;
-    --font-size-lg: 1.25rem;
-    --font-size-xl: 1.5rem;
-    --font-weight-light: 300;
-    --font-weight-normal: 400;
-    --font-weight-medium: 500;
-    --font-weight-semibold: 600;
-    --font-weight-bold: 700;
-    --form-label-font-weight: 500;
-    --about-us-h1-size: 5rem;
-    --about-us-h2-size: 3.6rem;
-    --about-us-p-size: 2.2rem;
-    --about-us-firstletter-size: 7rem;
-    --fact-text-line-height: 1.4;
-    
-    /* Scaling */
-    --control-small-scale: 0.875;
-    --control-large-scale: 1.25;
-    --focus-ring-width: 3px;
-    
-    /*==============================================================
-     * NON-LAYOUT RELATED VARIABLES (COLORS, EFFECTS, ANIMATIONS)
-     *==============================================================*/
-    
-    /* Core Colors */
     --primary-color: #1a237e;
-    --primary-color-light: #3949ab;
-    --primary-color-dark: #0d1642;
-    --primary-color-alpha: rgba(26, 35, 126, 0.7);
     --secondary-color: #00897b;
-    --secondary-color-light: #4ebaaa;
-    --secondary-color-dark: #005b4f;
-    
-    /* Text Colors */
     --text-color: #e0e0e0;
-    --text-color-on-light: #333333;
-    --text-color-on-dark: #e0e0e0;
-    --text-secondary: #adb5bd;
-    --tab-text-color: #ffffff;
-    --link-color: #90caf9;
-    --link-hover-color: #bbdefb;
-    --label-color: #adb5bd;
-    --disabled-text: #868e96;
-    --scaling-add-button-color: #ffffff;
-    
-    /* Background Colors */
     --background-color: #121a2e;
-    --app-background: #121a2e;
     --sidebar-background: #1e2746;
     --card-background: #1e2746;
-    --input-background: #ffffff;
-    --bg-color: #2a2a2a;
-    --disabled-background: #343a40;
-    --scaling-container-bg: #1e2746;
-    --scaling-item-bg: #1a243f;
-    --fact-engine-header-bg: #1a237e;
-    --table-header-bg: #1a237e;
-    --table-row-even-bg: #1e2746;
-    --table-row-hover-bg: rgba(40, 53, 105, 0.3);
-    --version-background: #1e2746;
-    --version-selected-background: #1a237e;
-    --progress-bg: #1e2746;
-    --progress-fill-bg: #1a237e;
-    
-    /* Border Colors */
     --border-color: #2a3356;
-    --input-border: #2a3356;
-    --custom-color: #cbafeb;
-    --table-border-color: #2a3356;
-    --scrollbar-border-color: #1e2746;
-    --homepage-tab-list-border: 1px solid #2a3356;
-    --version-border: 1px solid #2a3356;
-    --fact-card-border: 4px solid #1a237e;
-    --fact-card-pinned-border: 4px solid #ffc107;
-    /* Status Colors */
     --success-color: #28a745;
-    --success-hover: #218838;
     --danger-color: #dc3545;
-    --danger-hover: #bd2130;
-    --danger-color-light: #ffebee;
     --warning-color: #ffc107;
-    --warning-hover: #e5ac06;
     --info-color: #17a2b8;
     --light-color: #343a40;
     --dark-color: #f8f9fa;
-    
-    /* Special Colors */
-    --mode-text-color: #e0e0e0;
-    --mode-tag-background: #3a4366;
-    --mode-active-background: #2ea043;
-    --sen-color: #009688;
-    --eff-color: #b9d2d0;
-    --fac-color: #2b2f2f;
-    --highlight-color: rgba(26, 35, 126, 0.3);
-    --pinned-bg: rgba(255, 193, 7, 0.15);
-    --pin-color: #ffc107;
-    --pin-hover: #e5ac06;
-    --primary-hover: #2a3356;
-    --secondary-hover: #5a6268;
-    --version-hover-opacity: 0.9;
-    --button-primary-bg: #1a237e;
-    --button-primary-hover-bg: #2a3356;
-    --button-secondary-bg: #00897b;
-    --button-secondary-hover-bg: #005b4f;
-    --button-danger-bg: #dc3545;
-    --button-danger-hover-bg: #bd2130;
-    --button-warning-bg: #ffc107;
-    --button-warning-hover-bg: #e5ac06;
-    --notification-info-bg: rgba(23, 162, 184, 0.1);
-    --notification-success-bg: rgba(40, 167, 69, 0.1);
-    --notification-warning-bg: rgba(255, 193, 7, 0.1);
-    --notification-error-bg: rgba(220, 53, 69, 0.1);
-    --scrollbar-track: #1e2746;
-    --scrollbar-thumb: #3a4366;
-    --scrollbar-thumb-hover: #4a5376;
-    --focus-ring-color: rgba(26, 35, 126, 0.4);
-    
-    /* Gradients */
-    --gradient-primary: linear-gradient(145deg, #232d52, #1a237e);
-    --gradient-secondary: linear-gradient(145deg, #1e3246, #121a2e);
-    --gradient-success: linear-gradient(145deg, #28a745, #218838);
-    --gradient-danger: linear-gradient(145deg, #dc3545, #bd2130);
-    --gradient-warning: linear-gradient(145deg, #ffc107, #e5ac06);
-    --gradient-info: linear-gradient(145deg, #17a2b8, #138496);
-    --gradient-light: linear-gradient(145deg, #1e2746, #1a243f);
-    --gradient-dark: linear-gradient(145deg, #0a101e, #06080f);
-    --gradient-button-hover: linear-gradient(145deg, #1a237e, #3949ab);
-    --tab-background: linear-gradient(145deg, #232d52, #1a243f);
-    --tab-active-background: linear-gradient(145deg, #1a243f, #232d52);
-    
-    /* Shadow Effects */
-    --form-container-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3), -4px -4px 8px rgba(40, 53, 105, 0.2);
-    --form-item-shadow: 3px 3px 6px rgba(0, 0, 0, 0.25), -3px -3px 6px rgba(40, 53, 105, 0.15);
-    --form-item-hover-shadow: 4px 4px 8px rgba(0, 0, 0, 0.35), -4px -4px 8px rgba(40, 53, 105, 0.25);
-    --tab-button-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3), -3px -3px 6px rgba(40, 53, 105, 0.2);
-    --tab-button-hover-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4), -4px -4px 8px rgba(40, 53, 105, 0.3);
-    --tab-button-active-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.3), inset -2px -2px 5px rgba(40, 53, 105, 0.2);
-    --input-field-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(255, 255, 255, 0.1);
+    --text-secondary: #adb5bd;
+    --input-background: #1e2746;
+    --input-border: #2a3356;
     --shadow-dark: rgba(0, 0, 0, 0.3);
     --shadow-light: rgba(40, 53, 105, 0.2);
-    --shadow-input: inset 2px 2px 4px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(255, 255, 255, 0.1);
-    --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    --input-focus-shadow: 0 0 0 3px rgba(26, 35, 126, 0.4);
-    
-    /* Elevation Levels (Shadows) */
-    --elevation-1: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    --elevation-2: 0 3px 6px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.12);
-    --elevation-3: 0 10px 20px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1);
-    --elevation-4: 0 15px 25px rgba(0, 0, 0, 0.15), 0 5px 10px rgba(0, 0, 0, 0.05);
-    --elevation-5: 0 20px 40px rgba(0, 0, 0, 0.2);
-    
-    /* Animation and Transitions */
-    --transition-fast: 0.2s ease;
-    --transition-medium: 0.3s ease;
-    --transition-slow: 0.5s ease;
-    --transition-bounce: 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-    --animation-duration-short: 0.3s;
-    --animation-duration-medium: 0.5s;
-    --animation-duration-long: 0.8s;
-    --disabled-opacity: 0.65;
-    --input-transition: all 0.3s ease;
-    --button-transition: all 0.3s ease;
-    --tab-transition: all 0.3s ease;
-    --progress-transition: width 0.3s ease;
-    --homepage-fade-in-duration: 0.5s;
-    
-    /* Font Families */
-    --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    
-    /* Neumorphic Styles */
-    --neumorphic-bg: #1e2746;
-    --neumorphic-shadow-dark: rgba(0, 0, 0, 0.3);
-    --neumorphic-shadow-light: rgba(40, 53, 105, 0.2);
-    --neumorphic-gradient: linear-gradient(145deg, #232d52, #1a243f);
-    --neumorphic-text: #e0e0e0;
-    --neumorphic-active-text: #4a90e2;
+}
+
+/* Action Button Styles */
+.dark-theme .action-button.primary {
+    background-color: var(--primary-color);
+    color: white;
+    border: 2px solid #2a3356;
+    box-shadow: 3px 3px 6px var(--shadow-dark), -3px -3px 6px var(--shadow-light);
+    transition: all 0.3s ease;
+}
+
+.dark-theme .action-button.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
+    border-color: #3f51b5;
+}
+
+.dark-theme .action-button.primary:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.4);
+}
+
+/* Remarks Input Styles */
+.dark-theme .remarks-input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 2px solid var(--border-color);
+    border-radius: 0.25rem;
+    background-color: var(--input-background);
+    color: var(--text-color);
+    box-shadow: inset 2px 2px 5px var(--shadow-dark), inset -2px -2px 5px var(--shadow-light);
+}
+
+.dark-theme .remarks-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: inset 2px 2px 5px var(--shadow-dark), inset -2px -2px 5px var(--shadow-light), 0 0 0 3px rgba(26, 35, 126, 0.25);
+}
+
+/* Tab Styles with Depth Perception */
+.dark-theme .L_1_HomePageTabs .tab-button {
+    background: linear-gradient(145deg, #1e2746, #121a2e);
+    border-radius: 10px;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3), -3px -3px 6px rgba(40, 53, 105, 0.2);
+    color: var(--text-color);
+}
+
+.dark-theme .L_1_HomePageTabs .tab-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4), -4px -4px 8px rgba(40, 53, 105, 0.3);
+}
+
+.dark-theme .L_1_HomePageTabs .tab-button.active {
+    background: linear-gradient(145deg, #2a3356, #1e2746);
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.3), inset -2px -2px 5px rgba(40, 53, 105, 0.2);
+    color: #4a90e2;
+}
+
+/* Form Container */
+.dark-theme .form-container {
+    background-color: var(--sidebar-background);
+    border-radius: 10px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3), -4px -4px 8px rgba(40, 53, 105, 0.2);
+    padding: 20px;
+}
+
+/* Form Items */
+.dark-theme .form-item-container {
+    background-color: var(--card-background);
+    border-left: 6px solid var(--primary-color);
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2), -2px -2px 5px rgba(40, 53, 105, 0.1);
+    margin-bottom: 15px;
+    padding: 15px;
+    transition: all 0.3s ease;
+}
+
+.dark-theme .form-item-container:hover {
+    transform: translateY(-2px);
+    box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.3), -3px -3px 7px rgba(40, 53, 105, 0.2);
+}
+
+.dark-theme .form-item-container.highlighted-container {
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 10px rgba(26, 35, 126, 0.3);
 }

@@ -1,7 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import './neumorphic-charts.css';
-import { useVersionState } from '../../contexts/VersionStateContext';
-import useFormValues from '../../useFormValues';
+import './AnalysisChart.css';
 
 const CHART_TYPES = {
   SENSITIVITY: 'sensitivity',
@@ -44,7 +42,7 @@ const AnalysisChart = ({ type, data, options = {} }) => {
 
     // Draw axes
     ctx.beginPath();
-      ctx.strokeStyle = getComputedStyle(canvas).getPropertyValue('--chart-axis-color') || 'rgba(0, 0, 0, 0.1)';
+    ctx.strokeStyle = 'rgba(0, 0, 0, 0.1)';
     ctx.moveTo(padding, height - padding);
     ctx.lineTo(width - padding, height - padding); // x-axis
     ctx.moveTo(padding, padding);
@@ -66,7 +64,7 @@ const AnalysisChart = ({ type, data, options = {} }) => {
 
     // Draw curve
     ctx.beginPath();
-      ctx.strokeStyle = options.lineColor || getComputedStyle(canvas).getPropertyValue('--chart-primary');
+    ctx.strokeStyle = options.lineColor || '#3b82f6';
     ctx.lineWidth = 2;
 
     data.values.forEach((point, i) => {
@@ -88,7 +86,7 @@ const AnalysisChart = ({ type, data, options = {} }) => {
       const y = height / 2 - point.impact * yScale;
 
       ctx.beginPath();
-      ctx.fillStyle = options.pointColor || getComputedStyle(canvas).getPropertyValue('--chart-primary');
+      ctx.fillStyle = options.pointColor || '#3b82f6';
       ctx.arc(x, y, 4, 0, Math.PI * 2);
       ctx.fill();
     });
@@ -144,11 +142,10 @@ const AnalysisChart = ({ type, data, options = {} }) => {
       const y = height - padding - count * yScale;
       const barHeight = count * yScale;
 
-      const barColor = options.barColor || getComputedStyle(canvas).getPropertyValue('--chart-primary');
-      ctx.fillStyle = `${barColor}33`; // 20% opacity
+      ctx.fillStyle = options.barColor || 'rgba(59, 130, 246, 0.2)';
       ctx.fillRect(x, y, xScale - 1, barHeight);
 
-      ctx.strokeStyle = options.barBorder || barColor;
+      ctx.strokeStyle = options.barBorder || 'rgba(59, 130, 246, 0.5)';
       ctx.strokeRect(x, y, xScale - 1, barHeight);
     });
 
@@ -207,13 +204,11 @@ const AnalysisChart = ({ type, data, options = {} }) => {
       const y = padding + i * barHeight * 2;
 
       // Negative impact (left)
-      const negativeColor = options.negativeColor || getComputedStyle(canvas).getPropertyValue('--chart-danger');
-      ctx.fillStyle = `${negativeColor}33`; // 20% opacity
+      ctx.fillStyle = options.negativeColor || 'rgba(239, 68, 68, 0.2)';
       ctx.fillRect(xMiddle - Math.abs(param.low) * xScale, y, Math.abs(param.low) * xScale, barHeight);
 
       // Positive impact (right)
-      const positiveColor = options.positiveColor || getComputedStyle(canvas).getPropertyValue('--chart-success');
-      ctx.fillStyle = `${positiveColor}33`; // 20% opacity
+      ctx.fillStyle = options.positiveColor || 'rgba(34, 197, 94, 0.2)';
       ctx.fillRect(xMiddle, y, param.high * xScale, barHeight);
 
       // Labels
