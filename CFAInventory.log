@@ -1,10 +1,10 @@
-2025-03-13 14:40:21,675 INFO Searching for CFA files in BASE_PATH: C:\Users\Mohse\OneDrive\Desktop\Original
-2025-03-13 14:40:21,675 WARNING Base directory not found: C:\Users\Mohse\OneDrive\Desktop\Original
-2025-03-13 14:40:21,675 INFO Found alternative path: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original
-2025-03-13 14:40:21,675 ERROR Error reading batch folders: [WinError 267] The directory name is invalid: 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\public\\Original'
-2025-03-13 14:40:21,675 INFO No files found using batch structure. Trying direct CFA file search...
-2025-03-13 14:40:21,675 INFO No CFA files found. Falling back to any CSV files in batch folders...
-2025-03-13 14:40:21,675 WARNING No CFA versions found through any method
-2025-03-13 14:40:21,675 INFO Found 0 CFA versions: 
-2025-03-13 14:40:21,722 WARNING  * Debugger is active!
-2025-03-13 14:40:21,725 INFO  * Debugger PIN: 119-059-632
+2025-03-13 14:42:42,321 INFO Searching for CFA files in BASE_PATH: C:\Users\Mohse\OneDrive\Desktop\Original
+2025-03-13 14:42:42,322 WARNING Base directory not found: C:\Users\Mohse\OneDrive\Desktop\Original
+2025-03-13 14:42:42,323 INFO Found alternative path: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\public\Original
+2025-03-13 14:42:42,323 ERROR Error reading batch folders: [WinError 267] The directory name is invalid: 'C:\\Users\\Mohse\\OneDrive\\Desktop\\Milestone4 - Copy\\public\\Original'
+2025-03-13 14:42:42,323 INFO No files found using batch structure. Trying direct CFA file search...
+2025-03-13 14:42:42,323 INFO No CFA files found. Falling back to any CSV files in batch folders...
+2025-03-13 14:42:42,324 WARNING No CFA versions found through any method
+2025-03-13 14:42:42,324 INFO Found 0 CFA versions: 
+2025-03-13 14:42:42,360 WARNING  * Debugger is active!
+2025-03-13 14:42:42,367 INFO  * Debugger PIN: 119-059-632
