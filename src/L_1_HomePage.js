@@ -7,14 +7,12 @@ import CustomizableTable from './CustomizableTable';
 import ExtendedScaling from './extended_scaling/ExtendedScaling';
 import FactEngine from './FactEngine';
 import FactEngineAdmin from './FactEngineAdmin';
-import './label.css';
+import FormHeader from './FormHeader.js';
 import GeneralFormConfig from './GeneralFormConfig.js';
-import ThemeGenerator from './utils/ThemeGenerator';
-import ThemeConfigurator from './components/ThemeConfigurator';
+import Popup from './Popup.js';
 import './L_1_HomePage.CSS/L_1_HomePage1.css';
 import './L_1_HomePage.CSS/L_1_HomePage2.css';
 import './L_1_HomePage.CSS/L_1_HomePage3.css';
-import './L_1_HomePage.CSS/L_1_HomePage_theme.css';
 import './L_1_HomePage.CSS/L_1_HomePage4.css';
 import './L_1_HomePage.CSS/L_1_HomePage5.css';
 import './L_1_HomePage.CSS/L_1_HomePage6.css';
@@ -27,13 +25,15 @@ import './L_1_HomePage.CSS/L_1_HomePage_FactAdmin.css';
 import './styles/neumorphic-tabs.css';
 import './styles/dark-theme.css';
 import './styles/normal-theme.css';
-import './styles/creative-your-own-theme.css';
+import './styles/creative-theme.css';
 import PropertySelector from './PropertySelector.js';
 import MultiVersionSelector from './MultiVersionSelector.js';
 import TodoList from './TodoList.js';
 import VersionSelector from './VersionSelector.js';
-/*import ModelZone from './components/model/ModelZone';*/
+import ModelZone from './components/model/ModelZone';
+import VersionControl from './components/version/VersionControl';
 import EditableHierarchicalList from './Editable';
+import SpatialTransformComponent from './naturalmotion';
 import SensitivityAnalysis from './components/SensitivityAnalysis';
 import useFormValues from './useFormValues.js';
 import TestingZone from './components/TestingZone';
@@ -109,34 +109,34 @@ const L_1_HomePageContent = () => {
 
     // Theme management
     useEffect(() => {
-        // Map season to theme name
+        // Remove all theme classes
+        document.documentElement.classList.remove('dark-theme', 'normal-theme', 'creative-theme');
+        
+        // Map season to theme class
         const themeMap = {
-            'dark': ThemeGenerator.getThemeNames().dark,
-            'fall': ThemeGenerator.getThemeNames().template,
-            'winter': ThemeGenerator.getThemeNames().normal
+            'dark': 'dark-theme',
+            'winter': 'normal-theme',
+            'fall': 'creative-theme'
         };
-
-        // Get base colors from ThemeGenerator and apply theme
-        const baseTheme = themeMap[season];
-        if (baseTheme === ThemeGenerator.getThemeNames().template) {
-            // For custom theme, use the template and let ThemeConfigurator handle colors
-            const themeClasses = Object.values(ThemeGenerator.getThemeNames()).map(name => `${name}-theme`);
-            document.documentElement.classList.remove(...themeClasses);
-            document.documentElement.classList.add(`${baseTheme}-theme`);
-        } else {
-            // For built-in themes, use the standard approach
-            const baseColors = ThemeGenerator.baseThemes[baseTheme];
-            const colors = ThemeGenerator.generatePalette([baseColors.primary], 5, 'sequential');
-            ThemeGenerator.applyThemeToDOM(colors, baseTheme);
-        }
-
+        
+        // Add the appropriate theme class
+        document.documentElement.classList.add(themeMap[season]);
+        
         // Set data-theme attribute for backward compatibility
         document.documentElement.setAttribute('data-theme', season);
+        
+        // Apply theme-specific colors
+        if (season === 'dark') {
+            document.documentElement.style.setProperty('--primary-color', '#1a237e'); // Rich dark blue
+        } else if (season === 'fall') {
+            document.documentElement.style.setProperty('--primary-color', '#8a2be2'); // Vibrant purple
+        } else {
+            document.documentElement.style.setProperty('--primary-color', '#4a90e2'); // Clean blue
+        }
     }, [season]);
 
     const { formValues, handleInputChange, handleReset, setFormValues } = useFormValues();
     const [version, setVersion] = useState('1');
-    const [versionExtension, setVersionExtension] = useState('1');
     const [batchRunning, setBatchRunning] = useState(false);
     const [analysisRunning, setAnalysisRunning] = useState(false);
     const [monitoringActive, setMonitoringActive] = useState(false);
@@ -309,34 +309,40 @@ const L_1_HomePageContent = () => {
                 const endY = ribbonRect.bottom - creativeButton.bottom;
 
                 themeRibbon.style.setProperty('--glow-start-x', `${startX}px`);
+                // Calculate horizontal and vertical distances for diagonal movement
+                themeRibbon.style.setProperty('--glow-start-y', `${startY}px`);
+                themeRibbon.style.setProperty('--glow-end-x', `${endX}px`);
+                themeRibbon.style.setProperty('--glow-end-y', `${endY}px`);
+
+                // Set position variables for the glow effect
+                themeRibbon.style.setProperty('--glow-start-x', `${startX}px`);
                 themeRibbon.style.setProperty('--glow-start-y', `${startY}px`);
                 themeRibbon.style.setProperty('--glow-end-x', `${endX}px`);
                 themeRibbon.style.setProperty('--glow-end-y', `${endY}px`);
                 themeRibbon.style.setProperty('--transition-duration', '1.2s');
             }
 
+            // Add transition classes with proper timing
             requestAnimationFrame(() => {
-                const themeNames = ThemeGenerator.getThemeNames();
-                const toClass = newSeason === 'dark' ? `to-${themeNames.dark}` : 
-                              newSeason === 'fall' ? `to-${themeNames.template}` : 
-                              `to-${themeNames.normal}`;
-                themeRibbon.classList.add(toClass);
+                themeRibbon.classList.add(newSeason === 'dark' ? 'to-dark' : 'to-light');
                 themeRibbon.classList.add('theme-transition');
 
+                // Handle logo transition with proper timing
                 if (currentLogo) {
                     currentLogo.classList.add('fade-out');
                     currentLogo.classList.remove('active');
                 }
 
+                // Delay the new logo appearance to sync with the theme transition
                 if (newLogo) {
                     setTimeout(() => {
                         newLogo.classList.add('active');
                     }, 300);
                 }
 
+                // Clean up classes after all transitions complete
                 setTimeout(() => {
-                    const allThemeClasses = Object.values(themeNames).map(name => `to-${name}`);
-                    themeRibbon.classList.remove('theme-transition', ...allThemeClasses);
+                    themeRibbon.classList.remove('theme-transition', 'to-dark', 'to-light');
                     if (currentLogo) {
                         currentLogo.classList.remove('fade-out');
                     }
@@ -348,17 +354,14 @@ const L_1_HomePageContent = () => {
         setSeason(newSeason);
         document.body.className = newSeason;
 
-        // Map season to theme name and apply theme
-        const themeMap = {
-            'dark': ThemeGenerator.getThemeNames().dark,
-            'fall': ThemeGenerator.getThemeNames().template,
-            'winter': ThemeGenerator.getThemeNames().normal
-        };
-
-        const baseTheme = themeMap[newSeason];
-        const baseColors = ThemeGenerator.baseThemes[baseTheme];
-        const colors = ThemeGenerator.generatePalette([baseColors.primary], 5, 'sequential');
-        ThemeGenerator.applyThemeToDOM(colors, baseTheme);
+        // Apply theme-specific styles
+        if (newSeason === 'dark') {
+            document.documentElement.style.setProperty('--primary-color', '#1a237e'); // Rich dark blue
+        } else if (newSeason === 'fall') {
+            document.documentElement.style.setProperty('--primary-color', '#8a2be2'); // Vibrant purple
+        } else {
+            document.documentElement.style.setProperty('--primary-color', '#4a90e2'); // Clean blue
+        }
     };
 
     const toggleF = (key) => {
@@ -517,46 +520,46 @@ const L_1_HomePageContent = () => {
 
     /**
      * Starts real-time monitoring of calculation progress
-     * This function connects to Socket.IO for live updates from the calculation process
+     * This function connects to a stream for live updates from the calculation process
      */
     const startRealTimeMonitoring = () => {
-        // Initialize WebSocket connection
-        apiService.initializeWebSocket();
+        // Close any existing stream connections
+        if (window.calculationEventSource) {
+            window.calculationEventSource.close();
+        }
 
-        // For each selected version, set up monitoring
+        // For each selected version, set up a stream connection
         selectedVersions.forEach(version => {
-            const analysisId = `calculation_${version}`;
-            
-            // Start analysis monitoring
-            apiService.websocket.startAnalysis(analysisId, 'calculation', {
-                version,
-                selectedCalculationOption,
-                targetRow: target_row
-            }, 100); // Assuming 100 steps for progress tracking
+            // Create a new EventSource connection for streaming updates
+            const eventSource = new EventSource(`http://127.0.0.1:5007/stream_price/${version}`);
+            window.calculationEventSource = eventSource;
 
-            // Handle progress updates
-            apiService.websocket.onProgressUpdate((data) => {
-                if (data.analysis_id === analysisId) {
+            // Handle incoming messages
+            eventSource.onmessage = (event) => {
+                try {
+                    const data = JSON.parse(event.data);
                     console.log(`Real-time update for version ${version}:`, data);
                     
-                    // Update price if available in the results
-                    if (data.latest_results && data.latest_results.price) {
-                        updatePrice(version, data.latest_results.price);
+                    // Update price if available
+                    if (data.price) {
+                        updatePrice(version, data.price);
                     }
-                }
-            });
-
-            // Handle analysis completion
-            apiService.websocket.onAnalysisComplete((data) => {
-                if (data.analysis_id === analysisId) {
-                    console.log(`Completed calculation for version ${version}`);
                     
-                    // Update final price if available
-                    if (data.results && data.results.price) {
-                        updatePrice(version, data.results.price);
+                    // Close the stream if the backend signals completion
+                    if (data.complete) {
+                        console.log(`Completed streaming for version ${version}`);
+                        eventSource.close();
                     }
+                } catch (error) {
+                    console.error('Error processing stream data:', error);
                 }
-            });
+            };
+
+            // Handle errors
+            eventSource.onerror = (error) => {
+                console.error(`Error in calculation stream for version ${version}:`, error);
+                eventSource.close();
+            };
         });
         
         /* 
@@ -1065,78 +1068,6 @@ const L_1_HomePageContent = () => {
     const handleVersionChange = (event) => {
         setVersion(event.target.value);
     };
-    
-    const handleVersionExtensionChange = (event) => {
-        setVersionExtension(event.target.value);
-    };
-    
-    const createBatchExtension = async () => {
-        try {
-            // Show a loading indicator or message
-            setBatchRunning(true);
-            
-            const response = await fetch('http://127.0.0.1:8002/create_batch_extension', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ 
-                    version: version,
-                    extension: versionExtension
-                }),
-            });
-
-            const result = await response.json();
-            if (response.ok) {
-                console.log(result.message);
-                // Display a detailed success message to the user
-                alert(`Successfully created batch extension (${version}.${versionExtension}) with adapted scripts.\n\nThis includes custom versions of formatter, module1, and config handling scripts to work with the extension structure.`);
-            } else {
-                console.error(result.error);
-                alert(`Error: ${result.error}`);
-            }
-        } catch (error) {
-            console.error('Batch extension creation failed', error);
-            alert('Failed to create batch extension. Check console for details.');
-        } finally {
-            // Hide the loading indicator
-            setBatchRunning(false);
-        }
-    };
-    
-    const removeBatchExtension = async () => {
-        try {
-            // Show a loading indicator or message
-            setBatchRunning(true);
-            
-            const response = await fetch('http://127.0.0.1:8002/remove_batch_extension', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ 
-                    version: version,
-                    extension: versionExtension
-                }),
-            });
-
-            const result = await response.json();
-            if (response.ok) {
-                console.log(result.message);
-                // Display a success message to the user
-                alert(`Successfully removed batch extension (${version}.${versionExtension}).`);
-            } else {
-                console.error(result.error);
-                alert(`Error: ${result.error}`);
-            }
-        } catch (error) {
-            console.error('Batch extension removal failed', error);
-            alert('Failed to remove batch extension. Check console for details.');
-        } finally {
-            // Hide the loading indicator
-            setBatchRunning(false);
-        }
-    };
 
     const renderCase1Content = () => {
         // Name mapping for specific files to more presentable names
@@ -1345,8 +1276,8 @@ const L_1_HomePageContent = () => {
                     />
                 )}
                 <div className="form-action-buttons">
-                    <div className="button-row config-row load-config-section">
-                        <div className="tooltip-container load-config-button">
+                    <div className="button-row config-row">
+                        <div className="tooltip-container">
                             <button
                                 type="button"
                                 onClick={() => loadConfiguration(version)}
@@ -1354,8 +1285,7 @@ const L_1_HomePageContent = () => {
                                 Load Configuration
                             </button>
                         </div>
-                        <div className="version-inputs-wrapper">
-                            <span className="version-label">Version</span>
+                        <div className="version-input-container">
                             <input
                                 id="versionNumber"
                                 type="number"
@@ -1363,15 +1293,6 @@ const L_1_HomePageContent = () => {
                                 placeholder="1"
                                 value={version}
                                 onChange={handleVersionChange}
-                            />
-                            <span className="version-label">Extension</span>
-                            <input
-                                id="versionExtension"
-                                type="number"
-                                className="version-input"
-                                placeholder="1"
-                                value={versionExtension}
-                                onChange={handleVersionExtensionChange}
                             />
                         </div>
                     </div>
@@ -1438,20 +1359,6 @@ const L_1_HomePageContent = () => {
                   disabled={batchRunning || analysisRunning}
                 >
                   <span className="action-text">Remove Current Batch</span>
-                </button>
-                <button
-                  className="primary-action"
-                  onClick={createBatchExtension}
-                  disabled={batchRunning || analysisRunning}
-                >
-                  <span className="action-text">Create Batch Extension</span>
-                </button>
-                <button
-                  className="secondary-action"
-                  onClick={removeBatchExtension}
-                  disabled={batchRunning || analysisRunning}
-                >
-                  <span className="action-text">Remove Batch Extension</span>
                 </button>
               </div>
                     <div className="button-row practical-row">
@@ -1552,7 +1459,7 @@ const L_1_HomePageContent = () => {
             <div className="about-us-container">
                 <div className="about-us-content">
                     <div className="about-us-seal"></div>
-                    <h1>Financial Literacy<br /> A Foundation for Economic Empowerment</h1>
+                    <h1>The Transformative Power of Financial Literacy: A Foundation for Economic Empowerment</h1>
                     
                     <p>Financial literacy stands as the cornerstone of personal and professional empowerment in today's complex economic landscape. Beyond basic numeracy, true financial literacy encompasses the ability to synthesize multiple variables, understand their interrelationships, and project their impact across time—skills essential for navigating the increasingly sophisticated financial world we inhabit.</p>
                     
@@ -1603,6 +1510,7 @@ const L_1_HomePageContent = () => {
                         <ModelZone />
                         <div className="model-selection">
                             <VersionSelector />
+                            <SpatialTransformComponent />
                         </div>
                     </div>
                 );
@@ -1667,26 +1575,28 @@ const L_1_HomePageContent = () => {
                     <h2 className="h2-small">From lemonad stand to Tesla, TEA Space accomodates your complex cost modeling scenarios</h2>
                     <h2 className="h2-small">Grand opening April 15th 2025</h2>
                 </div>
-                <div className="theme-controls">
-                    <button
-                        className={`theme-button ${season === 'fall' ? 'active' : ''}`}
-                        onClick={() => handleThemeChange('fall')}
-                    >
-                        Creative
-                    </button>
-                    <button
-                        className={`theme-button ${season === 'winter' ? 'active' : ''}`}
-                        onClick={() => handleThemeChange('winter')}
-                    >
-                        Normal
-                    </button>
-                    <button
-                        className={`theme-button ${season === 'dark' ? 'active' : ''}`}
-                        onClick={() => handleThemeChange('dark')}
-                    >
-                        Dark
-                    </button>
-                    <ThemeConfigurator />
+                <div className="theme-ribbon">
+                    
+                    <div className="theme-buttons">
+                        <button
+                            className={`theme-button ${season === 'fall' ? 'active' : ''}`}
+                            onClick={() => handleThemeChange('fall')}
+                        >
+                            Creative
+                        </button>
+                        <button
+                            className={`theme-button ${season === 'winter' ? 'active' : ''}`}
+                            onClick={() => handleThemeChange('winter')}
+                        >
+                            Normal
+                        </button>
+                        <button
+                            className={`theme-button ${season === 'dark' ? 'active' : ''}`}
+                            onClick={() => handleThemeChange('dark')}
+                        >
+                            Dark
+                        </button>
+                    </div>
                 </div>
             </div>
             <div className="main-content">
@@ -1766,17 +1676,12 @@ const L_1_HomePageContent = () => {
                         <>
                             <SensitivityMonitor 
                                 S={S}
-                                setS={setS}
                                 version={version}
                                 activeTab={activeTab}
                             />
                             <ConfigurationMonitor 
-            version={version}
-            onDataFetched={(data) => {
-                console.log(`ConfigurationMonitor: Fetched ${data.standard.length} standard parameters and ${data.timeDependent.length} time-dependent parameters`);
-                // Optional: You can update any parent state or trigger actions based on the fetched data
-            }}
-        />
+                                version={version}
+                            />
                         </>
                     )}
                     <div className="L_1_HomePageTabContent">
