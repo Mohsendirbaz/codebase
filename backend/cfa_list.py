@@ -82,12 +82,7 @@ class AppState:
 
 state = AppState()
 
-# Logging configuration
-logging.config.dictConfig({'version': 1, 'disable_existing_loggers': False,
-    'formatters': {'standard': {'format': '%(asctime)s %(levelname)s %(message)s'}},
-    'handlers': {'file': {'level': 'DEBUG', 'formatter': 'standard', 'class': 'logging.FileHandler',
-    'filename': os.path.join(os.getcwd(), 'CFAInventory.log'), 'mode': 'w'}},
-    'root': {'handlers': ['file'], 'level': 'DEBUG'}})
+
 
 def get_cfa_versions() -> List[str]:
     """

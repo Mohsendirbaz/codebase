@@ -9,20 +9,8 @@ CORS(app)  # This enables CORS for all routes
 
 # Set up paths relative to the current file
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
-LOGS_DIR = os.path.join(BASE_DIR, 'backend', 'Logs')
-log_file_path = os.path.join(LOGS_DIR, 'app_executionSub.log')
 
-# Ensure the logging directory exists
-os.makedirs(LOGS_DIR, exist_ok=True)
 
-# Configure logging
-logging.basicConfig(
-    filename=log_file_path,
-    level=logging.DEBUG,
-    format='%(asctime)s %(levelname)s %(message)s'
-)
-
-logging.debug("Logging is configured and working correctly.")
 
 script_dir = os.path.join(BASE_DIR, 'backend', 'Visualization_generators')
 script_files = [ 'AggregatedSubPlots.py']
