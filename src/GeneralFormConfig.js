@@ -7,7 +7,7 @@ import SensitivityAnalysisSelector from './components/SensitivitySelector';
 import axios from 'axios';
 import { originalPropertyMapping } from './labelReferences';
 const getLatestPlantLifetime = (formValues) => {
-  const filteredValues = Object.values(formValues).filter(item => item.id === 'plantLifetimeAmount1');
+  const filteredValues = Object.values(formValues).filter(item => item.id === 'plantLifetimeAmount10');
   return filteredValues.length > 0 ? filteredValues[0].value : 40;
 };
 
