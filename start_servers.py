@@ -41,7 +41,6 @@ flask_base_dir = r"C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend"
 
 # List of Flask apps with their subdirectories and ports
 flask_apps = [
-    (r"flask_api\minimal_api.py", 8080),  # Minimal Flask app with no dependencies
     (r"Data_processors_and_transformers\Front_Subtab_Table.py", 8007),
     (r"Data_processors_and_transformers\Front_Subtab_Plot.py", 8008),
     (r"Data_processors_and_transformers\Front_Subtab_HTML.py", 8009),
