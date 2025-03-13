@@ -219,9 +219,9 @@
 }
 
 .reset-button {
-    background: #6b6d6f !important;
+    background: #f44336 !important;
     color: white !important;
-    border-color:#6b6d6f !important;
+    border-color: #d32f2f !important;
 }
 
 .reset-button:hover {
@@ -252,35 +252,24 @@
 
 /* Action button styles */
 .sensitivity-btn1 {
-    padding: 0.75rem 1rem !important;
+    padding: 8px 16px !important;
     cursor: pointer !important;
     border-radius: 4px !important;
     font-weight: bold !important;
     transition: all 0.3s ease !important;
-    min-height: 36px !important;
-    height: auto !important;
-    display: flex !important;
-    align-items: center !important;
-    text-align: center !important;
-    min-width: 180px !important;
-    flex-direction: column !important;
-    justify-content: center !important;
 }
 
-/* Apply theme styling to make it consistent with other buttons */
 .primary-btn1 {
-    /* Use theme variables instead of hardcoded colors */
-    background-color: var(--primary-color, #007bff) !important;
+    background-color: #007bff !important;
     color: white !important;
-    border: 2px solid var(--primary-color, #0056b3) !important;
+    border: 2px solid #0056b3 !important;
     box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2), -3px -3px 6px rgba(255, 255, 255, 0.1) !important;
     transition: all 0.3s ease !important;
 }
 
 .primary-btn1:hover {
-    /* Slightly darker shade of primary color */
-    background-color: var(--primary-color, #0069d9) !important;
-    border-color: var(--primary-color, #004085) !important;
+    background-color: #0069d9 !important;
+    border-color: #004085 !important;
     transform: translateY(-2px) !important;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25), -4px -4px 8px rgba(255, 255, 255, 0.15) !important;
 }
@@ -288,23 +277,4 @@
 .primary-btn1:focus {
     outline: none !important;
     box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25) !important;
-}
-
-/* Creative theme specific styling */
-.creative-theme .primary-btn1 {
-    background: var(--gradient-primary, linear-gradient(145deg, #9333ea, #7928ca)) !important;
-    border-color: #7928ca !important;
-}
-
-.creative-theme .primary-btn1:hover {
-    border-color: #6633cc !important;
-}
-
-/* Dark theme specific styling */
-.dark-theme .primary-btn1 {
-    border-color: #2a3356 !important;
-}
-
-.dark-theme .primary-btn1:hover {
-    border-color: #3f51b5 !important;
 }

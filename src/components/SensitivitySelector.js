@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './SensitivitySelector.css';
-import useFormValues from '../useFormValues';
 
 const Dialog = ({ show, onClose, children, triggerRef, isClosing }) => {
     if (!show) return null;
@@ -80,7 +79,6 @@ const SensitivityAnalysisSelector = ({ sKey = '', onSensitivityChange = () => {}
     const triggerButtonRef = useRef(null);
     const [showDialog, setShowDialog] = useState(false);
     const [isClosing, setIsClosing] = useState(false);
-    const { propertyMapping } = useFormValues();
 
     // Default state object
     const defaultState = {
@@ -279,19 +277,17 @@ const SensitivityAnalysisSelector = ({ sKey = '', onSensitivityChange = () => {}
         onSensitivityChange(sKey, defaultState);
     };
 
-    // Get compare options from property mapping
-    const compareOptions = Object.keys(propertyMapping)
-        .filter(key => key !== sKey)
-        .map(key => ({ key, label: propertyMapping[key] }));
+    const compareOptions = Array.from({ length: 70 }, (_, i) => `S${i + 10}`)
+        .filter(option => option !== sKey);
 
     return (
         <div className="sensitivity-module">
             <button
                 ref={triggerButtonRef}
-                className="action-button primary"
+                className="sensitivity-btn1 primary-btn1"
                 onClick={() => setShowDialog(true)}
             >
-                Sensitivity Analysis<br/>
+                Sensitivity
             </button>
 
             <Dialog
@@ -354,9 +350,7 @@ const SensitivityAnalysisSelector = ({ sKey = '', onSensitivityChange = () => {}
                                     >
                                         <option value="">Select parameter</option>
                                         {compareOptions.map(option => (
-                                            <option key={option.key} value={option.key}>
-                                                {option.label} ({option.key})
-                                            </option>
+                                            <option key={option} value={option}>{option}</option>
                                         ))}
                                     </select>
                                 </div>

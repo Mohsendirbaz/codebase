@@ -1,110 +1,104 @@
-/* About Us Container */
+/* L_1_HomePage_AboutUs.css */
+
 .about-us-container {
-  background-color: var(--card-background, #fff);
-  max-width: 1200px;
-  margin: 40px auto;
-  padding: 40px 60px;
-  box-shadow: 0 8px 16px var(--shadow-dark, rgba(0, 0, 0, 0.1));
-  border-radius: 12px;
-  font-family: 'Georgia', serif;
-  color: var(--text-color, #2c3e50);
+  background-color: var(--app-background);
 }
 
 .about-us-content {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
+  padding: 20px;
 }
 
-/* Headings */
+/* Heading styles */
 .about-us-container h1 {
-  font-size: 5rem;
-  color: var(--text-color, #2c3e50);
-  margin-bottom: 30px;
+  font-size: 2.5rem;
   text-align: center;
+  margin-bottom: 30px;
+  color: darkblue;
+  font-weight: normal;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-bottom: 2px solid #a3b0b1;
+  padding-bottom: 15px;
 }
 
 .about-us-container h2 {
-  font-size: 3.6rem;
-  color: var(--text-color, #2c3e50); /* Changed from primary-color to text-color */
-  margin: 30px 0 20px;
-  border-bottom: 3px solid var(--text-color, #2c3e50); /* Changed border color to match text */
-  padding-bottom: 10px;
+  font-size: 1.8rem;
+  color: darkblue;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  font-weight: normal;
 }
 
-/* Paragraphs */
+/* Paragraph styles */
 .about-us-container p {
-  font-size: 2.2rem;
-  line-height: 1.6;
+  font-size: 1.1rem;
+  line-height: 1.8;
   margin-bottom: 20px;
-  color: var(--text-color, #2c3e50);
+  text-align: justify;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  
 }
 
 /* First letter styling (drop cap) */
 .about-us-container p:first-of-type::first-letter {
-  font-size: 7rem;
+  font-size: 3.5rem;
   float: left;
-  padding-right: 15px;
-  color: var(--text-color, #2c3e50);
+  line-height: 0.8;
+  margin-right: 10px;
+  color: darkblue;
+  font-family: 'Libre Baskerville', Georgia, serif;
 }
 
-/* Decorative divider */
+/* Signature section */
+.signature-section {
+  text-align: right;
+  margin-top: 40px;
+  font-style: italic;
+}
+
+/* Decorative elements */
 .decorative-divider {
   text-align: center;
-  font-size: 2rem;
-  color: var(--text-color, #adb5bd); /* Changed from text-secondary to text-color */
   margin: 30px 0;
+  color: darkblue;
+  font-size: 1.5rem;
 }
 
-/* Lists */
-.about-us-container ul,
-.about-us-container ol {
-  font-size: 2.2rem;
-  color: var(--text-color, #2c3e50);
-  margin: 20px 0;
-  padding-left: 40px;
+/* Seal/logo styling */
+.about-us-seal {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 30px;
+  display: block;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='none' stroke='%235c4b24' stroke-width='2'/%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='%235c4b24' stroke-width='1'/%3E%3Ctext x='50' y='55' text-anchor='middle' font-family='serif' font-size='12' fill='%235c4b24'%3ETEA Space%3C/text%3E%3Ctext x='50' y='40' text-anchor='middle' font-family='serif' font-size='8' fill='%235c4b24'%3EEstablished%3C/text%3E%3Ctext x='50' y='65' text-anchor='middle' font-family='serif' font-size='8' fill='%235c4b24'%3E2025%3C/text%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-.about-us-container li {
-  margin-bottom: 15px;
-  line-height: 1.6;
-  color: var(--text-color, #2c3e50);
-}
-
-/* Links */
-.about-us-container a {
-  color: var(--text-color, #2c3e50);
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.about-us-container a:hover {
-  color: var(--text-color, #2c3e50);
-  text-decoration: underline;
+/* Special styling for when the About Us tab is active */
+.tab-button.active[data-tab="AboutUs"] {
+  background-color: #b5e6f5; /* Match the mellow yellow background */
+  border-bottom: 3px solid #9dbbb9; /* Match the border color */
+  color:darkblue;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .about-us-container {
     padding: 20px;
-    margin: 20px;
+    margin: 10px;
   }
-
+  
   .about-us-container h1 {
-    font-size: 4rem;
+    font-size: 2rem;
   }
-
+  
   .about-us-container h2 {
-    font-size: 3rem;
+    font-size: 1.5rem;
   }
-
-  .about-us-container p,
-  .about-us-container ul,
-  .about-us-container ol {
-    font-size: 1.8rem;
-  }
-
-  .about-us-container p:first-of-type::first-letter {
-    font-size: 5rem;
+  
+  .about-us-container p {
+    font-size: 1rem;
   }
 }

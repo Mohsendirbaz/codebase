@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "my-dashboard",
   "version": "1.0.0",
   "private": true,
@@ -80,6 +81,57 @@
     "directories": {
       "buildResources": "assets",
       "output": "dist"
+=======
+    "name": "my-dashboard",
+    "version": "1.0.0",
+    "private": true,
+    "main": "src/index.js",
+    "dependencies": {
+        "@atlaskit/drag-and-drop": "^0.15.1",
+        "@fortawesome/fontawesome-svg-core": "^6.7.2",
+        "@fortawesome/free-solid-svg-icons": "^6.7.2",
+        "@fortawesome/react-fontawesome": "^0.2.2",
+        "@headlessui/react": "^2.2.0",
+        "@heroicons/react": "^2.2.0",
+        "@radix-ui/react-dialog": "^1.1.4",
+        "@radix-ui/react-tooltip": "^1.1.6",
+        "@react-navigation/native": "^7.0.14",
+        "@react-navigation/stack": "^7.1.1",
+        "@testing-library/jest-dom": "6.4.6",
+        "@testing-library/react": "16.0.0",
+        "@testing-library/user-event": "14.5.2",
+        "aws-sdk": "^2.1642.0",
+        "body-parser": "^1.20.3",
+        "cors": "^2.8.5",
+        "dotenv": "^16.4.5",
+        "electron-is-dev": "^2.0.0",
+        "express": "^4.19.2",
+        "framer-motion": "^12.4.2",
+        "leaflet": "^1.9.4",
+        "lodash": "^4.17.21",
+        "lucide-react": "^0.469.0",
+        "mathjs": "^14.2.1",
+        "multer": "^1.4.5-lts.1",
+        "os": "^0.1.2",
+        "puppeteer": "^22.15.0",
+        "python-shell": "^5.0.0",
+        "react": "^18.0.0",
+        "react-beautiful-dnd": "^13.1.1",
+        "react-dnd": "^16.0.1",
+        "react-dnd-html5-backend": "^16.0.1",
+        "react-dom": "^18.0.0",
+        "react-file-chooser": "^0.0.3",
+        "react-file-picker": "^0.0.6",
+        "react-jss": "^10.10.0",
+        "react-router-dom": "^6.24.1",
+        "react-scripts": "5.0.1",
+        "react-tabs": "^6.0.2",
+        "recharts": "^2.15.1",
+        "sass": "^1.77.6",
+        "socket.io-client": "^4.7.5",
+        "subprocess": "^0.3.0",
+        "web-vitals": "4.1.1"
+>>>>>>> c1d0abf0 (Applied working JS, CSS, and JSON changes from b5850f9e)
     },
     "win": {
       "target": [

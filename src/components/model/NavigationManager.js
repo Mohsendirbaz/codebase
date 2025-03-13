@@ -1,7 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import './neumorphic-navigation.css';
-import { useVersionState } from '../../contexts/VersionStateContext';
-import useFormValues from '../../useFormValues';
+import './NavigationManager.css';
 
 const NAVIGATION_LEVELS = {
   ROOT: 'root',

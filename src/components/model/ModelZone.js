@@ -1,8 +1,9 @@
 import React, { useState, useCallback } from 'react';
-import './neumorphic-modelzone.css';
+import './ModelZone.css';
+import './FilterPopup.css';
 import ModelCard from './ModelCard';
 import FilterPopup from './FilterPopup';
-import EnhancedInheritanceControl from './EnhancedInheritanceControl';
+import InheritanceControl from './InheritanceControl';
 import ImpactAnalysis from './ImpactAnalysis';
 import SensitivityEngine from './SensitivityEngine';
 import RiskAssessment from './RiskAssessment';
@@ -11,7 +12,6 @@ import DecisionEngine from './DecisionEngine';
 import OverlayController from './OverlayController';
 import AnalysisVisualizationIntegration from './AnalysisVisualizationIntegration';
 import { useVersionState } from '../../contexts/VersionStateContext';
-import useFormValues from '../../useFormValues';
 
 // Dialog layer types
 const DIALOG_LAYERS = {
@@ -88,32 +88,10 @@ const ModelZone = () => {
     setActiveDialog(DIALOG_LAYERS.IMPACT);
   }, []);
 
-  const handleSensitivityAnalysis = useCallback(async (modelId) => {
+  const handleSensitivityAnalysis = useCallback((modelId) => {
     setActiveModel(modelId);
     setActiveDialog(DIALOG_LAYERS.SENSITIVITY);
-    
-    // Prepare sensitivity data with efficacy metrics for SensitivityEngine
-    const model = modelSettings.find(m => m.id === modelId);
-    if (!model) return;
-    
-    try {
-      // Load utility functions dynamically to avoid circular dependencies
-      const { loadSensitivityData, calculateEfficacyMetrics } = await import('./utils/dataProcessing');
-      
-      // Load sensitivity data
-      const sensitivityData = await loadSensitivityData(model);
-      
-      // Prepare data for SensitivityEngine
-      // (Efficacy metrics will be calculated in the ModelCard via the custom event)
-      setSensitivityData({
-        parameters: sensitivityData.parameters,
-        derivatives: sensitivityData.derivatives,
-        efficacyReady: true
-      });
-    } catch (error) {
-      console.error('Error loading sensitivity data:', error);
-    }
-  }, [modelSettings]);
+  }, []);
 
   const handleRiskAssessment = useCallback((modelId) => {
     setActiveModel(modelId);
@@ -157,9 +135,6 @@ const ModelZone = () => {
   const activeModelData = activeModel 
     ? modelSettings.find(m => m.id === activeModel)
     : null;
-
-  // Get form values and property mapping from the useFormValues hook
-  const { formValues, propertyMapping } = useFormValues();
 
   // Get overlay content based on active dialog
   const getOverlayContent = () => {
@@ -300,7 +275,6 @@ const ModelZone = () => {
             onRiskAssessment={() => handleRiskAssessment(model.id)}
             onOptimization={() => handleOptimization(model.id)}
             onDecisionSupport={() => handleDecisionSupport(model.id)}
-            baseSettings={model.type !== 'base' ? modelSettings.find(m => m.id === 'base') : null}
           />
         ))}
       </div>
@@ -317,13 +291,11 @@ const ModelZone = () => {
         </OverlayController>
       )}
 
-      {/* Enhanced Inheritance Visualization */}
+      {/* Inheritance Visualization */}
       <div className="inheritance-visualization">
-        <EnhancedInheritanceControl
+        <InheritanceControl
           models={modelSettings}
           onUpdate={handleFilterUpdate}
-          propertyMapping={propertyMapping}
-          formValues={formValues}
         />
       </div>
 

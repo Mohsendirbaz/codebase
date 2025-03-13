@@ -1,64 +1,55 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import './SensitivityMonitor.css';
 
 /**
  * SensitivityMonitor component displays and tracks all configured sensitivity parameters
  * Provides filtering, searching, and historical tracking of sensitivity configurations
  */
-const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
+const SensitivityMonitor = ({ S, version, activeTab }) => {
   // Component state
   const [isExpanded, setIsExpanded] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [showOnlyEnabled, setShowOnlyEnabled] = useState(false);
-  const [filterByTab, setFilterByTab] = useState('all');
+  const [showHistory, setShowHistory] = useState(false);
+  const [filterByTab, setFilterByTab] = useState(false);
   const [filterByType, setFilterByType] = useState('all');
+  const [sensitivityHistory, setSensitivityHistory] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  // Reset handlers
-  const handleResetAll = () => {
-    const resetS = {};
-    Object.keys(S).forEach(key => {
-      resetS[key] = {
-        mode: 'Not Set',
-        values: [],
-        enabled: false,
-        compareToKey: '',
-        comparisonType: null,
-        waterfall: false,
-        bar: false,
-        point: false
-      };
-    });
-    setS(resetS);
-  };
-
-  const handleResetParameter = (paramId) => {
-    setS(prev => ({
-      ...prev,
-      [paramId]: {
-        mode: 'Not Set',
-        values: [],
-        enabled: false,
-        compareToKey: '',
-        comparisonType: null,
-        waterfall: false,
-        bar: false,
-        point: false
+  // Fetch sensitivity history from backend when version changes
+  useEffect(() => {
+    if (!version || !showHistory) return;
+    
+    const fetchSensitivityHistory = async () => {
+      setIsLoading(true);
+      try {
+        const response = await fetch(`http://localhost:5000/get_sensitivity_history/${version}`);
+        if (response.ok) {
+          const data = await response.json();
+          // Parse log lines into structured data
+          const parsedHistory = data.logs.map(logLine => {
+            try {
+              const [timestamp, rest] = logLine.split(' - ');
+              const [sKey, configString] = rest.split(': ');
+              const config = JSON.parse(configString);
+              return { timestamp, sKey, config };
+            } catch (e) {
+              console.error('Error parsing log line:', e);
+              return null;
+            }
+          }).filter(item => item !== null);
+          
+          setSensitivityHistory(parsedHistory);
+        }
+      } catch (error) {
+        console.error('Error fetching sensitivity history:', error);
+      } finally {
+        setIsLoading(false);
       }
-    }));
-  };
+    };
 
-  // Helper function to determine which tab a parameter belongs to
-  const getParameterTab = (paramId) => {
-    const numericPart = parseInt(paramId.replace('S', ''));
-    if (numericPart >= 10 && numericPart <= 19) return 'ProjectConfig';
-    if (numericPart >= 20 && numericPart <= 29) return 'LoanConfig';
-    if (numericPart >= 30 && numericPart <= 39) return 'RatesConfig';
-    if (numericPart >= 40 && numericPart <= 49) return 'Process1Config';
-    if (numericPart >= 50 && numericPart <= 59) return 'Process2Config';
-    if (numericPart >= 60 && numericPart <= 69) return 'Revenue1Config';
-    if (numericPart >= 70 && numericPart <= 79) return 'Revenue2Config';
-    return 'other';
-  };
+    fetchSensitivityHistory();
+  }, [version, showHistory]);
 
   // Process raw sensitivity parameters into a more usable format
   const processedParams = useMemo(() => {
@@ -67,7 +58,6 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
     return Object.entries(S)
       .map(([key, config]) => ({
         id: key,
-        tab: getParameterTab(key),
         mode: config.mode || 'Not Set',
         values: config.values || [],
         enabled: config.enabled || false,
@@ -94,15 +84,12 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
       // Filter by visualization type if not set to 'all'
       if (filterByType !== 'all' && !param.visualizationTypes.includes(filterByType)) return false;
       
-      // Filter by tab if not set to 'all'
-      if (filterByTab !== 'all' && param.tab !== filterByTab) return false;
-      
       // Apply search filter to parameter ID
       if (searchTerm && !param.id.toLowerCase().includes(searchTerm.toLowerCase())) return false;
       
       return true;
     });
-  }, [processedParams, showOnlyEnabled, filterByType, filterByTab, searchTerm]);
+  }, [processedParams, showOnlyEnabled, filterByType, searchTerm]);
   
   // Group parameters by their first digit (e.g., S10-S19, S20-S29, etc.)
   const groupedParams = useMemo(() => {
@@ -123,28 +110,30 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
     return groups;
   }, [filteredParams]);
 
+  // Format a timestamp for display
+  const formatTimestamp = (timestamp) => {
+    if (!timestamp) return '';
+    try {
+      const date = new Date(timestamp);
+      return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    } catch (e) {
+      return timestamp;
+    }
+  };
+
   return (
     <div className={`sensitivity-monitor ${isExpanded ? 'expanded' : 'collapsed'}`}>
       <div className="monitor-header">
         {isExpanded ? (
           <>
             <h3>Sensitivity Monitor</h3>
-            <div>
-              <button 
-                className="reset-all-button"
-                onClick={handleResetAll}
-                title="Reset all parameters"
-              >
-                Reset All
-              </button>
-              <button 
-                className="toggle-button" 
-                onClick={() => setIsExpanded(false)}
-                title="Collapse panel"
-              >
-                ◀
-              </button>
-            </div>
+            <button 
+              className="toggle-button" 
+              onClick={() => setIsExpanded(false)}
+              title="Collapse panel"
+            >
+              ◀
+            </button>
           </>
         ) : (
           <button 
@@ -179,21 +168,15 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
                 Enabled only
               </label>
               
-              <select 
-                value={filterByTab} 
-                onChange={(e) => setFilterByTab(e.target.value)}
-                className="tab-filter"
-              >
-                <option value="all">All Tabs</option>
-                <option value="ProjectConfig">Project Configuration</option>
-                <option value="LoanConfig">Loan Configuration</option>
-                <option value="RatesConfig">Rates & Fixed Costs</option>
-                <option value="Process1Config">Process Quantities</option>
-                <option value="Process2Config">Process Costs</option>
-                <option value="Revenue1Config">Revenue Streams Quantities</option>
-                <option value="Revenue2Config">Revenue Streams Prices</option>
-              </select>
-
+              <label className="filter-option">
+                <input 
+                  type="checkbox" 
+                  checked={showHistory}
+                  onChange={() => setShowHistory(!showHistory)}
+                />
+                Show history
+              </label>
+              
               <select 
                 value={filterByType} 
                 onChange={(e) => setFilterByType(e.target.value)}
@@ -213,7 +196,6 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
             <div className="param-count">
               {filteredParams.length} parameter{filteredParams.length !== 1 ? 's' : ''} 
               {showOnlyEnabled ? ' (enabled)' : ''}
-              {filterByTab !== 'all' ? ` in ${filterByTab}` : ''}
             </div>
           </div>
           
@@ -237,20 +219,7 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
                     >
                       <div className="parameter-header">
                         <span className="param-id">{param.id}</span>
-          <div className="mode-container">
-            {param.mode === 'Not Set' ? (
-              <span className="not-set-text">Not Set</span>
-            ) : (
-              <div className="green-box"></div>
-            )}
-            <button
-              className="reset-parameter-button"
-              onClick={() => handleResetParameter(param.id)}
-              title="Reset this parameter"
-            >
-              Reset
-            </button>
-          </div>
+                        <span className="param-mode">{param.mode}</span>
                       </div>
                       
                       {param.values.length > 0 && (
@@ -280,6 +249,36 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
               ))
             )}
           </div>
+          
+          {/* History section */}
+          {showHistory && (
+            <div className="history-section">
+              <h4>Change History</h4>
+              
+              {isLoading ? (
+                <div className="loading-indicator">Loading history...</div>
+              ) : sensitivityHistory.length === 0 ? (
+                <div className="empty-state">No historical changes recorded</div>
+              ) : (
+                <div className="history-list">
+                  {sensitivityHistory.map((entry, idx) => (
+                    <div key={idx} className="history-item">
+                      <div className="history-time">{formatTimestamp(entry.timestamp)}</div>
+                      <div className="history-param">{entry.sKey}</div>
+                      <div className="history-details">
+                        {entry.config.mode && <span className="history-mode">{entry.config.mode}</span>}
+                        {entry.config.values?.length > 0 && (
+                          <span className="history-values">
+                            [{entry.config.values.filter(Boolean).join(', ')}]
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
         </div>
       )}
     </div>

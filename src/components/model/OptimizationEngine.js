@@ -1,9 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import './neumorphic-optimization.css';
+import './OptimizationEngine.css';
 import AnalysisChart from './AnalysisChart';
-import { useVersionState } from '../../contexts/VersionStateContext';
-import useFormValues from '../../useFormValues';
-import EfficacyIndicator from './EfficacyIndicator';
 
 const OPTIMIZATION_TYPES = {
   COST: 'cost',
@@ -20,23 +17,17 @@ const OBJECTIVE_FUNCTIONS = {
 };
 
 const OptimizationEngine = ({ model, baseModel, scenarios, constraints, onUpdate, onClose }) => {
-  // Access version state and form values
-  const { version } = useVersionState();
-  const { formValues, propertyMapping } = useFormValues();
-  
-  // Component state
   const [activeOptimization, setActiveOptimization] = useState(OPTIMIZATION_TYPES.COST);
   const [objectiveFunction, setObjectiveFunction] = useState(OBJECTIVE_FUNCTIONS.MINIMIZE_COST);
   const [solutions, setSolutions] = useState(null);
   const [isOptimizing, setIsOptimizing] = useState(false);
-  const [efficacyMetrics, setEfficacyMetrics] = useState(null);
   const [optimizationParams, setOptimizationParams] = useState({
     iterations: 1000,
     convergenceThreshold: 0.001,
     constraints: {
-      maxCost: constraints?.maxCost || Infinity,
-      maxRisk: constraints?.maxRisk || 0.2,
-      minReturn: constraints?.minReturn || 0.1
+      maxCost: Infinity,
+      maxRisk: 0.2,
+      minReturn: 0.1
     }
   });
 

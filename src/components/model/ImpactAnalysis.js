@@ -1,20 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import './neumorphic-impact.css';
-import { useVersionState } from '../../contexts/VersionStateContext';
-import useFormValues from '../../useFormValues';
-import EfficacyIndicator from './EfficacyIndicator';
+import './ImpactAnalysis.css';
 
 const ImpactAnalysis = ({ model, baseModel, onClose }) => {
-  // Access version state and form values
-  const { version } = useVersionState();
-  const { formValues, propertyMapping } = useFormValues();
-  
   const [activeTab, setActiveTab] = useState('cashflow');
   const [impactData, setImpactData] = useState(null);
-  const [efficacyMetrics, setEfficacyMetrics] = useState(null);
 
-  // Calculate impact data based on model settings and base model
   useEffect(() => {
+    // Calculate impact data based on model settings and base model
     const calculateImpact = () => {
       const impact = {
         cashflow: {
@@ -34,31 +26,6 @@ const ImpactAnalysis = ({ model, baseModel, onClose }) => {
 
     calculateImpact();
   }, [model, baseModel]);
-  
-  // Calculate efficacy metrics when impact data changes
-  useEffect(() => {
-    if (impactData) {
-      // Calculate efficacy metrics based on the impact analysis
-      const calculateEfficacyMetrics = () => {
-        // In a real implementation, this would likely call an API or use more complex calculations
-        // using the formValues and propertyMapping
-        return {
-          costEfficiency: 0.75 + (Math.random() * 0.2), // Value between 0.75 and 0.95
-          timeEfficiency: 0.65 + (Math.random() * 0.25), // Value between 0.65 and 0.9
-          processEfficiency: 0.7 + (Math.random() * 0.2), // Value between 0.7 and 0.9
-          overallEfficacy: 0.7 + (Math.random() * 0.25), // Value between 0.7 and 0.95
-          confidenceScore: 0.8 + (Math.random() * 0.15), // Value between 0.8 and 0.95
-          parameterSensitivity: {
-            cost: 0.2 + (Math.random() * 0.6), // Value between 0.2 and 0.8
-            time: 0.3 + (Math.random() * 0.5), // Value between 0.3 and 0.8
-            process: 0.4 + (Math.random() * 0.4) // Value between 0.4 and 0.8
-          }
-        };
-      };
-      
-      setEfficacyMetrics(calculateEfficacyMetrics());
-    }
-  }, [impactData, formValues, propertyMapping]);
 
   // Calculation helper functions
   const calculateInheritedValues = (model, baseModel) => {
@@ -257,18 +224,6 @@ const ImpactAnalysis = ({ model, baseModel, onClose }) => {
           </>
         )}
       </div>
-      
-      {/* Add EfficacyIndicator integration */}
-      {efficacyMetrics && (
-        <div className="efficacy-indicator-container">
-          <h3>Impact Efficacy Analysis</h3>
-          <EfficacyIndicator 
-            metrics={efficacyMetrics}
-            modelType={model.type}
-            baselineType={baseModel.type}
-          />
-        </div>
-      )}
     </div>
   );
 };
