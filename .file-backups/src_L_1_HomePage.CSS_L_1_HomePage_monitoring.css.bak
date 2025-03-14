@@ -1,21 +1,66 @@
-/* Monitoring button styles */
-button.active-monitoring {
-    background-color: #2196f3;
-    color: white;
-    border-color: #1976d2;
+/* L_1_HomePage_monitoring.css */
+.content-container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  overflow: hidden;
 }
 
-button.active-monitoring:hover {
-    background-color: #1976d2;
+.L_1_HomePageTabContent {
+  flex: 1;
+  overflow: auto;
+  padding: 20px;
 }
 
-/* Animation for active monitoring */
-@keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(33, 150, 243, 0.4); }
-    70% { box-shadow: 0 0 0 10px rgba(33, 150, 243, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(33, 150, 243, 0); }
+/* Styles for monitors layout */
+.sensitivity-monitor,
+.config-monitor {
+  flex-shrink: 0;
 }
 
-button.active-monitoring {
-    animation: pulse 2s infinite;
+/* Responsive behavior for smaller screens */
+@media screen and (max-width: 1200px) {
+  .content-container {
+    flex-wrap: wrap;
+  }
+  
+  .sensitivity-monitor.expanded,
+  .config-monitor.expanded {
+    width: 250px; /* Smaller width on medium screens */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .content-container {
+    flex-direction: column;
+  }
+  
+  .sensitivity-monitor.expanded,
+  .config-monitor.expanded {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  
+  .L_1_HomePageTabContent {
+    padding: 10px;
+  }
+}
+
+/* Media query for responsive layout */
+@media screen and (max-width: 768px) {
+  .content-container {
+    flex-direction: column;
+  }
+  
+  .sensitivity-monitor.expanded {
+    width: 100%;
+    height: 250px;
+  }
+  
+  .sensitivity-monitor.collapsed {
+    width: 100%;
+    height: 40px;
+  }
 }

@@ -36,33 +36,50 @@ const propertyMapping = {
   "maintenanceAmount37": "Maintenance Cost",
   "insuranceAmount38": "Insurance Cost",
 
-  // vAmount40-49 group
-  "vAmount40": "Additional Annualized CAPEX (TOC)(Node 1: Biomass Plantation)",
-  "vAmount41": "Additional Annualized CAPEX (TOC)(Node 2: Clean Up and Pressurizing)",
-  "vAmount42": "Additional Annualized CAPEX (TOC)(Node 3: T&S)",
-  "vAmount43": "45 Q (mt CO2)",
-  "vAmount44": "45 V (kg H2)",
-  "vAmount45": "Premium of Adopting Sustainable Farming Practices ($ Feedstock basis)",
-  "vAmount46": "Transport Cost (kg H2 basis)",
-  "vAmount47": "Storage Cost (kg H2 basis)",
-  "vAmount48": "Total Operating Costs",
-  "vAmount49": "Distance to Viability (Post Analysis Measure)",
-
-  // vAmount50-59 group
-  "vAmount50": "Additional Annualized CAPEX (+% TOC($))(Node 1: Biomass Plantation)",
-  "vAmount51": "Additional Annualized CAPEX (+% TOC($))(Node 2: Clean Up and Pressurizing)",
-  "vAmount52": "Additional Annualized CAPEX (+% TOC($))(Node 3: T&S)",
-  "vAmount53": "45 Q ($/mt CO2)",
-  "vAmount54": "45 V ($/kg H2)",
-  "vAmount55": "Premium of Adopting Sustainable Farming Practices (+% $ Feedstock basis)",
-  "vAmount56": "Transport Cost ($/kg H2)",
-  "vAmount57": "Storage Cost ($/kg H2)",
-  "vAmount58": "Total Operating Costs +% OPEX($)",
-  "vAmount59": "Distance to Viability (Post Analysis Measure)",
-
+  
+    "vAmount40": "v40",
+    "vAmount41": "v41",
+    "vAmount42": "v42",
+    "vAmount43": "v43",
+    "vAmount44": "v44",
+    "vAmount45": "v45",
+    "vAmount46": "v46",
+    "vAmount47": "v47",
+    "vAmount48": "v48",
+    "vAmount49": "v49",
+    "vAmount50": "v50",
+    "vAmount51": "v51",
+    "vAmount52": "v52",
+    "vAmount53": "v53",
+    "vAmount54": "v54",
+    "vAmount55": "v55",
+    "vAmount56": "v56",
+    "vAmount57": "v57",
+    "vAmount58": "v58",
+    "vAmount59": "v59",
+  
+  
   // vAmount60-69 group
-  "vAmount60": "Carbon Capture and Storage",
-  "vAmount61": "Convenience Fee"
+  "vAmount60": "v60",
+  "vAmount61": "v61",
+  "vAmount62": "v62",
+  "vAmount63": "v63",
+  "vAmount64": "v64",
+  "vAmount65": "v65",
+  "vAmount66": "v66",
+  "vAmount67": "v67",
+  "vAmount68": "v68",
+  "vAmount69": "v69",
+  "vAmount70": "v70",
+  "vAmount71": "v71",
+  "vAmount72": "v72",
+  "vAmount73": "v73",
+  "vAmount74": "v74",
+  "vAmount75": "v75",
+  "vAmount76": "v76",
+  "vAmount77": "v77",
+  "vAmount78": "v78",
+  "vAmount79": "v79",
 };
 
 // Complete select options mapping
@@ -108,9 +125,9 @@ const iconMapping = {
   "maintenanceAmount37": faTools,
   "insuranceAmount38": faHandshake,
 
-  // vAmount icons (40-61)
+  // vAmount icons (40-79)
   ...Object.fromEntries(
-    Array.from({ length: 22 }, (_, i) => [`vAmount${40 + i}`, faWarehouse])
+    Array.from({ length: 40 }, (_, i) => [`vAmount${40 + i}`, faWarehouse])
   )
 };
 
@@ -149,9 +166,9 @@ const defaultValues = {
   maintenanceAmount37: 2500,
   insuranceAmount38: 500,
 
-  // vAmount defaults (40-61)
+
   ...Object.fromEntries(
-    Array.from({ length: 22 }, (_, i) => [`vAmount${40 + i}`, 1])
+    Array.from({ length: 40 }, (_, i) => [`vAmount${40 + i}`,1])
   )
 };
 

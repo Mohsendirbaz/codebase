@@ -177,6 +177,7 @@
     "electron-builder": "^25.1.8",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-active-files": "file:eslint-plugin-active-files",
     "eslint-plugin-css-modules": "^2.12.0",
     "eslint-plugin-prettier": "^5.2.3",
     "eslint-plugin-react": "^7.34.1",

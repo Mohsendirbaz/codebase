@@ -37,28 +37,28 @@ def free_port(port):
             pass
 
 # Base directory where your Flask apps are located
-flask_base_dir = r"C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend"
+flask_base_dir = os.path.dirname(os.path.abspath(__file__))
 
 # List of Flask apps with their subdirectories and ports
 flask_apps = [
-    (r"Data_processors_and_transformers\Front_Subtab_Table.py", 8007),
-    (r"Data_processors_and_transformers\Front_Subtab_Plot.py", 8008),
-    (r"Data_processors_and_transformers\Front_Subtab_HTML.py", 8009),
-    (r"API_endpoints_and_controllers\Create_new_batch.py", 8001),
-    (r"API_endpoints_and_controllers\Create_batch_extension.py", 8002),
-    (r"API_endpoints_and_controllers\Remove_batch.py", 7001),
-    (r"API_endpoints_and_controllers\Calculations.py", 5007),
-    (r"API_endpoints_and_controllers\Calculations_and_Sensitivity.py", 25007),
-    (r"API_endpoints_and_controllers\PNG.py", 5008),
-    (r"API_endpoints_and_controllers\Sub.py", 5009),
-    (r"API_endpoints_and_controllers\Load.py", 5002),  # Changed port since 5000 is now used by main Flask app
-    (r"API_endpoints_and_controllers\config_monitor.py", 5001),
-    (r"cfa_list.py", 456),
-    (r"Enhanced_Sensitivity\start_enhanced_sensitivity_server.py", 27890),
+    (r"backend\Data_processors_and_transformers\Front_Subtab_Table.py", 8007),
+    (r"backend\Data_processors_and_transformers\Front_Subtab_Plot.py", 8008),
+    (r"backend\Data_processors_and_transformers\Front_Subtab_HTML.py", 8009),
+    (r"backend\API_endpoints_and_controllers\Create_new_batch.py", 8001),
+    (r"backend\API_endpoints_and_controllers\Create_batch_extension.py", 8002),
+    (r"backend\API_endpoints_and_controllers\Remove_batch.py", 7001),
+    (r"backend\API_endpoints_and_controllers\Calculations.py", 5007),
+    (r"backend\API_endpoints_and_controllers\Calculations_and_Sensitivity.py", 25007),
+    (r"backend\API_endpoints_and_controllers\PNG.py", 5008),
+    (r"backend\API_endpoints_and_controllers\Sub.py", 5009),
+    (r"backend\API_endpoints_and_controllers\Load.py", 5002),  # Changed port since 5000 is now used by main Flask app
+    (r"backend\API_endpoints_and_controllers\config_monitor.py", 5001),
+    (r"backend\cfa_list.py", 456),
+    (r"backend\Enhanced_Sensitivity\start_enhanced_sensitivity_server.py", 27890),
 ]
 
 # Base directory where your Node.js scripts are located
-node_base_dir = r"C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy"
+node_base_dir = os.path.dirname(os.path.abspath(__file__))
 
 # List of Node.js scripts to run with their respective ports
 node_scripts = [

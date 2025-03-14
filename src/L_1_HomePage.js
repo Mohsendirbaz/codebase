@@ -9,7 +9,6 @@ import FactEngine from './FactEngine';
 import FactEngineAdmin from './FactEngineAdmin';
 import FormHeader from './FormHeader.js';
 import GeneralFormConfig from './GeneralFormConfig.js';
-import Popup from './Popup.js';
 import './L_1_HomePage.CSS/L_1_HomePage1.css';
 import './L_1_HomePage.CSS/L_1_HomePage2.css';
 import './L_1_HomePage.CSS/L_1_HomePage3.css';
@@ -30,7 +29,6 @@ import PropertySelector from './PropertySelector.js';
 import MultiVersionSelector from './MultiVersionSelector.js';
 import TodoList from './TodoList.js';
 import VersionSelector from './VersionSelector.js';
-import ModelZone from './components/model/ModelZone';
 import VersionControl from './components/version/VersionControl';
 import EditableHierarchicalList from './Editable';
 import SpatialTransformComponent from './naturalmotion';
@@ -1683,15 +1681,14 @@ const L_1_HomePageContent = () => {
                         {renderForm()}
                     </div>
                 );
-            case 'ModelZone':
+            case 'NaturalMotion':
                 return (
-                    <div className="model-zone">
-                        <ModelZone />
+                 
                         <div className="model-selection">
                             <VersionSelector />
                             <SpatialTransformComponent />
                         </div>
-                    </div>
+             
                 );
             case 'Case1':
                 return renderCase1Content();
@@ -1825,10 +1822,10 @@ const L_1_HomePageContent = () => {
                             Editable
                         </button>
                         <button
-                            className={`tab-button ${activeTab === 'ModelZone' ? 'active' : ''}`}
-                            onClick={() => setActiveTab('ModelZone')}
+                            className={`tab-button ${activeTab === 'NaturalMotion' ? 'active' : ''}`}
+                            onClick={() => setActiveTab('NaturalMotion')}
                         >
-                            Model Zone
+                            Natural Motion
                         </button>
                         <button
                             className={`tab-button ${activeTab === 'SensitivityAnalysis' ? 'active' : ''}`}

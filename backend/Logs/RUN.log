@@ -114,3 +114,11 @@
 2025-03-03 05:39:49,881 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy\backend\Logs\RUN.log
 2025-03-03 05:39:49,917 WARNING  * Debugger is active!
 2025-03-03 05:39:49,922 INFO  * Debugger PIN: 119-059-632
+2025-03-14 09:11:05,671 INFO Logging configured correctly - Main logs going to: c:\Users\Mohse\OneDrive\Desktop\SF\backend\Logs\RUN.log
+2025-03-14 09:11:05,717 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:25007
+2025-03-14 09:11:05,717 INFO [33mPress CTRL+C to quit[0m
+2025-03-14 09:11:05,719 INFO  * Restarting with stat
+2025-03-14 09:11:06,271 INFO Logging configured correctly - Main logs going to: c:\Users\Mohse\OneDrive\Desktop\SF\backend\Logs\RUN.log
+2025-03-14 09:11:06,312 WARNING  * Debugger is active!
+2025-03-14 09:11:06,320 INFO  * Debugger PIN: 119-059-632
