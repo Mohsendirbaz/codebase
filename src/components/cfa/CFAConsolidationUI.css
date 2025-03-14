@@ -1,47 +1,4 @@
-:root {
-  /* Spacing */
-  --model-spacing-xs: 4px;
-  --model-spacing-sm: 8px;
-  --model-spacing-md: 16px;
-  --model-spacing-lg: 24px;
 
-  /* Colors */
-  --model-color-background: #ffffff;
-  --model-color-background-alt: #f8f9fa;
-  --model-color-background-hover: #e9ecef;
-  --model-color-text: #212529;
-  --model-color-border: #dee2e6;
-  --model-color-primary: #0d6efd;
-  --model-color-primary-light: #cfe2ff;
-  --model-color-success: #198754;
-  --model-color-success-light: #d1e7dd;
-  --model-color-danger: #dc3545;
-  --model-color-danger-light: #f8d7da;
-
-  /* Dark mode colors */
-  --model-color-background-dark: #212529;
-  --model-color-background-alt-dark: #343a40;
-  --model-color-border-dark: #495057;
-
-  /* Border radius */
-  --model-border-radius-sm: 4px;
-  --model-border-radius-md: 8px;
-  --model-border-radius-lg: 12px;
-
-  /* Shadows */
-  --model-shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
-  --model-shadow-md: 0 4px 6px rgba(0,0,0,0.15);
-  --model-shadow-lg: 0 10px 15px rgba(0,0,0,0.2);
-
-  /* Transitions */
-  --model-transition-fast: 0.15s ease;
-  --model-transition-medium: 0.3s ease;
-
-  /* Font sizes */
-  --model-font-size-sm: 14px;
-  --model-font-size-md: 16px;
-  --model-font-size-lg: 18px;
-}
 
 /* Component Layout */
 .cfa-consolidation {

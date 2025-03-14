@@ -589,24 +589,7 @@
       margin-top: var(--spacing-md) !important;
     }
     }
-    /* Enhanced Root Variables with Maximum Specificity */
-    html:not(#_):not(#_):not(#_) {
-      /* Critical Layout Variables */
-      --spacing-unit: 1rem !important;
-      --spacing-xs: calc(var(--spacing-unit) * 0.25) !important;
-      --spacing-sm: calc(var(--spacing-unit) * 0.5) !important;
-      --spacing-md: var(--spacing-unit) !important;
-      --spacing-lg: calc(var(--spacing-unit) * 1.5) !important;
-      --spacing-xl: calc(var(--spacing-unit) * 2) !important;
-    
-      /* Theme Variables */
-      --app-background: #f8fafc !important;
-      --sidebar-background: #ffffff !important;
-      --border-color: #e2e8f0 !important;
-      --text-color: #1e293b !important;
-      --text-secondary: #64748b !important;
-      --primary-color: #3b82f6 !important;
-    }
+ 
     
     /* Enhanced Container Layout */
     html body .scaling-container:not(#_):not(#_):not(#_) {
@@ -1034,30 +1017,9 @@
       animation: shimmer 1.5s infinite !important;
     }
     
-    /* Dark Mode Support */
-    @media (prefers-color-scheme: dark) {
-      html:not(#_):not(#_):not(#_) {
-        --app-background: #0f172a !important;
-        --sidebar-background: #1e293b !important;
-        --border-color: #334155 !important;
-        --text-color: #f1f5f9 !important;
-        --text-secondary: #94a3b8 !important;
-      }
+
     
-      html body .scaling-item:not(#_):not(#_):not(#_) {
-        background: rgba(255, 255, 255, 0.02) !important;
-      }
-    
-      html body .scaling-operation-select:not(#_):not(#_):not(#_),
-      html body .scaling-factor-input:not(#_):not(#_):not(#_) {
-        background: rgba(255, 255, 255, 0.03) !important;
-      }
-    
-      html body .tooltip:not(#_):not(#_):not(#_) {
-        background: rgba(30, 41, 59, 0.95) !important;
-        border-color: rgba(59, 130, 246, 0.3) !important;
-      }
-    }
+
     
     /* Responsive Design */
     @media (max-width: 768px) {
@@ -1350,15 +1312,6 @@
     html body .scaling-summary .font-medium:not(#_):not(#_):not(#_) {
       font-weight: 500 !important;
     }
-    /* Summary Component Root Variables */
-    html:not(#_):not(#_):not(#_) {
-      --summary-spacing: 1rem !important;
-      --summary-border-radius: 0.25rem !important;
-      --summary-transition: all 0.3s ease !important;
-      --summary-shadow: 0 4px 6px rgba(0, 0, 0, 0.05) !important;
-      --summary-checkbox-size: 1rem !important;
-    }
-    
     /* Summary Table Base Structure */
     html body .scaling-summary:not(#_):not(#_):not(#_) {
       background: var(--sidebar-background) !important;

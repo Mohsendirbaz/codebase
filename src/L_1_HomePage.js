@@ -1469,6 +1469,8 @@ const L_1_HomePageContent = () => {
                         />
                     </>
                 )}
+                <div className="form-panel-container">
+
                 <div className="form-action-buttons">
                     <div className="button-row config-row">
                         <div className="tooltip-container">
@@ -1603,6 +1605,7 @@ const L_1_HomePageContent = () => {
                             </button>
                         </div>
                     </div>
+                </div>
                 </div>
                 {monitoringActive && (
                     <CalculationMonitor 
