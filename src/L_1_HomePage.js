@@ -7,7 +7,6 @@ import CustomizableTable from './CustomizableTable';
 import ExtendedScaling from './extended_scaling/ExtendedScaling';
 import FactEngine from './FactEngine';
 import FactEngineAdmin from './FactEngineAdmin';
-import FormHeader from './FormHeader.js';
 import GeneralFormConfig from './GeneralFormConfig.js';
 import './L_1_HomePage.CSS/L_1_HomePage1.css';
 import './L_1_HomePage.CSS/L_1_HomePage2.css';
@@ -27,12 +26,8 @@ import './styles/normal-theme.css';
 import './styles/creative-theme.css';
 import PropertySelector from './PropertySelector.js';
 import MultiVersionSelector from './MultiVersionSelector.js';
-import TodoList from './TodoList.js';
 import VersionSelector from './VersionSelector.js';
-import VersionControl from './components/version/VersionControl';
-import EditableHierarchicalList from './Editable';
 import SpatialTransformComponent from './naturalmotion';
-import SensitivityAnalysis from './components/SensitivityAnalysis';
 import useFormValues from './useFormValues.js';
 import TestingZone from './components/TestingZone';
 import CalculationMonitor from './components/CalculationMonitor';
@@ -1357,6 +1352,12 @@ const L_1_HomePageContent = () => {
                 >
                     Additional Revenue Streams Prices <br /> (Rs, $ / unit)
                 </button>
+                <button
+                            className={`sub-tab-button ${activeSubTab === 'Scaling' ? 'active' : ''}`}
+                            onClick={() => setActiveSubTab('Scaling')}
+                        >
+                            + Scaling
+                        </button>
             </div>
             <div className="form-content">
                 
@@ -1446,6 +1447,27 @@ const L_1_HomePageContent = () => {
                         setS={setS}
                         setVersion={setVersion}
                     />
+                )}
+                {activeSubTab === 'Scaling' && (
+                    <>
+                        <GeneralFormConfig
+                            formValues={formValues}
+                            handleInputChange={handleInputChange}
+                            version={version}
+                            filterKeyword="Amount7"
+                            V={V}
+                            toggleV={toggleV}
+                            S={S || {}}
+                            setS={setS}
+                            setVersion={setVersion}
+                        />
+                        <ExtendedScaling
+                            baseCosts={baseCosts}
+                            onScaledValuesChange={handleScaledValuesChange}
+                            initialScalingGroups={scalingGroups}
+                            onScalingGroupsChange={handleScalingGroupsChange}
+                        />
+                    </>
                 )}
                 <div className="form-action-buttons">
                     <div className="button-row config-row">
@@ -1705,27 +1727,8 @@ const L_1_HomePageContent = () => {
                         onScalingGroupsChange={handleScalingGroupsChange}
                     />
                 );
-            case 'Editable':
-                return (
-                    <div className="p-4">
-                        <Tabs>
-                            <TabList>
-                                <Tab>Outline</Tab>
-                                <Tab>Todo List</Tab>
-                            </TabList>
-                            <TabPanel>
-                                <h2 className="text-xl font-bold mb-4">Editable Hierarchical List</h2>
-                                <EditableHierarchicalList />
-                            </TabPanel>
-                            <TabPanel>
-                                <h2 className="text-xl font-bold mb-4">Todo List</h2>
-                                <TodoList />
-                            </TabPanel>
-                        </Tabs>
-                    </div>
-                );
-            case 'SensitivityAnalysis':
-                return <SensitivityAnalysis />;
+         
+           
            
             case 'TestingZone':
             return <TestingZone />;
@@ -1816,28 +1819,16 @@ const L_1_HomePageContent = () => {
                             Scaling
                         </button>
                         <button
-                            className={`tab-button ${activeTab === 'Editable' ? 'active' : ''}`}
-                            onClick={() => setActiveTab('Editable')}
+                            className={`tab-button ${activeTab === 'TestingZone' ? 'active' : ''}`}
+                            onClick={() => setActiveTab('TestingZone')}
                         >
-                            Editable
+                            CFA Consolidation
                         </button>
                         <button
                             className={`tab-button ${activeTab === 'NaturalMotion' ? 'active' : ''}`}
                             onClick={() => setActiveTab('NaturalMotion')}
                         >
                             Natural Motion
-                        </button>
-                        <button
-                            className={`tab-button ${activeTab === 'SensitivityAnalysis' ? 'active' : ''}`}
-                            onClick={() => setActiveTab('SensitivityAnalysis')}
-                        >
-                            Sensitivity Analysis
-                        </button>
-                        <button
-                            className={`tab-button ${activeTab === 'TestingZone' ? 'active' : ''}`}
-                            onClick={() => setActiveTab('TestingZone')}
-                        >
-                            Testing Zone
                         </button>
                         <button
                             className={`tab-button ${activeTab === 'FactAdmin' ? 'active' : ''}`}
