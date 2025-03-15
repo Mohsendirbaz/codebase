@@ -1,5 +1,5 @@
 """Flask service (port:8009) - Processes HTML files from batch results"""
-from flask import Flask, jsonify, send_from_directory
+from flask import Flask, jsonify
 from flask_cors import CORS
 import os
 import re
@@ -11,7 +11,7 @@ app = Flask(__name__)
 CORS(app)
 
 # Use Path for more consistent path handling
-BASE_PATH = Path(os.path.dirname(os.path.dirname(os.path.dirname(__file__)))) / "Original"
+BASE_PATH = Path(os.path.dirname(os.path.dirname(os.path.dirname(__file__)))) / "public" / "Original"
 
 def get_versions(directory: Path):
     if not directory.exists():
@@ -20,37 +20,38 @@ def get_versions(directory: Path):
     return [name.split("(")[1].split(")")[0] for name in os.listdir(directory) 
             if name.startswith("Batch(") and name.endswith(")")]
 
-# Updated get_html_files function to handle HTML files in the nested directory structure
+# Updated get_html_files function to handle both organized and legacy HTML files
 @app.route('/api/album_html/<version>')
 def get_html_files(version: str):
     logging.info(f"Processing request for version: {version}")
+    results_path = BASE_PATH / f"Batch({version})" / f"Results({version})"
     html_files = []
 
-    if not BASE_PATH.exists():
-        logging.warning(f"Directory not found: {BASE_PATH}")
+    if not results_path.exists():
+        logging.warning(f"Results folder not found: {results_path}")
         return jsonify([])
 
-    # Construct the path to the version's Results directory
-    version_folder = BASE_PATH / f"Batch({version})" / f"Results({version})"
-    logging.info(f"Scanning directory: {version_folder}")
+    # First, look for organized HTML albums (with HTML_ prefix)
+    html_albums = [d for d in os.listdir(results_path) 
+                  if (results_path / d).is_dir() and d.startswith("HTML_")]
     
-    if not version_folder.exists():
-        logging.warning(f"Version folder not found: {version_folder}")
-        return jsonify([])
-    
-    # Look for HTML files in the Results directory
-    for item in os.listdir(version_folder):
-        item_path = version_folder / item
-        
-        # Check if it's a directory that might contain HTML files
-        if os.path.isdir(item_path):
-            logging.info(f"Checking directory: {item_path}")
-            for file in os.listdir(item_path):
+    # If no organized albums found, fall back to scanning all directories
+    if not html_albums:
+        logging.info(f"No organized HTML albums found, scanning all directories")
+        for root, _, files in os.walk(results_path):
+            root_path = Path(root)
+            for file in files:
                 if file.lower().endswith('.html'):
-                    process_html_file(file, item_path, html_files)
-        # Also check for HTML files directly in the Results directory
-        elif item.lower().endswith('.html'):
-            process_html_file(item, version_folder, html_files)
+                    process_html_file(file, root_path, html_files)
+    else:
+        # Process organized albums
+        for album in html_albums:
+            album_path = results_path / album
+            
+            # Skip processing metadata file
+            for file in os.listdir(album_path):
+                if file.lower().endswith('.html') and file != "album_metadata.json":
+                    process_html_file(file, album_path, html_files)
     
     logging.info(f"Found {len(html_files)} HTML files across {len(set(f['album'] for f in html_files))} albums")
     return jsonify(html_files)
@@ -59,13 +60,8 @@ def process_html_file(file, directory, html_files):
     """Helper function to process an HTML file and add it to the list"""
     file_path = directory / file
     try:
-        # Read the HTML content with proper encoding
         with open(file_path, 'r', encoding='utf-8') as f:
             content = f.read()
-        
-        # Log the content length to verify it's being read correctly
-        logging.info(f"Read HTML content from {file}, length: {len(content)}")
-        
         album = directory.name
         
         # Check if this is from an organized album (HTML_v1_2_PlotType)
@@ -86,69 +82,16 @@ def process_html_file(file, directory, html_files):
                 # Fall back to the original album name
                 display_name = album.replace('_', ' ')
         
-        # Create the HTML file object with all necessary information
-        html_file_obj = {
+        html_files.append({
             "name": file,
-            "content": content,  # Include the full HTML content
+            "content": content,
             "album": album,
             "display_name": display_name,
             "path": str(file_path)  # Convert Path to string for JSON serialization
-        }
-        
-        # Log the object structure (without the full content)
-        logging.info(f"Created HTML file object: {file}, album: {album}, path: {str(file_path)}")
-        
-        # Add to the list of HTML files
-        html_files.append(html_file_obj)
+        })
         logging.info(f"Processed {file} from album {album}")
     except Exception as e:
         logging.error(f"Failed to process {file}: {e}")
-        logging.error(f"Exception details: {str(e)}")
-
-# Add a route to serve static files from the correct directory
-@app.route('/static/html/<version>/<album>/<filename>')
-def serve_html(version, album, filename):
-    """Serve HTML files from the correct directory based on version and album"""
-    # Construct the path to the HTML file
-    version_folder = BASE_PATH / f"Batch({version})" / f"Results({version})"
-    
-    # Try to find the file in the album directory first
-    file_path = version_folder / album / filename
-    
-    # If not found, try directly in the Results directory
-    if not file_path.exists():
-        file_path = version_folder / filename
-    logging.info(f"Serving HTML file: {file_path}")
-    logging.info(f"File exists: {file_path.exists()}")
-    
-    # List all files in the directory to help debug
-    parent_dir = file_path.parent
-    if parent_dir.exists():
-        logging.info(f"Files in directory {parent_dir}:")
-        for file in parent_dir.iterdir():
-            logging.info(f"  - {file.name}")
-    else:
-        logging.error(f"Directory not found: {parent_dir}")
-    
-    # Check if the file exists
-    if not file_path.exists():
-        logging.error(f"HTML file not found: {file_path}")
-        return "File not found", 404
-    
-    # Serve the file from its directory
-    try:
-        logging.info(f"Attempting to serve file: {file_path.name} from directory: {str(file_path.parent)}")
-        response = send_from_directory(str(file_path.parent), file_path.name)
-        logging.info(f"Successfully served file: {file_path.name}")
-        return response
-    except Exception as e:
-        logging.error(f"Error serving file: {e}")
-        return f"Error serving file: {e}", 500
-
-# Add a test route to verify the server is working
-@app.route('/test')
-def test():
-    return "Flask server is working!"
 
 if __name__ == '__main__':
     # Configure basic logging

@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useFormValues from './useFormValues';
 import Popup from './Popup';
-import { faEdit, faCheck, faTimes, faSave, faUndo } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import SensitivityAnalysisSelector from './components/SensitivitySelector';
-import axios from 'axios';
-import { originalPropertyMapping } from './labelReferences';
+
+
 const getLatestPlantLifetime = (formValues) => {
   const filteredValues = Object.values(formValues).filter(item => item.id === 'plantLifetimeAmount1');
   return filteredValues.length > 0 ? filteredValues[0].value : 40;

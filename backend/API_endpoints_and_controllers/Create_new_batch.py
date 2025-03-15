@@ -10,7 +10,7 @@ CORS(app)
 # Define the base directory of the project
 # Define path directly from project root
 BASE_DIR = os.path.join(os.path.dirname(__file__), '..', '..')
-STATIC_FOLDER = os.path.join(BASE_DIR,'Original')
+STATIC_FOLDER = os.path.join(BASE_DIR, 'backend', 'Original')
 
 
 # Ensure the static/uploads directory exists

@@ -16,7 +16,7 @@ from Utility_functions.common_utils import property_mapping
 
 # Define the base directory for your uploads and batches
 ORIGINAL_DIR = Path(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-uploads_dir = ORIGINAL_DIR / "Original"
+uploads_dir = ORIGINAL_DIR / "public" / "Original"
 
 # Initialize logging
 log_file_path = os.path.join(os.getcwd(), 'app_executionSub.log')

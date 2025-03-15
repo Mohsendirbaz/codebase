@@ -218,14 +218,14 @@ class PriceOptimizationMonitor:
     def _get_status_file_path(self):
         """Get the path to the status file for this version."""
         # Construct path to the status file
-        results_folder = os.path.join(SCRIPT_DIR, "..", "..", "Original", 
+        results_folder = os.path.join(SCRIPT_DIR, "Original", 
             f"Batch({self.version})", f"Results({self.version})"
         )
         return os.path.join(results_folder, f"price_optimization_status_{self.version}.json")
     
     def _get_fallback_price_file(self):
         """Get the path to the optimal price file as a fallback."""
-        results_folder = os.path.join(SCRIPT_DIR, "..", "..", "Original", 
+        results_folder = os.path.join(SCRIPT_DIR, "Original", 
             f"Batch({self.version})", f"Results({self.version})"
         )
         return os.path.join(results_folder, f"optimal_price_{self.version}.json")
@@ -466,7 +466,7 @@ def get_price(version):
     Get the final optimized price for a specific version
     """
     try:
-        results_folder = os.path.join(SCRIPT_DIR, "..", "..", "Original", f"Batch({version})", f"Results({version})")
+        results_folder = os.path.join(SCRIPT_DIR, "Original", f"Batch({version})", f"Results({version})")
         
         # Try both possible file names for the price data
         price_files = [

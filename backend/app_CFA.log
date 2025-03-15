@@ -4331,7 +4331,6 @@ total units sold: 600000.0
 total_units_sold: 600000.0
 Script finished execution.
 CFA process initiated.
-<<<<<<< HEAD
 Script started with version: 3, V selections: {'V1': 'on', 'V2': 'off', 'V3': 'off', 'V4': 'off', 'V5': 'off', 'V6': 'off', 'V7': 'off', 'V8': 'off', 'V9': 'off', 'V10': 'off'}, F selections: {'F1': 'on', 'F2': 'on', 'F3': 'on', 'F4': 'on', 'F5': 'on'}, Target row: 20
 total units sold: 600000.0
 total_units_sold: 600000.0
@@ -4359,8 +4358,6 @@ total units sold: 600000.0
 total_units_sold: 600000.0
 Script finished execution.
 CFA process initiated.
-=======
->>>>>>> 62283430 (fixed rendering of table, dynamic and png)
 Script started with version: 2, V selections: {'V1': 'on', 'V2': 'off', 'V3': 'off', 'V4': 'off', 'V5': 'off', 'V6': 'off', 'V7': 'off', 'V8': 'off', 'V9': 'off', 'V10': 'off'}, F selections: {'F1': 'on', 'F2': 'on', 'F3': 'on', 'F4': 'on', 'F5': 'on'}, Target row: 20
 total units sold: 600000.0
 total_units_sold: 600000.0
@@ -4415,7 +4412,6 @@ total units sold: 600000.0
 total_units_sold: 600000.0
 Script finished execution.
 CFA process initiated.
-<<<<<<< HEAD
 Script started with version: 4, V selections: {'V1': 'on', 'V2': 'off', 'V3': 'off', 'V4': 'off', 'V5': 'off', 'V6': 'off', 'V7': 'off', 'V8': 'off', 'V9': 'off', 'V10': 'off'}, F selections: {'F1': 'on', 'F2': 'on', 'F3': 'on', 'F4': 'on', 'F5': 'on'}, Target row: 20
 total units sold: 600000.0
 total_units_sold: 600000.0
@@ -4439,145 +4435,6 @@ total units sold: 600000.0
 total_units_sold: 600000.0
 total units sold: 600000.0
 total_units_sold: 600000.0
-=======
-Script started with version: 1, V selections: {'V1': 'on', 'V2': 'off', 'V3': 'off', 'V4': 'off', 'V5': 'off', 'V6': 'off', 'V7': 'off', 'V8': 'off', 'V9': 'off', 'V10': 'off'}, F selections: {'F1': 'on', 'F2': 'on', 'F3': 'on', 'F4': 'on', 'F5': 'on'}, Target row: 20
-total units sold: 157894.73684210525
-total units sold: 410526.3157894737
-total units sold: 600000.0
-total_units_sold: 600000.0
-total units sold: 157894.73684210525
-total units sold: 410526.3157894737
-total units sold: 600000.0
-total_units_sold: 600000.0
-total units sold: 157894.73684210525
-total units sold: 410526.3157894737
-total units sold: 600000.0
-total_units_sold: 600000.0
-total units sold: 157894.73684210525
-total units sold: 410526.3157894737
-total units sold: 600000.0
-total_units_sold: 600000.0
-total units sold: 157894.73684210525
-total units sold: 410526.3157894737
-total units sold: 600000.0
-total_units_sold: 600000.0
-total units sold: 157894.73684210525
-total units sold: 410526.3157894737
-total units sold: 600000.0
-total_units_sold: 600000.0
-total units sold: 157894.73684210525
-total units sold: 410526.3157894737
-total units sold: 600000.0
-total_units_sold: 600000.0
-total units sold: 157894.73684210525
-total units sold: 410526.3157894737
-total units sold: 600000.0
-total_units_sold: 600000.0
-total units sold: 157894.73684210525
-total units sold: 410526.3157894737
-total units sold: 600000.0
-total_units_sold: 600000.0
-total units sold: 157894.73684210525
-total units sold: 410526.3157894737
-total units sold: 600000.0
-total_units_sold: 600000.0
-total units sold: 157894.73684210525
-total units sold: 410526.3157894737
-total units sold: 600000.0
-total_units_sold: 600000.0
-total units sold: 157894.73684210525
-total units sold: 410526.3157894737
-total units sold: 600000.0
-total_units_sold: 600000.0
-Script finished execution.
-CFA process initiated.
-Script started with version: 1, V selections: {'V1': 'on', 'V2': 'off', 'V3': 'off', 'V4': 'off', 'V5': 'off', 'V6': 'off', 'V7': 'off', 'V8': 'off', 'V9': 'off', 'V10': 'off'}, F selections: {'F1': 'on', 'F2': 'on', 'F3': 'on', 'F4': 'on', 'F5': 'on'}, Target row: 20
-total units sold: 221052.63157894736
-total units sold: 600000.0
-total_units_sold: 600000.0
-total units sold: 221052.63157894736
-total units sold: 600000.0
-total_units_sold: 600000.0
-total units sold: 221052.63157894736
-total units sold: 600000.0
-total_units_sold: 600000.0
-total units sold: 221052.63157894736
-total units sold: 600000.0
-total_units_sold: 600000.0
-total units sold: 221052.63157894736
-total units sold: 600000.0
-total_units_sold: 600000.0
-total units sold: 221052.63157894736
-total units sold: 600000.0
-total_units_sold: 600000.0
-total units sold: 221052.63157894736
-total units sold: 600000.0
-total_units_sold: 600000.0
-total units sold: 221052.63157894736
-total units sold: 600000.0
-total_units_sold: 600000.0
-total units sold: 221052.63157894736
-total units sold: 600000.0
-total_units_sold: 600000.0
-total units sold: 221052.63157894736
-total units sold: 600000.0
-total_units_sold: 600000.0
-total units sold: 221052.63157894736
-total units sold: 600000.0
-total_units_sold: 600000.0
-total units sold: 221052.63157894736
->>>>>>> 62283430 (fixed rendering of table, dynamic and png)
-total units sold: 600000.0
-total_units_sold: 600000.0
-Script finished execution.
-CFA process initiated.
-Script started with version: 1, V selections: {'V1': 'on', 'V2': 'off', 'V3': 'off', 'V4': 'off', 'V5': 'off', 'V6': 'off', 'V7': 'off', 'V8': 'off', 'V9': 'off', 'V10': 'off'}, F selections: {'F1': 'on', 'F2': 'on', 'F3': 'on', 'F4': 'on', 'F5': 'on'}, Target row: 20
-total units sold: 126315.78947368421
-total units sold: 284210.5263157895
-total units sold: 600000.0
-total_units_sold: 600000.0
-total units sold: 126315.78947368421
-total units sold: 284210.5263157895
-total units sold: 600000.0
-total_units_sold: 600000.0
-total units sold: 126315.78947368421
-total units sold: 284210.5263157895
-total units sold: 600000.0
-total_units_sold: 600000.0
-total units sold: 126315.78947368421
-total units sold: 284210.5263157895
-total units sold: 600000.0
-total_units_sold: 600000.0
-total units sold: 126315.78947368421
-total units sold: 284210.5263157895
-total units sold: 600000.0
-total_units_sold: 600000.0
-total units sold: 126315.78947368421
-total units sold: 284210.5263157895
-total units sold: 600000.0
-total_units_sold: 600000.0
-total units sold: 126315.78947368421
-total units sold: 284210.5263157895
-total units sold: 600000.0
-total_units_sold: 600000.0
-total units sold: 126315.78947368421
-total units sold: 284210.5263157895
-total units sold: 600000.0
-total_units_sold: 600000.0
-total units sold: 126315.78947368421
-total units sold: 284210.5263157895
-total units sold: 600000.0
-total_units_sold: 600000.0
-total units sold: 126315.78947368421
-total units sold: 284210.5263157895
-total units sold: 600000.0
-total_units_sold: 600000.0
-total units sold: 126315.78947368421
-total units sold: 284210.5263157895
-total units sold: 600000.0
-total_units_sold: 600000.0
-total units sold: 126315.78947368421
-total units sold: 284210.5263157895
 total units sold: 600000.0
 total_units_sold: 600000.0
 Script finished execution.

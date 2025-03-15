@@ -14,7 +14,7 @@ if str(BACKEND_DIR) not in sys.path:
     sys.path.append(str(BACKEND_DIR))
 
 # Base paths
-PUBLIC_DIR = BACKEND_DIR.parent / 'Original'
+PUBLIC_DIR = BACKEND_DIR.parent / 'public' / 'Original'
 # Try to import property_mapping, use empty dict if not available
 try:
     from Utility_functions.common_utils import property_mapping
@@ -37,9 +37,9 @@ logging.basicConfig(
 logging.info("Script started.")
 logger = logging.getLogger(__name__)
 
-# Create log directory for future use if needed, but don't log to file
-LOG_DIR = BACKEND_DIR / "Logs"
-LOG_DIR.mkdir(exist_ok=True)
+# Ensure base directory exists
+os.makedirs(PUBLIC_DIR, exist_ok=True)
+logging.info(f"Ensured base directory exists at {PUBLIC_DIR}")
 
 # Ensure base directory exists
 os.makedirs(PUBLIC_DIR, exist_ok=True)
