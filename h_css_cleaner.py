@@ -54,7 +54,7 @@ class CSSCleaner:
             self.class_map[base_class][selector_key]['definitions'][str(file_number)] = info['definition']
 
     def scan_file(self, file_number):
-        file_path = Path(f'src/L_1_HomePage{file_number}.css')
+        file_path = Path(f'src/HomePage{file_number}.css')
         if not file_path.exists():
             print(f"Warning: {file_path} not found")
             return

@@ -13,7 +13,7 @@ body.fall {
   box-sizing: inherit;
 }
 
-body.fall .L_1_HomePage {
+body.fall .HomePage {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto auto auto;
@@ -26,7 +26,7 @@ body.fall .L_1_HomePage {
   justify-content: center;
   align-items: center;
 }
-body.fall .L_1_HomePageSectionA {
+body.fall .HomePageSectionA {
   background-color: #FFD700; /* Gold background */
   display: grid; /* Switch back to grid layout */
   grid-template-columns: 1fr; /* Only one column */
@@ -40,7 +40,7 @@ body.fall .L_1_HomePageSectionA {
 }
 
 /* Main Title Section in the Center */
-body.fall .L_1_HomePageSectionT {
+body.fall .HomePageSectionT {
   grid-column: 1 / -1; /* Span across the entire grid */
   grid-row: 1 / -1;    /* Span across the entire grid */
   display: flex;
@@ -112,7 +112,7 @@ body.fall .tab-button.active {
   color: white;
 }
 
-body.fall .L_1_HomePageSectionR {
+body.fall .HomePageSectionR {
   background-color: #d3d3d3; /* Light background */
   display: flex;
   grid-template-columns: 1fr 1fr;
@@ -139,7 +139,7 @@ body.fall .FileUpload {
 }
 
 
-body.fall .L_1_HomePageTabContent {
+body.fall .HomePageTabContent {
   display: grid;
   grid-template-columns: 1fr;
   height: calc(100vh - 60mm - var(--tabs-height)); /* Dynamically adjust height based on known elements */
@@ -149,7 +149,7 @@ body.fall .L_1_HomePageTabContent {
 
 }
 
-body.fall .L_1_HomePageInput {
+body.fall .HomePageInput {
   display: grid;
   grid-template-columns: 1fr;
   align-content: center;
@@ -384,7 +384,7 @@ body.fall .version-selector-container select {
 
 
 
-body.fall .L_1_HomePageSectionB {
+body.fall .HomePageSectionB {
   background-color: #a1b4b4; /* Dark teal */
  
   display: flex;

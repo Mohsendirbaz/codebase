@@ -38,17 +38,17 @@ const ThemeConfigurator = ({ onClose }) => {
   
   const themeGenerator = useRef(new ThemeGenerator());
   const availableCssFiles = [
-    'L_1_HomePage_AboutUs.css',
-    'L_1_HomePage_buttons.css',
-    'L_1_HomePage_FactAdmin.css',
-    'L_1_HomePage_monitoring.css',
-    'L_1_HomePage_selectors.css',
-    'L_1_HomePage1.css',
-    'L_1_HomePage2.css',
-    'L_1_HomePage3.css',
-    'L_1_HomePage4.css',
-    'L_1_HomePage5.css',
-    'L_1_HomePage6.css'
+    'HomePage_AboutUs.css',
+    'HomePage_buttons.css',
+    'HomePage_FactAdmin.css',
+    'HomePage_monitoring.css',
+    'HomePage_selectors.css',
+    'HomePage1.css',
+    'HomePage2.css',
+    'HomePage3.css',
+    'HomePage4.css',
+    'HomePage5.css',
+    'HomePage6.css'
   ];
   
   // Load current theme colors on component mount

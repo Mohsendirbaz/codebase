@@ -85,19 +85,19 @@
     },
     "styles\\HomePage.CSS": {
       "files": [
-        "styles\\HomePage.CSS\\L_1_HomePage1.css",
-        "styles\\HomePage.CSS\\L_1_HomePage2.css",
-        "styles\\HomePage.CSS\\L_1_HomePage3.css",
-        "styles\\HomePage.CSS\\L_1_HomePage4.css",
-        "styles\\HomePage.CSS\\L_1_HomePage5.css",
-        "styles\\HomePage.CSS\\L_1_HomePage6.css",
-        "styles\\HomePage.CSS\\L_1_HomePage_AboutUs.css",
-        "styles\\HomePage.CSS\\L_1_HomePage_buttons.css",
-        "styles\\HomePage.CSS\\L_1_HomePage_FactAdmin.css",
-        "styles\\HomePage.CSS\\L_1_HomePage_FactEngine.css",
-        "styles\\HomePage.CSS\\L_1_HomePage_monitoring.css",
-        "styles\\HomePage.CSS\\L_1_HomePage_neumorphic-tabs.css",
-        "styles\\HomePage.CSS\\L_1_HomePage_selectors.css",
+        "styles\\HomePage.CSS\\HomePage1.css",
+        "styles\\HomePage.CSS\\HomePage2.css",
+        "styles\\HomePage.CSS\\HomePage3.css",
+        "styles\\HomePage.CSS\\HomePage4.css",
+        "styles\\HomePage.CSS\\HomePage5.css",
+        "styles\\HomePage.CSS\\HomePage6.css",
+        "styles\\HomePage.CSS\\HomePage_AboutUs.css",
+        "styles\\HomePage.CSS\\HomePage_buttons.css",
+        "styles\\HomePage.CSS\\HomePage_FactAdmin.css",
+        "styles\\HomePage.CSS\\HomePage_FactEngine.css",
+        "styles\\HomePage.CSS\\HomePage_monitoring.css",
+        "styles\\HomePage.CSS\\HomePage_neumorphic-tabs.css",
+        "styles\\HomePage.CSS\\HomePage_selectors.css",
         "styles\\HomePage.CSS\\Naturalmotion.css",
         "styles\\HomePage.CSS\\Popup.css",
         "styles\\HomePage.CSS\\VersionSelector.css"
@@ -309,68 +309,68 @@
         "size": 2770
       },
       {
-        "name": "L_1_HomePage1.css",
-        "path": "styles\\HomePage.CSS\\L_1_HomePage1.css",
+        "name": "HomePage1.css",
+        "path": "styles\\HomePage.CSS\\HomePage1.css",
         "size": 6372
       },
       {
-        "name": "L_1_HomePage2.css",
-        "path": "styles\\HomePage.CSS\\L_1_HomePage2.css",
+        "name": "HomePage2.css",
+        "path": "styles\\HomePage.CSS\\HomePage2.css",
         "size": 1919
       },
       {
-        "name": "L_1_HomePage3.css",
-        "path": "styles\\HomePage.CSS\\L_1_HomePage3.css",
+        "name": "HomePage3.css",
+        "path": "styles\\HomePage.CSS\\HomePage3.css",
         "size": 2816
       },
       {
-        "name": "L_1_HomePage4.css",
-        "path": "styles\\HomePage.CSS\\L_1_HomePage4.css",
+        "name": "HomePage4.css",
+        "path": "styles\\HomePage.CSS\\HomePage4.css",
         "size": 41173
       },
       {
-        "name": "L_1_HomePage5.css",
-        "path": "styles\\HomePage.CSS\\L_1_HomePage5.css",
+        "name": "HomePage5.css",
+        "path": "styles\\HomePage.CSS\\HomePage5.css",
         "size": 2620
       },
       {
-        "name": "L_1_HomePage6.css",
-        "path": "styles\\HomePage.CSS\\L_1_HomePage6.css",
+        "name": "HomePage6.css",
+        "path": "styles\\HomePage.CSS\\HomePage6.css",
         "size": 3178
       },
       {
-        "name": "L_1_HomePage_AboutUs.css",
-        "path": "styles\\HomePage.CSS\\L_1_HomePage_AboutUs.css",
+        "name": "HomePage_AboutUs.css",
+        "path": "styles\\HomePage.CSS\\HomePage_AboutUs.css",
         "size": 2677
       },
       {
-        "name": "L_1_HomePage_buttons.css",
-        "path": "styles\\HomePage.CSS\\L_1_HomePage_buttons.css",
+        "name": "HomePage_buttons.css",
+        "path": "styles\\HomePage.CSS\\HomePage_buttons.css",
         "size": 4552
       },
       {
-        "name": "L_1_HomePage_FactAdmin.css",
-        "path": "styles\\HomePage.CSS\\L_1_HomePage_FactAdmin.css",
+        "name": "HomePage_FactAdmin.css",
+        "path": "styles\\HomePage.CSS\\HomePage_FactAdmin.css",
         "size": 5981
       },
       {
-        "name": "L_1_HomePage_FactEngine.css",
-        "path": "styles\\HomePage.CSS\\L_1_HomePage_FactEngine.css",
+        "name": "HomePage_FactEngine.css",
+        "path": "styles\\HomePage.CSS\\HomePage_FactEngine.css",
         "size": 4027
       },
       {
-        "name": "L_1_HomePage_monitoring.css",
-        "path": "styles\\HomePage.CSS\\L_1_HomePage_monitoring.css",
+        "name": "HomePage_monitoring.css",
+        "path": "styles\\HomePage.CSS\\HomePage_monitoring.css",
         "size": 1221
       },
       {
-        "name": "L_1_HomePage_neumorphic-tabs.css",
-        "path": "styles\\HomePage.CSS\\L_1_HomePage_neumorphic-tabs.css",
+        "name": "HomePage_neumorphic-tabs.css",
+        "path": "styles\\HomePage.CSS\\HomePage_neumorphic-tabs.css",
         "size": 2204
       },
       {
-        "name": "L_1_HomePage_selectors.css",
-        "path": "styles\\HomePage.CSS\\L_1_HomePage_selectors.css",
+        "name": "HomePage_selectors.css",
+        "path": "styles\\HomePage.CSS\\HomePage_selectors.css",
         "size": 1237
       },
       {

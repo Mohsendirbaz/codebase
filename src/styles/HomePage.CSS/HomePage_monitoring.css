@@ -1,4 +1,4 @@
-/* L_1_HomePage_monitoring.css */
+/* HomePage_monitoring.css */
 .content-container {
   display: flex;
   flex-direction: row;
@@ -6,7 +6,7 @@
   overflow: hidden;
 }
 
-.L_1_HomePageTabContent {
+.HomePageTabContent {
   flex: 1;
   overflow: auto;
   padding: 20px;
@@ -43,7 +43,7 @@
     overflow-y: auto;
   }
   
-  .L_1_HomePageTabContent {
+  .HomePageTabContent {
     padding: 10px;
   }
 }

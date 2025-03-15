@@ -8,19 +8,19 @@ import ExtendedScaling from './components/extended_scaling/ExtendedScaling';
 import FactEngine from './FactEngine';
 import FactEngineAdmin from './FactEngineAdmin';
 import GeneralFormConfig from './GeneralFormConfig.js';
-import './styles/HomePage.CSS/L_1_HomePage1.css';
-import './styles/HomePage.CSS/L_1_HomePage2.css';
-import './styles/HomePage.CSS/L_1_HomePage3.css';
-import './styles/HomePage.CSS/L_1_HomePage4.css';
-import './styles/HomePage.CSS/L_1_HomePage5.css';
-import './styles/HomePage.CSS/L_1_HomePage6.css';
-import './styles/HomePage.CSS/L_1_HomePage_AboutUs.css';
-import './styles/HomePage.CSS/L_1_HomePage_buttons.css';
-import './styles/HomePage.CSS/L_1_HomePage_monitoring.css';
-import './styles/HomePage.CSS/L_1_HomePage_selectors.css';
-import './styles/HomePage.CSS/L_1_HomePage_FactEngine.css';
-import './styles/HomePage.CSS/L_1_HomePage_FactAdmin.css';
-import './styles/HomePage.CSS/L_1_HomePage_neumorphic-tabs.css';
+import './styles/HomePage.CSS/HomePage1.css';
+import './styles/HomePage.CSS/HomePage2.css';
+import './styles/HomePage.CSS/HomePage3.css';
+import './styles/HomePage.CSS/HomePage4.css';
+import './styles/HomePage.CSS/HomePage5.css';
+import './styles/HomePage.CSS/HomePage6.css';
+import './styles/HomePage.CSS/HomePage_AboutUs.css';
+import './styles/HomePage.CSS/HomePage_buttons.css';
+import './styles/HomePage.CSS/HomePage_monitoring.css';
+import './styles/HomePage.CSS/HomePage_selectors.css';
+import './styles/HomePage.CSS/HomePage_FactEngine.css';
+import './styles/HomePage.CSS/HomePage_FactAdmin.css';
+import './styles/HomePage.CSS/HomePage_neumorphic-tabs.css';
 import './styles/Themes/dark-theme.css';
 import './styles/Themes/normal-theme.css';
 import './styles/Themes/creative-theme.css';
@@ -35,7 +35,7 @@ import SensitivityMonitor from './components/modules/SensitivityMonitor';
 import ConfigurationMonitor from './components/modules/ConfigurationMonitor';
 import ThemeButton from './components/modules/ThemeButton';
 
-const L_1_HomePageContent = () => {
+const HomePageContent = () => {
     const { selectedVersions, version: contextVersion, setVersion: setContextVersion } = useVersionState();
     const [activeTab, setActiveTab] = useState('Input');
     const [activeSubTab, setActiveSubTab] = useState('ProjectConfig');
@@ -1742,10 +1742,10 @@ const L_1_HomePageContent = () => {
     };
 
     return (
-        <div className="L_1_HomePage">
-            <div className="L_1_HomePageSectionA">
+        <div className="HomePage">
+            <div className="HomePageSectionA">
                 <div className="about-us-image1"></div>
-                <div className="L_1_HomePageSectionT">
+                <div className="HomePageSectionT">
                     <h2 className="h2-large">TEA Space</h2>
                     <h2 className="h2-small">Techno-Economic-Social Simulation and Dynamic Modeling</h2>
                     <h2 className="h2-small">From lemonad stand to Tesla, TEA Space accomodates your complex cost modeling scenarios</h2>
@@ -1773,7 +1773,7 @@ const L_1_HomePageContent = () => {
                 </div>
             </div>
             <div className="main-content">
-                <nav className="L_1_HomePageTabs">
+                <nav className="HomePageTabs">
                     <div>
                         <button
                             className={`tab-button ${activeTab === 'AboutUs' ? 'active' : ''}`}
@@ -1845,7 +1845,7 @@ const L_1_HomePageContent = () => {
                             />
                         </>
                     )}
-                    <div className="L_1_HomePageTabContent">
+                    <div className="HomePageTabContent">
                         {renderTabContent()}
                     </div>
                 </div>
@@ -1854,12 +1854,12 @@ const L_1_HomePageContent = () => {
     );
 };
 
-const L_1_HomePage = () => {
+const HomePage = () => {
     return (
         <VersionStateProvider>
-            <L_1_HomePageContent />
+            <HomePageContent />
         </VersionStateProvider>
     );
 };
 
-export default L_1_HomePage;
+export default HomePage;

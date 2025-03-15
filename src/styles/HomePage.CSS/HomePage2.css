@@ -28,12 +28,12 @@
 }
 
 /* About Us Section */
-.L_1_HomePageSectionA {
+.HomePageSectionA {
     padding: 20px;
     background-color: var(--app-background);
 }
 
-.L_1_HomePageSectionT {
+.HomePageSectionT {
     margin-bottom: 20px;
 }
 
@@ -67,7 +67,7 @@
     gap: 20px;
 }
 
-.L_1_HomePageTabContent {
+.HomePageTabContent {
     flex: 1;
     background-color: var(--sidebar-background);
     border-radius: 8px;

@@ -1,4 +1,4 @@
-.L_1_HomePageTabs .tab-button,
+.HomePageTabs .tab-button,
 .sub-tab-buttons .sub-tab-button {
   background: linear-gradient(145deg, #e6e6e6, #ffffff);
   border-radius: 10px;
@@ -16,7 +16,7 @@
   overflow: hidden;
 }
 
-.L_1_HomePageTabs .tab-button::before,
+.HomePageTabs .tab-button::before,
 .sub-tab-buttons .sub-tab-button::before {
   content: '';
   position: absolute;
@@ -32,14 +32,14 @@
   pointer-events: none;
 }
 
-.L_1_HomePageTabs .tab-button:hover,
+.HomePageTabs .tab-button:hover,
 .sub-tab-buttons .sub-tab-button:hover {
   transform: translateY(-2px);
   box-shadow: 10px 10px 20px #c3c3c3,
               -10px -10px 20px #ffffff;
 }
 
-.L_1_HomePageTabs .tab-button:focus,
+.HomePageTabs .tab-button:focus,
 .sub-tab-buttons .sub-tab-button:focus {
   outline: none;
   box-shadow: 12px 12px 24px #b8b8b8,
@@ -47,7 +47,7 @@
   transform: translateY(-3px);
 }
 
-.L_1_HomePageTabs .tab-button.active,
+.HomePageTabs .tab-button.active,
 .sub-tab-buttons .sub-tab-button.active {
   background: linear-gradient(145deg, #ffffff, #f0f0f0);
   box-shadow: inset 4px 4px 8px #d1d1d1,
@@ -56,7 +56,7 @@
   color:darkblue;
 }
 
-.L_1_HomePageTabs {
+.HomePageTabs {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -77,7 +77,7 @@
 }
 
 /* Ensure uniform text size */
-.L_1_HomePageTabs .tab-button *,
+.HomePageTabs .tab-button *,
 .sub-tab-buttons .sub-tab-button * {
   font-size: 16px !important;
   line-height: 1.5;

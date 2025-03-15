@@ -34,7 +34,7 @@ class CSSProcessor:
     def remove_from_files(self):
         """Remove overridden classes from CSS files"""
         for file_num, classes in self.to_remove.items():
-            file_path = Path(f'src/L_1_HomePage{file_num}.css')
+            file_path = Path(f'src/HomePage{file_num}.css')
             if not file_path.exists():
                 print(f"Warning: {file_path} not found")
                 continue

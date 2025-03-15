@@ -13,7 +13,7 @@ html, body {
   box-sizing: inherit;
 }
 
-.L_1_HomePage {
+.HomePage {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto auto auto;
@@ -27,7 +27,7 @@ html, body {
   align-items: center;
 }
 
-.L_1_HomePageSectionA {
+.HomePageSectionA {
   background-color: #FFD700; /* Gold background */
   display: grid; /* Switch back to grid layout */
   grid-template-columns: 1fr; /* Only one column */
@@ -41,7 +41,7 @@ html, body {
 }
 
 /* Main Title Section in the Center */
-.L_1_HomePageSectionT {
+.HomePageSectionT {
   grid-column: 1 / -1; /* Span across the entire grid */
   grid-row: 1 / -1;    /* Span across the entire grid */
   display: flex;
@@ -93,7 +93,7 @@ html, body {
   margin-right: 5%;    /* Optional: Adjust for slight right positioning */
 }
 
-.L_1_HomePageTabs {
+.HomePageTabs {
   display: flex;
   align-items: flex-start;
   justify-content: left;
@@ -106,7 +106,7 @@ html, body {
 }
 
 
-.L_1_HomePage {
+.HomePage {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto auto auto;
@@ -139,7 +139,7 @@ html, body {
   color: white;
 }
 
-.L_1_HomePageSectionR {
+.HomePageSectionR {
   background-color: #d3d3d3; /* Light background */
   display: flex;
   grid-template-columns: 1fr 1fr;
@@ -166,7 +166,7 @@ html, body {
 }
 
 
-.L_1_HomePageTabContent {
+.HomePageTabContent {
   display: grid;
   grid-template-columns: 1fr;
   height: calc(100vh - 60mm - var(--tabs-height)); /* Dynamically adjust height based on known elements */
@@ -176,7 +176,7 @@ html, body {
 
 }
 
-.L_1_HomePageInput {
+.HomePageInput {
   display: grid;
   grid-template-columns: 1fr;
   align-content: center;
@@ -409,7 +409,7 @@ html, body {
 
 
 
-.L_1_HomePageSectionB {
+.HomePageSectionB {
   background-color: #a1b4b4; /* Dark teal */
  
   display: flex;

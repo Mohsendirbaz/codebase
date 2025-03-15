@@ -242,7 +242,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 backend/IMPLEMENTATION_PLAN.md
 backend/cheatsheets/Plan.log
@@ -336,7 +336,7 @@ src/FormHeader.js
 src/GeneralFormConfig.js
 src/index.css
 src/index.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 src/HomePage.js
 src/MultiVersionSelector.js
 src/naturalmotion.css
@@ -393,12 +393,12 @@ src.fetched/GeneralFormConfig.js
 src.fetched/index.css
 src.fetched/index.js
 src.fetched/HomePage.js
-src.fetched/L_1_HomePage1.css
-src.fetched/L_1_HomePage2.css
-src.fetched/L_1_HomePage3.css
-src.fetched/L_1_HomePage4.css
-src.fetched/L_1_HomePage5.css
-src.fetched/L_1_HomePage6.css
+src.fetched/HomePage1.css
+src.fetched/HomePage2.css
+src.fetched/HomePage3.css
+src.fetched/HomePage4.css
+src.fetched/HomePage5.css
+src.fetched/HomePage6.css
 src.fetched/MU.png
 src.fetched/naturalmotion.css
 src.fetched/naturalmotion.js
@@ -714,7 +714,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 backend/IMPLEMENTATION_PLAN.md
 backend/cheatsheets/Plan.log
@@ -764,7 +764,7 @@ User: Here's the content of g_src_directory_scanner.json:
         "GeneralFormConfig.js",
         "index.css",
         "index.js",
-        "L_1_HomePage copy.js",
+        "HomePage copy.js",
         "HomePage.js",
         "MultiVersionSelector.js",
         "naturalmotion.css",
@@ -826,12 +826,12 @@ User: Here's the content of g_src_directory_scanner.json:
     },
     "HomePage.CSS": {
       "files": [
-        "HomePage.CSS/L_1_HomePage1.css",
-        "HomePage.CSS/L_1_HomePage2.css",
-        "HomePage.CSS/L_1_HomePage3.css",
-        "HomePage.CSS/L_1_HomePage4.css",
-        "HomePage.CSS/L_1_HomePage5.css",
-        "HomePage.CSS/L_1_HomePage6.css"
+        "HomePage.CSS/HomePage1.css",
+        "HomePage.CSS/HomePage2.css",
+        "HomePage.CSS/HomePage3.css",
+        "HomePage.CSS/HomePage4.css",
+        "HomePage.CSS/HomePage5.css",
+        "HomePage.CSS/HomePage6.css"
       ],
       "import_count": 0
     },
@@ -896,7 +896,7 @@ User: Here's the content of g_src_directory_scanner.json:
         "GeneralFormConfig.js",
         "index.css",
         "index.js",
-        "L_1_HomePage copy.js",
+        "HomePage copy.js",
         "HomePage.js",
         "MultiVersionSelector.js",
         "naturalmotion.css",
@@ -984,12 +984,12 @@ User: Here's the content of g_src_directory_scanner.json:
     },
     "components\\HomePage.CSS": {
       "files": [
-        "components\\HomePage.CSS\\L_1_HomePage1.css",
-        "components\\HomePage.CSS\\L_1_HomePage2.css",
-        "components\\HomePage.CSS\\L_1_HomePage3.css",
-        "components\\HomePage.CSS\\L_1_HomePage4.css",
-        "components\\HomePage.CSS\\L_1_HomePage5.css",
-        "components\\HomePage.CSS\\L_1_HomePage6.css"
+        "components\\HomePage.CSS\\HomePage1.css",
+        "components\\HomePage.CSS\\HomePage2.css",
+        "components\\HomePage.CSS\\HomePage3.css",
+        "components\\HomePage.CSS\\HomePage4.css",
+        "components\\HomePage.CSS\\HomePage5.css",
+        "components\\HomePage.CSS\\HomePage6.css"
       ],
       "import_count": 0
     },
@@ -1103,17 +1103,17 @@ User: Here's the content of g_src_directory_scanner.json:
     },
     "HomePage.CSS": {
       "files": [
-        "HomePage.CSS\\L_1_HomePage1.css",
-        "HomePage.CSS\\L_1_HomePage2.css",
-        "HomePage.CSS\\L_1_HomePage3.css",
-        "HomePage.CSS\\L_1_HomePage4.css",
-        "HomePage.CSS\\L_1_HomePage5.css",
-        "HomePage.CSS\\L_1_HomePage6.css",
-        "HomePage.CSS\\L_1_HomePage_AboutUs.css",
-        "HomePage.CSS\\L_1_HomePage_buttons.css",
-        "HomePage.CSS\\L_1_HomePage_monitoring.css",
-        "HomePage.CSS\\L_1_HomePage_Neumorphic.css",
-        "HomePage.CSS\\L_1_HomePage_selectors.css"
+        "HomePage.CSS\\HomePage1.css",
+        "HomePage.CSS\\HomePage2.css",
+        "HomePage.CSS\\HomePage3.css",
+        "HomePage.CSS\\HomePage4.css",
+        "HomePage.CSS\\HomePage5.css",
+        "HomePage.CSS\\HomePage6.css",
+        "HomePage.CSS\\HomePage_AboutUs.css",
+        "HomePage.CSS\\HomePage_buttons.css",
+        "HomePage.CSS\\HomePage_monitoring.css",
+        "HomePage.CSS\\HomePage_Neumorphic.css",
+        "HomePage.CSS\\HomePage_selectors.css"
       ],
       "import_count": 0
     },
@@ -1193,8 +1193,8 @@ User: Here's the content of g_src_directory_scanner.json:
         "size": 294
       },
       {
-        "name": "L_1_HomePage copy.js",
-        "path": ".\\L_1_HomePage copy.js",
+        "name": "HomePage copy.js",
+        "path": ".\\HomePage copy.js",
         "size": 12020
       },
       {
@@ -1650,33 +1650,33 @@ User: Here's the content of g_src_directory_scanner.json:
         "size": 1113
       },
       {
-        "name": "L_1_HomePage1.css",
-        "path": "components\\HomePage.CSS\\L_1_HomePage1.css",
+        "name": "HomePage1.css",
+        "path": "components\\HomePage.CSS\\HomePage1.css",
         "size": 4089
       },
       {
-        "name": "L_1_HomePage2.css",
-        "path": "components\\HomePage.CSS\\L_1_HomePage2.css",
+        "name": "HomePage2.css",
+        "path": "components\\HomePage.CSS\\HomePage2.css",
         "size": 1919
       },
       {
-        "name": "L_1_HomePage3.css",
-        "path": "components\\HomePage.CSS\\L_1_HomePage3.css",
+        "name": "HomePage3.css",
+        "path": "components\\HomePage.CSS\\HomePage3.css",
         "size": 2816
       },
       {
-        "name": "L_1_HomePage4.css",
-        "path": "components\\HomePage.CSS\\L_1_HomePage4.css",
+        "name": "HomePage4.css",
+        "path": "components\\HomePage.CSS\\HomePage4.css",
         "size": 9759
       },
       {
-        "name": "L_1_HomePage5.css",
-        "path": "components\\HomePage.CSS\\L_1_HomePage5.css",
+        "name": "HomePage5.css",
+        "path": "components\\HomePage.CSS\\HomePage5.css",
         "size": 9032
       },
       {
-        "name": "L_1_HomePage6.css",
-        "path": "components\\HomePage.CSS\\L_1_HomePage6.css",
+        "name": "HomePage6.css",
+        "path": "components\\HomePage.CSS\\HomePage6.css",
         "size": 4051
       },
       {
@@ -1780,58 +1780,58 @@ User: Here's the content of g_src_directory_scanner.json:
         "size": 2770
       },
       {
-        "name": "L_1_HomePage1.css",
-        "path": "HomePage.CSS\\L_1_HomePage1.css",
+        "name": "HomePage1.css",
+        "path": "HomePage.CSS\\HomePage1.css",
         "size": 4089
       },
       {
-        "name": "L_1_HomePage2.css",
-        "path": "HomePage.CSS\\L_1_HomePage2.css",
+        "name": "HomePage2.css",
+        "path": "HomePage.CSS\\HomePage2.css",
         "size": 1919
       },
       {
-        "name": "L_1_HomePage3.css",
-        "path": "HomePage.CSS\\L_1_HomePage3.css",
+        "name": "HomePage3.css",
+        "path": "HomePage.CSS\\HomePage3.css",
         "size": 2816
       },
       {
-        "name": "L_1_HomePage4.css",
-        "path": "HomePage.CSS\\L_1_HomePage4.css",
+        "name": "HomePage4.css",
+        "path": "HomePage.CSS\\HomePage4.css",
         "size": 2149
       },
       {
-        "name": "L_1_HomePage5.css",
-        "path": "HomePage.CSS\\L_1_HomePage5.css",
+        "name": "HomePage5.css",
+        "path": "HomePage.CSS\\HomePage5.css",
         "size": 2620
       },
       {
-        "name": "L_1_HomePage6.css",
-        "path": "HomePage.CSS\\L_1_HomePage6.css",
+        "name": "HomePage6.css",
+        "path": "HomePage.CSS\\HomePage6.css",
         "size": 3180
       },
       {
-        "name": "L_1_HomePage_AboutUs.css",
-        "path": "HomePage.CSS\\L_1_HomePage_AboutUs.css",
+        "name": "HomePage_AboutUs.css",
+        "path": "HomePage.CSS\\HomePage_AboutUs.css",
         "size": 4718
       },
       {
-        "name": "L_1_HomePage_buttons.css",
-        "path": "HomePage.CSS\\L_1_HomePage_buttons.css",
+        "name": "HomePage_buttons.css",
+        "path": "HomePage.CSS\\HomePage_buttons.css",
         "size": 4282
       },
       {
-        "name": "L_1_HomePage_monitoring.css",
-        "path": "HomePage.CSS\\L_1_HomePage_monitoring.css",
+        "name": "HomePage_monitoring.css",
+        "path": "HomePage.CSS\\HomePage_monitoring.css",
         "size": 518
       },
       {
-        "name": "L_1_HomePage_Neumorphic.css",
-        "path": "HomePage.CSS\\L_1_HomePage_Neumorphic.css",
+        "name": "HomePage_Neumorphic.css",
+        "path": "HomePage.CSS\\HomePage_Neumorphic.css",
         "size": 11718
       },
       {
-        "name": "L_1_HomePage_selectors.css",
-        "path": "HomePage.CSS\\L_1_HomePage_selectors.css",
+        "name": "HomePage_selectors.css",
+        "path": "HomePage.CSS\\HomePage_selectors.css",
         "size": 1237
       },
       {
@@ -1869,7 +1869,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 backend/IMPLEMENTATION_PLAN.md
 backend/cheatsheets/Plan.log
@@ -1977,7 +1977,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 backend/IMPLEMENTATION_PLAN.md
 backend/cheatsheets/Plan.log
@@ -2153,7 +2153,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 backend/IMPLEMENTATION_PLAN.md
 backend/cheatsheets/Plan.log
@@ -2202,7 +2202,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 backend/IMPLEMENTATION_PLAN.md
 backend/cheatsheets/Plan.log
@@ -2248,7 +2248,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 backend/IMPLEMENTATION_PLAN.md
 backend/cheatsheets/Plan.log
@@ -2278,7 +2278,7 @@ Let me also look at the App.js file to understand the main application structure
 
 User: [read_file for 'src/App.js'] Result:import React, { useState, useEffect } from 'react';
 import './App.css';
-import L_1_HomePage from './L_1_HomePage';
+import HomePage from './HomePage';
 
 function App() {
   const [theme, setTheme] = useState('winter');
@@ -2314,7 +2314,7 @@ function App() {
 [read_file for 'src/App.js'] Result:
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import L_1_HomePage from './L_1_HomePage';
+import HomePage from './HomePage';
 import ErrorBoundary from './components/ErrorBoundary';
 import { VersionStateProvider } from './contexts/VersionStateContext';
 
@@ -2324,7 +2324,7 @@ function App() {
       <VersionStateProvider>
         <Router>
           <Routes>
-            <Route path="/" element={<L_1_HomePage />} />
+            <Route path="/" element={<HomePage />} />
           </Routes>
         </Router>
       </VersionStateProvider>
@@ -2344,7 +2344,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 backend/IMPLEMENTATION_PLAN.md
 backend/cheatsheets/Plan.log
@@ -2382,7 +2382,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 backend/IMPLEMENTATION_PLAN.md
 backend/cheatsheets/Plan.log
@@ -2417,7 +2417,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 backend/IMPLEMENTATION_PLAN.md
 backend/cheatsheets/Plan.log
@@ -2458,7 +2458,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 backend/IMPLEMENTATION_PLAN.md
 backend/cheatsheets/Plan.log
@@ -2496,7 +2496,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 backend/IMPLEMENTATION_PLAN.md
 backend/cheatsheets/Plan.log
@@ -2588,7 +2588,7 @@ src/FormHeader.js
 src/GeneralFormConfig.js
 src/index.css
 src/index.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 src/HomePage.js
 src/MultiVersionSelector.js
 src/naturalmotion.css
@@ -2647,12 +2647,12 @@ src.fetched/GeneralFormConfig.js
 src.fetched/index.css
 src.fetched/index.js
 src.fetched/HomePage.js
-src.fetched/L_1_HomePage1.css
-src.fetched/L_1_HomePage2.css
-src.fetched/L_1_HomePage3.css
-src.fetched/L_1_HomePage4.css
-src.fetched/L_1_HomePage5.css
-src.fetched/L_1_HomePage6.css
+src.fetched/HomePage1.css
+src.fetched/HomePage2.css
+src.fetched/HomePage3.css
+src.fetched/HomePage4.css
+src.fetched/HomePage5.css
+src.fetched/HomePage6.css
 src.fetched/MU.png
 src.fetched/naturalmotion.css
 src.fetched/naturalmotion.js
@@ -2794,7 +2794,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 eslint-plugin-active-files/package.json
 backend/IMPLEMENTATION_PLAN.md
@@ -2895,7 +2895,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 eslint-plugin-active-files/package.json
 eslint-plugin-active-files/index.js
@@ -2953,7 +2953,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 eslint-plugin-active-files/package.json
 eslint-plugin-active-files/index.js
@@ -3591,7 +3591,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 eslint-plugin-active-files/package.json
 eslint-plugin-active-files/index.js
@@ -3726,7 +3726,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 eslint-plugin-active-files/package.json
 eslint-plugin-active-files/index.js
@@ -4003,7 +4003,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 eslint-plugin-active-files/package.json
 eslint-plugin-active-files/index.js
@@ -4259,7 +4259,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 eslint-plugin-active-files/package.json
 eslint-plugin-active-files/index.js
@@ -4321,7 +4321,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 eslint-plugin-active-files/package.json
 eslint-plugin-active-files/index.js
@@ -4536,7 +4536,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 eslint-plugin-active-files/package.json
 eslint-plugin-active-files/index.js
@@ -4769,7 +4769,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 eslint-plugin-active-files/package.json
 eslint-plugin-active-files/index.js
@@ -5010,7 +5010,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 eslint-plugin-active-files/package.json
 eslint-plugin-active-files/index.js
@@ -5318,7 +5318,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 eslint-plugin-active-files/package.json
 eslint-plugin-active-files/index.js
@@ -5441,7 +5441,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 eslint-plugin-active-files/package.json
 eslint-plugin-active-files/index.js
@@ -5563,7 +5563,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 eslint-plugin-active-files/package.json
 eslint-plugin-active-files/index.js
@@ -5698,7 +5698,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 eslint-plugin-active-files/package.json
 eslint-plugin-active-files/index.js
@@ -5814,7 +5814,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 eslint-plugin-active-files/package.json
 eslint-plugin-active-files/index.js
@@ -6041,7 +6041,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 eslint-plugin-active-files/package.json
 eslint-plugin-active-files/index.js
@@ -6286,7 +6286,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 eslint-plugin-active-files/package.json
 eslint-plugin-active-files/index.js
@@ -6408,7 +6408,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 eslint-plugin-active-files/package.json
 eslint-plugin-active-files/index.js
@@ -6528,7 +6528,7 @@ src/FormHeader.js
 src/GeneralFormConfig.js
 src/index.css
 src/index.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 src/HomePage.js
 src/MultiVersionSelector.js
 src/naturalmotion.css
@@ -6575,12 +6575,12 @@ src.fetched/GeneralFormConfig.js
 src.fetched/index.css
 src.fetched/index.js
 src.fetched/HomePage.js
-src.fetched/L_1_HomePage1.css
-src.fetched/L_1_HomePage2.css
-src.fetched/L_1_HomePage3.css
-src.fetched/L_1_HomePage4.css
-src.fetched/L_1_HomePage5.css
-src.fetched/L_1_HomePage6.css
+src.fetched/HomePage1.css
+src.fetched/HomePage2.css
+src.fetched/HomePage3.css
+src.fetched/HomePage4.css
+src.fetched/HomePage5.css
+src.fetched/HomePage6.css
 src.fetched/MU.png
 src.fetched/naturalmotion.css
 src.fetched/naturalmotion.js
@@ -7238,7 +7238,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 eslint-plugin-active-files/package.json
 eslint-plugin-active-files/index.js
@@ -7664,7 +7664,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 eslint-plugin-active-files/package.json
 eslint-plugin-active-files/index.js
@@ -8086,7 +8086,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 eslint-plugin-active-files/package.json
 eslint-plugin-active-files/index.js
@@ -8348,7 +8348,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 eslint-plugin-active-files/package.json
 eslint-plugin-active-files/index.js
@@ -8455,7 +8455,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 eslint-plugin-active-files/index.js
 .eslintrc.js
@@ -8857,7 +8857,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 eslint-plugin-active-files/index.js
 .eslintrc.js
@@ -9336,7 +9336,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 eslint-plugin-active-files/index.js
 .eslintrc.js
@@ -9821,7 +9821,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 eslint-plugin-active-files/index.js
 .eslintrc.js
@@ -10287,7 +10287,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 eslint-plugin-active-files/index.js
 .eslintrc.js
@@ -10431,7 +10431,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .eslintrc.js
 .vscode/settings.json
@@ -10569,7 +10569,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .eslintrc.js
 .vscode/settings.json
@@ -10794,7 +10794,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .eslintrc.js
 .vscode/settings.json
@@ -11045,7 +11045,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .eslintrc.js
 .vscode/settings.json
@@ -11217,7 +11217,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .eslintrc.js
 .vscode/settings.json
@@ -11803,7 +11803,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .eslintrc.js
 .vscode/settings.json
@@ -12187,7 +12187,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .eslintrc.js
 .vscode/settings.json
@@ -12815,7 +12815,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .eslintrc.js
 .vscode/settings.json
@@ -13328,7 +13328,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .eslintrc.js
 .vscode/settings.json
@@ -13853,7 +13853,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .eslintrc.js
 .vscode/settings.json
@@ -14038,7 +14038,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -14166,7 +14166,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -14435,7 +14435,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -14573,7 +14573,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -14656,7 +14656,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -14779,7 +14779,7 @@ src/FormHeader.js
 src/GeneralFormConfig.js
 src/index.css
 src/index.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 src/HomePage.js
 src/MultiVersionSelector.js
 src/naturalmotion.css
@@ -14826,12 +14826,12 @@ src.fetched/GeneralFormConfig.js
 src.fetched/index.css
 src.fetched/index.js
 src.fetched/HomePage.js
-src.fetched/L_1_HomePage1.css
-src.fetched/L_1_HomePage2.css
-src.fetched/L_1_HomePage3.css
-src.fetched/L_1_HomePage4.css
-src.fetched/L_1_HomePage5.css
-src.fetched/L_1_HomePage6.css
+src.fetched/HomePage1.css
+src.fetched/HomePage2.css
+src.fetched/HomePage3.css
+src.fetched/HomePage4.css
+src.fetched/HomePage5.css
+src.fetched/HomePage6.css
 src.fetched/MU.png
 src.fetched/naturalmotion.css
 src.fetched/naturalmotion.js
@@ -14964,7 +14964,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -15414,7 +15414,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -15887,7 +15887,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -16379,7 +16379,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -16745,7 +16745,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -17101,7 +17101,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -17524,7 +17524,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -17654,7 +17654,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -17940,7 +17940,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -18075,7 +18075,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -18890,7 +18890,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -19502,7 +19502,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -19810,7 +19810,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -20024,7 +20024,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -20707,7 +20707,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -20958,7 +20958,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -21441,7 +21441,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -21849,7 +21849,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -22389,7 +22389,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -22545,7 +22545,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -22820,7 +22820,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -23031,7 +23031,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -23282,7 +23282,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -23514,7 +23514,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -23746,7 +23746,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -24019,7 +24019,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -24249,7 +24249,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -24382,7 +24382,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -24648,7 +24648,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -25006,7 +25006,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -25341,7 +25341,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -25613,7 +25613,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -25948,7 +25948,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -26220,7 +26220,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -26621,7 +26621,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -27022,7 +27022,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -27158,7 +27158,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -27443,7 +27443,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -27729,7 +27729,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -27869,7 +27869,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -28213,7 +28213,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -28582,7 +28582,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -28967,7 +28967,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -29436,7 +29436,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -29587,7 +29587,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -29665,12 +29665,12 @@ User: I've read the file active-files-report.json.
     "src\\components\\layout\\HeaderSection.css",
     "src\\components\\layout\\HeaderSection.js",
     "src\\components\\layout\\theme\\ThemeSelector.js",
-    "src\\components\\HomePage.CSS\\L_1_HomePage1.css",
-    "src\\components\\HomePage.CSS\\L_1_HomePage2.css",
-    "src\\components\\HomePage.CSS\\L_1_HomePage3.css",
-    "src\\components\\HomePage.CSS\\L_1_HomePage4.css",
-    "src\\components\\HomePage.CSS\\L_1_HomePage5.css",
-    "src\\components\\HomePage.CSS\\L_1_HomePage6.css",
+    "src\\components\\HomePage.CSS\\HomePage1.css",
+    "src\\components\\HomePage.CSS\\HomePage2.css",
+    "src\\components\\HomePage.CSS\\HomePage3.css",
+    "src\\components\\HomePage.CSS\\HomePage4.css",
+    "src\\components\\HomePage.CSS\\HomePage5.css",
+    "src\\components\\HomePage.CSS\\HomePage6.css",
     "src\\components\\model\\AnalysisChart.css",
     "src\\components\\model\\AnalysisChart.js",
     "src\\components\\model\\AnalysisVisualizationIntegration.css",
@@ -29743,18 +29743,18 @@ User: I've read the file active-files-report.json.
     "src\\hooks\\useTheme.js",
     "src\\hooks\\useVersion.js",
     "src\\index.css",
-    "src\\L_1_HomePage copy.js",
-    "src\\HomePage.CSS\\L_1_HomePage1.css",
-    "src\\HomePage.CSS\\L_1_HomePage2.css",
-    "src\\HomePage.CSS\\L_1_HomePage3.css",
-    "src\\HomePage.CSS\\L_1_HomePage4.css",
-    "src\\HomePage.CSS\\L_1_HomePage5.css",
-    "src\\HomePage.CSS\\L_1_HomePage6.css",
-    "src\\HomePage.CSS\\L_1_HomePage_AboutUs.css",
-    "src\\HomePage.CSS\\L_1_HomePage_buttons.css",
-    "src\\HomePage.CSS\\L_1_HomePage_monitoring.css",
-    "src\\HomePage.CSS\\L_1_HomePage_Neumorphic.css",
-    "src\\HomePage.CSS\\L_1_HomePage_selectors.css",
+    "src\\HomePage copy.js",
+    "src\\HomePage.CSS\\HomePage1.css",
+    "src\\HomePage.CSS\\HomePage2.css",
+    "src\\HomePage.CSS\\HomePage3.css",
+    "src\\HomePage.CSS\\HomePage4.css",
+    "src\\HomePage.CSS\\HomePage5.css",
+    "src\\HomePage.CSS\\HomePage6.css",
+    "src\\HomePage.CSS\\HomePage_AboutUs.css",
+    "src\\HomePage.CSS\\HomePage_buttons.css",
+    "src\\HomePage.CSS\\HomePage_monitoring.css",
+    "src\\HomePage.CSS\\HomePage_Neumorphic.css",
+    "src\\HomePage.CSS\\HomePage_selectors.css",
     "src\\HomePage.js",
     "src\\MultiVersionSelector.js",
     "src\\naturalmotion.css",
@@ -29798,7 +29798,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -29876,7 +29876,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -29983,7 +29983,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -30589,7 +30589,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -30745,7 +30745,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -30964,7 +30964,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -31131,7 +31131,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -31200,7 +31200,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -31771,7 +31771,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -32162,7 +32162,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -32512,7 +32512,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -32857,7 +32857,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -33203,7 +33203,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -33364,7 +33364,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -33433,7 +33433,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -33783,7 +33783,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -34267,7 +34267,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -34483,7 +34483,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -34869,7 +34869,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -35302,7 +35302,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -35898,7 +35898,7 @@ backend/sensitivity_plot_organizer.py
 backend/sensitivity_html_organizer.py
 backend/sensitivity_integration.py
 src/components/SensitivityIntegration.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 g_src_directory_scanner.py
 .vscode/settings.json
 example-files/active-file-example.js
@@ -36231,7 +36231,7 @@ src/FormHeader.js
 src/GeneralFormConfig.js
 src/index.css
 src/index.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 src/HomePage.js
 src/MultiVersionSelector.js
 src/naturalmotion.css
@@ -36278,12 +36278,12 @@ src.fetched/GeneralFormConfig.js
 src.fetched/index.css
 src.fetched/index.js
 src.fetched/HomePage.js
-src.fetched/L_1_HomePage1.css
-src.fetched/L_1_HomePage2.css
-src.fetched/L_1_HomePage3.css
-src.fetched/L_1_HomePage4.css
-src.fetched/L_1_HomePage5.css
-src.fetched/L_1_HomePage6.css
+src.fetched/HomePage1.css
+src.fetched/HomePage2.css
+src.fetched/HomePage3.css
+src.fetched/HomePage4.css
+src.fetched/HomePage5.css
+src.fetched/HomePage6.css
 src.fetched/MU.png
 src.fetched/naturalmotion.css
 src.fetched/naturalmotion.js
@@ -37813,7 +37813,7 @@ src/FormHeader.js
 src/GeneralFormConfig.js
 src/index.css
 src/index.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 src/HomePage.js
 src/MultiVersionSelector.js
 src/naturalmotion.css
@@ -37860,12 +37860,12 @@ src.fetched/GeneralFormConfig.js
 src.fetched/index.css
 src.fetched/index.js
 src.fetched/HomePage.js
-src.fetched/L_1_HomePage1.css
-src.fetched/L_1_HomePage2.css
-src.fetched/L_1_HomePage3.css
-src.fetched/L_1_HomePage4.css
-src.fetched/L_1_HomePage5.css
-src.fetched/L_1_HomePage6.css
+src.fetched/HomePage1.css
+src.fetched/HomePage2.css
+src.fetched/HomePage3.css
+src.fetched/HomePage4.css
+src.fetched/HomePage5.css
+src.fetched/HomePage6.css
 src.fetched/MU.png
 src.fetched/naturalmotion.css
 src.fetched/naturalmotion.js
@@ -40518,8 +40518,8 @@ module.exports = {
         "src\hooks\useSensitivity.js",
         "src\hooks\useTheme.js",
         "src\hooks\useVersion.js",
-        "src\L_1_HomePage copy.js",
-        "src\HomePage.CSS\L_1_HomePage_Neumorphic.css",
+        "src\HomePage copy.js",
+        "src\HomePage.CSS\HomePage_Neumorphic.css",
         "src\PriceOptimizationConfig.css",
         "src\PriceOptimizationConfig.js",
         "src\SensitivityVisualization.css",
@@ -40867,7 +40867,7 @@ src/FormHeader.js
 src/GeneralFormConfig.js
 src/index.css
 src/index.js
-src/L_1_HomePage copy.js
+src/HomePage copy.js
 src/HomePage.js
 src/MultiVersionSelector.js
 src/naturalmotion.css
@@ -40914,12 +40914,12 @@ src.fetched/GeneralFormConfig.js
 src.fetched/index.css
 src.fetched/index.js
 src.fetched/HomePage.js
-src.fetched/L_1_HomePage1.css
-src.fetched/L_1_HomePage2.css
-src.fetched/L_1_HomePage3.css
-src.fetched/L_1_HomePage4.css
-src.fetched/L_1_HomePage5.css
-src.fetched/L_1_HomePage6.css
+src.fetched/HomePage1.css
+src.fetched/HomePage2.css
+src.fetched/HomePage3.css
+src.fetched/HomePage4.css
+src.fetched/HomePage5.css
+src.fetched/HomePage6.css
 src.fetched/MU.png
 src.fetched/naturalmotion.css
 src.fetched/naturalmotion.js
@@ -43787,8 +43787,8 @@ module.exports = {
         "src/hooks/useSensitivity.js",
         "src/hooks/useTheme.js",
         "src/hooks/useVersion.js",
-        "src/L_1_HomePage copy.js",
-        "src/HomePage.CSS/L_1_HomePage_Neumorphic.css",
+        "src/HomePage copy.js",
+        "src/HomePage.CSS/HomePage_Neumorphic.css",
         "src/PriceOptimizationConfig.css",
         "src/PriceOptimizationConfig.js",
         "src/SensitivityVisualization.css",
@@ -44519,7 +44519,7 @@ src/index.js
 
 # VSCode Open Tabs
 src/App.js
-src/L_1_HomePage_copy.js
+src/HomePage_copy.js
 src/index.js
 
 # Current Time
@@ -44559,7 +44559,7 @@ src/index.js
 
 # VSCode Open Tabs
 src/App.js
-src/L_1_HomePage_copy.js
+src/HomePage_copy.js
 src/index.js
 
 # Current Time
@@ -44599,7 +44599,7 @@ src/index.js
 
 # VSCode Open Tabs
 src/App.js
-src/L_1_HomePage_copy.js
+src/HomePage_copy.js
 src/index.js
 
 # Current Time
@@ -44876,11 +44876,11 @@ I rejected that, but if you think it was not a mistake, make changes and it will
 </feedback>
 <environment_details>
 # VSCode Visible Files
-src/L_1_HomePage_copy.js
+src/HomePage_copy.js
 
 # VSCode Open Tabs
 src/App.js
-src/L_1_HomePage_copy.js
+src/HomePage_copy.js
 
 # Current Time
 3/1/2025, 2:12:21 PM (America/Chicago, UTC-6:00)
@@ -44914,11 +44914,11 @@ Note: If you previously attempted a tool use that the user did not provide a res
 IMPORTANT: If the last tool use was a replace_in_file or write_to_file that was interrupted, the file was reverted back to its original state before the interrupted edit, and you do NOT need to re-read the file as you already have its up-to-date contents.(The user did not provide a new message. Consider asking them how they'd like you to proceed, or to switch to Act mode to continue with the task.)
 <environment_details>
 # VSCode Visible Files
-src/L_1_HomePage_copy.js
+src/HomePage_copy.js
 
 # VSCode Open Tabs
 src/App.js
-src/L_1_HomePage_copy.js
+src/HomePage_copy.js
 
 # Current Time
 3/1/2025, 2:12:51 PM (America/Chicago, UTC-6:00)
@@ -45020,7 +45020,7 @@ src/[A]_Editable.js
 src/[A]_FormHeader.js
 src/[A]_GeneralFormConfig.js
 src/[A]_index.css
-src/[A]_L_1_HomePage_copy.js
+src/[A]_HomePage_copy.js
 src/[A]_naturalmotion.css
 src/[A]_naturalmotion.js
 src/[A]_Popup.css
@@ -45069,12 +45069,12 @@ src.fetched/GeneralFormConfig.js
 src.fetched/index.css
 src.fetched/index.js
 src.fetched/HomePage.js
-src.fetched/L_1_HomePage1.css
-src.fetched/L_1_HomePage2.css
-src.fetched/L_1_HomePage3.css
-src.fetched/L_1_HomePage4.css
-src.fetched/L_1_HomePage5.css
-src.fetched/L_1_HomePage6.css
+src.fetched/HomePage1.css
+src.fetched/HomePage2.css
+src.fetched/HomePage3.css
+src.fetched/HomePage4.css
+src.fetched/HomePage5.css
+src.fetched/HomePage6.css
 src.fetched/MU.png
 src.fetched/naturalmotion.css
 src.fetched/naturalmotion.js
@@ -45180,11 +45180,11 @@ so no I do not mean handle index.js imports more effectively, I mean try removin
 </user_message>
 <environment_details>
 # VSCode Visible Files
-src/L_1_HomePage_copy.js
+src/HomePage_copy.js
 
 # VSCode Open Tabs
 src/App.js
-src/L_1_HomePage_copy.js
+src/HomePage_copy.js
 
 # Current Time
 3/1/2025, 2:15:41 PM (America/Chicago, UTC-6:00)
@@ -45217,11 +45217,11 @@ I need to affirm your understanding of the task first
 </feedback>
 <environment_details>
 # VSCode Visible Files
-src/L_1_HomePage_copy.js
+src/HomePage_copy.js
 
 # VSCode Open Tabs
 src/App.js
-src/L_1_HomePage_copy.js
+src/HomePage_copy.js
 
 # Current Time
 3/1/2025, 2:16:09 PM (America/Chicago, UTC-6:00)
@@ -46630,17 +46630,17 @@ module.exports = {
         "src/hooks/useSensitivity.js",
         "src/hooks/useTheme.js",
         "src/hooks/useVersion.js",
-        "src/HomePage.CSS/L_1_HomePage1.css",
-        "src/HomePage.CSS/L_1_HomePage2.css",
-        "src/HomePage.CSS/L_1_HomePage3.css",
-        "src/HomePage.CSS/L_1_HomePage4.css",
-        "src/HomePage.CSS/L_1_HomePage5.css",
-        "src/HomePage.CSS/L_1_HomePage6.css",
-        "src/HomePage.CSS/L_1_HomePage_AboutUs.css",
-        "src/HomePage.CSS/L_1_HomePage_buttons.css",
-        "src/HomePage.CSS/L_1_HomePage_monitoring.css",
-        "src/HomePage.CSS/L_1_HomePage_Neumorphic.css",
-        "src/HomePage.CSS/L_1_HomePage_selectors.css",
+        "src/HomePage.CSS/HomePage1.css",
+        "src/HomePage.CSS/HomePage2.css",
+        "src/HomePage.CSS/HomePage3.css",
+        "src/HomePage.CSS/HomePage4.css",
+        "src/HomePage.CSS/HomePage5.css",
+        "src/HomePage.CSS/HomePage6.css",
+        "src/HomePage.CSS/HomePage_AboutUs.css",
+        "src/HomePage.CSS/HomePage_buttons.css",
+        "src/HomePage.CSS/HomePage_monitoring.css",
+        "src/HomePage.CSS/HomePage_Neumorphic.css",
+        "src/HomePage.CSS/HomePage_selectors.css",
         "src/HomePage.js",
         "src/MultiVersionSelector.js",
         "src/PriceOptimizationConfig.css",
@@ -46834,7 +46834,7 @@ src/[A]_Editable.js
 src/[A]_FormHeader.js
 src/[A]_GeneralFormConfig.js
 src/[A]_index.css
-src/[A]_L_1_HomePage_copy.js
+src/[A]_HomePage_copy.js
 src/[A]_naturalmotion.css
 src/[A]_naturalmotion.js
 src/[A]_Popup.css
@@ -46883,12 +46883,12 @@ src.fetched/GeneralFormConfig.js
 src.fetched/index.css
 src.fetched/index.js
 src.fetched/HomePage.js
-src.fetched/L_1_HomePage1.css
-src.fetched/L_1_HomePage2.css
-src.fetched/L_1_HomePage3.css
-src.fetched/L_1_HomePage4.css
-src.fetched/L_1_HomePage5.css
-src.fetched/L_1_HomePage6.css
+src.fetched/HomePage1.css
+src.fetched/HomePage2.css
+src.fetched/HomePage3.css
+src.fetched/HomePage4.css
+src.fetched/HomePage5.css
+src.fetched/HomePage6.css
 src.fetched/MU.png
 src.fetched/naturalmotion.css
 src.fetched/naturalmotion.js
@@ -48036,7 +48036,7 @@ src/[A]_useFormValues.js
 src/[A]_VersionSelector.css
 src/[A]_VersionSelector.js
 src/[I]_App.css
-src/[I]_L_1_HomePage_copy.js
+src/[I]_HomePage_copy.js
 src/[I]_PriceOptimizationConfig.css
 src/[I]_PriceOptimizationConfig.js
 src/[I]_SensitivityVisualization.css
@@ -48072,12 +48072,12 @@ src.fetched/GeneralFormConfig.js
 src.fetched/index.css
 src.fetched/index.js
 src.fetched/HomePage.js
-src.fetched/L_1_HomePage1.css
-src.fetched/L_1_HomePage2.css
-src.fetched/L_1_HomePage3.css
-src.fetched/L_1_HomePage4.css
-src.fetched/L_1_HomePage5.css
-src.fetched/L_1_HomePage6.css
+src.fetched/HomePage1.css
+src.fetched/HomePage2.css
+src.fetched/HomePage3.css
+src.fetched/HomePage4.css
+src.fetched/HomePage5.css
+src.fetched/HomePage6.css
 src.fetched/MU.png
 src.fetched/naturalmotion.css
 src.fetched/naturalmotion.js
@@ -55809,7 +55809,7 @@ ACT MODE
 **Assistant:**
 
 <thinking>
-I see the issue. The analyzer is skipping some files in the import statements. Looking at the screenshot, I can see that some imports have the [A]_ prefix in the path (like `./HomePage.CSS/[A]_L_1_HomePage5.css`), but others don't (like `./PropertySelector.js`). This suggests that the analyzer is not consistently applying the prefixes to all imported files.
+I see the issue. The analyzer is skipping some files in the import statements. Looking at the screenshot, I can see that some imports have the [A]_ prefix in the path (like `./HomePage.CSS/[A]_HomePage5.css`), but others don't (like `./PropertySelector.js`). This suggests that the analyzer is not consistently applying the prefixes to all imported files.
 
 Let's modify the mark-active-files.js script to ensure it properly handles all import paths, including those with nested directories like HomePage.CSS.
 </thinking>
@@ -55857,8 +55857,8 @@ Let's modify the mark-active-files.js script to ensure it properly handles all i
       { pattern: /Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: 'FilterPopup' },
       { pattern: /Individual\[(A|I)\]_ResultsPanel$/, replacement: 'IndividualResultsPanel' },
       // Add patterns for HomePage.CSS files
-      { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage$2.css' },
-      { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage_$2.css' }
+      { pattern: /HomePage\.CSS\/\[(A|I)\]_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/HomePage$2.css' },
+      { pattern: /HomePage\.CSS\/\[(A|I)\]_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/HomePage_$2.css' }
     ];
     
     // Try each known pattern
@@ -55971,8 +55971,8 @@ const cleanImportPath = (importPath) => {
       { pattern: /Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: 'FilterPopup' },
       { pattern: /Individual\[(A|I)\]_ResultsPanel$/, replacement: 'IndividualResultsPanel' },
       // Add patterns for HomePage.CSS files
-      { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage$2.css' },
-      { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage_$2.css' }
+      { pattern: /HomePage\.CSS\/\[(A|I)\]_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/HomePage$2.css' },
+      { pattern: /HomePage\.CSS\/\[(A|I)\]_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/HomePage_$2.css' }
     ];
     
     // Try each known pattern
@@ -56242,8 +56242,8 @@ Now I need to update the restore-filenames.js script to also handle the HomePage
     { pattern: /Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: 'FilterPopup' },
     { pattern: /Individual\[(A|I)\]_ResultsPanel$/, replacement: 'IndividualResultsPanel' },
     // Add patterns for HomePage.CSS files
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage_$2.css' }
+    { pattern: /HomePage\.CSS\/\[(A|I)\]_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/HomePage$2.css' },
+    { pattern: /HomePage\.CSS\/\[(A|I)\]_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/HomePage_$2.css' }
   ];
 >>>>>>> REPLACE
 </diff>
@@ -56376,7 +56376,7 @@ src/Editable.js
 src/FormHeader.js
 src/GeneralFormConfig.js
 src/index.js
-src/L_1_HomePage_copy.js
+src/HomePage_copy.js
 src/HomePage.js
 src/MultiVersionSelector.js
 src/naturalmotion.css
@@ -56423,12 +56423,12 @@ src.fetched/GeneralFormConfig.js
 src.fetched/index.css
 src.fetched/index.js
 src.fetched/HomePage.js
-src.fetched/L_1_HomePage1.css
-src.fetched/L_1_HomePage2.css
-src.fetched/L_1_HomePage3.css
-src.fetched/L_1_HomePage4.css
-src.fetched/L_1_HomePage5.css
-src.fetched/L_1_HomePage6.css
+src.fetched/HomePage1.css
+src.fetched/HomePage2.css
+src.fetched/HomePage3.css
+src.fetched/HomePage4.css
+src.fetched/HomePage5.css
+src.fetched/HomePage6.css
 src.fetched/MU.png
 src.fetched/naturalmotion.css
 src.fetched/naturalmotion.js
@@ -56587,8 +56587,8 @@ const cleanImportPath = (importPath) => {
       { pattern: /Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: 'FilterPopup' },
       { pattern: /Individual\[(A|I)\]_ResultsPanel$/, replacement: 'IndividualResultsPanel' },
       // Add patterns for HomePage.CSS files
-      { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage$2.css' },
-      { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage_$2.css' }
+      { pattern: /HomePage\.CSS\/\[(A|I)\]_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/HomePage$2.css' },
+      { pattern: /HomePage\.CSS\/\[(A|I)\]_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/HomePage_$2.css' }
     ];
     
     // Try each known pattern
@@ -57440,8 +57440,8 @@ const cleanFromPrefixes = (str) => {
     { pattern: /Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: 'FilterPopup' },
     { pattern: /Individual\[(A|I)\]_ResultsPanel$/, replacement: 'IndividualResultsPanel' },
     // Add patterns for HomePage.CSS files
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage_$2.css' }
+    { pattern: /HomePage\.CSS\/\[(A|I)\]_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/HomePage$2.css' },
+    { pattern: /HomePage\.CSS\/\[(A|I)\]_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/HomePage_$2.css' }
   ];
   
   // Try each known pattern
@@ -57514,8 +57514,8 @@ const cleanFromPrefixes = (str) => {
     { pattern: /Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: 'FilterPopup' },
     { pattern: /Individual\[(A|I)\]_ResultsPanel$/, replacement: 'IndividualResultsPanel' },
     // Add patterns for HomePage.CSS files
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage_$2.css' }
+    { pattern: /HomePage\.CSS\/\[(A|I)\]_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/HomePage$2.css' },
+    { pattern: /HomePage\.CSS\/\[(A|I)\]_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/HomePage_$2.css' }
   ];
   
   // Try each known pattern
@@ -58193,8 +58193,8 @@ const cleanFromPrefixes = (str) => {
     { pattern: /Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: 'FilterPopup' },
     { pattern: /Individual\[(A|I)\]_ResultsPanel$/, replacement: 'IndividualResultsPanel' },
     // Add patterns for HomePage.CSS files
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage_$2.css' }
+    { pattern: /HomePage\.CSS\/\[(A|I)\]_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/HomePage$2.css' },
+    { pattern: /HomePage\.CSS\/\[(A|I)\]_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/HomePage_$2.css' }
   ];
 >>>>>>> REPLACE
 </diff>
@@ -58318,8 +58318,8 @@ const cleanFromPrefixes = (str) => {
     { pattern: /Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: 'FilterPopup' },
     { pattern: /Individual\[(A|I)\]_ResultsPanel$/, replacement: 'IndividualResultsPanel' },
     // Add patterns for HomePage.CSS files
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage_$2.css' }
+    { pattern: /HomePage\.CSS\/\[(A|I)\]_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/HomePage$2.css' },
+    { pattern: /HomePage\.CSS\/\[(A|I)\]_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/HomePage_$2.css' }
   ];
   
   // Try each known pattern
@@ -58980,8 +58980,8 @@ const forceCleanImports = (filePath) => {
         { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
         { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
         // Add patterns for HomePage.CSS files
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
+        { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/HomePage$2.css' },
+        { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/HomePage_$2.css' }
       ];
       
       let matchedKnownPattern = false;
@@ -59130,8 +59130,8 @@ const cleanFromPrefixes = (str) => {
     { pattern: /Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: 'FilterPopup' },
     { pattern: /Individual\[(A|I)\]_ResultsPanel$/, replacement: 'IndividualResultsPanel' },
     // Add patterns for HomePage.CSS files
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage_$2.css' }
+    { pattern: /HomePage\.CSS\/\[(A|I)\]_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/HomePage$2.css' },
+    { pattern: /HomePage\.CSS\/\[(A|I)\]_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/HomePage_$2.css' }
   ];
   
   // Try each known pattern
@@ -59242,8 +59242,8 @@ const forceCleanImports = (filePath) => {
         { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
         { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
         // Add patterns for HomePage.CSS files
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
+        { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/HomePage$2.css' },
+        { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/HomePage_$2.css' }
       ];
       
       let matchedKnownPattern = false;
@@ -59861,8 +59861,8 @@ const updateImportsInFile = (filePath) => {
         { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
         { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
         // Add patterns for HomePage.CSS files
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
+        { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/HomePage$2.css' },
+        { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/HomePage_$2.css' }
       ];
       
       let matchedKnownPattern = false;
@@ -60028,8 +60028,8 @@ const cleanFromPrefixes = (str) => {
     { pattern: /Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: 'FilterPopup' },
     { pattern: /Individual\[(A|I)\]_ResultsPanel$/, replacement: 'IndividualResultsPanel' },
     // Add patterns for HomePage.CSS files
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage_$2.css' }
+    { pattern: /HomePage\.CSS\/\[(A|I)\]_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/HomePage$2.css' },
+    { pattern: /HomePage\.CSS\/\[(A|I)\]_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/HomePage_$2.css' }
   ];
   
   // Try each known pattern
@@ -60140,8 +60140,8 @@ const forceCleanImports = (filePath) => {
         { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
         { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
         // Add patterns for HomePage.CSS files
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
+        { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/HomePage$2.css' },
+        { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/HomePage_$2.css' }
       ];
       
       let matchedKnownPattern = false;
@@ -60273,8 +60273,8 @@ const updateImportsInFile = (filePath) => {
         { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
         { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
         // Add patterns for HomePage.CSS files
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
+        { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/HomePage$2.css' },
+        { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/HomePage_$2.css' }
       ];
       
       let matchedKnownPattern = false;
@@ -60675,8 +60675,8 @@ const cleanFromPrefixes = (str) => {
     { pattern: /Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: 'FilterPopup' },
     { pattern: /Individual\[(A|I)\]_ResultsPanel$/, replacement: 'IndividualResultsPanel' },
     // Add patterns for HomePage.CSS files
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage_$2.css' }
+    { pattern: /HomePage\.CSS\/\[(A|I)\]_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/HomePage$2.css' },
+    { pattern: /HomePage\.CSS\/\[(A|I)\]_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/HomePage_$2.css' }
   ];
   
   // Try each known pattern
@@ -60787,8 +60787,8 @@ const forceCleanImports = (filePath) => {
         { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
         { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
         // Add patterns for HomePage.CSS files
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
+        { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/HomePage$2.css' },
+        { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/HomePage_$2.css' }
       ];
       
       let matchedKnownPattern = false;
@@ -60920,8 +60920,8 @@ const updateImportsInFile = (filePath) => {
         { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
         { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
         // Add patterns for HomePage.CSS files
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
+        { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/HomePage$2.css' },
+        { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/HomePage_$2.css' }
       ];
       
       let matchedKnownPattern = false;
@@ -61299,7 +61299,7 @@ src/[A]_useFormValues.js
 src/[A]_VersionSelector.css
 src/[A]_VersionSelector.js
 src/[I]_App.css
-src/[I]_L_1_HomePage_copy.js
+src/[I]_HomePage_copy.js
 src/[I]_PriceOptimizationConfig.css
 src/[I]_PriceOptimizationConfig.js
 src/[I]_SensitivityVisualization.css
@@ -61335,12 +61335,12 @@ src.fetched/GeneralFormConfig.js
 src.fetched/index.css
 src.fetched/index.js
 src.fetched/HomePage.js
-src.fetched/L_1_HomePage1.css
-src.fetched/L_1_HomePage2.css
-src.fetched/L_1_HomePage3.css
-src.fetched/L_1_HomePage4.css
-src.fetched/L_1_HomePage5.css
-src.fetched/L_1_HomePage6.css
+src.fetched/HomePage1.css
+src.fetched/HomePage2.css
+src.fetched/HomePage3.css
+src.fetched/HomePage4.css
+src.fetched/HomePage5.css
+src.fetched/HomePage6.css
 src.fetched/MU.png
 src.fetched/naturalmotion.css
 src.fetched/naturalmotion.js
@@ -61889,16 +61889,16 @@ import ExtendedScaling from './extended_scaling/ExtendedScaling';
 import FormHeader from './FormHeader.js';
 import GeneralFormConfig from './GeneralFormConfig.js';
 import Popup from './Popup.js';
-import './HomePage.CSS/L_1_HomePage1.css';
-import './HomePage.CSS/L_1_HomePage2.css';
-import './HomePage.CSS/L_1_HomePage3.css';
-import './HomePage.CSS/L_1_HomePage4.css';
-import './HomePage.CSS/L_1_HomePage5.css';
-import './HomePage.CSS/L_1_HomePage6.css';
-import './HomePage.CSS/L_1_HomePage_AboutUs.css';
-import './HomePage.CSS/L_1_HomePage_buttons.css';
-import './HomePage.CSS/L_1_HomePage_monitoring.css';
-import './HomePage.CSS/L_1_HomePage_selectors.css';
+import './HomePage.CSS/HomePage1.css';
+import './HomePage.CSS/HomePage2.css';
+import './HomePage.CSS/HomePage3.css';
+import './HomePage.CSS/HomePage4.css';
+import './HomePage.CSS/HomePage5.css';
+import './HomePage.CSS/HomePage6.css';
+import './HomePage.CSS/HomePage_AboutUs.css';
+import './HomePage.CSS/HomePage_buttons.css';
+import './HomePage.CSS/HomePage_monitoring.css';
+import './HomePage.CSS/HomePage_selectors.css';
 import './styles/neumorphic-tabs.css';
 import PropertySelector from './PropertySelector.js';
 import MultiVersionSelector from './MultiVersionSelector.js';
@@ -61912,7 +61912,7 @@ import SensitivityAnalysis from './components/SensitivityAnalysis';
 import useFormValues from './useFormValues.js';
 import TestingZone from './components/TestingZone';
 import CalculationMonitor from './components/CalculationMonitor';
-const L_1_HomePageContent = () => {
+const HomePageContent = () => {
     const { selectedVersions, version: contextVersion, setVersion: setContextVersion } = useVersionState();
     const [activeTab, setActiveTab] = useState('AboutUs');
     const [activeSubTab, setActiveSubTab] = useState('ProjectConfig');
@@ -63313,10 +63313,10 @@ const L_1_HomePageContent = () => {
     };
 
     return (
-        <div className="L_1_HomePage">
-            <div className="L_1_HomePageSectionA">
+        <div className="HomePage">
+            <div className="HomePageSectionA">
                 <div className="about-us-image1"></div>
-                <div className="L_1_HomePageSectionT">
+                <div className="HomePageSectionT">
                     <h2 className="h2-large">TEA Space</h2>
                     <h2 className="h2-small">Techno-Economic-Social Simulation and Dynamic Modeling</h2>
                     <h2 className="h2-small">From lemonad stand to Tesla, TEA Space accomodates your complex cost modeling scenarios</h2>
@@ -63347,7 +63347,7 @@ const L_1_HomePageContent = () => {
                 </div>
             </div>
             <div className="main-content">
-                <nav className="L_1_HomePageTabs">
+                <nav className="HomePageTabs">
                     <div>
                         <button
                             className={`tab-button ${activeTab === 'AboutUs' ? 'active' : ''}`}
@@ -63412,7 +63412,7 @@ const L_1_HomePageContent = () => {
                         </button>
                     </div>
                 </nav>
-                <div className="L_1_HomePageTabContent">
+                <div className="HomePageTabContent">
                     {renderTabContent()}
                 </div>
             </div>
@@ -63420,15 +63420,15 @@ const L_1_HomePageContent = () => {
     );
 };
 
-const L_1_HomePage = () => {
+const HomePage = () => {
     return (
         <VersionStateProvider>
-            <L_1_HomePageContent />
+            <HomePageContent />
         </VersionStateProvider>
     );
 };
 
-export default L_1_HomePage;
+export default HomePage;
 
 <environment_details>
 # VSCode Visible Files
@@ -63617,7 +63617,7 @@ src/[A]_useFormValues.js
 src/[A]_VersionSelector.css
 src/[A]_VersionSelector.js
 src/[I]_App.css
-src/[I]_L_1_HomePage_copy.js
+src/[I]_HomePage_copy.js
 src/[I]_PriceOptimizationConfig.css
 src/[I]_PriceOptimizationConfig.js
 src/[I]_SensitivityVisualization.css
@@ -63653,12 +63653,12 @@ src.fetched/GeneralFormConfig.js
 src.fetched/index.css
 src.fetched/index.js
 src.fetched/HomePage.js
-src.fetched/L_1_HomePage1.css
-src.fetched/L_1_HomePage2.css
-src.fetched/L_1_HomePage3.css
-src.fetched/L_1_HomePage4.css
-src.fetched/L_1_HomePage5.css
-src.fetched/L_1_HomePage6.css
+src.fetched/HomePage1.css
+src.fetched/HomePage2.css
+src.fetched/HomePage3.css
+src.fetched/HomePage4.css
+src.fetched/HomePage5.css
+src.fetched/HomePage6.css
 src.fetched/MU.png
 src.fetched/naturalmotion.css
 src.fetched/naturalmotion.js
@@ -63801,7 +63801,7 @@ Let me elaborate on the edge problems we've encountered category by category:
 
 1. **Nested Directory Imports**:
    - The analyzer struggles with imports from nested directories like `HomePage.CSS/`
-   - CSS imports in particular are problematic (e.g., `import './HomePage.CSS/L_1_HomePage1.css'`)
+   - CSS imports in particular are problematic (e.g., `import './HomePage.CSS/HomePage1.css'`)
    - The current path resolution logic doesn't properly handle these nested structures
 
 2. **File Extension Handling**:
@@ -64052,12 +64052,12 @@ src.fetched/GeneralFormConfig.js
 src.fetched/index.css
 src.fetched/index.js
 src.fetched/HomePage.js
-src.fetched/L_1_HomePage1.css
-src.fetched/L_1_HomePage2.css
-src.fetched/L_1_HomePage3.css
-src.fetched/L_1_HomePage4.css
-src.fetched/L_1_HomePage5.css
-src.fetched/L_1_HomePage6.css
+src.fetched/HomePage1.css
+src.fetched/HomePage2.css
+src.fetched/HomePage3.css
+src.fetched/HomePage4.css
+src.fetched/HomePage5.css
+src.fetched/HomePage6.css
 src.fetched/MU.png
 src.fetched/naturalmotion.css
 src.fetched/naturalmotion.js
@@ -64642,8 +64642,8 @@ const cleanFromPrefixes = (str) => {
     { pattern: /Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: 'FilterPopup' },
     { pattern: /Individual\[(A|I)\]_ResultsPanel$/, replacement: 'IndividualResultsPanel' },
     // Add patterns for HomePage.CSS files
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage_$2.css' }
+    { pattern: /HomePage\.CSS\/\[(A|I)\]_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/HomePage$2.css' },
+    { pattern: /HomePage\.CSS\/\[(A|I)\]_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/HomePage_$2.css' }
   ];
   
   // Try each known pattern
@@ -64754,8 +64754,8 @@ const forceCleanImports = (filePath) => {
         { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
         { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
         // Add patterns for HomePage.CSS files
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
+        { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/HomePage$2.css' },
+        { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/HomePage_$2.css' }
       ];
       
       let matchedKnownPattern = false;
@@ -64887,8 +64887,8 @@ const updateImportsInFile = (filePath) => {
         { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
         { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
         // Add patterns for HomePage.CSS files
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
+        { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/HomePage$2.css' },
+        { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/HomePage_$2.css' }
       ];
       
       let matchedKnownPattern = false;
@@ -65608,8 +65608,8 @@ function resolveImportPath(importPath, currentFilePath) {
     { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
     { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
     // Add patterns for HomePage.CSS files
-    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
+    { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/HomePage$2.css' },
+    { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/HomePage_$2.css' }
   ];
   
   let cleanImportPath = importPath;
@@ -65783,8 +65783,8 @@ function resolveImportPath(importPath, currentFilePath) {
     { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
     { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
     // Add patterns for HomePage.CSS files
-    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
+    { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/HomePage$2.css' },
+    { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/HomePage_$2.css' }
   ];
   
   let cleanImportPath = importPath;
@@ -66424,8 +66424,8 @@ function resolveImportPath(importPath, currentFilePath) {
     { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
     { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
     // Add patterns for HomePage.CSS files
-    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
+    { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/HomePage$2.css' },
+    { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/HomePage_$2.css' }
   ];
   
   let cleanImportPath = importPath;
@@ -66930,8 +66930,8 @@ const cleanImportPath = (importPath) => {
     { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
     { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
     // Add patterns for HomePage.CSS files
-    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
+    { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/HomePage$2.css' },
+    { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/HomePage_$2.css' }
   ];
   
   // Try each known pattern
@@ -67080,8 +67080,8 @@ const cleanImportPath = (importPath) => {
     { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
     { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
     // Add patterns for HomePage.CSS files
-    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
+    { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/HomePage$2.css' },
+    { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/HomePage_$2.css' }
   ];
   
   // Try each known pattern
@@ -67431,8 +67431,8 @@ const cleanFromPrefixes = (str) => {
     { pattern: /Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: 'FilterPopup' },
     { pattern: /Individual\[(A|I)\]_ResultsPanel$/, replacement: 'IndividualResultsPanel' },
     // Add patterns for HomePage.CSS files
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage_$2.css' }
+    { pattern: /HomePage\.CSS\/\[(A|I)\]_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/HomePage$2.css' },
+    { pattern: /HomePage\.CSS\/\[(A|I)\]_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/HomePage_$2.css' }
   ];
   
   // Try each known pattern
@@ -67480,8 +67480,8 @@ const cleanFromPrefixes = (str) => {
     { pattern: /Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: 'FilterPopup' },
     { pattern: /Individual\[(A|I)\]_ResultsPanel$/, replacement: 'IndividualResultsPanel' },
     // Add patterns for HomePage.CSS files
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage_$2.css' }
+    { pattern: /HomePage\.CSS\/\[(A|I)\]_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/HomePage$2.css' },
+    { pattern: /HomePage\.CSS\/\[(A|I)\]_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/HomePage_$2.css' }
   ];
   
   // Try each known pattern
@@ -67637,8 +67637,8 @@ const cleanFromPrefixes = (str) => {
     { pattern: /Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: 'FilterPopup' },
     { pattern: /Individual\[(A|I)\]_ResultsPanel$/, replacement: 'IndividualResultsPanel' },
     // Add patterns for HomePage.CSS files
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage_$2.css' }
+    { pattern: /HomePage\.CSS\/\[(A|I)\]_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/HomePage$2.css' },
+    { pattern: /HomePage\.CSS\/\[(A|I)\]_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/HomePage_$2.css' }
   ];
   
   // Try each known pattern
@@ -67786,8 +67786,8 @@ const forceCleanImports = (filePath) => {
         { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
         { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
         // Add patterns for HomePage.CSS files
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
+        { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/HomePage$2.css' },
+        { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/HomePage_$2.css' }
       ];
       
       let matchedKnownPattern = false;
@@ -67919,8 +67919,8 @@ const updateImportsInFile = (filePath) => {
         { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
         { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
         // Add patterns for HomePage.CSS files
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
+        { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/HomePage$2.css' },
+        { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/HomePage_$2.css' }
       ];
       
       let matchedKnownPattern = false;
@@ -68126,7 +68126,7 @@ I've implemented a comprehensive solution to improve the handling of import path
    - Added explicit handling for known problematic patterns like:
      - `Filter[A]_Popup` → `FilterPopup`
      - `Model[A]_Card` → `ModelCard`
-     - `HomePage.CSS/[A]_L_1_HomePage5.css` → `HomePage.CSS/L_1_HomePage5.css`
+     - `HomePage.CSS/[A]_HomePage5.css` → `HomePage.CSS/HomePage5.css`
    - These patterns are now checked first before applying general rules
 
 3. **Enhanced Segment-by-Segment Processing**
@@ -69045,12 +69045,12 @@ src.fetched/GeneralFormConfig.js
 src.fetched/index.css
 src.fetched/index.js
 src.fetched/HomePage.js
-src.fetched/L_1_HomePage1.css
-src.fetched/L_1_HomePage2.css
-src.fetched/L_1_HomePage3.css
-src.fetched/L_1_HomePage4.css
-src.fetched/L_1_HomePage5.css
-src.fetched/L_1_HomePage6.css
+src.fetched/HomePage1.css
+src.fetched/HomePage2.css
+src.fetched/HomePage3.css
+src.fetched/HomePage4.css
+src.fetched/HomePage5.css
+src.fetched/HomePage6.css
 src.fetched/MU.png
 src.fetched/naturalmotion.css
 src.fetched/naturalmotion.js
@@ -69121,7 +69121,7 @@ In this mode you should focus on information gathering, asking questions, and ar
 Based on our previous discussions, here are the key edge cases and special considerations we need to focus on when handling import statements:
 
 ## 1. Nested Directory Imports
-- **HomePage.CSS Directory**: Special handling for imports like `'./HomePage.CSS/L_1_HomePage1.css'`
+- **HomePage.CSS Directory**: Special handling for imports like `'./HomePage.CSS/HomePage1.css'`
 - **Deep Nesting**: Handling imports that traverse multiple directory levels
 - **Directory with Prefixes**: Directories that might have [A] or [I] markers in their names
 
@@ -69138,7 +69138,7 @@ Based on our previous discussions, here are the key edge cases and special consi
 ## 4. Known Problematic Patterns
 - **FilterPopup**: Special handling for `Filter[A]_Popup`
 - **ModelCard**: Special handling for `Model[A]_Card`
-- **L_1_HomePage CSS Files**: Special patterns for CSS files in the HomePage.CSS directory
+- **HomePage CSS Files**: Special patterns for CSS files in the HomePage.CSS directory
 
 ## 5. Import Statement Variations
 - **ES6 Imports**: `import X from './path'`
@@ -70337,7 +70337,7 @@ const updateImportsInFile = (filePath, renamedFiles) => {
     }
     
     // Special handling for HomePage.CSS imports
-    const l1HomePageCssRegex = /import\s+['"]\.\/L_1_HomePage\.CSS\/([^'"]+)['"]|from\s+['"]\.\/L_1_HomePage\.CSS\/([^'"]+)['"]/g;
+    const l1HomePageCssRegex = /import\s+['"]\.\/HomePage\.CSS\/([^'"]+)['"]|from\s+['"]\.\/HomePage\.CSS\/([^'"]+)['"]/g;
     let match;
     while ((match = l1HomePageCssRegex.exec(content)) !== null) {
       const cssFile = match[1] || match[2];
@@ -70435,8 +70435,8 @@ const cleanImportPath = (importPath) => {
     { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
     { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
     // Add patterns for HomePage.CSS files
-    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
+    { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/HomePage$2.css' },
+    { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/HomePage_$2.css' }
   ];
   
   // Try each known pattern
@@ -70602,7 +70602,7 @@ const updateImportsInFile = (filePath, renamedFiles) => {
     }
     
     // Special handling for HomePage.CSS imports
-    const l1HomePageCssRegex = /import\s+['"]\.\/L_1_HomePage\.CSS\/([^'"]+)['"]|from\s+['"]\.\/L_1_HomePage\.CSS\/([^'"]+)['"]/g;
+    const l1HomePageCssRegex = /import\s+['"]\.\/HomePage\.CSS\/([^'"]+)['"]|from\s+['"]\.\/HomePage\.CSS\/([^'"]+)['"]/g;
     let match;
     while ((match = l1HomePageCssRegex.exec(content)) !== null) {
       const cssFile = match[1] || match[2];
@@ -70821,8 +70821,8 @@ const updateImportsInFile = (filePath) => {
         { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
         { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
         // Add patterns for HomePage.CSS files
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
+        { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/HomePage$2.css' },
+        { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/HomePage_$2.css' }
       ];
       
       let matchedKnownPattern = false;
@@ -70954,8 +70954,8 @@ const updateImportsInFile = (filePath) => {
         { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
         { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
         // Add patterns for HomePage.CSS files
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
+        { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/HomePage$2.css' },
+        { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/HomePage_$2.css' }
       ];
       
       let matchedKnownPattern = false;
@@ -71002,7 +71002,7 @@ const updateImportsInFile = (filePath) => {
     }
     
     // Special handling for HomePage.CSS imports
-    const l1HomePageCssRegex = /import\s+['"]\.\/L_1_HomePage\.CSS\/\[(A|I)\]_([^'"]+)['"]|from\s+['"]\.\/L_1_HomePage\.CSS\/\[(A|I)\]_([^'"]+)['"]/g;
+    const l1HomePageCssRegex = /import\s+['"]\.\/HomePage\.CSS\/\[(A|I)\]_([^'"]+)['"]|from\s+['"]\.\/HomePage\.CSS\/\[(A|I)\]_([^'"]+)['"]/g;
     let match;
     while ((match = l1HomePageCssRegex.exec(content)) !== null) {
       const cssFile = match[2] || match[3];
@@ -71106,8 +71106,8 @@ const cleanFromPrefixes = (str) => {
     { pattern: /Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: 'FilterPopup' },
     { pattern: /Individual\[(A|I)\]_ResultsPanel$/, replacement: 'IndividualResultsPanel' },
     // Add patterns for HomePage.CSS files
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage_$2.css' }
+    { pattern: /HomePage\.CSS\/\[(A|I)\]_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/HomePage$2.css' },
+    { pattern: /HomePage\.CSS\/\[(A|I)\]_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/HomePage_$2.css' }
   ];
   
   // Try each known pattern
@@ -71255,8 +71255,8 @@ const forceCleanImports = (filePath) => {
         { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
         { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
         // Add patterns for HomePage.CSS files
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
+        { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/HomePage$2.css' },
+        { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/HomePage_$2.css' }
       ];
       
       let matchedKnownPattern = false;
@@ -71388,8 +71388,8 @@ const updateImportsInFile = (filePath) => {
         { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
         { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
         // Add patterns for HomePage.CSS files
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
+        { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/HomePage$2.css' },
+        { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/HomePage_$2.css' }
       ];
       
       let matchedKnownPattern = false;
@@ -71436,7 +71436,7 @@ const updateImportsInFile = (filePath) => {
     }
     
     // Special handling for HomePage.CSS imports
-    const l1HomePageCssRegex = /import\s+['"]\.\/L_1_HomePage\.CSS\/\[(A|I)\]_([^'"]+)['"]|from\s+['"]\.\/L_1_HomePage\.CSS\/\[(A|I)\]_([^'"]+)['"]/g;
+    const l1HomePageCssRegex = /import\s+['"]\.\/HomePage\.CSS\/\[(A|I)\]_([^'"]+)['"]|from\s+['"]\.\/HomePage\.CSS\/\[(A|I)\]_([^'"]+)['"]/g;
     let match;
     while ((match = l1HomePageCssRegex.exec(content)) !== null) {
       const cssFile = match[2] || match[3];
@@ -71615,7 +71615,7 @@ I've implemented a comprehensive solution to improve the handling of import path
    - Added explicit handling for known problematic patterns like:
      - `Filter[A]_Popup` → `FilterPopup`
      - `Model[A]_Card` → `ModelCard`
-     - `HomePage.CSS/[A]_L_1_HomePage5.css` → `HomePage.CSS/L_1_HomePage5.css`
+     - `HomePage.CSS/[A]_HomePage5.css` → `HomePage.CSS/HomePage5.css`
    - These patterns are now checked first before applying general rules
 
 4. **Improved ESLint Configuration Management**
@@ -71855,12 +71855,12 @@ src.fetched/GeneralFormConfig.js
 src.fetched/index.css
 src.fetched/index.js
 src.fetched/HomePage.js
-src.fetched/L_1_HomePage1.css
-src.fetched/L_1_HomePage2.css
-src.fetched/L_1_HomePage3.css
-src.fetched/L_1_HomePage4.css
-src.fetched/L_1_HomePage5.css
-src.fetched/L_1_HomePage6.css
+src.fetched/HomePage1.css
+src.fetched/HomePage2.css
+src.fetched/HomePage3.css
+src.fetched/HomePage4.css
+src.fetched/HomePage5.css
+src.fetched/HomePage6.css
 src.fetched/MU.png
 src.fetched/naturalmotion.css
 src.fetched/naturalmotion.js
@@ -72234,8 +72234,8 @@ function resolveImportPath(importPath, currentFilePath) {
     { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
     { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
     // Add patterns for HomePage.CSS files
-    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
+    { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/HomePage$2.css' },
+    { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/HomePage_$2.css' }
   ];
   
   let cleanImportPath = importPath;
@@ -72858,8 +72858,8 @@ function resolveImportPath(importPath, currentFilePath) {
     { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
     { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
     // Add patterns for HomePage.CSS files
-    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
+    { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/HomePage$2.css' },
+    { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/HomePage_$2.css' }
   ];
   
   let cleanImportPath = importPath;
@@ -75129,8 +75129,8 @@ function resolveImportPath(importPath, currentFilePath) {
     { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
     { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
     // Add patterns for HomePage.CSS files
-    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
+    { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/HomePage$2.css' },
+    { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/HomePage_$2.css' }
   ];
   
   let cleanImportPath = importPath;

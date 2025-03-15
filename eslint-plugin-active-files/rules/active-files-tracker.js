@@ -40,8 +40,8 @@ function resolveImportPath(importPath, currentFilePath) {
     { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
     { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
     // Add patterns for HomePage.CSS files
-    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
+    { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/HomePage$2.css' },
+    { pattern: /\.\/HomePage\.CSS\/\[(A|I)\]_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/HomePage_$2.css' }
   ];
   
   let cleanImportPath = importPath;
