@@ -52,11 +52,11 @@ module.exports = {
       // Files identified as inactive by the active-files-tracker rule
       files: [
         "src/Card_set.js",
-        "src/components/EnhancedSensitivityIntegration.css",
-        "src/components/EnhancedSensitivityIntegration.js",
-        "src/components/SensitivityAnalysis.css",
-        "src/components/SensitivityAnalysis.js",
-        "src/components/SensitivityIntegration.js",
+        "src/components/modules/EnhancedSensitivityIntegration.css",
+        "src/components/modules/EnhancedSensitivityIntegration.js",
+        "src/components/modules/SensitivityAnalysis.css",
+        "src/components/modules/SensitivityAnalysis.js",
+        "src/components/modules/SensitivityIntegration.js",
         "src/components/version/VersionControl.css",
         "src/components/version/VersionControl.js",
         "src/contexts/VStateContext.js",
@@ -64,6 +64,7 @@ module.exports = {
         "src/FormHeader.js",
         "src/Scale_sum.js",
         "src/SensitivityVisualization.js",
+        "src/styles/L_1_HomePage.CSS/Naturalmotion.css",
         "src/ui/tooltip.js"
       ],
       rules: {

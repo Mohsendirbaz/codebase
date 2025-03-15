@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import './L_1_HomePage.CSS/L_1_HomePage_FactAdmin.css';
+import './styles/L_1_HomePage.CSS/L_1_HomePage_FactAdmin.css';
 
 // Local storage key - must match the one in FactEngine.js
 const FACT_STORAGE_KEY = 'teaSpaceFacts';

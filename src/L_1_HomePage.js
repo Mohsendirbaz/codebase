@@ -27,7 +27,7 @@ import './styles/Themes/creative-theme.css';
 import PropertySelector from './PropertySelector.js';
 import MultiVersionSelector from './MultiVersionSelector.js';
 import VersionSelector from './VersionSelector.js';
-import SpatialTransformComponent from './naturalmotion';
+import SpatialTransformComponent from './Naturalmotion.js'
 import useFormValues from './useFormValues.js';
 import TestingZone from './components/modules/TestingZone';
 import CalculationMonitor from './components/modules/CalculationMonitor';

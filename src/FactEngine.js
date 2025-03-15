@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import './L_1_HomePage.CSS/L_1_HomePage_FactEngine.css';
+import './styles/L_1_HomePage.CSS/L_1_HomePage_FactEngine.css';
 
 // Local storage keys
 const FACT_STORAGE_KEY = 'teaSpaceFacts';

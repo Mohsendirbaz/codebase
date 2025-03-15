@@ -41,13 +41,6 @@
   padding: 2rem ;
 }
 
-/* Dark Mode Adjustments */
-@media (prefers-color-scheme: dark) {
-  html{
-    --spatial-gradient-start: #1d4ed8 ;
-    --spatial-gradient-end: #7e22ce ;
-  }
-}
 
 /* Responsive Design */
 @media (max-width: 768px) {

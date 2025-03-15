@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import './SensitivityMonitor.css';
+import '../../styles/L_1_HomePage.CSS/SensitivityMonitor.css';
 
 /**
  * SensitivityMonitor component displays and tracks all configured sensitivity parameters
