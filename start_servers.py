@@ -41,6 +41,7 @@ flask_base_dir = os.path.dirname(os.path.abspath(__file__))
 
 # List of Flask apps with their subdirectories and ports
 flask_apps = [
+    (r"backend\flask_api\app.py", 8010),  # Theme configuration routes
     (r"backend\Data_processors_and_transformers\Front_Subtab_Table.py", 8007),
     (r"backend\Data_processors_and_transformers\Front_Subtab_Plot.py", 8008),
     (r"backend\Data_processors_and_transformers\Front_Subtab_HTML.py", 8009),
@@ -87,6 +88,11 @@ def start_flask_apps():
     if not verify_python_installation():
         return []
     
+    # Add flask_api directory to Python path for theme routes
+    flask_api_dir = os.path.join(flask_base_dir, 'backend', 'flask_api')
+    if flask_api_dir not in sys.path:
+        sys.path.append(flask_api_dir)
+    
     flask_processes = []
     for app, port in flask_apps:
         app_path = os.path.join(flask_base_dir, app)
@@ -97,11 +103,22 @@ def start_flask_apps():
         free_port(port)
         
         try:
+            env = os.environ.copy()
+            env['PORT'] = str(port)
+            
+            # For theme routes app, run from its directory
+            if 'flask_api\\app.py' in app:
+                working_dir = os.path.dirname(app_path)
+            else:
+                working_dir = flask_base_dir
+                
             process = subprocess.Popen(
-                ["python", app_path],  # Removed --port argument since simple_run.py doesn't accept it
+                ["python", app_path],
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
-                universal_newlines=True
+                universal_newlines=True,
+                env=env,
+                cwd=working_dir
             )
             # Wait a moment to check if process started successfully
             import time

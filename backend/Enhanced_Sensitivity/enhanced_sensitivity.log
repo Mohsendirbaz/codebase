@@ -433,3 +433,128 @@ Enhanced sensitivity calculations completed successfully
 2025-03-14 13:24:36,990 INFO Starting Enhanced Sensitivity Server on port 27890
 2025-03-14 13:24:37,257 WARNING  * Debugger is active!
 2025-03-14 13:24:37,265 INFO  * Debugger PIN: 119-059-632
+2025-03-14 19:23:32,450 INFO Initialized EnhancedSensitivityDirectoryBuilder with base directory: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Original
+2025-03-14 19:23:32,450 INFO Initialized EnhancedSensitivityExecutor with base directory: C:\Users\Mohse\OneDrive\Desktop\SF\backend
+2025-03-14 19:23:32,450 INFO Common scripts: ['C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\formatter.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\module1.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\config_modules.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\Table.py']
+2025-03-14 19:23:32,450 INFO Calculation script: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Core_calculation_engines\CFA.py
+2025-03-14 19:23:32,450 INFO Starting Enhanced Sensitivity Server on port 27890
+2025-03-14 19:23:32,558 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:27890
+ * Running on http://192.168.0.229:27890
+2025-03-14 19:23:32,558 INFO [33mPress CTRL+C to quit[0m
+2025-03-14 19:23:32,558 INFO  * Restarting with stat
+2025-03-14 19:23:33,863 INFO Initialized EnhancedSensitivityDirectoryBuilder with base directory: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Original
+2025-03-14 19:23:33,863 INFO Initialized EnhancedSensitivityExecutor with base directory: C:\Users\Mohse\OneDrive\Desktop\SF\backend
+2025-03-14 19:23:33,863 INFO Common scripts: ['C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\formatter.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\module1.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\config_modules.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\Table.py']
+2025-03-14 19:23:33,863 INFO Calculation script: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Core_calculation_engines\CFA.py
+2025-03-14 19:23:33,863 INFO Starting Enhanced Sensitivity Server on port 27890
+2025-03-14 19:23:33,902 WARNING  * Debugger is active!
+2025-03-14 19:23:33,917 INFO  * Debugger PIN: 119-059-632
+2025-03-14 19:25:35,796 INFO Initialized EnhancedSensitivityDirectoryBuilder with base directory: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Original
+2025-03-14 19:25:35,796 INFO Initialized EnhancedSensitivityExecutor with base directory: C:\Users\Mohse\OneDrive\Desktop\SF\backend
+2025-03-14 19:25:35,796 INFO Common scripts: ['C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\formatter.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\module1.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\config_modules.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\Table.py']
+2025-03-14 19:25:35,797 INFO Calculation script: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Core_calculation_engines\CFA.py
+2025-03-14 19:25:35,803 INFO Starting Enhanced Sensitivity Server on port 27890
+2025-03-14 19:25:35,983 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:27890
+ * Running on http://192.168.0.229:27890
+2025-03-14 19:25:35,984 INFO [33mPress CTRL+C to quit[0m
+2025-03-14 19:25:35,988 INFO  * Restarting with stat
+2025-03-14 19:25:37,820 INFO Initialized EnhancedSensitivityDirectoryBuilder with base directory: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Original
+2025-03-14 19:25:37,820 INFO Initialized EnhancedSensitivityExecutor with base directory: C:\Users\Mohse\OneDrive\Desktop\SF\backend
+2025-03-14 19:25:37,820 INFO Common scripts: ['C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\formatter.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\module1.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\config_modules.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\Table.py']
+2025-03-14 19:25:37,820 INFO Calculation script: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Core_calculation_engines\CFA.py
+2025-03-14 19:25:37,820 INFO Starting Enhanced Sensitivity Server on port 27890
+2025-03-14 19:25:37,925 WARNING  * Debugger is active!
+2025-03-14 19:25:37,937 INFO  * Debugger PIN: 119-059-632
+2025-03-14 19:26:03,931 INFO Initialized EnhancedSensitivityDirectoryBuilder with base directory: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Original
+2025-03-14 19:26:03,931 INFO Initialized EnhancedSensitivityExecutor with base directory: C:\Users\Mohse\OneDrive\Desktop\SF\backend
+2025-03-14 19:26:03,931 INFO Common scripts: ['C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\formatter.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\module1.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\config_modules.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\Table.py']
+2025-03-14 19:26:03,931 INFO Calculation script: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Core_calculation_engines\CFA.py
+2025-03-14 19:26:03,931 INFO Starting Enhanced Sensitivity Server on port 27890
+2025-03-14 19:26:04,037 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:27890
+ * Running on http://192.168.0.229:27890
+2025-03-14 19:26:04,037 INFO [33mPress CTRL+C to quit[0m
+2025-03-14 19:26:04,037 INFO  * Restarting with stat
+2025-03-14 19:26:05,406 INFO Initialized EnhancedSensitivityDirectoryBuilder with base directory: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Original
+2025-03-14 19:26:05,406 INFO Initialized EnhancedSensitivityExecutor with base directory: C:\Users\Mohse\OneDrive\Desktop\SF\backend
+2025-03-14 19:26:05,406 INFO Common scripts: ['C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\formatter.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\module1.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\config_modules.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\Table.py']
+2025-03-14 19:26:05,406 INFO Calculation script: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Core_calculation_engines\CFA.py
+2025-03-14 19:26:05,406 INFO Starting Enhanced Sensitivity Server on port 27890
+2025-03-14 19:26:05,628 WARNING  * Debugger is active!
+2025-03-14 19:26:05,644 INFO  * Debugger PIN: 119-059-632
+2025-03-14 19:27:30,066 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\flask_api\\app.py', reloading
+2025-03-14 19:27:30,144 INFO  * Restarting with stat
+2025-03-14 19:27:30,766 INFO Initialized EnhancedSensitivityDirectoryBuilder with base directory: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Original
+2025-03-14 19:27:30,766 INFO Initialized EnhancedSensitivityExecutor with base directory: C:\Users\Mohse\OneDrive\Desktop\SF\backend
+2025-03-14 19:27:30,766 INFO Common scripts: ['C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\formatter.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\module1.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\config_modules.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\Table.py']
+2025-03-14 19:27:30,766 INFO Calculation script: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Core_calculation_engines\CFA.py
+2025-03-14 19:27:30,782 INFO Starting Enhanced Sensitivity Server on port 27890
+2025-03-14 19:27:30,813 WARNING  * Debugger is active!
+2025-03-14 19:27:30,813 INFO  * Debugger PIN: 119-059-632
+2025-03-14 19:28:52,079 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\flask_api\\app.py', reloading
+2025-03-14 19:28:52,169 INFO  * Restarting with stat
+2025-03-14 19:28:53,464 INFO Initialized EnhancedSensitivityDirectoryBuilder with base directory: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Original
+2025-03-14 19:28:53,464 INFO Initialized EnhancedSensitivityExecutor with base directory: C:\Users\Mohse\OneDrive\Desktop\SF\backend
+2025-03-14 19:29:36,718 INFO Initialized EnhancedSensitivityDirectoryBuilder with base directory: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Original
+2025-03-14 19:29:36,718 INFO Initialized EnhancedSensitivityExecutor with base directory: C:\Users\Mohse\OneDrive\Desktop\SF\backend
+2025-03-14 19:29:36,719 INFO Common scripts: ['C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\formatter.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\module1.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\config_modules.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\Table.py']
+2025-03-14 19:29:36,719 INFO Calculation script: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Core_calculation_engines\CFA.py
+2025-03-14 19:29:36,725 INFO Starting Enhanced Sensitivity Server on port 27890
+2025-03-14 19:29:36,810 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:27890
+ * Running on http://192.168.0.229:27890
+2025-03-14 19:29:36,810 INFO [33mPress CTRL+C to quit[0m
+2025-03-14 19:29:36,810 INFO  * Restarting with stat
+2025-03-14 19:29:38,477 INFO Initialized EnhancedSensitivityDirectoryBuilder with base directory: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Original
+2025-03-14 19:29:38,477 INFO Initialized EnhancedSensitivityExecutor with base directory: C:\Users\Mohse\OneDrive\Desktop\SF\backend
+2025-03-14 19:29:38,477 INFO Common scripts: ['C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\formatter.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\module1.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\config_modules.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\Table.py']
+2025-03-14 19:29:38,477 INFO Calculation script: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Core_calculation_engines\CFA.py
+2025-03-14 19:29:38,477 INFO Starting Enhanced Sensitivity Server on port 27890
+2025-03-14 19:29:38,777 WARNING  * Debugger is active!
+2025-03-14 19:29:38,777 INFO  * Debugger PIN: 119-059-632
+2025-03-14 19:29:46,038 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\flask_api\\app.py', reloading
+2025-03-14 19:29:46,125 INFO  * Restarting with stat
+2025-03-14 19:29:47,191 INFO Initialized EnhancedSensitivityDirectoryBuilder with base directory: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Original
+2025-03-14 19:29:47,192 INFO Initialized EnhancedSensitivityExecutor with base directory: C:\Users\Mohse\OneDrive\Desktop\SF\backend
+2025-03-14 19:29:47,192 INFO Common scripts: ['C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\formatter.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\module1.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\config_modules.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\Table.py']
+2025-03-14 19:29:47,192 INFO Calculation script: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Core_calculation_engines\CFA.py
+2025-03-14 19:29:47,198 INFO Starting Enhanced Sensitivity Server on port 27890
+2025-03-14 19:29:47,233 WARNING  * Debugger is active!
+2025-03-14 19:29:47,233 INFO  * Debugger PIN: 119-059-632
+2025-03-14 19:30:33,024 INFO Initialized EnhancedSensitivityDirectoryBuilder with base directory: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Original
+2025-03-14 19:30:33,024 INFO Initialized EnhancedSensitivityExecutor with base directory: C:\Users\Mohse\OneDrive\Desktop\SF\backend
+2025-03-14 19:30:33,024 INFO Common scripts: ['C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\formatter.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\module1.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\config_modules.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\Table.py']
+2025-03-14 19:30:33,024 INFO Calculation script: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Core_calculation_engines\CFA.py
+2025-03-14 19:30:33,043 INFO Starting Enhanced Sensitivity Server on port 27890
+2025-03-14 19:30:33,213 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:27890
+ * Running on http://192.168.0.229:27890
+2025-03-14 19:30:33,213 INFO [33mPress CTRL+C to quit[0m
+2025-03-14 19:30:33,213 INFO  * Restarting with stat
+2025-03-14 19:30:34,836 INFO Initialized EnhancedSensitivityDirectoryBuilder with base directory: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Original
+2025-03-14 19:30:34,836 INFO Initialized EnhancedSensitivityExecutor with base directory: C:\Users\Mohse\OneDrive\Desktop\SF\backend
+2025-03-14 19:30:34,836 INFO Common scripts: ['C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\formatter.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\module1.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\config_modules.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\Table.py']
+2025-03-14 19:30:34,836 INFO Calculation script: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Core_calculation_engines\CFA.py
+2025-03-14 19:30:34,853 INFO Starting Enhanced Sensitivity Server on port 27890
+2025-03-14 19:30:35,108 WARNING  * Debugger is active!
+2025-03-14 19:30:35,108 INFO  * Debugger PIN: 119-059-632
+2025-03-14 19:42:28,170 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\flask_api\\routes\\theme_routes.py', reloading
+2025-03-14 19:42:28,244 INFO  * Restarting with stat
+2025-03-14 19:42:29,187 INFO Initialized EnhancedSensitivityDirectoryBuilder with base directory: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Original
+2025-03-14 19:42:29,187 INFO Initialized EnhancedSensitivityExecutor with base directory: C:\Users\Mohse\OneDrive\Desktop\SF\backend
+2025-03-14 19:42:29,187 INFO Common scripts: ['C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\formatter.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\module1.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\config_modules.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\Configuration_management\\Table.py']
+2025-03-14 19:42:29,188 INFO Calculation script: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Core_calculation_engines\CFA.py
+2025-03-14 19:42:29,194 INFO Starting Enhanced Sensitivity Server on port 27890
+2025-03-14 19:42:29,330 WARNING  * Debugger is active!
+2025-03-14 19:42:29,338 INFO  * Debugger PIN: 119-059-632
+2025-03-14 19:42:49,052 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\flask_api\\app.py', reloading
+2025-03-14 19:42:49,143 INFO  * Restarting with stat
+2025-03-14 19:42:51,018 INFO Initialized EnhancedSensitivityDirectoryBuilder with base directory: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Original
+2025-03-14 19:42:51,018 INFO Initialized EnhancedSensitivityExecutor with base directory: C:\Users\Mohse\OneDrive\Desktop\SF\backend

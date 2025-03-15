@@ -130,3 +130,78 @@
 2025-03-14 13:24:27,345 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Logs\RUN.log
 2025-03-14 13:24:27,382 WARNING  * Debugger is active!
 2025-03-14 13:24:27,393 INFO  * Debugger PIN: 119-059-632
+2025-03-14 19:23:24,896 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Logs\RUN.log
+2025-03-14 19:23:24,932 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:25007
+2025-03-14 19:23:24,932 INFO [33mPress CTRL+C to quit[0m
+2025-03-14 19:23:24,932 INFO  * Restarting with stat
+2025-03-14 19:23:25,501 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Logs\RUN.log
+2025-03-14 19:23:25,543 WARNING  * Debugger is active!
+2025-03-14 19:23:25,546 INFO  * Debugger PIN: 119-059-632
+2025-03-14 19:25:28,388 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Logs\RUN.log
+2025-03-14 19:25:28,422 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:25007
+2025-03-14 19:25:28,422 INFO [33mPress CTRL+C to quit[0m
+2025-03-14 19:25:28,422 INFO  * Restarting with stat
+2025-03-14 19:25:28,923 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Logs\RUN.log
+2025-03-14 19:25:28,988 WARNING  * Debugger is active!
+2025-03-14 19:25:28,996 INFO  * Debugger PIN: 119-059-632
+2025-03-14 19:25:56,443 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Logs\RUN.log
+2025-03-14 19:25:56,474 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:25007
+2025-03-14 19:25:56,474 INFO [33mPress CTRL+C to quit[0m
+2025-03-14 19:25:56,490 INFO  * Restarting with stat
+2025-03-14 19:25:57,044 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Logs\RUN.log
+2025-03-14 19:25:57,079 WARNING  * Debugger is active!
+2025-03-14 19:25:57,079 INFO  * Debugger PIN: 119-059-632
+2025-03-14 19:27:29,454 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\flask_api\\app.py', reloading
+2025-03-14 19:27:29,537 INFO  * Restarting with stat
+2025-03-14 19:27:30,391 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Logs\RUN.log
+2025-03-14 19:27:30,426 WARNING  * Debugger is active!
+2025-03-14 19:27:30,441 INFO  * Debugger PIN: 119-059-632
+2025-03-14 19:28:53,431 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\flask_api\\app.py', reloading
+2025-03-14 19:28:53,501 INFO  * Restarting with stat
+2025-03-14 19:28:54,369 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Logs\RUN.log
+2025-03-14 19:28:54,464 WARNING  * Debugger is active!
+2025-03-14 19:28:54,481 INFO  * Debugger PIN: 119-059-632
+2025-03-14 19:29:29,290 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Logs\RUN.log
+2025-03-14 19:29:29,337 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:25007
+2025-03-14 19:29:29,352 INFO [33mPress CTRL+C to quit[0m
+2025-03-14 19:29:29,352 INFO  * Restarting with stat
+2025-03-14 19:29:29,963 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Logs\RUN.log
+2025-03-14 19:29:30,005 WARNING  * Debugger is active!
+2025-03-14 19:29:30,013 INFO  * Debugger PIN: 119-059-632
+2025-03-14 19:29:45,783 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\flask_api\\app.py', reloading
+2025-03-14 19:29:45,856 INFO  * Restarting with stat
+2025-03-14 19:29:47,097 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Logs\RUN.log
+2025-03-14 19:29:47,147 WARNING  * Debugger is active!
+2025-03-14 19:29:47,155 INFO  * Debugger PIN: 119-059-632
+2025-03-14 19:30:24,894 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Logs\RUN.log
+2025-03-14 19:30:24,945 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:25007
+2025-03-14 19:30:24,945 INFO [33mPress CTRL+C to quit[0m
+2025-03-14 19:30:24,945 INFO  * Restarting with stat
+2025-03-14 19:30:25,571 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Logs\RUN.log
+2025-03-14 19:30:25,605 WARNING  * Debugger is active!
+2025-03-14 19:30:25,605 INFO  * Debugger PIN: 119-059-632
+2025-03-14 19:42:28,155 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\flask_api\\routes\\theme_routes.py', reloading
+2025-03-14 19:42:28,229 INFO  * Restarting with stat
+2025-03-14 19:42:29,597 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Logs\RUN.log
+2025-03-14 19:42:30,447 WARNING  * Debugger is active!
+2025-03-14 19:42:30,447 INFO  * Debugger PIN: 119-059-632
+2025-03-14 19:42:47,703 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\flask_api\\app.py', reloading
+2025-03-14 19:42:47,818 INFO  * Restarting with stat
+2025-03-14 19:42:50,641 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Logs\RUN.log
+2025-03-14 19:42:50,801 WARNING  * Debugger is active!
+2025-03-14 19:42:50,801 INFO  * Debugger PIN: 119-059-632
+2025-03-14 20:17:29,675 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\flask_api\\routes\\theme_routes.py', reloading
+2025-03-14 20:17:29,848 INFO  * Restarting with stat
+2025-03-14 20:17:32,374 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Logs\RUN.log
+2025-03-14 20:17:32,424 WARNING  * Debugger is active!
+2025-03-14 20:17:32,440 INFO  * Debugger PIN: 119-059-632
+2025-03-14 20:34:12,009 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF\\backend\\flask_api\\routes\\theme_routes.py', reloading
+2025-03-14 20:34:12,087 INFO  * Restarting with stat
+2025-03-14 20:34:13,784 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF\backend\Logs\RUN.log
+2025-03-14 20:34:14,024 WARNING  * Debugger is active!
+2025-03-14 20:34:14,033 INFO  * Debugger PIN: 119-059-632
