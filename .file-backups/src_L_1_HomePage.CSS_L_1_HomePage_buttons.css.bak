@@ -1,149 +1,159 @@
 /* Action Button Palette */
-.L_1_HomePage .form-action-buttons button {
+
+
+.form-panel-container15{
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%; /* Ensure full width */
+  gap: var(--spacing-unit); /* Consistent spacing */
+}
+
+ .form-action-buttons button {
   font-weight: bold;
-  padding: 10px;
+  padding: 40px;
   border: none;
-  border-radius: 4px;
+  border-radius: 24px;
   cursor: pointer;
   transition: all 0.3s ease;
   min-width: 150px;
   position: relative;
   overflow: hidden;
+
 }
 
 /* Configuration Row */
-.L_1_HomePage .form-action-buttons .config-row button {
-  background-color: #5C27C3;
-  color: white;
+ .form-action-buttons .config-row button {
+  background-color: var(--primary-color);
+  color: var(--button-text);
 }
 
-.L_1_HomePage .form-action-buttons .config-row button:hover {
-  background-color: #4a1fa3;
+ .form-action-buttons .config-row button:hover {
+  background-color: var(--primary-hover);
   transform: translateY(-2px);
-  box-shadow: 0 2px 8px rgba(92, 39, 195, 0.3);
+  box-shadow: 0 2px 8px rgba(var(--primary-rgb), 0.3);
 }
 
-.L_1_HomePage .form-action-buttons .config-row button:focus {
+ .form-action-buttons .config-row button:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(92, 39, 195, 0.4);
+  box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.4);
 }
 
 /* Visualization Row */
-.L_1_HomePage .form-action-buttons .visualization-row button {
-  background: linear-gradient(45deg, #4CAF50, #2196F3);
-  color: white;
+ .form-action-buttons .visualization-row button {
+  background: var(--gradient-primary);
+  color: var(--button-text);
 }
 
-.L_1_HomePage .form-action-buttons .visualization-row button:hover {
-  background: linear-gradient(45deg, #43A047, #1E88E5);
+ .form-action-buttons .visualization-row button:hover {
+  background: var(--gradient-primary-hover);
   transform: translateY(-2px);
-  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+  box-shadow: 0 2px 8px rgba(var(--success-rgb), 0.3);
 }
 
-.L_1_HomePage .form-action-buttons .visualization-row button:focus {
+ .form-action-buttons .visualization-row button:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.4);
+  box-shadow: 0 0 0 3px rgba(var(--success-rgb), 0.4);
 }
 
 /* Practical Row */
-.L_1_HomePage .form-action-buttons .practical-row button {
+ .form-action-buttons .practical-row button {
   position: relative;
 }
 
 /* Run CFA Button */
-.L_1_HomePage .form-action-buttons .practical-row button:nth-child(1) {
-  background-color: #FF5722;
-  color: white;
+ .form-action-buttons .practical-row button:nth-child(1) {
+  background-color: var(--warning-color);
+  color: var(--button-text);
 }
 
-.L_1_HomePage .form-action-buttons .practical-row button:nth-child(1):hover {
-  background-color: #F4511E;
+ .form-action-buttons .practical-row button:nth-child(1):hover {
+  background-color: var(--warning-hover);
   transform: translateY(-2px);
-  box-shadow: 0 2px 8px rgba(255, 87, 34, 0.3);
+  box-shadow: 0 2px 8px rgba(var(--warning-rgb), 0.3);
 }
 
-.L_1_HomePage .form-action-buttons .practical-row button:nth-child(1):focus {
+ .form-action-buttons .practical-row button:nth-child(1):focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(255, 87, 34, 0.4);
+  box-shadow: 0 0 0 3px rgba(var(--warning-rgb), 0.4);
 }
 
 /* Submit Complete Set Button */
-.L_1_HomePage .form-action-buttons .practical-row button:nth-child(2) {
-  background-color: #9C27B0;
-  color: white;
+ .form-action-buttons .practical-row button:nth-child(2) {
+  background-color: var(--accent-1);
+  color: var(--button-text);
 }
 
-.L_1_HomePage .form-action-buttons .practical-row button:nth-child(2):hover {
-  background-color: #8E24AA;
+ .form-action-buttons .practical-row button:nth-child(2):hover {
+  background-color: var(--accent-1-hover);
   transform: translateY(-2px);
-  box-shadow: 0 2px 8px rgba(156, 39, 176, 0.3);
+  box-shadow: 0 2px 8px rgba(var(--accent-1-rgb), 0.3);
 }
 
-.L_1_HomePage .form-action-buttons .practical-row button:nth-child(2):focus {
+ .form-action-buttons .practical-row button:nth-child(2):focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(156, 39, 176, 0.4);
+  box-shadow: 0 0 0 3px rgba(var(--accent-1-rgb), 0.4);
 }
 
 /* Reset Button */
-.L_1_HomePage .form-action-buttons .practical-row button:nth-child(3) {
-  background-color: #5C27B0;
-  color: white;
+ .form-action-buttons .practical-row button:nth-child(3) {
+  background-color: var(--accent-2);
+  color: var(--button-text);
 }
 
-.L_1_HomePage .form-action-buttons .practical-row button:nth-child(3):hover {
-  background-color: #512DA8;
+ .form-action-buttons .practical-row button:nth-child(3):hover {
+  background-color: var(--accent-2-hover);
   transform: translateY(-2px);
-  box-shadow: 0 2px 8px rgba(92, 39, 176, 0.3);
+  box-shadow: 0 2px 8px rgba(var(--accent-2-rgb), 0.3);
 }
 
-.L_1_HomePage .form-action-buttons .practical-row button:nth-child(3):focus {
+ .form-action-buttons .practical-row button:nth-child(3):focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(92, 39, 176, 0.4);
+  box-shadow: 0 0 0 3px rgba(var(--accent-2-rgb), 0.4);
 }
 
 /* Batch Operation Buttons */
-.L_1_HomePage .step-content button {
+ .step-content button {
   margin: 0 10px;
   min-width: 180px;
 }
 
 /* Create New Batch Button */
-.L_1_HomePage .step-content .primary-action {
-  background-color: #FF2722;
-  color: white;
+ .step-content .primary-action {
+  background-color: var(--danger-color);
+  color: var(--button-text);
 }
 
-.L_1_HomePage .step-content .primary-action:hover {
-  background-color: #E61E19;
+ .step-content .primary-action:hover {
+  background-color: var(--danger-hover);
   transform: translateY(-2px);
-  box-shadow: 0 2px 8px rgba(255, 39, 34, 0.3);
+  box-shadow: 0 2px 8px rgba(var(--danger-rgb), 0.3);
 }
 
-.L_1_HomePage .step-content .primary-action:focus {
+ .step-content .primary-action:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(255, 39, 34, 0.4);
+  box-shadow: 0 0 0 3px rgba(var(--danger-rgb), 0.4);
 }
 
 /* Remove Current Batch Button */
-.L_1_HomePage .step-content .secondary-action {
-  background-color: #2fb9b9;
-  color: white;
+ .step-content .secondary-action {
+  background-color: var(--secondary-color);
+  color: var(--button-text);
 }
 
-.L_1_HomePage .step-content .secondary-action:hover {
-  background-color: #2AA3A3;
+ .step-content .secondary-action:hover {
+  background-color: var(--secondary-hover);
   transform: translateY(-2px);
-  box-shadow: 0 2px 8px rgba(47, 185, 185, 0.3);
+  box-shadow: 0 2px 8px rgba(var(--secondary-rgb), 0.3);
 }
 
-.L_1_HomePage .step-content .secondary-action:focus {
+ .step-content .secondary-action:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(47, 185, 185, 0.4);
+  box-shadow: 0 0 0 3px rgba(var(--secondary-rgb), 0.4);
 }
 
 /* Disabled State */
-.L_1_HomePage .form-action-buttons button:disabled,
-.L_1_HomePage .step-content button:disabled {
+ .form-action-buttons button:disabled,
+ .step-content button:disabled {
   opacity: 0.7;
   cursor: not-allowed;
   transform: none;
@@ -157,6 +167,12 @@
   100% { opacity: 1; }
 }
 
-.L_1_HomePage .form-action-buttons .practical-row button:nth-child(1)[disabled] {
+ .form-action-buttons .practical-row button:nth-child(1)[disabled] {
   animation: pulse 1.5s infinite;
+}
+.tooltip1 {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+  visibility: hidden;
 }
