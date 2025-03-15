@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import '../../styles/L_1_HomePage.CSS/SensitivitySelector.css';
+import '../../styles/HomePage.CSS/SensitivitySelector.css';
 
 const Dialog = ({ show, onClose, children, triggerRef, isClosing }) => {
     if (!show) return null;

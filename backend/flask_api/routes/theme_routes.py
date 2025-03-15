@@ -26,7 +26,7 @@ cssutils.log.setLevel(logging.WARNING)
 # Get absolute path to project root (SF/)
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../..'))
 styles_folder = os.path.join(project_root, 'src', 'styles')
-css_registry_folder = os.path.join(project_root, 'src', 'L_1_HomePage.CSS')
+css_registry_folder = os.path.join(project_root, 'src', 'HomePage.CSS')
 
 def validate_filename(filename):
     """Prevent path traversal attacks and ensure valid CSS files"""
@@ -96,7 +96,7 @@ def save_theme():
 
 @theme_routes.route('/api/css-registry/apply', methods=['POST'])
 def apply_css_to_files():
-    """Apply CSS to selected files in L_1_HomePage.CSS directory"""
+    """Apply CSS to selected files in HomePage.CSS directory"""
     try:
         data = request.json
         if not data or 'files' not in data or 'cssCode' not in data:

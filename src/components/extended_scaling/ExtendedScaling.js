@@ -3,7 +3,7 @@ import { Tab } from '@headlessui/react';
 import { ArrowPathIcon, PlusIcon, TrashIcon, LockClosedIcon, LockOpenIcon } from '@heroicons/react/24/outline';
 import * as math from 'mathjs';
 import ScalingSummary from './ScalingSummary';
-import '../../styles/L_1_HomePage.CSS/L_1_HomePage4.css';
+import '../../styles/HomePage.CSS/L_1_HomePage4.css';
 import { DndProvider, useDrag, useDrop } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { motion, AnimatePresence } from 'framer-motion';

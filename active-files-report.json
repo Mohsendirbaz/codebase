@@ -2,7 +2,7 @@
   "activeFiles": [
     "src\\index.js",
     "src\\App.js",
-    "src\\L_1_HomePage.js",
+    "src\\HomePage.js",
     "src\\contexts\\VersionStateContext.js",
     "src\\CustomizableImage.js",
     "src\\CustomizableTable.js",
@@ -10,33 +10,33 @@
     "src\\components\\extended_scaling\\ExtendedScaling.js",
     "src\\components\\extended_scaling\\ScalingSummary.js",
     "src\\components\\extended_scaling\\Card.js",
-    "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage4.css",
+    "src\\styles\\HomePage.CSS\\L_1_HomePage4.css",
     "src\\FactEngine.js",
-    "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage_FactEngine.css",
+    "src\\styles\\HomePage.CSS\\L_1_HomePage_FactEngine.css",
     "src\\FactEngineAdmin.js",
-    "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage_FactAdmin.css",
+    "src\\styles\\HomePage.CSS\\L_1_HomePage_FactAdmin.css",
     "src\\GeneralFormConfig.js",
     "src\\Popup.js",
-    "src\\styles\\L_1_HomePage.CSS\\Popup.css",
+    "src\\styles\\HomePage.CSS\\Popup.css",
     "src\\components\\modules\\SensitivitySelector.js",
     "src\\components\\modules\\SensitivitySelector.css",
-    "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage1.css",
-    "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage2.css",
-    "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage3.css",
-    "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage5.css",
-    "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage6.css",
-    "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage_AboutUs.css",
-    "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage_buttons.css",
-    "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage_monitoring.css",
-    "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage_selectors.css",
-    "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage_neumorphic-tabs.css",
+    "src\\styles\\HomePage.CSS\\L_1_HomePage1.css",
+    "src\\styles\\HomePage.CSS\\L_1_HomePage2.css",
+    "src\\styles\\HomePage.CSS\\L_1_HomePage3.css",
+    "src\\styles\\HomePage.CSS\\L_1_HomePage5.css",
+    "src\\styles\\HomePage.CSS\\L_1_HomePage6.css",
+    "src\\styles\\HomePage.CSS\\L_1_HomePage_AboutUs.css",
+    "src\\styles\\HomePage.CSS\\L_1_HomePage_buttons.css",
+    "src\\styles\\HomePage.CSS\\L_1_HomePage_monitoring.css",
+    "src\\styles\\HomePage.CSS\\L_1_HomePage_selectors.css",
+    "src\\styles\\HomePage.CSS\\L_1_HomePage_neumorphic-tabs.css",
     "src\\styles\\Themes\\dark-theme.css",
     "src\\styles\\Themes\\normal-theme.css",
     "src\\styles\\Themes\\creative-theme.css",
     "src\\PropertySelector.js",
     "src\\MultiVersionSelector.js",
     "src\\VersionSelector.js",
-    "src\\styles\\L_1_HomePage.CSS\\VersionSelector.css",
+    "src\\styles\\HomePage.CSS\\VersionSelector.css",
     "src\\Naturalmotion.js",
     "src\\components\\modules\\TestingZone.js",
     "src\\components\\modules\\TestingZone.css",
@@ -76,32 +76,32 @@
     "src\\FormHeader.js",
     "src\\Scale_sum.js",
     "src\\SensitivityVisualization.js",
-    "src\\styles\\L_1_HomePage.CSS\\Naturalmotion.css",
+    "src\\styles\\HomePage.CSS\\Naturalmotion.css",
     "src\\ui\\tooltip.js"
   ],
   "standaloneFiles": [
     "src\\contexts\\VersionStateContext.js",
     "src\\CustomizableImage.js",
     "src\\useFormValues.js",
-    "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage4.css",
-    "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage_FactEngine.css",
-    "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage_FactAdmin.css",
-    "src\\styles\\L_1_HomePage.CSS\\Popup.css",
+    "src\\styles\\HomePage.CSS\\L_1_HomePage4.css",
+    "src\\styles\\HomePage.CSS\\L_1_HomePage_FactEngine.css",
+    "src\\styles\\HomePage.CSS\\L_1_HomePage_FactAdmin.css",
+    "src\\styles\\HomePage.CSS\\Popup.css",
     "src\\components\\modules\\SensitivitySelector.css",
-    "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage1.css",
-    "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage2.css",
-    "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage3.css",
-    "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage5.css",
-    "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage6.css",
-    "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage_AboutUs.css",
-    "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage_buttons.css",
-    "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage_monitoring.css",
-    "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage_selectors.css",
-    "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage_neumorphic-tabs.css",
+    "src\\styles\\HomePage.CSS\\L_1_HomePage1.css",
+    "src\\styles\\HomePage.CSS\\L_1_HomePage2.css",
+    "src\\styles\\HomePage.CSS\\L_1_HomePage3.css",
+    "src\\styles\\HomePage.CSS\\L_1_HomePage5.css",
+    "src\\styles\\HomePage.CSS\\L_1_HomePage6.css",
+    "src\\styles\\HomePage.CSS\\L_1_HomePage_AboutUs.css",
+    "src\\styles\\HomePage.CSS\\L_1_HomePage_buttons.css",
+    "src\\styles\\HomePage.CSS\\L_1_HomePage_monitoring.css",
+    "src\\styles\\HomePage.CSS\\L_1_HomePage_selectors.css",
+    "src\\styles\\HomePage.CSS\\L_1_HomePage_neumorphic-tabs.css",
     "src\\styles\\Themes\\dark-theme.css",
     "src\\styles\\Themes\\normal-theme.css",
     "src\\styles\\Themes\\creative-theme.css",
-    "src\\styles\\L_1_HomePage.CSS\\VersionSelector.css",
+    "src\\styles\\HomePage.CSS\\VersionSelector.css",
     "src\\Naturalmotion.js",
     "src\\components\\modules\\TestingZone.css",
     "src\\components\\cfa\\CFAConsolidationUI.css",
@@ -124,7 +124,7 @@
       "src\\App.js"
     ],
     "2": [
-      "src\\L_1_HomePage.js",
+      "src\\HomePage.js",
       "src\\contexts\\VersionStateContext.js",
       "src\\components\\modules\\ErrorBoundary.js"
     ],
@@ -133,22 +133,22 @@
       "src\\CustomizableTable.js",
       "src\\useFormValues.js",
       "src\\components\\extended_scaling\\ExtendedScaling.js",
-      "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage4.css",
+      "src\\styles\\HomePage.CSS\\L_1_HomePage4.css",
       "src\\FactEngine.js",
-      "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage_FactEngine.css",
+      "src\\styles\\HomePage.CSS\\L_1_HomePage_FactEngine.css",
       "src\\FactEngineAdmin.js",
-      "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage_FactAdmin.css",
+      "src\\styles\\HomePage.CSS\\L_1_HomePage_FactAdmin.css",
       "src\\GeneralFormConfig.js",
-      "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage1.css",
-      "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage2.css",
-      "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage3.css",
-      "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage5.css",
-      "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage6.css",
-      "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage_AboutUs.css",
-      "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage_buttons.css",
-      "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage_monitoring.css",
-      "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage_selectors.css",
-      "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage_neumorphic-tabs.css",
+      "src\\styles\\HomePage.CSS\\L_1_HomePage1.css",
+      "src\\styles\\HomePage.CSS\\L_1_HomePage2.css",
+      "src\\styles\\HomePage.CSS\\L_1_HomePage3.css",
+      "src\\styles\\HomePage.CSS\\L_1_HomePage5.css",
+      "src\\styles\\HomePage.CSS\\L_1_HomePage6.css",
+      "src\\styles\\HomePage.CSS\\L_1_HomePage_AboutUs.css",
+      "src\\styles\\HomePage.CSS\\L_1_HomePage_buttons.css",
+      "src\\styles\\HomePage.CSS\\L_1_HomePage_monitoring.css",
+      "src\\styles\\HomePage.CSS\\L_1_HomePage_selectors.css",
+      "src\\styles\\HomePage.CSS\\L_1_HomePage_neumorphic-tabs.css",
       "src\\styles\\Themes\\dark-theme.css",
       "src\\styles\\Themes\\normal-theme.css",
       "src\\styles\\Themes\\creative-theme.css",
@@ -166,7 +166,7 @@
       "src\\components\\extended_scaling\\ScalingSummary.js",
       "src\\Popup.js",
       "src\\components\\modules\\SensitivitySelector.js",
-      "src\\styles\\L_1_HomePage.CSS\\VersionSelector.css",
+      "src\\styles\\HomePage.CSS\\VersionSelector.css",
       "src\\components\\modules\\TestingZone.css",
       "src\\components\\cfa\\CFAConsolidationUI.js",
       "src\\components\\modules\\CalculationMonitor.css",
@@ -177,7 +177,7 @@
     ],
     "5": [
       "src\\components\\extended_scaling\\Card.js",
-      "src\\styles\\L_1_HomePage.CSS\\Popup.css",
+      "src\\styles\\HomePage.CSS\\Popup.css",
       "src\\components\\modules\\SensitivitySelector.css",
       "src\\components\\cfa\\CFAConsolidationUI.css",
       "src\\components\\cfa\\SelectionPanel.js",
@@ -197,30 +197,30 @@
     "src\\App.js": [
       "src\\index.js"
     ],
-    "src\\L_1_HomePage.js": [
+    "src\\HomePage.js": [
       "src\\App.js"
     ],
     "src\\contexts\\VersionStateContext.js": [
-      "src\\L_1_HomePage.js",
+      "src\\HomePage.js",
       "src\\MultiVersionSelector.js",
       "src\\VersionSelector.js",
       "src\\App.js"
     ],
     "src\\CustomizableImage.js": [
-      "src\\L_1_HomePage.js"
+      "src\\HomePage.js"
     ],
     "src\\CustomizableTable.js": [
-      "src\\L_1_HomePage.js",
+      "src\\HomePage.js",
       "src\\components\\cfa\\IndividualResultsPanel.js"
     ],
     "src\\useFormValues.js": [
       "src\\CustomizableTable.js",
       "src\\GeneralFormConfig.js",
       "src\\PropertySelector.js",
-      "src\\L_1_HomePage.js"
+      "src\\HomePage.js"
     ],
     "src\\components\\extended_scaling\\ExtendedScaling.js": [
-      "src\\L_1_HomePage.js"
+      "src\\HomePage.js"
     ],
     "src\\components\\extended_scaling\\ScalingSummary.js": [
       "src\\components\\extended_scaling\\ExtendedScaling.js"
@@ -228,32 +228,32 @@
     "src\\components\\extended_scaling\\Card.js": [
       "src\\components\\extended_scaling\\ScalingSummary.js"
     ],
-    "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage4.css": [
+    "src\\styles\\HomePage.CSS\\L_1_HomePage4.css": [
       "src\\components\\extended_scaling\\Card.js",
       "src\\components\\extended_scaling\\ExtendedScaling.js",
-      "src\\L_1_HomePage.js"
+      "src\\HomePage.js"
     ],
     "src\\FactEngine.js": [
-      "src\\L_1_HomePage.js"
+      "src\\HomePage.js"
     ],
-    "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage_FactEngine.css": [
+    "src\\styles\\HomePage.CSS\\L_1_HomePage_FactEngine.css": [
       "src\\FactEngine.js",
-      "src\\L_1_HomePage.js"
+      "src\\HomePage.js"
     ],
     "src\\FactEngineAdmin.js": [
-      "src\\L_1_HomePage.js"
+      "src\\HomePage.js"
     ],
-    "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage_FactAdmin.css": [
+    "src\\styles\\HomePage.CSS\\L_1_HomePage_FactAdmin.css": [
       "src\\FactEngineAdmin.js",
-      "src\\L_1_HomePage.js"
+      "src\\HomePage.js"
     ],
     "src\\GeneralFormConfig.js": [
-      "src\\L_1_HomePage.js"
+      "src\\HomePage.js"
     ],
     "src\\Popup.js": [
       "src\\GeneralFormConfig.js"
     ],
-    "src\\styles\\L_1_HomePage.CSS\\Popup.css": [
+    "src\\styles\\HomePage.CSS\\Popup.css": [
       "src\\Popup.js"
     ],
     "src\\components\\modules\\SensitivitySelector.js": [
@@ -262,62 +262,62 @@
     "src\\components\\modules\\SensitivitySelector.css": [
       "src\\components\\modules\\SensitivitySelector.js"
     ],
-    "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage1.css": [
-      "src\\L_1_HomePage.js"
+    "src\\styles\\HomePage.CSS\\L_1_HomePage1.css": [
+      "src\\HomePage.js"
     ],
-    "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage2.css": [
-      "src\\L_1_HomePage.js"
+    "src\\styles\\HomePage.CSS\\L_1_HomePage2.css": [
+      "src\\HomePage.js"
     ],
-    "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage3.css": [
-      "src\\L_1_HomePage.js"
+    "src\\styles\\HomePage.CSS\\L_1_HomePage3.css": [
+      "src\\HomePage.js"
     ],
-    "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage5.css": [
-      "src\\L_1_HomePage.js"
+    "src\\styles\\HomePage.CSS\\L_1_HomePage5.css": [
+      "src\\HomePage.js"
     ],
-    "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage6.css": [
-      "src\\L_1_HomePage.js"
+    "src\\styles\\HomePage.CSS\\L_1_HomePage6.css": [
+      "src\\HomePage.js"
     ],
-    "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage_AboutUs.css": [
-      "src\\L_1_HomePage.js"
+    "src\\styles\\HomePage.CSS\\L_1_HomePage_AboutUs.css": [
+      "src\\HomePage.js"
     ],
-    "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage_buttons.css": [
-      "src\\L_1_HomePage.js"
+    "src\\styles\\HomePage.CSS\\L_1_HomePage_buttons.css": [
+      "src\\HomePage.js"
     ],
-    "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage_monitoring.css": [
-      "src\\L_1_HomePage.js"
+    "src\\styles\\HomePage.CSS\\L_1_HomePage_monitoring.css": [
+      "src\\HomePage.js"
     ],
-    "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage_selectors.css": [
-      "src\\L_1_HomePage.js"
+    "src\\styles\\HomePage.CSS\\L_1_HomePage_selectors.css": [
+      "src\\HomePage.js"
     ],
-    "src\\styles\\L_1_HomePage.CSS\\L_1_HomePage_neumorphic-tabs.css": [
-      "src\\L_1_HomePage.js"
+    "src\\styles\\HomePage.CSS\\L_1_HomePage_neumorphic-tabs.css": [
+      "src\\HomePage.js"
     ],
     "src\\styles\\Themes\\dark-theme.css": [
-      "src\\L_1_HomePage.js"
+      "src\\HomePage.js"
     ],
     "src\\styles\\Themes\\normal-theme.css": [
-      "src\\L_1_HomePage.js"
+      "src\\HomePage.js"
     ],
     "src\\styles\\Themes\\creative-theme.css": [
-      "src\\L_1_HomePage.js"
+      "src\\HomePage.js"
     ],
     "src\\PropertySelector.js": [
-      "src\\L_1_HomePage.js"
+      "src\\HomePage.js"
     ],
     "src\\MultiVersionSelector.js": [
-      "src\\L_1_HomePage.js"
+      "src\\HomePage.js"
     ],
     "src\\VersionSelector.js": [
-      "src\\L_1_HomePage.js"
+      "src\\HomePage.js"
     ],
-    "src\\styles\\L_1_HomePage.CSS\\VersionSelector.css": [
+    "src\\styles\\HomePage.CSS\\VersionSelector.css": [
       "src\\VersionSelector.js"
     ],
     "src\\Naturalmotion.js": [
-      "src\\L_1_HomePage.js"
+      "src\\HomePage.js"
     ],
     "src\\components\\modules\\TestingZone.js": [
-      "src\\L_1_HomePage.js"
+      "src\\HomePage.js"
     ],
     "src\\components\\modules\\TestingZone.css": [
       "src\\components\\modules\\TestingZone.js"
@@ -351,25 +351,25 @@
       "src\\components\\cfa\\CFAConsolidationUI.js"
     ],
     "src\\components\\modules\\CalculationMonitor.js": [
-      "src\\L_1_HomePage.js"
+      "src\\HomePage.js"
     ],
     "src\\components\\modules\\CalculationMonitor.css": [
       "src\\components\\modules\\CalculationMonitor.js"
     ],
     "src\\components\\modules\\SensitivityMonitor.js": [
-      "src\\L_1_HomePage.js"
+      "src\\HomePage.js"
     ],
     "src\\components\\modules\\SensitivityMonitor.css": [
       "src\\components\\modules\\SensitivityMonitor.js"
     ],
     "src\\components\\modules\\ConfigurationMonitor.js": [
-      "src\\L_1_HomePage.js"
+      "src\\HomePage.js"
     ],
     "src\\components\\modules\\ConfigurationMonitor.css": [
       "src\\components\\modules\\ConfigurationMonitor.js"
     ],
     "src\\components\\modules\\ThemeButton.js": [
-      "src\\L_1_HomePage.js"
+      "src\\HomePage.js"
     ],
     "src\\components\\modules\\ThemeConfigurator.js": [
       "src\\components\\modules\\ThemeButton.js"

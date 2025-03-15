@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import '../../styles/L_1_HomePage.CSS/ConfigurationMonitor.css';
+import '../../styles/HomePage.CSS/ConfigurationMonitor.css';
 
 /**
  * ConfigurationMonitor component displays configuration values from U_configurations

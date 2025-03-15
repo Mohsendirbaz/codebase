@@ -64,7 +64,7 @@ module.exports = {
         "src/FormHeader.js",
         "src/Scale_sum.js",
         "src/SensitivityVisualization.js",
-        "src/styles/L_1_HomePage.CSS/Naturalmotion.css",
+        "src/styles/HomePage.CSS/Naturalmotion.css",
         "src/ui/tooltip.js"
       ],
       rules: {

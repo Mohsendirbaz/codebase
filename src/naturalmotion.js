@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './styles/L_1_HomePage.CSS/Naturalmotion.css';
+import './styles/HomePage.CSS/Naturalmotion.css';
 const SpatialTransformComponent = () => {
     const [interactionState, setInteractionState] = useState({
         isActive: false,

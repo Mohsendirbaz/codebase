@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import ThemeGenerator from '../../utils/ThemeGenerator';
-import '../../styles/L_1_HomePage.CSS/ThemeConfigurator.css';
+import '../../styles/HomePage.CSS/ThemeConfigurator.css';
 
 const ThemeConfigurator = ({ onClose }) => {
   const [activeTab, setActiveTab] = useState('colors');

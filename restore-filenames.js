@@ -55,9 +55,9 @@ const cleanFromPrefixes = (str, maxDepth = options.maxPrefixDepth) => {
     { pattern: /ModelCard\[(A|I)\]_/, replacement: 'ModelCard' },
     { pattern: /IndividualResultsPanel\[(A|I)\]_/, replacement: 'IndividualResultsPanel' },
     
-    // Add patterns for L_1_HomePage.CSS files
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'L_1_HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'L_1_HomePage.CSS/L_1_HomePage_$2.css' }
+    // Add patterns for HomePage.CSS files
+    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage$2.css' },
+    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage_$2.css' }
   ];
   
   // Try each known pattern
@@ -386,9 +386,9 @@ const cleanImportsInFile = (filePath, forceMode = false) => {
         { pattern: /\.\/Model\[(A|I)\]_Card$/, replacement: './ModelCard' },
         { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
         { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
-        // Add patterns for L_1_HomePage.CSS files
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage$2.css' },
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage_$2.css' }
+        // Add patterns for HomePage.CSS files
+        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
+        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
       ];
       
       let matchedKnownPattern = false;
@@ -434,13 +434,13 @@ const cleanImportsInFile = (filePath, forceMode = false) => {
       }
     }
     
-    // Special handling for L_1_HomePage.CSS imports
+    // Special handling for HomePage.CSS imports
     const l1HomePageCssRegex = /import\s+['"]\.\/L_1_HomePage\.CSS\/\[(A|I)\]_([^'"]+)['"]|from\s+['"]\.\/L_1_HomePage\.CSS\/\[(A|I)\]_([^'"]+)['"]/g;
     let match;
     while ((match = l1HomePageCssRegex.exec(content)) !== null) {
       const cssFile = match[2] || match[3];
       const prefix = match[1] || match[3];
-      const newImport = match[0].replace(`./L_1_HomePage.CSS/[${prefix}]_${cssFile}`, `./L_1_HomePage.CSS/${cssFile}`);
+      const newImport = match[0].replace(`./HomePage.CSS/[${prefix}]_${cssFile}`, `./HomePage.CSS/${cssFile}`);
       content = content.replace(match[0], newImport);
       updated = true;
     }

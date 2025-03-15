@@ -39,9 +39,9 @@ function resolveImportPath(importPath, currentFilePath) {
     { pattern: /\.\/Model\[(A|I)\]_Card$/, replacement: './ModelCard' },
     { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
     { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
-    // Add patterns for L_1_HomePage.CSS files
-    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage_$2.css' }
+    // Add patterns for HomePage.CSS files
+    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
+    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
   ];
   
   let cleanImportPath = importPath;
@@ -227,9 +227,9 @@ function extractImports(filePath) {
         const importPath = match[1];
         console.log(`  JS import: ${importPath}`);
         
-        // Special handling for L_1_HomePage.CSS imports
-        if (importPath.includes('L_1_HomePage.CSS')) {
-          console.log(`    Found L_1_HomePage.CSS import: ${importPath}`);
+        // Special handling for HomePage.CSS imports
+        if (importPath.includes('HomePage.CSS')) {
+          console.log(`    Found HomePage.CSS import: ${importPath}`);
         }
         
         const resolvedPath = resolveImportPath(importPath, filePath);
@@ -268,9 +268,9 @@ function extractImports(filePath) {
         const importPath = match[1];
         console.log(`  CSS import in JS: ${importPath}`);
         
-        // Special handling for L_1_HomePage.CSS imports
-        if (importPath.includes('L_1_HomePage.CSS')) {
-          console.log(`    Found L_1_HomePage.CSS import in JS: ${importPath}`);
+        // Special handling for HomePage.CSS imports
+        if (importPath.includes('HomePage.CSS')) {
+          console.log(`    Found HomePage.CSS import in JS: ${importPath}`);
         }
         
         const resolvedPath = resolveImportPath(importPath, filePath);

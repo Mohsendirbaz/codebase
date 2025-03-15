@@ -337,7 +337,7 @@ src/GeneralFormConfig.js
 src/index.css
 src/index.js
 src/L_1_HomePage copy.js
-src/L_1_HomePage.js
+src/HomePage.js
 src/MultiVersionSelector.js
 src/naturalmotion.css
 src/naturalmotion.js
@@ -359,7 +359,7 @@ src/components/
 src/contexts/
 src/extended_scaling/
 src/hooks/
-src/L_1_HomePage.CSS/
+src/HomePage.CSS/
 src/services/
 src/state/
 src/styles/
@@ -392,7 +392,7 @@ src.fetched/FormHeader.js
 src.fetched/GeneralFormConfig.js
 src.fetched/index.css
 src.fetched/index.js
-src.fetched/L_1_HomePage.js
+src.fetched/HomePage.js
 src.fetched/L_1_HomePage1.css
 src.fetched/L_1_HomePage2.css
 src.fetched/L_1_HomePage3.css
@@ -424,7 +424,7 @@ src.fetched/utils/
 src.main1/
 src.main1/App.js
 src.main2/
-src.main2/L_1_HomePage.js
+src.main2/HomePage.js
 src.sketch.series/
 src.sketch.series/App copy.css
 src.sketch.series/App.css
@@ -437,8 +437,8 @@ src.sketch.series/FormHeader.js
 src.sketch.series/GeneralFormConfig.js
 src.sketch.series/index.css
 src.sketch.series/index.js
-src.sketch.series/L_1_HomePage.css
-src.sketch.series/L_1_HomePage.js
+src.sketch.series/HomePage.css
+src.sketch.series/HomePage.js
 src.sketch.series/MU.png
 src.sketch.series/Popup.css
 src.sketch.series/Popup.js
@@ -765,7 +765,7 @@ User: Here's the content of g_src_directory_scanner.json:
         "index.css",
         "index.js",
         "L_1_HomePage copy.js",
-        "L_1_HomePage.js",
+        "HomePage.js",
         "MultiVersionSelector.js",
         "naturalmotion.css",
         "naturalmotion.js",
@@ -824,14 +824,14 @@ User: Here's the content of g_src_directory_scanner.json:
       ],
       "import_count": 1
     },
-    "L_1_HomePage.CSS": {
+    "HomePage.CSS": {
       "files": [
-        "L_1_HomePage.CSS/L_1_HomePage1.css",
-        "L_1_HomePage.CSS/L_1_HomePage2.css",
-        "L_1_HomePage.CSS/L_1_HomePage3.css",
-        "L_1_HomePage.CSS/L_1_HomePage4.css",
-        "L_1_HomePage.CSS/L_1_HomePage5.css",
-        "L_1_HomePage.CSS/L_1_HomePage6.css"
+        "HomePage.CSS/L_1_HomePage1.css",
+        "HomePage.CSS/L_1_HomePage2.css",
+        "HomePage.CSS/L_1_HomePage3.css",
+        "HomePage.CSS/L_1_HomePage4.css",
+        "HomePage.CSS/L_1_HomePage5.css",
+        "HomePage.CSS/L_1_HomePage6.css"
       ],
       "import_count": 0
     },
@@ -897,7 +897,7 @@ User: Here's the content of g_src_directory_scanner.json:
         "index.css",
         "index.js",
         "L_1_HomePage copy.js",
-        "L_1_HomePage.js",
+        "HomePage.js",
         "MultiVersionSelector.js",
         "naturalmotion.css",
         "naturalmotion.js",
@@ -982,14 +982,14 @@ User: Here's the content of g_src_directory_scanner.json:
       ],
       "import_count": 1
     },
-    "components\\L_1_HomePage.CSS": {
+    "components\\HomePage.CSS": {
       "files": [
-        "components\\L_1_HomePage.CSS\\L_1_HomePage1.css",
-        "components\\L_1_HomePage.CSS\\L_1_HomePage2.css",
-        "components\\L_1_HomePage.CSS\\L_1_HomePage3.css",
-        "components\\L_1_HomePage.CSS\\L_1_HomePage4.css",
-        "components\\L_1_HomePage.CSS\\L_1_HomePage5.css",
-        "components\\L_1_HomePage.CSS\\L_1_HomePage6.css"
+        "components\\HomePage.CSS\\L_1_HomePage1.css",
+        "components\\HomePage.CSS\\L_1_HomePage2.css",
+        "components\\HomePage.CSS\\L_1_HomePage3.css",
+        "components\\HomePage.CSS\\L_1_HomePage4.css",
+        "components\\HomePage.CSS\\L_1_HomePage5.css",
+        "components\\HomePage.CSS\\L_1_HomePage6.css"
       ],
       "import_count": 0
     },
@@ -1101,19 +1101,19 @@ User: Here's the content of g_src_directory_scanner.json:
       ],
       "import_count": 8
     },
-    "L_1_HomePage.CSS": {
+    "HomePage.CSS": {
       "files": [
-        "L_1_HomePage.CSS\\L_1_HomePage1.css",
-        "L_1_HomePage.CSS\\L_1_HomePage2.css",
-        "L_1_HomePage.CSS\\L_1_HomePage3.css",
-        "L_1_HomePage.CSS\\L_1_HomePage4.css",
-        "L_1_HomePage.CSS\\L_1_HomePage5.css",
-        "L_1_HomePage.CSS\\L_1_HomePage6.css",
-        "L_1_HomePage.CSS\\L_1_HomePage_AboutUs.css",
-        "L_1_HomePage.CSS\\L_1_HomePage_buttons.css",
-        "L_1_HomePage.CSS\\L_1_HomePage_monitoring.css",
-        "L_1_HomePage.CSS\\L_1_HomePage_Neumorphic.css",
-        "L_1_HomePage.CSS\\L_1_HomePage_selectors.css"
+        "HomePage.CSS\\L_1_HomePage1.css",
+        "HomePage.CSS\\L_1_HomePage2.css",
+        "HomePage.CSS\\L_1_HomePage3.css",
+        "HomePage.CSS\\L_1_HomePage4.css",
+        "HomePage.CSS\\L_1_HomePage5.css",
+        "HomePage.CSS\\L_1_HomePage6.css",
+        "HomePage.CSS\\L_1_HomePage_AboutUs.css",
+        "HomePage.CSS\\L_1_HomePage_buttons.css",
+        "HomePage.CSS\\L_1_HomePage_monitoring.css",
+        "HomePage.CSS\\L_1_HomePage_Neumorphic.css",
+        "HomePage.CSS\\L_1_HomePage_selectors.css"
       ],
       "import_count": 0
     },
@@ -1198,8 +1198,8 @@ User: Here's the content of g_src_directory_scanner.json:
         "size": 12020
       },
       {
-        "name": "L_1_HomePage.js",
-        "path": ".\\L_1_HomePage.js",
+        "name": "HomePage.js",
+        "path": ".\\HomePage.js",
         "size": 65617
       },
       {
@@ -1651,32 +1651,32 @@ User: Here's the content of g_src_directory_scanner.json:
       },
       {
         "name": "L_1_HomePage1.css",
-        "path": "components\\L_1_HomePage.CSS\\L_1_HomePage1.css",
+        "path": "components\\HomePage.CSS\\L_1_HomePage1.css",
         "size": 4089
       },
       {
         "name": "L_1_HomePage2.css",
-        "path": "components\\L_1_HomePage.CSS\\L_1_HomePage2.css",
+        "path": "components\\HomePage.CSS\\L_1_HomePage2.css",
         "size": 1919
       },
       {
         "name": "L_1_HomePage3.css",
-        "path": "components\\L_1_HomePage.CSS\\L_1_HomePage3.css",
+        "path": "components\\HomePage.CSS\\L_1_HomePage3.css",
         "size": 2816
       },
       {
         "name": "L_1_HomePage4.css",
-        "path": "components\\L_1_HomePage.CSS\\L_1_HomePage4.css",
+        "path": "components\\HomePage.CSS\\L_1_HomePage4.css",
         "size": 9759
       },
       {
         "name": "L_1_HomePage5.css",
-        "path": "components\\L_1_HomePage.CSS\\L_1_HomePage5.css",
+        "path": "components\\HomePage.CSS\\L_1_HomePage5.css",
         "size": 9032
       },
       {
         "name": "L_1_HomePage6.css",
-        "path": "components\\L_1_HomePage.CSS\\L_1_HomePage6.css",
+        "path": "components\\HomePage.CSS\\L_1_HomePage6.css",
         "size": 4051
       },
       {
@@ -1781,57 +1781,57 @@ User: Here's the content of g_src_directory_scanner.json:
       },
       {
         "name": "L_1_HomePage1.css",
-        "path": "L_1_HomePage.CSS\\L_1_HomePage1.css",
+        "path": "HomePage.CSS\\L_1_HomePage1.css",
         "size": 4089
       },
       {
         "name": "L_1_HomePage2.css",
-        "path": "L_1_HomePage.CSS\\L_1_HomePage2.css",
+        "path": "HomePage.CSS\\L_1_HomePage2.css",
         "size": 1919
       },
       {
         "name": "L_1_HomePage3.css",
-        "path": "L_1_HomePage.CSS\\L_1_HomePage3.css",
+        "path": "HomePage.CSS\\L_1_HomePage3.css",
         "size": 2816
       },
       {
         "name": "L_1_HomePage4.css",
-        "path": "L_1_HomePage.CSS\\L_1_HomePage4.css",
+        "path": "HomePage.CSS\\L_1_HomePage4.css",
         "size": 2149
       },
       {
         "name": "L_1_HomePage5.css",
-        "path": "L_1_HomePage.CSS\\L_1_HomePage5.css",
+        "path": "HomePage.CSS\\L_1_HomePage5.css",
         "size": 2620
       },
       {
         "name": "L_1_HomePage6.css",
-        "path": "L_1_HomePage.CSS\\L_1_HomePage6.css",
+        "path": "HomePage.CSS\\L_1_HomePage6.css",
         "size": 3180
       },
       {
         "name": "L_1_HomePage_AboutUs.css",
-        "path": "L_1_HomePage.CSS\\L_1_HomePage_AboutUs.css",
+        "path": "HomePage.CSS\\L_1_HomePage_AboutUs.css",
         "size": 4718
       },
       {
         "name": "L_1_HomePage_buttons.css",
-        "path": "L_1_HomePage.CSS\\L_1_HomePage_buttons.css",
+        "path": "HomePage.CSS\\L_1_HomePage_buttons.css",
         "size": 4282
       },
       {
         "name": "L_1_HomePage_monitoring.css",
-        "path": "L_1_HomePage.CSS\\L_1_HomePage_monitoring.css",
+        "path": "HomePage.CSS\\L_1_HomePage_monitoring.css",
         "size": 518
       },
       {
         "name": "L_1_HomePage_Neumorphic.css",
-        "path": "L_1_HomePage.CSS\\L_1_HomePage_Neumorphic.css",
+        "path": "HomePage.CSS\\L_1_HomePage_Neumorphic.css",
         "size": 11718
       },
       {
         "name": "L_1_HomePage_selectors.css",
-        "path": "L_1_HomePage.CSS\\L_1_HomePage_selectors.css",
+        "path": "HomePage.CSS\\L_1_HomePage_selectors.css",
         "size": 1237
       },
       {
@@ -2589,7 +2589,7 @@ src/GeneralFormConfig.js
 src/index.css
 src/index.js
 src/L_1_HomePage copy.js
-src/L_1_HomePage.js
+src/HomePage.js
 src/MultiVersionSelector.js
 src/naturalmotion.css
 src/naturalmotion.js
@@ -2611,7 +2611,7 @@ src/components/
 src/contexts/
 src/extended_scaling/
 src/hooks/
-src/L_1_HomePage.CSS/
+src/HomePage.CSS/
 src/services/
 src/state/
 src/styles/
@@ -2646,7 +2646,7 @@ src.fetched/FormHeader.js
 src.fetched/GeneralFormConfig.js
 src.fetched/index.css
 src.fetched/index.js
-src.fetched/L_1_HomePage.js
+src.fetched/HomePage.js
 src.fetched/L_1_HomePage1.css
 src.fetched/L_1_HomePage2.css
 src.fetched/L_1_HomePage3.css
@@ -2678,7 +2678,7 @@ src.fetched/utils/
 src.main1/
 src.main1/App.js
 src.main2/
-src.main2/L_1_HomePage.js
+src.main2/HomePage.js
 src.sketch.series/
 src.sketch.series/App copy.css
 src.sketch.series/App.css
@@ -2691,8 +2691,8 @@ src.sketch.series/FormHeader.js
 src.sketch.series/GeneralFormConfig.js
 src.sketch.series/index.css
 src.sketch.series/index.js
-src.sketch.series/L_1_HomePage.css
-src.sketch.series/L_1_HomePage.js
+src.sketch.series/HomePage.css
+src.sketch.series/HomePage.js
 src.sketch.series/MU.png
 src.sketch.series/Popup.css
 src.sketch.series/Popup.js
@@ -6529,7 +6529,7 @@ src/GeneralFormConfig.js
 src/index.css
 src/index.js
 src/L_1_HomePage copy.js
-src/L_1_HomePage.js
+src/HomePage.js
 src/MultiVersionSelector.js
 src/naturalmotion.css
 src/naturalmotion.js
@@ -6551,7 +6551,7 @@ src/components/
 src/contexts/
 src/extended_scaling/
 src/hooks/
-src/L_1_HomePage.CSS/
+src/HomePage.CSS/
 src/services/
 src/state/
 src/styles/
@@ -6574,7 +6574,7 @@ src.fetched/FormHeader.js
 src.fetched/GeneralFormConfig.js
 src.fetched/index.css
 src.fetched/index.js
-src.fetched/L_1_HomePage.js
+src.fetched/HomePage.js
 src.fetched/L_1_HomePage1.css
 src.fetched/L_1_HomePage2.css
 src.fetched/L_1_HomePage3.css
@@ -6606,7 +6606,7 @@ src.fetched/utils/
 src.main1/
 src.main1/App.js
 src.main2/
-src.main2/L_1_HomePage.js
+src.main2/HomePage.js
 src.sketch.series/
 src.sketch.series/App copy.css
 src.sketch.series/App.css
@@ -6619,8 +6619,8 @@ src.sketch.series/FormHeader.js
 src.sketch.series/GeneralFormConfig.js
 src.sketch.series/index.css
 src.sketch.series/index.js
-src.sketch.series/L_1_HomePage.css
-src.sketch.series/L_1_HomePage.js
+src.sketch.series/HomePage.css
+src.sketch.series/HomePage.js
 src.sketch.series/MU.png
 src.sketch.series/Popup.css
 src.sketch.series/Popup.js
@@ -14780,7 +14780,7 @@ src/GeneralFormConfig.js
 src/index.css
 src/index.js
 src/L_1_HomePage copy.js
-src/L_1_HomePage.js
+src/HomePage.js
 src/MultiVersionSelector.js
 src/naturalmotion.css
 src/naturalmotion.js
@@ -14802,7 +14802,7 @@ src/components/
 src/contexts/
 src/extended_scaling/
 src/hooks/
-src/L_1_HomePage.CSS/
+src/HomePage.CSS/
 src/services/
 src/state/
 src/styles/
@@ -14825,7 +14825,7 @@ src.fetched/FormHeader.js
 src.fetched/GeneralFormConfig.js
 src.fetched/index.css
 src.fetched/index.js
-src.fetched/L_1_HomePage.js
+src.fetched/HomePage.js
 src.fetched/L_1_HomePage1.css
 src.fetched/L_1_HomePage2.css
 src.fetched/L_1_HomePage3.css
@@ -14857,7 +14857,7 @@ src.fetched/utils/
 src.main1/
 src.main1/App.js
 src.main2/
-src.main2/L_1_HomePage.js
+src.main2/HomePage.js
 src.sketch.series/
 src.sketch.series/App copy.css
 src.sketch.series/App.css
@@ -14870,8 +14870,8 @@ src.sketch.series/FormHeader.js
 src.sketch.series/GeneralFormConfig.js
 src.sketch.series/index.css
 src.sketch.series/index.js
-src.sketch.series/L_1_HomePage.css
-src.sketch.series/L_1_HomePage.js
+src.sketch.series/HomePage.css
+src.sketch.series/HomePage.js
 src.sketch.series/MU.png
 src.sketch.series/Popup.css
 src.sketch.series/Popup.js
@@ -29665,12 +29665,12 @@ User: I've read the file active-files-report.json.
     "src\\components\\layout\\HeaderSection.css",
     "src\\components\\layout\\HeaderSection.js",
     "src\\components\\layout\\theme\\ThemeSelector.js",
-    "src\\components\\L_1_HomePage.CSS\\L_1_HomePage1.css",
-    "src\\components\\L_1_HomePage.CSS\\L_1_HomePage2.css",
-    "src\\components\\L_1_HomePage.CSS\\L_1_HomePage3.css",
-    "src\\components\\L_1_HomePage.CSS\\L_1_HomePage4.css",
-    "src\\components\\L_1_HomePage.CSS\\L_1_HomePage5.css",
-    "src\\components\\L_1_HomePage.CSS\\L_1_HomePage6.css",
+    "src\\components\\HomePage.CSS\\L_1_HomePage1.css",
+    "src\\components\\HomePage.CSS\\L_1_HomePage2.css",
+    "src\\components\\HomePage.CSS\\L_1_HomePage3.css",
+    "src\\components\\HomePage.CSS\\L_1_HomePage4.css",
+    "src\\components\\HomePage.CSS\\L_1_HomePage5.css",
+    "src\\components\\HomePage.CSS\\L_1_HomePage6.css",
     "src\\components\\model\\AnalysisChart.css",
     "src\\components\\model\\AnalysisChart.js",
     "src\\components\\model\\AnalysisVisualizationIntegration.css",
@@ -29744,18 +29744,18 @@ User: I've read the file active-files-report.json.
     "src\\hooks\\useVersion.js",
     "src\\index.css",
     "src\\L_1_HomePage copy.js",
-    "src\\L_1_HomePage.CSS\\L_1_HomePage1.css",
-    "src\\L_1_HomePage.CSS\\L_1_HomePage2.css",
-    "src\\L_1_HomePage.CSS\\L_1_HomePage3.css",
-    "src\\L_1_HomePage.CSS\\L_1_HomePage4.css",
-    "src\\L_1_HomePage.CSS\\L_1_HomePage5.css",
-    "src\\L_1_HomePage.CSS\\L_1_HomePage6.css",
-    "src\\L_1_HomePage.CSS\\L_1_HomePage_AboutUs.css",
-    "src\\L_1_HomePage.CSS\\L_1_HomePage_buttons.css",
-    "src\\L_1_HomePage.CSS\\L_1_HomePage_monitoring.css",
-    "src\\L_1_HomePage.CSS\\L_1_HomePage_Neumorphic.css",
-    "src\\L_1_HomePage.CSS\\L_1_HomePage_selectors.css",
-    "src\\L_1_HomePage.js",
+    "src\\HomePage.CSS\\L_1_HomePage1.css",
+    "src\\HomePage.CSS\\L_1_HomePage2.css",
+    "src\\HomePage.CSS\\L_1_HomePage3.css",
+    "src\\HomePage.CSS\\L_1_HomePage4.css",
+    "src\\HomePage.CSS\\L_1_HomePage5.css",
+    "src\\HomePage.CSS\\L_1_HomePage6.css",
+    "src\\HomePage.CSS\\L_1_HomePage_AboutUs.css",
+    "src\\HomePage.CSS\\L_1_HomePage_buttons.css",
+    "src\\HomePage.CSS\\L_1_HomePage_monitoring.css",
+    "src\\HomePage.CSS\\L_1_HomePage_Neumorphic.css",
+    "src\\HomePage.CSS\\L_1_HomePage_selectors.css",
+    "src\\HomePage.js",
     "src\\MultiVersionSelector.js",
     "src\\naturalmotion.css",
     "src\\naturalmotion.js",
@@ -36232,7 +36232,7 @@ src/GeneralFormConfig.js
 src/index.css
 src/index.js
 src/L_1_HomePage copy.js
-src/L_1_HomePage.js
+src/HomePage.js
 src/MultiVersionSelector.js
 src/naturalmotion.css
 src/naturalmotion.js
@@ -36254,7 +36254,7 @@ src/components/
 src/contexts/
 src/extended_scaling/
 src/hooks/
-src/L_1_HomePage.CSS/
+src/HomePage.CSS/
 src/services/
 src/state/
 src/styles/
@@ -36277,7 +36277,7 @@ src.fetched/FormHeader.js
 src.fetched/GeneralFormConfig.js
 src.fetched/index.css
 src.fetched/index.js
-src.fetched/L_1_HomePage.js
+src.fetched/HomePage.js
 src.fetched/L_1_HomePage1.css
 src.fetched/L_1_HomePage2.css
 src.fetched/L_1_HomePage3.css
@@ -36309,7 +36309,7 @@ src.fetched/utils/
 src.main1/
 src.main1/App.js
 src.main2/
-src.main2/L_1_HomePage.js
+src.main2/HomePage.js
 src.sketch.series/
 src.sketch.series/App copy.css
 src.sketch.series/App.css
@@ -36322,8 +36322,8 @@ src.sketch.series/FormHeader.js
 src.sketch.series/GeneralFormConfig.js
 src.sketch.series/index.css
 src.sketch.series/index.js
-src.sketch.series/L_1_HomePage.css
-src.sketch.series/L_1_HomePage.js
+src.sketch.series/HomePage.css
+src.sketch.series/HomePage.js
 src.sketch.series/MU.png
 src.sketch.series/Popup.css
 src.sketch.series/Popup.js
@@ -36763,7 +36763,7 @@ src/FormHeader.js
 # VSCode Open Tabs
 .eslintrc.js
 src/FormHeader.js
-src/L_1_HomePage.js
+src/HomePage.js
 
 # Current Time
 3/1/2025, 12:42:29 PM (America/Chicago, UTC-6:00)
@@ -37814,7 +37814,7 @@ src/GeneralFormConfig.js
 src/index.css
 src/index.js
 src/L_1_HomePage copy.js
-src/L_1_HomePage.js
+src/HomePage.js
 src/MultiVersionSelector.js
 src/naturalmotion.css
 src/naturalmotion.js
@@ -37836,7 +37836,7 @@ src/components/
 src/contexts/
 src/extended_scaling/
 src/hooks/
-src/L_1_HomePage.CSS/
+src/HomePage.CSS/
 src/services/
 src/state/
 src/styles/
@@ -37859,7 +37859,7 @@ src.fetched/FormHeader.js
 src.fetched/GeneralFormConfig.js
 src.fetched/index.css
 src.fetched/index.js
-src.fetched/L_1_HomePage.js
+src.fetched/HomePage.js
 src.fetched/L_1_HomePage1.css
 src.fetched/L_1_HomePage2.css
 src.fetched/L_1_HomePage3.css
@@ -37891,7 +37891,7 @@ src.fetched/utils/
 src.main1/
 src.main1/App.js
 src.main2/
-src.main2/L_1_HomePage.js
+src.main2/HomePage.js
 src.sketch.series/
 src.sketch.series/App copy.css
 src.sketch.series/App.css
@@ -37904,8 +37904,8 @@ src.sketch.series/FormHeader.js
 src.sketch.series/GeneralFormConfig.js
 src.sketch.series/index.css
 src.sketch.series/index.js
-src.sketch.series/L_1_HomePage.css
-src.sketch.series/L_1_HomePage.js
+src.sketch.series/HomePage.css
+src.sketch.series/HomePage.js
 src.sketch.series/MU.png
 src.sketch.series/Popup.css
 src.sketch.series/Popup.js
@@ -40358,7 +40358,7 @@ PS C:\Users\Mohse\OneDrive\Desktop\Milestone4 - Copy>
 # VSCode Open Tabs
 src/FormHeader.js
 .eslintrc.analysis.js
-src/L_1_HomePage.js
+src/HomePage.js
 src/VersionSelector.js
 update-eslint-config.js
 run-active-files-analysis.js
@@ -40519,7 +40519,7 @@ module.exports = {
         "src\hooks\useTheme.js",
         "src\hooks\useVersion.js",
         "src\L_1_HomePage copy.js",
-        "src\L_1_HomePage.CSS\L_1_HomePage_Neumorphic.css",
+        "src\HomePage.CSS\L_1_HomePage_Neumorphic.css",
         "src\PriceOptimizationConfig.css",
         "src\PriceOptimizationConfig.js",
         "src\SensitivityVisualization.css",
@@ -40559,7 +40559,7 @@ Try again with a more precise SEARCH block.
 
 # VSCode Open Tabs
 src/FormHeader.js
-src/L_1_HomePage.js
+src/HomePage.js
 src/VersionSelector.js
 .eslintrc.analysis.js
 update-eslint-config.js
@@ -40661,7 +40661,7 @@ it was emphasized to avoid launching independent efforts such as this detached f
 
 # VSCode Open Tabs
 src/FormHeader.js
-src/L_1_HomePage.js
+src/HomePage.js
 src/VersionSelector.js
 .eslintrc.analysis.js
 update-eslint-config.js
@@ -40756,7 +40756,7 @@ update-eslint-config.js
 
 # VSCode Open Tabs
 src/FormHeader.js
-src/L_1_HomePage.js
+src/HomePage.js
 src/VersionSelector.js
 .eslintrc.analysis.js
 update-eslint-config.js
@@ -40868,7 +40868,7 @@ src/GeneralFormConfig.js
 src/index.css
 src/index.js
 src/L_1_HomePage copy.js
-src/L_1_HomePage.js
+src/HomePage.js
 src/MultiVersionSelector.js
 src/naturalmotion.css
 src/naturalmotion.js
@@ -40890,7 +40890,7 @@ src/components/
 src/contexts/
 src/extended_scaling/
 src/hooks/
-src/L_1_HomePage.CSS/
+src/HomePage.CSS/
 src/services/
 src/state/
 src/styles/
@@ -40913,7 +40913,7 @@ src.fetched/FormHeader.js
 src.fetched/GeneralFormConfig.js
 src.fetched/index.css
 src.fetched/index.js
-src.fetched/L_1_HomePage.js
+src.fetched/HomePage.js
 src.fetched/L_1_HomePage1.css
 src.fetched/L_1_HomePage2.css
 src.fetched/L_1_HomePage3.css
@@ -40945,7 +40945,7 @@ src.fetched/utils/
 src.main1/
 src.main1/App.js
 src.main2/
-src.main2/L_1_HomePage.js
+src.main2/HomePage.js
 src.sketch.series/
 src.sketch.series/App copy.css
 src.sketch.series/App.css
@@ -40958,8 +40958,8 @@ src.sketch.series/FormHeader.js
 src.sketch.series/GeneralFormConfig.js
 src.sketch.series/index.css
 src.sketch.series/index.js
-src.sketch.series/L_1_HomePage.css
-src.sketch.series/L_1_HomePage.js
+src.sketch.series/HomePage.css
+src.sketch.series/HomePage.js
 src.sketch.series/MU.png
 src.sketch.series/Popup.css
 src.sketch.series/Popup.js
@@ -41015,7 +41015,7 @@ update-eslint-config.js
 
 # VSCode Open Tabs
 src/FormHeader.js
-src/L_1_HomePage.js
+src/HomePage.js
 src/VersionSelector.js
 .eslintrc.analysis.js
 update-eslint-config.js
@@ -41069,7 +41069,7 @@ update-eslint-config.js
 
 # VSCode Open Tabs
 src/FormHeader.js
-src/L_1_HomePage.js
+src/HomePage.js
 src/VersionSelector.js
 .eslintrc.analysis.js
 update-eslint-config.js
@@ -41126,7 +41126,7 @@ update-eslint-config.js
 
 # VSCode Open Tabs
 src/FormHeader.js
-src/L_1_HomePage.js
+src/HomePage.js
 src/VersionSelector.js
 .eslintrc.analysis.js
 update-eslint-config.js
@@ -41194,7 +41194,7 @@ update-eslint-config.js
 
 # VSCode Open Tabs
 src/FormHeader.js
-src/L_1_HomePage.js
+src/HomePage.js
 src/VersionSelector.js
 .eslintrc.analysis.js
 update-eslint-config.js
@@ -41595,7 +41595,7 @@ update-eslint-config.js
 
 # VSCode Open Tabs
 src/FormHeader.js
-src/L_1_HomePage.js
+src/HomePage.js
 src/VersionSelector.js
 .eslintrc.analysis.js
 update-eslint-config.js
@@ -42155,7 +42155,7 @@ eslint-plugin-active-files/rules/active-files-tracker.js
 
 # VSCode Open Tabs
 src/FormHeader.js
-src/L_1_HomePage.js
+src/HomePage.js
 src/VersionSelector.js
 .eslintrc.analysis.js
 update-eslint-config.js
@@ -42345,7 +42345,7 @@ run-active-files-analysis.js
 
 # VSCode Open Tabs
 src/FormHeader.js
-src/L_1_HomePage.js
+src/HomePage.js
 src/VersionSelector.js
 .eslintrc.analysis.js
 update-eslint-config.js
@@ -42534,7 +42534,7 @@ run-active-files-analysis.js
 
 # VSCode Open Tabs
 src/FormHeader.js
-src/L_1_HomePage.js
+src/HomePage.js
 src/VersionSelector.js
 .eslintrc.analysis.js
 update-eslint-config.js
@@ -42637,7 +42637,7 @@ IMPORTANT: For any future changes to this file, use the final_file_content shown
 
 # VSCode Open Tabs
 src/FormHeader.js
-src/L_1_HomePage.js
+src/HomePage.js
 src/VersionSelector.js
 .eslintrc.analysis.js
 update-eslint-config.js
@@ -42771,7 +42771,7 @@ IMPORTANT: For any future changes to this file, use the final_file_content shown
 
 # VSCode Open Tabs
 src/FormHeader.js
-src/L_1_HomePage.js
+src/HomePage.js
 src/VersionSelector.js
 .eslintrc.analysis.js
 update-eslint-config.js
@@ -43120,7 +43120,7 @@ active-files-usage-guide.md
 
 # VSCode Open Tabs
 src/FormHeader.js
-src/L_1_HomePage.js
+src/HomePage.js
 src/VersionSelector.js
 .eslintrc.analysis.js
 update-eslint-config.js
@@ -43281,7 +43281,7 @@ update-eslint-config.js
 
 # VSCode Open Tabs
 src/FormHeader.js
-src/L_1_HomePage.js
+src/HomePage.js
 src/VersionSelector.js
 .eslintrc.analysis.js
 eslint-plugin-active-files/rules/active-files-tracker.js
@@ -43476,7 +43476,7 @@ update-eslint-config.js
 
 # VSCode Open Tabs
 src/FormHeader.js
-src/L_1_HomePage.js
+src/HomePage.js
 src/VersionSelector.js
 .eslintrc.analysis.js
 eslint-plugin-active-files/rules/active-files-tracker.js
@@ -43565,7 +43565,7 @@ does .eslintrc.analysis.js have any role?
 
 # VSCode Open Tabs
 src/FormHeader.js
-src/L_1_HomePage.js
+src/HomePage.js
 src/VersionSelector.js
 .eslintrc.analysis.js
 eslint-plugin-active-files/rules/active-files-tracker.js
@@ -43642,7 +43642,7 @@ src/index.js
 
 # VSCode Open Tabs
 src/FormHeader.js
-src/L_1_HomePage.js
+src/HomePage.js
 src/VersionSelector.js
 eslint-plugin-active-files/rules/active-files-tracker.js
 run-active-files-analysis.js
@@ -43788,7 +43788,7 @@ module.exports = {
         "src/hooks/useTheme.js",
         "src/hooks/useVersion.js",
         "src/L_1_HomePage copy.js",
-        "src/L_1_HomePage.CSS/L_1_HomePage_Neumorphic.css",
+        "src/HomePage.CSS/L_1_HomePage_Neumorphic.css",
         "src/PriceOptimizationConfig.css",
         "src/PriceOptimizationConfig.js",
         "src/SensitivityVisualization.css",
@@ -43828,7 +43828,7 @@ IMPORTANT: For any future changes to this file, use the final_file_content shown
 
 # VSCode Open Tabs
 src/FormHeader.js
-src/L_1_HomePage.js
+src/HomePage.js
 src/VersionSelector.js
 eslint-plugin-active-files/rules/active-files-tracker.js
 run-active-files-analysis.js
@@ -43987,7 +43987,7 @@ active-files-usage-guide.md
 
 # VSCode Open Tabs
 src/FormHeader.js
-src/L_1_HomePage.js
+src/HomePage.js
 src/VersionSelector.js
 eslint-plugin-active-files/rules/active-files-tracker.js
 run-active-files-analysis.js
@@ -44197,7 +44197,7 @@ run-active-files-analysis.js
 
 # VSCode Open Tabs
 src/FormHeader.js
-src/L_1_HomePage.js
+src/HomePage.js
 src/VersionSelector.js
 eslint-plugin-active-files/rules/active-files-tracker.js
 update-eslint-config.js
@@ -44432,7 +44432,7 @@ run-active-files-analysis.js
 
 # VSCode Open Tabs
 src/FormHeader.js
-src/L_1_HomePage.js
+src/HomePage.js
 src/VersionSelector.js
 eslint-plugin-active-files/rules/active-files-tracker.js
 update-eslint-config.js
@@ -45032,7 +45032,7 @@ src/[A]_useFormValues.js
 src/[A]_VersionSelector.css
 src/[A]_VersionSelector.js
 src/[I]_App.css
-src/[I]_L_1_HomePage.js
+src/[I]_HomePage.js
 src/[I]_MultiVersionSelector.js
 src/[I]_PriceOptimizationConfig.css
 src/[I]_PriceOptimizationConfig.js
@@ -45045,7 +45045,7 @@ src/components/
 src/contexts/
 src/extended_scaling/
 src/hooks/
-src/L_1_HomePage.CSS/
+src/HomePage.CSS/
 src/services/
 src/state/
 src/styles/
@@ -45068,7 +45068,7 @@ src.fetched/FormHeader.js
 src.fetched/GeneralFormConfig.js
 src.fetched/index.css
 src.fetched/index.js
-src.fetched/L_1_HomePage.js
+src.fetched/HomePage.js
 src.fetched/L_1_HomePage1.css
 src.fetched/L_1_HomePage2.css
 src.fetched/L_1_HomePage3.css
@@ -45100,7 +45100,7 @@ src.fetched/utils/
 src.main1/
 src.main1/App.js
 src.main2/
-src.main2/L_1_HomePage.js
+src.main2/HomePage.js
 src.sketch.series/
 src.sketch.series/App copy.css
 src.sketch.series/App.css
@@ -45113,8 +45113,8 @@ src.sketch.series/FormHeader.js
 src.sketch.series/GeneralFormConfig.js
 src.sketch.series/index.css
 src.sketch.series/index.js
-src.sketch.series/L_1_HomePage.css
-src.sketch.series/L_1_HomePage.js
+src.sketch.series/HomePage.css
+src.sketch.series/HomePage.js
 src.sketch.series/MU.png
 src.sketch.series/Popup.css
 src.sketch.series/Popup.js
@@ -46630,18 +46630,18 @@ module.exports = {
         "src/hooks/useSensitivity.js",
         "src/hooks/useTheme.js",
         "src/hooks/useVersion.js",
-        "src/L_1_HomePage.CSS/L_1_HomePage1.css",
-        "src/L_1_HomePage.CSS/L_1_HomePage2.css",
-        "src/L_1_HomePage.CSS/L_1_HomePage3.css",
-        "src/L_1_HomePage.CSS/L_1_HomePage4.css",
-        "src/L_1_HomePage.CSS/L_1_HomePage5.css",
-        "src/L_1_HomePage.CSS/L_1_HomePage6.css",
-        "src/L_1_HomePage.CSS/L_1_HomePage_AboutUs.css",
-        "src/L_1_HomePage.CSS/L_1_HomePage_buttons.css",
-        "src/L_1_HomePage.CSS/L_1_HomePage_monitoring.css",
-        "src/L_1_HomePage.CSS/L_1_HomePage_Neumorphic.css",
-        "src/L_1_HomePage.CSS/L_1_HomePage_selectors.css",
-        "src/L_1_HomePage.js",
+        "src/HomePage.CSS/L_1_HomePage1.css",
+        "src/HomePage.CSS/L_1_HomePage2.css",
+        "src/HomePage.CSS/L_1_HomePage3.css",
+        "src/HomePage.CSS/L_1_HomePage4.css",
+        "src/HomePage.CSS/L_1_HomePage5.css",
+        "src/HomePage.CSS/L_1_HomePage6.css",
+        "src/HomePage.CSS/L_1_HomePage_AboutUs.css",
+        "src/HomePage.CSS/L_1_HomePage_buttons.css",
+        "src/HomePage.CSS/L_1_HomePage_monitoring.css",
+        "src/HomePage.CSS/L_1_HomePage_Neumorphic.css",
+        "src/HomePage.CSS/L_1_HomePage_selectors.css",
+        "src/HomePage.js",
         "src/MultiVersionSelector.js",
         "src/PriceOptimizationConfig.css",
         "src/PriceOptimizationConfig.js",
@@ -46846,7 +46846,7 @@ src/[A]_useFormValues.js
 src/[A]_VersionSelector.css
 src/[A]_VersionSelector.js
 src/[I]_App.css
-src/[I]_L_1_HomePage.js
+src/[I]_HomePage.js
 src/[I]_MultiVersionSelector.js
 src/[I]_PriceOptimizationConfig.css
 src/[I]_PriceOptimizationConfig.js
@@ -46859,7 +46859,7 @@ src/components/
 src/contexts/
 src/extended_scaling/
 src/hooks/
-src/L_1_HomePage.CSS/
+src/HomePage.CSS/
 src/services/
 src/state/
 src/styles/
@@ -46882,7 +46882,7 @@ src.fetched/FormHeader.js
 src.fetched/GeneralFormConfig.js
 src.fetched/index.css
 src.fetched/index.js
-src.fetched/L_1_HomePage.js
+src.fetched/HomePage.js
 src.fetched/L_1_HomePage1.css
 src.fetched/L_1_HomePage2.css
 src.fetched/L_1_HomePage3.css
@@ -46914,7 +46914,7 @@ src.fetched/utils/
 src.main1/
 src.main1/App.js
 src.main2/
-src.main2/L_1_HomePage.js
+src.main2/HomePage.js
 src.sketch.series/
 src.sketch.series/App copy.css
 src.sketch.series/App.css
@@ -46927,8 +46927,8 @@ src.sketch.series/FormHeader.js
 src.sketch.series/GeneralFormConfig.js
 src.sketch.series/index.css
 src.sketch.series/index.js
-src.sketch.series/L_1_HomePage.css
-src.sketch.series/L_1_HomePage.js
+src.sketch.series/HomePage.css
+src.sketch.series/HomePage.js
 src.sketch.series/MU.png
 src.sketch.series/Popup.css
 src.sketch.series/Popup.js
@@ -48023,7 +48023,7 @@ src/[A]_Editable.css
 src/[A]_Editable.js
 src/[A]_FormHeader.js
 src/[A]_GeneralFormConfig.js
-src/[A]_L_1_HomePage.js
+src/[A]_HomePage.js
 src/[A]_MultiVersionSelector.js
 src/[A]_naturalmotion.css
 src/[A]_naturalmotion.js
@@ -48048,7 +48048,7 @@ src/components/
 src/contexts/
 src/extended_scaling/
 src/hooks/
-src/L_1_HomePage.CSS/
+src/HomePage.CSS/
 src/services/
 src/state/
 src/styles/
@@ -48071,7 +48071,7 @@ src.fetched/FormHeader.js
 src.fetched/GeneralFormConfig.js
 src.fetched/index.css
 src.fetched/index.js
-src.fetched/L_1_HomePage.js
+src.fetched/HomePage.js
 src.fetched/L_1_HomePage1.css
 src.fetched/L_1_HomePage2.css
 src.fetched/L_1_HomePage3.css
@@ -48103,7 +48103,7 @@ src.fetched/utils/
 src.main1/
 src.main1/App.js
 src.main2/
-src.main2/L_1_HomePage.js
+src.main2/HomePage.js
 src.sketch.series/
 src.sketch.series/App copy.css
 src.sketch.series/App.css
@@ -48116,8 +48116,8 @@ src.sketch.series/FormHeader.js
 src.sketch.series/GeneralFormConfig.js
 src.sketch.series/index.css
 src.sketch.series/index.js
-src.sketch.series/L_1_HomePage.css
-src.sketch.series/L_1_HomePage.js
+src.sketch.series/HomePage.css
+src.sketch.series/HomePage.js
 src.sketch.series/MU.png
 src.sketch.series/Popup.css
 src.sketch.series/Popup.js
@@ -55788,14 +55788,14 @@ in the process of making corrections, run analyzer that needs to adjust names in
 [Image]
 <environment_details>
 # VSCode Visible Files
-src/[A]_L_1_HomePage.js
+src/[A]_HomePage.js
 
 # VSCode Open Tabs
 src/index.js
 active-files-usage-guide.md
 mark-active-files.js
 restore-filenames.js
-src/[A]_L_1_HomePage.js
+src/[A]_HomePage.js
 
 # Current Time
 3/1/2025, 3:36:14 PM (America/Chicago, UTC-6:00)
@@ -55809,9 +55809,9 @@ ACT MODE
 **Assistant:**
 
 <thinking>
-I see the issue. The analyzer is skipping some files in the import statements. Looking at the screenshot, I can see that some imports have the [A]_ prefix in the path (like `./L_1_HomePage.CSS/[A]_L_1_HomePage5.css`), but others don't (like `./PropertySelector.js`). This suggests that the analyzer is not consistently applying the prefixes to all imported files.
+I see the issue. The analyzer is skipping some files in the import statements. Looking at the screenshot, I can see that some imports have the [A]_ prefix in the path (like `./HomePage.CSS/[A]_L_1_HomePage5.css`), but others don't (like `./PropertySelector.js`). This suggests that the analyzer is not consistently applying the prefixes to all imported files.
 
-Let's modify the mark-active-files.js script to ensure it properly handles all import paths, including those with nested directories like L_1_HomePage.CSS.
+Let's modify the mark-active-files.js script to ensure it properly handles all import paths, including those with nested directories like HomePage.CSS.
 </thinking>
 
 <replace_in_file>
@@ -55856,9 +55856,9 @@ Let's modify the mark-active-files.js script to ensure it properly handles all i
       { pattern: /Model\[(A|I)\]_Card$/, replacement: 'ModelCard' },
       { pattern: /Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: 'FilterPopup' },
       { pattern: /Individual\[(A|I)\]_ResultsPanel$/, replacement: 'IndividualResultsPanel' },
-      // Add patterns for L_1_HomePage.CSS files
-      { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'L_1_HomePage.CSS/L_1_HomePage$2.css' },
-      { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'L_1_HomePage.CSS/L_1_HomePage_$2.css' }
+      // Add patterns for HomePage.CSS files
+      { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage$2.css' },
+      { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage_$2.css' }
     ];
     
     // Try each known pattern
@@ -55970,9 +55970,9 @@ const cleanImportPath = (importPath) => {
       { pattern: /Model\[(A|I)\]_Card$/, replacement: 'ModelCard' },
       { pattern: /Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: 'FilterPopup' },
       { pattern: /Individual\[(A|I)\]_ResultsPanel$/, replacement: 'IndividualResultsPanel' },
-      // Add patterns for L_1_HomePage.CSS files
-      { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'L_1_HomePage.CSS/L_1_HomePage$2.css' },
-      { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'L_1_HomePage.CSS/L_1_HomePage_$2.css' }
+      // Add patterns for HomePage.CSS files
+      { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage$2.css' },
+      { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage_$2.css' }
     ];
     
     // Try each known pattern
@@ -56220,7 +56220,7 @@ ACT MODE
 **Assistant:**
 
 <thinking>
-Now I need to update the restore-filenames.js script to also handle the L_1_HomePage.CSS files correctly.
+Now I need to update the restore-filenames.js script to also handle the HomePage.CSS files correctly.
 </thinking>
 
 <replace_in_file>
@@ -56241,9 +56241,9 @@ Now I need to update the restore-filenames.js script to also handle the L_1_Home
     { pattern: /Model\[(A|I)\]_Card$/, replacement: 'ModelCard' },
     { pattern: /Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: 'FilterPopup' },
     { pattern: /Individual\[(A|I)\]_ResultsPanel$/, replacement: 'IndividualResultsPanel' },
-    // Add patterns for L_1_HomePage.CSS files
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'L_1_HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'L_1_HomePage.CSS/L_1_HomePage_$2.css' }
+    // Add patterns for HomePage.CSS files
+    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage$2.css' },
+    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage_$2.css' }
   ];
 >>>>>>> REPLACE
 </diff>
@@ -56377,7 +56377,7 @@ src/FormHeader.js
 src/GeneralFormConfig.js
 src/index.js
 src/L_1_HomePage_copy.js
-src/L_1_HomePage.js
+src/HomePage.js
 src/MultiVersionSelector.js
 src/naturalmotion.css
 src/naturalmotion.js
@@ -56399,7 +56399,7 @@ src/components/
 src/contexts/
 src/extended_scaling/
 src/hooks/
-src/L_1_HomePage.CSS/
+src/HomePage.CSS/
 src/services/
 src/state/
 src/styles/
@@ -56422,7 +56422,7 @@ src.fetched/FormHeader.js
 src.fetched/GeneralFormConfig.js
 src.fetched/index.css
 src.fetched/index.js
-src.fetched/L_1_HomePage.js
+src.fetched/HomePage.js
 src.fetched/L_1_HomePage1.css
 src.fetched/L_1_HomePage2.css
 src.fetched/L_1_HomePage3.css
@@ -56454,7 +56454,7 @@ src.fetched/utils/
 src.main1/
 src.main1/App.js
 src.main2/
-src.main2/L_1_HomePage.js
+src.main2/HomePage.js
 src.sketch.series/
 src.sketch.series/App copy.css
 src.sketch.series/App.css
@@ -56467,8 +56467,8 @@ src.sketch.series/FormHeader.js
 src.sketch.series/GeneralFormConfig.js
 src.sketch.series/index.css
 src.sketch.series/index.js
-src.sketch.series/L_1_HomePage.css
-src.sketch.series/L_1_HomePage.js
+src.sketch.series/HomePage.css
+src.sketch.series/HomePage.js
 src.sketch.series/MU.png
 src.sketch.series/Popup.css
 src.sketch.series/Popup.js
@@ -56586,9 +56586,9 @@ const cleanImportPath = (importPath) => {
       { pattern: /Model\[(A|I)\]_Card$/, replacement: 'ModelCard' },
       { pattern: /Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: 'FilterPopup' },
       { pattern: /Individual\[(A|I)\]_ResultsPanel$/, replacement: 'IndividualResultsPanel' },
-      // Add patterns for L_1_HomePage.CSS files
-      { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'L_1_HomePage.CSS/L_1_HomePage$2.css' },
-      { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'L_1_HomePage.CSS/L_1_HomePage_$2.css' }
+      // Add patterns for HomePage.CSS files
+      { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage$2.css' },
+      { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage_$2.css' }
     ];
     
     // Try each known pattern
@@ -57439,9 +57439,9 @@ const cleanFromPrefixes = (str) => {
     { pattern: /Model\[(A|I)\]_Card$/, replacement: 'ModelCard' },
     { pattern: /Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: 'FilterPopup' },
     { pattern: /Individual\[(A|I)\]_ResultsPanel$/, replacement: 'IndividualResultsPanel' },
-    // Add patterns for L_1_HomePage.CSS files
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'L_1_HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'L_1_HomePage.CSS/L_1_HomePage_$2.css' }
+    // Add patterns for HomePage.CSS files
+    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage$2.css' },
+    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage_$2.css' }
   ];
   
   // Try each known pattern
@@ -57513,9 +57513,9 @@ const cleanFromPrefixes = (str) => {
     { pattern: /Model\[(A|I)\]_Card$/, replacement: 'ModelCard' },
     { pattern: /Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: 'FilterPopup' },
     { pattern: /Individual\[(A|I)\]_ResultsPanel$/, replacement: 'IndividualResultsPanel' },
-    // Add patterns for L_1_HomePage.CSS files
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'L_1_HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'L_1_HomePage.CSS/L_1_HomePage_$2.css' }
+    // Add patterns for HomePage.CSS files
+    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage$2.css' },
+    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage_$2.css' }
   ];
   
   // Try each known pattern
@@ -58192,9 +58192,9 @@ const cleanFromPrefixes = (str) => {
     { pattern: /Model\[(A|I)\]_Card$/, replacement: 'ModelCard' },
     { pattern: /Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: 'FilterPopup' },
     { pattern: /Individual\[(A|I)\]_ResultsPanel$/, replacement: 'IndividualResultsPanel' },
-    // Add patterns for L_1_HomePage.CSS files
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'L_1_HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'L_1_HomePage.CSS/L_1_HomePage_$2.css' }
+    // Add patterns for HomePage.CSS files
+    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage$2.css' },
+    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage_$2.css' }
   ];
 >>>>>>> REPLACE
 </diff>
@@ -58317,9 +58317,9 @@ const cleanFromPrefixes = (str) => {
     { pattern: /Model\[(A|I)\]_Card$/, replacement: 'ModelCard' },
     { pattern: /Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: 'FilterPopup' },
     { pattern: /Individual\[(A|I)\]_ResultsPanel$/, replacement: 'IndividualResultsPanel' },
-    // Add patterns for L_1_HomePage.CSS files
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'L_1_HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'L_1_HomePage.CSS/L_1_HomePage_$2.css' }
+    // Add patterns for HomePage.CSS files
+    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage$2.css' },
+    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage_$2.css' }
   ];
   
   // Try each known pattern
@@ -58979,9 +58979,9 @@ const forceCleanImports = (filePath) => {
         { pattern: /\.\/Model\[(A|I)\]_Card$/, replacement: './ModelCard' },
         { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
         { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
-        // Add patterns for L_1_HomePage.CSS files
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage$2.css' },
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage_$2.css' }
+        // Add patterns for HomePage.CSS files
+        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
+        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
       ];
       
       let matchedKnownPattern = false;
@@ -59129,9 +59129,9 @@ const cleanFromPrefixes = (str) => {
     { pattern: /Model\[(A|I)\]_Card$/, replacement: 'ModelCard' },
     { pattern: /Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: 'FilterPopup' },
     { pattern: /Individual\[(A|I)\]_ResultsPanel$/, replacement: 'IndividualResultsPanel' },
-    // Add patterns for L_1_HomePage.CSS files
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'L_1_HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'L_1_HomePage.CSS/L_1_HomePage_$2.css' }
+    // Add patterns for HomePage.CSS files
+    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage$2.css' },
+    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage_$2.css' }
   ];
   
   // Try each known pattern
@@ -59241,9 +59241,9 @@ const forceCleanImports = (filePath) => {
         { pattern: /\.\/Model\[(A|I)\]_Card$/, replacement: './ModelCard' },
         { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
         { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
-        // Add patterns for L_1_HomePage.CSS files
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage$2.css' },
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage_$2.css' }
+        // Add patterns for HomePage.CSS files
+        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
+        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
       ];
       
       let matchedKnownPattern = false;
@@ -59860,9 +59860,9 @@ const updateImportsInFile = (filePath) => {
         { pattern: /\.\/Model\[(A|I)\]_Card$/, replacement: './ModelCard' },
         { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
         { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
-        // Add patterns for L_1_HomePage.CSS files
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage$2.css' },
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage_$2.css' }
+        // Add patterns for HomePage.CSS files
+        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
+        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
       ];
       
       let matchedKnownPattern = false;
@@ -60027,9 +60027,9 @@ const cleanFromPrefixes = (str) => {
     { pattern: /Model\[(A|I)\]_Card$/, replacement: 'ModelCard' },
     { pattern: /Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: 'FilterPopup' },
     { pattern: /Individual\[(A|I)\]_ResultsPanel$/, replacement: 'IndividualResultsPanel' },
-    // Add patterns for L_1_HomePage.CSS files
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'L_1_HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'L_1_HomePage.CSS/L_1_HomePage_$2.css' }
+    // Add patterns for HomePage.CSS files
+    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage$2.css' },
+    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage_$2.css' }
   ];
   
   // Try each known pattern
@@ -60139,9 +60139,9 @@ const forceCleanImports = (filePath) => {
         { pattern: /\.\/Model\[(A|I)\]_Card$/, replacement: './ModelCard' },
         { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
         { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
-        // Add patterns for L_1_HomePage.CSS files
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage$2.css' },
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage_$2.css' }
+        // Add patterns for HomePage.CSS files
+        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
+        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
       ];
       
       let matchedKnownPattern = false;
@@ -60272,9 +60272,9 @@ const updateImportsInFile = (filePath) => {
         { pattern: /\.\/Model\[(A|I)\]_Card$/, replacement: './ModelCard' },
         { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
         { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
-        // Add patterns for L_1_HomePage.CSS files
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage$2.css' },
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage_$2.css' }
+        // Add patterns for HomePage.CSS files
+        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
+        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
       ];
       
       let matchedKnownPattern = false;
@@ -60674,9 +60674,9 @@ const cleanFromPrefixes = (str) => {
     { pattern: /Model\[(A|I)\]_Card$/, replacement: 'ModelCard' },
     { pattern: /Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: 'FilterPopup' },
     { pattern: /Individual\[(A|I)\]_ResultsPanel$/, replacement: 'IndividualResultsPanel' },
-    // Add patterns for L_1_HomePage.CSS files
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'L_1_HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'L_1_HomePage.CSS/L_1_HomePage_$2.css' }
+    // Add patterns for HomePage.CSS files
+    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage$2.css' },
+    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage_$2.css' }
   ];
   
   // Try each known pattern
@@ -60786,9 +60786,9 @@ const forceCleanImports = (filePath) => {
         { pattern: /\.\/Model\[(A|I)\]_Card$/, replacement: './ModelCard' },
         { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
         { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
-        // Add patterns for L_1_HomePage.CSS files
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage$2.css' },
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage_$2.css' }
+        // Add patterns for HomePage.CSS files
+        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
+        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
       ];
       
       let matchedKnownPattern = false;
@@ -60919,9 +60919,9 @@ const updateImportsInFile = (filePath) => {
         { pattern: /\.\/Model\[(A|I)\]_Card$/, replacement: './ModelCard' },
         { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
         { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
-        // Add patterns for L_1_HomePage.CSS files
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage$2.css' },
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage_$2.css' }
+        // Add patterns for HomePage.CSS files
+        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
+        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
       ];
       
       let matchedKnownPattern = false;
@@ -61178,14 +61178,14 @@ run analyzer skipped all the importstaments, whathappened to dependency garphs t
 </user_message>
 <environment_details>
 # VSCode Visible Files
-src/[A]_L_1_HomePage.js
+src/[A]_HomePage.js
 
 # VSCode Open Tabs
 src/index.js
 active-files-usage-guide.md
 mark-active-files.js
 restore-filenames.js
-src/[A]_L_1_HomePage.js
+src/[A]_HomePage.js
 
 # Current Time
 3/1/2025, 3:48:53 PM (America/Chicago, UTC-6:00)
@@ -61286,7 +61286,7 @@ src/[A]_Editable.css
 src/[A]_Editable.js
 src/[A]_FormHeader.js
 src/[A]_GeneralFormConfig.js
-src/[A]_L_1_HomePage.js
+src/[A]_HomePage.js
 src/[A]_MultiVersionSelector.js
 src/[A]_naturalmotion.css
 src/[A]_naturalmotion.js
@@ -61311,7 +61311,7 @@ src/components/
 src/contexts/
 src/extended_scaling/
 src/hooks/
-src/L_1_HomePage.CSS/
+src/HomePage.CSS/
 src/services/
 src/state/
 src/styles/
@@ -61334,7 +61334,7 @@ src.fetched/FormHeader.js
 src.fetched/GeneralFormConfig.js
 src.fetched/index.css
 src.fetched/index.js
-src.fetched/L_1_HomePage.js
+src.fetched/HomePage.js
 src.fetched/L_1_HomePage1.css
 src.fetched/L_1_HomePage2.css
 src.fetched/L_1_HomePage3.css
@@ -61366,7 +61366,7 @@ src.fetched/utils/
 src.main1/
 src.main1/App.js
 src.main2/
-src.main2/L_1_HomePage.js
+src.main2/HomePage.js
 src.sketch.series/
 src.sketch.series/App copy.css
 src.sketch.series/App.css
@@ -61379,8 +61379,8 @@ src.sketch.series/FormHeader.js
 src.sketch.series/GeneralFormConfig.js
 src.sketch.series/index.css
 src.sketch.series/index.js
-src.sketch.series/L_1_HomePage.css
-src.sketch.series/L_1_HomePage.js
+src.sketch.series/HomePage.css
+src.sketch.series/HomePage.js
 src.sketch.series/MU.png
 src.sketch.series/Popup.css
 src.sketch.series/Popup.js
@@ -61441,14 +61441,14 @@ User: [The user has switched to ACT MODE, so you may now proceed with the task.]
 [The user has switched to ACT MODE, so you may now proceed with the task.]
 <environment_details>
 # VSCode Visible Files
-src/[A]_L_1_HomePage.js
+src/[A]_HomePage.js
 
 # VSCode Open Tabs
 src/index.js
 active-files-usage-guide.md
 mark-active-files.js
 restore-filenames.js
-src/[A]_L_1_HomePage.js
+src/[A]_HomePage.js
 
 # Current Time
 3/1/2025, 3:49:07 PM (America/Chicago, UTC-6:00)
@@ -61843,14 +61843,14 @@ module.exports = {
 
 <environment_details>
 # VSCode Visible Files
-src/[A]_L_1_HomePage.js
+src/[A]_HomePage.js
 
 # VSCode Open Tabs
 src/index.js
 active-files-usage-guide.md
 mark-active-files.js
 restore-filenames.js
-src/[A]_L_1_HomePage.js
+src/[A]_HomePage.js
 
 # Current Time
 3/1/2025, 3:49:16 PM (America/Chicago, UTC-6:00)
@@ -61864,20 +61864,20 @@ ACT MODE
 **Assistant:**
 
 <thinking>
-Now I need to examine the content of the L_1_HomePage.js file to understand what import statements might be getting skipped.
+Now I need to examine the content of the HomePage.js file to understand what import statements might be getting skipped.
 </thinking>
 
 <read_file>
-<path>src/[A]_L_1_HomePage.js</path>
+<path>src/[A]_HomePage.js</path>
 </read_file>
 
-User: I've read the file src/[A]_L_1_HomePage.js.
+User: I've read the file src/[A]_HomePage.js.
 
 ---
 
 **User:**
 
-[read_file for 'src/[A]_L_1_HomePage.js'] Result:
+[read_file for 'src/[A]_HomePage.js'] Result:
 
 import { useEffect, useState } from 'react';
 import { VersionStateProvider, useVersionState } from './contexts/VersionStateContext';
@@ -61889,16 +61889,16 @@ import ExtendedScaling from './extended_scaling/ExtendedScaling';
 import FormHeader from './FormHeader.js';
 import GeneralFormConfig from './GeneralFormConfig.js';
 import Popup from './Popup.js';
-import './L_1_HomePage.CSS/L_1_HomePage1.css';
-import './L_1_HomePage.CSS/L_1_HomePage2.css';
-import './L_1_HomePage.CSS/L_1_HomePage3.css';
-import './L_1_HomePage.CSS/L_1_HomePage4.css';
-import './L_1_HomePage.CSS/L_1_HomePage5.css';
-import './L_1_HomePage.CSS/L_1_HomePage6.css';
-import './L_1_HomePage.CSS/L_1_HomePage_AboutUs.css';
-import './L_1_HomePage.CSS/L_1_HomePage_buttons.css';
-import './L_1_HomePage.CSS/L_1_HomePage_monitoring.css';
-import './L_1_HomePage.CSS/L_1_HomePage_selectors.css';
+import './HomePage.CSS/L_1_HomePage1.css';
+import './HomePage.CSS/L_1_HomePage2.css';
+import './HomePage.CSS/L_1_HomePage3.css';
+import './HomePage.CSS/L_1_HomePage4.css';
+import './HomePage.CSS/L_1_HomePage5.css';
+import './HomePage.CSS/L_1_HomePage6.css';
+import './HomePage.CSS/L_1_HomePage_AboutUs.css';
+import './HomePage.CSS/L_1_HomePage_buttons.css';
+import './HomePage.CSS/L_1_HomePage_monitoring.css';
+import './HomePage.CSS/L_1_HomePage_selectors.css';
 import './styles/neumorphic-tabs.css';
 import PropertySelector from './PropertySelector.js';
 import MultiVersionSelector from './MultiVersionSelector.js';
@@ -63432,14 +63432,14 @@ export default L_1_HomePage;
 
 <environment_details>
 # VSCode Visible Files
-src/[A]_L_1_HomePage.js
+src/[A]_HomePage.js
 
 # VSCode Open Tabs
 src/index.js
 active-files-usage-guide.md
 mark-active-files.js
 restore-filenames.js
-src/[A]_L_1_HomePage.js
+src/[A]_HomePage.js
 
 # Current Time
 3/1/2025, 3:49:23 PM (America/Chicago, UTC-6:00)
@@ -63474,14 +63474,14 @@ a billion times now, you do not need to see the files, stop for a seond, just su
 </feedback>
 <environment_details>
 # VSCode Visible Files
-src/[A]_L_1_HomePage.js
+src/[A]_HomePage.js
 
 # VSCode Open Tabs
 src/index.js
 active-files-usage-guide.md
 mark-active-files.js
 restore-filenames.js
-src/[A]_L_1_HomePage.js
+src/[A]_HomePage.js
 
 # Current Time
 3/1/2025, 3:52:06 PM (America/Chicago, UTC-6:00)
@@ -63496,14 +63496,14 @@ Note: If you previously attempted a tool use that the user did not provide a res
 IMPORTANT: If the last tool use was a replace_in_file or write_to_file that was interrupted, the file was reverted back to its original state before the interrupted edit, and you do NOT need to re-read the file as you already have its up-to-date contents.(The user did not provide a new message. Consider asking them how they'd like you to proceed, or to switch to Act mode to continue with the task.)
 <environment_details>
 # VSCode Visible Files
-src/[A]_L_1_HomePage.js
+src/[A]_HomePage.js
 
 # VSCode Open Tabs
 src/index.js
 active-files-usage-guide.md
 mark-active-files.js
 restore-filenames.js
-src/[A]_L_1_HomePage.js
+src/[A]_HomePage.js
 
 # Current Time
 3/1/2025, 3:52:10 PM (America/Chicago, UTC-6:00)
@@ -63604,7 +63604,7 @@ src/[A]_Editable.css
 src/[A]_Editable.js
 src/[A]_FormHeader.js
 src/[A]_GeneralFormConfig.js
-src/[A]_L_1_HomePage.js
+src/[A]_HomePage.js
 src/[A]_MultiVersionSelector.js
 src/[A]_naturalmotion.css
 src/[A]_naturalmotion.js
@@ -63629,7 +63629,7 @@ src/components/
 src/contexts/
 src/extended_scaling/
 src/hooks/
-src/L_1_HomePage.CSS/
+src/HomePage.CSS/
 src/services/
 src/state/
 src/styles/
@@ -63652,7 +63652,7 @@ src.fetched/FormHeader.js
 src.fetched/GeneralFormConfig.js
 src.fetched/index.css
 src.fetched/index.js
-src.fetched/L_1_HomePage.js
+src.fetched/HomePage.js
 src.fetched/L_1_HomePage1.css
 src.fetched/L_1_HomePage2.css
 src.fetched/L_1_HomePage3.css
@@ -63684,7 +63684,7 @@ src.fetched/utils/
 src.main1/
 src.main1/App.js
 src.main2/
-src.main2/L_1_HomePage.js
+src.main2/HomePage.js
 src.sketch.series/
 src.sketch.series/App copy.css
 src.sketch.series/App.css
@@ -63697,8 +63697,8 @@ src.sketch.series/FormHeader.js
 src.sketch.series/GeneralFormConfig.js
 src.sketch.series/index.css
 src.sketch.series/index.js
-src.sketch.series/L_1_HomePage.css
-src.sketch.series/L_1_HomePage.js
+src.sketch.series/HomePage.css
+src.sketch.series/HomePage.js
 src.sketch.series/MU.png
 src.sketch.series/Popup.css
 src.sketch.series/Popup.js
@@ -63734,7 +63734,7 @@ Based on our interactions, here's a summary of what you've been asking for and t
    - Properly handles files that appear in multiple active paths
 
 ## Key Issues Identified
-1. **Import statement skipping**: The analyzer is missing some import statements, particularly in nested directories like L_1_HomePage.CSS
+1. **Import statement skipping**: The analyzer is missing some import statements, particularly in nested directories like HomePage.CSS
 2. **Dependency graph incompleteness**: Not all files are being properly tracked in the dependency graph
 3. **Path resolution problems**: Issues with resolving relative paths, especially for complex or nested imports
 
@@ -63771,14 +63771,14 @@ and whathas been our edge problems so far elaborate category by category
 </user_message>
 <environment_details>
 # VSCode Visible Files
-src/[A]_L_1_HomePage.js
+src/[A]_HomePage.js
 
 # VSCode Open Tabs
 src/index.js
 active-files-usage-guide.md
 mark-active-files.js
 restore-filenames.js
-src/[A]_L_1_HomePage.js
+src/[A]_HomePage.js
 
 # Current Time
 3/1/2025, 3:52:45 PM (America/Chicago, UTC-6:00)
@@ -63800,8 +63800,8 @@ Let me elaborate on the edge problems we've encountered category by category:
 ## Import Path Resolution Issues
 
 1. **Nested Directory Imports**:
-   - The analyzer struggles with imports from nested directories like `L_1_HomePage.CSS/`
-   - CSS imports in particular are problematic (e.g., `import './L_1_HomePage.CSS/L_1_HomePage1.css'`)
+   - The analyzer struggles with imports from nested directories like `HomePage.CSS/`
+   - CSS imports in particular are problematic (e.g., `import './HomePage.CSS/L_1_HomePage1.css'`)
    - The current path resolution logic doesn't properly handle these nested structures
 
 2. **File Extension Handling**:
@@ -64006,7 +64006,7 @@ src/FormHeader.js
 src/GeneralFormConfig.js
 src/index.css
 src/index.js
-src/L_1_HomePage.js
+src/HomePage.js
 src/MultiVersionSelector.js
 src/naturalmotion.css
 src/naturalmotion.js
@@ -64028,7 +64028,7 @@ src/components/
 src/contexts/
 src/extended_scaling/
 src/hooks/
-src/L_1_HomePage.CSS/
+src/HomePage.CSS/
 src/services/
 src/state/
 src/styles/
@@ -64051,7 +64051,7 @@ src.fetched/FormHeader.js
 src.fetched/GeneralFormConfig.js
 src.fetched/index.css
 src.fetched/index.js
-src.fetched/L_1_HomePage.js
+src.fetched/HomePage.js
 src.fetched/L_1_HomePage1.css
 src.fetched/L_1_HomePage2.css
 src.fetched/L_1_HomePage3.css
@@ -64083,7 +64083,7 @@ src.fetched/utils/
 src.main1/
 src.main1/App.js
 src.main2/
-src.main2/L_1_HomePage.js
+src.main2/HomePage.js
 src.sketch.series/
 src.sketch.series/App copy.css
 src.sketch.series/App.css
@@ -64096,8 +64096,8 @@ src.sketch.series/FormHeader.js
 src.sketch.series/GeneralFormConfig.js
 src.sketch.series/index.css
 src.sketch.series/index.js
-src.sketch.series/L_1_HomePage.css
-src.sketch.series/L_1_HomePage.js
+src.sketch.series/HomePage.css
+src.sketch.series/HomePage.js
 src.sketch.series/MU.png
 src.sketch.series/Popup.css
 src.sketch.series/Popup.js
@@ -64134,7 +64134,7 @@ Here's what I propose:
 2. **Enhance the import path handling** with a focus on:
    - Full name matching for complex cases
    - Better handling of prefixes in different positions
-   - Consistent treatment of CSS imports, especially for the L_1_HomePage.CSS directory
+   - Consistent treatment of CSS imports, especially for the HomePage.CSS directory
 
 3. **Simplify the naming convention** to be less error-prone:
    - Make prefix handling more consistent and predictable
@@ -64641,9 +64641,9 @@ const cleanFromPrefixes = (str) => {
     { pattern: /Model\[(A|I)\]_Card$/, replacement: 'ModelCard' },
     { pattern: /Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: 'FilterPopup' },
     { pattern: /Individual\[(A|I)\]_ResultsPanel$/, replacement: 'IndividualResultsPanel' },
-    // Add patterns for L_1_HomePage.CSS files
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'L_1_HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'L_1_HomePage.CSS/L_1_HomePage_$2.css' }
+    // Add patterns for HomePage.CSS files
+    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage$2.css' },
+    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage_$2.css' }
   ];
   
   // Try each known pattern
@@ -64753,9 +64753,9 @@ const forceCleanImports = (filePath) => {
         { pattern: /\.\/Model\[(A|I)\]_Card$/, replacement: './ModelCard' },
         { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
         { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
-        // Add patterns for L_1_HomePage.CSS files
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage$2.css' },
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage_$2.css' }
+        // Add patterns for HomePage.CSS files
+        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
+        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
       ];
       
       let matchedKnownPattern = false;
@@ -64886,9 +64886,9 @@ const updateImportsInFile = (filePath) => {
         { pattern: /\.\/Model\[(A|I)\]_Card$/, replacement: './ModelCard' },
         { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
         { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
-        // Add patterns for L_1_HomePage.CSS files
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage$2.css' },
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage_$2.css' }
+        // Add patterns for HomePage.CSS files
+        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
+        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
       ];
       
       let matchedKnownPattern = false;
@@ -65469,8 +65469,8 @@ ACT MODE
 <thinking>
 Based on my analysis of the code, I've identified several issues that could be causing the analyzer to skip some import statements:
 
-1. The CSS import regex in the ESLint rule doesn't properly handle the L_1_HomePage.CSS directory imports.
-2. The resolveImportPath function doesn't handle nested directories like L_1_HomePage.CSS correctly.
+1. The CSS import regex in the ESLint rule doesn't properly handle the HomePage.CSS directory imports.
+2. The resolveImportPath function doesn't handle nested directories like HomePage.CSS correctly.
 3. The pattern matching for known problematic files needs to be enhanced.
 
 Let's update the ESLint rule to fix these issues.
@@ -65607,9 +65607,9 @@ function resolveImportPath(importPath, currentFilePath) {
     { pattern: /\.\/Model\[(A|I)\]_Card$/, replacement: './ModelCard' },
     { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
     { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
-    // Add patterns for L_1_HomePage.CSS files
-    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage_$2.css' }
+    // Add patterns for HomePage.CSS files
+    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
+    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
   ];
   
   let cleanImportPath = importPath;
@@ -65782,9 +65782,9 @@ function resolveImportPath(importPath, currentFilePath) {
     { pattern: /\.\/Model\[(A|I)\]_Card$/, replacement: './ModelCard' },
     { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
     { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
-    // Add patterns for L_1_HomePage.CSS files
-    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage_$2.css' }
+    // Add patterns for HomePage.CSS files
+    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
+    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
   ];
   
   let cleanImportPath = importPath;
@@ -66178,7 +66178,7 @@ ACT MODE
 **Assistant:**
 
 <thinking>
-Now let's update the extractImports function in the ESLint rule to better handle CSS imports, especially for the L_1_HomePage.CSS directory.
+Now let's update the extractImports function in the ESLint rule to better handle CSS imports, especially for the HomePage.CSS directory.
 </thinking>
 
 <replace_in_file>
@@ -66323,9 +66323,9 @@ function extractImports(filePath) {
       while ((match = importRegex.exec(content)) !== null) {
         const importPath = match[1];
         
-        // Special handling for L_1_HomePage.CSS imports
-        if (importPath.includes('L_1_HomePage.CSS')) {
-          console.log(`Found L_1_HomePage.CSS import: ${importPath}`);
+        // Special handling for HomePage.CSS imports
+        if (importPath.includes('HomePage.CSS')) {
+          console.log(`Found HomePage.CSS import: ${importPath}`);
         }
         
         const resolvedPath = resolveImportPath(importPath, filePath);
@@ -66353,9 +66353,9 @@ function extractImports(filePath) {
       while ((match = cssImportRegex.exec(content)) !== null) {
         const importPath = match[1];
         
-        // Special handling for L_1_HomePage.CSS imports
-        if (importPath.includes('L_1_HomePage.CSS')) {
-          console.log(`Found L_1_HomePage.CSS import in JS: ${importPath}`);
+        // Special handling for HomePage.CSS imports
+        if (importPath.includes('HomePage.CSS')) {
+          console.log(`Found HomePage.CSS import in JS: ${importPath}`);
         }
         
         const resolvedPath = resolveImportPath(importPath, filePath);
@@ -66423,9 +66423,9 @@ function resolveImportPath(importPath, currentFilePath) {
     { pattern: /\.\/Model\[(A|I)\]_Card$/, replacement: './ModelCard' },
     { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
     { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
-    // Add patterns for L_1_HomePage.CSS files
-    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage_$2.css' }
+    // Add patterns for HomePage.CSS files
+    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
+    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
   ];
   
   let cleanImportPath = importPath;
@@ -66603,9 +66603,9 @@ function extractImports(filePath) {
       while ((match = importRegex.exec(content)) !== null) {
         const importPath = match[1];
         
-        // Special handling for L_1_HomePage.CSS imports
-        if (importPath.includes('L_1_HomePage.CSS')) {
-          console.log(`Found L_1_HomePage.CSS import: ${importPath}`);
+        // Special handling for HomePage.CSS imports
+        if (importPath.includes('HomePage.CSS')) {
+          console.log(`Found HomePage.CSS import: ${importPath}`);
         }
         
         const resolvedPath = resolveImportPath(importPath, filePath);
@@ -66633,9 +66633,9 @@ function extractImports(filePath) {
       while ((match = cssImportRegex.exec(content)) !== null) {
         const importPath = match[1];
         
-        // Special handling for L_1_HomePage.CSS imports
-        if (importPath.includes('L_1_HomePage.CSS')) {
-          console.log(`Found L_1_HomePage.CSS import in JS: ${importPath}`);
+        // Special handling for HomePage.CSS imports
+        if (importPath.includes('HomePage.CSS')) {
+          console.log(`Found HomePage.CSS import in JS: ${importPath}`);
         }
         
         const resolvedPath = resolveImportPath(importPath, filePath);
@@ -66929,9 +66929,9 @@ const cleanImportPath = (importPath) => {
     { pattern: /\.\/Model\[(A|I)\]_Card$/, replacement: './ModelCard' },
     { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
     { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
-    // Add patterns for L_1_HomePage.CSS files
-    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage_$2.css' }
+    // Add patterns for HomePage.CSS files
+    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
+    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
   ];
   
   // Try each known pattern
@@ -67079,9 +67079,9 @@ const cleanImportPath = (importPath) => {
     { pattern: /\.\/Model\[(A|I)\]_Card$/, replacement: './ModelCard' },
     { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
     { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
-    // Add patterns for L_1_HomePage.CSS files
-    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage_$2.css' }
+    // Add patterns for HomePage.CSS files
+    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
+    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
   ];
   
   // Try each known pattern
@@ -67430,9 +67430,9 @@ const cleanFromPrefixes = (str) => {
     { pattern: /Model\[(A|I)\]_Card$/, replacement: 'ModelCard' },
     { pattern: /Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: 'FilterPopup' },
     { pattern: /Individual\[(A|I)\]_ResultsPanel$/, replacement: 'IndividualResultsPanel' },
-    // Add patterns for L_1_HomePage.CSS files
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'L_1_HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'L_1_HomePage.CSS/L_1_HomePage_$2.css' }
+    // Add patterns for HomePage.CSS files
+    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage$2.css' },
+    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage_$2.css' }
   ];
   
   // Try each known pattern
@@ -67479,9 +67479,9 @@ const cleanFromPrefixes = (str) => {
     { pattern: /Model\[(A|I)\]_Card$/, replacement: 'ModelCard' },
     { pattern: /Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: 'FilterPopup' },
     { pattern: /Individual\[(A|I)\]_ResultsPanel$/, replacement: 'IndividualResultsPanel' },
-    // Add patterns for L_1_HomePage.CSS files
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'L_1_HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'L_1_HomePage.CSS/L_1_HomePage_$2.css' }
+    // Add patterns for HomePage.CSS files
+    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage$2.css' },
+    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage_$2.css' }
   ];
   
   // Try each known pattern
@@ -67636,9 +67636,9 @@ const cleanFromPrefixes = (str) => {
     { pattern: /Model\[(A|I)\]_Card$/, replacement: 'ModelCard' },
     { pattern: /Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: 'FilterPopup' },
     { pattern: /Individual\[(A|I)\]_ResultsPanel$/, replacement: 'IndividualResultsPanel' },
-    // Add patterns for L_1_HomePage.CSS files
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'L_1_HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'L_1_HomePage.CSS/L_1_HomePage_$2.css' }
+    // Add patterns for HomePage.CSS files
+    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage$2.css' },
+    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage_$2.css' }
   ];
   
   // Try each known pattern
@@ -67785,9 +67785,9 @@ const forceCleanImports = (filePath) => {
         { pattern: /\.\/Model\[(A|I)\]_Card$/, replacement: './ModelCard' },
         { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
         { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
-        // Add patterns for L_1_HomePage.CSS files
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage$2.css' },
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage_$2.css' }
+        // Add patterns for HomePage.CSS files
+        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
+        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
       ];
       
       let matchedKnownPattern = false;
@@ -67918,9 +67918,9 @@ const updateImportsInFile = (filePath) => {
         { pattern: /\.\/Model\[(A|I)\]_Card$/, replacement: './ModelCard' },
         { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
         { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
-        // Add patterns for L_1_HomePage.CSS files
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage$2.css' },
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage_$2.css' }
+        // Add patterns for HomePage.CSS files
+        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
+        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
       ];
       
       let matchedKnownPattern = false;
@@ -68126,7 +68126,7 @@ I've implemented a comprehensive solution to improve the handling of import path
    - Added explicit handling for known problematic patterns like:
      - `Filter[A]_Popup` → `FilterPopup`
      - `Model[A]_Card` → `ModelCard`
-     - `L_1_HomePage.CSS/[A]_L_1_HomePage5.css` → `L_1_HomePage.CSS/L_1_HomePage5.css`
+     - `HomePage.CSS/[A]_L_1_HomePage5.css` → `HomePage.CSS/L_1_HomePage5.css`
    - These patterns are now checked first before applying general rules
 
 3. **Enhanced Segment-by-Segment Processing**
@@ -68135,7 +68135,7 @@ I've implemented a comprehensive solution to improve the handling of import path
    - This handles complex cases like prefixes in the middle of names
 
 4. **Improved CSS Import Handling**
-   - Added special handling for CSS imports, particularly for the L_1_HomePage.CSS directory
+   - Added special handling for CSS imports, particularly for the HomePage.CSS directory
    - Enhanced logging for CSS imports to help diagnose issues
    - Fixed regex patterns to better handle quotes and paths in CSS imports
 
@@ -68888,14 +68888,14 @@ the file names that reside in src the renaming fucntion has been restored, now f
 </user_message>
 <environment_details>
 # VSCode Visible Files
-src/[A]_L_1_HomePage.js
+src/[A]_HomePage.js
 
 # VSCode Open Tabs
 eslint-plugin-active-files/rules/active-files-tracker.js
 mark-active-files.js
 restore-filenames.js
 .eslintrc.js
-src/[A]_L_1_HomePage.js
+src/[A]_HomePage.js
 
 # Current Time
 3/1/2025, 5:03:45 PM (America/Chicago, UTC-6:00)
@@ -68999,7 +68999,7 @@ src/FormHeader.js
 src/GeneralFormConfig.js
 src/index.css
 src/index.js
-src/L_1_HomePage.js
+src/HomePage.js
 src/MultiVersionSelector.js
 src/naturalmotion.css
 src/naturalmotion.js
@@ -69021,7 +69021,7 @@ src/components/
 src/contexts/
 src/extended_scaling/
 src/hooks/
-src/L_1_HomePage.CSS/
+src/HomePage.CSS/
 src/services/
 src/state/
 src/styles/
@@ -69044,7 +69044,7 @@ src.fetched/FormHeader.js
 src.fetched/GeneralFormConfig.js
 src.fetched/index.css
 src.fetched/index.js
-src.fetched/L_1_HomePage.js
+src.fetched/HomePage.js
 src.fetched/L_1_HomePage1.css
 src.fetched/L_1_HomePage2.css
 src.fetched/L_1_HomePage3.css
@@ -69076,7 +69076,7 @@ src.fetched/utils/
 src.main1/
 src.main1/App.js
 src.main2/
-src.main2/L_1_HomePage.js
+src.main2/HomePage.js
 src.sketch.series/
 src.sketch.series/App copy.css
 src.sketch.series/App.css
@@ -69089,8 +69089,8 @@ src.sketch.series/FormHeader.js
 src.sketch.series/GeneralFormConfig.js
 src.sketch.series/index.css
 src.sketch.series/index.js
-src.sketch.series/L_1_HomePage.css
-src.sketch.series/L_1_HomePage.js
+src.sketch.series/HomePage.css
+src.sketch.series/HomePage.js
 src.sketch.series/MU.png
 src.sketch.series/Popup.css
 src.sketch.series/Popup.js
@@ -69121,7 +69121,7 @@ In this mode you should focus on information gathering, asking questions, and ar
 Based on our previous discussions, here are the key edge cases and special considerations we need to focus on when handling import statements:
 
 ## 1. Nested Directory Imports
-- **L_1_HomePage.CSS Directory**: Special handling for imports like `'./L_1_HomePage.CSS/L_1_HomePage1.css'`
+- **HomePage.CSS Directory**: Special handling for imports like `'./HomePage.CSS/L_1_HomePage1.css'`
 - **Deep Nesting**: Handling imports that traverse multiple directory levels
 - **Directory with Prefixes**: Directories that might have [A] or [I] markers in their names
 
@@ -69138,7 +69138,7 @@ Based on our previous discussions, here are the key edge cases and special consi
 ## 4. Known Problematic Patterns
 - **FilterPopup**: Special handling for `Filter[A]_Popup`
 - **ModelCard**: Special handling for `Model[A]_Card`
-- **L_1_HomePage CSS Files**: Special patterns for CSS files in the L_1_HomePage.CSS directory
+- **L_1_HomePage CSS Files**: Special patterns for CSS files in the HomePage.CSS directory
 
 ## 5. Import Statement Variations
 - **ES6 Imports**: `import X from './path'`
@@ -69164,7 +69164,7 @@ To address these edge cases, I propose a multi-layered approach:
 1. **Known Pattern First**: Check for known problematic patterns first before applying general rules
 2. **Segment-by-Segment Processing**: Process each segment of the path individually
 3. **Consistent Handling**: Use the same logic across all components (ESLint rule, marking script, restoration script)
-4. **Enhanced Logging**: Add detailed logging for CSS imports and L_1_HomePage.CSS imports
+4. **Enhanced Logging**: Add detailed logging for CSS imports and HomePage.CSS imports
 5. **Robust Error Handling**: Implement safer string replacement with fallback mechanisms
 
 Would you like me to focus on implementing any specific aspect of this approach first? Or would you prefer I develop a comprehensive solution that addresses all these edge cases?
@@ -69187,14 +69187,14 @@ having override of active over inactive, to avoid duplicate appendings
 </user_message>
 <environment_details>
 # VSCode Visible Files
-src/[A]_L_1_HomePage.js
+src/[A]_HomePage.js
 
 # VSCode Open Tabs
 eslint-plugin-active-files/rules/active-files-tracker.js
 mark-active-files.js
 restore-filenames.js
 .eslintrc.js
-src/[A]_L_1_HomePage.js
+src/[A]_HomePage.js
 
 # Current Time
 3/1/2025, 5:05:08 PM (America/Chicago, UTC-6:00)
@@ -69261,14 +69261,14 @@ User: [The user has switched to ACT MODE, so you may now proceed with the task.]
 [The user has switched to ACT MODE, so you may now proceed with the task.]
 <environment_details>
 # VSCode Visible Files
-src/[A]_L_1_HomePage.js
+src/[A]_HomePage.js
 
 # VSCode Open Tabs
 eslint-plugin-active-files/rules/active-files-tracker.js
 mark-active-files.js
 restore-filenames.js
 .eslintrc.js
-src/[A]_L_1_HomePage.js
+src/[A]_HomePage.js
 
 # Current Time
 3/1/2025, 5:05:19 PM (America/Chicago, UTC-6:00)
@@ -70101,7 +70101,7 @@ no prefix is added to import statements, upon run analyzer, why? there is a depe
 </feedback>
 <environment_details>
 # VSCode Visible Files
-src/[A]_L_1_HomePage.js
+src/[A]_HomePage.js
 
 # VSCode Open Tabs
 eslint-plugin-active-files/rules/active-files-tracker.js
@@ -70110,7 +70110,7 @@ restore-filenames.js
 .eslintrc.js
 update-eslint-config.js
 package.json
-src/[A]_L_1_HomePage.js
+src/[A]_HomePage.js
 
 # Current Time
 3/1/2025, 5:07:42 PM (America/Chicago, UTC-6:00)
@@ -70336,7 +70336,7 @@ const updateImportsInFile = (filePath, renamedFiles) => {
       }
     }
     
-    // Special handling for L_1_HomePage.CSS imports
+    // Special handling for HomePage.CSS imports
     const l1HomePageCssRegex = /import\s+['"]\.\/L_1_HomePage\.CSS\/([^'"]+)['"]|from\s+['"]\.\/L_1_HomePage\.CSS\/([^'"]+)['"]/g;
     let match;
     while ((match = l1HomePageCssRegex.exec(content)) !== null) {
@@ -70345,7 +70345,7 @@ const updateImportsInFile = (filePath, renamedFiles) => {
         // Determine if this CSS file is active or inactive
         // For simplicity, we'll mark all CSS files as active
         const prefix = '[A]_';
-        const newImport = match[0].replace(`./L_1_HomePage.CSS/${cssFile}`, `./L_1_HomePage.CSS/${prefix}${cssFile}`);
+        const newImport = match[0].replace(`./HomePage.CSS/${cssFile}`, `./HomePage.CSS/${prefix}${cssFile}`);
         content = content.replace(match[0], newImport);
         updated = true;
       }
@@ -70434,9 +70434,9 @@ const cleanImportPath = (importPath) => {
     { pattern: /\.\/Model\[(A|I)\]_Card$/, replacement: './ModelCard' },
     { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
     { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
-    // Add patterns for L_1_HomePage.CSS files
-    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage_$2.css' }
+    // Add patterns for HomePage.CSS files
+    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
+    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
   ];
   
   // Try each known pattern
@@ -70601,7 +70601,7 @@ const updateImportsInFile = (filePath, renamedFiles) => {
       }
     }
     
-    // Special handling for L_1_HomePage.CSS imports
+    // Special handling for HomePage.CSS imports
     const l1HomePageCssRegex = /import\s+['"]\.\/L_1_HomePage\.CSS\/([^'"]+)['"]|from\s+['"]\.\/L_1_HomePage\.CSS\/([^'"]+)['"]/g;
     let match;
     while ((match = l1HomePageCssRegex.exec(content)) !== null) {
@@ -70610,7 +70610,7 @@ const updateImportsInFile = (filePath, renamedFiles) => {
         // Determine if this CSS file is active or inactive
         // For simplicity, we'll mark all CSS files as active
         const prefix = '[A]_';
-        const newImport = match[0].replace(`./L_1_HomePage.CSS/${cssFile}`, `./L_1_HomePage.CSS/${prefix}${cssFile}`);
+        const newImport = match[0].replace(`./HomePage.CSS/${cssFile}`, `./HomePage.CSS/${prefix}${cssFile}`);
         content = content.replace(match[0], newImport);
         updated = true;
       }
@@ -70820,9 +70820,9 @@ const updateImportsInFile = (filePath) => {
         { pattern: /\.\/Model\[(A|I)\]_Card$/, replacement: './ModelCard' },
         { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
         { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
-        // Add patterns for L_1_HomePage.CSS files
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage$2.css' },
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage_$2.css' }
+        // Add patterns for HomePage.CSS files
+        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
+        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
       ];
       
       let matchedKnownPattern = false;
@@ -70953,9 +70953,9 @@ const updateImportsInFile = (filePath) => {
         { pattern: /\.\/Model\[(A|I)\]_Card$/, replacement: './ModelCard' },
         { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
         { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
-        // Add patterns for L_1_HomePage.CSS files
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage$2.css' },
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage_$2.css' }
+        // Add patterns for HomePage.CSS files
+        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
+        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
       ];
       
       let matchedKnownPattern = false;
@@ -71001,13 +71001,13 @@ const updateImportsInFile = (filePath) => {
       }
     }
     
-    // Special handling for L_1_HomePage.CSS imports
+    // Special handling for HomePage.CSS imports
     const l1HomePageCssRegex = /import\s+['"]\.\/L_1_HomePage\.CSS\/\[(A|I)\]_([^'"]+)['"]|from\s+['"]\.\/L_1_HomePage\.CSS\/\[(A|I)\]_([^'"]+)['"]/g;
     let match;
     while ((match = l1HomePageCssRegex.exec(content)) !== null) {
       const cssFile = match[2] || match[3];
       const prefix = match[1] || match[3];
-      const newImport = match[0].replace(`./L_1_HomePage.CSS/[${prefix}]_${cssFile}`, `./L_1_HomePage.CSS/${cssFile}`);
+      const newImport = match[0].replace(`./HomePage.CSS/[${prefix}]_${cssFile}`, `./HomePage.CSS/${cssFile}`);
       content = content.replace(match[0], newImport);
       updated = true;
     }
@@ -71105,9 +71105,9 @@ const cleanFromPrefixes = (str) => {
     { pattern: /Model\[(A|I)\]_Card$/, replacement: 'ModelCard' },
     { pattern: /Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: 'FilterPopup' },
     { pattern: /Individual\[(A|I)\]_ResultsPanel$/, replacement: 'IndividualResultsPanel' },
-    // Add patterns for L_1_HomePage.CSS files
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'L_1_HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'L_1_HomePage.CSS/L_1_HomePage_$2.css' }
+    // Add patterns for HomePage.CSS files
+    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage$2.css' },
+    { pattern: /L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: 'HomePage.CSS/L_1_HomePage_$2.css' }
   ];
   
   // Try each known pattern
@@ -71254,9 +71254,9 @@ const forceCleanImports = (filePath) => {
         { pattern: /\.\/Model\[(A|I)\]_Card$/, replacement: './ModelCard' },
         { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
         { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
-        // Add patterns for L_1_HomePage.CSS files
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage$2.css' },
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage_$2.css' }
+        // Add patterns for HomePage.CSS files
+        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
+        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
       ];
       
       let matchedKnownPattern = false;
@@ -71387,9 +71387,9 @@ const updateImportsInFile = (filePath) => {
         { pattern: /\.\/Model\[(A|I)\]_Card$/, replacement: './ModelCard' },
         { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
         { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
-        // Add patterns for L_1_HomePage.CSS files
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage$2.css' },
-        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage_$2.css' }
+        // Add patterns for HomePage.CSS files
+        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
+        { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
       ];
       
       let matchedKnownPattern = false;
@@ -71435,13 +71435,13 @@ const updateImportsInFile = (filePath) => {
       }
     }
     
-    // Special handling for L_1_HomePage.CSS imports
+    // Special handling for HomePage.CSS imports
     const l1HomePageCssRegex = /import\s+['"]\.\/L_1_HomePage\.CSS\/\[(A|I)\]_([^'"]+)['"]|from\s+['"]\.\/L_1_HomePage\.CSS\/\[(A|I)\]_([^'"]+)['"]/g;
     let match;
     while ((match = l1HomePageCssRegex.exec(content)) !== null) {
       const cssFile = match[2] || match[3];
       const prefix = match[1] || match[3];
-      const newImport = match[0].replace(`./L_1_HomePage.CSS/[${prefix}]_${cssFile}`, `./L_1_HomePage.CSS/${cssFile}`);
+      const newImport = match[0].replace(`./HomePage.CSS/[${prefix}]_${cssFile}`, `./HomePage.CSS/${cssFile}`);
       content = content.replace(match[0], newImport);
       updated = true;
     }
@@ -71601,7 +71601,7 @@ I've implemented a comprehensive solution to improve the handling of import path
 
 1. **Enhanced Import Path Handling**
    - Updated the import path processing in both `mark-active-files.js` and `restore-filenames.js` to properly handle prefixes in import statements
-   - Added special handling for L_1_HomePage.CSS directory imports, which were previously being missed
+   - Added special handling for HomePage.CSS directory imports, which were previously being missed
    - Implemented more robust regex patterns for extracting and updating import paths
 
 2. **Consistent Pattern Matching**
@@ -71615,7 +71615,7 @@ I've implemented a comprehensive solution to improve the handling of import path
    - Added explicit handling for known problematic patterns like:
      - `Filter[A]_Popup` → `FilterPopup`
      - `Model[A]_Card` → `ModelCard`
-     - `L_1_HomePage.CSS/[A]_L_1_HomePage5.css` → `L_1_HomePage.CSS/L_1_HomePage5.css`
+     - `HomePage.CSS/[A]_L_1_HomePage5.css` → `HomePage.CSS/L_1_HomePage5.css`
    - These patterns are now checked first before applying general rules
 
 4. **Improved ESLint Configuration Management**
@@ -71644,7 +71644,7 @@ The solution works through a multi-layered approach:
    - Apply specific rules based on the structure of each segment
 
 3. **Third Layer: Special Case Handling**
-   - Added dedicated handling for L_1_HomePage.CSS imports
+   - Added dedicated handling for HomePage.CSS imports
    - Implemented special processing for index.js to ensure it's always properly handled
 
 This approach ensures consistent handling of import paths across all components of the active files tracking system, making it more reliable and predictable.
@@ -71807,7 +71807,7 @@ src/[A]_Editable.js
 src/[A]_FormHeader.js
 src/[A]_GeneralFormConfig.js
 src/[A]_index.css
-src/[A]_L_1_HomePage.js
+src/[A]_HomePage.js
 src/[A]_MultiVersionSelector.js
 src/[A]_naturalmotion.css
 src/[A]_naturalmotion.js
@@ -71831,7 +71831,7 @@ src/components/
 src/contexts/
 src/extended_scaling/
 src/hooks/
-src/L_1_HomePage.CSS/
+src/HomePage.CSS/
 src/services/
 src/state/
 src/styles/
@@ -71854,7 +71854,7 @@ src.fetched/FormHeader.js
 src.fetched/GeneralFormConfig.js
 src.fetched/index.css
 src.fetched/index.js
-src.fetched/L_1_HomePage.js
+src.fetched/HomePage.js
 src.fetched/L_1_HomePage1.css
 src.fetched/L_1_HomePage2.css
 src.fetched/L_1_HomePage3.css
@@ -71886,7 +71886,7 @@ src.fetched/utils/
 src.main1/
 src.main1/App.js
 src.main2/
-src.main2/L_1_HomePage.js
+src.main2/HomePage.js
 src.sketch.series/
 src.sketch.series/App copy.css
 src.sketch.series/App.css
@@ -71899,8 +71899,8 @@ src.sketch.series/FormHeader.js
 src.sketch.series/GeneralFormConfig.js
 src.sketch.series/index.css
 src.sketch.series/index.js
-src.sketch.series/L_1_HomePage.css
-src.sketch.series/L_1_HomePage.js
+src.sketch.series/HomePage.css
+src.sketch.series/HomePage.js
 src.sketch.series/MU.png
 src.sketch.series/Popup.css
 src.sketch.series/Popup.js
@@ -72233,9 +72233,9 @@ function resolveImportPath(importPath, currentFilePath) {
     { pattern: /\.\/Model\[(A|I)\]_Card$/, replacement: './ModelCard' },
     { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
     { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
-    // Add patterns for L_1_HomePage.CSS files
-    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage_$2.css' }
+    // Add patterns for HomePage.CSS files
+    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
+    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
   ];
   
   let cleanImportPath = importPath;
@@ -72413,9 +72413,9 @@ function extractImports(filePath) {
       while ((match = importRegex.exec(content)) !== null) {
         const importPath = match[1];
         
-        // Special handling for L_1_HomePage.CSS imports
-        if (importPath.includes('L_1_HomePage.CSS')) {
-          console.log(`Found L_1_HomePage.CSS import: ${importPath}`);
+        // Special handling for HomePage.CSS imports
+        if (importPath.includes('HomePage.CSS')) {
+          console.log(`Found HomePage.CSS import: ${importPath}`);
         }
         
         const resolvedPath = resolveImportPath(importPath, filePath);
@@ -72443,9 +72443,9 @@ function extractImports(filePath) {
       while ((match = cssImportRegex.exec(content)) !== null) {
         const importPath = match[1];
         
-        // Special handling for L_1_HomePage.CSS imports
-        if (importPath.includes('L_1_HomePage.CSS')) {
-          console.log(`Found L_1_HomePage.CSS import in JS: ${importPath}`);
+        // Special handling for HomePage.CSS imports
+        if (importPath.includes('HomePage.CSS')) {
+          console.log(`Found HomePage.CSS import in JS: ${importPath}`);
         }
         
         const resolvedPath = resolveImportPath(importPath, filePath);
@@ -72857,9 +72857,9 @@ function resolveImportPath(importPath, currentFilePath) {
     { pattern: /\.\/Model\[(A|I)\]_Card$/, replacement: './ModelCard' },
     { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
     { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
-    // Add patterns for L_1_HomePage.CSS files
-    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage_$2.css' }
+    // Add patterns for HomePage.CSS files
+    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
+    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
   ];
   
   let cleanImportPath = importPath;
@@ -73037,9 +73037,9 @@ function extractImports(filePath) {
       while ((match = importRegex.exec(content)) !== null) {
         const importPath = match[1];
         
-        // Special handling for L_1_HomePage.CSS imports
-        if (importPath.includes('L_1_HomePage.CSS')) {
-          console.log(`Found L_1_HomePage.CSS import: ${importPath}`);
+        // Special handling for HomePage.CSS imports
+        if (importPath.includes('HomePage.CSS')) {
+          console.log(`Found HomePage.CSS import: ${importPath}`);
         }
         
         const resolvedPath = resolveImportPath(importPath, filePath);
@@ -73067,9 +73067,9 @@ function extractImports(filePath) {
       while ((match = cssImportRegex.exec(content)) !== null) {
         const importPath = match[1];
         
-        // Special handling for L_1_HomePage.CSS imports
-        if (importPath.includes('L_1_HomePage.CSS')) {
-          console.log(`Found L_1_HomePage.CSS import in JS: ${importPath}`);
+        // Special handling for HomePage.CSS imports
+        if (importPath.includes('HomePage.CSS')) {
+          console.log(`Found HomePage.CSS import in JS: ${importPath}`);
         }
         
         const resolvedPath = resolveImportPath(importPath, filePath);
@@ -74885,9 +74885,9 @@ function extractImports(filePath) {
       while ((match = importRegex.exec(content)) !== null) {
         const importPath = match[1];
         
-        // Special handling for L_1_HomePage.CSS imports
-        if (importPath.includes('L_1_HomePage.CSS')) {
-          console.log(`Found L_1_HomePage.CSS import: ${importPath}`);
+        // Special handling for HomePage.CSS imports
+        if (importPath.includes('HomePage.CSS')) {
+          console.log(`Found HomePage.CSS import: ${importPath}`);
         }
         
         const resolvedPath = resolveImportPath(importPath, filePath);
@@ -74915,9 +74915,9 @@ function extractImports(filePath) {
       while ((match = cssImportRegex.exec(content)) !== null) {
         const importPath = match[1];
         
-        // Special handling for L_1_HomePage.CSS imports
-        if (importPath.includes('L_1_HomePage.CSS')) {
-          console.log(`Found L_1_HomePage.CSS import in JS: ${importPath}`);
+        // Special handling for HomePage.CSS imports
+        if (importPath.includes('HomePage.CSS')) {
+          console.log(`Found HomePage.CSS import in JS: ${importPath}`);
         }
         
         const resolvedPath = resolveImportPath(importPath, filePath);
@@ -74996,9 +74996,9 @@ function extractImports(filePath) {
         const importPath = match[1];
         console.log(`  JS import: ${importPath}`);
         
-        // Special handling for L_1_HomePage.CSS imports
-        if (importPath.includes('L_1_HomePage.CSS')) {
-          console.log(`    Found L_1_HomePage.CSS import: ${importPath}`);
+        // Special handling for HomePage.CSS imports
+        if (importPath.includes('HomePage.CSS')) {
+          console.log(`    Found HomePage.CSS import: ${importPath}`);
         }
         
         const resolvedPath = resolveImportPath(importPath, filePath);
@@ -75035,9 +75035,9 @@ function extractImports(filePath) {
         const importPath = match[1];
         console.log(`  CSS import in JS: ${importPath}`);
         
-        // Special handling for L_1_HomePage.CSS imports
-        if (importPath.includes('L_1_HomePage.CSS')) {
-          console.log(`    Found L_1_HomePage.CSS import in JS: ${importPath}`);
+        // Special handling for HomePage.CSS imports
+        if (importPath.includes('HomePage.CSS')) {
+          console.log(`    Found HomePage.CSS import in JS: ${importPath}`);
         }
         
         const resolvedPath = resolveImportPath(importPath, filePath);
@@ -75128,9 +75128,9 @@ function resolveImportPath(importPath, currentFilePath) {
     { pattern: /\.\/Model\[(A|I)\]_Card$/, replacement: './ModelCard' },
     { pattern: /\.\/Filter\[(A|I)\]_\[(A|I)\]_Popup$/, replacement: './FilterPopup' },
     { pattern: /\.\/Individual\[(A|I)\]_ResultsPanel$/, replacement: './IndividualResultsPanel' },
-    // Add patterns for L_1_HomePage.CSS files
-    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage$2.css' },
-    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './L_1_HomePage.CSS/L_1_HomePage_$2.css' }
+    // Add patterns for HomePage.CSS files
+    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage(\d+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage$2.css' },
+    { pattern: /\.\/L_1_HomePage\.CSS\/\[(A|I)\]_L_1_HomePage_([^.]+)\.css$/, replacement: './HomePage.CSS/L_1_HomePage_$2.css' }
   ];
   
   let cleanImportPath = importPath;
@@ -75314,9 +75314,9 @@ function extractImports(filePath) {
         const importPath = match[1];
         console.log(`  JS import: ${importPath}`);
         
-        // Special handling for L_1_HomePage.CSS imports
-        if (importPath.includes('L_1_HomePage.CSS')) {
-          console.log(`    Found L_1_HomePage.CSS import: ${importPath}`);
+        // Special handling for HomePage.CSS imports
+        if (importPath.includes('HomePage.CSS')) {
+          console.log(`    Found HomePage.CSS import: ${importPath}`);
         }
         
         const resolvedPath = resolveImportPath(importPath, filePath);
@@ -75353,9 +75353,9 @@ function extractImports(filePath) {
         const importPath = match[1];
         console.log(`  CSS import in JS: ${importPath}`);
         
-        // Special handling for L_1_HomePage.CSS imports
-        if (importPath.includes('L_1_HomePage.CSS')) {
-          console.log(`    Found L_1_HomePage.CSS import in JS: ${importPath}`);
+        // Special handling for HomePage.CSS imports
+        if (importPath.includes('HomePage.CSS')) {
+          console.log(`    Found HomePage.CSS import in JS: ${importPath}`);
         }
         
         const resolvedPath = resolveImportPath(importPath, filePath);
@@ -76187,7 +76187,7 @@ I've implemented a comprehensive solution that focuses on the core requirements 
      - Require statements (`require('./path')`)
      - CSS @import statements with and without url()
    - Added detailed logging to help diagnose import resolution issues
-   - Improved handling of special cases like L_1_HomePage.CSS imports
+   - Improved handling of special cases like HomePage.CSS imports
 
 2. **Robust Dependency Graph Construction**
    - Enhanced the core algorithm that recursively traces imports from the entry point

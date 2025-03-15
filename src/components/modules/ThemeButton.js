@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ThemeConfigurator from './ThemeConfigurator';
-import '../../styles/L_1_HomePage.CSS/ThemeButton.css';
+import '../../styles/HomePage.CSS/ThemeButton.css';
 
 const ThemeButton = ({ theme, currentTheme, onThemeChange }) => {
   const [isConfiguratorOpen, setIsConfiguratorOpen] = useState(false);

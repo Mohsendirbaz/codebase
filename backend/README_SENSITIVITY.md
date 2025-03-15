@@ -189,7 +189,7 @@ Generates visualizations for sensitivity analysis. This endpoint requires that c
 
 ## Frontend Integration
 
-The frontend has been updated to follow the new workflow. The `handleRuns` function in `L_1_HomePage.js` now follows these steps:
+The frontend has been updated to follow the new workflow. The `handleRuns` function in `HomePage.js` now follows these steps:
 
 1. First, it calls the `/sensitivity/configure` endpoint to generate and save sensitivity configurations.
 2. Then, it calls the `/runs` endpoint to run the sensitivity calculations.
