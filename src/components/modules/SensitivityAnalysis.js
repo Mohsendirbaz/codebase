@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import SensitivityVisualization from '../SensitivityVisualization';
-import { useVersionState } from '../contexts/VersionStateContext';
+import SensitivityVisualization from '../../SensitivityVisualization';
+import { useVersionState } from '../../contexts/VersionStateContext';
 import './SensitivityAnalysis.css';
 
 const SensitivityAnalysis = () => {

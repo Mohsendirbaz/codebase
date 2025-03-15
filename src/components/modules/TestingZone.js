@@ -1,6 +1,6 @@
 import React from 'react';
 import './TestingZone.css';
-import CFAConsolidationUI from './cfa/CFAConsolidationUI';
+import CFAConsolidationUI from '../cfa/CFAConsolidationUI';
 
 const TestingZone = () => {
   return (

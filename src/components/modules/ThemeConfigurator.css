@@ -2,7 +2,7 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-  background-color: var(--card-background);
+  background-color: #e9ecef;
   border-radius: var(--model-border-radius-lg, 12px);
   box-shadow: var(--model-shadow-lg, 0 10px 15px rgba(0, 0, 0, 0.2));
   position: fixed;

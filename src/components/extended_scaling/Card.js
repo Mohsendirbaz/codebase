@@ -1,5 +1,5 @@
 import React from 'react';
-import '../L_1_HomePage.CSS/L_1_HomePage4.css';
+import '../../L_1_HomePage.CSS/L_1_HomePage4.css';
 
 export const Card = ({ children, className = '', ...props }) => (
   <div className={`card ${className}`} {...props}>

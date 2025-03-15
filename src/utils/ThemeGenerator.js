@@ -180,107 +180,23 @@ class ThemeGenerator {
         console.log('CSS code to apply:', cssCode);
         
         try {
-            // Try to save via server API first
-            try {
-                console.log('Attempting to apply CSS via server API...');
-                const response = await fetch(`${this.cssRegistryEndpoint}/apply`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ files, cssCode }),
-                });
-                
-                if (response.ok) {
-                    console.log('CSS successfully applied via server API');
-                    console.groupEnd();
-                    return { success: true, message: 'CSS applied via server API' };
-                } else {
-                    const errorData = await response.json();
-                    console.error('Server API failed:', errorData);
-                    throw new Error(errorData.message || 'Server failed to apply CSS');
-                }
-            } catch (error) {
-                console.warn('Server CSS apply failed:', error);
-                
-                // Fallback to local file updates
-                console.log('Attempting local file updates...');
-                try {
-                    // Ensure we update all theme files consistently
-                    const themeFiles = [
-                        'dark-theme.css',
-                        'light-theme.css',
-                        'creative-theme.css'
-                    ].map(file => `src/styles/${file}`);
-                    
-                    // Update each theme file
-                    for (const themeFile of themeFiles) {
-                        console.log(`Updating ${themeFile}...`);
-                        
-                        try {
-                            // Construct full path to theme file
-                            const themePath = themeFile;
-                            
-                            // Read existing content
-                            const existingContent = await fs.promises.readFile(themePath, 'utf8');
-                            
-                            // Find the :root selector
-                            const rootSelectorIndex = existingContent.indexOf(':root');
-                            if (rootSelectorIndex === -1) {
-                                throw new Error(`Could not find :root selector in ${themeFile}`);
-                            }
-                            
-                            // Find the end of the root block
-                            const rootBlockEnd = existingContent.indexOf('}', rootSelectorIndex);
-                            if (rootBlockEnd === -1) {
-                                throw new Error(`Could not find end of :root block in ${themeFile}`);
-                            }
-                            
-                            // Extract the root block
-                            const rootBlock = existingContent.substring(rootSelectorIndex, rootBlockEnd + 1);
-                            
-                            // Replace the root block with new CSS
-                            const newContent = existingContent.replace(
-                                rootBlock,
-                                `:root.${themeFile.replace('.css', '')} {\n${cssCode}\n}`
-                            );
-                            
-                            // Write updated content
-                            console.log(`Writing to ${themePath} with content:\n${newContent}`);
-                            await fs.promises.writeFile(themePath, newContent, 'utf8');
-                            console.log(`Successfully updated ${themeFile}`);
-                            console.log('New content:', newContent);
-                            console.log('---');
-                            
-                            // Verify file was written correctly
-                            const writtenContent = await fs.promises.readFile(themePath, 'utf8');
-                            if (writtenContent === newContent) {
-                                console.log(`Verified ${themeFile} content matches expected`);
-                            } else {
-                                console.error(`Content mismatch in ${themeFile}!`);
-                                console.log('Expected:', newContent);
-                                console.log('Actual:', writtenContent);
-                            }
-                        } catch (fileError) {
-                            console.error(`Failed to update ${themeFile}:`, fileError);
-                            throw fileError;
-                        }
-                    }
-                    
-                    console.log('Local theme files updated successfully');
-                    console.groupEnd();
-                    return { 
-                        success: true,
-                        message: 'CSS applied locally to theme files',
-                        files: themeFiles
-                    };
-                } catch (localError) {
-                    console.error('Local file update failed:', localError);
-                    return { 
-                        success: false, 
-                        message: 'Failed to apply CSS both via server and locally: ' + localError.message
-                    };
-                }
+            console.log('Attempting to apply CSS via server API...');
+            const response = await fetch(`${this.cssRegistryEndpoint}/apply`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ files, cssCode }),
+            });
+            
+            if (response.ok) {
+                console.log('CSS successfully applied via server API');
+                console.groupEnd();
+                return { success: true, message: 'CSS applied via server API' };
+            } else {
+                const errorData = await response.json();
+                console.error('Server API failed:', errorData);
+                throw new Error(errorData.message || 'Server failed to apply CSS');
             }
         } catch (error) {
             console.error('CSS application failed:', error);

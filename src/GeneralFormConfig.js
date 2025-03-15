@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useFormValues from './useFormValues';
 import Popup from './Popup';
 import { faEdit, faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
-import SensitivityAnalysisSelector from './components/SensitivitySelector';
+import SensitivityAnalysisSelector from './components/modules/SensitivitySelector';
 
 
 const getLatestPlantLifetime = (formValues) => {

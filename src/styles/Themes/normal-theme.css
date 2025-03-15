@@ -74,6 +74,10 @@
    --spatial-gradient-end: #9333ea ;
    --spatial-shadow-intensity: 2xl ;
    --spatial-text-size: 1.5rem ;
+
+   /* Sensitivity Monitor Variables */
+
+  --header-background: #1a237e;
 }
 html{
     /* Critical Layout Variables */
