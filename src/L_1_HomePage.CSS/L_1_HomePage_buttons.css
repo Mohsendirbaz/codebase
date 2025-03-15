@@ -1,7 +1,7 @@
 /* Action Button Palette */
 
 
-.form-panel-container{
+.form-panel-container15{
   display: flex;
   justify-content: space-evenly;
   width: 100%; /* Ensure full width */
@@ -23,36 +23,36 @@
 
 /* Configuration Row */
  .form-action-buttons .config-row button {
-  background-color: #5C27C3;
-  color: white;
+  background-color: var(--primary-color);
+  color: var(--button-text);
 }
 
  .form-action-buttons .config-row button:hover {
-  background-color: #4a1fa3;
+  background-color: var(--primary-hover);
   transform: translateY(-2px);
-  box-shadow: 0 2px 8px rgba(92, 39, 195, 0.3);
+  box-shadow: 0 2px 8px rgba(var(--primary-rgb), 0.3);
 }
 
  .form-action-buttons .config-row button:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(92, 39, 195, 0.4);
+  box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.4);
 }
 
 /* Visualization Row */
  .form-action-buttons .visualization-row button {
-  background: linear-gradient(45deg, #4CAF50, #2196F3);
-  color: white;
+  background: var(--gradient-primary);
+  color: var(--button-text);
 }
 
  .form-action-buttons .visualization-row button:hover {
-  background: linear-gradient(45deg, #43A047, #1E88E5);
+  background: var(--gradient-primary-hover);
   transform: translateY(-2px);
-  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+  box-shadow: 0 2px 8px rgba(var(--success-rgb), 0.3);
 }
 
  .form-action-buttons .visualization-row button:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.4);
+  box-shadow: 0 0 0 3px rgba(var(--success-rgb), 0.4);
 }
 
 /* Practical Row */
@@ -62,53 +62,53 @@
 
 /* Run CFA Button */
  .form-action-buttons .practical-row button:nth-child(1) {
-  background-color: #FF5722;
-  color: white;
+  background-color: var(--warning-color);
+  color: var(--button-text);
 }
 
  .form-action-buttons .practical-row button:nth-child(1):hover {
-  background-color: #F4511E;
+  background-color: var(--warning-hover);
   transform: translateY(-2px);
-  box-shadow: 0 2px 8px rgba(255, 87, 34, 0.3);
+  box-shadow: 0 2px 8px rgba(var(--warning-rgb), 0.3);
 }
 
  .form-action-buttons .practical-row button:nth-child(1):focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(255, 87, 34, 0.4);
+  box-shadow: 0 0 0 3px rgba(var(--warning-rgb), 0.4);
 }
 
 /* Submit Complete Set Button */
  .form-action-buttons .practical-row button:nth-child(2) {
-  background-color: #9C27B0;
-  color: white;
+  background-color: var(--accent-1);
+  color: var(--button-text);
 }
 
  .form-action-buttons .practical-row button:nth-child(2):hover {
-  background-color: #8E24AA;
+  background-color: var(--accent-1-hover);
   transform: translateY(-2px);
-  box-shadow: 0 2px 8px rgba(156, 39, 176, 0.3);
+  box-shadow: 0 2px 8px rgba(var(--accent-1-rgb), 0.3);
 }
 
  .form-action-buttons .practical-row button:nth-child(2):focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(156, 39, 176, 0.4);
+  box-shadow: 0 0 0 3px rgba(var(--accent-1-rgb), 0.4);
 }
 
 /* Reset Button */
  .form-action-buttons .practical-row button:nth-child(3) {
-  background-color: #5C27B0;
-  color: white;
+  background-color: var(--accent-2);
+  color: var(--button-text);
 }
 
  .form-action-buttons .practical-row button:nth-child(3):hover {
-  background-color: #512DA8;
+  background-color: var(--accent-2-hover);
   transform: translateY(-2px);
-  box-shadow: 0 2px 8px rgba(92, 39, 176, 0.3);
+  box-shadow: 0 2px 8px rgba(var(--accent-2-rgb), 0.3);
 }
 
  .form-action-buttons .practical-row button:nth-child(3):focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(92, 39, 176, 0.4);
+  box-shadow: 0 0 0 3px rgba(var(--accent-2-rgb), 0.4);
 }
 
 /* Batch Operation Buttons */
@@ -119,36 +119,36 @@
 
 /* Create New Batch Button */
  .step-content .primary-action {
-  background-color: #FF2722;
-  color: white;
+  background-color: var(--danger-color);
+  color: var(--button-text);
 }
 
  .step-content .primary-action:hover {
-  background-color: #E61E19;
+  background-color: var(--danger-hover);
   transform: translateY(-2px);
-  box-shadow: 0 2px 8px rgba(255, 39, 34, 0.3);
+  box-shadow: 0 2px 8px rgba(var(--danger-rgb), 0.3);
 }
 
  .step-content .primary-action:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(255, 39, 34, 0.4);
+  box-shadow: 0 0 0 3px rgba(var(--danger-rgb), 0.4);
 }
 
 /* Remove Current Batch Button */
  .step-content .secondary-action {
-  background-color: #2fb9b9;
-  color: white;
+  background-color: var(--secondary-color);
+  color: var(--button-text);
 }
 
  .step-content .secondary-action:hover {
-  background-color: #2AA3A3;
+  background-color: var(--secondary-hover);
   transform: translateY(-2px);
-  box-shadow: 0 2px 8px rgba(47, 185, 185, 0.3);
+  box-shadow: 0 2px 8px rgba(var(--secondary-rgb), 0.3);
 }
 
  .step-content .secondary-action:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(47, 185, 185, 0.4);
+  box-shadow: 0 0 0 3px rgba(var(--secondary-rgb), 0.4);
 }
 
 /* Disabled State */

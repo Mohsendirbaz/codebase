@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import chroma from 'chroma-js';
 import ThemeGenerator from '../utils/ThemeGenerator';
 import './ThemeConfigurator.css';
 

@@ -1,13 +1,21 @@
 {
   "project_name": "Backend Structure",
-  "analysis_date": "2025-03-02 11:13:31",
+  "analysis_date": "2025-03-14 22:59:43",
   "version": 1,
   "directories": {
+    "api": {
+      "files": [
+        "api\\labelUpdate.js"
+      ],
+      "import_count": 1
+    },
     "API_endpoints_and_controllers": {
       "files": [
         "API_endpoints_and_controllers\\album_organizer.py",
         "API_endpoints_and_controllers\\Calculations.py",
         "API_endpoints_and_controllers\\Calculations_and_Sensitivity.py",
+        "API_endpoints_and_controllers\\config_monitor.py",
+        "API_endpoints_and_controllers\\Create_batch_extension.py",
         "API_endpoints_and_controllers\\Create_new_batch.py",
         "API_endpoints_and_controllers\\html_album_organizer.py",
         "API_endpoints_and_controllers\\Load.py",
@@ -18,7 +26,7 @@
         "API_endpoints_and_controllers\\Sen_Config.py",
         "API_endpoints_and_controllers\\Sub.py"
       ],
-      "import_count": 12
+      "import_count": 14
     },
     "API_endpoints_and_controllers\\__pycache__": {
       "files": [
@@ -33,13 +41,16 @@
         "Configuration_management\\app_CFA.log",
         "Configuration_management\\config_modules.py",
         "Configuration_management\\formatter.py",
+        "Configuration_management\\formatter_extension.py",
         "Configuration_management\\LogName.log",
         "Configuration_management\\module.log",
         "Configuration_management\\module1.py",
+        "Configuration_management\\module1_extension.py",
         "Configuration_management\\Table.log",
-        "Configuration_management\\Table.py"
+        "Configuration_management\\Table.py",
+        "Configuration_management\\update_config_modules_with_CFA_extension.py"
       ],
-      "import_count": 8
+      "import_count": 11
     },
     "Core_calculation_engines": {
       "files": [
@@ -62,9 +73,65 @@
       "files": [
         "Data_processors_and_transformers\\__pycache__\\economic_summary.cpython-312.pyc",
         "Data_processors_and_transformers\\__pycache__\\file_utils.cpython-312.pyc",
-        "Data_processors_and_transformers\\__pycache__\\file_utils.cpython-39.pyc"
+        "Data_processors_and_transformers\\__pycache__\\file_utils.cpython-39.pyc",
+        "Data_processors_and_transformers\\__pycache__\\Front_Subtab_Plot.cpython-312.pyc"
       ],
-      "import_count": 3
+      "import_count": 4
+    },
+    "Enhanced_Sensitivity": {
+      "files": [
+        "Enhanced_Sensitivity\\enhanced_sensitivity.log",
+        "Enhanced_Sensitivity\\enhanced_sensitivity_data_structures.py",
+        "Enhanced_Sensitivity\\enhanced_sensitivity_directory_builder.py",
+        "Enhanced_Sensitivity\\enhanced_sensitivity_executor.py",
+        "Enhanced_Sensitivity\\enhanced_sensitivity_file_operations.py",
+        "Enhanced_Sensitivity\\enhanced_sensitivity_flask_server.py",
+        "Enhanced_Sensitivity\\README.md",
+        "Enhanced_Sensitivity\\start_enhanced_sensitivity_server.py",
+        "Enhanced_Sensitivity\\test_directory_structure.py",
+        "Enhanced_Sensitivity\\test_sensitivity_storage.py",
+        "Enhanced_Sensitivity\\__init__.py"
+      ],
+      "import_count": 11
+    },
+    "Enhanced_Sensitivity\\Logs": {
+      "files": [
+        "Enhanced_Sensitivity\\Logs\\enhanced_sensitivity_config_data.pkl",
+        "Enhanced_Sensitivity\\Logs\\enhanced_sensitivity_config_status.json"
+      ],
+      "import_count": 2
+    },
+    "Enhanced_Sensitivity\\__pycache__": {
+      "files": [
+        "Enhanced_Sensitivity\\__pycache__\\enhanced_sensitivity_data_structures.cpython-312.pyc",
+        "Enhanced_Sensitivity\\__pycache__\\enhanced_sensitivity_directory_builder.cpython-312.pyc",
+        "Enhanced_Sensitivity\\__pycache__\\enhanced_sensitivity_executor.cpython-312.pyc",
+        "Enhanced_Sensitivity\\__pycache__\\enhanced_sensitivity_file_operations.cpython-312.pyc",
+        "Enhanced_Sensitivity\\__pycache__\\enhanced_sensitivity_flask_server.cpython-312.pyc",
+        "Enhanced_Sensitivity\\__pycache__\\__init__.cpython-312.pyc"
+      ],
+      "import_count": 6
+    },
+    "flask_api": {
+      "files": [
+        "flask_api\\app.py",
+        "flask_api\\__init__.py"
+      ],
+      "import_count": 2
+    },
+    "flask_api\\routes": {
+      "files": [
+        "flask_api\\routes\\theme_routes.py",
+        "flask_api\\routes\\__init__.py"
+      ],
+      "import_count": 2
+    },
+    "flask_api\\routes\\__pycache__": {
+      "files": [
+        "flask_api\\routes\\__pycache__\\theme_routes.cpython-312.pyc",
+        "flask_api\\routes\\__pycache__\\__init__.cpython-312.pyc"
+      ],
+      "import_count": 2
     },
     "Logs": {
       "files": [
@@ -72,9 +139,28 @@
         "Logs\\CFA_CALC.log",
         "Logs\\PNG.log",
         "Logs\\RUN.log",
-        "Logs\\SENSITIVITY.log"
+        "Logs\\SENSITIVITY.log",
+        "Logs\\sensitivity_config_data.pkl",
+        "Logs\\sensitivity_config_status.json"
       ],
-      "import_count": 5
+      "import_count": 7
+    },
+    "Logs\\Sensitivity": {
+      "files": [
+        "Logs\\Sensitivity\\consolidated_20250303.log",
+        "Logs\\Sensitivity\\sensitivity_api.log",
+        "Logs\\Sensitivity\\sensitivity_configuration.log",
+        "Logs\\Sensitivity\\sensitivity_data_processing.log",
+        "Logs\\Sensitivity\\sensitivity_directory_ops.log",
+        "Logs\\Sensitivity\\sensitivity_execution_flow.log",
+        "Logs\\Sensitivity\\sensitivity_html.log",
+        "Logs\\Sensitivity\\sensitivity_integration.log",
+        "Logs\\Sensitivity\\sensitivity_manager.log",
+        "Logs\\Sensitivity\\sensitivity_plots.log",
+        "Logs\\Sensitivity\\sensitivity_plot_generation.log",
+        "Logs\\Sensitivity\\sensitivity_workflow.log"
+      ],
+      "import_count": 12
     },
     "templates": {
       "files": [
@@ -86,13 +172,14 @@
       "files": [
         "Utility_functions\\Clone.py",
         "Utility_functions\\common_utils.py",
+        "Utility_functions\\common_utils_backup1.py",
         "Utility_functions\\Configuration_Differences.py",
         "Utility_functions\\ID_Replace_Python.py",
         "Utility_functions\\ID_Replace_Python_Final.py",
         "Utility_functions\\property_mapping_service.py",
         "Utility_functions\\PyScanner.py"
       ],
-      "import_count": 7
+      "import_count": 8
     },
     "Utility_functions\\__pycache__": {
       "files": [
@@ -113,6 +200,12 @@
     "Visualization_generators\\__pycache__": {
       "files": [
         "Visualization_generators\\__pycache__\\cfa_plotting.cpython-312.pyc"
+      ],
+      "import_count": 1
+    },
+    "__pycache__": {
+      "files": [
+        "__pycache__\\sensitivity_logging.cpython-312.pyc"
       ],
       "import_count": 1
     }
