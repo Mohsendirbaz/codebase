@@ -180,7 +180,6 @@
 
 /* Slider Input Styling */
 input[type="range"] {
-    -webkit-appearance: none;
     width: 100%;
     height: 4px;
     border-radius: 2px;

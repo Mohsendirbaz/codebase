@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react';
-import { useVersionState } from './contexts/VersionStateContext';
 import './styles/HomePage.CSS/VersionSelector.css';
 
 /**

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { VersionStateProvider, useVersionState } from './contexts/VersionStateContext';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import CustomizableImage from './components/modules/CustomizableImage';

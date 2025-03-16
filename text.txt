@@ -6,13 +6,13 @@ git rev-parse HEAD  # Should show current
 
 git remote -v  # Should show https://github.com/Mohsendirbaz/SF.git
 
-git checkout -b SConfig.R4
+git checkout -b tm1
 
 git add .
 
 git commit -m "still recovering"
 
-git push origin SConfig.R4
+git push origin tm1
 
 
 # Remove existing temp directory (already done)
