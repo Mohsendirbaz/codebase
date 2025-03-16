@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import propertyMapping from './useFormValues.js';  // Correctly importing propertyMapping
+import propertyMapping from '../../useFormValues.js';  // Correctly importing propertyMapping
 
 const CustomizableTable = ({
   data,
