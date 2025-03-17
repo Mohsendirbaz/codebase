@@ -24,7 +24,6 @@ import './styles/Themes/dark-theme.css';
 import './styles/Themes/normal-theme.css';
 import './styles/Themes/creative-theme.css';
 import PropertySelector from './PropertySelector.js';
-import MultiVersionSelector from './MultiVersionSelector.js';
 import VersionSelector from './VersionSelector.js';
 import SpatialTransformComponent from './Naturalmotion.js'
 import useFormValues from './useFormValues.js';
@@ -35,7 +34,7 @@ import ConfigurationMonitor from './components/modules/ConfigurationMonitor';
 import ThemeButton from './components/modules/ThemeButton';
 
 const HomePageContent = () => {
-    const { selectedVersions, version: contextVersion, setVersion: setContextVersion } = useVersionState();
+    const [selectedVersions, setSelectedVersions] = useState([1]);
     const [activeTab, setActiveTab] = useState('Input');
     const [activeSubTab, setActiveSubTab] = useState('ProjectConfig');
     const [selectedProperties, setSelectedProperties] = useState([]);
@@ -308,9 +307,7 @@ const HomePageContent = () => {
                 themeRibbon.style.setProperty('--glow-end-x', `${endX}px`);
                 themeRibbon.style.setProperty('--glow-end-y', `${endY}px`);
 
-                // Set position variables for the glow effect
-                themeRibbon.style.setProperty('--glow-start-x', `${startX}px`);
-                themeRibbon.style.setProperty('--glow-start-y', `${startY}px`);
+                // Set position variables for the glow effect (removing duplicates)
                 themeRibbon.style.setProperty('--glow-end-x', `${endX}px`);
                 themeRibbon.style.setProperty('--glow-end-y', `${endY}px`);
                 themeRibbon.style.setProperty('--transition-duration', '1.2s');
@@ -1470,14 +1467,14 @@ const HomePageContent = () => {
                         />
                     </>
                 )}
-                <div className="form-panel-container">
-
-                <div className="form-action-buttons">
-                    <div className="button-row config-row">
+                <div className="form-panel-container" style={{gap: 0, margin: 0, padding: 0}}>
+                <div className="form-action-buttons" style={{gap: 0}}>
+                    <div className="button-row config-row" style={{marginBottom: 0, padding: 0}}>
                         <div className="tooltip-container">
                             <button
                                 type="button"
                                 onClick={() => loadConfiguration(version)}
+                                style={{padding: "5px 8px"}}
                             >
                                 Load Configuration
                             </button>
@@ -1490,11 +1487,12 @@ const HomePageContent = () => {
                                 placeholder="1"
                                 value={version}
                                 onChange={handleVersionChange}
+                                style={{height: "25px"}}
                             />
                         </div>
                     </div>
 
-                    <div className="button-row checkbox-row">
+                    <div className="button-row checkbox-row" style={{marginTop: 0, marginBottom: 0, padding: 0}}>
                         <label>
                             <input
                                 type="checkbox"
@@ -1513,10 +1511,11 @@ const HomePageContent = () => {
                         </label>
                     </div>
 
-                    <div className="button-row visualization-row">
+                    <div className="button-row visualization-row" style={{marginTop: 0, marginBottom: 0, padding: 0}}>
                         <div className="tooltip-container">
                             <button
                                 onClick={handleRunPNG}
+                                style={{padding: "5px 8px"}}
                             >
                                 Generate PNG Plots
                             </button>
@@ -1529,6 +1528,7 @@ const HomePageContent = () => {
                             <button
                                 type="button"
                                 onClick={handleRunSub}
+                                style={{padding: "5px 8px"}}
                             >
                                 Generate Dynamic Plots
                             </button>
@@ -1538,35 +1538,41 @@ const HomePageContent = () => {
                             </span>
                         </div>
                     </div>
-                    <div className="step-content">
-                <button
-                  className="primary-action"
-                  onClick={createNewBatch}
-                  disabled={batchRunning || analysisRunning}
-                >
-                  {batchRunning ? (
-                    <span className="loading-text">Creating New Batch</span>
-                  ) : (
-                    <span className="action-text">Create New Batch</span>
-                  )}
-                </button>
-                <button
-                  className="secondary-action"
-                  onClick={RemoveBatch}
-                  disabled={batchRunning || analysisRunning}
-                >
-                  <span className="action-text">Remove Current Batch</span>
-                </button>
-              </div>
-                    <div className="button-row practical-row">
+                    
+                    <div className="step-content" style={{marginTop: 0, marginBottom: 0, padding: 0}}>
+                        <button
+                          className="primary-action"
+                          onClick={createNewBatch}
+                          disabled={batchRunning || analysisRunning}
+                          style={{padding: "5px 8px", margin: 0}}
+                        >
+                          {batchRunning ? (
+                            <span className="loading-text">Creating New Batch</span>
+                          ) : (
+                            <span className="action-text">Create New Batch</span>
+                          )}
+                        </button>
+                        <button
+                          className="secondary-action"
+                          onClick={RemoveBatch}
+                          disabled={batchRunning || analysisRunning}
+                          style={{padding: "5px 8px", margin: 0}}
+                        >
+                          <span className="action-text">Remove Current Batch</span>
+                        </button>
+                    </div>
+                    
+                    <div className="button-row practical-row" style={{marginTop: 0, padding: 0}}>
                         <div className="tooltip-container">
                             <button
                                 onClick={handleRun}
+                                style={{padding: "5px 8px"}}
                             >
                                 Run CFA
                             </button>
                             <button
                                 onClick={handleRuns}
+                                style={{padding: "5px 8px"}}
                             >
                                 Run CFA & Sensitivity
                             </button>
@@ -1583,6 +1589,7 @@ const HomePageContent = () => {
                             <button
                                 onClick={() => setMonitoringActive(!monitoringActive)}
                                 className={monitoringActive ? 'active-monitoring' : ''}
+                                style={{padding: "5px 8px"}}
                             >
                                 {monitoringActive ? 'Hide Monitoring' : 'Show Monitoring'}
                             </button>
@@ -1593,6 +1600,7 @@ const HomePageContent = () => {
                         <div className="tooltip-container">
                             <button
                                 onClick={handleSubmitCompleteSet}
+                                style={{padding: "5px 8px"}}
                             >
                                 Submit Complete Set
                             </button>
@@ -1601,6 +1609,7 @@ const HomePageContent = () => {
                             <button
                                 type="button"
                                 onClick={handleReset}
+                                style={{padding: "5px 8px"}}
                             >
                                 Reset
                             </button>
@@ -1649,7 +1658,9 @@ const HomePageContent = () => {
                             />
                         </div>
                         <div className="version-selector-container">
-                            <MultiVersionSelector maxVersions={20} />
+                            <VersionSelector 
+                                onVersionSelect={(selectedVersion) => setSelectedVersions([selectedVersion])}
+                            />
                         </div>
                     </div>
                 </div>
@@ -1836,6 +1847,7 @@ const HomePageContent = () => {
                         <>
                             <SensitivityMonitor 
                                 S={S}
+                                setS={setS}
                                 version={version}
                                 activeTab={activeTab}
                             />
@@ -1854,11 +1866,7 @@ const HomePageContent = () => {
 };
 
 const HomePage = () => {
-    return (
-        <VersionStateProvider>
-            <HomePageContent />
-        </VersionStateProvider>
-    );
+    return <HomePageContent />;
 };
 
 export default HomePage;

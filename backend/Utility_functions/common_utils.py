@@ -59,7 +59,7 @@ property_mapping = {
     "vAmount67": "v67",
     "vAmount68": "v68",
     "vAmount69": "v69",
-    "vAmount70": "v71",
+    "vAmount70": "v70",
     "vAmount71": "v71",
     "vAmount72": "v72",
     "vAmount73": "v73",

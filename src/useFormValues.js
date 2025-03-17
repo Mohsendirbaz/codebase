@@ -3,7 +3,6 @@ import { faDollarSign, faCogs, faIndustry, faBuilding, faWarehouse, faHandshake,
 
 // Complete property mapping object with updated vAmount nomenclature
 const propertyMapping = {
-  // Amount10-19 group
   "plantLifetimeAmount10": "Plant Lifetime",
   "bECAmount11": "Bare Erected Cost",
   "numberOfUnitsAmount12": "Number of Units",
@@ -13,8 +12,6 @@ const propertyMapping = {
   "process_contingency_PC_Amount16": "Process Contingency as % of BEC",
   "project_Contingency_PT_BEC_EPC_PCAmount17": "Project Contingency as % of BEC, EPC, PC",
   "use_direct_operating_expensesAmount18": "Use Direct Operating Expenses",
-
-  // Amount20-29 group
   "depreciationMethodAmount20": "Depreciation Method",
   "loanTypeAmount21": "Loan Type",
   "interestTypeAmount22": "Interest Type",
@@ -24,8 +21,6 @@ const propertyMapping = {
   "loanPercentageAmount26": "Loan Percentage of TOC",
   "repaymentPercentageOfRevenueAmount27": "Repayment Percentage Of Revenue",
   "numberofconstructionYearsAmount28": "Number of Construction Years",
-
-  // Amount30-39 group
   "iRRAmount30": "Internal Rate of Return",
   "annualInterestRateAmount31": "Annual Interest Rate",
   "stateTaxRateAmount32": "State Tax Rate",
@@ -35,31 +30,26 @@ const propertyMapping = {
   "utilityAmount36": "Utility Cost",
   "maintenanceAmount37": "Maintenance Cost",
   "insuranceAmount38": "Insurance Cost",
-
-  
-    "vAmount40": "v40",
-    "vAmount41": "v41",
-    "vAmount42": "v42",
-    "vAmount43": "v43",
-    "vAmount44": "v44",
-    "vAmount45": "v45",
-    "vAmount46": "v46",
-    "vAmount47": "v47",
-    "vAmount48": "v48",
-    "vAmount49": "v49",
-    "vAmount50": "v50",
-    "vAmount51": "v51",
-    "vAmount52": "v52",
-    "vAmount53": "v53",
-    "vAmount54": "v54",
-    "vAmount55": "v55",
-    "vAmount56": "v56",
-    "vAmount57": "v57",
-    "vAmount58": "v58",
-    "vAmount59": "v59",
-  
-  
-  // vAmount60-69 group
+  "vAmount40": "v40",
+  "vAmount41": "v41",
+  "vAmount42": "v42",
+  "vAmount43": "v43",
+  "vAmount44": "v44",
+  "vAmount45": "v45",
+  "vAmount46": "v46",
+  "vAmount47": "v47",
+  "vAmount48": "v48",
+  "vAmount49": "v49",
+  "vAmount50": "v50",
+  "vAmount51": "v51",
+  "vAmount52": "v52",
+  "vAmount53": "v53",
+  "vAmount54": "v54",
+  "vAmount55": "v55",
+  "vAmount56": "v56",
+  "vAmount57": "v57",
+  "vAmount58": "v58",
+  "vAmount59": "v59",
   "vAmount60": "v60",
   "vAmount61": "v61",
   "vAmount62": "v62",

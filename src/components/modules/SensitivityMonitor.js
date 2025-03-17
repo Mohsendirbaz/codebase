@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import '../../styles/HomePage.CSS/SensitivityMonitor.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRotateLeft } from '@fortawesome/free-solid-svg-icons';
 
 /**
  * SensitivityMonitor component displays and tracks all configured sensitivity parameters
  * Provides filtering, searching, and historical tracking of sensitivity configurations
  */
-const SensitivityMonitor = ({ S, version, activeTab }) => {
+const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
   // Component state
   const [isExpanded, setIsExpanded] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
@@ -127,13 +129,40 @@ const SensitivityMonitor = ({ S, version, activeTab }) => {
         {isExpanded ? (
           <>
             <h3>Sensitivity Monitor</h3>
-            <button 
-              className="toggle-button" 
-              onClick={() => setIsExpanded(false)}
-              title="Collapse panel"
-            >
-              ◀
-            </button>
+            <div className="header-controls">
+              <button 
+                className="global-reset-button" 
+                onClick={() => {
+                  if (setS) {
+                    // Reset all sensitivity parameters to default values
+                    const resetS = {};
+                    for (let i = 10; i <= 79; i++) {
+                      resetS[`S${i}`] = {
+                        mode: null,
+                        values: [],
+                        enabled: false,
+                        compareToKey: '',
+                        comparisonType: null,
+                        waterfall: false,
+                        bar: false,
+                        point: false
+                      };
+                    }
+                    setS(resetS);
+                  }
+                }}
+                title="Reset all sensitivity parameters"
+              >
+                <FontAwesomeIcon icon={faRotateLeft} /> Reset All
+              </button>
+              <button 
+                className="toggle-button" 
+                onClick={() => setIsExpanded(false)}
+                title="Collapse panel"
+              >
+                ◀
+              </button>
+            </div>
           </>
         ) : (
           <button 
@@ -219,7 +248,35 @@ const SensitivityMonitor = ({ S, version, activeTab }) => {
                     >
                       <div className="parameter-header">
                         <span className="param-id">{param.id}</span>
-                        <span className="param-mode">{param.mode}</span>
+                        <div className="param-indicators">
+                          {param.enabled && <span className="param-enabled-indicator"></span>}
+                          <span className="param-mode">{param.mode}</span>
+                        </div>
+                        <button 
+                          className="param-reset-button" 
+                          title={`Reset ${param.id}`}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            // Reset this specific parameter without confirmation
+                            if (setS) {
+                              setS(prevS => ({
+                                ...prevS,
+                                [param.id]: {
+                                  mode: null,
+                                  values: [],
+                                  enabled: false,
+                                  compareToKey: '',
+                                  comparisonType: null,
+                                  waterfall: false,
+                                  bar: false,
+                                  point: false
+                                }
+                              }));
+                            }
+                          }}
+                        >
+                          <FontAwesomeIcon icon={faRotateLeft} /> Reset
+                        </button>
                       </div>
                       
                       {param.values.length > 0 && (

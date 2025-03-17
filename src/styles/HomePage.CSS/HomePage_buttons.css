@@ -1,24 +1,99 @@
 /* Action Button Palette */
 
+/* Form container layout - ultra compact */
+.form-panel-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 2px;
+  margin: 4px 0;
+}
 
-.form-panel-container15{
+.form-action-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 2px;
+}
+
+/* Row layout for all button rows */
+.button-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: var(--model-spacing-sm);
+  padding: 2px 0;
+}
+
+/* Config row */
+.config-row {
   display: flex;
   justify-content: space-evenly;
-  width: 100%; /* Ensure full width */
-  gap: var(--spacing-unit); /* Consistent spacing */
+  align-items: center;
+  width: 100%;
+}
+
+/* Checkbox row */
+.checkbox-row {
+  display: flex;
+  justify-content: center;
+  gap: var(--model-spacing-md);
+  align-items: center;
+}
+
+/* Visualization row */
+.visualization-row {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+}
+
+/* Step content - batch operations */
+.step-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: var(--model-spacing-xs) 0;
+  gap: var(--model-spacing-sm);
+}
+
+/* Practical row */
+.practical-row {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+/* Make buttons in practical row more evenly spaced */
+.practical-row .tooltip-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-width: 150px;
+  max-width: 250px;
 }
 
  .form-action-buttons button {
   font-weight: bold;
-  padding: 40px;
+  padding: 8px 10px;
   border: none;
-  border-radius: 24px;
+  border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
   min-width: 150px;
   position: relative;
   overflow: hidden;
-
+  line-height: 1.2;
+  margin: 0;
+  height: auto;
 }
 
 /* Configuration Row */
@@ -28,31 +103,31 @@
 }
 
  .form-action-buttons .config-row button:hover {
-  background-color: var(--primary-hover);
+  background-color: var(--secondary-color);
   transform: translateY(-2px);
-  box-shadow: 0 2px 8px rgba(var(--primary-rgb), 0.3);
+  box-shadow: var(--model-shadow-sm);
 }
 
  .form-action-buttons .config-row button:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.4);
+  box-shadow: var(--model-shadow-md);
 }
 
 /* Visualization Row */
  .form-action-buttons .visualization-row button {
-  background: var(--gradient-primary);
+  background-color: var(--info-color);
   color: var(--button-text);
 }
 
  .form-action-buttons .visualization-row button:hover {
-  background: var(--gradient-primary-hover);
+  background-color: var(--secondary-color);
   transform: translateY(-2px);
-  box-shadow: 0 2px 8px rgba(var(--success-rgb), 0.3);
+  box-shadow: var(--model-shadow-sm);
 }
 
  .form-action-buttons .visualization-row button:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(var(--success-rgb), 0.4);
+  box-shadow: var(--model-shadow-md);
 }
 
 /* Practical Row */
@@ -67,48 +142,48 @@
 }
 
  .form-action-buttons .practical-row button:nth-child(1):hover {
-  background-color: var(--warning-hover);
+  background-color: var(--secondary-color);
   transform: translateY(-2px);
-  box-shadow: 0 2px 8px rgba(var(--warning-rgb), 0.3);
+  box-shadow: var(--model-shadow-sm);
 }
 
  .form-action-buttons .practical-row button:nth-child(1):focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(var(--warning-rgb), 0.4);
+  box-shadow: var(--model-shadow-md);
 }
 
 /* Submit Complete Set Button */
  .form-action-buttons .practical-row button:nth-child(2) {
-  background-color: var(--accent-1);
+  background-color: var(--success-color);
   color: var(--button-text);
 }
 
  .form-action-buttons .practical-row button:nth-child(2):hover {
-  background-color: var(--accent-1-hover);
+  background-color: var(--secondary-color);
   transform: translateY(-2px);
-  box-shadow: 0 2px 8px rgba(var(--accent-1-rgb), 0.3);
+  box-shadow: var(--model-shadow-sm);
 }
 
  .form-action-buttons .practical-row button:nth-child(2):focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(var(--accent-1-rgb), 0.4);
+  box-shadow: var(--model-shadow-md);
 }
 
 /* Reset Button */
  .form-action-buttons .practical-row button:nth-child(3) {
-  background-color: var(--accent-2);
+  background-color: var(--danger-color);
   color: var(--button-text);
 }
 
  .form-action-buttons .practical-row button:nth-child(3):hover {
-  background-color: var(--accent-2-hover);
+  background-color: var(--secondary-color);
   transform: translateY(-2px);
-  box-shadow: 0 2px 8px rgba(var(--accent-2-rgb), 0.3);
+  box-shadow: var(--model-shadow-sm);
 }
 
  .form-action-buttons .practical-row button:nth-child(3):focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(var(--accent-2-rgb), 0.4);
+  box-shadow: var(--model-shadow-md);
 }
 
 /* Batch Operation Buttons */
@@ -124,14 +199,14 @@
 }
 
  .step-content .primary-action:hover {
-  background-color: var(--danger-hover);
+  background-color: var(--primary-color);
   transform: translateY(-2px);
-  box-shadow: 0 2px 8px rgba(var(--danger-rgb), 0.3);
+  box-shadow: var(--model-shadow-sm);
 }
 
  .step-content .primary-action:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(var(--danger-rgb), 0.4);
+  box-shadow: var(--model-shadow-md);
 }
 
 /* Remove Current Batch Button */
@@ -141,14 +216,14 @@
 }
 
  .step-content .secondary-action:hover {
-  background-color: var(--secondary-hover);
+  background-color: var(--primary-color);
   transform: translateY(-2px);
-  box-shadow: 0 2px 8px rgba(var(--secondary-rgb), 0.3);
+  box-shadow: var(--model-shadow-sm);
 }
 
  .step-content .secondary-action:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(var(--secondary-rgb), 0.4);
+  box-shadow: var(--model-shadow-md);
 }
 
 /* Disabled State */

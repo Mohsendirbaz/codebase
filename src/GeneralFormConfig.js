@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useFormValues from './useFormValues';
-import Popup from './components/modules/Efficacy';
-import { faEdit, faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
+import Popup from './styles/HomePage.CSS/Efficacy.css';
+import { faEdit, faCheck, faTimes, faSave, faUndo } from '@fortawesome/free-solid-svg-icons';
 import SensitivityAnalysisSelector from './components/modules/SensitivitySelector';
-
+import axios from 'axios';
+import { propertyMapping as referenceLabels } from './LabelReferences';
 
 const getLatestPlantLifetime = (formValues) => {
   const filteredValues = Object.values(formValues).filter(item => item.id === 'plantLifetimeAmount1');
@@ -18,6 +19,8 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
   const [selectedItemId, setSelectedItemId] = useState();
   const [editingLabel, setEditingLabel] = useState(null);
   const [tempLabel, setTempLabel] = useState('');
+  const [updateStatus, setUpdateStatus] = useState('');
+  const [originalLabels, setOriginalLabels] = useState({});
 
   // Helper function to get corresponding S number
   const getSNumber = (key) => {
@@ -29,9 +32,7 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
     return null;
   };
 
-
-
-  // Previous helper functions remain the same
+  // Helper function to get V number
   const getVNumber = (vAmountNum) => {
     const num = parseInt(vAmountNum);
     if (num >= 40 && num <= 49) return `V${num - 39}`;
@@ -66,13 +67,25 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
         ...formValues[key]
       };
     });
+    
+  // Store original labels when component mounts
+  useEffect(() => {
+    if (Object.keys(originalLabels).length === 0) {
+      const labels = {};
+      Object.entries(formValues).forEach(([key, value]) => {
+        labels[key] = value.label;
+      });
+      setOriginalLabels(labels);
+    }
+  }, [formValues]);
 
-  // Rest of the component functions remain the same
+  // Updated to immediately apply labels locally
   const handleLabelEdit = (itemId) => {
     setEditingLabel(itemId);
     setTempLabel(formValues[itemId].label);
   };
 
+  // Updated to take effect locally immediately
   const handleLabelSave = (itemId) => {
     handleInputChange({ target: { value: tempLabel } }, itemId, 'label');
     setEditingLabel(null);
@@ -98,7 +111,7 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
   const handleScheduleClick = (e, itemId) => {
     const rect = e.target.getBoundingClientRect();
     setPopupPosition({
-      top: rect.top + window.scrollY+100,
+      top: rect.top + window.scrollY + 100,
       left: rect.left + rect.width + 10,
     });
     setSelectedItemId(itemId);
@@ -110,10 +123,79 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
     setShowPopup(true);
   };
 
+  // Function to handle updating form labels in both files
+  const handleUpdateFormLabels = async () => {
+    try {
+      setUpdateStatus('Updating labels...');
 
+      // Collect all updated labels from formValues
+      const updatedLabels = {};
+      Object.entries(formValues).forEach(([key, value]) => {
+        updatedLabels[key] = value.label;
+      });
+
+      // Call backend API to update files
+      const response = await axios.post('http://localhost:3060/api/update-form-labels', {
+        labels: updatedLabels
+      });
+
+      if (response.data.success) {
+        setUpdateStatus('Labels updated successfully!');
+        setTimeout(() => setUpdateStatus(''), 3000);
+      } else {
+        setUpdateStatus('Update failed: ' + response.data.message);
+      }
+    } catch (error) {
+      console.error('Error updating form labels:', error);
+      setUpdateStatus('Update failed: ' + error.message);
+    }
+  };
+  
+  // Function to reset labels to original values
+  const handleResetLabels = () => {
+    if (!originalLabels || Object.keys(originalLabels).length === 0) {
+      setUpdateStatus('No original labels to restore');
+      return;
+    }
+    
+    // Confirm reset
+    if (window.confirm('Are you sure you want to reset all labels to their original values?')) {
+      try {
+        // Apply original labels to all form items
+        Object.entries(originalLabels).forEach(([key, label]) => {
+          if (formValues[key]) {
+            handleInputChange({ target: { value: label } }, key, 'label');
+          }
+        });
+        
+        setUpdateStatus('Labels reset to original values');
+        setTimeout(() => setUpdateStatus(''), 3000);
+      } catch (error) {
+        console.error('Error resetting labels:', error);
+        setUpdateStatus('Reset failed: ' + error.message);
+      }
+    }
+  };
 
   return (
     <>
+      {/* Label Management Section */}
+      <div className="labels-section">
+        <button 
+          className="update-button"
+          onClick={handleUpdateFormLabels}
+        >
+          <FontAwesomeIcon icon={faSave} /> Update Form Labels
+        </button>
+        <button 
+          className="reset-button"
+          onClick={handleResetLabels}
+        >
+          <FontAwesomeIcon icon={faUndo} /> Reset Labels
+        </button>
+        {updateStatus && <span className="update-status">{updateStatus}</span>}
+      </div>
+
       {formItems.map((item) => (
         <div key={item.id} className={`form-item-container ${item.id === selectedItemId ? 'highlighted-container' : ''}`}>
 
@@ -173,12 +255,12 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
                 </div>
               ) : (
                 <div className="label-text">
-                  <span>{item.label}</span>
                   <FontAwesomeIcon
                     icon={faEdit}
                     onClick={() => handleLabelEdit(item.id)}
                     className="edit-icon"
                   />
+                  <span>{item.label}</span>
                 </div>
               )}
             </div>
@@ -204,7 +286,7 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
                     <button className="control-button1" onClick={() => handleDecrement(item.id)}>-</button>
                     <button className="control-button2" onClick={() => handleIncrement(item.id)}>+</button>
                   </div>
-                  </div>
+                </div>
 
                 {/* Step Input */}
                 <div className="step-container">
@@ -222,23 +304,17 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
                   />
                 </div>
                 <div className="remarks-container">
-      <input
-        type="text"
-        id={`${item.id}-remarks`}
-        value={item.remarks || ''}
-        onChange={(e) => handleInputChange({ target: { value: e.target.value } }, item.id, 'remarks')}
-        placeholder="Add remarks"
-        className="remarks-input remarks-important"
-      />
-    </div>
+                  <input
+                    type="text"
+                    id={`${item.id}-remarks`}
+                    value={item.remarks || ''}
+                    onChange={(e) => handleInputChange({ target: { value: e.target.value } }, item.id, 'remarks')}
+                    placeholder="Add remarks"
+                    className="remarks-input remarks-important"
+                  />
+                </div>
                 {/* Action Buttons */}
                 <div className="action-buttons">
-                  <button
-                    className="action-button primary"
-                    onClick={(e) => handleScheduleClick(e, item.id)}
-                  >
-                    Specify Efficacy Period
-                  </button>
                   {item.sKey && (
                     <SensitivityAnalysisSelector
                       sKey={item.sKey}
@@ -253,6 +329,13 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
                       version={version}
                     />
                   )}
+                  <button
+                    className="action-button primary"
+                    onClick={(e) => handleScheduleClick(e, item.id)}
+                  >
+                    Specify Efficacy Period<br/>
+                    (overrides basevalues for specified intervals)
+                  </button>
                   <button
                     className="action-button factual"
                     onClick={(e) => handleScheduleClick(e, item.id)}
@@ -292,12 +375,6 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
                 
                 {/* Action Buttons */}
                 <div className="action-buttons">
-                  <button
-                    className="action-button primary"
-                    onClick={(e) => handleScheduleClick(e, item.id)}
-                  >
-                    Specify Efficacy Period
-                  </button>
                   {item.sKey && (
                     <SensitivityAnalysisSelector
                       sKey={item.sKey}
@@ -312,6 +389,13 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
                       version={version}
                     />
                   )}
+                  <button
+                    className="action-button primary"
+                    onClick={(e) => handleScheduleClick(e, item.id)}
+                  >
+                    Specify Efficacy Period<br/>
+                    (overrides basevalues for specified intervals)
+                  </button>
                   <button
                     className="action-button factual"
                     onClick={(e) => handleScheduleClick(e, item.id)}
@@ -337,7 +421,7 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
           formValues={formValues}
           handleInputChange={handleInputChange}
           id={selectedItemId}
-          onVersionChange={(newVersion) => setVersion(newVersion)} // Add this handler
+          onVersionChange={(newVersion) => setVersion(newVersion)}
           version={version}
           itemId={selectedItemId}
         />
@@ -345,6 +429,5 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
     </>
   );
 };
-
 
 export default GeneralFormConfig;
