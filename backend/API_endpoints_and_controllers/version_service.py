@@ -14,19 +14,27 @@ def get_all_versions():
     if not os.path.exists(STATIC_FOLDER):
         os.makedirs(STATIC_FOLDER)
     
-    batches = [d for d in os.listdir(STATIC_FOLDER) if os.path.isdir(os.path.join(STATIC_FOLDER, d)) and d.startswith('Batch')]
-    versions = []
+    import re
+    versions = set()  # Use set to avoid duplicates
+    
+    # Walk through all subdirectories
+    for root, dirs, files in os.walk(STATIC_FOLDER):
+        for dir_name in dirs:
+            # Match both Batch(X) and Batch(X.Y) formats
+            match = re.match(r'Batch\((\d+(?:\.\d+)?)\)', dir_name)
+            if match:
+                version_str = match.group(1)
+                try:
+                    # Convert to float for decimal versions, but keep as int if possible
+                    version = float(version_str)
+                    if version.is_integer():
+                        version = int(version)
+                    versions.add(version)
+                except ValueError:
+                    continue
 
-    for batch in batches:
-        try:
-            # Extract numeric portion from batch folder name
-            version_str = ''.join(filter(lambda x: x.isdigit() or x == '.', batch))
-            version = float(version_str) if '.' in version_str else int(version_str)
-            versions.append(version)
-        except ValueError:
-            pass
-
-    return sorted(versions)
+    # Return sorted list of unique versions
+    return sorted(list(versions))
 
 @app.route('/versions', methods=['GET'])
 def list_versions_route():

@@ -36,13 +36,14 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
     { id: 'product', label: 'Product (A×B)' }
   ];
 
-  // Fetch available parameters from the backend
+  // Fetch available parameters and start monitoring
   useEffect(() => {
     if (!version) return;
     
     const fetchParameters = async () => {
       setIsLoading(true);
       try {
+        // Initial parameters fetch
         const response = await fetch(`http://localhost:5001/parameters/${version}`);
         if (!response.ok) {
           throw new Error(`Failed to fetch parameters: ${response.status}`);
@@ -50,15 +51,57 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
         
         const data = await response.json();
         setAvailableParameters(data.parameters || []);
+
+        // Start sensitivity monitoring
+        const monitorResponse = await fetch('http://localhost:5001/monitor/sensitivity', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ version })
+        });
+
+        if (!monitorResponse.ok) {
+          console.warn('Sensitivity monitoring initialization failed:', monitorResponse.status);
+        } else {
+          const monitorData = await monitorResponse.json();
+          console.log('Sensitivity monitoring initialized:', monitorData);
+        }
+
       } catch (error) {
-        console.error('Error fetching sensitivity parameters:', error);
+        console.error('Error in sensitivity monitoring:', error);
       } finally {
         setIsLoading(false);
       }
     };
     
     fetchParameters();
-  }, [version]);
+
+    // Poll for sensitivity updates every 5 seconds
+    const intervalId = setInterval(async () => {
+      try {
+        const response = await fetch('http://localhost:5001/monitor/sensitivity', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ version })
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          if (data.sensitivity_values) {
+            // Update sensitivity values in state
+            setS(prevS => ({
+              ...prevS,
+              ...data.sensitivity_values
+            }));
+          }
+        }
+      } catch (error) {
+        console.warn('Sensitivity update check failed:', error);
+      }
+    }, 5000);
+
+    // Cleanup interval on unmount
+    return () => clearInterval(intervalId);
+  }, [version, setS]);
   
   // Filter parameters based on search term and filter mode
   const filteredParameters = useMemo(() => {
