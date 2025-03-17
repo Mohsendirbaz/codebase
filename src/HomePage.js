@@ -27,6 +27,7 @@ import PropertySelector from './PropertySelector.js';
 import VersionSelector from './VersionSelector.js';
 import SpatialTransformComponent from './Naturalmotion.js'
 import useFormValues from './useFormValues.js';
+import versionEventEmitter from './utils/eventEmitter';
 import TestingZone from './components/modules/TestingZone';
 import CalculationMonitor from './components/modules/CalculationMonitor';
 import SensitivityMonitor from './components/modules/SensitivityMonitor';
@@ -36,6 +37,18 @@ import ThemeButton from './components/modules/ThemeButton';
 const HomePageContent = () => {
     const [selectedVersions, setSelectedVersions] = useState([1]);
     const [activeTab, setActiveTab] = useState('Input');
+
+    // Listen for version change events
+    useEffect(() => {
+        const handleVersionChange = (version) => {
+            setSelectedVersions(Array.isArray(version) ? version : [version]);
+        };
+
+        versionEventEmitter.on('versionChange', handleVersionChange);
+        return () => {
+            versionEventEmitter.off('versionChange', handleVersionChange);
+        };
+    }, []);
     const [activeSubTab, setActiveSubTab] = useState('ProjectConfig');
     const [selectedProperties, setSelectedProperties] = useState([]);
     const [season, setSeason] = useState('winter');
@@ -1519,10 +1532,10 @@ const HomePageContent = () => {
                             >
                                 Generate PNG Plots
                             </button>
-                            <span className="tooltip1">
+                           {/* <span className="tooltip1">
                                 Choose the attributes thou wishest to grace the legend, and with a
                                 click, summon forth the PNG plots.
-                            </span>
+                            </span> */}
                         </div>
                         <div className="tooltip-container">
                             <button
@@ -1532,10 +1545,10 @@ const HomePageContent = () => {
                             >
                                 Generate Dynamic Plots
                             </button>
-                            <span className="tooltip1">
+                            {/* <span className="tooltip1">
                                 Seize the power of efficacy to tailor thy analysis, then click to
                                 conjure dynamic plots.
-                            </span>
+                            </span> */}
                         </div>
                     </div>
                     
@@ -1574,16 +1587,16 @@ const HomePageContent = () => {
                                 onClick={handleRuns}
                                 style={{padding: "5px 8px"}}
                             >
-                                Run CFA & Sensitivity
+                                Run Sensitivity
                             </button>
-                            <span className="tooltip1">
+                            {/* <span className="tooltip1">
                                 <p className="left-aligned-text">
                                     Engage the button to unleash a thorough cash flow analysis:
                                     Cumulative cash flows • Annual revenues • Operating expenses •
                                     Loan repayment terms • Depreciation schedules • State taxes •
                                     Federal taxes • Annual cash flows
                                 </p>
-                            </span>
+                            </span> */}
                         </div>
                         <div className="tooltip-container">
                             <button
@@ -1593,9 +1606,9 @@ const HomePageContent = () => {
                             >
                                 {monitoringActive ? 'Hide Monitoring' : 'Show Monitoring'}
                             </button>
-                            <span className="tooltip1">
+                            {/* <span className="tooltip1">
                                 Toggle real-time calculation monitoring display
-                            </span>
+                            </span> */}
                         </div>
                         <div className="tooltip-container">
                             <button
@@ -1658,9 +1671,7 @@ const HomePageContent = () => {
                             />
                         </div>
                         <div className="version-selector-container">
-                            <VersionSelector 
-                                onVersionSelect={(selectedVersion) => setSelectedVersions([selectedVersion])}
-                            />
+                            <VersionSelector />
                         </div>
                     </div>
                 </div>

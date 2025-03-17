@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useFormValues from './useFormValues';
-import Popup from './styles/HomePage.CSS/Efficacy.css';
+import Popup from './components/modules/Efficacy';
 import { faEdit, faCheck, faTimes, faSave, faUndo } from '@fortawesome/free-solid-svg-icons';
 import SensitivityAnalysisSelector from './components/modules/SensitivitySelector';
 import axios from 'axios';

@@ -4,231 +4,249 @@
 .form-panel-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
-  gap: 2px;
-  margin: 4px 0;
+  gap: 8px;
+  margin: 8px 0;
 }
 
 .form-action-buttons {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
-  gap: 2px;
+  gap: 8px;
 }
 
 /* Row layout for all button rows */
 .button-row {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   width: 100%;
-  gap: var(--model-spacing-sm);
-  padding: 2px 0;
+  gap: calc(var(--model-spacing-sm) * 2);
+  padding: 8px 0;
+  flex-wrap: wrap;
 }
 
 /* Config row */
 .config-row {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: center;
   width: 100%;
+  margin-bottom: 8px !important;
 }
 
 /* Checkbox row */
 .checkbox-row {
   display: flex;
-  justify-content: center;
-  gap: var(--model-spacing-md);
+  justify-content: flex-start;
+  gap: calc(var(--model-spacing-md) * 2);
   align-items: center;
+  margin: 8px 0 !important;
 }
 
 /* Visualization row */
 .visualization-row {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: center;
   width: 100%;
+  margin: 8px 0 !important;
 }
 
 /* Step content - batch operations */
 .step-content {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   width: 100%;
-  padding: var(--model-spacing-xs) 0;
-  gap: var(--model-spacing-sm);
+  padding: calc(var(--model-spacing-xs) * 2) 0;
+  gap: calc(var(--model-spacing-sm) * 2);
+  margin: 8px 0 !important;
 }
 
 /* Practical row */
 .practical-row {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: center;
   width: 100%;
   flex-wrap: wrap;
+  margin: 8px 0 !important;
+  gap: 12px;
 }
 
 /* Make buttons in practical row more evenly spaced */
 .practical-row .tooltip-container {
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex: 1;
-  min-width: 150px;
-  max-width: 250px;
+  justify-content: flex-start;
+  margin-right: 10px;
 }
 
- .form-action-buttons button {
+.form-action-buttons button {
   font-weight: bold;
-  padding: 8px 10px;
+  padding: 16px 20px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
   min-width: 150px;
+  min-height: calc(16px * 2 + 1.2em);
   position: relative;
   overflow: hidden;
   line-height: 1.2;
-  margin: 0;
+  margin: 0 10px 0 0 !important;
   height: auto;
+  white-space: nowrap;
+}
+
+/* Force inline style overrides */
+.form-action-buttons button[style*="padding"] {
+  padding: 16px 20px !important;
 }
 
 /* Configuration Row */
- .form-action-buttons .config-row button {
+.form-action-buttons .config-row button {
   background-color: var(--primary-color);
   color: var(--button-text);
+  margin-right: 10px !important;
 }
 
- .form-action-buttons .config-row button:hover {
+.form-action-buttons .config-row button:hover {
   background-color: var(--secondary-color);
   transform: translateY(-2px);
   box-shadow: var(--model-shadow-sm);
 }
 
- .form-action-buttons .config-row button:focus {
+.form-action-buttons .config-row button:focus {
   outline: none;
   box-shadow: var(--model-shadow-md);
 }
 
 /* Visualization Row */
- .form-action-buttons .visualization-row button {
+.form-action-buttons .visualization-row button {
   background-color: var(--info-color);
   color: var(--button-text);
+  margin-right: 10px !important;
+  flex: 0 0 auto;
 }
 
- .form-action-buttons .visualization-row button:hover {
+.form-action-buttons .visualization-row button:hover {
   background-color: var(--secondary-color);
   transform: translateY(-2px);
   box-shadow: var(--model-shadow-sm);
 }
 
- .form-action-buttons .visualization-row button:focus {
+.form-action-buttons .visualization-row button:focus {
   outline: none;
   box-shadow: var(--model-shadow-md);
 }
 
 /* Practical Row */
- .form-action-buttons .practical-row button {
+.form-action-buttons .practical-row button {
   position: relative;
+  margin-right: 10px !important;
+  flex: 0 0 auto;
 }
 
 /* Run CFA Button */
- .form-action-buttons .practical-row button:nth-child(1) {
+.form-action-buttons .practical-row button:nth-child(1) {
   background-color: var(--warning-color);
   color: var(--button-text);
 }
 
- .form-action-buttons .practical-row button:nth-child(1):hover {
+.form-action-buttons .practical-row button:nth-child(1):hover {
   background-color: var(--secondary-color);
   transform: translateY(-2px);
   box-shadow: var(--model-shadow-sm);
 }
 
- .form-action-buttons .practical-row button:nth-child(1):focus {
+.form-action-buttons .practical-row button:nth-child(1):focus {
   outline: none;
   box-shadow: var(--model-shadow-md);
 }
 
 /* Submit Complete Set Button */
- .form-action-buttons .practical-row button:nth-child(2) {
+.form-action-buttons .practical-row button:nth-child(2) {
   background-color: var(--success-color);
   color: var(--button-text);
 }
 
- .form-action-buttons .practical-row button:nth-child(2):hover {
+.form-action-buttons .practical-row button:nth-child(2):hover {
   background-color: var(--secondary-color);
   transform: translateY(-2px);
   box-shadow: var(--model-shadow-sm);
 }
 
- .form-action-buttons .practical-row button:nth-child(2):focus {
+.form-action-buttons .practical-row button:nth-child(2):focus {
   outline: none;
   box-shadow: var(--model-shadow-md);
 }
 
 /* Reset Button */
- .form-action-buttons .practical-row button:nth-child(3) {
+.form-action-buttons .practical-row button:nth-child(3) {
   background-color: var(--danger-color);
   color: var(--button-text);
 }
 
- .form-action-buttons .practical-row button:nth-child(3):hover {
+.form-action-buttons .practical-row button:nth-child(3):hover {
   background-color: var(--secondary-color);
   transform: translateY(-2px);
   box-shadow: var(--model-shadow-sm);
 }
 
- .form-action-buttons .practical-row button:nth-child(3):focus {
+.form-action-buttons .practical-row button:nth-child(3):focus {
   outline: none;
   box-shadow: var(--model-shadow-md);
 }
 
 /* Batch Operation Buttons */
- .step-content button {
-  margin: 0 10px;
+.step-content button {
+  margin: 0 20px 0 0 !important;
   min-width: 180px;
+  flex: 0 0 auto;
 }
 
 /* Create New Batch Button */
- .step-content .primary-action {
+.step-content .primary-action {
   background-color: var(--danger-color);
   color: var(--button-text);
 }
 
- .step-content .primary-action:hover {
+.step-content .primary-action:hover {
   background-color: var(--primary-color);
   transform: translateY(-2px);
   box-shadow: var(--model-shadow-sm);
 }
 
- .step-content .primary-action:focus {
+.step-content .primary-action:focus {
   outline: none;
   box-shadow: var(--model-shadow-md);
 }
 
 /* Remove Current Batch Button */
- .step-content .secondary-action {
+.step-content .secondary-action {
   background-color: var(--secondary-color);
   color: var(--button-text);
 }
 
- .step-content .secondary-action:hover {
+.step-content .secondary-action:hover {
   background-color: var(--primary-color);
   transform: translateY(-2px);
   box-shadow: var(--model-shadow-sm);
 }
 
- .step-content .secondary-action:focus {
+.step-content .secondary-action:focus {
   outline: none;
   box-shadow: var(--model-shadow-md);
 }
 
 /* Disabled State */
- .form-action-buttons button:disabled,
- .step-content button:disabled {
+.form-action-buttons button:disabled,
+.step-content button:disabled {
   opacity: 0.7;
   cursor: not-allowed;
   transform: none;
@@ -242,12 +260,79 @@
   100% { opacity: 1; }
 }
 
- .form-action-buttons .practical-row button:nth-child(1)[disabled] {
+.form-action-buttons .practical-row button:nth-child(1)[disabled] {
   animation: pulse 1.5s infinite;
 }
+
 .tooltip1 {
   position: relative;
   display: inline-block;
   border-bottom: 1px dotted black;
   visibility: hidden;
+}
+
+/* Version input container */
+.version-input-container {
+  display: flex;
+  align-items: center;
+  min-width: 100px;
+  margin-left: 10px;
+}
+
+.version-input {
+  min-height: 35px !important;
+  padding: 5px 10px;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  width: 80px;
+}
+
+/* Fixes for inline styles */
+.form-panel-container[style*="gap: 0"],
+.form-action-buttons[style*="gap: 0"] {
+  gap: 8px !important;
+}
+
+.button-row[style*="padding: 0"],
+.button-row[style*="margin: 0"] {
+  padding: 8px 0 !important;
+  margin: 8px 0 !important;
+}
+
+.form-action-buttons button[style*="padding: 5px 8px"] {
+  padding: 16px 20px !important;
+}
+
+/* Fix for checkbox row alignment */
+.checkbox-row label {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.checkbox-row input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .form-action-buttons button {
+    min-width: 120px;
+    padding: 12px 16px;
+    margin-bottom: 8px;
+  }
+  
+  .button-row {
+    flex-wrap: wrap;
+  }
+  
+  .practical-row .tooltip-container {
+    flex: 1 1 45%;
+  }
+}
+
+/* Ensure buttons don't shrink too much */
+.form-action-buttons button,
+.step-content button {
+  flex-shrink: 0;
 }

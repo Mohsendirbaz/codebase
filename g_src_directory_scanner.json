@@ -1,26 +1,22 @@
 {
   "project_name": "src",
-  "analysis_date": "2025-03-15 17:32:33",
+  "analysis_date": "2025-03-16 23:20:27",
   "version": 6,
   "directories": {
     ".": {
       "files": [
         "App.js",
-        "CustomizableImage.js",
-        "CustomizableTable.js",
-        "FactEngine.js",
-        "FactEngineAdmin.js",
         "GeneralFormConfig.js",
-        "index.js",
         "HomePage.js",
-        "MultiVersionSelector.js",
+        "index.js",
+        "Label.css",
+        "LabelReferences.js",
         "Naturalmotion.js",
-        "Popup.js",
         "PropertySelector.js",
         "useFormValues.js",
         "VersionSelector.js"
       ],
-      "import_count": 14
+      "import_count": 9
     },
     "components": {
       "files": [],
@@ -52,26 +48,19 @@
       "files": [
         "components\\modules\\CalculationMonitor.js",
         "components\\modules\\ConfigurationMonitor.js",
+        "components\\modules\\CustomizableImage.js",
+        "components\\modules\\CustomizableTable.js",
+        "components\\modules\\Efficacy.js",
         "components\\modules\\ErrorBoundary.js",
+        "components\\modules\\FactEngine.js",
+        "components\\modules\\FactEngineAdmin.js",
         "components\\modules\\SensitivityMonitor.js",
         "components\\modules\\SensitivitySelector.js",
         "components\\modules\\TestingZone.js",
-        "components\\modules\\ThemeButton.js"
+        "components\\modules\\ThemeButton.js",
+        "components\\modules\\ThemeConfigurator.js"
       ],
-      "import_count": 7
-    },
-    "components\\version": {
-      "files": [
-        "components\\version\\VersionControl.css",
-        "components\\version\\VersionControl.js"
-      ],
-      "import_count": 1
-    },
-    "contexts": {
-      "files": [
-        "contexts\\VersionStateContext.js"
-      ],
-      "import_count": 1
+      "import_count": 13
     },
     "data": {
       "files": [
@@ -85,6 +74,9 @@
     },
     "styles\\HomePage.CSS": {
       "files": [
+        "styles\\HomePage.CSS\\CalculationMonitor.css",
+        "styles\\HomePage.CSS\\ConfigurationMonitor.css",
+        "styles\\HomePage.CSS\\Efficacy.css",
         "styles\\HomePage.CSS\\HomePage1.css",
         "styles\\HomePage.CSS\\HomePage2.css",
         "styles\\HomePage.CSS\\HomePage3.css",
@@ -99,7 +91,11 @@
         "styles\\HomePage.CSS\\HomePage_neumorphic-tabs.css",
         "styles\\HomePage.CSS\\HomePage_selectors.css",
         "styles\\HomePage.CSS\\Naturalmotion.css",
-        "styles\\HomePage.CSS\\Popup.css",
+        "styles\\HomePage.CSS\\SensitivityMonitor.css",
+        "styles\\HomePage.CSS\\SensitivitySelector.css",
+        "styles\\HomePage.CSS\\TestingZone.css",
+        "styles\\HomePage.CSS\\ThemeButton.css",
+        "styles\\HomePage.CSS\\ThemeConfigurator.css",
         "styles\\HomePage.CSS\\VersionSelector.css"
       ],
       "import_count": 0
@@ -114,9 +110,10 @@
     },
     "utils": {
       "files": [
+        "utils\\eventEmitter.js",
         "utils\\ThemeGenerator.js"
       ],
-      "import_count": 1
+      "import_count": 2
     }
   },
   "files_by_extension": {
@@ -124,32 +121,17 @@
       {
         "name": "App.js",
         "path": ".\\App.js",
-        "size": 590
-      },
-      {
-        "name": "CustomizableImage.js",
-        "path": ".\\CustomizableImage.js",
-        "size": 2571
-      },
-      {
-        "name": "CustomizableTable.js",
-        "path": ".\\CustomizableTable.js",
-        "size": 4365
-      },
-      {
-        "name": "FactEngine.js",
-        "path": ".\\FactEngine.js",
-        "size": 7120
-      },
-      {
-        "name": "FactEngineAdmin.js",
-        "path": ".\\FactEngineAdmin.js",
-        "size": 9280
+        "size": 445
       },
       {
         "name": "GeneralFormConfig.js",
         "path": ".\\GeneralFormConfig.js",
-        "size": 12934
+        "size": 16217
+      },
+      {
+        "name": "HomePage.js",
+        "path": ".\\HomePage.js",
+        "size": 80642
       },
       {
         "name": "index.js",
@@ -157,24 +139,14 @@
         "size": 271
       },
       {
-        "name": "HomePage.js",
-        "path": ".\\HomePage.js",
-        "size": 79466
-      },
-      {
-        "name": "MultiVersionSelector.js",
-        "path": ".\\MultiVersionSelector.js",
-        "size": 1777
+        "name": "LabelReferences.js",
+        "path": ".\\LabelReferences.js",
+        "size": 2772
       },
       {
         "name": "Naturalmotion.js",
         "path": ".\\Naturalmotion.js",
-        "size": 2760
-      },
-      {
-        "name": "Popup.js",
-        "path": ".\\Popup.js",
-        "size": 9255
+        "size": 2756
       },
       {
         "name": "PropertySelector.js",
@@ -184,12 +156,12 @@
       {
         "name": "useFormValues.js",
         "path": ".\\useFormValues.js",
-        "size": 8607
+        "size": 8384
       },
       {
         "name": "VersionSelector.js",
         "path": ".\\VersionSelector.js",
-        "size": 5797
+        "size": 1915
       },
       {
         "name": "CFAConsolidationUI.js",
@@ -199,7 +171,7 @@
       {
         "name": "IndividualResultsPanel.js",
         "path": "components\\cfa\\IndividualResultsPanel.js",
-        "size": 11711
+        "size": 11716
       },
       {
         "name": "ProcessingPanel.js",
@@ -219,12 +191,12 @@
       {
         "name": "Card.js",
         "path": "components\\extended_scaling\\Card.js",
-        "size": 590
+        "size": 582
       },
       {
         "name": "ExtendedScaling.js",
         "path": "components\\extended_scaling\\ExtendedScaling.js",
-        "size": 23439
+        "size": 23431
       },
       {
         "name": "ScalingSummary.js",
@@ -234,12 +206,27 @@
       {
         "name": "CalculationMonitor.js",
         "path": "components\\modules\\CalculationMonitor.js",
-        "size": 8193
+        "size": 8192
       },
       {
         "name": "ConfigurationMonitor.js",
         "path": "components\\modules\\ConfigurationMonitor.js",
-        "size": 10442
+        "size": 10441
+      },
+      {
+        "name": "CustomizableImage.js",
+        "path": "components\\modules\\CustomizableImage.js",
+        "size": 2571
+      },
+      {
+        "name": "CustomizableTable.js",
+        "path": "components\\modules\\CustomizableTable.js",
+        "size": 4369
+      },
+      {
+        "name": "Efficacy.js",
+        "path": "components\\modules\\Efficacy.js",
+        "size": 9258
       },
       {
         "name": "ErrorBoundary.js",
@@ -247,34 +234,44 @@
         "size": 2463
       },
       {
+        "name": "FactEngine.js",
+        "path": "components\\modules\\FactEngine.js",
+        "size": 7116
+      },
+      {
+        "name": "FactEngineAdmin.js",
+        "path": "components\\modules\\FactEngineAdmin.js",
+        "size": 9276
+      },
+      {
         "name": "SensitivityMonitor.js",
         "path": "components\\modules\\SensitivityMonitor.js",
-        "size": 10916
+        "size": 13467
       },
       {
         "name": "SensitivitySelector.js",
         "path": "components\\modules\\SensitivitySelector.js",
-        "size": 16806
+        "size": 16805
       },
       {
         "name": "TestingZone.js",
         "path": "components\\modules\\TestingZone.js",
-        "size": 564
+        "size": 563
       },
       {
         "name": "ThemeButton.js",
         "path": "components\\modules\\ThemeButton.js",
-        "size": 1358
+        "size": 1357
       },
       {
-        "name": "VersionControl.js",
-        "path": "components\\version\\VersionControl.js",
-        "size": 2446
+        "name": "ThemeConfigurator.js",
+        "path": "components\\modules\\ThemeConfigurator.js",
+        "size": 35593
       },
       {
-        "name": "VersionStateContext.js",
-        "path": "contexts\\VersionStateContext.js",
-        "size": 1101
+        "name": "eventEmitter.js",
+        "path": "utils\\eventEmitter.js",
+        "size": 743
       },
       {
         "name": "ThemeGenerator.js",
@@ -283,6 +280,11 @@
       }
     ],
     "css": [
+      {
+        "name": "Label.css",
+        "path": ".\\Label.css",
+        "size": 1559
+      },
       {
         "name": "CFAConsolidationUI.css",
         "path": "components\\cfa\\CFAConsolidationUI.css",
@@ -304,19 +306,29 @@
         "size": 6001
       },
       {
-        "name": "VersionControl.css",
-        "path": "components\\version\\VersionControl.css",
-        "size": 2770
+        "name": "CalculationMonitor.css",
+        "path": "styles\\HomePage.CSS\\CalculationMonitor.css",
+        "size": 3258
+      },
+      {
+        "name": "ConfigurationMonitor.css",
+        "path": "styles\\HomePage.CSS\\ConfigurationMonitor.css",
+        "size": 4401
+      },
+      {
+        "name": "Efficacy.css",
+        "path": "styles\\HomePage.CSS\\Efficacy.css",
+        "size": 3947
       },
       {
         "name": "HomePage1.css",
         "path": "styles\\HomePage.CSS\\HomePage1.css",
-        "size": 6372
+        "size": 7310
       },
       {
         "name": "HomePage2.css",
         "path": "styles\\HomePage.CSS\\HomePage2.css",
-        "size": 1919
+        "size": 1907
       },
       {
         "name": "HomePage3.css",
@@ -336,17 +348,17 @@
       {
         "name": "HomePage6.css",
         "path": "styles\\HomePage.CSS\\HomePage6.css",
-        "size": 3178
+        "size": 7147
       },
       {
         "name": "HomePage_AboutUs.css",
         "path": "styles\\HomePage.CSS\\HomePage_AboutUs.css",
-        "size": 2677
+        "size": 2673
       },
       {
         "name": "HomePage_buttons.css",
         "path": "styles\\HomePage.CSS\\HomePage_buttons.css",
-        "size": 4552
+        "size": 5725
       },
       {
         "name": "HomePage_FactAdmin.css",
@@ -361,17 +373,17 @@
       {
         "name": "HomePage_monitoring.css",
         "path": "styles\\HomePage.CSS\\HomePage_monitoring.css",
-        "size": 1221
+        "size": 2808
       },
       {
         "name": "HomePage_neumorphic-tabs.css",
         "path": "styles\\HomePage.CSS\\HomePage_neumorphic-tabs.css",
-        "size": 2204
+        "size": 2176
       },
       {
         "name": "HomePage_selectors.css",
         "path": "styles\\HomePage.CSS\\HomePage_selectors.css",
-        "size": 1237
+        "size": 1600
       },
       {
         "name": "Naturalmotion.css",
@@ -379,9 +391,29 @@
         "size": 1525
       },
       {
-        "name": "Popup.css",
-        "path": "styles\\HomePage.CSS\\Popup.css",
-        "size": 3978
+        "name": "SensitivityMonitor.css",
+        "path": "styles\\HomePage.CSS\\SensitivityMonitor.css",
+        "size": 8024
+      },
+      {
+        "name": "SensitivitySelector.css",
+        "path": "styles\\HomePage.CSS\\SensitivitySelector.css",
+        "size": 8059
+      },
+      {
+        "name": "TestingZone.css",
+        "path": "styles\\HomePage.CSS\\TestingZone.css",
+        "size": 1151
+      },
+      {
+        "name": "ThemeButton.css",
+        "path": "styles\\HomePage.CSS\\ThemeButton.css",
+        "size": 1084
+      },
+      {
+        "name": "ThemeConfigurator.css",
+        "path": "styles\\HomePage.CSS\\ThemeConfigurator.css",
+        "size": 9197
       },
       {
         "name": "VersionSelector.css",

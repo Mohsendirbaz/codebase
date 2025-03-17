@@ -1,22 +1,23 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import './styles/HomePage.CSS/VersionSelector.css';
+import versionEventEmitter from './utils/eventEmitter';
 
 /**
  * VersionSelector component
  * Allows selecting versions from a grouped list
- * 
+ * Emits 'versionChange' events when selection changes
  */
-const VersionSelector = ({ onVersionSelect }) => {
+const VersionSelector = () => {
   const [versions, setVersions] = useState([]);
-  const [selectedVersion, setSelectedVersion] = useState('');
+  const [selectedVersions, setSelectedVersions] = useState([]);
 
   useEffect(() => {
       const fetchVersions = async () => {
           try {
-              const response = await fetch('http://localhost:5000/versions');
+              const response = await fetch('http://localhost:8002/versions');
               if (response.ok) {
                   const data = await response.json();
-                  setVersions(data);
+                  setVersions(data.versions.map(v => ({ id: v, name: `Version ${v}` })));
               } else {
                   console.error('Failed to fetch versions');
               }
@@ -28,19 +29,21 @@ const VersionSelector = ({ onVersionSelect }) => {
   }, []);
 
   const handleVersionChange = (event) => {
-      const selectedValue = event.target.value;
-      setSelectedVersion(selectedValue);
-      onVersionSelect(selectedValue);
+      const selectedValues = Array.from(event.target.selectedOptions)
+          .map(option => option.value);
+      setSelectedVersions(selectedValues);
+      versionEventEmitter.emit('versionChange', 
+          selectedValues.length === 1 ? selectedValues[0] : selectedValues);
   };
 
   return (
       <div className="version-selector">
           <select 
-              value={selectedVersion}
+              multiple
+              value={selectedVersions}
               onChange={handleVersionChange}
               className="version-select"
           >
-              <option value="">Select Version</option>
               {versions.map((version) => (
                   <option key={version.id} value={version.id}>
                       {version.name}

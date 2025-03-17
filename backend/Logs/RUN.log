@@ -409,3 +409,56 @@
 2025-03-16 21:10:04,916 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
 2025-03-16 21:10:04,948 WARNING  * Debugger is active!
 2025-03-16 21:10:04,948 INFO  * Debugger PIN: 119-059-632
+2025-03-16 22:12:38,180 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-16 22:12:38,229 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:25007
+2025-03-16 22:12:38,229 INFO [33mPress CTRL+C to quit[0m
+2025-03-16 22:12:38,231 INFO  * Restarting with stat
+2025-03-16 22:12:38,922 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-16 22:12:38,962 WARNING  * Debugger is active!
+2025-03-16 22:12:38,970 INFO  * Debugger PIN: 119-059-632
+2025-03-16 22:29:52,339 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\API_endpoints_and_controllers\\version_service.py', reloading
+2025-03-16 22:29:52,437 INFO  * Restarting with stat
+2025-03-16 22:29:54,148 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-16 22:29:54,183 WARNING  * Debugger is active!
+2025-03-16 22:29:54,195 INFO  * Debugger PIN: 119-059-632
+2025-03-16 22:30:19,415 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\API_endpoints_and_controllers\\version_service.py', reloading
+2025-03-16 22:30:19,503 INFO  * Restarting with stat
+2025-03-16 22:30:20,542 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-16 22:30:20,670 WARNING  * Debugger is active!
+2025-03-16 22:30:20,686 INFO  * Debugger PIN: 119-059-632
+2025-03-16 23:14:45,012 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-16 23:14:45,262 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:25007
+2025-03-16 23:14:45,262 INFO [33mPress CTRL+C to quit[0m
+2025-03-16 23:14:45,279 INFO  * Restarting with stat
+2025-03-16 23:14:49,210 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-16 23:14:49,477 WARNING  * Debugger is active!
+2025-03-16 23:14:49,494 INFO  * Debugger PIN: 119-059-632
+2025-03-16 23:28:00,445 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\API_endpoints_and_controllers\\version_service.py', reloading
+2025-03-16 23:28:04,634 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\API_endpoints_and_controllers\\version_service.py', reloading
+2025-03-16 23:28:04,701 INFO  * Restarting with stat
+2025-03-16 23:28:08,583 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-16 23:28:09,066 WARNING  * Debugger is active!
+2025-03-16 23:28:09,099 INFO  * Debugger PIN: 119-059-632
+2025-03-16 23:28:59,702 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\API_endpoints_and_controllers\\version_service.py', reloading
+2025-03-16 23:28:59,810 INFO  * Restarting with stat
+2025-03-16 23:29:02,359 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-16 23:29:02,459 WARNING  * Debugger is active!
+2025-03-16 23:29:02,459 INFO  * Debugger PIN: 119-059-632
+2025-03-16 23:36:52,903 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-16 23:36:53,129 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:25007
+2025-03-16 23:36:53,129 INFO [33mPress CTRL+C to quit[0m
+2025-03-16 23:36:53,144 INFO  * Restarting with stat
+2025-03-16 23:36:56,832 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-16 23:36:56,946 WARNING  * Debugger is active!
+2025-03-16 23:36:56,961 INFO  * Debugger PIN: 119-059-632
+2025-03-17 00:34:13,299 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-17 00:34:13,575 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:25007
+2025-03-17 00:34:13,583 INFO [33mPress CTRL+C to quit[0m
+2025-03-17 00:34:13,584 INFO  * Restarting with stat
+2025-03-17 00:34:15,190 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-17 00:34:15,243 WARNING  * Debugger is active!
+2025-03-17 00:34:15,258 INFO  * Debugger PIN: 119-059-632

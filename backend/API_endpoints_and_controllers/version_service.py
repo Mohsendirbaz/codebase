@@ -19,14 +19,16 @@ def get_all_versions():
 
     for batch in batches:
         try:
-            version = int(batch.replace('Batch(', '').replace(')', ''))
+            # Extract numeric portion from batch folder name
+            version_str = ''.join(filter(lambda x: x.isdigit() or x == '.', batch))
+            version = float(version_str) if '.' in version_str else int(version_str)
             versions.append(version)
         except ValueError:
             pass
 
     return sorted(versions)
 
-@app.route('/list_versions', methods=['GET'])
+@app.route('/versions', methods=['GET'])
 def list_versions_route():
     try:
         versions = get_all_versions()
