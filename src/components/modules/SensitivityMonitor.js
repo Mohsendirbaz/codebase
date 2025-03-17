@@ -1,184 +1,245 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import '../../styles/HomePage.CSS/SensitivityMonitor.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faRotateLeft } from '@fortawesome/free-solid-svg-icons';
 
 /**
- * SensitivityMonitor component displays and tracks all configured sensitivity parameters
- * Provides filtering, searching, and historical tracking of sensitivity configurations
+ * SensitivityMonitor component for configuring and managing sensitivity analysis parameters
+ * 
+ * @param {Object} props
+ * @param {Object} props.S - Sensitivity parameters state object
+ * @param {Function} props.setS - Function to update sensitivity parameters
+ * @param {string} props.version - Current version number
+ * @param {string} props.activeTab - Currently active application tab
  */
 const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
   // Component state
-  const [isExpanded, setIsExpanded] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-  const [showOnlyEnabled, setShowOnlyEnabled] = useState(false);
-  const [showHistory, setShowHistory] = useState(false);
-  const [filterByTab, setFilterByTab] = useState(false);
-  const [filterByType, setFilterByType] = useState('all');
-  const [sensitivityHistory, setSensitivityHistory] = useState([]);
+  const [filterMode, setFilterMode] = useState('all');
+  const [selectedParameter, setSelectedParameter] = useState(null);
+  const [parameterDetails, setParameterDetails] = useState(null);
+  const [availableParameters, setAvailableParameters] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  
+  // Modes available for sensitivity analysis
+  const sensitivityModes = [
+    { id: 'range', label: 'Range Analysis', description: 'Test a range of values' },
+    { id: 'discrete', label: 'Discrete Values', description: 'Test specific values' },
+    { id: 'percentage', label: 'Percentage Change', description: 'Test percentage variations' },
+    { id: 'monteCarlo', label: 'Monte Carlo', description: 'Random sampling within bounds' }
+  ];
+  
+  // Comparison types for parameter relationships
+  const comparisonTypes = [
+    { id: 'none', label: 'No Comparison' },
+    { id: 'ratio', label: 'Ratio (A:B)' },
+    { id: 'difference', label: 'Difference (A-B)' },
+    { id: 'product', label: 'Product (A×B)' }
+  ];
 
-  // Fetch sensitivity history from backend when version changes
+  // Fetch available parameters from the backend
   useEffect(() => {
-    if (!version || !showHistory) return;
+    if (!version) return;
     
-    const fetchSensitivityHistory = async () => {
+    const fetchParameters = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch(`http://localhost:5000/get_sensitivity_history/${version}`);
-        if (response.ok) {
-          const data = await response.json();
-          // Parse log lines into structured data
-          const parsedHistory = data.logs.map(logLine => {
-            try {
-              const [timestamp, rest] = logLine.split(' - ');
-              const [sKey, configString] = rest.split(': ');
-              const config = JSON.parse(configString);
-              return { timestamp, sKey, config };
-            } catch (e) {
-              console.error('Error parsing log line:', e);
-              return null;
-            }
-          }).filter(item => item !== null);
-          
-          setSensitivityHistory(parsedHistory);
+        const response = await fetch(`http://localhost:5001/parameters/${version}`);
+        if (!response.ok) {
+          throw new Error(`Failed to fetch parameters: ${response.status}`);
         }
+        
+        const data = await response.json();
+        setAvailableParameters(data.parameters || []);
       } catch (error) {
-        console.error('Error fetching sensitivity history:', error);
+        console.error('Error fetching sensitivity parameters:', error);
       } finally {
         setIsLoading(false);
       }
     };
-
-    fetchSensitivityHistory();
-  }, [version, showHistory]);
-
-  // Process raw sensitivity parameters into a more usable format
-  const processedParams = useMemo(() => {
-    if (!S) return [];
     
-    return Object.entries(S)
-      .map(([key, config]) => ({
-        id: key,
-        mode: config.mode || 'Not Set',
-        values: config.values || [],
-        enabled: config.enabled || false,
-        compareToKey: config.compareToKey || '',
-        comparisonType: config.comparisonType || null,
-        waterfall: config.waterfall || false,
-        bar: config.bar || false,
-        point: config.point || false,
-        // Determine visualization types
-        visualizationTypes: [
-          config.waterfall && 'waterfall',
-          config.bar && 'bar',
-          config.point && 'point'
-        ].filter(Boolean)
-      }));
-  }, [S]);
-
-  // Apply all filters to the processed parameters
-  const filteredParams = useMemo(() => {
-    return processedParams.filter(param => {
-      // Filter by enabled status if that filter is active
-      if (showOnlyEnabled && !param.enabled) return false;
-      
-      // Filter by visualization type if not set to 'all'
-      if (filterByType !== 'all' && !param.visualizationTypes.includes(filterByType)) return false;
-      
-      // Apply search filter to parameter ID
-      if (searchTerm && !param.id.toLowerCase().includes(searchTerm.toLowerCase())) return false;
-      
-      return true;
-    });
-  }, [processedParams, showOnlyEnabled, filterByType, searchTerm]);
+    fetchParameters();
+  }, [version]);
   
-  // Group parameters by their first digit (e.g., S10-S19, S20-S29, etc.)
-  const groupedParams = useMemo(() => {
-    const groups = {};
-    
-    filteredParams.forEach(param => {
-      // Extract the group number (first digit after S)
-      const groupNumber = param.id.match(/S(\d)/)?.[1] || '0';
-      const groupKey = `S${groupNumber}0-S${groupNumber}9`;
+  // Filter parameters based on search term and filter mode
+  const filteredParameters = useMemo(() => {
+    return Object.entries(S).filter(([key, value]) => {
+      // Extract parameter number for categorization
+      const paramNumber = parseInt(key.replace('S', ''), 10);
       
-      if (!groups[groupKey]) {
-        groups[groupKey] = [];
+      // Match search term
+      const matchesSearch = searchTerm === '' || 
+        key.toLowerCase().includes(searchTerm.toLowerCase());
+      
+      // Match filter mode
+      let matchesFilter = filterMode === 'all';
+      
+      if (filterMode === 'enabled' && value.enabled) {
+        matchesFilter = true;
+      } else if (filterMode === 'disabled' && !value.enabled) {
+        matchesFilter = true;
+      } else if (filterMode === 'project' && paramNumber >= 10 && paramNumber <= 19) {
+        matchesFilter = true;
+      } else if (filterMode === 'loan' && paramNumber >= 20 && paramNumber <= 29) {
+        matchesFilter = true;
+      } else if (filterMode === 'rates' && paramNumber >= 30 && paramNumber <= 39) {
+        matchesFilter = true;
+      } else if (filterMode === 'quantities' && paramNumber >= 40 && paramNumber <= 49) {
+        matchesFilter = true;
+      } else if (filterMode === 'costs' && paramNumber >= 50 && paramNumber <= 59) {
+        matchesFilter = true;
       }
       
-      groups[groupKey].push(param);
+      return matchesSearch && matchesFilter;
     });
+  }, [S, searchTerm, filterMode]);
+  
+  // Get parameter name from key
+  const getParameterName = useCallback((key) => {
+    const paramNumber = key.replace('S', '');
+    const matchingParam = availableParameters.find(p => p.id === `Amount${paramNumber}`);
     
-    return groups;
-  }, [filteredParams]);
-
-  // Format a timestamp for display
-  const formatTimestamp = (timestamp) => {
-    if (!timestamp) return '';
-    try {
-      const date = new Date(timestamp);
-      return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    } catch (e) {
-      return timestamp;
+    if (matchingParam) {
+      return matchingParam.name || matchingParam.id;
     }
-  };
-
+    
+    return `Parameter ${paramNumber}`;
+  }, [availableParameters]);
+  
+  // Handle enabling/disabling a parameter
+  const toggleParameterEnabled = useCallback((key) => {
+    setS(prevS => ({
+      ...prevS,
+      [key]: {
+        ...prevS[key],
+        enabled: !prevS[key].enabled
+      }
+    }));
+  }, [setS]);
+  
+  // Open parameter details panel
+  const openParameterDetails = useCallback((key) => {
+    setSelectedParameter(key);
+    setParameterDetails(S[key]);
+  }, [S]);
+  
+  // Update parameter details
+  const updateParameterDetails = useCallback((field, value) => {
+    setParameterDetails(prev => ({
+      ...prev,
+      [field]: value
+    }));
+  }, []);
+  
+  // Save parameter changes
+  const saveParameterChanges = useCallback(() => {
+    if (!selectedParameter || !parameterDetails) return;
+    
+    setS(prevS => ({
+      ...prevS,
+      [selectedParameter]: {
+        ...parameterDetails
+      }
+    }));
+    
+    // Close the details panel
+    setSelectedParameter(null);
+    setParameterDetails(null);
+  }, [selectedParameter, parameterDetails, setS]);
+  
+  // Cancel parameter editing
+  const cancelParameterEditing = useCallback(() => {
+    setSelectedParameter(null);
+    setParameterDetails(null);
+  }, []);
+  
+  // Helper to add a value to a parameter's values array
+  const addParameterValue = useCallback(() => {
+    if (!parameterDetails) return;
+    
+    setParameterDetails(prev => ({
+      ...prev,
+      values: [...prev.values, 0]
+    }));
+  }, [parameterDetails]);
+  
+  // Helper to remove a value from a parameter's values array
+  const removeParameterValue = useCallback((index) => {
+    if (!parameterDetails) return;
+    
+    setParameterDetails(prev => ({
+      ...prev,
+      values: prev.values.filter((_, i) => i !== index)
+    }));
+  }, [parameterDetails]);
+  
+  // Update a specific value in the values array
+  const updateParameterValue = useCallback((index, value) => {
+    if (!parameterDetails) return;
+    
+    const newValue = parseFloat(value);
+    if (isNaN(newValue)) return;
+    
+    setParameterDetails(prev => {
+      const newValues = [...prev.values];
+      newValues[index] = newValue;
+      return {
+        ...prev,
+        values: newValues
+      };
+    });
+  }, [parameterDetails]);
+  
+  // Reset all sensitivity parameters
+  const resetAllParameters = useCallback(() => {
+    const initialS = {};
+    for (let i = 10; i <= 79; i++) {
+      initialS[`S${i}`] = {
+        mode: null,
+        values: [],
+        enabled: false,
+        compareToKey: '',
+        comparisonType: null,
+      };
+    }
+    setS(initialS);
+  }, [setS]);
+  
+  // Determine if the component should be visible based on activeTab
+  const isVisible = useMemo(() => {
+    return ['Input', 'Case1', 'Case2', 'Case3', 'Scaling'].includes(activeTab);
+  }, [activeTab]);
+  
+  // If not visible, don't render anything
+  if (!isVisible) return null;
+  
   return (
     <div className={`sensitivity-monitor ${isExpanded ? 'expanded' : 'collapsed'}`}>
       <div className="monitor-header">
         {isExpanded ? (
           <>
-            <h3>Sensitivity Monitor</h3>
-            <div className="header-controls">
-              <button 
-                className="global-reset-button" 
-                onClick={() => {
-                  if (setS) {
-                    // Reset all sensitivity parameters to default values
-                    const resetS = {};
-                    for (let i = 10; i <= 79; i++) {
-                      resetS[`S${i}`] = {
-                        mode: null,
-                        values: [],
-                        enabled: false,
-                        compareToKey: '',
-                        comparisonType: null,
-                        waterfall: false,
-                        bar: false,
-                        point: false
-                      };
-                    }
-                    setS(resetS);
-                  }
-                }}
-                title="Reset all sensitivity parameters"
-              >
-                <FontAwesomeIcon icon={faRotateLeft} /> Reset All
-              </button>
-              <button 
-                className="toggle-button" 
-                onClick={() => setIsExpanded(false)}
-                title="Collapse panel"
-              >
-                ◀
-              </button>
-            </div>
+            <h3>Sensitivity Analysis Configuration</h3>
+            <button 
+              className="collapse-button" 
+              onClick={() => setIsExpanded(false)}
+              aria-label="Collapse panel"
+            >
+              ▼
+            </button>
           </>
         ) : (
           <button 
             className="expand-button" 
             onClick={() => setIsExpanded(true)}
-            title="Expand panel"
+            aria-label="Expand panel"
           >
-            <span className="vertical-text">Sensitivity Monitor</span> ▶
+            <span className="vertical-text">Sensitivity Analysis</span> ▲
           </button>
         )}
       </div>
       
       {isExpanded && (
         <div className="monitor-content">
-          {/* Search and filters */}
-          <div className="search-filters">
+          <div className="monitor-toolbar">
             <input
               type="text"
               placeholder="Search parameters..."
@@ -187,153 +248,237 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
               className="search-input"
             />
             
-            <div className="filter-options">
-              <label className="filter-option">
-                <input 
-                  type="checkbox" 
-                  checked={showOnlyEnabled}
-                  onChange={() => setShowOnlyEnabled(!showOnlyEnabled)}
-                />
-                Enabled only
-              </label>
-              
-              <label className="filter-option">
-                <input 
-                  type="checkbox" 
-                  checked={showHistory}
-                  onChange={() => setShowHistory(!showHistory)}
-                />
-                Show history
-              </label>
-              
-              <select 
-                value={filterByType} 
-                onChange={(e) => setFilterByType(e.target.value)}
-                className="type-filter"
-              >
-                <option value="all">All visualizations</option>
-                <option value="waterfall">Waterfall</option>
-                <option value="bar">Bar</option>
-                <option value="point">Point</option>
-              </select>
-            </div>
+            <select 
+              value={filterMode} 
+              onChange={(e) => setFilterMode(e.target.value)}
+              className="filter-select"
+            >
+              <option value="all">All Parameters</option>
+              <option value="enabled">Enabled</option>
+              <option value="disabled">Disabled</option>
+              <option value="project">Project Settings (10-19)</option>
+              <option value="loan">Loan Settings (20-29)</option>
+              <option value="rates">Rate Settings (30-39)</option>
+              <option value="quantities">Process Quantities (40-49)</option>
+              <option value="costs">Process Costs (50-59)</option>
+            </select>
+            
+            <button 
+              className="reset-button"
+              onClick={resetAllParameters}
+              title="Reset all sensitivity parameters"
+            >
+              Reset All
+            </button>
           </div>
           
-          {/* Status information */}
-          <div className="monitor-status">
-            <div className="version-info">Version: {version}</div>
-            <div className="param-count">
-              {filteredParams.length} parameter{filteredParams.length !== 1 ? 's' : ''} 
-              {showOnlyEnabled ? ' (enabled)' : ''}
-            </div>
-          </div>
-          
-          {/* Parameters list - grouped by ranges */}
-          <div className="parameters-list">
-            {Object.keys(groupedParams).length === 0 ? (
-              <div className="empty-state">
-                {processedParams.length === 0 
-                  ? "No sensitivity parameters configured" 
-                  : "No parameters match your filters"}
-              </div>
-            ) : (
-              Object.entries(groupedParams).map(([groupName, params]) => (
-                <div key={groupName} className="param-group">
-                  <div className="group-header">{groupName}</div>
-                  
-                  {params.map(param => (
-                    <div 
-                      key={param.id} 
-                      className={`parameter-item ${param.enabled ? 'enabled' : 'disabled'}`}
-                    >
-                      <div className="parameter-header">
-                        <span className="param-id">{param.id}</span>
-                        <div className="param-indicators">
-                          {param.enabled && <span className="param-enabled-indicator"></span>}
-                          <span className="param-mode">{param.mode}</span>
-                        </div>
-                        <button 
-                          className="param-reset-button" 
-                          title={`Reset ${param.id}`}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            // Reset this specific parameter without confirmation
-                            if (setS) {
-                              setS(prevS => ({
-                                ...prevS,
-                                [param.id]: {
-                                  mode: null,
-                                  values: [],
-                                  enabled: false,
-                                  compareToKey: '',
-                                  comparisonType: null,
-                                  waterfall: false,
-                                  bar: false,
-                                  point: false
-                                }
-                              }));
-                            }
-                          }}
-                        >
-                          <FontAwesomeIcon icon={faRotateLeft} /> Reset
-                        </button>
-                      </div>
-                      
-                      {param.values.length > 0 && (
-                        <div className="param-values">
-                          {param.values.filter(v => v !== '').map((value, idx) => (
-                            <span key={idx} className="value-chip">{value}</span>
-                          ))}
-                        </div>
-                      )}
-                      
-                      {param.compareToKey && (
-                        <div className="param-comparison">
-                          Compares to {param.compareToKey} as {param.comparisonType} axis
-                        </div>
-                      )}
-                      
-                      {param.visualizationTypes.length > 0 && (
-                        <div className="vis-types">
-                          {param.visualizationTypes.map(type => (
-                            <span key={type} className={`vis-tag ${type}`}>{type}</span>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  ))}
+          {isLoading ? (
+            <div className="loading-indicator">Loading parameters...</div>
+          ) : (
+            <div className="parameters-container">
+              {filteredParameters.length === 0 ? (
+                <div className="empty-state">
+                  No sensitivity parameters match your criteria
                 </div>
-              ))
-            )}
-          </div>
-          
-          {/* History section */}
-          {showHistory && (
-            <div className="history-section">
-              <h4>Change History</h4>
-              
-              {isLoading ? (
-                <div className="loading-indicator">Loading history...</div>
-              ) : sensitivityHistory.length === 0 ? (
-                <div className="empty-state">No historical changes recorded</div>
               ) : (
-                <div className="history-list">
-                  {sensitivityHistory.map((entry, idx) => (
-                    <div key={idx} className="history-item">
-                      <div className="history-time">{formatTimestamp(entry.timestamp)}</div>
-                      <div className="history-param">{entry.sKey}</div>
-                      <div className="history-details">
-                        {entry.config.mode && <span className="history-mode">{entry.config.mode}</span>}
-                        {entry.config.values?.length > 0 && (
-                          <span className="history-values">
-                            [{entry.config.values.filter(Boolean).join(', ')}]
-                          </span>
-                        )}
+                <ul className="parameters-list">
+                  {filteredParameters.map(([key, value]) => (
+                    <li key={key} className={`parameter-item ${value.enabled ? 'enabled' : 'disabled'}`}>
+                      <div className="parameter-header">
+                        <div className="parameter-info">
+                          <span className="parameter-key">{key}</span>
+                          <span className="parameter-name">{getParameterName(key)}</span>
+                        </div>
+                        
+                        <div className="parameter-controls">
+                          <label className="toggle-label">
+                            <input 
+                              type="checkbox" 
+                              checked={value.enabled} 
+                              onChange={() => toggleParameterEnabled(key)}
+                              className="toggle-checkbox"
+                            />
+                            <span className="toggle-slider"></span>
+                          </label>
+                          
+                          <button 
+                            className="edit-button"
+                            onClick={() => openParameterDetails(key)}
+                            disabled={!value.enabled}
+                            title="Configure parameter"
+                          >
+                            Configure
+                          </button>
+                        </div>
                       </div>
-                    </div>
+                      
+                      {value.enabled && (
+                        <div className="parameter-summary">
+                          <div className="parameter-mode">
+                            <span className="label">Mode:</span> 
+                            <span className="value">
+                              {value.mode ? 
+                                sensitivityModes.find(m => m.id === value.mode)?.label || value.mode 
+                                : 'Not configured'}
+                            </span>
+                          </div>
+                          
+                          {value.values.length > 0 && (
+                            <div className="parameter-values">
+                              <span className="label">Values:</span> 
+                              <span className="value">
+                                {value.values.length === 1 ? 
+                                  value.values[0] : 
+                                  `${value.values.length} values`}
+                              </span>
+                            </div>
+                          )}
+                          
+                          {value.compareToKey && (
+                            <div className="parameter-comparison">
+                              <span className="label">Compared to:</span> 
+                              <span className="value">
+                                {getParameterName(value.compareToKey)} 
+                                ({comparisonTypes.find(c => c.id === value.comparisonType)?.label || 'comparison'})
+                              </span>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </li>
                   ))}
-                </div>
+                </ul>
               )}
+            </div>
+          )}
+          
+          {/* Parameter details modal */}
+          {selectedParameter && parameterDetails && (
+            <div className="parameter-modal">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h4>Configure {getParameterName(selectedParameter)}</h4>
+                  <button 
+                    className="close-button"
+                    onClick={cancelParameterEditing}
+                    aria-label="Close"
+                  >
+                    ×
+                  </button>
+                </div>
+                
+                <div className="modal-body">
+                  <div className="form-group">
+                    <label htmlFor="sensitivity-mode">Sensitivity Mode</label>
+                    <select 
+                      id="sensitivity-mode"
+                      value={parameterDetails.mode || ''}
+                      onChange={(e) => updateParameterDetails('mode', e.target.value)}
+                      className="form-control"
+                    >
+                      <option value="">Select a mode</option>
+                      {sensitivityModes.map(mode => (
+                        <option key={mode.id} value={mode.id}>
+                          {mode.label} - {mode.description}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  
+                  {parameterDetails.mode && (
+                    <>
+                      <div className="form-group">
+                        <label>Parameter Values</label>
+                        <div className="values-container">
+                          {parameterDetails.values.length === 0 ? (
+                            <div className="empty-values">No values configured</div>
+                          ) : (
+                            <ul className="values-list">
+                              {parameterDetails.values.map((value, index) => (
+                                <li key={index} className="value-item">
+                                  <input 
+                                    type="number"
+                                    value={value}
+                                    onChange={(e) => updateParameterValue(index, e.target.value)}
+                                    className="value-input"
+                                    step="0.01"
+                                  />
+                                  <button 
+                                    className="remove-value-button"
+                                    onClick={() => removeParameterValue(index)}
+                                    aria-label="Remove value"
+                                  >
+                                    -
+                                  </button>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                          
+                          <button 
+                            className="add-value-button"
+                            onClick={addParameterValue}
+                          >
+                            Add Value
+                          </button>
+                        </div>
+                      </div>
+                      
+                      <div className="form-group">
+                        <label htmlFor="comparison-parameter">Compare To Parameter</label>
+                        <select 
+                          id="comparison-parameter"
+                          value={parameterDetails.compareToKey || ''}
+                          onChange={(e) => updateParameterDetails('compareToKey', e.target.value)}
+                          className="form-control"
+                        >
+                          <option value="">No comparison</option>
+                          {Object.keys(S)
+                            .filter(key => key !== selectedParameter && S[key].enabled)
+                            .map(key => (
+                              <option key={key} value={key}>
+                                {getParameterName(key)} ({key})
+                              </option>
+                            ))}
+                        </select>
+                      </div>
+                      
+                      {parameterDetails.compareToKey && (
+                        <div className="form-group">
+                          <label htmlFor="comparison-type">Comparison Type</label>
+                          <select 
+                            id="comparison-type"
+                            value={parameterDetails.comparisonType || 'none'}
+                            onChange={(e) => updateParameterDetails('comparisonType', e.target.value)}
+                            className="form-control"
+                          >
+                            {comparisonTypes.map(type => (
+                              <option key={type.id} value={type.id}>
+                                {type.label}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                      )}
+                    </>
+                  )}
+                </div>
+                
+                <div className="modal-footer">
+                  <button 
+                    className="cancel-button"
+                    onClick={cancelParameterEditing}
+                  >
+                    Cancel
+                  </button>
+                  <button 
+                    className="save-button"
+                    onClick={saveParameterChanges}
+                  >
+                    Save Changes
+                  </button>
+                </div>
+              </div>
             </div>
           )}
         </div>

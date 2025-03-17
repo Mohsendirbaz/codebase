@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './styles/HomePage.CSS/VersionSelector.css';
 import versionEventEmitter from './utils/eventEmitter';
+import './styles/HomePage.CSS/CommonSelector.css';
 
 /**
  * VersionSelector component

@@ -1,5 +1,7 @@
 import React from 'react';
 import useFormValues from './useFormValues';
+import './styles/HomePage.CSS/PropertySelector.css';
+import './styles/HomePage.CSS/CommonSelector.css';
 
 const PropertySelector = ({ selectedProperties, setSelectedProperties }) => {
   const { formValues } = useFormValues();

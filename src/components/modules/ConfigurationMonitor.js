@@ -14,51 +14,32 @@ const ConfigurationMonitor = ({ version }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // Property mapping for human-readable names
-  const propertyMapping = {
-    // Amount10-19 group
-    "plantLifetimeAmount10": "Plant Lifetime",
-    "bECAmount11": "Bare Erected Cost",
-    "numberOfUnitsAmount12": "Number of Units",
-    "initialSellingPriceAmount13": "Price",
-    "totalOperatingCostPercentageAmount14": "Direct Total Operating Cost Percentage as % of Revenue",
-    "engineering_Procurement_and_Construction_EPC_Amount15": "Engineering Procurement and Construction as % of BEC",
-    "process_contingency_PC_Amount16": "Process Contingency as % of BEC",
-    "project_Contingency_PT_BEC_EPC_PCAmount17": "Project Contingency as % of BEC, EPC, PC",
-    "use_direct_operating_expensesAmount18": "Use Direct Operating Expenses",
-
-    // Amount20-29 group
-    "depreciationMethodAmount20": "Depreciation Method",
-    "loanTypeAmount21": "Loan Type",
-    "interestTypeAmount22": "Interest Type",
-    "generalInflationRateAmount23": "General Inflation Rate",
-    "interestProportionAmount24": "Interest Proportion",
-    "principalProportionAmount25": "Principal Proportion",
-    "loanPercentageAmount26": "Loan Percentage of TOC",
-    "repaymentPercentageOfRevenueAmount27": "Repayment Percentage Of Revenue",
-    "numberofconstructionYearsAmount28": "Number of Construction Years",
-
-    // Amount30-39 group
-    "iRRAmount30": "Internal Rate of Return",
-    "annualInterestRateAmount31": "Annual Interest Rate",
-    "stateTaxRateAmount32": "State Tax Rate",
-    "federalTaxRateAmount33": "Federal Tax Rate",
-    "rawmaterialAmount34": "Feedstock Cost",
-    "laborAmount35": "Labor Cost",
-    "utilityAmount36": "Utility Cost",
-    "maintenanceAmount37": "Maintenance Cost",
-    "insuranceAmount38": "Insurance Cost",
+  // Generate human-readable name from id
+  const getDisplayName = (id) => {
+    // Extract the base name before "Amount" and the number
+    const [baseName] = id.split(/Amount\d+/i);
+    // Convert camelCase to space-separated words
+    return baseName
+      .replace(/([A-Z])/g, ' $1')
+      .replace(/_/g, ' ')
+      .replace(/(^|\s)\S/g, t => t.toUpperCase())
+      .trim();
   };
 
-  // Helper function to categorize parameters by their group (Amount10-19, Amount20-29, etc.)
+  // Categorize parameters based on the numeric suffix in their ID
   const categorizeParam = (id) => {
-    if (id.includes('Amount1')) return 'Project Settings';
-    if (id.includes('Amount2')) return 'Loan Settings';
-    if (id.includes('Amount3')) return 'Rate Settings';
-    if (id.includes('Amount4') || id.includes('vAmount4')) return 'Process Quantities';
-    if (id.includes('Amount5') || id.includes('vAmount5')) return 'Process Costs';
-    if (id.includes('Amount6') || id.includes('vAmount6')) return 'Custom Group 1';
-    if (id.includes('Amount7') || id.includes('vAmount7')) return 'Custom Group 2';
+    // Extract the numeric suffix from the ID
+    const match = id.match(/Amount(\d+)/i);
+    if (!match) return 'Other';
+    
+    const amountNumber = parseInt(match[1], 10);
+    if (amountNumber >= 10 && amountNumber <= 19) return 'Project Settings';
+    if (amountNumber >= 20 && amountNumber <= 29) return 'Loan Settings';
+    if (amountNumber >= 30 && amountNumber <= 39) return 'Rate Settings';
+    if (amountNumber >= 40 && amountNumber <= 49) return 'Process Quantities';
+    if (amountNumber >= 50 && amountNumber <= 59) return 'Process Costs';
+    if (amountNumber >= 60 && amountNumber <= 69) return 'Custom Group 1';
+    if (amountNumber >= 70 && amountNumber <= 79) return 'Custom Group 2';
     return 'Other';
   };
 
@@ -81,7 +62,19 @@ const ConfigurationMonitor = ({ version }) => {
         }
         
         const data = await response.json();
-        setConfigData(data.filteredValues || []);
+        if (Array.isArray(data.filteredValues)) {
+          setConfigData(data.filteredValues);
+          console.log(`Loaded ${data.filteredValues.length} configuration parameters for version ${version}`);
+          
+          // Log metadata if available
+          if (data.metadata) {
+            console.log('Configuration metadata:', data.metadata);
+          }
+        } else {
+          console.error('Invalid filteredValues format:', data.filteredValues);
+          setConfigData([]);
+          setError('Received invalid data format from server');
+        }
       } catch (error) {
         console.error('Error fetching configuration data:', error);
         setError('Failed to load configuration data. Please try again.');
@@ -100,8 +93,8 @@ const ConfigurationMonitor = ({ version }) => {
     // Filter based on search term and group filter
     const filteredParams = configData.filter(param => {
       const matchesSearch = searchTerm === '' || 
-        param.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        (propertyMapping[param.id] && propertyMapping[param.id].toLowerCase().includes(searchTerm.toLowerCase())) ||
+        param.id.toLowerCase().includes(searchTerm.toLowerCase()) || 
+        getDisplayName(param.id).toLowerCase().includes(searchTerm.toLowerCase()) ||
         (param.remarks && param.remarks.toLowerCase().includes(searchTerm.toLowerCase()));
       
       const category = categorizeParam(param.id);
@@ -224,7 +217,7 @@ const ConfigurationMonitor = ({ version }) => {
                     {params.map(param => (
                       <div key={param.id} className="parameter-item">
                         <div className="parameter-header">
-                          <span className="param-id">{propertyMapping[param.id] || param.id}</span>
+                          <span className="param-id">{getDisplayName(param.id)}</span>
                           <span className="param-value">{formatValue(param.value)}</span>
                         </div>
                         

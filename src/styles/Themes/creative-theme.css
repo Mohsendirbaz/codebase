@@ -1,6 +1,7 @@
-/* Normal Theme - Professional & Clean */
+/* Creative Theme - Vibrant & Expressive */
 :root.creative-theme {
-  --primary-color: #4a90e2;
+  /* Base colors */
+  --primary-color: #8a2be2; /* Vibrant purple */
   --secondary-color: #66bb6a;
   --text-color: #333333;
   --background-color: #f5f7fa;
@@ -16,83 +17,115 @@
   --text-secondary: #6c757d;
   --input-background: #ffffff;
   --input-border: #ced4da;
-  --shadow-dark: rgba(166, 180, 200, 0.7);
-  --shadow-light: rgba(255, 255, 255, 0.8);
-    /* Spacing */
---model-spacing-xs: 4px;
---model-spacing-sm: 8px;
---model-spacing-md: 16px;
---model-spacing-lg: 24px;
+  --shadow-dark: rgba(138, 43, 226, 0.15);
+  --shadow-light: rgba(255, 255, 255, 0.85);
+  
+  /* Spacing */
+  --model-spacing-xs: 4px;
+  --model-spacing-sm: 8px;
+  --model-spacing-md: 16px;
+  --model-spacing-lg: 24px;
 
-/* Colors */
---model-color-background: #ffffff;
---model-color-background-alt: #f8f9fa;
---model-color-background-hover: #e9ecef;
---model-color-text: #212529;
---model-color-border: #dee2e6;
---model-color-primary: #0d6efd;
---model-color-primary-light: #cfe2ff;
---model-color-success: #198754;
---model-color-success-light: #d1e7dd;
---model-color-danger: #dc3545;
---model-color-danger-light: #f8d7da;
+  /* Colors */
+  --model-color-background: #ffffff;
+  --model-color-background-alt: #f8f9fa;
+  --model-color-background-hover: #e9ecef;
+  --model-color-text: #212529;
+  --model-color-border: #dee2e6;
+  --model-color-primary: #0d6efd;
+  --model-color-primary-light: #cfe2ff;
+  --model-color-success: #198754;
+  --model-color-success-light: #d1e7dd;
+  --model-color-danger: #dc3545;
+  --model-color-danger-light: #f8d7da;
 
-/* Dark mode colors */
---model-color-background-dark: #212529;
---model-color-background-alt-dark: #343a40;
---model-color-border-dark: #495057;
+  /* Dark mode colors */
+  --model-color-background-dark: #212529;
+  --model-color-background-alt-dark: #343a40;
+  --model-color-border-dark: #495057;
 
-/* Border radius */
---model-border-radius-sm: 4px;
---model-border-radius-md: 8px;
---model-border-radius-lg: 12px;
+  /* Border radius */
+  --model-border-radius-sm: 4px;
+  --model-border-radius-md: 8px;
+  --model-border-radius-lg: 12px;
 
-/* Shadows */
---model-shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
---model-shadow-md: 0 4px 6px rgba(0,0,0,0.15);
---model-shadow-lg: 0 10px 15px rgba(0,0,0,0.2);
+  /* Shadows */
+  --model-shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+  --model-shadow-md: 0 4px 6px rgba(0,0,0,0.15);
+  --model-shadow-lg: 0 10px 15px rgba(0,0,0,0.2);
 
-/* Transitions */
---model-transition-fast: 0.15s ease;
---model-transition-medium: 0.3s ease;
+  /* Transitions */
+  --model-transition-fast: 0.15s ease;
+  --model-transition-medium: 0.3s ease;
 
-/* Font sizes */
---model-font-size-sm: 14px;
---model-font-size-md: 16px;
---model-font-size-lg: 18px;
+  /* Font sizes */
+  --model-font-size-sm: 14px;
+  --model-font-size-md: 16px;
+  --model-font-size-lg: 18px;
+  
+  /* Neumorphic specific variables */
+  --neu-background: #f1eef7; /* Light purple tint */
+  --neu-light-shadow: rgba(255, 255, 255, 0.85);
+  --neu-dark-shadow: rgba(138, 43, 226, 0.15);
+  
+  /* Neumorphic shadow variations */
+  --neu-flat-shadow: 0px 0px 0px var(--neu-dark-shadow);
+  --neu-pressed-shadow: inset 4px 4px 8px var(--neu-dark-shadow),
+                        inset -4px -4px 8px var(--neu-light-shadow);
+  --neu-shadow-sm: 3px 3px 6px var(--neu-dark-shadow),
+                  -3px -3px 6px var(--neu-light-shadow);
+  --neu-shadow-md: 5px 5px 10px var(--neu-dark-shadow),
+                  -5px -5px 10px var(--neu-light-shadow);
+  --neu-shadow-lg: 8px 8px 16px var(--neu-dark-shadow),
+                  -8px -8px 16px var(--neu-light-shadow);
+  
+  /* Neumorphic gradients */
+  --neu-gradient-basic: linear-gradient(145deg, #ffffff, #f1eef7);
+  --neu-gradient-pressed: linear-gradient(145deg, #f1eef7, #ffffff);
+  --neu-gradient-highlight: linear-gradient(45deg, rgba(255, 255, 255, 0.2), rgba(138, 43, 226, 0.05));
+  
+  /* Neumorphic border radius */
+  --neu-border-radius-sm: 8px;
+  --neu-border-radius-md: 10px;
+  --neu-border-radius-lg: 15px;
+  
+  /* Neumorphic transitions */
+  --neu-transition-fast: 0.2s all ease;
+  --neu-transition-medium: 0.3s all ease;
+  --neu-transition-slow: 0.5s all ease;
 
- /* Spatial Transform Variables */
- --spatial-perspective: 1000px ;
- --spatial-perspective-origin-x: 0% ;
- --spatial-perspective-origin-y: 0% ;
- --spatial-transition-timing: cubic-bezier(0.42, 0, 0.05, 0.99) ;
- --spatial-transition-duration: 0.5s ;
- --spatial-container-width: 24rem ;
- --spatial-container-height: 16rem ;
- --spatial-element-radius: 0.75rem ;
- --spatial-gradient-start: #2563eb ;
- --spatial-gradient-end: #9333ea ;
- --spatial-shadow-intensity: 2xl ;
- --spatial-text-size: 1.5rem ;
+  /* Spatial Transform Variables */
+  --spatial-perspective: 1000px;
+  --spatial-perspective-origin-x: 0%;
+  --spatial-perspective-origin-y: 0%;
+  --spatial-transition-timing: cubic-bezier(0.42, 0, 0.05, 0.99);
+  --spatial-transition-duration: 0.5s;
+  --spatial-container-width: 24rem;
+  --spatial-container-height: 16rem;
+  --spatial-element-radius: 0.75rem;
+  --spatial-gradient-start: #8a2be2; /* Adjusted to match theme */
+  --spatial-gradient-end: #9333ea;
+  --spatial-shadow-intensity: 2xl;
+  --spatial-text-size: 1.5rem;
 
- /* Sensitivity Monitor Variables */
-
- --header-background: #ffffff;
+  /* Sensitivity Monitor Variables */
+  --header-background: #ffffff;
 }
-html{
+
+html {
   /* Critical Layout Variables */
-  --spacing-unit: 1rem ;
-  --spacing-xs: calc(var(--spacing-unit) * 0.25) ;
-  --spacing-sm: calc(var(--spacing-unit) * 0.5) ;
-  --spacing-md: var(--spacing-unit) ;
-  --spacing-lg: calc(var(--spacing-unit) * 1.5) ;
-  --spacing-xl: calc(var(--spacing-unit) * 2) ;
+  --spacing-unit: 1rem;
+  --spacing-xs: calc(var(--spacing-unit) * 0.25);
+  --spacing-sm: calc(var(--spacing-unit) * 0.5);
+  --spacing-md: var(--spacing-unit);
+  --spacing-lg: calc(var(--spacing-unit) * 1.5);
+  --spacing-xl: calc(var(--spacing-unit) * 2);
 
   /* Theme Variables */
-  --app-background: #f8fafc ;
-  --sidebar-background: #ffffff ;
-  --border-color: #e2e8f0 ;
-  --text-color: #1e293b ;
-  --text-secondary: #64748b ;
-  --primary-color: #3b82f6 ;
+  --app-background: #f8fafc;
+  --sidebar-background: #ffffff;
+  --border-color: #e2e8f0;
+  --text-color: #1e293b;
+  --text-secondary: #64748b;
+  --primary-color: #3b82f6;
 }

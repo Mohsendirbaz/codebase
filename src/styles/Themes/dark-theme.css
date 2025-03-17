@@ -1,5 +1,6 @@
 /* Dark Theme with Rich Dark Blue */
 :root.dark-theme {
+    /* Base colors */
     --primary-color: #121a2e;
     --secondary-color: #00897b;
     --text-color: #e0e0e0;
@@ -18,7 +19,8 @@
     --input-border: #2a3356;
     --shadow-dark: rgba(0, 0, 0, 0.3);
     --shadow-light: rgba(40, 53, 105, 0.2);
-        /* Spacing */
+    
+    /* Spacing */
     --model-spacing-xs: 4px;
     --model-spacing-sm: 8px;
     --model-spacing-md: 16px;
@@ -60,48 +62,70 @@
     --model-font-size-sm: 14px;
     --model-font-size-md: 16px;
     --model-font-size-lg: 18px;
+    
+    /* Neumorphic specific variables */
+    --neu-background: #1e2746;
+    --neu-light-shadow: rgba(40, 53, 105, 0.2);
+    --neu-dark-shadow: rgba(0, 0, 0, 0.3);
+    
+    /* Neumorphic shadow variations */
+    --neu-flat-shadow: 0px 0px 0px var(--neu-dark-shadow);
+    --neu-pressed-shadow: inset 4px 4px 8px var(--neu-dark-shadow),
+                          inset -4px -4px 8px var(--neu-light-shadow);
+    --neu-shadow-sm: 3px 3px 6px var(--neu-dark-shadow),
+                    -3px -3px 6px var(--neu-light-shadow);
+    --neu-shadow-md: 5px 5px 10px var(--neu-dark-shadow),
+                    -5px -5px 10px var(--neu-light-shadow);
+    --neu-shadow-lg: 8px 8px 16px var(--neu-dark-shadow),
+                    -8px -8px 16px var(--neu-light-shadow);
+    
+    /* Neumorphic gradients */
+    --neu-gradient-basic: linear-gradient(145deg, #242e54, #1a263f);
+    --neu-gradient-pressed: linear-gradient(145deg, #1a263f, #242e54);
+    --neu-gradient-highlight: linear-gradient(45deg, rgba(40, 53, 105, 0.05), rgba(40, 53, 105, 0.15));
+    
+    /* Neumorphic border radius */
+    --neu-border-radius-sm: 8px;
+    --neu-border-radius-md: 10px;
+    --neu-border-radius-lg: 15px;
+    
+    /* Neumorphic transitions */
+    --neu-transition-fast: 0.2s all ease;
+    --neu-transition-medium: 0.3s all ease;
+    --neu-transition-slow: 0.5s all ease;
 
     /* Spatial Transform Variables */
-    --spatial-perspective: 1000px ;
-    --spatial-perspective-origin-x: 0% ;
-    --spatial-perspective-origin-y: 0% ;
-    --spatial-transition-timing: cubic-bezier(0.42, 0, 0.05, 0.99) ;
-    --spatial-transition-duration: 0.5s ;
-    --spatial-container-width: 24rem ;
-    --spatial-container-height: 16rem ;
-    --spatial-element-radius: 0.75rem ;
-    --spatial-gradient-start: #2563eb ;
-    --spatial-gradient-end: #9333ea ;
-    --spatial-shadow-intensity: 2xl ;
-    --spatial-text-size: 1.5rem ;
+    --spatial-perspective: 1000px;
+    --spatial-perspective-origin-x: 0%;
+    --spatial-perspective-origin-y: 0%;
+    --spatial-transition-timing: cubic-bezier(0.42, 0, 0.05, 0.99);
+    --spatial-transition-duration: 0.5s;
+    --spatial-container-width: 24rem;
+    --spatial-container-height: 16rem;
+    --spatial-element-radius: 0.75rem;
+    --spatial-gradient-start: #2563eb;
+    --spatial-gradient-end: #9333ea;
+    --spatial-shadow-intensity: 2xl;
+    --spatial-text-size: 1.5rem;
 
     /* Sensitivity Monitor Variables */
-
     --header-background: #1a237e;
- 
 }
-html{
+
+html {
     /* Critical Layout Variables */
-    --spacing-unit: 1rem ;
-    --spacing-xs: calc(var(--spacing-unit) * 0.25) ;
-    --spacing-sm: calc(var(--spacing-unit) * 0.5) ;
-    --spacing-md: var(--spacing-unit) ;
-    --spacing-lg: calc(var(--spacing-unit) * 1.5) ;
-    --spacing-xl: calc(var(--spacing-unit) * 2) ;
+    --spacing-unit: 1rem;
+    --spacing-xs: calc(var(--spacing-unit) * 0.25);
+    --spacing-sm: calc(var(--spacing-unit) * 0.5);
+    --spacing-md: var(--spacing-unit);
+    --spacing-lg: calc(var(--spacing-unit) * 1.5);
+    --spacing-xl: calc(var(--spacing-unit) * 2);
 
     /* Theme Variables */
-    --app-background: #f8fafc ;
-    --sidebar-background: #ffffff ;
-    --border-color: #e2e8f0 ;
-    --text-color: #1e293b ;
-    --text-secondary: #64748b ;
-    --primary-color: #3b82f6 ;
-  }
-
-
-
-
-
-
-
-
+    --app-background: #f8fafc;
+    --sidebar-background: #ffffff;
+    --border-color: #e2e8f0;
+    --text-color: #1e293b;
+    --text-secondary: #64748b;
+    --primary-color: #3b82f6;
+}
