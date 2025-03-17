@@ -1668,6 +1668,7 @@ const HomePageContent = () => {
         </div>
     );
 
+    
     const renderAboutUsContent = () => {
         return (
             <div className="about-us-container">
