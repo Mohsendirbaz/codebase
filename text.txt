@@ -6,13 +6,13 @@ git rev-parse HEAD  # Should show current
 
 git remote -v  # Should show https://github.com/Mohsendirbaz/SF.git
 
-git checkout -b tm2
+git checkout -b tm4
 
 git add .
 
-git commit -m "still recovering"
+git commit -m "tm4.1"
 
-git push origin tm2
+git push origin tm4
 
 
 # Remove existing temp directory (already done)
