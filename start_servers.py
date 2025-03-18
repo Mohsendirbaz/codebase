@@ -63,9 +63,9 @@ node_base_dir = os.path.dirname(os.path.abspath(__file__))
 
 # List of Node.js scripts to run with their respective ports
 node_scripts = [
-    ("submit_parameter_append.js", 3040),
-    ("submitCompleteSet.js", 3052),
-    ("labelUpdate.js", 3060)
+    (r"src\utils\submit_parameter_append.js", 3040),
+    (r"src\utils\submitCompleteSet.js", 3052),
+    (r"src\utils\labelUpdate.js", 3060)
 ]
 
 def verify_python_installation():

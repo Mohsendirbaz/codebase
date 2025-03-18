@@ -680,3 +680,20 @@
 2025-03-17 10:02:51,421 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
 2025-03-17 10:02:51,461 WARNING  * Debugger is active!
 2025-03-17 10:02:51,472 INFO  * Debugger PIN: 119-059-632
+2025-03-18 11:39:27,911 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\sensitivity_logging.py', reloading
+2025-03-18 11:40:13,235 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-18 11:40:13,313 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:25007
+2025-03-18 11:40:13,313 INFO [33mPress CTRL+C to quit[0m
+2025-03-18 11:40:13,313 INFO  * Restarting with stat
+2025-03-18 11:40:15,038 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-18 11:40:15,119 WARNING  * Debugger is active!
+2025-03-18 11:40:15,119 INFO  * Debugger PIN: 119-059-632
+2025-03-18 11:57:22,916 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-18 11:57:23,094 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:25007
+2025-03-18 11:57:23,094 INFO [33mPress CTRL+C to quit[0m
+2025-03-18 11:57:23,109 INFO  * Restarting with stat
+2025-03-18 11:57:25,372 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-18 11:57:25,670 WARNING  * Debugger is active!
+2025-03-18 11:57:25,670 INFO  * Debugger PIN: 119-059-632
