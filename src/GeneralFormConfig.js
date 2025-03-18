@@ -5,7 +5,7 @@ import Popup from './components/modules/Efficacy';
 import { faEdit, faCheck, faTimes, faSave, faUndo } from '@fortawesome/free-solid-svg-icons';
 import SensitivityAnalysisSelector from './components/modules/SensitivitySelector';
 import axios from 'axios';
-import { propertyMapping as referenceLabels } from './LabelReferences';
+import { propertyMapping as referenceLabels } from './utils/LabelReferences';
 
 const getLatestPlantLifetime = (formValues) => {
   const filteredValues = Object.values(formValues).filter(item => item.id === 'plantLifetimeAmount1');

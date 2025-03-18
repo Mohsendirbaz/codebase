@@ -672,3 +672,11 @@
 2025-03-17 03:15:33,712 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
 2025-03-17 03:15:33,822 WARNING  * Debugger is active!
 2025-03-17 03:15:33,837 INFO  * Debugger PIN: 119-059-632
+2025-03-17 10:02:50,504 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-17 10:02:50,551 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:25007
+2025-03-17 10:02:50,551 INFO [33mPress CTRL+C to quit[0m
+2025-03-17 10:02:50,566 INFO  * Restarting with stat
+2025-03-17 10:02:51,421 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-17 10:02:51,461 WARNING  * Debugger is active!
+2025-03-17 10:02:51,472 INFO  * Debugger PIN: 119-059-632

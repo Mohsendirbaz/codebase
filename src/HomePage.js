@@ -27,7 +27,7 @@ import PropertySelector from './PropertySelector.js';
 import VersionSelector from './VersionSelector.js';
 import SpatialTransformComponent from './Naturalmotion.js'
 import useFormValues from './useFormValues.js';
-import versionEventEmitter from './utils/eventEmitter';
+import versionEventEmitter from './state/EventEmitter';
 import TestingZone from './components/modules/TestingZone';
 import CalculationMonitor from './components/modules/CalculationMonitor';
 import SensitivityMonitor from './components/modules/SensitivityMonitor';

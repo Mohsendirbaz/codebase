@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import ThemeGenerator from '../../utils/ThemeGenerator';
+import ThemeGenerator from './ThemeGenerator';
 import '../../styles/HomePage.CSS/ThemeConfigurator.css';
 
 const ThemeConfigurator = ({ onClose }) => {
