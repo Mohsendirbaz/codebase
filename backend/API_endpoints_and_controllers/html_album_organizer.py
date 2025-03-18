@@ -1,4 +1,4 @@
-# html_album_organizer.py
+# Html_album_organizer.py
 import os
 import shutil
 import logging

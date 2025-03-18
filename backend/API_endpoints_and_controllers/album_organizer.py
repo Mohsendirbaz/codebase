@@ -1,4 +1,4 @@
-# album_organizer.py
+# Album_organizer.py
 import os
 import shutil
 import logging

@@ -41,21 +41,21 @@ flask_base_dir = os.path.dirname(os.path.abspath(__file__))
 
 # List of Flask apps with their subdirectories and ports
 flask_apps = [
-    (r"backend\flask_api\app.py", 8010),  # Theme configuration routes
     (r"backend\Data_processors_and_transformers\Front_Subtab_Table.py", 8007),
     (r"backend\Data_processors_and_transformers\Front_Subtab_Plot.py", 8008),
     (r"backend\Data_processors_and_transformers\Front_Subtab_HTML.py", 8009),
     (r"backend\API_endpoints_and_controllers\Create_new_batch.py", 8001),
-    (r"backend\API_endpoints_and_controllers\version_service.py", 8002),
     (r"backend\API_endpoints_and_controllers\Remove_batch.py", 7001),
     (r"backend\API_endpoints_and_controllers\Calculations.py", 5007),
-    (r"backend\API_endpoints_and_controllers\Calculations_and_Sensitivity.py", 25007),
+    (r"backend\API_endpoints_and_controllers\Calculations_and_sensitivity.py", 25007),
     (r"backend\API_endpoints_and_controllers\PNG.py", 5008),
     (r"backend\API_endpoints_and_controllers\Sub.py", 5009),
-    (r"backend\API_endpoints_and_controllers\Load.py", 5000),  # Changed port since 5000 is now used by main Flask app
-    (r"backend\API_endpoints_and_controllers\config_monitor.py", 5001),
+    (r"backend\API_endpoints_and_controllers\Load.py", 5000),  
+    (r"backend\API_endpoints_and_controllers\Sensitivity_monitor.py", 5001),
     (r"backend\cfa_list.py", 456),
+    (r"backend\API_endpoints_and_controllers\Version_service.py", 8002),
     (r"backend\Enhanced_Sensitivity\start_enhanced_sensitivity_server.py", 27890),
+    (r"backend\flask_api\routes\theme_routes.py", 8010),
 ]
 
 # Base directory where your Node.js scripts are located

@@ -61,6 +61,9 @@ const HomePageContent = () => {
                 enabled: false,
                 compareToKey: '',
                 comparisonType: null,
+                waterfall: false,
+                bar: false,
+                point: false
             };
         }
         

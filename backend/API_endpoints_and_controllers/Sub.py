@@ -54,7 +54,7 @@ def run_scripts():
 
         try:
             # Import and run HTML album organizer
-            organizer_path = os.path.join(os.path.dirname(__file__), 'html_album_organizer.py')
+            organizer_path = os.path.join(os.path.dirname(__file__), 'Html_album_organizer.py')
             if os.path.exists(organizer_path):
                 result = subprocess.run(
                     ['python', organizer_path],

@@ -1191,3 +1191,172 @@ Enhanced sensitivity calculations completed successfully
 2025-03-18 11:57:37,573 INFO Starting Enhanced Sensitivity Server on port 27890
 2025-03-18 11:57:37,715 WARNING  * Debugger is active!
 2025-03-18 11:57:37,731 INFO  * Debugger PIN: 119-059-632
+2025-03-18 14:17:11,216 INFO Initialized EnhancedSensitivityDirectoryBuilder with base directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original
+2025-03-18 14:17:11,216 INFO Initialized EnhancedSensitivityExecutor with base directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend
+2025-03-18 14:17:11,216 INFO Common scripts: ['C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\formatter.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\module1.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\config_modules.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\Table.py']
+2025-03-18 14:17:11,216 INFO Calculation script: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Core_calculation_engines\CFA.py
+2025-03-18 14:17:11,224 INFO Starting Enhanced Sensitivity Server on port 27890
+2025-03-18 14:17:11,368 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:27890
+ * Running on http://192.168.0.229:27890
+2025-03-18 14:17:11,368 INFO [33mPress CTRL+C to quit[0m
+2025-03-18 14:17:11,371 INFO  * Restarting with stat
+2025-03-18 14:17:15,053 INFO Initialized EnhancedSensitivityDirectoryBuilder with base directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original
+2025-03-18 14:17:15,054 INFO Initialized EnhancedSensitivityExecutor with base directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend
+2025-03-18 14:17:15,054 INFO Common scripts: ['C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\formatter.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\module1.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\config_modules.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\Table.py']
+2025-03-18 14:17:15,054 INFO Calculation script: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Core_calculation_engines\CFA.py
+2025-03-18 14:17:15,061 INFO Starting Enhanced Sensitivity Server on port 27890
+2025-03-18 14:17:15,293 WARNING  * Debugger is active!
+2025-03-18 14:17:15,300 INFO  * Debugger PIN: 119-059-632
+2025-03-18 14:35:59,604 INFO Initialized EnhancedSensitivityDirectoryBuilder with base directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original
+2025-03-18 14:35:59,604 INFO Initialized EnhancedSensitivityExecutor with base directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend
+2025-03-18 14:35:59,605 INFO Common scripts: ['C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\formatter.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\module1.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\config_modules.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\Table.py']
+2025-03-18 14:35:59,605 INFO Calculation script: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Core_calculation_engines\CFA.py
+2025-03-18 14:35:59,608 INFO Starting Enhanced Sensitivity Server on port 27890
+2025-03-18 14:35:59,754 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:27890
+ * Running on http://192.168.0.229:27890
+2025-03-18 14:35:59,754 INFO [33mPress CTRL+C to quit[0m
+2025-03-18 14:35:59,754 INFO  * Restarting with stat
+2025-03-18 14:36:02,515 INFO Initialized EnhancedSensitivityDirectoryBuilder with base directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original
+2025-03-18 14:36:02,515 INFO Initialized EnhancedSensitivityExecutor with base directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend
+2025-03-18 14:36:02,515 INFO Common scripts: ['C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\formatter.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\module1.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\config_modules.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\Table.py']
+2025-03-18 14:36:02,515 INFO Calculation script: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Core_calculation_engines\CFA.py
+2025-03-18 14:36:02,530 INFO Starting Enhanced Sensitivity Server on port 27890
+2025-03-18 14:36:02,732 WARNING  * Debugger is active!
+2025-03-18 14:36:02,749 INFO  * Debugger PIN: 119-059-632
+2025-03-18 14:41:55,160 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\API_endpoints_and_controllers\\Sub.py', reloading
+2025-03-18 14:41:55,265 INFO  * Restarting with stat
+2025-03-18 14:41:57,115 INFO Initialized EnhancedSensitivityDirectoryBuilder with base directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original
+2025-03-18 14:41:57,116 INFO Initialized EnhancedSensitivityExecutor with base directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend
+2025-03-18 14:41:57,116 INFO Common scripts: ['C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\formatter.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\module1.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\config_modules.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\Table.py']
+2025-03-18 14:41:57,116 INFO Calculation script: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Core_calculation_engines\CFA.py
+2025-03-18 14:41:57,124 INFO Starting Enhanced Sensitivity Server on port 27890
+2025-03-18 15:28:12,694 INFO Initialized EnhancedSensitivityDirectoryBuilder with base directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original
+2025-03-18 15:28:12,694 INFO Initialized EnhancedSensitivityExecutor with base directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend
+2025-03-18 15:28:12,694 INFO Common scripts: ['C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\formatter.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\module1.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\config_modules.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\Table.py']
+2025-03-18 15:28:12,694 INFO Calculation script: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Core_calculation_engines\CFA.py
+2025-03-18 15:28:12,694 INFO Starting Enhanced Sensitivity Server on port 27890
+2025-03-18 15:28:12,906 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:27890
+ * Running on http://192.168.0.229:27890
+2025-03-18 15:28:12,906 INFO [33mPress CTRL+C to quit[0m
+2025-03-18 15:28:12,914 INFO  * Restarting with stat
+2025-03-18 15:28:14,923 INFO Initialized EnhancedSensitivityDirectoryBuilder with base directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original
+2025-03-18 15:28:14,923 INFO Initialized EnhancedSensitivityExecutor with base directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend
+2025-03-18 15:28:14,923 INFO Common scripts: ['C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\formatter.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\module1.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\config_modules.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\Table.py']
+2025-03-18 15:28:14,923 INFO Calculation script: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Core_calculation_engines\CFA.py
+2025-03-18 15:28:14,923 INFO Starting Enhanced Sensitivity Server on port 27890
+2025-03-18 15:28:15,118 WARNING  * Debugger is active!
+2025-03-18 15:28:15,126 INFO  * Debugger PIN: 119-059-632
+2025-03-18 15:41:36,175 INFO Initialized EnhancedSensitivityDirectoryBuilder with base directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original
+2025-03-18 15:41:36,175 INFO Initialized EnhancedSensitivityExecutor with base directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend
+2025-03-18 15:41:36,175 INFO Common scripts: ['C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\formatter.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\module1.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\config_modules.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\Table.py']
+2025-03-18 15:41:36,175 INFO Calculation script: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Core_calculation_engines\CFA.py
+2025-03-18 15:41:36,175 INFO Starting Enhanced Sensitivity Server on port 27890
+2025-03-18 15:41:36,375 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:27890
+ * Running on http://192.168.0.229:27890
+2025-03-18 15:41:36,375 INFO [33mPress CTRL+C to quit[0m
+2025-03-18 15:41:36,375 INFO  * Restarting with stat
+2025-03-18 15:41:38,949 INFO Initialized EnhancedSensitivityDirectoryBuilder with base directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original
+2025-03-18 15:41:38,949 INFO Initialized EnhancedSensitivityExecutor with base directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend
+2025-03-18 15:41:38,949 INFO Common scripts: ['C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\formatter.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\module1.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\config_modules.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\Table.py']
+2025-03-18 15:41:38,949 INFO Calculation script: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Core_calculation_engines\CFA.py
+2025-03-18 15:41:38,949 INFO Starting Enhanced Sensitivity Server on port 27890
+2025-03-18 15:41:39,027 WARNING  * Debugger is active!
+2025-03-18 15:41:39,034 INFO  * Debugger PIN: 119-059-632
+2025-03-18 15:52:46,038 INFO Initialized EnhancedSensitivityDirectoryBuilder with base directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original
+2025-03-18 15:52:46,038 INFO Initialized EnhancedSensitivityExecutor with base directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend
+2025-03-18 15:52:46,038 INFO Common scripts: ['C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\formatter.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\module1.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\config_modules.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\Table.py']
+2025-03-18 15:52:46,038 INFO Calculation script: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Core_calculation_engines\CFA.py
+2025-03-18 15:52:46,038 INFO Starting Enhanced Sensitivity Server on port 27890
+2025-03-18 15:52:46,249 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:27890
+ * Running on http://192.168.0.229:27890
+2025-03-18 15:52:46,249 INFO [33mPress CTRL+C to quit[0m
+2025-03-18 15:52:46,264 INFO  * Restarting with stat
+2025-03-18 15:52:48,646 INFO Initialized EnhancedSensitivityDirectoryBuilder with base directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original
+2025-03-18 15:52:48,646 INFO Initialized EnhancedSensitivityExecutor with base directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend
+2025-03-18 15:52:48,646 INFO Common scripts: ['C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\formatter.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\module1.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\config_modules.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\Table.py']
+2025-03-18 15:52:48,646 INFO Calculation script: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Core_calculation_engines\CFA.py
+2025-03-18 15:52:48,662 INFO Starting Enhanced Sensitivity Server on port 27890
+2025-03-18 15:52:49,066 WARNING  * Debugger is active!
+2025-03-18 15:52:49,082 INFO  * Debugger PIN: 119-059-632
+2025-03-18 16:10:20,630 INFO Initialized EnhancedSensitivityDirectoryBuilder with base directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original
+2025-03-18 16:10:20,630 INFO Initialized EnhancedSensitivityExecutor with base directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend
+2025-03-18 16:10:20,630 INFO Common scripts: ['C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\formatter.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\module1.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\config_modules.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\Table.py']
+2025-03-18 16:10:20,630 INFO Calculation script: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Core_calculation_engines\CFA.py
+2025-03-18 16:10:20,630 INFO Starting Enhanced Sensitivity Server on port 27890
+2025-03-18 16:10:20,786 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:27890
+ * Running on http://192.168.0.229:27890
+2025-03-18 16:10:20,786 INFO [33mPress CTRL+C to quit[0m
+2025-03-18 16:10:20,791 INFO  * Restarting with stat
+2025-03-18 16:10:22,783 INFO Initialized EnhancedSensitivityDirectoryBuilder with base directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original
+2025-03-18 16:10:22,783 INFO Initialized EnhancedSensitivityExecutor with base directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend
+2025-03-18 16:10:22,783 INFO Common scripts: ['C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\formatter.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\module1.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\config_modules.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\Table.py']
+2025-03-18 16:10:22,783 INFO Calculation script: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Core_calculation_engines\CFA.py
+2025-03-18 16:10:22,798 INFO Starting Enhanced Sensitivity Server on port 27890
+2025-03-18 16:10:22,974 WARNING  * Debugger is active!
+2025-03-18 16:10:22,974 INFO  * Debugger PIN: 119-059-632
+2025-03-18 16:22:26,752 INFO Initialized EnhancedSensitivityDirectoryBuilder with base directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original
+2025-03-18 16:22:26,752 INFO Initialized EnhancedSensitivityExecutor with base directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend
+2025-03-18 16:22:26,752 INFO Common scripts: ['C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\formatter.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\module1.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\config_modules.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\Table.py']
+2025-03-18 16:22:26,752 INFO Calculation script: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Core_calculation_engines\CFA.py
+2025-03-18 16:22:26,752 INFO Starting Enhanced Sensitivity Server on port 27890
+2025-03-18 16:22:27,060 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:27890
+ * Running on http://192.168.0.229:27890
+2025-03-18 16:22:27,060 INFO [33mPress CTRL+C to quit[0m
+2025-03-18 16:22:27,060 INFO  * Restarting with stat
+2025-03-18 16:22:29,071 INFO Initialized EnhancedSensitivityDirectoryBuilder with base directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original
+2025-03-18 16:22:29,071 INFO Initialized EnhancedSensitivityExecutor with base directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend
+2025-03-18 16:22:29,071 INFO Common scripts: ['C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\formatter.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\module1.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\config_modules.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\Table.py']
+2025-03-18 16:22:29,071 INFO Calculation script: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Core_calculation_engines\CFA.py
+2025-03-18 16:22:29,086 INFO Starting Enhanced Sensitivity Server on port 27890
+2025-03-18 16:22:29,277 WARNING  * Debugger is active!
+2025-03-18 16:22:29,292 INFO  * Debugger PIN: 119-059-632
+2025-03-18 16:30:56,945 INFO Initialized EnhancedSensitivityDirectoryBuilder with base directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original
+2025-03-18 16:30:56,945 INFO Initialized EnhancedSensitivityExecutor with base directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend
+2025-03-18 16:30:56,945 INFO Common scripts: ['C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\formatter.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\module1.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\config_modules.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\Table.py']
+2025-03-18 16:30:56,945 INFO Calculation script: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Core_calculation_engines\CFA.py
+2025-03-18 16:30:56,960 INFO Starting Enhanced Sensitivity Server on port 27890
+2025-03-18 16:30:57,049 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:27890
+ * Running on http://192.168.0.229:27890
+2025-03-18 16:30:57,049 INFO [33mPress CTRL+C to quit[0m
+2025-03-18 16:30:57,049 INFO  * Restarting with stat
+2025-03-18 16:30:58,677 INFO Initialized EnhancedSensitivityDirectoryBuilder with base directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original
+2025-03-18 16:30:58,677 INFO Initialized EnhancedSensitivityExecutor with base directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend
+2025-03-18 16:30:58,677 INFO Common scripts: ['C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\formatter.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\module1.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\config_modules.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\Table.py']
+2025-03-18 16:30:58,677 INFO Calculation script: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Core_calculation_engines\CFA.py
+2025-03-18 16:30:58,677 INFO Starting Enhanced Sensitivity Server on port 27890
+2025-03-18 16:30:58,777 WARNING  * Debugger is active!
+2025-03-18 16:30:58,792 INFO  * Debugger PIN: 119-059-632
+2025-03-18 16:37:01,464 INFO Initialized EnhancedSensitivityDirectoryBuilder with base directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original
+2025-03-18 16:37:01,464 INFO Initialized EnhancedSensitivityExecutor with base directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend
+2025-03-18 16:37:01,464 INFO Common scripts: ['C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\formatter.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\module1.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\config_modules.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\Table.py']
+2025-03-18 16:37:01,464 INFO Calculation script: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Core_calculation_engines\CFA.py
+2025-03-18 16:37:01,479 INFO Starting Enhanced Sensitivity Server on port 27890
+2025-03-18 16:37:01,672 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:27890
+ * Running on http://192.168.0.229:27890
+2025-03-18 16:37:01,672 INFO [33mPress CTRL+C to quit[0m
+2025-03-18 16:37:01,688 INFO  * Restarting with stat
+2025-03-18 16:37:03,769 INFO Initialized EnhancedSensitivityDirectoryBuilder with base directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original
+2025-03-18 16:37:03,770 INFO Initialized EnhancedSensitivityExecutor with base directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend
+2025-03-18 16:37:03,770 INFO Common scripts: ['C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\formatter.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\module1.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\config_modules.py', 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Configuration_management\\Table.py']
+2025-03-18 16:37:03,770 INFO Calculation script: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Core_calculation_engines\CFA.py
+2025-03-18 16:37:03,777 INFO Starting Enhanced Sensitivity Server on port 27890
+2025-03-18 16:37:03,932 WARNING  * Debugger is active!
+2025-03-18 16:37:03,932 INFO  * Debugger PIN: 119-059-632

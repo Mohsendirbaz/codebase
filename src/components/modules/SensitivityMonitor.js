@@ -232,19 +232,41 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
     });
   }, [parameterDetails]);
   
-  // Reset all sensitivity parameters
-  const resetAllParameters = useCallback(() => {
-    const initialS = {};
-    for (let i = 10; i <= 79; i++) {
-      initialS[`S${i}`] = {
+  // Reset a single parameter
+  const resetParameter = useCallback((key) => {
+    setS(prevS => ({
+      ...prevS,
+      [key]: {
         mode: null,
         values: [],
-        enabled: false,
+        enabled: true,
         compareToKey: '',
         comparisonType: null,
-      };
-    }
-    setS(initialS);
+        waterfall: false,
+        bar: false,
+        point: false
+      }
+    }));
+  }, [setS]);
+
+  // Reset all sensitivity parameters while preserving enabled state
+  const resetAllParameters = useCallback(() => {
+    setS(prevS => {
+      const newS = {};
+      Object.entries(prevS).forEach(([key, value]) => {
+        newS[key] = {
+          ...value,
+          mode: null,
+          values: [],
+          compareToKey: '',
+          comparisonType: null,
+          waterfall: false,
+          bar: false,
+          point: false
+        };
+      });
+      return newS;
+    });
   }, [setS]);
   
   // Determine if the component should be visible based on activeTab
@@ -344,6 +366,8 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
                             <span className="toggle-slider"></span>
                           </label>
                           
+                          <div className="parameter-actions">
+                            
                           <button 
                             className="edit-button"
                             onClick={() => openParameterDetails(key)}
@@ -352,6 +376,15 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
                           >
                             Configure
                           </button>
+                          <button
+                            className="parameter-reset-button"
+                            onClick={() => resetParameter(key)}
+                            disabled={!value.enabled}
+                            title="Reset parameter"
+                          >
+                            Reset
+                          </button>
+                          </div>
                         </div>
                       </div>
                       
@@ -386,6 +419,17 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
                               </span>
                             </div>
                           )}
+                          
+                          <div className="parameter-plots">
+                            <span className="label">Plots:</span>
+                            <span className="value">
+                              {[
+                                value.waterfall && 'Waterfall',
+                                value.bar && 'Bar', 
+                                value.point && 'Point'
+                              ].filter(Boolean).join(', ') || 'None'}
+                            </span>
+                          </div>
                         </div>
                       )}
                     </li>
@@ -430,6 +474,59 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
                   
                   {parameterDetails.mode && (
                     <>
+                      <div className="form-group plot-controls">
+                        <label>Plot Types</label>
+                        <div className="plot-selection">
+                          {parameterDetails.waterfall && (
+                            <div className="plot-selection-item waterfall">
+                              Waterfall
+                            </div>
+                          )}
+                          {parameterDetails.bar && (
+                            <div className="plot-selection-item bar">
+                              Bar
+                            </div>
+                          )}
+                          {parameterDetails.point && (
+                            <div className="plot-selection-item point">
+                              Point
+                            </div>
+                          )}
+                        </div>
+                        <div className="plot-checkbox-group">
+                          <label className="toggle-label">
+                            <input
+                              type="checkbox"
+                              checked={parameterDetails.waterfall}
+                              onChange={(e) => updateParameterDetails('waterfall', e.target.checked)}
+                              className="toggle-checkbox"
+                            />
+                            <span className="toggle-slider"></span>
+                            Waterfall
+                          </label>
+                          <label className="toggle-label">
+                            <input
+                              type="checkbox"
+                              checked={parameterDetails.bar}
+                              onChange={(e) => updateParameterDetails('bar', e.target.checked)}
+                              className="toggle-checkbox"
+                            />
+                            <span className="toggle-slider"></span>
+                            Bar
+                          </label>
+                          <label className="toggle-label">
+                            <input
+                              type="checkbox"
+                              checked={parameterDetails.point}
+                              onChange={(e) => updateParameterDetails('point', e.target.checked)}
+                              className="toggle-checkbox"
+                            />
+                            <span className="toggle-slider"></span>
+                            Point
+                          </label>
+                        </div>
+                      </div>
+
                       <div className="form-group">
                         <label>Parameter Values</label>
                         <div className="values-container">

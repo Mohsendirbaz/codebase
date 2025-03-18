@@ -326,7 +326,7 @@ def run_scripts():
         try:
             # Import and run album organizer
             sys.path.append(str(BACKEND_DIR))
-            from album_organizer import organize_plot_albums
+            from Album_organizer import organize_plot_albums
             organize_plot_albums()
             logger.info("Album organization completed")
         except Exception as e:

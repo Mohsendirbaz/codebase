@@ -108,11 +108,36 @@
   font-weight: 500;
   transition: all var(--neu-transition-fast);
   box-shadow: var(--neu-shadow-sm);
+  margin-left: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.reset-button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: radial-gradient(circle, rgba(255,255,255,0.3) 10%, transparent 10.01%);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform var(--neu-transition-medium);
 }
 
 .reset-button:hover {
   transform: translateY(-2px);
   box-shadow: var(--neu-shadow-md);
+}
+
+.reset-button:active::after {
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 0s;
+}
+
+.edit-button {
+  padding: 8px 16px;
+  margin-right: 12px;
 }
 
 .parameters-container {
@@ -172,6 +197,50 @@
   display: flex;
   align-items: center;
   gap: 12px;
+}
+
+.parameter-reset-button {
+  padding: 6px 12px;
+  background-color: var(--warning-color);
+  color: white;
+  border: none;
+  border-radius: var(--neu-border-radius-sm);
+  cursor: pointer;
+  font-weight: 500;
+  font-size: var(--model-font-size-sm);
+  transition: all var(--neu-transition-fast);
+  margin-left: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.parameter-reset-button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: radial-gradient(circle, rgba(255,255,255,0.3) 10%, transparent 10.01%);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform var(--neu-transition-medium);
+}
+
+.parameter-reset-button:hover {
+  background-color: color-mix(in srgb, var(--warning-color) 90%, black);
+  transform: translateY(-1px);
+  box-shadow: var(--neu-shadow-sm);
+}
+
+.parameter-reset-button:active::after {
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 0s;
+}
+
+.parameter-reset-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: color-mix(in srgb, var(--warning-color) 50%, gray);
 }
 
 .toggle-label {
@@ -250,8 +319,14 @@
 
 .parameter-mode,
 .parameter-values,
-.parameter-comparison {
+.parameter-comparison,
+.parameter-plots {
   margin-bottom: 4px;
+}
+
+.parameter-plots .value {
+  color: var(--text-color);
+  font-weight: 500;
 }
 
 .parameter-summary .label {
@@ -450,11 +525,62 @@
   box-shadow: var(--neu-shadow-sm);
 }
 
+/* Plot controls */
+.plot-controls {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: var(--neu-background);
+  border-radius: var(--neu-border-radius-md);
+  border: 1px solid var(--border-color);
+}
+
+.plot-checkbox-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.plot-checkbox-group .toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--model-font-size-sm);
+  color: var(--text-secondary);
+}
+
 /* Loading indicator */
 .loading-indicator {
   padding: 20px;
   text-align: center;
   color: var(--text-secondary);
+}
+
+/* Plot selection styles */
+.plot-selection {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.plot-selection-item {
+  padding: 6px 12px;
+  border-radius: var(--neu-border-radius-sm);
+  font-size: var(--model-font-size-sm);
+  font-weight: 500;
+  color: white;
+}
+
+.plot-selection-item.waterfall {
+  background-color: #ff8c42; /* Orange */
+}
+
+.plot-selection-item.bar {
+  background-color: #87ceeb; /* Sky blue */
+}
+
+.plot-selection-item.point {
+  background-color: #77dd77; /* Green */
 }
 
 /* Responsive adjustments */
