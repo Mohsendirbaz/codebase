@@ -1,5 +1,5 @@
 import React from 'react';
-import './SelectionPanel.css';
+import '../../styles/HomePage.CSS/SelectionPanel.css';
 
 const SelectionPanel = ({
   available,

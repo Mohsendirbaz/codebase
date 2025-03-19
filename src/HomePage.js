@@ -10,7 +10,6 @@ import GeneralFormConfig from './GeneralFormConfig.js';
 import './styles/HomePage.CSS/HomePage1.css';
 import './styles/HomePage.CSS/HomePage2.css';
 import './styles/HomePage.CSS/HomePage3.css';
-import './styles/HomePage.CSS/HomePage4.css';
 import './styles/HomePage.CSS/HomePage5.css';
 import './styles/HomePage.CSS/HomePage6.css';
 import './styles/HomePage.CSS/HomePage_AboutUs.css';
@@ -21,7 +20,7 @@ import './styles/HomePage.CSS/HomePage_FactEngine.css';
 import './styles/HomePage.CSS/HomePage_FactAdmin.css';
 import './styles/HomePage.CSS/HomePage_neumorphic-tabs.css';
 import './styles/Themes/dark-theme.css';
-import './styles/Themes/normal-theme.css';
+import './styles/Themes/light-theme.css';
 import './styles/Themes/creative-theme.css';
 import PropertySelector from './PropertySelector.js';
 import VersionSelector from './VersionSelector.js';
@@ -51,7 +50,7 @@ const HomePageContent = () => {
     }, []);
     const [activeSubTab, setActiveSubTab] = useState('ProjectConfig');
     const [selectedProperties, setSelectedProperties] = useState([]);
-    const [season, setSeason] = useState('winter');
+    const [season, setSeason] = useState('dark');
     const [S, setS] = useState(() => {
         const initialS = {};
         for (let i = 10; i <= 79; i++) {
@@ -119,13 +118,13 @@ const HomePageContent = () => {
     // Theme management
     useEffect(() => {
         // Remove all theme classes
-        document.documentElement.classList.remove('dark-theme', 'normal-theme', 'creative-theme');
+        document.documentElement.classList.remove('dark-theme', 'light-theme', 'creative-theme');
         
         // Map season to theme class
         const themeMap = {
             'dark': 'dark-theme',
-            'winter': 'normal-theme',
-            'fall': 'creative-theme'
+            'light': 'light-theme',
+            'creative': 'creative-theme'
         };
         
         // Add the appropriate theme class
@@ -134,14 +133,7 @@ const HomePageContent = () => {
         // Set data-theme attribute for backward compatibility
         document.documentElement.setAttribute('data-theme', season);
         
-        // Apply theme-specific colors
-        if (season === 'dark') {
-            document.documentElement.style.setProperty('--primary-color', '#1a237e'); // Rich dark blue
-        } else if (season === 'fall') {
-            document.documentElement.style.setProperty('--primary-color', '#8a2be2'); // Vibrant purple
-        } else {
-            document.documentElement.style.setProperty('--primary-color', '#4a90e2'); // Clean blue
-        }
+       
     }, [season]);
 
     const { formValues, handleInputChange, handleReset, setFormValues } = useFormValues();
@@ -294,81 +286,12 @@ const HomePageContent = () => {
 
     const handleThemeChange = (newSeason) => {
         const themeRibbon = document.querySelector('.theme-ribbon');
-        const currentLogo = document.querySelector('.logo-container img.active');
-        const newLogo = document.querySelector(
-            `.logo-container img[alt="${newSeason === 'winter' ? 'MU Logo' : newSeason === 'fall' ? 'US Biomass Logo' : 'Blue Parrot Logo'}"]`
-        );
-        const buttons = document.querySelectorAll('.theme-button');
-        const targetButton =
-            newSeason === 'dark' ? buttons[2] : newSeason === 'fall' ? buttons[0] : buttons[1];
-
-        if (themeRibbon && themeRibbon.classList.contains('theme-transition')) {
-            return;
-        }
-
-        if (themeRibbon) {
-            const targetButtonRect = targetButton?.getBoundingClientRect();
-            const ribbonRect = themeRibbon.getBoundingClientRect();
-            const creativeButton = buttons[0]?.getBoundingClientRect();
-
-            if (targetButtonRect && ribbonRect && creativeButton) {
-                const startX = ribbonRect.right - targetButtonRect.right + 35;
-                const startY = ribbonRect.bottom - targetButtonRect.bottom;
-                const endX = ribbonRect.right - creativeButton.right + 35;
-                const endY = ribbonRect.bottom - creativeButton.bottom;
-
-                themeRibbon.style.setProperty('--glow-start-x', `${startX}px`);
-                // Calculate horizontal and vertical distances for diagonal movement
-                themeRibbon.style.setProperty('--glow-start-y', `${startY}px`);
-                themeRibbon.style.setProperty('--glow-end-x', `${endX}px`);
-                themeRibbon.style.setProperty('--glow-end-y', `${endY}px`);
-
-                // Set position variables for the glow effect (removing duplicates)
-                themeRibbon.style.setProperty('--glow-end-x', `${endX}px`);
-                themeRibbon.style.setProperty('--glow-end-y', `${endY}px`);
-                themeRibbon.style.setProperty('--transition-duration', '1.2s');
-            }
-
-            // Add transition classes with proper timing
-            requestAnimationFrame(() => {
-                themeRibbon.classList.add(newSeason === 'dark' ? 'to-dark' : 'to-light');
-                themeRibbon.classList.add('theme-transition');
-
-                // Handle logo transition with proper timing
-                if (currentLogo) {
-                    currentLogo.classList.add('fade-out');
-                    currentLogo.classList.remove('active');
-                }
-
-                // Delay the new logo appearance to sync with the theme transition
-                if (newLogo) {
-                    setTimeout(() => {
-                        newLogo.classList.add('active');
-                    }, 300);
-                }
-
-                // Clean up classes after all transitions complete
-                setTimeout(() => {
-                    themeRibbon.classList.remove('theme-transition', 'to-dark', 'to-light');
-                    if (currentLogo) {
-                        currentLogo.classList.remove('fade-out');
-                    }
-                }, 1200);
-            });
-        }
+       
 
         // Update theme state
         setSeason(newSeason);
         document.body.className = newSeason;
 
-        // Apply theme-specific styles
-        if (newSeason === 'dark') {
-            document.documentElement.style.setProperty('--primary-color', '#1a237e'); // Rich dark blue
-        } else if (newSeason === 'fall') {
-            document.documentElement.style.setProperty('--primary-color', '#8a2be2'); // Vibrant purple
-        } else {
-            document.documentElement.style.setProperty('--primary-color', '#4a90e2'); // Clean blue
-        }
     };
 
     const toggleF = (key) => {
@@ -1773,25 +1696,23 @@ const HomePageContent = () => {
                 <div className="HomePageSectionT">
                     <h2 className="h2-large">TEA Space</h2>
                     <h2 className="h2-small">Techno-Economic-Social Simulation and Dynamic Modeling</h2>
-                    <h2 className="h2-small">From lemonad stand to Tesla, TEA Space accomodates your complex cost modeling scenarios</h2>
-                    <h2 className="h2-small">Grand opening April 15th 2025</h2>
                 </div>
                 <div className="theme-ribbon">
                     
                 <div className="theme-buttons">
     <ThemeButton 
         theme="creative" 
-        currentTheme={season === 'fall' ? 'creative' : season === 'winter' ? 'normal' : 'dark'} 
-        onThemeChange={() => handleThemeChange('fall')} 
+        currentTheme={season === 'creative' ? 'creative' : season === 'creative' ? 'light' : 'dark'} 
+        onThemeChange={() => handleThemeChange('creative')} 
     />
     <ThemeButton 
-        theme="normal" 
-        currentTheme={season === 'fall' ? 'creative' : season === 'winter' ? 'normal' : 'dark'} 
-        onThemeChange={() => handleThemeChange('winter')} 
+        theme="light" 
+        currentTheme={season === 'light' ? 'light' : season === 'light' ? 'creative' : 'dark'} 
+        onThemeChange={() => handleThemeChange('light')} 
     />
     <ThemeButton 
         theme="dark" 
-        currentTheme={season === 'fall' ? 'creative' : season === 'winter' ? 'normal' : 'dark'} 
+        currentTheme={season === 'dark' ? 'dark' : season === 'dark' ? 'light' : 'creative'} 
         onThemeChange={() => handleThemeChange('dark')} 
     />
 </div>

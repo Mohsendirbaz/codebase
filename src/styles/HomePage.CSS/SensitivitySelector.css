@@ -254,15 +254,17 @@
 .sensitivity-btn1 {
     padding: var(--spacing-sm, 8px) var(--spacing-md, 16px);
     cursor: pointer;
-    border-radius: var(--model-border-radius-sm, 4px);
     font-weight: bold;
+    border: 1px solid var(--border-color);
+    border-radius: var(--neu-border-radius-sm);
     transition: all var(--model-transition-medium, 0.3s ease);
 }
 
 .primary-btn1 {
-    background-color: var(--primary-color, #007bff);
+    background-color: var(--sidbar-background, #007bff);
     color: white;
-    border: 2px solid var(--primary-color, #0056b3);
+    border: 1px solid var(--border-color);
+    border-radius: var(--neu-border-radius-sm);
     box-shadow: var(--model-shadow-md, 3px 3px 6px var(--shadow-dark), -3px -3px 6px var(--shadow-light));
     transition: all var(--model-transition-medium, 0.3s ease);
 }
@@ -271,6 +273,8 @@
     background-color: var(--primary-color, #0069d9);
     border-color: var(--primary-color, #004085);
     transform: translateY(-2px);
+    border: 1px solid var(--border-color);
+    border-radius: var(--neu-border-radius-sm);
     box-shadow: var(--model-shadow-lg, 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light));
 }
 

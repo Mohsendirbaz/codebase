@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo } from 'react';
-import './ResultsPanel.css';
+import '../../styles/HomePage.CSS/ResultsPanel.css';
 
 const ResultsPanel = ({
   data,

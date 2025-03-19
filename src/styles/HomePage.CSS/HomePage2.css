@@ -30,7 +30,7 @@
 /* About Us Section */
 .HomePageSectionA {
     padding: 20px;
-    background-color: var(--app-background);
+    background-color: var(--primary-color);
 }
 
 .HomePageSectionT {

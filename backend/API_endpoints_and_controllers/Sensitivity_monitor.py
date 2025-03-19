@@ -1,7 +1,12 @@
 from flask import Flask, request, jsonify
 import os
+import sys
+import signal
+import subprocess
 import logging
+import time
 from flask_cors import CORS
+import psutil
 
 app = Flask(__name__)
 CORS(app)
@@ -77,6 +82,47 @@ def get_sensitivity_status():
     except Exception as e:
         logger.error(f"Error in sensitivity monitoring: {str(e)}")
         return jsonify({"error": str(e)}), 500
+
+@app.route('/restart', methods=['POST'])
+def restart_server():
+    """Restart the Flask server running on port 5001"""
+    try:
+        logger.info("Server restart requested")
+        # Find process using port 5001
+        for proc in psutil.process_iter(['pid', 'name', 'cmdline']):
+            try:
+                for conn in proc.connections(kind='inet'):
+                    if conn.laddr.port == 5001 and proc.pid != os.getpid():
+                        # This is the process we want to restart (not ourselves)
+                        logger.info(f"Found process {proc.pid} using port 5001")
+                        # Gracefully terminate the process
+                        parent = psutil.Process(proc.pid)
+                        for child in parent.children(recursive=True):
+                            child.terminate()
+                        parent.terminate()
+                        
+                        # Wait for process to terminate
+                        gone, alive = psutil.wait_procs([parent], timeout=3)
+                        if alive:
+                            # Force kill if still alive
+                            for p in alive:
+                                p.kill()
+                        
+                        # Get the script path
+                        script_path = os.path.abspath(__file__)
+                        
+                        # Start the server in a new process
+                        subprocess.Popen([sys.executable, script_path])
+                        logger.info("Server restart initiated successfully")
+                        return jsonify({"status": "success", "message": "Server restarting"}), 200
+            except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
+                pass
+        
+        logger.warning("Could not find process on port 5001 to restart")
+        return jsonify({"status": "error", "message": "Could not find process on port 5001"}), 404
+    except Exception as e:
+        logger.error(f"Error during server restart: {str(e)}")
+        return jsonify({"status": "error", "message": str(e)}), 500
 
 def get_current_config(version):
     """Get current configuration values from U_configurations file"""

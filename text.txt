@@ -1,4 +1,4 @@
-
+netstat -ano | findstr 5001
 
 git status
 

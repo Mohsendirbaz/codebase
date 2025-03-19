@@ -127,5 +127,29 @@ html {
     --border-color: #e2e8f0;
     --text-color: #1e293b;
     --text-secondary: #64748b;
-    --primary-color: #3b82f6;
+
 }
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    html{
+      --app-background: #0f172a ;
+      --sidebar-background: #1e293b ;
+      --border-color: #334155 ;
+      --text-color: #f1f5f9 ;
+      --text-secondary: #94a3b8 ;
+    }
+  
+    .scaling-item{
+      background: rgba(255, 255, 255, 0.02) ;
+    }
+  
+    .scaling-operation-select:not(#_):not(#_):not(#_),
+    .scaling-factor-input{
+      background: rgba(255, 255, 255, 0.03) ;
+    }
+  
+    .tooltip{
+      background: rgba(30, 41, 59, 0.95) ;
+      border-color: rgba(59, 130, 246, 0.3) ;
+    }
+  }

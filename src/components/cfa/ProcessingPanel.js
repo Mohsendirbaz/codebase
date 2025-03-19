@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import './ProcessingPanel.css';
+import '../../styles/HomePage.CSS/ProcessingPanel.css';
 
 const ProcessingPanel = ({
   status,

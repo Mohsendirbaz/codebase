@@ -31,7 +31,7 @@ const ThemeButton = ({ theme, currentTheme, onThemeChange }) => {
             ✏️
           </span>
         )}
-        {theme === 'dark' ? 'Dark' : theme === 'normal' ? 'Light' : 'Creative'}
+        {theme === 'dark' ? 'Dark' : theme === 'light' ? 'Light' : 'Creative'}
       </button>
       
       {isConfiguratorOpen && (

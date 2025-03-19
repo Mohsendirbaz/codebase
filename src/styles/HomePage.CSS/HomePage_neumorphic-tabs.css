@@ -2,8 +2,7 @@
 .sub-tab-buttons .sub-tab-button {
   background: linear-gradient(145deg, #e6e6e6, #ffffff);
   border-radius: 10px;
-  box-shadow: 8px 8px 16px #d1d1d1,
-              -8px -8px 16px #ffffff;
+  
   padding: 15px 25px;
   margin: 10px;
   font-size: 16px;
@@ -54,6 +53,9 @@
               inset -4px -4px 8px #ffffff;
   transform: translateY(0);
   color:darkblue;
+  box-shadow:
+              -8px -8px 16px #ffffff;
+  font-weight: bolder;
 }
 
 .HomePageTabs {
@@ -62,7 +64,7 @@
   justify-content: center;
   gap: 15px;
   padding: 20px;
-  background: #f8f8f8;
+  background: var(--primary-color);
   border-radius: 15px;
   margin-bottom: 20px;
 }

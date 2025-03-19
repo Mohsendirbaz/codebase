@@ -1,5 +1,5 @@
 import React, { useCallback, useState, useMemo } from 'react';
-import './ResultsPanel.css';
+import '../../styles/HomePage.CSS//ResultsPanel.css';
 import CustomizableTable from '../modules/CustomizableTable'; // Adjust path as needed
 
 const IndividualResultsPanel = ({

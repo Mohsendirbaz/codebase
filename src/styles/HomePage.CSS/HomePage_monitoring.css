@@ -1,14 +1,14 @@
 /* HomePage_monitoring.css - Ultra Compact Edition */
 .content-container {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   height: 100%;
   overflow: hidden;
   gap: 4px;
 }
 
 .HomePageTabContent {
-  flex: 1;
+
   overflow: auto;
   padding: 10px 5px;
 }

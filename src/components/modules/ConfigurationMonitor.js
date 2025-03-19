@@ -179,8 +179,8 @@ const ConfigurationMonitor = ({ version }) => {
   };
 
   return (
-    <div className={`config-monitor ${isExpanded ? 'expanded' : 'collapsed'}`}>
-      <div className="config-header">
+    <div className={`config-monitor-c ${isExpanded ? 'expanded' : 'collapsed'}`}>
+      <div className="config-header-c">
         {isExpanded ? (
           <>
             <h3>Configuration Monitor</h3>
@@ -204,9 +204,9 @@ const ConfigurationMonitor = ({ version }) => {
       </div>
       
       {isExpanded && (
-        <div className="config-content">
+        <div className="config-content-c">
           {/* Search and filters */}
-          <div className="search-filters">
+          <div className="search-filters-c">
             <input
               type="text"
               placeholder="Search parameters..."
@@ -241,7 +241,7 @@ const ConfigurationMonitor = ({ version }) => {
           </div>
           
           {/* Status information */}
-          <div className="config-status">
+          <div className="config-status-c">
             <div className="version-info">Version: {version}</div>
             <div className="param-count">
               {configData.length} parameters
@@ -259,7 +259,7 @@ const ConfigurationMonitor = ({ version }) => {
           
           {/* Parameters list - grouped by category */}
           {!isLoading && !error && (
-            <div className="parameters-list">
+            <div className="parameters-list-c">
               {Object.keys(groupedParams).length === 0 ? (
                 <div className="empty-state">
                   {configData.length === 0 
@@ -268,11 +268,11 @@ const ConfigurationMonitor = ({ version }) => {
                 </div>
               ) : (
                 Object.entries(groupedParams).map(([groupName, params]) => (
-                  <div key={groupName} className="param-group">
+                  <div key={groupName} className="param-group-c">
                     <div className="group-header">{groupName}</div>
                     
                     {params.map(param => (
-                      <div key={param.id} className="parameter-item">
+                      <div key={param.id} className="parameter-item-c">
                         <div className="parameter-header">
                           <span className="param-id">{getDisplayName(param.id)}</span>
                           <span className="param-value">{formatValue(param.value)}</span>

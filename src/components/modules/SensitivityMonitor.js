@@ -23,6 +23,7 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
   const [availableParameters, setAvailableParameters] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [currentVersion, setCurrentVersion] = useState(version);
+  const [isRestarting, setIsRestarting] = useState(false);
 
   // Refresh parameters by temporarily setting version to 0
   const refreshParameters = useCallback(async () => {
@@ -35,6 +36,37 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
   // Store the refresh function in the ref
   useEffect(() => {
     refreshRef.current = refreshParameters;
+  }, [refreshParameters]);
+
+  // Restart Flask server
+  const restartFlaskServer = useCallback(async () => {
+    setIsRestarting(true);
+    setIsLoading(true);
+    try {
+      const response = await fetch('http://localhost:5001/restart', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' }
+      });
+      
+      if (!response.ok) {
+        throw new Error(`Failed to restart server: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      console.log('Server restart initiated:', data);
+      
+      // Wait a bit for server to restart
+      await new Promise(resolve => setTimeout(resolve, 3000));
+      
+      // Refresh parameters after restart
+      await refreshParameters();
+    } catch (error) {
+      console.error('Error restarting Flask server:', error);
+      alert('Failed to restart the server. Please check the console for details.');
+    } finally {
+      setIsLoading(false);
+      setIsRestarting(false);
+    }
   }, [refreshParameters]);
 
   // Modes available for sensitivity analysis
@@ -297,8 +329,8 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
 
   
   return (
-    <div className={`sensitivity-monitor ${isExpanded ? 'expanded' : 'collapsed'}`}>
-      <div className="monitor-header">
+    <div className={`sensitivity-monitor-s ${isExpanded ? 'expanded' : 'collapsed'}`}>
+      <div className="monitor-header-s">
         {isExpanded ? (
           <>
             <h3>Sensitivity Analysis Configuration</h3>
@@ -322,8 +354,8 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
       </div>
       
       {isExpanded && (
-        <div className="monitor-content">
-          <div className="monitor-toolbar">
+        <div className="monitor-content-s">
+          <div className="monitor-toolbar-s">
             <input
               type="text"
               placeholder="Search parameters..."
@@ -361,12 +393,20 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
             >
               Refresh
             </button>
+            <button
+              className="restart-button"
+              onClick={restartFlaskServer}
+              title="Restart Flask server"
+              disabled={isRestarting}
+            >
+              {isRestarting ? 'Restarting...' : 'Restart Server'}
+            </button>
           </div>
           
           {isLoading ? (
             <div className="loading-indicator">Loading parameters...</div>
           ) : (
-            <div className="parameters-container">
+            <div className="parameters-container-s">
               {filteredParameters.length === 0 ? (
                 <div className="empty-state">
                   No sensitivity parameters match your criteria
@@ -374,14 +414,14 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
               ) : (
                 <ul className="parameters-list">
                   {filteredParameters.map(([key, value]) => (
-                    <li key={key} className={`parameter-item ${value.enabled ? 'enabled' : 'disabled'}`}>
-                      <div className="parameter-header">
+                    <li key={key} className={`parameter-item-s ${value.enabled ? 'enabled' : 'disabled'}`}>
+                      <div className="parameter-header-s">
                         <div className="parameter-info">
-                          <span className="parameter-key">{key}</span>
+                          <span className="parameter-key">{key}</span> <br />
                           <span className="parameter-name">{getParameterName(key)}</span>
                         </div>
                         
-                        <div className="parameter-controls">
+                        <div className="parameter-controls-s">
                           <label className="toggle-label">
                             <input 
                               type="checkbox" 
@@ -415,7 +455,7 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
                       </div>
                       
                       {value.enabled && (
-                        <div className="parameter-summary">
+                        <div className="parameter-summary-s">
                           <div className="parameter-mode">
                             <span className="label">Mode:</span> 
                             <span className="value">

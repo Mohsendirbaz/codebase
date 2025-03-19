@@ -1,5 +1,5 @@
 /* ConfigurationMonitor.css */
-.config-monitor {
+.config-monitor-c {
   position: relative;
   height: 100%;
   transition: height var(--neu-transition-medium), width var(--neu-transition-medium), opacity var(--neu-transition-medium);
@@ -11,12 +11,12 @@
   border-radius: var(--neu-border-radius-lg);
 }
 
-.config-monitor.collapsed {
+.config-monitor-c.collapsed {
   width: 50px;
   opacity: 0.8;
 }
 
-.config-monitor.expanded {
+.config-monitor-c.expanded {
   width: 320px;
   opacity: 1;
 }
@@ -50,13 +50,14 @@
   letter-spacing: 1px;
 }
 
-.config-header {
+.config-header-c {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 12px 16px;
   background: var(--neu-gradient-basic);
   border-bottom: 1px solid var(--border-color);
+  color:var(--text-color)
 }
 
 .config-header h3 {
@@ -86,14 +87,14 @@
   background: transparent;
 }
 
-.config-content {
+.config-content-c {
   padding: 16px;
   overflow-y: auto;
   height: calc(100% - 56px);
 }
 
 /* Search and filters */
-.search-filters {
+.search-filters-c {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
@@ -138,7 +139,7 @@
 }
 
 /* Status information */
-.config-status {
+.config-status-c {
   display: flex;
   justify-content: space-between;
   padding: 8px 12px;
@@ -181,7 +182,7 @@
 }
 
 /* Parameter grouping */
-.param-group {
+.param-group-c {
   margin-bottom: 24px;
 }
 
@@ -197,13 +198,13 @@
 }
 
 /* Parameter items styling */
-.parameters-list {
+.parameters-list-c {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.parameter-item {
+.parameter-item-c {
   padding: 16px;
   border-radius: var(--neu-border-radius-md);
   background-color: var(--card-background);
@@ -212,7 +213,7 @@
   border-left: 3px solid var(--primary-color);
 }
 
-.parameter-item:hover {
+.parameter-item-c:hover {
   transform: translateY(-2px);
   box-shadow: var(--neu-shadow-md);
 }
@@ -232,7 +233,7 @@
 
 .param-value {
   font-weight: bold;
-  color: var(--primary-color);
+  color: var(--text-color);
   padding: 4px 10px;
   background-color: var(--neu-background);
   border-radius: var(--neu-border-radius-sm);
@@ -403,7 +404,7 @@
 
 /* Responsive styles */
 @media screen and (max-width: 768px) {
-  .config-monitor.expanded {
+  .config-monitor-c.expanded {
     width: 100%;
     height: 350px;
     position: absolute;
@@ -412,7 +413,7 @@
     z-index: 10;
   }
   
-  .search-filters {
+  .search-filters-c {
     flex-direction: column;
   }
   
