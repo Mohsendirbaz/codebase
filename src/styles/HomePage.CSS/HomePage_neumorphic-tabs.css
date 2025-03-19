@@ -41,20 +41,20 @@
 .HomePageTabs .tab-button:focus,
 .sub-tab-buttons .sub-tab-button:focus {
   outline: none;
-  box-shadow: 12px 12px 24px #b8b8b8,
-              -12px -12px 24px #ffffff;
+  box-shadow: 0px 15px 24px #b8b8b8,
+              0px -15px 24px #ffffff;
   transform: translateY(-3px);
 }
 
 .HomePageTabs .tab-button.active,
 .sub-tab-buttons .sub-tab-button.active {
   background: linear-gradient(145deg, #ffffff, #f0f0f0);
-  box-shadow: inset 4px 4px 8px #d1d1d1,
-              inset -4px -4px 8px #ffffff;
+  box-shadow: 0px 15px 24px #b8b8b8,
+  0px -15px 24px #ffffff;
   transform: translateY(0);
   color:darkblue;
-  box-shadow:
-              -8px -8px 16px #ffffff;
+  box-shadow: 0px 15px 24px #b8b8b8,
+  0px -15px 24px #ffffff;
   font-weight: bolder;
 }
 

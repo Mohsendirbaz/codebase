@@ -1,7 +1,7 @@
 /* HomePage_monitoring.css - Ultra Compact Edition */
 .content-container {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: 380px 1fr auto;
   height: 100%;
   overflow: hidden;
   gap: 4px;
@@ -120,11 +120,11 @@
   
   .sensitivity-monitor.expanded,
   .config-monitor.expanded {
-    width: 200px;
+    width: 380px;
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 380px) {
   .content-container {
     flex-direction: column;
   }

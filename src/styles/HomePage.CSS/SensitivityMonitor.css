@@ -27,6 +27,7 @@
   padding: 12px 16px;
   background: var(--neu-gradient-basic);
   border-bottom: 1px solid var(--border-color);
+  color: var(--text-color);
 }
 
 .monitor-header h3 {
@@ -87,6 +88,10 @@
   min-width: 200px;
 }
 
+.h3 {
+  color: var(--text-color);
+}
+
 .filter-select {
   min-width: 160px;
 }
@@ -118,8 +123,8 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 300%;
-  height: 300%;
+  width: 100%;
+  height: 100%;
   background: radial-gradient(circle, rgba(255,255,255,0.3) 10%, transparent 10.01%);
   transform: translate(-50%, -50%) scale(0);
   transition: transform var(--neu-transition-medium);
@@ -262,8 +267,8 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 300%;
-  height: 300%;
+  width: 100%;
+  height: 100%;
   background: radial-gradient(circle, rgba(255,255,255,0.3) 10%, transparent 10.01%);
   transform: translate(-50%, -50%) scale(0);
   transition: transform var(--neu-transition-medium);
@@ -677,7 +682,7 @@
 }
 
 /* Responsive adjustments */
-@media (max-width: 768px) {
+@media (max-width: 380px) {
   .monitor-toolbar-s {
     flex-direction: column;
   }
