@@ -203,7 +203,7 @@
 .parameter-key {
   font-weight: 600;
   font-size: var(--model-font-size-md);
-  color: var(--primary-color);
+  color: var(--text-color);
 }
 
 .parameter-name {
