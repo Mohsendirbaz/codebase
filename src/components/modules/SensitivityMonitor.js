@@ -10,16 +10,33 @@ import '../../styles/HomePage.CSS/SensitivityMonitor.css';
  * @param {string} props.version - Current version number
  * @param {string} props.activeTab - Currently active application tab
  */
+// Create a ref to store the refresh function
+const refreshRef = { current: null };
+
 const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
   // Component state
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [filterMode, setFilterMode] = useState('all');
   const [selectedParameter, setSelectedParameter] = useState(null);
   const [parameterDetails, setParameterDetails] = useState(null);
   const [availableParameters, setAvailableParameters] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  
+  const [currentVersion, setCurrentVersion] = useState(version);
+
+  // Refresh parameters by temporarily setting version to 0
+  const refreshParameters = useCallback(async () => {
+    const originalVersion = version;
+    setCurrentVersion('0');
+    await new Promise(resolve => setTimeout(resolve, 100)); // Small delay
+    setCurrentVersion(originalVersion);
+  }, [version]);
+
+  // Store the refresh function in the ref
+  useEffect(() => {
+    refreshRef.current = refreshParameters;
+  }, [refreshParameters]);
+
   // Modes available for sensitivity analysis
   const sensitivityModes = [
     { id: 'range', label: 'Range Analysis', description: 'Test a range of values' },
@@ -38,13 +55,13 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
 
   // Fetch available parameters and start monitoring
   useEffect(() => {
-    if (!version) return;
+    if (!currentVersion) return;
     
     const fetchParameters = async () => {
       setIsLoading(true);
       try {
         // Initial parameters fetch
-        const response = await fetch(`http://localhost:5001/parameters/${version}`);
+        const response = await fetch(`http://localhost:5001/parameters/${currentVersion}`);
         if (!response.ok) {
           throw new Error(`Failed to fetch parameters: ${response.status}`);
         }
@@ -56,7 +73,7 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
         const monitorResponse = await fetch('http://localhost:5001/monitor/sensitivity', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ version })
+          body: JSON.stringify({ version: currentVersion })
         });
 
         if (!monitorResponse.ok) {
@@ -81,7 +98,7 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
         const response = await fetch('http://localhost:5001/monitor/sensitivity', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ version })
+          body: JSON.stringify({ version: currentVersion })
         });
 
         if (response.ok) {
@@ -277,6 +294,8 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
   // If not visible, don't render anything
   if (!isVisible) return null;
   
+
+  
   return (
     <div className={`sensitivity-monitor ${isExpanded ? 'expanded' : 'collapsed'}`}>
       <div className="monitor-header">
@@ -334,6 +353,13 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
               title="Reset all sensitivity parameters"
             >
               Reset All
+            </button>
+            <button
+              className="refresh-button"
+              onClick={refreshParameters}
+              title="Refresh sensitivity parameters"
+            >
+              Refresh
             </button>
           </div>
           
@@ -422,13 +448,29 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
                           
                           <div className="parameter-plots">
                             <span className="label">Plots:</span>
-                            <span className="value">
-                              {[
-                                value.waterfall && 'Waterfall',
-                                value.bar && 'Bar', 
-                                value.point && 'Point'
-                              ].filter(Boolean).join(', ') || 'None'}
-                            </span>
+                            <div className="plot-indicators">
+                              {value.waterfall && (
+                                <div className="plot-item">
+                                  <span className="plot-box waterfall"></span>
+                                  <span className="plot-label">Waterfall</span>
+                                </div>
+                              )}
+                              {value.bar && (
+                                <div className="plot-item">
+                                  <span className="plot-box bar"></span>
+                                  <span className="plot-label">Bar</span>
+                                </div>
+                              )}
+                              {value.point && (
+                                <div className="plot-item">
+                                  <span className="plot-box point"></span>
+                                  <span className="plot-label">Point</span>
+                                </div>
+                              )}
+                              {!value.waterfall && !value.bar && !value.point && (
+                                <span className="no-plots">None</span>
+                              )}
+                            </div>
                           </div>
                         </div>
                       )}
@@ -627,4 +669,4 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
   );
 };
 
-export default SensitivityMonitor;
+export { SensitivityMonitor as default, refreshRef };

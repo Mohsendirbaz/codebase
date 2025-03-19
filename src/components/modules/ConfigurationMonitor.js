@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import { refreshRef } from './SensitivityMonitor';
 import '../../styles/HomePage.CSS/ConfigurationMonitor.css';
 import useFormValues from '../../useFormValues';
 
@@ -71,61 +72,68 @@ const ConfigurationMonitor = ({ version }) => {
     { id: "federalTaxRateAmount33", value: 21, remarks: "Federal tax rate" }
   ];
   
-  // Fetch configuration data - with fallback to hardcoded data if API fails
-  useEffect(() => {
+  // Fetch configuration data function
+  const fetchConfigData = useCallback(async () => {
     if (!version) return;
     
-    const fetchConfigData = async () => {
-      setIsLoading(true);
-      setError(null);
-      
-      try {
-        // Always use integer version for U_configurations files
-        let intVersion = version;
-        if (typeof version === 'string' && version.includes('.')) {
-          // For versions like "1.13", use just "1" for config files
-          intVersion = version.split('.')[0];
-        }
-        
-        console.log(`Attempting to fetch configuration for version: ${intVersion}`);
-        
-        // Try load endpoint directly
-        const response = await fetch('http://localhost:5000/load_configuration', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ version: intVersion })
-        });
-        
-        if (!response.ok) {
-          console.warn(`API returned error status: ${response.status}`);
-          console.log('Using fallback configuration data');
-          setConfigData(fallbackConfigData);
-          return;
-        }
-        
-        const data = await response.json();
-        
-        if (data.filteredValues && Array.isArray(data.filteredValues) && data.filteredValues.length > 0) {
-          console.log(`Loaded ${data.filteredValues.length} configuration values from API`);
-          setConfigData(data.filteredValues);
-        } else {
-          console.warn('API returned empty filteredValues array, using fallback data');
-          setConfigData(fallbackConfigData);
-        }
-      } catch (error) {
-        console.error('Error fetching configuration data:', error);
-        console.log('Using fallback configuration data due to error');
-        setConfigData(fallbackConfigData);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    // Just fetch once when version changes
-    fetchConfigData();
+    setIsLoading(true);
+    setError(null);
     
-    // No polling, no cleanup needed
+    try {
+      // Always use integer version for U_configurations files
+      let intVersion = version;
+      if (typeof version === 'string' && version.includes('.')) {
+        // For versions like "1.13", use just "1" for config files
+        intVersion = version.split('.')[0];
+      }
+      
+      console.log(`Attempting to fetch configuration for version: ${intVersion}`);
+      
+      // Try load endpoint directly
+      const response = await fetch('http://localhost:5000/load_configuration', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ version: intVersion })
+      });
+      
+      if (!response.ok) {
+        console.warn(`API returned error status: ${response.status}`);
+        console.log('Using fallback configuration data');
+        setConfigData(fallbackConfigData);
+        return;
+      }
+      
+      const data = await response.json();
+      
+      if (data.filteredValues && Array.isArray(data.filteredValues) && data.filteredValues.length > 0) {
+        console.log(`Loaded ${data.filteredValues.length} configuration values from API`);
+        setConfigData(data.filteredValues);
+      } else {
+        console.warn('API returned empty filteredValues array, using fallback data');
+        setConfigData(fallbackConfigData);
+      }
+    } catch (error) {
+      console.error('Error fetching configuration data:', error);
+      console.log('Using fallback configuration data due to error');
+      setConfigData(fallbackConfigData);
+    } finally {
+      setIsLoading(false);
+    }
   }, [version]);
+
+  // Refresh configuration data
+  const handleRefresh = useCallback(() => {
+    setConfigData([]);
+    setIsLoading(true);
+    setError(null);
+    fetchConfigData();
+    refreshRef.current?.();
+  }, [fetchConfigData]);
+
+  // Fetch configuration data on version change
+  useEffect(() => {
+    fetchConfigData();
+  }, [fetchConfigData]);
 
   // Process and group configuration data
   const groupedParams = useMemo(() => {
@@ -207,6 +215,14 @@ const ConfigurationMonitor = ({ version }) => {
               className="search-input"
             />
             
+            <button
+              className="refresh-button"
+              onClick={handleRefresh}
+              title="Refresh configuration data"
+            >
+              Refresh
+            </button>
+
             <select 
               value={filterByGroup} 
               onChange={(e) => setFilterByGroup(e.target.value)}

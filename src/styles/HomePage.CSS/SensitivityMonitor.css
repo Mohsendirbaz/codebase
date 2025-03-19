@@ -125,9 +125,27 @@
   transition: transform var(--neu-transition-medium);
 }
 
-.reset-button:hover {
+.reset-button:hover,
+.refresh-button:hover {
   transform: translateY(-2px);
   box-shadow: var(--neu-shadow-md);
+}
+
+.refresh-button {
+  padding: 8px 16px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--neu-border-radius-md);
+  cursor: pointer;
+  font-weight: 500;
+  transition: all var(--neu-transition-fast);
+  box-shadow: var(--neu-shadow-sm);
+  margin-left: 8px;
+}
+
+.refresh-button:hover {
+  background-color: var(--secondary-color);
 }
 
 .reset-button:active::after {
@@ -201,7 +219,7 @@
 
 .parameter-reset-button {
   padding: 6px 12px;
-  background-color: var(--warning-color);
+  background-color: var(--danger-color);
   color: white;
   border: none;
   border-radius: var(--neu-border-radius-sm);
@@ -227,7 +245,7 @@
 }
 
 .parameter-reset-button:hover {
-  background-color: color-mix(in srgb, var(--warning-color) 90%, black);
+  background-color: rgba(var(--warning-color-rgb), 0.9);
   transform: translateY(-1px);
   box-shadow: var(--neu-shadow-sm);
 }
@@ -240,7 +258,7 @@
 .parameter-reset-button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-  background-color: color-mix(in srgb, var(--warning-color) 50%, gray);
+  background-color: rgba(var(--warning-color-rgb), 0.5);
 }
 
 .toggle-label {
@@ -547,6 +565,50 @@
   gap: 0.5rem;
   font-size: var(--model-font-size-sm);
   color: var(--text-secondary);
+}
+
+/* Plot indicators */
+.plot-indicators {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.plot-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.plot-box {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.plot-box.waterfall {
+  background-color: #4caf50;
+}
+
+.plot-box.bar {
+  background-color: #2196f3;
+}
+
+.plot-box.point {
+  background-color: #ff9800;
+}
+
+.plot-label {
+  font-size: 0.9em;
+  color: var(--text-color);
+}
+
+.no-plots {
+  color: var(--text-secondary);
+  font-style: italic;
 }
 
 /* Loading indicator */
