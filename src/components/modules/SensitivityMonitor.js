@@ -333,7 +333,7 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
       <div className="monitor-header-s">
         {isExpanded ? (
           <>
-            <h3>Sensitivity Analysis Configuration</h3>
+            <h3>Sensitivity Analysis</h3>
             <button 
               className="collapse-button" 
               onClick={() => setIsExpanded(false)}

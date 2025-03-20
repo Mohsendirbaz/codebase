@@ -198,17 +198,7 @@
   padding: 2px 0;
 }
 
-.refresh-button {
-  background: none;
-  border: none;
-  color: var(--text-secondary);
-  cursor: pointer;
-  font-size: 14px;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 
 .version-selector-box {
   max-height: 100px;
@@ -284,19 +274,7 @@
   border: 1px solid var(--border-color);
 }
 
-/* Input field reduction */
-.version-input {
-  height: 22px;
-  width: 60px;
-  font-size: 12px;
-  padding: 0 5px;
-}
 
-.version-input-container {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
 
 /* Label management styles */
 .labels-section {
@@ -324,9 +302,7 @@
     transition: background-color 0.2s, transform 0.1s;
   }
   
-  .update-button {
-    background-color: #4a90e2;
-  }
+ 
   
   .reset-button {
     background-color: #6c757d;

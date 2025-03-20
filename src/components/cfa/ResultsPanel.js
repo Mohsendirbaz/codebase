@@ -195,7 +195,7 @@ const ResultsPanel = ({
         <h3 className="results-panel__title">Consolidated Results</h3>
         <div className="results-panel__actions">
           <button
-            className="action-button"
+            className="action-button-rs"
             onClick={() => {
               // Add export functionality
               console.log('Export table data:', validatedData);

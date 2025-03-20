@@ -183,7 +183,7 @@ const ConfigurationMonitor = ({ version }) => {
       <div className="config-header-c">
         {isExpanded ? (
           <>
-            <h3>Configuration Monitor</h3>
+            <h3>Financial Configuration</h3>
             <button 
               className="toggle-button" 
               onClick={() => setIsExpanded(false)}
@@ -216,7 +216,7 @@ const ConfigurationMonitor = ({ version }) => {
             />
             
             <button
-              className="refresh-button"
+              className="refresh-button-c"
               onClick={handleRefresh}
               title="Refresh configuration data"
             >

@@ -145,7 +145,7 @@
   flex-wrap: wrap;
 }
 
-.action-button {
+.action-button-pp {
   padding: var(--model-spacing-sm) var(--model-spacing-lg);
   border: none;
   border-radius: var(--model-border-radius-sm);
@@ -155,36 +155,36 @@
   transition: all var(--model-transition-fast) ease;
 }
 
-.action-button.start {
+.action-button-pp.start {
   background: var(--model-color-primary);
   color: white;
 }
 
-.action-button.start:hover:not(:disabled) {
+.action-button-pp.start:hover:not(:disabled) {
   background: var(--model-color-primary-dark);
 }
 
-.action-button.cancel {
+.action-button-pp.cancel {
   background: var(--model-color-danger);
   color: white;
 }
 
-.action-button.cancel:hover:not(:disabled) {
+.action-button-pp.cancel:hover:not(:disabled) {
   background: var(--model-color-danger-dark);
 }
 
-.action-button.reset {
+.action-button-pp.reset {
   background: var(--model-color-background);
   color: var(--model-color-text);
   border: 1px solid var(--model-color-border);
 }
 
-.action-button.reset:hover:not(:disabled) {
+.action-button-pp.reset:hover:not(:disabled) {
   background: var(--model-color-background-hover);
   border-color: var(--model-color-text);
 }
 
-.action-button:disabled {
+.action-button-pp:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }

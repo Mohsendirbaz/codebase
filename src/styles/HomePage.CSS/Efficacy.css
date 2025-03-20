@@ -142,17 +142,7 @@
     align-items: center;
 }
 
-.version-input-container {
-    margin-right: auto;
-}
 
-.version-input {
-    padding: 6px 10px;
-    border: 1px solid #e5e7eb;
-    border-radius: 4px;
-    background-color: #ffffff;
-    color: #333;
-}
 
 .button {
     padding: 8px 16px;

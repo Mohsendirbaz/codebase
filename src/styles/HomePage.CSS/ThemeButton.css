@@ -12,7 +12,8 @@
   cursor: pointer;
   transition: var(--model-transition-medium, 0.3s ease);
   position: relative;
-  min-width: 80px;
+  min-width: 100px;
+  font-size: 1rem;
 }
 
 .theme-button.active {

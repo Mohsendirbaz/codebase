@@ -102,7 +102,7 @@ const ProcessingPanel = ({
 
       <div className="processing-panel__actions">
         <button
-          className={`action-button ${isProcessing ? 'cancel' : 'start'}`}
+          className={`action-button-pp ${isProcessing ? 'cancel' : 'start'}`}
           onClick={isProcessing ? onCancel : onStart}
           disabled={disabled || (isProcessing && status === 'complete')}
         >
@@ -132,7 +132,7 @@ const ProcessingPanel = ({
 
         {showReset && (
           <button
-            className="action-button reset"
+            className="action-button-pp reset"
             onClick={onReset}
             disabled={isProcessing}
           >

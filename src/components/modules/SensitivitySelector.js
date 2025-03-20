@@ -284,10 +284,10 @@ const SensitivityAnalysisSelector = ({ sKey = '', onSensitivityChange = () => {}
         <div className="sensitivity-module">
             <button
                 ref={triggerButtonRef}
-                className="sensitivity-btn1 primary-btn1"
+                className="action-button-sensitivity"
                 onClick={() => setShowDialog(true)}
             >
-                Sensitivity
+                Perform Sensitivity Analysis
             </button>
 
             <Dialog

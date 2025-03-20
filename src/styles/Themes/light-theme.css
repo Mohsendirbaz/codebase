@@ -1,7 +1,7 @@
 /* Normal Theme - Professional & Clean */
 :root.light-theme {
   /* Base colors */
-  --primary-color: #4a90e2;
+  --primary-color: #63733f;
   --secondary-color: #66bb6a;
   --text-color: #333333;
   --background-color: #f5f7fa;
@@ -108,8 +108,7 @@
   --spatial-shadow-intensity: 2xl;
   --spatial-text-size: 1.5rem;
 
-  /* Sensitivity Monitor Variables */
-  --header-background: #ffffff;
+  --dark-blue:darkblue;
 }
 
 html {

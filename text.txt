@@ -6,13 +6,13 @@ git rev-parse HEAD  # Should show current
 
 git remote -v  # Should show https://github.com/Mohsendirbaz/SF.git
 
-git checkout -b tm5
+git checkout -b tm7
 
 git add .
 
-git commit -m "Cleaned Up Project"
+git commit -m "Cleaned Up Project-refined and enhanced"
 
-git push codebase tm5
+git push codebase tm7
 
 
 # Remove existing temp directory (already done)

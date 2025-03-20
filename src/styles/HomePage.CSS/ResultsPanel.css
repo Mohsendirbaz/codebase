@@ -28,7 +28,7 @@
   gap: var(--model-spacing-sm);
 }
 
-.action-button {
+.action-button-rs {
   padding: var(--model-spacing-sm) var(--model-spacing-md);
   background: var(--model-color-primary);
   color: white;
@@ -39,7 +39,7 @@
   transition: background var(--model-transition-fast) ease;
 }
 
-.action-button:hover {
+.action-button-rs:hover {
   background: var(--model-color-primary-dark);
 }
 

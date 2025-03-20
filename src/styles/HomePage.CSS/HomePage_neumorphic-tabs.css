@@ -1,4 +1,19 @@
-.HomePageTabs .tab-button,
+.HomePageTabs .tab-button{
+  background: linear-gradient(145deg, #e6e6e6, #ffffff);
+  border-radius: 10px;
+  
+  padding: 15px 25px;
+  margin: 10px;
+  font-size: var(--spatial-text-size)*.8;
+  font-weight: 500;
+  color: #333;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
 .sub-tab-buttons .sub-tab-button {
   background: linear-gradient(145deg, #e6e6e6, #ffffff);
   border-radius: 10px;
@@ -14,7 +29,6 @@
   position: relative;
   overflow: hidden;
 }
-
 .HomePageTabs .tab-button::before,
 .sub-tab-buttons .sub-tab-button::before {
   content: '';
@@ -90,6 +104,7 @@
   padding: 12px 20px;
   margin: 8px;
   font-size: 14px;
+  flex-wrap: wrap;
 }
 
 /* Remove default button styles */
@@ -97,4 +112,38 @@
 .sub-tab-button {
   border: none;
   background-color: transparent;
+}
+.sub-tab-buttons {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap to next line */
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+/* Optionally, adjust the button width to better control wrapping */
+.sub-tab-buttons .sub-tab-button {
+  flex: 0 0 auto; /* Don't grow or shrink, respect the button's natural width */
+  min-width: 150px; /* Optional: minimum width to ensure consistent appearance */
+  max-width: 250px; /* Optional: maximum width to prevent overly wide buttons */
+}
+
+/* Make active subtab buttons more visible when wrapped */
+.sub-tab-buttons .sub-tab-button.active {
+  background: linear-gradient(145deg, #ffffff, #f0f0f0);
+  box-shadow: var(--neu-shadow-md);
+  transform: translateY(0);
+  color: var(--dark-blue);
+  font-weight: bolder;
+  position: relative;
+  z-index: 1; /* Ensure active buttons appear above others */
+}
+
+/* Enhance hover state for better interaction when wrapped */
+.sub-tab-buttons .sub-tab-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--neu-shadow-sm);
+  z-index: 2; /* Raise hovered buttons above others */
 }

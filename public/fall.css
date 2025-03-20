@@ -36,7 +36,7 @@ body.fall .HomePageSectionA {
   color: #002366; /* Deep Blue text */
   font-weight: bold; /* Make the text bold */
   font-size: 1.2em; /* Increase the font size for a main title */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add a slight shadow */
+  text-shadow: 8px 8px 16px rgba(0, 0, 0, 0.3); /* Add a slight shadow */
 }
 
 /* Main Title Section in the Center */
@@ -50,7 +50,7 @@ body.fall .HomePageSectionT {
   color: #002366;
   font-weight: bold;
   font-size: 1em;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  text-shadow: 8px 8px 16px rgba(0, 0, 0, 0.3);
   flex-direction: column;
 }
 

@@ -122,6 +122,9 @@
   display: flex;
   flex-direction: column;
   z-index: 1;
+  color: var( --success-color);
+  font-size: var(--model-font-size-md);
+  font-weight: 5000;
 }
 
 .version-number {

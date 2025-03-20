@@ -6,7 +6,7 @@
   background-color: var(--card-background);
   border-right: 1px solid var(--border-color);
   overflow: hidden;
-  width: 380px;
+  width: 520px;
   box-shadow: var(--neu-shadow-md);
   border-radius: var(--neu-border-radius-lg);
 }
@@ -17,7 +17,7 @@
 }
 
 .config-monitor-c.expanded {
-  width: 380px;
+  width: 520px;
   opacity: 1;
 }
 
@@ -154,7 +154,7 @@
 
 /* Button styles */
 .reset-button,
-.refresh-button {
+.refresh-button-c {
   padding: 8px 16px;
   border: none;
   border-radius: var(--neu-border-radius-md);
@@ -170,13 +170,13 @@
   color: white;
 }
 
-.refresh-button {
+.refresh-button-c {
   background-color: var(--primary-color);
   color: white;
 }
 
 .reset-button:hover,
-.refresh-button:hover {
+.refresh-button-c:hover {
   transform: translateY(-2px);
   box-shadow: var(--neu-shadow-md);
 }

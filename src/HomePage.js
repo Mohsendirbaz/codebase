@@ -15,7 +15,6 @@ import './styles/HomePage.CSS/HomePage6.css';
 import './styles/HomePage.CSS/HomePage_AboutUs.css';
 import './styles/HomePage.CSS/HomePage_buttons.css';
 import './styles/HomePage.CSS/HomePage_monitoring.css';
-import './styles/HomePage.CSS/HomePage_selectors.css';
 import './styles/HomePage.CSS/HomePage_FactEngine.css';
 import './styles/HomePage.CSS/HomePage_FactAdmin.css';
 import './styles/HomePage.CSS/HomePage_neumorphic-tabs.css';
