@@ -6,7 +6,7 @@
   background-color: var(--card-background);
   border-right: 1px solid var(--border-color);
   overflow: hidden;
-  width: 520px;
+  width: 480;
   box-shadow: var(--neu-shadow-md);
   border-radius: var(--neu-border-radius-lg);
 }
@@ -17,7 +17,7 @@
 }
 
 .config-monitor-c.expanded {
-  width: 520px;
+  width: 480;
   opacity: 1;
 }
 
