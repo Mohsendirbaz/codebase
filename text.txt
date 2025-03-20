@@ -6,13 +6,13 @@ git rev-parse HEAD  # Should show current
 
 git remote -v  # Should show https://github.com/Mohsendirbaz/SF.git
 
-git checkout -b tm8
+git checkout -b tm9
 
 git add .
 
 git commit -m "Natural motion"
 
-git push codebase tm8
+git push tm6 tm9
 
 
 # Remove existing temp directory (already done)
