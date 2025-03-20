@@ -23,7 +23,7 @@ import './styles/Themes/light-theme.css';
 import './styles/Themes/creative-theme.css';
 import PropertySelector from './PropertySelector.js';
 import VersionSelector from './VersionSelector.js';
-import SpatialTransformComponent from './Naturalmotion.js'
+import SpatialTransformComponent from './Natural.js'
 import useFormValues from './useFormValues.js';
 import versionEventEmitter from './state/EventEmitter';
 import TestingZone from './components/modules/TestingZone';
