@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import '../../styles/HomePage.CSS/SensitivityMonitor.css';
+import useFormValues from '../../useFormValues';
 
 /**
  * SensitivityMonitor component for configuring and managing sensitivity analysis parameters
@@ -14,6 +15,9 @@ import '../../styles/HomePage.CSS/SensitivityMonitor.css';
 const refreshRef = { current: null };
 
 const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
+  // Get form values
+  const { formValues } = useFormValues();
+  
   // Component state
   const [isExpanded, setIsExpanded] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
@@ -221,17 +225,21 @@ const formatParameterValues = useCallback((values) => {
   return values.map(v => v.toFixed(2)).join(', ');
 }, []);
   
-  // Get parameter name from key
+  // Get parameter name from key using formValues mapping
   const getParameterName = useCallback((key) => {
-    const paramNumber = key.replace('S', '');
-    const matchingParam = availableParameters.find(p => p.id === `Amount${paramNumber}`);
+    if (!key) return '';
     
-    if (matchingParam) {
-      return matchingParam.name || matchingParam.id;
+    const numericPart = key.replace(/\D/g, '');
+    
+    // Try property names from different sources based on numeric part
+    for (const formKey in formValues) {
+      if (formKey.includes(`Amount${numericPart}`)) {
+        return formValues[formKey].label || key;
+      }
     }
     
-    return `Parameter ${paramNumber}`;
-  }, [availableParameters]);
+    return key;
+  }, [formValues]);
   
   // Handle enabling/disabling a parameter
   const toggleParameterEnabled = useCallback((key) => {
@@ -747,13 +755,20 @@ const formatParameterValues = useCallback((values) => {
                           className="form-control"
                         >
                           <option value="">No comparison</option>
-                          {Object.keys(S)
-                            .filter(key => key !== selectedParameter && S[key].enabled)
-                            .map(key => (
-                              <option key={key} value={key}>
-                                {getParameterName(key)} ({key})
-                              </option>
-                            ))}
+                          {Array.from({ length: 70 }, (_, i) => {
+                            const key = `S${i + 10}`;
+                            return {
+                              key,
+                              label: getParameterName(key)
+                            };
+                          }).filter(option => 
+                            option.key !== selectedParameter && 
+                            S[option.key]?.enabled
+                          ).map(option => (
+                            <option key={option.key} value={option.key}>
+                              {option.key} - {option.label}
+                            </option>
+                          ))}
                         </select>
                       </div>
                       
