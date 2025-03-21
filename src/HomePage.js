@@ -764,9 +764,6 @@ const HomePageContent = () => {
             return {
                 id: item.id,
                 value: item.value,
-                senParam: item.senParam,
-                lifeStage: efficacyPeriod.lifeStage?.value,
-                duration: efficacyPeriod.duration?.value,
                 remarks: item.remarks || '',
             };
         });
