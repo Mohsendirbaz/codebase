@@ -25,6 +25,14 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
   const [currentVersion, setCurrentVersion] = useState(version);
   const [isRestarting, setIsRestarting] = useState(false);
 
+  // Mode color mapping for visual indication
+  const modeColorMap = {
+    range: 'mode-range',
+    discrete: 'mode-discrete',
+    percentage: 'mode-percentage',
+    monteCarlo: 'mode-montecarlo'
+  };
+
   // Refresh parameters by temporarily setting version to 0
   const refreshParameters = useCallback(async () => {
     const originalVersion = version;
@@ -150,40 +158,68 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
 
     // Cleanup interval on unmount
     return () => clearInterval(intervalId);
-  }, [version, setS]);
+  }, [currentVersion, setS]);
   
   // Filter parameters based on search term and filter mode
-  const filteredParameters = useMemo(() => {
-    return Object.entries(S).filter(([key, value]) => {
-      // Extract parameter number for categorization
-      const paramNumber = parseInt(key.replace('S', ''), 10);
-      
-      // Match search term
-      const matchesSearch = searchTerm === '' || 
-        key.toLowerCase().includes(searchTerm.toLowerCase());
-      
-      // Match filter mode
-      let matchesFilter = filterMode === 'all';
-      
-      if (filterMode === 'enabled' && value.enabled) {
-        matchesFilter = true;
-      } else if (filterMode === 'disabled' && !value.enabled) {
-        matchesFilter = true;
-      } else if (filterMode === 'project' && paramNumber >= 10 && paramNumber <= 19) {
-        matchesFilter = true;
-      } else if (filterMode === 'loan' && paramNumber >= 20 && paramNumber <= 29) {
-        matchesFilter = true;
-      } else if (filterMode === 'rates' && paramNumber >= 30 && paramNumber <= 39) {
-        matchesFilter = true;
-      } else if (filterMode === 'quantities' && paramNumber >= 40 && paramNumber <= 49) {
-        matchesFilter = true;
-      } else if (filterMode === 'costs' && paramNumber >= 50 && paramNumber <= 59) {
-        matchesFilter = true;
-      }
-      
-      return matchesSearch && matchesFilter;
+  // In SensitivityMonitor.js - update the filteredParameters useMemo function
+
+const filteredParameters = useMemo(() => {
+  // Check if search term contains comma-separated values
+  if (searchTerm.includes(',')) {
+    // Split by comma and clean each term (trim whitespace, remove 'S' if present)
+    const searchTerms = searchTerm.split(',').map(term => {
+      const cleanTerm = term.trim().toUpperCase();
+      return cleanTerm.startsWith('S') ? cleanTerm : `S${cleanTerm}`;
     });
-  }, [S, searchTerm, filterMode]);
+    
+    // Filter parameters that match any of the search terms
+    return Object.entries(S).filter(([key]) => {
+      return searchTerms.some(term => key.toUpperCase() === term);
+    });
+  }
+  
+  // Default search behavior (single term)
+  return Object.entries(S).filter(([key, value]) => {
+    // Extract parameter number for categorization
+    const paramNumber = parseInt(key.replace('S', ''), 10);
+    
+    // Match search term - case insensitive
+    const matchesSearch = searchTerm === '' || 
+      key.toUpperCase().includes(searchTerm.toUpperCase()) ||
+      (searchTerm.toUpperCase().startsWith('S') ? 
+        key.toUpperCase().includes(searchTerm.toUpperCase()) : 
+        key.toUpperCase().includes(`S${searchTerm.toUpperCase()}`));
+    
+    // Match filter mode
+    let matchesFilter = filterMode === 'all';
+    
+    if (filterMode === 'enabled' && value.enabled) {
+      matchesFilter = true;
+    } else if (filterMode === 'disabled' && !value.enabled) {
+      matchesFilter = true;
+    } else if (filterMode === 'project' && paramNumber >= 10 && paramNumber <= 19) {
+      matchesFilter = true;
+    } else if (filterMode === 'loan' && paramNumber >= 20 && paramNumber <= 29) {
+      matchesFilter = true;
+    } else if (filterMode === 'rates' && paramNumber >= 30 && paramNumber <= 39) {
+      matchesFilter = true;
+    } else if (filterMode === 'quantities' && paramNumber >= 40 && paramNumber <= 49) {
+      matchesFilter = true;
+    } else if (filterMode === 'costs' && paramNumber >= 50 && paramNumber <= 59) {
+      matchesFilter = true;
+    }
+    
+    return matchesSearch && matchesFilter;
+  });
+}, [S, searchTerm, filterMode]);
+  
+ // Format values for display
+const formatParameterValues = useCallback((values) => {
+  if (!values || values.length === 0) return null;
+  
+  // Always show all values with fixed decimal precision
+  return values.map(v => v.toFixed(2)).join(', ');
+}, []);
   
   // Get parameter name from key
   const getParameterName = useCallback((key) => {
@@ -211,16 +247,27 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
   // Open parameter details panel
   const openParameterDetails = useCallback((key) => {
     setSelectedParameter(key);
-    setParameterDetails(S[key]);
+    setParameterDetails({...S[key]});
   }, [S]);
   
-  // Update parameter details
+  // Update parameter details and reflect changes in main display
   const updateParameterDetails = useCallback((field, value) => {
     setParameterDetails(prev => ({
       ...prev,
       [field]: value
     }));
-  }, []);
+    
+    // Instantly reflect changes in main display if selectedParameter exists
+    if (selectedParameter) {
+      setS(prevS => ({
+        ...prevS,
+        [selectedParameter]: {
+          ...prevS[selectedParameter],
+          [field]: value
+        }
+      }));
+    }
+  }, [selectedParameter, setS]);
   
   // Save parameter changes
   const saveParameterChanges = useCallback(() => {
@@ -240,80 +287,131 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
   
   // Cancel parameter editing
   const cancelParameterEditing = useCallback(() => {
+    // Revert changes
+    if (selectedParameter) {
+      setS(prevS => ({
+        ...prevS,
+        [selectedParameter]: {
+          ...prevS[selectedParameter]
+        }
+      }));
+    }
+    
+    // Close the details panel
     setSelectedParameter(null);
     setParameterDetails(null);
-  }, []);
+  }, [selectedParameter, setS]);
   
   // Helper to add a value to a parameter's values array
   const addParameterValue = useCallback(() => {
-    if (!parameterDetails) return;
+    if (!parameterDetails || !selectedParameter) return;
     
+    const newValues = [...parameterDetails.values, 0];
+    
+    // Update both parameter details and main state
     setParameterDetails(prev => ({
       ...prev,
-      values: [...prev.values, 0]
+      values: newValues
     }));
-  }, [parameterDetails]);
+    
+    setS(prevS => ({
+      ...prevS,
+      [selectedParameter]: {
+        ...prevS[selectedParameter],
+        values: newValues
+      }
+    }));
+  }, [parameterDetails, selectedParameter, setS]);
   
   // Helper to remove a value from a parameter's values array
   const removeParameterValue = useCallback((index) => {
-    if (!parameterDetails) return;
+    if (!parameterDetails || !selectedParameter) return;
     
+    const newValues = parameterDetails.values.filter((_, i) => i !== index);
+    
+    // Update both parameter details and main state
     setParameterDetails(prev => ({
       ...prev,
-      values: prev.values.filter((_, i) => i !== index)
+      values: newValues
     }));
-  }, [parameterDetails]);
+    
+    setS(prevS => ({
+      ...prevS,
+      [selectedParameter]: {
+        ...prevS[selectedParameter],
+        values: newValues
+      }
+    }));
+  }, [parameterDetails, selectedParameter, setS]);
   
   // Update a specific value in the values array
   const updateParameterValue = useCallback((index, value) => {
-    if (!parameterDetails) return;
+    if (!parameterDetails || !selectedParameter) return;
     
     const newValue = parseFloat(value);
     if (isNaN(newValue)) return;
     
-    setParameterDetails(prev => {
-      const newValues = [...prev.values];
-      newValues[index] = newValue;
-      return {
-        ...prev,
+    const newValues = [...parameterDetails.values];
+    newValues[index] = newValue;
+    
+    // Update both parameter details and main state
+    setParameterDetails(prev => ({
+      ...prev,
+      values: newValues
+    }));
+    
+    setS(prevS => ({
+      ...prevS,
+      [selectedParameter]: {
+        ...prevS[selectedParameter],
         values: newValues
-      };
-    });
-  }, [parameterDetails]);
+      }
+    }));
+  }, [parameterDetails, selectedParameter, setS]);
   
-  // Reset a single parameter
+  // Reset a single parameter to initial state
   const resetParameter = useCallback((key) => {
     setS(prevS => ({
       ...prevS,
       [key]: {
         mode: null,
         values: [],
-        enabled: true,
         compareToKey: '',
         comparisonType: null,
         waterfall: false,
         bar: false,
-        point: false
+        point: false,
+        minValue: 0,
+        maxValue: 0,
+        step: 0.01,
+        isLocked: false,
+        enabled: false
       }
     }));
   }, [setS]);
 
-  // Reset all sensitivity parameters while preserving enabled state
+  // Reset all sensitivity parameters to initial state
   const resetAllParameters = useCallback(() => {
     setS(prevS => {
       const newS = {};
-      Object.entries(prevS).forEach(([key, value]) => {
+      // Reset all S parameters to initial state
+      for (let i = 1; i <= 59; i++) {
+        const key = `S${i}`;
         newS[key] = {
-          ...value,
           mode: null,
           values: [],
           compareToKey: '',
           comparisonType: null,
           waterfall: false,
           bar: false,
-          point: false
+          point: false,
+          minValue: 0,
+          maxValue: 0,
+          step: 0.01,
+          isLocked: false,
+          enabled: false
         };
-      });
+      }
       return newS;
     });
   }, [setS]);
@@ -326,8 +424,6 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
   // If not visible, don't render anything
   if (!isVisible) return null;
   
-
-  
   return (
     <div className={`sensitivity-monitor-s ${isExpanded ? 'expanded' : 'collapsed'}`}>
       <div className="monitor-header-s">
@@ -339,7 +435,7 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
               onClick={() => setIsExpanded(false)}
               aria-label="Collapse panel"
             >
-              ▼
+              ◀
             </button>
           </>
         ) : (
@@ -433,23 +529,22 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
                           </label>
                           
                           <div className="parameter-actions">
-                            
-                          <button 
-                            className="edit-button"
-                            onClick={() => openParameterDetails(key)}
-                            disabled={!value.enabled}
-                            title="Configure parameter"
-                          >
-                            Configure
-                          </button>
-                          <button
-                            className="parameter-reset-button"
-                            onClick={() => resetParameter(key)}
-                            disabled={!value.enabled}
-                            title="Reset parameter"
-                          >
-                            Reset
-                          </button>
+                            <button 
+                              className="edit-button"
+                              onClick={() => openParameterDetails(key)}
+                              disabled={!value.enabled}
+                              title="Configure parameter"
+                            >
+                              Configure
+                            </button>
+                            <button
+                              className="parameter-reset-button"
+                              onClick={() => resetParameter(key)}
+                              disabled={!value.enabled}
+                              title="Reset parameter"
+                            >
+                              Reset
+                            </button>
                           </div>
                         </div>
                       </div>
@@ -458,7 +553,7 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
                         <div className="parameter-summary-s">
                           <div className="parameter-mode">
                             <span className="label">Mode:</span> 
-                            <span className="value">
+                            <span className={`value ${value.mode ? modeColorMap[value.mode] : ''}`}>
                               {value.mode ? 
                                 sensitivityModes.find(m => m.id === value.mode)?.label || value.mode 
                                 : 'Not configured'}
@@ -468,10 +563,8 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
                           {value.values.length > 0 && (
                             <div className="parameter-values">
                               <span className="label">Values:</span> 
-                              <span className="value">
-                                {value.values.length === 1 ? 
-                                  value.values[0] : 
-                                  `${value.values.length} values`}
+                              <span className="value values-display">
+                                {formatParameterValues(value.values)}
                               </span>
                             </div>
                           )}
@@ -487,7 +580,6 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
                           )}
                           
                           <div className="parameter-plots">
-                            <span className="label">Plots:</span>
                             <div className="plot-indicators">
                               {value.waterfall && (
                                 <div className="plot-item">
@@ -508,7 +600,7 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
                                 </div>
                               )}
                               {!value.waterfall && !value.bar && !value.point && (
-                                <span className="no-plots">None</span>
+                                <span className="no-plots"></span>
                               )}
                             </div>
                           </div>
