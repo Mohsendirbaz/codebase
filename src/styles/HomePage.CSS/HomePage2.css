@@ -72,6 +72,8 @@
     background-color: var(--sidebar-background);
     border-radius: 8px;
     padding: 20px;
+    overflow: auto;
+    padding: 10px 5px;
 }
 
 /* Left-aligned Text */

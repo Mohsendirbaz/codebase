@@ -59,7 +59,7 @@ const CFAConsolidationUI = () => {
     }));
     
     try {
-      const response = await fetch('http://localhost:456/api/versions', {
+      const response = await fetch('http://localhost:4560/api/versions', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
@@ -144,7 +144,7 @@ const CFAConsolidationUI = () => {
     });
     
     try {
-      const consolidationResponse = await fetch('http://localhost:456/api/consolidate', {
+      const consolidationResponse = await fetch('http://localhost:4560/api/consolidate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -169,7 +169,7 @@ const CFAConsolidationUI = () => {
       
       while (!completed) {
         try {
-          const progressResponse = await fetch(`http://localhost:456/api/consolidate/status/${consolidationId}`, {
+          const progressResponse = await fetch(`http://localhost:4560/api/consolidate/status/${consolidationId}`, {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json'
@@ -207,7 +207,7 @@ const CFAConsolidationUI = () => {
           if (progressData.status === 'complete') {
             completed = true;
             
-            const resultsResponse = await fetch(`http://localhost:456/api/consolidate/results/${consolidationId}`, {
+            const resultsResponse = await fetch(`http://localhost:4560/api/consolidate/results/${consolidationId}`, {
               method: 'GET',
               headers: {
                 'Content-Type': 'application/json'
@@ -292,7 +292,7 @@ const CFAConsolidationUI = () => {
     }));
     
     try {
-      const response = await fetch(`http://localhost:456/api/cell-details`, {
+      const response = await fetch(`http://localhost:4560/api/cell-details`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
