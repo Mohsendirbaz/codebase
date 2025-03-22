@@ -226,13 +226,13 @@
 }
 
 .parameter-item-c.baseline::before {
-  content: "Baseline Value";
+ 
   position: absolute;
   top: -8px;
   left: 16px;
   font-size: var(--model-font-size-xs);
   font-weight: 600;
-  color: var(--primary-color);
+  color: var(--text-color);
   background: var(--card-background);
   padding: 2px 8px;
   border-radius: var(--neu-border-radius-sm);
@@ -326,10 +326,15 @@
 
 .param-id {
   font-weight: 600;
-  color: var(--text-color);
+  color: var(--primary-color);
   font-size: var(--model-font-size-md);
 }
 
+.param-id-baseline {
+  font-weight: 600;
+  color: var(--text-color);
+  font-size: var(--model-font-size-md);
+}
 .param-value {
   font-weight: bold;
   color: var(--text-color);

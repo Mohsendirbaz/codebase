@@ -16,6 +16,7 @@
   align-items: flex-start;
   width: 100%;
   gap: 8px;
+  font-size:24px;
 }
 
 /* Row layout for all button rows */
@@ -27,6 +28,7 @@
   gap: calc(var(--model-spacing-sm) * 2);
   padding: 8px 0;
   flex-wrap: wrap;
+  
 }
 
 /* Config row */
@@ -36,6 +38,7 @@
   align-items: center;
   width: 100%;
   margin-bottom: 8px !important;
+  
 }
 
 /* Checkbox row */
@@ -45,6 +48,7 @@
   gap: calc(var(--model-spacing-md) * 2);
   align-items: center;
   margin: 8px 0 !important;
+  
 }
 
 /* Visualization row */
@@ -54,6 +58,7 @@
   align-items: center;
   width: 100%;
   margin: 8px 0 !important;
+  font-size:24px;
 }
 
 /* Step content - batch operations */
@@ -87,33 +92,7 @@
   padding: 2px;
 }
 
-.property-selector-container,
-.version-selector-container {
-  flex: 1;
-  min-width: 0;
-  margin: 0;
-}
 
-.property-selector-container select,
-.version-selector-container select {
-  width: 100%;
-  min-height: 80px;
-  padding: 2px 4px;
-  border-radius: 3px;
-  border: 1px solid var(--border-color);
-  background-color: var(--input-background);
-  color: var(--text-color);
-  font-size: 15px;
-}
-
-.property-selector-container label,
-.version-selector-container label {
-  display: block;
-  margin-bottom: 2px;
-  font-weight: 500;
-  color: var(--text-secondary);
-  font-size: 11px;
-}
 
 /* Form elements compaction */
 .calculation-row {
@@ -130,7 +109,7 @@
 }
 
 .radio-label {
-  font-size: 12px;
+  font-size: 24px;
   display: flex;
   align-items: center;
   gap: 3px;
@@ -140,29 +119,16 @@
 .target-row-input {
   width: 50px;
   height: 20px;
-  font-size: 11px;
+  font-size:24px;
+  text-align: center;
   padding: 2px 4px;
   border-radius: 3px;
   border: 1px solid var(--border-color);
+  background-color: var(--input-background);
+  color: var(--text-color);
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .selectors-container {
-    flex-direction: column;
-    gap: 4px;
-  }
-  
-  .property-selector-container,
-  .version-selector-container {
-    width: 100%;
-  }
-  
-  .property-selector-container select,
-  .version-selector-container select {
-    min-height: 60px;
-  }
-}
+
 
 /* Make buttons in practical row more evenly spaced */
 .practical-row .tooltip-container {
@@ -170,6 +136,7 @@
   align-items: center;
   justify-content: flex-start;
   margin-right: 10px;
+  font-size:24px;
 }
 
 .form-action-buttons button {
@@ -192,6 +159,7 @@
 /* Force inline style overrides */
 .form-action-buttons button[style*="padding"] {
   padding: 16px 20px !important;
+  font-size:24px;
 }
 
 /* Configuration Row */
@@ -218,6 +186,7 @@
   color: var(--button-text);
   margin-right: 10px !important;
   flex: 0 0 auto;
+  font-size:24px;
 }
 
 .form-action-buttons .visualization-row button:hover {
@@ -415,6 +384,7 @@
   align-items: center;
   margin-right: 20px;
   color:var(--text-color);
+  font-size:24px;
 }
 
 .checkbox-row input[type="checkbox"] {

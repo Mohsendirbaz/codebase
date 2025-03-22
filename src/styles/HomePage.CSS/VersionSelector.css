@@ -1,202 +1,116 @@
-/* Version Selector Styles */
-.version-selector-container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-  position: relative;
-}
+/* Version Selector Styles
+   ========================================================================== */
 
-.version-selector {
-  max-height: calc(var(--model-spacing-md) * 25);
-  overflow-y: auto;
-  border: none;
-  border-radius: var(--neu-border-radius-lg);
-  background: var(--neu-background);
-  margin-bottom: var(--model-spacing-md);
-  padding: var(--model-spacing-md);
-  box-shadow: var(--neu-shadow-sm);
-  width: 100%;
-  transition: var(--model-transition-medium);
-}
-
-.version-selector:hover {
-  box-shadow: var(--neu-shadow-md);
-}
-
-.group-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: calc(var(--model-spacing-sm) * 1.5) var(--model-spacing-md);
-  background: var(--neu-gradient-basic);
-  border-radius: var(--neu-border-radius-md);
-  margin-bottom: calc(var(--model-spacing-sm) * 1.5);
-  cursor: pointer;
-  transition: var(--model-transition-medium);
-  min-height: calc(var(--model-spacing-md) * 3.5);
-  box-shadow: var(--neu-shadow-sm);
-  position: relative;
-  overflow: hidden;
-}
-
-.group-header::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--neu-gradient-highlight);
-  pointer-events: none;
-}
-
-.group-header:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--neu-shadow-md);
-}
-
-.group-header.all-selected {
-  background: var(--neu-gradient-pressed);
-  box-shadow: var(--neu-pressed-shadow);
-  transform: translateY(0);
-}
-
-.group-header.all-selected::before {
-  opacity: 0;
-}
-
-.group-title {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  z-index: 1;
-}
-
-.group-name {
-  font-weight: 500;
-  font-size: var(--model-font-size-md);
-  color: var(--text-color);
-}
-
-.group-count {
-  font-size: var(--model-font-size-sm);
-  color: var(--text-secondary);
-  background: var(--neu-background);
-  padding: calc(var(--model-spacing-xs) * 1) calc(var(--model-spacing-sm) * 1);
-  border-radius: var(--neu-border-radius-sm);
-  box-shadow: var(--neu-pressed-shadow);
-}
-
-.version-list {
-  margin-left: var(--model-spacing-md);
-  margin-bottom: calc(var(--model-spacing-md) * 1.25);
-}
-
-.version-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: calc(var(--model-spacing-sm) * 1.25) var(--model-spacing-md);
-  border-radius: var(--neu-border-radius-sm);
-  margin-bottom: var(--model-spacing-sm);
-  cursor: pointer;
-  transition: var(--model-transition-medium);
-  min-height: calc(var(--model-spacing-md) * 3);
-  position: relative;
-}
-
-.version-item:hover {
-  background: var(--neu-gradient-basic);
-  box-shadow: var(--neu-shadow-sm);
-  transform: translateY(-1px);
-}
-
-.version-item.selected {
-  background: var(--neu-gradient-pressed);
-  box-shadow: var(--neu-pressed-shadow);
-  transform: translateY(0);
-}
-
-.version-info {
-  display: flex;
-  flex-direction: column;
-  z-index: 1;
-  color: var( --success-color);
-  font-size: var(--model-font-size-md);
-  font-weight: 5000;
-}
-
-.version-number {
-  font-weight: 500;
-  font-size: var(--model-font-size-md);
-  color: var(--text-color);
-}
-
-.version-description {
-  font-size: var(--model-font-size-sm);
-  color: var(--text-secondary);
-  margin-top: calc(var(--model-spacing-xs) * 1);
-}
-
-.version-checkbox {
-  position: relative;
-  width: calc(var(--model-spacing-md) * 1.5);
-  height: calc(var(--model-spacing-md) * 1.5);
-  z-index: 1;
-}
-
-.version-checkbox::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: calc(var(--model-spacing-md) * 1.5);
-  height: calc(var(--model-spacing-md) * 1.5);
-  border-radius: calc(var(--neu-border-radius-sm));
-  background: var(--neu-background);
-  box-shadow: var(--neu-pressed-shadow);
-}
-
-.version-item.selected .version-checkbox::before {
-  background: var(--primary-color);
-}
-
-.version-item.selected .version-checkbox::after {
-  content: '';
-  position: absolute;
-  top: calc(var(--model-spacing-sm) * 0.75);
-  left: calc(var(--model-spacing-sm) * 1.125);
-  width: calc(var(--model-spacing-xs) * 1.5);
-  height: calc(var(--model-spacing-sm) * 1.25);
-  border: solid white;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
-}
-
-/* Responsive adjustments */
-@media (min-width: 768px) {
-  .version-selector-container {
+/* Container Layout
+   ========================================================================== */
+   .version-selector-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    position: relative;
     flex: 1 1 45%;
     min-width: 300px;
+    margin-bottom: var(--model-spacing-md);
   }
-}
-
-/* Scrollbar styling */
-.version-selector::-webkit-scrollbar {
-  width: calc(var(--model-spacing-sm) * 0.75);
-}
-
-.version-selector::-webkit-scrollbar-track {
-  background: var(--neu-background);
-  border-radius: var(--neu-border-radius-sm);
-}
-
-.version-selector::-webkit-scrollbar-thumb {
-  background: var(--primary-color);
-  border-radius: var(--neu-border-radius-sm);
-}
-
-.version-selector::-webkit-scrollbar-thumb:hover {
-  background: var(--secondary-color);
-}
+  
+  /* Label Styling
+     ========================================================================== */
+  .version-selector-container label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: var(--model-spacing-sm);
+    font-size: var(--model-font-size-md);
+    color: var(--text-color);
+    padding-left: var(--model-spacing-sm);
+  }
+  
+  /* Select Element
+     ========================================================================== */
+  .version-selector-container select {
+    width: 100%;
+    min-height: calc(var(--model-spacing-md) * 4);
+    padding: var(--model-spacing-sm) var(--model-spacing-md);
+    border: 2px solid transparent;
+    border-radius: var(--neu-border-radius-md);
+    background: var(--neu-background);
+    color: var(--text-color);
+    font-size: var(--model-font-size-md);
+    appearance: none;
+    box-shadow: var(--neu-shadow-sm);
+    transition: var(--model-transition-medium);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Option Styling
+     ========================================================================== */
+  .version-selector-container select option {
+    padding: calc(var(--model-spacing-sm) * 1.5) var(--model-spacing-sm);
+    min-height: calc(var(--model-spacing-md) * 2.25);
+    font-size: var(--model-font-size-md);
+    background-color: var(--card-background);
+    color: var(--text-color);
+  }
+  
+  /* Multiple Select Styling
+     ========================================================================== */
+  .version-selector-container select[multiple] {
+    min-height: calc(var(--model-spacing-md) * 12.5);
+    padding-right: calc(var(--model-spacing-md) * 1.5);
+  }
+  
+  .version-selector-container select[multiple]:focus {
+    overflow-y: auto;
+  }
+  
+  .version-selector-container select[multiple] option:checked {
+    background-color: var(--primary-color);
+    color: white;
+  }
+  
+  /* Interactive States
+     ========================================================================== */
+  .version-selector-container select:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--neu-shadow-md);
+  }
+  
+  .version-selector-container select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: var(--neu-pressed-shadow);
+  }
+  
+  /* Scrollbar Styling
+     ========================================================================== */
+  .version-selector-container select::-webkit-scrollbar {
+    width: calc(var(--model-spacing-sm) * 0.75);
+  }
+  
+  .version-selector-container select::-webkit-scrollbar-track {
+    background: var(--neu-background);
+    border-radius: var(--neu-border-radius-sm);
+  }
+  
+  .version-selector-container select::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: var(--neu-border-radius-sm);
+  }
+  
+  .version-selector-container select::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+  }
+  
+  /* Responsive Adjustments
+     ========================================================================== */
+  @media (max-width: 768px) {
+    .version-selector-container {
+      width: 100%;
+    }
+    
+    .version-selector-container select {
+      min-height: calc(var(--model-spacing-md) * 3);
+    }
+  }
