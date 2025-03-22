@@ -10400,3 +10400,17 @@ FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\Mohse\\OneDr
 2025-03-21 21:07:56,080 - CalculationsLogger - ERROR - Error running formatter.py: 
 2025-03-21 21:07:56,080 - CalculationsLogger - ERROR - Failed to run common script for version 1: Error running formatter.py: 
 2025-03-21 21:07:56,080 - CalculationsLogger - ERROR - Error processing version 1: Error running formatter.py: 
+2025-03-22 11:58:23,378 - CalculationsLogger - INFO - Initialized monitor for version 1, status file: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\..\..\Original\Batch(1)\Results(1)\price_optimization_status_1.json
+2025-03-22 11:58:23,379 - CalculationsLogger - INFO - Client added to monitor for version 1. Total clients: 1
+2025-03-22 11:58:23,379 - CalculationsLogger - INFO - Monitoring thread started for version 1
+2025-03-22 11:58:25,383 - CalculationsLogger - WARNING - Status file not found for version 1, consecutive errors: 5
+2025-03-22 11:58:26,935 - CalculationsLogger - INFO - Client added to monitor for version 1. Total clients: 2
+2025-03-22 11:58:27,889 - CalculationsLogger - WARNING - Status file not found for version 1, consecutive errors: 10
+2025-03-22 11:58:30,395 - CalculationsLogger - WARNING - Status file not found for version 1, consecutive errors: 15
+2025-03-22 11:58:31,372 - CalculationsLogger - INFO - Client added to monitor for version 1. Total clients: 3
+2025-03-22 11:58:32,898 - CalculationsLogger - WARNING - Status file not found for version 1, consecutive errors: 20
+2025-03-22 11:58:33,400 - CalculationsLogger - ERROR - Too many consecutive errors for version 1, stopping monitor
+2025-03-22 11:58:33,400 - CalculationsLogger - INFO - Monitoring stopped for version 1
+2025-03-22 11:58:33,400 - CalculationsLogger - INFO - Client disconnected from stream for version 1
+2025-03-22 11:58:33,400 - CalculationsLogger - INFO - Client disconnected from stream for version 1
+2025-03-22 11:58:33,400 - CalculationsLogger - INFO - Client disconnected from stream for version 1

@@ -171,6 +171,7 @@
 
 .form-action-buttons .config-row button:hover {
   background-color: var(--secondary-color);
+  color: var(--text-color);
   transform: translateY(-2px);
   box-shadow: var(--model-shadow-sm);
 }
@@ -191,6 +192,7 @@
 
 .form-action-buttons .visualization-row button:hover {
   background-color: var(--secondary-color);
+  color: var(--text-color);
   transform: translateY(-2px);
   box-shadow: var(--model-shadow-sm);
 }
@@ -215,6 +217,7 @@
 
 .form-action-buttons .practical-row button:nth-child(1):hover {
   background-color: var(--secondary-color);
+  color: var(--text-color);
   transform: translateY(-2px);
   box-shadow: var(--model-shadow-sm);
 }
@@ -232,6 +235,7 @@
 
 .form-action-buttons .practical-row button:nth-child(2):hover {
   background-color: var(--secondary-color);
+  color: var(--text-color);
   transform: translateY(-2px);
   box-shadow: var(--model-shadow-sm);
 }
@@ -249,6 +253,7 @@
 
 .form-action-buttons .practical-row button:nth-child(3):hover {
   background-color: var(--secondary-color);
+  color: var(--text-color);
   transform: translateY(-2px);
   box-shadow: var(--model-shadow-sm);
 }
@@ -272,7 +277,8 @@
 }
 
 .step-content .primary-action:hover {
-  background-color: var(--primary-color);
+  background-color: var(--secondary-color);
+  color: var(--text-color);
   transform: translateY(-2px);
   box-shadow: var(--model-shadow-sm);
 }
@@ -284,12 +290,13 @@
 
 /* Remove Current Batch Button */
 .step-content .secondary-action {
-  background-color: var(--secondary-color);
+  background-color: var(--model-color-text);
   color: var(--button-text);
 }
 
 .step-content .secondary-action:hover {
-  background-color: var(--primary-color);
+  background-color: var(--secondary-color);
+  color: var(--text-color);
   transform: translateY(-2px);
   box-shadow: var(--model-shadow-sm);
 }
@@ -409,8 +416,7 @@
 }
 
 /* Ensure buttons don't shrink too much */
-.form-action-buttons button,
-.step-content button {
+.form-action-buttons button{
   flex-shrink: 0;
 }
 
@@ -478,6 +484,7 @@
 
 .action-button-sensitivity:hover {
   background: var(--model-color-primary-dark);
+  color: var(--text-color);
 }
 
 .action-button-efficacy{
@@ -493,6 +500,7 @@
 
 .action-button-efficacy:hover {
   background: var(--model-color-primary-dark);
+  color: var(--text-color);
 }
 
 .action-button-factual{
@@ -508,4 +516,5 @@
 
 .action-button-factual:hover {
   background: var(--model-color-primary-dark);
+  color: var(--text-color);
 }
