@@ -10,9 +10,9 @@ git checkout -b tm11
 
 git add .
 
-git commit -m "Natural"
+git commit -m "styled monitors"
 
-git push tm6 tm111
+git push codebase tm111
 
 
 # Remove existing temp directory (already done)
