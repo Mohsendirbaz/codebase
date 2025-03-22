@@ -26,7 +26,24 @@ const ConfigurationMonitor = ({ version }) => {
       return propertyMapping[id];
     }
     
-    // Fallback to generating a display name from ID
+    // Handle new parameter formats
+    if (id.startsWith('CustomParam_')) {
+      return id.replace('CustomParam_', '')
+        .replace(/_/g, ' ')
+        .replace(/(^|\s)\S/g, t => t.toUpperCase());
+    }
+    if (id.startsWith('TimeSeg_')) {
+      return id.replace('TimeSeg_', 'Time Segment: ')
+        .replace(/_/g, ' ')
+        .replace(/(^|\s)\S/g, t => t.toUpperCase());
+    }
+    if (id.startsWith('UserDefined_')) {
+      return id.replace('UserDefined_', 'User Defined: ')
+        .replace(/_/g, ' ')
+        .replace(/(^|\s)\S/g, t => t.toUpperCase());
+    }
+    
+    // Fallback to generating a display name from legacy ID format
     const [baseName] = id.split(/Amount\d+/i);
     return baseName
       .replace(/([A-Z])/g, ' $1')
@@ -35,9 +52,14 @@ const ConfigurationMonitor = ({ version }) => {
       .trim();
   };
 
-  // Categorize parameters based on the numeric suffix in their ID
+  // Categorize parameters based on the numeric suffix in their ID or custom prefixes
   const categorizeParam = (id) => {
-    // Extract the numeric suffix from the ID
+    // Check for custom parameter prefixes first
+    if (id.startsWith('CustomParam_')) return 'Custom Parameters';
+    if (id.startsWith('TimeSeg_')) return 'Time-Segmented';
+    if (id.startsWith('UserDefined_')) return 'User-Defined';
+    
+    // Handle legacy numeric suffix parameters
     const match = id.match(/Amount(\d+)/i);
     if (!match) return 'Other';
     
@@ -71,7 +93,11 @@ const ConfigurationMonitor = ({ version }) => {
     { id: "iRRAmount30", value: 12, remarks: "Target internal rate of return" },
     { id: "annualInterestRateAmount31", value: 7.5, remarks: "Annual interest rate" },
     { id: "stateTaxRateAmount32", value: 6, remarks: "State tax rate" },
-    { id: "federalTaxRateAmount33", value: 21, remarks: "Federal tax rate" }
+    { id: "federalTaxRateAmount33", value: 21, remarks: "Federal tax rate" },
+    // New parameter types
+    { id: "CustomParam_energy_credit_rate", value: 0.3, remarks: "Custom energy credit rate" },
+    { id: "TimeSeg_maintenance_cost", value: 50000, remarks: "Maintenance cost time segment", start: 5, end: 10 },
+    { id: "UserDefined_equipment_upgrade", value: 150000, remarks: "User defined equipment upgrade cost" }
   ];
   
   // Fetch configuration data function
@@ -282,6 +308,9 @@ const ConfigurationMonitor = ({ version }) => {
               <option value="Rate Settings">Rate Settings</option>
               <option value="Process Quantities">Process Quantities</option>
               <option value="Process Costs">Process Costs</option>
+              <option value="Custom Parameters">Custom Parameters</option>
+              <option value="Time-Segmented">Time-Segmented Parameters</option>
+              <option value="User-Defined">User-Defined Groups</option>
               <option value="Custom Group 1">Custom Group 1</option>
               <option value="Custom Group 2">Custom Group 2</option>
               <option value="Other">Other</option>
