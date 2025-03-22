@@ -21,34 +21,10 @@
   opacity: 1;
 }
 
-.expand-button {
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 10px 2px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: var(--primary-color);
-  transition: transform var(--neu-transition-fast);
-}
 
-.expand-button:hover {
-  transform: scale(1.1);
-}
 
-.vertical-text {
-  writing-mode: vertical-lr;
-  transform: rotate(180deg);
-  white-space: nowrap;
-  margin-bottom: 10px;
-  font-size: var(--model-font-size-md);
-  font-weight: 600;
-  letter-spacing: 1px;
-}
+
+
 
 .config-header-c {
   display: flex;
@@ -71,7 +47,7 @@
   border: none;
   cursor: pointer;
   font-size: 18px;
-  color: var(--primary-color);
+  color: var(--text-color);
   display: flex;
   align-items: center;
   transition: transform var(--neu-transition-fast);
@@ -226,13 +202,13 @@
 }
 
 .parameter-item-c.baseline::before {
-  content: "Baseline Value";
+ 
   position: absolute;
   top: -8px;
   left: 16px;
   font-size: var(--model-font-size-xs);
   font-weight: 600;
-  color: var(--primary-color);
+  color: var(--text-color);
   background: var(--card-background);
   padding: 2px 8px;
   border-radius: var(--neu-border-radius-sm);
@@ -326,10 +302,15 @@
 
 .param-id {
   font-weight: 600;
-  color: var(--text-color);
+  color: var(--primary-color);
   font-size: var(--model-font-size-md);
 }
 
+.param-id-baseline {
+  font-weight: 600;
+  color: var(--text-color);
+  font-size: var(--model-font-size-md);
+}
 .param-value {
   font-weight: bold;
   color: var(--text-color);
@@ -608,7 +589,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: var(--primary-color);
+  color: var(--text-color);
   transition: transform var(--neu-transition-fast);
 }
 
@@ -620,10 +601,25 @@
   writing-mode: vertical-lr;
   transform: rotate(180deg);
   white-space: nowrap;
-  margin-bottom: 10px;
   font-size: var(--model-font-size-md);
   font-weight: 600;
   letter-spacing: 1px;
+  text-align: center;
+  
+  /* Positioning at top */
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(180deg);
+  z-index: 5;
+  
+  /* Spacing */
+  padding: 5px;
+}
+
+.collapsed .vertical-text {
+  width: 30px;
+  overflow: hidden;
 }
 
 .config-header-c {
@@ -647,7 +643,7 @@
   border: none;
   cursor: pointer;
   font-size: 18px;
-  color: var(--primary-color);
+  color: var(--text-color);
   display: flex;
   align-items: center;
   transition: transform var(--neu-transition-fast);
@@ -707,4 +703,3 @@
   transition: all var(--neu-transition-fast);
   box-shadow: var(--neu-shadow-sm);
 }
-

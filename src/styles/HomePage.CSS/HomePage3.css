@@ -120,14 +120,6 @@
     align-items: center;
 }
 
-.target-row-input {
-    width: 80px;
-    padding: 5px;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    background-color: var(--sidebar-background);
-    color: var(--text-color);
-}
 
 /* Property Selector */
 .property-selector-container {

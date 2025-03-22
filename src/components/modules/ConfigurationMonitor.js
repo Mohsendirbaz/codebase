@@ -354,7 +354,7 @@ const ConfigurationMonitor = ({ version }) => {
                         {/* Baseline Value */}
                         <div className="parameter-item-c baseline">
                           <div className="parameter-header">
-                            <span className="param-id">{getDisplayName(param.id)}</span>
+                            <span className="param-id-baseline">{getDisplayName(param.id)}</span>
                             <span className="param-value">{formatValue(param.value)}</span>
                           </div>
                           

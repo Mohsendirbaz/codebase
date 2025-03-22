@@ -9512,3 +9512,905 @@ FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\Mohse\\OneDr
 2025-03-21 18:20:04,491 - CalculationsLogger - ERROR - Too many consecutive errors for version 11, stopping monitor
 2025-03-21 18:20:04,491 - CalculationsLogger - INFO - Monitoring stopped for version 11
 2025-03-21 18:20:04,491 - CalculationsLogger - INFO - Stream ending for version 11 - calculation complete
+2025-03-21 21:07:56,058 - CalculationsLogger - INFO - ================================================================================
+2025-03-21 21:07:56,058 - CalculationsLogger - INFO - RUN ENDPOINT CALLED
+2025-03-21 21:07:56,059 - CalculationsLogger - INFO - Request received at: 2025-03-21T21:07:56.059403
+2025-03-21 21:07:56,059 - CalculationsLogger - INFO - Request headers: {'Host': '127.0.0.1:5007', 'Connection': 'keep-alive', 'Content-Length': '9535', 'Sec-Ch-Ua-Platform': '"Windows"', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 Edg/134.0.0.0', 'Sec-Ch-Ua': '"Chromium";v="134", "Not:A-Brand";v="24", "Microsoft Edge";v="134"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Origin': 'https://codebase-mu.vercel.app', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-US,en;q=0.9'}
+2025-03-21 21:07:56,062 - CalculationsLogger - INFO - Request data: {
+  "selectedVersions": [
+    1
+  ],
+  "selectedV": {
+    "V1": "on",
+    "V2": "off",
+    "V3": "off",
+    "V4": "off",
+    "V5": "off",
+    "V6": "off",
+    "V7": "off",
+    "V8": "off",
+    "V9": "off",
+    "V10": "off"
+  },
+  "selectedF": {
+    "F1": "on",
+    "F2": "on",
+    "F3": "on",
+    "F4": "on",
+    "F5": "on"
+  },
+  "selectedCalculationOption": "calculateForPrice",
+  "targetRow": "20",
+  "SenParameters": {
+    "S10": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S11": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S12": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S13": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S14": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S15": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S16": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S17": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S18": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S19": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S20": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S21": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S22": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S23": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S24": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S25": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S26": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S27": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S28": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S29": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S30": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S31": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S32": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S33": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S34": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S35": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S36": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S37": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S38": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S39": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S40": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S41": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S42": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S43": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S44": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S45": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S46": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S47": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S48": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S49": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S50": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S51": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S52": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S53": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S54": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S55": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S56": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S57": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S58": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S59": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S60": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S61": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S62": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S63": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S64": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S65": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S66": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S67": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S68": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S69": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S70": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S71": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S72": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S73": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S74": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S75": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S76": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S77": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S78": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S79": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    }
+  }
+}
+2025-03-21 21:07:56,062 - CalculationsLogger - INFO - Processing versions: [1]
+2025-03-21 21:07:56,062 - CalculationsLogger - INFO - V states - Enabled: ['V1'], Disabled: ['V2', 'V3', 'V4', 'V5', 'V6', 'V7', 'V8', 'V9', 'V10']
+2025-03-21 21:07:56,062 - CalculationsLogger - INFO - F states - Enabled: ['F1', 'F2', 'F3', 'F4', 'F5'], Disabled: []
+2025-03-21 21:07:56,062 - CalculationsLogger - INFO - Calculation option: calculateForPrice, Target row: 20
+2025-03-21 21:07:56,063 - CalculationsLogger - INFO - Price optimization parameters:
+2025-03-21 21:07:56,063 - CalculationsLogger - INFO -   - Tolerance bounds: Lower=-1000, Upper=1000
+2025-03-21 21:07:56,063 - CalculationsLogger - INFO -   - Adjustment rates: Increase=1.02, Decrease=0.985
+2025-03-21 21:07:56,068 - CalculationsLogger - INFO - Sensitivity Parameters:
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| Parameter   | Enabled   | Mode   | Compare To   | Comparison Type   | Visualization   |
++=============+===========+========+==============+===================+=================+
+| S10         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S11         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S12         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S13         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S14         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S15         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S16         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S17         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S18         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S19         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S20         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S21         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S22         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S23         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S24         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S25         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S26         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S27         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S28         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S29         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S30         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S31         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S32         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S33         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S34         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S35         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S36         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S37         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S38         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S39         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S40         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S41         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S42         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S43         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S44         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S45         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S46         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S47         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S48         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S49         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S50         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S51         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S52         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S53         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S54         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S55         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S56         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S57         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S58         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S59         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S60         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S61         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S62         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S63         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S64         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S65         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S66         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S67         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S68         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S69         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S70         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S71         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S72         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S73         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S74         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S75         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S76         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S77         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S78         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+| S79         | No        |        |              |                   | None            |
++-------------+-----------+--------+--------------+-------------------+-----------------+
+2025-03-21 21:07:56,068 - CalculationsLogger - INFO - Processing version 1
+2025-03-21 21:07:56,068 - CalculationsLogger - INFO - Starting processing for version 1
+2025-03-21 21:07:56,080 - CalculationsLogger - ERROR - Error running formatter.py: 
+2025-03-21 21:07:56,080 - CalculationsLogger - ERROR - Failed to run common script for version 1: Error running formatter.py: 
+2025-03-21 21:07:56,080 - CalculationsLogger - ERROR - Error processing version 1: Error running formatter.py: 
+2025-03-22 11:58:23,378 - CalculationsLogger - INFO - Initialized monitor for version 1, status file: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\..\..\Original\Batch(1)\Results(1)\price_optimization_status_1.json
+2025-03-22 11:58:23,379 - CalculationsLogger - INFO - Client added to monitor for version 1. Total clients: 1
+2025-03-22 11:58:23,379 - CalculationsLogger - INFO - Monitoring thread started for version 1
+2025-03-22 11:58:25,383 - CalculationsLogger - WARNING - Status file not found for version 1, consecutive errors: 5
+2025-03-22 11:58:26,935 - CalculationsLogger - INFO - Client added to monitor for version 1. Total clients: 2
+2025-03-22 11:58:27,889 - CalculationsLogger - WARNING - Status file not found for version 1, consecutive errors: 10
+2025-03-22 11:58:30,395 - CalculationsLogger - WARNING - Status file not found for version 1, consecutive errors: 15
+2025-03-22 11:58:31,372 - CalculationsLogger - INFO - Client added to monitor for version 1. Total clients: 3
+2025-03-22 11:58:32,898 - CalculationsLogger - WARNING - Status file not found for version 1, consecutive errors: 20
+2025-03-22 11:58:33,400 - CalculationsLogger - ERROR - Too many consecutive errors for version 1, stopping monitor
+2025-03-22 11:58:33,400 - CalculationsLogger - INFO - Monitoring stopped for version 1
+2025-03-22 11:58:33,400 - CalculationsLogger - INFO - Client disconnected from stream for version 1
+2025-03-22 11:58:33,400 - CalculationsLogger - INFO - Client disconnected from stream for version 1
+2025-03-22 11:58:33,400 - CalculationsLogger - INFO - Client disconnected from stream for version 1
