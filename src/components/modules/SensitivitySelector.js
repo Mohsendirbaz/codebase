@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import '../../styles/HomePage.CSS/SensitivitySelector.css';
+import useFormValues from '../../useFormValues';
 
 const Dialog = ({ show, onClose, children, triggerRef, isClosing }) => {
     if (!show) return null;
@@ -79,6 +80,9 @@ const SensitivityAnalysisSelector = ({ sKey = '', onSensitivityChange = () => {}
     const triggerButtonRef = useRef(null);
     const [showDialog, setShowDialog] = useState(false);
     const [isClosing, setIsClosing] = useState(false);
+    
+    // Get form values and property mapping from the hook
+    const { formValues } = useFormValues();
 
     // Default state object
     const defaultState = {
@@ -95,19 +99,26 @@ const SensitivityAnalysisSelector = ({ sKey = '', onSensitivityChange = () => {}
     // Use the state from S prop with fallback to default state
     const currentS = (S && S[sKey]) || defaultState;
     
-    // Convert symmetrical mode to multiple mode for backward compatibility
-    useEffect(() => {
-        if (S && S[sKey] && S[sKey].mode === 'symmetrical') {
-            // Convert symmetrical mode to multiple
-            setS(prev => ({
-                ...prev,
-                [sKey]: {
-                    ...prev[sKey],
-                    mode: 'multiple'
-                }
-            }));
+    // Extract numeric part from key (e.g., "S10" -> "10")
+    const getNumericPart = (key) => {
+        return key.replace(/\D/g, '');
+    };
+    
+    // Get parameter name using the numeric part
+    const getParameterName = (key) => {
+        if (!key) return '';
+        
+        const numericPart = getNumericPart(key);
+        
+        // Try property names from different sources based on numeric part
+        for (const formKey in formValues) {
+            if (formKey.includes(`Amount${numericPart}`)) {
+                return formValues[formKey].label || key;
+            }
         }
-    }, [S, sKey, setS]);
+        
+        return key;
+    };
 
     const handleClose = () => {
         setIsClosing(true);
@@ -117,12 +128,11 @@ const SensitivityAnalysisSelector = ({ sKey = '', onSensitivityChange = () => {}
         }, 300);
     };
 
-    const handleModeToggle = (mode) => {
+    const handleModeToggle = () => {
         setS(prev => {
             const currentS = prev[sKey] || defaultState;
-            const currentMode = currentS.mode;
-
-            if (mode === currentMode) {
+            
+            if (currentS.mode === 'multiple') {
                 return {
                     ...prev,
                     [sKey]: defaultState
@@ -133,24 +143,8 @@ const SensitivityAnalysisSelector = ({ sKey = '', onSensitivityChange = () => {}
                 ...prev,
                 [sKey]: {
                     ...currentS,
-                    mode,
+                    mode: 'multiple',
                     values: currentS.values || [],
-                    enabled: true
-                }
-            };
-        });
-    };
-
-    // Keep this function for backward compatibility but now it sets mode to 'multiple'
-    const handleSymmetricalChange = (value) => {
-        setS(prev => {
-            const currentS = prev[sKey] || defaultState;
-            return {
-                ...prev,
-                [sKey]: {
-                    ...currentS,
-                    mode: 'multiple',  // Changed from 'symmetrical' to 'multiple'
-                    values: [value],
                     enabled: true
                 }
             };
@@ -232,13 +226,10 @@ const SensitivityAnalysisSelector = ({ sKey = '', onSensitivityChange = () => {}
 
     const handleSaveChanges = () => {
         const currentS = S[sKey] || defaultState;
-
-        // Ensure mode is 'multiple' if it was 'symmetrical'
-        const mode = currentS.mode === 'symmetrical' ? 'multiple' : currentS.mode;
         
         // Create configuration object
         const configData = {
-            mode,
+            mode: 'multiple',
             values: currentS.values || [],
             enabled: true,
             compareToKey: currentS.compareToKey || '',
@@ -277,8 +268,14 @@ const SensitivityAnalysisSelector = ({ sKey = '', onSensitivityChange = () => {}
         onSensitivityChange(sKey, defaultState);
     };
 
-    const compareOptions = Array.from({ length: 70 }, (_, i) => `S${i + 10}`)
-        .filter(option => option !== sKey);
+    // Generate compare options for S10-S79 only
+    const compareOptions = Array.from({ length: 70 }, (_, i) => {
+        const key = `S${i + 10}`;
+        return {
+            key,
+            label: getParameterName(key)
+        };
+    }).filter(option => option.key !== sKey);
 
     return (
         <div className="sensitivity-module">
@@ -301,25 +298,26 @@ const SensitivityAnalysisSelector = ({ sKey = '', onSensitivityChange = () => {}
                         <h2 className="sensitivity-title">
                             Sensitivity Analysis
                             <span className="parameter-key">{sKey}</span>
+                            <span className="parameter-name">{getParameterName(sKey)}</span>
                         </h2>
                         <button onClick={handleClose} className="close-button">×</button>
                     </div>
 
                     <div className="mode-selection">
                         <div
-                            className={`mode-box ${currentS.mode === 'multiple' || currentS.mode === 'symmetrical' ? 'selected' : ''}`}
-                            onClick={() => handleModeToggle('multiple')}
+                            className={`mode-box ${currentS.mode === 'multiple' ? 'selected' : ''}`}
+                            onClick={handleModeToggle}
                         >
                             <div className="mode-header">
                                 <input
                                     type="checkbox"
-                                    checked={currentS.mode === 'multiple' || currentS.mode === 'symmetrical'}
+                                    checked={currentS.mode === 'multiple'}
                                     onChange={() => {}}
                                     className="mode-checkbox"
                                 />
                                 <span>Multiple Points (must be ascending)</span>
                             </div>
-                            {(currentS.mode === 'multiple' || currentS.mode === 'symmetrical') && (
+                            {currentS.mode === 'multiple' && (
                                 <div className="points-grid" onClick={(e) => e.stopPropagation()}>
                                     <div className="point-inputs">
                                         {Array(6).fill(null).map((_, idx) => (
@@ -338,7 +336,7 @@ const SensitivityAnalysisSelector = ({ sKey = '', onSensitivityChange = () => {}
                         </div>
                     </div>
 
-                    {currentS.mode && (
+                    {currentS.mode === 'multiple' && (
                         <div className="additional-settings">
                             <div className="settings-row">
                                 <div className="compare-section">
@@ -350,7 +348,9 @@ const SensitivityAnalysisSelector = ({ sKey = '', onSensitivityChange = () => {}
                                     >
                                         <option value="">Select parameter</option>
                                         {compareOptions.map(option => (
-                                            <option key={option} value={option}>{option}</option>
+                                            <option key={option.key} value={option.key}>
+                                                {option.key} - {option.label}
+                                            </option>
                                         ))}
                                     </select>
                                 </div>
@@ -414,7 +414,7 @@ const SensitivityAnalysisSelector = ({ sKey = '', onSensitivityChange = () => {}
                         <button onClick={handleSaveChanges} className="save-button">
                             Save Changes
                         </button>
-                        {currentS.mode && (
+                        {currentS.mode === 'multiple' && (
                             <button onClick={handleReset} className="reset-button">
                                 Reset
                             </button>

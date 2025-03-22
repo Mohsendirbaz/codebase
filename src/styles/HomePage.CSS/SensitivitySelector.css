@@ -42,24 +42,37 @@
 }
 
 /* Header */
-.sensitivity-header {
+.sensitivity-selector-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid var(--border-color, #ddd);
     padding-bottom: var(--spacing-sm, 10px);
+    margin-bottom: var(--spacing-md, 15px);
 }
 
 .sensitivity-title {
     font-size: var(--model-font-size-lg, 20px);
     font-weight: bold;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
 
 .parameter-key {
     font-size: var(--model-font-size-md, 16px);
     color: var(--text-secondary, gray);
     margin-left: var(--spacing-sm, 10px);
+    display: inline-block;
+}
+
+.parameter-name {
+    font-size: var(--model-font-size-sm, 14px);
+    color: var(--primary-color, #007bff);
+    margin-left: var(--spacing-sm, 10px);
+    display: block;
+    font-style: italic;
 }
 
 .close-button {
@@ -117,8 +130,8 @@
 }
 
 .point-inputs {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--spacing-xs, 5px);
 }
 
@@ -151,10 +164,22 @@
     gap: var(--spacing-sm, 10px);
 }
 
+.settings-row {
+    margin-bottom: var(--spacing-sm, 10px);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm, 10px);
+}
+
 .compare-section, .axis-section {
     margin-bottom: var(--spacing-sm, 10px);
     display: flex;
     flex-direction: column;
+}
+
+.compare-section label {
+    margin-bottom: var(--spacing-xs, 5px);
+    font-weight: 500;
 }
 
 .compare-select {
@@ -250,3 +275,21 @@
     box-shadow: var(--model-shadow-lg, 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light));
 }
 
+/* Action button styling */
+.action-button-sensitivity {
+    background: var(--primary-color, #007bff);
+    color: white;
+    border: none;
+    border-radius: var(--model-border-radius-md, 8px);
+    padding: var(--spacing-sm, 8px) var(--spacing-md, 12px);
+    cursor: pointer;
+    font-weight: 500;
+    transition: all var(--model-transition-medium, 0.3s ease);
+    box-shadow: var(--model-shadow-md, 3px 3px 6px var(--shadow-dark), -3px -3px 6px var(--shadow-light));
+}
+
+.action-button-sensitivity:hover {
+    transform: translateY(-2px);
+    background: var(--primary-hover-color, #0069d9);
+    box-shadow: var(--model-shadow-lg, 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light));
+}

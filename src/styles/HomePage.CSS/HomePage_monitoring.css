@@ -1,7 +1,7 @@
 /* HomePage_monitoring.css - Ultra Compact Edition */
 .content-container {
   display: grid;
-  grid-template-columns: 520px 1fr auto;
+  grid-template-columns: auto auto auto;
   height: 100%;
   overflow: hidden;
   gap: 4px;

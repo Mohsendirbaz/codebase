@@ -6,6 +6,7 @@ import useFormValues from '../../useFormValues';
 /**
  * ConfigurationMonitor component displays configuration values from U_configurations
  * Provides searching and filtering of configuration parameters
+ * Shows both baseline and customized (time-segmented) parameters
  */
 const ConfigurationMonitor = ({ version }) => {
   // Import property mapping from useFormValues
@@ -14,7 +15,8 @@ const ConfigurationMonitor = ({ version }) => {
   const [isExpanded, setIsExpanded] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [filterByGroup, setFilterByGroup] = useState('all');
-  const [configData, setConfigData] = useState([]);
+  const [configData, setConfigData] = useState([]); // Baseline parameters (filteredValues)
+  const [customizedData, setCustomizedData] = useState([]); // Customized parameters (filteredValue)
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -24,7 +26,24 @@ const ConfigurationMonitor = ({ version }) => {
       return propertyMapping[id];
     }
     
-    // Fallback to generating a display name from ID
+    // Handle new parameter formats
+    if (id.startsWith('CustomParam_')) {
+      return id.replace('CustomParam_', '')
+        .replace(/_/g, ' ')
+        .replace(/(^|\s)\S/g, t => t.toUpperCase());
+    }
+    if (id.startsWith('TimeSeg_')) {
+      return id.replace('TimeSeg_', 'Time Segment: ')
+        .replace(/_/g, ' ')
+        .replace(/(^|\s)\S/g, t => t.toUpperCase());
+    }
+    if (id.startsWith('UserDefined_')) {
+      return id.replace('UserDefined_', 'User Defined: ')
+        .replace(/_/g, ' ')
+        .replace(/(^|\s)\S/g, t => t.toUpperCase());
+    }
+    
+    // Fallback to generating a display name from legacy ID format
     const [baseName] = id.split(/Amount\d+/i);
     return baseName
       .replace(/([A-Z])/g, ' $1')
@@ -33,9 +52,14 @@ const ConfigurationMonitor = ({ version }) => {
       .trim();
   };
 
-  // Categorize parameters based on the numeric suffix in their ID
+  // Categorize parameters based on the numeric suffix in their ID or custom prefixes
   const categorizeParam = (id) => {
-    // Extract the numeric suffix from the ID
+    // Check for custom parameter prefixes first
+    if (id.startsWith('CustomParam_')) return 'Custom Parameters';
+    if (id.startsWith('TimeSeg_')) return 'Time-Segmented';
+    if (id.startsWith('UserDefined_')) return 'User-Defined';
+    
+    // Handle legacy numeric suffix parameters
     const match = id.match(/Amount(\d+)/i);
     if (!match) return 'Other';
     
@@ -69,7 +93,11 @@ const ConfigurationMonitor = ({ version }) => {
     { id: "iRRAmount30", value: 12, remarks: "Target internal rate of return" },
     { id: "annualInterestRateAmount31", value: 7.5, remarks: "Annual interest rate" },
     { id: "stateTaxRateAmount32", value: 6, remarks: "State tax rate" },
-    { id: "federalTaxRateAmount33", value: 21, remarks: "Federal tax rate" }
+    { id: "federalTaxRateAmount33", value: 21, remarks: "Federal tax rate" },
+    // New parameter types
+    { id: "CustomParam_energy_credit_rate", value: 0.3, remarks: "Custom energy credit rate" },
+    { id: "TimeSeg_maintenance_cost", value: 50000, remarks: "Maintenance cost time segment", start: 5, end: 10 },
+    { id: "UserDefined_equipment_upgrade", value: 150000, remarks: "User defined equipment upgrade cost" }
   ];
   
   // Fetch configuration data function
@@ -100,22 +128,34 @@ const ConfigurationMonitor = ({ version }) => {
         console.warn(`API returned error status: ${response.status}`);
         console.log('Using fallback configuration data');
         setConfigData(fallbackConfigData);
+        setCustomizedData([]);
         return;
       }
       
       const data = await response.json();
       
+      // Process baseline configuration values
       if (data.filteredValues && Array.isArray(data.filteredValues) && data.filteredValues.length > 0) {
-        console.log(`Loaded ${data.filteredValues.length} configuration values from API`);
+        console.log(`Loaded ${data.filteredValues.length} baseline configuration values from API`);
         setConfigData(data.filteredValues);
       } else {
         console.warn('API returned empty filteredValues array, using fallback data');
         setConfigData(fallbackConfigData);
       }
+      
+      // Process customized configuration values with time segments
+      if (data.filteredValue && Array.isArray(data.filteredValue)) {
+        console.log(`Loaded ${data.filteredValue.length} customized configuration values from API`);
+        setCustomizedData(data.filteredValue);
+      } else {
+        console.warn('API returned empty or non-array filteredValue');
+        setCustomizedData([]);
+      }
     } catch (error) {
       console.error('Error fetching configuration data:', error);
       console.log('Using fallback configuration data due to error');
       setConfigData(fallbackConfigData);
+      setCustomizedData([]);
     } finally {
       setIsLoading(false);
     }
@@ -124,6 +164,7 @@ const ConfigurationMonitor = ({ version }) => {
   // Refresh configuration data
   const handleRefresh = useCallback(() => {
     setConfigData([]);
+    setCustomizedData([]);
     setIsLoading(true);
     setError(null);
     fetchConfigData();
@@ -135,12 +176,42 @@ const ConfigurationMonitor = ({ version }) => {
     fetchConfigData();
   }, [fetchConfigData]);
 
+  // Combine baseline and customized parameters for display
+  // We'll use this to group and filter all parameters
+  const allParameters = useMemo(() => {
+    const combined = [...configData];
+    
+    // Process customized parameters
+    customizedData.forEach(customParam => {
+      // Find if there's a matching baseline parameter
+      const baselineIndex = combined.findIndex(bp => bp.id === customParam.id);
+      
+      if (baselineIndex !== -1) {
+        // If there's a baseline parameter with the same ID, add customized data to it
+        combined[baselineIndex] = {
+          ...combined[baselineIndex],
+          hasCustomized: true,
+          customized: [...(combined[baselineIndex].customized || []), customParam]
+        };
+      } else {
+        // If no baseline parameter exists, add as a new entry
+        combined.push({
+          ...customParam,
+          hasCustomized: true,
+          customized: [customParam]
+        });
+      }
+    });
+    
+    return combined;
+  }, [configData, customizedData]);
+
   // Process and group configuration data
   const groupedParams = useMemo(() => {
-    if (!configData || configData.length === 0) return {};
+    if (!allParameters || allParameters.length === 0) return {};
     
     // Filter based on search term and group filter
-    const filteredParams = configData.filter(param => {
+    const filteredParams = allParameters.filter(param => {
       const matchesSearch = searchTerm === '' || 
         param.id.toLowerCase().includes(searchTerm.toLowerCase()) || 
         getDisplayName(param.id).toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -163,7 +234,7 @@ const ConfigurationMonitor = ({ version }) => {
       groups[category].push(param);
       return groups;
     }, {});
-  }, [configData, searchTerm, filterByGroup]);
+  }, [allParameters, searchTerm, filterByGroup]);
 
   // Format value for display based on type
   const formatValue = (value) => {
@@ -174,6 +245,9 @@ const ConfigurationMonitor = ({ version }) => {
         minimumFractionDigits: 0,
         maximumFractionDigits: 2
       });
+    }
+    if (typeof value === 'boolean') {
+      return value ? 'Yes' : 'No';
     }
     return value.toString();
   };
@@ -234,6 +308,9 @@ const ConfigurationMonitor = ({ version }) => {
               <option value="Rate Settings">Rate Settings</option>
               <option value="Process Quantities">Process Quantities</option>
               <option value="Process Costs">Process Costs</option>
+              <option value="Custom Parameters">Custom Parameters</option>
+              <option value="Time-Segmented">Time-Segmented Parameters</option>
+              <option value="User-Defined">User-Defined Groups</option>
               <option value="Custom Group 1">Custom Group 1</option>
               <option value="Custom Group 2">Custom Group 2</option>
               <option value="Other">Other</option>
@@ -244,7 +321,8 @@ const ConfigurationMonitor = ({ version }) => {
           <div className="config-status-c">
             <div className="version-info">Version: {version}</div>
             <div className="param-count">
-              {configData.length} parameters
+              {allParameters.length} parameters 
+              {customizedData.length > 0 ? ` (${customizedData.length} customized)` : ''}
             </div>
           </div>
           
@@ -262,7 +340,7 @@ const ConfigurationMonitor = ({ version }) => {
             <div className="parameters-list-c">
               {Object.keys(groupedParams).length === 0 ? (
                 <div className="empty-state">
-                  {configData.length === 0 
+                  {allParameters.length === 0 
                     ? "No configuration data available" 
                     : "No parameters match your filters"}
                 </div>
@@ -272,28 +350,55 @@ const ConfigurationMonitor = ({ version }) => {
                     <div className="group-header">{groupName}</div>
                     
                     {params.map(param => (
-                      <div key={param.id} className="parameter-item-c">
-                        <div className="parameter-header">
-                          <span className="param-id">{getDisplayName(param.id)}</span>
-                          <span className="param-value">{formatValue(param.value)}</span>
+                      <div key={param.id} className="parameter-container">
+                        {/* Baseline Value */}
+                        <div className="parameter-item-c baseline">
+                          <div className="parameter-header">
+                            <span className="param-id">{getDisplayName(param.id)}</span>
+                            <span className="param-value">{formatValue(param.value)}</span>
+                          </div>
+                          
+                          {param.remarks && (
+                            <div className="param-remarks">
+                              <span>Note: {param.remarks}</span>
+                            </div>
+                          )}
+                          
+                          <div className="param-technical-id">
+                            <span>ID: {param.id}</span>
+                          </div>
                         </div>
-                        
-                        {param.remarks && (
-                          <div className="param-remarks">
-                            <span>Note: {param.remarks}</span>
+
+                        {/* Customized Values */}
+                        {param.hasCustomized && param.customized && param.customized.length > 0 && (
+                          <div className="customized-values-container">
+                            {param.customized.map((custom, idx) => (
+                              <div key={`${custom.id}-${idx}`} className="parameter-item-c customized">
+                                <div className="parameter-header">
+                                  <span className="param-id">Customized Value</span>
+                                  <span className="param-value">{formatValue(custom.value)}</span>
+                                </div>
+                                
+                                <div className="time-segment">
+                                  <div className="time-segment-item">
+                                    {custom.start !== undefined ? custom.start : 0}
+                                    <div className="time-segment-label">Start</div>
+                                  </div>
+                                  <div className="time-segment-item">
+                                    {custom.end !== undefined ? custom.end : 'End'}
+                                    <div className="time-segment-label">End</div>
+                                  </div>
+                                </div>
+                                
+                                {custom.remarks && (
+                                  <div className="param-remarks">
+                                    <span>Note: {custom.remarks}</span>
+                                  </div>
+                                )}
+                              </div>
+                            ))}
                           </div>
                         )}
-                        
-                        {/* If this parameter has start/end values */}
-                        {(param.start !== undefined || param.end !== undefined) && (
-                          <div className="param-period">
-                            <span>Period: {param.start || 0} to {param.end || 'End'}</span>
-                          </div>
-                        )}
-                        
-                        <div className="param-technical-id">
-                          <span>ID: {param.id}</span>
-                        </div>
                       </div>
                     ))}
                   </div>
