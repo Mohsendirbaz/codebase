@@ -1424,6 +1424,10 @@ const HomePageContent = () => {
                             version={version}
                             filterKeyword="Amount7"
                             V={V}
+                            setV={setV}
+                            R={R}
+                            setR={setR}
+                            toggleR={toggleR}
                             toggleV={toggleV}
                             S={S || {}}
                             setS={setS}
