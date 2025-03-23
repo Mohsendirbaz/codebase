@@ -7,7 +7,7 @@
   background-color: var(--card-background);
   border-right: 1px solid var(--border-color);
   overflow: hidden;
-  width: 480px;
+  width: 660px;
   box-shadow: var(--neu-shadow-md);
   border-radius: var(--neu-border-radius-lg);
 }
@@ -18,7 +18,7 @@
 }
 
 .sensitivity-monitor-s.expanded {
-  width: 480px;
+  width: 660px;
   opacity: 1;
 }
 

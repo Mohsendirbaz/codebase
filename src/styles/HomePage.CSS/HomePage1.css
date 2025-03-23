@@ -221,6 +221,8 @@
 
 .remarks-container {
     flex: 1;
+    margin-right: 15px; /* Adds space below the remarks container */
+
 }
 
 .remarks-input {
