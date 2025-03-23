@@ -6,13 +6,13 @@ git rev-parse HEAD  # Should show current
 
 git remote -v  # Should show https://github.com/Mohsendirbaz/SF.git
 
-git checkout -b tm13
+git checkout -b tm1
 
 git add .
 
 git commit -m "styled monitors, refined palette, working run cfa, visualizations, new batchs etc"
 
-git push codebase tm13
+git push codebase tm14
 
 
 # Remove existing temp directory (already done)
