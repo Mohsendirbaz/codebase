@@ -1651,7 +1651,6 @@ const HomePageContent = () => {
                 return (
                  
                         <div className="model-selection">
-                            <VersionSelector />
                             <SpatialTransformComponent />
                         </div>
              
