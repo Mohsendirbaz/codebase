@@ -364,9 +364,7 @@
   text-align: center;
 }
 
-.update-button {
-  background-color: var(--primary-color);
-}
+
 
 /* Fixes for inline styles */
 .form-panel-container[style*="gap: 0"],
@@ -418,6 +416,30 @@
 /* Ensure buttons don't shrink too much */
 .form-action-buttons button{
   flex-shrink: 0;
+}
+
+/* Fix for button icons on mobile devices */
+.form-action-buttons button svg,
+.action-button svg,
+.action-button-efficacy svg,
+.action-button-factual svg,
+.action-button-sensitivity svg {
+    width: 16px;
+    height: 16px;
+    max-width: 16px;
+    max-height: 16px;
+    vertical-align: middle;
+}
+
+/* iOS-specific adjustments */
+@supports (-webkit-touch-callout: none) {
+    .form-action-buttons button svg,
+    .action-button svg,
+    .action-button-efficacy svg,
+    .action-button-factual svg,
+    .action-button-sensitivity svg {
+        transform: scale(0.9);
+    }
 }
 
 
