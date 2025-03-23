@@ -51,7 +51,6 @@ flask_apps = [
     (r"backend\API_endpoints_and_controllers\PNG.py", 5008),
     (r"backend\API_endpoints_and_controllers\Sub.py", 5009),
     (r"backend\API_endpoints_and_controllers\Load.py", 5000),  
-    (r"backend\API_endpoints_and_controllers\Sensitivity_monitor.py", 5001),
     (r"backend\cfa_list.py", 4560),
     (r"backend\API_endpoints_and_controllers\Version_service.py", 8002),
     (r"backend\flask_api\routes\theme_routes.py", 8010),

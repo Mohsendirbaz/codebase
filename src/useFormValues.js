@@ -50,26 +50,26 @@ const propertyMapping = {
   "vAmount57": "v57",
   "vAmount58": "v58",
   "vAmount59": "v59",
-  "vAmount60": "v60",
-  "vAmount61": "v61",
-  "vAmount62": "v62",
-  "vAmount63": "v63",
-  "vAmount64": "v64",
-  "vAmount65": "v65",
-  "vAmount66": "v66",
-  "vAmount67": "v67",
-  "vAmount68": "v68",
-  "vAmount69": "v69",
-  "vAmount70": "v70",
-  "vAmount71": "v71",
-  "vAmount72": "v72",
-  "vAmount73": "v73",
-  "vAmount74": "v74",
-  "vAmount75": "v75",
-  "vAmount76": "v76",
-  "vAmount77": "v77",
-  "vAmount78": "v78",
-  "vAmount79": "v79",
+  "rAmount60": "r60",
+  "rAmount61": "r61",
+  "rAmount62": "r62",
+  "rAmount63": "r63",
+  "rAmount64": "r64",
+  "rAmount65": "r65",
+  "rAmount66": "r66",
+  "rAmount67": "r67",
+  "rAmount68": "r68",
+  "rAmount69": "r69",
+  "rAmount70": "r70",
+  "rAmount71": "r71",
+  "rAmount72": "r72",
+  "rAmount73": "r73",
+  "rAmount74": "r74",
+  "rAmount75": "r75",
+  "rAmount76": "r76",
+  "rAmount77": "r77",
+  "rAmount78": "r78",
+  "rAmount79": "r79",
 };
 
 // Complete select options mapping
@@ -117,7 +117,10 @@ const iconMapping = {
 
   // vAmount icons (40-79)
   ...Object.fromEntries(
-    Array.from({ length: 40 }, (_, i) => [`vAmount${40 + i}`, faWarehouse])
+    Array.from({ length: 20 }, (_, i) => [`vAmount${40 + i}`, faWarehouse])
+  ),
+  ...Object.fromEntries(
+    Array.from({ length: 40 }, (_, i) => [`rAmount${60 + i}`, faWarehouse])
   )
 };
 
@@ -158,7 +161,10 @@ const defaultValues = {
 
 
   ...Object.fromEntries(
-    Array.from({ length: 40 }, (_, i) => [`vAmount${40 + i}`,1])
+    Array.from({ length: 20 }, (_, i) => [`vAmount${40 + i}`,1])
+  ),
+  ...Object.fromEntries(
+    Array.from({ length: 20 }, (_, i) => [`rAmount${60 + i}`,1])
   )
 };
 

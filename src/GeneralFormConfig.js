@@ -12,7 +12,7 @@ const getLatestPlantLifetime = (formValues) => {
   return filteredValues.length > 0 ? filteredValues[0].value : 40;
 };
 
-const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeyword, V, toggleV, F, toggleF, S, setS, setVersion }) => {
+const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeyword, V,setV, toggleV, R, setR, toggleR, F, toggleF, S, setS, setVersion }) => {
   const { iconMapping } = useFormValues();
   const [showPopup, setShowPopup] = useState(false);
   const [popupPosition, setPopupPosition] = useState({ top: 0, left: 0 });
@@ -37,12 +37,16 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
     const num = parseInt(vAmountNum);
     if (num >= 40 && num <= 49) return `V${num - 39}`;
     if (num >= 50 && num <= 59) return `V${num - 49}`;
-    if (num >= 50 && num <= 69) return `R${num - 59}`;
-    if (num >= 50 && num <= 79) return `R${num - 69}`;
 
     return null;
   };
-
+  // Helper function to get R number
+  const getRNumber = (rAmountNum) => {
+    const num = parseInt(rAmountNum);
+    if (num >= 50 && num <= 69) return `R${num - 59}`;
+    if (num >= 50 && num <= 79) return `R${num - 69}`;
+    return null;
+  };
   const getFNumber = (key) => {
     const match = key.match(/Amount(\d+)/);
     if (!match) return null;
@@ -57,11 +61,13 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
     .filter((key) => key.includes(filterKeyword))
     .map((key) => {
       const vKey = key.includes('vAmount') ? getVNumber(key.replace('vAmount', '')) : null;
+      const rKey = key.includes('rAmount') ? getRNumber(key.replace('rAmount', '')) : null;
       const fKey = getFNumber(key);
       const sKey = getSNumber(key);
       return {
         id: key,
         vKey,
+        rKey,
         fKey,
         sKey,
         ...formValues[key]
@@ -199,7 +205,7 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
       {formItems.map((item) => (
         <div key={item.id} className={`form-item-container ${item.id === selectedItemId ? 'highlighted-container' : ''}`}>
 
-          {/* Priority Section: F/V Checkboxes */}
+          {/* Priority Section: F/V/R Checkboxes */}
           <div className="checkbox-section">
             {item.vKey && (
               <div className="checkbox-group">
@@ -209,6 +215,17 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
                   className="custom-checkbox"
                   checked={V[item.vKey] === 'on'}
                   onChange={() => toggleV(item.vKey)}
+                />
+              </div>
+            )}
+            {item.rKey && (
+              <div className="checkbox-group">
+                <span className="checkbox-label">{item.rKey}</span>
+                <input
+                  type="checkbox"
+                  className="custom-checkbox"
+                  checked={R[item.rKey] === 'on'}
+                  onChange={() => toggleR(item.rKey)}
                 />
               </div>
             )}

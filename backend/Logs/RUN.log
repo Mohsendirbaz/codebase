@@ -1767,3 +1767,114 @@
 2025-03-22 20:05:58,652 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
 2025-03-22 20:05:58,684 WARNING  * Debugger is active!
 2025-03-22 20:05:58,684 INFO  * Debugger PIN: 119-059-632
+2025-03-23 06:23:37,540 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-23 06:23:37,592 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-03-23 06:23:37,592 INFO [33mPress CTRL+C to quit[0m
+2025-03-23 06:23:37,592 INFO  * Restarting with stat
+2025-03-23 06:23:38,040 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-23 06:23:38,056 WARNING  * Debugger is active!
+2025-03-23 06:23:38,056 INFO  * Debugger PIN: 119-059-632
+2025-03-23 06:25:00,622 INFO 127.0.0.1 - - [23/Mar/2025 06:25:00] "OPTIONS /sensitivity/configure HTTP/1.1" 200 -
+2025-03-23 06:25:00,637 INFO 127.0.0.1 - - [23/Mar/2025 06:25:00] "POST /sensitivity/configure HTTP/1.1" 200 -
+2025-03-23 06:25:00,669 INFO 127.0.0.1 - - [23/Mar/2025 06:25:00] "OPTIONS /runs HTTP/1.1" 200 -
+2025-03-23 06:25:44,454 INFO 127.0.0.1 - - [23/Mar/2025 06:25:44] "POST /runs HTTP/1.1" 200 -
+2025-03-23 06:25:44,472 INFO 127.0.0.1 - - [23/Mar/2025 06:25:44] "[33mGET /prices/8 HTTP/1.1[0m" 404 -
+2025-03-23 06:25:44,487 INFO 127.0.0.1 - - [23/Mar/2025 06:25:44] "OPTIONS /sensitivity/visualize HTTP/1.1" 200 -
+2025-03-23 06:25:44,495 INFO 127.0.0.1 - - [23/Mar/2025 06:25:44] "[33mGET /stream_prices/8 HTTP/1.1[0m" 404 -
+2025-03-23 06:25:44,512 INFO 127.0.0.1 - - [23/Mar/2025 06:25:44] "POST /sensitivity/visualize HTTP/1.1" 200 -
+2025-03-23 06:28:10,693 INFO 127.0.0.1 - - [23/Mar/2025 06:28:10] "OPTIONS /sensitivity/configure HTTP/1.1" 200 -
+2025-03-23 06:28:10,771 INFO 127.0.0.1 - - [23/Mar/2025 06:28:10] "POST /sensitivity/configure HTTP/1.1" 200 -
+2025-03-23 06:28:10,833 INFO 127.0.0.1 - - [23/Mar/2025 06:28:10] "OPTIONS /runs HTTP/1.1" 200 -
+2025-03-23 06:29:10,068 INFO 127.0.0.1 - - [23/Mar/2025 06:29:10] "POST /runs HTTP/1.1" 200 -
+2025-03-23 06:29:10,169 INFO 127.0.0.1 - - [23/Mar/2025 06:29:10] "[33mGET /prices/8 HTTP/1.1[0m" 404 -
+2025-03-23 06:29:10,185 INFO 127.0.0.1 - - [23/Mar/2025 06:29:10] "OPTIONS /sensitivity/visualize HTTP/1.1" 200 -
+2025-03-23 06:29:10,200 INFO 127.0.0.1 - - [23/Mar/2025 06:29:10] "[33mGET /stream_prices/8 HTTP/1.1[0m" 404 -
+2025-03-23 06:29:10,232 INFO 127.0.0.1 - - [23/Mar/2025 06:29:10] "POST /sensitivity/visualize HTTP/1.1" 200 -
+2025-03-23 06:30:47,371 INFO 127.0.0.1 - - [23/Mar/2025 06:30:47] "OPTIONS /sensitivity/configure HTTP/1.1" 200 -
+2025-03-23 06:30:47,387 INFO 127.0.0.1 - - [23/Mar/2025 06:30:47] "[35m[1mPOST /sensitivity/configure HTTP/1.1[0m" 500 -
+2025-03-23 06:31:59,089 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-23 06:31:59,136 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-03-23 06:31:59,136 INFO [33mPress CTRL+C to quit[0m
+2025-03-23 06:31:59,136 INFO  * Restarting with stat
+2025-03-23 06:31:59,531 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-23 06:31:59,561 WARNING  * Debugger is active!
+2025-03-23 06:31:59,568 INFO  * Debugger PIN: 119-059-632
+2025-03-23 06:35:14,696 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-23 06:35:14,727 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-03-23 06:35:14,727 INFO [33mPress CTRL+C to quit[0m
+2025-03-23 06:35:14,727 INFO  * Restarting with stat
+2025-03-23 06:35:15,123 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-23 06:35:15,139 WARNING  * Debugger is active!
+2025-03-23 06:35:15,154 INFO  * Debugger PIN: 119-059-632
+2025-03-23 06:36:27,758 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-23 06:36:27,784 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-03-23 06:36:27,784 INFO [33mPress CTRL+C to quit[0m
+2025-03-23 06:36:27,784 INFO  * Restarting with stat
+2025-03-23 06:36:28,295 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-23 06:36:28,326 WARNING  * Debugger is active!
+2025-03-23 06:36:28,342 INFO  * Debugger PIN: 119-059-632
+2025-03-23 06:37:58,038 INFO 127.0.0.1 - - [23/Mar/2025 06:37:58] "OPTIONS /sensitivity/configure HTTP/1.1" 200 -
+2025-03-23 06:37:58,088 INFO 127.0.0.1 - - [23/Mar/2025 06:37:58] "POST /sensitivity/configure HTTP/1.1" 200 -
+2025-03-23 06:37:58,138 INFO 127.0.0.1 - - [23/Mar/2025 06:37:58] "OPTIONS /runs HTTP/1.1" 200 -
+2025-03-23 06:38:50,827 INFO 127.0.0.1 - - [23/Mar/2025 06:38:50] "POST /runs HTTP/1.1" 200 -
+2025-03-23 06:38:50,842 INFO 127.0.0.1 - - [23/Mar/2025 06:38:50] "[33mGET /prices/9 HTTP/1.1[0m" 404 -
+2025-03-23 06:38:50,858 INFO 127.0.0.1 - - [23/Mar/2025 06:38:50] "OPTIONS /sensitivity/visualize HTTP/1.1" 200 -
+2025-03-23 06:38:50,858 INFO 127.0.0.1 - - [23/Mar/2025 06:38:50] "[33mGET /stream_prices/9 HTTP/1.1[0m" 404 -
+2025-03-23 06:38:50,889 INFO 127.0.0.1 - - [23/Mar/2025 06:38:50] "POST /sensitivity/visualize HTTP/1.1" 200 -
+2025-03-23 06:59:35,486 INFO 127.0.0.1 - - [23/Mar/2025 06:59:35] "OPTIONS /sensitivity/configure HTTP/1.1" 200 -
+2025-03-23 06:59:35,524 INFO 127.0.0.1 - - [23/Mar/2025 06:59:35] "POST /sensitivity/configure HTTP/1.1" 200 -
+2025-03-23 06:59:35,550 INFO 127.0.0.1 - - [23/Mar/2025 06:59:35] "OPTIONS /runs HTTP/1.1" 200 -
+2025-03-23 07:00:22,571 INFO 127.0.0.1 - - [23/Mar/2025 07:00:22] "POST /runs HTTP/1.1" 200 -
+2025-03-23 07:00:22,609 INFO 127.0.0.1 - - [23/Mar/2025 07:00:22] "[33mGET /prices/9 HTTP/1.1[0m" 404 -
+2025-03-23 07:00:22,627 INFO 127.0.0.1 - - [23/Mar/2025 07:00:22] "OPTIONS /sensitivity/visualize HTTP/1.1" 200 -
+2025-03-23 07:00:22,643 INFO 127.0.0.1 - - [23/Mar/2025 07:00:22] "[33mGET /stream_prices/9 HTTP/1.1[0m" 404 -
+2025-03-23 07:00:22,659 INFO 127.0.0.1 - - [23/Mar/2025 07:00:22] "POST /sensitivity/visualize HTTP/1.1" 200 -
+2025-03-23 07:03:59,370 INFO 127.0.0.1 - - [23/Mar/2025 07:03:59] "OPTIONS /sensitivity/configure HTTP/1.1" 200 -
+2025-03-23 07:03:59,430 INFO 127.0.0.1 - - [23/Mar/2025 07:03:59] "POST /sensitivity/configure HTTP/1.1" 200 -
+2025-03-23 07:03:59,480 INFO 127.0.0.1 - - [23/Mar/2025 07:03:59] "OPTIONS /runs HTTP/1.1" 200 -
+2025-03-23 07:04:45,858 INFO 127.0.0.1 - - [23/Mar/2025 07:04:45] "POST /runs HTTP/1.1" 200 -
+2025-03-23 07:04:45,874 INFO 127.0.0.1 - - [23/Mar/2025 07:04:45] "[33mGET /prices/9 HTTP/1.1[0m" 404 -
+2025-03-23 07:04:45,874 INFO 127.0.0.1 - - [23/Mar/2025 07:04:45] "OPTIONS /sensitivity/visualize HTTP/1.1" 200 -
+2025-03-23 07:04:45,890 INFO 127.0.0.1 - - [23/Mar/2025 07:04:45] "[33mGET /stream_prices/9 HTTP/1.1[0m" 404 -
+2025-03-23 07:04:45,905 INFO 127.0.0.1 - - [23/Mar/2025 07:04:45] "POST /sensitivity/visualize HTTP/1.1" 200 -
+2025-03-23 07:06:03,823 INFO 127.0.0.1 - - [23/Mar/2025 07:06:03] "OPTIONS /sensitivity/configure HTTP/1.1" 200 -
+2025-03-23 07:06:03,840 INFO 127.0.0.1 - - [23/Mar/2025 07:06:03] "POST /sensitivity/configure HTTP/1.1" 200 -
+2025-03-23 07:06:03,883 INFO 127.0.0.1 - - [23/Mar/2025 07:06:03] "OPTIONS /runs HTTP/1.1" 200 -
+2025-03-23 07:06:52,252 INFO 127.0.0.1 - - [23/Mar/2025 07:06:52] "POST /runs HTTP/1.1" 200 -
+2025-03-23 07:06:52,252 INFO 127.0.0.1 - - [23/Mar/2025 07:06:52] "[33mGET /prices/10 HTTP/1.1[0m" 404 -
+2025-03-23 07:06:52,267 INFO 127.0.0.1 - - [23/Mar/2025 07:06:52] "OPTIONS /sensitivity/visualize HTTP/1.1" 200 -
+2025-03-23 07:06:52,267 INFO 127.0.0.1 - - [23/Mar/2025 07:06:52] "[33mGET /stream_prices/10 HTTP/1.1[0m" 404 -
+2025-03-23 07:06:52,283 INFO 127.0.0.1 - - [23/Mar/2025 07:06:52] "POST /sensitivity/visualize HTTP/1.1" 200 -
+2025-03-23 07:15:55,458 INFO 127.0.0.1 - - [23/Mar/2025 07:15:55] "OPTIONS /sensitivity/configure HTTP/1.1" 200 -
+2025-03-23 07:15:55,505 INFO 127.0.0.1 - - [23/Mar/2025 07:15:55] "POST /sensitivity/configure HTTP/1.1" 200 -
+2025-03-23 07:15:55,522 INFO 127.0.0.1 - - [23/Mar/2025 07:15:55] "OPTIONS /runs HTTP/1.1" 200 -
+2025-03-23 07:16:52,256 INFO 127.0.0.1 - - [23/Mar/2025 07:16:52] "POST /runs HTTP/1.1" 200 -
+2025-03-23 07:16:52,256 INFO 127.0.0.1 - - [23/Mar/2025 07:16:52] "[33mGET /prices/11 HTTP/1.1[0m" 404 -
+2025-03-23 07:16:52,294 INFO 127.0.0.1 - - [23/Mar/2025 07:16:52] "OPTIONS /sensitivity/visualize HTTP/1.1" 200 -
+2025-03-23 07:16:52,294 INFO 127.0.0.1 - - [23/Mar/2025 07:16:52] "[33mGET /stream_prices/11 HTTP/1.1[0m" 404 -
+2025-03-23 07:16:52,326 INFO 127.0.0.1 - - [23/Mar/2025 07:16:52] "POST /sensitivity/visualize HTTP/1.1" 200 -
+2025-03-23 07:19:43,851 INFO 127.0.0.1 - - [23/Mar/2025 07:19:43] "OPTIONS /sensitivity/configure HTTP/1.1" 200 -
+2025-03-23 07:19:43,881 INFO 127.0.0.1 - - [23/Mar/2025 07:19:43] "POST /sensitivity/configure HTTP/1.1" 200 -
+2025-03-23 07:19:43,905 INFO 127.0.0.1 - - [23/Mar/2025 07:19:43] "OPTIONS /runs HTTP/1.1" 200 -
+2025-03-23 07:20:29,834 INFO 127.0.0.1 - - [23/Mar/2025 07:20:29] "POST /runs HTTP/1.1" 200 -
+2025-03-23 07:20:29,865 INFO 127.0.0.1 - - [23/Mar/2025 07:20:29] "[33mGET /prices/12 HTTP/1.1[0m" 404 -
+2025-03-23 07:20:29,881 INFO 127.0.0.1 - - [23/Mar/2025 07:20:29] "OPTIONS /sensitivity/visualize HTTP/1.1" 200 -
+2025-03-23 07:20:29,896 INFO 127.0.0.1 - - [23/Mar/2025 07:20:29] "[33mGET /stream_prices/12 HTTP/1.1[0m" 404 -
+2025-03-23 07:20:29,928 INFO 127.0.0.1 - - [23/Mar/2025 07:20:29] "POST /sensitivity/visualize HTTP/1.1" 200 -
+2025-03-23 08:57:28,196 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Utility_functions\\common_utils.py', reloading
+2025-03-23 08:57:28,289 INFO  * Restarting with stat
+2025-03-23 08:57:28,947 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-23 08:57:29,060 WARNING  * Debugger is active!
+2025-03-23 08:57:29,069 INFO  * Debugger PIN: 119-059-632
+2025-03-23 09:01:03,155 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-23 09:01:03,189 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-03-23 09:01:03,189 INFO [33mPress CTRL+C to quit[0m
+2025-03-23 09:01:03,191 INFO  * Restarting with stat
+2025-03-23 09:01:03,594 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-23 09:01:03,618 WARNING  * Debugger is active!
+2025-03-23 09:01:03,623 INFO  * Debugger PIN: 119-059-632

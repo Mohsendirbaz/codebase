@@ -296,13 +296,13 @@
   
   .scaling-item-label{
   font-weight: 500 ;
-  color: var(--text-color) ;
+  color: var(--primary-color) ;
   margin-bottom: var(--spacing-xs) ;
   }
   
   .scaling-base-value{
   font-size: 0.875rem ;
-  color: var(--text-secondary) ;
+  color: var(--primary-color) ;
   }
   
   .scaling-operation-select{
@@ -311,7 +311,7 @@
   border: 1px solid var(--border-color) ;
   border-radius: var(--spacing-xl) ;
   background: var(--app-background) ;
-  color: var(--text-color) ;
+  color: var(--primary-color) ;
   font-size: 0.875rem ;
   cursor: pointer ;
   transition: all 0.2s ease ;
@@ -328,7 +328,7 @@
   border: 1px solid var(--border-color) ;
   border-radius: var(--spacing-xl) ;
   background: var(--app-background) ;
-  color: var(--text-color) ;
+  color: var(--primary-color) ;
   font-size: 0.875rem ;
   transition: all 0.2s ease ;
   }
@@ -338,10 +338,7 @@
   cursor: not-allowed ;
   }
   
-  .scaling-result{
-  min-width: 150px ;
-  text-align: right ;
-  }
+
   
   .scaling-result-value{
   font-size: 0.875rem ;
@@ -356,7 +353,7 @@
   border: 1px solid var(--border-color) ;
   border-radius: var(--spacing-xl) ;
   background: var(--app-background) ;
-  color: var(--text-color) ;
+  color: var(--primary-color) ;
   font-size: 0.875rem ;
   transition: all 0.2s ease ;
   }
@@ -704,42 +701,7 @@
     padding: var(--spacing-md) ;
   }
   
-  /* Enhanced Input Fields */
-  .scaling-operation-select{
-    min-width: 150px ;
-    padding: var(--spacing-md) var(--spacing-lg) ;
-    border: 1px solid rgba(59, 130, 246, 0.2) ;
-    border-radius: var(--spacing-xl) ;
-    background: rgba(255, 255, 255, 0.05) ;
-    color: var(--text-color) ;
-    font-size: 0.875rem ;
-    cursor: pointer ;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) ;
-  }
   
-  .scaling-operation-select:hover{
-    border-color: var(--primary-color) ;
-    transform: translateY(-1px) ;
-    box-shadow: 0 2px 4px rgba(59, 130, 246, 0.1) ;
-  }
-  
-  .scaling-factor-input{
-    width: 120px ;
-    padding: var(--spacing-md) var(--spacing-lg) ;
-    border: 1px solid rgba(59, 130, 246, 0.2) ;
-    border-radius: var(--spacing-xl) ;
-    background: rgba(255, 255, 255, 0.05) ;
-    color: var(--text-color) ;
-    font-size: 0.875rem ;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) ;
-  }
-  
-  .scaling-factor-input:focus{
-    border-color: var(--primary-color) ;
-    transform: translateY(-1px) ;
-    box-shadow: 0 2px 4px rgba(59, 130, 246, 0.1) ;
-    outline: none ;
-  }
   
   /* Enhanced Result Display */
   .scaling-result{
@@ -881,32 +843,7 @@
     cursor: not-allowed ;
   }
   
-  /* Enhanced Notes Input */
-  .scaling-notes-input{
-    width: 100% ;
-    padding: var(--spacing-md) var(--spacing-lg) ;
-    border: 1px solid var(--border-color) ;
-    border-radius: var(--spacing-xl) ;
-    background: var(--app-background) ;
-    color: var(--text-color) ;
-    font-size: 0.875rem ;
-    transition: all 0.2s ease ;
-    margin-top: var(--spacing-md) ;
-    resize: vertical ;
-    min-height: 60px ;
-  }
   
-  .scaling-notes-input:focus{
-    border-color: var(--primary-color) ;
-    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1) ;
-    outline: none ;
-  }
-  
-  .scaling-notes-input:disabled{
-    background: var(--sidebar-background) ;
-    cursor: not-allowed ;
-    opacity: 0.7 ;
-  }
   
   /* Enhanced Save Button */
   .scaling-save-button{

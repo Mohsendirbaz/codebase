@@ -12268,3 +12268,49 @@ FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\Mohse\\OneDr
 2025-03-22 17:01:51,756 - CalculationsLogger - ERROR - Too many consecutive errors for version 2, stopping monitor
 2025-03-22 17:01:51,756 - CalculationsLogger - INFO - Monitoring stopped for version 2
 2025-03-22 17:01:51,756 - CalculationsLogger - INFO - Stream ending for version 2 - calculation complete
+2025-03-23 06:25:02,796 - CalculationsLogger - INFO - Initialized monitor for version 8, status file: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\..\..\Original\Batch(8)\Results(8)\price_optimization_status_8.json
+2025-03-23 06:25:02,796 - CalculationsLogger - INFO - Client added to monitor for version 8. Total clients: 1
+2025-03-23 06:25:02,827 - CalculationsLogger - INFO - Monitoring thread started for version 8
+2025-03-23 06:25:04,835 - CalculationsLogger - INFO - Client added to monitor for version 8. Total clients: 2
+2025-03-23 06:25:04,835 - CalculationsLogger - WARNING - Status file not found for version 8, consecutive errors: 5
+2025-03-23 06:25:07,343 - CalculationsLogger - WARNING - Status file not found for version 8, consecutive errors: 10
+2025-03-23 06:25:09,257 - CalculationsLogger - INFO - Client added to monitor for version 8. Total clients: 3
+2025-03-23 06:25:09,855 - CalculationsLogger - WARNING - Status file not found for version 8, consecutive errors: 15
+2025-03-23 06:25:12,370 - CalculationsLogger - WARNING - Status file not found for version 8, consecutive errors: 20
+2025-03-23 06:25:12,871 - CalculationsLogger - ERROR - Too many consecutive errors for version 8, stopping monitor
+2025-03-23 06:25:12,871 - CalculationsLogger - INFO - Monitoring stopped for version 8
+2025-03-23 06:25:12,871 - CalculationsLogger - INFO - Client disconnected from stream for version 8
+2025-03-23 06:25:12,871 - CalculationsLogger - INFO - Client disconnected from stream for version 8
+2025-03-23 06:25:12,871 - CalculationsLogger - INFO - Stream ending for version 8 - calculation complete
+2025-03-23 06:25:14,827 - CalculationsLogger - INFO - Initialized monitor for version 8, status file: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\..\..\Original\Batch(8)\Results(8)\price_optimization_status_8.json
+2025-03-23 06:25:14,827 - CalculationsLogger - INFO - Client added to monitor for version 8. Total clients: 1
+2025-03-23 06:25:14,859 - CalculationsLogger - INFO - Monitoring thread started for version 8
+2025-03-23 06:25:16,565 - CalculationsLogger - INFO - Client added to monitor for version 8. Total clients: 2
+2025-03-23 06:25:16,862 - CalculationsLogger - WARNING - Status file not found for version 8, consecutive errors: 5
+2025-03-23 06:25:19,371 - CalculationsLogger - WARNING - Status file not found for version 8, consecutive errors: 10
+2025-03-23 06:25:21,881 - CalculationsLogger - WARNING - Status file not found for version 8, consecutive errors: 15
+2025-03-23 06:25:24,391 - CalculationsLogger - WARNING - Status file not found for version 8, consecutive errors: 20
+2025-03-23 06:25:24,892 - CalculationsLogger - ERROR - Too many consecutive errors for version 8, stopping monitor
+2025-03-23 06:25:24,892 - CalculationsLogger - INFO - Monitoring stopped for version 8
+2025-03-23 06:25:24,892 - CalculationsLogger - INFO - Client disconnected from stream for version 8
+2025-03-23 06:25:24,892 - CalculationsLogger - INFO - Client disconnected from stream for version 8
+2025-03-23 06:28:13,687 - CalculationsLogger - INFO - Initialized monitor for version 8, status file: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\..\..\Original\Batch(8)\Results(8)\price_optimization_status_8.json
+2025-03-23 06:28:13,687 - CalculationsLogger - INFO - Client added to monitor for version 8. Total clients: 1
+2025-03-23 06:28:13,687 - CalculationsLogger - INFO - Monitoring thread started for version 8
+2025-03-23 06:28:15,704 - CalculationsLogger - WARNING - Status file not found for version 8, consecutive errors: 5
+2025-03-23 06:28:18,207 - CalculationsLogger - WARNING - Status file not found for version 8, consecutive errors: 10
+2025-03-23 06:28:20,712 - CalculationsLogger - WARNING - Status file not found for version 8, consecutive errors: 15
+2025-03-23 06:28:23,217 - CalculationsLogger - WARNING - Status file not found for version 8, consecutive errors: 20
+2025-03-23 06:28:23,718 - CalculationsLogger - ERROR - Too many consecutive errors for version 8, stopping monitor
+2025-03-23 06:28:23,718 - CalculationsLogger - INFO - Monitoring stopped for version 8
+2025-03-23 06:28:23,718 - CalculationsLogger - INFO - Stream ending for version 8 - calculation complete
+2025-03-23 06:30:49,463 - CalculationsLogger - INFO - Initialized monitor for version 9, status file: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\..\..\Original\Batch(9)\Results(9)\price_optimization_status_9.json
+2025-03-23 06:30:49,479 - CalculationsLogger - INFO - Client added to monitor for version 9. Total clients: 1
+2025-03-23 06:30:49,479 - CalculationsLogger - INFO - Monitoring thread started for version 9
+2025-03-23 06:30:51,495 - CalculationsLogger - WARNING - Status file not found for version 9, consecutive errors: 5
+2025-03-23 06:30:54,022 - CalculationsLogger - WARNING - Status file not found for version 9, consecutive errors: 10
+2025-03-23 06:30:56,525 - CalculationsLogger - WARNING - Status file not found for version 9, consecutive errors: 15
+2025-03-23 06:30:59,046 - CalculationsLogger - WARNING - Status file not found for version 9, consecutive errors: 20
+2025-03-23 06:30:59,548 - CalculationsLogger - ERROR - Too many consecutive errors for version 9, stopping monitor
+2025-03-23 06:30:59,548 - CalculationsLogger - INFO - Monitoring stopped for version 9
+2025-03-23 06:30:59,548 - CalculationsLogger - INFO - Stream ending for version 9 - calculation complete

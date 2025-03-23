@@ -333,7 +333,18 @@ const HomePageContent = () => {
         V9: 'off',
         V10: 'off',
     });
-
+    const [R, setR] = useState({
+        R1: 'on',
+        R2: 'off',
+        R3: 'off',
+        R4: 'off',
+        R5: 'off',
+        R6: 'off',
+        R7: 'off',
+        R8: 'off',
+        R9: 'off',
+        R10: 'off',
+    });
     const handleThemeChange = (newSeason) => {
         const themeRibbon = document.querySelector('.theme-ribbon');
        
@@ -357,7 +368,12 @@ const HomePageContent = () => {
             [key]: prev[key] === 'off' ? 'on' : 'off',
         }));
     };
-
+    const toggleR = (key) => {
+        setR((prev) => ({
+            ...prev,
+            [key]: prev[key] === 'off' ? 'on' : 'off',
+        }));
+    };
     const createNewBatch = async () => {
         setBatchRunning(true);
         try {
@@ -1339,6 +1355,10 @@ const HomePageContent = () => {
                         version={version}
                         filterKeyword="Amount4"
                         V={V}
+                        setV={setV}
+                        R={R}
+                        setR={setR}
+                        toggleR={toggleR}
                         toggleV={toggleV}
                         S={S || {}}
                         setS={setS}
@@ -1352,6 +1372,10 @@ const HomePageContent = () => {
                         version={version}
                         filterKeyword="Amount5"
                         V={V}
+                        setV={setV}
+                        R={R}
+                        setR={setR}
+                        toggleR={toggleR}
                         toggleV={toggleV}
                         S={S || {}}
                         setS={setS}
@@ -1365,6 +1389,10 @@ const HomePageContent = () => {
                         version={version}
                         filterKeyword="Amount6"
                         V={V}
+                        setV={setV}
+                        R={R}
+                        setR={setR}
+                        toggleR={toggleR}
                         toggleV={toggleV}
                         S={S || {}}
                         setS={setS}
@@ -1378,6 +1406,10 @@ const HomePageContent = () => {
                         version={version}
                         filterKeyword="Amount7"
                         V={V}
+                        setV={setV}
+                        R={R}
+                        setR={setR}
+                        toggleR={toggleR}
                         toggleV={toggleV}
                         S={S || {}}
                         setS={setS}
