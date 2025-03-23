@@ -48,6 +48,7 @@ flask_apps = [
     (r"backend\API_endpoints_and_controllers\Remove_batch.py", 7001),
     (r"backend\API_endpoints_and_controllers\Calculations.py", 5007),
     (r"backend\API_endpoints_and_controllers\Calculations_and_sensitivity.py", 2500),
+    (r"backend\API_endpoints_and_controllers\sense_config_base.py", 2600),
     (r"backend\API_endpoints_and_controllers\PNG.py", 5008),
     (r"backend\API_endpoints_and_controllers\Sub.py", 5009),
     (r"backend\API_endpoints_and_controllers\Load.py", 5000),  

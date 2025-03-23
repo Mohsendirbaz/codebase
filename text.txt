@@ -6,13 +6,13 @@ git rev-parse HEAD  # Should show current
 
 git remote -v  # Should show https://github.com/Mohsendirbaz/SF.git
 
-git checkout -b tm1
+git checkout -b tm16
 
 git add .
 
-git commit -m "styled monitors, refined palette, working run cfa, visualizations, new batchs etc"
+git commit -m "sense config base successfully copied"
 
-git push codebase tm14
+git push codebase tm16
 
 
 # Remove existing temp directory (already done)
@@ -56,3 +56,8 @@ cp -r temp_TeaSpace/src/* src.sketch.series/
 
 # Remove the temporary repository
 rm -rf temp_TeaSpace
+
+
+
+
+Stop-Process -Id (Get-NetTCPConnection -LocalPort 5000).OwningProcess -Force

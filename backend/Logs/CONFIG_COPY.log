@@ -1,0 +1,20 @@
+2025-03-23 15:34:41,756 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\CONFIG_COPY.log
+2025-03-23 15:34:41,801 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-03-23 15:34:41,801 INFO [33mPress CTRL+C to quit[0m
+2025-03-23 15:34:41,803 INFO  * Restarting with stat
+2025-03-23 15:34:42,311 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\CONFIG_COPY.log
+2025-03-23 15:34:42,346 WARNING  * Debugger is active!
+2025-03-23 15:34:42,354 INFO  * Debugger PIN: 119-059-632
+2025-03-23 15:38:52,490 INFO 127.0.0.1 - - [23/Mar/2025 15:38:52] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-03-23 15:46:11,582 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\API_endpoints_and_controllers\\sense_config_base.py', reloading
+2025-03-23 15:46:11,649 INFO  * Restarting with stat
+2025-03-23 15:46:22,422 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\CONFIG_COPY.log
+2025-03-23 15:46:22,467 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-03-23 15:46:22,467 INFO [33mPress CTRL+C to quit[0m
+2025-03-23 15:46:22,469 INFO  * Restarting with stat
+2025-03-23 15:46:23,002 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\CONFIG_COPY.log
+2025-03-23 15:46:23,037 WARNING  * Debugger is active!
+2025-03-23 15:46:23,046 INFO  * Debugger PIN: 119-059-632
+2025-03-23 15:50:35,866 INFO 127.0.0.1 - - [23/Mar/2025 15:50:35] "POST /copy-config-modules HTTP/1.1" 200 -

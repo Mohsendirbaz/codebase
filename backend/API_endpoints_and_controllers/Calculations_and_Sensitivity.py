@@ -26,6 +26,47 @@ import time
 import sys
 import shutil
 import pickle
+import requests
+
+# Add this near other functions
+def trigger_config_module_copy(version, sensitivity_dir, sen_parameters):
+    """
+    Triggers the independent config module copy service.
+    
+    Args:
+        version (int): Version number
+        sensitivity_dir (str): Path to sensitivity directory
+        sen_parameters (dict): Sensitivity parameters
+        
+    Returns:
+        dict: Response from the config copy service
+    """
+    sensitivity_logger = logging.getLogger('sensitivity')
+    
+    try:
+        sensitivity_logger.info("Triggering config module copy service on port 2600...")
+        response = requests.post(
+            "http://localhost:2600/copy-config-modules",
+            json={},
+            timeout=10  # Initial connection timeout
+        )
+        
+        if response.status_code == 200:
+            result = response.json()
+            sensitivity_logger.info(f"Config copy service triggered successfully: {result.get('message')}")
+            return result
+        else:
+            error_msg = f"Error triggering config copy service: {response.text}"
+            sensitivity_logger.error(error_msg)
+            return {"error": error_msg}
+            
+    except requests.exceptions.ConnectionError:
+        sensitivity_logger.warning("Config copy service not running or unreachable")
+        return {"error": "Config copy service not available"}
+    except Exception as e:
+        error_msg = f"Error connecting to config copy service: {str(e)}"
+        sensitivity_logger.error(error_msg)
+        return {"error": error_msg}
 
 base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(base_dir)
@@ -45,7 +86,7 @@ from sensitivity_logging import (
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 SCRIPT_DIR = os.path.join(BASE_DIR, 'backend')
 LOGS_DIR = os.path.join(SCRIPT_DIR, 'Logs')
-
+ORIGINAL_BASE_DIR = os.path.join(BASE_DIR, 'Original')
 # Create logs directory if it doesn't exist
 os.makedirs(LOGS_DIR, exist_ok=True)
 
@@ -341,20 +382,27 @@ def save_sensitivity_config_files(version, reports_dir, SenParameters):
                     }, f, indent=2)
                 saved_files.append(param_file)
                 sensitivity_logger.info(f"Saved parameter configuration file: {param_file}")
+                results_folder_base=os.path.join(ORIGINAL_BASE_DIR, f'Batch({version})', f'Results({version})')
                 
                 # Create a deep copy of the config module for this variation
-                config_module_path = os.path.join(results_folder, f"{version}_config_module_3.json")
+                config_module_path = os.path.join(results_folder_base, f"{version}_config_module_3.json")
                 if os.path.exists(config_module_path):
-                    # Load the config module
-                    with open(config_module_path, 'r') as f:
-                        config_module = json.load(f)
-                    
-                    # Save a copy in the variation directory
-                    var_config_path = os.path.join(var_dir, f"{version}_config_module_3.json")
-                    with open(var_config_path, 'w') as f:
-                        json.dump(config_module, f, indent=4)
-                    saved_files.append(var_config_path)
-                    sensitivity_logger.info(f"Saved config module copy: {var_config_path}")
+                    try:
+                        # Load the config module
+                        with open(config_module_path, 'r') as f:
+                            config_module = json.load(f)
+                        
+                        # Save a copy in the variation directory
+                        var_config_path = os.path.join(var_dir, f"{version}_config_module_3.json")
+                        with open(var_config_path, 'w') as f:
+                            json.dump(config_module, f, indent=4)
+                        saved_files.append(var_config_path)
+                        sensitivity_logger.info(f"Saved config module copy: {var_config_path}")
+                    except Exception as e:
+                        error_msg = f"Failed to copy config module for param_id {param_id}, variation {var_str}: {str(e)}"
+                        sensitivity_logger.error(error_msg)
+                else:
+                    sensitivity_logger.error(f"Config module not found at: {config_module_path} for param_id {param_id}, variation {var_str}")
             
         return saved_files
         
@@ -764,7 +812,11 @@ def run_calculations():
         sensitivity_logger.info(f"Configuration scripts: {config_time:.2f}s")
         sensitivity_logger.info(f"Calculations completed: {len(enabled_params) + 1}")  # +1 for baseline
         sensitivity_logger.info(f"{'='*80}\n")
-
+        copy_service_result = trigger_config_module_copy(
+    version,
+    sensitivity_dir,
+    config['SenParameters']
+)
         # Return success response with timing information
         return jsonify({
             "status": "success",
@@ -774,7 +826,9 @@ def run_calculations():
                 "total": f"{total_time:.2f}s",
                 "configuration": f"{config_time:.2f}s",
                 "calculations": len(enabled_params) + 1
-            }
+            },
+            "configCopy": copy_service_result
+
         })
 
     except Exception as e:

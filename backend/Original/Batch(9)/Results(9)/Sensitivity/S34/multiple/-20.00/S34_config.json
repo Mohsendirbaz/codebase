@@ -1,0 +1,21 @@
+{
+  "parameter": "S34",
+  "config": {
+    "mode": "multiple",
+    "values": [
+      -20,
+      20
+    ],
+    "enabled": true,
+    "compareToKey": "S13",
+    "comparisonType": "secondary",
+    "waterfall": true,
+    "bar": true,
+    "point": true
+  },
+  "variation": -20,
+  "variation_str": "-20.00",
+  "mode": "multiple",
+  "version": "9",
+  "timestamp": "2025-03-23 15:46:58"
+}
