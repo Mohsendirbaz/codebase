@@ -6,13 +6,13 @@ git rev-parse HEAD  # Should show current
 
 git remote -v  # Should show https://github.com/Mohsendirbaz/SF.git
 
-git checkout -b tm16
+git checkout -b ocean11
 
 git add .
 
-git commit -m "sense config base successfully copied"
+git commit -m "sensitivity_analysis"
 
-git push codebase tm16
+git push codebase ocean11
 
 
 # Remove existing temp directory (already done)

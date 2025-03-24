@@ -3,18 +3,19 @@
   "config": {
     "mode": "multiple",
     "values": [
+      -50,
       50
     ],
     "enabled": true,
-    "compareToKey": "S11",
-    "comparisonType": "primary",
-    "waterfall": false,
+    "compareToKey": "S13",
+    "comparisonType": null,
+    "waterfall": true,
     "bar": false,
-    "point": true
+    "point": false
   },
   "variation": 50,
   "variation_str": "+50.00",
   "mode": "multiple",
   "version": "5",
-  "timestamp": "2025-03-23 12:23:17"
+  "timestamp": "2025-03-23 18:13:47"
 }

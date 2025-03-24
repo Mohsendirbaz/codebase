@@ -12,6 +12,7 @@ import './styles/HomePage.CSS/HomePage2.css';
 import './styles/HomePage.CSS/HomePage3.css';
 import './styles/HomePage.CSS/HomePage5.css';
 import './styles/HomePage.CSS/HomePage6.css';
+import './styles/HomePage.CSS/CustomizableTable.css';
 import './styles/HomePage.CSS/HomePage_AboutUs.css';
 import './styles/HomePage.CSS/HomePage_buttons.css';
 import './styles/HomePage.CSS/HomePage_monitoring.css';

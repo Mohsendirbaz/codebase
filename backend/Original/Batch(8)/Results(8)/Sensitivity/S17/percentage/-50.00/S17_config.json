@@ -1,0 +1,21 @@
+{
+  "parameter": "S17",
+  "config": {
+    "mode": "percentage",
+    "values": [
+      -50,
+      50
+    ],
+    "enabled": true,
+    "compareToKey": "S13",
+    "comparisonType": "ratio",
+    "waterfall": true,
+    "bar": false,
+    "point": false
+  },
+  "variation": -50,
+  "variation_str": "-50.00",
+  "mode": "percentage",
+  "version": "8",
+  "timestamp": "2025-03-23 19:46:40"
+}

@@ -1,6 +1,6 @@
 {
   "version": "5",
-  "timestamp": "2025-03-23 12:23:17",
+  "timestamp": "2025-03-23 18:13:47",
   "parameters": {
     "S10": {
       "mode": null,
@@ -75,14 +75,15 @@
     "S17": {
       "mode": "multiple",
       "values": [
+        -50,
         50
       ],
       "enabled": true,
-      "compareToKey": "S11",
-      "comparisonType": "primary",
-      "waterfall": false,
+      "compareToKey": "S13",
+      "comparisonType": null,
+      "waterfall": true,
       "bar": false,
-      "point": true
+      "point": false
     },
     "S18": {
       "mode": null,
@@ -245,34 +246,24 @@
       "point": false
     },
     "S34": {
-      "mode": "multiple",
-      "values": [
-        -20,
-        20
-      ],
-      "enabled": true,
-      "compareToKey": "S13",
-      "comparisonType": "secondary",
-      "waterfall": true,
-      "bar": true,
-      "point": true
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
     },
     "S35": {
-      "mode": "multiple",
-      "values": [
-        -10,
-        -20,
-        -30,
-        10,
-        20,
-        30
-      ],
-      "enabled": true,
-      "compareToKey": "S13",
-      "comparisonType": "secondary",
-      "waterfall": true,
-      "bar": true,
-      "point": true
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
     },
     "S36": {
       "mode": null,

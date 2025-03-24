@@ -1,8 +1,7 @@
 {
   "configured": true,
-  "timestamp": "2025-03-23 15:46:58",
-  "runId": "20250323_154658",
-  "version": "9",
-  "configDir": "C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Original\\Batch(9)\\Results(9)\\Sensitivity\\Reports",
-  "sensitivityDir": "C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Original\\Batch(9)\\Results(9)\\Sensitivity"
+  "timestamp": "2025-03-23 23:29:48",
+  "runId": "20250323_232948",
+  "version": "10",
+  "configCopyStatus": "unknown"
 }

@@ -48,3 +48,31 @@
 2025-03-23 15:35:49,420 - CalculationsLogger - ERROR - Too many consecutive errors for version 8, stopping monitor
 2025-03-23 15:35:49,420 - CalculationsLogger - INFO - Monitoring stopped for version 8
 2025-03-23 15:35:49,421 - CalculationsLogger - INFO - Stream ending for version 8 - calculation complete
+2025-03-23 23:29:49,195 - CalculationsLogger - INFO - Initialized monitor for version 10, status file: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\..\..\Original\Batch(10)\Results(10)\price_optimization_status_10.json
+2025-03-23 23:29:49,196 - CalculationsLogger - INFO - Client added to monitor for version 10. Total clients: 1
+2025-03-23 23:29:49,198 - CalculationsLogger - INFO - Monitoring thread started for version 10
+2025-03-23 23:29:51,201 - CalculationsLogger - WARNING - Status file not found for version 10, consecutive errors: 5
+2025-03-23 23:29:51,530 - CalculationsLogger - INFO - Client added to monitor for version 10. Total clients: 2
+2025-03-23 23:29:51,640 - CalculationsLogger - INFO - Client added to monitor for version 10. Total clients: 3
+2025-03-23 23:29:51,641 - CalculationsLogger - INFO - Client disconnected from stream for version 10
+2025-03-23 23:29:51,641 - CalculationsLogger - INFO - Client removed from monitor for version 10. Remaining clients: 2
+2025-03-23 23:29:51,641 - CalculationsLogger - INFO - Client removed from monitor for version 10
+2025-03-23 23:29:51,643 - CalculationsLogger - INFO - Client added to monitor for version 10. Total clients: 3
+2025-03-23 23:29:52,611 - CalculationsLogger - INFO - Client added to monitor for version 10. Total clients: 4
+2025-03-23 23:29:53,626 - CalculationsLogger - INFO - Client added to monitor for version 10. Total clients: 5
+2025-03-23 23:29:53,707 - CalculationsLogger - WARNING - Status file not found for version 10, consecutive errors: 10
+2025-03-23 23:29:54,642 - CalculationsLogger - INFO - Client added to monitor for version 10. Total clients: 6
+2025-03-23 23:29:55,603 - CalculationsLogger - INFO - Client added to monitor for version 10. Total clients: 7
+2025-03-23 23:29:56,210 - CalculationsLogger - WARNING - Status file not found for version 10, consecutive errors: 15
+2025-03-23 23:29:56,592 - CalculationsLogger - INFO - Client added to monitor for version 10. Total clients: 8
+2025-03-23 23:29:58,714 - CalculationsLogger - WARNING - Status file not found for version 10, consecutive errors: 20
+2025-03-23 23:29:59,214 - CalculationsLogger - ERROR - Too many consecutive errors for version 10, stopping monitor
+2025-03-23 23:29:59,214 - CalculationsLogger - INFO - Monitoring stopped for version 10
+2025-03-23 23:29:59,216 - CalculationsLogger - INFO - Client disconnected from stream for version 10
+2025-03-23 23:29:59,216 - CalculationsLogger - INFO - Client disconnected from stream for version 10
+2025-03-23 23:29:59,217 - CalculationsLogger - INFO - Client disconnected from stream for version 10
+2025-03-23 23:29:59,217 - CalculationsLogger - INFO - Client disconnected from stream for version 10
+2025-03-23 23:29:59,217 - CalculationsLogger - INFO - Stream ending for version 10 - calculation complete
+2025-03-23 23:29:59,218 - CalculationsLogger - INFO - Client disconnected from stream for version 10
+2025-03-23 23:29:59,218 - CalculationsLogger - INFO - Client disconnected from stream for version 10
+2025-03-23 23:29:59,218 - CalculationsLogger - INFO - Client disconnected from stream for version 10
