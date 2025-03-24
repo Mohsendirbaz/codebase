@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import PlotsTabs from './PlotsTabs';
-import './SensitivityPlotsTabs.css';
 
 const SensitivityPlotsTabs = ({ version, S }) => {
     const [parameters, setParameters] = useState([]);

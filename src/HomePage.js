@@ -32,6 +32,11 @@ import CalculationMonitor from './components/modules/CalculationMonitor';
 import SensitivityMonitor from './components/modules/SensitivityMonitor';
 import ConfigurationMonitor from './components/modules/ConfigurationMonitor';
 import ThemeButton from './components/modules/ThemeButton';
+import PlotsTabs from './components/modules/PlotsTabs';
+import SensitivityPlotsTabs from './components/modules/SensitivityPlotsTabs';
+
+
+
 
 const HomePageContent = () => {
     const [selectedVersions, setSelectedVersions] = useState([1]);
@@ -1719,6 +1724,19 @@ const HomePageContent = () => {
                                 <FactEngineAdmin />
                             </div>
                         );
+                    case 'PlotGallery':
+                        return (
+                            <PlotsTabs 
+                                version={version} 
+                            />
+                        );
+                    case 'SensitivityPlots':
+                        return (
+                            <SensitivityPlotsTabs 
+                                version={version}
+                                S={S}
+                            />
+                        );
                     default:
             return null;
         }
@@ -1810,6 +1828,18 @@ const HomePageContent = () => {
                             onClick={() => setActiveTab('FactAdmin')}
                         >
                             Admin
+                        </button>
+                        <button
+                            className={`tab-button ${activeTab === 'PlotGallery' ? 'active' : ''}`}
+                            onClick={() => setActiveTab('PlotGallery')}
+                        >
+                            Plot Gallery
+                        </button>
+                        <button
+                            className={`tab-button ${activeTab === 'SensitivityPlots' ? 'active' : ''}`}
+                            onClick={() => setActiveTab('SensitivityPlots')}
+                        >
+                            Sensitivity Analysis
                         </button>
                     </div>
                 </nav>

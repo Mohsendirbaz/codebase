@@ -494,3 +494,20 @@
 2025-03-24 01:35:02,051 INFO 127.0.0.1 - - [24/Mar/2025 01:35:02] "OPTIONS /sensitivity/visualize HTTP/1.1" 200 -
 2025-03-24 01:35:02,066 INFO 127.0.0.1 - - [24/Mar/2025 01:35:02] "POST /sensitivity/visualize HTTP/1.1" 200 -
 2025-03-24 01:35:02,113 INFO 127.0.0.1 - - [24/Mar/2025 01:35:02] "GET /stream_prices/6 HTTP/1.1" 200 -
+2025-03-24 02:15:33,159 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-24 02:15:33,205 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-03-24 02:15:33,205 INFO [33mPress CTRL+C to quit[0m
+2025-03-24 02:15:33,205 INFO  * Restarting with stat
+2025-03-24 02:15:35,477 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-24 02:15:35,509 WARNING  * Debugger is active!
+2025-03-24 02:15:35,524 INFO  * Debugger PIN: 119-059-632
+2025-03-24 02:16:27,364 INFO 127.0.0.1 - - [24/Mar/2025 02:16:27] "OPTIONS /sensitivity/configure HTTP/1.1" 200 -
+2025-03-24 02:16:27,402 INFO 127.0.0.1 - - [24/Mar/2025 02:16:27] "POST /sensitivity/configure HTTP/1.1" 200 -
+2025-03-24 02:16:27,419 INFO 127.0.0.1 - - [24/Mar/2025 02:16:27] "OPTIONS /runs HTTP/1.1" 200 -
+2025-03-24 02:17:14,465 DEBUG Starting new HTTP connection (1): localhost:2600
+2025-03-24 02:17:26,666 INFO 127.0.0.1 - - [24/Mar/2025 02:17:26] "POST /runs HTTP/1.1" 200 -
+2025-03-24 02:17:26,666 INFO 127.0.0.1 - - [24/Mar/2025 02:17:26] "GET /prices/7 HTTP/1.1" 200 -
+2025-03-24 02:17:26,710 INFO 127.0.0.1 - - [24/Mar/2025 02:17:26] "OPTIONS /sensitivity/visualize HTTP/1.1" 200 -
+2025-03-24 02:17:26,726 INFO 127.0.0.1 - - [24/Mar/2025 02:17:26] "POST /sensitivity/visualize HTTP/1.1" 200 -
+2025-03-24 02:17:26,743 INFO 127.0.0.1 - - [24/Mar/2025 02:17:26] "GET /stream_prices/7 HTTP/1.1" 200 -

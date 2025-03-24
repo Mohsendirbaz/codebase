@@ -175,7 +175,7 @@
 }
 
 /* Theme support */
-.dark-theme .plots-tabs-container {
+.dark-theme .plots-tabs-container-1 {
     --primary-color: #4d7ea8;
     --border-color: #444;
     --text-color: #eee;
@@ -184,7 +184,7 @@
     --shadow-color: rgba(0, 0, 0, 0.3);
 }
 
-.light-theme .plots-tabs-container {
+.light-theme .plots-tabs-container-1 {
     --primary-color: #3a7ca5;
     --border-color: #ddd;
     --text-color: #333;
@@ -193,7 +193,7 @@
     --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
-.creative-theme .plots-tabs-container {
+.creative-theme .plots-tabs-container-1 {
     --primary-color: #6a8eae;
     --border-color: #c4beb9;
     --text-color: #594a3c;
