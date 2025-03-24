@@ -5,7 +5,7 @@ This module provides functionality to copy configuration modules for sensitivity
 It is designed to work independently from the main calculation orchestration.
 
 Key features:
-1. Copies all existing configuration modules (1-100)
+1. Applies sensitivity variations to all configuration modules (1-100)
 2. Implements a 2-minute pause before execution
 3. Organized configuration copying for each sensitivity parameter
 4. Complete logging and error handling
@@ -20,6 +20,8 @@ import time
 import sys
 import shutil
 import pickle
+import copy
+import importlib.util
 
 # =====================================
 # Configuration Constants
@@ -70,34 +72,78 @@ def setup_logging():
     sensitivity_logger.info("Sensitivity logging configured correctly - Logs going to: " + SENSITIVITY_LOG_PATH)
 
 # =====================================
+# Import Sen_Config Functions
+# =====================================
+
+def import_sensitivity_functions():
+    """Import necessary functions from Sen_Config module."""
+    sensitivity_logger = logging.getLogger('sensitivity')
+    
+    try:
+        # Add the Configuration_management directory to the path
+        config_mgmt_path = os.path.join(SCRIPT_DIR, "Configuration_management")
+        if config_mgmt_path not in sys.path:
+            sys.path.append(config_mgmt_path)
+        
+        # Try direct import
+        try:
+            from Sen_Config import apply_sensitivity_variation, find_parameter_by_id
+            sensitivity_logger.info("Successfully imported sensitivity functions via direct import")
+            return apply_sensitivity_variation, find_parameter_by_id
+        except ImportError:
+            sensitivity_logger.warning("Direct import failed, attempting spec import...")
+        
+        # Try spec import if direct import fails
+        sen_config_path = os.path.join(config_mgmt_path, "Sen_Config.py")
+        if os.path.exists(sen_config_path):
+            spec = importlib.util.spec_from_file_location("Sen_Config", sen_config_path)
+            sen_config_module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(sen_config_module)
+            
+            apply_sensitivity_variation = getattr(sen_config_module, 'apply_sensitivity_variation')
+            find_parameter_by_id = getattr(sen_config_module, 'find_parameter_by_id')
+            
+            sensitivity_logger.info("Successfully imported sensitivity functions via spec import")
+            return apply_sensitivity_variation, find_parameter_by_id
+        else:
+            raise ImportError(f"Could not find Sen_Config.py at {sen_config_path}")
+    
+    except Exception as e:
+        sensitivity_logger.error(f"Failed to import sensitivity functions: {str(e)}")
+        raise ImportError(f"Failed to import required functions: {str(e)}")
+
+# =====================================
 # Configuration Copy Functions
 # =====================================
 
-def copy_all_config_modules(version, SenParameters):
+def process_config_modules(version, SenParameters):
     """
-    Copy all existing configuration modules (1-100) to variation directories.
-    Includes a 2-minute pause before execution.
+    Process all configuration modules (1-100) for all parameter variations.
+    Apply sensitivity variations and save modified configurations.
     
     Args:
         version (int): Version number
         SenParameters (dict): Dictionary containing sensitivity parameters
         
     Returns:
-        dict: Summary of copied modules and their status
+        dict: Summary of processed modules and their status
     """
     sensitivity_logger = logging.getLogger('sensitivity')
-    copy_summary = {
+    processing_summary = {
         'total_found': 0,
-        'total_copied': 0,
+        'total_modified': 0,
         'errors': [],
-        'copied_modules': {}
+        'processed_modules': {}
     }
     
-    sensitivity_logger.info(f"Starting config module copy operation with 2-minute pause...")
-    time.sleep(120)  # 2-minute pause
-    sensitivity_logger.info(f"Resuming after pause, searching for config modules...")
+    sensitivity_logger.info("Starting config module processing with 2-minute pause...")
+    time.sleep(120)  # 2-minute pause for system stabilization
+    sensitivity_logger.info("Resuming after pause, processing config modules...")
     
     try:
+        # Import sensitivity functions from Sen_Config
+        apply_sensitivity_variation, find_parameter_by_id = import_sensitivity_functions()
+        
         # Source directory in ORIGINAL_BASE_DIR (root level)
         source_dir = os.path.join(ORIGINAL_BASE_DIR, f'Batch({version})', f'Results({version})')
         
@@ -118,6 +164,8 @@ def copy_all_config_modules(version, SenParameters):
             if not values:
                 continue
                 
+            sensitivity_logger.info(f"Processing parameter {param_id} with mode {mode}")
+            
             # Determine variation list based on mode
             if mode.lower() == 'symmetrical':
                 base_variation = values[0]
@@ -125,55 +173,76 @@ def copy_all_config_modules(version, SenParameters):
             else:  # 'multipoint' mode
                 variation_list = values
                 
-            # Search for all config modules (1-100) for each variation
+            # Process each variation
             for variation in variation_list:
                 var_str = f"{variation:+.2f}"
-                var_dir = os.path.join(sensitivity_dir, param_id, mode, var_str)
+                param_var_dir = os.path.join(sensitivity_dir, param_id, mode.lower(), var_str)
                 
                 # Create directory if it doesn't exist
-                os.makedirs(var_dir, exist_ok=True)
+                os.makedirs(param_var_dir, exist_ok=True)
+                sensitivity_logger.info(f"Processing variation {var_str} in directory: {param_var_dir}")
                 
-                # Check for all possible module files (1-100)
+                # Track modules for this parameter variation
+                param_key = f"{param_id}_{var_str}"
+                if param_key not in processing_summary['processed_modules']:
+                    processing_summary['processed_modules'][param_key] = []
+                
+                # Process all possible module files (1-100)
                 for module_num in range(1, 101):
-                    config_module_path = os.path.join(source_dir, f"{version}_config_module_{module_num}.json")
+                    source_config_path = os.path.join(source_dir, f"{version}_config_module_{module_num}.json")
+                    target_config_path = os.path.join(param_var_dir, f"{version}_config_module_{module_num}.json")
                     
-                    # Add to summary if found
-                    if os.path.exists(config_module_path):
-                        copy_summary['total_found'] += 1
-                        param_key = f"{param_id}_{var_str}"
+                    # Skip if source file doesn't exist
+                    if not os.path.exists(source_config_path):
+                        continue
                         
-                        if param_key not in copy_summary['copied_modules']:
-                            copy_summary['copied_modules'][param_key] = []
+                    processing_summary['total_found'] += 1
+                    
+                    try:
+                        # Load the source config module
+                        with open(source_config_path, 'r') as f:
+                            config_module = json.load(f)
                         
-                        try:
-                            # Load the config module
-                            with open(config_module_path, 'r') as f:
-                                config_module = json.load(f)
+                        # Apply sensitivity variation to the config
+                        modified_config = apply_sensitivity_variation(
+                            copy.deepcopy(config_module), 
+                            param_id, 
+                            variation, 
+                            mode
+                        )
+                        
+                        # Save the modified config
+                        with open(target_config_path, 'w') as f:
+                            json.dump(modified_config, f, indent=4)
                             
-                            # Save a copy in the variation directory
-                            var_config_path = os.path.join(var_dir, f"{version}_config_module_{module_num}.json")
-                            with open(var_config_path, 'w') as f:
-                                json.dump(config_module, f, indent=4)
-                                
-                            copy_summary['total_copied'] += 1
-                            copy_summary['copied_modules'][param_key].append(module_num)
-                            sensitivity_logger.info(f"Copied config module {module_num} to {param_id}, variation {var_str}")
-                        except Exception as e:
-                            error_msg = f"Failed to copy config module {module_num} for {param_id}, variation {var_str}: {str(e)}"
-                            sensitivity_logger.error(error_msg)
-                            copy_summary['errors'].append(error_msg)
+                        processing_summary['total_modified'] += 1
+                        processing_summary['processed_modules'][param_key].append(module_num)
+                        sensitivity_logger.info(
+                            f"Applied {variation}{'%' if mode == 'symmetrical' else ''} "
+                            f"variation to config module {module_num} for {param_id}"
+                        )
+                            
+                    except Exception as e:
+                        error_msg = f"Failed to process config module {module_num} for {param_id}, variation {var_str}: {str(e)}"
+                        sensitivity_logger.error(error_msg)
+                        processing_summary['errors'].append(error_msg)
         
-        sensitivity_logger.info(f"Config module copy operation completed: found {copy_summary['total_found']}, copied {copy_summary['total_copied']}")
-        if copy_summary['errors']:
-            sensitivity_logger.warning(f"Encountered {len(copy_summary['errors'])} errors during copy")
+        sensitivity_logger.info(
+            f"Config module processing completed: "
+            f"found {processing_summary['total_found']}, "
+            f"modified {processing_summary['total_modified']}"
+        )
         
-        return copy_summary
+        if processing_summary['errors']:
+            sensitivity_logger.warning(f"Encountered {len(processing_summary['errors'])} errors during processing")
+        
+        return processing_summary
         
     except Exception as e:
-        error_msg = f"Error in config module copy operation: {str(e)}"
+        error_msg = f"Error in config module processing: {str(e)}"
         sensitivity_logger.exception(error_msg)
-        copy_summary['errors'].append(error_msg)
-        return copy_summary
+        processing_summary['errors'].append(error_msg)
+        return processing_summary
 
 def check_sensitivity_config_status():
     """
@@ -220,8 +289,8 @@ app = initialize_app()
 # =====================================
 
 @app.route('/copy-config-modules', methods=['POST'])
-def trigger_config_copy():
-    """Independent endpoint to copy all configuration modules."""
+def trigger_config_processing():
+    """Endpoint to process all configuration modules with sensitivity variations."""
     sensitivity_logger = logging.getLogger('sensitivity')
     run_id = time.strftime("%Y%m%d_%H%M%S")
     
@@ -235,23 +304,28 @@ def trigger_config_copy():
                 "nextStep": "Call /sensitivity/configure endpoint first"
             }), 400
             
-        version = saved_config['versions'][0]
+        # Get version from the saved configuration or request body
+        request_data = request.get_json() or {}
+        version = request_data.get('version') or saved_config['versions'][0]
         
-        # Execute the independent copy operation
-        copy_summary = copy_all_config_modules(
+        # Get sensitivity parameters
+        sen_parameters = request_data.get('parameters') or saved_config['SenParameters']
+        
+        # Execute the processing operation
+        processing_summary = process_config_modules(
             version,
-            saved_config['SenParameters']
+            sen_parameters
         )
         
         return jsonify({
             "status": "success",
-            "message": "Config module copy operation completed",
+            "message": "Config module processing completed successfully",
             "runId": run_id,
-            "summary": copy_summary
+            "summary": processing_summary
         })
         
     except Exception as e:
-        error_msg = f"Error during config module copy: {str(e)}"
+        error_msg = f"Error during config module processing: {str(e)}"
         sensitivity_logger.error(error_msg)
         return jsonify({
             "error": error_msg,
@@ -266,8 +340,8 @@ def health_check():
     """
     return jsonify({
         "status": "ok",
-        "server": "sensitivity-config-base-server",
-        "version": "1.0.0",
+        "server": "sensitivity-config-processor",
+        "version": "1.1.0",
         "timestamp": time.strftime("%Y-%m-%d %H:%M:%S")
     })
 

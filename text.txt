@@ -6,13 +6,12 @@ git rev-parse HEAD  # Should show current
 
 git remote -v  # Should show https://github.com/Mohsendirbaz/SF.git
 
-git checkout -b ocean11
-
+git checkout -b ocean12
 git add .
 
-git commit -m "sensitivity_analysis"
+git commit -m "sensitivity_analysis modified configs available"
 
-git push codebase ocean11
+git push codebase ocean12
 
 
 # Remove existing temp directory (already done)

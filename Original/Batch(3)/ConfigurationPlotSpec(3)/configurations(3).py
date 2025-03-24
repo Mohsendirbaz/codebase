@@ -1,5 +1,5 @@
 plantLifetimeAmount10=20
-bECAmount11=300000
+bECAmount11=200000
 numberOfUnitsAmount12=30000
 initialSellingPriceAmount13=2
 totalOperatingCostPercentageAmount14=0.1
@@ -69,4 +69,5 @@ variable_costsAmount4=[1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 amounts_per_unitAmount5=[1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 
 filtered_values_json=[
+   '{"filteredValue":{"id":"initialSellingPriceAmount13","value":"8.8","start":"10","end":"20","remarks":"5x higher multiplier in years 10-20"}}',
 ]

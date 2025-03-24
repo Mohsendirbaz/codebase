@@ -3,16 +3,12 @@
   "config": {
     "mode": "multiple",
     "values": [
-      -30,
-      -20,
       -10,
-      10,
-      20,
-      30
+      100
     ],
     "enabled": true,
     "compareToKey": "S13",
-    "comparisonType": "secondary",
+    "comparisonType": "primary",
     "waterfall": true,
     "bar": true,
     "point": true
@@ -21,5 +17,5 @@
   "variation_str": "-10.00",
   "mode": "multiple",
   "version": "2",
-  "timestamp": "2025-03-23 17:32:01"
+  "timestamp": "2025-03-24 00:03:25"
 }

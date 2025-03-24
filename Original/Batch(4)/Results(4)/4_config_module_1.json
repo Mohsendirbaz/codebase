@@ -16,7 +16,9 @@
     "depreciationMethodAmount20": "Straight-Line",
     "engineering_Procurement_and_Construction_EPC_Amount15": 0,
     "federalTaxRateAmount33": 0.21,
-    "filtered_values_json": [],
+    "filtered_values_json": [
+        "{\"filteredValue\":{\"id\":\"initialSellingPriceAmount13\",\"value\":\"8.8\",\"start\":\"10\",\"end\":\"20\",\"remarks\":\"5x higher multiplier in years 10-20\"}}"
+    ],
     "generalInflationRateAmount23": 0,
     "iRRAmount30": 0.05,
     "initialSellingPriceAmount13": 2,

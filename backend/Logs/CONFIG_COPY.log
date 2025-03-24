@@ -179,3 +179,80 @@
 2025-03-23 23:42:56,862 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\CONFIG_COPY.log
 2025-03-23 23:42:56,972 WARNING  * Debugger is active!
 2025-03-23 23:42:56,981 INFO  * Debugger PIN: 119-059-632
+2025-03-23 23:45:41,767 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\API_endpoints_and_controllers\\Calculations_and_sensitivity.py', reloading
+2025-03-23 23:45:41,829 INFO  * Restarting with stat
+2025-03-23 23:45:42,641 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\CONFIG_COPY.log
+2025-03-23 23:45:43,041 WARNING  * Debugger is active!
+2025-03-23 23:45:43,049 INFO  * Debugger PIN: 119-059-632
+2025-03-23 23:46:04,501 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\API_endpoints_and_controllers\\Calculations_and_sensitivity.py', reloading
+2025-03-23 23:46:04,576 INFO  * Restarting with stat
+2025-03-23 23:46:05,209 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\CONFIG_COPY.log
+2025-03-23 23:46:05,251 WARNING  * Debugger is active!
+2025-03-23 23:46:05,262 INFO  * Debugger PIN: 119-059-632
+2025-03-23 23:46:20,067 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\API_endpoints_and_controllers\\Calculations_and_sensitivity.py', reloading
+2025-03-23 23:46:20,101 INFO  * Restarting with stat
+2025-03-23 23:46:20,568 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\CONFIG_COPY.log
+2025-03-23 23:46:20,608 WARNING  * Debugger is active!
+2025-03-23 23:46:20,612 INFO  * Debugger PIN: 119-059-632
+2025-03-23 23:46:41,865 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\CONFIG_COPY.log
+2025-03-23 23:46:41,912 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-03-23 23:46:41,912 INFO [33mPress CTRL+C to quit[0m
+2025-03-23 23:46:41,912 INFO  * Restarting with stat
+2025-03-23 23:46:42,439 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\CONFIG_COPY.log
+2025-03-23 23:46:42,475 WARNING  * Debugger is active!
+2025-03-23 23:46:42,475 INFO  * Debugger PIN: 119-059-632
+2025-03-23 23:50:43,123 INFO 127.0.0.1 - - [23/Mar/2025 23:50:43] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-03-24 00:06:18,462 INFO 127.0.0.1 - - [24/Mar/2025 00:06:18] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-03-24 00:54:58,913 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\API_endpoints_and_controllers\\Sen_Config.py', reloading
+2025-03-24 00:54:59,007 INFO  * Restarting with stat
+2025-03-24 00:55:00,174 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\CONFIG_COPY.log
+2025-03-24 00:55:00,238 WARNING  * Debugger is active!
+2025-03-24 00:55:00,238 INFO  * Debugger PIN: 119-059-632
+2025-03-24 00:55:16,344 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\API_endpoints_and_controllers\\Sen_Config.py', reloading
+2025-03-24 00:55:16,444 INFO  * Restarting with stat
+2025-03-24 00:55:18,111 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\CONFIG_COPY.log
+2025-03-24 00:55:18,312 WARNING  * Debugger is active!
+2025-03-24 00:55:18,342 INFO  * Debugger PIN: 119-059-632
+2025-03-24 00:55:45,846 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\API_endpoints_and_controllers\\Sen_Config.py', reloading
+2025-03-24 00:55:45,945 INFO  * Restarting with stat
+2025-03-24 00:55:47,147 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\CONFIG_COPY.log
+2025-03-24 00:55:47,213 WARNING  * Debugger is active!
+2025-03-24 00:55:47,213 INFO  * Debugger PIN: 119-059-632
+2025-03-24 01:01:34,854 INFO 127.0.0.1 - - [24/Mar/2025 01:01:34] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-03-24 01:08:22,421 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\API_endpoints_and_controllers\\Sen_Config.py', reloading
+2025-03-24 01:08:22,521 INFO  * Restarting with stat
+2025-03-24 01:08:24,253 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\CONFIG_COPY.log
+2025-03-24 01:08:24,287 WARNING  * Debugger is active!
+2025-03-24 01:08:24,303 INFO  * Debugger PIN: 119-059-632
+2025-03-24 01:12:35,551 INFO 127.0.0.1 - - [24/Mar/2025 01:12:35] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-03-24 01:20:58,624 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\API_endpoints_and_controllers\\Sen_Config.py', reloading
+2025-03-24 01:20:58,687 INFO  * Restarting with stat
+2025-03-24 01:20:59,995 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\CONFIG_COPY.log
+2025-03-24 01:21:00,078 WARNING  * Debugger is active!
+2025-03-24 01:21:00,078 INFO  * Debugger PIN: 119-059-632
+2025-03-24 01:21:51,157 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\API_endpoints_and_controllers\\Sen_Config.py', reloading
+2025-03-24 01:21:51,228 INFO  * Restarting with stat
+2025-03-24 01:21:53,579 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\CONFIG_COPY.log
+2025-03-24 01:21:53,903 WARNING  * Debugger is active!
+2025-03-24 01:21:53,920 INFO  * Debugger PIN: 119-059-632
+2025-03-24 01:22:45,363 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\CONFIG_COPY.log
+2025-03-24 01:22:45,412 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-03-24 01:22:45,412 INFO [33mPress CTRL+C to quit[0m
+2025-03-24 01:22:45,412 INFO  * Restarting with stat
+2025-03-24 01:22:45,985 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\CONFIG_COPY.log
+2025-03-24 01:22:46,016 WARNING  * Debugger is active!
+2025-03-24 01:22:46,032 INFO  * Debugger PIN: 119-059-632
+2025-03-24 01:26:16,221 INFO 127.0.0.1 - - [24/Mar/2025 01:26:16] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-03-24 01:33:11,933 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\API_endpoints_and_controllers\\sense_config_base.py', reloading
+2025-03-24 01:33:12,028 INFO  * Restarting with stat
+2025-03-24 01:33:22,571 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\CONFIG_COPY.log
+2025-03-24 01:33:22,614 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-03-24 01:33:22,615 INFO [33mPress CTRL+C to quit[0m
+2025-03-24 01:33:22,617 INFO  * Restarting with stat
+2025-03-24 01:33:23,159 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\CONFIG_COPY.log
+2025-03-24 01:33:23,194 WARNING  * Debugger is active!
+2025-03-24 01:33:23,202 INFO  * Debugger PIN: 119-059-632
+2025-03-24 01:36:53,346 INFO 127.0.0.1 - - [24/Mar/2025 01:36:53] "POST /copy-config-modules HTTP/1.1" 200 -

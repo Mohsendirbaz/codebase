@@ -368,3 +368,129 @@
 2025-03-23 23:16:10,838 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\API_endpoints_and_controllers\\Calculations_and_sensitivity.py', reloading
 2025-03-23 23:16:10,885 INFO  * Restarting with stat
 2025-03-23 23:23:40,000 INFO  * Restarting with stat
+2025-03-23 23:46:42,178 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-23 23:46:42,209 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-03-23 23:46:42,209 INFO [33mPress CTRL+C to quit[0m
+2025-03-23 23:46:42,209 INFO  * Restarting with stat
+2025-03-23 23:46:44,454 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-23 23:46:44,469 WARNING  * Debugger is active!
+2025-03-23 23:46:44,489 INFO  * Debugger PIN: 119-059-632
+2025-03-23 23:47:41,324 INFO 127.0.0.1 - - [23/Mar/2025 23:47:41] "OPTIONS /sensitivity/configure HTTP/1.1" 200 -
+2025-03-23 23:47:41,361 INFO 127.0.0.1 - - [23/Mar/2025 23:47:41] "POST /sensitivity/configure HTTP/1.1" 200 -
+2025-03-23 23:47:41,385 INFO 127.0.0.1 - - [23/Mar/2025 23:47:41] "OPTIONS /runs HTTP/1.1" 200 -
+2025-03-23 23:48:40,924 DEBUG Starting new HTTP connection (1): localhost:2600
+2025-03-23 23:48:53,037 INFO 127.0.0.1 - - [23/Mar/2025 23:48:53] "POST /runs HTTP/1.1" 200 -
+2025-03-23 23:48:53,037 INFO 127.0.0.1 - - [23/Mar/2025 23:48:53] "GET /prices/11 HTTP/1.1" 200 -
+2025-03-23 23:48:53,068 INFO 127.0.0.1 - - [23/Mar/2025 23:48:53] "OPTIONS /sensitivity/visualize HTTP/1.1" 200 -
+2025-03-23 23:48:53,115 INFO 127.0.0.1 - - [23/Mar/2025 23:48:53] "POST /sensitivity/visualize HTTP/1.1" 200 -
+2025-03-23 23:48:53,131 INFO 127.0.0.1 - - [23/Mar/2025 23:48:53] "GET /stream_prices/11 HTTP/1.1" 200 -
+2025-03-24 00:03:25,439 INFO 127.0.0.1 - - [24/Mar/2025 00:03:25] "OPTIONS /sensitivity/configure HTTP/1.1" 200 -
+2025-03-24 00:03:25,477 INFO 127.0.0.1 - - [24/Mar/2025 00:03:25] "POST /sensitivity/configure HTTP/1.1" 200 -
+2025-03-24 00:03:25,495 INFO 127.0.0.1 - - [24/Mar/2025 00:03:25] "OPTIONS /runs HTTP/1.1" 200 -
+2025-03-24 00:04:16,179 DEBUG Starting new HTTP connection (1): localhost:2600
+2025-03-24 00:04:28,315 INFO 127.0.0.1 - - [24/Mar/2025 00:04:28] "POST /runs HTTP/1.1" 200 -
+2025-03-24 00:04:28,331 INFO 127.0.0.1 - - [24/Mar/2025 00:04:28] "GET /prices/2 HTTP/1.1" 200 -
+2025-03-24 00:04:28,347 INFO 127.0.0.1 - - [24/Mar/2025 00:04:28] "OPTIONS /sensitivity/visualize HTTP/1.1" 200 -
+2025-03-24 00:04:28,378 INFO 127.0.0.1 - - [24/Mar/2025 00:04:28] "POST /sensitivity/visualize HTTP/1.1" 200 -
+2025-03-24 00:04:28,425 INFO 127.0.0.1 - - [24/Mar/2025 00:04:28] "GET /stream_prices/2 HTTP/1.1" 200 -
+2025-03-24 00:54:57,901 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\API_endpoints_and_controllers\\Sen_Config.py', reloading
+2025-03-24 00:54:58,195 INFO  * Restarting with stat
+2025-03-24 00:55:04,695 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-24 00:55:04,757 WARNING  * Debugger is active!
+2025-03-24 00:55:04,757 INFO  * Debugger PIN: 119-059-632
+2025-03-24 00:55:12,432 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\API_endpoints_and_controllers\\Sen_Config.py', reloading
+2025-03-24 00:55:12,591 INFO  * Restarting with stat
+2025-03-24 00:55:19,495 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-24 00:55:19,559 WARNING  * Debugger is active!
+2025-03-24 00:55:19,577 INFO  * Debugger PIN: 119-059-632
+2025-03-24 00:55:47,597 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\API_endpoints_and_controllers\\Sen_Config.py', reloading
+2025-03-24 00:55:47,763 INFO  * Restarting with stat
+2025-03-24 00:55:52,893 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-24 00:55:52,987 WARNING  * Debugger is active!
+2025-03-24 00:55:52,987 INFO  * Debugger PIN: 119-059-632
+2025-03-24 00:58:37,537 INFO 127.0.0.1 - - [24/Mar/2025 00:58:37] "OPTIONS /sensitivity/configure HTTP/1.1" 200 -
+2025-03-24 00:58:37,603 INFO 127.0.0.1 - - [24/Mar/2025 00:58:37] "POST /sensitivity/configure HTTP/1.1" 200 -
+2025-03-24 00:58:37,653 INFO 127.0.0.1 - - [24/Mar/2025 00:58:37] "OPTIONS /runs HTTP/1.1" 200 -
+2025-03-24 00:59:32,352 DEBUG Starting new HTTP connection (1): localhost:2600
+2025-03-24 00:59:44,780 INFO 127.0.0.1 - - [24/Mar/2025 00:59:44] "POST /runs HTTP/1.1" 200 -
+2025-03-24 00:59:44,780 INFO 127.0.0.1 - - [24/Mar/2025 00:59:44] "GET /prices/3 HTTP/1.1" 200 -
+2025-03-24 00:59:44,795 INFO 127.0.0.1 - - [24/Mar/2025 00:59:44] "OPTIONS /sensitivity/visualize HTTP/1.1" 200 -
+2025-03-24 00:59:44,827 INFO 127.0.0.1 - - [24/Mar/2025 00:59:44] "POST /sensitivity/visualize HTTP/1.1" 200 -
+2025-03-24 00:59:44,874 INFO 127.0.0.1 - - [24/Mar/2025 00:59:44] "GET /stream_prices/3 HTTP/1.1" 200 -
+2025-03-24 01:08:17,049 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\API_endpoints_and_controllers\\Sen_Config.py', reloading
+2025-03-24 01:08:17,224 INFO  * Restarting with stat
+2025-03-24 01:08:22,654 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-24 01:08:22,721 WARNING  * Debugger is active!
+2025-03-24 01:08:22,737 INFO  * Debugger PIN: 119-059-632
+2025-03-24 01:08:45,050 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-24 01:08:45,144 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-03-24 01:08:45,144 INFO [33mPress CTRL+C to quit[0m
+2025-03-24 01:08:45,144 INFO  * Restarting with stat
+2025-03-24 01:08:48,750 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-24 01:08:48,786 WARNING  * Debugger is active!
+2025-03-24 01:08:48,797 INFO  * Debugger PIN: 119-059-632
+2025-03-24 01:09:35,137 INFO 127.0.0.1 - - [24/Mar/2025 01:09:35] "OPTIONS /sensitivity/configure HTTP/1.1" 200 -
+2025-03-24 01:09:35,178 INFO 127.0.0.1 - - [24/Mar/2025 01:09:35] "POST /sensitivity/configure HTTP/1.1" 200 -
+2025-03-24 01:09:35,188 INFO 127.0.0.1 - - [24/Mar/2025 01:09:35] "OPTIONS /runs HTTP/1.1" 200 -
+2025-03-24 01:10:33,045 DEBUG Starting new HTTP connection (1): localhost:2600
+2025-03-24 01:10:45,466 INFO 127.0.0.1 - - [24/Mar/2025 01:10:45] "POST /runs HTTP/1.1" 200 -
+2025-03-24 01:10:45,466 INFO 127.0.0.1 - - [24/Mar/2025 01:10:45] "GET /prices/4 HTTP/1.1" 200 -
+2025-03-24 01:10:45,513 INFO 127.0.0.1 - - [24/Mar/2025 01:10:45] "OPTIONS /sensitivity/visualize HTTP/1.1" 200 -
+2025-03-24 01:10:45,544 INFO 127.0.0.1 - - [24/Mar/2025 01:10:45] "POST /sensitivity/visualize HTTP/1.1" 200 -
+2025-03-24 01:10:45,560 INFO 127.0.0.1 - - [24/Mar/2025 01:10:45] "GET /stream_prices/4 HTTP/1.1" 200 -
+2025-03-24 01:20:56,326 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\API_endpoints_and_controllers\\Sen_Config.py', reloading
+2025-03-24 01:20:56,419 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\API_endpoints_and_controllers\\Sen_Config.py', reloading
+2025-03-24 01:20:56,523 INFO  * Restarting with stat
+2025-03-24 01:20:56,594 INFO  * Restarting with stat
+2025-03-24 01:21:01,039 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-24 01:21:01,310 WARNING  * Debugger is active!
+2025-03-24 01:21:01,319 INFO  * Debugger PIN: 119-059-632
+2025-03-24 01:21:01,871 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-24 01:21:02,037 WARNING  * Debugger is active!
+2025-03-24 01:21:02,046 INFO  * Debugger PIN: 119-059-632
+2025-03-24 01:21:54,669 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\API_endpoints_and_controllers\\Sen_Config.py', reloading
+2025-03-24 01:21:54,921 INFO  * Restarting with stat
+2025-03-24 01:21:56,219 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\API_endpoints_and_controllers\\Sen_Config.py', reloading
+2025-03-24 01:21:56,429 INFO  * Restarting with stat
+2025-03-24 01:22:01,300 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-24 01:22:01,475 WARNING  * Debugger is active!
+2025-03-24 01:22:01,485 INFO  * Debugger PIN: 119-059-632
+2025-03-24 01:22:02,046 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-24 01:22:02,133 WARNING  * Debugger is active!
+2025-03-24 01:22:02,133 INFO  * Debugger PIN: 119-059-632
+2025-03-24 01:22:46,016 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-24 01:22:46,063 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-03-24 01:22:46,063 INFO [33mPress CTRL+C to quit[0m
+2025-03-24 01:22:46,063 INFO  * Restarting with stat
+2025-03-24 01:22:48,705 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-24 01:22:48,809 WARNING  * Debugger is active!
+2025-03-24 01:22:48,825 INFO  * Debugger PIN: 119-059-632
+2025-03-24 01:23:20,159 INFO 127.0.0.1 - - [24/Mar/2025 01:23:20] "OPTIONS /sensitivity/configure HTTP/1.1" 200 -
+2025-03-24 01:23:20,199 INFO 127.0.0.1 - - [24/Mar/2025 01:23:20] "POST /sensitivity/configure HTTP/1.1" 200 -
+2025-03-24 01:23:20,213 INFO 127.0.0.1 - - [24/Mar/2025 01:23:20] "OPTIONS /runs HTTP/1.1" 200 -
+2025-03-24 01:24:13,673 DEBUG Starting new HTTP connection (1): localhost:2600
+2025-03-24 01:24:26,146 INFO 127.0.0.1 - - [24/Mar/2025 01:24:26] "POST /runs HTTP/1.1" 200 -
+2025-03-24 01:24:26,162 INFO 127.0.0.1 - - [24/Mar/2025 01:24:26] "GET /prices/5 HTTP/1.1" 200 -
+2025-03-24 01:24:26,209 INFO 127.0.0.1 - - [24/Mar/2025 01:24:26] "OPTIONS /sensitivity/visualize HTTP/1.1" 200 -
+2025-03-24 01:24:26,209 INFO 127.0.0.1 - - [24/Mar/2025 01:24:26] "GET /stream_prices/5 HTTP/1.1" 200 -
+2025-03-24 01:24:26,224 INFO 127.0.0.1 - - [24/Mar/2025 01:24:26] "POST /sensitivity/visualize HTTP/1.1" 200 -
+2025-03-24 01:33:23,007 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-24 01:33:23,051 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-03-24 01:33:23,051 INFO [33mPress CTRL+C to quit[0m
+2025-03-24 01:33:23,054 INFO  * Restarting with stat
+2025-03-24 01:33:25,589 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\RUN.log
+2025-03-24 01:33:25,627 WARNING  * Debugger is active!
+2025-03-24 01:33:25,634 INFO  * Debugger PIN: 119-059-632
+2025-03-24 01:33:54,104 INFO 127.0.0.1 - - [24/Mar/2025 01:33:54] "OPTIONS /sensitivity/configure HTTP/1.1" 200 -
+2025-03-24 01:33:54,146 INFO 127.0.0.1 - - [24/Mar/2025 01:33:54] "POST /sensitivity/configure HTTP/1.1" 200 -
+2025-03-24 01:33:54,162 INFO 127.0.0.1 - - [24/Mar/2025 01:33:54] "OPTIONS /runs HTTP/1.1" 200 -
+2025-03-24 01:34:49,807 DEBUG Starting new HTTP connection (1): localhost:2600
+2025-03-24 01:35:02,051 INFO 127.0.0.1 - - [24/Mar/2025 01:35:02] "POST /runs HTTP/1.1" 200 -
+2025-03-24 01:35:02,051 INFO 127.0.0.1 - - [24/Mar/2025 01:35:02] "GET /prices/6 HTTP/1.1" 200 -
+2025-03-24 01:35:02,051 INFO 127.0.0.1 - - [24/Mar/2025 01:35:02] "OPTIONS /sensitivity/visualize HTTP/1.1" 200 -
+2025-03-24 01:35:02,066 INFO 127.0.0.1 - - [24/Mar/2025 01:35:02] "POST /sensitivity/visualize HTTP/1.1" 200 -
+2025-03-24 01:35:02,113 INFO 127.0.0.1 - - [24/Mar/2025 01:35:02] "GET /stream_prices/6 HTTP/1.1" 200 -

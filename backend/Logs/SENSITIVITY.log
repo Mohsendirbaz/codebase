@@ -1,7 +1,1387 @@
-2025-03-23 23:29:38,222 INFO Starting config module copy operation with 2-minute pause...
-2025-03-23 23:31:01,573 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\SENSITIVITY.log
-2025-03-23 23:34:58,795 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\SENSITIVITY.log
-2025-03-23 23:40:20,117 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\SENSITIVITY.log
-2025-03-23 23:40:36,117 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\SENSITIVITY.log
-2025-03-23 23:42:19,750 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\SENSITIVITY.log
-2025-03-23 23:42:56,863 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\SENSITIVITY.log
+2025-03-24 01:09:35,145 INFO 
+================================================================================
+2025-03-24 01:09:35,145 INFO 
+================================================================================
+2025-03-24 01:09:35,145 INFO Sensitivity Configuration Generation - Run ID: 20250324_010935
+2025-03-24 01:09:35,145 INFO Sensitivity Configuration Generation - Run ID: 20250324_010935
+2025-03-24 01:09:35,145 INFO ================================================================================
+2025-03-24 01:09:35,145 INFO ================================================================================
+2025-03-24 01:09:35,145 INFO Version: 4
+2025-03-24 01:09:35,145 INFO Version: 4
+2025-03-24 01:09:35,145 INFO Calculation Mode: calculateForPrice
+2025-03-24 01:09:35,145 INFO Calculation Mode: calculateForPrice
+2025-03-24 01:09:35,146 INFO Target Row: 20
+2025-03-24 01:09:35,146 INFO Target Row: 20
+2025-03-24 01:09:35,147 INFO Created main sensitivity directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity
+2025-03-24 01:09:35,147 INFO Created main sensitivity directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity
+2025-03-24 01:09:35,148 INFO Created Reports directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Reports
+2025-03-24 01:09:35,148 INFO Created Reports directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Reports
+2025-03-24 01:09:35,148 INFO Created Cache directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Cache
+2025-03-24 01:09:35,148 INFO Created Cache directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Cache
+2025-03-24 01:09:35,149 INFO Created Configuration directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Configuration
+2025-03-24 01:09:35,149 INFO Created Configuration directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Configuration
+2025-03-24 01:09:35,150 INFO Created mode directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Symmetrical
+2025-03-24 01:09:35,150 INFO Created mode directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Symmetrical
+2025-03-24 01:09:35,151 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Symmetrical\waterfall
+2025-03-24 01:09:35,151 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Symmetrical\waterfall
+2025-03-24 01:09:35,151 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Symmetrical\bar
+2025-03-24 01:09:35,151 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Symmetrical\bar
+2025-03-24 01:09:35,157 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Symmetrical\point
+2025-03-24 01:09:35,157 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Symmetrical\point
+2025-03-24 01:09:35,157 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Symmetrical\Configuration
+2025-03-24 01:09:35,157 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Symmetrical\Configuration
+2025-03-24 01:09:35,158 INFO Created mode directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Multipoint
+2025-03-24 01:09:35,158 INFO Created mode directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Multipoint
+2025-03-24 01:09:35,158 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Multipoint\waterfall
+2025-03-24 01:09:35,158 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Multipoint\waterfall
+2025-03-24 01:09:35,159 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Multipoint\bar
+2025-03-24 01:09:35,159 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Multipoint\bar
+2025-03-24 01:09:35,160 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Multipoint\point
+2025-03-24 01:09:35,160 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Multipoint\point
+2025-03-24 01:09:35,160 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Multipoint\Configuration
+2025-03-24 01:09:35,160 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Multipoint\Configuration
+2025-03-24 01:09:35,162 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\S35\multiple\-10.00
+2025-03-24 01:09:35,162 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\S35\multiple\-10.00
+2025-03-24 01:09:35,162 INFO Created config variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Multipoint\Configuration\S35_-10.00
+2025-03-24 01:09:35,162 INFO Created config variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Multipoint\Configuration\S35_-10.00
+2025-03-24 01:09:35,163 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\S35\multiple\+100.00
+2025-03-24 01:09:35,163 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\S35\multiple\+100.00
+2025-03-24 01:09:35,164 INFO Created config variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Multipoint\Configuration\S35_+100.00
+2025-03-24 01:09:35,164 INFO Created config variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Multipoint\Configuration\S35_+100.00
+2025-03-24 01:09:35,164 INFO Created plot directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Multipoint\waterfall\S35_waterfall
+2025-03-24 01:09:35,164 INFO Created plot directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Multipoint\waterfall\S35_waterfall
+2025-03-24 01:09:35,165 INFO Created plot directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Multipoint\bar\S35_bar
+2025-03-24 01:09:35,165 INFO Created plot directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Multipoint\bar\S35_bar
+2025-03-24 01:09:35,166 INFO Created plot directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Multipoint\point\S35_point
+2025-03-24 01:09:35,166 INFO Created plot directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Multipoint\point\S35_point
+2025-03-24 01:09:35,166 INFO 
+================================================================================
+2025-03-24 01:09:35,166 INFO 
+================================================================================
+2025-03-24 01:09:35,166 INFO CFA Run Configuration
+2025-03-24 01:09:35,166 INFO CFA Run Configuration
+2025-03-24 01:09:35,166 INFO ================================================================================
+2025-03-24 01:09:35,166 INFO ================================================================================
+2025-03-24 01:09:35,167 INFO 
+Basic Configuration:
+2025-03-24 01:09:35,167 INFO 
+Basic Configuration:
+2025-03-24 01:09:35,167 INFO Version(s): 4
+2025-03-24 01:09:35,167 INFO Version(s): 4
+2025-03-24 01:09:35,167 INFO Calculation Mode: calculateForPrice
+2025-03-24 01:09:35,167 INFO Calculation Mode: calculateForPrice
+2025-03-24 01:09:35,167 INFO Target Row: 20
+2025-03-24 01:09:35,167 INFO Target Row: 20
+2025-03-24 01:09:35,168 INFO 
+Parameter States:
+2025-03-24 01:09:35,168 INFO 
+Parameter States:
+2025-03-24 01:09:35,168 INFO Enabled V Parameters: V1
+2025-03-24 01:09:35,168 INFO Enabled V Parameters: V1
+2025-03-24 01:09:35,168 INFO Enabled F Parameters: F1, F2, F3, F4, F5
+2025-03-24 01:09:35,168 INFO Enabled F Parameters: F1, F2, F3, F4, F5
+2025-03-24 01:09:35,168 INFO 
+Sensitivity Analysis Configuration:
+2025-03-24 01:09:35,168 INFO 
+Sensitivity Analysis Configuration:
+2025-03-24 01:09:35,169 INFO Enabled Parameters: S35
+2025-03-24 01:09:35,169 INFO Enabled Parameters: S35
+2025-03-24 01:09:35,169 INFO 
+S35 Configuration:
+2025-03-24 01:09:35,169 INFO 
+S35 Configuration:
+2025-03-24 01:09:35,169 INFO   Mode: multiple
+2025-03-24 01:09:35,169 INFO   Mode: multiple
+2025-03-24 01:09:35,169 INFO   Values: [-10, 100]
+2025-03-24 01:09:35,169 INFO   Values: [-10, 100]
+2025-03-24 01:09:35,170 INFO   Comparison:
+2025-03-24 01:09:35,170 INFO   Comparison:
+2025-03-24 01:09:35,170 INFO     Target: S13
+2025-03-24 01:09:35,170 INFO     Target: S13
+2025-03-24 01:09:35,170 INFO     Type: primary
+2025-03-24 01:09:35,170 INFO     Type: primary
+2025-03-24 01:09:35,170 INFO     Plot Types: waterfall, bar, point
+2025-03-24 01:09:35,170 INFO     Plot Types: waterfall, bar, point
+2025-03-24 01:09:35,171 INFO 
+================================================================================
+
+2025-03-24 01:09:35,171 INFO 
+================================================================================
+
+2025-03-24 01:09:35,177 INFO Saved main configuration file: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Reports\sensitivity_config.json
+2025-03-24 01:09:35,177 INFO Saved main configuration file: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Reports\sensitivity_config.json
+2025-03-24 01:09:35,178 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\S35\multiple\-10.00\S35_config.json
+2025-03-24 01:09:35,178 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\S35\multiple\-10.00\S35_config.json
+2025-03-24 01:09:35,178 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\S35\multiple\+100.00\S35_config.json
+2025-03-24 01:09:35,178 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\S35\multiple\+100.00\S35_config.json
+2025-03-24 01:09:35,178 INFO 
+Sensitivity configuration completed successfully
+2025-03-24 01:09:35,178 INFO 
+Sensitivity configuration completed successfully
+2025-03-24 01:09:35,178 INFO Configuration files saved: 3
+2025-03-24 01:09:35,178 INFO Configuration files saved: 3
+2025-03-24 01:09:35,178 INFO Configuration status saved to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\sensitivity_config_status.json
+2025-03-24 01:09:35,178 INFO Configuration status saved to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\sensitivity_config_status.json
+2025-03-24 01:09:35,178 INFO ================================================================================
+
+2025-03-24 01:09:35,178 INFO ================================================================================
+
+2025-03-24 01:09:35,238 INFO Using saved sensitivity configuration data
+2025-03-24 01:09:35,238 INFO Using saved sensitivity configuration data
+2025-03-24 01:09:35,238 INFO Using sensitivity directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity
+2025-03-24 01:09:35,238 INFO Using sensitivity directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity
+2025-03-24 01:09:35,238 INFO 
+================================================================================
+2025-03-24 01:09:35,238 INFO 
+================================================================================
+2025-03-24 01:09:35,238 INFO Sensitivity Calculation Run - ID: 20250324_010935
+2025-03-24 01:09:35,238 INFO Sensitivity Calculation Run - ID: 20250324_010935
+2025-03-24 01:09:35,238 INFO ================================================================================
+2025-03-24 01:09:35,238 INFO ================================================================================
+2025-03-24 01:09:35,238 INFO 
+================================================================================
+2025-03-24 01:09:35,238 INFO 
+================================================================================
+2025-03-24 01:09:35,238 INFO CFA Run Configuration
+2025-03-24 01:09:35,238 INFO CFA Run Configuration
+2025-03-24 01:09:35,238 INFO ================================================================================
+2025-03-24 01:09:35,238 INFO ================================================================================
+2025-03-24 01:09:35,238 INFO 
+Basic Configuration:
+2025-03-24 01:09:35,238 INFO 
+Basic Configuration:
+2025-03-24 01:09:35,238 INFO Version(s): 4
+2025-03-24 01:09:35,238 INFO Version(s): 4
+2025-03-24 01:09:35,238 INFO Calculation Mode: calculateForPrice
+2025-03-24 01:09:35,238 INFO Calculation Mode: calculateForPrice
+2025-03-24 01:09:35,238 INFO Target Row: 20
+2025-03-24 01:09:35,238 INFO Target Row: 20
+2025-03-24 01:09:35,238 INFO 
+Parameter States:
+2025-03-24 01:09:35,238 INFO 
+Parameter States:
+2025-03-24 01:09:35,238 INFO Enabled V Parameters: V1
+2025-03-24 01:09:35,238 INFO Enabled V Parameters: V1
+2025-03-24 01:09:35,238 INFO Enabled F Parameters: F1, F2, F3, F4, F5
+2025-03-24 01:09:35,238 INFO Enabled F Parameters: F1, F2, F3, F4, F5
+2025-03-24 01:09:35,238 INFO 
+Sensitivity Analysis Configuration:
+2025-03-24 01:09:35,238 INFO 
+Sensitivity Analysis Configuration:
+2025-03-24 01:09:35,238 INFO Enabled Parameters: S35
+2025-03-24 01:09:35,238 INFO Enabled Parameters: S35
+2025-03-24 01:09:35,238 INFO 
+S35 Configuration:
+2025-03-24 01:09:35,238 INFO 
+S35 Configuration:
+2025-03-24 01:09:35,238 INFO   Mode: multiple
+2025-03-24 01:09:35,238 INFO   Mode: multiple
+2025-03-24 01:09:35,238 INFO   Values: [-10, 100]
+2025-03-24 01:09:35,238 INFO   Values: [-10, 100]
+2025-03-24 01:09:35,238 INFO   Comparison:
+2025-03-24 01:09:35,238 INFO   Comparison:
+2025-03-24 01:09:35,238 INFO     Target: S13
+2025-03-24 01:09:35,238 INFO     Target: S13
+2025-03-24 01:09:35,238 INFO     Type: primary
+2025-03-24 01:09:35,238 INFO     Type: primary
+2025-03-24 01:09:35,238 INFO     Plot Types: waterfall, bar, point
+2025-03-24 01:09:35,238 INFO     Plot Types: waterfall, bar, point
+2025-03-24 01:09:35,238 INFO 
+================================================================================
+
+2025-03-24 01:09:35,238 INFO 
+================================================================================
+
+2025-03-24 01:09:35,238 INFO 
+Executing Configuration Management Scripts:
+2025-03-24 01:09:35,238 INFO 
+Executing Configuration Management Scripts:
+2025-03-24 01:09:35,238 INFO 
+Executing: formatter.py
+2025-03-24 01:09:35,238 INFO 
+Executing: formatter.py
+2025-03-24 01:09:35,675 INFO Completed formatter.py in 0.44s
+2025-03-24 01:09:35,675 INFO Completed formatter.py in 0.44s
+2025-03-24 01:09:36,177 INFO 
+Executing: module1.py
+2025-03-24 01:09:36,177 INFO 
+Executing: module1.py
+2025-03-24 01:09:39,193 INFO Completed module1.py in 3.02s
+2025-03-24 01:09:39,193 INFO Completed module1.py in 3.02s
+2025-03-24 01:09:39,693 INFO 
+Executing: config_modules.py
+2025-03-24 01:09:39,693 INFO 
+Executing: config_modules.py
+2025-03-24 01:09:42,923 INFO Completed config_modules.py in 3.23s
+2025-03-24 01:09:42,923 INFO Completed config_modules.py in 3.23s
+2025-03-24 01:09:43,445 INFO 
+Executing: Table.py
+2025-03-24 01:09:43,445 INFO 
+Executing: Table.py
+2025-03-24 01:09:45,760 INFO Completed Table.py in 2.32s
+2025-03-24 01:09:45,760 INFO Completed Table.py in 2.32s
+2025-03-24 01:09:46,270 INFO 
+Configuration scripts completed in 11.03s
+2025-03-24 01:09:46,270 INFO 
+Configuration scripts completed in 11.03s
+2025-03-24 01:09:46,270 INFO 
+Processing Calculations:
+2025-03-24 01:09:46,270 INFO 
+Processing Calculations:
+2025-03-24 01:09:46,270 INFO Using calculation script: CFA.py
+2025-03-24 01:09:46,270 INFO Using calculation script: CFA.py
+2025-03-24 01:09:46,270 INFO 
+Executing baseline calculation:
+2025-03-24 01:09:46,270 INFO 
+Executing baseline calculation:
+2025-03-24 01:10:09,439 INFO Baseline calculation completed successfully
+2025-03-24 01:10:09,439 INFO Baseline calculation completed successfully
+2025-03-24 01:10:09,439 INFO 
+Processing 1 sensitivity parameters:
+2025-03-24 01:10:09,439 INFO 
+Processing 1 sensitivity parameters:
+2025-03-24 01:10:09,439 INFO 
+Processing S35:
+2025-03-24 01:10:09,439 INFO 
+Processing S35:
+2025-03-24 01:10:09,439 INFO Mode: multiple
+2025-03-24 01:10:09,439 INFO Mode: multiple
+2025-03-24 01:10:09,439 INFO Values: [-10, 100]
+2025-03-24 01:10:09,439 INFO Values: [-10, 100]
+2025-03-24 01:10:33,029 INFO Completed S35 in 23.59s
+2025-03-24 01:10:33,029 INFO Completed S35 in 23.59s
+2025-03-24 01:10:33,029 INFO 
+================================================================================
+2025-03-24 01:10:33,029 INFO 
+================================================================================
+2025-03-24 01:10:33,029 INFO Run Summary - ID: 20250324_010935
+2025-03-24 01:10:33,029 INFO Run Summary - ID: 20250324_010935
+2025-03-24 01:10:33,029 INFO Total execution time: 57.79s
+2025-03-24 01:10:33,029 INFO Total execution time: 57.79s
+2025-03-24 01:10:33,029 INFO Configuration scripts: 11.03s
+2025-03-24 01:10:33,029 INFO Configuration scripts: 11.03s
+2025-03-24 01:10:33,029 INFO Calculations completed: 2
+2025-03-24 01:10:33,029 INFO Calculations completed: 2
+2025-03-24 01:10:33,029 INFO ================================================================================
+
+2025-03-24 01:10:33,029 INFO ================================================================================
+
+2025-03-24 01:10:33,029 INFO Triggering config module copy service on port 2600...
+2025-03-24 01:10:33,029 INFO Triggering config module copy service on port 2600...
+2025-03-24 01:10:35,465 INFO Starting config module copy operation with 2-minute pause...
+2025-03-24 01:10:45,466 ERROR Error connecting to config copy service: HTTPConnectionPool(host='localhost', port=2600): Read timed out. (read timeout=10)
+2025-03-24 01:10:45,466 ERROR Error connecting to config copy service: HTTPConnectionPool(host='localhost', port=2600): Read timed out. (read timeout=10)
+2025-03-24 01:10:45,466 INFO Fetching price for version: 4
+2025-03-24 01:10:45,466 INFO Fetching price for version: 4
+2025-03-24 01:10:45,528 INFO Using saved version from configuration
+2025-03-24 01:10:45,528 INFO Using saved version from configuration
+2025-03-24 01:10:45,528 INFO Using saved sensitivity parameters from configuration
+2025-03-24 01:10:45,528 INFO Using saved sensitivity parameters from configuration
+2025-03-24 01:10:45,528 INFO [ENTER] Processing visualization request - Run ID: 20250324_011045
+2025-03-24 01:10:45,528 INFO [ENTER] Processing visualization request - Run ID: 20250324_011045
+2025-03-24 01:10:45,528 INFO 
+Processing visualization request - Run ID: 20250324_011045
+2025-03-24 01:10:45,528 INFO 
+Processing visualization request - Run ID: 20250324_011045
+2025-03-24 01:10:45,528 INFO Version: 4
+2025-03-24 01:10:45,528 INFO Version: 4
+2025-03-24 01:10:45,528 INFO Parameters: ['S10', 'S11', 'S12', 'S13', 'S14', 'S15', 'S16', 'S17', 'S18', 'S19', 'S20', 'S21', 'S22', 'S23', 'S24', 'S25', 'S26', 'S27', 'S28', 'S29', 'S30', 'S31', 'S32', 'S33', 'S34', 'S35', 'S36', 'S37', 'S38', 'S39', 'S40', 'S41', 'S42', 'S43', 'S44', 'S45', 'S46', 'S47', 'S48', 'S49', 'S50', 'S51', 'S52', 'S53', 'S54', 'S55', 'S56', 'S57', 'S58', 'S59', 'S60', 'S61', 'S62', 'S63', 'S64', 'S65', 'S66', 'S67', 'S68', 'S69', 'S70', 'S71', 'S72', 'S73', 'S74', 'S75', 'S76', 'S77', 'S78', 'S79']
+2025-03-24 01:10:45,528 INFO Parameters: ['S10', 'S11', 'S12', 'S13', 'S14', 'S15', 'S16', 'S17', 'S18', 'S19', 'S20', 'S21', 'S22', 'S23', 'S24', 'S25', 'S26', 'S27', 'S28', 'S29', 'S30', 'S31', 'S32', 'S33', 'S34', 'S35', 'S36', 'S37', 'S38', 'S39', 'S40', 'S41', 'S42', 'S43', 'S44', 'S45', 'S46', 'S47', 'S48', 'S49', 'S50', 'S51', 'S52', 'S53', 'S54', 'S55', 'S56', 'S57', 'S58', 'S59', 'S60', 'S61', 'S62', 'S63', 'S64', 'S65', 'S66', 'S67', 'S68', 'S69', 'S70', 'S71', 'S72', 'S73', 'S74', 'S75', 'S76', 'S77', 'S78', 'S79']
+2025-03-24 01:10:45,528 INFO Created main sensitivity directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity
+2025-03-24 01:10:45,528 INFO Created main sensitivity directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity
+2025-03-24 01:10:45,528 INFO Created sensitivity mode directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Symmetrical
+2025-03-24 01:10:45,528 INFO Created sensitivity mode directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Symmetrical
+2025-03-24 01:10:45,528 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Symmetrical\waterfall
+2025-03-24 01:10:45,528 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Symmetrical\waterfall
+2025-03-24 01:10:45,528 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Symmetrical\bar
+2025-03-24 01:10:45,528 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Symmetrical\bar
+2025-03-24 01:10:45,528 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Symmetrical\point
+2025-03-24 01:10:45,528 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Symmetrical\point
+2025-03-24 01:10:45,528 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Symmetrical\Configuration
+2025-03-24 01:10:45,528 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Symmetrical\Configuration
+2025-03-24 01:10:45,528 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Symmetrical\Configuration\S35_-10.00
+2025-03-24 01:10:45,528 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Symmetrical\Configuration\S35_-10.00
+2025-03-24 01:10:45,528 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Symmetrical\Configuration\S35_+10.00
+2025-03-24 01:10:45,528 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Symmetrical\Configuration\S35_+10.00
+2025-03-24 01:10:45,528 INFO Created sensitivity mode directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Multipoint
+2025-03-24 01:10:45,528 INFO Created sensitivity mode directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Multipoint
+2025-03-24 01:10:45,528 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Multipoint\waterfall
+2025-03-24 01:10:45,528 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Multipoint\waterfall
+2025-03-24 01:10:45,528 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Multipoint\bar
+2025-03-24 01:10:45,528 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Multipoint\bar
+2025-03-24 01:10:45,528 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Multipoint\point
+2025-03-24 01:10:45,528 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Multipoint\point
+2025-03-24 01:10:45,528 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Multipoint\Configuration
+2025-03-24 01:10:45,528 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Multipoint\Configuration
+2025-03-24 01:10:45,528 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Multipoint\Configuration\S35_-10.00
+2025-03-24 01:10:45,528 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Multipoint\Configuration\S35_-10.00
+2025-03-24 01:10:45,528 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Multipoint\Configuration\S35_+100.00
+2025-03-24 01:10:45,528 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Multipoint\Configuration\S35_+100.00
+2025-03-24 01:10:45,528 INFO Created standalone Configuration directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Configuration
+2025-03-24 01:10:45,528 INFO Created standalone Configuration directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Configuration
+2025-03-24 01:10:45,528 INFO Created sensitivity extra directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Reports
+2025-03-24 01:10:45,528 INFO Created sensitivity extra directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Reports
+2025-03-24 01:10:45,544 INFO Created sensitivity extra directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Cache
+2025-03-24 01:10:45,544 INFO Created sensitivity extra directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Cache
+2025-03-24 01:10:45,544 INFO [CHECKPOINT] Processing parameter S35
+2025-03-24 01:10:45,544 INFO [CHECKPOINT] Processing parameter S35
+2025-03-24 01:10:45,544 INFO 
+Processing S35:
+2025-03-24 01:10:45,544 INFO 
+Processing S35:
+2025-03-24 01:10:45,544 INFO S35 identified as special case (vs S13)
+2025-03-24 01:10:45,544 INFO S35 identified as special case (vs S13)
+2025-03-24 01:10:45,544 INFO Added relationship: S35 -> S13 (primary)
+2025-03-24 01:10:45,544 INFO Added relationship: S35 -> S13 (primary)
+2025-03-24 01:10:45,544 INFO PLOT GENERATION STARTED: waterfall plot for S35 vs S13 (multiple)
+2025-03-24 01:10:45,544 INFO PLOT GENERATION STARTED: waterfall plot for S35 vs S13 (multiple)
+2025-03-24 01:10:45,544 WARNING Plot not found: waterfall_S35_S13_primary
+2025-03-24 01:10:45,544 WARNING Plot not found: waterfall_S35_S13_primary
+2025-03-24 01:10:45,544 ERROR PLOT GENERATION FAILED: waterfall plot for S35 vs S13 (multiple) - Plot not found: waterfall_S35_S13_primary
+2025-03-24 01:10:45,544 ERROR PLOT GENERATION FAILED: waterfall plot for S35 vs S13 (multiple) - Plot not found: waterfall_S35_S13_primary
+2025-03-24 01:10:45,544 ERROR DATA LOADING FAILED: S35 vs S13 from C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Multipoint\S35_vs_S13_multiple_results.json - Result data file not found
+2025-03-24 01:10:45,544 ERROR DATA LOADING FAILED: S35 vs S13 from C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Multipoint\S35_vs_S13_multiple_results.json - Result data file not found
+2025-03-24 01:10:45,544 INFO PLOT GENERATION STARTED: bar plot for S35 vs S13 (multiple)
+2025-03-24 01:10:45,544 INFO PLOT GENERATION STARTED: bar plot for S35 vs S13 (multiple)
+2025-03-24 01:10:45,544 WARNING Plot not found: bar_S35_S13_primary
+2025-03-24 01:10:45,544 WARNING Plot not found: bar_S35_S13_primary
+2025-03-24 01:10:45,544 ERROR PLOT GENERATION FAILED: bar plot for S35 vs S13 (multiple) - Plot not found: bar_S35_S13_primary
+2025-03-24 01:10:45,544 ERROR PLOT GENERATION FAILED: bar plot for S35 vs S13 (multiple) - Plot not found: bar_S35_S13_primary
+2025-03-24 01:10:45,544 ERROR DATA LOADING FAILED: S35 vs S13 from C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Multipoint\S35_vs_S13_multiple_results.json - Result data file not found
+2025-03-24 01:10:45,544 ERROR DATA LOADING FAILED: S35 vs S13 from C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Multipoint\S35_vs_S13_multiple_results.json - Result data file not found
+2025-03-24 01:10:45,544 INFO PLOT GENERATION STARTED: point plot for S35 vs S13 (multiple)
+2025-03-24 01:10:45,544 INFO PLOT GENERATION STARTED: point plot for S35 vs S13 (multiple)
+2025-03-24 01:10:45,544 WARNING Plot not found: point_S35_S13_primary
+2025-03-24 01:10:45,544 WARNING Plot not found: point_S35_S13_primary
+2025-03-24 01:10:45,544 ERROR PLOT GENERATION FAILED: point plot for S35 vs S13 (multiple) - Plot not found: point_S35_S13_primary
+2025-03-24 01:10:45,544 ERROR PLOT GENERATION FAILED: point plot for S35 vs S13 (multiple) - Plot not found: point_S35_S13_primary
+2025-03-24 01:10:45,544 ERROR DATA LOADING FAILED: S35 vs S13 from C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Multipoint\S35_vs_S13_multiple_results.json - Result data file not found
+2025-03-24 01:10:45,544 ERROR DATA LOADING FAILED: S35 vs S13 from C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(4)\Results(4)\Sensitivity\Multipoint\S35_vs_S13_multiple_results.json - Result data file not found
+2025-03-24 01:10:45,544 INFO [CHECKPOINT] Completed processing parameter S35
+2025-03-24 01:10:45,544 INFO [CHECKPOINT] Completed processing parameter S35
+2025-03-24 01:10:45,544 INFO 
+Visualization processing complete - Run ID: 20250324_011045
+2025-03-24 01:10:45,544 INFO 
+Visualization processing complete - Run ID: 20250324_011045
+2025-03-24 01:10:45,544 INFO Processing time: 0.02s
+2025-03-24 01:10:45,544 INFO Processing time: 0.02s
+2025-03-24 01:10:45,544 INFO Plots generated: 0
+2025-03-24 01:10:45,544 INFO Plots generated: 0
+2025-03-24 01:10:45,544 INFO [EXIT] Visualization processing complete - Run ID: 20250324_011045
+2025-03-24 01:10:45,544 INFO [EXIT] Visualization processing complete - Run ID: 20250324_011045
+2025-03-24 01:10:45,560 INFO Starting price stream for version: 4
+2025-03-24 01:10:45,560 INFO Starting price stream for version: 4
+2025-03-24 01:10:45,560 INFO Using simulated initial price: 1400.0
+2025-03-24 01:10:45,560 INFO Using simulated initial price: 1400.0
+2025-03-24 01:10:46,561 INFO Streaming price update 1: 1405.0
+2025-03-24 01:10:46,561 INFO Streaming price update 1: 1405.0
+2025-03-24 01:10:47,562 INFO Streaming price update 2: 1415.0
+2025-03-24 01:10:47,562 INFO Streaming price update 2: 1415.0
+2025-03-24 01:10:48,564 INFO Streaming price update 3: 1430.0
+2025-03-24 01:10:48,564 INFO Streaming price update 3: 1430.0
+2025-03-24 01:10:49,565 INFO Streaming price update 4: 1450.0
+2025-03-24 01:10:49,565 INFO Streaming price update 4: 1450.0
+2025-03-24 01:10:50,566 INFO Streaming price update 5: 1475.0
+2025-03-24 01:10:50,566 INFO Streaming price update 5: 1475.0
+2025-03-24 01:12:35,473 INFO Resuming after pause, searching for config modules...
+2025-03-24 01:12:35,473 INFO Copied config module 1 to S35, variation -10.00
+2025-03-24 01:12:35,473 INFO Copied config module 2 to S35, variation -10.00
+2025-03-24 01:12:35,473 INFO Copied config module 3 to S35, variation -10.00
+2025-03-24 01:12:35,473 INFO Copied config module 4 to S35, variation -10.00
+2025-03-24 01:12:35,473 INFO Copied config module 5 to S35, variation -10.00
+2025-03-24 01:12:35,473 INFO Copied config module 6 to S35, variation -10.00
+2025-03-24 01:12:35,473 INFO Copied config module 7 to S35, variation -10.00
+2025-03-24 01:12:35,488 INFO Copied config module 8 to S35, variation -10.00
+2025-03-24 01:12:35,488 INFO Copied config module 9 to S35, variation -10.00
+2025-03-24 01:12:35,488 INFO Copied config module 10 to S35, variation -10.00
+2025-03-24 01:12:35,488 INFO Copied config module 11 to S35, variation -10.00
+2025-03-24 01:12:35,488 INFO Copied config module 12 to S35, variation -10.00
+2025-03-24 01:12:35,488 INFO Copied config module 13 to S35, variation -10.00
+2025-03-24 01:12:35,488 INFO Copied config module 14 to S35, variation -10.00
+2025-03-24 01:12:35,504 INFO Copied config module 15 to S35, variation -10.00
+2025-03-24 01:12:35,504 INFO Copied config module 16 to S35, variation -10.00
+2025-03-24 01:12:35,504 INFO Copied config module 17 to S35, variation -10.00
+2025-03-24 01:12:35,504 INFO Copied config module 18 to S35, variation -10.00
+2025-03-24 01:12:35,504 INFO Copied config module 19 to S35, variation -10.00
+2025-03-24 01:12:35,504 INFO Copied config module 20 to S35, variation -10.00
+2025-03-24 01:12:35,520 INFO Copied config module 1 to S35, variation +100.00
+2025-03-24 01:12:35,520 INFO Copied config module 2 to S35, variation +100.00
+2025-03-24 01:12:35,520 INFO Copied config module 3 to S35, variation +100.00
+2025-03-24 01:12:35,520 INFO Copied config module 4 to S35, variation +100.00
+2025-03-24 01:12:35,520 INFO Copied config module 5 to S35, variation +100.00
+2025-03-24 01:12:35,520 INFO Copied config module 6 to S35, variation +100.00
+2025-03-24 01:12:35,520 INFO Copied config module 7 to S35, variation +100.00
+2025-03-24 01:12:35,520 INFO Copied config module 8 to S35, variation +100.00
+2025-03-24 01:12:35,535 INFO Copied config module 9 to S35, variation +100.00
+2025-03-24 01:12:35,535 INFO Copied config module 10 to S35, variation +100.00
+2025-03-24 01:12:35,535 INFO Copied config module 11 to S35, variation +100.00
+2025-03-24 01:12:35,535 INFO Copied config module 12 to S35, variation +100.00
+2025-03-24 01:12:35,535 INFO Copied config module 13 to S35, variation +100.00
+2025-03-24 01:12:35,535 INFO Copied config module 14 to S35, variation +100.00
+2025-03-24 01:12:35,535 INFO Copied config module 15 to S35, variation +100.00
+2025-03-24 01:12:35,535 INFO Copied config module 16 to S35, variation +100.00
+2025-03-24 01:12:35,551 INFO Copied config module 17 to S35, variation +100.00
+2025-03-24 01:12:35,551 INFO Copied config module 18 to S35, variation +100.00
+2025-03-24 01:12:35,551 INFO Copied config module 19 to S35, variation +100.00
+2025-03-24 01:12:35,551 INFO Copied config module 20 to S35, variation +100.00
+2025-03-24 01:12:35,551 INFO Config module copy operation completed: found 40, copied 40
+2025-03-24 01:20:59,995 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\SENSITIVITY.log
+2025-03-24 01:21:01,039 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\SENSITIVITY.log
+2025-03-24 01:21:01,039 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\SENSITIVITY.log
+2025-03-24 01:21:01,871 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\SENSITIVITY.log
+2025-03-24 01:21:01,871 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\SENSITIVITY.log
+2025-03-24 01:21:53,579 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\SENSITIVITY.log
+2025-03-24 01:22:01,300 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\SENSITIVITY.log
+2025-03-24 01:22:01,300 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\SENSITIVITY.log
+2025-03-24 01:22:02,046 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\SENSITIVITY.log
+2025-03-24 01:22:02,046 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\SENSITIVITY.log
+2025-03-24 01:22:45,364 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\SENSITIVITY.log
+2025-03-24 01:22:45,985 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\SENSITIVITY.log
+2025-03-24 01:22:46,016 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\SENSITIVITY.log
+2025-03-24 01:22:46,016 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\SENSITIVITY.log
+2025-03-24 01:22:48,705 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\SENSITIVITY.log
+2025-03-24 01:22:48,705 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\SENSITIVITY.log
+2025-03-24 01:23:20,169 INFO 
+================================================================================
+2025-03-24 01:23:20,169 INFO 
+================================================================================
+2025-03-24 01:23:20,169 INFO Sensitivity Configuration Generation - Run ID: 20250324_012320
+2025-03-24 01:23:20,169 INFO Sensitivity Configuration Generation - Run ID: 20250324_012320
+2025-03-24 01:23:20,169 INFO ================================================================================
+2025-03-24 01:23:20,169 INFO ================================================================================
+2025-03-24 01:23:20,169 INFO Version: 5
+2025-03-24 01:23:20,169 INFO Version: 5
+2025-03-24 01:23:20,169 INFO Calculation Mode: calculateForPrice
+2025-03-24 01:23:20,169 INFO Calculation Mode: calculateForPrice
+2025-03-24 01:23:20,170 INFO Target Row: 20
+2025-03-24 01:23:20,170 INFO Target Row: 20
+2025-03-24 01:23:20,171 INFO Created main sensitivity directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity
+2025-03-24 01:23:20,171 INFO Created main sensitivity directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity
+2025-03-24 01:23:20,172 INFO Created Reports directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Reports
+2025-03-24 01:23:20,172 INFO Created Reports directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Reports
+2025-03-24 01:23:20,172 INFO Created Cache directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Cache
+2025-03-24 01:23:20,172 INFO Created Cache directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Cache
+2025-03-24 01:23:20,173 INFO Created Configuration directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Configuration
+2025-03-24 01:23:20,173 INFO Created Configuration directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Configuration
+2025-03-24 01:23:20,173 INFO Created mode directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical
+2025-03-24 01:23:20,173 INFO Created mode directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical
+2025-03-24 01:23:20,174 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\waterfall
+2025-03-24 01:23:20,174 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\waterfall
+2025-03-24 01:23:20,174 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\bar
+2025-03-24 01:23:20,174 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\bar
+2025-03-24 01:23:20,175 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\point
+2025-03-24 01:23:20,175 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\point
+2025-03-24 01:23:20,177 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration
+2025-03-24 01:23:20,177 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration
+2025-03-24 01:23:20,177 INFO Created mode directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint
+2025-03-24 01:23:20,177 INFO Created mode directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint
+2025-03-24 01:23:20,178 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\waterfall
+2025-03-24 01:23:20,178 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\waterfall
+2025-03-24 01:23:20,178 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\bar
+2025-03-24 01:23:20,178 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\bar
+2025-03-24 01:23:20,179 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\point
+2025-03-24 01:23:20,179 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\point
+2025-03-24 01:23:20,180 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\Configuration
+2025-03-24 01:23:20,180 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\Configuration
+2025-03-24 01:23:20,180 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\S35\multiple\-10.00
+2025-03-24 01:23:20,180 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\S35\multiple\-10.00
+2025-03-24 01:23:20,181 INFO Created config variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\Configuration\S35_-10.00
+2025-03-24 01:23:20,181 INFO Created config variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\Configuration\S35_-10.00
+2025-03-24 01:23:20,181 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\S35\multiple\+100.00
+2025-03-24 01:23:20,181 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\S35\multiple\+100.00
+2025-03-24 01:23:20,182 INFO Created config variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\Configuration\S35_+100.00
+2025-03-24 01:23:20,182 INFO Created config variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\Configuration\S35_+100.00
+2025-03-24 01:23:20,183 INFO Created plot directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\waterfall\S35_waterfall
+2025-03-24 01:23:20,183 INFO Created plot directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\waterfall\S35_waterfall
+2025-03-24 01:23:20,183 INFO Created plot directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\bar\S35_bar
+2025-03-24 01:23:20,183 INFO Created plot directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\bar\S35_bar
+2025-03-24 01:23:20,184 INFO Created plot directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\point\S35_point
+2025-03-24 01:23:20,184 INFO Created plot directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\point\S35_point
+2025-03-24 01:23:20,184 INFO 
+================================================================================
+2025-03-24 01:23:20,184 INFO 
+================================================================================
+2025-03-24 01:23:20,184 INFO CFA Run Configuration
+2025-03-24 01:23:20,184 INFO CFA Run Configuration
+2025-03-24 01:23:20,184 INFO ================================================================================
+2025-03-24 01:23:20,184 INFO ================================================================================
+2025-03-24 01:23:20,184 INFO 
+Basic Configuration:
+2025-03-24 01:23:20,184 INFO 
+Basic Configuration:
+2025-03-24 01:23:20,185 INFO Version(s): 5
+2025-03-24 01:23:20,185 INFO Version(s): 5
+2025-03-24 01:23:20,185 INFO Calculation Mode: calculateForPrice
+2025-03-24 01:23:20,185 INFO Calculation Mode: calculateForPrice
+2025-03-24 01:23:20,185 INFO Target Row: 20
+2025-03-24 01:23:20,185 INFO Target Row: 20
+2025-03-24 01:23:20,185 INFO 
+Parameter States:
+2025-03-24 01:23:20,185 INFO 
+Parameter States:
+2025-03-24 01:23:20,185 INFO Enabled V Parameters: V1
+2025-03-24 01:23:20,185 INFO Enabled V Parameters: V1
+2025-03-24 01:23:20,186 INFO Enabled F Parameters: F1, F2, F3, F4, F5
+2025-03-24 01:23:20,186 INFO Enabled F Parameters: F1, F2, F3, F4, F5
+2025-03-24 01:23:20,186 INFO 
+Sensitivity Analysis Configuration:
+2025-03-24 01:23:20,186 INFO 
+Sensitivity Analysis Configuration:
+2025-03-24 01:23:20,186 INFO Enabled Parameters: S35
+2025-03-24 01:23:20,186 INFO Enabled Parameters: S35
+2025-03-24 01:23:20,186 INFO 
+S35 Configuration:
+2025-03-24 01:23:20,186 INFO 
+S35 Configuration:
+2025-03-24 01:23:20,186 INFO   Mode: multiple
+2025-03-24 01:23:20,186 INFO   Mode: multiple
+2025-03-24 01:23:20,186 INFO   Values: [-10, 100]
+2025-03-24 01:23:20,186 INFO   Values: [-10, 100]
+2025-03-24 01:23:20,187 INFO   Comparison:
+2025-03-24 01:23:20,187 INFO   Comparison:
+2025-03-24 01:23:20,187 INFO     Target: S13
+2025-03-24 01:23:20,187 INFO     Target: S13
+2025-03-24 01:23:20,187 INFO     Type: primary
+2025-03-24 01:23:20,187 INFO     Type: primary
+2025-03-24 01:23:20,187 INFO     Plot Types: waterfall, bar, point
+2025-03-24 01:23:20,187 INFO     Plot Types: waterfall, bar, point
+2025-03-24 01:23:20,187 INFO 
+================================================================================
+
+2025-03-24 01:23:20,187 INFO 
+================================================================================
+
+2025-03-24 01:23:20,194 INFO Saved main configuration file: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Reports\sensitivity_config.json
+2025-03-24 01:23:20,194 INFO Saved main configuration file: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Reports\sensitivity_config.json
+2025-03-24 01:23:20,195 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\S35\multiple\-10.00\S35_config.json
+2025-03-24 01:23:20,195 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\S35\multiple\-10.00\S35_config.json
+2025-03-24 01:23:20,197 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\S35\multiple\+100.00\S35_config.json
+2025-03-24 01:23:20,197 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\S35\multiple\+100.00\S35_config.json
+2025-03-24 01:23:20,198 INFO 
+Sensitivity configuration completed successfully
+2025-03-24 01:23:20,198 INFO 
+Sensitivity configuration completed successfully
+2025-03-24 01:23:20,198 INFO Configuration files saved: 3
+2025-03-24 01:23:20,198 INFO Configuration files saved: 3
+2025-03-24 01:23:20,199 INFO Configuration status saved to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\sensitivity_config_status.json
+2025-03-24 01:23:20,199 INFO Configuration status saved to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\sensitivity_config_status.json
+2025-03-24 01:23:20,199 INFO ================================================================================
+
+2025-03-24 01:23:20,199 INFO ================================================================================
+
+2025-03-24 01:23:20,247 INFO Using saved sensitivity configuration data
+2025-03-24 01:23:20,247 INFO Using saved sensitivity configuration data
+2025-03-24 01:23:20,247 INFO Using sensitivity directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity
+2025-03-24 01:23:20,247 INFO Using sensitivity directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity
+2025-03-24 01:23:20,247 INFO 
+================================================================================
+2025-03-24 01:23:20,247 INFO 
+================================================================================
+2025-03-24 01:23:20,247 INFO Sensitivity Calculation Run - ID: 20250324_012320
+2025-03-24 01:23:20,247 INFO Sensitivity Calculation Run - ID: 20250324_012320
+2025-03-24 01:23:20,247 INFO ================================================================================
+2025-03-24 01:23:20,247 INFO ================================================================================
+2025-03-24 01:23:20,247 INFO 
+================================================================================
+2025-03-24 01:23:20,247 INFO 
+================================================================================
+2025-03-24 01:23:20,247 INFO CFA Run Configuration
+2025-03-24 01:23:20,247 INFO CFA Run Configuration
+2025-03-24 01:23:20,247 INFO ================================================================================
+2025-03-24 01:23:20,247 INFO ================================================================================
+2025-03-24 01:23:20,247 INFO 
+Basic Configuration:
+2025-03-24 01:23:20,247 INFO 
+Basic Configuration:
+2025-03-24 01:23:20,247 INFO Version(s): 5
+2025-03-24 01:23:20,247 INFO Version(s): 5
+2025-03-24 01:23:20,247 INFO Calculation Mode: calculateForPrice
+2025-03-24 01:23:20,247 INFO Calculation Mode: calculateForPrice
+2025-03-24 01:23:20,247 INFO Target Row: 20
+2025-03-24 01:23:20,247 INFO Target Row: 20
+2025-03-24 01:23:20,247 INFO 
+Parameter States:
+2025-03-24 01:23:20,247 INFO 
+Parameter States:
+2025-03-24 01:23:20,247 INFO Enabled V Parameters: V1
+2025-03-24 01:23:20,247 INFO Enabled V Parameters: V1
+2025-03-24 01:23:20,247 INFO Enabled F Parameters: F1, F2, F3, F4, F5
+2025-03-24 01:23:20,247 INFO Enabled F Parameters: F1, F2, F3, F4, F5
+2025-03-24 01:23:20,247 INFO 
+Sensitivity Analysis Configuration:
+2025-03-24 01:23:20,247 INFO 
+Sensitivity Analysis Configuration:
+2025-03-24 01:23:20,247 INFO Enabled Parameters: S35
+2025-03-24 01:23:20,247 INFO Enabled Parameters: S35
+2025-03-24 01:23:20,247 INFO 
+S35 Configuration:
+2025-03-24 01:23:20,247 INFO 
+S35 Configuration:
+2025-03-24 01:23:20,247 INFO   Mode: multiple
+2025-03-24 01:23:20,247 INFO   Mode: multiple
+2025-03-24 01:23:20,247 INFO   Values: [-10, 100]
+2025-03-24 01:23:20,247 INFO   Values: [-10, 100]
+2025-03-24 01:23:20,247 INFO   Comparison:
+2025-03-24 01:23:20,247 INFO   Comparison:
+2025-03-24 01:23:20,247 INFO     Target: S13
+2025-03-24 01:23:20,247 INFO     Target: S13
+2025-03-24 01:23:20,247 INFO     Type: primary
+2025-03-24 01:23:20,247 INFO     Type: primary
+2025-03-24 01:23:20,247 INFO     Plot Types: waterfall, bar, point
+2025-03-24 01:23:20,247 INFO     Plot Types: waterfall, bar, point
+2025-03-24 01:23:20,247 INFO 
+================================================================================
+
+2025-03-24 01:23:20,247 INFO 
+================================================================================
+
+2025-03-24 01:23:20,247 INFO 
+Executing Configuration Management Scripts:
+2025-03-24 01:23:20,247 INFO 
+Executing Configuration Management Scripts:
+2025-03-24 01:23:20,247 INFO 
+Executing: formatter.py
+2025-03-24 01:23:20,247 INFO 
+Executing: formatter.py
+2025-03-24 01:23:20,414 INFO Completed formatter.py in 0.17s
+2025-03-24 01:23:20,414 INFO Completed formatter.py in 0.17s
+2025-03-24 01:23:20,928 INFO 
+Executing: module1.py
+2025-03-24 01:23:20,928 INFO 
+Executing: module1.py
+2025-03-24 01:23:24,406 INFO Completed module1.py in 3.48s
+2025-03-24 01:23:24,406 INFO Completed module1.py in 3.48s
+2025-03-24 01:23:24,907 INFO 
+Executing: config_modules.py
+2025-03-24 01:23:24,907 INFO 
+Executing: config_modules.py
+2025-03-24 01:23:26,862 INFO Completed config_modules.py in 1.95s
+2025-03-24 01:23:26,862 INFO Completed config_modules.py in 1.95s
+2025-03-24 01:23:27,364 INFO 
+Executing: Table.py
+2025-03-24 01:23:27,364 INFO 
+Executing: Table.py
+2025-03-24 01:23:31,191 INFO Completed Table.py in 3.83s
+2025-03-24 01:23:31,191 INFO Completed Table.py in 3.83s
+2025-03-24 01:23:31,692 INFO 
+Configuration scripts completed in 11.44s
+2025-03-24 01:23:31,692 INFO 
+Configuration scripts completed in 11.44s
+2025-03-24 01:23:31,692 INFO 
+Processing Calculations:
+2025-03-24 01:23:31,692 INFO 
+Processing Calculations:
+2025-03-24 01:23:31,692 INFO Using calculation script: CFA.py
+2025-03-24 01:23:31,692 INFO Using calculation script: CFA.py
+2025-03-24 01:23:31,692 INFO 
+Executing baseline calculation:
+2025-03-24 01:23:31,692 INFO 
+Executing baseline calculation:
+2025-03-24 01:23:53,309 INFO Baseline calculation completed successfully
+2025-03-24 01:23:53,309 INFO Baseline calculation completed successfully
+2025-03-24 01:23:53,309 INFO 
+Processing 1 sensitivity parameters:
+2025-03-24 01:23:53,309 INFO 
+Processing 1 sensitivity parameters:
+2025-03-24 01:23:53,309 INFO 
+Processing S35:
+2025-03-24 01:23:53,309 INFO 
+Processing S35:
+2025-03-24 01:23:53,309 INFO Mode: multiple
+2025-03-24 01:23:53,309 INFO Mode: multiple
+2025-03-24 01:23:53,309 INFO Values: [-10, 100]
+2025-03-24 01:23:53,309 INFO Values: [-10, 100]
+2025-03-24 01:24:13,673 INFO Completed S35 in 20.36s
+2025-03-24 01:24:13,673 INFO Completed S35 in 20.36s
+2025-03-24 01:24:13,673 INFO 
+================================================================================
+2025-03-24 01:24:13,673 INFO 
+================================================================================
+2025-03-24 01:24:13,673 INFO Run Summary - ID: 20250324_012320
+2025-03-24 01:24:13,673 INFO Run Summary - ID: 20250324_012320
+2025-03-24 01:24:13,673 INFO Total execution time: 53.43s
+2025-03-24 01:24:13,673 INFO Total execution time: 53.43s
+2025-03-24 01:24:13,673 INFO Configuration scripts: 11.44s
+2025-03-24 01:24:13,673 INFO Configuration scripts: 11.44s
+2025-03-24 01:24:13,673 INFO Calculations completed: 2
+2025-03-24 01:24:13,673 INFO Calculations completed: 2
+2025-03-24 01:24:13,673 INFO ================================================================================
+
+2025-03-24 01:24:13,673 INFO ================================================================================
+
+2025-03-24 01:24:13,673 INFO Triggering config module copy service on port 2600...
+2025-03-24 01:24:13,673 INFO Triggering config module copy service on port 2600...
+2025-03-24 01:24:16,140 INFO Starting config module copy operation with 2-minute pause...
+2025-03-24 01:24:26,146 ERROR Error connecting to config copy service: HTTPConnectionPool(host='localhost', port=2600): Read timed out. (read timeout=10)
+2025-03-24 01:24:26,146 ERROR Error connecting to config copy service: HTTPConnectionPool(host='localhost', port=2600): Read timed out. (read timeout=10)
+2025-03-24 01:24:26,162 INFO Fetching price for version: 5
+2025-03-24 01:24:26,162 INFO Fetching price for version: 5
+2025-03-24 01:24:26,209 INFO Using saved version from configuration
+2025-03-24 01:24:26,209 INFO Using saved version from configuration
+2025-03-24 01:24:26,209 INFO Using saved sensitivity parameters from configuration
+2025-03-24 01:24:26,209 INFO Using saved sensitivity parameters from configuration
+2025-03-24 01:24:26,209 INFO [ENTER] Processing visualization request - Run ID: 20250324_012426
+2025-03-24 01:24:26,209 INFO [ENTER] Processing visualization request - Run ID: 20250324_012426
+2025-03-24 01:24:26,209 INFO 
+Processing visualization request - Run ID: 20250324_012426
+2025-03-24 01:24:26,209 INFO 
+Processing visualization request - Run ID: 20250324_012426
+2025-03-24 01:24:26,209 INFO Version: 5
+2025-03-24 01:24:26,209 INFO Version: 5
+2025-03-24 01:24:26,209 INFO Parameters: ['S10', 'S11', 'S12', 'S13', 'S14', 'S15', 'S16', 'S17', 'S18', 'S19', 'S20', 'S21', 'S22', 'S23', 'S24', 'S25', 'S26', 'S27', 'S28', 'S29', 'S30', 'S31', 'S32', 'S33', 'S34', 'S35', 'S36', 'S37', 'S38', 'S39', 'S40', 'S41', 'S42', 'S43', 'S44', 'S45', 'S46', 'S47', 'S48', 'S49', 'S50', 'S51', 'S52', 'S53', 'S54', 'S55', 'S56', 'S57', 'S58', 'S59', 'S60', 'S61', 'S62', 'S63', 'S64', 'S65', 'S66', 'S67', 'S68', 'S69', 'S70', 'S71', 'S72', 'S73', 'S74', 'S75', 'S76', 'S77', 'S78', 'S79']
+2025-03-24 01:24:26,209 INFO Parameters: ['S10', 'S11', 'S12', 'S13', 'S14', 'S15', 'S16', 'S17', 'S18', 'S19', 'S20', 'S21', 'S22', 'S23', 'S24', 'S25', 'S26', 'S27', 'S28', 'S29', 'S30', 'S31', 'S32', 'S33', 'S34', 'S35', 'S36', 'S37', 'S38', 'S39', 'S40', 'S41', 'S42', 'S43', 'S44', 'S45', 'S46', 'S47', 'S48', 'S49', 'S50', 'S51', 'S52', 'S53', 'S54', 'S55', 'S56', 'S57', 'S58', 'S59', 'S60', 'S61', 'S62', 'S63', 'S64', 'S65', 'S66', 'S67', 'S68', 'S69', 'S70', 'S71', 'S72', 'S73', 'S74', 'S75', 'S76', 'S77', 'S78', 'S79']
+2025-03-24 01:24:26,209 INFO Created main sensitivity directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity
+2025-03-24 01:24:26,209 INFO Created main sensitivity directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity
+2025-03-24 01:24:26,209 INFO Starting price stream for version: 5
+2025-03-24 01:24:26,209 INFO Starting price stream for version: 5
+2025-03-24 01:24:26,209 INFO Created sensitivity mode directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical
+2025-03-24 01:24:26,209 INFO Created sensitivity mode directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical
+2025-03-24 01:24:26,209 INFO Using simulated initial price: 1500.0
+2025-03-24 01:24:26,209 INFO Using simulated initial price: 1500.0
+2025-03-24 01:24:26,209 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\waterfall
+2025-03-24 01:24:26,209 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\waterfall
+2025-03-24 01:24:26,209 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\bar
+2025-03-24 01:24:26,209 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\bar
+2025-03-24 01:24:26,209 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\point
+2025-03-24 01:24:26,209 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\point
+2025-03-24 01:24:26,209 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration
+2025-03-24 01:24:26,209 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration
+2025-03-24 01:24:26,209 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S35_-10.00
+2025-03-24 01:24:26,209 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S35_-10.00
+2025-03-24 01:24:26,209 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S35_+10.00
+2025-03-24 01:24:26,209 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S35_+10.00
+2025-03-24 01:24:26,224 INFO Created sensitivity mode directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint
+2025-03-24 01:24:26,224 INFO Created sensitivity mode directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint
+2025-03-24 01:24:26,224 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\waterfall
+2025-03-24 01:24:26,224 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\waterfall
+2025-03-24 01:24:26,224 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\bar
+2025-03-24 01:24:26,224 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\bar
+2025-03-24 01:24:26,224 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\point
+2025-03-24 01:24:26,224 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\point
+2025-03-24 01:24:26,224 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\Configuration
+2025-03-24 01:24:26,224 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\Configuration
+2025-03-24 01:24:26,224 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\Configuration\S35_-10.00
+2025-03-24 01:24:26,224 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\Configuration\S35_-10.00
+2025-03-24 01:24:26,224 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\Configuration\S35_+100.00
+2025-03-24 01:24:26,224 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\Configuration\S35_+100.00
+2025-03-24 01:24:26,224 INFO Created standalone Configuration directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Configuration
+2025-03-24 01:24:26,224 INFO Created standalone Configuration directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Configuration
+2025-03-24 01:24:26,224 INFO Created sensitivity extra directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Reports
+2025-03-24 01:24:26,224 INFO Created sensitivity extra directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Reports
+2025-03-24 01:24:26,224 INFO Created sensitivity extra directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Cache
+2025-03-24 01:24:26,224 INFO Created sensitivity extra directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Cache
+2025-03-24 01:24:26,224 INFO [CHECKPOINT] Processing parameter S35
+2025-03-24 01:24:26,224 INFO [CHECKPOINT] Processing parameter S35
+2025-03-24 01:24:26,224 INFO 
+Processing S35:
+2025-03-24 01:24:26,224 INFO 
+Processing S35:
+2025-03-24 01:24:26,224 INFO S35 identified as special case (vs S13)
+2025-03-24 01:24:26,224 INFO S35 identified as special case (vs S13)
+2025-03-24 01:24:26,224 INFO Added relationship: S35 -> S13 (primary)
+2025-03-24 01:24:26,224 INFO Added relationship: S35 -> S13 (primary)
+2025-03-24 01:24:26,224 INFO PLOT GENERATION STARTED: waterfall plot for S35 vs S13 (multiple)
+2025-03-24 01:24:26,224 INFO PLOT GENERATION STARTED: waterfall plot for S35 vs S13 (multiple)
+2025-03-24 01:24:26,224 WARNING Plot not found: waterfall_S35_S13_primary
+2025-03-24 01:24:26,224 WARNING Plot not found: waterfall_S35_S13_primary
+2025-03-24 01:24:26,224 ERROR PLOT GENERATION FAILED: waterfall plot for S35 vs S13 (multiple) - Plot not found: waterfall_S35_S13_primary
+2025-03-24 01:24:26,224 ERROR PLOT GENERATION FAILED: waterfall plot for S35 vs S13 (multiple) - Plot not found: waterfall_S35_S13_primary
+2025-03-24 01:24:26,224 ERROR DATA LOADING FAILED: S35 vs S13 from C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\S35_vs_S13_multiple_results.json - Result data file not found
+2025-03-24 01:24:26,224 ERROR DATA LOADING FAILED: S35 vs S13 from C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\S35_vs_S13_multiple_results.json - Result data file not found
+2025-03-24 01:24:26,224 INFO PLOT GENERATION STARTED: bar plot for S35 vs S13 (multiple)
+2025-03-24 01:24:26,224 INFO PLOT GENERATION STARTED: bar plot for S35 vs S13 (multiple)
+2025-03-24 01:24:26,224 WARNING Plot not found: bar_S35_S13_primary
+2025-03-24 01:24:26,224 WARNING Plot not found: bar_S35_S13_primary
+2025-03-24 01:24:26,224 ERROR PLOT GENERATION FAILED: bar plot for S35 vs S13 (multiple) - Plot not found: bar_S35_S13_primary
+2025-03-24 01:24:26,224 ERROR PLOT GENERATION FAILED: bar plot for S35 vs S13 (multiple) - Plot not found: bar_S35_S13_primary
+2025-03-24 01:24:26,224 ERROR DATA LOADING FAILED: S35 vs S13 from C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\S35_vs_S13_multiple_results.json - Result data file not found
+2025-03-24 01:24:26,224 ERROR DATA LOADING FAILED: S35 vs S13 from C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\S35_vs_S13_multiple_results.json - Result data file not found
+2025-03-24 01:24:26,224 INFO PLOT GENERATION STARTED: point plot for S35 vs S13 (multiple)
+2025-03-24 01:24:26,224 INFO PLOT GENERATION STARTED: point plot for S35 vs S13 (multiple)
+2025-03-24 01:24:26,224 WARNING Plot not found: point_S35_S13_primary
+2025-03-24 01:24:26,224 WARNING Plot not found: point_S35_S13_primary
+2025-03-24 01:24:26,224 ERROR PLOT GENERATION FAILED: point plot for S35 vs S13 (multiple) - Plot not found: point_S35_S13_primary
+2025-03-24 01:24:26,224 ERROR PLOT GENERATION FAILED: point plot for S35 vs S13 (multiple) - Plot not found: point_S35_S13_primary
+2025-03-24 01:24:26,224 ERROR DATA LOADING FAILED: S35 vs S13 from C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\S35_vs_S13_multiple_results.json - Result data file not found
+2025-03-24 01:24:26,224 ERROR DATA LOADING FAILED: S35 vs S13 from C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\S35_vs_S13_multiple_results.json - Result data file not found
+2025-03-24 01:24:26,224 INFO [CHECKPOINT] Completed processing parameter S35
+2025-03-24 01:24:26,224 INFO [CHECKPOINT] Completed processing parameter S35
+2025-03-24 01:24:26,224 INFO 
+Visualization processing complete - Run ID: 20250324_012426
+2025-03-24 01:24:26,224 INFO 
+Visualization processing complete - Run ID: 20250324_012426
+2025-03-24 01:24:26,224 INFO Processing time: 0.02s
+2025-03-24 01:24:26,224 INFO Processing time: 0.02s
+2025-03-24 01:24:26,224 INFO Plots generated: 0
+2025-03-24 01:24:26,224 INFO Plots generated: 0
+2025-03-24 01:24:26,224 INFO [EXIT] Visualization processing complete - Run ID: 20250324_012426
+2025-03-24 01:24:26,224 INFO [EXIT] Visualization processing complete - Run ID: 20250324_012426
+2025-03-24 01:24:27,222 INFO Streaming price update 1: 1505.0
+2025-03-24 01:24:27,222 INFO Streaming price update 1: 1505.0
+2025-03-24 01:24:28,223 INFO Streaming price update 2: 1515.0
+2025-03-24 01:24:28,223 INFO Streaming price update 2: 1515.0
+2025-03-24 01:24:29,224 INFO Streaming price update 3: 1530.0
+2025-03-24 01:24:29,224 INFO Streaming price update 3: 1530.0
+2025-03-24 01:24:30,225 INFO Streaming price update 4: 1550.0
+2025-03-24 01:24:30,225 INFO Streaming price update 4: 1550.0
+2025-03-24 01:24:31,227 INFO Streaming price update 5: 1575.0
+2025-03-24 01:24:31,227 INFO Streaming price update 5: 1575.0
+2025-03-24 01:26:16,142 INFO Resuming after pause, searching for config modules...
+2025-03-24 01:26:16,142 INFO Copied config module 1 to S35, variation -10.00
+2025-03-24 01:26:16,142 INFO Copied config module 2 to S35, variation -10.00
+2025-03-24 01:26:16,142 INFO Copied config module 3 to S35, variation -10.00
+2025-03-24 01:26:16,142 INFO Copied config module 4 to S35, variation -10.00
+2025-03-24 01:26:16,142 INFO Copied config module 5 to S35, variation -10.00
+2025-03-24 01:26:16,142 INFO Copied config module 6 to S35, variation -10.00
+2025-03-24 01:26:16,142 INFO Copied config module 7 to S35, variation -10.00
+2025-03-24 01:26:16,158 INFO Copied config module 8 to S35, variation -10.00
+2025-03-24 01:26:16,158 INFO Copied config module 9 to S35, variation -10.00
+2025-03-24 01:26:16,158 INFO Copied config module 10 to S35, variation -10.00
+2025-03-24 01:26:16,158 INFO Copied config module 11 to S35, variation -10.00
+2025-03-24 01:26:16,158 INFO Copied config module 12 to S35, variation -10.00
+2025-03-24 01:26:16,158 INFO Copied config module 13 to S35, variation -10.00
+2025-03-24 01:26:16,158 INFO Copied config module 14 to S35, variation -10.00
+2025-03-24 01:26:16,174 INFO Copied config module 15 to S35, variation -10.00
+2025-03-24 01:26:16,174 INFO Copied config module 16 to S35, variation -10.00
+2025-03-24 01:26:16,174 INFO Copied config module 17 to S35, variation -10.00
+2025-03-24 01:26:16,174 INFO Copied config module 18 to S35, variation -10.00
+2025-03-24 01:26:16,174 INFO Copied config module 19 to S35, variation -10.00
+2025-03-24 01:26:16,174 INFO Copied config module 20 to S35, variation -10.00
+2025-03-24 01:26:16,189 INFO Copied config module 1 to S35, variation +100.00
+2025-03-24 01:26:16,189 INFO Copied config module 2 to S35, variation +100.00
+2025-03-24 01:26:16,189 INFO Copied config module 3 to S35, variation +100.00
+2025-03-24 01:26:16,189 INFO Copied config module 4 to S35, variation +100.00
+2025-03-24 01:26:16,189 INFO Copied config module 5 to S35, variation +100.00
+2025-03-24 01:26:16,189 INFO Copied config module 6 to S35, variation +100.00
+2025-03-24 01:26:16,189 INFO Copied config module 7 to S35, variation +100.00
+2025-03-24 01:26:16,189 INFO Copied config module 8 to S35, variation +100.00
+2025-03-24 01:26:16,205 INFO Copied config module 9 to S35, variation +100.00
+2025-03-24 01:26:16,205 INFO Copied config module 10 to S35, variation +100.00
+2025-03-24 01:26:16,205 INFO Copied config module 11 to S35, variation +100.00
+2025-03-24 01:26:16,205 INFO Copied config module 12 to S35, variation +100.00
+2025-03-24 01:26:16,205 INFO Copied config module 13 to S35, variation +100.00
+2025-03-24 01:26:16,205 INFO Copied config module 14 to S35, variation +100.00
+2025-03-24 01:26:16,205 INFO Copied config module 15 to S35, variation +100.00
+2025-03-24 01:26:16,221 INFO Copied config module 16 to S35, variation +100.00
+2025-03-24 01:26:16,221 INFO Copied config module 17 to S35, variation +100.00
+2025-03-24 01:26:16,221 INFO Copied config module 18 to S35, variation +100.00
+2025-03-24 01:26:16,221 INFO Copied config module 19 to S35, variation +100.00
+2025-03-24 01:26:16,221 INFO Copied config module 20 to S35, variation +100.00
+2025-03-24 01:26:16,221 INFO Config module copy operation completed: found 40, copied 40
+2025-03-24 01:33:22,571 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\SENSITIVITY.log
+2025-03-24 01:33:23,007 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\SENSITIVITY.log
+2025-03-24 01:33:23,007 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\SENSITIVITY.log
+2025-03-24 01:33:23,159 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\SENSITIVITY.log
+2025-03-24 01:33:25,590 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\SENSITIVITY.log
+2025-03-24 01:33:25,590 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\SENSITIVITY.log
+2025-03-24 01:33:54,110 INFO 
+================================================================================
+2025-03-24 01:33:54,110 INFO 
+================================================================================
+2025-03-24 01:33:54,110 INFO Sensitivity Configuration Generation - Run ID: 20250324_013354
+2025-03-24 01:33:54,110 INFO Sensitivity Configuration Generation - Run ID: 20250324_013354
+2025-03-24 01:33:54,110 INFO ================================================================================
+2025-03-24 01:33:54,110 INFO ================================================================================
+2025-03-24 01:33:54,110 INFO Version: 6
+2025-03-24 01:33:54,110 INFO Version: 6
+2025-03-24 01:33:54,110 INFO Calculation Mode: calculateForPrice
+2025-03-24 01:33:54,110 INFO Calculation Mode: calculateForPrice
+2025-03-24 01:33:54,110 INFO Target Row: 20
+2025-03-24 01:33:54,110 INFO Target Row: 20
+2025-03-24 01:33:54,110 INFO Created main sensitivity directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity
+2025-03-24 01:33:54,110 INFO Created main sensitivity directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity
+2025-03-24 01:33:54,110 INFO Created Reports directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Reports
+2025-03-24 01:33:54,110 INFO Created Reports directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Reports
+2025-03-24 01:33:54,110 INFO Created Cache directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Cache
+2025-03-24 01:33:54,110 INFO Created Cache directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Cache
+2025-03-24 01:33:54,110 INFO Created Configuration directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Configuration
+2025-03-24 01:33:54,110 INFO Created Configuration directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Configuration
+2025-03-24 01:33:54,110 INFO Created mode directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Symmetrical
+2025-03-24 01:33:54,110 INFO Created mode directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Symmetrical
+2025-03-24 01:33:54,110 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Symmetrical\waterfall
+2025-03-24 01:33:54,110 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Symmetrical\waterfall
+2025-03-24 01:33:54,110 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Symmetrical\bar
+2025-03-24 01:33:54,110 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Symmetrical\bar
+2025-03-24 01:33:54,110 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Symmetrical\point
+2025-03-24 01:33:54,110 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Symmetrical\point
+2025-03-24 01:33:54,126 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Symmetrical\Configuration
+2025-03-24 01:33:54,126 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Symmetrical\Configuration
+2025-03-24 01:33:54,126 INFO Created mode directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Multipoint
+2025-03-24 01:33:54,126 INFO Created mode directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Multipoint
+2025-03-24 01:33:54,126 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Multipoint\waterfall
+2025-03-24 01:33:54,126 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Multipoint\waterfall
+2025-03-24 01:33:54,127 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Multipoint\bar
+2025-03-24 01:33:54,127 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Multipoint\bar
+2025-03-24 01:33:54,127 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Multipoint\point
+2025-03-24 01:33:54,127 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Multipoint\point
+2025-03-24 01:33:54,128 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Multipoint\Configuration
+2025-03-24 01:33:54,128 INFO Created plot type directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Multipoint\Configuration
+2025-03-24 01:33:54,129 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\S35\multiple\-10.00
+2025-03-24 01:33:54,129 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\S35\multiple\-10.00
+2025-03-24 01:33:54,130 INFO Created config variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Multipoint\Configuration\S35_-10.00
+2025-03-24 01:33:54,130 INFO Created config variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Multipoint\Configuration\S35_-10.00
+2025-03-24 01:33:54,130 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\S35\multiple\+100.00
+2025-03-24 01:33:54,130 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\S35\multiple\+100.00
+2025-03-24 01:33:54,131 INFO Created config variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Multipoint\Configuration\S35_+100.00
+2025-03-24 01:33:54,131 INFO Created config variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Multipoint\Configuration\S35_+100.00
+2025-03-24 01:33:54,131 INFO Created plot directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Multipoint\waterfall\S35_waterfall
+2025-03-24 01:33:54,131 INFO Created plot directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Multipoint\waterfall\S35_waterfall
+2025-03-24 01:33:54,132 INFO Created plot directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Multipoint\bar\S35_bar
+2025-03-24 01:33:54,132 INFO Created plot directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Multipoint\bar\S35_bar
+2025-03-24 01:33:54,132 INFO Created plot directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Multipoint\point\S35_point
+2025-03-24 01:33:54,132 INFO Created plot directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Multipoint\point\S35_point
+2025-03-24 01:33:54,132 INFO 
+================================================================================
+2025-03-24 01:33:54,132 INFO 
+================================================================================
+2025-03-24 01:33:54,133 INFO CFA Run Configuration
+2025-03-24 01:33:54,133 INFO CFA Run Configuration
+2025-03-24 01:33:54,133 INFO ================================================================================
+2025-03-24 01:33:54,133 INFO ================================================================================
+2025-03-24 01:33:54,133 INFO 
+Basic Configuration:
+2025-03-24 01:33:54,133 INFO 
+Basic Configuration:
+2025-03-24 01:33:54,133 INFO Version(s): 6
+2025-03-24 01:33:54,133 INFO Version(s): 6
+2025-03-24 01:33:54,133 INFO Calculation Mode: calculateForPrice
+2025-03-24 01:33:54,133 INFO Calculation Mode: calculateForPrice
+2025-03-24 01:33:54,133 INFO Target Row: 20
+2025-03-24 01:33:54,133 INFO Target Row: 20
+2025-03-24 01:33:54,133 INFO 
+Parameter States:
+2025-03-24 01:33:54,133 INFO 
+Parameter States:
+2025-03-24 01:33:54,134 INFO Enabled V Parameters: V1
+2025-03-24 01:33:54,134 INFO Enabled V Parameters: V1
+2025-03-24 01:33:54,134 INFO Enabled F Parameters: F1, F2, F3, F4, F5
+2025-03-24 01:33:54,134 INFO Enabled F Parameters: F1, F2, F3, F4, F5
+2025-03-24 01:33:54,134 INFO 
+Sensitivity Analysis Configuration:
+2025-03-24 01:33:54,134 INFO 
+Sensitivity Analysis Configuration:
+2025-03-24 01:33:54,134 INFO Enabled Parameters: S35
+2025-03-24 01:33:54,134 INFO Enabled Parameters: S35
+2025-03-24 01:33:54,134 INFO 
+S35 Configuration:
+2025-03-24 01:33:54,134 INFO 
+S35 Configuration:
+2025-03-24 01:33:54,134 INFO   Mode: multiple
+2025-03-24 01:33:54,134 INFO   Mode: multiple
+2025-03-24 01:33:54,135 INFO   Values: [-10, 100]
+2025-03-24 01:33:54,135 INFO   Values: [-10, 100]
+2025-03-24 01:33:54,135 INFO   Comparison:
+2025-03-24 01:33:54,135 INFO   Comparison:
+2025-03-24 01:33:54,135 INFO     Target: S13
+2025-03-24 01:33:54,135 INFO     Target: S13
+2025-03-24 01:33:54,135 INFO     Type: primary
+2025-03-24 01:33:54,135 INFO     Type: primary
+2025-03-24 01:33:54,135 INFO     Plot Types: waterfall, bar, point
+2025-03-24 01:33:54,135 INFO     Plot Types: waterfall, bar, point
+2025-03-24 01:33:54,135 INFO 
+================================================================================
+
+2025-03-24 01:33:54,135 INFO 
+================================================================================
+
+2025-03-24 01:33:54,142 INFO Saved main configuration file: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Reports\sensitivity_config.json
+2025-03-24 01:33:54,142 INFO Saved main configuration file: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Reports\sensitivity_config.json
+2025-03-24 01:33:54,143 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\S35\multiple\-10.00\S35_config.json
+2025-03-24 01:33:54,143 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\S35\multiple\-10.00\S35_config.json
+2025-03-24 01:33:54,144 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\S35\multiple\+100.00\S35_config.json
+2025-03-24 01:33:54,144 INFO Saved parameter configuration file: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\S35\multiple\+100.00\S35_config.json
+2025-03-24 01:33:54,145 INFO 
+Sensitivity configuration completed successfully
+2025-03-24 01:33:54,145 INFO 
+Sensitivity configuration completed successfully
+2025-03-24 01:33:54,145 INFO Configuration files saved: 3
+2025-03-24 01:33:54,145 INFO Configuration files saved: 3
+2025-03-24 01:33:54,145 INFO Configuration status saved to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\sensitivity_config_status.json
+2025-03-24 01:33:54,145 INFO Configuration status saved to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\sensitivity_config_status.json
+2025-03-24 01:33:54,145 INFO ================================================================================
+
+2025-03-24 01:33:54,145 INFO ================================================================================
+
+2025-03-24 01:33:54,260 INFO Using saved sensitivity configuration data
+2025-03-24 01:33:54,260 INFO Using saved sensitivity configuration data
+2025-03-24 01:33:54,260 INFO Using sensitivity directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity
+2025-03-24 01:33:54,260 INFO Using sensitivity directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity
+2025-03-24 01:33:54,260 INFO 
+================================================================================
+2025-03-24 01:33:54,260 INFO 
+================================================================================
+2025-03-24 01:33:54,260 INFO Sensitivity Calculation Run - ID: 20250324_013354
+2025-03-24 01:33:54,260 INFO Sensitivity Calculation Run - ID: 20250324_013354
+2025-03-24 01:33:54,260 INFO ================================================================================
+2025-03-24 01:33:54,260 INFO ================================================================================
+2025-03-24 01:33:54,260 INFO 
+================================================================================
+2025-03-24 01:33:54,260 INFO 
+================================================================================
+2025-03-24 01:33:54,260 INFO CFA Run Configuration
+2025-03-24 01:33:54,260 INFO CFA Run Configuration
+2025-03-24 01:33:54,260 INFO ================================================================================
+2025-03-24 01:33:54,260 INFO ================================================================================
+2025-03-24 01:33:54,260 INFO 
+Basic Configuration:
+2025-03-24 01:33:54,260 INFO 
+Basic Configuration:
+2025-03-24 01:33:54,260 INFO Version(s): 6
+2025-03-24 01:33:54,260 INFO Version(s): 6
+2025-03-24 01:33:54,260 INFO Calculation Mode: calculateForPrice
+2025-03-24 01:33:54,260 INFO Calculation Mode: calculateForPrice
+2025-03-24 01:33:54,260 INFO Target Row: 20
+2025-03-24 01:33:54,260 INFO Target Row: 20
+2025-03-24 01:33:54,260 INFO 
+Parameter States:
+2025-03-24 01:33:54,260 INFO 
+Parameter States:
+2025-03-24 01:33:54,260 INFO Enabled V Parameters: V1
+2025-03-24 01:33:54,260 INFO Enabled V Parameters: V1
+2025-03-24 01:33:54,260 INFO Enabled F Parameters: F1, F2, F3, F4, F5
+2025-03-24 01:33:54,260 INFO Enabled F Parameters: F1, F2, F3, F4, F5
+2025-03-24 01:33:54,260 INFO 
+Sensitivity Analysis Configuration:
+2025-03-24 01:33:54,260 INFO 
+Sensitivity Analysis Configuration:
+2025-03-24 01:33:54,260 INFO Enabled Parameters: S35
+2025-03-24 01:33:54,260 INFO Enabled Parameters: S35
+2025-03-24 01:33:54,260 INFO 
+S35 Configuration:
+2025-03-24 01:33:54,260 INFO 
+S35 Configuration:
+2025-03-24 01:33:54,260 INFO   Mode: multiple
+2025-03-24 01:33:54,260 INFO   Mode: multiple
+2025-03-24 01:33:54,260 INFO   Values: [-10, 100]
+2025-03-24 01:33:54,260 INFO   Values: [-10, 100]
+2025-03-24 01:33:54,260 INFO   Comparison:
+2025-03-24 01:33:54,260 INFO   Comparison:
+2025-03-24 01:33:54,260 INFO     Target: S13
+2025-03-24 01:33:54,260 INFO     Target: S13
+2025-03-24 01:33:54,260 INFO     Type: primary
+2025-03-24 01:33:54,260 INFO     Type: primary
+2025-03-24 01:33:54,260 INFO     Plot Types: waterfall, bar, point
+2025-03-24 01:33:54,260 INFO     Plot Types: waterfall, bar, point
+2025-03-24 01:33:54,260 INFO 
+================================================================================
+
+2025-03-24 01:33:54,260 INFO 
+================================================================================
+
+2025-03-24 01:33:54,260 INFO 
+Executing Configuration Management Scripts:
+2025-03-24 01:33:54,260 INFO 
+Executing Configuration Management Scripts:
+2025-03-24 01:33:54,260 INFO 
+Executing: formatter.py
+2025-03-24 01:33:54,260 INFO 
+Executing: formatter.py
+2025-03-24 01:33:54,904 INFO Completed formatter.py in 0.64s
+2025-03-24 01:33:54,904 INFO Completed formatter.py in 0.64s
+2025-03-24 01:33:55,405 INFO 
+Executing: module1.py
+2025-03-24 01:33:55,405 INFO 
+Executing: module1.py
+2025-03-24 01:33:58,340 INFO Completed module1.py in 2.94s
+2025-03-24 01:33:58,340 INFO Completed module1.py in 2.94s
+2025-03-24 01:33:58,852 INFO 
+Executing: config_modules.py
+2025-03-24 01:33:58,852 INFO 
+Executing: config_modules.py
+2025-03-24 01:34:00,219 INFO Completed config_modules.py in 1.37s
+2025-03-24 01:34:00,219 INFO Completed config_modules.py in 1.37s
+2025-03-24 01:34:00,721 INFO 
+Executing: Table.py
+2025-03-24 01:34:00,721 INFO 
+Executing: Table.py
+2025-03-24 01:34:02,968 INFO Completed Table.py in 2.25s
+2025-03-24 01:34:02,968 INFO Completed Table.py in 2.25s
+2025-03-24 01:34:03,470 INFO 
+Configuration scripts completed in 9.21s
+2025-03-24 01:34:03,470 INFO 
+Configuration scripts completed in 9.21s
+2025-03-24 01:34:03,470 INFO 
+Processing Calculations:
+2025-03-24 01:34:03,470 INFO 
+Processing Calculations:
+2025-03-24 01:34:03,470 INFO Using calculation script: CFA.py
+2025-03-24 01:34:03,470 INFO Using calculation script: CFA.py
+2025-03-24 01:34:03,470 INFO 
+Executing baseline calculation:
+2025-03-24 01:34:03,470 INFO 
+Executing baseline calculation:
+2025-03-24 01:34:25,446 INFO Baseline calculation completed successfully
+2025-03-24 01:34:25,446 INFO Baseline calculation completed successfully
+2025-03-24 01:34:25,447 INFO 
+Processing 1 sensitivity parameters:
+2025-03-24 01:34:25,447 INFO 
+Processing 1 sensitivity parameters:
+2025-03-24 01:34:25,447 INFO 
+Processing S35:
+2025-03-24 01:34:25,447 INFO 
+Processing S35:
+2025-03-24 01:34:25,447 INFO Mode: multiple
+2025-03-24 01:34:25,447 INFO Mode: multiple
+2025-03-24 01:34:25,447 INFO Values: [-10, 100]
+2025-03-24 01:34:25,447 INFO Values: [-10, 100]
+2025-03-24 01:34:49,807 INFO Completed S35 in 24.36s
+2025-03-24 01:34:49,807 INFO Completed S35 in 24.36s
+2025-03-24 01:34:49,807 INFO 
+================================================================================
+2025-03-24 01:34:49,807 INFO 
+================================================================================
+2025-03-24 01:34:49,807 INFO Run Summary - ID: 20250324_013354
+2025-03-24 01:34:49,807 INFO Run Summary - ID: 20250324_013354
+2025-03-24 01:34:49,807 INFO Total execution time: 55.55s
+2025-03-24 01:34:49,807 INFO Total execution time: 55.55s
+2025-03-24 01:34:49,807 INFO Configuration scripts: 9.21s
+2025-03-24 01:34:49,807 INFO Configuration scripts: 9.21s
+2025-03-24 01:34:49,807 INFO Calculations completed: 2
+2025-03-24 01:34:49,807 INFO Calculations completed: 2
+2025-03-24 01:34:49,807 INFO ================================================================================
+
+2025-03-24 01:34:49,807 INFO ================================================================================
+
+2025-03-24 01:34:49,807 INFO Triggering config module copy service on port 2600...
+2025-03-24 01:34:49,807 INFO Triggering config module copy service on port 2600...
+2025-03-24 01:34:52,050 INFO Starting config module processing with 2-minute pause...
+2025-03-24 01:35:02,051 ERROR Error connecting to config copy service: HTTPConnectionPool(host='localhost', port=2600): Read timed out. (read timeout=10)
+2025-03-24 01:35:02,051 ERROR Error connecting to config copy service: HTTPConnectionPool(host='localhost', port=2600): Read timed out. (read timeout=10)
+2025-03-24 01:35:02,051 INFO Fetching price for version: 6
+2025-03-24 01:35:02,051 INFO Fetching price for version: 6
+2025-03-24 01:35:02,051 INFO Using saved version from configuration
+2025-03-24 01:35:02,051 INFO Using saved version from configuration
+2025-03-24 01:35:02,051 INFO Using saved sensitivity parameters from configuration
+2025-03-24 01:35:02,051 INFO Using saved sensitivity parameters from configuration
+2025-03-24 01:35:02,051 INFO [ENTER] Processing visualization request - Run ID: 20250324_013502
+2025-03-24 01:35:02,051 INFO [ENTER] Processing visualization request - Run ID: 20250324_013502
+2025-03-24 01:35:02,051 INFO 
+Processing visualization request - Run ID: 20250324_013502
+2025-03-24 01:35:02,051 INFO 
+Processing visualization request - Run ID: 20250324_013502
+2025-03-24 01:35:02,051 INFO Version: 6
+2025-03-24 01:35:02,051 INFO Version: 6
+2025-03-24 01:35:02,051 INFO Parameters: ['S10', 'S11', 'S12', 'S13', 'S14', 'S15', 'S16', 'S17', 'S18', 'S19', 'S20', 'S21', 'S22', 'S23', 'S24', 'S25', 'S26', 'S27', 'S28', 'S29', 'S30', 'S31', 'S32', 'S33', 'S34', 'S35', 'S36', 'S37', 'S38', 'S39', 'S40', 'S41', 'S42', 'S43', 'S44', 'S45', 'S46', 'S47', 'S48', 'S49', 'S50', 'S51', 'S52', 'S53', 'S54', 'S55', 'S56', 'S57', 'S58', 'S59', 'S60', 'S61', 'S62', 'S63', 'S64', 'S65', 'S66', 'S67', 'S68', 'S69', 'S70', 'S71', 'S72', 'S73', 'S74', 'S75', 'S76', 'S77', 'S78', 'S79']
+2025-03-24 01:35:02,051 INFO Parameters: ['S10', 'S11', 'S12', 'S13', 'S14', 'S15', 'S16', 'S17', 'S18', 'S19', 'S20', 'S21', 'S22', 'S23', 'S24', 'S25', 'S26', 'S27', 'S28', 'S29', 'S30', 'S31', 'S32', 'S33', 'S34', 'S35', 'S36', 'S37', 'S38', 'S39', 'S40', 'S41', 'S42', 'S43', 'S44', 'S45', 'S46', 'S47', 'S48', 'S49', 'S50', 'S51', 'S52', 'S53', 'S54', 'S55', 'S56', 'S57', 'S58', 'S59', 'S60', 'S61', 'S62', 'S63', 'S64', 'S65', 'S66', 'S67', 'S68', 'S69', 'S70', 'S71', 'S72', 'S73', 'S74', 'S75', 'S76', 'S77', 'S78', 'S79']
+2025-03-24 01:35:02,066 INFO Created main sensitivity directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity
+2025-03-24 01:35:02,066 INFO Created main sensitivity directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity
+2025-03-24 01:35:02,066 INFO Created sensitivity mode directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Symmetrical
+2025-03-24 01:35:02,066 INFO Created sensitivity mode directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Symmetrical
+2025-03-24 01:35:02,066 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Symmetrical\waterfall
+2025-03-24 01:35:02,066 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Symmetrical\waterfall
+2025-03-24 01:35:02,066 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Symmetrical\bar
+2025-03-24 01:35:02,066 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Symmetrical\bar
+2025-03-24 01:35:02,066 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Symmetrical\point
+2025-03-24 01:35:02,066 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Symmetrical\point
+2025-03-24 01:35:02,066 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Symmetrical\Configuration
+2025-03-24 01:35:02,066 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Symmetrical\Configuration
+2025-03-24 01:35:02,066 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Symmetrical\Configuration\S35_-10.00
+2025-03-24 01:35:02,066 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Symmetrical\Configuration\S35_-10.00
+2025-03-24 01:35:02,066 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Symmetrical\Configuration\S35_+10.00
+2025-03-24 01:35:02,066 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Symmetrical\Configuration\S35_+10.00
+2025-03-24 01:35:02,066 INFO Created sensitivity mode directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Multipoint
+2025-03-24 01:35:02,066 INFO Created sensitivity mode directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Multipoint
+2025-03-24 01:35:02,066 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Multipoint\waterfall
+2025-03-24 01:35:02,066 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Multipoint\waterfall
+2025-03-24 01:35:02,066 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Multipoint\bar
+2025-03-24 01:35:02,066 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Multipoint\bar
+2025-03-24 01:35:02,066 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Multipoint\point
+2025-03-24 01:35:02,066 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Multipoint\point
+2025-03-24 01:35:02,066 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Multipoint\Configuration
+2025-03-24 01:35:02,066 INFO Created sensitivity subdirectory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Multipoint\Configuration
+2025-03-24 01:35:02,066 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Multipoint\Configuration\S35_-10.00
+2025-03-24 01:35:02,066 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Multipoint\Configuration\S35_-10.00
+2025-03-24 01:35:02,066 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Multipoint\Configuration\S35_+100.00
+2025-03-24 01:35:02,066 INFO Created parameter variation directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Multipoint\Configuration\S35_+100.00
+2025-03-24 01:35:02,066 INFO Created standalone Configuration directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Configuration
+2025-03-24 01:35:02,066 INFO Created standalone Configuration directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Configuration
+2025-03-24 01:35:02,066 INFO Created sensitivity extra directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Reports
+2025-03-24 01:35:02,066 INFO Created sensitivity extra directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Reports
+2025-03-24 01:35:02,066 INFO Created sensitivity extra directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Cache
+2025-03-24 01:35:02,066 INFO Created sensitivity extra directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Cache
+2025-03-24 01:35:02,066 INFO [CHECKPOINT] Processing parameter S35
+2025-03-24 01:35:02,066 INFO [CHECKPOINT] Processing parameter S35
+2025-03-24 01:35:02,066 INFO 
+Processing S35:
+2025-03-24 01:35:02,066 INFO 
+Processing S35:
+2025-03-24 01:35:02,066 INFO S35 identified as special case (vs S13)
+2025-03-24 01:35:02,066 INFO S35 identified as special case (vs S13)
+2025-03-24 01:35:02,066 INFO Added relationship: S35 -> S13 (primary)
+2025-03-24 01:35:02,066 INFO Added relationship: S35 -> S13 (primary)
+2025-03-24 01:35:02,066 INFO PLOT GENERATION STARTED: waterfall plot for S35 vs S13 (multiple)
+2025-03-24 01:35:02,066 INFO PLOT GENERATION STARTED: waterfall plot for S35 vs S13 (multiple)
+2025-03-24 01:35:02,066 WARNING Plot not found: waterfall_S35_S13_primary
+2025-03-24 01:35:02,066 WARNING Plot not found: waterfall_S35_S13_primary
+2025-03-24 01:35:02,066 ERROR PLOT GENERATION FAILED: waterfall plot for S35 vs S13 (multiple) - Plot not found: waterfall_S35_S13_primary
+2025-03-24 01:35:02,066 ERROR PLOT GENERATION FAILED: waterfall plot for S35 vs S13 (multiple) - Plot not found: waterfall_S35_S13_primary
+2025-03-24 01:35:02,066 ERROR DATA LOADING FAILED: S35 vs S13 from C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Multipoint\S35_vs_S13_multiple_results.json - Result data file not found
+2025-03-24 01:35:02,066 ERROR DATA LOADING FAILED: S35 vs S13 from C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Multipoint\S35_vs_S13_multiple_results.json - Result data file not found
+2025-03-24 01:35:02,066 INFO PLOT GENERATION STARTED: bar plot for S35 vs S13 (multiple)
+2025-03-24 01:35:02,066 INFO PLOT GENERATION STARTED: bar plot for S35 vs S13 (multiple)
+2025-03-24 01:35:02,066 WARNING Plot not found: bar_S35_S13_primary
+2025-03-24 01:35:02,066 WARNING Plot not found: bar_S35_S13_primary
+2025-03-24 01:35:02,066 ERROR PLOT GENERATION FAILED: bar plot for S35 vs S13 (multiple) - Plot not found: bar_S35_S13_primary
+2025-03-24 01:35:02,066 ERROR PLOT GENERATION FAILED: bar plot for S35 vs S13 (multiple) - Plot not found: bar_S35_S13_primary
+2025-03-24 01:35:02,066 ERROR DATA LOADING FAILED: S35 vs S13 from C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Multipoint\S35_vs_S13_multiple_results.json - Result data file not found
+2025-03-24 01:35:02,066 ERROR DATA LOADING FAILED: S35 vs S13 from C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Multipoint\S35_vs_S13_multiple_results.json - Result data file not found
+2025-03-24 01:35:02,066 INFO PLOT GENERATION STARTED: point plot for S35 vs S13 (multiple)
+2025-03-24 01:35:02,066 INFO PLOT GENERATION STARTED: point plot for S35 vs S13 (multiple)
+2025-03-24 01:35:02,066 WARNING Plot not found: point_S35_S13_primary
+2025-03-24 01:35:02,066 WARNING Plot not found: point_S35_S13_primary
+2025-03-24 01:35:02,066 ERROR PLOT GENERATION FAILED: point plot for S35 vs S13 (multiple) - Plot not found: point_S35_S13_primary
+2025-03-24 01:35:02,066 ERROR PLOT GENERATION FAILED: point plot for S35 vs S13 (multiple) - Plot not found: point_S35_S13_primary
+2025-03-24 01:35:02,066 ERROR DATA LOADING FAILED: S35 vs S13 from C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Multipoint\S35_vs_S13_multiple_results.json - Result data file not found
+2025-03-24 01:35:02,066 ERROR DATA LOADING FAILED: S35 vs S13 from C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\Multipoint\S35_vs_S13_multiple_results.json - Result data file not found
+2025-03-24 01:35:02,066 INFO [CHECKPOINT] Completed processing parameter S35
+2025-03-24 01:35:02,066 INFO [CHECKPOINT] Completed processing parameter S35
+2025-03-24 01:35:02,066 INFO 
+Visualization processing complete - Run ID: 20250324_013502
+2025-03-24 01:35:02,066 INFO 
+Visualization processing complete - Run ID: 20250324_013502
+2025-03-24 01:35:02,066 INFO Processing time: 0.02s
+2025-03-24 01:35:02,066 INFO Processing time: 0.02s
+2025-03-24 01:35:02,066 INFO Plots generated: 0
+2025-03-24 01:35:02,066 INFO Plots generated: 0
+2025-03-24 01:35:02,066 INFO [EXIT] Visualization processing complete - Run ID: 20250324_013502
+2025-03-24 01:35:02,066 INFO [EXIT] Visualization processing complete - Run ID: 20250324_013502
+2025-03-24 01:35:02,113 INFO Starting price stream for version: 6
+2025-03-24 01:35:02,113 INFO Starting price stream for version: 6
+2025-03-24 01:35:02,113 INFO Using simulated initial price: 1600.0
+2025-03-24 01:35:02,113 INFO Using simulated initial price: 1600.0
+2025-03-24 01:35:03,126 INFO Streaming price update 1: 1605.0
+2025-03-24 01:35:03,126 INFO Streaming price update 1: 1605.0
+2025-03-24 01:35:04,126 INFO Streaming price update 2: 1615.0
+2025-03-24 01:35:04,126 INFO Streaming price update 2: 1615.0
+2025-03-24 01:35:05,155 INFO Streaming price update 3: 1630.0
+2025-03-24 01:35:05,155 INFO Streaming price update 3: 1630.0
+2025-03-24 01:35:06,156 INFO Streaming price update 4: 1650.0
+2025-03-24 01:35:06,156 INFO Streaming price update 4: 1650.0
+2025-03-24 01:35:07,157 INFO Streaming price update 5: 1675.0
+2025-03-24 01:35:07,157 INFO Streaming price update 5: 1675.0
+2025-03-24 01:36:52,054 INFO Resuming after pause, processing config modules...
+2025-03-24 01:36:53,227 INFO Successfully imported sensitivity functions via direct import
+2025-03-24 01:36:53,227 INFO Processing parameter S35 with mode multiple
+2025-03-24 01:36:53,227 INFO Processing variation -10.00 in directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\S35\multiple\-10.00
+2025-03-24 01:36:53,227 INFO Found parameter by index: laborAmount35 for S35
+2025-03-24 01:36:53,227 INFO Applied -10 % variation to laborAmount35 (S35)
+2025-03-24 01:36:53,227 INFO Applied -10 variation to config module 1 for S35
+2025-03-24 01:36:53,227 INFO Found parameter by index: laborAmount35 for S35
+2025-03-24 01:36:53,227 INFO Applied -10 % variation to laborAmount35 (S35)
+2025-03-24 01:36:53,227 INFO Applied -10 variation to config module 2 for S35
+2025-03-24 01:36:53,227 INFO Found parameter by index: laborAmount35 for S35
+2025-03-24 01:36:53,243 INFO Applied -10 % variation to laborAmount35 (S35)
+2025-03-24 01:36:53,243 INFO Applied -10 variation to config module 3 for S35
+2025-03-24 01:36:53,243 INFO Found parameter by index: laborAmount35 for S35
+2025-03-24 01:36:53,243 INFO Applied -10 % variation to laborAmount35 (S35)
+2025-03-24 01:36:53,243 INFO Applied -10 variation to config module 4 for S35
+2025-03-24 01:36:53,243 INFO Found parameter by index: laborAmount35 for S35
+2025-03-24 01:36:53,243 INFO Applied -10 % variation to laborAmount35 (S35)
+2025-03-24 01:36:53,243 INFO Applied -10 variation to config module 5 for S35
+2025-03-24 01:36:53,243 INFO Found parameter by index: laborAmount35 for S35
+2025-03-24 01:36:53,243 INFO Applied -10 % variation to laborAmount35 (S35)
+2025-03-24 01:36:53,243 INFO Applied -10 variation to config module 6 for S35
+2025-03-24 01:36:53,243 INFO Found parameter by index: laborAmount35 for S35
+2025-03-24 01:36:53,243 INFO Applied -10 % variation to laborAmount35 (S35)
+2025-03-24 01:36:53,243 INFO Applied -10 variation to config module 7 for S35
+2025-03-24 01:36:53,259 INFO Found parameter by index: laborAmount35 for S35
+2025-03-24 01:36:53,259 INFO Applied -10 % variation to laborAmount35 (S35)
+2025-03-24 01:36:53,259 INFO Applied -10 variation to config module 8 for S35
+2025-03-24 01:36:53,259 INFO Found parameter by index: laborAmount35 for S35
+2025-03-24 01:36:53,259 INFO Applied -10 % variation to laborAmount35 (S35)
+2025-03-24 01:36:53,259 INFO Applied -10 variation to config module 9 for S35
+2025-03-24 01:36:53,259 INFO Found parameter by index: laborAmount35 for S35
+2025-03-24 01:36:53,259 INFO Applied -10 % variation to laborAmount35 (S35)
+2025-03-24 01:36:53,259 INFO Applied -10 variation to config module 10 for S35
+2025-03-24 01:36:53,259 INFO Found parameter by index: laborAmount35 for S35
+2025-03-24 01:36:53,259 INFO Applied -10 % variation to laborAmount35 (S35)
+2025-03-24 01:36:53,259 INFO Applied -10 variation to config module 11 for S35
+2025-03-24 01:36:53,259 INFO Found parameter by index: laborAmount35 for S35
+2025-03-24 01:36:53,259 INFO Applied -10 % variation to laborAmount35 (S35)
+2025-03-24 01:36:53,259 INFO Applied -10 variation to config module 12 for S35
+2025-03-24 01:36:53,259 INFO Found parameter by index: laborAmount35 for S35
+2025-03-24 01:36:53,259 INFO Applied -10 % variation to laborAmount35 (S35)
+2025-03-24 01:36:53,259 INFO Applied -10 variation to config module 13 for S35
+2025-03-24 01:36:53,259 INFO Found parameter by index: laborAmount35 for S35
+2025-03-24 01:36:53,259 INFO Applied -10 % variation to laborAmount35 (S35)
+2025-03-24 01:36:53,274 INFO Applied -10 variation to config module 14 for S35
+2025-03-24 01:36:53,274 INFO Found parameter by index: laborAmount35 for S35
+2025-03-24 01:36:53,274 INFO Applied -10 % variation to laborAmount35 (S35)
+2025-03-24 01:36:53,274 INFO Applied -10 variation to config module 15 for S35
+2025-03-24 01:36:53,274 INFO Found parameter by index: laborAmount35 for S35
+2025-03-24 01:36:53,274 INFO Applied -10 % variation to laborAmount35 (S35)
+2025-03-24 01:36:53,274 INFO Applied -10 variation to config module 16 for S35
+2025-03-24 01:36:53,274 INFO Found parameter by index: laborAmount35 for S35
+2025-03-24 01:36:53,274 INFO Applied -10 % variation to laborAmount35 (S35)
+2025-03-24 01:36:53,274 INFO Applied -10 variation to config module 17 for S35
+2025-03-24 01:36:53,274 INFO Found parameter by index: laborAmount35 for S35
+2025-03-24 01:36:53,274 INFO Applied -10 % variation to laborAmount35 (S35)
+2025-03-24 01:36:53,274 INFO Applied -10 variation to config module 18 for S35
+2025-03-24 01:36:53,274 INFO Found parameter by index: laborAmount35 for S35
+2025-03-24 01:36:53,274 INFO Applied -10 % variation to laborAmount35 (S35)
+2025-03-24 01:36:53,274 INFO Applied -10 variation to config module 19 for S35
+2025-03-24 01:36:53,274 INFO Found parameter by index: laborAmount35 for S35
+2025-03-24 01:36:53,274 INFO Applied -10 % variation to laborAmount35 (S35)
+2025-03-24 01:36:53,274 INFO Applied -10 variation to config module 20 for S35
+2025-03-24 01:36:53,290 INFO Processing variation +100.00 in directory: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Original\Batch(6)\Results(6)\Sensitivity\S35\multiple\+100.00
+2025-03-24 01:36:53,290 INFO Found parameter by index: laborAmount35 for S35
+2025-03-24 01:36:53,290 INFO Applied 100 % variation to laborAmount35 (S35)
+2025-03-24 01:36:53,290 INFO Applied 100 variation to config module 1 for S35
+2025-03-24 01:36:53,290 INFO Found parameter by index: laborAmount35 for S35
+2025-03-24 01:36:53,290 INFO Applied 100 % variation to laborAmount35 (S35)
+2025-03-24 01:36:53,299 INFO Applied 100 variation to config module 2 for S35
+2025-03-24 01:36:53,299 INFO Found parameter by index: laborAmount35 for S35
+2025-03-24 01:36:53,299 INFO Applied 100 % variation to laborAmount35 (S35)
+2025-03-24 01:36:53,299 INFO Applied 100 variation to config module 3 for S35
+2025-03-24 01:36:53,299 INFO Found parameter by index: laborAmount35 for S35
+2025-03-24 01:36:53,299 INFO Applied 100 % variation to laborAmount35 (S35)
+2025-03-24 01:36:53,299 INFO Applied 100 variation to config module 4 for S35
+2025-03-24 01:36:53,299 INFO Found parameter by index: laborAmount35 for S35
+2025-03-24 01:36:53,299 INFO Applied 100 % variation to laborAmount35 (S35)
+2025-03-24 01:36:53,299 INFO Applied 100 variation to config module 5 for S35
+2025-03-24 01:36:53,299 INFO Found parameter by index: laborAmount35 for S35
+2025-03-24 01:36:53,299 INFO Applied 100 % variation to laborAmount35 (S35)
+2025-03-24 01:36:53,299 INFO Applied 100 variation to config module 6 for S35
+2025-03-24 01:36:53,299 INFO Found parameter by index: laborAmount35 for S35
+2025-03-24 01:36:53,299 INFO Applied 100 % variation to laborAmount35 (S35)
+2025-03-24 01:36:53,299 INFO Applied 100 variation to config module 7 for S35
+2025-03-24 01:36:53,299 INFO Found parameter by index: laborAmount35 for S35
+2025-03-24 01:36:53,299 INFO Applied 100 % variation to laborAmount35 (S35)
+2025-03-24 01:36:53,299 INFO Applied 100 variation to config module 8 for S35
+2025-03-24 01:36:53,299 INFO Found parameter by index: laborAmount35 for S35
+2025-03-24 01:36:53,315 INFO Applied 100 % variation to laborAmount35 (S35)
+2025-03-24 01:36:53,315 INFO Applied 100 variation to config module 9 for S35
+2025-03-24 01:36:53,315 INFO Found parameter by index: laborAmount35 for S35
+2025-03-24 01:36:53,315 INFO Applied 100 % variation to laborAmount35 (S35)
+2025-03-24 01:36:53,315 INFO Applied 100 variation to config module 10 for S35
+2025-03-24 01:36:53,315 INFO Found parameter by index: laborAmount35 for S35
+2025-03-24 01:36:53,315 INFO Applied 100 % variation to laborAmount35 (S35)
+2025-03-24 01:36:53,315 INFO Applied 100 variation to config module 11 for S35
+2025-03-24 01:36:53,315 INFO Found parameter by index: laborAmount35 for S35
+2025-03-24 01:36:53,315 INFO Applied 100 % variation to laborAmount35 (S35)
+2025-03-24 01:36:53,315 INFO Applied 100 variation to config module 12 for S35
+2025-03-24 01:36:53,315 INFO Found parameter by index: laborAmount35 for S35
+2025-03-24 01:36:53,315 INFO Applied 100 % variation to laborAmount35 (S35)
+2025-03-24 01:36:53,315 INFO Applied 100 variation to config module 13 for S35
+2025-03-24 01:36:53,315 INFO Found parameter by index: laborAmount35 for S35
+2025-03-24 01:36:53,315 INFO Applied 100 % variation to laborAmount35 (S35)
+2025-03-24 01:36:53,315 INFO Applied 100 variation to config module 14 for S35
+2025-03-24 01:36:53,315 INFO Found parameter by index: laborAmount35 for S35
+2025-03-24 01:36:53,315 INFO Applied 100 % variation to laborAmount35 (S35)
+2025-03-24 01:36:53,331 INFO Applied 100 variation to config module 15 for S35
+2025-03-24 01:36:53,331 INFO Found parameter by index: laborAmount35 for S35
+2025-03-24 01:36:53,331 INFO Applied 100 % variation to laborAmount35 (S35)
+2025-03-24 01:36:53,331 INFO Applied 100 variation to config module 16 for S35
+2025-03-24 01:36:53,346 INFO Found parameter by index: laborAmount35 for S35
+2025-03-24 01:36:53,346 INFO Applied 100 % variation to laborAmount35 (S35)
+2025-03-24 01:36:53,346 INFO Applied 100 variation to config module 17 for S35
+2025-03-24 01:36:53,346 INFO Found parameter by index: laborAmount35 for S35
+2025-03-24 01:36:53,346 INFO Applied 100 % variation to laborAmount35 (S35)
+2025-03-24 01:36:53,346 INFO Applied 100 variation to config module 18 for S35
+2025-03-24 01:36:53,346 INFO Found parameter by index: laborAmount35 for S35
+2025-03-24 01:36:53,346 INFO Applied 100 % variation to laborAmount35 (S35)
+2025-03-24 01:36:53,346 INFO Applied 100 variation to config module 19 for S35
+2025-03-24 01:36:53,346 INFO Found parameter by index: laborAmount35 for S35
+2025-03-24 01:36:53,346 INFO Applied 100 % variation to laborAmount35 (S35)
+2025-03-24 01:36:53,346 INFO Applied 100 variation to config module 20 for S35
+2025-03-24 01:36:53,346 INFO Config module processing completed: found 40, modified 40

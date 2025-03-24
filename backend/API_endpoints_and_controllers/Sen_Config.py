@@ -5,6 +5,7 @@ import importlib.util
 import sys
 import copy
 import logging
+import time
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from Sensitivity_File_Manager import SensitivityFileManager
 
@@ -157,17 +158,43 @@ def generate_sensitivity_configs(config_received, config_matrix_df, results_fold
             # Create base config module
             config_module = {}
             
-            # For module-based configs, convert to dictionary
-            if not isinstance(config_received, dict):
-                for param in dir(config_received):
-                    if not param.startswith('__'):
-                        config_module[param] = copy.deepcopy(getattr(config_received, param))
-            else:
-                config_module = copy.deepcopy(config_received)
+            # Verify config copy completion
+            config_copy_complete = False
+            retry_count = 0
+            max_retries = 3
+            
+            while not config_copy_complete and retry_count < max_retries:
+                try:
+                    # Create config module
+                    if not isinstance(config_received, dict):
+                        for param in dir(config_received):
+                            if not param.startswith('__'):
+                                config_module[param] = copy.deepcopy(getattr(config_received, param))
+                    else:
+                        config_module = copy.deepcopy(config_received)
+                    
+                    # Verify config copy
+                    if len(config_module) > 0:
+                        config_copy_complete = True
+                        logger.info("Config copy verified successfully")
+                    else:
+                        raise ValueError("Empty config module after copy")
+                except Exception as e:
+                    retry_count += 1
+                    logger.warning(f"Config copy failed (attempt {retry_count}): {str(e)}")
+                    if retry_count < max_retries:
+                        time.sleep(10)  # Wait 10 seconds before retry
+                    else:
+                        raise RuntimeError("Failed to create config copy after multiple attempts")
             
             # Apply filtered values
             if isinstance(filtered_values, str):
                 filtered_values = parse_filtered_values(filtered_values)
+                
+            # Wait for Flask to stabilize after config copy
+            logger.info("Waiting for Flask to stabilize...")
+            time.sleep(120)  # 2 minute delay
+            logger.info("Flask stabilization period complete")
                 
             for item in filtered_values:
                 if item.get('remarks') != "Default entry":
@@ -239,18 +266,19 @@ def save_sensitivity_config(config_module, results_folder, version, param_id,
         else:
             config_dict = config_module
         
-        # Create sensitivity-specific subdirectory
-        sensitivity_dir = os.path.join(
-            results_folder,
-            'Sensitivity',
-            'Symmetrical' if mode == 'symmetrical' else 'Multipoint'
+        # Create parameter-specific directory structure
+        sensitivity_dir = os.path.join(results_folder, 'Sensitivity')
+        param_var_dir = os.path.join(
+            sensitivity_dir,
+            param_id,
+            mode.lower(),  # Ensure lowercase mode name
+            f"{variation:+.2f}"
         )
-        os.makedirs(sensitivity_dir, exist_ok=True)
+        os.makedirs(param_var_dir, exist_ok=True)
         
-        # Generate filename using concatenation convention
-        var_str = f"{variation:+.2f}"
-        filename = f"{version}_config_module_{start_year}_{param_id}_{var_str}.json"
-        filepath = os.path.join(sensitivity_dir, filename)
+        # Generate simplified filename
+        filename = f"{version}_config_module_{start_year}.json"
+        filepath = os.path.join(param_var_dir, filename)
         
         with open(filepath, 'w') as f:
             json.dump(config_dict, f, indent=4)

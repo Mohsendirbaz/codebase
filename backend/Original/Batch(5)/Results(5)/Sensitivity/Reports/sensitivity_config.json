@@ -1,6 +1,6 @@
 {
   "version": "5",
-  "timestamp": "2025-03-23 18:13:47",
+  "timestamp": "2025-03-24 01:23:20",
   "parameters": {
     "S10": {
       "mode": null,
@@ -73,15 +73,12 @@
       "point": false
     },
     "S17": {
-      "mode": "multiple",
-      "values": [
-        -50,
-        50
-      ],
-      "enabled": true,
-      "compareToKey": "S13",
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
       "comparisonType": null,
-      "waterfall": true,
+      "waterfall": false,
       "bar": false,
       "point": false
     },
@@ -256,14 +253,17 @@
       "point": false
     },
     "S35": {
-      "mode": null,
-      "values": [],
-      "enabled": false,
-      "compareToKey": "",
-      "comparisonType": null,
-      "waterfall": false,
-      "bar": false,
-      "point": false
+      "mode": "multiple",
+      "values": [
+        -10,
+        100
+      ],
+      "enabled": true,
+      "compareToKey": "S13",
+      "comparisonType": "primary",
+      "waterfall": true,
+      "bar": true,
+      "point": true
     },
     "S36": {
       "mode": null,
