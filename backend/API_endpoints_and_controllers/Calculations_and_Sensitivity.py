@@ -768,8 +768,8 @@ def run_calculations():
         config_time = time.time() - start_time
         sensitivity_logger.info(f"\nConfiguration scripts completed in {config_time:.2f}s")
 
-        # Step 2: Process calculations based on mode
-        sensitivity_logger.info("\nProcessing Calculations:")
+        # Step 2: Process baseline calculation
+        sensitivity_logger.info("\nProcessing Baseline Calculation:")
         calc_start = time.time()
         
         # Get calculation script
@@ -803,59 +803,208 @@ def run_calculations():
             raise Exception(error_msg)
         
         sensitivity_logger.info("Baseline calculation completed successfully")
-
-        # Step 3: Process sensitivity parameters if enabled
-        enabled_params = [k for k, v in config['SenParameters'].items() if v.get('enabled')]
-        if enabled_params:
-            sensitivity_logger.info(f"\nProcessing {len(enabled_params)} sensitivity parameters:")
-            
-            for param_id, param_config in config['SenParameters'].items():
-                if not param_config.get('enabled'):
-                    continue
-                    
-                param_start = time.time()
-                sensitivity_logger.info(f"\nProcessing {param_id}:")
-                sensitivity_logger.info(f"Mode: {param_config.get('mode')}")
-                sensitivity_logger.info(f"Values: {param_config.get('values')}")
-                
-                result = subprocess.run(
-                    [
-                        'python',
-                        calculation_script,
-                        str(config['versions'][0]),
-                        json.dumps(config['selectedV']),
-                        json.dumps(config['selectedF']),
-                        str(config['targetRow']),
-                        config['calculationOption'],
-                        json.dumps({param_id: param_config})
-                    ],
-                    capture_output=True,
-                    text=True
-                )
-                
-                if result.returncode != 0:
-                    error_msg = f"Sensitivity calculation failed for {param_id}: {result.stderr}"
-                    sensitivity_logger.error(error_msg)
-                    raise Exception(error_msg)
-                
-                param_duration = time.time() - param_start
-                sensitivity_logger.info(f"Completed {param_id} in {param_duration:.2f}s")
-
-        total_time = time.time() - start_time
-        sensitivity_logger.info(f"\n{'='*80}")
-        sensitivity_logger.info(f"Run Summary - ID: {run_id}")
-        sensitivity_logger.info(f"Total execution time: {total_time:.2f}s")
-        sensitivity_logger.info(f"Configuration scripts: {config_time:.2f}s")
-        sensitivity_logger.info(f"Calculations completed: {len(enabled_params) + 1}")  # +1 for baseline
-        sensitivity_logger.info(f"{'='*80}\n")
         
-        # Trigger the config module copy service
+        # Step 3: Trigger the config module copy service BEFORE sensitivity calculations
+        sensitivity_logger.info("\nTriggering configuration module copying:")
         copy_service_result = trigger_config_module_copy(
             version,
             sensitivity_dir,
             config['SenParameters']
         )
         
+        # Wait for config copy service to complete (or timeout after 5 minutes)
+        sensitivity_logger.info("Waiting for configuration copying to complete...")
+        max_wait_time = 300  # 5 minutes in seconds
+        start_wait = time.time()
+        config_copy_complete = False
+        
+        # First check if service is available
+        while time.time() - start_wait < max_wait_time:
+            try:
+                response = requests.get("http://localhost:2600/health", timeout=2)
+                if response.ok:
+                    config_copy_complete = True
+                    sensitivity_logger.info("Configuration copying service is available")
+                    break
+            except requests.exceptions.RequestException:
+                pass
+            
+            # Log progress and wait
+            elapsed = time.time() - start_wait
+            sensitivity_logger.info(f"Still waiting for configuration service... ({elapsed:.0f}s elapsed)")
+            time.sleep(15)  # Check every 15 seconds
+        
+        # Now verify that actual configuration files have been created (more reliable check)
+        sensitivity_logger.info("Verifying configuration files existence...")
+        config_files_verified = False
+        start_wait = time.time()  # Reset timer
+        
+        while time.time() - start_wait < max_wait_time:
+            # Check for actual configuration files for each enabled parameter
+            all_found = True
+            for param_id, param_config in config['SenParameters'].items():
+                if not param_config.get('enabled'):
+                    continue
+                
+                mode = param_config.get('mode', 'symmetrical')
+                values = param_config.get('values', [])
+                
+                # Determine variations based on mode
+                if mode.lower() == 'symmetrical':
+                    base_variation = values[0]
+                    variations = [base_variation, -base_variation]
+                else:
+                    variations = values
+                
+                # Check if configuration files exist for each variation
+                for variation in variations:
+                    var_str = f"{variation:+.2f}"
+                    mode_dir = 'symmetrical' if mode.lower() == 'symmetrical' else 'multiple'
+                    config_path_pattern = os.path.join(
+                        sensitivity_dir,
+                        param_id,
+                        mode_dir,
+                        var_str,
+                        f"{version}_config_module_*.json"
+                    )
+                    
+                    if not glob.glob(config_path_pattern):
+                        all_found = False
+                        sensitivity_logger.info(f"Still waiting for config files for {param_id} variation {var_str}...")
+                        break
+                
+                if not all_found:
+                    break
+            
+            if all_found:
+                config_files_verified = True
+                sensitivity_logger.info("All required configuration files verified!")
+                break
+            
+            # Log progress and wait
+            elapsed = time.time() - start_wait
+            sensitivity_logger.info(f"Still waiting for configuration files... ({elapsed:.0f}s elapsed)")
+            time.sleep(15)  # Check every 15 seconds
+        
+        if not config_files_verified:
+            sensitivity_logger.warning("Timed out waiting for all configuration files, proceeding anyway")
+        
+        # Update configuration pickle file to ensure version matching for subsequent steps
+        sensitivity_logger.info("Updating configuration data with current version...")
+        try:
+            # Save configuration data with explicit version for process_sensitivity_results.py to use
+            with open(SENSITIVITY_CONFIG_DATA_PATH, 'wb') as f:
+                # Ensure version is correctly saved in the configuration
+                if isinstance(config['versions'], list) and version not in config['versions']:
+                    config['versions'].append(version)
+                pickle.dump(config, f)
+            sensitivity_logger.info(f"Updated configuration data with version {version}")
+        except Exception as e:
+            sensitivity_logger.error(f"Error updating configuration data: {str(e)}")
+        
+        # Step 4: Now process sensitivity parameters if enabled (AFTER config copy is done)
+        enabled_params = [k for k, v in config['SenParameters'].items() if v.get('enabled')]
+        if enabled_params:
+            sensitivity_logger.info(f"\nExecuting process_sensitivity_results.py to handle modified configurations...")
+            
+            try:
+                process_script = os.path.join(
+                    SCRIPT_DIR, 
+                    "API_endpoints_and_controllers", 
+                    "process_sensitivity_results.py"
+                )
+                
+                if os.path.exists(process_script):
+                    sensitivity_logger.info(f"Running process_sensitivity_results.py for {version}...")
+                    process_result = subprocess.run(
+                        ['python', process_script, str(version), '0.5'],  # 30 second wait time
+                        capture_output=True,
+                        text=True
+                    )
+                    
+                    if process_result.returncode == 0:
+                        sensitivity_logger.info("Successfully processed sensitivity results")
+                    else:
+                        error_output = process_result.stderr or process_result.stdout
+                        sensitivity_logger.error(f"Error processing sensitivity results: {error_output}")
+                        
+                        # Try running with backup approach if the first attempt failed
+                        sensitivity_logger.info("Attempting backup approach for sensitivity processing...")
+                        for param_id, param_config in config['SenParameters'].items():
+                            if not param_config.get('enabled'):
+                                continue
+                                
+                            param_start = time.time()
+                            sensitivity_logger.info(f"\nProcessing {param_id} directly:")
+                            sensitivity_logger.info(f"Mode: {param_config.get('mode')}")
+                            sensitivity_logger.info(f"Values: {param_config.get('values')}")
+                            
+                            # Run CFA on each modified configuration
+                            mode = param_config.get('mode', 'symmetrical')
+                            values = param_config.get('values', [])
+                            
+                            if mode.lower() == 'symmetrical':
+                                base_variation = values[0]
+                                variations = [base_variation, -base_variation]
+                            else:
+                                variations = values
+                            
+                            for variation in variations:
+                                var_str = f"{variation:+.2f}"
+                                sensitivity_logger.info(f"Direct processing of {param_id} variation {var_str}")
+                                
+                                # Find modified config files
+                                mode_dir = 'symmetrical' if mode.lower() == 'symmetrical' else 'multiple'
+                                config_pattern = os.path.join(
+                                    sensitivity_dir,
+                                    param_id,
+                                    mode_dir,
+                                    var_str,
+                                    f"{version}_config_module_*.json"
+                                )
+                                
+                                config_files = glob.glob(config_pattern)
+                                if config_files:
+                                    for config_file in config_files:
+                                        sensitivity_logger.info(f"Running CFA with config file: {config_file}")
+                                        result = subprocess.run(
+                                            [
+                                                'python',
+                                                calculation_script,
+                                                str(version),
+                                                '-c', config_file,
+                                                '--sensitivity',
+                                                param_id,
+                                                str(variation),
+                                                param_config.get('compareToKey', 'S13')
+                                            ],
+                                            capture_output=True,
+                                            text=True
+                                        )
+                                        
+                                        if result.returncode != 0:
+                                            sensitivity_logger.error(f"Error running CFA: {result.stderr}")
+                                        else:
+                                            sensitivity_logger.info(f"Successfully ran CFA on modified config: {config_file}")
+                                else:
+                                    sensitivity_logger.warning(f"No config files found for {param_id} variation {var_str}")
+                            
+                            param_duration = time.time() - param_start
+                            sensitivity_logger.info(f"Completed {param_id} backup processing in {param_duration:.2f}s")
+                else:
+                    sensitivity_logger.error(f"Results processing script not found: {process_script}")
+                    
+            except Exception as e:
+                sensitivity_logger.error(f"Exception triggering sensitivity results processing: {str(e)}")
+
+        total_time = time.time() - start_time
+        sensitivity_logger.info(f"\n{'='*80}")
+        sensitivity_logger.info(f"Run Summary - ID: {run_id}")
+        sensitivity_logger.info(f"Total execution time: {total_time:.2f}s")
+        sensitivity_logger.info(f"Configuration scripts: {config_time:.2f}s")
+        sensitivity_logger.info(f"Configurations processed: {len(enabled_params)}")
+        sensitivity_logger.info(f"{'='*80}\n")
+                
         # Return success response with timing information
         return jsonify({
             "status": "success",
@@ -891,6 +1040,11 @@ def get_sensitivity_visualization():
     sensitivity_logger = logging.getLogger('sensitivity')
     run_id = time.strftime("%Y%m%d_%H%M%S")
     start_time = time.time()
+    
+    # Enhanced logging for visualization process
+    sensitivity_logger.info("\n" + "="*80)
+    sensitivity_logger.info("PLOT GENERATION STARTED - Run ID: " + run_id)
+    sensitivity_logger.info("="*80)
     
     try:
         # Check if sensitivity configurations have been generated
@@ -1066,6 +1220,9 @@ def get_sensitivity_visualization():
                 'Symmetrical' if mode == 'symmetrical' else 'Multipoint'
             )
 
+            # Initialize plot data structure for this parameter
+            visualization_data['plots'][param_id] = {}
+            
             # Check if sensitivity directory exists
             if not os.path.exists(sensitivity_dir):
                 error_msg = f"Sensitivity directory not found: {sensitivity_dir}"
@@ -1074,11 +1231,91 @@ def get_sensitivity_visualization():
                 visualization_data['parameters'][param_id]['status']['error'] = error_msg
                 visualization_data['metadata']['errors'].append(error_msg)
                 continue
+                
+            # Check for results files before attempting to visualize
+            result_file_name = f"{param_id}_vs_{config['compareToKey']}_{mode.lower()}_results.json"
+            result_file_path = os.path.join(sensitivity_dir, result_file_name)
+            
+            if not os.path.exists(result_file_path):
+                sensitivity_logger.warning(f"Results file not found: {result_file_path}")
+                sensitivity_logger.info("Checking if results processing needs to be triggered...")
+            
+            # Check if process_sensitivity_results.py needs to be executed
+            try:
+                process_script = os.path.join(
+                    SCRIPT_DIR, 
+                    "API_endpoints_and_controllers", 
+                    "process_sensitivity_results.py"
+                )
+                
+                if os.path.exists(process_script):
+                    sensitivity_logger.info(f"Triggering results processing for {param_id}...")
+                    process_result = subprocess.run(
+                        ['python', process_script, str(version), '0.5'],  # 30 second wait time
+                        capture_output=True,
+                        text=True
+                    )
+                    
+                    if process_result.returncode == 0:
+                        sensitivity_logger.info("Successfully processed sensitivity results")
+                        
+                        # Check again for results file
+                        if os.path.exists(result_file_path):
+                            sensitivity_logger.info(f"Results file now found after processing: {result_file_path}")
+                        else:
+                            sensitivity_logger.warning(f"Results file still not found after processing: {result_file_path}")
+                    else:
+                        sensitivity_logger.error(f"Error in manual results processing: {process_result.stderr}")
+            except Exception as e:
+                sensitivity_logger.error(f"Exception in manual results processing: {str(e)}")
 
-            # Process each plot type
+            # First, we need to make sure results processing is complete
+            # Check for results file existence
+            result_file_name = f"{param_id}_vs_{config['compareToKey']}_{mode.lower()}_results.json"
+            result_file_path = os.path.join(sensitivity_dir, result_file_name)
+            
+            # If results file doesn't exist, wait and trigger results processing
+            if not os.path.exists(result_file_path):
+                sensitivity_logger.warning(f"Results file not found: {result_file_path}")
+                sensitivity_logger.info("Triggering results processing explicitly...")
+                
+                try:
+                    process_script = os.path.join(
+                        SCRIPT_DIR, 
+                        "API_endpoints_and_controllers", 
+                        "process_sensitivity_results.py"
+                    )
+                    
+                    if os.path.exists(process_script):
+                        sensitivity_logger.info(f"Executing results processing for {param_id}...")
+                        process_result = subprocess.run(
+                            ['python', process_script, str(version), '1'],  # 1 minute wait time
+                            capture_output=True,
+                            text=True
+                        )
+                        
+                        if process_result.returncode == 0:
+                            sensitivity_logger.info("Successfully processed sensitivity results")
+                            
+                            # Check if results file was created
+                            if os.path.exists(result_file_path):
+                                sensitivity_logger.info(f"Results file now created: {result_file_path}")
+                            else:
+                                sensitivity_logger.warning(f"Results file still not found after processing: {result_file_path}")
+                                # Wait a bit more in case file writing is delayed
+                                time.sleep(5)
+                        else:
+                            sensitivity_logger.error(f"Error in results processing: {process_result.stderr}")
+                    else:
+                        sensitivity_logger.error(f"Results processing script not found: {process_script}")
+                except Exception as e:
+                    sensitivity_logger.error(f"Exception in results processing: {str(e)}")
+            
+            # Now that results processing has been attempted, process each plot type
             for plot_type in plot_types:
                 # Log the start of plot generation attempt
                 log_plot_generation_start(param_id, config['compareToKey'], plot_type, mode)
+                sensitivity_logger.info(f"Beginning plot generation for {param_id} {plot_type} plot...")
                 
                 # Construct the plot name and path
                 plot_name = f"{plot_type}_{param_id}_{config['compareToKey']}_{config.get('comparisonType', 'primary')}"
@@ -1091,40 +1328,78 @@ def get_sensitivity_visualization():
                     'error': None
                 }
 
-                # Check if the plot file exists
-                if os.path.exists(plot_path):
-                    # Plot exists, log success
-                    relative_path = os.path.relpath(plot_path, base_dir)
-                    plot_status.update({
-                        'status': 'ready',
-                        'path': relative_path,
-                        'error': None
-                    })
-                    plots_generated += 1
-                    sensitivity_logger.info(f"Found {plot_type} plot: {relative_path}")
-                    log_plot_generation_complete(param_id, config['compareToKey'], plot_type, mode, plot_path)
-                else:
-                    # Plot doesn't exist, log the error
-                    error_msg = f"Plot not found: {plot_name}"
-                    plot_status['error'] = error_msg
-                    sensitivity_logger.warning(error_msg)
+                # Check again for the results file now that processing has completed
+                if os.path.exists(result_file_path):
+                    sensitivity_logger.info(f"Using results data from: {result_file_path}")
                     
-                    # Log detailed information about the missing plot
-                    log_plot_generation_error(param_id, config['compareToKey'], plot_type, mode, error_msg)
-                    
-                    # Check if result data exists for this parameter
-                    result_file_name = f"{param_id}_vs_{config['compareToKey']}_{mode.lower()}_results.json"
-                    result_file_path = os.path.join(sensitivity_dir, result_file_name)
-                    
-                    if os.path.exists(result_file_path):
-                        # Result data exists but plot wasn't generated
-                        log_plot_data_loading(param_id, config['compareToKey'], result_file_path, success=True)
-                        log_plot_rendering(param_id, config['compareToKey'], plot_type, success=False, 
-                                          error_msg="Plot generation was not attempted or failed")
+                    # Check if the plot file exists
+                    if os.path.exists(plot_path):
+                        # Plot exists, log success
+                        relative_path = os.path.relpath(plot_path, base_dir)
+                        plot_status.update({
+                            'status': 'ready',
+                            'path': relative_path,
+                            'error': None
+                        })
+                        plots_generated += 1
+                        sensitivity_logger.info(f"Found existing {plot_type} plot: {relative_path}")
+                        log_plot_generation_complete(param_id, config['compareToKey'], plot_type, mode, plot_path)
                     else:
-                        # Result data doesn't exist
-                        log_plot_data_loading(param_id, config['compareToKey'], result_file_path, success=False, 
-                                             error_msg="Result data file not found")
+                        # Plot doesn't exist, but we have results data - generate the plot
+                        sensitivity_logger.info(f"Generating {plot_type} plot from results data...")
+                        log_plot_data_loading(param_id, config['compareToKey'], result_file_path, success=True)
+                        
+                        # Attempt to generate the plot using sensitivity_Routes functions
+                        try:
+                            # Import the plot generation script
+                            try:
+                                from sensitivity_Routes import generate_plot_from_results
+                                
+                                # Generate the plot
+                                generated = generate_plot_from_results(
+                                    version=version,
+                                    param_id=param_id,
+                                    compare_to_key=config['compareToKey'],
+                                    plot_type=plot_type,
+                                    mode=mode,
+                                    result_path=result_file_path
+                                )
+                                
+                                if generated and os.path.exists(plot_path):
+                                    sensitivity_logger.info(f"Successfully generated {plot_type} plot: {plot_path}")
+                                    relative_path = os.path.relpath(plot_path, base_dir)
+                                    plot_status.update({
+                                        'status': 'ready',
+                                        'path': relative_path,
+                                        'error': None
+                                    })
+                                    plots_generated += 1
+                                    log_plot_generation_complete(param_id, config['compareToKey'], plot_type, mode, plot_path)
+                                else:
+                                    error_msg = f"Plot generation failed despite having result data"
+                                    plot_status['error'] = error_msg
+                                    sensitivity_logger.warning(error_msg)
+                                    log_plot_rendering(param_id, config['compareToKey'], plot_type, success=False, 
+                                                    error_msg=error_msg)
+                            except ImportError:
+                                error_msg = "Could not import plot generation function"
+                                plot_status['error'] = error_msg
+                                sensitivity_logger.warning(error_msg)
+                                log_plot_rendering(param_id, config['compareToKey'], plot_type, success=False, 
+                                                error_msg=error_msg)
+                        except Exception as e:
+                            error_msg = f"Error generating plot: {str(e)}"
+                            plot_status['error'] = error_msg
+                            sensitivity_logger.error(error_msg)
+                            log_plot_rendering(param_id, config['compareToKey'], plot_type, success=False, 
+                                            error_msg=error_msg)
+                else:
+                    # No results data available even after processing
+                    error_msg = f"Results data not available for {param_id} even after processing"
+                    plot_status['error'] = error_msg
+                    sensitivity_logger.error(error_msg)
+                    log_plot_data_loading(param_id, config['compareToKey'], result_file_path, success=False, 
+                                         error_msg=error_msg)
 
                 # Add plot status to visualization data
                 visualization_data['plots'][param_id][plot_type] = plot_status
@@ -1140,11 +1415,13 @@ def get_sensitivity_visualization():
             'plotsGenerated': plots_generated
         })
 
-        sensitivity_logger.info(f"\nVisualization processing complete - Run ID: {run_id}")
+        sensitivity_logger.info("\n" + "="*80)
+        sensitivity_logger.info(f"PLOT GENERATION COMPLETED - Run ID: {run_id}")
         sensitivity_logger.info(f"Processing time: {processing_time:.2f}s")
         sensitivity_logger.info(f"Plots generated: {plots_generated}")
         if visualization_data['metadata']['errors']:
             sensitivity_logger.info(f"Errors encountered: {len(visualization_data['metadata']['errors'])}")
+        sensitivity_logger.info("="*80 + "\n")
         
         log_execution_flow('exit', f"Visualization processing complete - Run ID: {run_id}")
         return jsonify(visualization_data)
@@ -1168,6 +1445,111 @@ def get_sensitivity_visualization():
 # Price Endpoints
 # =====================================
 
+def find_price_from_economic_summaries(version):
+    """
+    Find price value from economic summaries in multiple potential locations.
+    
+    Args:
+        version (int/str): Version number
+        
+    Returns:
+        tuple: (price, source) - price is the found price value or None if not found,
+                                source is a description of where it was found
+    """
+    sensitivity_logger = logging.getLogger('sensitivity')
+    
+    # Convert version to int if it's a string
+    version_num = int(version) if not isinstance(version, int) else version
+    
+    # List of potential paths to check for economic summaries
+    paths_to_check = [
+        # Main economic summary
+        os.path.join(
+            ORIGINAL_BASE_DIR,
+            f'Batch({version_num})',
+            f'Results({version_num})',
+            f"Economic_Summary({version_num}).csv"
+        ),
+        # Secondary location - in Results root
+        os.path.join(
+            ORIGINAL_BASE_DIR,
+            f'Batch({version_num})',
+            f'Results({version_num})',
+            f"Economic_Summary.csv"
+        ),
+        # In sensitivity directory
+        os.path.join(
+            ORIGINAL_BASE_DIR,
+            f'Batch({version_num})',
+            f'Results({version_num})',
+            'Sensitivity',
+            f"Economic_Summary({version_num}).csv"
+        )
+    ]
+    
+    # Also search for any economic summary CSVs using glob pattern
+    glob_patterns = [
+        os.path.join(
+            ORIGINAL_BASE_DIR,
+            f'Batch({version_num})',
+            f'Results({version_num})',
+            "**",
+            f"Economic_Summary*.csv"
+        ),
+        os.path.join(
+            ORIGINAL_BASE_DIR,
+            f'Batch({version_num})',
+            f'Results({version_num})',
+            "Sensitivity",
+            "**",
+            f"Economic_Summary*.csv"
+        )
+    ]
+    
+    # First check specific paths
+    for idx, path in enumerate(paths_to_check):
+        sensitivity_logger.info(f"Checking for economic summary at path {idx+1}/{len(paths_to_check)}: {path}")
+        
+        if os.path.exists(path):
+            try:
+                economic_df = pd.read_csv(path)
+                price_rows = economic_df[economic_df['Metric'] == 'Average Selling Price (Project Life Cycle)']
+                
+                if not price_rows.empty:
+                    price_value = float(price_rows.iloc[0, 1])  # Assuming price is in second column
+                    sensitivity_logger.info(f"Found price in economic summary at {path}: {price_value}")
+                    return price_value, f"economic_summary_path_{idx+1}"
+                else:
+                    sensitivity_logger.warning(f"Price row not found in economic summary at {path}")
+            except Exception as e:
+                sensitivity_logger.error(f"Error reading economic summary at {path}: {str(e)}")
+    
+    # Then try using glob patterns
+    for pattern_idx, pattern in enumerate(glob_patterns):
+        sensitivity_logger.info(f"Searching for economic summaries with pattern {pattern_idx+1}/{len(glob_patterns)}")
+        
+        try:
+            matches = glob.glob(pattern, recursive=True)
+            sensitivity_logger.info(f"Found {len(matches)} potential economic summary files")
+            
+            for match_idx, match_path in enumerate(matches):
+                try:
+                    economic_df = pd.read_csv(match_path)
+                    price_rows = economic_df[economic_df['Metric'] == 'Average Selling Price (Project Life Cycle)']
+                    
+                    if not price_rows.empty:
+                        price_value = float(price_rows.iloc[0, 1])
+                        sensitivity_logger.info(f"Found price in economic summary at {match_path}: {price_value}")
+                        return price_value, f"glob_pattern_{pattern_idx+1}_match_{match_idx+1}"
+                except Exception as e:
+                    sensitivity_logger.error(f"Error reading match {match_idx+1} at {match_path}: {str(e)}")
+        except Exception as e:
+            sensitivity_logger.error(f"Error with glob pattern {pattern_idx+1}: {str(e)}")
+    
+    # If we reach here, no price was found in any economic summary
+    sensitivity_logger.warning(f"No price found in any economic summary for version {version_num}")
+    return None, "not_found"
+
 @app.route('/prices/<version>', methods=['GET'])
 def get_price(version):
     """
@@ -1178,35 +1560,63 @@ def get_price(version):
         sensitivity_logger = logging.getLogger('sensitivity')
         sensitivity_logger.info(f"Fetching price for version: {version}")
         
-        # Attempt to read from economic summary file
+        # Try to find price from economic summaries in multiple locations
+        price, source = find_price_from_economic_summaries(version)
+        
+        if price is not None:
+            return jsonify({
+                'price': price,
+                'version': version,
+                'source': source,
+                'timestamp': time.strftime("%Y-%m-%d %H:%M:%S")
+            })
+        
+        # Check for sensitivity results that might have price data
         try:
             base_dir = os.path.join(BASE_DIR, 'backend', 'Original')
-            economic_summary_path = os.path.join(
+            sensitivity_dir = os.path.join(
                 base_dir,
                 f'Batch({version})',
                 f'Results({version})',
-                f"Economic_Summary({version}).csv"
+                'Sensitivity'
             )
             
-            if os.path.exists(economic_summary_path):
-                economic_df = pd.read_csv(economic_summary_path)
-                price_row = economic_df[economic_df['Metric'] == 'Average Selling Price (Project Life Cycle)']
-                if not price_row.empty:
-                    price = float(price_row.iloc[0, 1])  # Assuming value is in second column
-                    return jsonify({
-                        'price': price,
-                        'version': version,
-                        'timestamp': time.strftime("%Y-%m-%d %H:%M:%S")
-                    })
+            # Look for any results JSON files
+            result_files = glob.glob(os.path.join(sensitivity_dir, "*_results.json"))
+            
+            for result_file in result_files:
+                sensitivity_logger.info(f"Checking sensitivity result file: {result_file}")
+                
+                try:
+                    with open(result_file, 'r') as f:
+                        result_data = json.load(f)
+                        
+                    # Look for price in variations
+                    if 'variations' in result_data:
+                        for variation in result_data['variations']:
+                            if variation.get('status') == 'completed' and 'values' in variation and 'price' in variation['values']:
+                                price = variation['values']['price']
+                                if price is not None:
+                                    sensitivity_logger.info(f"Found price in sensitivity result: {price}")
+                                    return jsonify({
+                                        'price': price,
+                                        'version': version,
+                                        'source': f"sensitivity_result_{os.path.basename(result_file)}",
+                                        'timestamp': time.strftime("%Y-%m-%d %H:%M:%S")
+                                    })
+                except Exception as e:
+                    sensitivity_logger.error(f"Error reading sensitivity result file {result_file}: {str(e)}")
         except Exception as e:
-            sensitivity_logger.error(f"Error reading economic summary: {str(e)}")
+            sensitivity_logger.error(f"Error searching sensitivity results: {str(e)}")
         
-        # Fallback to simulated price
+        # Fallback to simulated price with detailed logging
         price = 1000.00 + float(version) * 100
+        sensitivity_logger.warning(f"Using simulated price {price} for version {version} - No real data found")
         
         return jsonify({
             'price': price,
             'version': version,
+            'source': 'simulated',
             'timestamp': time.strftime("%Y-%m-%d %H:%M:%S")
         })
         
@@ -1222,60 +1632,95 @@ def get_price(version):
 def stream_prices(version):
     """
     Stream real-time price updates.
-    This endpoint matches the existing one used in HomePage.js.
+    This endpoint matches the existing one used in HomePage.js but with improved price finding.
     """
     def generate():
         try:
             sensitivity_logger = logging.getLogger('sensitivity')
             sensitivity_logger.info(f"Starting price stream for version: {version}")
             
-            # Initial data - attempt to read from economic summary file
+            # Try to find real price using our comprehensive search function
+            price, source = find_price_from_economic_summaries(version)
+            
+            # If we found a real price, use it with small variations
+            if price is not None:
+                sensitivity_logger.info(f"Initial real price from {source}: {price}")
+                yield f"data: {json.dumps({'price': price, 'version': version, 'source': source})}\n\n"
+                
+                # Stream updates with small variations around the actual price
+                variations = [-2, 0, 2]  # First down, then same, then up
+                for i, variation in enumerate(variations):
+                    time.sleep(1)
+                    updated_price = price + variation
+                    sensitivity_logger.info(f"Streaming real price update {i+1}: {updated_price} (variation: {variation})")
+                    yield f"data: {json.dumps({'price': updated_price, 'version': version, 'source': f'{source}_variation_{i+1}'})}\n\n"
+                
+                # Send completion message with original price
+                yield f"data: {json.dumps({'complete': True, 'price': price, 'version': version, 'source': source})}\n\n"
+                return
+                
+            # Check sensitivity results as a fallback
             try:
                 base_dir = os.path.join(BASE_DIR, 'backend', 'Original')
-                economic_summary_path = os.path.join(
+                sensitivity_dir = os.path.join(
                     base_dir,
                     f'Batch({version})',
                     f'Results({version})',
-                    f"Economic_Summary({version}).csv"
+                    'Sensitivity'
                 )
                 
-                if os.path.exists(economic_summary_path):
-                    economic_df = pd.read_csv(economic_summary_path)
-                    price_row = economic_df[economic_df['Metric'] == 'Average Selling Price (Project Life Cycle)']
-                    if not price_row.empty:
-                        price = float(price_row.iloc[0, 1])  # Assuming value is in second column
-                        sensitivity_logger.info(f"Initial price from economic summary: {price}")
-                        yield f"data: {json.dumps({'price': price, 'version': version})}\n\n"
-                        
-                        # Simulate updates with small variations around the actual price
-                        for i in range(3):
-                            time.sleep(1)
-                            price += (i - 1) * 2  # First down, then up
-                            sensitivity_logger.info(f"Streaming price update {i+1}: {price}")
-                            yield f"data: {json.dumps({'price': price, 'version': version})}\n\n"
+                # Look for any results JSON files
+                result_files = glob.glob(os.path.join(sensitivity_dir, "*_results.json"))
+                
+                for result_file in result_files:
+                    try:
+                        with open(result_file, 'r') as f:
+                            result_data = json.load(f)
                             
-                        # Send completion message
-                        yield f"data: {json.dumps({'complete': True, 'price': price, 'version': version})}\n\n"
-                        return
+                        # Look for price in variations
+                        if 'variations' in result_data:
+                            for variation in result_data['variations']:
+                                if variation.get('status') == 'completed' and 'values' in variation and 'price' in variation['values']:
+                                    price = variation['values']['price']
+                                    if price is not None:
+                                        source = f"sensitivity_result_{os.path.basename(result_file)}"
+                                        sensitivity_logger.info(f"Found price in sensitivity result: {price}")
+                                        
+                                        # Initial data
+                                        yield f"data: {json.dumps({'price': price, 'version': version, 'source': source})}\n\n"
+                                        
+                                        # Stream updates with small variations
+                                        variations = [-2, 0, 2]  # First down, then same, then up
+                                        for i, variation in enumerate(variations):
+                                            time.sleep(1)
+                                            updated_price = price + variation
+                                            sensitivity_logger.info(f"Streaming price update {i+1}: {updated_price} (variation: {variation})")
+                                            yield f"data: {json.dumps({'price': updated_price, 'version': version, 'source': f'{source}_variation_{i+1}'})}\n\n"
+                                        
+                                        # Send completion message
+                                        yield f"data: {json.dumps({'complete': True, 'price': price, 'version': version, 'source': source})}\n\n"
+                                        return
+                    except Exception as e:
+                        sensitivity_logger.error(f"Error reading sensitivity result file {result_file}: {str(e)}")
             except Exception as e:
-                sensitivity_logger.error(f"Error reading economic summary for streaming: {str(e)}")
+                sensitivity_logger.error(f"Error searching sensitivity results: {str(e)}")
             
-            # Fallback to simulated price
+            # Fallback to simulated price as last resort
             price = 1000.00 + float(version) * 100
-            sensitivity_logger.info(f"Using simulated initial price: {price}")
+            sensitivity_logger.warning(f"Using simulated initial price: {price}")
             
             # Send initial data
-            yield f"data: {json.dumps({'price': price, 'version': version})}\n\n"
+            yield f"data: {json.dumps({'price': price, 'version': version, 'source': 'simulated'})}\n\n"
             
             # Simulate updates every second for 5 seconds
             for i in range(5):
                 time.sleep(1)
                 price += 5.0 * (i + 1)
-                sensitivity_logger.info(f"Streaming price update {i+1}: {price}")
-                yield f"data: {json.dumps({'price': price, 'version': version})}\n\n"
+                sensitivity_logger.warning(f"Streaming simulated price update {i+1}: {price}")
+                yield f"data: {json.dumps({'price': price, 'version': version, 'source': 'simulated'})}\n\n"
                 
             # Send completion message
-            yield f"data: {json.dumps({'complete': True, 'price': price, 'version': version})}\n\n"
+            yield f"data: {json.dumps({'complete': True, 'price': price, 'version': version, 'source': 'simulated'})}\n\n"
             
         except Exception as e:
             sensitivity_logger = logging.getLogger('sensitivity')

@@ -6,12 +6,159 @@ import json
 import time
 from datetime import datetime
 import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
 from Sensitivity_File_Manager import SensitivityFileManager
 
 # Configure logger
 logger = logging.getLogger('sensitivity')
 
 sensitivity_routes = Blueprint('sensitivity_routes', __name__)
+
+# Add function for dynamic plot generation that can be imported by other modules
+def generate_plot_from_results(version, param_id, compare_to_key, plot_type, mode, result_path):
+    """
+    Generate a plot from existing result data.
+    
+    Args:
+        version (int): Version number
+        param_id (str): Parameter ID
+        compare_to_key (str): Comparison parameter ID
+        plot_type (str): Type of plot to generate (waterfall, bar, point)
+        mode (str): Analysis mode (symmetrical or multiple)
+        result_path (str): Path to the result data file
+        
+    Returns:
+        bool: True if plot was generated successfully, False otherwise
+    """
+    # Add detailed logging to help debug the process
+    logger.info(f"=== PLOT GENERATION FROM RESULTS ===")
+    logger.info(f"Version: {version}")
+    logger.info(f"Parameter: {param_id}")
+    logger.info(f"Compare to: {compare_to_key}")
+    logger.info(f"Plot type: {plot_type}")
+    logger.info(f"Mode: {mode}")
+    logger.info(f"Result path: {result_path}")
+    try:
+        logger.info(f"Generating {plot_type} plot for {param_id} vs {compare_to_key} from {result_path}")
+        
+        # Ensure result file exists
+        if not os.path.exists(result_path):
+            logger.error(f"Result file not found: {result_path}")
+            return False
+            
+        # Load result data
+        with open(result_path, 'r') as f:
+            result_data = json.load(f)
+            
+        # Extract necessary data for the plot
+        variations = result_data.get('variations', [])
+        if not variations:
+            logger.error(f"No variation data found in {result_path}")
+            return False
+            
+        # Normalize mode for directory path
+        mode_dir = 'Symmetrical' if mode.lower() in ['symmetrical', 'percentage', 'multiple'] else 'Multipoint'
+        comparison_type = result_data.get('comparison_type', 'primary')
+        
+        # Construct plot path
+        plot_name = f"{plot_type}_{param_id}_{compare_to_key}_{comparison_type}.png"
+        
+        # Define the directory structure
+        base_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'backend', 'Original')
+        
+        plot_path = os.path.join(
+            base_dir,
+            f'Batch({version})',
+            f'Results({version})',
+            'Sensitivity',
+            mode_dir,
+            plot_type,
+            plot_name
+        )
+        
+        # Ensure the directory exists
+        os.makedirs(os.path.dirname(plot_path), exist_ok=True)
+        
+        # Extract variation values and prices
+        x_values = []
+        y_values = []
+        
+        for variation in variations:
+            var_value = variation.get('variation')
+            if var_value is not None:
+                x_values.append(var_value)
+                
+                price = None
+                if 'values' in variation and 'price' in variation['values']:
+                    price = variation['values']['price']
+                    
+                y_values.append(price)
+        
+        # Sort values by x to ensure proper ordering
+        points = sorted(zip(x_values, y_values), key=lambda point: point[0])
+        x_values = [point[0] for point in points]
+        y_values = [point[1] for point in points]
+        
+        # Create and save the plot
+        plt.figure(figsize=(10, 6))
+        
+        if plot_type == 'waterfall':
+            # Create waterfall plot
+            cumulative = 0
+            for i, (x, y) in enumerate(points):
+                if i == 0:
+                    # First bar is the base
+                    plt.bar(i, y, width=0.5, color='blue', label=f"{x}%")
+                    cumulative = y
+                else:
+                    # Show difference from previous
+                    diff = y - cumulative
+                    color = 'green' if diff >= 0 else 'red'
+                    plt.bar(i, diff, bottom=cumulative, width=0.5, color=color, label=f"{x}%")
+                    cumulative = y
+                    
+            plt.title(f"Waterfall Analysis: {param_id} vs {compare_to_key}")
+            plt.ylabel('Price')
+            plt.xlabel('Variation')
+            plt.xticks(range(len(x_values)), [f"{x}%" for x in x_values])
+            
+        elif plot_type == 'bar':
+            # Create bar plot
+            plt.bar(x_values, y_values, color='blue')
+            plt.title(f"Bar Analysis: {param_id} vs {compare_to_key}")
+            plt.ylabel('Price')
+            plt.xlabel(f'{param_id} Variation (%)')
+            
+        elif plot_type == 'point':
+            # Create point/line plot
+            plt.plot(x_values, y_values, 'o-', color='blue')
+            plt.title(f"Point Analysis: {param_id} vs {compare_to_key}")
+            plt.ylabel('Price')
+            plt.xlabel(f'{param_id} Variation (%)')
+            
+        # Add grid and save
+        plt.grid(True, linestyle='--', alpha=0.7)
+        plt.tight_layout()
+        # Save the plot with higher quality
+        plt.savefig(plot_path, dpi=150, bbox_inches='tight')
+        plt.close()
+        
+        # Verify the file was actually created
+        if os.path.exists(plot_path) and os.path.getsize(plot_path) > 0:
+            logger.info(f"Successfully generated {plot_type} plot at {plot_path}")
+            # Log the file size and timestamp to help with debugging
+            file_stats = os.stat(plot_path)
+            logger.info(f"Plot file size: {file_stats.st_size} bytes")
+            logger.info(f"Plot creation time: {time.ctime(file_stats.st_mtime)}")
+            return True
+        else:
+            logger.error(f"Plot file creation failed or file is empty: {plot_path}")
+            return False
+        
+    except Exception as e:
+        logger.error(f"Error generating {plot_type} plot: {str(e)}")
+        return False
 
 # Base directory path - should be adjusted based on deployment context
 base_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'backend', 'Original')

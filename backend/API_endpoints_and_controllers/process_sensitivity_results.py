@@ -150,16 +150,44 @@ def load_sensitivity_config(version):
     import pickle
     
     try:
+        if not os.path.exists(SENSITIVITY_CONFIG_DATA_PATH):
+            logger.error(f"Configuration data file not found: {SENSITIVITY_CONFIG_DATA_PATH}")
+            return None
+            
         with open(SENSITIVITY_CONFIG_DATA_PATH, 'rb') as f:
             config_data = pickle.load(f)
         
-        # Verify that the loaded config matches the requested version
-        if config_data and 'versions' in config_data and version in config_data['versions']:
+        # Verify that config data has necessary structure
+        if not config_data or not isinstance(config_data, dict):
+            logger.error("Invalid configuration data format")
+            return None
+            
+        # If version is explicitly in the versions list, use it
+        if 'versions' in config_data and isinstance(config_data['versions'], list) and version in config_data['versions']:
             logger.info(f"Loaded configuration data for version {version}")
             return config_data
+            
+        # If versions is not a list or doesn't contain our version, add it
+        if 'versions' in config_data:
+            if not isinstance(config_data['versions'], list):
+                config_data['versions'] = [version]
+            elif version not in config_data['versions']:
+                config_data['versions'].append(version)
+                
+            # Save the updated config back to file
+            with open(SENSITIVITY_CONFIG_DATA_PATH, 'wb') as f:
+                pickle.dump(config_data, f)
+                
+            logger.info(f"Updated configuration data with version {version}")
+            return config_data
         else:
-            logger.warning(f"Configuration data doesn't match version {version}")
-            return None
+            logger.warning(f"Configuration data has no versions field")
+            # Try to add versions field and save back
+            config_data['versions'] = [version]
+            with open(SENSITIVITY_CONFIG_DATA_PATH, 'wb') as f:
+                pickle.dump(config_data, f)
+            logger.info(f"Added versions field with version {version} to configuration data")
+            return config_data
             
     except Exception as e:
         logger.error(f"Error loading sensitivity configuration: {str(e)}")
@@ -444,7 +472,7 @@ def main():
     max_wait_time = 30  # Default maximum wait time in minutes
     
     if len(sys.argv) >= 3:
-        max_wait_time = int(sys.argv[2])
+        max_wait_time = float(sys.argv[2])
     
     # Log start information
     logger.info(f"=== Starting Sensitivity Results Processing ===")
