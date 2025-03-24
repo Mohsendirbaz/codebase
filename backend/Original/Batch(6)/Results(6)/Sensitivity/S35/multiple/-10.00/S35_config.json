@@ -1,0 +1,21 @@
+{
+  "parameter": "S35",
+  "config": {
+    "mode": "multiple",
+    "values": [
+      -10,
+      100
+    ],
+    "enabled": true,
+    "compareToKey": "S13",
+    "comparisonType": "primary",
+    "waterfall": true,
+    "bar": true,
+    "point": true
+  },
+  "variation": -10,
+  "variation_str": "-10.00",
+  "mode": "multiple",
+  "version": "6",
+  "timestamp": "2025-03-24 01:33:54"
+}

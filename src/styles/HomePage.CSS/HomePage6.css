@@ -300,6 +300,7 @@
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.2s, transform 0.1s;
+    background-color: var(--primary-color);
   }
   
  

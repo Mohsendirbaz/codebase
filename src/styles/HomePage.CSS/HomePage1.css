@@ -81,10 +81,28 @@
     cursor: pointer;
     color: var(--text-secondary);
     transition: color 0.2s ease;
+    font-size: 16px; /* Base size */
+    width: 20px; /* Explicit width */
+    height: 20px; /* Explicit height */
+    max-width: 20px; /* Prevent overflow */
+    max-height: 20px; /* Prevent overflow */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .edit-icon:hover {
     color: var(--primary-color);
+}
+
+/* Additional iOS-specific fixes */
+@supports (-webkit-touch-callout: none) {
+    /* CSS specific to iOS devices */
+    .edit-icon {
+        /* Further constrain size on iOS */
+        transform: scale(0.9);
+        font-size: 14px;
+    }
 }
 
 /* Improved edit icon positioning */
@@ -221,6 +239,8 @@
 
 .remarks-container {
     flex: 1;
+    margin-right: 15px; /* Adds space below the remarks container */
+
 }
 
 .remarks-input {

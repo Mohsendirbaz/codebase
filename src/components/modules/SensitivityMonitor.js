@@ -747,30 +747,38 @@ const formatParameterValues = useCallback((values) => {
                       </div>
                       
                       <div className="form-group">
-                        <label htmlFor="comparison-parameter">Compare To Parameter</label>
-                        <select 
-                          id="comparison-parameter"
-                          value={parameterDetails.compareToKey || ''}
-                          onChange={(e) => updateParameterDetails('compareToKey', e.target.value)}
-                          className="form-control"
-                        >
-                          <option value="">No comparison</option>
-                          {Array.from({ length: 70 }, (_, i) => {
-                            const key = `S${i + 10}`;
-                            return {
-                              key,
-                              label: getParameterName(key)
-                            };
-                          }).filter(option => 
-                            option.key !== selectedParameter && 
-                            S[option.key]?.enabled
-                          ).map(option => (
-                            <option key={option.key} value={option.key}>
-                              {option.key} - {option.label}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
+  <label htmlFor="comparison-parameter">Compare To Parameter</label>
+  <select 
+    id="comparison-parameter"
+    value={parameterDetails.compareToKey || ''}
+    onChange={(e) => updateParameterDetails('compareToKey', e.target.value)}
+    className="form-control"
+  >
+    <option value="">No comparison</option>
+    {Object.keys(S)
+      .filter(key => key !== selectedParameter)
+      .map(key => {
+        // Get the numeric part of the key (e.g., "10" from "S10")
+        const numericPart = key.replace(/\D/g, '');
+        
+        // Find the matching form value with the label
+        let label = key;
+        for (const formKey in formValues) {
+          if (formKey.includes(`Amount${numericPart}`)) {
+            label = formValues[formKey].label || key;
+            break;
+          }
+        }
+        
+        return (
+          <option key={key} value={key}>
+            {key} - {label}
+          </option>
+        );
+      })
+    }
+  </select>
+</div>
                       
                       {parameterDetails.compareToKey && (
                         <div className="form-group">

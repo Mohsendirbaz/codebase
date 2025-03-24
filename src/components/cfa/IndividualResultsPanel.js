@@ -220,7 +220,7 @@ const IndividualResultsPanel = ({
     
     setLoadingTable(true);
     try {
-      const response = await fetch(`http://localhost:456/api/process/${version}`);
+      const response = await fetch(`http://localhost:4560/api/process/${version}`);
       if (!response.ok) {
         throw new Error(`Failed to fetch version data: ${response.status}`);
       }

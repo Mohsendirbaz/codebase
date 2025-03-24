@@ -1,4 +1,4 @@
-"""Flask service (port:456) - Processes CFA CSV files with version selection"""
+"""Flask service (port:4560) - Processes CFA CSV files with version selection"""
 from flask import Flask, jsonify, request, render_template
 from flask_cors import CORS
 import os, logging, logging.config
@@ -14,7 +14,7 @@ CORS(app)
 # Configuration
 # Use the same BASE_PATH as the original script
 BASE_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "Original")
-PORT = 456
+PORT = 4560
 CFA_PREFIX = "CFA"
 
 # State management

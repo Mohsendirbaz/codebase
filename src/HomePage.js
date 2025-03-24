@@ -12,6 +12,7 @@ import './styles/HomePage.CSS/HomePage2.css';
 import './styles/HomePage.CSS/HomePage3.css';
 import './styles/HomePage.CSS/HomePage5.css';
 import './styles/HomePage.CSS/HomePage6.css';
+import './styles/HomePage.CSS/CustomizableTable.css';
 import './styles/HomePage.CSS/HomePage_AboutUs.css';
 import './styles/HomePage.CSS/HomePage_buttons.css';
 import './styles/HomePage.CSS/HomePage_monitoring.css';
@@ -31,6 +32,11 @@ import CalculationMonitor from './components/modules/CalculationMonitor';
 import SensitivityMonitor from './components/modules/SensitivityMonitor';
 import ConfigurationMonitor from './components/modules/ConfigurationMonitor';
 import ThemeButton from './components/modules/ThemeButton';
+import PlotsTabs from './components/modules/PlotsTabs';
+import SensitivityPlotsTabs from './components/modules/SensitivityPlotsTabs';
+
+
+
 
 const HomePageContent = () => {
     const [selectedVersions, setSelectedVersions] = useState([1]);
@@ -139,6 +145,57 @@ const HomePageContent = () => {
     const [version, setVersion] = useState('1');
     const [batchRunning, setBatchRunning] = useState(false);
     const [analysisRunning, setAnalysisRunning] = useState(false);
+
+    const renderVersionControl = () => (
+        <div className="version-control-container" style={{
+            position: 'sticky',
+            top: '0',
+            zIndex: '100',
+            backgroundColor: 'var(--background-color)',
+            padding: '10px',
+            borderBottom: '1px solid var(--border-color)',
+            marginBottom: '20px'
+        }}>
+            <div className="version-input-container" style={{
+                display: 'flex',
+                gap: '10px',
+                alignItems: 'center',
+                justifyContent: 'flex-end',
+                maxWidth: '1200px',
+                margin: '0 auto',
+                padding: '0 20px'
+            }}>
+                <input
+                    id="versionNumber"
+                    type="number"
+                    className="version-input"
+                    placeholder="1"
+                    value={version}
+                    onChange={handleVersionChange}
+                    style={{
+                        width: '80px',
+                        padding: '5px',
+                        border: '1px solid var(--border-color)',
+                        borderRadius: '4px'
+                    }}
+                />
+                <button 
+                    className="refresh-button"
+                    onClick={handleRefresh}
+                    title="Refresh visualization"
+                    style={{
+                        padding: '5px 10px',
+                        border: '1px solid var(--border-color)',
+                        borderRadius: '4px',
+                        background: 'var(--button-background)',
+                        cursor: 'pointer'
+                    }}
+                >
+                    ↻
+                </button>
+            </div>
+        </div>
+    );
     const [monitoringActive, setMonitoringActive] = useState(false);
     const [csvFiles, setCsvFiles] = useState([]);
     const [subTab, setSubTab] = useState('');
@@ -282,7 +339,18 @@ const HomePageContent = () => {
         V9: 'off',
         V10: 'off',
     });
-
+    const [R, setR] = useState({
+        R1: 'on',
+        R2: 'off',
+        R3: 'off',
+        R4: 'off',
+        R5: 'off',
+        R6: 'off',
+        R7: 'off',
+        R8: 'off',
+        R9: 'off',
+        R10: 'off',
+    });
     const handleThemeChange = (newSeason) => {
         const themeRibbon = document.querySelector('.theme-ribbon');
        
@@ -306,7 +374,12 @@ const HomePageContent = () => {
             [key]: prev[key] === 'off' ? 'on' : 'off',
         }));
     };
-
+    const toggleR = (key) => {
+        setR((prev) => ({
+            ...prev,
+            [key]: prev[key] === 'off' ? 'on' : 'off',
+        }));
+    };
     const createNewBatch = async () => {
         setBatchRunning(true);
         try {
@@ -523,7 +596,7 @@ const HomePageContent = () => {
             
             // STEP 1: First generate and save sensitivity configurations
             console.log('Step 1: Generating sensitivity configurations...');
-            const configResponse = await fetch('http://127.0.0.1:25007/sensitivity/configure', {
+            const configResponse = await fetch('http://127.0.0.1:2500/sensitivity/configure', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(requestPayload),
@@ -540,7 +613,7 @@ const HomePageContent = () => {
             
             // STEP 2: Now run the calculations
             console.log('Step 2: Running CFA calculations...');
-            const response = await fetch('http://127.0.0.1:25007/runs', {
+            const response = await fetch('http://127.0.0.1:2500/runs', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(requestPayload),
@@ -568,7 +641,7 @@ const HomePageContent = () => {
                 try {
                     console.log('Step 3: Fetching sensitivity visualization data...');
                     
-                    const visualizationResponse = await fetch('http://127.0.0.1:25007/sensitivity/visualize', {
+                    const visualizationResponse = await fetch('http://127.0.0.1:2500/sensitivity/visualize', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(requestPayload), // Reuse the same payload
@@ -606,7 +679,7 @@ const HomePageContent = () => {
         try {
             // For each selected version, fetch the calculated price
             for (const version of selectedVersions) {
-                const priceResponse = await fetch(`http://127.0.0.1:25007/prices/${version}`);
+                const priceResponse = await fetch(`http://127.0.0.1:2500/prices/${version}`);
                 
                 if (priceResponse.ok) {
                     const priceData = await priceResponse.json();
@@ -632,7 +705,7 @@ const HomePageContent = () => {
         // For each selected version, set up a stream connection
         selectedVersions.forEach(version => {
             // Create a new EventSource connection for streaming updates
-            const eventSource = new EventSource(`http://127.0.0.1:25007/stream_prices/${version}`);
+            const eventSource = new EventSource(`http://127.0.0.1:2500/stream_prices/${version}`);
             window.calculationEventSource = eventSource;
     
             // Handle incoming messages
@@ -941,23 +1014,7 @@ const HomePageContent = () => {
     const renderCase2Content = () => {
         return (
             <div>
-                <div className="version-input-container">
-                    <input
-                        id="versionNumber"
-                        type="number"
-                        className="version-input"
-                        placeholder="1"
-                        value={version}
-                        onChange={handleVersionChange}
-                    />
-                    <button 
-                        className="refresh-button"
-                        onClick={handleRefresh}
-                        title="Refresh visualization"
-                    >
-                        ↻
-                    </button>
-                </div>
+                {renderVersionControl()}
                 
                 {(!albumHtmls || Object.keys(albumHtmls).length === 0) ? (
                     <div>No HTML files available</div>
@@ -1095,23 +1152,7 @@ const HomePageContent = () => {
 
         return (
             <div>
-                <div className="version-input-container">
-                    <input
-                        id="versionNumber"
-                        type="number"
-                        className="version-input"
-                        placeholder="1"
-                        value={version}
-                        onChange={handleVersionChange}
-                    />
-                    <button 
-                        className="refresh-button"
-                        onClick={handleRefresh}
-                        title="Refresh visualization"
-                    >
-                        ↻
-                    </button>
-                </div>
+                {renderVersionControl()}
                 <Tabs
                     selectedIndex={Object.keys(albumImages).indexOf(selectedAlbum)}
                     onSelect={(index) => setSelectedAlbum(Object.keys(albumImages)[index])}
@@ -1201,23 +1242,7 @@ const HomePageContent = () => {
 
         return (
             <div>
-                <div className="version-input-container">
-                    <input
-                        id="versionNumber"
-                        type="number"
-                        className="version-input"
-                        placeholder="1"
-                        value={version}
-                        onChange={handleVersionChange}
-                    />
-                    <button 
-                        className="refresh-button"
-                        onClick={handleRefresh}
-                        title="Refresh visualization"
-                    >
-                        ↻
-                    </button>
-                </div>
+                {renderVersionControl()}
                 <Tabs
                     selectedIndex={sortedCsvFiles.findIndex((file) => file.name === subTab)}
                     onSelect={(index) => setSubTab(sortedCsvFiles[index]?.name || '')}
@@ -1336,6 +1361,10 @@ const HomePageContent = () => {
                         version={version}
                         filterKeyword="Amount4"
                         V={V}
+                        setV={setV}
+                        R={R}
+                        setR={setR}
+                        toggleR={toggleR}
                         toggleV={toggleV}
                         S={S || {}}
                         setS={setS}
@@ -1349,6 +1378,10 @@ const HomePageContent = () => {
                         version={version}
                         filterKeyword="Amount5"
                         V={V}
+                        setV={setV}
+                        R={R}
+                        setR={setR}
+                        toggleR={toggleR}
                         toggleV={toggleV}
                         S={S || {}}
                         setS={setS}
@@ -1362,6 +1395,10 @@ const HomePageContent = () => {
                         version={version}
                         filterKeyword="Amount6"
                         V={V}
+                        setV={setV}
+                        R={R}
+                        setR={setR}
+                        toggleR={toggleR}
                         toggleV={toggleV}
                         S={S || {}}
                         setS={setS}
@@ -1375,6 +1412,10 @@ const HomePageContent = () => {
                         version={version}
                         filterKeyword="Amount7"
                         V={V}
+                        setV={setV}
+                        R={R}
+                        setR={setR}
+                        toggleR={toggleR}
                         toggleV={toggleV}
                         S={S || {}}
                         setS={setS}
@@ -1389,6 +1430,10 @@ const HomePageContent = () => {
                             version={version}
                             filterKeyword="Amount7"
                             V={V}
+                            setV={setV}
+                            R={R}
+                            setR={setR}
+                            toggleR={toggleR}
                             toggleV={toggleV}
                             S={S || {}}
                             setS={setS}
@@ -1648,7 +1693,6 @@ const HomePageContent = () => {
                 return (
                  
                         <div className="model-selection">
-                            <VersionSelector />
                             <SpatialTransformComponent />
                         </div>
              
@@ -1679,6 +1723,19 @@ const HomePageContent = () => {
                                 <FactEngine />
                                 <FactEngineAdmin />
                             </div>
+                        );
+                    case 'PlotGallery':
+                        return (
+                            <PlotsTabs 
+                                version={version} 
+                            />
+                        );
+                    case 'SensitivityPlots':
+                        return (
+                            <SensitivityPlotsTabs 
+                                version={version}
+                                S={S}
+                            />
                         );
                     default:
             return null;
@@ -1771,6 +1828,18 @@ const HomePageContent = () => {
                             onClick={() => setActiveTab('FactAdmin')}
                         >
                             Admin
+                        </button>
+                        <button
+                            className={`tab-button ${activeTab === 'PlotGallery' ? 'active' : ''}`}
+                            onClick={() => setActiveTab('PlotGallery')}
+                        >
+                            Plot Gallery
+                        </button>
+                        <button
+                            className={`tab-button ${activeTab === 'SensitivityPlots' ? 'active' : ''}`}
+                            onClick={() => setActiveTab('SensitivityPlots')}
+                        >
+                            Sensitivity Analysis
                         </button>
                     </div>
                 </nav>
