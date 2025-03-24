@@ -545,3 +545,12 @@
 2025-03-24 02:48:39,593 INFO 127.0.0.1 - - [24/Mar/2025 02:48:39] "OPTIONS /sensitivity/visualize HTTP/1.1" 200 -
 2025-03-24 02:48:39,828 INFO 127.0.0.1 - - [24/Mar/2025 02:48:39] "POST /sensitivity/visualize HTTP/1.1" 200 -
 2025-03-24 02:48:39,927 INFO 127.0.0.1 - - [24/Mar/2025 02:48:39] "POST /sensitivity/visualize HTTP/1.1" 200 -
+2025-03-24 02:56:12,741 INFO 127.0.0.1 - - [24/Mar/2025 02:56:12] "OPTIONS /sensitivity/configure HTTP/1.1" 200 -
+2025-03-24 02:56:12,799 INFO 127.0.0.1 - - [24/Mar/2025 02:56:12] "POST /sensitivity/configure HTTP/1.1" 200 -
+2025-03-24 02:56:12,822 INFO 127.0.0.1 - - [24/Mar/2025 02:56:12] "OPTIONS /runs HTTP/1.1" 200 -
+2025-03-24 02:57:43,891 DEBUG Starting new HTTP connection (1): localhost:2600
+2025-03-24 02:57:56,152 INFO 127.0.0.1 - - [24/Mar/2025 02:57:56] "POST /runs HTTP/1.1" 200 -
+2025-03-24 02:57:56,152 INFO 127.0.0.1 - - [24/Mar/2025 02:57:56] "GET /prices/8 HTTP/1.1" 200 -
+2025-03-24 02:57:56,152 INFO 127.0.0.1 - - [24/Mar/2025 02:57:56] "OPTIONS /sensitivity/visualize HTTP/1.1" 200 -
+2025-03-24 02:57:56,183 INFO 127.0.0.1 - - [24/Mar/2025 02:57:56] "POST /sensitivity/visualize HTTP/1.1" 200 -
+2025-03-24 02:57:56,198 INFO 127.0.0.1 - - [24/Mar/2025 02:57:56] "GET /stream_prices/8 HTTP/1.1" 200 -
