@@ -335,3 +335,11 @@
 2025-03-24 02:15:33,495 WARNING  * Debugger is active!
 2025-03-24 02:15:33,495 INFO  * Debugger PIN: 119-059-632
 2025-03-24 02:19:17,788 INFO 127.0.0.1 - - [24/Mar/2025 02:19:17] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-03-24 02:32:27,740 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\CONFIG_COPY.log
+2025-03-24 02:32:27,790 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-03-24 02:32:27,790 INFO [33mPress CTRL+C to quit[0m
+2025-03-24 02:32:27,790 INFO  * Restarting with stat
+2025-03-24 02:32:28,270 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\OneDrive\Desktop\SF.worktrees\ThemeManagement\backend\Logs\CONFIG_COPY.log
+2025-03-24 02:32:28,305 WARNING  * Debugger is active!
+2025-03-24 02:32:28,317 INFO  * Debugger PIN: 119-059-632
