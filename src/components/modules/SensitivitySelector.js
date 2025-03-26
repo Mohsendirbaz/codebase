@@ -50,10 +50,10 @@ const Dialog = ({ show, onClose, children, triggerRef, isClosing }) => {
         if (show) {
             // Initial position calculation
             calculatePosition();
-            
+
             // Add resize listener with debounce
             window.addEventListener('resize', calculatePosition);
-            
+
             // Cleanup
             return () => {
                 window.removeEventListener('resize', calculatePosition);
@@ -80,7 +80,7 @@ const SensitivityAnalysisSelector = ({ sKey = '', onSensitivityChange = () => {}
     const triggerButtonRef = useRef(null);
     const [showDialog, setShowDialog] = useState(false);
     const [isClosing, setIsClosing] = useState(false);
-    
+
     // Get form values and property mapping from the hook
     const { formValues } = useFormValues();
 
@@ -98,25 +98,25 @@ const SensitivityAnalysisSelector = ({ sKey = '', onSensitivityChange = () => {}
 
     // Use the state from S prop with fallback to default state
     const currentS = (S && S[sKey]) || defaultState;
-    
+
     // Extract numeric part from key (e.g., "S10" -> "10")
     const getNumericPart = (key) => {
         return key.replace(/\D/g, '');
     };
-    
+
     // Get parameter name using the numeric part
     const getParameterName = (key) => {
         if (!key) return '';
-        
+
         const numericPart = getNumericPart(key);
-        
+
         // Try property names from different sources based on numeric part
         for (const formKey in formValues) {
             if (formKey.includes(`Amount${numericPart}`)) {
                 return formValues[formKey].label || key;
             }
         }
-        
+
         return key;
     };
 
@@ -131,7 +131,7 @@ const SensitivityAnalysisSelector = ({ sKey = '', onSensitivityChange = () => {}
     const handleModeToggle = () => {
         setS(prev => {
             const currentS = prev[sKey] || defaultState;
-            
+
             if (currentS.mode === 'multiple') {
                 return {
                     ...prev,
@@ -163,15 +163,11 @@ const SensitivityAnalysisSelector = ({ sKey = '', onSensitivityChange = () => {}
 
             newValues[idx] = value;
 
-            const numbers = newValues
-                .filter(p => p !== '')
-                .map(Number)
-                .filter(n => !isNaN(n));
-
-            if (numbers.length > 1 && !numbers.every((n, i) => i === 0 || n > numbers[i - 1])) {
-                alert('Values must be in ascending order');
-                return prev;
-            }
+            // Convert valid numbers while preserving F/V box values
+            const processedValues = newValues.map(v => {
+                if (v === '' || isNaN(v)) return v;
+                return Number(v);
+            });
 
             return {
                 ...prev,
@@ -226,7 +222,7 @@ const SensitivityAnalysisSelector = ({ sKey = '', onSensitivityChange = () => {}
 
     const handleSaveChanges = () => {
         const currentS = S[sKey] || defaultState;
-        
+
         // Create configuration object
         const configData = {
             mode: 'multiple',
@@ -238,7 +234,7 @@ const SensitivityAnalysisSelector = ({ sKey = '', onSensitivityChange = () => {}
             bar: currentS.bar || false,
             point: currentS.point || false
         };
-        
+
         // Log/register this change if version is provided
         if (version) {
             fetch('http://localhost:5000/register_sensitivity_change', {
@@ -315,7 +311,7 @@ const SensitivityAnalysisSelector = ({ sKey = '', onSensitivityChange = () => {}
                                     onChange={() => {}}
                                     className="mode-checkbox"
                                 />
-                                <span>Multiple Points (must be ascending)</span>
+                                <span>Multiple Points</span>
                             </div>
                             {currentS.mode === 'multiple' && (
                                 <div className="points-grid" onClick={(e) => e.stopPropagation()}>
