@@ -9,6 +9,7 @@ import logging
 # Initialize logging
 log_file_path = os.path.join(os.getcwd(), 'LogName.log')
 logging.basicConfig(filename=log_file_path, level=logging.INFO, format='%(asctime)s %(message)s')
+
 # Function to parse the filtered_values string and convert it into a dictionary
 def parse_filtered_values(filtered_values):
     try:
@@ -34,7 +35,7 @@ def strip_value(value):
 # Helper function to find the index from the fv_id (e.g., Amount4, Amount5)
 def find_index_from_id(fv_id):
     """
-    Extracts the numeric part from the ID (assuming it ends with a number) 
+    Extracts the numeric part from the ID (assuming it ends with a number)
     and returns the 0-based index.
     """
     try:
@@ -42,6 +43,14 @@ def find_index_from_id(fv_id):
         return int(index_part) - 1  # Convert to 0-based index
     except ValueError:
         return None
+
+def ensure_clean_directory(file_path):
+    """Ensure the directory exists and the file doesn't exist before saving"""
+    dir_path = os.path.dirname(file_path)
+    if not os.path.exists(dir_path):
+        os.makedirs(dir_path)
+    if os.path.exists(file_path):
+        os.remove(file_path)
 
 # Function to update the config module with filtered values and save it as a JSON file
 def update_and_save_config_module(config_received, config_matrix_df, results_folder, version):
@@ -55,23 +64,21 @@ def update_and_save_config_module(config_received, config_matrix_df, results_fol
             # Parse the filtered_values string into a dictionary
             if isinstance(filtered_values, str):
                 filtered_values = parse_filtered_values(filtered_values)
-            
+
             # Create a distinct config module for the current interval
             config_module = importlib.util.module_from_spec(importlib.util.spec_from_loader('config_module', loader=None))
-          
+
             for param in dir(config_received):
-             
                 if not param.startswith('__'):
                     # Make a deep copy to ensure previous updates are not propagated
                     setattr(config_module, param, copy.deepcopy(getattr(config_received, param)))
-                
 
             # Special treatment for Amount4 and Amount5 updates
             for item in filtered_values:
                 fv_id = item.get('id')
                 value = strip_value(item.get('value'))
                 remarks = item.get('remarks')
-                
+
                 # Only update if the remark is not "Default entry"
                 if remarks != "Default entry":
                     # Handle Amount4 and Amount5 updates
@@ -102,38 +109,65 @@ def update_and_save_config_module(config_received, config_matrix_df, results_fol
                         setattr(config_module, fv_id, value)
                         print(f"Updated {fv_id} to {value} for module {start_year}-{end_year}")
                         logging.info(f"Updated {fv_id} to {value} for module {start_year}-{end_year}")
+
             # Save the distinct updated config module as a JSON file with the version prefix
             config_module_dict = {param: getattr(config_module, param) for param in dir(config_module) if not param.startswith('__')}
             config_module_file = os.path.join(results_folder, f"{version}_config_module_{start_year}.json")
+
+            # Ensure clean directory and file
+            ensure_clean_directory(config_module_file)
+
             with open(config_module_file, 'w') as f:
                 json.dump(config_module_dict, f, indent=4)
 
             print(f"Config module {start_year}-{end_year} saved in {results_folder}")
-    
+
     except Exception as e:
         print(f"An error occurred: {str(e)}")
+        logging.error(f"Error in update_and_save_config_module: {str(e)}")
 
-# Example function to demonstrate usage (this is just for context, not part of the core functionality)
 def main(version):
-    # Set the path to the directory containing the modules
-    code_files_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))),"Original")
-    
-    results_folder = os.path.join(code_files_path,f"Batch({version})", f"Results({version})")
-    config_matrix_file = os.path.join(results_folder, f"General_Configuration_Matrix({version}).csv")
+    try:
+        # Set the path to the directory containing the modules
+        code_files_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))),"Original")
 
-    # Load the config matrix (read once)
-    config_matrix_df = pd.read_csv(config_matrix_file)
+        results_folder = os.path.join(code_files_path,f"Batch({version})", f"Results({version})")
+        config_matrix_file = os.path.join(results_folder, f"General_Configuration_Matrix({version}).csv")
 
-    # Set the path to the directory containing the configurations
-    config_file = os.path.join(code_files_path, f"Batch({version})", f"ConfigurationPlotSpec({version})", f"configurations({version}).py")
-    spec = importlib.util.spec_from_file_location("config", config_file)
-    config_received = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(config_received)
+        # Ensure results folder exists
+        if not os.path.exists(results_folder):
+            os.makedirs(results_folder)
 
-    # Run the update and save config modules
-    update_and_save_config_module(config_received, config_matrix_df, results_folder, version)
+        # Load the config matrix (read once)
+        if not os.path.exists(config_matrix_file):
+            raise FileNotFoundError(f"Config matrix file not found: {config_matrix_file}")
+
+        config_matrix_df = pd.read_csv(config_matrix_file)
+
+        # Set the path to the directory containing the configurations
+        config_file = os.path.join(code_files_path, f"Batch({version})", f"ConfigurationPlotSpec({version})", f"configurations({version}).py")
+
+        if not os.path.exists(config_file):
+            raise FileNotFoundError(f"Config file not found: {config_file}")
+
+        spec = importlib.util.spec_from_file_location("config", config_file)
+        config_received = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(config_received)
+
+        # Run the update and save config modules
+        update_and_save_config_module(config_received, config_matrix_df, results_folder, version)
+
+    except Exception as e:
+        print(f"Error in main function: {str(e)}")
+        logging.error(f"Error in main function: {str(e)}")
+        raise
 
 # Accept version as a command-line argument
 if __name__ == "__main__":
-    version = sys.argv[1] if len(sys.argv) > 1 else 1
-    main(version)
+    try:
+        version = sys.argv[1] if len(sys.argv) > 1 else 1
+        main(version)
+    except Exception as e:
+        print(f"Script execution failed: {str(e)}")
+        logging.error(f"Script execution failed: {str(e)}")
+        sys.exit(1)

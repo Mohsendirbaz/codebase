@@ -496,13 +496,13 @@ def run_scripts():
         logger.info("RUN ENDPOINT CALLED")
         logger.info(f"Request received at: {datetime.now().isoformat()}")
         logger.info(f"Request headers: {dict(request.headers)}")
-        
+
         # Get JSON data from request
         data = request.get_json()
         if not data:
             logger.error("No data provided in request")
             return jsonify({"error": "No data provided"}), 400
-        
+
         # Log the request data
         logger.info(f"Request data: {json.dumps(data, indent=2)}")
 
@@ -516,7 +516,7 @@ def run_scripts():
         selected_v = data.get('selectedV', DEFAULT_V_STATES)
         selected_f = data.get('selectedF', DEFAULT_F_STATES)
         selected_calculation_option = data.get('selectedCalculationOption', DEFAULT_CALCULATION_OPTION)
-        
+
         # Validate calculation option
         if not selected_calculation_option:
             logger.error("No calculation option selected")
@@ -528,16 +528,33 @@ def run_scripts():
         # Extract additional parameters
         target_row = int(data.get('targetRow', DEFAULT_TARGET_ROW))
         sen_parameters = data.get('SenParameters', {})  # Note: Frontend uses SenParameters (capital S)
-        
+        form_values = data.get('formValues', {})
+
+        # Extract year columns configuration (from Amount10 fields)
+        year_columns_config = {}
+        amount10_keys = [k for k in form_values.keys() if 'Amount10' in k]
+
+        if amount10_keys:
+            key = amount10_keys[0]  # Take the first Amount10 key found
+            try:
+                year_columns_value = int(form_values[key].get('value', 0))
+                logger.info(f"Found year columns configuration from {key}: {year_columns_value}")
+
+                # Apply to all selected versions
+                for version in selected_versions:
+                    year_columns_config[str(version)] = year_columns_value
+            except (ValueError, TypeError, AttributeError) as e:
+                logger.warning(f"Invalid year columns value from {key}: {e}")
+
         # Extract optimization parameters with defaults
         optimization_params = data.get('optimizationParams', {})
-        
+
         # Set default optimization parameters
         tolerance_lower = DEFAULT_TOLERANCE_LOWER
         tolerance_upper = DEFAULT_TOLERANCE_UPPER
         increase_rate = DEFAULT_INCREASE_RATE
         decrease_rate = DEFAULT_DECREASE_RATE
-        
+
         # Override with global parameters if provided
         if 'global' in optimization_params:
             global_params = optimization_params['global']
@@ -548,10 +565,10 @@ def run_scripts():
 
         # Log all parameters in structured format
         log_state_parameters(
-            selected_versions, 
-            selected_v, 
-            selected_f, 
-            selected_calculation_option, 
+            selected_versions,
+            selected_v,
+            selected_f,
+            selected_calculation_option,
             target_row,
             tolerance_lower,
             tolerance_upper,
@@ -559,7 +576,11 @@ def run_scripts():
             decrease_rate,
             sen_parameters
         )
-        
+
+        # Additional logging for year columns configuration
+        if year_columns_config:
+            logger.info(f"Year columns configuration: {json.dumps(year_columns_config)}")
+
         # Change to script directory for relative path operations
         os.chdir(SCRIPT_DIR)
 
@@ -567,13 +588,13 @@ def run_scripts():
         calculation_script = CALCULATION_SCRIPTS[selected_calculation_option]
         for version in selected_versions:
             logger.info(f"Processing version {version}")
-            
+
             # Check for version-specific optimization parameters
             version_tolerance_lower = tolerance_lower
             version_tolerance_upper = tolerance_upper
             version_increase_rate = increase_rate
             version_decrease_rate = decrease_rate
-            
+
             # Override with version-specific parameters if provided
             if str(version) in optimization_params:
                 version_params = optimization_params[str(version)]
@@ -581,11 +602,11 @@ def run_scripts():
                 version_tolerance_upper = version_params.get('toleranceUpper', tolerance_upper)
                 version_increase_rate = version_params.get('increaseRate', increase_rate)
                 version_decrease_rate = version_params.get('decreaseRate', decrease_rate)
-                
+
                 logger.info(f"Using version-specific optimization parameters for version {version}:")
                 logger.info(f"  - Tolerance bounds: Lower={version_tolerance_lower}, Upper={version_tolerance_upper}")
                 logger.info(f"  - Adjustment rates: Increase={version_increase_rate}, Decrease={version_decrease_rate}")
-            
+
             error = process_version(
                 version,
                 calculation_script,
@@ -610,9 +631,10 @@ def run_scripts():
         response_data = {
             "status": "success",
             "message": "Calculation completed successfully",
-            "timestamp": datetime.now().isoformat()
+            "timestamp": datetime.now().isoformat(),
+            "yearColumns": year_columns_config
         }
-        
+
         logger.info("Calculation completed successfully")
         return jsonify(response_data) if selected_calculation_option == 'calculateForPrice' else ('', 204)
 

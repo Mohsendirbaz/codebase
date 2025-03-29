@@ -240,7 +240,7 @@ const Popup = ({ show, position, onClose, formValues, handleInputChange, id, ver
           </div>
 
           <div>
-            <label className="slider-label">End Year</label>
+            <label className="slider-label">End Year (Exclusive)</label>
             <input
               type="range"
               min="1"

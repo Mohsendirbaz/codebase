@@ -1,18 +1,58 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import propertyMapping from '../../useFormValues.js';  // Correctly importing propertyMapping
 
 const CustomizableTable = ({
-  data,
-  fileName,
-  columns = null,
-  renderCell = null,
-  tableClassName = '',
-  headerClassName = '',
-  rowClassName = '',
-  cellClassName = '',
-  numberFormatOptions = { minimumFractionDigits: 2, maximumFractionDigits: 2 }
-}) => {
+                             data,
+                             fileName,
+                             columns = null,
+                             renderCell = null,
+                             tableClassName = '',
+                             headerClassName = '',
+                             rowClassName = '',
+                             cellClassName = '',
+                             numberFormatOptions = { minimumFractionDigits: 2, maximumFractionDigits: 2 },
+                             yearColumnsToHighlight = 0,
+                             version = '1'
+                           }) => {
+  const tableRef = useRef(null);
+
+  useEffect(() => {
+    // Apply year column styling after component mounts or when yearColumnsToHighlight changes
+    if (yearColumnsToHighlight > 0 && tableRef.current) {
+      const table = tableRef.current;
+      const headerCells = table.querySelectorAll('th');
+
+      // Clear any existing year column styling
+      headerCells.forEach(cell => cell.classList.remove('year-column'));
+      table.querySelectorAll('td.year-column').forEach(cell => cell.classList.remove('year-column'));
+
+      // Apply styling to the first N year columns
+      let yearColumnsFound = 0;
+
+      headerCells.forEach((cell, index) => {
+        const headerText = cell.textContent.trim().toLowerCase();
+
+        // Consider as year column if it contains 'year' or matches year patterns
+        const isYearColumn =
+            headerText.includes('year') ||
+            /^y\d+$/i.test(headerText) || // Y1, Y2, etc.
+            /^year\s*\d+$/i.test(headerText) || // Year 1, Year 2, etc.
+            /^(20\d{2}|19\d{2})$/.test(headerText); // 2020, 2021, etc.
+
+        if (isYearColumn && yearColumnsFound < yearColumnsToHighlight) {
+          // Add year-column class to header
+          cell.classList.add('year-column');
+          yearColumnsFound++;
+
+          // Add year-column class to all cells in this column
+          const rowCells = table.querySelectorAll(`tbody tr td:nth-child(${index + 1})`);
+          rowCells.forEach(rowCell => rowCell.classList.add('year-column'));
+        }
+      });
+    }
+  }, [yearColumnsToHighlight, data, fileName]);
+
   if (!data || data.length === 0) {
     return <div>No data available</div>;
   }
@@ -43,7 +83,7 @@ const CustomizableTable = ({
   // Get headers from the columns or the data keys
   let headers = columns || Object.keys(data[0]);
 
-  // Check if the fileName is 'CFA' or 'Filtered_Value_Intervals' to determine if headers should be reordered and reversed
+  // Check if the fileName is 'CFA' or 'Filtered_Value_Intervals' to determine if headers should be reordered
   if (fileName && fileName.startsWith('CFA')) {
     headers = desiredHeaderOrderCFA7;
   } else if (fileName && fileName.startsWith('Filtered_Value_Intervals')) {
@@ -80,47 +120,57 @@ const CustomizableTable = ({
     }
 
     return (
-      <span style={style}>
+        <span style={style}>
         {formattedValue}
       </span>
     );
   };
 
   return (
-    <table className={`custom-table ${tableClassName}`}>
-      <thead>
-  <tr>
-    {headers.map((header) => (
-      <th
-        key={header}
-        className={`custom-header ${headerClassName}`}
-        style={{ width: '200px', textAlign: 'center' }}
-      >
-        <span style={{ position: 'relative', cursor: 'pointer' }}>
-          {header}
-          <span className="tooltip2">hi</span> {/* Tooltip Element */}
-        </span>
-      </th>
-    ))}
-  </tr>
-</thead>
-      <tbody>
-        {data.map((row, rowIndex) => (
-          <tr key={rowIndex} className={`custom-row ${rowClassName}`}>
+      <div className="table-container" data-version={version}>
+        <h3 className="table-title">
+          {fileName}
+          {yearColumnsToHighlight > 0 && (
+              <span className="year-info">
+            (Construction Years: {yearColumnsToHighlight})
+          </span>
+          )}
+        </h3>
+        <table ref={tableRef} className={`custom-table ${tableClassName}`} data-year-columns={yearColumnsToHighlight}>
+          <thead>
+          <tr>
             {headers.map((header) => (
-              <td key={`${rowIndex}-${header}`} className={`custom-cell ${cellClassName}`} style={{ padding: '8px !important', textAlign: 'left', paddingLeft: '10px' }}>
-                {header === 'ID' && fileName.startsWith('Filtered_Value_Intervals')
-                  ? propertyMapping[row[header]] || row[header]  // Apply mapping for IDs in Filtered_Value_Intervals
-                  : renderCell
-                    ? renderCell(row[header], header, row)
-                    : formatNumber(row[header])
-                }
-              </td>
+                <th
+                    key={header}
+                    className={`custom-header ${headerClassName}`}
+                    style={{ width: '200px', textAlign: 'center' }}
+                >
+                <span style={{ position: 'relative', cursor: 'pointer' }}>
+                  {header}
+                  <span className="tooltip2">hi</span> {/* Tooltip Element */}
+                </span>
+                </th>
             ))}
           </tr>
-        ))}
-      </tbody>
-    </table>
+          </thead>
+          <tbody>
+          {data.map((row, rowIndex) => (
+              <tr key={rowIndex} className={`custom-row ${rowClassName}`}>
+                {headers.map((header) => (
+                    <td key={`${rowIndex}-${header}`} className={`custom-cell ${cellClassName}`} style={{ padding: '8px !important', textAlign: 'left', paddingLeft: '10px' }}>
+                      {header === 'ID' && fileName.startsWith('Filtered_Value_Intervals')
+                          ? propertyMapping[row[header]] || row[header]  // Apply mapping for IDs in Filtered_Value_Intervals
+                          : renderCell
+                              ? renderCell(row[header], header, row)
+                              : formatNumber(row[header])
+                      }
+                    </td>
+                ))}
+              </tr>
+          ))}
+          </tbody>
+        </table>
+      </div>
   );
 };
 
@@ -134,6 +184,8 @@ CustomizableTable.propTypes = {
   rowClassName: PropTypes.string,
   cellClassName: PropTypes.string,
   numberFormatOptions: PropTypes.object,
+  yearColumnsToHighlight: PropTypes.number,
+  version: PropTypes.string
 };
 
 export default CustomizableTable;

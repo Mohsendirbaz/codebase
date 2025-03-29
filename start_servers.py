@@ -51,7 +51,7 @@ flask_apps = [
     (r"backend\API_endpoints_and_controllers\sense_config_base.py", 2600),
     (r"backend\API_endpoints_and_controllers\PNG.py", 5008),
     (r"backend\API_endpoints_and_controllers\Sub.py", 5009),
-    (r"backend\API_endpoints_and_controllers\Load.py", 5000),  
+    (r"backend\API_endpoints_and_controllers\Load.py", 5000),
     (r"backend\cfa_list.py", 4560),
     (r"backend\API_endpoints_and_controllers\Version_service.py", 8002),
     (r"backend\flask_api\routes\theme_routes.py", 8010),
@@ -86,31 +86,31 @@ def verify_node_installation():
 def start_flask_apps():
     if not verify_python_installation():
         return []
-    
+
     # Add flask_api directory to Python path for theme routes
     flask_api_dir = os.path.join(flask_base_dir, 'backend', 'flask_api')
     if flask_api_dir not in sys.path:
         sys.path.append(flask_api_dir)
-    
+
     flask_processes = []
     for app, port in flask_apps:
         app_path = os.path.join(flask_base_dir, app)
         if not check_file_exists(app_path):
             continue
-            
+
         # Silently free the port before starting the app
         free_port(port)
-        
+
         try:
             env = os.environ.copy()
             env['PORT'] = str(port)
-            
+
             # For theme routes app, run from its directory
             if 'flask_api\\app.py' in app:
                 working_dir = os.path.dirname(app_path)
             else:
                 working_dir = flask_base_dir
-                
+
             process = subprocess.Popen(
                 ["python", app_path],
                 stdout=subprocess.PIPE,
@@ -122,7 +122,7 @@ def start_flask_apps():
             # Wait a moment to check if process started successfully
             import time
             time.sleep(1)
-            
+
             if process.poll() is None:  # Process is still running
                 flask_processes.append((process, port))  # Store process and port
                 print(f"Started Flask app '{app}' on port {port}")
@@ -130,7 +130,7 @@ def start_flask_apps():
                 out, err = process.communicate()
                 if err:
                     print(f"Error starting Flask app '{app}': {err}")
-                
+
         except Exception as e:
             print(f"Failed to start Flask app '{app}' on port {port}. Error: {e}")
     return flask_processes
@@ -138,16 +138,16 @@ def start_flask_apps():
 def start_node_scripts():
     if not verify_node_installation():
         return []
-        
+
     node_processes = []
     for script, port in node_scripts:
         script_path = os.path.join(node_base_dir, script)
         if not check_file_exists(script_path):
             continue
-            
+
         # Silently free the port before starting the script
         free_port(port)
-        
+
         try:
             process = subprocess.Popen(
                 ["node", script_path, "--port", str(port)],
@@ -158,7 +158,7 @@ def start_node_scripts():
             # Wait a moment to check if process started successfully
             import time
             time.sleep(1)
-            
+
             if process.poll() is None:  # Process is still running
                 node_processes.append((process, port))  # Store process and port
                 print(f"Started Node.js script '{script}' on port {port}")
@@ -166,40 +166,40 @@ def start_node_scripts():
                 out, err = process.communicate()
                 if err:
                     print(f"Error starting Node.js script '{script}': {err}")
-                
+
         except Exception as e:
             print(f"Failed to start Node.js script '{script}' on port {port}. Error: {e}")
     return node_processes
 
 if __name__ == "__main__":
     print("Checking dependencies and starting servers...")
-    
+
     # Verify all paths exist before starting
     all_paths_valid = True
     for app, _ in flask_apps:
         app_path = os.path.join(flask_base_dir, app)
         if not check_file_exists(app_path):
             all_paths_valid = False
-            
+
     for script, _ in node_scripts:
         script_path = os.path.join(node_base_dir, script)
         if not check_file_exists(script_path):
             all_paths_valid = False
-    
+
     if not all_paths_valid:
         print("Error: Some required files are missing. Please check the paths.")
         sys.exit(1)
-    
+
     # Start Flask apps and Node.js scripts
     flask_processes = start_flask_apps()
     node_processes = start_node_scripts()
-    
+
     if not flask_processes and not node_processes:
         print("Error: No servers could be started. Please check the logs above.")
         sys.exit(1)
-        
+
     print("Servers started. Press Ctrl+C to stop.")
-    
+
     try:
         # Wait for all processes
         all_processes = flask_processes + node_processes
@@ -214,7 +214,7 @@ if __name__ == "__main__":
             time.sleep(1)
     except KeyboardInterrupt:
         print("\nTermination signal received. Stopping servers...")
-        
+
         # Terminate all processes
         for process, port in flask_processes + node_processes:
             try:
@@ -222,5 +222,5 @@ if __name__ == "__main__":
                 print(f"Terminated process on port {port}")
             except:
                 pass  # Process may have already terminated
-        
+
         print("All servers stopped. Exiting.")
