@@ -12,6 +12,7 @@ const propertyMapping = {
   "process_contingency_PC_Amount16": "Process Contingency as % of BEC",
   "project_Contingency_PT_BEC_EPC_PCAmount17": "Project Contingency as % of BEC, EPC, PC",
   "use_direct_operating_expensesAmount18": "Use Direct Operating Expenses",
+  "use_direct_revenueAmount19": "Use Direct Revenue",
   "depreciationMethodAmount20": "Depreciation Method",
   "loanTypeAmount21": "Loan Type",
   "interestTypeAmount22": "Interest Type",
@@ -78,7 +79,8 @@ const selectOptionsMapping = {
   "loanTypeAmount21": ['simple', 'compounded'],
   "interestTypeAmount22": ['fixed', 'variable'],
   "loanRepaymentFrequencyAmount21": ['quarterly', 'semiannually', 'annually'],
-  "use_direct_operating_expensesAmount18": ['True', 'False']
+  "use_direct_operating_expensesAmount18": ['True', 'False'],
+  "use_direct_revenueAmount19": ['True', 'False']
 };
 
 // Complete icon mapping with updated vAmount nomenclature
@@ -92,6 +94,8 @@ const iconMapping = {
   "process_contingency_PC_Amount16": faCogs,
   "project_Contingency_PT_BEC_EPC_PCAmount17": faTools,
   "plantLifetimeAmount10": faBuilding,
+  "use_direct_operating_expensesAmount18": faHandshake,
+  "use_direct_revenueAmount19": faHandshake,
 
   // Amount20-29 icons
   "depreciationMethodAmount20": faChartLine,
@@ -135,6 +139,7 @@ const defaultValues = {
   process_contingency_PC_Amount16: 0,
   project_Contingency_PT_BEC_EPC_PCAmount17: 0,
   use_direct_operating_expensesAmount18: 'False',
+  use_direct_revenueAmount19: 'False',
   plantLifetimeAmount10: 20,
 
   // Amount20-29 defaults

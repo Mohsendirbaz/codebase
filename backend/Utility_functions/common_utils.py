@@ -11,6 +11,7 @@ property_mapping = {
     "process_contingency_PC_Amount16": "Process Contingency as % of BEC",
     "project_Contingency_PT_BEC_EPC_PCAmount17": "Project Contingency as % of BEC, EPC, PC",
     "use_direct_operating_expensesAmount18": "Use Direct Operating Expenses",
+    "use_direct_revenueAmount19": "Use Direct Revenue",
     "depreciationMethodAmount20": "Depreciation Method",
     "loanTypeAmount21": "Loan Type",
     "interestTypeAmount22": "Interest Type",

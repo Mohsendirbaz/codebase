@@ -3,7 +3,7 @@ import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import CustomizableImage from './components/modules/CustomizableImage';
 import CustomizableTable from './components/modules/CustomizableTable';
-import ExtendedScaling from './components/extended_scaling/ExtendedScaling';
+import ExtendedScaling from './components/truly_extended_scaling/ExtendedScaling';
 import FactEngine from './components/modules/FactEngine';
 import FactEngineAdmin from './components/modules/FactEngineAdmin';
 import GeneralFormConfig from './GeneralFormConfig.js';
@@ -34,6 +34,7 @@ import ConfigurationMonitor from './components/modules/ConfigurationMonitor';
 import ThemeButton from './components/modules/ThemeButton';
 import PlotsTabs from './components/modules/PlotsTabs';
 import SensitivityPlotsTabs from './components/modules/SensitivityPlotsTabs';
+import CentralScalingTab from './components/truly_extended_scaling/CentralScalingTab';
 
 
 
@@ -54,6 +55,12 @@ const HomePageContent = () => {
         };
     }, []);
     const [activeSubTab, setActiveSubTab] = useState('ProjectConfig');
+    const [scalingBaseCosts, setScalingBaseCosts] = useState({
+        Amount4: [], // Process Quantities
+        Amount5: [], // Process Costs
+        Amount6: [], // Revenue Quantities
+        Amount7: []  // Revenue Prices
+    });
     const [selectedProperties, setSelectedProperties] = useState([]);
     const [season, setSeason] = useState('dark');
     const [S, setS] = useState(() => {
@@ -448,6 +455,10 @@ const HomePageContent = () => {
      * Runs Cash Flow Analysis (CFA) calculations for selected versions
      * Sends configuration parameters to the backend and processes the response
      */
+    /**
+     * Runs Cash Flow Analysis (CFA) calculations for selected versions
+     * Sends configuration parameters to the backend and processes the response
+     */
     const handleRun = async () => {
         // Set loading state and reset previous results
         setAnalysisRunning(true);
@@ -462,6 +473,7 @@ const HomePageContent = () => {
                 selectedCalculationOption,
                 targetRow: target_row,
                 SenParameters: S,
+                formValues: formValues // Include form values to extract Amount10
             };
 
             console.log('Running CFA with parameters:', requestPayload);
@@ -481,6 +493,12 @@ const HomePageContent = () => {
 
             const result = await response.json();
             console.log('Calculation completed successfully:', result);
+
+            // Check if year columns configuration was returned
+            if (result.yearColumns) {
+                console.log('Year columns configuration:', result.yearColumns);
+                // You could store this in state if needed for other components
+            }
 
             // If price calculation was selected, fetch the calculated prices
             if (selectedCalculationOption === 'calculateForPrice') {
@@ -580,7 +598,7 @@ const HomePageContent = () => {
         // Set loading state and reset previous results
         setAnalysisRunning(true);
         setCalculatedPrices({});
-    
+
         try {
             // Prepare request payload with all necessary parameters
             const requestPayload = {
@@ -590,10 +608,11 @@ const HomePageContent = () => {
                 selectedCalculationOption,
                 targetRow: target_row,
                 SenParameters: S,
+                formValues: formValues // Include form values to extract Amount10
             };
-    
+
             console.log('Running CFA with parameters:', requestPayload);
-            
+
             // STEP 1: First generate and save sensitivity configurations
             console.log('Step 1: Generating sensitivity configurations...');
             const configResponse = await fetch('http://127.0.0.1:2500/sensitivity/configure', {
@@ -601,16 +620,16 @@ const HomePageContent = () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(requestPayload),
             });
-            
+
             // Check if configuration was successful
             if (!configResponse.ok) {
                 const configErrorData = await configResponse.json();
                 throw new Error(configErrorData.error || 'Failed to generate sensitivity configurations');
             }
-            
+
             const configResult = await configResponse.json();
             console.log('Sensitivity configurations generated successfully:', configResult);
-            
+
             // STEP 2: Now run the calculations
             console.log('Step 2: Running CFA calculations...');
             const response = await fetch('http://127.0.0.1:2500/runs', {
@@ -618,45 +637,51 @@ const HomePageContent = () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(requestPayload),
             });
-    
+
             // Process the response
             if (!response.ok) {
                 const errorData = await response.json();
                 throw new Error(errorData.error || 'Failed to run calculation');
             }
-    
+
             const result = await response.json();
             console.log('Calculation completed successfully:', result);
-    
+
+            // Check if year columns configuration was returned
+            if (result.yearColumns) {
+                console.log('Year columns configuration from sensitivity:', result.yearColumns);
+                // You could store this in state if needed
+            }
+
             // If price calculation was selected, fetch the calculated prices
             if (selectedCalculationOption === 'calculateForPrice') {
                 await fetchCalculatedPrices_s();
             }
-    
+
             // Start real-time monitoring if calculation was successful
             if (result.status === 'success') {
                 startRealTimeMonitoring_s();
-                
+
                 // STEP 3: Fetch sensitivity visualization data
                 try {
                     console.log('Step 3: Fetching sensitivity visualization data...');
-                    
+
                     const visualizationResponse = await fetch('http://127.0.0.1:2500/sensitivity/visualize', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(requestPayload), // Reuse the same payload
                     });
-                    
+
                     if (visualizationResponse.ok) {
                         const visualizationData = await visualizationResponse.json();
                         console.log('Visualization data received:', visualizationData);
-                        
+
                         // Store visualization data in state or process it as needed
                         // For example, you could add a setSensitivityVisualizations state setter
                         // setSensitivityVisualizations(visualizationData);
                     } else {
-                        console.warn('Visualization endpoint returned non-OK response:', 
-                                    await visualizationResponse.text());
+                        console.warn('Visualization endpoint returned non-OK response:',
+                            await visualizationResponse.text());
                     }
                 } catch (vizError) {
                     console.error('Error fetching sensitivity visualizations:', vizError);
@@ -1212,6 +1237,10 @@ const HomePageContent = () => {
 
     const renderCase1Content = () => {
         // Name mapping for specific files to more presentable names
+        const amount10Keys = Object.keys(formValues).filter(key => key.includes('Amount10'));
+        const yearColumnsToHighlight = amount10Keys.length > 0
+            ? parseInt(formValues[amount10Keys[0]].value) || 0
+            : 0;
         const nameMapping = {
             [`CFA(${version}).csv`]: `Cash Flow Analysis (Version ${version})`,
             [`Economic_Summary(${version}).csv`]: `Economic Summary (Version ${version})`,
@@ -1257,7 +1286,8 @@ const HomePageContent = () => {
                 </TabList>
                 {sortedCsvFiles.map((file) => (
                     <TabPanel key={file.name}>
-                        <CustomizableTable data={file.data} fileName={file.name} />
+                        <CustomizableTable data={file.data} fileName={file.name}  yearColumnsToHighlight={yearColumnsToHighlight}
+                        />
                     </TabPanel>
                 ))}
             </Tabs>
@@ -1355,74 +1385,108 @@ const HomePageContent = () => {
                     />
                 )}
                 {activeSubTab === 'Process1Config' && (
-                    <GeneralFormConfig
-                        formValues={formValues}
-                        handleInputChange={handleInputChange}
-                        version={version}
-                        filterKeyword="Amount4"
-                        V={V}
-                        setV={setV}
-                        R={R}
-                        setR={setR}
-                        toggleR={toggleR}
-                        toggleV={toggleV}
-                        S={S || {}}
-                        setS={setS}
-                        setVersion={setVersion}
-                    />
+                    <>
+                        <GeneralFormConfig
+                            formValues={formValues}
+                            handleInputChange={handleInputChange}
+                            version={version}
+                            filterKeyword="Amount4"
+                            V={V}
+                            setV={setV}
+                            R={R}
+                            setR={setR}
+                            toggleR={toggleR}
+                            toggleV={toggleV}
+                            S={S || {}}
+                            setS={setS}
+                            setVersion={setVersion}
+                        />
+                        <ExtendedScaling
+                            baseCosts={scalingBaseCosts.Amount4 || []}
+                            onScaledValuesChange={handleScaledValuesChange}
+                            initialScalingGroups={scalingGroups.filter(g => g._scalingType === 'Amount4')}
+                            onScalingGroupsChange={(newGroups) => {
+                                const otherGroups = scalingGroups.filter(g => g._scalingType !== 'Amount4');
+                                const updatedGroups = newGroups.map(g => ({...g, _scalingType: 'Amount4'}));
+                                handleScalingGroupsChange([...otherGroups, ...updatedGroups]);
+                            }}
+                            filterKeyword="Amount4"
+                            V={V}
+                            R={R}
+                            toggleV={toggleV}
+                            toggleR={toggleR}
+                        />
+                    </>
                 )}
                 {activeSubTab === 'Process2Config' && (
-                    <GeneralFormConfig
-                        formValues={formValues}
-                        handleInputChange={handleInputChange}
-                        version={version}
-                        filterKeyword="Amount5"
-                        V={V}
-                        setV={setV}
-                        R={R}
-                        setR={setR}
-                        toggleR={toggleR}
-                        toggleV={toggleV}
-                        S={S || {}}
-                        setS={setS}
-                        setVersion={setVersion}
-                    />
+                    <>
+                        <GeneralFormConfig
+                            formValues={formValues}
+                            handleInputChange={handleInputChange}
+                            version={version}
+                            filterKeyword="Amount5"
+                            V={V}
+                            setV={setV}
+                            R={R}
+                            setR={setR}
+                            toggleR={toggleR}
+                            toggleV={toggleV}
+                            S={S || {}}
+                            setS={setS}
+                            setVersion={setVersion}
+                        />
+                        <ExtendedScaling
+                            baseCosts={scalingBaseCosts.Amount5 || []}
+                            onScaledValuesChange={handleScaledValuesChange}
+                            initialScalingGroups={scalingGroups.filter(g => g._scalingType === 'Amount5')}
+                            onScalingGroupsChange={(newGroups) => {
+                                const otherGroups = scalingGroups.filter(g => g._scalingType !== 'Amount5');
+                                const updatedGroups = newGroups.map(g => ({...g, _scalingType: 'Amount5'}));
+                                handleScalingGroupsChange([...otherGroups, ...updatedGroups]);
+                            }}
+                            filterKeyword="Amount5"
+                            V={V}
+                            R={R}
+                            toggleV={toggleV}
+                            toggleR={toggleR}
+                        />
+                    </>
                 )}
                 {activeSubTab === 'Revenue1Config' && (
-                    <GeneralFormConfig
-                        formValues={formValues}
-                        handleInputChange={handleInputChange}
-                        version={version}
-                        filterKeyword="Amount6"
-                        V={V}
-                        setV={setV}
-                        R={R}
-                        setR={setR}
-                        toggleR={toggleR}
-                        toggleV={toggleV}
-                        S={S || {}}
-                        setS={setS}
-                        setVersion={setVersion}
-                    />
+                    <>
+                        <GeneralFormConfig
+                            formValues={formValues}
+                            handleInputChange={handleInputChange}
+                            version={version}
+                            filterKeyword="Amount6"
+                            V={V}
+                            setV={setV}
+                            R={R}
+                            setR={setR}
+                            toggleR={toggleR}
+                            toggleV={toggleV}
+                            S={S || {}}
+                            setS={setS}
+                            setVersion={setVersion}
+                        />
+                        <ExtendedScaling
+                            baseCosts={scalingBaseCosts.Amount6 || []}
+                            onScaledValuesChange={handleScaledValuesChange}
+                            initialScalingGroups={scalingGroups.filter(g => g._scalingType === 'Amount6')}
+                            onScalingGroupsChange={(newGroups) => {
+                                const otherGroups = scalingGroups.filter(g => g._scalingType !== 'Amount6');
+                                const updatedGroups = newGroups.map(g => ({...g, _scalingType: 'Amount6'}));
+                                handleScalingGroupsChange([...otherGroups, ...updatedGroups]);
+                            }}
+                            filterKeyword="Amount6"
+                            V={V}
+                            R={R}
+                            toggleV={toggleV}
+                            toggleR={toggleR}
+                        />
+                    </>
                 )}
                 {activeSubTab === 'Revenue2Config' && (
-                    <GeneralFormConfig
-                        formValues={formValues}
-                        handleInputChange={handleInputChange}
-                        version={version}
-                        filterKeyword="Amount7"
-                        V={V}
-                        setV={setV}
-                        R={R}
-                        setR={setR}
-                        toggleR={toggleR}
-                        toggleV={toggleV}
-                        S={S || {}}
-                        setS={setS}
-                        setVersion={setVersion}
-                    />
-                )}
-                {activeSubTab === 'Scaling' && (
                     <>
                         <GeneralFormConfig
                             formValues={formValues}
@@ -1440,12 +1504,36 @@ const HomePageContent = () => {
                             setVersion={setVersion}
                         />
                         <ExtendedScaling
-                            baseCosts={baseCosts}
+                            baseCosts={scalingBaseCosts.Amount7 || []}
                             onScaledValuesChange={handleScaledValuesChange}
-                            initialScalingGroups={scalingGroups}
-                            onScalingGroupsChange={handleScalingGroupsChange}
+                            initialScalingGroups={scalingGroups.filter(g => g._scalingType === 'Amount7')}
+                            onScalingGroupsChange={(newGroups) => {
+                                const otherGroups = scalingGroups.filter(g => g._scalingType !== 'Amount7');
+                                const updatedGroups = newGroups.map(g => ({...g, _scalingType: 'Amount7'}));
+                                handleScalingGroupsChange([...otherGroups, ...updatedGroups]);
+                            }}
+                            filterKeyword="Amount7"
+                            V={V}
+                            R={R}
+                            toggleV={toggleV}
+                            toggleR={toggleR}
                         />
                     </>
+                )}
+
+                {activeSubTab === 'Scaling' && (
+                    <CentralScalingTab
+                        formValues={formValues}
+                        V={V}
+                        R={R}
+                        toggleV={toggleV}
+                        toggleR={toggleR}
+                        scalingBaseCosts={scalingBaseCosts}
+                        setScalingBaseCosts={setScalingBaseCosts}
+                        scalingGroups={scalingGroups}
+                        onScalingGroupsChange={handleScalingGroupsChange}
+                        onScaledValuesChange={handleScaledValuesChange}
+                    />
                 )}
                 <div className="form-panel-container" style={{gap: 0, margin: 0, padding: 0}}>
                 <div className="form-action-buttons" style={{gap: 0}}>
@@ -1683,62 +1771,72 @@ const HomePageContent = () => {
         switch (activeTab) {
             case 'AboutUs':
                 return renderAboutUsContent();
+
             case 'Input':
                 return (
-                    <div className="form-content">
-                        {renderForm()}
-                    </div>
+                        renderForm()
                 );
+
             case 'NaturalMotion':
                 return (
-                 
-                        <div className="model-selection">
-                            <SpatialTransformComponent />
-                        </div>
-             
+                    <div className="model-selection">
+                        <SpatialTransformComponent />
+                    </div>
                 );
+
             case 'Case1':
                 return renderCase1Content();
+
             case 'Case2':
                 return renderCase2Content();
+
             case 'Case3':
                 return renderCase3Content();
+
             case 'Scaling':
                 return (
-                    <ExtendedScaling
-                        baseCosts={baseCosts}
-                        onScaledValuesChange={handleScaledValuesChange}
-                        initialScalingGroups={scalingGroups}
+                    <CentralScalingTab
+                        formValues={formValues}
+                        V={V}
+                        R={R}
+                        toggleV={toggleV}
+                        toggleR={toggleR}
+                        scalingBaseCosts={scalingBaseCosts}
+                        setScalingBaseCosts={setScalingBaseCosts}
+                        scalingGroups={scalingGroups}
                         onScalingGroupsChange={handleScalingGroupsChange}
+                        onScaledValuesChange={handleScaledValuesChange}
                     />
                 );
-         
-           
-           
+
             case 'TestingZone':
-            return <TestingZone />;
-                    case 'FactAdmin':
-                        return (
-                            <div>
-                                <FactEngine />
-                                <FactEngineAdmin />
-                            </div>
-                        );
-                    case 'PlotGallery':
-                        return (
-                            <PlotsTabs 
-                                version={version} 
-                            />
-                        );
-                    case 'SensitivityPlots':
-                        return (
-                            <SensitivityPlotsTabs 
-                                version={version}
-                                S={S}
-                            />
-                        );
-                    default:
-            return null;
+                return <TestingZone />;
+
+            case 'FactAdmin':
+                return (
+                    <div>
+                        <FactEngine />
+                        <FactEngineAdmin />
+                    </div>
+                );
+
+            case 'PlotGallery':
+                return (
+                    <PlotsTabs
+                        version={version}
+                    />
+                );
+
+            case 'SensitivityPlots':
+                return (
+                    <SensitivityPlotsTabs
+                        version={version}
+                        S={S}
+                    />
+                );
+
+            default:
+                return null;
         }
     };
 

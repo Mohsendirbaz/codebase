@@ -29,7 +29,7 @@
     /* Colors */
     --model-color-background: #ffffff;
     --model-color-background-alt: #f8f9fa;
-    --model-color-background-hover: #e9ecef;
+    --model-color-background-hover:#659cd2;
     --model-color-text: #212529;
     --model-color-border: #dee2e6;
     --model-color-primary: #0d6efd;
@@ -40,9 +40,9 @@
     --model-color-danger-light: #f8d7da;
 
     /* Dark mode colors */
-    --model-color-background-dark: #212529;
-    --model-color-background-alt-dark: #343a40;
-    --model-color-border-dark: #495057;
+    --model-color-background-dark: #0f2237;
+    --model-color-background-alt-dark: #497eb5;
+    --model-color-border-dark: #5a94cd;
 
     /* Border radius */
     --model-border-radius-sm: 4px;
@@ -130,6 +130,11 @@ html {
     --border-color: #e2e8f0;
     --text-color: #1e293b;
     --text-secondary: #64748b;
+
+    /* Year column accent colors */
+    --accent-color: #63733f;
+    --accent-hover-color: #556331;
+    --accent-color-rgb: 99, 115, 63;
 
 }
 /* Dark Mode Support */

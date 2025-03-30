@@ -113,6 +113,12 @@
   --primary-color-rgb: 43, 226, 223;
   --danger-color-rgb: 220, 53, 69;
   --border-color-rgb: 224, 224, 224;
+
+  /* Year column accent colors */
+  --accent-color: #2be2df;
+  --accent-hover-color: #25c9c6;
+  --accent-color-rgb: 43, 226, 223;
+
 }
 
 html {
