@@ -72,6 +72,30 @@ def remove_batch(version):
             logging.info(f"Batch({version}) removed from both locations successfully.")
             return {"status": "success", "message": " ".join(success_messages)}
 
+
+@app.route('/clear-log', methods=['POST'])
+def clear_log():
+    """Clear the contents of a specified log file."""
+    data = request.json
+    file_path = data.get('path')
+
+    if not file_path:
+        return jsonify({"status": "error", "message": "No file path provided"}), 400
+
+    try:
+        # Check if the file exists
+        if not os.path.exists(file_path):
+            return jsonify({"status": "error", "message": f"File not found: {file_path}"}), 404
+
+        # Clear file contents by opening in write mode
+        with open(file_path, 'w') as f:
+            f.write('')
+
+        return jsonify({"status": "success", "message": f"File cleared: {file_path}"}), 200
+    except Exception as e:
+        return jsonify({"status": "error", "message": f"Error clearing file: {str(e)}"}), 500
+
+
 @app.route('/Remove_batch', methods=['POST'])
 def remove_batch_endpoint():
     """Handle batch removal via POST request."""
