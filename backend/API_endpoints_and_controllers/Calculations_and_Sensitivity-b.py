@@ -717,21 +717,6 @@ def run_calculations():
         else:
             return jsonify({"error": "No configuration data available"}), 400
 
-        # Extract year columns config from form values
-        year_columns_config = {}
-        form_values = data.get('formValues', {})
-        amount10_keys = [k for k in form_values if isinstance(k, str) and 'Amount10' in k]
-        if amount10_keys and form_values.get(amount10_keys[0]):
-            try:
-                value = form_values[amount10_keys[0]].get('value')
-                if value:
-                    year_columns = int(value)
-                    for version in config['versions']:
-                        year_columns_config[str(version)] = year_columns
-                    sensitivity_logger.info(f"Year columns configuration set to {year_columns} for all versions")
-            except (ValueError, TypeError, AttributeError) as e:
-                sensitivity_logger.warning(f"Error extracting year columns config: {e}")
-
         # Get version and paths
         version = config['versions'][0]
         base_dir = os.path.join(BASE_DIR, 'backend', 'Original')
@@ -1020,7 +1005,7 @@ def run_calculations():
         sensitivity_logger.info(f"Configurations processed: {len(enabled_params)}")
         sensitivity_logger.info(f"{'='*80}\n")
 
-        # Return success response with timing information and year columns
+        # Return success response with timing information
         return jsonify({
             "status": "success",
             "message": "Calculations completed successfully",
@@ -1030,8 +1015,7 @@ def run_calculations():
                 "configuration": f"{config_time:.2f}s",
                 "calculations": len(enabled_params) + 1
             },
-            "configCopy": copy_service_result,
-            "yearColumns": year_columns_config
+            "configCopy": copy_service_result
         })
 
     except Exception as e:
