@@ -59,4 +59,4 @@ rm -rf temp_TeaSpace
 
 
 
-Stop-Process -Id (Get-NetTCPConnection -LocalPort 5000).OwningProcess -Force
+Stop-Process -Id (netstat -ano | findstr 5001).OwningProcess -Force

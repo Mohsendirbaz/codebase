@@ -1,7 +1,7 @@
 /* Creative Theme - Vibrant & Expressive */
 :root.creative-theme {
   /* Base colors */
-  --primary-color: #2be2df; /* Vibrant purple */
+  --primary-color: #2be2df; /* Vibrant teal */
   --secondary-color: #66bb6a;
   --text-color: #333333;
   --background-color: #f5f7fa;
@@ -19,7 +19,7 @@
   --input-border: #ced4da;
   --shadow-dark: rgba(138, 43, 226, 0.15);
   --shadow-light: rgba(255, 255, 255, 0.85);
-  
+
   /* Spacing */
   --model-spacing-xs: 4px;
   --model-spacing-sm: 8px;
@@ -62,33 +62,33 @@
   --model-font-size-sm: 14px;
   --model-font-size-md: 16px;
   --model-font-size-lg: 18px;
-  
+
   /* Neumorphic specific variables */
   --neu-background: #f1eef7; /* Light purple tint */
   --neu-light-shadow: rgba(255, 255, 255, 0.85);
   --neu-dark-shadow: rgba(138, 43, 226, 0.15);
-  
+
   /* Neumorphic shadow variations */
   --neu-flat-shadow: 0px 0px 0px var(--neu-dark-shadow);
   --neu-pressed-shadow: inset 4px 4px 8px var(--neu-dark-shadow),
-                        inset -4px -4px 8px var(--neu-light-shadow);
+  inset -4px -4px 8px var(--neu-light-shadow);
   --neu-shadow-sm: 3px 3px 6px var(--neu-dark-shadow),
-                  -3px -3px 6px var(--neu-light-shadow);
+  -3px -3px 6px var(--neu-light-shadow);
   --neu-shadow-md: 5px 5px 10px var(--neu-dark-shadow),
-                  -5px -5px 10px var(--neu-light-shadow);
+  -5px -5px 10px var(--neu-light-shadow);
   --neu-shadow-lg: 8px 8px 16px var(--neu-dark-shadow),
-                  -8px -8px 16px var(--neu-light-shadow);
-  
+  -8px -8px 16px var(--neu-light-shadow);
+
   /* Neumorphic gradients */
   --neu-gradient-basic: linear-gradient(145deg, #ffffff, #f1eef7);
   --neu-gradient-pressed: linear-gradient(145deg, #f1eef7, #ffffff);
   --neu-gradient-highlight: linear-gradient(45deg, rgba(255, 255, 255, 0.2), rgba(138, 43, 226, 0.05));
-  
+
   /* Neumorphic border radius */
   --neu-border-radius-sm: 8px;
   --neu-border-radius-md: 10px;
   --neu-border-radius-lg: 15px;
-  
+
   /* Neumorphic transitions */
   --neu-transition-fast: 0.2s all ease;
   --neu-transition-medium: 0.3s all ease;
@@ -108,7 +108,7 @@
   --spatial-shadow-intensity: 2xl;
   --spatial-text-size: 1.5rem;
 
-  --dark-blue:darkblue;
+  --dark-blue: darkblue;
 
   --primary-color-rgb: 43, 226, 223;
   --danger-color-rgb: 220, 53, 69;
@@ -118,7 +118,6 @@
   --accent-color: #2be2df;
   --accent-hover-color: #25c9c6;
   --accent-color-rgb: 43, 226, 223;
-
 }
 
 html {
@@ -137,4 +136,29 @@ html {
   --text-color: #1e293b;
   --text-secondary: #64748b;
   --primary-color: #3b82f6;
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  html {
+    --app-background: #0f172a;
+    --sidebar-background: #1e293b;
+    --border-color: #334155;
+    --text-color: #f1f5f9;
+    --text-secondary: #94a3b8;
+  }
+
+  .scaling-item {
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .scaling-operation-select:not(#_):not(#_):not(#_),
+  .scaling-factor-input {
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .tooltip {
+    background: rgba(30, 41, 59, 0.95);
+    border-color: rgba(59, 130, 246, 0.3);
+  }
 }

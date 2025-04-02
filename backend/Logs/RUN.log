@@ -638,3 +638,303 @@
 2025-03-24 04:56:01,713 INFO  * Debugger PIN: 119-059-632
 2025-03-24 04:56:13,963 INFO  * Detected change in 'C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
 2025-03-24 04:56:14,176 INFO  * Restarting with stat
+2025-03-30 18:59:05,004 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-03-30 18:59:05,207 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-03-30 18:59:05,207 INFO [33mPress CTRL+C to quit[0m
+2025-03-30 18:59:05,207 INFO  * Restarting with stat
+2025-03-30 18:59:15,932 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-03-30 18:59:16,130 WARNING  * Debugger is active!
+2025-03-30 18:59:16,130 INFO  * Debugger PIN: 119-059-632
+2025-03-30 19:07:49,893 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-03-30 19:07:50,049 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-03-30 19:07:50,049 INFO [33mPress CTRL+C to quit[0m
+2025-03-30 19:07:50,080 INFO  * Restarting with stat
+2025-03-30 19:08:03,902 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-03-30 19:08:04,187 WARNING  * Debugger is active!
+2025-03-30 19:08:04,202 INFO  * Debugger PIN: 119-059-632
+2025-03-30 19:14:46,177 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-03-30 19:14:46,490 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-03-30 19:14:46,490 INFO [33mPress CTRL+C to quit[0m
+2025-03-30 19:14:46,505 INFO  * Restarting with stat
+2025-03-30 19:14:58,864 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-03-30 19:14:59,132 WARNING  * Debugger is active!
+2025-03-30 19:14:59,132 INFO  * Debugger PIN: 119-059-632
+2025-03-30 19:23:53,321 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-03-30 19:23:53,853 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-03-30 19:23:53,853 INFO [33mPress CTRL+C to quit[0m
+2025-03-30 19:23:53,853 INFO  * Restarting with stat
+2025-03-30 19:24:05,781 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-03-30 19:24:07,713 WARNING  * Debugger is active!
+2025-03-30 19:24:07,728 INFO  * Debugger PIN: 119-059-632
+2025-03-30 19:39:06,552 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-03-30 19:39:06,770 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-03-30 19:39:06,770 INFO [33mPress CTRL+C to quit[0m
+2025-03-30 19:39:06,770 INFO  * Restarting with stat
+2025-03-30 19:39:15,761 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-03-30 19:39:16,155 WARNING  * Debugger is active!
+2025-03-30 19:39:16,170 INFO  * Debugger PIN: 119-059-632
+2025-03-30 19:40:39,350 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-03-30 19:40:39,585 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-03-30 19:40:39,585 INFO [33mPress CTRL+C to quit[0m
+2025-03-30 19:40:39,616 INFO  * Restarting with stat
+2025-03-30 19:40:49,254 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-03-30 19:40:49,425 WARNING  * Debugger is active!
+2025-03-30 19:40:49,425 INFO  * Debugger PIN: 119-059-632
+2025-03-30 19:46:20,122 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\Create_new_batch.py', reloading
+2025-03-30 19:46:20,928 INFO  * Restarting with stat
+2025-03-30 19:46:30,310 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-03-30 19:46:30,372 WARNING  * Debugger is active!
+2025-03-30 19:46:30,388 INFO  * Debugger PIN: 119-059-632
+2025-03-30 20:27:57,531 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-03-30 20:27:57,583 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-03-30 20:27:57,583 INFO [33mPress CTRL+C to quit[0m
+2025-03-30 20:27:57,583 INFO  * Restarting with stat
+2025-03-30 20:28:00,351 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-03-30 20:28:00,394 WARNING  * Debugger is active!
+2025-03-30 20:28:00,410 INFO  * Debugger PIN: 119-059-632
+2025-03-30 20:32:42,141 INFO 127.0.0.1 - - [30/Mar/2025 20:32:42] "OPTIONS /sensitivity/configure HTTP/1.1" 200 -
+2025-03-30 20:32:42,182 INFO 127.0.0.1 - - [30/Mar/2025 20:32:42] "[35m[1mPOST /sensitivity/configure HTTP/1.1[0m" 500 -
+2025-03-31 08:27:54,610 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-03-31 08:27:54,641 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-03-31 08:27:54,641 INFO [33mPress CTRL+C to quit[0m
+2025-03-31 08:27:54,657 INFO  * Restarting with stat
+2025-03-31 08:27:56,811 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-03-31 08:27:56,842 WARNING  * Debugger is active!
+2025-03-31 08:27:56,858 INFO  * Debugger PIN: 119-059-632
+2025-03-31 08:47:38,655 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-03-31 08:47:38,702 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-03-31 08:47:38,702 INFO [33mPress CTRL+C to quit[0m
+2025-03-31 08:47:38,702 INFO  * Restarting with stat
+2025-03-31 08:47:41,775 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-03-31 08:47:41,817 WARNING  * Debugger is active!
+2025-03-31 08:47:41,833 INFO  * Debugger PIN: 119-059-632
+2025-03-31 09:18:27,283 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-03-31 09:18:27,330 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-03-31 09:18:27,330 INFO [33mPress CTRL+C to quit[0m
+2025-03-31 09:18:27,330 INFO  * Restarting with stat
+2025-03-31 09:18:29,745 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-03-31 09:18:29,776 WARNING  * Debugger is active!
+2025-03-31 09:18:29,776 INFO  * Debugger PIN: 119-059-632
+2025-03-31 09:36:30,318 INFO 127.0.0.1 - - [31/Mar/2025 09:36:30] "OPTIONS /sensitivity/visualize HTTP/1.1" 200 -
+2025-03-31 09:36:30,333 INFO 127.0.0.1 - - [31/Mar/2025 09:36:30] "OPTIONS /sensitivity/visualize HTTP/1.1" 200 -
+2025-03-31 09:36:30,579 INFO 127.0.0.1 - - [31/Mar/2025 09:36:30] "[31m[1mPOST /sensitivity/visualize HTTP/1.1[0m" 400 -
+2025-03-31 09:36:30,641 INFO 127.0.0.1 - - [31/Mar/2025 09:36:30] "[31m[1mPOST /sensitivity/visualize HTTP/1.1[0m" 400 -
+2025-03-31 10:12:33,376 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-03-31 10:12:33,411 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-03-31 10:12:33,411 INFO [33mPress CTRL+C to quit[0m
+2025-03-31 10:12:33,411 INFO  * Restarting with stat
+2025-03-31 10:12:35,622 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-03-31 10:12:35,657 WARNING  * Debugger is active!
+2025-03-31 10:12:35,657 INFO  * Debugger PIN: 119-059-632
+2025-03-31 13:51:13,735 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-03-31 13:51:13,774 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-03-31 13:51:13,774 INFO [33mPress CTRL+C to quit[0m
+2025-03-31 13:51:13,777 INFO  * Restarting with stat
+2025-03-31 13:51:15,989 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-03-31 13:51:16,023 WARNING  * Debugger is active!
+2025-03-31 13:51:16,030 INFO  * Debugger PIN: 119-059-632
+2025-03-31 15:20:45,741 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-03-31 15:20:45,772 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-03-31 15:20:45,772 INFO [33mPress CTRL+C to quit[0m
+2025-03-31 15:20:45,787 INFO  * Restarting with stat
+2025-03-31 15:20:47,960 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-03-31 15:20:47,991 WARNING  * Debugger is active!
+2025-03-31 15:20:47,991 INFO  * Debugger PIN: 119-059-632
+2025-03-31 17:01:03,200 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-03-31 17:01:03,247 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-03-31 17:01:03,247 INFO [33mPress CTRL+C to quit[0m
+2025-03-31 17:01:03,247 INFO  * Restarting with stat
+2025-03-31 17:01:05,479 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-03-31 17:01:05,515 WARNING  * Debugger is active!
+2025-03-31 17:01:05,531 INFO  * Debugger PIN: 119-059-632
+2025-04-01 08:39:36,587 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-04-01 08:39:36,622 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-04-01 08:39:36,622 INFO [33mPress CTRL+C to quit[0m
+2025-04-01 08:39:36,622 INFO  * Restarting with stat
+2025-04-01 08:39:38,833 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-04-01 08:39:38,867 WARNING  * Debugger is active!
+2025-04-01 08:39:38,883 INFO  * Debugger PIN: 119-059-632
+2025-04-01 09:28:34,287 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity-b.py', reloading
+2025-04-01 09:28:34,505 INFO  * Restarting with stat
+2025-04-01 09:28:40,363 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-04-01 09:28:40,432 WARNING  * Debugger is active!
+2025-04-01 09:28:40,445 INFO  * Debugger PIN: 119-059-632
+2025-04-01 10:16:03,816 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-04-01 10:16:03,854 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-04-01 10:16:03,855 INFO [33mPress CTRL+C to quit[0m
+2025-04-01 10:16:03,857 INFO  * Restarting with stat
+2025-04-01 10:16:06,048 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-04-01 10:16:06,072 WARNING  * Debugger is active!
+2025-04-01 10:16:06,077 INFO  * Debugger PIN: 119-059-632
+2025-04-01 10:45:26,422 INFO 127.0.0.1 - - [01/Apr/2025 10:45:26] "OPTIONS /sensitivity/visualize HTTP/1.1" 200 -
+2025-04-01 10:45:26,439 INFO 127.0.0.1 - - [01/Apr/2025 10:45:26] "OPTIONS /sensitivity/visualize HTTP/1.1" 200 -
+2025-04-01 10:45:26,691 INFO 127.0.0.1 - - [01/Apr/2025 10:45:26] "[31m[1mPOST /sensitivity/visualize HTTP/1.1[0m" 400 -
+2025-04-01 10:45:26,742 INFO 127.0.0.1 - - [01/Apr/2025 10:45:26] "[31m[1mPOST /sensitivity/visualize HTTP/1.1[0m" 400 -
+2025-04-01 12:42:19,630 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-04-01 12:42:19,676 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-04-01 12:42:19,676 INFO [33mPress CTRL+C to quit[0m
+2025-04-01 12:42:19,676 INFO  * Restarting with stat
+2025-04-01 12:42:23,301 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-04-01 12:42:23,442 WARNING  * Debugger is active!
+2025-04-01 12:42:23,442 INFO  * Debugger PIN: 119-059-632
+2025-04-01 13:29:36,104 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-04-01 13:29:36,156 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-04-01 13:29:36,156 INFO [33mPress CTRL+C to quit[0m
+2025-04-01 13:29:36,158 INFO  * Restarting with stat
+2025-04-01 13:29:38,934 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-04-01 13:29:39,001 WARNING  * Debugger is active!
+2025-04-01 13:29:39,010 INFO  * Debugger PIN: 119-059-632
+2025-04-01 15:48:24,294 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-04-01 15:48:24,341 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-04-01 15:48:24,341 INFO [33mPress CTRL+C to quit[0m
+2025-04-01 15:48:24,341 INFO  * Restarting with stat
+2025-04-01 15:48:27,012 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-04-01 15:48:27,050 WARNING  * Debugger is active!
+2025-04-01 15:48:27,050 INFO  * Debugger PIN: 119-059-632
+2025-04-01 16:05:09,646 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-04-01 16:05:09,687 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-04-01 16:05:09,688 INFO [33mPress CTRL+C to quit[0m
+2025-04-01 16:05:09,690 INFO  * Restarting with stat
+2025-04-01 16:05:11,917 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-04-01 16:05:11,951 WARNING  * Debugger is active!
+2025-04-01 16:05:11,959 INFO  * Debugger PIN: 119-059-632
+2025-04-01 18:24:41,912 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-04-01 18:24:41,954 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-04-01 18:24:41,955 INFO [33mPress CTRL+C to quit[0m
+2025-04-01 18:24:41,957 INFO  * Restarting with stat
+2025-04-01 18:24:44,395 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-04-01 18:24:44,423 WARNING  * Debugger is active!
+2025-04-01 18:24:44,431 INFO  * Debugger PIN: 119-059-632
+2025-04-01 20:55:19,676 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-04-01 20:55:19,722 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-04-01 20:55:19,722 INFO [33mPress CTRL+C to quit[0m
+2025-04-01 20:55:19,722 INFO  * Restarting with stat
+2025-04-01 20:55:22,026 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-04-01 20:55:22,073 WARNING  * Debugger is active!
+2025-04-01 20:55:22,073 INFO  * Debugger PIN: 119-059-632
+2025-04-02 09:30:47,201 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-04-02 09:30:47,232 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-04-02 09:30:47,232 INFO [33mPress CTRL+C to quit[0m
+2025-04-02 09:30:47,247 INFO  * Restarting with stat
+2025-04-02 09:30:49,446 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-04-02 09:30:49,477 WARNING  * Debugger is active!
+2025-04-02 09:30:49,477 INFO  * Debugger PIN: 119-059-632
+2025-04-02 11:39:23,063 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-04-02 11:39:23,141 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-04-02 11:39:23,141 INFO [33mPress CTRL+C to quit[0m
+2025-04-02 11:39:23,156 INFO  * Restarting with stat
+2025-04-02 11:39:25,669 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-04-02 11:39:25,700 WARNING  * Debugger is active!
+2025-04-02 11:39:25,716 INFO  * Debugger PIN: 119-059-632
+2025-04-02 11:55:01,498 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-04-02 11:55:01,545 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-04-02 11:55:01,545 INFO [33mPress CTRL+C to quit[0m
+2025-04-02 11:55:01,545 INFO  * Restarting with stat
+2025-04-02 11:55:04,205 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-04-02 11:55:04,252 WARNING  * Debugger is active!
+2025-04-02 11:55:04,252 INFO  * Debugger PIN: 119-059-632
+2025-04-02 14:14:58,007 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-04-02 14:14:58,054 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-04-02 14:14:58,054 INFO [33mPress CTRL+C to quit[0m
+2025-04-02 14:14:58,054 INFO  * Restarting with stat
+2025-04-02 14:15:00,686 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-04-02 14:15:00,717 WARNING  * Debugger is active!
+2025-04-02 14:15:00,717 INFO  * Debugger PIN: 119-059-632
+2025-04-02 14:20:54,230 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-04-02 14:20:54,280 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-04-02 14:20:54,280 INFO [33mPress CTRL+C to quit[0m
+2025-04-02 14:20:54,280 INFO  * Restarting with stat
+2025-04-02 14:20:56,819 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-04-02 14:20:56,850 WARNING  * Debugger is active!
+2025-04-02 14:20:56,866 INFO  * Debugger PIN: 119-059-632
+2025-04-02 14:21:41,275 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\Utility_functions\\common_utils.py', reloading
+2025-04-02 14:21:41,486 INFO  * Restarting with stat
+2025-04-02 14:21:49,247 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-04-02 14:21:49,284 WARNING  * Debugger is active!
+2025-04-02 14:21:49,299 INFO  * Debugger PIN: 119-059-632
+2025-04-02 14:22:54,974 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\Utility_functions\\common_utils.py', reloading
+2025-04-02 14:22:55,627 INFO  * Restarting with stat
+2025-04-02 14:23:02,742 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-04-02 14:23:02,812 WARNING  * Debugger is active!
+2025-04-02 14:23:02,828 INFO  * Debugger PIN: 119-059-632
+2025-04-02 15:20:43,584 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-04-02 15:20:43,646 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-04-02 15:20:43,646 INFO [33mPress CTRL+C to quit[0m
+2025-04-02 15:20:43,646 INFO  * Restarting with stat
+2025-04-02 15:20:46,198 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-04-02 15:20:46,238 WARNING  * Debugger is active!
+2025-04-02 15:20:46,260 INFO  * Debugger PIN: 119-059-632
+2025-04-02 15:38:10,712 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-04-02 15:38:10,766 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-04-02 15:38:10,766 INFO [33mPress CTRL+C to quit[0m
+2025-04-02 15:38:10,770 INFO  * Restarting with stat
+2025-04-02 15:38:13,301 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-04-02 15:38:13,337 WARNING  * Debugger is active!
+2025-04-02 15:38:13,346 INFO  * Debugger PIN: 119-059-632
+2025-04-02 15:41:17,528 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\Utility_functions\\common_utils.py', reloading
+2025-04-02 15:41:17,706 INFO  * Restarting with stat
+2025-04-02 15:41:21,049 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-04-02 15:41:21,099 WARNING  * Debugger is active!
+2025-04-02 15:41:21,107 INFO  * Debugger PIN: 119-059-632
+2025-04-02 15:41:28,822 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\Utility_functions\\common_utils.py', reloading
+2025-04-02 15:41:29,268 INFO  * Restarting with stat
+2025-04-02 15:41:38,320 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-04-02 15:41:38,356 WARNING  * Debugger is active!
+2025-04-02 15:41:38,367 INFO  * Debugger PIN: 119-059-632
+2025-04-02 16:30:32,240 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-04-02 16:30:32,295 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-04-02 16:30:32,295 INFO [33mPress CTRL+C to quit[0m
+2025-04-02 16:30:32,311 INFO  * Restarting with stat
+2025-04-02 16:30:36,863 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-04-02 16:30:37,048 WARNING  * Debugger is active!
+2025-04-02 16:30:37,064 INFO  * Debugger PIN: 119-059-632
+2025-04-02 16:52:52,055 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-04-02 16:52:52,117 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-04-02 16:52:52,117 INFO [33mPress CTRL+C to quit[0m
+2025-04-02 16:52:52,117 INFO  * Restarting with stat
+2025-04-02 16:52:56,304 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-04-02 16:52:56,393 WARNING  * Debugger is active!
+2025-04-02 16:52:56,393 INFO  * Debugger PIN: 119-059-632
+2025-04-02 17:00:30,814 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-04-02 17:00:30,874 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-04-02 17:00:30,874 INFO [33mPress CTRL+C to quit[0m
+2025-04-02 17:00:30,874 INFO  * Restarting with stat
+2025-04-02 17:00:35,228 INFO Logging configured correctly - Main logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\RUN.log
+2025-04-02 17:00:35,259 WARNING  * Debugger is active!
+2025-04-02 17:00:35,275 INFO  * Debugger PIN: 119-059-632
+2025-04-02 17:01:11,878 INFO 127.0.0.1 - - [02/Apr/2025 17:01:11] "OPTIONS /sensitivity/visualize HTTP/1.1" 200 -
+2025-04-02 17:01:11,884 INFO 127.0.0.1 - - [02/Apr/2025 17:01:11] "OPTIONS /sensitivity/visualize HTTP/1.1" 200 -
+2025-04-02 17:01:12,107 INFO 127.0.0.1 - - [02/Apr/2025 17:01:12] "[31m[1mPOST /sensitivity/visualize HTTP/1.1[0m" 400 -
+2025-04-02 17:01:12,207 INFO 127.0.0.1 - - [02/Apr/2025 17:01:12] "[31m[1mPOST /sensitivity/visualize HTTP/1.1[0m" 400 -

@@ -37,7 +37,7 @@ def free_port(port):
             pass
 
 # Base directory where your Flask apps are located
-flask_base_dir = os.path.dirname(os.path.abspath(__file__))
+flask_base_dir = os.path.join(os.path.dirname(__file__))
 
 # List of Flask apps with their subdirectories and ports
 flask_apps = [
@@ -51,6 +51,7 @@ flask_apps = [
     (r"backend\API_endpoints_and_controllers\sense_config_base.py", 2600),
     (r"backend\API_endpoints_and_controllers\PNG.py", 5008),
     (r"backend\API_endpoints_and_controllers\Sub.py", 5009),
+    (r"backend\Utility_functions\property_mapping_service.py", 5010),
     (r"backend\API_endpoints_and_controllers\Load.py", 5000),
     (r"backend\cfa_list.py", 4560),
     (r"backend\API_endpoints_and_controllers\Version_service.py", 8002),
@@ -64,7 +65,7 @@ node_base_dir = os.path.dirname(os.path.abspath(__file__))
 node_scripts = [
     ("submit_parameter_append.js", 3040),
     ("submitCompleteSet.js", 3052),
-    (r"src\utils\labelUpdate.js", 3060)
+    (r"labelUpdate.js", 3060)
 ]
 
 def verify_python_installation():

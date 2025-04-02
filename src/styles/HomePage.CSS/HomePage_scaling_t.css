@@ -398,8 +398,8 @@
 
 /* Enhanced Checkbox Styles */
 .scaling-checkbox {
-  width: 18px;
-  height: 18px;
+  width: var(--spacing-lg);
+  height:var(--spacing-lg);
   border: 2px solid var(--border-color);
   border-radius: 4px;
   cursor: pointer;

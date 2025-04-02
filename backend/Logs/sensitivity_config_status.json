@@ -1,8 +1,6 @@
 {
-  "configured": true,
-  "timestamp": "2025-03-24 04:15:45",
-  "runId": "20250324_041545",
-  "version": "12",
-  "configDir": "C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Original\\Batch(12)\\Results(12)\\Sensitivity\\Reports",
-  "sensitivityDir": "C:\\Users\\Mohse\\OneDrive\\Desktop\\SF.worktrees\\ThemeManagement\\backend\\Original\\Batch(12)\\Results(12)\\Sensitivity"
+  "configured": false,
+  "timestamp": "2025-03-30 20:32:42",
+  "runId": "20250330_203242",
+  "error": "Error generating sensitivity configurations: Unknown format code 'f' for object of type 'str'"
 }
