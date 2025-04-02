@@ -3,6 +3,38 @@ import { Tab } from '@headlessui/react';
 import { CalculatorIcon, CubeIcon, CurrencyDollarIcon, ChartBarIcon } from '@heroicons/react/24/outline';
 import ExtendedScaling from './ExtendedScaling';
 import '../../styles/HomePage.CSS/CentralScalingTab.css'
+
+// Scaling types configuration
+const scalingTypes = [
+    {
+        id: 'Amount4',
+        label: 'Process Quantities',
+        filterKeyword: 'Amount4',
+        icon: CubeIcon,
+        description: 'Scale process input quantities (Vs, units)'
+    },
+    {
+        id: 'Amount5',
+        label: 'Process Costs',
+        filterKeyword: 'Amount5',
+        icon: CurrencyDollarIcon,
+        description: 'Scale process costs (Vs, $ / unit)'
+    },
+    {
+        id: 'Amount6',
+        label: 'Revenue Quantities',
+        filterKeyword: 'Amount6',
+        icon: ChartBarIcon,
+        description: 'Scale revenue stream quantities (Rs, units)'
+    },
+    {
+        id: 'Amount7',
+        label: 'Revenue Prices',
+        filterKeyword: 'Amount7',
+        icon: CalculatorIcon,
+        description: 'Scale revenue stream prices (Rs, $ / unit)'
+    }
+];
 /**
  * CentralScalingTab - A unified interface for managing all scaling operations
  *
@@ -28,42 +60,24 @@ const CentralScalingTab = ({
                                setScalingBaseCosts,
                                scalingGroups,
                                onScalingGroupsChange,
-                               onScaledValuesChange
+                               onScaledValuesChange,
+                               onActiveGroupChange
                            }) => {
     // State for the active tab
     const [activeTab, setActiveTab] = useState(0);
+    const [activeScalingGroups, setActiveScalingGroups] = useState(() => {
+        return scalingTypes.reduce((acc, type) => {
+            acc[type.id] = 0; // Default all to index 0
+            return acc;
+        }, {});
+    });
 
-    // Scaling types configuration
-    const scalingTypes = [
-        {
-            id: 'Amount4',
-            label: 'Process Quantities',
-            filterKeyword: 'Amount4',
-            icon: CubeIcon,
-            description: 'Scale process input quantities (Vs, units)'
-        },
-        {
-            id: 'Amount5',
-            label: 'Process Costs',
-            filterKeyword: 'Amount5',
-            icon: CurrencyDollarIcon,
-            description: 'Scale process costs (Vs, $ / unit)'
-        },
-        {
-            id: 'Amount6',
-            label: 'Revenue Quantities',
-            filterKeyword: 'Amount6',
-            icon: ChartBarIcon,
-            description: 'Scale revenue stream quantities (Rs, units)'
-        },
-        {
-            id: 'Amount7',
-            label: 'Revenue Prices',
-            filterKeyword: 'Amount7',
-            icon: CalculatorIcon,
-            description: 'Scale revenue stream prices (Rs, $ / unit)'
-        }
-    ];
+    const handleActiveGroupChange = useCallback((groupIndex, filterKeyword) => {
+        setActiveScalingGroups(prev => ({
+            ...prev,
+            [filterKeyword]: groupIndex
+        }));
+    }, []);
 
     // Handle tab change
     const handleTabChange = (index) => {
@@ -81,6 +95,8 @@ const CentralScalingTab = ({
         const activeType = scalingTypes[activeTab].id;
         return (scalingGroups || []).filter(group => group._scalingType === activeType);
     }, [activeTab, scalingGroups, scalingTypes]);
+// Add this inside the CentralScalingTab component
+
 
     // Handle scaling groups change for the active tab
     const handleScalingGroupsChange = (newGroups) => {
@@ -188,6 +204,11 @@ const CentralScalingTab = ({
                                 R={R}
                                 toggleV={toggleV}
                                 toggleR={toggleR}
+                                activeGroupIndex={activeScalingGroups[type.id] || 0}
+                                onActiveGroupChange={(groupIndex, filterKeyword) => {
+                                    handleActiveGroupChange(groupIndex, filterKeyword);
+                                    onActiveGroupChange && onActiveGroupChange(groupIndex, filterKeyword);
+                                }}
                             />
                         </Tab.Panel>
                     ))}
