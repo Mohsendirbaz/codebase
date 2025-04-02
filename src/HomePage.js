@@ -3,7 +3,7 @@ import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import CustomizableImage from './components/modules/CustomizableImage';
 import CustomizableTable from './components/modules/CustomizableTable';
-import ExtendedScaling from './components/truly_extended_scaling/ExtendedScaling';
+import ExtendedScaling from 'src/components/truly_extended_scaling/ExtendedScaling';
 import FactEngine from './components/modules/FactEngine';
 import FactEngineAdmin from './components/modules/FactEngineAdmin';
 import GeneralFormConfig from './GeneralFormConfig.js';
@@ -34,7 +34,7 @@ import ConfigurationMonitor from './components/modules/ConfigurationMonitor';
 import ThemeButton from './components/modules/ThemeButton';
 import PlotsTabs from './components/modules/PlotsTabs';
 import SensitivityPlotsTabs from './components/modules/SensitivityPlotsTabs';
-import CentralScalingTab from './components/truly_extended_scaling/CentralScalingTab';
+import CentralScalingTab from 'src/components/truly_extended_scaling/CentralScalingTab';
 
 
 
@@ -147,7 +147,21 @@ const HomePageContent = () => {
         
        
     }, [season]);
+// Add state to store final results by category
+    const [finalResults, setFinalResults] = useState({
+        Amount4: [],
+        Amount5: [],
+        Amount6: [],
+        Amount7: []
+    });
 
+    // Handler for receiving final results from ExtendedScaling
+    const handleFinalResultsGenerated = (summaryItems, filterKeyword) => {
+        setFinalResults(prev => ({
+            ...prev,
+            [filterKeyword]: summaryItems
+        }));
+    };
     const { formValues, handleInputChange, handleReset, setFormValues } = useFormValues();
     const [version, setVersion] = useState('1');
     const [batchRunning, setBatchRunning] = useState(false);
@@ -221,18 +235,56 @@ const HomePageContent = () => {
     const [isToggleSectionOpen, setIsToggleSectionOpen] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
     const [popupPosition, setPopupPosition] = useState({ top: 0, left: 0 });
-    // Extract base costs from Process2Config values
+    // THEN define the effect that depends on formValues
     useEffect(() => {
-        const process2Costs = Object.entries(formValues)
-            .filter(([key, value]) => key.includes('Amount5'))
-            .map(([key, value]) => ({
-                id: key,
-                label: value.label || 'Unnamed Cost',
-                baseValue: parseFloat(value.value) || 0,
-            }));
-        setBaseCosts(process2Costs);
-    }, [formValues]);
+        // Create a mapping of all four Amount categories
+        const amountCategories = ['Amount4', 'Amount5', 'Amount6', 'Amount7'];
 
+        // Generate scalingBaseCosts with the same structure for all categories
+        const updatedScalingBaseCosts = amountCategories.reduce((result, category) => {
+            // Extract entries for this category - correctly match without underscore
+            const categoryEntries = Object.entries(formValues)
+                .filter(([key]) => key.includes(category));
+
+            // Sort entries based on their numeric suffix
+            categoryEntries.sort(([keyA], [keyB]) => {
+                // Extract the numeric part after the category (e.g., "Amount40" -> "40")
+                const suffixA = keyA.replace(category, '');
+                const suffixB = keyB.replace(category, '');
+                return parseInt(suffixA) - parseInt(suffixB);
+            });
+
+            // Map sorted entries to scaling items
+            result[category] = categoryEntries.map(([key, value]) => ({
+                id: key,
+                label: value.label || `Unnamed ${category}`,
+                value: parseFloat(value.value) || 0,
+                baseValue: parseFloat(value.value) || 0,
+                vKey: key.startsWith('v') ? key : null,  // Only set vKey if key starts with 'v'
+                rKey: key.startsWith('r') ? key : null   // Only set rKey if key starts with 'r'
+            }));
+
+            return result;
+        }, {});
+
+        // Update state
+        setScalingBaseCosts(updatedScalingBaseCosts);
+    }, [formValues]);
+// Add this state to HomePage to track active groups by type
+    const [activeScalingGroups, setActiveScalingGroups] = useState({
+        Amount4: 0,
+        Amount5: 0,
+        Amount6: 0,
+        Amount7: 0
+    });
+
+// Handler for active group changes
+    const handleActiveGroupChange = (groupIndex, filterKeyword) => {
+        setActiveScalingGroups(prev => ({
+            ...prev,
+            [filterKeyword]: groupIndex
+        }));
+    };
     const handleScaledValuesChange = (scaledValues) => {
         console.log('Scaled values:', scaledValues);
     };
@@ -1400,6 +1452,7 @@ const HomePageContent = () => {
                             S={S || {}}
                             setS={setS}
                             setVersion={setVersion}
+                            summaryItems={finalResults.Amount4} // Pass the stored results
                         />
                         <ExtendedScaling
                             baseCosts={scalingBaseCosts.Amount4 || []}
@@ -1415,6 +1468,9 @@ const HomePageContent = () => {
                             R={R}
                             toggleV={toggleV}
                             toggleR={toggleR}
+                            onFinalResultsGenerated={handleFinalResultsGenerated} // Add this callback
+                            activeGroupIndex={activeScalingGroups.Amount4 || 0}
+                            onActiveGroupChange={handleActiveGroupChange}
                         />
                     </>
                 )}
@@ -1434,6 +1490,7 @@ const HomePageContent = () => {
                             S={S || {}}
                             setS={setS}
                             setVersion={setVersion}
+                            summaryItems={finalResults.Amount5} // Pass the stored results
                         />
                         <ExtendedScaling
                             baseCosts={scalingBaseCosts.Amount5 || []}
@@ -1449,6 +1506,9 @@ const HomePageContent = () => {
                             R={R}
                             toggleV={toggleV}
                             toggleR={toggleR}
+                            onFinalResultsGenerated={handleFinalResultsGenerated} // Add this callback
+                            activeGroupIndex={activeScalingGroups.Amount5 || 0}
+                            onActiveGroupChange={handleActiveGroupChange}
                         />
                     </>
                 )}
@@ -1468,6 +1528,7 @@ const HomePageContent = () => {
                             S={S || {}}
                             setS={setS}
                             setVersion={setVersion}
+                            summaryItems={finalResults.Amount6} // Pass the stored results
                         />
                         <ExtendedScaling
                             baseCosts={scalingBaseCosts.Amount6 || []}
@@ -1483,6 +1544,9 @@ const HomePageContent = () => {
                             R={R}
                             toggleV={toggleV}
                             toggleR={toggleR}
+                            onFinalResultsGenerated={handleFinalResultsGenerated} // Add this callback
+                            activeGroupIndex={activeScalingGroups.Amount6 || 0}
+                            onActiveGroupChange={handleActiveGroupChange}
                         />
                     </>
                 )}
@@ -1502,6 +1566,7 @@ const HomePageContent = () => {
                             S={S || {}}
                             setS={setS}
                             setVersion={setVersion}
+                            summaryItems={finalResults.Amount7} // Pass the stored results
                         />
                         <ExtendedScaling
                             baseCosts={scalingBaseCosts.Amount7 || []}
@@ -1517,6 +1582,9 @@ const HomePageContent = () => {
                             R={R}
                             toggleV={toggleV}
                             toggleR={toggleR}
+                            onFinalResultsGenerated={handleFinalResultsGenerated} // Add this callback
+                            activeGroupIndex={activeScalingGroups.Amount7 || 0}
+                            onActiveGroupChange={handleActiveGroupChange}
                         />
                     </>
                 )}
