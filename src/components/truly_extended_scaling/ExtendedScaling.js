@@ -7,6 +7,7 @@ import '../../styles/HomePage.CSS/HomePage_scaling_t.css';
 import { DndProvider, useDrag, useDrop } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { motion, AnimatePresence } from 'framer-motion';
+import PropTypes from 'prop-types';
 
 // Tooltip component for operation explanations
 const Tooltip = ({ content, children }) => {
@@ -180,7 +181,10 @@ const ExtendedScaling = ({
                            V,
                            R,
                            toggleV,
-                           toggleR
+                           toggleR,
+                           activeGroupIndex = 0,
+                           onActiveGroupChange = () => {},
+                           onFinalResultsGenerated
                          }) => {
   // State for history and undo/redo
   const [history, setHistory] = useState([]);
@@ -198,48 +202,6 @@ const ExtendedScaling = ({
   const [isExporting, setIsExporting] = useState(false);
   const [isImporting, setIsImporting] = useState(false);
   const [showDocumentation, setShowDocumentation] = useState(false);
-
-  // Main scaling groups state
-  const [scalingGroups, setScalingGroups] = useState(() => {
-    // Initialize with provided groups or create a default group
-    const initialGroups = initialScalingGroups.length > 0
-        ? initialScalingGroups
-        : [{
-          id: 'default',
-          name: 'Default Scaling',
-          isProtected: false,
-          _scalingType: filterKeyword, // Store the scaling type
-          items: baseCosts.map(cost => ({
-            ...cost,
-            originalBaseValue: parseFloat(cost.value) || cost.baseValue || 0,
-            baseValue: parseFloat(cost.value) || cost.baseValue || 0,
-            scalingFactor: 1,
-            operation: 'multiply',
-            enabled: true,
-            notes: '',
-            scaledValue: parseFloat(cost.value) || cost.baseValue || 0
-          }))
-        }];
-
-    setHistory([initialGroups]);
-    setHistoryIndex(0);
-
-    // Create initial history entry
-    setHistoryEntries([{
-      id: `history_${Date.now()}_initial`,
-      timestamp: Date.now(),
-      action: 'initialize',
-      description: 'Initial scaling configuration',
-      snapshots: {
-        scalingGroups: JSON.parse(JSON.stringify(initialGroups)),
-        protectedTabs: []
-      }
-    }]);
-
-    return initialGroups;
-  });
-
-  const [selectedGroup, setSelectedGroup] = useState(0);
 
   // Enhanced operations with descriptions
   const operations = [
@@ -288,7 +250,7 @@ const ExtendedScaling = ({
   ];
 
   // Enhanced error handling and validation
-  const calculateScaledValue = (baseValue, operation, factor) => {
+  const calculateScaledValue = useCallback((baseValue, operation, factor) => {
     try {
       if (baseValue === 0 && operation === 'divide') {
         throw new Error('Division by zero');
@@ -336,9 +298,67 @@ const ExtendedScaling = ({
       }));
       return 0;
     }
-  };
+  }, []);
 
-  // Enhanced history tracking
+  // Main scaling groups state
+  const [scalingGroups, setScalingGroups] = useState(() => {
+    // Initialize with provided groups or create a default group
+    const initialGroups = initialScalingGroups.length > 0
+        ? initialScalingGroups
+        : [{
+          id: 'default',
+          name: 'Default Scaling',
+          isProtected: false,
+          _scalingType: filterKeyword, // Store the scaling type
+          items: baseCosts.map(cost => ({
+            ...cost,
+            originalBaseValue: parseFloat(cost.value) || cost.baseValue || 0,
+            baseValue: parseFloat(cost.value) || cost.baseValue || 0,
+            scalingFactor: 1,
+            operation: 'multiply',
+            enabled: true,
+            notes: '',
+            scaledValue: parseFloat(cost.value) || cost.baseValue || 0
+          }))
+        }];
+
+    setHistory([initialGroups]);
+    setHistoryIndex(0);
+
+    // Create initial history entry
+    setHistoryEntries([{
+      id: `history_${Date.now()}_initial`,
+      timestamp: Date.now(),
+      action: 'initialize',
+      description: 'Initial scaling configuration',
+      snapshots: {
+        scalingGroups: JSON.parse(JSON.stringify(initialGroups)),
+        protectedTabs: []
+      }
+    }]);
+
+    return initialGroups;
+  });
+
+  const [selectedGroup, setSelectedGroup] = useState(activeGroupIndex || 0);
+
+  // Add a synchronization function for tab configurations
+  const syncTabConfigs = useCallback(() => {
+    const newTabConfigs = scalingGroups.map(group => ({
+      id: group.id,
+      label: group.name,
+      isProtected: protectedTabs.has(group.id),
+      _scalingType: group._scalingType || filterKeyword
+    }));
+    setTabConfigs(newTabConfigs);
+  }, [scalingGroups, protectedTabs, filterKeyword]);
+
+  // Call this whenever scalingGroups change
+  useEffect(() => {
+    syncTabConfigs();
+  }, [scalingGroups, syncTabConfigs]);
+
+  // Enhanced history tracking with tabConfigs
   const addToHistory = useCallback((newGroups, action, description, payload = {}) => {
     // Create a history entry with detailed metadata
     const historyEntry = {
@@ -350,7 +370,7 @@ const ExtendedScaling = ({
       snapshots: {
         scalingGroups: JSON.parse(JSON.stringify(newGroups)),
         protectedTabs: Array.from(protectedTabs),
-        tabConfigs: tabConfigs ? JSON.parse(JSON.stringify(tabConfigs)) : []
+        tabConfigs: JSON.parse(JSON.stringify(tabConfigs))
       }
     };
 
@@ -388,6 +408,14 @@ const ExtendedScaling = ({
     // We need to clone the current scaling groups to avoid reference issues
     const newGroups = JSON.parse(JSON.stringify(scalingGroups));
 
+    // Update tab configs when protection status changes
+    const newTabConfigs = tabConfigs.map(tab =>
+        tab.id === groupId
+            ? { ...tab, isProtected: !isCurrentlyProtected }
+            : tab
+    );
+    setTabConfigs(newTabConfigs);
+
     // Add to history
     addToHistory(
         newGroups,
@@ -396,10 +424,11 @@ const ExtendedScaling = ({
         {
           groupId,
           previousState: isCurrentlyProtected,
-          newState: !isCurrentlyProtected
+          newState: !isCurrentlyProtected,
+          tabConfigs: newTabConfigs
         }
     );
-  }, [protectedTabs, scalingGroups, addToHistory]);
+  }, [protectedTabs, scalingGroups, addToHistory, tabConfigs]);
 
   // Undo/Redo functionality
   const undo = useCallback(() => {
@@ -480,240 +509,6 @@ const ExtendedScaling = ({
     }
     return groups.length; // Append at the end if no suitable position found
   }, []);
-
-  // Enhanced group management with slot filling
-  const addScalingGroup = useCallback(() => {
-    // Look for gaps in the existing group sequence based on naming conventions
-    const existingNumbers = scalingGroups
-        .map(group => {
-          const match = group.name.match(/Scaling Group (\d+)/);
-          return match ? parseInt(match[1], 10) : null;
-        })
-        .filter(Boolean)
-        .sort((a, b) => a - b);
-
-    // Find the first available gap in the sequence
-    let newGroupNumber = 1;
-    for (let i = 0; i < existingNumbers.length; i++) {
-      if (existingNumbers[i] !== i + 1) {
-        newGroupNumber = i + 1;
-        break;
-      }
-      newGroupNumber = i + 2; // If no gap found, use the next number
-    }
-
-    // Get the correct insertion index based on the numbering
-    const insertionIndex = determineInsertionIndex(newGroupNumber, scalingGroups);
-
-    // Get the appropriate previous results to use as base values
-    const previousIndex = insertionIndex > 0 ? insertionIndex - 1 : null;
-    const previousResults = previousIndex !== null
-        ? scalingGroups[previousIndex].items.reduce((acc, item) => {
-          acc[item.id] = {
-            scaledValue: item.enabled ? item.scaledValue : item.baseValue,
-            enabled: item.enabled
-          };
-          return acc;
-        }, {})
-        : null;
-
-    const newGroup = {
-      id: `group-${Date.now()}`,
-      name: `Scaling Group ${newGroupNumber}`,
-      isProtected: false,
-      _scalingType: filterKeyword, // Store the scaling type
-      items: baseCosts.map(cost => {
-        // If we have previous results, use them as base values
-        const baseValue = previousResults
-            ? (previousResults[cost.id]?.scaledValue ?? cost.baseValue)
-            : cost.baseValue || 0;
-
-        return {
-          ...cost,
-          originalBaseValue: cost.baseValue || 0, // Preserve original
-          baseValue: baseValue, // Dynamic base for cumulative calc
-          scalingFactor: 1,
-          operation: 'multiply',
-          enabled: true,
-          notes: '',
-          scaledValue: baseValue
-        };
-      })
-    };
-
-    // Insert the new group at the appropriate position
-    const newGroups = [...scalingGroups];
-    newGroups.splice(insertionIndex, 0, newGroup);
-
-    // Recalculate all groups that come after to maintain cumulative calculations
-    const updatedGroups = propagateChanges(newGroups, insertionIndex);
-
-    setScalingGroups(updatedGroups);
-    setSelectedGroup(insertionIndex);
-
-    addToHistory(
-        updatedGroups,
-        'add_group',
-        `Added ${newGroup.name} at position ${insertionIndex + 1}`,
-        {
-          groupId: newGroup.id,
-          groupIndex: insertionIndex,
-          previousResults
-        }
-    );
-
-    if (onScalingGroupsChange) {
-      onScalingGroupsChange(updatedGroups);
-    }
-  }, [scalingGroups, baseCosts, addToHistory, propagateChanges, onScalingGroupsChange, determineInsertionIndex, filterKeyword]);
-
-  // Enhanced remove group with cumulative recalculation
-  const removeScalingGroup = useCallback((index) => {
-    const groupToRemove = scalingGroups[index];
-    if (protectedTabs.has(groupToRemove.id)) {
-      setErrors(prev => ({
-        ...prev,
-        removal: `Cannot remove protected group "${groupToRemove.name}"`
-      }));
-      return;
-    }
-
-    // Remove the group
-    let newGroups = scalingGroups.filter((_, idx) => idx !== index);
-
-    // Propagate changes if we're removing a group that's not the last one
-    if (index < newGroups.length) {
-      // If we're removing a group that's not the first one, use the previous group's results
-      // Otherwise, reset to original base values
-      if (index > 0) {
-        // Propagate changes starting from the group before the one we just removed
-        newGroups = propagateChanges(newGroups, index - 1);
-      } else {
-        // If we removed the first group, the new first group should use original base values
-        const firstGroup = {...newGroups[0]};
-        firstGroup.items = firstGroup.items.map(item => ({
-          ...item,
-          baseValue: item.originalBaseValue || item.baseValue,
-          scaledValue: calculateScaledValue(
-              item.originalBaseValue || item.baseValue,
-              item.operation,
-              item.scalingFactor
-          )
-        }));
-        newGroups[0] = firstGroup;
-
-        // Then propagate changes from this group onward
-        newGroups = propagateChanges(newGroups, 0);
-      }
-    }
-
-    setScalingGroups(newGroups);
-    if (selectedGroup >= index) {
-      setSelectedGroup(Math.max(0, selectedGroup - 1));
-    }
-
-    // Add to history
-    addToHistory(
-        newGroups,
-        'remove_group',
-        `Removed scaling group "${groupToRemove.name}" and updated cumulative values`,
-        {
-          groupId: groupToRemove.id,
-          groupIndex: index,
-          removedGroup: groupToRemove
-        }
-    );
-
-    if (onScalingGroupsChange) {
-      onScalingGroupsChange(newGroups);
-    }
-  }, [scalingGroups, selectedGroup, addToHistory, protectedTabs, propagateChanges, calculateScaledValue, onScalingGroupsChange]);
-
-  // Drag and drop functionality
-  const moveItem = useCallback((dragIndex, hoverIndex) => {
-    const dragItem = scalingGroups[selectedGroup].items[dragIndex];
-    const newItems = [...scalingGroups[selectedGroup].items];
-    newItems.splice(dragIndex, 1);
-    newItems.splice(hoverIndex, 0, dragItem);
-
-    const newGroups = [...scalingGroups];
-    newGroups[selectedGroup] = {
-      ...newGroups[selectedGroup],
-      items: newItems
-    };
-
-    setScalingGroups(newGroups);
-
-    addToHistory(
-        newGroups,
-        'reorder_items',
-        `Reordered items in "${newGroups[selectedGroup].name}"`,
-        {
-          groupId: newGroups[selectedGroup].id,
-          dragIndex,
-          hoverIndex
-        }
-    );
-
-    if (onScalingGroupsChange) {
-      onScalingGroupsChange(newGroups);
-    }
-  }, [scalingGroups, selectedGroup, addToHistory, onScalingGroupsChange]);
-
-  // Enhanced export with history
-  const exportConfiguration = useCallback(() => {
-    setIsExporting(true);
-    try {
-      // Enhanced format with cumulative calculation metadata
-      const exportData = {
-        version: "1.2.0", // Update version to indicate enhanced cumulative support
-        metadata: {
-          exportDate: new Date().toISOString(),
-          exportedBy: "ScalingModule",
-          description: "Complete scaling configuration with cumulative calculations",
-          scalingType: filterKeyword || "mixed"
-        },
-        currentState: {
-          selectedGroupIndex: selectedGroup,
-          scalingGroups: scalingGroups.map((group, index) => ({
-            ...group,
-            isCumulative: index > 0, // Flag to indicate cumulative source
-            sourceGroupIndex: index > 0 ? index - 1 : null // Source of base values
-          })),
-          protectedTabs: Array.from(protectedTabs),
-          itemExpressions: itemExpressions || {}
-        },
-        history: historyEntries
-      };
-
-      const config = JSON.stringify(exportData, null, 2);
-
-      // Create download link
-      const blob = new Blob([config], { type: 'application/json' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `scaling-config-${filterKeyword || 'mixed'}-${Date.now()}.json`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-    } catch (error) {
-      setErrors(prev => ({
-        ...prev,
-        export: error.message
-      }));
-    } finally {
-      setIsExporting(false);
-    }
-  }, [
-    scalingGroups,
-    protectedTabs,
-    selectedGroup,
-    historyEntries,
-    itemExpressions,
-    filterKeyword
-  ]);
 
   // Process imported configuration for cumulative calculations
   const processImportedConfiguration = useCallback((groups) => {
@@ -811,7 +606,68 @@ const ExtendedScaling = ({
     return validatedGroups;
   }, [calculateScaledValue, filterKeyword]);
 
-  // Enhanced import with backward compatibility
+  // Enhanced export with history and tabConfigs
+  const exportConfiguration = useCallback(() => {
+    setIsExporting(true);
+    try {
+      // Ensure tab configs are synced before export
+      syncTabConfigs();
+
+      // Enhanced format with cumulative calculation metadata
+      const exportData = {
+        version: "1.2.0", // Update version to indicate enhanced cumulative support
+        metadata: {
+          exportDate: new Date().toISOString(),
+          exportedBy: "ScalingModule",
+          description: "Complete scaling configuration with cumulative calculations",
+          scalingType: filterKeyword || "mixed"
+        },
+        currentState: {
+          selectedGroupIndex: selectedGroup,
+          scalingGroups: scalingGroups.map((group, index) => ({
+            ...group,
+            isCumulative: index > 0, // Flag to indicate cumulative source
+            sourceGroupIndex: index > 0 ? index - 1 : null // Source of base values
+          })),
+          protectedTabs: Array.from(protectedTabs),
+          itemExpressions: itemExpressions || {},
+          tabConfigs: tabConfigs // Include tabConfigs in export
+        },
+        history: historyEntries
+      };
+
+      const config = JSON.stringify(exportData, null, 2);
+
+      // Create download link
+      const blob = new Blob([config], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `scaling-config-${filterKeyword || 'mixed'}-${Date.now()}.json`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } catch (error) {
+      setErrors(prev => ({
+        ...prev,
+        export: error.message
+      }));
+    } finally {
+      setIsExporting(false);
+    }
+  }, [
+    scalingGroups,
+    protectedTabs,
+    selectedGroup,
+    historyEntries,
+    itemExpressions,
+    filterKeyword,
+    tabConfigs,
+    syncTabConfigs
+  ]);
+
+  // Enhanced import with backward compatibility and tabConfigs support
   const importConfiguration = useCallback((event) => {
     setIsImporting(true);
     try {
@@ -832,16 +688,18 @@ const ExtendedScaling = ({
           const isV12Format = importedData.version === "1.2.0";
 
           // Extract scaling groups and protected tabs based on format
-          let importedGroups, importedProtectedTabs;
+          let importedGroups, importedProtectedTabs, importedTabConfigs;
 
           if (isLegacyFormat) {
             // Handle legacy format
             importedGroups = importedData.groups;
             importedProtectedTabs = new Set(importedData.protectedTabs || []);
+            importedTabConfigs = null; // Not available in legacy format
           } else if (isV11Format || isV12Format) {
             // Handle 1.1 or 1.2 format
             importedGroups = importedData.currentState.scalingGroups;
             importedProtectedTabs = new Set(importedData.currentState.protectedTabs || []);
+            importedTabConfigs = importedData.currentState.tabConfigs || null;
           } else {
             throw new Error("Invalid configuration format");
           }
@@ -876,6 +734,27 @@ const ExtendedScaling = ({
           setProtectedTabs(importedProtectedTabs);
           setSelectedGroup(0);
 
+          // Handle tab configurations
+          if (importedTabConfigs && Array.isArray(importedTabConfigs)) {
+            // Ensure tabConfigs match current groups
+            const syncedTabConfigs = processedGroups.map(group => {
+              const matchingTabConfig = importedTabConfigs.find(tab => tab.id === group.id);
+
+              return {
+                id: group.id,
+                label: group.name,
+                isProtected: importedProtectedTabs.has(group.id),
+                _scalingType: group._scalingType || filterKeyword,
+                ...(matchingTabConfig || {})
+              };
+            });
+
+            setTabConfigs(syncedTabConfigs);
+          } else {
+            // Generate new tabConfigs
+            syncTabConfigs();
+          }
+
           // Create new history
           const newHistory = [processedGroups];
           setHistory(newHistory);
@@ -889,7 +768,8 @@ const ExtendedScaling = ({
             description: `Imported ${processedGroups.length} scaling groups from ${file.name}`,
             snapshots: {
               scalingGroups: JSON.parse(JSON.stringify(processedGroups)),
-              protectedTabs: Array.from(importedProtectedTabs)
+              protectedTabs: Array.from(importedProtectedTabs),
+              tabConfigs: JSON.parse(JSON.stringify(tabConfigs || []))
             }
           };
           setHistoryEntries([initialHistoryEntry]);
@@ -897,6 +777,11 @@ const ExtendedScaling = ({
           // Update parent component
           if (onScalingGroupsChange) {
             onScalingGroupsChange(processedGroups);
+          }
+
+          // Update active group if callback provided
+          if (onActiveGroupChange) {
+            onActiveGroupChange(0, filterKeyword);
           }
         } catch (error) {
           setErrors(prev => ({
@@ -927,9 +812,242 @@ const ExtendedScaling = ({
       }));
       setIsImporting(false);
     }
-  }, [onScalingGroupsChange, filterKeyword, processImportedConfiguration]);
+  }, [
+    onScalingGroupsChange,
+    filterKeyword,
+    processImportedConfiguration,
+    syncTabConfigs,
+    tabConfigs,
+    onActiveGroupChange
+  ]);
 
+  // Enhanced group management with slot filling and tab config maintenance
+  const addScalingGroup = useCallback(() => {
+    // Look for gaps in the existing group sequence based on naming conventions
+    const existingNumbers = scalingGroups
+        .map(group => {
+          const match = group.name.match(/Scaling Group (\d+)/);
+          return match ? parseInt(match[1], 10) : null;
+        })
+        .filter(Boolean)
+        .sort((a, b) => a - b);
 
+    // Find the first available gap in the sequence
+    let newGroupNumber = 1;
+    for (let i = 0; i < existingNumbers.length; i++) {
+      if (existingNumbers[i] !== i + 1) {
+        newGroupNumber = i + 1;
+        break;
+      }
+      newGroupNumber = i + 2; // If no gap found, use the next number
+    }
+
+    // Get the correct insertion index based on the numbering
+    const insertionIndex = determineInsertionIndex(newGroupNumber, scalingGroups);
+
+    // Get the appropriate previous results to use as base values
+    const previousIndex = insertionIndex > 0 ? insertionIndex - 1 : null;
+    const previousResults = previousIndex !== null
+        ? scalingGroups[previousIndex].items.reduce((acc, item) => {
+          acc[item.id] = {
+            scaledValue: item.enabled ? item.scaledValue : item.baseValue,
+            enabled: item.enabled
+          };
+          return acc;
+        }, {})
+        : null;
+
+    const newGroup = {
+      id: `group-${Date.now()}`,
+      name: `Scaling Group ${newGroupNumber}`,
+      isProtected: false,
+      _scalingType: filterKeyword, // Store the scaling type
+      items: baseCosts.map(cost => {
+        // If we have previous results, use them as base values
+        const baseValue = previousResults
+            ? (previousResults[cost.id]?.scaledValue ?? cost.baseValue)
+            : cost.baseValue || 0;
+
+        return {
+          ...cost,
+          originalBaseValue: cost.baseValue || 0, // Preserve original
+          baseValue: baseValue, // Dynamic base for cumulative calc
+          scalingFactor: 1,
+          operation: 'multiply',
+          enabled: true,
+          notes: '',
+          scaledValue: baseValue
+        };
+      })
+    };
+
+    // Insert the new group at the appropriate position
+    const newGroups = [...scalingGroups];
+    newGroups.splice(insertionIndex, 0, newGroup);
+
+    // Recalculate all groups that come after to maintain cumulative calculations
+    const updatedGroups = propagateChanges(newGroups, insertionIndex);
+
+    setScalingGroups(updatedGroups);
+
+    // Update selected group and notify parent if callback provided
+    setSelectedGroup(insertionIndex);
+    if (onActiveGroupChange) {
+      onActiveGroupChange(insertionIndex, filterKeyword);
+    }
+
+    // Update tab configs
+    const newTabConfigs = updatedGroups.map(group => ({
+      id: group.id,
+      label: group.name,
+      isProtected: protectedTabs.has(group.id),
+      _scalingType: group._scalingType || filterKeyword
+    }));
+    setTabConfigs(newTabConfigs);
+
+    addToHistory(
+        updatedGroups,
+        'add_group',
+        `Added ${newGroup.name} at position ${insertionIndex + 1}`,
+        {
+          groupId: newGroup.id,
+          groupIndex: insertionIndex,
+          previousResults,
+          tabConfigs: newTabConfigs
+        }
+    );
+
+    if (onScalingGroupsChange) {
+      onScalingGroupsChange(updatedGroups);
+    }
+  }, [
+    scalingGroups,
+    baseCosts,
+    addToHistory,
+    propagateChanges,
+    onScalingGroupsChange,
+    determineInsertionIndex,
+    filterKeyword,
+    protectedTabs,
+    onActiveGroupChange
+  ]);
+
+  // Enhanced remove group with cumulative recalculation and tab config maintenance
+  const removeScalingGroup = useCallback((index) => {
+    const groupToRemove = scalingGroups[index];
+    if (protectedTabs.has(groupToRemove.id)) {
+      setErrors(prev => ({
+        ...prev,
+        removal: `Cannot remove protected group "${groupToRemove.name}"`
+      }));
+      return;
+    }
+
+    // Remove the group
+    let newGroups = scalingGroups.filter((_, idx) => idx !== index);
+
+    // Propagate changes if we're removing a group that's not the last one
+    if (index < newGroups.length) {
+      // If we're removing a group that's not the first one, use the previous group's results
+      // Otherwise, reset to original base values
+      if (index > 0) {
+        // Propagate changes starting from the group before the one we just removed
+        newGroups = propagateChanges(newGroups, index - 1);
+      } else {
+        // If we removed the first group, the new first group should use original base values
+        const firstGroup = {...newGroups[0]};
+        firstGroup.items = firstGroup.items.map(item => ({
+          ...item,
+          baseValue: item.originalBaseValue || item.baseValue,
+          scaledValue: calculateScaledValue(
+              item.originalBaseValue || item.baseValue,
+              item.operation,
+              item.scalingFactor
+          )
+        }));
+        newGroups[0] = firstGroup;
+
+        // Then propagate changes from this group onward
+        newGroups = propagateChanges(newGroups, 0);
+      }
+    }
+
+    setScalingGroups(newGroups);
+
+    // Update selected group and notify parent if needed
+    const newSelectedIndex = Math.max(0, selectedGroup - (selectedGroup >= index ? 1 : 0));
+    setSelectedGroup(newSelectedIndex);
+    if (onActiveGroupChange) {
+      onActiveGroupChange(newSelectedIndex, filterKeyword);
+    }
+
+    // Update tab configs
+    const newTabConfigs = newGroups.map(group => ({
+      id: group.id,
+      label: group.name,
+      isProtected: protectedTabs.has(group.id),
+      _scalingType: group._scalingType || filterKeyword
+    }));
+    setTabConfigs(newTabConfigs);
+
+    // Add to history
+    addToHistory(
+        newGroups,
+        'remove_group',
+        `Removed scaling group "${groupToRemove.name}" and updated cumulative values`,
+        {
+          groupId: groupToRemove.id,
+          groupIndex: index,
+          removedGroup: groupToRemove,
+          tabConfigs: newTabConfigs
+        }
+    );
+
+    if (onScalingGroupsChange) {
+      onScalingGroupsChange(newGroups);
+    }
+  }, [
+    scalingGroups,
+    selectedGroup,
+    addToHistory,
+    protectedTabs,
+    propagateChanges,
+    calculateScaledValue,
+    onScalingGroupsChange,
+    filterKeyword,
+    onActiveGroupChange
+  ]);
+
+  // Drag and drop functionality
+  const moveItem = useCallback((dragIndex, hoverIndex) => {
+    const dragItem = scalingGroups[selectedGroup].items[dragIndex];
+    const newItems = [...scalingGroups[selectedGroup].items];
+    newItems.splice(dragIndex, 1);
+    newItems.splice(hoverIndex, 0, dragItem);
+
+    const newGroups = [...scalingGroups];
+    newGroups[selectedGroup] = {
+      ...newGroups[selectedGroup],
+      items: newItems
+    };
+
+    setScalingGroups(newGroups);
+
+    addToHistory(
+        newGroups,
+        'reorder_items',
+        `Reordered items in "${newGroups[selectedGroup].name}"`,
+        {
+          groupId: newGroups[selectedGroup].id,
+          dragIndex,
+          hoverIndex
+        }
+    );
+
+    if (onScalingGroupsChange) {
+      onScalingGroupsChange(newGroups);
+    }
+  }, [scalingGroups, selectedGroup, addToHistory, onScalingGroupsChange]);
 
   // Enhanced item updates with propagation
   const updateGroupItem = useCallback((groupIndex, itemIndex, updates) => {
@@ -1042,14 +1160,13 @@ const ExtendedScaling = ({
     });
   }, [scalingGroups]);
 
-  // Initialize tabConfigs when scaling groups change
   useEffect(() => {
-    const newTabConfigs = scalingGroups.map(group => ({
-      id: group.id,
-      label: group.name
-    }));
-    setTabConfigs(newTabConfigs);
-  }, [scalingGroups]);
+    // Ensure selectedGroup stays within bounds
+    if (selectedGroup >= scalingGroups.length) {
+      setSelectedGroup(Math.max(0, scalingGroups.length - 1));
+      onActiveGroupChange(Math.max(0, scalingGroups.length - 1), filterKeyword);
+    }
+  }, [scalingGroups, selectedGroup, filterKeyword, onActiveGroupChange]);
 
   // Effect to notify parent of changes
   useEffect(() => {
@@ -1091,10 +1208,34 @@ const ExtendedScaling = ({
     }));
   }, []);
 
+  // Sync selectedGroup with activeGroupIndex prop when it changes
+  useEffect(() => {
+    if (activeGroupIndex !== undefined && activeGroupIndex !== null) {
+      const validIndex = Math.max(0, Math.min(activeGroupIndex, scalingGroups.length - 1));
+      if (validIndex !== selectedGroup) {
+        setSelectedGroup(validIndex);
+      }
+    }
+  }, [activeGroupIndex, scalingGroups.length, selectedGroup]);
+
+
+// Notify parent component about final results when they change
+  useEffect(() => {
+    if (onFinalResultsGenerated) {
+      const summaryItems = generateSummaryItems();
+      onFinalResultsGenerated(summaryItems, filterKeyword);
+    }
+  }, [generateSummaryItems, onFinalResultsGenerated, filterKeyword]);
+
+
   return (
       <DndProvider backend={HTML5Backend}>
         <div className="scaling-container">
-          <Tab.Group selectedIndex={selectedGroup} onChange={setSelectedGroup}>
+          <Tab.Group selectedIndex={selectedGroup} onChange={(index) => {
+            const newIndex = Math.max(0, Math.min(index, scalingGroups.length - 1));
+            setSelectedGroup(newIndex);
+            onActiveGroupChange(newIndex, filterKeyword);
+          }}>
             <div className="scaling-header">
               <Tab.List className="scaling-tab-list">
                 {scalingGroups.map((group, index) => (
@@ -1233,6 +1374,17 @@ const ExtendedScaling = ({
                             newGroups[groupIndex].name = e.target.value;
                             setScalingGroups(newGroups);
 
+                            // Update tab configs when group name changes
+                            const newTabConfigs = [...tabConfigs];
+                            const tabIndex = newTabConfigs.findIndex(tab => tab.id === group.id);
+                            if (tabIndex !== -1) {
+                              newTabConfigs[tabIndex] = {
+                                ...newTabConfigs[tabIndex],
+                                label: e.target.value
+                              };
+                              setTabConfigs(newTabConfigs);
+                            }
+
                             // Add to history
                             addToHistory(
                                 newGroups,
@@ -1242,7 +1394,8 @@ const ExtendedScaling = ({
                                   groupId: group.id,
                                   groupIndex,
                                   oldName: group.name,
-                                  newName: e.target.value
+                                  newName: e.target.value,
+                                  tabConfigs: newTabConfigs
                                 }
                             );
 
@@ -1290,8 +1443,8 @@ const ExtendedScaling = ({
                                     <div className="cumulative-value-container">
                                       <span>Base Value: {item.baseValue.toFixed(2)}</span>
                                       <span className="cumulative-indicator">
-                                        ← Previous Tab Result
-                                      </span>
+                                ← Previous Tab Result
+                              </span>
                                       <div className="original-value">
                                         (Original: {item.originalBaseValue.toFixed(2)})
                                       </div>
@@ -1402,6 +1555,66 @@ const ExtendedScaling = ({
         </div>
       </DndProvider>
   );
+};
+
+ExtendedScaling.propTypes = {
+  baseCosts: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        label: PropTypes.string,
+        value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+        baseValue: PropTypes.number,
+        vKey: PropTypes.string,
+        rKey: PropTypes.string
+      })
+  ).isRequired,
+  onScaledValuesChange: PropTypes.func,
+  onSave: PropTypes.func,
+  initialScalingGroups: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        isProtected: PropTypes.bool,
+        _scalingType: PropTypes.string,
+        items: PropTypes.arrayOf(
+            PropTypes.shape({
+              id: PropTypes.string.isRequired,
+              label: PropTypes.string,
+              originalBaseValue: PropTypes.number,
+              baseValue: PropTypes.number,
+              scalingFactor: PropTypes.number,
+              operation: PropTypes.string,
+              enabled: PropTypes.bool,
+              notes: PropTypes.string,
+              scaledValue: PropTypes.number,
+              vKey: PropTypes.string,
+              rKey: PropTypes.string
+            })
+        ).isRequired
+      })
+  ),
+  onScalingGroupsChange: PropTypes.func,
+  filterKeyword: PropTypes.string.isRequired,
+  V: PropTypes.object,
+  R: PropTypes.object,
+  toggleV: PropTypes.func,
+  toggleR: PropTypes.func,
+  // Tab persistence props:
+  activeGroupIndex: PropTypes.number,
+  onActiveGroupChange: PropTypes.func
+};
+
+ExtendedScaling.defaultProps = {
+  baseCosts: [],
+  initialScalingGroups: [],
+  onScaledValuesChange: () => {},
+  onScalingGroupsChange: () => {},
+  V: {},
+  R: {},
+  toggleV: () => {},
+  toggleR: () => {},
+  activeGroupIndex: 0,
+  onActiveGroupChange: () => {}
 };
 
 export default ExtendedScaling;
