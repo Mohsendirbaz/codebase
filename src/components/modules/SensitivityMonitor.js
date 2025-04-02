@@ -11,8 +11,8 @@ import useFormValues from '../../useFormValues';
  * @param {string} props.version - Current version number
  * @param {string} props.activeTab - Currently active application tab
  */
-// Create a ref to store the refresh function
-const refreshRef = { current: null };
+// Create a ref to store the parameter actions for external access
+const sensitivityActionRef = { current: null };
 
 const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
   // Get form values
@@ -24,10 +24,6 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
   const [filterMode, setFilterMode] = useState('all');
   const [selectedParameter, setSelectedParameter] = useState(null);
   const [parameterDetails, setParameterDetails] = useState(null);
-  const [availableParameters, setAvailableParameters] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [currentVersion, setCurrentVersion] = useState(version);
-  const [isRestarting, setIsRestarting] = useState(false);
 
   // Mode color mapping for visual indication
   const modeColorMap = {
@@ -37,53 +33,9 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
     monteCarlo: 'mode-montecarlo'
   };
 
-  // Refresh parameters by temporarily setting version to 0
-  const refreshParameters = useCallback(async () => {
-    const originalVersion = version;
-    setCurrentVersion('0');
-    await new Promise(resolve => setTimeout(resolve, 100)); // Small delay
-    setCurrentVersion(originalVersion);
-  }, [version]);
-
-  // Store the refresh function in the ref
-  useEffect(() => {
-    refreshRef.current = refreshParameters;
-  }, [refreshParameters]);
-
-  // Restart Flask server
-  const restartFlaskServer = useCallback(async () => {
-    setIsRestarting(true);
-    setIsLoading(true);
-    try {
-      const response = await fetch('http://localhost:5001/restart', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' }
-      });
-
-      if (!response.ok) {
-        throw new Error(`Failed to restart server: ${response.status}`);
-      }
-
-      const data = await response.json();
-      console.log('Server restart initiated:', data);
-
-      // Wait a bit for server to restart
-      await new Promise(resolve => setTimeout(resolve, 3000));
-
-      // Refresh parameters after restart
-      await refreshParameters();
-    } catch (error) {
-      console.error('Error restarting Flask server:', error);
-      alert('Failed to restart the server. Please check the console for details.');
-    } finally {
-      setIsLoading(false);
-      setIsRestarting(false);
-    }
-  }, [refreshParameters]);
-
   // Modes available for sensitivity analysis
   const sensitivityModes = [
-    { id: 'range', label: 'multiple' },
+    { id: 'range', label: 'Multiple Values' },
     { id: 'discrete', label: 'Discrete Values - Test specific values'},
     { id: 'percentage', label: 'Percentage Change - Test percentage variations'},
     { id: 'monteCarlo', label: 'Monte Carlo - Random sampling within bounds' }
@@ -99,76 +51,7 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
     { id: 'product', label: 'Product (A×B)' }
   ];
 
-  // Fetch available parameters and start monitoring
-  useEffect(() => {
-    if (!currentVersion) return;
-
-    const fetchParameters = async () => {
-      setIsLoading(true);
-      try {
-        // Initial parameters fetch
-        const response = await fetch(`http://localhost:5001/parameters/${currentVersion}`);
-        if (!response.ok) {
-          throw new Error(`Failed to fetch parameters: ${response.status}`);
-        }
-
-        const data = await response.json();
-        setAvailableParameters(data.parameters || []);
-
-        // Start sensitivity monitoring
-        const monitorResponse = await fetch('http://localhost:5001/monitor/sensitivity', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ version: currentVersion })
-        });
-
-        if (!monitorResponse.ok) {
-          console.warn('Sensitivity monitoring initialization failed:', monitorResponse.status);
-        } else {
-          const monitorData = await monitorResponse.json();
-          console.log('Sensitivity monitoring initialized:', monitorData);
-        }
-
-      } catch (error) {
-        console.error('Error in sensitivity monitoring:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchParameters();
-
-    // Poll for sensitivity updates every 5 seconds
-    const intervalId = setInterval(async () => {
-      try {
-        const response = await fetch('http://localhost:5001/monitor/sensitivity', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ version: currentVersion })
-        });
-
-        if (response.ok) {
-          const data = await response.json();
-          if (data.sensitivity_values) {
-            // Update sensitivity values in state
-            setS(prevS => ({
-              ...prevS,
-              ...data.sensitivity_values
-            }));
-          }
-        }
-      } catch (error) {
-        console.warn('Sensitivity update check failed:', error);
-      }
-    }, 5000);
-
-    // Cleanup interval on unmount
-    return () => clearInterval(intervalId);
-  }, [currentVersion, setS]);
-
   // Filter parameters based on search term and filter mode
-  // In SensitivityMonitor.js - update the filteredParameters useMemo function
-
   const filteredParameters = useMemo(() => {
     // Check if search term contains comma-separated values
     if (searchTerm.includes(',')) {
@@ -406,7 +289,7 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
     setS(prevS => {
       const newS = {};
       // Reset all S parameters to initial state
-      for (let i = 1; i <= 59; i++) {
+      for (let i = 10; i <= 79; i++) {
         const key = `S${i}`;
         newS[key] = {
           mode: null,
@@ -427,6 +310,14 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
   const isVisible = useMemo(() => {
     return ['Input', 'Case1', 'Case2', 'Case3', 'Scaling'].includes(activeTab);
   }, [activeTab]);
+
+  // Store actions in the ref for external access
+  useEffect(() => {
+    sensitivityActionRef.current = {
+      toggleParameterEnabled,
+      openParameterDetails
+    };
+  }, [toggleParameterEnabled, openParameterDetails]);
 
   // If not visible, don't render anything
   if (!isVisible) return null;
@@ -489,144 +380,125 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
                 >
                   Reset All
                 </button>
-                <button
-                    className="refresh-button"
-                    onClick={refreshParameters}
-                    title="Refresh sensitivity parameters"
-                >
-                  Refresh
-                </button>
-                <button
-                    className="restart-button"
-                    onClick={restartFlaskServer}
-                    title="Restart Flask server"
-                    disabled={isRestarting}
-                >
-                  {isRestarting ? 'Restarting...' : 'Restart Server'}
-                </button>
               </div>
 
-              {isLoading ? (
-                  <div className="loading-indicator">Loading parameters...</div>
-              ) : (
-                  <div className="parameters-container-s">
-                    {filteredParameters.length === 0 ? (
-                        <div className="empty-state">
-                          No sensitivity parameters match your criteria
-                        </div>
-                    ) : (
-                        <ul className="parameters-list">
-                          {filteredParameters.map(([key, value]) => (
-                              <li key={key} className={`parameter-item-s ${value.enabled ? 'enabled' : 'disabled'}`}>
-                                <div className="parameter-header-s">
-                                  <div className="parameter-info">
-                                    <span className="parameter-key">{key}</span> <br />
-                                    <span className="parameter-name">{getParameterName(key)}</span>
+              <div className="parameters-container-s">
+                {filteredParameters.length === 0 ? (
+                    <div className="empty-state">
+                      No sensitivity parameters match your criteria
+                    </div>
+                ) : (
+                    <ul className="parameters-list">
+                      {filteredParameters.map(([key, value]) => (
+                          <li key={key} className={`parameter-item-s ${value.enabled ? 'enabled' : 'disabled'}`}>
+                            <div className="parameter-header-s">
+                              <div className="parameter-info">
+                                <span className="parameter-key">{key}</span> <br />
+                                <span className="parameter-name">{getParameterName(key)}</span>
+                              </div>
+
+                              <div className="parameter-controls-s">
+                                <label className="toggle-label">
+                                  <input
+                                      type="checkbox"
+                                      checked={value.enabled}
+                                      onChange={() => toggleParameterEnabled(key)}
+                                      className="toggle-checkbox"
+                                  />
+                                  <span className="toggle-slider"></span>
+                                </label>
+
+                                <div className="parameter-actions">
+                                  <button
+                                      className="edit-button"
+                                      onClick={() => openParameterDetails(key)}
+                                      disabled={!value.enabled}
+                                      title="Configure parameter"
+                                  >
+                                    Configure
+                                  </button>
+                                  <button
+                                      className="parameter-reset-button"
+                                      onClick={() => resetParameter(key)}
+                                      disabled={!value.enabled}
+                                      title="Reset parameter"
+                                  >
+                                    Reset
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+
+                            {value.enabled && (
+                                <div className="parameter-summary-s">
+                                  <div className="parameter-mode">
+                                    <span className="label">Mode:</span>
+                                    <span className={`value ${value.mode ? modeColorMap[value.mode] : ''}`}>
+                            {value.mode ?
+                                sensitivityModes.find(m => m.id === value.mode)?.label || value.mode
+                                : 'Not configured'}
+                          </span>
                                   </div>
 
-                                  <div className="parameter-controls-s">
-                                    <label className="toggle-label">
-                                      <input
-                                          type="checkbox"
-                                          checked={value.enabled}
-                                          onChange={() => toggleParameterEnabled(key)}
-                                          className="toggle-checkbox"
-                                      />
-                                      <span className="toggle-slider"></span>
-                                    </label>
+                                  {value.values.length > 0 && (
+                                      <div className="parameter-values">
+                                        <span className="label">Values:</span>
+                                        <span className="value values-display">
+                              {formatParameterValues(value.values)}
+                            </span>
+                                      </div>
+                                  )}
 
-                                    <div className="parameter-actions">
-                                      <button
-                                          className="edit-button"
-                                          onClick={() => openParameterDetails(key)}
-                                          disabled={!value.enabled}
-                                          title="Configure parameter"
-                                      >
-                                        Configure
-                                      </button>
-                                      <button
-                                          className="parameter-reset-button"
-                                          onClick={() => resetParameter(key)}
-                                          disabled={!value.enabled}
-                                          title="Reset parameter"
-                                      >
-                                        Reset
-                                      </button>
+                                  {value.compareToKey && (
+                                      <div className="parameter-comparison">
+                                        <span className="label">Compared to:</span>
+                                        <span className="value">
+                              {getParameterName(value.compareToKey)}
+                            </span>
+                                      </div>
+                                  )}
+
+                                  {value.comparisonType && value.comparisonType !== 'none' && (
+                                      <div className="parameter-comparison">
+                                        <span className="label">Comparison Type:</span>
+                                        <span className="value">
+                              {comparisonTypes.find(t => t.id === value.comparisonType)?.label || value.comparisonType}
+                            </span>
+                                      </div>
+                                  )}
+
+                                  <div className="parameter-plots">
+                                    <div className="plot-indicators">
+                                      {value.waterfall && (
+                                          <div className="plot-item">
+                                            <span className="plot-box waterfall"></span>
+                                            <span className="plot-label">Waterfall</span>
+                                          </div>
+                                      )}
+                                      {value.bar && (
+                                          <div className="plot-item">
+                                            <span className="plot-box bar"></span>
+                                            <span className="plot-label">Bar</span>
+                                          </div>
+                                      )}
+                                      {value.point && (
+                                          <div className="plot-item">
+                                            <span className="plot-box point"></span>
+                                            <span className="plot-label">Point</span>
+                                          </div>
+                                      )}
+                                      {!value.waterfall && !value.bar && !value.point && (
+                                          <span className="no-plots"></span>
+                                      )}
                                     </div>
                                   </div>
                                 </div>
-
-                                {value.enabled && (
-                                    <div className="parameter-summary-s">
-                                      <div className="parameter-mode">
-                                        <span className="label">Mode:</span>
-                                        <span className={`value ${value.mode ? modeColorMap[value.mode] : ''}`}>
-                              {value.mode ?
-                                  sensitivityModes.find(m => m.id === value.mode)?.label || value.mode
-                                  : 'Not configured'}
-                            </span>
-                                      </div>
-
-                                      {value.values.length > 0 && (
-                                          <div className="parameter-values">
-                                            <span className="label">Values:</span>
-                                            <span className="value values-display">
-                                {formatParameterValues(value.values)}
-                              </span>
-                                          </div>
-                                      )}
-
-                                      {value.compareToKey && (
-                                          <div className="parameter-comparison">
-                                            <span className="label">Compared to:</span>
-                                            <span className="value">
-                                {getParameterName(value.compareToKey)}
-                              </span>
-                                          </div>
-                                      )}
-
-                                      {value.comparisonType && value.comparisonType !== 'none' && (
-                                          <div className="parameter-comparison">
-                                            <span className="label">Comparison Type:</span>
-                                            <span className="value">
-                                {comparisonTypes.find(t => t.id === value.comparisonType)?.label || value.comparisonType}
-                              </span>
-                                          </div>
-                                      )}
-
-                                      <div className="parameter-plots">
-                                        <div className="plot-indicators">
-                                          {value.waterfall && (
-                                              <div className="plot-item">
-                                                <span className="plot-box waterfall"></span>
-                                                <span className="plot-label">Waterfall</span>
-                                              </div>
-                                          )}
-                                          {value.bar && (
-                                              <div className="plot-item">
-                                                <span className="plot-box bar"></span>
-                                                <span className="plot-label">Bar</span>
-                                              </div>
-                                          )}
-                                          {value.point && (
-                                              <div className="plot-item">
-                                                <span className="plot-box point"></span>
-                                                <span className="plot-label">Point</span>
-                                              </div>
-                                          )}
-                                          {!value.waterfall && !value.bar && !value.point && (
-                                              <span className="no-plots"></span>
-                                          )}
-                                        </div>
-                                      </div>
-                                    </div>
-                                )}
-                              </li>
-                          ))}
-                        </ul>
-                    )}
-                  </div>
-              )}
+                            )}
+                          </li>
+                      ))}
+                    </ul>
+                )}
+              </div>
 
               {/* Parameter details modal */}
               {selectedParameter && parameterDetails && (
@@ -831,4 +703,4 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
   );
 };
 
-export { SensitivityMonitor as default, refreshRef };
+export { SensitivityMonitor as default, sensitivityActionRef };
