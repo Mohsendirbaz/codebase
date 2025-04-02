@@ -3,16 +3,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useFormValues from './useFormValues';
 import Popup from './components/modules/Efficacy';
 import { faEdit, faCheck, faTimes, faSave, faUndo } from '@fortawesome/free-solid-svg-icons';
-import SensitivityAnalysisSelector from './components/modules/SensitivitySelector';
 import axios from 'axios';
-import { propertyMapping as referenceLabels } from './utils/LabelReferences';
+import { sensitivityActionRef } from './components/modules/SensitivityMonitor';
+
 
 const getLatestPlantLifetime = (formValues) => {
   const filteredValues = Object.values(formValues).filter(item => item.id === 'plantLifetimeAmount10');
   return filteredValues.length > 0 ? filteredValues[0].value : 40;
 };
 
-const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeyword, V,setV, toggleV, R, setR, toggleR, F, toggleF, S, setS, setVersion }) => {
+const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeyword, V,setV, toggleV, R, setR, toggleR, F, toggleF, S, setS, setVersion, summaryItems }) => {
   const { iconMapping } = useFormValues();
   const [showPopup, setShowPopup] = useState(false);
   const [popupPosition, setPopupPosition] = useState({ top: 0, left: 0 });
@@ -55,25 +55,30 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
     if (num >= 34 && num <= 38) return `F${num - 33}`;
     return null;
   };
+  const getFinalResultValue = (itemId) => {
+    if (!summaryItems || summaryItems.length === 0) return null;
 
+    const summaryItem = summaryItems.find(item => item.id === itemId);
+    return summaryItem ? summaryItem.finalResult : null;
+  };
   // Updated formItems to include S numbers
   const formItems = Object.keys(formValues)
-    .filter((key) => key.includes(filterKeyword))
-    .map((key) => {
-      const vKey = key.includes('vAmount') ? getVNumber(key.replace('vAmount', '')) : null;
-      const rKey = key.includes('rAmount') ? getRNumber(key.replace('rAmount', '')) : null;
-      const fKey = getFNumber(key);
-      const sKey = getSNumber(key);
-      return {
-        id: key,
-        vKey,
-        rKey,
-        fKey,
-        sKey,
-        ...formValues[key]
-      };
-    });
-    
+      .filter((key) => key.includes(filterKeyword))
+      .map((key) => {
+        const vKey = key.includes('vAmount') ? getVNumber(key.replace('vAmount', '')) : null;
+        const rKey = key.includes('rAmount') ? getRNumber(key.replace('rAmount', '')) : null;
+        const fKey = getFNumber(key);
+        const sKey = getSNumber(key);
+        return {
+          id: key,
+          vKey,
+          rKey,
+          fKey,
+          sKey,
+          ...formValues[key]
+        };
+      });
+
   // Store original labels when component mounts
   useEffect(() => {
     if (Object.keys(originalLabels).length === 0) {
@@ -156,14 +161,14 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
       setUpdateStatus('Update failed: ' + error.message);
     }
   };
-  
+
   // Function to reset labels to original values
   const handleResetLabels = () => {
     if (!originalLabels || Object.keys(originalLabels).length === 0) {
       setUpdateStatus('No original labels to restore');
       return;
     }
-    
+
     // Confirm reset
     if (window.confirm('Are you sure you want to reset all labels to their original values?')) {
       try {
@@ -173,7 +178,7 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
             handleInputChange({ target: { value: label } }, key, 'label');
           }
         });
-        
+
         setUpdateStatus('Labels reset to original values');
         setTimeout(() => setUpdateStatus(''), 3000);
       } catch (error) {
@@ -184,264 +189,289 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
   };
 
   return (
-    <>
-      {/* Label Management Section */}
-      <div className="labels-section">
-        <button 
-          className="update-button"
-          onClick={handleUpdateFormLabels}
-        >
-          <FontAwesomeIcon icon={faSave} /> Update Form Labels
-        </button>
-        <button 
-          className="reset-button"
-          onClick={handleResetLabels}
-        >
-          <FontAwesomeIcon icon={faUndo} /> Reset Labels
-        </button>
-        {updateStatus && <span className="update-status">{updateStatus}</span>}
-      </div>
-
-      {formItems.map((item) => (
-        <div key={item.id} className={`form-item-container ${item.id === selectedItemId ? 'highlighted-container' : ''}`}>
-
-          {/* Priority Section: F/V/R Checkboxes */}
-          <div className="checkbox-section">
-            {item.vKey && (
-              <div className="checkbox-group">
-                <span className="checkbox-label">{item.vKey}</span>
-                <input
-                  type="checkbox"
-                  className="custom-checkbox"
-                  checked={V[item.vKey] === 'on'}
-                  onChange={() => toggleV(item.vKey)}
-                />
-              </div>
-            )}
-            {item.rKey && (
-              <div className="checkbox-group">
-                <span className="checkbox-label">{item.rKey}</span>
-                <input
-                  type="checkbox"
-                  className="custom-checkbox"
-                  checked={R[item.rKey] === 'on'}
-                  onChange={() => toggleR(item.rKey)}
-                />
-              </div>
-            )}
-            {item.fKey && (
-              <div className="checkbox-group">
-                <span className="checkbox-label">{item.fKey}</span>
-                <input
-                  type="checkbox"
-                  className="custom-checkbox"
-                  checked={F[item.fKey] === 'on'}
-                  onChange={() => toggleF(item.fKey)}
-                />
-              </div>
-            )}
-          </div>
-
-          {/* Main Input Section */}
-          <div className="main-input-section">
-            {/* Label and Icon */}
-            <div className="label-container">
-              {iconMapping[item.id] && (
-                <FontAwesomeIcon icon={iconMapping[item.id]} className="input-icon" />
-              )}
-              {editingLabel === item.id ? (
-                <div className="edit-label-container">
-                  <input
-                    type="text"
-                    value={tempLabel}
-                    onChange={(e) => setTempLabel(e.target.value)}
-                    className="label-edit-input"
-                  />
-                  <div className="edit-actions">
-                    <FontAwesomeIcon
-                      icon={faCheck}
-                      onClick={() => handleLabelSave(item.id)}
-                      className="edit-icon save"
-                    />
-                    <FontAwesomeIcon
-                      icon={faTimes}
-                      onClick={handleCancelEdit}
-                      className="edit-icon cancel"
-                    />
-                  </div>
-                </div>
-              ) : (
-                <div className="label-text">
-                  <FontAwesomeIcon
-                    icon={faEdit}
-                    onClick={() => handleLabelEdit(item.id)}
-                    className="edit-icon"
-                  />
-                  <span>{item.label}</span>
-                </div>
-              )}
-            </div>
-
-            {/* Value Input and Controls */}
-            {item.type === 'number' && (
-              <div className="input-controls-section">
-                <div className="value-container">
-                  <input
-                    type="number"
-                    id={item.id}
-                    value={item.value !== undefined && item.value !== null && !isNaN(item.value) ? item.value : ''}
-                    onChange={(e) => {
-                      let value = parseFloat(e.target.value);
-                      value = isNaN(value) ? null : value;
-                      handleInputChange({ target: { value } }, item.id, 'value');
-                    }}
-                    className="value-input"
-                    placeholder={item.placeholder}
-                    step={item.step}
-                  />
-                  <div className="increment-controls">
-                    <button className="control-button1" onClick={() => handleDecrement(item.id)}>-</button>
-                    <button className="control-button2" onClick={() => handleIncrement(item.id)}>+</button>
-                  </div>
-                </div>
-
-                {/* Step Input */}
-                <div className="step-container">
-                  <input
-                    type="number"
-                    id={`${item.id}-step`}
-                    value={item.step !== undefined && item.step !== null && !isNaN(item.step) ? item.step : ''}
-                    onChange={(e) => {
-                      let step = parseFloat(e.target.value);
-                      step = isNaN(step) ? '' : step;
-                      handleInputChange({ target: { value: step } }, item.id, 'step');
-                    }}
-                    className="step-input"
-                    placeholder="Step Value"
-                  />
-                </div>
-                <div className="remarks-container">
-                  <input
-                    type="text"
-                    id={`${item.id}-remarks`}
-                    value={item.remarks || ''}
-                    onChange={(e) => handleInputChange({ target: { value: e.target.value } }, item.id, 'remarks')}
-                    placeholder="Add remarks"
-                    className="remarks-input remarks-important"
-                  />
-                </div>
-                {/* Action Buttons */}
-                <div className="action-buttons">
-                  {item.sKey && (
-                    <SensitivityAnalysisSelector
-                      sKey={item.sKey}
-                      onSensitivityChange={(sKey, config) => {
-                        setS(prev => ({
-                          ...prev,
-                          [sKey]: config
-                        }));
-                      }}
-                      S={S}
-                      setS={setS}
-                      version={version}
-                    />
-                  )}
-                  <button
-                    className="action-button-efficacy"
-                    onClick={(e) => handleScheduleClick(e, item.id)}
-                  >
-                    Specify Efficacy Period
-                  </button>
-                  <button
-                    className="action-button-factual"
-                    onClick={(e) => handleScheduleClick(e, item.id)}
-                  >
-                    Find Factual Precedence
-                  </button>
-                </div>
-              </div>
-            )}
-
-            {/* Select Input */}
-            {item.type === 'select' && (
-              <div className="input-controls-section">
-                <div className="value-container">
-                  <select
-                    id={item.id}
-                    value={item.value || ''}
-                    onChange={(e) => handleInputChange(e, item.id, 'value')}
-                    className="select-input"
-                  >
-                    {item.options.map((option, index) => (
-                      <option key={index} value={option}>{option}</option>
-                    ))}
-                  </select>
-                </div>
-                
-                <div className="remarks-container">
-                  <input
-                    type="text"
-                    id={`${item.id}-remarks`}
-                    value={item.remarks || ''}
-                    onChange={(e) => handleInputChange({ target: { value: e.target.value } }, item.id, 'remarks')}
-                    placeholder="Add remarks"
-                    className="remarks-input remarks-important"
-                  />
-                </div>
-                
-                {/* Action Buttons */}
-                <div className="action-buttons">
-                  {item.sKey && (
-                    <SensitivityAnalysisSelector
-                      sKey={item.sKey}
-                      onSensitivityChange={(sKey, config) => {
-                        setS(prev => ({
-                          ...prev,
-                          [sKey]: config
-                        }));
-                      }}
-                      S={S}
-                      setS={setS}
-                      version={version}
-                    />
-                  )}
-                  <button
-                    className="action-button-efficacy"
-                    onClick={(e) => handleScheduleClick(e, item.id)}
-                  >
-                    Specify Efficacy Period
-                  </button>
-                  <button
-                    className="action-button-factual"
-                    onClick={(e) => handleScheduleClick(e, item.id)}
-                  >
-                    Find Factual Precedence
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
+      <>
+        {/* Label Management Section */}
+        <div className="labels-section">
+          <button
+              className="update-button"
+              onClick={handleUpdateFormLabels}
+          >
+            <FontAwesomeIcon icon={faSave} /> Update Form Labels
+          </button>
+          <button
+              className="reset-button"
+              onClick={handleResetLabels}
+          >
+            <FontAwesomeIcon icon={faUndo} /> Reset Labels
+          </button>
+          {updateStatus && <span className="update-status">{updateStatus}</span>}
         </div>
-      ))}
 
-      {/* Popup */}
-      {selectedItemId && (
-        <Popup
-          show={showPopup}
-          position={popupPosition}
-          onClose={() => {
-            setShowPopup(false);
-            setSelectedItemId(null); // Reset the selectedItemId to remove highlighting
-          }}
-          formValues={formValues}
-          handleInputChange={handleInputChange}
-          id={selectedItemId}
-          onVersionChange={(newVersion) => setVersion(newVersion)}
-          version={version}
-          itemId={selectedItemId}
-        />
-      )}
-    </>
+        {formItems.map((item) => (
+            <div key={item.id} className={`form-item-container ${item.id === selectedItemId ? 'highlighted-container' : ''}`}>
+
+              {/* Priority Section: F/V/R Checkboxes */}
+              <div className="checkbox-section">
+                {item.vKey && (
+                    <div className="checkbox-group">
+                      <span className="checkbox-label">{item.vKey}</span>
+                      <input
+                          type="checkbox"
+                          className="custom-checkbox"
+                          checked={V[item.vKey] === 'on'}
+                          onChange={() => toggleV(item.vKey)}
+                      />
+                    </div>
+                )}
+                {item.rKey && (
+                    <div className="checkbox-group">
+                      <span className="checkbox-label">{item.rKey}</span>
+                      <input
+                          type="checkbox"
+                          className="custom-checkbox"
+                          checked={R[item.rKey] === 'on'}
+                          onChange={() => toggleR(item.rKey)}
+                      />
+                    </div>
+                )}
+                {item.fKey && (
+                    <div className="checkbox-group">
+                      <span className="checkbox-label">{item.fKey}</span>
+                      <input
+                          type="checkbox"
+                          className="custom-checkbox"
+                          checked={F[item.fKey] === 'on'}
+                          onChange={() => toggleF(item.fKey)}
+                      />
+                    </div>
+                )}
+              </div>
+
+              {/* Main Input Section */}
+              <div className="main-input-section">
+                {/* Label and Icon */}
+                <div className="label-container">
+                  {iconMapping[item.id] && (
+                      <FontAwesomeIcon icon={iconMapping[item.id]} className="input-icon" />
+                  )}
+                  {editingLabel === item.id ? (
+                      <div className="edit-label-container">
+                        <input
+                            type="text"
+                            value={tempLabel}
+                            onChange={(e) => setTempLabel(e.target.value)}
+                            className="label-edit-input"
+                        />
+                        <div className="edit-actions">
+                          <FontAwesomeIcon
+                              icon={faCheck}
+                              onClick={() => handleLabelSave(item.id)}
+                              className="edit-icon save"
+                          />
+                          <FontAwesomeIcon
+                              icon={faTimes}
+                              onClick={handleCancelEdit}
+                              className="edit-icon cancel"
+                          />
+                        </div>
+                      </div>
+                  ) : (
+                      <div className="label-text">
+                        <FontAwesomeIcon
+                            icon={faEdit}
+                            onClick={() => handleLabelEdit(item.id)}
+                            className="edit-icon"
+                        />
+                        <span>{item.label}</span>
+                      </div>
+                  )}
+                </div>
+
+                {/* Value Input and Controls */}
+                {item.type === 'number' && (
+                    <div className="input-controls-section">
+                      <div className="value-container">
+                        <input
+                            type="number"
+                            id={item.id}
+                            value={item.value !== undefined && item.value !== null && !isNaN(item.value) ? item.value : ''}
+                            onChange={(e) => {
+                              let value = parseFloat(e.target.value);
+                              value = isNaN(value) ? null : value;
+                              handleInputChange({ target: { value } }, item.id, 'value');
+                            }}
+                            className="value-input"
+                            placeholder={item.placeholder}
+                            step={item.step}
+                        />
+
+                        {/* Add final result display */}
+                        {getFinalResultValue(item.id) !== null && (
+                            <div className="final-result-container">
+            <span className="final-result-value">
+              Final: {getFinalResultValue(item.id).toFixed(2)}
+            </span>
+                              <span className="final-result-indicator">
+              ← Summary Result
+            </span>
+                            </div>
+                        )}
+
+                        <div className="increment-controls">
+                          <button className="control-button1" onClick={() => handleDecrement(item.id)}>-</button>
+                          <button className="control-button2" onClick={() => handleIncrement(item.id)}>+</button>
+                        </div>
+                      </div>
+
+                      {/* Step Input */}
+                      <div className="step-container">
+                        <input
+                            type="number"
+                            id={`${item.id}-step`}
+                            value={item.step !== undefined && item.step !== null && !isNaN(item.step) ? item.step : ''}
+                            onChange={(e) => {
+                              let step = parseFloat(e.target.value);
+                              step = isNaN(step) ? '' : step;
+                              handleInputChange({ target: { value: step } }, item.id, 'step');
+                            }}
+                            className="step-input"
+                            placeholder="Step Value"
+                        />
+                      </div>
+                      <div className="remarks-container">
+                        <input
+                            type="text"
+                            id={`${item.id}-remarks`}
+                            value={item.remarks || ''}
+                            onChange={(e) => handleInputChange({ target: { value: e.target.value } }, item.id, 'remarks')}
+                            placeholder="Add remarks"
+                            className="remarks-input remarks-important"
+                        />
+                      </div>
+                      {/* Action Buttons */}
+                      <div className="action-buttons">
+                        {item.sKey && (
+                            <button
+                                className="action-button-sensitivity"
+                                onClick={() => {
+                                  if (sensitivityActionRef.current) {
+                                    // First enable the parameter
+                                    sensitivityActionRef.current.toggleParameterEnabled(item.sKey);
+
+                                    // Then open configuration panel with a slight delay to ensure state updates
+                                    setTimeout(() => {
+                                      sensitivityActionRef.current.openParameterDetails(item.sKey);
+                                    }, 50);
+                                  } else {
+                                    console.warn("Sensitivity configuration is not available");
+                                  }
+                                }}
+                            >
+                              Configure Sensitivity
+                            </button>
+                        )}
+                        <button
+                            className="action-button-efficacy"
+                            onClick={(e) => handleScheduleClick(e, item.id)}
+                        >
+                          Specify Efficacy Period
+                        </button>
+                        <button
+                            className="action-button-factual"
+                            onClick={(e) => handleScheduleClick(e, item.id)}
+                        >
+                          Find Factual Precedence
+                        </button>
+                      </div>
+                    </div>
+                )}
+
+                {/* Select Input */}
+                {item.type === 'select' && (
+                    <div className="input-controls-section">
+                      <div className="value-container">
+                        <select
+                            id={item.id}
+                            value={item.value || ''}
+                            onChange={(e) => handleInputChange(e, item.id, 'value')}
+                            className="select-input"
+                        >
+                          {item.options.map((option, index) => (
+                              <option key={index} value={option}>{option}</option>
+                          ))}
+                        </select>
+                      </div>
+
+                      <div className="remarks-container">
+                        <input
+                            type="text"
+                            id={`${item.id}-remarks`}
+                            value={item.remarks || ''}
+                            onChange={(e) => handleInputChange({ target: { value: e.target.value } }, item.id, 'remarks')}
+                            placeholder="Add remarks"
+                            className="remarks-input remarks-important"
+                        />
+                      </div>
+
+                      {/* Action Buttons */}
+                      <div className="action-buttons">
+                        {item.sKey && (
+                            <button
+                                className="action-button-sensitivity"
+                                onClick={() => {
+                                  if (sensitivityActionRef.current) {
+                                    // First enable the parameter
+                                    sensitivityActionRef.current.toggleParameterEnabled(item.sKey);
+
+                                    // Then open configuration panel with a slight delay to ensure state updates
+                                    setTimeout(() => {
+                                      sensitivityActionRef.current.openParameterDetails(item.sKey);
+                                    }, 50);
+                                  } else {
+                                    console.warn("Sensitivity configuration is not available");
+                                  }
+                                }}
+                            >
+                              Configure Sensitivity
+                            </button>
+                        )}
+                        <button
+                            className="action-button-efficacy"
+                            onClick={(e) => handleScheduleClick(e, item.id)}
+                        >
+                          Specify Efficacy Period
+                        </button>
+                        <button
+                            className="action-button-factual"
+                            onClick={(e) => handleScheduleClick(e, item.id)}
+                        >
+                          Find Factual Precedence
+                        </button>
+                      </div>
+                    </div>
+                )}
+              </div>
+            </div>
+        ))}
+
+        {/* Popup */}
+        {selectedItemId && (
+            <Popup
+                show={showPopup}
+                position={popupPosition}
+                onClose={() => {
+                  setShowPopup(false);
+                  setSelectedItemId(null); // Reset the selectedItemId to remove highlighting
+                }}
+                formValues={formValues}
+                handleInputChange={handleInputChange}
+                id={selectedItemId}
+                onVersionChange={(newVersion) => setVersion(newVersion)}
+                version={version}
+                itemId={selectedItemId}
+            />
+        )}
+      </>
   );
 };
 
