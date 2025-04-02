@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
-import { refreshRef } from './SensitivityMonitor';
 import '../../styles/HomePage.CSS/ConfigurationMonitor.css';
 import useFormValues from '../../useFormValues';
 
@@ -19,6 +18,32 @@ const ConfigurationMonitor = ({ version }) => {
   const [customizedData, setCustomizedData] = useState([]); // Customized parameters (filteredValue)
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [currentVersion, setCurrentVersion] = useState(version);
+
+
+
+// Refresh parameters by temporarily setting version to 0
+  const refreshParameters = useCallback(async () => {
+    const originalVersion = version;
+    setCurrentVersion('0');
+    await new Promise(resolve => setTimeout(resolve, 100)); // Small delay
+    setCurrentVersion(originalVersion);
+  }, [version]);
+
+  const fetchParameters = async () => {
+    setIsLoading(true);
+  try {
+  // Initial parameters fetch
+  const response = await fetch(`http://localhost:5001/parameters/${currentVersion}`);
+  if (!response.ok) {
+    throw new Error(`Failed to fetch parameters: ${response.status}`);
+  }
+  } catch (error) {console.error('Error in sensitivity monitoring:', error);
+  }finally {
+    setIsLoading(false);
+  }
+  };
+
 
   // Get display name from property mapping or generate one if not found
   const getDisplayName = (id) => {
@@ -168,7 +193,7 @@ const ConfigurationMonitor = ({ version }) => {
     setIsLoading(true);
     setError(null);
     fetchConfigData();
-    refreshRef.current?.();
+    refreshParameters();
   }, [fetchConfigData]);
 
   // Fetch configuration data on version change
