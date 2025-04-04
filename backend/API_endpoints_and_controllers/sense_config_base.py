@@ -6,9 +6,10 @@ It is designed to work independently from the main calculation orchestration.
 
 Key features:
 1. Applies sensitivity variations to all configuration modules (1-100)
-2. Implements a 2-minute pause before execution
+2. Implements a pause before execution to ensure files exist
 3. Organized configuration copying for each sensitivity parameter
 4. Complete logging and error handling
+5. Generates SensitivityPlotDatapoints_{version}.json for plot visualization
 """
 from flask import Flask, request, jsonify
 from flask_cors import CORS
@@ -116,6 +117,204 @@ def import_sensitivity_functions():
 # Configuration Copy Functions
 # =====================================
 
+def generate_sensitivity_datapoints(version, SenParameters):
+    """
+    Generate SensitivityPlotDatapoints_{version}.json file with baseline and variation points.
+    Uses actual base values from configuration modules.
+
+    Args:
+        version (int): Version number
+        SenParameters (dict): Dictionary containing sensitivity parameters
+
+    Returns:
+        str: Path to the generated file
+    """
+    sensitivity_logger = logging.getLogger('sensitivity')
+
+    # Import necessary functions if not already available
+    try:
+        apply_sensitivity_variation, find_parameter_by_id = import_sensitivity_functions()
+    except Exception as e:
+        sensitivity_logger.error(f"Failed to import sensitivity functions for datapoints generation: {str(e)}")
+        return None
+
+    # Define paths
+    target_base_dir = os.path.join(BASE_DIR, 'backend', 'Original')
+    results_folder = os.path.join(target_base_dir, f'Batch({version})', f'Results({version})')
+    source_dir = os.path.join(ORIGINAL_BASE_DIR, f'Batch({version})', f'Results({version})')
+
+    sensitivity_logger.info(f"Generating SensitivityPlotDatapoints_{version}.json in {results_folder}")
+
+    # Find a base configuration module to extract baseline values
+    base_config = None
+    base_config_path = None
+
+    for module_num in range(1, 101):
+        potential_path = os.path.join(source_dir, f"{version}_config_module_{module_num}.json")
+        if os.path.exists(potential_path):
+            base_config_path = potential_path
+            try:
+                with open(base_config_path, 'r') as f:
+                    base_config = json.load(f)
+                sensitivity_logger.info(f"Loaded base configuration from {base_config_path}")
+                break
+            except Exception as e:
+                sensitivity_logger.warning(f"Failed to load {potential_path}: {str(e)}")
+                continue
+
+    if not base_config:
+        sensitivity_logger.warning("No base configuration module found. Using fallback values.")
+
+    # Initialize the datapoints structure
+    datapoints = {
+        "metadata": {
+            "structure_explanation": {
+                "S35,S13": "Key format: 'enabledParam,compareToKey' where S35 is enabled parameter and S13 is comparison key",
+                "baseline": "Reference point measurement",
+                "baseline:key": "Numerical measurement point for baseline (e.g., 10000)",
+                "baseline:value": "Reference measurement value to compare against",
+                "info": "Position indicator: '+' (all above), '-' (all below), or 'b#' (# variations below baseline)",
+                "data": "Collection of variation measurements",
+                "data:keys": "Numerical measurement points determined by sense_config_base.py",
+                "data:values": "Actual measurements populated by CFA_Sensitivity.py. Must be initially null/empty when created by sense_config_base.py"
+            }
+        }
+    }
+
+    # Process each enabled parameter
+    for param_id, param_config in SenParameters.items():
+        if not param_config.get('enabled'):
+            continue
+
+        # Get comparison key from parameter configuration
+        compare_to_key = param_config.get('compareToKey', 'S13')
+        combined_key = f"{param_id},{compare_to_key}"
+
+        # Get mode and values from parameter configuration
+        # Normalize mode terminology to match Sen_Config.py
+        mode = param_config.get('mode', 'symmetrical')
+        if mode in ['percentage', 'multiple']:
+            normalized_mode = 'symmetrical'
+        elif mode in ['discrete']:
+            normalized_mode = 'multipoint'
+        else:
+            normalized_mode = mode.lower()
+
+        values = param_config.get('values', [])
+
+        if not values:
+            continue
+
+        # Get baseline value from base configuration if available
+        baseline_value = None
+        if base_config:
+            try:
+                # Find parameter key in base configuration
+                param_key = find_parameter_by_id(base_config, param_id)
+
+                # Extract the value using that key
+                baseline_value = base_config[param_key]
+                sensitivity_logger.info(f"Found base value {baseline_value} for {param_id} via key {param_key}")
+            except Exception as e:
+                sensitivity_logger.error(f"Error finding parameter {param_id} in base config: {str(e)}")
+
+        # If no baseline value found, use parameter number as fallback
+        if baseline_value is None:
+            param_num = int(param_id[1:]) if param_id[1:].isdigit() else 0
+            baseline_value = 10000 + (param_num * 100)
+            sensitivity_logger.warning(f"Using fallback baseline value {baseline_value} for {param_id}")
+
+        # Convert baseline value to numeric if it's not already
+        try:
+            if isinstance(baseline_value, str):
+                if '.' in baseline_value:
+                    baseline_value = float(baseline_value)
+                else:
+                    baseline_value = int(baseline_value)
+        except (ValueError, TypeError):
+            sensitivity_logger.warning(f"Could not convert baseline value to numeric: {baseline_value}")
+            baseline_value = 10000 + (int(param_id[1:]) if param_id[1:].isdigit() else 0) * 100
+
+        # Ensure baseline_key is an integer for the datapoints structure
+        baseline_key = int(baseline_value)
+
+        # Get variations based on actual mode
+        variations = []
+        if normalized_mode == 'symmetrical':
+            base_variation = values[0]
+            variations = [base_variation, -base_variation]
+        else:  # 'multipoint'/'discrete'
+            variations = values
+
+        # Create data points dictionary excluding baseline
+        data_points = {}
+
+        # Analyze variation positions
+        variations_below_baseline = 0
+        all_below = True
+        all_above = True
+
+        # Process each variation
+        for variation in sorted(variations):
+            # Skip baseline variation (typically 0) if present
+            if variation == 0:
+                continue
+
+            # Determine position relative to baseline
+            if variation < 0:
+                variations_below_baseline += 1
+                all_above = False
+            elif variation > 0:
+                all_below = False
+
+            # Apply variation to base value using the same logic as apply_sensitivity_variation
+            if normalized_mode == 'symmetrical':
+                # For symmetrical/percentage mode, apply percentage change
+                variation_value = baseline_value * (1 + variation/100)
+            else:
+                # For multipoint/discrete mode, use direct value
+                variation_value = baseline_value + variation
+
+            # Use the variation value as the point key
+            point_key = int(variation_value)
+            data_points[str(point_key)] = None
+
+        # Determine info indicator
+        if all_below:
+            info_indicator = "-"
+        elif all_above:
+            info_indicator = "+"
+        else:
+            info_indicator = f"b{variations_below_baseline}"
+
+        # Add to datapoints structure
+        datapoints[combined_key] = {
+            "baseline": {str(baseline_key): None},
+            "info": info_indicator,
+            "data": data_points
+        }
+
+        sensitivity_logger.info(
+            f"Added datapoints for {combined_key}: baseline={baseline_key}, "
+            f"mode={normalized_mode}, variations={len(data_points)}, info={info_indicator}"
+        )
+
+    # Write to file in Results folder (not in Sensitivity subfolder)
+    output_file = os.path.join(results_folder, f"SensitivityPlotDatapoints_{version}.json")
+
+    try:
+        with open(output_file, 'w') as f:
+            json.dump(datapoints, f, indent=2)
+        sensitivity_logger.info(
+            f"Successfully saved SensitivityPlotDatapoints_{version}.json with "
+            f"{len(datapoints) - 1} parameter entries"
+        )
+    except Exception as e:
+        error_msg = f"Failed to write SensitivityPlotDatapoints_{version}.json: {str(e)}"
+        sensitivity_logger.error(error_msg)
+
+    return output_file
+
 def process_config_modules(version, SenParameters):
     """
     Process all configuration modules (1-100) for all parameter variations.
@@ -138,8 +337,8 @@ def process_config_modules(version, SenParameters):
         'py_files_copied': 0
     }
 
-    sensitivity_logger.info("Starting config module processing with 2-minute pause...")
-    time.sleep(120)  # 2-minute pause for system stabilization
+    sensitivity_logger.info("Starting config module processing with initial 2-minute pause...")
+    time.sleep(120)  # Initial 2-minute pause for system stabilization
     sensitivity_logger.info("Resuming after pause, processing config modules...")
 
     try:
@@ -154,10 +353,20 @@ def process_config_modules(version, SenParameters):
         results_folder = os.path.join(target_base_dir, f'Batch({version})', f'Results({version})')
         sensitivity_dir = os.path.join(results_folder, 'Sensitivity')
 
+        # Create ConfigurationPlotSpec directory at the same level as Results
+        config_plot_spec_dir = os.path.join(target_base_dir, f'Batch({version})', f'ConfigurationPlotSpec({version})')
+        os.makedirs(config_plot_spec_dir, exist_ok=True)
+        sensitivity_logger.info(f"Created/ensured ConfigurationPlotSpec directory: {config_plot_spec_dir}")
+
+        # 5-minute pause before looking for CSV files to ensure they exist
+        sensitivity_logger.info("Starting 5-minute pause to ensure CSV files exist...")
+        time.sleep(300)  # 5-minute pause to ensure files exist
+        sensitivity_logger.info("Resuming after 5-minute pause, checking for CSV files...")
+
         # Define the specific CSV files we want to copy
         target_csv_files = [
-            f"Configuration_Matrix_{version}.csv",
-            f"General_Configuration_Matrix_{version}.csv"
+            f"Configuration_Matrix({version}).csv",
+            f"General_Configuration_Matrix({version}).csv"
         ]
 
         # Get the Python configuration file path
@@ -174,7 +383,7 @@ def process_config_modules(version, SenParameters):
 
         if len(existing_csv_files) < len(target_csv_files):
             missing_files = set(target_csv_files) - set(existing_csv_files)
-            sensitivity_logger.warning(f"Some target CSV files not found: {missing_files}")
+            sensitivity_logger.warning(f"Some target CSV files not found even after pause: {missing_files}")
         if not py_file_exists:
             sensitivity_logger.warning(f"Python configuration file not found: {config_file}")
 
@@ -185,24 +394,32 @@ def process_config_modules(version, SenParameters):
 
             # Get mode and values
             mode = param_config.get('mode', 'symmetrical')
+            # Normalize mode terminology
+            if mode in ['percentage', 'multiple']:
+                normalized_mode = 'symmetrical'
+            elif mode in ['discrete']:
+                normalized_mode = 'multipoint'
+            else:
+                normalized_mode = mode.lower()
+
             values = param_config.get('values', [])
 
             if not values:
                 continue
 
-            sensitivity_logger.info(f"Processing parameter {param_id} with mode {mode}")
+            sensitivity_logger.info(f"Processing parameter {param_id} with mode {normalized_mode}")
 
-            # Determine variation list based on mode
-            if mode.lower() == 'symmetrical':
+            # Determine variation list based on normalized mode
+            if normalized_mode == 'symmetrical':
                 base_variation = values[0]
                 variation_list = [base_variation, -base_variation]
-            else:  # 'multipoint' mode
+            else:  # 'multipoint'
                 variation_list = values
 
             # Process each variation
             for variation in variation_list:
                 var_str = f"{variation:+.2f}"
-                param_var_dir = os.path.join(sensitivity_dir, param_id, mode.lower(), var_str)
+                param_var_dir = os.path.join(sensitivity_dir, param_id, normalized_mode, var_str)
 
                 # Create directory if it doesn't exist
                 os.makedirs(param_var_dir, exist_ok=True)
@@ -222,14 +439,26 @@ def process_config_modules(version, SenParameters):
                         processing_summary['errors'].append(error_msg)
 
                 # Copy the Python configuration file if it exists
+                # Now copying to the new ConfigurationPlotSpec directory
                 if py_file_exists:
+                    # Copy to parameter variation directory
                     target_py_path = os.path.join(param_var_dir, os.path.basename(config_file))
                     try:
                         shutil.copy2(config_file, target_py_path)
                         processing_summary['py_files_copied'] += 1
-                        sensitivity_logger.info(f"Copied Python configuration file: {os.path.basename(config_file)}")
+                        sensitivity_logger.info(f"Copied Python configuration file to variation dir: {os.path.basename(config_file)}")
                     except Exception as e:
-                        error_msg = f"Failed to copy Python configuration file: {str(e)}"
+                        error_msg = f"Failed to copy Python configuration file to variation dir: {str(e)}"
+                        sensitivity_logger.error(error_msg)
+                        processing_summary['errors'].append(error_msg)
+
+                    # Also copy to the main ConfigurationPlotSpec directory
+                    config_plot_spec_py_path = os.path.join(config_plot_spec_dir, os.path.basename(config_file))
+                    try:
+                        shutil.copy2(config_file, config_plot_spec_py_path)
+                        sensitivity_logger.info(f"Copied Python configuration file to main ConfigurationPlotSpec dir: {config_plot_spec_py_path}")
+                    except Exception as e:
+                        error_msg = f"Failed to copy Python configuration file to ConfigurationPlotSpec dir: {str(e)}"
                         sensitivity_logger.error(error_msg)
                         processing_summary['errors'].append(error_msg)
 
@@ -259,7 +488,7 @@ def process_config_modules(version, SenParameters):
                             copy.deepcopy(config_module),
                             param_id,
                             variation,
-                            mode
+                            normalized_mode
                         )
 
                         # Save the modified config
@@ -269,7 +498,7 @@ def process_config_modules(version, SenParameters):
                         processing_summary['total_modified'] += 1
                         processing_summary['processed_modules'][param_key].append(module_num)
                         sensitivity_logger.info(
-                            f"Applied {variation}{'%' if mode == 'symmetrical' else ''} "
+                            f"Applied {variation}{'%' if normalized_mode == 'symmetrical' else ''} "
                             f"variation to config module {module_num} for {param_id}"
                         )
 
@@ -289,6 +518,11 @@ def process_config_modules(version, SenParameters):
         if processing_summary['errors']:
             sensitivity_logger.warning(f"Encountered {len(processing_summary['errors'])} errors during processing")
 
+        # Generate the SensitivityPlotDatapoints_{version}.json file
+        sensitivity_logger.info("Generating SensitivityPlotDatapoints_{version}.json file with actual base values...")
+        datapoints_file = generate_sensitivity_datapoints(version, SenParameters)
+        sensitivity_logger.info(f"SensitivityPlotDatapoints generation completed: {datapoints_file}")
+
         return processing_summary
 
     except Exception as e:
@@ -301,7 +535,7 @@ def process_config_modules(version, SenParameters):
 def check_sensitivity_config_status():
     """
     Check if sensitivity configurations have been generated and saved.
-    
+
     Returns:
         tuple: (is_configured, config_data) - Boolean indicating if configurations are ready and the configuration data
     """
