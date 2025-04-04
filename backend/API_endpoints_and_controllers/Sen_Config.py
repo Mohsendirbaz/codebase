@@ -36,51 +36,61 @@ def strip_value(value):
 def find_parameter_by_id(config_module, param_id):
     """
     Find the parameter name in config_module that corresponds to the param_id.
-    
+    Identifies parameters by matching the numeric portion of param_id with
+    the last digits of parameter names in the configuration.
+
     Args:
         config_module (dict): Configuration module
         param_id (str): Parameter ID (e.g., 'S13')
-        
+
     Returns:
         str: Parameter name found in config_module
     """
     # Extract the numerical part of the parameter ID
     if not param_id.startswith('S') or not param_id[1:].isdigit():
         raise ValueError(f"Invalid parameter ID format: {param_id}")
-        
-    param_index = param_id[1:]
-    
-    # Special case for S13 (price parameter)
-    if param_id == 'S13':
-        for key in config_module:
-            if 'priceAmount' in key:
-                logger.info(f"Found price parameter: {key} for S13")
-                return key
-                
-    # Search for parameter by pattern
+
+    param_digits = param_id[1:]  # Get just the numeric part
+    logger.info(f"Searching for parameter with numeric identifier: {param_digits}")
+
+    # Search for parameter by checking the last digits of each key
     for key in config_module:
-        if f"Amount{param_index}" in key:
-            logger.info(f"Found parameter by index: {key} for {param_id}")
+        # Check if the key ends with the param_digits
+        if key.endswith(param_digits):
+            logger.info(f"Found parameter by numeric suffix match: {key} for {param_id}")
             return key
-            
-    # If not found by direct match, search for any key containing the index
+
+    # If not found by exact suffix match, check for numeric ending that matches
     for key in config_module:
-        if param_index in key and 'Amount' in key:
-            logger.info(f"Found parameter by partial match: {key} for {param_id}")
+        # Extract all digits from the end of the key
+        numeric_suffix = ''
+        for char in reversed(key):
+            if char.isdigit():
+                numeric_suffix = char + numeric_suffix
+            else:
+                break
+        if numeric_suffix == param_digits:
+            logger.info(f"Found parameter by extracted numeric suffix: {key} for {param_id}")
             return key
-            
+
+    # If still not found, look for the digits anywhere in the key
+    for key in config_module:
+        if param_digits in key:
+            logger.info(f"Found parameter by partial numeric match: {key} for {param_id}")
+            return key
+
     raise ValueError(f"Could not find parameter for {param_id} in config module")
 
 def apply_sensitivity_variation(config_module, param_id, variation_value, mode='symmetrical'):
     """
     Applies sensitivity variation to the specified parameter.
-    
+
     Args:
         config_module (dict): Configuration module
         param_id (str): Parameter ID (e.g., 'S13')
         variation_value (float): Variation value to apply
         mode (str): Either 'symmetrical'/'percentage' or 'multipoint'/'discrete'
-        
+
     Returns:
         dict: Modified configuration module
     """
@@ -90,13 +100,13 @@ def apply_sensitivity_variation(config_module, param_id, variation_value, mode='
             mode = 'symmetrical'
         elif mode == 'discrete':
             mode = 'multipoint'
-            
+
         # Find parameter in config module
         param_name = find_parameter_by_id(config_module, param_id)
-        
+
         # Get original value
         original_value = config_module[param_name]
-        
+
         # Apply variation based on mode
         if mode == 'symmetrical':
             # For percentage/symmetrical mode, apply percentage change
@@ -108,30 +118,37 @@ def apply_sensitivity_variation(config_module, param_id, variation_value, mode='
             else:
                 raise TypeError(f"Unsupported parameter type: {type(original_value)}")
         elif mode == 'multipoint':
-            # For discrete mode, directly replace with the variation value
-            modified_value = variation_value
+            # For discrete/multipoint mode, add variation to the original value
+            # This is the key fix - adding to original value instead of replacing it
+            if isinstance(original_value, (int, float)):
+                modified_value = original_value + variation_value
+            elif isinstance(original_value, list):
+                # For list values, add to each element
+                modified_value = [val + variation_value for val in original_value]
+            else:
+                raise TypeError(f"Unsupported parameter type for discrete mode: {type(original_value)}")
         else:
             raise ValueError(f"Unknown variation mode: {mode}")
-            
+
         # Update the config module
         config_module[param_name] = modified_value
-        
+
         logger.info(
             f"Applied {variation_value} {'%' if mode == 'symmetrical' else ''} "
             f"variation to {param_name} ({param_id})"
         )
-        
+
         return config_module
-        
+
     except Exception as e:
         logger.error(f"Error applying sensitivity variation: {str(e)}")
         raise
 
-def generate_sensitivity_configs(config_received, config_matrix_df, results_folder, version, 
-                               param_id, mode, variations):
+def generate_sensitivity_configs(config_received, config_matrix_df, results_folder, version,
+                                 param_id, mode, variations):
     """
     Generates configuration modules for sensitivity analysis.
-    
+
     Args:
         config_received: Original configuration
         config_matrix_df: DataFrame with configuration matrix
@@ -140,29 +157,29 @@ def generate_sensitivity_configs(config_received, config_matrix_df, results_fold
         param_id (str): Parameter ID
         mode (str): Either 'symmetrical' or 'multipoint'
         variations (list): List of variation values
-        
+
     Returns:
         list: Paths to generated configuration files
     """
     logger.info(f"Generating sensitivity configs for {param_id} in {mode} mode")
     config_paths = []
-    
+
     try:
         base_configs = []
-        
+
         # First, generate base configurations
         for idx, row in config_matrix_df.iterrows():
             start_year = int(row['start'])
             filtered_values = row['filtered_values']
-            
+
             # Create base config module
             config_module = {}
-            
+
             # Verify config copy completion
             config_copy_complete = False
             retry_count = 0
             max_retries = 3
-            
+
             while not config_copy_complete and retry_count < max_retries:
                 try:
                     # Create config module
@@ -172,7 +189,7 @@ def generate_sensitivity_configs(config_received, config_matrix_df, results_fold
                                 config_module[param] = copy.deepcopy(getattr(config_received, param))
                     else:
                         config_module = copy.deepcopy(config_received)
-                    
+
                     # Verify config copy
                     if len(config_module) > 0:
                         config_copy_complete = True
@@ -186,44 +203,44 @@ def generate_sensitivity_configs(config_received, config_matrix_df, results_fold
                         time.sleep(10)  # Wait 10 seconds before retry
                     else:
                         raise RuntimeError("Failed to create config copy after multiple attempts")
-            
+
             # Apply filtered values
             if isinstance(filtered_values, str):
                 filtered_values = parse_filtered_values(filtered_values)
-                
+
             # Wait for Flask to stabilize after config copy
             logger.info("Waiting for Flask to stabilize...")
             time.sleep(120)  # 2 minute delay
             logger.info("Flask stabilization period complete")
-                
+
             for item in filtered_values:
                 if item.get('remarks') != "Default entry":
                     config_module[item.get('id')] = strip_value(item.get('value'))
-            
+
             base_configs.append((start_year, config_module))
-        
+
         # Generate sensitivity variations
         if mode == 'symmetrical':
             variation = variations[0]
             variations_list = [variation, -variation]
         else:  # multipoint
             variations_list = variations
-        
+
         # Apply variations and save configurations
         for variation in variations_list:
             for start_year, base_config in base_configs:
                 # Create a fresh copy for this variation
                 sensitivity_config = copy.deepcopy(base_config)
-                
+
                 # Apply sensitivity variation
                 sensitivity_config = apply_sensitivity_variation(
                     sensitivity_config, param_id, variation, mode
                 )
-                
+
                 # Save configuration
                 config_path = save_sensitivity_config(
-                    sensitivity_config, 
-                    results_folder, 
+                    sensitivity_config,
+                    results_folder,
                     version,
                     param_id,
                     mode,
@@ -231,18 +248,18 @@ def generate_sensitivity_configs(config_received, config_matrix_df, results_fold
                     start_year
                 )
                 config_paths.append(config_path)
-                
+
         return config_paths
-                
+
     except Exception as e:
         logger.error(f"Error generating sensitivity configurations: {str(e)}")
         raise
 
-def save_sensitivity_config(config_module, results_folder, version, param_id, 
-                          mode, variation, start_year):
+def save_sensitivity_config(config_module, results_folder, version, param_id,
+                            mode, variation, start_year):
     """
     Saves sensitivity configuration with appropriate naming convention.
-    
+
     Args:
         config_module (dict): Configuration module
         results_folder (str): Path to results folder
@@ -251,7 +268,7 @@ def save_sensitivity_config(config_module, results_folder, version, param_id,
         mode (str): Either 'symmetrical' or 'multipoint'
         variation (float): Variation value
         start_year (int): Start year
-        
+
     Returns:
         str: Path to saved configuration file
     """
@@ -259,13 +276,13 @@ def save_sensitivity_config(config_module, results_folder, version, param_id,
         # Convert config module to dictionary if it's not already
         if not isinstance(config_module, dict):
             config_dict = {
-                param: getattr(config_module, param) 
-                for param in dir(config_module) 
+                param: getattr(config_module, param)
+                for param in dir(config_module)
                 if not param.startswith('__')
             }
         else:
             config_dict = config_module
-        
+
         # Create parameter-specific directory structure
         sensitivity_dir = os.path.join(results_folder, 'Sensitivity')
         param_var_dir = os.path.join(
@@ -275,17 +292,17 @@ def save_sensitivity_config(config_module, results_folder, version, param_id,
             f"{variation:+.2f}"
         )
         os.makedirs(param_var_dir, exist_ok=True)
-        
+
         # Generate simplified filename
         filename = f"{version}_config_module_{start_year}.json"
         filepath = os.path.join(param_var_dir, filename)
-        
+
         with open(filepath, 'w') as f:
             json.dump(config_dict, f, indent=4)
-            
+
         logger.info(f"Saved sensitivity configuration: {filepath}")
         return filepath
-        
+
     except Exception as e:
         logger.error(f"Error saving sensitivity configuration: {str(e)}")
         raise
