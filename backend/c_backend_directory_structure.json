@@ -1,265 +1,73 @@
 {
   "project_name": "Backend Structure",
-  "analysis_date": "2025-03-23 12:41:51",
+  "analysis_date": "2025-04-03 17:41:19",
   "version": 1,
   "directories": {
     "API_endpoints_and_controllers": {
       "files": [
-        "API_endpoints_and_controllers\\Album_organizer.py",
+        "API_endpoints_and_controllers\\album_organizer.py",
+        "API_endpoints_and_controllers\\backend-mock-api.py",
         "API_endpoints_and_controllers\\Calculations.py",
-        "API_endpoints_and_controllers\\Calculations_and_sensitivity.py",
+        "API_endpoints_and_controllers\\Calculations_and_Sensitivity-b.py",
+        "API_endpoints_and_controllers\\Calculations_and_Sensitivity-L.py",
+        "API_endpoints_and_controllers\\Calculations_and_Sensitivity-LL.py",
+        "API_endpoints_and_controllers\\Calculations_and_Sensitivity.py",
         "API_endpoints_and_controllers\\Create_batch_extension.py",
         "API_endpoints_and_controllers\\Create_new_batch.py",
-        "API_endpoints_and_controllers\\Html_album_organizer.py",
+        "API_endpoints_and_controllers\\html_album_organizer.py",
         "API_endpoints_and_controllers\\Load.py",
         "API_endpoints_and_controllers\\PNG.py",
+        "API_endpoints_and_controllers\\process_sensitivity_results.py",
         "API_endpoints_and_controllers\\Remove_batch.py",
+        "API_endpoints_and_controllers\\Sense_CFA_modified_config.py",
+        "API_endpoints_and_controllers\\sense_config_base.py",
+        "API_endpoints_and_controllers\\Sensitivity_File_Manager.py",
         "API_endpoints_and_controllers\\Sensitivity_monitor.py",
+        "API_endpoints_and_controllers\\sensitivity_Routes.py",
+        "API_endpoints_and_controllers\\Sen_Config.py",
         "API_endpoints_and_controllers\\Sub.py",
-        "API_endpoints_and_controllers\\Version_service.py"
+        "API_endpoints_and_controllers\\version_service.py"
       ],
-      "import_count": 12
+      "import_count": 22
+    },
+    "API_endpoints_and_controllers\\Refactorization": {
+      "files": [
+        "API_endpoints_and_controllers\\Refactorization\\Calculations_and_Sensitivity-LL.py"
+      ],
+      "import_count": 1
+    },
+    "API_endpoints_and_controllers\\Refactorization\\backend": {
+      "files": [
+        "API_endpoints_and_controllers\\Refactorization\\backend\\app.py",
+        "API_endpoints_and_controllers\\Refactorization\\backend\\config.py",
+        "API_endpoints_and_controllers\\Refactorization\\backend\\decorators.py",
+        "API_endpoints_and_controllers\\Refactorization\\backend\\pipeline.py",
+        "API_endpoints_and_controllers\\Refactorization\\backend\\state.py",
+        "API_endpoints_and_controllers\\Refactorization\\backend\\utils.py"
+      ],
+      "import_count": 6
+    },
+    "API_endpoints_and_controllers\\Refactorization\\backend\\blueprints": {
+      "files": [
+        "API_endpoints_and_controllers\\Refactorization\\backend\\blueprints\\baseline.py",
+        "API_endpoints_and_controllers\\Refactorization\\backend\\blueprints\\health.py",
+        "API_endpoints_and_controllers\\Refactorization\\backend\\blueprints\\payload.py",
+        "API_endpoints_and_controllers\\Refactorization\\backend\\blueprints\\runs.py",
+        "API_endpoints_and_controllers\\Refactorization\\backend\\blueprints\\sensitivity.py",
+        "API_endpoints_and_controllers\\Refactorization\\backend\\blueprints\\__init__.py"
+      ],
+      "import_count": 6
     },
     "API_endpoints_and_controllers\\__pycache__": {
       "files": [
         "API_endpoints_and_controllers\\__pycache__\\album_organizer.cpython-312.pyc",
         "API_endpoints_and_controllers\\__pycache__\\Calculations.cpython-312.pyc",
         "API_endpoints_and_controllers\\__pycache__\\Dashboard.cpython-312.pyc",
-        "API_endpoints_and_controllers\\__pycache__\\Load.cpython-312.pyc"
+        "API_endpoints_and_controllers\\__pycache__\\Load.cpython-312.pyc",
+        "API_endpoints_and_controllers\\__pycache__\\Sensitivity_File_Manager.cpython-312.pyc",
+        "API_endpoints_and_controllers\\__pycache__\\Sen_Config.cpython-312.pyc"
       ],
-      "import_count": 4
-    },
-    "Batch(5)": {
-      "files": [],
-      "import_count": 0
-    },
-    "Batch(5)\\Results(5)": {
-      "files": [],
-      "import_count": 0
-    },
-    "Batch(5)\\Results(5)\\Sensitivity": {
-      "files": [],
-      "import_count": 0
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\Cache": {
-      "files": [],
-      "import_count": 0
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\Configuration": {
-      "files": [],
-      "import_count": 0
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\Multipoint": {
-      "files": [],
-      "import_count": 0
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\Multipoint\\bar": {
-      "files": [],
-      "import_count": 0
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\Multipoint\\bar\\S34_bar": {
-      "files": [],
-      "import_count": 0
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\Multipoint\\bar\\S35_bar": {
-      "files": [],
-      "import_count": 0
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\Multipoint\\Configuration": {
-      "files": [],
-      "import_count": 0
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\Multipoint\\Configuration\\S17_+50.00": {
-      "files": [],
-      "import_count": 0
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\Multipoint\\Configuration\\S34_+20.00": {
-      "files": [],
-      "import_count": 0
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\Multipoint\\Configuration\\S34_-20.00": {
-      "files": [],
-      "import_count": 0
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\Multipoint\\Configuration\\S35_+10.00": {
-      "files": [],
-      "import_count": 0
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\Multipoint\\Configuration\\S35_+20.00": {
-      "files": [],
-      "import_count": 0
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\Multipoint\\Configuration\\S35_+30.00": {
-      "files": [],
-      "import_count": 0
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\Multipoint\\Configuration\\S35_-10.00": {
-      "files": [],
-      "import_count": 0
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\Multipoint\\Configuration\\S35_-20.00": {
-      "files": [],
-      "import_count": 0
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\Multipoint\\Configuration\\S35_-30.00": {
-      "files": [],
-      "import_count": 0
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\Multipoint\\point": {
-      "files": [],
-      "import_count": 0
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\Multipoint\\point\\S17_point": {
-      "files": [],
-      "import_count": 0
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\Multipoint\\point\\S34_point": {
-      "files": [],
-      "import_count": 0
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\Multipoint\\point\\S35_point": {
-      "files": [],
-      "import_count": 0
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\Multipoint\\waterfall": {
-      "files": [],
-      "import_count": 0
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\Multipoint\\waterfall\\S34_waterfall": {
-      "files": [],
-      "import_count": 0
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\Multipoint\\waterfall\\S35_waterfall": {
-      "files": [],
-      "import_count": 0
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\Reports": {
-      "files": [
-        "Batch(5)\\Results(5)\\Sensitivity\\Reports\\sensitivity_config.json"
-      ],
-      "import_count": 1
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\S17": {
-      "files": [],
-      "import_count": 0
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\S17\\multiple": {
-      "files": [],
-      "import_count": 0
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\S17\\multiple\\+50.00": {
-      "files": [
-        "Batch(5)\\Results(5)\\Sensitivity\\S17\\multiple\\+50.00\\S17_config.json"
-      ],
-      "import_count": 1
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\S34": {
-      "files": [],
-      "import_count": 0
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\S34\\multiple": {
-      "files": [],
-      "import_count": 0
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\S34\\multiple\\+20.00": {
-      "files": [
-        "Batch(5)\\Results(5)\\Sensitivity\\S34\\multiple\\+20.00\\S34_config.json"
-      ],
-      "import_count": 1
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\S34\\multiple\\-20.00": {
-      "files": [
-        "Batch(5)\\Results(5)\\Sensitivity\\S34\\multiple\\-20.00\\S34_config.json"
-      ],
-      "import_count": 1
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\S35": {
-      "files": [],
-      "import_count": 0
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\S35\\multiple": {
-      "files": [],
-      "import_count": 0
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\S35\\multiple\\+10.00": {
-      "files": [
-        "Batch(5)\\Results(5)\\Sensitivity\\S35\\multiple\\+10.00\\S35_config.json"
-      ],
-      "import_count": 1
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\S35\\multiple\\+20.00": {
-      "files": [
-        "Batch(5)\\Results(5)\\Sensitivity\\S35\\multiple\\+20.00\\S35_config.json"
-      ],
-      "import_count": 1
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\S35\\multiple\\+30.00": {
-      "files": [
-        "Batch(5)\\Results(5)\\Sensitivity\\S35\\multiple\\+30.00\\S35_config.json"
-      ],
-      "import_count": 1
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\S35\\multiple\\-10.00": {
-      "files": [
-        "Batch(5)\\Results(5)\\Sensitivity\\S35\\multiple\\-10.00\\S35_config.json"
-      ],
-      "import_count": 1
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\S35\\multiple\\-20.00": {
-      "files": [
-        "Batch(5)\\Results(5)\\Sensitivity\\S35\\multiple\\-20.00\\S35_config.json"
-      ],
-      "import_count": 1
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\S35\\multiple\\-30.00": {
-      "files": [
-        "Batch(5)\\Results(5)\\Sensitivity\\S35\\multiple\\-30.00\\S35_config.json"
-      ],
-      "import_count": 1
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\Symmetrical": {
-      "files": [],
-      "import_count": 0
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\Symmetrical\\bar": {
-      "files": [],
-      "import_count": 0
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\Symmetrical\\Configuration": {
-      "files": [],
-      "import_count": 0
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\Symmetrical\\Configuration\\S17_+50.00": {
-      "files": [],
-      "import_count": 0
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\Symmetrical\\Configuration\\S17_-50.00": {
-      "files": [],
-      "import_count": 0
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\Symmetrical\\Configuration\\S34_+20.00": {
-      "files": [],
-      "import_count": 0
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\Symmetrical\\Configuration\\S34_-20.00": {
-      "files": [],
-      "import_count": 0
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\Symmetrical\\Configuration\\S35_+10.00": {
-      "files": [],
-      "import_count": 0
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\Symmetrical\\Configuration\\S35_-10.00": {
-      "files": [],
-      "import_count": 0
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\Symmetrical\\point": {
-      "files": [],
-      "import_count": 0
-    },
-    "Batch(5)\\Results(5)\\Sensitivity\\Symmetrical\\waterfall": {
-      "files": [],
-      "import_count": 0
+      "import_count": 6
     },
     "Configuration_management": {
       "files": [
@@ -279,10 +87,11 @@
     },
     "Core_calculation_engines": {
       "files": [
+        "Core_calculation_engines\\CFA-b.py",
         "Core_calculation_engines\\CFA.py",
         "Core_calculation_engines\\Old_Script.py"
       ],
-      "import_count": 2
+      "import_count": 3
     },
     "Data_processors_and_transformers": {
       "files": [
@@ -317,14 +126,16 @@
       "files": [
         "Logs\\app_executionSub.log",
         "Logs\\CFA_CALC.log",
+        "Logs\\CONFIG_COPY.log",
         "Logs\\config_monitor.log",
         "Logs\\PNG.log",
         "Logs\\RUN.log",
         "Logs\\SENSITIVITY.log",
         "Logs\\sensitivity_config_data.pkl",
-        "Logs\\sensitivity_config_status.json"
+        "Logs\\sensitivity_config_status.json",
+        "Logs\\SENSITIVITY_RESULTS.log"
       ],
-      "import_count": 8
+      "import_count": 10
     },
     "templates": {
       "files": [

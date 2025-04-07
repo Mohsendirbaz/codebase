@@ -12,7 +12,7 @@ if str(BACKEND_DIR) not in sys.path:
     sys.path.append(str(BACKEND_DIR))
 
 # Now we can import from other backend modules
-from Utility_functions.common_utils import property_mapping
+from backend.Utility_functions.common_utils import property_mapping
 
 # Define the base directory for your uploads and batches
 ORIGINAL_DIR = Path(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))

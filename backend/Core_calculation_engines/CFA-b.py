@@ -756,67 +756,167 @@ def calculate_revenue_and_expenses_from_modules(config_received, config_matrix_d
    
 # ---------------- Main Function Block Start ----------------
 
-# Main function to load config matrix and run the update
-def main(version, selected_v, selected_f, target_row):
-    # Set up paths for modules and results
-    code_files_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "Original")
+# ---------------- Main Function Block Start ----------------
 
-    results_folder = os.path.join(code_files_path, f"Batch({version})", f"Results({version})")
-    config_matrix_file = os.path.join(results_folder, f"Configuration_Matrix({version}).csv")
-    
+# Main function to load config matrix and run the update
+def main(version, selected_v, selected_f, target_row, calculation_option, sen_parameters=None):
+    """
+    Main function that processes configurations and runs calculations
+
+    Args:
+        version (str/int): Configuration version
+        selected_v (dict): Dictionary of V parameter selections
+        selected_f (dict): Dictionary of F parameter selections
+        target_row (int): Target row for calculations
+        calculation_option (str): Selected calculation option
+        sen_parameters (dict): Sensitivity parameters if applicable
+
+    Returns:
+        tuple: Final price and NPV values
+    """
+    cfa_logger.info(f"Starting main function for version {version}")
+
+    # Get paths from environment variables if available, otherwise use defaults
+    code_files_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+    # Use environment variables if provided, otherwise fall back to default paths
+    if os.getenv('CONFIG_MATRIX_FILE') and os.getenv('CONFIG_FILE') and os.getenv('RESULTS_FOLDER'):
+        config_matrix_file = os.getenv('CONFIG_MATRIX_FILE')
+        config_file = os.getenv('CONFIG_FILE')
+        results_folder = os.getenv('RESULTS_FOLDER')
+        cfa_logger.info(f"Using environment variables for paths")
+        cfa_logger.info(f"Config Matrix: {config_matrix_file}")
+        cfa_logger.info(f"Config File: {config_file}")
+        cfa_logger.info(f"Results Folder: {results_folder}")
+    else:
+        # Default paths based on version
+        results_folder = os.path.join(code_files_path, "Original", f"Batch({version})", f"Results({version})")
+        config_matrix_file = os.path.join(results_folder, f"General_Configuration_Matrix({version}).csv")
+        config_file = os.path.join(code_files_path, "Original", f"Batch({version})",
+                                   f"ConfigurationPlotSpec({version})", f"configurations({version}).py")
+        cfa_logger.info(f"Using default paths based on version {version}")
+
+    # Verify paths exist
+    if not os.path.exists(config_matrix_file):
+        error_msg = f"Config matrix file not found: {config_matrix_file}"
+        cfa_logger.error(error_msg)
+        raise FileNotFoundError(error_msg)
+
+    if not os.path.exists(config_file):
+        error_msg = f"Configuration file not found: {config_file}"
+        cfa_logger.error(error_msg)
+        raise FileNotFoundError(error_msg)
+
+    if not os.path.exists(results_folder):
+        cfa_logger.warning(f"Results folder does not exist, creating: {results_folder}")
+        os.makedirs(results_folder, exist_ok=True)
+
     # Load the config matrix
+    cfa_logger.info(f"Loading config matrix from {config_matrix_file}")
     config_matrix_df = pd.read_csv(config_matrix_file)
-    
+
     # Load configuration file
-    config_file = os.path.join(code_files_path, f"Batch({version})", f"ConfigurationPlotSpec({version})", f"configurations({version}).py")
+    cfa_logger.info(f"Loading configuration from {config_file}")
     spec = importlib.util.spec_from_file_location("config", config_file)
     config_received = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(config_received)
-    iteration = 0
-    # Initial price and NPV calculation
-    price = config_received.initialSellingPriceAmount13
-    results = calculate_revenue_and_expenses_from_modules(config_received, config_matrix_df, results_folder, version, selected_v, selected_f, price, target_row, iteration)
-    npv = results['primary_result']
-    iteration = results['secondary_result']
-    price_logger.info(f"Initial NPV: ${npv:.2f}, Iteration: {iteration}")
-    
-    # Define convergence tolerance
-    TOLERANCE_LOWER = -1000
-    TOLERANCE_UPPER = 1000
 
-    # Optimization loop
-    while npv < TOLERANCE_LOWER or npv > TOLERANCE_UPPER:
-        price_logger.info(f"Current NPV: ${npv:.2f}, Iteration: {iteration}, Price: ${price:.2f}")
-        
-        # Adjust price based on NPV
-        if npv < 0:
-            price *= 1.02  # Increment price by 2%
-            price_logger.info(f"Increasing price to ${price:.2f} due to NPV below tolerance.")
-        elif npv > 0:
-            price *= 0.985  # Decrement price by 2%
-            price_logger.info(f"Decreasing price to ${price:.2f} due to NPV above tolerance.")
-        
-        # Recalculate NPV with the updated price
-        results = calculate_revenue_and_expenses_from_modules(config_received, config_matrix_df, results_folder, version, selected_v, selected_f, price, target_row, iteration)
+    # Initialize iteration counter and price
+    iteration = 0
+    price = config_received.initialSellingPriceAmount13
+
+    # For sensitivity analysis, use provided parameters
+    if sen_parameters:
+        cfa_logger.info(f"Running with sensitivity parameters: {sen_parameters}")
+        results = calculate_revenue_and_expenses_from_modules(
+            config_received, config_matrix_df, results_folder,
+            version, selected_v, selected_f, price, target_row, iteration
+        )
+        return results
+
+    # For price calculation mode
+    if calculation_option.lower() == 'calculateforprice':
+        cfa_logger.info(f"Starting price optimization")
+
+        # Initial price and NPV calculation
+        results = calculate_revenue_and_expenses_from_modules(
+            config_received, config_matrix_df, results_folder,
+            version, selected_v, selected_f, price, target_row, iteration
+        )
         npv = results['primary_result']
         iteration = results['secondary_result']
-    
-        # Check if within tolerance to break the loop
-        if TOLERANCE_LOWER <= npv <= TOLERANCE_UPPER:
-            price_logger.info("NPV is within tolerance bounds. Exiting optimization loop.")
-            break
+        price_logger.info(f"Initial NPV: ${npv:.2f}, Iteration: {iteration}")
 
-    return price, npv  # Optionally return the final price and NPV
+        # Define convergence tolerance
+        TOLERANCE_LOWER = -1000
+        TOLERANCE_UPPER = 1000
+
+        # Optimization loop
+        while npv < TOLERANCE_LOWER or npv > TOLERANCE_UPPER:
+            price_logger.info(f"Current NPV: ${npv:.2f}, Iteration: {iteration}, Price: ${price:.2f}")
+
+            # Adjust price based on NPV
+            if npv < 0:
+                price *= 1.02  # Increment price by 2%
+                price_logger.info(f"Increasing price to ${price:.2f} due to NPV below tolerance.")
+            elif npv > 0:
+                price *= 0.985  # Decrement price by 1.5%
+                price_logger.info(f"Decreasing price to ${price:.2f} due to NPV above tolerance.")
+
+            # Recalculate NPV with the updated price
+            results = calculate_revenue_and_expenses_from_modules(
+                config_received, config_matrix_df, results_folder,
+                version, selected_v, selected_f, price, target_row, iteration
+            )
+            npv = results['primary_result']
+            iteration = results['secondary_result']
+
+            # Check if within tolerance to break the loop
+            if TOLERANCE_LOWER <= npv <= TOLERANCE_UPPER:
+                price_logger.info("NPV is within tolerance bounds. Exiting optimization loop.")
+                break
+
+        return price, npv
+
+    # For freeFlowNPV and other calculation options
+    else:
+        cfa_logger.info(f"Running {calculation_option} calculation")
+        results = calculate_revenue_and_expenses_from_modules(
+            config_received, config_matrix_df, results_folder,
+            version, selected_v, selected_f, price, target_row, iteration
+        )
+        return results
 
 # Ensure script runs as expected when invoked
 if __name__ == "__main__":
-    version = sys.argv[1] if len(sys.argv) > 1 else 1
-    selected_v = json.loads(sys.argv[2]) if len(sys.argv) > 2 else {f'V{i+1}': 'off' for i in range(10)}
-    selected_f = json.loads(sys.argv[3]) if len(sys.argv) > 3 else {f'F{i+1}': 'off' for i in range(5)}
-    target_row = int(sys.argv[4]) if len(sys.argv) > 4 else 10
-    selected_calculation_option = sys.argv[5] if len(sys.argv) > 5 else 'calculateforprice'  # Default to calculateforprice
-    senParameters = json.loads(sys.argv[6]) if len(sys.argv) > 6 else {}  
+    try:
+        # Parse command line arguments
+        version = sys.argv[1] if len(sys.argv) > 1 else 1
+        selected_v = json.loads(sys.argv[2]) if len(sys.argv) > 2 else {f'V{i+1}': 'off' for i in range(10)}
+        selected_f = json.loads(sys.argv[3]) if len(sys.argv) > 3 else {f'F{i+1}': 'off' for i in range(5)}
+        target_row = int(sys.argv[4]) if len(sys.argv) > 4 else 10
+        calculation_option = sys.argv[5] if len(sys.argv) > 5 else 'calculateforprice'
+        sen_parameters = json.loads(sys.argv[6]) if len(sys.argv) > 6 else {}
 
-    cfa_logger.info(f"Script started with version: {version}, V selections: {selected_v}, F selections: {selected_f}, Target row: {target_row}")
-    main(version, selected_v, selected_f, target_row)
-    cfa_logger.info("Script finished execution.")
+        # Log execution details
+        cfa_logger.info(f"Script started with: version={version}, calculation_option={calculation_option}")
+        cfa_logger.info(f"V selections: {selected_v}")
+        cfa_logger.info(f"F selections: {selected_f}")
+        cfa_logger.info(f"Target row: {target_row}")
+
+        if sen_parameters:
+            cfa_logger.info(f"Sensitivity parameters provided: {len(sen_parameters)} parameters")
+
+        # Execute main function
+        result = main(version, selected_v, selected_f, target_row, calculation_option, sen_parameters)
+
+        # Log completion
+        if isinstance(result, tuple) and len(result) == 2:
+            price, npv = result
+            cfa_logger.info(f"Script finished execution with final price: ${price:.2f}, NPV: ${npv:.2f}")
+        else:
+            cfa_logger.info(f"Script finished execution with result: {result}")
+
+    except Exception as e:
+        cfa_logger.error(f"Error in CFA.py execution: {str(e)}", exc_info=True)
+        raise

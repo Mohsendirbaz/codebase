@@ -6,23 +6,49 @@ import { faEdit, faCheck, faTimes, faSave, faUndo } from '@fortawesome/free-soli
 import axios from 'axios';
 import { sensitivityActionRef } from './components/modules/SensitivityMonitor';
 
-
-const getLatestPlantLifetime = (formValues) => {
-  const filteredValues = Object.values(formValues).filter(item => item.id === 'plantLifetimeAmount10');
-  return filteredValues.length > 0 ? filteredValues[0].value : 40;
-};
-
-const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeyword, V,setV, toggleV, R, setR, toggleR, F, toggleF, S, setS, setVersion, summaryItems }) => {
+/**
+ * GeneralFormConfig Component
+ * Handles configuration of form values, labels, and related settings
+ */
+const GeneralFormConfig = ({
+                             formValues,
+                             handleInputChange,
+                             version,
+                             filterKeyword,
+                             V, setV, toggleV,
+                             R, setR, toggleR,
+                             F, toggleF,
+                             S, setS,
+                             setVersion,
+                             summaryItems,
+                           }) => {
   const { iconMapping } = useFormValues();
+
+  //--------------------------------------------------------------------------
+  // STATE MANAGEMENT
+  //--------------------------------------------------------------------------
   const [showPopup, setShowPopup] = useState(false);
   const [popupPosition, setPopupPosition] = useState({ top: 0, left: 0 });
   const [selectedItemId, setSelectedItemId] = useState();
+  const [updateStatus, setUpdateStatus] = useState('');
+  const [isUpdating, setIsUpdating] = useState(false);
+
+  // Label management state
   const [editingLabel, setEditingLabel] = useState(null);
   const [tempLabel, setTempLabel] = useState('');
-  const [updateStatus, setUpdateStatus] = useState('');
   const [originalLabels, setOriginalLabels] = useState({});
+  const [editedLabels, setEditedLabels] = useState({});
 
-  // Helper function to get corresponding S number
+  //--------------------------------------------------------------------------
+  // HELPER FUNCTIONS - Convert keys to specific numbering schemes
+  //--------------------------------------------------------------------------
+  // Get plant lifetime value for efficacy calculations
+  const getLatestPlantLifetime = (formValues) => {
+    const filteredValues = Object.values(formValues).filter(item => item.id === 'plantLifetimeAmount10');
+    return filteredValues.length > 0 ? filteredValues[0].value : 40;
+  };
+
+  // Get S parameter number (used for sensitivity analysis)
   const getSNumber = (key) => {
     const match = key.match(/Amount(\d+)/);
     if (!match) return null;
@@ -32,21 +58,23 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
     return null;
   };
 
-  // Helper function to get V number
+  // Get V parameter number (variable parameters)
   const getVNumber = (vAmountNum) => {
     const num = parseInt(vAmountNum);
     if (num >= 40 && num <= 49) return `V${num - 39}`;
     if (num >= 50 && num <= 59) return `V${num - 49}`;
-
     return null;
   };
-  // Helper function to get R number
+
+  // Get R parameter number (rate parameters)
   const getRNumber = (rAmountNum) => {
     const num = parseInt(rAmountNum);
     if (num >= 50 && num <= 69) return `R${num - 59}`;
     if (num >= 50 && num <= 79) return `R${num - 69}`;
     return null;
   };
+
+  // Get F parameter number (factor parameters)
   const getFNumber = (key) => {
     const match = key.match(/Amount(\d+)/);
     if (!match) return null;
@@ -55,13 +83,22 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
     if (num >= 34 && num <= 38) return `F${num - 33}`;
     return null;
   };
+
+  //--------------------------------------------------------------------------
+  // SUMMARY ITEM HANDLING
+  //--------------------------------------------------------------------------
+  // Get final calculated value from summary items
   const getFinalResultValue = (itemId) => {
     if (!summaryItems || summaryItems.length === 0) return null;
 
     const summaryItem = summaryItems.find(item => item.id === itemId);
     return summaryItem ? summaryItem.finalResult : null;
   };
-  // Updated formItems to include S numbers
+
+  //--------------------------------------------------------------------------
+  // FORM ITEM PROCESSING
+  //--------------------------------------------------------------------------
+  // Transform form values into displayable items with appropriate metadata
   const formItems = Object.keys(formValues)
       .filter((key) => key.includes(filterKeyword))
       .map((key) => {
@@ -79,6 +116,9 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
         };
       });
 
+  //--------------------------------------------------------------------------
+  // LABEL MANAGEMENT FUNCTIONS
+  //--------------------------------------------------------------------------
   // Store original labels when component mounts
   useEffect(() => {
     if (Object.keys(originalLabels).length === 0) {
@@ -90,35 +130,100 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
     }
   }, [formValues]);
 
-  // Updated to immediately apply labels locally
+  // Begin editing a label
   const handleLabelEdit = (itemId) => {
     setEditingLabel(itemId);
     setTempLabel(formValues[itemId].label);
   };
 
-  // Updated to take effect locally immediately
-  const handleLabelSave = (itemId) => {
-    handleInputChange({ target: { value: tempLabel } }, itemId, 'label');
-    setEditingLabel(null);
-  };
-
+  // Cancel label editing
   const handleCancelEdit = () => {
     setEditingLabel(null);
     setTempLabel('');
   };
 
+  // Save edited label locally
+  const handleLabelSave = (itemId) => {
+    handleInputChange({ target: { value: tempLabel } }, itemId, 'label');
+    setEditedLabels(prev => ({ ...prev, [itemId]: true }));
+    setEditingLabel(null);
+    setUpdateStatus('Label saved locally - remember to update form');
+    setTimeout(() => setUpdateStatus(''), 3000);
+  };
+
+  // Update all edited labels to server
+  const handleUpdateFormLabels = async () => {
+    try {
+      setIsUpdating(true);
+      setUpdateStatus('Updating form labels...');
+
+      const updates = {};
+      Object.keys(editedLabels).forEach(key => {
+        if (formValues[key]) {
+          updates[key] = {
+            label: formValues[key].label,
+            value: formValues[key].value
+          };
+        }
+      });
+
+      if (Object.keys(updates).length === 0) {
+        setUpdateStatus('No edited labels to update');
+        setIsUpdating(false);
+        setTimeout(() => setUpdateStatus(''), 3000);
+        return;
+      }
+
+      const response = await axios.post('/api/update-form-values', { updates });
+
+      if (response.data.success) {
+        setEditedLabels({});
+        setUpdateStatus(`${Object.keys(updates).length} labels updated successfully`);
+        setTimeout(() => setUpdateStatus(''), 3000);
+      } else {
+        throw new Error(response.data.message);
+      }
+    } catch (error) {
+      console.error('Update failed:', error);
+      setUpdateStatus(`Update failed: ${error.message}`);
+      setTimeout(() => setUpdateStatus(''), 3000);
+    } finally {
+      setIsUpdating(false);
+    }
+  };
+
+  // Reset all labels to original values
+  const handleResetLabels = () => {
+    if (window.confirm('Reset all labels to original values?')) {
+      Object.entries(originalLabels).forEach(([key, label]) => {
+        if (formValues[key]) {
+          handleInputChange({ target: { value: label } }, key, 'label');
+        }
+      });
+      setEditedLabels({});
+      setUpdateStatus('Labels reset to original values');
+      setTimeout(() => setUpdateStatus(''), 3000);
+    }
+  };
+
+  //--------------------------------------------------------------------------
+  // INPUT HANDLERS
+  //--------------------------------------------------------------------------
+  // Handle increment button click
   const handleIncrement = (itemId) => {
     const item = formValues[itemId];
     const newValue = parseFloat(item.value) + parseFloat(item.step);
     handleInputChange({ target: { value: newValue } }, itemId, 'value');
   };
 
+  // Handle decrement button click
   const handleDecrement = (itemId) => {
     const item = formValues[itemId];
     const newValue = parseFloat(item.value) - parseFloat(item.step);
     handleInputChange({ target: { value: newValue } }, itemId, 'value');
   };
 
+  // Handle schedule/efficacy button click
   const handleScheduleClick = (e, itemId) => {
     const rect = e.target.getBoundingClientRect();
     setPopupPosition({
@@ -134,60 +239,9 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
     setShowPopup(true);
   };
 
-  // Function to handle updating form labels in both files
-  const handleUpdateFormLabels = async () => {
-    try {
-      setUpdateStatus('Updating labels...');
-
-      // Collect all updated labels from formValues
-      const updatedLabels = {};
-      Object.entries(formValues).forEach(([key, value]) => {
-        updatedLabels[key] = value.label;
-      });
-
-      // Call backend API to update files
-      const response = await axios.post('http://localhost:3060/api/update-form-labels', {
-        labels: updatedLabels
-      });
-
-      if (response.data.success) {
-        setUpdateStatus('Labels updated successfully!');
-        setTimeout(() => setUpdateStatus(''), 3000);
-      } else {
-        setUpdateStatus('Update failed: ' + response.data.message);
-      }
-    } catch (error) {
-      console.error('Error updating form labels:', error);
-      setUpdateStatus('Update failed: ' + error.message);
-    }
-  };
-
-  // Function to reset labels to original values
-  const handleResetLabels = () => {
-    if (!originalLabels || Object.keys(originalLabels).length === 0) {
-      setUpdateStatus('No original labels to restore');
-      return;
-    }
-
-    // Confirm reset
-    if (window.confirm('Are you sure you want to reset all labels to their original values?')) {
-      try {
-        // Apply original labels to all form items
-        Object.entries(originalLabels).forEach(([key, label]) => {
-          if (formValues[key]) {
-            handleInputChange({ target: { value: label } }, key, 'label');
-          }
-        });
-
-        setUpdateStatus('Labels reset to original values');
-        setTimeout(() => setUpdateStatus(''), 3000);
-      } catch (error) {
-        console.error('Error resetting labels:', error);
-        setUpdateStatus('Reset failed: ' + error.message);
-      }
-    }
-  };
-
+  //--------------------------------------------------------------------------
+  // COMPONENT RENDERING
+  //--------------------------------------------------------------------------
   return (
       <>
         {/* Label Management Section */}
@@ -195,8 +249,9 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
           <button
               className="update-button"
               onClick={handleUpdateFormLabels}
+              disabled={isUpdating}
           >
-            <FontAwesomeIcon icon={faSave} /> Update Form Labels
+            <FontAwesomeIcon icon={faSave} /> {isUpdating ? 'Updating...' : 'Update Form Labels'}
           </button>
           <button
               className="reset-button"
@@ -207,10 +262,11 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
           {updateStatus && <span className="update-status">{updateStatus}</span>}
         </div>
 
+        {/* Form Items Display */}
         {formItems.map((item) => (
             <div key={item.id} className={`form-item-container ${item.id === selectedItemId ? 'highlighted-container' : ''}`}>
 
-              {/* Priority Section: F/V/R Checkboxes */}
+              {/* Parameter Type Checkboxes (V/R/F) */}
               <div className="checkbox-section">
                 {item.vKey && (
                     <div className="checkbox-group">
@@ -287,7 +343,7 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
                   )}
                 </div>
 
-                {/* Value Input and Controls */}
+                {/* Numeric Input Controls */}
                 {item.type === 'number' && (
                     <div className="input-controls-section">
                       <div className="value-container">
@@ -305,15 +361,15 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
                             step={item.step}
                         />
 
-                        {/* Add final result display */}
+                        {/* Summary Results Display */}
                         {getFinalResultValue(item.id) !== null && (
                             <div className="final-result-container">
-            <span className="final-result-value">
-              Final: {getFinalResultValue(item.id).toFixed(2)}
-            </span>
+                      <span className="final-result-value">
+                        Final: {getFinalResultValue(item.id).toFixed(2)}
+                      </span>
                               <span className="final-result-indicator">
-              ← Summary Result
-            </span>
+                        ← Summary Result
+                      </span>
                             </div>
                         )}
 
@@ -323,7 +379,7 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
                         </div>
                       </div>
 
-                      {/* Step Input */}
+                      {/* Step Value Input */}
                       <div className="step-container">
                         <input
                             type="number"
@@ -338,6 +394,8 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
                             placeholder="Step Value"
                         />
                       </div>
+
+                      {/* Remarks Field */}
                       <div className="remarks-container">
                         <input
                             type="text"
@@ -348,8 +406,10 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
                             className="remarks-input remarks-important"
                         />
                       </div>
+
                       {/* Action Buttons */}
                       <div className="action-buttons">
+                        {/* Sensitivity Configuration */}
                         {item.sKey && (
                             <button
                                 className="action-button-sensitivity"
@@ -386,7 +446,7 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
                     </div>
                 )}
 
-                {/* Select Input */}
+                {/* Select Input Controls */}
                 {item.type === 'select' && (
                     <div className="input-controls-section">
                       <div className="value-container">
@@ -402,6 +462,7 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
                         </select>
                       </div>
 
+                      {/* Remarks Field */}
                       <div className="remarks-container">
                         <input
                             type="text"
@@ -415,6 +476,7 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
 
                       {/* Action Buttons */}
                       <div className="action-buttons">
+                        {/* Sensitivity Configuration */}
                         {item.sKey && (
                             <button
                                 className="action-button-sensitivity"
@@ -454,7 +516,7 @@ const GeneralFormConfig = ({ formValues, handleInputChange, version, filterKeywo
             </div>
         ))}
 
-        {/* Popup */}
+        {/* Efficacy Popup */}
         {selectedItemId && (
             <Popup
                 show={showPopup}

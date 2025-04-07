@@ -81,3 +81,4 @@ def extract_properties(config_file):
     properties = {key: getattr(config, key, None) for key in property_mapping.keys()}
     return properties
 
+

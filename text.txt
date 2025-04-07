@@ -57,6 +57,11 @@ cp -r temp_TeaSpace/src/* src.sketch.series/
 rm -rf temp_TeaSpace
 
 
+1. find the Process ID (PID) using the port 3000:
 
+netstat -ano | findstr :3000
+2. kill the process using the PID you found:
 
+taskkill /PID <PID> /F
+# Find the process using port 5001 and kill it
 Stop-Process -Id (netstat -ano | findstr 5001).OwningProcess -Force

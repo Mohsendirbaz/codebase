@@ -17,7 +17,7 @@ def get_versions(directory: Path):
     if not directory.exists():
         logging.warning(f"Directory not found: {directory}")
         return []
-    return [name.split("(")[1].split(")")[0] for name in os.listdir(directory) 
+    return [name.split("(")[1].split(")")[0] for name in os.listdir(directory)
             if name.startswith("Batch(") and name.endswith(")")]
 
 # Updated get_html_files function to handle HTML files in the nested directory structure
@@ -33,15 +33,15 @@ def get_html_files(version: str):
     # Construct the path to the version's Results directory
     version_folder = BASE_PATH / f"Batch({version})" / f"Results({version})"
     logging.info(f"Scanning directory: {version_folder}")
-    
+
     if not version_folder.exists():
         logging.warning(f"Version folder not found: {version_folder}")
         return jsonify([])
-    
+
     # Look for HTML files in the Results directory
     for item in os.listdir(version_folder):
         item_path = version_folder / item
-        
+
         # Check if it's a directory that might contain HTML files
         if os.path.isdir(item_path):
             logging.info(f"Checking directory: {item_path}")
@@ -51,7 +51,7 @@ def get_html_files(version: str):
         # Also check for HTML files directly in the Results directory
         elif item.lower().endswith('.html'):
             process_html_file(item, version_folder, html_files)
-    
+
     logging.info(f"Found {len(html_files)} HTML files across {len(set(f['album'] for f in html_files))} albums")
     return jsonify(html_files)
 
@@ -62,12 +62,12 @@ def process_html_file(file, directory, html_files):
         # Read the HTML content with proper encoding
         with open(file_path, 'r', encoding='utf-8') as f:
             content = f.read()
-        
+
         # Log the content length to verify it's being read correctly
         logging.info(f"Read HTML content from {file}, length: {len(content)}")
-        
+
         album = directory.name
-        
+
         # Check if this is from an organized album (HTML_v1_2_PlotType)
         album_match = re.match(r"HTML_v(\d+_\d+)_(.+)", album)
         if album_match:
@@ -85,7 +85,7 @@ def process_html_file(file, directory, html_files):
             else:
                 # Fall back to the original album name
                 display_name = album.replace('_', ' ')
-        
+
         # Create the HTML file object with all necessary information
         html_file_obj = {
             "name": file,
@@ -94,10 +94,10 @@ def process_html_file(file, directory, html_files):
             "display_name": display_name,
             "path": str(file_path)  # Convert Path to string for JSON serialization
         }
-        
+
         # Log the object structure (without the full content)
         logging.info(f"Created HTML file object: {file}, album: {album}, path: {str(file_path)}")
-        
+
         # Add to the list of HTML files
         html_files.append(html_file_obj)
         logging.info(f"Processed {file} from album {album}")
@@ -111,16 +111,16 @@ def serve_html(version, album, filename):
     """Serve HTML files from the correct directory based on version and album"""
     # Construct the path to the HTML file
     version_folder = BASE_PATH / f"Batch({version})" / f"Results({version})"
-    
+
     # Try to find the file in the album directory first
     file_path = version_folder / album / filename
-    
+
     # If not found, try directly in the Results directory
     if not file_path.exists():
         file_path = version_folder / filename
     logging.info(f"Serving HTML file: {file_path}")
     logging.info(f"File exists: {file_path.exists()}")
-    
+
     # List all files in the directory to help debug
     parent_dir = file_path.parent
     if parent_dir.exists():
@@ -129,12 +129,12 @@ def serve_html(version, album, filename):
             logging.info(f"  - {file.name}")
     else:
         logging.error(f"Directory not found: {parent_dir}")
-    
+
     # Check if the file exists
     if not file_path.exists():
         logging.error(f"HTML file not found: {file_path}")
         return "File not found", 404
-    
+
     # Serve the file from its directory
     try:
         logging.info(f"Attempting to serve file: {file_path.name} from directory: {str(file_path.parent)}")
@@ -157,7 +157,7 @@ if __name__ == '__main__':
         format='%(asctime)s [%(levelname)s] %(message)s',
         datefmt='%Y-%m-%d %H:%M:%S'
     )
-    
+
     # Get available versions and start the server
     versions = get_versions(BASE_PATH)
     logging.info(f"Available versions: {versions}")

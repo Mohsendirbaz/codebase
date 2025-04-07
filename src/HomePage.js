@@ -471,7 +471,10 @@ const HomePageContent = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ version }),
+                body: JSON.stringify({
+                    version,
+                    path: "C:/Users/Mohse/IdeaProjects2/codebase/backend/Logs/SENSITIVITY.log"
+                }),
             });
             const result = await response.json();
             if (response.ok) {
@@ -699,47 +702,8 @@ const HomePageContent = () => {
             const result = await response.json();
             console.log('Calculation completed successfully:', result);
 
-            // Check if year columns configuration was returned
-            if (result.yearColumns) {
-                console.log('Year columns configuration from sensitivity:', result.yearColumns);
-                // You could store this in state if needed
-            }
 
-            // If price calculation was selected, fetch the calculated prices
-            if (selectedCalculationOption === 'calculateForPrice') {
-                await fetchCalculatedPrices_s();
-            }
 
-            // Start real-time monitoring if calculation was successful
-            if (result.status === 'success') {
-                startRealTimeMonitoring_s();
-
-                // STEP 3: Fetch sensitivity visualization data
-                try {
-                    console.log('Step 3: Fetching sensitivity visualization data...');
-
-                    const visualizationResponse = await fetch('http://127.0.0.1:2500/sensitivity/visualize', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(requestPayload), // Reuse the same payload
-                    });
-
-                    if (visualizationResponse.ok) {
-                        const visualizationData = await visualizationResponse.json();
-                        console.log('Visualization data received:', visualizationData);
-
-                        // Store visualization data in state or process it as needed
-                        // For example, you could add a setSensitivityVisualizations state setter
-                        // setSensitivityVisualizations(visualizationData);
-                    } else {
-                        console.warn('Visualization endpoint returned non-OK response:',
-                            await visualizationResponse.text());
-                    }
-                } catch (vizError) {
-                    console.error('Error fetching sensitivity visualizations:', vizError);
-                    // Don't throw this error - we don't want it to affect the main flow
-                }
-            }
         } catch (error) {
             console.error('Error during CFA calculation:', error);
             // Could add user notification here
@@ -748,81 +712,7 @@ const HomePageContent = () => {
         }
     };
     
-    /**
-     * Fetches calculated prices for all selected versions
-     * This is a separate function to keep the main handleRun function focused
-     */
-    const fetchCalculatedPrices_s = async () => {
-        try {
-            // For each selected version, fetch the calculated price
-            for (const version of selectedVersions) {
-                const priceResponse = await fetch(`http://127.0.0.1:2500/prices/${version}`);
-                
-                if (priceResponse.ok) {
-                    const priceData = await priceResponse.json();
-                    updatePrice(version, priceData.price);
-                    console.log(`Fetched price for version ${version}:`, priceData.price);
-                }
-            }
-        } catch (error) {
-            console.error('Error fetching calculated prices:', error);
-        }
-    };
-    
-    /**
-     * Starts real-time monitoring of calculation progress
-     * This function connects to a stream for live updates from the calculation process
-     */
-    const startRealTimeMonitoring_s = () => {
-        // Close any existing stream connections
-        if (window.calculationEventSource) {
-            window.calculationEventSource.close();
-        }
-    
-        // For each selected version, set up a stream connection
-        selectedVersions.forEach(version => {
-            // Create a new EventSource connection for streaming updates
-            const eventSource = new EventSource(`http://127.0.0.1:2500/stream_prices/${version}`);
-            window.calculationEventSource = eventSource;
-    
-            // Handle incoming messages
-            eventSource.onmessage = (event) => {
-                try {
-                    const data = JSON.parse(event.data);
-                    console.log(`Real-time update for version ${version}:`, data);
-                    
-                    // Update price if available
-                    if (data.price) {
-                        updatePrice(version, data.price);
-                    }
-                    
-                    // Close the stream if the backend signals completion
-                    if (data.complete) {
-                        console.log(`Completed streaming for version ${version}`);
-                        eventSource.close();
-                    }
-                } catch (error) {
-                    console.error('Error processing stream data:', error);
-                }
-            };
-    
-            // Handle errors
-            eventSource.onerror = (error) => {
-                console.error(`Error in calculation stream for version ${version}:`, error);
-                eventSource.close();
-            };
-        });
-        
-        /*
-        // FUTURE ENHANCEMENTS (commented placeholders):
-        // - Add progress indicators for each calculation step
-        // - Implement real-time visualization updates
-        // - Display performance metrics during calculation
-        // - Show memory usage statistics
-        // - Track and display error rates
-        // - Provide estimated completion time
-        */
-    };
+
     
 
 
@@ -1913,7 +1803,7 @@ const HomePageContent = () => {
             <div className="HomePageSectionA">
                 <div className="about-us-image1"></div>
                 <div className="HomePageSectionT">
-                    <h2 className="h2-large">TEA Space</h2>
+                    <h2 className="h2-large">Ziptovic</h2>
                     <h2 className="h2-small">Techno-Economic-Social Simulation and Dynamic Modeling</h2>
                 </div>
                 <div className="theme-ribbon">

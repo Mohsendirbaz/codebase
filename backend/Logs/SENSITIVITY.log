@@ -1,183 +1,688 @@
-2025-03-31 10:12:32,957 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-03-31 10:12:33,376 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-03-31 10:12:33,376 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-03-31 10:12:33,458 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-03-31 10:12:35,622 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-03-31 10:12:35,622 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-03-31 13:51:13,383 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-03-31 13:51:13,735 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-03-31 13:51:13,735 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-03-31 13:51:13,860 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-03-31 13:51:15,989 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-03-31 13:51:15,989 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-03-31 15:20:45,355 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-03-31 15:20:45,741 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-03-31 15:20:45,741 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-03-31 15:20:45,837 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-03-31 15:20:47,960 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-03-31 15:20:47,960 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-03-31 17:01:02,764 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-03-31 17:01:03,200 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-03-31 17:01:03,200 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-03-31 17:01:03,231 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-03-31 17:01:05,479 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-03-31 17:01:05,479 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 08:39:36,234 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 08:39:36,587 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 08:39:36,587 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 08:39:36,734 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 08:39:38,833 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 08:39:38,833 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 09:28:35,436 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 09:28:40,363 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 09:28:40,363 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 10:16:03,516 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 10:16:03,816 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 10:16:03,816 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 10:16:04,059 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 10:16:06,049 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 10:16:06,049 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 10:45:26,683 INFO 
+2025-04-07 09:59:42,129 INFO 
 ================================================================================
-2025-04-01 10:45:26,683 INFO 
+2025-04-07 09:59:42,129 INFO 
 ================================================================================
-2025-04-01 10:45:26,683 INFO PLOT GENERATION STARTED - Run ID: 20250401_104526
-2025-04-01 10:45:26,683 INFO PLOT GENERATION STARTED - Run ID: 20250401_104526
-2025-04-01 10:45:26,683 INFO ================================================================================
-2025-04-01 10:45:26,683 INFO ================================================================================
-2025-04-01 10:45:26,691 WARNING Sensitivity configurations have not been generated yet
-2025-04-01 10:45:26,691 WARNING Sensitivity configurations have not been generated yet
-2025-04-01 10:45:26,741 INFO 
+2025-04-07 09:59:42,129 INFO Sensitivity Configuration Generation - Run ID: 20250407_095942
+2025-04-07 09:59:42,129 INFO Sensitivity Configuration Generation - Run ID: 20250407_095942
+2025-04-07 09:59:42,130 INFO ================================================================================
+2025-04-07 09:59:42,130 INFO ================================================================================
+2025-04-07 09:59:42,130 INFO Version: 5
+2025-04-07 09:59:42,130 INFO Version: 5
+2025-04-07 09:59:42,130 INFO Calculation Mode: calculateForPrice
+2025-04-07 09:59:42,130 INFO Calculation Mode: calculateForPrice
+2025-04-07 09:59:42,130 INFO Target Row: 20
+2025-04-07 09:59:42,130 INFO Target Row: 20
+2025-04-07 09:59:42,131 INFO Created main sensitivity directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity
+2025-04-07 09:59:42,131 INFO Created main sensitivity directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity
+2025-04-07 09:59:42,132 INFO Created Reports directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Reports
+2025-04-07 09:59:42,132 INFO Created Reports directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Reports
+2025-04-07 09:59:42,132 INFO Created Cache directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Cache
+2025-04-07 09:59:42,132 INFO Created Cache directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Cache
+2025-04-07 09:59:42,133 INFO Created Configuration directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Configuration
+2025-04-07 09:59:42,133 INFO Created Configuration directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Configuration
+2025-04-07 09:59:42,133 INFO Created mode directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical
+2025-04-07 09:59:42,133 INFO Created mode directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical
+2025-04-07 09:59:42,134 INFO Created plot type directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\waterfall
+2025-04-07 09:59:42,134 INFO Created plot type directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\waterfall
+2025-04-07 09:59:42,134 INFO Created plot type directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\bar
+2025-04-07 09:59:42,134 INFO Created plot type directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\bar
+2025-04-07 09:59:42,135 INFO Created plot type directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\point
+2025-04-07 09:59:42,135 INFO Created plot type directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\point
+2025-04-07 09:59:42,135 INFO Created plot type directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration
+2025-04-07 09:59:42,135 INFO Created plot type directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration
+2025-04-07 09:59:42,136 INFO Created mode directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint
+2025-04-07 09:59:42,136 INFO Created mode directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint
+2025-04-07 09:59:42,136 INFO Created plot type directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\waterfall
+2025-04-07 09:59:42,136 INFO Created plot type directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\waterfall
+2025-04-07 09:59:42,137 INFO Created plot type directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\bar
+2025-04-07 09:59:42,137 INFO Created plot type directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\bar
+2025-04-07 09:59:42,137 INFO Created plot type directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\point
+2025-04-07 09:59:42,137 INFO Created plot type directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\point
+2025-04-07 09:59:42,138 INFO Created plot type directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\Configuration
+2025-04-07 09:59:42,138 INFO Created plot type directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Multipoint\Configuration
+2025-04-07 09:59:42,146 INFO Created parameter variation directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\S34\symmetrical\+100.00
+2025-04-07 09:59:42,146 INFO Created parameter variation directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\S34\symmetrical\+100.00
+2025-04-07 09:59:42,150 INFO Created config variation directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S34_+100.00
+2025-04-07 09:59:42,150 INFO Created config variation directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S34_+100.00
+2025-04-07 09:59:42,152 INFO Created parameter variation directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\S34\symmetrical\-100.00
+2025-04-07 09:59:42,152 INFO Created parameter variation directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\S34\symmetrical\-100.00
+2025-04-07 09:59:42,153 INFO Created config variation directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S34_-100.00
+2025-04-07 09:59:42,153 INFO Created config variation directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S34_-100.00
+2025-04-07 09:59:42,154 INFO Created plot directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\point\S34_point
+2025-04-07 09:59:42,154 INFO Created plot directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\point\S34_point
+2025-04-07 09:59:42,156 INFO Created parameter variation directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\S35\symmetrical\-50.00
+2025-04-07 09:59:42,156 INFO Created parameter variation directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\S35\symmetrical\-50.00
+2025-04-07 09:59:42,157 INFO Created config variation directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S35_-50.00
+2025-04-07 09:59:42,157 INFO Created config variation directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S35_-50.00
+2025-04-07 09:59:42,157 INFO Created parameter variation directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\S35\symmetrical\+50.00
+2025-04-07 09:59:42,157 INFO Created parameter variation directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\S35\symmetrical\+50.00
+2025-04-07 09:59:42,158 INFO Created config variation directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S35_+50.00
+2025-04-07 09:59:42,158 INFO Created config variation directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S35_+50.00
+2025-04-07 09:59:42,159 INFO Created plot directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\point\S35_point
+2025-04-07 09:59:42,159 INFO Created plot directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\point\S35_point
+2025-04-07 09:59:42,159 INFO 
 ================================================================================
-2025-04-01 10:45:26,741 INFO 
+2025-04-07 09:59:42,159 INFO 
 ================================================================================
-2025-04-01 10:45:26,741 INFO PLOT GENERATION STARTED - Run ID: 20250401_104526
-2025-04-01 10:45:26,741 INFO PLOT GENERATION STARTED - Run ID: 20250401_104526
-2025-04-01 10:45:26,741 INFO ================================================================================
-2025-04-01 10:45:26,741 INFO ================================================================================
-2025-04-01 10:45:26,742 WARNING Sensitivity configurations have not been generated yet
-2025-04-01 10:45:26,742 WARNING Sensitivity configurations have not been generated yet
-2025-04-01 12:42:18,930 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 12:42:19,563 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 12:42:19,630 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 12:42:19,630 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 12:42:23,301 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 12:42:23,301 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 13:29:35,404 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 13:29:36,062 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 13:29:36,104 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 13:29:36,104 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 13:29:38,934 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 13:29:38,934 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 15:48:23,611 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 15:48:24,294 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 15:48:24,294 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 15:48:24,341 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 15:48:27,012 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 15:48:27,012 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 16:05:09,399 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 16:05:09,647 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 16:05:09,647 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 16:05:09,929 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 16:05:11,917 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 16:05:11,917 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 18:24:41,661 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 18:24:41,912 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 18:24:41,912 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 18:24:42,230 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 18:24:44,395 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 18:24:44,395 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 20:55:19,259 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 20:55:19,676 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 20:55:19,676 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 20:55:19,804 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 20:55:22,026 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-01 20:55:22,026 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 09:30:46,708 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 09:30:47,201 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 09:30:47,201 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 09:30:47,263 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 09:30:49,446 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 09:30:49,446 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 11:39:22,582 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 11:39:23,063 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 11:39:23,063 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 11:39:23,188 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 11:39:25,669 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 11:39:25,669 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 11:55:01,170 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 11:55:01,498 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 11:55:01,498 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 11:55:01,808 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 11:55:04,205 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 11:55:04,205 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 14:14:57,586 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 14:14:58,007 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 14:14:58,007 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 14:14:58,224 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 14:15:00,686 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 14:15:00,686 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 14:20:53,811 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 14:20:54,230 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 14:20:54,230 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 14:20:54,446 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 14:20:56,819 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 14:20:56,819 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 14:21:49,247 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 14:21:49,247 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 14:23:02,742 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 14:23:02,742 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 15:20:42,906 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 15:20:43,472 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 15:20:43,584 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 15:20:43,584 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 15:20:46,213 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 15:20:46,213 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 15:38:10,299 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 15:38:10,712 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 15:38:10,712 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 15:38:10,903 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 15:38:13,301 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 15:38:13,301 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 15:41:21,049 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 15:41:21,049 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 15:41:38,321 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 15:41:38,321 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 16:30:31,499 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 16:30:32,240 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 16:30:32,240 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 16:30:32,484 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 16:30:36,863 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 16:30:36,863 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 16:52:51,068 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 16:52:52,055 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 16:52:52,055 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 16:52:52,564 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 16:52:56,304 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 16:52:56,304 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 17:00:29,783 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 17:00:30,593 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 17:00:30,814 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 17:00:30,814 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 17:00:35,228 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 17:00:35,228 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-02 17:01:12,107 INFO 
+2025-04-07 09:59:42,159 INFO CFA Run Configuration
+2025-04-07 09:59:42,159 INFO CFA Run Configuration
+2025-04-07 09:59:42,159 INFO ================================================================================
+2025-04-07 09:59:42,159 INFO ================================================================================
+2025-04-07 09:59:42,159 INFO 
+Basic Configuration:
+2025-04-07 09:59:42,159 INFO 
+Basic Configuration:
+2025-04-07 09:59:42,160 INFO Version(s): 5
+2025-04-07 09:59:42,160 INFO Version(s): 5
+2025-04-07 09:59:42,160 INFO Calculation Mode: calculateForPrice
+2025-04-07 09:59:42,160 INFO Calculation Mode: calculateForPrice
+2025-04-07 09:59:42,160 INFO Target Row: 20
+2025-04-07 09:59:42,160 INFO Target Row: 20
+2025-04-07 09:59:42,160 INFO 
+Parameter States:
+2025-04-07 09:59:42,160 INFO 
+Parameter States:
+2025-04-07 09:59:42,160 INFO Enabled V Parameters: V1
+2025-04-07 09:59:42,160 INFO Enabled V Parameters: V1
+2025-04-07 09:59:42,161 INFO Enabled F Parameters: F1, F2, F3, F4, F5
+2025-04-07 09:59:42,161 INFO Enabled F Parameters: F1, F2, F3, F4, F5
+2025-04-07 09:59:42,161 INFO 
+Sensitivity Analysis Configuration:
+2025-04-07 09:59:42,161 INFO 
+Sensitivity Analysis Configuration:
+2025-04-07 09:59:42,161 INFO Enabled Parameters: S34, S35
+2025-04-07 09:59:42,161 INFO Enabled Parameters: S34, S35
+2025-04-07 09:59:42,161 INFO 
+S34 Configuration:
+2025-04-07 09:59:42,161 INFO 
+S34 Configuration:
+2025-04-07 09:59:42,161 INFO   Mode: symmetrical
+2025-04-07 09:59:42,161 INFO   Mode: symmetrical
+2025-04-07 09:59:42,161 INFO   Values: [100]
+2025-04-07 09:59:42,161 INFO   Values: [100]
+2025-04-07 09:59:42,162 INFO   Comparison:
+2025-04-07 09:59:42,162 INFO   Comparison:
+2025-04-07 09:59:42,162 INFO     Target: S13
+2025-04-07 09:59:42,162 INFO     Target: S13
+2025-04-07 09:59:42,162 INFO     Type: primary
+2025-04-07 09:59:42,162 INFO     Type: primary
+2025-04-07 09:59:42,162 INFO     Plot Types: point
+2025-04-07 09:59:42,162 INFO     Plot Types: point
+2025-04-07 09:59:42,162 INFO 
+S35 Configuration:
+2025-04-07 09:59:42,162 INFO 
+S35 Configuration:
+2025-04-07 09:59:42,162 INFO   Mode: symmetrical
+2025-04-07 09:59:42,162 INFO   Mode: symmetrical
+2025-04-07 09:59:42,163 INFO   Values: [-50]
+2025-04-07 09:59:42,163 INFO   Values: [-50]
+2025-04-07 09:59:42,163 INFO   Comparison:
+2025-04-07 09:59:42,163 INFO   Comparison:
+2025-04-07 09:59:42,163 INFO     Target: S13
+2025-04-07 09:59:42,163 INFO     Target: S13
+2025-04-07 09:59:42,163 INFO     Type: primary
+2025-04-07 09:59:42,163 INFO     Type: primary
+2025-04-07 09:59:42,163 INFO     Plot Types: point
+2025-04-07 09:59:42,163 INFO     Plot Types: point
+2025-04-07 09:59:42,163 INFO 
 ================================================================================
-2025-04-02 17:01:12,107 INFO 
+
+2025-04-07 09:59:42,163 INFO 
 ================================================================================
-2025-04-02 17:01:12,107 INFO PLOT GENERATION STARTED - Run ID: 20250402_170112
-2025-04-02 17:01:12,107 INFO PLOT GENERATION STARTED - Run ID: 20250402_170112
-2025-04-02 17:01:12,107 INFO ================================================================================
-2025-04-02 17:01:12,107 INFO ================================================================================
-2025-04-02 17:01:12,107 WARNING Sensitivity configurations have not been generated yet
-2025-04-02 17:01:12,107 WARNING Sensitivity configurations have not been generated yet
-2025-04-02 17:01:12,205 INFO 
+
+2025-04-07 09:59:42,180 INFO Saved main configuration file: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Reports\sensitivity_config.json
+2025-04-07 09:59:42,180 INFO Saved main configuration file: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Reports\sensitivity_config.json
+2025-04-07 09:59:42,181 INFO Saved parameter configuration file: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\S34\symmetrical\+100.00\S34_config.json
+2025-04-07 09:59:42,181 INFO Saved parameter configuration file: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\S34\symmetrical\+100.00\S34_config.json
+2025-04-07 09:59:42,182 INFO Saved parameter configuration file: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\S34\symmetrical\-100.00\S34_config.json
+2025-04-07 09:59:42,182 INFO Saved parameter configuration file: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\S34\symmetrical\-100.00\S34_config.json
+2025-04-07 09:59:42,183 INFO Saved parameter configuration file: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\S35\symmetrical\-50.00\S35_config.json
+2025-04-07 09:59:42,183 INFO Saved parameter configuration file: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\S35\symmetrical\-50.00\S35_config.json
+2025-04-07 09:59:42,184 INFO Saved parameter configuration file: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\S35\symmetrical\+50.00\S35_config.json
+2025-04-07 09:59:42,184 INFO Saved parameter configuration file: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\S35\symmetrical\+50.00\S35_config.json
+2025-04-07 09:59:42,184 INFO 
+Triggering configuration module copying:
+2025-04-07 09:59:42,184 INFO 
+Triggering configuration module copying:
+2025-04-07 09:59:42,184 INFO Triggering config module copy service on port 2600...
+2025-04-07 09:59:42,184 INFO Triggering config module copy service on port 2600...
+2025-04-07 09:59:44,500 INFO Config copy service triggered successfully: None
+2025-04-07 09:59:44,500 INFO Config copy service triggered successfully: None
+2025-04-07 09:59:44,500 INFO Preparing path configurations with CalSen service...
+2025-04-07 09:59:44,500 INFO Preparing path configurations with CalSen service...
+2025-04-07 09:59:47,506 INFO CalSen paths prepared: 2 configurations
+2025-04-07 09:59:47,506 INFO CalSen paths prepared: 2 configurations
+2025-04-07 09:59:47,513 INFO 
+Sensitivity configuration completed successfully
+2025-04-07 09:59:47,513 INFO 
+Sensitivity configuration completed successfully
+2025-04-07 09:59:47,514 INFO Configuration files saved: 5
+2025-04-07 09:59:47,514 INFO Configuration files saved: 5
+2025-04-07 09:59:47,514 INFO Configuration status saved to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\sensitivity_config_status.json
+2025-04-07 09:59:47,514 INFO Configuration status saved to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\sensitivity_config_status.json
+2025-04-07 09:59:47,514 INFO ================================================================================
+
+2025-04-07 09:59:47,514 INFO ================================================================================
+
+2025-04-07 09:59:51,069 INFO Using saved sensitivity configuration data
+2025-04-07 09:59:51,069 INFO Using saved sensitivity configuration data
+2025-04-07 09:59:51,069 INFO Year columns configuration set to 20 for all versions
+2025-04-07 09:59:51,069 INFO Year columns configuration set to 20 for all versions
+2025-04-07 09:59:51,069 INFO Using sensitivity directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity
+2025-04-07 09:59:51,069 INFO Using sensitivity directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity
+2025-04-07 09:59:51,070 INFO 
 ================================================================================
-2025-04-02 17:01:12,205 INFO 
+2025-04-07 09:59:51,070 INFO 
 ================================================================================
-2025-04-02 17:01:12,205 INFO PLOT GENERATION STARTED - Run ID: 20250402_170112
-2025-04-02 17:01:12,205 INFO PLOT GENERATION STARTED - Run ID: 20250402_170112
-2025-04-02 17:01:12,206 INFO ================================================================================
-2025-04-02 17:01:12,206 INFO ================================================================================
-2025-04-02 17:01:12,206 WARNING Sensitivity configurations have not been generated yet
-2025-04-02 17:01:12,206 WARNING Sensitivity configurations have not been generated yet
+2025-04-07 09:59:51,070 INFO Sensitivity Calculation Run - ID: 20250407_095951
+2025-04-07 09:59:51,070 INFO Sensitivity Calculation Run - ID: 20250407_095951
+2025-04-07 09:59:51,070 INFO ================================================================================
+2025-04-07 09:59:51,070 INFO ================================================================================
+2025-04-07 09:59:51,071 INFO 
+================================================================================
+2025-04-07 09:59:51,071 INFO 
+================================================================================
+2025-04-07 09:59:51,071 INFO CFA Run Configuration
+2025-04-07 09:59:51,071 INFO CFA Run Configuration
+2025-04-07 09:59:51,071 INFO ================================================================================
+2025-04-07 09:59:51,071 INFO ================================================================================
+2025-04-07 09:59:51,071 INFO 
+Basic Configuration:
+2025-04-07 09:59:51,071 INFO 
+Basic Configuration:
+2025-04-07 09:59:51,071 INFO Version(s): 5
+2025-04-07 09:59:51,071 INFO Version(s): 5
+2025-04-07 09:59:51,072 INFO Calculation Mode: calculateForPrice
+2025-04-07 09:59:51,072 INFO Calculation Mode: calculateForPrice
+2025-04-07 09:59:51,072 INFO Target Row: 20
+2025-04-07 09:59:51,072 INFO Target Row: 20
+2025-04-07 09:59:51,072 INFO 
+Parameter States:
+2025-04-07 09:59:51,072 INFO 
+Parameter States:
+2025-04-07 09:59:51,072 INFO Enabled V Parameters: V1
+2025-04-07 09:59:51,072 INFO Enabled V Parameters: V1
+2025-04-07 09:59:51,072 INFO Enabled F Parameters: F1, F2, F3, F4, F5
+2025-04-07 09:59:51,072 INFO Enabled F Parameters: F1, F2, F3, F4, F5
+2025-04-07 09:59:51,072 INFO 
+Sensitivity Analysis Configuration:
+2025-04-07 09:59:51,072 INFO 
+Sensitivity Analysis Configuration:
+2025-04-07 09:59:51,072 INFO Enabled Parameters: S34, S35
+2025-04-07 09:59:51,072 INFO Enabled Parameters: S34, S35
+2025-04-07 09:59:51,073 INFO 
+S34 Configuration:
+2025-04-07 09:59:51,073 INFO 
+S34 Configuration:
+2025-04-07 09:59:51,073 INFO   Mode: symmetrical
+2025-04-07 09:59:51,073 INFO   Mode: symmetrical
+2025-04-07 09:59:51,073 INFO   Values: [100]
+2025-04-07 09:59:51,073 INFO   Values: [100]
+2025-04-07 09:59:51,073 INFO   Comparison:
+2025-04-07 09:59:51,073 INFO   Comparison:
+2025-04-07 09:59:51,073 INFO     Target: S13
+2025-04-07 09:59:51,073 INFO     Target: S13
+2025-04-07 09:59:51,073 INFO     Type: primary
+2025-04-07 09:59:51,073 INFO     Type: primary
+2025-04-07 09:59:51,073 INFO     Plot Types: point
+2025-04-07 09:59:51,073 INFO     Plot Types: point
+2025-04-07 09:59:51,074 INFO 
+S35 Configuration:
+2025-04-07 09:59:51,074 INFO 
+S35 Configuration:
+2025-04-07 09:59:51,074 INFO   Mode: symmetrical
+2025-04-07 09:59:51,074 INFO   Mode: symmetrical
+2025-04-07 09:59:51,074 INFO   Values: [-50]
+2025-04-07 09:59:51,074 INFO   Values: [-50]
+2025-04-07 09:59:51,074 INFO   Comparison:
+2025-04-07 09:59:51,074 INFO   Comparison:
+2025-04-07 09:59:51,074 INFO     Target: S13
+2025-04-07 09:59:51,074 INFO     Target: S13
+2025-04-07 09:59:51,074 INFO     Type: primary
+2025-04-07 09:59:51,074 INFO     Type: primary
+2025-04-07 09:59:51,075 INFO     Plot Types: point
+2025-04-07 09:59:51,075 INFO     Plot Types: point
+2025-04-07 09:59:51,075 INFO 
+================================================================================
+
+2025-04-07 09:59:51,075 INFO 
+================================================================================
+
+2025-04-07 09:59:51,075 INFO 
+Executing Configuration Management Scripts:
+2025-04-07 09:59:51,075 INFO 
+Executing Configuration Management Scripts:
+2025-04-07 09:59:51,075 INFO 
+Executing: formatter.py
+2025-04-07 09:59:51,075 INFO 
+Executing: formatter.py
+2025-04-07 09:59:51,398 INFO Completed formatter.py in 0.32s
+2025-04-07 09:59:51,398 INFO Completed formatter.py in 0.32s
+2025-04-07 09:59:51,905 INFO 
+Executing: module1.py
+2025-04-07 09:59:51,905 INFO 
+Executing: module1.py
+2025-04-07 09:59:53,725 INFO Completed module1.py in 1.82s
+2025-04-07 09:59:53,725 INFO Completed module1.py in 1.82s
+2025-04-07 09:59:54,227 INFO 
+Executing: config_modules.py
+2025-04-07 09:59:54,227 INFO 
+Executing: config_modules.py
+2025-04-07 09:59:55,927 INFO Completed config_modules.py in 1.70s
+2025-04-07 09:59:55,927 INFO Completed config_modules.py in 1.70s
+2025-04-07 09:59:56,434 INFO 
+Executing: Table.py
+2025-04-07 09:59:56,434 INFO 
+Executing: Table.py
+2025-04-07 09:59:59,016 INFO Completed Table.py in 2.58s
+2025-04-07 09:59:59,016 INFO Completed Table.py in 2.58s
+2025-04-07 09:59:59,519 INFO 
+Configuration scripts completed in 8.44s
+2025-04-07 09:59:59,519 INFO 
+Configuration scripts completed in 8.44s
+2025-04-07 09:59:59,519 INFO 
+Processing Baseline Calculation:
+2025-04-07 09:59:59,519 INFO 
+Processing Baseline Calculation:
+2025-04-07 09:59:59,520 INFO Using calculation script: CFA.py
+2025-04-07 09:59:59,520 INFO Using calculation script: CFA.py
+2025-04-07 09:59:59,520 INFO 
+Executing baseline calculation:
+2025-04-07 09:59:59,520 INFO 
+Executing baseline calculation:
+2025-04-07 10:00:34,701 INFO Baseline calculation completed successfully
+2025-04-07 10:00:34,701 INFO Baseline calculation completed successfully
+2025-04-07 10:00:34,701 INFO 
+Checking configuration module copy status:
+2025-04-07 10:00:34,701 INFO 
+Checking configuration module copy status:
+2025-04-07 10:00:34,701 INFO Configuration copying was already initiated during configuration step
+2025-04-07 10:00:34,701 INFO Configuration copying was already initiated during configuration step
+2025-04-07 10:00:34,702 INFO Verifying configuration files existence...
+2025-04-07 10:00:34,702 INFO Verifying configuration files existence...
+2025-04-07 10:00:34,702 INFO Still waiting for config files for S34 variation +100.00...
+2025-04-07 10:00:34,702 INFO Still waiting for config files for S34 variation +100.00...
+2025-04-07 10:00:34,703 INFO Still waiting for configuration files... (0s elapsed)
+2025-04-07 10:00:34,703 INFO Still waiting for configuration files... (0s elapsed)
+2025-04-07 10:00:49,704 INFO Still waiting for config files for S34 variation +100.00...
+2025-04-07 10:00:49,704 INFO Still waiting for config files for S34 variation +100.00...
+2025-04-07 10:00:49,704 INFO Still waiting for configuration files... (15s elapsed)
+2025-04-07 10:00:49,704 INFO Still waiting for configuration files... (15s elapsed)
+2025-04-07 10:01:04,705 INFO Still waiting for config files for S34 variation +100.00...
+2025-04-07 10:01:04,705 INFO Still waiting for config files for S34 variation +100.00...
+2025-04-07 10:01:04,705 INFO Still waiting for configuration files... (30s elapsed)
+2025-04-07 10:01:04,705 INFO Still waiting for configuration files... (30s elapsed)
+2025-04-07 10:01:19,707 INFO Still waiting for config files for S34 variation +100.00...
+2025-04-07 10:01:19,707 INFO Still waiting for config files for S34 variation +100.00...
+2025-04-07 10:01:19,707 INFO Still waiting for configuration files... (45s elapsed)
+2025-04-07 10:01:19,707 INFO Still waiting for configuration files... (45s elapsed)
+2025-04-07 10:01:34,708 INFO Still waiting for config files for S34 variation +100.00...
+2025-04-07 10:01:34,708 INFO Still waiting for config files for S34 variation +100.00...
+2025-04-07 10:01:34,708 INFO Still waiting for configuration files... (60s elapsed)
+2025-04-07 10:01:34,708 INFO Still waiting for configuration files... (60s elapsed)
+2025-04-07 10:01:49,720 INFO Still waiting for config files for S34 variation +100.00...
+2025-04-07 10:01:49,720 INFO Still waiting for config files for S34 variation +100.00...
+2025-04-07 10:01:49,721 INFO Still waiting for configuration files... (75s elapsed)
+2025-04-07 10:01:49,721 INFO Still waiting for configuration files... (75s elapsed)
+2025-04-07 10:02:04,722 INFO Still waiting for config files for S34 variation +100.00...
+2025-04-07 10:02:04,722 INFO Still waiting for config files for S34 variation +100.00...
+2025-04-07 10:02:04,722 INFO Still waiting for configuration files... (90s elapsed)
+2025-04-07 10:02:04,722 INFO Still waiting for configuration files... (90s elapsed)
+2025-04-07 10:02:19,723 INFO Still waiting for config files for S34 variation +100.00...
+2025-04-07 10:02:19,723 INFO Still waiting for config files for S34 variation +100.00...
+2025-04-07 10:02:19,723 INFO Still waiting for configuration files... (105s elapsed)
+2025-04-07 10:02:19,723 INFO Still waiting for configuration files... (105s elapsed)
+2025-04-07 10:02:34,724 INFO Still waiting for config files for S34 variation +100.00...
+2025-04-07 10:02:34,724 INFO Still waiting for config files for S34 variation +100.00...
+2025-04-07 10:02:34,724 INFO Still waiting for configuration files... (120s elapsed)
+2025-04-07 10:02:34,724 INFO Still waiting for configuration files... (120s elapsed)
+2025-04-07 10:02:49,729 INFO Still waiting for config files for S34 variation +100.00...
+2025-04-07 10:02:49,729 INFO Still waiting for config files for S34 variation +100.00...
+2025-04-07 10:02:49,729 INFO Still waiting for configuration files... (135s elapsed)
+2025-04-07 10:02:49,729 INFO Still waiting for configuration files... (135s elapsed)
+2025-04-07 10:03:04,734 INFO Still waiting for config files for S34 variation +100.00...
+2025-04-07 10:03:04,734 INFO Still waiting for config files for S34 variation +100.00...
+2025-04-07 10:03:04,734 INFO Still waiting for configuration files... (150s elapsed)
+2025-04-07 10:03:04,734 INFO Still waiting for configuration files... (150s elapsed)
+2025-04-07 10:03:19,736 INFO Still waiting for config files for S34 variation +100.00...
+2025-04-07 10:03:19,736 INFO Still waiting for config files for S34 variation +100.00...
+2025-04-07 10:03:19,737 INFO Still waiting for configuration files... (165s elapsed)
+2025-04-07 10:03:19,737 INFO Still waiting for configuration files... (165s elapsed)
+2025-04-07 10:03:34,743 WARNING Timed out waiting for all configuration files, proceeding anyway
+2025-04-07 10:03:34,743 WARNING Timed out waiting for all configuration files, proceeding anyway
+2025-04-07 10:03:34,743 INFO Updating configuration data with current version...
+2025-04-07 10:03:34,743 INFO Updating configuration data with current version...
+2025-04-07 10:03:34,747 INFO Updated configuration data with version 5
+2025-04-07 10:03:34,747 INFO Updated configuration data with version 5
+2025-04-07 10:03:34,747 INFO 
+Processing 2 enabled sensitivity parameters...
+2025-04-07 10:03:34,747 INFO 
+Processing 2 enabled sensitivity parameters...
+2025-04-07 10:03:34,748 INFO 
+Processing S34 directly:
+2025-04-07 10:03:34,748 INFO 
+Processing S34 directly:
+2025-04-07 10:03:34,748 INFO Mode: symmetrical
+2025-04-07 10:03:34,748 INFO Mode: symmetrical
+2025-04-07 10:03:34,748 INFO Values: [100]
+2025-04-07 10:03:34,748 INFO Values: [100]
+2025-04-07 10:03:34,748 INFO Processing S34 variation +100.00
+2025-04-07 10:03:34,748 INFO Processing S34 variation +100.00
+2025-04-07 10:03:34,750 INFO Running CFA-b.py for S34 variation +100.00
+2025-04-07 10:03:34,750 INFO Running CFA-b.py for S34 variation +100.00
+2025-04-07 10:03:42,925 ERROR Error running CFA-b.py: 2025-04-07 10:03:42,617 - Price optimization started.
+2025-04-07 10:03:42,618 - CFA process initiated.
+2025-04-07 10:03:42,618 - Script started with: version=5, calculation_option=calculateForPrice
+2025-04-07 10:03:42,618 - V selections: {'V1': 'on', 'V2': 'off', 'V3': 'off', 'V4': 'off', 'V5': 'off', 'V6': 'off', 'V7': 'off', 'V8': 'off', 'V9': 'off', 'V10': 'off'}
+2025-04-07 10:03:42,618 - F selections: {'F1': 'on', 'F2': 'on', 'F3': 'on', 'F4': 'on', 'F5': 'on'}
+2025-04-07 10:03:42,618 - Target row: 20
+2025-04-07 10:03:42,618 - Sensitivity parameters provided: 1 parameters
+2025-04-07 10:03:42,619 - Starting main function for version 5
+2025-04-07 10:03:42,619 - Using environment variables for paths
+2025-04-07 10:03:42,619 - Config Matrix: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S34_+100.00\General_Configuration_Matrix(5).csv
+2025-04-07 10:03:42,619 - Config File: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S34_+100.00\configurations(5).py
+2025-04-07 10:03:42,619 - Results Folder: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\S34\symmetrical\+100.00
+2025-04-07 10:03:42,619 - Config matrix file not found: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S34_+100.00\General_Configuration_Matrix(5).csv
+2025-04-07 10:03:42,620 - Error in CFA.py execution: Config matrix file not found: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S34_+100.00\General_Configuration_Matrix(5).csv
+Traceback (most recent call last):
+  File "C:\Users\Mohse\IdeaProjects2\codebase\backend\Core_calculation_engines\CFA-b.py", line 911, in <module>
+    result = main(version, selected_v, selected_f, target_row, calculation_option, sen_parameters)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mohse\IdeaProjects2\codebase\backend\Core_calculation_engines\CFA-b.py", line 803, in main
+    raise FileNotFoundError(error_msg)
+FileNotFoundError: Config matrix file not found: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S34_+100.00\General_Configuration_Matrix(5).csv
+Traceback (most recent call last):
+  File "C:\Users\Mohse\IdeaProjects2\codebase\backend\Core_calculation_engines\CFA-b.py", line 911, in <module>
+    result = main(version, selected_v, selected_f, target_row, calculation_option, sen_parameters)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mohse\IdeaProjects2\codebase\backend\Core_calculation_engines\CFA-b.py", line 803, in main
+    raise FileNotFoundError(error_msg)
+FileNotFoundError: Config matrix file not found: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S34_+100.00\General_Configuration_Matrix(5).csv
+
+2025-04-07 10:03:42,925 ERROR Error running CFA-b.py: 2025-04-07 10:03:42,617 - Price optimization started.
+2025-04-07 10:03:42,618 - CFA process initiated.
+2025-04-07 10:03:42,618 - Script started with: version=5, calculation_option=calculateForPrice
+2025-04-07 10:03:42,618 - V selections: {'V1': 'on', 'V2': 'off', 'V3': 'off', 'V4': 'off', 'V5': 'off', 'V6': 'off', 'V7': 'off', 'V8': 'off', 'V9': 'off', 'V10': 'off'}
+2025-04-07 10:03:42,618 - F selections: {'F1': 'on', 'F2': 'on', 'F3': 'on', 'F4': 'on', 'F5': 'on'}
+2025-04-07 10:03:42,618 - Target row: 20
+2025-04-07 10:03:42,618 - Sensitivity parameters provided: 1 parameters
+2025-04-07 10:03:42,619 - Starting main function for version 5
+2025-04-07 10:03:42,619 - Using environment variables for paths
+2025-04-07 10:03:42,619 - Config Matrix: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S34_+100.00\General_Configuration_Matrix(5).csv
+2025-04-07 10:03:42,619 - Config File: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S34_+100.00\configurations(5).py
+2025-04-07 10:03:42,619 - Results Folder: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\S34\symmetrical\+100.00
+2025-04-07 10:03:42,619 - Config matrix file not found: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S34_+100.00\General_Configuration_Matrix(5).csv
+2025-04-07 10:03:42,620 - Error in CFA.py execution: Config matrix file not found: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S34_+100.00\General_Configuration_Matrix(5).csv
+Traceback (most recent call last):
+  File "C:\Users\Mohse\IdeaProjects2\codebase\backend\Core_calculation_engines\CFA-b.py", line 911, in <module>
+    result = main(version, selected_v, selected_f, target_row, calculation_option, sen_parameters)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mohse\IdeaProjects2\codebase\backend\Core_calculation_engines\CFA-b.py", line 803, in main
+    raise FileNotFoundError(error_msg)
+FileNotFoundError: Config matrix file not found: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S34_+100.00\General_Configuration_Matrix(5).csv
+Traceback (most recent call last):
+  File "C:\Users\Mohse\IdeaProjects2\codebase\backend\Core_calculation_engines\CFA-b.py", line 911, in <module>
+    result = main(version, selected_v, selected_f, target_row, calculation_option, sen_parameters)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mohse\IdeaProjects2\codebase\backend\Core_calculation_engines\CFA-b.py", line 803, in main
+    raise FileNotFoundError(error_msg)
+FileNotFoundError: Config matrix file not found: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S34_+100.00\General_Configuration_Matrix(5).csv
+
+2025-04-07 10:03:42,925 INFO Running CFA_Sensitivity.py for S34 variation +100.00
+2025-04-07 10:03:42,925 INFO Running CFA_Sensitivity.py for S34 variation +100.00
+2025-04-07 10:03:49,162 ERROR Error running CFA_Sensitivity.py: 
+2025-04-07 10:03:49,162 ERROR Error running CFA_Sensitivity.py: 
+2025-04-07 10:03:49,162 ERROR All calculation scripts failed for S34 variation +100.00
+2025-04-07 10:03:49,162 ERROR All calculation scripts failed for S34 variation +100.00
+2025-04-07 10:03:49,163 INFO Processing S34 variation -100.00
+2025-04-07 10:03:49,163 INFO Processing S34 variation -100.00
+2025-04-07 10:03:49,164 INFO Running CFA-b.py for S34 variation -100.00
+2025-04-07 10:03:49,164 INFO Running CFA-b.py for S34 variation -100.00
+2025-04-07 10:03:54,183 ERROR Error running CFA-b.py: 2025-04-07 10:03:53,897 - Price optimization started.
+2025-04-07 10:03:53,897 - CFA process initiated.
+2025-04-07 10:03:53,897 - Script started with: version=5, calculation_option=calculateForPrice
+2025-04-07 10:03:53,897 - V selections: {'V1': 'on', 'V2': 'off', 'V3': 'off', 'V4': 'off', 'V5': 'off', 'V6': 'off', 'V7': 'off', 'V8': 'off', 'V9': 'off', 'V10': 'off'}
+2025-04-07 10:03:53,897 - F selections: {'F1': 'on', 'F2': 'on', 'F3': 'on', 'F4': 'on', 'F5': 'on'}
+2025-04-07 10:03:53,898 - Target row: 20
+2025-04-07 10:03:53,898 - Sensitivity parameters provided: 1 parameters
+2025-04-07 10:03:53,898 - Starting main function for version 5
+2025-04-07 10:03:53,898 - Using environment variables for paths
+2025-04-07 10:03:53,898 - Config Matrix: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S34_-100.00\General_Configuration_Matrix(5).csv
+2025-04-07 10:03:53,898 - Config File: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S34_-100.00\configurations(5).py
+2025-04-07 10:03:53,898 - Results Folder: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\S34\symmetrical\-100.00
+2025-04-07 10:03:53,898 - Config matrix file not found: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S34_-100.00\General_Configuration_Matrix(5).csv
+2025-04-07 10:03:53,898 - Error in CFA.py execution: Config matrix file not found: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S34_-100.00\General_Configuration_Matrix(5).csv
+Traceback (most recent call last):
+  File "C:\Users\Mohse\IdeaProjects2\codebase\backend\Core_calculation_engines\CFA-b.py", line 911, in <module>
+    result = main(version, selected_v, selected_f, target_row, calculation_option, sen_parameters)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mohse\IdeaProjects2\codebase\backend\Core_calculation_engines\CFA-b.py", line 803, in main
+    raise FileNotFoundError(error_msg)
+FileNotFoundError: Config matrix file not found: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S34_-100.00\General_Configuration_Matrix(5).csv
+Traceback (most recent call last):
+  File "C:\Users\Mohse\IdeaProjects2\codebase\backend\Core_calculation_engines\CFA-b.py", line 911, in <module>
+    result = main(version, selected_v, selected_f, target_row, calculation_option, sen_parameters)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mohse\IdeaProjects2\codebase\backend\Core_calculation_engines\CFA-b.py", line 803, in main
+    raise FileNotFoundError(error_msg)
+FileNotFoundError: Config matrix file not found: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S34_-100.00\General_Configuration_Matrix(5).csv
+
+2025-04-07 10:03:54,183 ERROR Error running CFA-b.py: 2025-04-07 10:03:53,897 - Price optimization started.
+2025-04-07 10:03:53,897 - CFA process initiated.
+2025-04-07 10:03:53,897 - Script started with: version=5, calculation_option=calculateForPrice
+2025-04-07 10:03:53,897 - V selections: {'V1': 'on', 'V2': 'off', 'V3': 'off', 'V4': 'off', 'V5': 'off', 'V6': 'off', 'V7': 'off', 'V8': 'off', 'V9': 'off', 'V10': 'off'}
+2025-04-07 10:03:53,897 - F selections: {'F1': 'on', 'F2': 'on', 'F3': 'on', 'F4': 'on', 'F5': 'on'}
+2025-04-07 10:03:53,898 - Target row: 20
+2025-04-07 10:03:53,898 - Sensitivity parameters provided: 1 parameters
+2025-04-07 10:03:53,898 - Starting main function for version 5
+2025-04-07 10:03:53,898 - Using environment variables for paths
+2025-04-07 10:03:53,898 - Config Matrix: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S34_-100.00\General_Configuration_Matrix(5).csv
+2025-04-07 10:03:53,898 - Config File: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S34_-100.00\configurations(5).py
+2025-04-07 10:03:53,898 - Results Folder: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\S34\symmetrical\-100.00
+2025-04-07 10:03:53,898 - Config matrix file not found: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S34_-100.00\General_Configuration_Matrix(5).csv
+2025-04-07 10:03:53,898 - Error in CFA.py execution: Config matrix file not found: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S34_-100.00\General_Configuration_Matrix(5).csv
+Traceback (most recent call last):
+  File "C:\Users\Mohse\IdeaProjects2\codebase\backend\Core_calculation_engines\CFA-b.py", line 911, in <module>
+    result = main(version, selected_v, selected_f, target_row, calculation_option, sen_parameters)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mohse\IdeaProjects2\codebase\backend\Core_calculation_engines\CFA-b.py", line 803, in main
+    raise FileNotFoundError(error_msg)
+FileNotFoundError: Config matrix file not found: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S34_-100.00\General_Configuration_Matrix(5).csv
+Traceback (most recent call last):
+  File "C:\Users\Mohse\IdeaProjects2\codebase\backend\Core_calculation_engines\CFA-b.py", line 911, in <module>
+    result = main(version, selected_v, selected_f, target_row, calculation_option, sen_parameters)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mohse\IdeaProjects2\codebase\backend\Core_calculation_engines\CFA-b.py", line 803, in main
+    raise FileNotFoundError(error_msg)
+FileNotFoundError: Config matrix file not found: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S34_-100.00\General_Configuration_Matrix(5).csv
+
+2025-04-07 10:03:54,184 INFO Running CFA_Sensitivity.py for S34 variation -100.00
+2025-04-07 10:03:54,184 INFO Running CFA_Sensitivity.py for S34 variation -100.00
+2025-04-07 10:03:59,364 ERROR Error running CFA_Sensitivity.py: 
+2025-04-07 10:03:59,364 ERROR Error running CFA_Sensitivity.py: 
+2025-04-07 10:03:59,365 ERROR All calculation scripts failed for S34 variation -100.00
+2025-04-07 10:03:59,365 ERROR All calculation scripts failed for S34 variation -100.00
+2025-04-07 10:03:59,365 INFO Completed S34 processing in 24.62s
+2025-04-07 10:03:59,365 INFO Completed S34 processing in 24.62s
+2025-04-07 10:03:59,365 INFO 
+Processing S35 directly:
+2025-04-07 10:03:59,365 INFO 
+Processing S35 directly:
+2025-04-07 10:03:59,365 INFO Mode: symmetrical
+2025-04-07 10:03:59,365 INFO Mode: symmetrical
+2025-04-07 10:03:59,365 INFO Values: [-50]
+2025-04-07 10:03:59,365 INFO Values: [-50]
+2025-04-07 10:03:59,366 INFO Processing S35 variation -50.00
+2025-04-07 10:03:59,366 INFO Processing S35 variation -50.00
+2025-04-07 10:03:59,367 INFO Running CFA-b.py for S35 variation -50.00
+2025-04-07 10:03:59,367 INFO Running CFA-b.py for S35 variation -50.00
+2025-04-07 10:04:04,369 ERROR Error running CFA-b.py: 2025-04-07 10:04:04,091 - Price optimization started.
+2025-04-07 10:04:04,091 - CFA process initiated.
+2025-04-07 10:04:04,092 - Script started with: version=5, calculation_option=calculateForPrice
+2025-04-07 10:04:04,092 - V selections: {'V1': 'on', 'V2': 'off', 'V3': 'off', 'V4': 'off', 'V5': 'off', 'V6': 'off', 'V7': 'off', 'V8': 'off', 'V9': 'off', 'V10': 'off'}
+2025-04-07 10:04:04,092 - F selections: {'F1': 'on', 'F2': 'on', 'F3': 'on', 'F4': 'on', 'F5': 'on'}
+2025-04-07 10:04:04,092 - Target row: 20
+2025-04-07 10:04:04,092 - Sensitivity parameters provided: 1 parameters
+2025-04-07 10:04:04,092 - Starting main function for version 5
+2025-04-07 10:04:04,092 - Using environment variables for paths
+2025-04-07 10:04:04,093 - Config Matrix: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S35_-50.00\General_Configuration_Matrix(5).csv
+2025-04-07 10:04:04,093 - Config File: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S35_-50.00\configurations(5).py
+2025-04-07 10:04:04,093 - Results Folder: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\S35\symmetrical\-50.00
+2025-04-07 10:04:04,093 - Config matrix file not found: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S35_-50.00\General_Configuration_Matrix(5).csv
+2025-04-07 10:04:04,093 - Error in CFA.py execution: Config matrix file not found: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S35_-50.00\General_Configuration_Matrix(5).csv
+Traceback (most recent call last):
+  File "C:\Users\Mohse\IdeaProjects2\codebase\backend\Core_calculation_engines\CFA-b.py", line 911, in <module>
+    result = main(version, selected_v, selected_f, target_row, calculation_option, sen_parameters)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mohse\IdeaProjects2\codebase\backend\Core_calculation_engines\CFA-b.py", line 803, in main
+    raise FileNotFoundError(error_msg)
+FileNotFoundError: Config matrix file not found: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S35_-50.00\General_Configuration_Matrix(5).csv
+Traceback (most recent call last):
+  File "C:\Users\Mohse\IdeaProjects2\codebase\backend\Core_calculation_engines\CFA-b.py", line 911, in <module>
+    result = main(version, selected_v, selected_f, target_row, calculation_option, sen_parameters)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mohse\IdeaProjects2\codebase\backend\Core_calculation_engines\CFA-b.py", line 803, in main
+    raise FileNotFoundError(error_msg)
+FileNotFoundError: Config matrix file not found: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S35_-50.00\General_Configuration_Matrix(5).csv
+
+2025-04-07 10:04:04,369 ERROR Error running CFA-b.py: 2025-04-07 10:04:04,091 - Price optimization started.
+2025-04-07 10:04:04,091 - CFA process initiated.
+2025-04-07 10:04:04,092 - Script started with: version=5, calculation_option=calculateForPrice
+2025-04-07 10:04:04,092 - V selections: {'V1': 'on', 'V2': 'off', 'V3': 'off', 'V4': 'off', 'V5': 'off', 'V6': 'off', 'V7': 'off', 'V8': 'off', 'V9': 'off', 'V10': 'off'}
+2025-04-07 10:04:04,092 - F selections: {'F1': 'on', 'F2': 'on', 'F3': 'on', 'F4': 'on', 'F5': 'on'}
+2025-04-07 10:04:04,092 - Target row: 20
+2025-04-07 10:04:04,092 - Sensitivity parameters provided: 1 parameters
+2025-04-07 10:04:04,092 - Starting main function for version 5
+2025-04-07 10:04:04,092 - Using environment variables for paths
+2025-04-07 10:04:04,093 - Config Matrix: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S35_-50.00\General_Configuration_Matrix(5).csv
+2025-04-07 10:04:04,093 - Config File: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S35_-50.00\configurations(5).py
+2025-04-07 10:04:04,093 - Results Folder: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\S35\symmetrical\-50.00
+2025-04-07 10:04:04,093 - Config matrix file not found: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S35_-50.00\General_Configuration_Matrix(5).csv
+2025-04-07 10:04:04,093 - Error in CFA.py execution: Config matrix file not found: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S35_-50.00\General_Configuration_Matrix(5).csv
+Traceback (most recent call last):
+  File "C:\Users\Mohse\IdeaProjects2\codebase\backend\Core_calculation_engines\CFA-b.py", line 911, in <module>
+    result = main(version, selected_v, selected_f, target_row, calculation_option, sen_parameters)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mohse\IdeaProjects2\codebase\backend\Core_calculation_engines\CFA-b.py", line 803, in main
+    raise FileNotFoundError(error_msg)
+FileNotFoundError: Config matrix file not found: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S35_-50.00\General_Configuration_Matrix(5).csv
+Traceback (most recent call last):
+  File "C:\Users\Mohse\IdeaProjects2\codebase\backend\Core_calculation_engines\CFA-b.py", line 911, in <module>
+    result = main(version, selected_v, selected_f, target_row, calculation_option, sen_parameters)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mohse\IdeaProjects2\codebase\backend\Core_calculation_engines\CFA-b.py", line 803, in main
+    raise FileNotFoundError(error_msg)
+FileNotFoundError: Config matrix file not found: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S35_-50.00\General_Configuration_Matrix(5).csv
+
+2025-04-07 10:04:04,369 INFO Running CFA_Sensitivity.py for S35 variation -50.00
+2025-04-07 10:04:04,369 INFO Running CFA_Sensitivity.py for S35 variation -50.00
+2025-04-07 10:04:09,383 ERROR Error running CFA_Sensitivity.py: 
+2025-04-07 10:04:09,383 ERROR Error running CFA_Sensitivity.py: 
+2025-04-07 10:04:09,383 ERROR All calculation scripts failed for S35 variation -50.00
+2025-04-07 10:04:09,383 ERROR All calculation scripts failed for S35 variation -50.00
+2025-04-07 10:04:09,383 INFO Processing S35 variation +50.00
+2025-04-07 10:04:09,383 INFO Processing S35 variation +50.00
+2025-04-07 10:04:09,385 INFO Running CFA-b.py for S35 variation +50.00
+2025-04-07 10:04:09,385 INFO Running CFA-b.py for S35 variation +50.00
+2025-04-07 10:04:14,382 ERROR Error running CFA-b.py: 2025-04-07 10:04:14,099 - Price optimization started.
+2025-04-07 10:04:14,100 - CFA process initiated.
+2025-04-07 10:04:14,100 - Script started with: version=5, calculation_option=calculateForPrice
+2025-04-07 10:04:14,100 - V selections: {'V1': 'on', 'V2': 'off', 'V3': 'off', 'V4': 'off', 'V5': 'off', 'V6': 'off', 'V7': 'off', 'V8': 'off', 'V9': 'off', 'V10': 'off'}
+2025-04-07 10:04:14,100 - F selections: {'F1': 'on', 'F2': 'on', 'F3': 'on', 'F4': 'on', 'F5': 'on'}
+2025-04-07 10:04:14,100 - Target row: 20
+2025-04-07 10:04:14,101 - Sensitivity parameters provided: 1 parameters
+2025-04-07 10:04:14,101 - Starting main function for version 5
+2025-04-07 10:04:14,101 - Using environment variables for paths
+2025-04-07 10:04:14,101 - Config Matrix: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S35_+50.00\General_Configuration_Matrix(5).csv
+2025-04-07 10:04:14,101 - Config File: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S35_+50.00\configurations(5).py
+2025-04-07 10:04:14,101 - Results Folder: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\S35\symmetrical\+50.00
+2025-04-07 10:04:14,102 - Config matrix file not found: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S35_+50.00\General_Configuration_Matrix(5).csv
+2025-04-07 10:04:14,102 - Error in CFA.py execution: Config matrix file not found: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S35_+50.00\General_Configuration_Matrix(5).csv
+Traceback (most recent call last):
+  File "C:\Users\Mohse\IdeaProjects2\codebase\backend\Core_calculation_engines\CFA-b.py", line 911, in <module>
+    result = main(version, selected_v, selected_f, target_row, calculation_option, sen_parameters)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mohse\IdeaProjects2\codebase\backend\Core_calculation_engines\CFA-b.py", line 803, in main
+    raise FileNotFoundError(error_msg)
+FileNotFoundError: Config matrix file not found: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S35_+50.00\General_Configuration_Matrix(5).csv
+Traceback (most recent call last):
+  File "C:\Users\Mohse\IdeaProjects2\codebase\backend\Core_calculation_engines\CFA-b.py", line 911, in <module>
+    result = main(version, selected_v, selected_f, target_row, calculation_option, sen_parameters)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mohse\IdeaProjects2\codebase\backend\Core_calculation_engines\CFA-b.py", line 803, in main
+    raise FileNotFoundError(error_msg)
+FileNotFoundError: Config matrix file not found: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S35_+50.00\General_Configuration_Matrix(5).csv
+
+2025-04-07 10:04:14,382 ERROR Error running CFA-b.py: 2025-04-07 10:04:14,099 - Price optimization started.
+2025-04-07 10:04:14,100 - CFA process initiated.
+2025-04-07 10:04:14,100 - Script started with: version=5, calculation_option=calculateForPrice
+2025-04-07 10:04:14,100 - V selections: {'V1': 'on', 'V2': 'off', 'V3': 'off', 'V4': 'off', 'V5': 'off', 'V6': 'off', 'V7': 'off', 'V8': 'off', 'V9': 'off', 'V10': 'off'}
+2025-04-07 10:04:14,100 - F selections: {'F1': 'on', 'F2': 'on', 'F3': 'on', 'F4': 'on', 'F5': 'on'}
+2025-04-07 10:04:14,100 - Target row: 20
+2025-04-07 10:04:14,101 - Sensitivity parameters provided: 1 parameters
+2025-04-07 10:04:14,101 - Starting main function for version 5
+2025-04-07 10:04:14,101 - Using environment variables for paths
+2025-04-07 10:04:14,101 - Config Matrix: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S35_+50.00\General_Configuration_Matrix(5).csv
+2025-04-07 10:04:14,101 - Config File: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S35_+50.00\configurations(5).py
+2025-04-07 10:04:14,101 - Results Folder: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\S35\symmetrical\+50.00
+2025-04-07 10:04:14,102 - Config matrix file not found: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S35_+50.00\General_Configuration_Matrix(5).csv
+2025-04-07 10:04:14,102 - Error in CFA.py execution: Config matrix file not found: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S35_+50.00\General_Configuration_Matrix(5).csv
+Traceback (most recent call last):
+  File "C:\Users\Mohse\IdeaProjects2\codebase\backend\Core_calculation_engines\CFA-b.py", line 911, in <module>
+    result = main(version, selected_v, selected_f, target_row, calculation_option, sen_parameters)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mohse\IdeaProjects2\codebase\backend\Core_calculation_engines\CFA-b.py", line 803, in main
+    raise FileNotFoundError(error_msg)
+FileNotFoundError: Config matrix file not found: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S35_+50.00\General_Configuration_Matrix(5).csv
+Traceback (most recent call last):
+  File "C:\Users\Mohse\IdeaProjects2\codebase\backend\Core_calculation_engines\CFA-b.py", line 911, in <module>
+    result = main(version, selected_v, selected_f, target_row, calculation_option, sen_parameters)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mohse\IdeaProjects2\codebase\backend\Core_calculation_engines\CFA-b.py", line 803, in main
+    raise FileNotFoundError(error_msg)
+FileNotFoundError: Config matrix file not found: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(5)\Results(5)\Sensitivity\Symmetrical\Configuration\S35_+50.00\General_Configuration_Matrix(5).csv
+
+2025-04-07 10:04:14,382 INFO Running CFA_Sensitivity.py for S35 variation +50.00
+2025-04-07 10:04:14,382 INFO Running CFA_Sensitivity.py for S35 variation +50.00
+2025-04-07 10:04:19,365 ERROR Error running CFA_Sensitivity.py: 
+2025-04-07 10:04:19,365 ERROR Error running CFA_Sensitivity.py: 
+2025-04-07 10:04:19,365 ERROR All calculation scripts failed for S35 variation +50.00
+2025-04-07 10:04:19,365 ERROR All calculation scripts failed for S35 variation +50.00
+2025-04-07 10:04:19,365 INFO Completed S35 processing in 20.00s
+2025-04-07 10:04:19,365 INFO Completed S35 processing in 20.00s
+2025-04-07 10:04:19,366 INFO 
+Sensitivity Calculation Summary:
+2025-04-07 10:04:19,366 INFO 
+Sensitivity Calculation Summary:
+2025-04-07 10:04:19,366 INFO S34: 0/2 variations successful, took 24.62s
+2025-04-07 10:04:19,366 INFO S34: 0/2 variations successful, took 24.62s
+2025-04-07 10:04:19,366 ERROR   - All calculation scripts failed for S34 variation +100.00
+2025-04-07 10:04:19,366 ERROR   - All calculation scripts failed for S34 variation +100.00
+2025-04-07 10:04:19,366 ERROR   - All calculation scripts failed for S34 variation -100.00
+2025-04-07 10:04:19,366 ERROR   - All calculation scripts failed for S34 variation -100.00
+2025-04-07 10:04:19,366 INFO S35: 0/2 variations successful, took 20.00s
+2025-04-07 10:04:19,366 INFO S35: 0/2 variations successful, took 20.00s
+2025-04-07 10:04:19,367 ERROR   - All calculation scripts failed for S35 variation -50.00
+2025-04-07 10:04:19,367 ERROR   - All calculation scripts failed for S35 variation -50.00
+2025-04-07 10:04:19,367 ERROR   - All calculation scripts failed for S35 variation +50.00
+2025-04-07 10:04:19,367 ERROR   - All calculation scripts failed for S35 variation +50.00
+2025-04-07 10:04:19,367 WARNING Some sensitivity calculations failed
+2025-04-07 10:04:19,367 WARNING Some sensitivity calculations failed
+2025-04-07 10:04:19,367 INFO 
+================================================================================
+2025-04-07 10:04:19,367 INFO 
+================================================================================
+2025-04-07 10:04:19,367 INFO Run Summary - ID: 20250407_095951
+2025-04-07 10:04:19,367 INFO Run Summary - ID: 20250407_095951
+2025-04-07 10:04:19,367 INFO Total execution time: 268.29s
+2025-04-07 10:04:19,367 INFO Total execution time: 268.29s
+2025-04-07 10:04:19,368 INFO Configuration scripts: 8.44s
+2025-04-07 10:04:19,368 INFO Configuration scripts: 8.44s
+2025-04-07 10:04:19,368 INFO Configurations processed: 2
+2025-04-07 10:04:19,368 INFO Configurations processed: 2
+2025-04-07 10:04:19,368 INFO ================================================================================
+
+2025-04-07 10:04:19,368 INFO ================================================================================
+
+2025-04-07 10:55:39,141 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
+2025-04-07 10:55:39,141 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log

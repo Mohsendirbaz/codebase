@@ -734,3 +734,722 @@
 2025-04-02 17:00:30,593 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
 2025-04-02 17:00:30,640 WARNING  * Debugger is active!
 2025-04-02 17:00:30,655 INFO  * Debugger PIN: 119-059-632
+2025-04-03 16:54:47,776 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-03 16:54:47,807 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-03 16:54:47,807 INFO [33mPress CTRL+C to quit[0m
+2025-04-03 16:54:47,807 INFO  * Restarting with stat
+2025-04-03 16:54:48,229 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-03 16:54:48,260 WARNING  * Debugger is active!
+2025-04-03 16:54:48,260 INFO  * Debugger PIN: 119-059-632
+2025-04-03 17:21:31,959 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-03 17:21:31,990 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-03 17:21:31,990 INFO [33mPress CTRL+C to quit[0m
+2025-04-03 17:21:32,006 INFO  * Restarting with stat
+2025-04-03 17:21:32,475 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-03 17:21:32,506 WARNING  * Debugger is active!
+2025-04-03 17:21:32,508 INFO  * Debugger PIN: 119-059-632
+2025-04-03 17:23:48,711 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-03 17:23:48,742 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-03 17:23:48,742 INFO [33mPress CTRL+C to quit[0m
+2025-04-03 17:23:48,742 INFO  * Restarting with stat
+2025-04-03 17:23:49,251 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-03 17:23:49,277 WARNING  * Debugger is active!
+2025-04-03 17:23:49,292 INFO  * Debugger PIN: 119-059-632
+2025-04-03 17:24:26,251 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-03 17:24:26,283 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-03 17:24:26,283 INFO [33mPress CTRL+C to quit[0m
+2025-04-03 17:24:26,283 INFO  * Restarting with stat
+2025-04-03 17:24:26,794 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-03 17:24:26,825 WARNING  * Debugger is active!
+2025-04-03 17:24:26,841 INFO  * Debugger PIN: 119-059-632
+2025-04-03 19:29:49,922 INFO 127.0.0.1 - - [03/Apr/2025 19:29:49] "GET /health HTTP/1.1" 200 -
+2025-04-03 19:31:39,308 INFO 127.0.0.1 - - [03/Apr/2025 19:31:39] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-03 19:45:38,705 INFO 127.0.0.1 - - [03/Apr/2025 19:45:38] "GET /health HTTP/1.1" 200 -
+2025-04-03 19:47:26,766 INFO 127.0.0.1 - - [03/Apr/2025 19:47:26] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-03 20:51:38,335 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\sense_config_base.py', reloading
+2025-04-03 20:51:38,689 INFO  * Restarting with stat
+2025-04-03 20:51:39,845 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-03 20:51:39,889 WARNING  * Debugger is active!
+2025-04-03 20:51:39,889 INFO  * Debugger PIN: 119-059-632
+2025-04-03 20:52:03,928 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-03 20:52:03,982 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-03 20:52:03,982 INFO [33mPress CTRL+C to quit[0m
+2025-04-03 20:52:03,982 INFO  * Restarting with stat
+2025-04-03 20:52:04,480 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-03 20:52:04,511 WARNING  * Debugger is active!
+2025-04-03 20:52:04,527 INFO  * Debugger PIN: 119-059-632
+2025-04-03 20:55:05,327 INFO 127.0.0.1 - - [03/Apr/2025 20:55:05] "GET /health HTTP/1.1" 200 -
+2025-04-03 20:56:54,378 INFO 127.0.0.1 - - [03/Apr/2025 20:56:54] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-03 21:21:24,787 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\sense_config_base.py', reloading
+2025-04-03 21:21:24,944 INFO  * Restarting with stat
+2025-04-03 21:21:26,693 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-03 21:21:27,048 WARNING  * Debugger is active!
+2025-04-03 21:21:27,064 INFO  * Debugger PIN: 119-059-632
+2025-04-03 21:22:27,767 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-03 21:22:27,814 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-03 21:22:27,814 INFO [33mPress CTRL+C to quit[0m
+2025-04-03 21:22:27,814 INFO  * Restarting with stat
+2025-04-03 21:22:28,313 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-03 21:22:28,349 WARNING  * Debugger is active!
+2025-04-03 21:22:28,365 INFO  * Debugger PIN: 119-059-632
+2025-04-03 21:25:42,600 INFO 127.0.0.1 - - [03/Apr/2025 21:25:42] "GET /health HTTP/1.1" 200 -
+2025-04-03 21:27:31,708 INFO 127.0.0.1 - - [03/Apr/2025 21:27:31] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-03 21:52:20,974 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\sense_config_base.py', reloading
+2025-04-03 21:52:21,260 INFO  * Restarting with stat
+2025-04-03 21:52:22,589 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-03 21:52:22,668 WARNING  * Debugger is active!
+2025-04-03 21:52:22,677 INFO  * Debugger PIN: 119-059-632
+2025-04-03 21:53:11,761 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-03 21:53:11,803 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-03 21:53:11,803 INFO [33mPress CTRL+C to quit[0m
+2025-04-03 21:53:11,805 INFO  * Restarting with stat
+2025-04-03 21:53:12,289 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-03 21:53:12,329 WARNING  * Debugger is active!
+2025-04-03 21:53:12,337 INFO  * Debugger PIN: 119-059-632
+2025-04-03 21:54:23,229 INFO 127.0.0.1 - - [03/Apr/2025 21:54:23] "GET /health HTTP/1.1" 200 -
+2025-04-03 21:56:12,211 INFO 127.0.0.1 - - [03/Apr/2025 21:56:12] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-03 22:14:56,194 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-03 22:14:56,236 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-03 22:14:56,236 INFO [33mPress CTRL+C to quit[0m
+2025-04-03 22:14:56,238 INFO  * Restarting with stat
+2025-04-03 22:14:56,735 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-03 22:14:56,769 WARNING  * Debugger is active!
+2025-04-03 22:14:56,777 INFO  * Debugger PIN: 119-059-632
+2025-04-03 22:16:42,104 INFO 127.0.0.1 - - [03/Apr/2025 22:16:42] "GET /health HTTP/1.1" 200 -
+2025-04-03 22:23:31,295 INFO 127.0.0.1 - - [03/Apr/2025 22:23:31] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-03 22:28:21,436 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-03 22:28:21,483 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-03 22:28:21,483 INFO [33mPress CTRL+C to quit[0m
+2025-04-03 22:28:21,499 INFO  * Restarting with stat
+2025-04-03 22:28:22,122 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-03 22:28:22,153 WARNING  * Debugger is active!
+2025-04-03 22:28:22,169 INFO  * Debugger PIN: 119-059-632
+2025-04-03 22:31:15,100 INFO 127.0.0.1 - - [03/Apr/2025 22:31:15] "GET /health HTTP/1.1" 200 -
+2025-04-03 22:33:34,292 INFO 127.0.0.1 - - [03/Apr/2025 22:33:34] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-03 22:35:18,109 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-03 22:35:18,159 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-03 22:35:18,159 INFO [33mPress CTRL+C to quit[0m
+2025-04-03 22:35:18,159 INFO  * Restarting with stat
+2025-04-03 22:35:18,727 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-03 22:35:18,763 WARNING  * Debugger is active!
+2025-04-03 22:35:18,775 INFO  * Debugger PIN: 119-059-632
+2025-04-03 22:36:33,454 INFO 127.0.0.1 - - [03/Apr/2025 22:36:33] "GET /health HTTP/1.1" 200 -
+2025-04-03 22:38:52,481 INFO 127.0.0.1 - - [03/Apr/2025 22:38:52] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-03 23:12:56,167 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-03 23:12:56,218 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-03 23:12:56,218 INFO [33mPress CTRL+C to quit[0m
+2025-04-03 23:12:56,221 INFO  * Restarting with stat
+2025-04-03 23:12:56,759 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-03 23:12:56,790 WARNING  * Debugger is active!
+2025-04-03 23:12:56,798 INFO  * Debugger PIN: 119-059-632
+2025-04-03 23:16:00,476 INFO 127.0.0.1 - - [03/Apr/2025 23:16:00] "GET /health HTTP/1.1" 200 -
+2025-04-03 23:22:49,519 INFO 127.0.0.1 - - [03/Apr/2025 23:22:49] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-03 23:44:03,199 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-03 23:44:03,250 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-03 23:44:03,250 INFO [33mPress CTRL+C to quit[0m
+2025-04-03 23:44:03,252 INFO  * Restarting with stat
+2025-04-03 23:44:03,782 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-03 23:44:03,815 WARNING  * Debugger is active!
+2025-04-03 23:44:03,832 INFO  * Debugger PIN: 119-059-632
+2025-04-03 23:45:13,545 INFO 127.0.0.1 - - [03/Apr/2025 23:45:13] "GET /health HTTP/1.1" 200 -
+2025-04-03 23:52:02,798 INFO 127.0.0.1 - - [03/Apr/2025 23:52:02] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-04 09:04:50,458 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-04 09:04:50,489 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-04 09:04:50,489 INFO [33mPress CTRL+C to quit[0m
+2025-04-04 09:04:50,505 INFO  * Restarting with stat
+2025-04-04 09:04:50,926 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-04 09:04:50,958 WARNING  * Debugger is active!
+2025-04-04 09:04:50,958 INFO  * Debugger PIN: 119-059-632
+2025-04-04 10:57:48,749 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-04 10:57:48,784 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-04 10:57:48,784 INFO [33mPress CTRL+C to quit[0m
+2025-04-04 10:57:48,784 INFO  * Restarting with stat
+2025-04-04 10:57:49,253 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-04 10:57:49,284 WARNING  * Debugger is active!
+2025-04-04 10:57:49,293 INFO  * Debugger PIN: 119-059-632
+2025-04-04 11:27:31,121 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-04 11:27:31,190 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-04 11:27:31,190 INFO [33mPress CTRL+C to quit[0m
+2025-04-04 11:27:31,193 INFO  * Restarting with stat
+2025-04-04 11:27:34,349 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-04 11:27:34,408 WARNING  * Debugger is active!
+2025-04-04 11:27:34,458 INFO  * Debugger PIN: 119-059-632
+2025-04-04 11:31:55,110 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-04 11:31:55,740 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-04 11:31:55,741 INFO [33mPress CTRL+C to quit[0m
+2025-04-04 11:31:55,743 INFO  * Restarting with stat
+2025-04-04 11:31:59,525 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-04 11:31:59,787 WARNING  * Debugger is active!
+2025-04-04 11:31:59,796 INFO  * Debugger PIN: 119-059-632
+2025-04-04 11:40:52,818 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-04 11:40:53,061 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-04 11:40:53,061 INFO [33mPress CTRL+C to quit[0m
+2025-04-04 11:40:53,064 INFO  * Restarting with stat
+2025-04-04 11:40:55,258 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-04 11:40:55,716 WARNING  * Debugger is active!
+2025-04-04 11:40:55,724 INFO  * Debugger PIN: 119-059-632
+2025-04-04 12:03:09,524 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-04 12:03:09,571 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-04 12:03:09,571 INFO [33mPress CTRL+C to quit[0m
+2025-04-04 12:03:09,571 INFO  * Restarting with stat
+2025-04-04 12:03:10,176 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-04 12:03:10,207 WARNING  * Debugger is active!
+2025-04-04 12:03:10,207 INFO  * Debugger PIN: 119-059-632
+2025-04-04 12:05:17,941 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-04 12:05:17,988 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-04 12:05:17,988 INFO [33mPress CTRL+C to quit[0m
+2025-04-04 12:05:17,988 INFO  * Restarting with stat
+2025-04-04 12:05:18,515 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-04 12:05:18,546 WARNING  * Debugger is active!
+2025-04-04 12:05:18,546 INFO  * Debugger PIN: 119-059-632
+2025-04-04 12:08:50,667 INFO 127.0.0.1 - - [04/Apr/2025 12:08:50] "GET /health HTTP/1.1" 200 -
+2025-04-04 12:11:40,768 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-04 12:11:40,815 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-04 12:11:40,815 INFO [33mPress CTRL+C to quit[0m
+2025-04-04 12:11:40,815 INFO  * Restarting with stat
+2025-04-04 12:11:41,315 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-04 12:11:41,341 WARNING  * Debugger is active!
+2025-04-04 12:11:41,357 INFO  * Debugger PIN: 119-059-632
+2025-04-04 13:22:24,225 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-04 13:22:24,256 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-04 13:22:24,256 INFO [33mPress CTRL+C to quit[0m
+2025-04-04 13:22:24,256 INFO  * Restarting with stat
+2025-04-04 13:22:24,756 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-04 13:22:24,787 WARNING  * Debugger is active!
+2025-04-04 13:22:24,803 INFO  * Debugger PIN: 119-059-632
+2025-04-04 13:33:44,869 INFO 127.0.0.1 - - [04/Apr/2025 13:33:44] "GET /health HTTP/1.1" 200 -
+2025-04-04 13:40:33,756 INFO 127.0.0.1 - - [04/Apr/2025 13:40:33] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-04 13:45:25,844 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-04-04 13:45:26,001 INFO  * Restarting with stat
+2025-04-04 13:45:26,872 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-04 13:45:26,910 WARNING  * Debugger is active!
+2025-04-04 13:45:26,910 INFO  * Debugger PIN: 119-059-632
+2025-04-04 13:47:11,003 INFO 127.0.0.1 - - [04/Apr/2025 13:47:11] "GET /health HTTP/1.1" 200 -
+2025-04-04 13:51:00,252 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\sense_config_base.py', reloading
+2025-04-04 13:51:00,404 INFO  * Restarting with stat
+2025-04-04 13:51:01,604 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-04 13:51:01,671 WARNING  * Debugger is active!
+2025-04-04 13:51:01,688 INFO  * Debugger PIN: 119-059-632
+2025-04-04 14:01:28,922 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-04 14:01:28,969 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-04 14:01:28,969 INFO [33mPress CTRL+C to quit[0m
+2025-04-04 14:01:28,969 INFO  * Restarting with stat
+2025-04-04 14:01:29,456 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-04 14:01:29,487 WARNING  * Debugger is active!
+2025-04-04 14:01:29,503 INFO  * Debugger PIN: 119-059-632
+2025-04-04 14:24:57,568 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-04 14:24:57,618 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-04 14:24:57,618 INFO [33mPress CTRL+C to quit[0m
+2025-04-04 14:24:57,618 INFO  * Restarting with stat
+2025-04-04 14:24:58,105 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-04 14:24:58,138 WARNING  * Debugger is active!
+2025-04-04 14:24:58,154 INFO  * Debugger PIN: 119-059-632
+2025-04-04 14:26:07,270 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-04 14:26:07,317 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-04 14:26:07,317 INFO [33mPress CTRL+C to quit[0m
+2025-04-04 14:26:07,317 INFO  * Restarting with stat
+2025-04-04 14:26:07,826 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-04 14:26:07,857 WARNING  * Debugger is active!
+2025-04-04 14:26:07,873 INFO  * Debugger PIN: 119-059-632
+2025-04-04 14:28:35,577 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-04 14:28:35,624 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-04 14:28:35,624 INFO [33mPress CTRL+C to quit[0m
+2025-04-04 14:28:35,624 INFO  * Restarting with stat
+2025-04-04 14:28:36,143 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-04 14:28:36,182 WARNING  * Debugger is active!
+2025-04-04 14:28:36,198 INFO  * Debugger PIN: 119-059-632
+2025-04-04 14:31:07,912 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-04-04 14:31:08,009 INFO  * Restarting with stat
+2025-04-04 14:31:09,430 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-04 14:31:09,557 WARNING  * Debugger is active!
+2025-04-04 14:31:09,565 INFO  * Debugger PIN: 119-059-632
+2025-04-04 14:32:05,919 INFO 127.0.0.1 - - [04/Apr/2025 14:32:05] "GET /health HTTP/1.1" 200 -
+2025-04-04 14:34:25,177 INFO 127.0.0.1 - - [04/Apr/2025 14:34:25] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-04 14:38:11,256 INFO 127.0.0.1 - - [04/Apr/2025 14:38:11] "GET /health HTTP/1.1" 200 -
+2025-04-04 14:40:29,422 INFO 127.0.0.1 - - [04/Apr/2025 14:40:29] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-04 14:41:40,786 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-04-04 14:41:40,997 INFO  * Restarting with stat
+2025-04-04 14:41:42,091 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-04 14:41:42,148 WARNING  * Debugger is active!
+2025-04-04 14:41:42,156 INFO  * Debugger PIN: 119-059-632
+2025-04-04 14:59:21,431 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-04-04 14:59:21,534 INFO  * Restarting with stat
+2025-04-04 14:59:22,526 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-04 14:59:22,567 WARNING  * Debugger is active!
+2025-04-04 14:59:22,576 INFO  * Debugger PIN: 119-059-632
+2025-04-04 15:04:31,140 INFO 127.0.0.1 - - [04/Apr/2025 15:04:31] "GET /health HTTP/1.1" 200 -
+2025-04-04 15:06:50,323 INFO 127.0.0.1 - - [04/Apr/2025 15:06:50] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-04 15:33:52,810 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\process_sensitivity_results.py', reloading
+2025-04-04 15:33:52,970 INFO  * Restarting with stat
+2025-04-04 15:33:53,781 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-04 15:33:53,827 WARNING  * Debugger is active!
+2025-04-04 15:33:53,835 INFO  * Debugger PIN: 119-059-632
+2025-04-04 15:37:11,362 INFO 127.0.0.1 - - [04/Apr/2025 15:37:11] "GET /health HTTP/1.1" 200 -
+2025-04-04 15:39:30,680 INFO 127.0.0.1 - - [04/Apr/2025 15:39:30] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-04 15:49:55,509 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\process_sensitivity_results.py', reloading
+2025-04-04 15:49:55,675 INFO  * Restarting with stat
+2025-04-04 15:49:56,657 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-04 15:49:56,712 WARNING  * Debugger is active!
+2025-04-04 15:49:56,721 INFO  * Debugger PIN: 119-059-632
+2025-04-04 15:55:49,914 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\process_sensitivity_results.py', reloading
+2025-04-04 15:55:49,998 INFO  * Restarting with stat
+2025-04-04 15:55:50,950 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-04 15:55:50,994 WARNING  * Debugger is active!
+2025-04-04 15:55:51,002 INFO  * Debugger PIN: 119-059-632
+2025-04-04 15:57:38,462 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-04 15:57:38,508 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-04 15:57:38,509 INFO [33mPress CTRL+C to quit[0m
+2025-04-04 15:57:38,511 INFO  * Restarting with stat
+2025-04-04 15:57:39,023 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-04 15:57:39,062 WARNING  * Debugger is active!
+2025-04-04 15:57:39,070 INFO  * Debugger PIN: 119-059-632
+2025-04-04 15:57:51,688 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\process_sensitivity_results.py', reloading
+2025-04-04 15:57:51,808 INFO  * Restarting with stat
+2025-04-04 15:57:53,757 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-04 15:57:53,840 WARNING  * Debugger is active!
+2025-04-04 15:57:53,848 INFO  * Debugger PIN: 119-059-632
+2025-04-04 15:59:14,130 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-04 15:59:14,175 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-04 15:59:14,175 INFO [33mPress CTRL+C to quit[0m
+2025-04-04 15:59:14,177 INFO  * Restarting with stat
+2025-04-04 15:59:14,702 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-04 15:59:14,733 WARNING  * Debugger is active!
+2025-04-04 15:59:14,741 INFO  * Debugger PIN: 119-059-632
+2025-04-04 16:08:04,042 INFO 127.0.0.1 - - [04/Apr/2025 16:08:04] "GET /health HTTP/1.1" 200 -
+2025-04-04 16:10:23,340 INFO 127.0.0.1 - - [04/Apr/2025 16:10:23] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-04 16:16:12,119 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\process_sensitivity_results.py', reloading
+2025-04-04 16:16:12,306 INFO  * Restarting with stat
+2025-04-04 16:16:13,528 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-04 16:16:13,640 WARNING  * Debugger is active!
+2025-04-04 16:16:13,640 INFO  * Debugger PIN: 119-059-632
+2025-04-04 16:25:33,476 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\process_sensitivity_results.py', reloading
+2025-04-04 16:25:33,542 INFO  * Restarting with stat
+2025-04-04 16:25:34,671 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-04 16:25:34,735 WARNING  * Debugger is active!
+2025-04-04 16:25:34,743 INFO  * Debugger PIN: 119-059-632
+2025-04-05 01:10:31,345 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\Refactorization\\modular_sensitivity\\middleware.py', reloading
+2025-04-05 01:10:31,512 INFO  * Restarting with stat
+2025-04-05 01:10:32,619 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-05 01:10:32,674 WARNING  * Debugger is active!
+2025-04-05 01:10:32,678 INFO  * Debugger PIN: 119-059-632
+2025-04-05 01:14:02,716 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\Refactorization\\modular_sensitivity\\logging_config.py', reloading
+2025-04-05 01:14:02,868 INFO  * Restarting with stat
+2025-04-05 01:14:04,483 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-05 01:14:04,536 WARNING  * Debugger is active!
+2025-04-05 01:14:04,536 INFO  * Debugger PIN: 119-059-632
+2025-04-05 01:17:18,266 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\Refactorization\\modular_sensitivity\\app.py', reloading
+2025-04-05 01:17:18,365 INFO  * Restarting with stat
+2025-04-05 01:17:19,583 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-05 01:17:19,748 WARNING  * Debugger is active!
+2025-04-05 01:17:19,755 INFO  * Debugger PIN: 119-059-632
+2025-04-05 01:25:24,714 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\Refactorization\\modular_sensitivity\\utils.py', reloading
+2025-04-05 01:25:24,805 INFO  * Restarting with stat
+2025-04-05 01:25:25,724 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-05 01:25:25,946 WARNING  * Debugger is active!
+2025-04-05 01:25:25,946 INFO  * Debugger PIN: 119-059-632
+2025-04-05 01:56:32,872 INFO 127.0.0.1 - - [05/Apr/2025 01:56:32] "GET /health HTTP/1.1" 200 -
+2025-04-05 01:58:52,513 INFO 127.0.0.1 - - [05/Apr/2025 01:58:52] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-05 09:21:13,928 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-05 09:21:13,991 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-05 09:21:13,991 INFO [33mPress CTRL+C to quit[0m
+2025-04-05 09:21:13,991 INFO  * Restarting with stat
+2025-04-05 09:21:14,539 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-05 09:21:14,570 WARNING  * Debugger is active!
+2025-04-05 09:21:14,586 INFO  * Debugger PIN: 119-059-632
+2025-04-05 09:27:55,754 INFO 127.0.0.1 - - [05/Apr/2025 09:27:55] "GET /health HTTP/1.1" 200 -
+2025-04-05 09:30:14,565 INFO 127.0.0.1 - - [05/Apr/2025 09:30:14] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-05 10:58:55,075 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\Sen_Config.py', reloading
+2025-04-05 10:58:55,215 INFO  * Restarting with stat
+2025-04-05 10:58:57,074 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-05 10:58:57,168 WARNING  * Debugger is active!
+2025-04-05 10:58:57,168 INFO  * Debugger PIN: 119-059-632
+2025-04-05 11:12:52,333 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-05 11:12:52,373 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-05 11:12:52,373 INFO [33mPress CTRL+C to quit[0m
+2025-04-05 11:12:52,375 INFO  * Restarting with stat
+2025-04-05 11:12:52,912 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-05 11:12:52,969 WARNING  * Debugger is active!
+2025-04-05 11:12:52,977 INFO  * Debugger PIN: 119-059-632
+2025-04-05 11:23:41,037 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-05 11:23:41,069 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-05 11:23:41,069 INFO [33mPress CTRL+C to quit[0m
+2025-04-05 11:23:41,084 INFO  * Restarting with stat
+2025-04-05 11:23:41,569 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-05 11:23:41,604 WARNING  * Debugger is active!
+2025-04-05 11:23:41,604 INFO  * Debugger PIN: 119-059-632
+2025-04-05 12:51:12,040 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-05 12:51:12,086 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-05 12:51:12,086 INFO [33mPress CTRL+C to quit[0m
+2025-04-05 12:51:12,088 INFO  * Restarting with stat
+2025-04-05 12:51:12,524 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-05 12:51:12,549 WARNING  * Debugger is active!
+2025-04-05 12:51:12,556 INFO  * Debugger PIN: 119-059-632
+2025-04-05 14:14:15,349 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-05 14:14:15,394 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-05 14:14:15,395 INFO [33mPress CTRL+C to quit[0m
+2025-04-05 14:14:15,397 INFO  * Restarting with stat
+2025-04-05 14:14:15,925 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-05 14:14:15,963 WARNING  * Debugger is active!
+2025-04-05 14:14:15,970 INFO  * Debugger PIN: 119-059-632
+2025-04-05 14:15:34,089 INFO 127.0.0.1 - - [05/Apr/2025 14:15:34] "GET /health HTTP/1.1" 200 -
+2025-04-05 14:17:53,288 INFO 127.0.0.1 - - [05/Apr/2025 14:17:53] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-05 16:53:54,977 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-05 16:53:55,021 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-05 16:53:55,021 INFO [33mPress CTRL+C to quit[0m
+2025-04-05 16:53:55,024 INFO  * Restarting with stat
+2025-04-05 16:53:55,550 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-05 16:53:55,588 WARNING  * Debugger is active!
+2025-04-05 16:53:55,596 INFO  * Debugger PIN: 119-059-632
+2025-04-05 16:58:19,458 INFO 127.0.0.1 - - [05/Apr/2025 16:58:19] "GET /health HTTP/1.1" 200 -
+2025-04-05 17:00:38,352 INFO 127.0.0.1 - - [05/Apr/2025 17:00:38] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-05 17:05:23,133 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-04-05 17:05:23,347 INFO  * Restarting with stat
+2025-04-05 17:05:24,414 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-05 17:05:24,457 WARNING  * Debugger is active!
+2025-04-05 17:05:24,467 INFO  * Debugger PIN: 119-059-632
+2025-04-05 17:06:24,767 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-05 17:06:24,813 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-05 17:06:24,813 INFO [33mPress CTRL+C to quit[0m
+2025-04-05 17:06:24,816 INFO  * Restarting with stat
+2025-04-05 17:06:25,306 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-05 17:06:25,339 WARNING  * Debugger is active!
+2025-04-05 17:06:25,347 INFO  * Debugger PIN: 119-059-632
+2025-04-05 17:07:03,167 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-05 17:07:03,207 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-05 17:07:03,207 INFO [33mPress CTRL+C to quit[0m
+2025-04-05 17:07:03,209 INFO  * Restarting with stat
+2025-04-05 17:07:03,727 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-05 17:07:03,761 WARNING  * Debugger is active!
+2025-04-05 17:07:03,769 INFO  * Debugger PIN: 119-059-632
+2025-04-05 17:08:09,955 INFO 127.0.0.1 - - [05/Apr/2025 17:08:09] "GET /health HTTP/1.1" 200 -
+2025-04-05 17:10:28,993 INFO 127.0.0.1 - - [05/Apr/2025 17:10:28] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-05 18:00:15,837 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\sense_config_base.py', reloading
+2025-04-05 18:00:16,028 INFO  * Restarting with stat
+2025-04-05 18:00:17,318 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-05 18:00:17,446 WARNING  * Debugger is active!
+2025-04-05 18:00:17,455 INFO  * Debugger PIN: 119-059-632
+2025-04-05 18:01:23,804 INFO 127.0.0.1 - - [05/Apr/2025 18:01:23] "GET /health HTTP/1.1" 200 -
+2025-04-05 18:03:42,941 INFO 127.0.0.1 - - [05/Apr/2025 18:03:42] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-06 10:01:15,443 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 10:01:15,499 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-06 10:01:15,499 INFO [33mPress CTRL+C to quit[0m
+2025-04-06 10:01:15,499 INFO  * Restarting with stat
+2025-04-06 10:01:16,091 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 10:01:16,137 WARNING  * Debugger is active!
+2025-04-06 10:01:16,137 INFO  * Debugger PIN: 119-059-632
+2025-04-06 10:03:57,197 INFO 127.0.0.1 - - [06/Apr/2025 10:03:57] "GET /health HTTP/1.1" 200 -
+2025-04-06 10:05:56,657 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\sense_config_base.py', reloading
+2025-04-06 10:05:56,798 INFO  * Restarting with stat
+2025-04-06 10:05:58,381 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 10:05:58,605 WARNING  * Debugger is active!
+2025-04-06 10:05:58,605 INFO  * Debugger PIN: 119-059-632
+2025-04-06 11:10:33,214 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\sense_config_base.py', reloading
+2025-04-06 11:10:33,277 INFO  * Restarting with stat
+2025-04-06 11:10:34,046 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 11:10:34,108 WARNING  * Debugger is active!
+2025-04-06 11:10:34,113 INFO  * Debugger PIN: 119-059-632
+2025-04-06 11:11:44,450 INFO 127.0.0.1 - - [06/Apr/2025 11:11:44] "GET /health HTTP/1.1" 200 -
+2025-04-06 11:14:03,337 INFO 127.0.0.1 - - [06/Apr/2025 11:14:03] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-06 13:11:29,465 INFO 127.0.0.1 - - [06/Apr/2025 13:11:29] "GET /health HTTP/1.1" 200 -
+2025-04-06 13:13:47,591 INFO 127.0.0.1 - - [06/Apr/2025 13:13:47] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-06 13:21:24,516 INFO 127.0.0.1 - - [06/Apr/2025 13:21:24] "GET /health HTTP/1.1" 200 -
+2025-04-06 13:23:42,651 INFO 127.0.0.1 - - [06/Apr/2025 13:23:42] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-06 15:12:02,130 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 15:12:02,177 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-06 15:12:02,177 INFO [33mPress CTRL+C to quit[0m
+2025-04-06 15:12:02,180 INFO  * Restarting with stat
+2025-04-06 15:12:02,672 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 15:12:02,711 WARNING  * Debugger is active!
+2025-04-06 15:12:02,720 INFO  * Debugger PIN: 119-059-632
+2025-04-06 15:35:41,737 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-04-06 15:35:41,808 INFO  * Restarting with stat
+2025-04-06 15:35:43,212 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 15:35:43,310 WARNING  * Debugger is active!
+2025-04-06 15:35:43,324 INFO  * Debugger PIN: 119-059-632
+2025-04-06 15:37:00,493 INFO 127.0.0.1 - - [06/Apr/2025 15:37:00] "GET /health HTTP/1.1" 200 -
+2025-04-06 15:39:19,479 INFO 127.0.0.1 - - [06/Apr/2025 15:39:19] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-06 15:41:56,057 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-04-06 15:41:56,271 INFO  * Restarting with stat
+2025-04-06 15:41:57,369 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 15:41:57,406 WARNING  * Debugger is active!
+2025-04-06 15:41:57,424 INFO  * Debugger PIN: 119-059-632
+2025-04-06 15:43:48,752 INFO 127.0.0.1 - - [06/Apr/2025 15:43:48] "GET /health HTTP/1.1" 200 -
+2025-04-06 15:46:07,761 INFO 127.0.0.1 - - [06/Apr/2025 15:46:07] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-06 15:56:09,515 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-04-06 15:56:09,700 INFO  * Restarting with stat
+2025-04-06 15:56:10,990 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 15:56:11,021 WARNING  * Debugger is active!
+2025-04-06 15:56:11,036 INFO  * Debugger PIN: 119-059-632
+2025-04-06 15:58:03,047 INFO 127.0.0.1 - - [06/Apr/2025 15:58:03] "GET /health HTTP/1.1" 200 -
+2025-04-06 16:00:22,148 INFO 127.0.0.1 - - [06/Apr/2025 16:00:22] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-06 16:03:51,881 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\sensitivity_Routes.py', reloading
+2025-04-06 16:03:52,046 INFO  * Restarting with stat
+2025-04-06 16:03:53,039 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 16:03:53,073 WARNING  * Debugger is active!
+2025-04-06 16:03:53,073 INFO  * Debugger PIN: 119-059-632
+2025-04-06 16:04:45,561 INFO 127.0.0.1 - - [06/Apr/2025 16:04:45] "GET /health HTTP/1.1" 200 -
+2025-04-06 16:07:04,511 INFO 127.0.0.1 - - [06/Apr/2025 16:07:04] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-06 16:15:50,904 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\sensitivity_Routes.py', reloading
+2025-04-06 16:15:51,045 INFO  * Restarting with stat
+2025-04-06 16:15:51,845 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 16:15:51,955 WARNING  * Debugger is active!
+2025-04-06 16:15:51,955 INFO  * Debugger PIN: 119-059-632
+2025-04-06 16:20:21,709 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 16:20:21,740 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-06 16:20:21,740 INFO [33mPress CTRL+C to quit[0m
+2025-04-06 16:20:21,756 INFO  * Restarting with stat
+2025-04-06 16:20:22,225 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 16:20:22,260 WARNING  * Debugger is active!
+2025-04-06 16:20:22,260 INFO  * Debugger PIN: 119-059-632
+2025-04-06 16:21:35,563 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\sense_config_base.py', reloading
+2025-04-06 16:21:35,632 INFO  * Restarting with stat
+2025-04-06 16:21:36,849 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 16:21:36,905 WARNING  * Debugger is active!
+2025-04-06 16:21:36,915 INFO  * Debugger PIN: 119-059-632
+2025-04-06 16:22:06,213 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 16:22:06,260 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-06 16:22:06,260 INFO [33mPress CTRL+C to quit[0m
+2025-04-06 16:22:06,260 INFO  * Restarting with stat
+2025-04-06 16:22:06,747 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 16:22:06,778 WARNING  * Debugger is active!
+2025-04-06 16:22:06,794 INFO  * Debugger PIN: 119-059-632
+2025-04-06 16:23:36,188 INFO 127.0.0.1 - - [06/Apr/2025 16:23:36] "GET /health HTTP/1.1" 200 -
+2025-04-06 16:25:55,618 INFO 127.0.0.1 - - [06/Apr/2025 16:25:55] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-06 16:43:45,501 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-04-06 16:43:45,656 INFO  * Restarting with stat
+2025-04-06 16:43:47,225 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 16:43:48,571 WARNING  * Debugger is active!
+2025-04-06 16:43:48,580 INFO  * Debugger PIN: 119-059-632
+2025-04-06 16:44:54,866 INFO 127.0.0.1 - - [06/Apr/2025 16:44:54] "GET /health HTTP/1.1" 200 -
+2025-04-06 16:47:14,304 INFO 127.0.0.1 - - [06/Apr/2025 16:47:14] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-06 16:50:38,561 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-04-06 16:50:38,717 INFO  * Restarting with stat
+2025-04-06 16:50:40,057 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 16:50:40,135 WARNING  * Debugger is active!
+2025-04-06 16:50:40,135 INFO  * Debugger PIN: 119-059-632
+2025-04-06 17:32:37,488 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-04-06 17:32:37,566 INFO  * Restarting with stat
+2025-04-06 17:32:38,618 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 17:32:38,680 WARNING  * Debugger is active!
+2025-04-06 17:32:38,688 INFO  * Debugger PIN: 119-059-632
+2025-04-06 17:33:10,555 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-04-06 17:33:10,953 INFO  * Restarting with stat
+2025-04-06 17:33:13,092 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 17:33:13,166 WARNING  * Debugger is active!
+2025-04-06 17:33:13,166 INFO  * Debugger PIN: 119-059-632
+2025-04-06 17:39:28,895 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 17:39:28,927 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-06 17:39:28,927 INFO [33mPress CTRL+C to quit[0m
+2025-04-06 17:39:28,927 INFO  * Restarting with stat
+2025-04-06 17:39:29,432 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 17:39:29,464 WARNING  * Debugger is active!
+2025-04-06 17:39:29,479 INFO  * Debugger PIN: 119-059-632
+2025-04-06 17:40:45,478 INFO 127.0.0.1 - - [06/Apr/2025 17:40:45] "GET /health HTTP/1.1" 200 -
+2025-04-06 17:43:04,309 INFO 127.0.0.1 - - [06/Apr/2025 17:43:04] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-06 17:48:54,369 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\sensitivity_Routes.py', reloading
+2025-04-06 17:48:54,521 INFO  * Restarting with stat
+2025-04-06 17:49:05,623 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 17:49:05,664 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-06 17:49:05,664 INFO [33mPress CTRL+C to quit[0m
+2025-04-06 17:49:05,666 INFO  * Restarting with stat
+2025-04-06 17:49:06,155 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 17:49:06,183 WARNING  * Debugger is active!
+2025-04-06 17:49:06,191 INFO  * Debugger PIN: 119-059-632
+2025-04-06 17:50:09,996 INFO 127.0.0.1 - - [06/Apr/2025 17:50:09] "GET /health HTTP/1.1" 200 -
+2025-04-06 17:52:28,996 INFO 127.0.0.1 - - [06/Apr/2025 17:52:28] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-06 17:57:37,680 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\Sen_Config.py', reloading
+2025-04-06 17:57:37,837 INFO  * Restarting with stat
+2025-04-06 17:57:38,902 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 17:57:38,948 WARNING  * Debugger is active!
+2025-04-06 17:57:38,948 INFO  * Debugger PIN: 119-059-632
+2025-04-06 17:57:50,274 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 17:57:50,310 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-06 17:57:50,310 INFO [33mPress CTRL+C to quit[0m
+2025-04-06 17:57:50,325 INFO  * Restarting with stat
+2025-04-06 17:57:50,833 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 17:57:50,865 WARNING  * Debugger is active!
+2025-04-06 17:57:50,880 INFO  * Debugger PIN: 119-059-632
+2025-04-06 17:58:59,946 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\Sen_Config.py', reloading
+2025-04-06 17:59:00,075 INFO  * Restarting with stat
+2025-04-06 17:59:02,026 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 17:59:02,175 WARNING  * Debugger is active!
+2025-04-06 17:59:02,190 INFO  * Debugger PIN: 119-059-632
+2025-04-06 18:00:08,306 INFO 127.0.0.1 - - [06/Apr/2025 18:00:08] "GET /health HTTP/1.1" 200 -
+2025-04-06 18:02:28,223 INFO 127.0.0.1 - - [06/Apr/2025 18:02:28] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-06 18:04:51,541 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\sense_config_base.py', reloading
+2025-04-06 18:04:51,705 INFO  * Restarting with stat
+2025-04-06 18:04:52,635 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 18:04:52,682 WARNING  * Debugger is active!
+2025-04-06 18:04:52,698 INFO  * Debugger PIN: 119-059-632
+2025-04-06 18:06:54,023 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 18:06:54,070 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-06 18:06:54,070 INFO [33mPress CTRL+C to quit[0m
+2025-04-06 18:06:54,070 INFO  * Restarting with stat
+2025-04-06 18:06:54,561 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 18:06:54,608 WARNING  * Debugger is active!
+2025-04-06 18:06:54,624 INFO  * Debugger PIN: 119-059-632
+2025-04-06 18:07:55,740 INFO 127.0.0.1 - - [06/Apr/2025 18:07:55] "GET /health HTTP/1.1" 200 -
+2025-04-06 18:09:47,867 INFO 127.0.0.1 - - [06/Apr/2025 18:09:47] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-06 18:57:40,878 INFO 127.0.0.1 - - [06/Apr/2025 18:57:40] "GET /health HTTP/1.1" 200 -
+2025-04-06 18:59:32,009 INFO 127.0.0.1 - - [06/Apr/2025 18:59:32] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-06 19:58:12,941 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-04-06 19:58:13,165 INFO  * Restarting with stat
+2025-04-06 19:58:14,326 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 19:58:14,409 WARNING  * Debugger is active!
+2025-04-06 19:58:14,419 INFO  * Debugger PIN: 119-059-632
+2025-04-06 20:05:23,007 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-04-06 20:05:23,140 INFO  * Restarting with stat
+2025-04-06 20:05:25,226 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 20:05:25,294 WARNING  * Debugger is active!
+2025-04-06 20:05:25,302 INFO  * Debugger PIN: 119-059-632
+2025-04-06 20:06:50,055 INFO 127.0.0.1 - - [06/Apr/2025 20:06:50] "GET /health HTTP/1.1" 200 -
+2025-04-06 20:07:39,105 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 20:07:39,136 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-06 20:07:39,136 INFO [33mPress CTRL+C to quit[0m
+2025-04-06 20:07:39,152 INFO  * Restarting with stat
+2025-04-06 20:07:39,631 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 20:07:39,647 WARNING  * Debugger is active!
+2025-04-06 20:07:39,663 INFO  * Debugger PIN: 119-059-632
+2025-04-06 20:08:56,718 INFO 127.0.0.1 - - [06/Apr/2025 20:08:56] "GET /health HTTP/1.1" 200 -
+2025-04-06 20:10:48,685 INFO 127.0.0.1 - - [06/Apr/2025 20:10:48] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-06 20:11:27,435 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 20:11:27,479 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-06 20:11:27,479 INFO [33mPress CTRL+C to quit[0m
+2025-04-06 20:11:27,482 INFO  * Restarting with stat
+2025-04-06 20:11:28,045 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 20:11:28,077 WARNING  * Debugger is active!
+2025-04-06 20:11:28,092 INFO  * Debugger PIN: 119-059-632
+2025-04-06 20:12:43,659 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 20:12:43,707 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-06 20:12:43,707 INFO [33mPress CTRL+C to quit[0m
+2025-04-06 20:12:43,711 INFO  * Restarting with stat
+2025-04-06 20:12:44,183 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 20:12:44,224 WARNING  * Debugger is active!
+2025-04-06 20:12:44,224 INFO  * Debugger PIN: 119-059-632
+2025-04-06 20:14:08,572 INFO 127.0.0.1 - - [06/Apr/2025 20:14:08] "GET /health HTTP/1.1" 200 -
+2025-04-06 20:16:00,555 INFO 127.0.0.1 - - [06/Apr/2025 20:16:00] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-06 20:17:35,827 INFO 127.0.0.1 - - [06/Apr/2025 20:17:35] "GET /health HTTP/1.1" 200 -
+2025-04-06 20:19:26,930 INFO 127.0.0.1 - - [06/Apr/2025 20:19:26] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-06 20:20:45,649 INFO 127.0.0.1 - - [06/Apr/2025 20:20:45] "GET /health HTTP/1.1" 200 -
+2025-04-06 20:22:36,702 INFO 127.0.0.1 - - [06/Apr/2025 20:22:36] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-06 21:38:40,251 INFO 127.0.0.1 - - [06/Apr/2025 21:38:40] "GET /health HTTP/1.1" 200 -
+2025-04-06 21:40:31,370 INFO 127.0.0.1 - - [06/Apr/2025 21:40:31] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-06 21:43:15,615 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 21:43:15,654 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-06 21:43:15,654 INFO [33mPress CTRL+C to quit[0m
+2025-04-06 21:43:15,656 INFO  * Restarting with stat
+2025-04-06 21:43:16,146 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 21:43:16,174 WARNING  * Debugger is active!
+2025-04-06 21:43:16,182 INFO  * Debugger PIN: 119-059-632
+2025-04-06 21:45:57,290 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 21:45:57,338 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-06 21:45:57,338 INFO [33mPress CTRL+C to quit[0m
+2025-04-06 21:45:57,341 INFO  * Restarting with stat
+2025-04-06 21:45:57,913 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 21:45:57,944 WARNING  * Debugger is active!
+2025-04-06 21:45:57,951 INFO  * Debugger PIN: 119-059-632
+2025-04-06 21:48:44,394 INFO 127.0.0.1 - - [06/Apr/2025 21:48:44] "GET /health HTTP/1.1" 200 -
+2025-04-06 21:50:36,123 INFO 127.0.0.1 - - [06/Apr/2025 21:50:36] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-06 22:41:12,439 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\Core_calculation_engines\\CFA-b.py', reloading
+2025-04-06 22:41:12,644 INFO  * Restarting with stat
+2025-04-06 22:41:15,308 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 22:41:15,347 WARNING  * Debugger is active!
+2025-04-06 22:41:15,363 INFO  * Debugger PIN: 119-059-632
+2025-04-06 22:53:30,599 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-04-06 22:53:30,687 INFO  * Restarting with stat
+2025-04-06 22:53:32,863 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 22:53:32,939 WARNING  * Debugger is active!
+2025-04-06 22:53:32,939 INFO  * Debugger PIN: 119-059-632
+2025-04-06 22:55:59,838 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-04-06 22:55:59,889 INFO  * Restarting with stat
+2025-04-06 22:56:02,164 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 22:56:02,317 WARNING  * Debugger is active!
+2025-04-06 22:56:02,325 INFO  * Debugger PIN: 119-059-632
+2025-04-06 23:10:42,290 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 23:10:42,337 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-06 23:10:42,337 INFO [33mPress CTRL+C to quit[0m
+2025-04-06 23:10:42,339 INFO  * Restarting with stat
+2025-04-06 23:10:42,863 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 23:10:42,906 WARNING  * Debugger is active!
+2025-04-06 23:10:42,915 INFO  * Debugger PIN: 119-059-632
+2025-04-06 23:13:44,269 INFO 127.0.0.1 - - [06/Apr/2025 23:13:44] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-06 23:15:47,144 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\CalSen.py', reloading
+2025-04-06 23:15:47,314 INFO  * Restarting with stat
+2025-04-06 23:15:49,851 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 23:15:50,223 WARNING  * Debugger is active!
+2025-04-06 23:15:50,230 INFO  * Debugger PIN: 119-059-632
+2025-04-06 23:22:46,379 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 23:22:46,406 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-04-06 23:22:46,406 INFO [33mPress CTRL+C to quit[0m
+2025-04-06 23:22:46,406 INFO  * Restarting with stat
+2025-04-06 23:22:46,852 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 23:22:46,885 WARNING  * Debugger is active!
+2025-04-06 23:22:46,888 INFO  * Debugger PIN: 119-059-632
+2025-04-06 23:25:06,961 INFO 127.0.0.1 - - [06/Apr/2025 23:25:06] "POST /copy-config-modules HTTP/1.1" 200 -
+2025-04-06 23:30:47,727 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\sensitivity_Routes.py', reloading
+2025-04-06 23:30:47,945 INFO  * Restarting with stat
+2025-04-06 23:30:48,969 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 23:30:49,016 WARNING  * Debugger is active!
+2025-04-06 23:30:49,016 INFO  * Debugger PIN: 119-059-632
+2025-04-06 23:35:53,661 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\CalSen-ds.py', reloading
+2025-04-06 23:35:53,733 INFO  * Restarting with stat
+2025-04-06 23:35:55,241 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 23:35:55,373 WARNING  * Debugger is active!
+2025-04-06 23:35:55,381 INFO  * Debugger PIN: 119-059-632
+2025-04-06 23:40:15,077 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\process_sensitivity_results.py', reloading
+2025-04-06 23:40:15,218 INFO  * Restarting with stat
+2025-04-06 23:40:17,921 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
+2025-04-06 23:40:18,011 WARNING  * Debugger is active!
+2025-04-06 23:40:18,019 INFO  * Debugger PIN: 119-059-632
+2025-04-06 23:41:05,875 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\sense_config_base.py', reloading
+2025-04-06 23:41:05,983 INFO  * Restarting with stat

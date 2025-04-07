@@ -27,7 +27,7 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
 
   // Mode color mapping for visual indication
   const modeColorMap = {
-    range: 'mode-range',
+    multiple: 'mode-multiple',
     discrete: 'mode-discrete',
     percentage: 'mode-percentage',
     monteCarlo: 'mode-montecarlo'
@@ -35,15 +35,15 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
 
   // Modes available for sensitivity analysis
   const sensitivityModes = [
-    { id: 'range', label: 'Multiple Values' },
-    { id: 'discrete', label: 'Discrete Values - Test specific values'},
-    { id: 'percentage', label: 'Percentage Change - Test percentage variations'},
-    { id: 'monteCarlo', label: 'Monte Carlo - Random sampling within bounds' }
+    { id: 'multiple', label: 'Multiple Values - used directly for calculation and visualization' },
+    { id: 'discrete', label: 'Discrete Values - added to and subtracted from base values'},
+    { id: 'symmetrical', label: 'Percentage Change'},
+    { id: 'monteCarlo', label: 'Monte Carlo - Coming Soon!' }
   ];
 
   // Comparison types for parameter relationships
   const comparisonTypes = [
-    { id: 'As primary (x axis)', label: 'As primary (x axis)' },
+    { id: 'primary', label: 'As primary (x axis)' },
     { id: 'As primary (y axis)', label: 'As primary (y axis)' },
     { id: 'none', label: 'No Comparison' },
     { id: 'ratio', label: 'Ratio (A:B)' },
