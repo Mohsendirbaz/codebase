@@ -62,6 +62,6 @@ rm -rf temp_TeaSpace
 netstat -ano | findstr :3000
 2. kill the process using the PID you found:
 
-taskkill /PID <PID> /F
+taskkill /PID 17616 /F
 # Find the process using port 5001 and kill it
 Stop-Process -Id (netstat -ano | findstr 5001).OwningProcess -Force

@@ -27,17 +27,17 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
 
   // Mode color mapping for visual indication
   const modeColorMap = {
-    multiple: 'mode-multiple',
-    discrete: 'mode-discrete',
     percentage: 'mode-percentage',
+    directvalue: 'mode-directvalue',
+    absolutedeparture: 'mode-absolutedeparture',
     monteCarlo: 'mode-montecarlo'
   };
 
   // Modes available for sensitivity analysis
   const sensitivityModes = [
-    { id: 'multiple', label: 'Multiple Values - used directly for calculation and visualization' },
-    { id: 'discrete', label: 'Discrete Values - added to and subtracted from base values'},
-    { id: 'symmetrical', label: 'Percentage Change'},
+    { id: 'percentage', label: 'Percentage Change' },
+    { id: 'directvalue', label: 'Direct Values - used directly for calculation and visualization'},
+    { id: 'absolutedeparture', label: 'Absolute Departure - added to and subtracted from base values' },
     { id: 'monteCarlo', label: 'Monte Carlo - Coming Soon!' }
   ];
 
@@ -102,8 +102,8 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
     });
   }, [S, searchTerm, filterMode]);
 
-  // Format values for display
-  const formatParameterValues = useCallback((values) => {
+  // Update the formatParameterValues function to apply mode-specific styling
+  const formatParameterValues = useCallback((values, mode) => {
     if (!values || values.length === 0) return null;
 
     // Handle both numeric and string values (like F/V boxes)
@@ -443,9 +443,9 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
                                   {value.values.length > 0 && (
                                       <div className="parameter-values">
                                         <span className="label">Values:</span>
-                                        <span className="value values-display">
-                              {formatParameterValues(value.values)}
-                            </span>
+                                        <span className={`value values-display ${value.mode ? `mode-${value.mode}` : ''}`}>
+      {formatParameterValues(value.values)}
+    </span>
                                       </div>
                                   )}
 
@@ -526,7 +526,11 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
                           >
                             <option value="">Select a mode</option>
                             {sensitivityModes.map(mode => (
-                                <option key={mode.id} value={mode.id}>
+                                <option
+                                    key={mode.id}
+                                    value={mode.id}
+                                    className={`mode-${mode.id}`}
+                                >
                                   {mode.label}
                                 </option>
                             ))}

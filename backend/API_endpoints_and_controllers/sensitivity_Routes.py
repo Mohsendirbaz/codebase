@@ -1,1004 +1,1486 @@
-"""
-Sensitivity Routes Module
-Provides Flask endpoints for sensitivity analysis visualization and interaction.
-Compatible with CalSen service and updated calculation approach.
-"""
-from flask import Flask, request, jsonify, send_file, Response
-from flask_cors import CORS
-import subprocess
-import os
+from flask import Blueprint, request, jsonify, send_file
 import logging
+import os
+import subprocess
 import json
 import time
-import sys
-import shutil
-import pickle
-import requests
-import glob
-import re
+from datetime import datetime
 import pandas as pd
-import numpy as np
-import matplotlib
-matplotlib.use('Agg')  # Use non-interactive backend
 import matplotlib.pyplot as plt
-import seaborn as sns
-from io import BytesIO
-from matplotlib.ticker import MaxNLocator
-
-# Base directories setup
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-SCRIPT_DIR = os.path.join(BASE_DIR, 'backend')
-LOGS_DIR = os.path.join(SCRIPT_DIR, 'Logs')
-ORIGINAL_BASE_DIR = os.path.join(BASE_DIR, 'backend', 'Original')
-
-# Create logs directory if it doesn't exist
-os.makedirs(LOGS_DIR, exist_ok=True)
-
-# Log file path
-SENSITIVITY_ROUTES_LOG_PATH = os.path.join(LOGS_DIR, "SENSITIVITY_ROUTES.log")
+import numpy as np
+from Sensitivity_File_Manager import SensitivityFileManager
 
 # Configure logger
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler(SENSITIVITY_ROUTES_LOG_PATH),
-        logging.StreamHandler()
-    ]
-)
+logger = logging.getLogger('sensitivity')
 
-logger = logging.getLogger('sensitivity_routes')
-logger.info("Sensitivity Routes module initializing")
+sensitivity_routes = Blueprint('sensitivity_routes', __name__)
 
-# Initialize Flask app
-app = Flask(__name__)
-CORS(app)
-
-# =====================================
-# Helper Functions
-# =====================================
-
-def get_sensitivity_dir(version):
-    """Get the sensitivity directory path for a given version"""
-    return os.path.join(ORIGINAL_BASE_DIR, f"Batch({version})", f"Results({version})", "Sensitivity")
-
-def get_parameter_variations(version, param_id):
-    """
-    Get all variations for a specific parameter.
-    
-    Args:
-        version (str): Version number
-        param_id (str): Parameter ID (e.g., "S13")
-        
-    Returns:
-        dict: Dictionary with parameter mode and variations
-    """
-    sensitivity_dir = get_sensitivity_dir(version)
-    param_dir = os.path.join(sensitivity_dir, param_id)
-
-    if not os.path.exists(param_dir):
-        logger.warning(f"Parameter directory not found: {param_dir}")
-        return None
-
-    # Find mode directories
-    mode_dirs = glob.glob(os.path.join(param_dir, "*"))
-    if not mode_dirs:
-        logger.warning(f"No mode directories found in {param_dir}")
-        return None
-
-    # Use the first mode found
-    mode_dir = mode_dirs[0]
-    mode = os.path.basename(mode_dir)
-
-    # Find variation directories
-    var_dirs = glob.glob(os.path.join(mode_dir, "*"))
-    if not var_dirs:
-        logger.warning(f"No variation directories found in {mode_dir}")
-        return None
-
-    # Extract variations
-    variations = []
-    for var_dir in var_dirs:
-        var_str = os.path.basename(var_dir)
-        try:
-            if var_str.startswith('+') or var_str.startswith('-'):
-                var_val = float(var_str)
-                variations.append(var_val)
-        except ValueError:
-            continue
-
-    return {
-        "mode": mode,
-        "variations": variations
-    }
-
-def get_config_file_path(version, param_id, mode, variation):
-    """
-    Get path to parameter configuration file.
-    
-    Args:
-        version (str): Version number
-        param_id (str): Parameter ID (e.g., "S13")
-        mode (str): Mode (symmetrical or multipoint)
-        variation (float): Variation value
-        
-    Returns:
-        str: Path to configuration file
-    """
-    sensitivity_dir = get_sensitivity_dir(version)
-    var_str = f"{variation:+.2f}"
-
-    # Parameter variation directory
-    param_var_dir = os.path.join(sensitivity_dir, param_id, mode.lower(), var_str)
-
-    # Configuration file
-    config_file = os.path.join(param_var_dir, f"{param_id}_config.json")
-
-    return config_file if os.path.exists(config_file) else None
-
-def load_parameter_config(version, param_id, mode, variation):
-    """
-    Load parameter configuration from file.
-    
-    Args:
-        version (str): Version number
-        param_id (str): Parameter ID (e.g., "S13")
-        mode (str): Mode (symmetrical or multipoint)
-        variation (float): Variation value
-        
-    Returns:
-        dict: Parameter configuration
-    """
-    config_file = get_config_file_path(version, param_id, mode, variation)
-
-    if not config_file:
-        logger.warning(f"Configuration file not found for {param_id}, {mode}, {variation}")
-        return None
-
-    try:
-        with open(config_file, 'r') as f:
-            return json.load(f)
-    except Exception as e:
-        logger.error(f"Error loading configuration file {config_file}: {str(e)}")
-        return None
-
-def find_result_files(version, param_id, compare_to_key, mode):
-    """
-    Find result files for a parameter comparison.
-    
-    Args:
-        version (str): Version number
-        param_id (str): Parameter ID (e.g., "S13")
-        compare_to_key (str): Comparison parameter ID
-        mode (str): Mode (symmetrical or multipoint)
-        
-    Returns:
-        list: List of result file paths
-    """
-    sensitivity_dir = get_sensitivity_dir(version)
-
-    # Convert mode to directory name
-    mode_dir_name = "Symmetrical" if mode.lower() in ["symmetrical", "percentage"] else "Multipoint"
-
-    # Search pattern
-    pattern = os.path.join(
-        sensitivity_dir,
-        mode_dir_name,
-        f"{param_id}_vs_{compare_to_key}_{mode.lower()}_results.json"
-    )
-
-    return glob.glob(pattern)
-
-def generate_plot_from_results(version, param_id, compare_to_key, plot_type, mode, result_path, var_str=None):
+# Add function for dynamic plot generation that can be imported by other modules
+def generate_plot_from_results(version, param_id, compare_to_key, plot_type, mode, result_path):
     """
     Generate a plot from existing result data.
     
     Args:
-        version (str): Version number
-        param_id (str): Parameter ID (e.g., "S13")
+        version (int): Version number
+        param_id (str): Parameter ID
         compare_to_key (str): Comparison parameter ID
-        plot_type (str): Plot type (waterfall, bar, point)
-        mode (str): Mode (symmetrical or multipoint)
-        result_path (str): Path to result data file
-        var_str (str, optional): Variation string for specific plots
-        
-    Returns:
-        str: Path to generated plot
-    """
-    if not os.path.exists(result_path):
-        logger.error(f"Result file not found: {result_path}")
-        return None
+        plot_type (str): Type of plot to generate (waterfall, bar, point)
+        mode (str): Analysis mode (percentage, directvalue, absolutedeparture, montecarlo)
+        result_path (str): Path to the result data file
 
+    Returns:
+        bool: True if plot was generated successfully, False otherwise
+    """
+    # Add detailed logging to help debug the process
+    logger.info(f"=== PLOT GENERATION FROM RESULTS ===")
+    logger.info(f"Version: {version}")
+    logger.info(f"Parameter: {param_id}")
+    logger.info(f"Compare to: {compare_to_key}")
+    logger.info(f"Plot type: {plot_type}")
+    logger.info(f"Mode: {mode}")
+    logger.info(f"Result path: {result_path}")
     try:
+        logger.info(f"Generating {plot_type} plot for {param_id} vs {compare_to_key} from {result_path}")
+
+        # Ensure result file exists
+        if not os.path.exists(result_path):
+            logger.error(f"Result file not found: {result_path}")
+            return False
+
         # Load result data
         with open(result_path, 'r') as f:
             result_data = json.load(f)
 
-        # Extract data for plotting
-        x_values = result_data.get("x_values", [])
-        y_values = result_data.get("y_values", [])
-        baseline = result_data.get("baseline", 0)
+        # Extract necessary data for the plot
+        variations = result_data.get('variations', [])
+        if not variations:
+            logger.error(f"No variation data found in {result_path}")
+            return False
 
-        if not x_values or not y_values:
-            logger.error(f"Missing data in result file: {result_path}")
-            return None
+        # Get the proper directory name for this mode
+        mode_dir = get_mode_directory(mode)
+        comparison_type = result_data.get('comparison_type', 'primary')
 
-        # Convert mode for directory path
-        mode_dir = 'Symmetrical' if mode.lower() in ['symmetrical', 'percentage'] else 'Multipoint'
+        # Construct plot path
+        plot_name = f"{plot_type}_{param_id}_{compare_to_key}_{comparison_type}.png"
 
-        # Create plot path
-        plot_file_name = f"{plot_type}_{param_id}_{compare_to_key}"
-        if var_str:
-            plot_file_name += f"_{var_str}"
-        plot_file_name += f"_{result_data.get('comparison_type', 'primary')}.png"
+        # Define the directory structure
+        base_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'backend', 'Original')
 
-        # Full path to plot file
-        sensitivity_dir = get_sensitivity_dir(version)
         plot_path = os.path.join(
-            sensitivity_dir,
+            base_dir,
+            f'Batch({version})',
+            f'Results({version})',
+            'Sensitivity',
             mode_dir,
             plot_type,
-            plot_file_name
+            plot_name
         )
-
-        # Create plot directory if it doesn't exist
+        
+        # Ensure the directory exists
         os.makedirs(os.path.dirname(plot_path), exist_ok=True)
-
-        # Generate plot based on type
-        plt.figure(figsize=(10, 6), dpi=100)
-
+        
+        # Extract variation values and prices
+        x_values = []
+        y_values = []
+        
+        for variation in variations:
+            var_value = variation.get('variation')
+            if var_value is not None:
+                x_values.append(var_value)
+                
+                price = None
+                if 'values' in variation and 'price' in variation['values']:
+                    price = variation['values']['price']
+                    
+                y_values.append(price)
+        
+        # Sort values by x to ensure proper ordering
+        points = sorted(zip(x_values, y_values), key=lambda point: point[0])
+        x_values = [point[0] for point in points]
+        y_values = [point[1] for point in points]
+        
+        # Create and save the plot
+        plt.figure(figsize=(10, 6))
+        
         if plot_type == 'waterfall':
-            # Waterfall plot
-            # Implementation depends on your visualization requirements
-            pass
-
+            # Create waterfall plot
+            cumulative = 0
+            for i, (x, y) in enumerate(points):
+                if i == 0:
+                    # First bar is the base
+                    plt.bar(i, y, width=0.5, color='blue', label=f"{x}%")
+                    cumulative = y
+                else:
+                    # Show difference from previous
+                    diff = y - cumulative
+                    color = 'green' if diff >= 0 else 'red'
+                    plt.bar(i, diff, bottom=cumulative, width=0.5, color=color, label=f"{x}%")
+                    cumulative = y
+                    
+            plt.title(f"Waterfall Analysis: {param_id} vs {compare_to_key}")
+            plt.ylabel('Price')
+            plt.xlabel('Variation')
+            plt.xticks(range(len(x_values)), [f"{x}%" for x in x_values])
+            
         elif plot_type == 'bar':
-            # Bar plot
-            plt.bar(x_values, y_values)
-            plt.axhline(y=baseline, color='r', linestyle='-', label='Baseline')
-            plt.title(f"{param_id} vs {compare_to_key} Bar Plot")
-            plt.xlabel(param_id)
-            plt.ylabel(compare_to_key)
-            plt.grid(True, alpha=0.3)
-            plt.legend()
-
+            # Create bar plot
+            plt.bar(x_values, y_values, color='blue')
+            plt.title(f"Bar Analysis: {param_id} vs {compare_to_key}")
+            plt.ylabel('Price')
+            plt.xlabel(f'{param_id} Variation (%)')
+            
         elif plot_type == 'point':
-            # Point plot
-            plt.plot(x_values, y_values, 'o-')
-            plt.axhline(y=baseline, color='r', linestyle='-', label='Baseline')
-            plt.title(f"{param_id} vs {compare_to_key} Point Plot")
-            plt.xlabel(param_id)
-            plt.ylabel(compare_to_key)
-            plt.grid(True, alpha=0.3)
-            plt.legend()
-
-        # Save the plot
-        plt.savefig(plot_path, bbox_inches='tight')
+            # Create point/line plot
+            plt.plot(x_values, y_values, 'o-', color='blue')
+            plt.title(f"Point Analysis: {param_id} vs {compare_to_key}")
+            plt.ylabel('Price')
+            plt.xlabel(f'{param_id} Variation (%)')
+            
+        # Add grid and save
+        plt.grid(True, linestyle='--', alpha=0.7)
+        plt.tight_layout()
+        # Save the plot with higher quality
+        plt.savefig(plot_path, dpi=150, bbox_inches='tight')
         plt.close()
-
-        logger.info(f"Generated {plot_type} plot at {plot_path}")
-        return plot_path
-
+        
+        # Verify the file was actually created
+        if os.path.exists(plot_path) and os.path.getsize(plot_path) > 0:
+            logger.info(f"Successfully generated {plot_type} plot at {plot_path}")
+            # Log the file size and timestamp to help with debugging
+            file_stats = os.stat(plot_path)
+            logger.info(f"Plot file size: {file_stats.st_size} bytes")
+            logger.info(f"Plot creation time: {time.ctime(file_stats.st_mtime)}")
+            return True
+        else:
+            logger.error(f"Plot file creation failed or file is empty: {plot_path}")
+            return False
+        
     except Exception as e:
-        logger.exception(f"Error generating plot: {str(e)}")
-        return None
-
-def run_calculation_script(version, param_id, param_config, mode, variation, compare_to_key):
+        logger.error(f"Error generating {plot_type} plot: {str(e)}")
+        return False
+# Add this mode mapping function at the top of the file
+def get_mode_directory(mode):
     """
-    Run calculation script for a specific parameter variation.
-    
+    Maps a sensitivity mode to its directory name.
+
     Args:
-        version (str): Version number
-        param_id (str): Parameter ID (e.g., "S13")
-        param_config (dict): Parameter configuration
-        mode (str): Mode (symmetrical or multipoint)
-        variation (float): Variation value
-        compare_to_key (str): Comparison parameter ID
-        
+        mode (str): One of: 'percentage', 'directvalue', 'absolutedeparture', 'montecarlo'
+
     Returns:
-        bool: True if successful, False otherwise
+        str: Capitalized directory name for the mode
     """
-    sensitivity_dir = get_sensitivity_dir(version)
-    var_str = f"{variation:+.2f}"
-
-    # Parameter variation directory (lowercase mode)
-    param_var_dir = os.path.join(sensitivity_dir, param_id, mode.lower(), var_str)
-
-    # Configuration directory (capitalized mode)
-    mode_dir_name = "Symmetrical" if mode.lower() == "symmetrical" else "Multipoint"
-    config_dir = os.path.join(sensitivity_dir, mode_dir_name, "Configuration", f"{param_id}_{var_str}")
-
-    # Configuration files
-    config_matrix_file = os.path.join(config_dir, f"General_Configuration_Matrix({version}).csv")
-    config_file = os.path.join(config_dir, f"configurations({version}).py")
-
-    # Copy matrix file if it doesn't exist
-    source_matrix_file = os.path.join(
-        ORIGINAL_BASE_DIR, f"Batch({version})", f"Results({version})",
-        f"General_Configuration_Matrix({version}).csv"
-    )
-
-    if not os.path.exists(config_matrix_file) and os.path.exists(source_matrix_file):
-        os.makedirs(os.path.dirname(config_matrix_file), exist_ok=True)
-        shutil.copy2(source_matrix_file, config_matrix_file)
-        logger.info(f"Copied matrix file to {config_matrix_file}")
-
-    # Copy config file if it doesn't exist
-    source_config_file = os.path.join(
-        ORIGINAL_BASE_DIR, f"Batch({version})", f"ConfigurationPlotSpec({version})",
-        f"configurations({version}).py"
-    )
-
-    if not os.path.exists(config_file) and os.path.exists(source_config_file):
-        os.makedirs(os.path.dirname(config_file), exist_ok=True)
-        shutil.copy2(source_config_file, config_file)
-        logger.info(f"Copied config file to {config_file}")
-
-    # Create modified SenParameters dictionary
-    modified_sen_parameters = {
-        param_id: {
-            "enabled": True,
-            "mode": mode,
-            "values": [variation],
-            "compareToKey": compare_to_key,
-            "comparisonType": param_config.get('comparisonType', 'primary'),
-            "variation": variation,
-            "variation_str": var_str
-        }
+    mode_dir_mapping = {
+        'percentage': 'Percentage',
+        'directvalue': 'DirectValue',
+        'absolutedeparture': 'AbsoluteDeparture',
+        'montecarlo': 'MonteCarlo'
     }
 
-    # Define the CFA scripts to try (in order)
-    cfa_scripts = [
-        os.path.join(SCRIPT_DIR, "Core_calculation_engines", "CFA-b.py"),
-        os.path.join(SCRIPT_DIR, "Core_calculation_engines", "CFA.py")
-    ]
+    # Default to Percentage if unknown mode
+    return mode_dir_mapping.get(mode.lower(), 'Percentage')
 
-    # Environment variables for scripts
-    env_vars = {
-        **os.environ,
-        'CONFIG_MATRIX_FILE': config_matrix_file,
-        'CONFIG_FILE': config_file,
-        'RESULTS_FOLDER': param_var_dir
-    }
 
-    # Try each script in order
-    for script_path in cfa_scripts:
-        if not os.path.exists(script_path):
-            continue
 
-        script_name = os.path.basename(script_path)
-        logger.info(f"Running {script_name} for {param_id} variation {var_str}")
+        # Rest of the function remains the same...
+# Base directory path - should be adjusted based on deployment context
+base_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'backend', 'Original')
+file_manager = SensitivityFileManager(base_dir)
 
-        try:
-            # Additional arguments for the calculation script
-            args = [
-                'python',
-                script_path,
-                str(version),
-                '{}',  # Empty selected_v
-                '{}',  # Empty selected_f
-                '10',  # Default target_row
-                'freeFlowNPV',  # Default calculation option
-                json.dumps(modified_sen_parameters)
-            ]
-
-            # Run the script
-            result = subprocess.run(
-                args,
-                env=env_vars,
-                capture_output=True,
-                text=True,
-                timeout=300  # 5-minute timeout
-            )
-
-            if result.returncode == 0:
-                logger.info(f"Successfully ran {script_name} for {param_id} variation {var_str}")
-                return True
-            else:
-                logger.error(f"Error running {script_name}: {result.stderr}")
-                # Try next script
-
-        except subprocess.TimeoutExpired:
-            logger.error(f"Timeout running {script_name} for {param_id} variation {var_str}")
-            # Try next script
-
-        except Exception as e:
-            logger.error(f"Exception running {script_name}: {str(e)}")
-            # Try next script
-
-    # All scripts failed
-    logger.error(f"All calculation scripts failed for {param_id} variation {var_str}")
-    return False
-
-def process_sensitivity_results(version, param_id, compare_to_key, mode):
+def find_economic_summary_price(version):
     """
-    Process sensitivity results for a parameter and generate comparison data.
+    Extracts price (S13) value from economic summary.
     
     Args:
-        version (str): Version number
-        param_id (str): Parameter ID (e.g., "S13")
-        compare_to_key (str): Comparison parameter ID
-        mode (str): Mode (symmetrical or multipoint)
+        version (int): Version number
         
     Returns:
-        dict: Processed results
-    """
-    sensitivity_dir = get_sensitivity_dir(version)
-
-    # Get parameter variations
-    param_info = get_parameter_variations(version, param_id)
-    if not param_info:
-        logger.error(f"Could not find parameter variations for {param_id}")
-        return None
-
-    variations = param_info["variations"]
-    if not variations:
-        logger.error(f"No variations found for {param_id}")
-        return None
-
-    # Process each variation
-    x_values = []
-    y_values = []
-    baseline = None
-
-    for variation in variations:
-        var_str = f"{variation:+.2f}"
-        logger.info(f"Processing variation {var_str} for {param_id}")
-
-        # Load parameter configuration
-        param_config = load_parameter_config(version, param_id, param_info["mode"], variation)
-        if not param_config:
-            logger.warning(f"Could not load configuration for {param_id} variation {var_str}")
-            continue
-
-        # Process this variation if needed
-        param_var_dir = os.path.join(sensitivity_dir, param_id, param_info["mode"].lower(), var_str)
-        result_file = os.path.join(param_var_dir, "Economic_Summary(1).csv")
-
-        if not os.path.exists(result_file):
-            logger.warning(f"Result file not found: {result_file}, running calculation")
-
-            # Run calculation for this variation
-            success = run_calculation_script(
-                version, param_id, param_config, param_info["mode"], variation, compare_to_key
-            )
-
-            if not success or not os.path.exists(result_file):
-                logger.error(f"Failed to generate result file for {param_id} variation {var_str}")
-                continue
-
-        # Extract result data from Economic_Summary CSV
-        try:
-            economic_data = pd.read_csv(result_file)
-
-            # Find the row with the price data
-            price_row = economic_data[economic_data['Metric'].str.contains('Average Selling Price')]
-            if price_row.empty:
-                logger.warning(f"No price data found in {result_file}")
-                continue
-
-            # Extract price value
-            price_str = price_row['Value'].iloc[0]
-            price_value = float(price_str.replace('$', '').replace(',', ''))
-
-            # Collect data points
-            x_values.append(variation)
-            y_values.append(price_value)
-
-            # If variation is 0, use as baseline
-            if variation == 0 or (baseline is None and len(y_values) == 1):
-                baseline = price_value
-
-        except Exception as e:
-            logger.error(f"Error extracting data from {result_file}: {str(e)}")
-            continue
-
-    # Sort data points by x value
-    if x_values and y_values:
-        sorted_points = sorted(zip(x_values, y_values))
-        x_values = [p[0] for p in sorted_points]
-        y_values = [p[1] for p in sorted_points]
-
-    # Save results to a JSON file
-    result_data = {
-        "parameter": param_id,
-        "compare_to": compare_to_key,
-        "mode": mode,
-        "x_values": x_values,
-        "y_values": y_values,
-        "baseline": baseline,
-        "comparison_type": "primary",  # Default to primary
-        "timestamp": time.strftime("%Y-%m-%d %H:%M:%S")
-    }
-
-    # Convert mode for directory path
-    mode_dir = 'Symmetrical' if mode.lower() in ['symmetrical', 'percentage'] else 'Multipoint'
-
-    # Save result JSON
-    result_file_path = os.path.join(
-        sensitivity_dir,
-        mode_dir,
-        f"{param_id}_vs_{compare_to_key}_{mode.lower()}_results.json"
-    )
-
-    # Create directory if it doesn't exist
-    os.makedirs(os.path.dirname(result_file_path), exist_ok=True)
-
-    with open(result_file_path, 'w') as f:
-        json.dump(result_data, f, indent=2)
-
-    logger.info(f"Saved result data to {result_file_path}")
-
-    return result_data
-
-def get_calsen_paths(version, param_id=None):
-    """
-    Get paths from CalSen service.
-    
-    Args:
-        version (str): Version number
-        param_id (str, optional): Parameter ID (e.g., "S13")
-        
-    Returns:
-        dict: Path sets from CalSen service
+        float: Price value or None if not found
     """
     try:
-        response = requests.post(
-            "http://localhost:2750/get_config_paths",
-            json={"version": version},
-            timeout=5
+        economic_summary_path = os.path.join(
+            base_dir,
+            f'Batch({version})',
+            f'Results({version})',
+            f"Economic_Summary({version}).csv"
+        )
+        
+        if not os.path.exists(economic_summary_path):
+            logger.warning(f"Economic summary not found: {economic_summary_path}")
+            return None
+            
+        economic_df = pd.read_csv(economic_summary_path)
+        price_row = economic_df[economic_df['Metric'] == 'Average Selling Price (Project Life Cycle)']
+        
+        if price_row.empty:
+            logger.warning("Price row not found in economic summary")
+            return None
+            
+        price_value = price_row.iloc[0, 1]  # Assuming value is in second column
+        logger.info(f"Extracted price value: {price_value}")
+        return price_value
+        
+    except Exception as e:
+        logger.error(f"Error extracting price from economic summary: {str(e)}")
+        return None
+
+@sensitivity_routes.route('/sensitivity/symmetrical', methods=['POST'])
+def handle_symmetrical_analysis():
+    """
+    Processes symmetrical sensitivity analysis.
+    
+    Expected JSON payload:
+    {
+        "param_id": "S10",
+        "values": [10.0],
+        "compareToKey": "S13",
+        "comparisonType": "primary",
+        "version": 1,
+        "waterfall": true,
+        "bar": true,
+        "point": true
+    }
+    """
+    run_id = time.strftime("%Y%m%d_%H%M%S")
+    logger.info(f"\n{'='*80}")
+    logger.info(f"Symmetrical Analysis Request - Run ID: {run_id}")
+    logger.info(f"{'='*80}")
+    
+    try:
+        data = request.json
+        logger.info(f"Request data: {data}")
+        
+        # Validate required parameters
+        param_id = data.get('param_id')
+        if not param_id or not param_id.startswith('S') or not param_id[1:].isdigit():
+            return jsonify({"error": "Invalid parameter ID format"}), 400
+
+        variation = data.get('values', [None])[0]
+        if variation is None:
+            return jsonify({"error": "No variation percentage provided"}), 400
+
+        # Use S13 as default compareToKey if none provided
+        compare_to_key = data.get('compareToKey', 'S13')
+        version = data.get('version', 1)
+        comparison_type = data.get('comparisonType', 'primary')
+        
+        logger.info(f"Processing {param_id} with {variation}% variation vs {compare_to_key}")
+        
+        # Define paths
+        sensitivity_dir = os.path.join(
+            base_dir,
+            f'Batch({version})',
+            f'Results({version})',
+            'Sensitivity',
+            'Symmetrical'
+        )
+        os.makedirs(sensitivity_dir, exist_ok=True)
+        
+        # Prepare positive and negative variations
+        variations = [variation]
+        result_data = {
+            'parameter': param_id,
+            'compare_to_key': compare_to_key,
+            'comparison_type': comparison_type,
+            'mode': 'symmetrical',
+            'version': version,
+            'timestamp': time.strftime("%Y-%m-%d %H:%M:%S"),
+            'variations': []
+        }
+        
+        # Execute calculations for each variation
+        for var in variations:
+            var_str = f"{var:+.2f}"
+            logger.info(f"Processing variation: {var_str}")
+            
+            # Execute the sensitivity calculation script
+            calculation_script = os.path.join(base_dir, "Core_calculation_engines", "sensitivity_calculator.py")
+            
+            if not os.path.exists(calculation_script):
+                logger.warning(f"Calculation script not found: {calculation_script}")
+                # Use fallback to CFA.py if sensitivity_calculator.py doesn't exist
+                calculation_script = os.path.join(base_dir, "Core_calculation_engines", "CFA.py")
+            
+            calc_result = subprocess.run(
+                [
+                    'python',
+                    calculation_script,
+                    str(version),
+                    param_id,
+                    str(var),
+                    compare_to_key
+                ],
+                capture_output=True,
+                text=True
+            )
+            
+            if calc_result.returncode != 0:
+                error_msg = f"Calculation failed for {param_id} ({var_str}): {calc_result.stderr}"
+                logger.error(error_msg)
+                result_data['variations'].append({
+                    'variation': var,
+                    'variation_str': var_str,
+                    'status': 'error',
+                    'error': error_msg
+                })
+                continue
+            
+            # Extract price from economic summary if needed
+            price_value = find_economic_summary_price(version)
+            
+            # Add variation result
+            result_data['variations'].append({
+                'variation': var,
+                'variation_str': var_str,
+                'status': 'completed',
+                'values': {
+                    'price': price_value
+                }
+            })
+            
+            logger.info(f"Completed calculation for variation {var_str}")
+        
+        # Store calculation results
+        result_path = file_manager.store_calculation_result(
+            version=version,
+            param_id=param_id,
+            result_data=result_data,
+            mode='symmetrical',
+            compare_to_key=compare_to_key
+        )
+        
+        logger.info(f"Stored calculation results at {result_path['path']}")
+        
+        # Generate requested plots
+        plot_types = []
+        if data.get('waterfall'): plot_types.append('waterfall')
+        if data.get('bar'): plot_types.append('bar')
+        if data.get('point'): plot_types.append('point')
+        
+        generated_plots = {}
+        
+        for plot_type in plot_types:
+            plot_name = f"{plot_type}_{param_id}_{compare_to_key}_{comparison_type}"
+            plot_type_dir = os.path.join(sensitivity_dir, plot_type)
+            os.makedirs(plot_type_dir, exist_ok=True)
+            
+            plot_path = os.path.join(plot_type_dir, f"{plot_name}.png")
+            script_path = os.path.join(base_dir, "Visualization_generators", f"generate_{plot_type}_plot.py")
+            
+            if not os.path.exists(script_path):
+                logger.warning(f"Plot generation script not found: {script_path}")
+                generated_plots[plot_type] = {
+                    'status': 'error',
+                    'error': f"Plot generation script not found: {script_path}"
+                }
+                continue
+            
+            try:
+                logger.info(f"Generating {plot_type} plot: {plot_name}")
+                
+                result = subprocess.run(
+                    [
+                        'python',
+                        script_path,
+                        str(version),
+                        param_id,
+                        str(variation),
+                        compare_to_key,
+                        comparison_type,
+                        result_path['path'] if isinstance(result_path, dict) else result_path
+                    ],
+                    capture_output=True,
+                    text=True
+                )
+                
+                if result.returncode != 0:
+                    error_msg = f"Plot generation failed for {plot_type}: {result.stderr}"
+                    logger.error(error_msg)
+                    generated_plots[plot_type] = {
+                        'status': 'error',
+                        'error': error_msg
+                    }
+                else:
+                    generated_plots[plot_type] = {
+                        'status': 'completed',
+                        'path': os.path.relpath(plot_path, base_dir)
+                    }
+                    logger.info(f"Generated {plot_type} plot at {plot_path}")
+                    
+            except Exception as e:
+                error_msg = f"Error generating {plot_type} plot: {str(e)}"
+                logger.error(error_msg)
+                generated_plots[plot_type] = {
+                    'status': 'error',
+                    'error': error_msg
+                }
+        
+        # Prepare response
+        response = {
+            "status": "success",
+            "runId": run_id,
+            "message": "Symmetrical analysis completed",
+            "parameter": param_id,
+            "compareToKey": compare_to_key,
+            "variations": [var for var in variations],
+            "plots": generated_plots,
+            "directory": sensitivity_dir,
+            "results_path": result_path['path'] if isinstance(result_path, dict) else result_path
+        }
+        
+        logger.info(f"\n{'='*80}")
+        logger.info(f"Symmetrical Analysis Completed - Run ID: {run_id}")
+        logger.info(f"{'='*80}")
+        
+        return jsonify(response)
+
+    except Exception as e:
+        error_msg = f"Error in symmetrical analysis: {str(e)}"
+        logger.error(error_msg)
+        return jsonify({
+            "error": error_msg,
+            "runId": run_id
+        }), 500
+
+@sensitivity_routes.route('/sensitivity/multipoint', methods=['POST'])
+def handle_multipoint_analysis():
+    """
+    Processes multiple point sensitivity analysis.
+    
+    Expected JSON payload:
+    {
+        "param_id": "S10",
+        "values": [5.0, 10.0, 15.0],
+        "compareToKey": "S13",
+        "comparisonType": "primary",
+        "version": 1,
+        "waterfall": true,
+        "bar": true,
+        "point": true
+    }
+    """
+    run_id = time.strftime("%Y%m%d_%H%M%S")
+    logger.info(f"\n{'='*80}")
+    logger.info(f"Multipoint Analysis Request - Run ID: {run_id}")
+    logger.info(f"{'='*80}")
+    
+    try:
+        data = request.json
+        logger.info(f"Request data: {data}")
+        
+        # Validate required parameters
+        param_id = data.get('param_id')
+        if not param_id or not param_id.startswith('S') or not param_id[1:].isdigit():
+            return jsonify({"error": "Invalid parameter ID format"}), 400
+
+        variations = data.get('values', [])
+        if not variations:
+            return jsonify({"error": "No variation points provided"}), 400
+
+        # Use S13 as default compareToKey if none provided
+        compare_to_key = data.get('compareToKey', 'S13')
+        version = data.get('version', 1)
+        comparison_type = data.get('comparisonType', 'primary')
+        
+        logger.info(f"Processing {param_id} with {len(variations)} variations vs {compare_to_key}")
+        
+        # Define paths
+        sensitivity_dir = os.path.join(
+            base_dir,
+            f'Batch({version})',
+            f'Results({version})',
+            'Sensitivity',
+            'Multipoint'
+        )
+        os.makedirs(sensitivity_dir, exist_ok=True)
+        
+        result_data = {
+            'parameter': param_id,
+            'compare_to_key': compare_to_key,
+            'comparison_type': comparison_type,
+            'mode': 'multipoint',
+            'version': version,
+            'timestamp': time.strftime("%Y-%m-%d %H:%M:%S"),
+            'variations': []
+        }
+        
+        # Execute calculations for each variation
+        for var in variations:
+            var_str = f"{var:+.2f}"
+            logger.info(f"Processing variation: {var_str}")
+            
+            # Execute the sensitivity calculation script
+            calculation_script = os.path.join(base_dir, "Core_calculation_engines", "sensitivity_calculator.py")
+            
+            if not os.path.exists(calculation_script):
+                logger.warning(f"Calculation script not found: {calculation_script}")
+                # Use fallback to CFA.py if sensitivity_calculator.py doesn't exist
+                calculation_script = os.path.join(base_dir, "Core_calculation_engines", "CFA.py")
+            
+            calc_result = subprocess.run(
+                [
+                    'python',
+                    calculation_script,
+                    str(version),
+                    param_id,
+                    str(var),
+                    compare_to_key
+                ],
+                capture_output=True,
+                text=True
+            )
+            
+            if calc_result.returncode != 0:
+                error_msg = f"Calculation failed for {param_id} ({var_str}): {calc_result.stderr}"
+                logger.error(error_msg)
+                result_data['variations'].append({
+                    'variation': var,
+                    'variation_str': var_str,
+                    'status': 'error',
+                    'error': error_msg
+                })
+                continue
+            
+            # Extract price from economic summary if needed
+            price_value = find_economic_summary_price(version)
+            
+            # Add variation result
+            result_data['variations'].append({
+                'variation': var,
+                'variation_str': var_str,
+                'status': 'completed',
+                'values': {
+                    'price': price_value
+                }
+            })
+            
+            logger.info(f"Completed calculation for variation {var_str}")
+        
+        # Store calculation results
+        result_path = file_manager.store_calculation_result(
+            version=version,
+            param_id=param_id,
+            result_data=result_data,
+            mode='multipoint',
+            compare_to_key=compare_to_key
+        )
+        
+        logger.info(f"Stored calculation results at {result_path['path']}")
+        
+        # Generate requested plots
+        plot_types = []
+        if data.get('waterfall'): plot_types.append('waterfall')
+        if data.get('bar'): plot_types.append('bar')
+        if data.get('point'): plot_types.append('point')
+        
+        generated_plots = {}
+        
+        for plot_type in plot_types:
+            plot_name = f"{plot_type}_{param_id}_{compare_to_key}_{comparison_type}"
+            plot_type_dir = os.path.join(sensitivity_dir, plot_type)
+            os.makedirs(plot_type_dir, exist_ok=True)
+            
+            plot_path = os.path.join(plot_type_dir, f"{plot_name}.png")
+            script_path = os.path.join(base_dir, "Visualization_generators", f"generate_{plot_type}_plot.py")
+            
+            if not os.path.exists(script_path):
+                logger.warning(f"Plot generation script not found: {script_path}")
+                generated_plots[plot_type] = {
+                    'status': 'error',
+                    'error': f"Plot generation script not found: {script_path}"
+                }
+                continue
+            
+            try:
+                logger.info(f"Generating {plot_type} plot: {plot_name}")
+                
+                result = subprocess.run(
+                    [
+                        'python',
+                        script_path,
+                        str(version),
+                        param_id,
+                        json.dumps(variations),
+                        compare_to_key,
+                        comparison_type,
+                        result_path['path'] if isinstance(result_path, dict) else result_path
+                    ],
+                    capture_output=True,
+                    text=True
+                )
+                
+                if result.returncode != 0:
+                    error_msg = f"Plot generation failed for {plot_type}: {result.stderr}"
+                    logger.error(error_msg)
+                    generated_plots[plot_type] = {
+                        'status': 'error',
+                        'error': error_msg
+                    }
+                else:
+                    generated_plots[plot_type] = {
+                        'status': 'completed',
+                        'path': os.path.relpath(plot_path, base_dir)
+                    }
+                    logger.info(f"Generated {plot_type} plot at {plot_path}")
+                    
+            except Exception as e:
+                error_msg = f"Error generating {plot_type} plot: {str(e)}"
+                logger.error(error_msg)
+                generated_plots[plot_type] = {
+                    'status': 'error',
+                    'error': error_msg
+                }
+        
+        # Prepare response
+        response = {
+            "status": "success",
+            "runId": run_id,
+            "message": "Multipoint analysis completed",
+            "parameter": param_id,
+            "compareToKey": compare_to_key,
+            "variations": variations,
+            "plots": generated_plots,
+            "directory": sensitivity_dir,
+            "results_path": result_path['path'] if isinstance(result_path, dict) else result_path
+        }
+        
+        logger.info(f"\n{'='*80}")
+        logger.info(f"Multipoint Analysis Completed - Run ID: {run_id}")
+        logger.info(f"{'='*80}")
+        
+        return jsonify(response)
+
+    except Exception as e:
+        error_msg = f"Error in multipoint analysis: {str(e)}"
+        logger.error(error_msg)
+        return jsonify({
+            "error": error_msg,
+            "runId": run_id
+        }), 500
+
+@sensitivity_routes.route('/sensitivity/generate-report', methods=['POST'])
+def generate_analysis_report():
+    """
+    Generates a comprehensive analysis report for all processed sensitivity parameters.
+    
+    Expected JSON payload:
+    {
+        "version": 1,
+        "parameters": {
+            "S10": {
+                "mode": "symmetrical",
+                "plotTypes": ["waterfall", "bar", "point"]
+            },
+            "S11": {
+                "mode": "multipoint",
+                "plotTypes": ["waterfall", "bar", "point"]
+            }
+        }
+    }
+    """
+    run_id = time.strftime("%Y%m%d_%H%M%S")
+    logger.info(f"\n{'='*80}")
+    logger.info(f"Report Generation Request - Run ID: {run_id}")
+    logger.info(f"{'='*80}")
+    
+    try:
+        data = request.json
+        version = data.get('version')
+        parameters_data = data.get('parameters', {})
+        
+        if not version:
+            return jsonify({"error": "Version number is required"}), 400
+            
+        if not parameters_data:
+            return jsonify({"error": "No parameter data provided"}), 400
+        
+        # Process parameters and prepare report data
+        report_data = {}
+        
+        for param_id, config in parameters_data.items():
+            logger.info(f"Processing parameter: {param_id}")
+            
+            mode = config.get('mode', 'symmetrical')
+            plot_types = config.get('plotTypes', [])
+            
+            # Use S13 as default compareToKey if none provided
+            compare_to_key = config.get('compareToKey', 'S13')
+            comparison_type = config.get('comparisonType', 'primary')
+            
+            # Load result data
+            mode_dir = get_mode_directory(mode)
+            result_path = os.path.join(
+                base_dir,
+                f'Batch({version})',
+                f'Results({version})',
+                'Sensitivity',
+                mode_dir,
+                f"{param_id}_vs_{compare_to_key}_{mode.lower()}_results.json"
+            )
+            
+            if os.path.exists(result_path):
+                with open(result_path, 'r') as f:
+                    result_data = json.load(f)
+            else:
+                result_path_alt = os.path.join(
+                    base_dir,
+                    f'Batch({version})',
+                    f'Results({version})',
+                    'Sensitivity',
+                    mode_dir,
+                    f"{param_id}_results.json"
+                )
+                
+                if os.path.exists(result_path_alt):
+                    with open(result_path_alt, 'r') as f:
+                        result_data = json.load(f)
+                else:
+                    logger.warning(f"No results found for {param_id}")
+                    continue
+            
+            # Collect plots
+            parameter_plots = {}
+            
+            for plot_type in plot_types:
+                plot_name = f"{plot_type}_{param_id}_{compare_to_key}_{comparison_type}"
+                plot_path = os.path.join(
+                    base_dir,
+                    f'Batch({version})',
+                    f'Results({version})',
+                    'Sensitivity',
+                    mode_dir,
+                    plot_type,
+                    f"{plot_name}.png"
+                )
+                
+                if os.path.exists(plot_path):
+                    parameter_plots[plot_type] = os.path.relpath(plot_path, base_dir)
+                else:
+                    # Try alternative location (directly in mode directory)
+                    alt_plot_path = os.path.join(
+                        base_dir,
+                        f'Batch({version})',
+                        f'Results({version})',
+                        'Sensitivity',
+                        mode_dir,
+                        f"{plot_name}.png"
+                    )
+                    
+                    if os.path.exists(alt_plot_path):
+                        parameter_plots[plot_type] = os.path.relpath(alt_plot_path, base_dir)
+            
+            # Prepare parameter report data
+            report_data[param_id] = {
+                'mode': mode,
+                'compareToKey': compare_to_key,
+                'results': result_data,
+                'plots': parameter_plots,
+                'variations': result_data.get('variations', [])
+            }
+            
+            logger.info(f"Added {param_id} to report with {len(parameter_plots)} plots")
+        
+        # Generate the report using SensitivityFileManager
+        report_path = file_manager.create_analysis_report(
+            version=version,
+            analysis_data=report_data
+        )
+        
+        # Convert report path to relative path for frontend
+        relative_path = os.path.relpath(
+            report_path,
+            base_dir
+        )
+        
+        logger.info(f"\n{'='*80}")
+        logger.info(f"Report Generation Completed - Run ID: {run_id}")
+        logger.info(f"Report path: {report_path}")
+        logger.info(f"{'='*80}")
+        
+        return jsonify({
+            "status": "success",
+            "runId": run_id,
+            "message": "Analysis report generated successfully",
+            "report_path": relative_path,
+            "parameter_count": len(report_data)
+        })
+        
+    except Exception as e:
+        error_msg = f"Error generating analysis report: {str(e)}"
+        logger.error(error_msg)
+        return jsonify({
+            "error": error_msg,
+            "runId": run_id
+        }), 500
+
+@sensitivity_routes.route('/sensitivity/plots/<mode>/<plot_type>', methods=['GET'])
+def get_sensitivity_plot(mode, plot_type):
+    """
+    Retrieves a specific sensitivity plot.
+    
+    Query parameters:
+    - param_id: Parameter ID (e.g., S10)
+    - compareToKey: Comparison parameter ID (default: S13)
+    - comparisonType: Comparison type (default: primary)
+    - version: Version number
+    """
+    try:
+        param_id = request.args.get('param_id')
+        compare_to_key = request.args.get('compareToKey', 'S13')
+        comparison_type = request.args.get('comparisonType', 'primary')
+        version = request.args.get('version', '1')
+
+        if not param_id:
+            return jsonify({"error": "Parameter ID is required"}), 400
+
+        logger.info(f"Retrieving {plot_type} plot for {param_id} vs {compare_to_key} in {mode} mode")
+        
+        # Get plot information from file manager
+        plot_info = file_manager.get_plot_path(
+            version=int(version),
+            mode=mode,
+            plot_type=plot_type,
+            param_id=param_id,
+            compare_to_key=compare_to_key,
+            comparison_type=comparison_type
         )
 
-        if response.status_code == 200:
-            result = response.json()
-            path_sets = result.get("path_sets", {})
+        if plot_info['status'] != 'ready':
+            return jsonify({
+                "error": f"Plot not found: {plot_info.get('error', 'Unknown error')}"
+            }), 404
 
-            if param_id:
-                return path_sets.get(param_id)
-            return path_sets
+        logger.info(f"Returning plot from {plot_info['full_path']}")
+        return send_file(plot_info['full_path'], mimetype='image/png')
 
-        logger.warning(f"CalSen service returned non-200 status: {response.status_code}")
-        return None
+    except Exception as e:
+        error_msg = f"Error retrieving plot: {str(e)}"
+        logger.error(error_msg)
+        return jsonify({"error": error_msg}), 500
 
-    except requests.exceptions.RequestException:
-        logger.warning("CalSen service not available")
-        return None
+@sensitivity_routes.route('/api/sensitivity-plots/<version>', methods=['GET'])
+def get_sensitivity_plots_by_version(version):
+    """Returns all sensitivity plots for a specific version."""
+    try:
+        # Define paths
+        base_dir_results = os.path.join(
+            base_dir,
+            f'Batch({version})',
+            f'Results({version})',
+            'Sensitivity'
+        )
+        
+        if not os.path.exists(base_dir_results):
+            return jsonify([])
+        
+        plots_data = []
+        
+        # Search in both Symmetrical and Multipoint directories
+        for mode in ['Percentage', 'DirectValue', 'AbsoluteDeparture', 'MonteCarlo']:
+            mode_dir = os.path.join(base_dir_results, mode)
 
-# =====================================
-# API Endpoints
-# =====================================
+            if not os.path.exists(mode_dir):
+                continue
 
-@app.route('/sensitivity/parameters', methods=['GET'])
-def get_parameters():
-    """Get all sensitivity parameters for a version"""
-    version = request.args.get('version', '1')
+            # Search for plot files in each plot type subdirectory
+            for plot_type in ['waterfall', 'bar', 'point']:
+                plot_type_dir = os.path.join(mode_dir, plot_type)
 
-    # Try to get parameters from CalSen service first
-    calsen_paths = get_calsen_paths(version)
+                if not os.path.exists(plot_type_dir):
+                    continue
 
-    if calsen_paths:
-        # Convert CalSen paths to parameter list
-        parameters = [
-            {
-                "id": param_id,
-                "mode": paths.get("mode"),
-                "variations": list(paths.get("variations", {}).keys()),
-                "compareToKey": paths.get("compareToKey")
-            }
-            for param_id, paths in calsen_paths.items()
-        ]
+                # Find all PNG files
+                for root, _, files in os.walk(plot_type_dir):
+                    for file in files:
+                        if file.endswith('.png'):
+                            # Extract parameter and comparison info from filename
+                            file_parts = file.replace('.png', '').split('_')
 
+                            if len(file_parts) >= 4:
+                                # Extract parts from filename (e.g., waterfall_S10_S13_primary.png)
+                                plot_data = {
+                                    'path': os.path.join(root, file),
+                                    'title': f"{file_parts[0].capitalize()} Plot: {file_parts[1]} vs {file_parts[2]}",
+                                    'category': file_parts[1],  # Parameter ID (e.g., S10)
+                                    'group': plot_type.capitalize(),  # Plot type as group
+                                    'description': f"Comparison type: {file_parts[3]}",
+                                    'mode': mode
+                                }
+
+                                plots_data.append(plot_data)
+
+                # Also check for plots directly in mode directory
+                for file in os.listdir(mode_dir):
+                    if file.endswith('.png') and file.startswith(f"{plot_type}_"):
+                        # Extract parameter and comparison info from filename
+                        file_parts = file.replace('.png', '').split('_')
+
+                        if len(file_parts) >= 4:
+                            plot_data = {
+                                'path': os.path.join(mode_dir, file),
+                                'title': f"{file_parts[0].capitalize()} Plot: {file_parts[1]} vs {file_parts[2]}",
+                                'category': file_parts[1],  # Parameter ID (e.g., S10)
+                                'group': plot_type.capitalize(),  # Plot type as group
+                                'description': f"Comparison type: {file_parts[3]}",
+                                'mode': mode
+                            }
+
+                            plots_data.append(plot_data)
+
+        return jsonify(plots_data)
+        
+    except Exception as e:
+        logger.error(f"Error retrieving sensitivity plots: {str(e)}")
         return jsonify({
-            "status": "success",
+            "error": f"Error retrieving sensitivity plots: {str(e)}"
+        }), 500
+
+@sensitivity_routes.route('/api/sensitivity-plots/<version>/<param_id>', methods=['GET'])
+def get_sensitivity_plots_by_parameter(version, param_id):
+    """Returns sensitivity plots for a specific parameter."""
+    try:
+        # Define paths
+        base_dir_results = os.path.join(
+            base_dir,
+            f'Batch({version})',
+            f'Results({version})',
+            'Sensitivity'
+        )
+        
+        if not os.path.exists(base_dir_results):
+            return jsonify([])
+        
+        plots_data = []
+        
+        # Search in both Symmetrical and Multipoint directories
+        for mode in ['Percentage', 'DirectValue', 'AbsoluteDeparture', 'MonteCarlo']:
+            mode_dir = os.path.join(base_dir_results, mode)
+            
+            if not os.path.exists(mode_dir):
+                continue
+                
+            # Search for plot files in each plot type subdirectory
+            for plot_type in ['waterfall', 'bar', 'point']:
+                plot_type_dir = os.path.join(mode_dir, plot_type)
+                
+                if not os.path.exists(plot_type_dir):
+                    continue
+                    
+                # Find all PNG files for this parameter
+                for root, _, files in os.walk(plot_type_dir):
+                    for file in files:
+                        if file.endswith('.png') and f"_{param_id}_" in file:
+                            # Extract parameter and comparison info from filename
+                            file_parts = file.replace('.png', '').split('_')
+                            
+                            if len(file_parts) >= 4:
+                                plot_data = {
+                                    'path': os.path.join(root, file),
+                                    'title': f"{file_parts[0].capitalize()} Plot: {file_parts[1]} vs {file_parts[2]}",
+                                    'category': file_parts[1],  # Parameter ID (e.g., S10)
+                                    'group': plot_type.capitalize(),  # Plot type as group
+                                    'description': f"Comparison type: {file_parts[3]}",
+                                    'mode': mode
+                                }
+                                
+                                plots_data.append(plot_data)
+                
+                # Also check for plots directly in mode directory
+                for file in os.listdir(mode_dir):
+                    if file.endswith('.png') and file.startswith(f"{plot_type}_") and f"_{param_id}_" in file:
+                        # Extract parameter and comparison info from filename
+                        file_parts = file.replace('.png', '').split('_')
+                        
+                        if len(file_parts) >= 4:
+                            plot_data = {
+                                'path': os.path.join(mode_dir, file),
+                                'title': f"{file_parts[0].capitalize()} Plot: {file_parts[1]} vs {file_parts[2]}",
+                                'category': file_parts[1],  # Parameter ID (e.g., S10)
+                                'group': plot_type.capitalize(),  # Plot type as group
+                                'description': f"Comparison type: {file_parts[3]}",
+                                'mode': mode
+                            }
+                            
+                            plots_data.append(plot_data)
+        
+        return jsonify(plots_data)
+        
+    except Exception as e:
+        logger.error(f"Error retrieving sensitivity plots: {str(e)}")
+        return jsonify({
+            "error": f"Error retrieving sensitivity plots: {str(e)}"
+        }), 500
+
+@sensitivity_routes.route('/api/sensitivity-plots/<version>/<category>/<group>', methods=['GET'])
+def get_sensitivity_plots_by_category_and_group(version, category, group):
+    """Returns sensitivity plots for a specific category and group."""
+    try:
+        # Define paths
+        base_dir_results = os.path.join(
+            base_dir,
+            f'Batch({version})',
+            f'Results({version})',
+            'Sensitivity'
+        )
+        
+        if not os.path.exists(base_dir_results):
+            return jsonify([])
+        
+        plots_data = []
+        
+        # Determine which mode directories to search
+        if group.lower() == 'symmetrical':
+            modes = ['Symmetrical']
+        elif group.lower() == 'multipoint':
+            modes = ['Multipoint']
+        else:
+            # If group is a plot type like 'Bar', 'Waterfall', or 'Point'
+            modes = ['Symmetrical', 'Multipoint']
+        
+        for mode in modes:
+            mode_dir = os.path.join(base_dir_results, mode)
+            
+            if not os.path.exists(mode_dir):
+                continue
+                
+            # If group is a plot type, search in that directory
+            if group.lower() in ['bar', 'waterfall', 'point']:
+                plot_type_dir = os.path.join(mode_dir, group.lower())
+                
+                if not os.path.exists(plot_type_dir):
+                    continue
+                    
+                # Find all PNG files for this category
+                for root, _, files in os.walk(plot_type_dir):
+                    for file in files:
+                        if file.endswith('.png') and (f"_{category}_" in file or file.startswith(f"{group.lower()}_{category}_")):
+                            # Extract parameter and comparison info from filename
+                            file_parts = file.replace('.png', '').split('_')
+                            
+                            if len(file_parts) >= 4:
+                                plot_data = {
+                                    'path': os.path.join(root, file),
+                                    'title': f"{file_parts[0].capitalize()} Plot: {file_parts[1]} vs {file_parts[2]}",
+                                    'category': file_parts[1],  # Parameter ID (e.g., S10)
+                                    'group': file_parts[0].capitalize(),  # Plot type as group
+                                    'description': f"Comparison type: {file_parts[3]}",
+                                    'mode': mode
+                                }
+                                
+                                plots_data.append(plot_data)
+            
+            # Also check for plots directly in mode directory
+            for file in os.listdir(mode_dir):
+                if file.endswith('.png') and (f"_{category}_" in file or file.startswith(f"{group.lower()}_{category}_")):
+                    # Extract parameter and comparison info from filename
+                    file_parts = file.replace('.png', '').split('_')
+                    
+                    if len(file_parts) >= 4:
+                        plot_data = {
+                            'path': os.path.join(mode_dir, file),
+                            'title': f"{file_parts[0].capitalize()} Plot: {file_parts[1]} vs {file_parts[2]}",
+                            'category': file_parts[1],  # Parameter ID (e.g., S10)
+                            'group': file_parts[0].capitalize(),  # Plot type as group
+                            'description': f"Comparison type: {file_parts[3]}",
+                            'mode': mode
+                        }
+                        
+                        plots_data.append(plot_data)
+        
+        return jsonify(plots_data)
+        
+    except Exception as e:
+        logger.error(f"Error retrieving sensitivity plots: {str(e)}")
+        return jsonify({
+            "error": f"Error retrieving sensitivity plots: {str(e)}"
+        }), 500
+
+@sensitivity_routes.route('/api/sensitivity-parameters/<version>', methods=['GET'])
+def get_sensitivity_parameters(version):
+    """Returns all sensitivity parameters for a specific version."""
+    try:
+        # Define paths
+        base_dir_results = os.path.join(
+            base_dir,
+            f'Batch({version})',
+            f'Results({version})',
+            'Sensitivity'
+        )
+        
+        if not os.path.exists(base_dir_results):
+            return jsonify([])
+        
+        parameters = {}
+        
+        # Check parameter directories
+        for item in os.listdir(base_dir_results):
+            item_path = os.path.join(base_dir_results, item)
+            
+            # Look for parameter directories (starting with S)
+            if os.path.isdir(item_path) and item.startswith('S'):
+                param_id = item
+                
+                # Determine mode from subdirectories
+                modes = []
+                if os.path.exists(os.path.join(item_path, 'symmetrical')):
+                    modes.append('symmetrical')
+                if os.path.exists(os.path.join(item_path, 'multipoint')):
+                    modes.append('multipoint')
+                
+                # Get compare_to_key from result files
+                compare_to_key = 'S13'  # Default
+                for mode in ['Percentage', 'DirectValue', 'AbsoluteDeparture', 'MonteCarlo']:
+                    mode_dir = os.path.join(base_dir_results, mode)
+                    
+                    if not os.path.exists(mode_dir):
+                        continue
+                    
+                    # Check result files
+                    for file in os.listdir(mode_dir):
+                        if file.startswith(f"{param_id}_vs_") and file.endswith('_results.json'):
+                            parts = file.replace('_results.json', '').split('_vs_')
+                            if len(parts) >= 2:
+                                compare_to_key = parts[1].split('_')[0]
+                                break
+                                
+                # Add parameter info
+                parameters[param_id] = {
+                    'id': param_id,
+                    'modes': modes,
+                    'compareToKey': compare_to_key
+                }
+        
+        return jsonify(list(parameters.values()))
+        
+    except Exception as e:
+        logger.error(f"Error retrieving sensitivity parameters: {str(e)}")
+        return jsonify({
+            "error": f"Error retrieving sensitivity parameters: {str(e)}"
+        }), 500
+
+@sensitivity_routes.route('/api/sensitivity-summary/<version>', methods=['GET'])
+def get_sensitivity_summary(version):
+    """Returns a summary of sensitivity analysis for a specific version."""
+    try:
+        # Define paths
+        base_dir_results = os.path.join(
+            base_dir,
+            f'Batch({version})',
+            f'Results({version})',
+            'Sensitivity'
+        )
+        
+        if not os.path.exists(base_dir_results):
+            return jsonify({
+                "version": version,
+                "parameters": [],
+                "plots": [],
+                "status": "not_found"
+            })
+        
+        # Get parameters
+        parameters = []
+        for item in os.listdir(base_dir_results):
+            item_path = os.path.join(base_dir_results, item)
+            
+            # Look for parameter directories (starting with S)
+            if os.path.isdir(item_path) and item.startswith('S'):
+                param_id = item
+                
+                # Determine mode from subdirectories
+                modes = []
+                if os.path.exists(os.path.join(item_path, 'symmetrical')):
+                    modes.append('symmetrical')
+                if os.path.exists(os.path.join(item_path, 'multipoint')):
+                    modes.append('multipoint')
+                
+                parameters.append({
+                    'id': param_id,
+                    'modes': modes
+                })
+        
+        # Get plot counts
+        plot_counts = {
+            'waterfall': 0,
+            'bar': 0,
+            'point': 0,
+            'total': 0
+        }
+        
+        for mode in ['Percentage', 'DirectValue', 'AbsoluteDeparture', 'MonteCarlo']:
+            mode_dir = os.path.join(base_dir_results, mode)
+            
+            if not os.path.exists(mode_dir):
+                continue
+                
+            for plot_type in ['waterfall', 'bar', 'point']:
+                plot_type_dir = os.path.join(mode_dir, plot_type)
+                
+                if not os.path.exists(plot_type_dir):
+                    continue
+                    
+                # Count PNG files
+                for root, _, files in os.walk(plot_type_dir):
+                    plot_files = [f for f in files if f.endswith('.png')]
+                    plot_counts[plot_type] += len(plot_files)
+                    plot_counts['total'] += len(plot_files)
+                    
+                # Also check mode directory directly
+                for file in os.listdir(mode_dir):
+                    if file.endswith('.png') and file.startswith(f"{plot_type}_"):
+                        plot_counts[plot_type] += 1
+                        plot_counts['total'] += 1
+        
+        # Get reports
+        reports_dir = os.path.join(
+            base_dir,
+            f'Batch({version})',
+            f'Results({version})',
+            'Reports'
+        )
+        
+        reports = []
+        if os.path.exists(reports_dir):
+            for file in os.listdir(reports_dir):
+                if file.startswith('sensitivity_analysis_') and file.endswith('.html'):
+                    report_path = os.path.join(reports_dir, file)
+                    timestamp = datetime.fromtimestamp(os.path.getmtime(report_path))
+                    
+                    reports.append({
+                        'name': file,
+                        'path': os.path.relpath(report_path, base_dir),
+                        'timestamp': timestamp.isoformat(),
+                        'size': os.path.getsize(report_path)
+                    })
+        
+        summary = {
             "version": version,
             "parameters": parameters,
-            "source": "calsen"
-        })
-
-    # Fallback: scan directories
-    sensitivity_dir = get_sensitivity_dir(version)
-
-    if not os.path.exists(sensitivity_dir):
+            "plot_counts": plot_counts,
+            "reports": reports,
+            "status": "ready",
+            "timestamp": datetime.now().isoformat()
+        }
+        
+        return jsonify(summary)
+        
+    except Exception as e:
+        logger.error(f"Error retrieving sensitivity summary: {str(e)}")
         return jsonify({
-            "error": f"Sensitivity directory not found for version {version}"
-        }), 404
+            "error": f"Error retrieving sensitivity summary: {str(e)}",
+            "version": version,
+            "status": "error"
+        }), 500
 
-    # Find parameter directories
-    param_dirs = glob.glob(os.path.join(sensitivity_dir, "S*"))
+@sensitivity_routes.route('/sensitivity/analysis', methods=['POST'])
+def handle_sensitivity_analysis():
+    """
+    Processes sensitivity analysis for any mode.
 
-    parameters = []
-    for param_dir in param_dirs:
-        param_id = os.path.basename(param_dir)
+    Expected JSON payload:
+    {
+        "param_id": "S10",
+        "mode": "percentage",  # or "directvalue", "absolutedeparture", "montecarlo"
+        "values": [10.0],
+        "compareToKey": "S13",
+        "comparisonType": "primary",
+        "version": 1,
+        "waterfall": true,
+        "bar": true,
+        "point": true
+    }
+    """
+    run_id = time.strftime("%Y%m%d_%H%M%S")
+    logger.info(f"\n{'='*80}")
+    logger.info(f"Sensitivity Analysis Request - Run ID: {run_id}")
+    logger.info(f"{'='*80}")
 
-        # Get parameter info
-        param_info = get_parameter_variations(version, param_id)
-        if param_info:
-            var_strs = [f"{v:+.2f}" for v in param_info["variations"]]
+    try:
+        data = request.json
+        logger.info(f"Request data: {data}")
 
-            # Load parameter configuration to get compareToKey
-            param_config = None
-            if param_info["variations"]:
-                param_config = load_parameter_config(
-                    version, param_id, param_info["mode"], param_info["variations"][0]
-                )
+        # Validate required parameters
+        param_id = data.get('param_id')
+        if not param_id or not param_id.startswith('S') or not param_id[1:].isdigit():
+            return jsonify({"error": "Invalid parameter ID format"}), 400
 
-            parameters.append({
-                "id": param_id,
-                "mode": param_info["mode"],
-                "variations": var_strs,
-                "compareToKey": param_config.get("compareToKey") if param_config else None
+        # Get values array
+        values = data.get('values', [])
+        if not values:
+            return jsonify({"error": "No variation values provided"}), 400
+
+        # Get mode with default to percentage
+        mode = data.get('mode', 'percentage')
+        if mode not in ['percentage', 'directvalue', 'absolutedeparture', 'montecarlo']:
+            logger.warning(f"Unknown mode '{mode}', defaulting to 'percentage'")
+            mode = 'percentage'
+
+        # Use S13 as default compareToKey if none provided
+        compare_to_key = data.get('compareToKey', 'S13')
+        version = data.get('version', 1)
+        comparison_type = data.get('comparisonType', 'primary')
+
+        logger.info(f"Processing {param_id} with {len(values)} variation(s) in {mode} mode vs {compare_to_key}")
+
+        # Define paths using the mode mapping
+        mode_dir = get_mode_directory(mode)
+        sensitivity_dir = os.path.join(
+            base_dir,
+            f'Batch({version})',
+            f'Results({version})',
+            'Sensitivity',
+            mode_dir
+        )
+        os.makedirs(sensitivity_dir, exist_ok=True)
+
+        # Create results data structure
+        result_data = {
+            'parameter': param_id,
+            'compare_to_key': compare_to_key,
+            'comparison_type': comparison_type,
+            'mode': mode,
+            'version': version,
+            'timestamp': time.strftime("%Y-%m-%d %H:%M:%S"),
+            'variations': []
+        }
+
+        # Execute calculations for each variation
+        for var in values:
+            var_str = f"{var:+.2f}"
+            logger.info(f"Processing variation: {var_str}")
+
+            # Execute the sensitivity calculation script
+            calculation_script = os.path.join(base_dir, "Core_calculation_engines", "sensitivity_calculator.py")
+
+            if not os.path.exists(calculation_script):
+                logger.warning(f"Calculation script not found: {calculation_script}")
+                # Use fallback to CFA.py if sensitivity_calculator.py doesn't exist
+                calculation_script = os.path.join(base_dir, "Core_calculation_engines", "CFA.py")
+
+            calc_result = subprocess.run(
+                [
+                    'python',
+                    calculation_script,
+                    str(version),
+                    param_id,
+                    str(var),
+                    compare_to_key,
+                    mode  # Add mode as parameter to calculation script
+                ],
+                capture_output=True,
+                text=True
+            )
+
+            if calc_result.returncode != 0:
+                error_msg = f"Calculation failed for {param_id} ({var_str}): {calc_result.stderr}"
+                logger.error(error_msg)
+                result_data['variations'].append({
+                    'variation': var,
+                    'variation_str': var_str,
+                    'status': 'error',
+                    'error': error_msg
+                })
+                continue
+
+            # Extract price from economic summary
+            price_value = find_economic_summary_price(version)
+
+            # Add variation result
+            result_data['variations'].append({
+                'variation': var,
+                'variation_str': var_str,
+                'status': 'completed',
+                'values': {
+                    'price': price_value
+                }
             })
 
-    return jsonify({
-        "status": "success",
-        "version": version,
-        "parameters": parameters,
-        "source": "directory"
-    })
+            logger.info(f"Completed calculation for variation {var_str}")
 
-@app.route('/sensitivity/parameter/<param_id>', methods=['GET'])
-def get_parameter(param_id):
-    """Get details for a specific parameter"""
-    version = request.args.get('version', '1')
+        # Store calculation results using file manager with the new mode
+        result_path = file_manager.store_calculation_result(
+            version=version,
+            param_id=param_id,
+            result_data=result_data,
+            mode=mode,
+            compare_to_key=compare_to_key
+        )
 
-    # Try to get parameter from CalSen service first
-    calsen_paths = get_calsen_paths(version, param_id)
+        logger.info(f"Stored calculation results at {result_path['path']}")
 
-    if calsen_paths:
-        variations = calsen_paths.get("variations", {})
-        var_data = {}
+        # Generate requested plots
+        plot_types = []
+        if data.get('waterfall'): plot_types.append('waterfall')
+        if data.get('bar'): plot_types.append('bar')
+        if data.get('point'): plot_types.append('point')
 
-        for var_str, paths in variations.items():
-            var_data[var_str] = {
-                "param_var_dir": paths.get("param_var_dir"),
-                "config_var_dir": paths.get("config_var_dir"),
-                "variation": paths.get("variation")
-            }
+        generated_plots = {}
 
-        return jsonify({
+        for plot_type in plot_types:
+            plot_name = f"{plot_type}_{param_id}_{compare_to_key}_{comparison_type}"
+            plot_type_dir = os.path.join(sensitivity_dir, plot_type)
+            os.makedirs(plot_type_dir, exist_ok=True)
+
+            plot_path = os.path.join(plot_type_dir, f"{plot_name}.png")
+
+            # Use internal generate_plot_from_results function instead of external script
+            try:
+                logger.info(f"Generating {plot_type} plot: {plot_name}")
+
+                plot_generated = generate_plot_from_results(
+                    version=version,
+                    param_id=param_id,
+                    compare_to_key=compare_to_key,
+                    plot_type=plot_type,
+                    mode=mode,
+                    result_path=result_path['path'] if isinstance(result_path, dict) else result_path
+                )
+
+                if plot_generated:
+                    generated_plots[plot_type] = {
+                        'status': 'completed',
+                        'path': os.path.relpath(plot_path, base_dir)
+                    }
+                    logger.info(f"Generated {plot_type} plot at {plot_path}")
+                else:
+                    error_msg = f"Failed to generate {plot_type} plot"
+                    logger.error(error_msg)
+                    generated_plots[plot_type] = {
+                        'status': 'error',
+                        'error': error_msg
+                    }
+            except Exception as e:
+                error_msg = f"Error generating {plot_type} plot: {str(e)}"
+                logger.error(error_msg)
+                generated_plots[plot_type] = {
+                    'status': 'error',
+                    'error': error_msg
+                }
+
+        # Prepare response
+        response = {
             "status": "success",
-            "version": version,
-            "parameter": {
-                "id": param_id,
-                "mode": calsen_paths.get("mode"),
-                "compareToKey": calsen_paths.get("compareToKey"),
-                "comparisonType": calsen_paths.get("comparisonType"),
-                "variations": var_data
-            },
-            "source": "calsen"
-        })
-
-    # Fallback: get parameter info from directories
-    param_info = get_parameter_variations(version, param_id)
-
-    if not param_info:
-        return jsonify({
-            "error": f"Parameter {param_id} not found for version {version}"
-        }), 404
-
-    variations = param_info["variations"]
-    var_data = {}
-
-    for variation in variations:
-        var_str = f"{variation:+.2f}"
-
-        # Load parameter configuration
-        param_config = load_parameter_config(version, param_id, param_info["mode"], variation)
-
-        if param_config:
-            var_data[var_str] = {
-                "variation": variation,
-                "config": param_config
-            }
-
-    # Find parameter config from first variation
-    compare_to_key = None
-    comparison_type = None
-
-    if variations and var_data:
-        first_var = f"{variations[0]:+.2f}"
-        if first_var in var_data and "config" in var_data[first_var]:
-            config = var_data[first_var]["config"]
-            compare_to_key = config.get("compareToKey") or config.get("config", {}).get("compareToKey")
-            comparison_type = config.get("comparisonType") or config.get("config", {}).get("comparisonType")
-
-    return jsonify({
-        "status": "success",
-        "version": version,
-        "parameter": {
-            "id": param_id,
-            "mode": param_info["mode"],
-            "compareToKey": compare_to_key,
-            "comparisonType": comparison_type,
-            "variations": var_data
-        },
-        "source": "directory"
-    })
-
-@app.route('/sensitivity/results/<param_id>', methods=['GET'])
-def get_results(param_id):
-    """Get results for a parameter comparison"""
-    version = request.args.get('version', '1')
-    compare_to_key = request.args.get('compareToKey')
-    mode = request.args.get('mode', 'symmetrical')
-
-    # If compareToKey is not provided, try to get it from parameter config
-    if not compare_to_key:
-        param_info = get_parameter_variations(version, param_id)
-
-        if param_info and param_info["variations"]:
-            variation = param_info["variations"][0]
-            param_config = load_parameter_config(version, param_id, param_info["mode"], variation)
-
-            if param_config:
-                compare_to_key = param_config.get("compareToKey") or param_config.get("config", {}).get("compareToKey")
-
-    if not compare_to_key:
-        return jsonify({
-            "error": "compareToKey is required"
-        }), 400
-
-    # Check if result file exists
-    result_files = find_result_files(version, param_id, compare_to_key, mode)
-
-    if result_files:
-        # Use existing result file
-        with open(result_files[0], 'r') as f:
-            result_data = json.load(f)
-
-        return jsonify({
-            "status": "success",
-            "version": version,
+            "runId": run_id,
+            "message": f"{mode.capitalize()} analysis completed",
             "parameter": param_id,
             "compareToKey": compare_to_key,
             "mode": mode,
-            "results": result_data,
-            "resultFile": result_files[0]
-        })
+            "variations": values,
+            "plots": generated_plots,
+            "directory": sensitivity_dir,
+            "results_path": result_path['path'] if isinstance(result_path, dict) else result_path
+        }
 
-    # Process results
-    result_data = process_sensitivity_results(version, param_id, compare_to_key, mode)
+        logger.info(f"\n{'='*80}")
+        logger.info(f"Analysis Completed - Run ID: {run_id}")
+        logger.info(f"{'='*80}")
 
-    if not result_data:
+        return jsonify(response)
+
+    except Exception as e:
+        error_msg = f"Error in sensitivity analysis: {str(e)}"
+        logger.error(error_msg)
         return jsonify({
-            "error": f"Failed to process results for {param_id} vs {compare_to_key}"
+            "error": error_msg,
+            "runId": run_id
         }), 500
-
-    return jsonify({
-        "status": "success",
-        "version": version,
-        "parameter": param_id,
-        "compareToKey": compare_to_key,
-        "mode": mode,
-        "results": result_data,
-        "generated": True
-    })
-
-@app.route('/sensitivity/plot/<param_id>', methods=['GET'])
-def get_plot(param_id):
-    """Get or generate a plot for a parameter comparison"""
-    version = request.args.get('version', '1')
-    compare_to_key = request.args.get('compareToKey')
-    plot_type = request.args.get('type', 'point')
-    mode = request.args.get('mode', 'symmetrical')
-    variation = request.args.get('variation')
-
-    # If compareToKey is not provided, try to get it from parameter config
-    if not compare_to_key:
-        param_info = get_parameter_variations(version, param_id)
-
-        if param_info and param_info["variations"]:
-            var_val = param_info["variations"][0]
-            param_config = load_parameter_config(version, param_id, param_info["mode"], var_val)
-
-            if param_config:
-                compare_to_key = param_config.get("compareToKey") or param_config.get("config", {}).get("compareToKey")
-
-    if not compare_to_key:
-        return jsonify({
-            "error": "compareToKey is required"
-        }), 400
-
-    # Check if results exist or need to be generated
-    result_files = find_result_files(version, param_id, compare_to_key, mode)
-
-    if not result_files:
-        # Process results first
-        result_data = process_sensitivity_results(version, param_id, compare_to_key, mode)
-
-        if not result_data:
-            return jsonify({
-                "error": f"Failed to process results for {param_id} vs {compare_to_key}"
-            }), 500
-
-        # Add result file to the list
-        sensitivity_dir = get_sensitivity_dir(version)
-        mode_dir = 'Symmetrical' if mode.lower() in ['symmetrical', 'percentage'] else 'Multipoint'
-        result_path = os.path.join(
-            sensitivity_dir,
-            mode_dir,
-            f"{param_id}_vs_{compare_to_key}_{mode.lower()}_results.json"
-        )
-
-        result_files = [result_path]
-
-    # Generate plot
-    var_str = f"{float(variation):+.2f}" if variation else None
-    plot_path = generate_plot_from_results(
-        version, param_id, compare_to_key, plot_type, mode, result_files[0], var_str
-    )
-
-    if not plot_path:
-        return jsonify({
-            "error": f"Failed to generate {plot_type} plot for {param_id} vs {compare_to_key}"
-        }), 500
-
-    # Return plot file
-    if request.args.get('inline', 'false').lower() == 'true':
-        # Serve the plot inline as a data URL
-        with open(plot_path, 'rb') as f:
-            plot_data = f.read()
-
-        response = Response(plot_data, mimetype='image/png')
-        return response
-
-    # Return plot file path
-    return jsonify({
-        "status": "success",
-        "version": version,
-        "parameter": param_id,
-        "compareToKey": compare_to_key,
-        "plotType": plot_type,
-        "mode": mode,
-        "plotPath": plot_path,
-        "plotUrl": f"/sensitivity/plot-file?path={plot_path}"
-    })
-
-@app.route('/sensitivity/plot-file', methods=['GET'])
-def get_plot_file():
-    """Serve a plot file"""
-    plot_path = request.args.get('path')
-
-    if not plot_path or not os.path.exists(plot_path):
-        return jsonify({
-            "error": "Plot file not found"
-        }), 404
-
-    return send_file(plot_path, mimetype='image/png')
-
-@app.route('/sensitivity/process-all', methods=['POST'])
-def process_all_sensitivity():
-    """Process all sensitivity parameters for a version"""
-    data = request.json
-    version = data.get('version', '1')
-    wait_time = data.get('waitTime', 0.5)  # Default to 0.5 seconds between calculations
-
-    # Get all parameters
-    sensitivity_dir = get_sensitivity_dir(version)
-
-    if not os.path.exists(sensitivity_dir):
-        return jsonify({
-            "error": f"Sensitivity directory not found for version {version}"
-        }), 404
-
-    # Find parameter directories
-    param_dirs = glob.glob(os.path.join(sensitivity_dir, "S*"))
-
-    if not param_dirs:
-        return jsonify({
-            "error": f"No parameter directories found in {sensitivity_dir}"
-        }), 404
-
-    # Process each parameter
-    results = {}
-
-    for param_dir in param_dirs:
-        param_id = os.path.basename(param_dir)
-        logger.info(f"Processing parameter {param_id}")
-
-        # Get parameter info
-        param_info = get_parameter_variations(version, param_id)
-        if not param_info:
-            logger.warning(f"Could not get variations for {param_id}")
-            results[param_id] = {"status": "error", "message": "Could not get variations"}
-            continue
-
-        # Load parameter configuration to get compareToKey
-        compare_to_key = None
-        if param_info["variations"]:
-            param_config = load_parameter_config(
-                version, param_id, param_info["mode"], param_info["variations"][0]
-            )
-
-            if param_config:
-                compare_to_key = param_config.get("compareToKey") or param_config.get("config", {}).get("compareToKey")
-
-        if not compare_to_key:
-            logger.warning(f"No compareToKey found for {param_id}")
-            results[param_id] = {"status": "error", "message": "No compareToKey found"}
-            continue
-
-        # Process results
-        result_data = process_sensitivity_results(version, param_id, compare_to_key, param_info["mode"])
-
-        if result_data:
-            results[param_id] = {
-                "status": "success",
-                "compareToKey": compare_to_key,
-                "mode": param_info["mode"],
-                "points": len(result_data.get("x_values", []))
-            }
-        else:
-            results[param_id] = {
-                "status": "error",
-                "message": "Failed to process results"
-            }
-
-        # Wait before processing next parameter
-        time.sleep(float(wait_time))
-
-    return jsonify({
-        "status": "success",
-        "version": version,
-        "results": results,
-        "processed": len(results)
-    })
-
-@app.route('/sensitivity/run-calculation', methods=['POST'])
-def run_calculation():
-    """Run calculation for a specific parameter variation"""
-    data = request.json
-    version = data.get('version', '1')
-    param_id = data.get('paramId')
-    variation = data.get('variation')
-    compare_to_key = data.get('compareToKey')
-    mode = data.get('mode', 'symmetrical')
-
-    if not param_id or variation is None or not compare_to_key:
-        return jsonify({
-            "error": "paramId, variation, and compareToKey are required"
-        }), 400
-
-    # Convert variation to float
-    try:
-        variation = float(variation)
-    except ValueError:
-        return jsonify({
-            "error": f"Invalid variation value: {variation}"
-        }), 400
-
-    # Load parameter configuration
-    param_config = load_parameter_config(version, param_id, mode, variation)
-
-    if not param_config:
-        return jsonify({
-            "error": f"Parameter configuration not found for {param_id} variation {variation}"
-        }), 404
-
-    # Run calculation
-    success = run_calculation_script(version, param_id, param_config, mode, variation, compare_to_key)
-
-    if not success:
-        return jsonify({
-            "error": f"Failed to run calculation for {param_id} variation {variation}"
-        }), 500
-
-    return jsonify({
-        "status": "success",
-        "version": version,
-        "paramId": param_id,
-        "variation": variation,
-        "compareToKey": compare_to_key,
-        "mode": mode
-    })
-
-# =====================================
-# Main Application
-# =====================================
-
-if __name__ == '__main__':
-    # Get port from command line arguments or use default
-    port = int(sys.argv[1]) if len(sys.argv) > 1 else 5000
-
-    logger.info(f"Starting Sensitivity Routes service on port {port}")
-    app.run(debug=False, host='0.0.0.0', port=port)

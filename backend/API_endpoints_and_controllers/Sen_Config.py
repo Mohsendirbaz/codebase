@@ -7,7 +7,6 @@ import copy
 import logging
 import time
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from Sensitivity_File_Manager import SensitivityFileManager
 
 # Configure logger
 logger = logging.getLogger('sensitivity')
@@ -81,7 +80,7 @@ def find_parameter_by_id(config_module, param_id):
 
     raise ValueError(f"Could not find parameter for {param_id} in config module")
 
-def apply_sensitivity_variation(config_module, param_id, variation_value, mode='symmetrical'):
+def apply_sensitivity_variation(config_module, param_id, variation_value, mode='percentage'):
     """
     Applies sensitivity variation to the specified parameter.
 
@@ -89,18 +88,12 @@ def apply_sensitivity_variation(config_module, param_id, variation_value, mode='
         config_module (dict): Configuration module
         param_id (str): Parameter ID (e.g., 'S13')
         variation_value (float): Variation value to apply
-        mode (str): Either 'symmetrical'/'percentage' or 'multipoint'/'discrete'
+        mode (str): One of 'percentage', 'directvalue', 'absolutedeparture', or 'montecarlo'
 
     Returns:
         dict: Modified configuration module
     """
     try:
-        # Normalize mode terminology
-        if mode in ['percentage', 'multiple']:
-            mode = 'symmetrical'
-        elif mode == 'discrete':
-            mode = 'multipoint'
-
         # Find parameter in config module
         param_name = find_parameter_by_id(config_module, param_id)
 
@@ -108,8 +101,8 @@ def apply_sensitivity_variation(config_module, param_id, variation_value, mode='
         original_value = config_module[param_name]
 
         # Apply variation based on mode
-        if mode == 'symmetrical':
-            # For percentage/symmetrical mode, apply percentage change
+        if mode.lower() == 'percentage':
+            # For percentage mode, apply percentage change
             if isinstance(original_value, (int, float)):
                 modified_value = original_value * (1 + variation_value/100)
             elif isinstance(original_value, list):
@@ -117,33 +110,68 @@ def apply_sensitivity_variation(config_module, param_id, variation_value, mode='
                 modified_value = [val * (1 + variation_value/100) for val in original_value]
             else:
                 raise TypeError(f"Unsupported parameter type: {type(original_value)}")
-        elif mode == 'multipoint':
-            # For discrete/multipoint mode, add variation to the original value
-            # This is the key fix - adding to original value instead of replacing it
+
+        elif mode.lower() == 'directvalue':
+            # For direct value mode, use variation value directly (no change to original)
+            if isinstance(original_value, (int, float)):
+                modified_value = variation_value
+            elif isinstance(original_value, list):
+                # For list values, replace with variation
+                modified_value = [variation_value] * len(original_value)
+            else:
+                raise TypeError(f"Unsupported parameter type for direct value mode: {type(original_value)}")
+
+        elif mode.lower() == 'absolutedeparture':
+            # For absolute departure mode, add variation to the original value
             if isinstance(original_value, (int, float)):
                 modified_value = original_value + variation_value
             elif isinstance(original_value, list):
                 # For list values, add to each element
                 modified_value = [val + variation_value for val in original_value]
             else:
-                raise TypeError(f"Unsupported parameter type for discrete mode: {type(original_value)}")
+                raise TypeError(f"Unsupported parameter type for absolute departure mode: {type(original_value)}")
+
+        elif mode.lower() == 'montecarlo':
+            # For Monte Carlo mode, use percentage mode logic for now
+            # This will be expanded later with Monte Carlo specific logic
+            logger.info("Using percentage mode logic for Monte Carlo (to be implemented)")
+            if isinstance(original_value, (int, float)):
+                modified_value = original_value * (1 + variation_value/100)
+            elif isinstance(original_value, list):
+                modified_value = [val * (1 + variation_value/100) for val in original_value]
+            else:
+                raise TypeError(f"Unsupported parameter type: {type(original_value)}")
         else:
-            raise ValueError(f"Unknown variation mode: {mode}")
+            # Default to percentage mode for unknown modes
+            logger.warning(f"Unknown variation mode: {mode}. Defaulting to percentage mode.")
+            if isinstance(original_value, (int, float)):
+                modified_value = original_value * (1 + variation_value/100)
+            elif isinstance(original_value, list):
+                modified_value = [val * (1 + variation_value/100) for val in original_value]
+            else:
+                raise TypeError(f"Unsupported parameter type: {type(original_value)}")
 
         # Update the config module
         config_module[param_name] = modified_value
 
-        logger.info(
-            f"Applied {variation_value} {'%' if mode == 'symmetrical' else ''} "
-            f"variation to {param_name} ({param_id})"
-        )
+        # Format log message based on mode
+        if mode.lower() == 'percentage':
+            log_msg = f"Applied {variation_value}% variation to {param_name} ({param_id})"
+        elif mode.lower() == 'directvalue':
+            log_msg = f"Applied direct value {variation_value} to {param_name} ({param_id})"
+        elif mode.lower() == 'absolutedeparture':
+            log_msg = f"Applied absolute departure of {variation_value} to {param_name} ({param_id})"
+        elif mode.lower() == 'montecarlo':
+            log_msg = f"Applied Monte Carlo variation of {variation_value} to {param_name} ({param_id})"
+        else:
+            log_msg = f"Applied variation {variation_value} to {param_name} ({param_id})"
 
+        logger.info(log_msg)
         return config_module
 
     except Exception as e:
         logger.error(f"Error applying sensitivity variation: {str(e)}")
         raise
-
 def generate_sensitivity_configs(config_received, config_matrix_df, results_folder, version,
                                  param_id, mode, variations):
     """
@@ -155,7 +183,7 @@ def generate_sensitivity_configs(config_received, config_matrix_df, results_fold
         results_folder (str): Path to results folder
         version (int): Version number
         param_id (str): Parameter ID
-        mode (str): Either 'symmetrical' or 'multipoint'
+        mode (str): One of 'percentage', 'directvalue', 'absolutedeparture', or 'montecarlo'
         variations (list): List of variation values
 
     Returns:
@@ -210,7 +238,7 @@ def generate_sensitivity_configs(config_received, config_matrix_df, results_fold
 
             # Wait for Flask to stabilize after config copy
             logger.info("Waiting for Flask to stabilize...")
-            time.sleep(120)  # 2 minute delay
+            time.sleep(10)  # 10 sec delay
             logger.info("Flask stabilization period complete")
 
             for item in filtered_values:
@@ -219,11 +247,16 @@ def generate_sensitivity_configs(config_received, config_matrix_df, results_fold
 
             base_configs.append((start_year, config_module))
 
-        # Generate sensitivity variations
-        if mode == 'symmetrical':
-            variation = variations[0]
-            variations_list = [variation, -variation]
-        else:  # multipoint
+        # Generate sensitivity variations based on mode
+        if mode.lower() == 'percentage':
+            # For percentage mode, we can use first value and create symmetric variations
+            if len(variations) > 0:
+                variation = variations[0]
+                variations_list = [variation, -variation] if variation != 0 else [0]
+            else:
+                variations_list = []
+        else:
+            # For other modes, use all provided variations
             variations_list = variations
 
         # Apply variations and save configurations
@@ -265,7 +298,7 @@ def save_sensitivity_config(config_module, results_folder, version, param_id,
         results_folder (str): Path to results folder
         version (int): Version number
         param_id (str): Parameter ID
-        mode (str): Either 'symmetrical' or 'multipoint'
+        mode (str): One of 'percentage', 'directvalue', 'absolutedeparture', or 'montecarlo'
         variation (float): Variation value
         start_year (int): Start year
 
@@ -283,12 +316,22 @@ def save_sensitivity_config(config_module, results_folder, version, param_id,
         else:
             config_dict = config_module
 
+        # Map mode to directory structure
+        mode_dir_mapping = {
+            'percentage': 'percentage',
+            'directvalue': 'directvalue',
+            'absolutedeparture': 'absolutedeparture',
+            'montecarlo': 'montecarlo'
+        }
+
+        mode_dir = mode_dir_mapping.get(mode.lower(), 'percentage')  # Default to percentage
+
         # Create parameter-specific directory structure
         sensitivity_dir = os.path.join(results_folder, 'Sensitivity')
         param_var_dir = os.path.join(
             sensitivity_dir,
             param_id,
-            mode.lower(),  # Ensure lowercase mode name
+            mode_dir,  # Use mapped mode directory
             f"{variation:+.2f}"
         )
         os.makedirs(param_var_dir, exist_ok=True)

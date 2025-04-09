@@ -343,7 +343,7 @@ app = initialize_app()
 # =====================================
 
 @app.route('/copy-config-modules', methods=['POST'])
-def trigger_config_processing():
+def copy_config_modules():
     """Endpoint to process all configuration modules with sensitivity variations."""
     sensitivity_logger = logging.getLogger('sensitivity')
     run_id = time.strftime("%Y%m%d_%H%M%S")

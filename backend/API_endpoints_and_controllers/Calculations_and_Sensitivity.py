@@ -68,10 +68,13 @@ COMMON_PYTHON_SCRIPTS = [
 def get_calculation_script(version):
     """Get the appropriate calculation script based on version number"""
     script_name = f'CFA.py'
+    """ we'd like to add CFA-b.py equipped with path resolution module tailored for sensitivity analysis, that would not be function of version, since all sensitivity analyses are uniform with that regard """
     script_path = os.path.join(SCRIPT_DIR, "Core_calculation_engines", script_name)
     if os.path.exists(script_path):
         return script_path
     raise Exception(f"Calculation script not found for version {version}")
+
+
 
 CALCULATION_SCRIPTS = {
     'calculateForPrice': get_calculation_script,
@@ -87,7 +90,11 @@ def setup_logging():
     # Create logs directory if it doesn't exist
     os.makedirs(LOGS_DIR, exist_ok=True)
 
-    # Configure main application logger
+    # Clear any existing handlers
+    logging.getLogger().handlers = []
+    logging.getLogger('sensitivity').handlers = []
+
+    # Configure main application logger (root logger)
     main_handler = logging.FileHandler(LOG_FILE_PATH)
     main_handler.setFormatter(logging.Formatter('%(asctime)s %(levelname)s %(message)s'))
 
@@ -104,8 +111,10 @@ def setup_logging():
     sensitivity_handler.setFormatter(logging.Formatter('%(asctime)s %(levelname)s %(message)s'))
     sensitivity_logger.addHandler(sensitivity_handler)
 
-    logging.info("Logging configured correctly - Main logs going to: " + LOG_FILE_PATH)
-    sensitivity_logger.info("Sensitivity logging configured correctly - Logs going to: " + SENSITIVITY_LOG_PATH)
+    # Only log the configuration messages once
+    if not main_logger.handlers or not sensitivity_logger.handlers:
+        main_logger.info("Logging configured correctly - Main logs going to: " + LOG_FILE_PATH)
+        sensitivity_logger.info("Sensitivity logging configured correctly - Logs going to: " + SENSITIVITY_LOG_PATH)
 
 # =====================================
 # Helper Functions
@@ -153,106 +162,6 @@ def trigger_config_module_copy(version, sensitivity_dir, sen_parameters):
         error_msg = f"Error connecting to config copy service: {str(e)}"
         sensitivity_logger.error(error_msg)
         return {"error": error_msg}
-
-def run_script(script_name, *args, script_type="python", timeout=30):
-    """
-    Run a script with the specified arguments.
-
-    Args:
-        script_name (str): Path to the script
-        args: Arguments to pass to the script
-        script_type (str): Either "python" or "Rscript"
-        timeout (int): Maximum execution time in seconds (default: 30)
-
-    Returns:
-        tuple: (success, error_message)
-    """
-    try:
-        if not os.path.exists(script_name):
-            error_msg = f"Script not found: {script_name}"
-            logging.error(error_msg)
-            return False, error_msg
-
-        command = ['python' if script_type == "python" else 'Rscript', script_name]
-        command.extend([str(arg) for arg in args])
-
-        try:
-            result = subprocess.run(
-                command,
-                capture_output=True,
-                text=True,
-                timeout=timeout,
-                check=True
-            )
-            logging.info(f"Successfully ran {os.path.basename(script_name)}" +
-                         (f" for version {args[0]}" if args else ""))
-            return True, None
-
-        except subprocess.TimeoutExpired:
-            error_msg = f"Script timed out after {timeout}s: {os.path.basename(script_name)}"
-            logging.error(error_msg)
-            return False, error_msg
-
-        except subprocess.CalledProcessError as e:
-            error_msg = (f"Script failed with return code {e.returncode}: "
-                         f"{os.path.basename(script_name)}\n"
-                         f"Command: {' '.join(e.cmd)}\n"
-                         f"Error output: {e.stderr or e.stdout}")
-            logging.error(error_msg)
-            return False, error_msg
-
-    except FileNotFoundError:
-        error_msg = f"Command not found: {command[0]}"
-        logging.error(error_msg)
-        return False, error_msg
-
-    except Exception as e:
-        error_msg = f"Unexpected error running {os.path.basename(script_name)}: {str(e)}"
-        logging.exception(error_msg)
-        return False, error_msg
-
-def process_version(version, calculation_script, selected_v, selected_f, target_row,
-                    calculation_option, SenParameters):
-    """
-    Process a specific version by running configuration scripts and calculation script.
-
-    Args:
-        version: Version number
-        calculation_script: Path to calculation script
-        selected_v: Dictionary of V parameter selections
-        selected_f: Dictionary of F parameter selections
-        target_row: Target row for calculations
-        calculation_option: Calculation mode
-        SenParameters: Sensitivity parameters
-
-    Returns:
-        error message if any, None otherwise
-    """
-    try:
-        # Run common configuration scripts
-        for script in COMMON_PYTHON_SCRIPTS:
-            success, error = run_script(script, version)
-            if not success:
-                return error
-
-        # Run calculation script
-        success, error = run_script(
-            calculation_script,
-            version,
-            json.dumps(selected_v),
-            json.dumps(selected_f),
-            json.dumps(target_row),
-            calculation_option,
-            json.dumps(SenParameters)
-        )
-        if not success:
-            return error
-
-        return None
-    except Exception as e:
-        error_msg = f"Error processing version {version}: {str(e)}"
-        logging.exception(error_msg)
-        return error_msg
 
 def log_run_configuration(logger, config):
     """Log run configuration in a structured format"""
@@ -319,16 +228,24 @@ def create_sensitivity_directories(version, SenParameters):
     sensitivity_logger.info(f"Created main sensitivity directory: {sensitivity_dir}")
 
     # Create standard subdirectories
-    for subdir in ["Reports", "Cache", "Configuration"]:
+    for subdir in ["Reports"]:
         path = os.path.join(sensitivity_dir, subdir)
         os.makedirs(path, exist_ok=True)
         sensitivity_logger.info(f"Created {subdir} directory: {path}")
 
     reports_dir = os.path.join(sensitivity_dir, "Reports")
 
-    # Create analysis mode directories
-    for mode in ["Symmetrical", "Multipoint"]:
-        mode_dir = os.path.join(sensitivity_dir, mode)
+    # Create mode directories for all supported modes
+    mode_dir_mapping = {
+        'percentage': 'Percentage',
+        'directvalue': 'DirectValue',
+        'absolutedeparture': 'AbsoluteDeparture',
+        'montecarlo': 'MonteCarlo'
+    }
+
+    # Create standard directories for each mode
+    for mode_name in mode_dir_mapping.values():
+        mode_dir = os.path.join(sensitivity_dir, mode_name)
         os.makedirs(mode_dir, exist_ok=True)
         sensitivity_logger.info(f"Created mode directory: {mode_dir}")
 
@@ -348,7 +265,7 @@ def create_sensitivity_directories(version, SenParameters):
             continue
 
         # Get parameter details
-        mode = param_config.get('mode', 'symmetrical')
+        mode = param_config.get('mode', 'percentage')
         values = param_config.get('values', [])
         plot_types = []
 
@@ -363,40 +280,35 @@ def create_sensitivity_directories(version, SenParameters):
         param_dir = os.path.join(sensitivity_dir, param_id)
         os.makedirs(param_dir, exist_ok=True)
 
-        # Create mode directory within parameter
-        param_mode_dir = os.path.join(param_dir, mode)
+        # Create mode directory within parameter (lowercase mode)
+        param_mode_dir = os.path.join(param_dir, mode.lower())
         os.makedirs(param_mode_dir, exist_ok=True)
 
-        # Determine variation values based on mode
-        variation_list = []
-        if mode.lower() == 'symmetrical':
-            if values and len(values) > 0:
-                base_variation = values[0]
-                variation_list = [base_variation, -base_variation]
-        else:  # 'multipoint' or other modes
-            variation_list = values
+        # Use values directly from configuration without special handling
+        variation_list = values
 
         # Create variation directories
         for variation in variation_list:
             var_str = f"{variation:+.2f}"
 
             # 1. Create parameter variation directories
-            var_dir = os.path.join(param_dir, mode, var_str)
+            var_dir = os.path.join(param_dir, mode.lower(), var_str)
             os.makedirs(var_dir, exist_ok=True)
             sensitivity_logger.info(f"Created parameter variation directory: {var_dir}")
 
             # 2. Create configuration variation directories
-            mode_name = "Symmetrical" if mode.lower() == "symmetrical" else "Multipoint"
-            config_var_dir = os.path.join(sensitivity_dir, mode_name, "Configuration", f"{param_id}_{var_str}")
+            # Map to the proper capitalized mode directory
+            mode_cap = mode_dir_mapping.get(mode.lower(), 'Percentage')
+            config_var_dir = os.path.join(sensitivity_dir, mode_cap, "Configuration", f"{param_id}_{var_str}")
             os.makedirs(config_var_dir, exist_ok=True)
-            sensitivity_logger.info(f"Created config variation directory: {config_var_dir}")
+            sensitivity_logger.info(f"Created configuration directory: {config_var_dir}")
 
         # Create plot type directories for this parameter
-        mode_dir = os.path.join(sensitivity_dir,
-                                "Symmetrical" if mode.lower() == "symmetrical" else "Multipoint")
+        # Map to the proper capitalized mode directory
+        mode_cap = mode_dir_mapping.get(mode.lower(), 'Percentage')
 
         for plot_type in plot_types:
-            plot_dir = os.path.join(mode_dir, plot_type, f"{param_id}_{plot_type}")
+            plot_dir = os.path.join(sensitivity_dir, mode_cap, plot_type)
             os.makedirs(plot_dir, exist_ok=True)
             sensitivity_logger.info(f"Created plot directory: {plot_dir}")
 
@@ -440,17 +352,17 @@ def save_sensitivity_config_files(version, reports_dir, SenParameters):
                 continue
 
             # Get mode and values
-            mode = param_config.get('mode', 'symmetrical')
+            mode = param_config.get('mode', 'percentage')
             values = param_config.get('values', [])
 
             if not values:
                 continue
 
             # Determine variation list based on mode
-            if mode.lower() == 'symmetrical':
-                # For symmetrical, use first value to create +/- variations
+            if mode.lower() == 'percentage':
+                # For percentage, use first value to create +/- variations
                 base_variation = values[0]
-                variation_list = [base_variation, -base_variation]
+                variation_list = [base_variation]
             else:  # 'multipoint' mode
                 # For multipoint, use all values directly
                 variation_list = values
@@ -486,91 +398,6 @@ def save_sensitivity_config_files(version, reports_dir, SenParameters):
         sensitivity_logger.exception(error_msg)
         raise
 
-def process_sensitivity_visualization(SenParameters):
-    """
-    Process sensitivity parameters for visualization.
-
-    Args:
-        SenParameters (dict): Dictionary containing sensitivity parameters
-
-    Returns:
-        dict: Visualization data structure
-    """
-    sensitivity_logger = logging.getLogger('sensitivity')
-
-    try:
-        visualization_data = {
-            'parameters': {},
-            'relationships': []
-        }
-
-        run_id = time.strftime("%Y%m%d_%H%M%S")
-        sensitivity_logger.info(f"\n{'='*80}\nNew Sensitivity Analysis Run - ID: {run_id}\n{'='*80}")
-
-        # Process each parameter (S10 through S61)
-        for param_key, config in SenParameters.items():
-            if not config.get('enabled', False):
-                continue
-
-            if not (param_key.startswith('S') and param_key[1:].isdigit() and
-                    10 <= int(param_key[1:]) <= 61):
-                sensitivity_logger.warning(f"Invalid parameter key: {param_key}")
-                continue
-
-            visualization_data['parameters'][param_key] = {
-                'id': param_key,
-                'mode': config.get('mode'),
-                'enabled': True
-            }
-
-            sensitivity_logger.info(f"\nParameter: {param_key}")
-            sensitivity_logger.info("-" * 40)
-
-            if config.get('mode'):
-                sensitivity_logger.info(f"Analysis Mode: {config['mode']}")
-                values = config.get('values', [])
-
-                if config['mode'] == 'symmetrical':
-                    if values and values[0] is not None:
-                        sensitivity_logger.info(f"Variation: ±{values[0]}%")
-                    else:
-                        sensitivity_logger.info("Variation: Not specified")
-
-                elif config['mode'] == 'multiple':
-                    valid_points = [str(point) for point in values if point is not None]
-                    if valid_points:
-                        sensitivity_logger.info(f"Points: {', '.join(valid_points)}%")
-                    else:
-                        sensitivity_logger.info("Points: Not specified")
-
-            if config.get('compareToKey'):
-                plot_types = []
-                if config.get('waterfall'): plot_types.append('waterfall')
-                if config.get('bar'): plot_types.append('bar')
-                if config.get('point'): plot_types.append('point')
-
-                visualization_data['relationships'].append({
-                    'source': param_key,
-                    'target': config['compareToKey'],
-                    'type': config.get('comparisonType', 'primary'),
-                    'plotTypes': plot_types
-                })
-
-                sensitivity_logger.info(
-                    f"Comparison: Against {config['compareToKey']} as "
-                    f"{'primary (X axis)' if config.get('comparisonType') == 'primary' else 'secondary (Y axis)'}"
-                )
-
-                if plot_types:
-                    sensitivity_logger.info(f"Plot Types: {', '.join(plot_types)}")
-
-        return visualization_data
-
-    except Exception as e:
-        error_msg = f"Error processing sensitivity visualization: {str(e)}"
-        sensitivity_logger.exception(error_msg)
-        raise
-
 def check_sensitivity_config_status():
     """
     Check if sensitivity configurations have been generated and saved.
@@ -598,194 +425,6 @@ def check_sensitivity_config_status():
     except Exception as e:
         logging.error(f"Error checking sensitivity configuration status: {str(e)}")
         return False, None
-
-def process_sensitivity_calculations(version, param_id, param_config, sensitivity_dir, calculation_script, config):
-    """
-    Process sensitivity calculations for a specific parameter and its variations.
-
-    Args:
-        version (int): Version number
-        param_id (str): Parameter ID (e.g., 'S13')
-        param_config (dict): Parameter configuration
-        sensitivity_dir (str): Base sensitivity directory
-        calculation_script (str): Path to primary calculation script
-        config (dict): Full configuration including selectedV, selectedF, etc.
-
-    Returns:
-        dict: Results of processing
-    """
-    sensitivity_logger = logging.getLogger('sensitivity')
-
-    param_start = time.time()
-    sensitivity_logger.info(f"\nProcessing {param_id} directly:")
-    sensitivity_logger.info(f"Mode: {param_config.get('mode')}")
-    sensitivity_logger.info(f"Values: {param_config.get('values')}")
-
-    # Get base directories
-    base_dir = os.path.join(BASE_DIR, 'backend', 'Original')
-    results_folder = os.path.join(base_dir, f'Batch({version})', f'Results({version})')
-
-    # Run CFA on each modified configuration
-    mode = param_config.get('mode', 'symmetrical').lower()
-    values = param_config.get('values', [])
-    results = {"variations_processed": 0, "success_count": 0, "errors": []}
-
-    # Determine variation list with consistent formatting
-    if mode == 'symmetrical':
-        base_variation = float(values[0])
-        variations = [base_variation, -base_variation]
-    else:  # 'multipoint' mode
-        variations = [float(v) for v in values]
-
-    # Define the CFA scripts to try (in order)
-    cfa_scripts = [
-        os.path.join(SCRIPT_DIR, "Core_calculation_engines", "CFA-b.py")    ]
-
-    for variation in variations:
-        var_str = f"{variation:+.2f}"  # Consistent +- format
-        sensitivity_logger.info(f"Processing {param_id} variation {var_str}")
-
-        # Get directory paths with correct capitalization
-        mode_dir_name = "Symmetrical" if mode == "symmetrical" else "Multipoint"
-
-        # Parameter variation directory (lowercase mode)
-        param_var_dir = os.path.join(sensitivity_dir, param_id, mode, var_str)
-        os.makedirs(param_var_dir, exist_ok=True)
-
-        # Configuration directory (capitalized mode)
-        config_dir = os.path.join(sensitivity_dir, mode_dir_name, "Configuration", f"{param_id}_{var_str}")
-        os.makedirs(config_dir, exist_ok=True)
-
-        # Create a modified SenParameters dictionary for this specific variation
-        modified_sen_parameters = {
-            param_id: {
-                "enabled": True,
-                "mode": mode,
-                "values": [variation],
-                "compareToKey": param_config.get('compareToKey', 'S13'),
-                "comparisonType": param_config.get('comparisonType', 'primary'),
-                "variation": variation,
-                "variation_str": var_str
-            }
-        }
-
-        # Find or copy configuration files
-        config_matrix_file = os.path.join(config_dir, f"General_Configuration_Matrix({version}).csv")
-        source_config_matrix = os.path.join(results_folder, f"General_Configuration_Matrix({version}).csv")
-
-        # Copy the matrix file if it doesn't exist
-        if not os.path.exists(config_matrix_file) and os.path.exists(source_config_matrix):
-            import shutil
-            shutil.copy2(source_config_matrix, config_matrix_file)
-            sensitivity_logger.info(f"Copied configuration matrix to {config_matrix_file}")
-
-        # Configuration file path
-        config_file = os.path.join(config_dir, f"configurations({version}).py")
-        source_config_file = os.path.join(base_dir, f"Batch({version})",
-                                          f"ConfigurationPlotSpec({version})",
-                                          f"configurations({version}).py")
-
-        # Copy the config file if it doesn't exist
-        if not os.path.exists(config_file) and os.path.exists(source_config_file):
-            import shutil
-            shutil.copy2(source_config_file, config_file)
-            sensitivity_logger.info(f"Copied configuration file to {config_file}")
-
-        # Set up environment variables for the calculation scripts
-        env_vars = {
-            **os.environ,
-            'CONFIG_MATRIX_FILE': config_matrix_file,
-            'CONFIG_FILE': config_file,
-            'RESULTS_FOLDER': param_var_dir
-        }
-
-        # Try each calculation script in order
-        success = False
-        results["variations_processed"] += 1
-
-        for script_path in cfa_scripts:
-            script_name = os.path.basename(script_path)
-            if not os.path.exists(script_path):
-                sensitivity_logger.warning(f"Script not found: {script_path}, trying next script")
-                continue
-
-            sensitivity_logger.info(f"Running {script_name} for {param_id} variation {var_str}")
-
-            try:
-                # Prepare the command-line arguments
-                result = subprocess.run(
-                    [
-                        'python',
-                        script_path,
-                        str(version),
-                        json.dumps(config['selectedV']),
-                        json.dumps(config['selectedF']),
-                        str(config['targetRow']),
-                        config['calculationOption'],
-                        json.dumps(modified_sen_parameters)
-                    ],
-                    env=env_vars,
-                    capture_output=True,
-                    text=True,
-                    timeout=300  # 5-minute timeout
-                )
-
-                if result.returncode == 0:
-                    sensitivity_logger.info(f"Successfully ran {script_name} for {param_id} variation {var_str}")
-                    success = True
-                    break
-                else:
-                    error_msg = f"Error running {script_name}: {result.stderr}"
-                    sensitivity_logger.error(error_msg)
-                    # Continue to the next script if this one failed
-
-            except subprocess.TimeoutExpired:
-                error_msg = f"Timeout running {script_name} for {param_id} variation {var_str}"
-                sensitivity_logger.error(error_msg)
-                results["errors"].append(error_msg)
-
-            except Exception as e:
-                error_msg = f"Exception running {script_name} for {param_id} variation {var_str}: {str(e)}"
-                sensitivity_logger.error(error_msg)
-                results["errors"].append(error_msg)
-
-        if success:
-            results["success_count"] += 1
-
-            # Generate plots if requested
-            if param_config.get('waterfall') or param_config.get('bar') or param_config.get('point'):
-                try:
-                    # Implementation for plot generation would go here
-                    # This is a placeholder - actual plot generation depends on your visualization library
-                    plot_types = []
-                    if param_config.get('waterfall'): plot_types.append('waterfall')
-                    if param_config.get('bar'): plot_types.append('bar')
-                    if param_config.get('point'): plot_types.append('point')
-
-                    for plot_type in plot_types:
-                        plot_dir = os.path.join(
-                            sensitivity_dir,
-                            mode_dir_name,
-                            plot_type,
-                            f"{param_id}_{plot_type}"
-                        )
-                        os.makedirs(plot_dir, exist_ok=True)
-                        sensitivity_logger.info(f"Plot directory created: {plot_dir}")
-
-                except Exception as e:
-                    plot_error = f"Error generating plots for {param_id} variation {var_str}: {str(e)}"
-                    sensitivity_logger.error(plot_error)
-                    results["errors"].append(plot_error)
-        else:
-            error_msg = f"All calculation scripts failed for {param_id} variation {var_str}"
-            sensitivity_logger.error(error_msg)
-            results["errors"].append(error_msg)
-
-    param_duration = time.time() - param_start
-    sensitivity_logger.info(f"Completed {param_id} processing in {param_duration:.2f}s")
-    results["duration"] = param_duration
-
-    return results
 
 # =====================================
 # Flask Application Initialization
@@ -842,41 +481,6 @@ def configure_sensitivity():
         # Save configuration files
         saved_files = save_sensitivity_config_files(version, config_dir, config['SenParameters'])
 
-        # Trigger config module copy service - MOVED FROM /runs to here
-        sensitivity_logger.info("\nTriggering configuration module copying:")
-        copy_service_result = trigger_config_module_copy(
-            version,
-            sensitivity_dir,
-            config['SenParameters']
-        )
-
-        # If CalSen service is available, prepare paths
-        calsen_result = None
-        try:
-            sensitivity_logger.info("Preparing path configurations with CalSen service...")
-            cal_sen_response = requests.post(
-                "http://localhost:2750/get_config_paths",
-                json={
-                    "version": version,
-                    "payload": config
-                },
-                timeout=5
-            )
-
-            if cal_sen_response.status_code == 200:
-                calsen_result = cal_sen_response.json()
-                sensitivity_logger.info(f"CalSen paths prepared: {len(calsen_result.get('path_sets', {}))} configurations")
-
-                # Save path sets for later use
-                calsen_paths_file = os.path.join(config_dir, "calsen_paths.json")
-                with open(calsen_paths_file, 'w') as f:
-                    json.dump(calsen_result, f, indent=2)
-            else:
-                sensitivity_logger.warning("CalSen service did not return valid path sets")
-
-        except requests.exceptions.RequestException:
-            sensitivity_logger.warning("CalSen service not available")
-
         # Save configuration status
         with open(SENSITIVITY_CONFIG_STATUS_PATH, 'w') as f:
             json.dump({
@@ -885,10 +489,7 @@ def configure_sensitivity():
                 'runId': run_id,
                 'version': version,
                 'configDir': config_dir,
-                'sensitivityDir': sensitivity_dir,
-                'configCopyInitiated': True,
-                'configCopyResult': copy_service_result,
-                'calsenResult': calsen_result is not None
+                'sensitivityDir': sensitivity_dir
             }, f, indent=2)
 
         # Save configuration data for later use
@@ -907,8 +508,6 @@ def configure_sensitivity():
             "configDir": config_dir,
             "sensitivityDir": sensitivity_dir,
             "savedFiles": len(saved_files),
-            "configCopy": copy_service_result,
-            "calsen": calsen_result is not None,
             "nextStep": "Visit /runs to execute sensitivity calculations"
         })
 
@@ -1073,33 +672,42 @@ def run_calculations():
 
         sensitivity_logger.info("Baseline calculation completed successfully")
 
-        # Step 3: Check if config files are already being copied
-        sensitivity_logger.info("\nChecking configuration module copy status:")
-        status_data = {}
+        # Step 3: Trigger the config module copy service BEFORE sensitivity calculations
+        sensitivity_logger.info("\nTriggering configuration module copying:")
+        copy_service_result = trigger_config_module_copy(
+            version,
+            sensitivity_dir,
+            config['SenParameters']
+        )
 
-        if os.path.exists(SENSITIVITY_CONFIG_STATUS_PATH):
-            with open(SENSITIVITY_CONFIG_STATUS_PATH, 'r') as f:
-                status_data = json.load(f)
+        # Wait for config copy service to complete (or timeout after a few seconds)
+        sensitivity_logger.info("Waiting for configuration copying to complete...")
+        max_wait_time = 3 # in seconds
+        start_wait = time.time()
+        config_copy_complete = False
 
-        if status_data.get('configCopyInitiated'):
-            sensitivity_logger.info("Configuration copying was already initiated during configuration step")
-            copy_service_result = status_data.get('configCopyResult', {})
-        else:
-            # Fallback: trigger the config copy if not done during configure step
-            sensitivity_logger.info("Configuration copying was not initiated - triggering now")
-            copy_service_result = trigger_config_module_copy(
-                version,
-                sensitivity_dir,
-                config['SenParameters']
-            )
+        # First check if service is available
+        while time.time() - start_wait < max_wait_time:
+            try:
+                response = requests.get("http://localhost:2600/health", timeout=2)
+                if response.ok:
+                    config_copy_complete = True
+                    sensitivity_logger.info("Configuration copying service is available")
+                    break
+            except requests.exceptions.RequestException:
+                pass
 
-        # Verify that actual configuration files have been created
+            # Log progress and wait
+            elapsed = time.time() - start_wait
+            sensitivity_logger.info(f"Still waiting for configuration service... ({elapsed:.0f}s elapsed)")
+            time.sleep(15)  # Check every 15 seconds
+
+        # Now verify that actual configuration files have been created (more reliable check)
         sensitivity_logger.info("Verifying configuration files existence...")
         config_files_verified = False
-        wait_duration = 180  # 3 minutes
-        start_wait = time.time()
+        start_wait = time.time()  # Reset timer
 
-        while time.time() - start_wait < wait_duration:
+        while time.time() - start_wait < max_wait_time:
             # Check for actual configuration files for each enabled parameter
             all_found = True
             for param_id, param_config in config['SenParameters'].items():
@@ -1110,19 +718,20 @@ def run_calculations():
                 values = param_config.get('values', [])
 
                 # Determine variations based on mode
-                if mode.lower() == 'symmetrical':
-                    base_variation = float(values[0])
-                    variations = [base_variation, -base_variation]
-                else:  # multipoint mode
-                    variations = [float(v) for v in values]
+                if mode.lower() == 'percentage':
+                    base_variation = values[0]
+                    variations = [base_variation]
+                else:
+                    variations = values
 
                 # Check if configuration files exist for each variation
                 for variation in variations:
                     var_str = f"{variation:+.2f}"
+                    mode_dir = 'percentage' if mode.lower() == 'percentage' else 'multiple'
                     config_path_pattern = os.path.join(
                         sensitivity_dir,
                         param_id,
-                        mode.lower(),
+                        mode_dir,
                         var_str,
                         f"{version}_config_module_*.json"
                     )
@@ -1161,47 +770,100 @@ def run_calculations():
         except Exception as e:
             sensitivity_logger.error(f"Error updating configuration data: {str(e)}")
 
-        # Step 4: Process sensitivity parameters with the updated process_sensitivity_calculations function
+        # Step 4: Now process sensitivity parameters if enabled (AFTER config copy is done)
         enabled_params = [k for k, v in config['SenParameters'].items() if v.get('enabled')]
         if enabled_params:
-            sensitivity_logger.info(f"\nProcessing {len(enabled_params)} enabled sensitivity parameters...")
+            sensitivity_logger.info(f"\nExecuting process_sensitivity_results.py to handle modified configurations...")
 
-            # Process each parameter
-            processing_results = {}
-            overall_success = True
-
-            for param_id, param_config in config['SenParameters'].items():
-                if not param_config.get('enabled'):
-                    continue
-
-                # Process this parameter's calculations using our new function
-                result = process_sensitivity_calculations(
-                    version,
-                    param_id,
-                    param_config,
-                    sensitivity_dir,
-                    calculation_script,
-                    config
+            try:
+                process_script = os.path.join(
+                    SCRIPT_DIR,
+                    "API_endpoints_and_controllers",
+                    "process_sensitivity_results.py"
                 )
 
-                processing_results[param_id] = result
+                if os.path.exists(process_script):
+                    sensitivity_logger.info(f"Running process_sensitivity_results.py for {version}...")
+                    process_result = subprocess.run(
+                        ['python', process_script, str(version), '0.5'],  # 30 second wait time
+                        capture_output=True,
+                        text=True
+                    )
 
-                # Check if all variations were processed successfully
-                if result["success_count"] < result["variations_processed"]:
-                    overall_success = False
+                    if process_result.returncode == 0:
+                        sensitivity_logger.info("Successfully processed sensitivity results")
+                    else:
+                        error_output = process_result.stderr or process_result.stdout
+                        sensitivity_logger.error(f"Error processing sensitivity results: {error_output}")
 
-            # Log summary of processing results
-            sensitivity_logger.info("\nSensitivity Calculation Summary:")
-            for param_id, result in processing_results.items():
-                sensitivity_logger.info(f"{param_id}: {result['success_count']}/{result['variations_processed']} variations successful, took {result['duration']:.2f}s")
-                if result["errors"]:
-                    for error in result["errors"]:
-                        sensitivity_logger.error(f"  - {error}")
+                        # Try running with backup approach if the first attempt failed
+                        sensitivity_logger.info("Attempting backup approach for sensitivity processing...")
+                        for param_id, param_config in config['SenParameters'].items():
+                            if not param_config.get('enabled'):
+                                continue
 
-            if overall_success:
-                sensitivity_logger.info("All sensitivity calculations completed successfully")
-            else:
-                sensitivity_logger.warning("Some sensitivity calculations failed")
+                            param_start = time.time()
+                            sensitivity_logger.info(f"\nProcessing {param_id} directly:")
+                            sensitivity_logger.info(f"Mode: {param_config.get('mode')}")
+                            sensitivity_logger.info(f"Values: {param_config.get('values')}")
+
+                            # Run CFA on each modified configuration
+                            mode = param_config.get('mode', 'symmetrical')
+                            values = param_config.get('values', [])
+
+                            if mode.lower() == 'symmetrical':
+                                base_variation = values[0]
+                                variations = [base_variation]
+                            else:
+                                variations = values
+
+                            for variation in variations:
+                                var_str = f"{variation:+.2f}"
+                                sensitivity_logger.info(f"Direct processing of {param_id} variation {var_str}")
+
+                                # Find modified config files
+                                mode_dir = 'symmetrical' if mode.lower() == 'symmetrical' else 'multiple'
+                                config_pattern = os.path.join(
+                                    sensitivity_dir,
+                                    param_id,
+                                    mode_dir,
+                                    var_str,
+                                    f"{version}_config_module_*.json"
+                                )
+
+                                config_files = glob.glob(config_pattern)
+                                if config_files:
+                                    for config_file in config_files:
+                                        sensitivity_logger.info(f"Running CFA with config file: {config_file}")
+                                        result = subprocess.run(
+                                            [
+                                                'python',
+                                                calculation_script,
+                                                str(version),
+                                                '-c', config_file,
+                                                '--sensitivity',
+                                                param_id,
+                                                str(variation),
+                                                param_config.get('compareToKey', 'S13')
+                                            ],
+                                            capture_output=True,
+                                            text=True
+                                        )
+
+                                        if result.returncode != 0:
+                                            sensitivity_logger.error(f"Error running CFA: {result.stderr}")
+                                        else:
+                                            sensitivity_logger.info(f"Successfully ran CFA on modified config: {config_file}")
+                                else:
+                                    sensitivity_logger.warning(f"No config files found for {param_id} variation {var_str}")
+
+                            param_duration = time.time() - param_start
+                            sensitivity_logger.info(f"Completed {param_id} backup processing in {param_duration:.2f}s")
+                else:
+                    sensitivity_logger.error(f"Results processing script not found: {process_script}")
+
+            except Exception as e:
+                sensitivity_logger.error(f"Exception triggering sensitivity results processing: {str(e)}")
 
         total_time = time.time() - start_time
         sensitivity_logger.info(f"\n{'='*80}")
@@ -1233,49 +895,125 @@ def run_calculations():
             "runId": run_id
         }), 500
 
-@app.route('/copy-config-modules', methods=['POST'])
-def copy_config_modules_proxy():
-    """
-    Proxy endpoint that forwards requests to the config module copy service on port 2600.
-    This provides redundancy in case the 2600 service isn't running.
-    """
-    try:
-        sensitivity_logger = logging.getLogger('sensitivity')
-        sensitivity_logger.info("Received request to copy config modules")
+# =====================================
+# Baseline Calculation Endpoint
+# =====================================
 
-        # Forward the request to the actual service
-        try:
-            response = requests.post(
-                "http://localhost:2600/copy-config-modules",
-                json=request.json,
-                timeout=10
+@app.route('/run-baseline', methods=['POST'])
+def run_baseline():
+    """Endpoint dedicated to baseline calculations only"""
+    sensitivity_logger = logging.getLogger('sensitivity')
+    run_id = time.strftime("%Y%m%d_%H%M%S")
+
+    try:
+        data = request.get_json()
+        if not data:
+            return jsonify({"error": "No data provided"}), 400
+
+        # Extract configuration matching the /runs endpoint pattern
+        config = {
+            'versions': data.get('selectedVersions', [1]),
+            'selectedV': data.get('selectedV', {f'V{i+1}': 'off' for i in range(10)}),
+            'selectedF': data.get('selectedF', {f'F{i+1}': 'off' for i in range(5)}),
+            'calculationOption': data.get('selectedCalculationOption', 'freeFlowNPV'),
+            'targetRow': int(data.get('targetRow', 20)),
+            'SenParameters': {}  # Empty SenParameters for baseline
+        }
+
+        version = config['versions'][0]
+        calculation_option = config['calculationOption']
+        target_row = config['targetRow']
+
+        sensitivity_logger.info(f"\n{'='*80}")
+        sensitivity_logger.info(f"Baseline Calculation - Run ID: {run_id}")
+        sensitivity_logger.info(f"{'='*80}")
+        sensitivity_logger.info(f"Version: {version}")
+        sensitivity_logger.info(f"Calculation Mode: {calculation_option}")
+        sensitivity_logger.info(f"Target Row: {target_row}")
+
+        # Execute configuration management scripts (same as /runs endpoint)
+        sensitivity_logger.info("\nExecuting Configuration Management Scripts:")
+        start_time = time.time()
+
+        for script in COMMON_PYTHON_SCRIPTS:
+            script_name = os.path.basename(script)
+            script_start = time.time()
+            sensitivity_logger.info(f"\nExecuting: {script_name}")
+
+            result = subprocess.run(
+                ['python', script, str(version)],
+                capture_output=True,
+                text=True
             )
 
-            if response.status_code == 200:
-                result = response.json()
-                sensitivity_logger.info(f"Config copy service response: {result.get('message')}")
-                return jsonify(result), response.status_code
-            else:
-                error_msg = f"Error from config copy service: {response.text}"
+            if result.returncode != 0:
+                error_msg = f"Script execution failed: {script_name}\nError: {result.stderr}"
                 sensitivity_logger.error(error_msg)
-                return jsonify({"error": error_msg}), response.status_code
+                raise Exception(error_msg)
 
-        except requests.exceptions.ConnectionError:
-            # If the service is not running, provide a fallback response
-            sensitivity_logger.warning("Config copy service not running - providing fallback response")
-            return jsonify({
-                "status": "fallback",
-                "message": "Config module copy service not available. Using fallback implementation.",
-                "timestamp": time.strftime("%Y-%m-%d %H:%M:%S")
-            })
+            script_duration = time.time() - script_start
+            sensitivity_logger.info(f"Completed {script_name} in {script_duration:.2f}s")
+            time.sleep(0.5)  # Ensure proper sequencing
+
+        config_time = time.time() - start_time
+        sensitivity_logger.info(f"\nConfiguration scripts completed in {config_time:.2f}s")
+
+        # Get calculation script (same as /runs endpoint)
+        calculation_script_func = CALCULATION_SCRIPTS.get(calculation_option)
+        if not calculation_script_func:
+            raise Exception(f"No script found for calculation mode: {calculation_option}")
+
+        calculation_script = calculation_script_func(version)
+        sensitivity_logger.info(f"Using calculation script: {os.path.basename(calculation_script)}")
+
+        # Run baseline calculation with the same pattern as /runs endpoint
+        sensitivity_logger.info("\nExecuting baseline calculation:")
+        result = subprocess.run(
+            [
+                'python',
+                calculation_script,
+                str(version),
+                json.dumps(config['selectedV']),
+                json.dumps(config['selectedF']),
+                str(target_row),
+                calculation_option,
+                '{}'  # Empty SenParameters for baseline
+            ],
+            capture_output=True,
+            text=True
+        )
+
+        if result.returncode != 0:
+            error_msg = f"Baseline calculation failed: {result.stderr}"
+            sensitivity_logger.error(error_msg)
+            raise Exception(error_msg)
+
+        sensitivity_logger.info("Baseline calculation completed successfully")
+
+        total_time = time.time() - start_time
+        sensitivity_logger.info(f"\n{'='*80}")
+        sensitivity_logger.info(f"Run Summary - ID: {run_id}")
+        sensitivity_logger.info(f"Total execution time: {total_time:.2f}s")
+        sensitivity_logger.info(f"Configuration scripts: {config_time:.2f}s")
+        sensitivity_logger.info(f"{'='*80}\n")
+
+        return jsonify({
+            "status": "success",
+            "message": "Baseline calculation completed",
+            "runId": run_id,
+            "version": version,
+            "timing": {
+                "total": f"{total_time:.2f}s",
+                "configuration": f"{config_time:.2f}s"
+            }
+        })
+
     except Exception as e:
-        sensitivity_logger = logging.getLogger('sensitivity')
-        sensitivity_logger.exception(f"Error in config module copy proxy: {str(e)}")
-        return jsonify({"error": str(e)}), 500
-
-# =====================================
-# Start Flask Application
-# =====================================
-
+        error_msg = f"Error during baseline calculation: {str(e)}"
+        sensitivity_logger.error(error_msg)
+        return jsonify({
+            "error": error_msg,
+            "runId": run_id
+        }), 500
 if __name__ == '__main__':
     app.run(debug=True, host='127.0.0.1', port=2500)

@@ -136,6 +136,12 @@ html {
   --text-color: #1e293b;
   --text-secondary: #64748b;
   --primary-color: #3b82f6;
+
+  /*floating sticker header*/
+  --sticker-float-duration: 5s;
+  --sticker-rotate-degree: 3deg;
+  --sticker-float-distance: -20px;
+  --message-colors: var(--model-color-primary), var(--info-color), var(--accent-color);
 }
 
 /* Dark Mode Support */

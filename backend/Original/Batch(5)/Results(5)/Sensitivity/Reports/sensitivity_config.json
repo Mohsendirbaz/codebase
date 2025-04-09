@@ -1,6 +1,6 @@
 {
   "version": "5",
-  "timestamp": "2025-04-07 09:59:42",
+  "timestamp": "2025-04-08 19:25:51",
   "parameters": {
     "S10": {
       "mode": null,
@@ -243,7 +243,7 @@
       "point": false
     },
     "S34": {
-      "mode": "symmetrical",
+      "mode": "percentage",
       "values": [
         100
       ],
@@ -255,46 +255,53 @@
       "point": true
     },
     "S35": {
-      "mode": "symmetrical",
+      "mode": "directvalue",
       "values": [
-        -50
+        100
       ],
       "enabled": true,
       "compareToKey": "S13",
       "comparisonType": "primary",
       "waterfall": false,
-      "bar": false,
-      "point": true
+      "bar": true,
+      "point": false
     },
     "S36": {
-      "mode": null,
-      "values": [],
-      "enabled": false,
-      "compareToKey": "",
-      "comparisonType": null,
-      "waterfall": false,
+      "mode": "absolutedeparture",
+      "values": [
+        100
+      ],
+      "enabled": true,
+      "compareToKey": "S13",
+      "comparisonType": "primary",
+      "waterfall": true,
       "bar": false,
       "point": false
     },
     "S37": {
-      "mode": null,
-      "values": [],
-      "enabled": false,
-      "compareToKey": "",
-      "comparisonType": null,
-      "waterfall": false,
-      "bar": false,
-      "point": false
+      "mode": "monteCarlo",
+      "values": [
+        100
+      ],
+      "enabled": true,
+      "compareToKey": "S13",
+      "comparisonType": "primary",
+      "waterfall": true,
+      "bar": true,
+      "point": true
     },
     "S38": {
-      "mode": null,
-      "values": [],
-      "enabled": false,
-      "compareToKey": "",
-      "comparisonType": null,
+      "mode": "percentage",
+      "values": [
+        -50,
+        50
+      ],
+      "enabled": true,
+      "compareToKey": "S13",
+      "comparisonType": "As primary (y axis)",
       "waterfall": false,
       "bar": false,
-      "point": false
+      "point": true
     },
     "S39": {
       "mode": null,

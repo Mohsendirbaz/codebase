@@ -1,19 +1,8 @@
 {
   "configured": true,
-  "timestamp": "2025-04-07 09:59:47",
-  "runId": "20250407_095942",
-  "version": "5",
-  "configDir": "C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\Original\\Batch(5)\\Results(5)\\Sensitivity\\Reports",
-  "sensitivityDir": "C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\Original\\Batch(5)\\Results(5)\\Sensitivity",
-  "configCopyInitiated": true,
-  "configCopyResult": {
-    "result": {
-      "errors": [],
-      "files_copied": 0,
-      "processed": 0
-    },
-    "runId": "20250407_095944",
-    "status": "success"
-  },
-  "calsenResult": true
+  "timestamp": "2025-04-09 06:03:18",
+  "runId": "20250409_060318",
+  "version": "6",
+  "configDir": "C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\Original\\Batch(6)\\Results(6)\\Sensitivity\\Reports",
+  "sensitivityDir": "C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\Original\\Batch(6)\\Results(6)\\Sensitivity"
 }

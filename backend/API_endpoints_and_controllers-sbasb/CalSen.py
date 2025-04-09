@@ -53,7 +53,7 @@ def find_configuration_files(version, param_id=None, mode=None, variation=None):
     Args:
         version (int): Version number
         param_id (str, optional): Parameter ID (e.g., "S35")
-        mode (str, optional): Mode (percentage, directvalue, absolutedeparture, montecarlo)
+        mode (str, optional): Mode (symmetrical or multipoint)
         variation (float, optional): Variation value
 
     Returns:
@@ -75,7 +75,6 @@ def find_configuration_files(version, param_id=None, mode=None, variation=None):
         search_pattern = os.path.join(search_pattern, "S*")
 
     if mode:
-        # Ensure lowercase for directory search
         mode_lower = mode.lower()
         search_pattern = os.path.join(search_pattern, mode_lower)
     else:
@@ -179,19 +178,26 @@ def build_paths_for_version(version):
             continue
 
         # Get mode and determine variation format
-        mode = config.get('mode', 'percentage').lower()
+        mode = config.get('mode', 'symmetrical').lower()
         values = config.get('values', [])
 
         if not values:
             continue
 
         # Determine variations based on mode
-        try:
-            # For all modes, use the values provided directly without special handling
-            variations = [float(v) for v in values if v is not None]
-        except (TypeError, ValueError):
-            logger.warning(f"Invalid values for {mode} mode in {param_id}: {values}")
-            continue
+        if mode == 'symmetrical':
+            try:
+                base_variation = float(values[0])
+                variations = [base_variation, -base_variation]
+            except (TypeError, ValueError):
+                logger.warning(f"Invalid value for symmetrical mode in {param_id}: {values[0]}")
+                continue
+        else:  # 'multipoint' or other modes
+            try:
+                variations = [float(v) for v in values if v is not None]
+            except (TypeError, ValueError):
+                logger.warning(f"Invalid values for {mode} mode in {param_id}: {values}")
+                continue
 
         if not variations:
             continue
@@ -212,19 +218,12 @@ def build_paths_for_version(version):
                 f"Results({version})",
                 "Sensitivity",
                 s_param,
-                mode.lower(),  # Ensure lowercase for consistency
+                mode,
                 var_str
             )
 
             # Mode directory with capitalized name
-            # With this:
-            mode_dir_mapping = {
-                'percentage': 'Percentage',
-                'directvalue': 'DirectValue',
-                'absolutedeparture': 'AbsoluteDeparture',
-                'montecarlo': 'MonteCarlo'
-            }
-            mode_dir_name = mode_dir_mapping.get(mode.lower(), 'Percentage')  # Default to Percentage
+            mode_dir_name = "Symmetrical" if mode == "symmetrical" else "Multipoint"
 
             # Configuration directory (capitalized mode)
             config_var_dir = os.path.join(
@@ -320,7 +319,7 @@ def get_config_paths():
             "SenParameters": {
                 "S13": {
                     "enabled": true,
-                    "mode": "percentage",
+                    "mode": "symmetrical",
                     "values": [10],
                     ...
                 },
@@ -377,7 +376,7 @@ def find_config_files():
     {
         "version": 1,
         "param_id": "S35",  # Optional
-        "mode": "percentage",  # Optional
+        "mode": "symmetrical",  # Optional
         "variation": 10.0  # Optional
     }
     """

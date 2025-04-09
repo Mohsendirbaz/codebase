@@ -35,6 +35,7 @@ import ThemeButton from './components/modules/ThemeButton';
 import PlotsTabs from './components/modules/PlotsTabs';
 import SensitivityPlotsTabs from './components/modules/SensitivityPlotsTabs';
 import CentralScalingTab from 'src/components/truly_extended_scaling/CentralScalingTab';
+import StickerHeader from './components/modules/HeaderBackground';
 
 
 
@@ -77,7 +78,7 @@ const HomePageContent = () => {
                 point: false
             };
         }
-        
+
         return initialS;
     });
 
@@ -131,21 +132,21 @@ const HomePageContent = () => {
     useEffect(() => {
         // Remove all theme classes
         document.documentElement.classList.remove('dark-theme', 'light-theme', 'creative-theme');
-        
+
         // Map season to theme class
         const themeMap = {
             'dark': 'dark-theme',
             'light': 'light-theme',
             'creative': 'creative-theme'
         };
-        
+
         // Add the appropriate theme class
         document.documentElement.classList.add(themeMap[season]);
-        
+
         // Set data-theme attribute for backward compatibility
         document.documentElement.setAttribute('data-theme', season);
-        
-       
+
+
     }, [season]);
 // Add state to store final results by category
     const [finalResults, setFinalResults] = useState({
@@ -200,7 +201,7 @@ const HomePageContent = () => {
                         borderRadius: '4px'
                     }}
                 />
-                <button 
+                <button
                     className="refresh-button"
                     onClick={handleRefresh}
                     title="Refresh visualization"
@@ -358,18 +359,18 @@ const HomePageContent = () => {
 
     // State to track refresh operations
     const [isRefreshing, setIsRefreshing] = useState(false);
-    
+
     const handleRefresh = () => {
         // Store the current version
         const currentVersion = version;
-        
+
         // Set refreshing state to true
         setIsRefreshing(true);
-        
+
         // Force a re-fetch by setting a different version temporarily
         // Using '0' instead of empty string to ensure it's a valid version number
         setVersion('0');
-        
+
         // Set it back to the current version after a short delay
         setTimeout(() => {
             setVersion(currentVersion);
@@ -412,7 +413,7 @@ const HomePageContent = () => {
     });
     const handleThemeChange = (newSeason) => {
         const themeRibbon = document.querySelector('.theme-ribbon');
-       
+
 
         // Update theme state
         setSeason(newSeason);
@@ -581,7 +582,7 @@ const HomePageContent = () => {
             // For each selected version, fetch the calculated price
             for (const version of selectedVersions) {
                 const priceResponse = await fetch(`http://127.0.0.1:5007/price/${version}`);
-                
+
                 if (priceResponse.ok) {
                     const priceData = await priceResponse.json();
                     updatePrice(version, priceData.price);
@@ -614,12 +615,12 @@ const HomePageContent = () => {
                 try {
                     const data = JSON.parse(event.data);
                     console.log(`Real-time update for version ${version}:`, data);
-                    
+
                     // Update price if available
                     if (data.price) {
                         updatePrice(version, data.price);
                     }
-                    
+
                     // Close the stream if the backend signals completion
                     if (data.complete) {
                         console.log(`Completed streaming for version ${version}`);
@@ -636,8 +637,8 @@ const HomePageContent = () => {
                 eventSource.close();
             };
         });
-        
-        /* 
+
+        /*
         // FUTURE ENHANCEMENTS (commented placeholders):
         // - Add progress indicators for each calculation step
         // - Implement real-time visualization updates
@@ -668,41 +669,50 @@ const HomePageContent = () => {
 
             console.log('Running CFA with parameters:', requestPayload);
 
-            // STEP 1: First generate and save sensitivity configurations
-            console.log('Step 1: Generating sensitivity configurations...');
+            // STEP 1: Run baseline calculations first
+            console.log('Step 1: Running baseline calculations...');
+            const baselineResponse = await fetch('http://127.0.0.1:2500/run-baseline', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(requestPayload),
+            });
+
+            if (!baselineResponse.ok) {
+                const baselineError = await baselineResponse.json();
+                throw new Error(baselineError.error || 'Baseline calculation failed');
+            }
+            const baselineResult = await baselineResponse.json();
+            console.log('Baseline calculations completed:', baselineResult);
+
+            // STEP 2: Generate sensitivity configurations
+            console.log('Step 2: Generating sensitivity configurations...');
             const configResponse = await fetch('http://127.0.0.1:2500/sensitivity/configure', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(requestPayload),
             });
 
-            // Check if configuration was successful
             if (!configResponse.ok) {
                 const configErrorData = await configResponse.json();
                 throw new Error(configErrorData.error || 'Failed to generate sensitivity configurations');
             }
-
             const configResult = await configResponse.json();
             console.log('Sensitivity configurations generated successfully:', configResult);
 
-            // STEP 2: Now run the calculations
-            console.log('Step 2: Running CFA calculations...');
+            // STEP 3: Run full calculations with sensitivity
+            console.log('Step 3: Running full CFA calculations...');
             const response = await fetch('http://127.0.0.1:2500/runs', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(requestPayload),
             });
 
-            // Process the response
             if (!response.ok) {
                 const errorData = await response.json();
                 throw new Error(errorData.error || 'Failed to run calculation');
             }
-
             const result = await response.json();
             console.log('Calculation completed successfully:', result);
-
-
 
         } catch (error) {
             console.error('Error during CFA calculation:', error);
@@ -711,9 +721,9 @@ const HomePageContent = () => {
             setAnalysisRunning(false);
         }
     };
-    
 
-    
+
+
 
 
     const handleRunPNG = async () => {
@@ -721,7 +731,7 @@ const HomePageContent = () => {
         try {
             // Always use current version if no versions selected
             const versions = selectedVersions.length > 0 ? selectedVersions : [version];
-            
+
             // Ensure current version is included
             if (!versions.includes(version)) {
                 versions.push(version);
@@ -836,16 +846,16 @@ const HomePageContent = () => {
                 console.log('Skipping HTML fetch - version is empty (refresh in progress)');
                 return;
             }
-            
+
             try {
                 console.log(`Fetching HTML files for version: ${version}`);
                 const response = await fetch(`http://localhost:8009/api/album_html/${version}`);
                 console.log(`Response status:`, response.status);
-                
+
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
-                
+
                 const data = await response.json();
                 console.log(`API response data:`, data);
 
@@ -857,24 +867,24 @@ const HomePageContent = () => {
 
                 // Log the raw data to see what's being returned
                 console.log(`Raw HTML data:`, data);
-                
+
                 // Check if data is an array and has elements
                 if (!Array.isArray(data) || data.length === 0) {
                     console.log(`No HTML files returned from API for version ${version}`);
                     setAlbumHtmls({});
                     return;
                 }
-                
+
                 // Log the first item in the data array
                 console.log(`First HTML file:`, data[0]);
-                
+
                 // Check if the data has the expected structure
                 if (!data[0].album || !data[0].content) {
                     console.log(`HTML data does not have the expected structure:`, data[0]);
                     setAlbumHtmls({});
                     return;
                 }
-                
+
                 // Group HTML files by album
                 const albumGroupedHtmls = data.reduce((acc, html) => {
                     const { album } = html;
@@ -893,7 +903,7 @@ const HomePageContent = () => {
                 console.log(`First album with HTML files:`, firstAlbumWithHtml);
                 if (firstAlbumWithHtml) {
                     setSelectedHtml(firstAlbumWithHtml);
-                    
+
                     // Log the HTML content of the first file in the first album
                     if (albumGroupedHtmls[firstAlbumWithHtml] && albumGroupedHtmls[firstAlbumWithHtml][0]) {
                         console.log(`HTML content of first file:`, albumGroupedHtmls[firstAlbumWithHtml][0].content);
@@ -913,22 +923,22 @@ const HomePageContent = () => {
     const transformPathToUrlh = (filePath) => {
         // Normalize the file path to replace backslashes with forward slashes
         const normalizedPath = filePath.replace(/\\/g, '/');
-        
+
         // Extract the batch version using a simpler regex that just looks for the number in Batch(X)
         const batchMatch = normalizedPath.match(/Batch\((\d+)\)/);
         if (!batchMatch) return normalizedPath; // If no batch number found, return original path
-        
+
         const version = batchMatch[1];
-        
+
         // Split the path by '/' to extract album and filename more reliably
         const pathParts = normalizedPath.split('/');
-        
+
         // The HTML file should be the last part
         const fileName = pathParts[pathParts.length - 1];
-        
+
         // The album should be the second-to-last directory
         const album = pathParts[pathParts.length - 2];
-        
+
         // Construct the URL using the extracted parts
         // Use the Flask server that's serving the HTML files (port 8009)
         return `http://localhost:8009/static/html/${version}/${album}/${fileName}`;
@@ -942,7 +952,7 @@ const HomePageContent = () => {
             const description = htmlMatch[2].replace(/_/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2');
             return `${description} for versions [${versions}] (Current: ${version})`;
         }
-        
+
         // Handle legacy v1_2_PlotType_Plot format
         const legacyMatch = album.match(/v([\d_]+)_(.+?)(_Plot)?$/);
         if (legacyMatch) {
@@ -950,7 +960,7 @@ const HomePageContent = () => {
             const description = legacyMatch[2].replace(/_/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2');
             return `${description} for versions [${versions}] (Current: ${version})`;
         }
-        
+
         // Default formatting for other album names
         return `${album.replace(/_/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2')} (Version ${version})`;
     };
@@ -982,7 +992,7 @@ const HomePageContent = () => {
         return (
             <div>
                 {renderVersionControl()}
-                
+
                 {(!albumHtmls || Object.keys(albumHtmls).length === 0) ? (
                     <div>No HTML files available</div>
                 ) : (
@@ -1012,7 +1022,7 @@ const HomePageContent = () => {
                 console.log('Skipping image fetch - version is empty (refresh in progress)');
                 return;
             }
-            
+
             try {
                 console.log(`Fetching images for version: ${version}`);
                 const response = await fetch(`http://localhost:8008/api/album/${version}`);
@@ -1049,22 +1059,22 @@ const HomePageContent = () => {
     const transformPathToUrl = (filePath) => {
         // Normalize the file path to replace backslashes with forward slashes
         const normalizedPath = filePath.replace(/\\/g, '/');
-        
+
         // Extract the batch version using a simpler regex that just looks for the number in Batch(X)
         const batchMatch = normalizedPath.match(/Batch\((\d+)\)/);
         if (!batchMatch) return normalizedPath; // If no batch number found, return original path
-        
+
         const version = batchMatch[1];
-        
+
         // Split the path by '/' to extract album and filename more reliably
         const pathParts = normalizedPath.split('/');
-        
+
         // The PNG file should be the last part
         const fileName = pathParts[pathParts.length - 1];
-        
+
         // The album should be the second-to-last directory
         const album = pathParts[pathParts.length - 2];
-        
+
         // Construct the URL using the extracted parts
         return `http://localhost:5008/images/Batch(${version})/Results(${version})/${album}/${fileName}`;
     };
@@ -1077,7 +1087,7 @@ const HomePageContent = () => {
             const description = organizedMatch[2].replace(/_/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2');
             return `${description} for versions [${versions}] (Current: ${version})`;
         }
-        
+
         // Handle legacy format (e.g., AnnotatedStaticPlots)
         const legacyMatch = album.match(/([\d_]+)_(.+?)$/);
         if (legacyMatch) {
@@ -1085,7 +1095,7 @@ const HomePageContent = () => {
             const description = legacyMatch[2].replace(/_/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2');
             return `${description} for versions [${versions}] (Current: ${version})`;
         }
-        
+
         // Default formatting for other album names
         return `${album.replace(/_/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2')} (Version ${version})`;
     };
@@ -1145,7 +1155,7 @@ const HomePageContent = () => {
                 console.log('Skipping CSV fetch - version is empty (refresh in progress)');
                 return;
             }
-            
+
             try {
                 console.log(`Fetching CSV files for version: ${version}`);
                 const response = await fetch(`http://localhost:8007/api/csv-files/${version}`);
@@ -1290,7 +1300,7 @@ const HomePageContent = () => {
                         </button>
             </div>
             <div className="form-content">
-                
+
                 {activeSubTab === 'ProjectConfig' && (
                     <GeneralFormConfig
                         formValues={formValues}
@@ -1564,7 +1574,7 @@ const HomePageContent = () => {
                             </span> */}
                         </div>
                     </div>
-                    
+
                     <div className="step-content" style={{marginTop: 0, marginBottom: 0, padding: 0}}>
                         <button
                           className="primary-action"
@@ -1587,7 +1597,7 @@ const HomePageContent = () => {
                           <span className="action-text">Remove Current Batch</span>
                         </button>
                     </div>
-                    
+
                     <div className="button-row practical-row" style={{marginTop: 0, padding: 0}}>
                         <div className="tooltip-container">
                             <button
@@ -1644,7 +1654,7 @@ const HomePageContent = () => {
                 </div>
                 </div>
                 {monitoringActive && (
-                    <CalculationMonitor 
+                    <CalculationMonitor
                         selectedVersions={selectedVersions}
                         updatePrice={updatePrice}
                         isActive={monitoringActive}
@@ -1692,35 +1702,29 @@ const HomePageContent = () => {
         </div>
     );
 
-    
+
     const renderAboutUsContent = () => {
         return (
             <div className="about-us-container">
                 <div className="about-us-content">
                     <div className="about-us-seal"></div>
                     <h1>Financial Literacy<br/>
-                        A Foundation for Economic Empowerment</h1>                    
+                        A Foundation for Economic Empowerment</h1>
                     <p>Financial literacy stands as the cornerstone of personal and professional empowerment in today's complex economic landscape.</p>
-                    
+
                     <div className="decorative-divider">✦ ✦ ✦</div>
-                    
-                    
-                    <h2>Beyond Static Analysis</h2>
-                    <p>Traditional financial education often relies on static models that fail to capture the fluid nature of economic realities. Our approach revolutionizes this paradigm by facilitating both backward and forward factorization of cost components with comprehensive historical tracking. A prominent feature of our platform is cell based </p>
-                    
+
+
+                    <h2>Synthesize disparate elements into cohesive strategies</h2>
+
                     <p>learners can manipulate, analyze, and internalize.</p>
-                    
+
                     <h2>Cultivating Integrated Financial Thinkers</h2>
-                    <p>Seiving peripherials from essentials in compositional artistry developed through financial modeling creates professionals who can synthesize disparate elements into cohesive strategies.</p>
-                    
+
                     <div className="decorative-divider">✦ ✦ ✦</div>
-                    
-                    <h2>Reimagining Financial Education</h2>
-                    <p>Construct, test, and refine financial cases that reflect the nuanced realities of modern economic systems.</p>
-                    
-                    
+
                 </div>
-                
+
             </div>
         );
     };
@@ -1800,29 +1804,29 @@ const HomePageContent = () => {
 
     return (
         <div className="HomePage">
+            <StickerHeader />
             <div className="HomePageSectionA">
                 <div className="about-us-image1"></div>
                 <div className="HomePageSectionT">
-                    <h2 className="h2-large">Ziptovic</h2>
-                    <h2 className="h2-small">Techno-Economic-Social Simulation and Dynamic Modeling</h2>
+
                 </div>
                 <div className="theme-ribbon">
-                    
+
                 <div className="theme-buttons">
-    <ThemeButton 
-        theme="creative" 
-        currentTheme={season === 'creative' ? 'creative' : season === 'creative' ? 'light' : 'dark'} 
-        onThemeChange={() => handleThemeChange('creative')} 
+    <ThemeButton
+        theme="creative"
+        currentTheme={season === 'creative' ? 'creative' : season === 'creative' ? 'light' : 'dark'}
+        onThemeChange={() => handleThemeChange('creative')}
     />
-    <ThemeButton 
-        theme="light" 
-        currentTheme={season === 'light' ? 'light' : season === 'light' ? 'creative' : 'dark'} 
-        onThemeChange={() => handleThemeChange('light')} 
+    <ThemeButton
+        theme="light"
+        currentTheme={season === 'light' ? 'light' : season === 'light' ? 'creative' : 'dark'}
+        onThemeChange={() => handleThemeChange('light')}
     />
-    <ThemeButton 
-        theme="dark" 
-        currentTheme={season === 'dark' ? 'dark' : season === 'dark' ? 'light' : 'creative'} 
-        onThemeChange={() => handleThemeChange('dark')} 
+    <ThemeButton
+        theme="dark"
+        currentTheme={season === 'dark' ? 'dark' : season === 'dark' ? 'light' : 'creative'}
+        onThemeChange={() => handleThemeChange('dark')}
     />
 </div>
                 </div>
@@ -1902,13 +1906,13 @@ const HomePageContent = () => {
                 <div className="content-container">
                     {activeTab !== 'AboutUs' && (
                         <>
-                            <SensitivityMonitor 
+                            <SensitivityMonitor
                                 S={S}
                                 setS={setS}
                                 version={version}
                                 activeTab={activeTab}
                             />
-                            <ConfigurationMonitor 
+                            <ConfigurationMonitor
                                 version={version}
                             />
                         </>

@@ -7,6 +7,7 @@ import copy
 import logging
 import time
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from Sensitivity_File_Manager import SensitivityFileManager
 
 # Configure logger
 logger = logging.getLogger('sensitivity')
@@ -80,7 +81,7 @@ def find_parameter_by_id(config_module, param_id):
 
     raise ValueError(f"Could not find parameter for {param_id} in config module")
 
-def apply_sensitivity_variation(config_module, param_id, variation_value, mode='percentage'):
+def apply_sensitivity_variation(config_module, param_id, variation_value, mode='symmetrical'):
     """
     Applies sensitivity variation to the specified parameter.
 
@@ -88,7 +89,7 @@ def apply_sensitivity_variation(config_module, param_id, variation_value, mode='
         config_module (dict): Configuration module
         param_id (str): Parameter ID (e.g., 'S13')
         variation_value (float): Variation value to apply
-        mode (str): Either 'percentage'/'percentage' or 'multipoint'/'discrete'
+        mode (str): Either 'symmetrical'/'percentage' or 'multipoint'/'discrete'
 
     Returns:
         dict: Modified configuration module
@@ -96,7 +97,7 @@ def apply_sensitivity_variation(config_module, param_id, variation_value, mode='
     try:
         # Normalize mode terminology
         if mode in ['percentage', 'multiple']:
-            mode = 'percentage'
+            mode = 'symmetrical'
         elif mode == 'discrete':
             mode = 'multipoint'
 
@@ -107,8 +108,8 @@ def apply_sensitivity_variation(config_module, param_id, variation_value, mode='
         original_value = config_module[param_name]
 
         # Apply variation based on mode
-        if mode == 'percentage':
-            # For percentage/percentage mode, apply percentage change
+        if mode == 'symmetrical':
+            # For percentage/symmetrical mode, apply percentage change
             if isinstance(original_value, (int, float)):
                 modified_value = original_value * (1 + variation_value/100)
             elif isinstance(original_value, list):
@@ -133,7 +134,7 @@ def apply_sensitivity_variation(config_module, param_id, variation_value, mode='
         config_module[param_name] = modified_value
 
         logger.info(
-            f"Applied {variation_value} {'%' if mode == 'percentage' else ''} "
+            f"Applied {variation_value} {'%' if mode == 'symmetrical' else ''} "
             f"variation to {param_name} ({param_id})"
         )
 
@@ -154,7 +155,7 @@ def generate_sensitivity_configs(config_received, config_matrix_df, results_fold
         results_folder (str): Path to results folder
         version (int): Version number
         param_id (str): Parameter ID
-        mode (str): Either 'percentage' or 'multipoint'
+        mode (str): Either 'symmetrical' or 'multipoint'
         variations (list): List of variation values
 
     Returns:
@@ -209,7 +210,7 @@ def generate_sensitivity_configs(config_received, config_matrix_df, results_fold
 
             # Wait for Flask to stabilize after config copy
             logger.info("Waiting for Flask to stabilize...")
-            time.sleep(10)  # 10 sec delay
+            time.sleep(120)  # 2 minute delay
             logger.info("Flask stabilization period complete")
 
             for item in filtered_values:
@@ -219,9 +220,9 @@ def generate_sensitivity_configs(config_received, config_matrix_df, results_fold
             base_configs.append((start_year, config_module))
 
         # Generate sensitivity variations
-        if mode == 'percentage':
+        if mode == 'symmetrical':
             variation = variations[0]
-            variations_list = [variation]
+            variations_list = [variation, -variation]
         else:  # multipoint
             variations_list = variations
 
@@ -264,7 +265,7 @@ def save_sensitivity_config(config_module, results_folder, version, param_id,
         results_folder (str): Path to results folder
         version (int): Version number
         param_id (str): Parameter ID
-        mode (str): Either 'percentage' or 'multipoint'
+        mode (str): Either 'symmetrical' or 'multipoint'
         variation (float): Variation value
         start_year (int): Start year
 
