@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import '../../styles/HomePage.CSS/StickerHeader.css';
 import TicTacToe from './TicTacToe';
 import WhakAMole from './WhakAMole';
+import PendulumClock from './PendulumClock';
 
 const StickerHeader = () => {
     const [stickers, setStickers] = useState([]);
@@ -11,7 +12,10 @@ const StickerHeader = () => {
     const [dipoleStrength, setDipoleStrength] = useState(50);
     const [dipoleRadius, setDipoleRadius] = useState(30);
     const animationFramesRef = useRef({});
-
+    const [showClock, setShowClock] = useState(false);
+    const toggleClock = () => {
+        setShowClock(prev => !prev);
+    };
     // Track dipole locations
     const [dipoles, setDipoles] = useState([
         { x: 25, y: 25, strength: 1, type: 'attractive' },  // Top left quadrant
@@ -410,6 +414,17 @@ const StickerHeader = () => {
                     Techno-Economic-Social Simulation and Dynamic Modeling
                 </h2>
             </div>
+            {/* Clock toggle button */}
+            <button className="clock-toggle-button" onClick={toggleClock}>
+                <span role="img" aria-label="Clock">⏰</span> {showClock ? 'Hide Clock' : 'Show Clock'}
+            </button>
+
+            {/* Pendulum Clock */}
+            {showClock && (
+                <div className="clock-overlay">
+                    <PendulumClock size="medium" />
+                </div>
+            )}
             {/* Games Menu Button - Improved positioning */}
             <button className="games-menu-button" onClick={toggleGamesMenu}>
                 <span role="img" aria-label="Games">🎮</span> Games

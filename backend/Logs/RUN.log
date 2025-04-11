@@ -1,164 +1,214 @@
-2025-04-08 17:36:38,222 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\Sen_Config.py', reloading
-2025-04-08 17:36:38,638 INFO  * Restarting with stat
-2025-04-08 17:36:43,369 WARNING  * Debugger is active!
-2025-04-08 17:36:43,386 INFO  * Debugger PIN: 119-059-632
-2025-04-08 17:37:01,967 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\Sen_Config.py', reloading
-2025-04-08 17:37:02,260 INFO  * Restarting with stat
-2025-04-08 17:37:09,203 WARNING  * Debugger is active!
-2025-04-08 17:37:09,203 INFO  * Debugger PIN: 119-059-632
-2025-04-08 17:37:47,687 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\Sen_Config.py', reloading
-2025-04-08 17:37:47,876 INFO  * Restarting with stat
-2025-04-08 17:37:52,839 WARNING  * Debugger is active!
-2025-04-08 17:37:52,847 INFO  * Debugger PIN: 119-059-632
-2025-04-08 17:42:39,611 INFO 127.0.0.1 - - [08/Apr/2025 17:42:39] "OPTIONS /run-baseline HTTP/1.1" 200 -
-2025-04-08 17:43:13,907 INFO 127.0.0.1 - - [08/Apr/2025 17:43:13] "POST /run-baseline HTTP/1.1" 200 -
-2025-04-08 17:43:13,917 INFO 127.0.0.1 - - [08/Apr/2025 17:43:13] "OPTIONS /sensitivity/configure HTTP/1.1" 200 -
-2025-04-08 17:43:13,965 INFO 127.0.0.1 - - [08/Apr/2025 17:43:13] "POST /sensitivity/configure HTTP/1.1" 200 -
-2025-04-08 17:43:13,988 INFO 127.0.0.1 - - [08/Apr/2025 17:43:13] "OPTIONS /runs HTTP/1.1" 200 -
-2025-04-08 17:43:48,906 DEBUG Starting new HTTP connection (1): localhost:2600
-2025-04-08 17:44:01,263 DEBUG Starting new HTTP connection (1): localhost:2600
-2025-04-08 17:44:03,286 DEBUG http://localhost:2600 "GET /health HTTP/1.1" 200 125
-2025-04-08 17:45:02,679 INFO 127.0.0.1 - - [08/Apr/2025 17:45:02] "POST /runs HTTP/1.1" 200 -
-2025-04-08 17:58:51,196 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+2025-04-09 20:46:24,439 INFO 127.0.0.1 - - [09/Apr/2025 20:46:24] "OPTIONS /run-baseline HTTP/1.1" 200 -
+2025-04-09 20:46:56,203 INFO 127.0.0.1 - - [09/Apr/2025 20:46:56] "POST /run-baseline HTTP/1.1" 200 -
+2025-04-09 20:46:56,219 INFO 127.0.0.1 - - [09/Apr/2025 20:46:56] "OPTIONS /sensitivity/configure HTTP/1.1" 200 -
+2025-04-09 20:46:56,250 DEBUG Starting new HTTP connection (1): localhost:2600
+2025-04-09 20:46:58,668 DEBUG http://localhost:2600 "POST /copy-config-modules HTTP/1.1" 400 128
+2025-04-09 20:46:58,670 DEBUG Starting new HTTP connection (1): localhost:2750
+2025-04-09 20:47:01,044 DEBUG http://localhost:2750 "POST /get_config_paths HTTP/1.1" 404 58
+2025-04-09 20:47:01,047 INFO 127.0.0.1 - - [09/Apr/2025 20:47:01] "POST /sensitivity/configure HTTP/1.1" 200 -
+2025-04-09 20:47:01,051 INFO 127.0.0.1 - - [09/Apr/2025 20:47:01] "OPTIONS /runs HTTP/1.1" 200 -
+2025-04-09 20:47:34,080 INFO 127.0.0.1 - - [09/Apr/2025 20:47:34] "POST /runs HTTP/1.1" 200 -
+2025-04-09 20:47:34,112 INFO 127.0.0.1 - - [09/Apr/2025 20:47:34] "OPTIONS /calculate-sensitivity HTTP/1.1" 200 -
+2025-04-09 20:47:34,127 INFO 127.0.0.1 - - [09/Apr/2025 20:47:34] "POST /calculate-sensitivity HTTP/1.1" 200 -
+2025-04-09 20:47:34,205 INFO 127.0.0.1 - - [09/Apr/2025 20:47:34] "OPTIONS /api/sensitivity/parameters?version=4 HTTP/1.1" 200 -
+2025-04-09 20:47:34,236 DEBUG Starting new HTTP connection (1): localhost:2750
+2025-04-09 20:47:36,371 DEBUG http://localhost:2750 "POST /list_parameters HTTP/1.1" 404 54
+2025-04-09 20:47:36,371 INFO 127.0.0.1 - - [09/Apr/2025 20:47:36] "GET /api/sensitivity/parameters?version=4 HTTP/1.1" 200 -
+2025-04-09 20:51:05,089 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on http://127.0.0.1:2500
-2025-04-08 17:58:51,196 INFO [33mPress CTRL+C to quit[0m
-2025-04-08 17:58:51,196 INFO  * Restarting with stat
-2025-04-08 17:58:53,393 WARNING  * Debugger is active!
-2025-04-08 17:58:53,393 INFO  * Debugger PIN: 119-059-632
-2025-04-08 18:36:33,748 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\Calculations_and_sensitivity.py', reloading
-2025-04-08 18:36:33,947 INFO  * Restarting with stat
-2025-04-08 18:36:40,060 WARNING  * Debugger is active!
-2025-04-08 18:36:40,060 INFO  * Debugger PIN: 119-059-632
-2025-04-08 18:36:55,129 INFO 127.0.0.1 - - [08/Apr/2025 18:36:55] "OPTIONS /run-baseline HTTP/1.1" 200 -
-2025-04-08 18:37:39,659 INFO 127.0.0.1 - - [08/Apr/2025 18:37:39] "POST /run-baseline HTTP/1.1" 200 -
-2025-04-08 18:37:39,718 INFO 127.0.0.1 - - [08/Apr/2025 18:37:39] "OPTIONS /sensitivity/configure HTTP/1.1" 200 -
-2025-04-08 18:37:39,762 INFO 127.0.0.1 - - [08/Apr/2025 18:37:39] "POST /sensitivity/configure HTTP/1.1" 200 -
-2025-04-08 18:37:39,774 INFO 127.0.0.1 - - [08/Apr/2025 18:37:39] "OPTIONS /runs HTTP/1.1" 200 -
-2025-04-08 18:38:24,859 DEBUG Starting new HTTP connection (1): localhost:2600
-2025-04-08 18:38:36,993 DEBUG Starting new HTTP connection (1): localhost:2600
-2025-04-08 18:38:39,008 DEBUG http://localhost:2600 "GET /health HTTP/1.1" 200 125
-2025-04-08 18:39:39,008 INFO 127.0.0.1 - - [08/Apr/2025 18:39:39] "POST /runs HTTP/1.1" 200 -
-2025-04-08 18:53:02,073 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\CalSen.py', reloading
-2025-04-08 18:53:02,332 INFO  * Restarting with stat
-2025-04-08 18:53:07,638 WARNING  * Debugger is active!
-2025-04-08 18:53:07,647 INFO  * Debugger PIN: 119-059-632
-2025-04-08 18:54:31,503 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\CalSen.py', reloading
-2025-04-08 18:54:31,691 INFO  * Restarting with stat
-2025-04-08 18:54:37,776 WARNING  * Debugger is active!
-2025-04-08 18:54:37,792 INFO  * Debugger PIN: 119-059-632
-2025-04-08 18:55:07,012 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\CalSen.py', reloading
-2025-04-08 18:55:07,192 INFO  * Restarting with stat
-2025-04-08 18:55:12,462 WARNING  * Debugger is active!
-2025-04-08 18:55:12,471 INFO  * Debugger PIN: 119-059-632
-2025-04-08 18:57:04,045 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\CalSen.py', reloading
-2025-04-08 18:57:04,215 INFO  * Restarting with stat
-2025-04-08 18:57:08,180 WARNING  * Debugger is active!
-2025-04-08 18:57:08,190 INFO  * Debugger PIN: 119-059-632
-2025-04-08 18:59:38,791 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\CalSen.py', reloading
-2025-04-08 18:59:38,962 INFO  * Restarting with stat
-2025-04-08 18:59:43,083 WARNING  * Debugger is active!
-2025-04-08 18:59:43,091 INFO  * Debugger PIN: 119-059-632
-2025-04-08 19:06:48,430 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\CalSen.py', reloading
-2025-04-08 19:06:48,593 INFO  * Restarting with stat
-2025-04-08 19:06:52,225 WARNING  * Debugger is active!
-2025-04-08 19:06:52,234 INFO  * Debugger PIN: 119-059-632
-2025-04-08 19:07:49,243 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\CalSen.py', reloading
-2025-04-08 19:07:49,399 INFO  * Restarting with stat
-2025-04-08 19:07:53,105 WARNING  * Debugger is active!
-2025-04-08 19:07:53,114 INFO  * Debugger PIN: 119-059-632
-2025-04-08 19:13:03,225 INFO 127.0.0.1 - - [08/Apr/2025 19:13:03] "OPTIONS /run-baseline HTTP/1.1" 200 -
-2025-04-08 19:13:37,555 INFO 127.0.0.1 - - [08/Apr/2025 19:13:37] "POST /run-baseline HTTP/1.1" 200 -
-2025-04-08 19:13:37,602 INFO 127.0.0.1 - - [08/Apr/2025 19:13:37] "OPTIONS /sensitivity/configure HTTP/1.1" 200 -
-2025-04-08 19:13:37,652 INFO 127.0.0.1 - - [08/Apr/2025 19:13:37] "POST /sensitivity/configure HTTP/1.1" 200 -
-2025-04-08 19:13:37,652 INFO 127.0.0.1 - - [08/Apr/2025 19:13:37] "OPTIONS /runs HTTP/1.1" 200 -
-2025-04-08 19:14:08,337 DEBUG Starting new HTTP connection (1): localhost:2600
-2025-04-08 19:14:20,403 DEBUG Starting new HTTP connection (1): localhost:2600
-2025-04-08 19:14:22,408 DEBUG http://localhost:2600 "GET /health HTTP/1.1" 200 125
-2025-04-08 19:15:20,928 INFO 127.0.0.1 - - [08/Apr/2025 19:15:20] "POST /runs HTTP/1.1" 200 -
-2025-04-08 19:25:15,352 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
-2025-04-08 19:25:15,520 INFO  * Restarting with stat
-2025-04-08 19:25:20,239 WARNING  * Debugger is active!
-2025-04-08 19:25:20,242 INFO  * Debugger PIN: 119-059-632
-2025-04-08 19:25:25,121 INFO 127.0.0.1 - - [08/Apr/2025 19:25:25] "OPTIONS /run-baseline HTTP/1.1" 200 -
-2025-04-08 19:25:51,272 INFO 127.0.0.1 - - [08/Apr/2025 19:25:51] "POST /run-baseline HTTP/1.1" 200 -
-2025-04-08 19:25:51,318 INFO 127.0.0.1 - - [08/Apr/2025 19:25:51] "OPTIONS /sensitivity/configure HTTP/1.1" 200 -
-2025-04-08 19:25:51,365 INFO 127.0.0.1 - - [08/Apr/2025 19:25:51] "POST /sensitivity/configure HTTP/1.1" 200 -
-2025-04-08 19:25:51,365 INFO 127.0.0.1 - - [08/Apr/2025 19:25:51] "OPTIONS /runs HTTP/1.1" 200 -
-2025-04-08 19:26:18,020 DEBUG Starting new HTTP connection (1): localhost:2600
-2025-04-08 19:26:30,234 DEBUG Starting new HTTP connection (1): localhost:2600
-2025-04-08 19:26:32,235 DEBUG http://localhost:2600 "GET /health HTTP/1.1" 200 125
-2025-04-08 19:27:30,400 INFO 127.0.0.1 - - [08/Apr/2025 19:27:30] "POST /runs HTTP/1.1" 200 -
-2025-04-08 19:36:09,233 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\sensitivity_Routes.py', reloading
-2025-04-08 19:36:09,433 INFO  * Restarting with stat
-2025-04-08 19:36:12,162 WARNING  * Debugger is active!
-2025-04-08 19:36:12,179 INFO  * Debugger PIN: 119-059-632
-2025-04-08 19:38:17,133 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\sensitivity_Routes.py', reloading
-2025-04-08 19:38:17,305 INFO  * Restarting with stat
-2025-04-08 19:38:22,288 WARNING  * Debugger is active!
-2025-04-08 19:38:22,303 INFO  * Debugger PIN: 119-059-632
-2025-04-08 19:38:37,302 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\sensitivity_Routes.py', reloading
-2025-04-08 19:38:37,477 INFO  * Restarting with stat
-2025-04-08 19:38:39,113 WARNING  * Debugger is active!
-2025-04-08 19:38:39,129 INFO  * Debugger PIN: 119-059-632
-2025-04-08 19:41:25,694 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\sensitivity_Routes.py', reloading
-2025-04-08 19:41:25,819 INFO  * Restarting with stat
-2025-04-08 19:41:27,399 WARNING  * Debugger is active!
-2025-04-08 19:41:27,399 INFO  * Debugger PIN: 119-059-632
-2025-04-08 20:20:44,888 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\sensitivity_Routes.py', reloading
-2025-04-08 20:20:45,030 INFO  * Restarting with stat
-2025-04-08 20:20:47,136 WARNING  * Debugger is active!
-2025-04-08 20:20:47,142 INFO  * Debugger PIN: 119-059-632
-2025-04-08 20:47:02,494 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\sensitivity_Routes.py', reloading
-2025-04-08 20:47:02,676 INFO  * Restarting with stat
-2025-04-08 20:47:06,128 WARNING  * Debugger is active!
-2025-04-08 20:47:06,133 INFO  * Debugger PIN: 119-059-632
-2025-04-08 20:50:33,938 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\sensitivity_Routes.py', reloading
-2025-04-08 20:50:34,085 INFO  * Restarting with stat
-2025-04-08 20:50:35,919 WARNING  * Debugger is active!
-2025-04-08 20:50:35,925 INFO  * Debugger PIN: 119-059-632
-2025-04-08 20:51:52,870 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\sensitivity_Routes.py', reloading
-2025-04-08 20:51:53,001 INFO  * Restarting with stat
-2025-04-08 20:51:54,800 WARNING  * Debugger is active!
-2025-04-08 20:51:54,807 INFO  * Debugger PIN: 119-059-632
-2025-04-08 20:52:28,108 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\sensitivity_Routes.py', reloading
-2025-04-08 20:52:28,254 INFO  * Restarting with stat
-2025-04-08 20:52:30,225 WARNING  * Debugger is active!
-2025-04-08 20:52:30,230 INFO  * Debugger PIN: 119-059-632
-2025-04-09 05:38:24,849 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+2025-04-09 20:51:05,089 INFO [33mPress CTRL+C to quit[0m
+2025-04-09 20:51:05,092 INFO  * Restarting with stat
+2025-04-09 20:51:09,089 WARNING  * Debugger is active!
+2025-04-09 20:51:09,098 INFO  * Debugger PIN: 119-059-632
+2025-04-09 20:52:01,161 INFO 127.0.0.1 - - [09/Apr/2025 20:52:01] "OPTIONS /run-baseline HTTP/1.1" 200 -
+2025-04-09 20:52:32,533 INFO 127.0.0.1 - - [09/Apr/2025 20:52:32] "POST /run-baseline HTTP/1.1" 200 -
+2025-04-09 20:52:32,599 INFO 127.0.0.1 - - [09/Apr/2025 20:52:32] "OPTIONS /sensitivity/configure HTTP/1.1" 200 -
+2025-04-09 20:52:32,645 DEBUG Starting new HTTP connection (1): localhost:2600
+2025-04-09 20:52:45,082 DEBUG Starting new HTTP connection (1): localhost:2750
+2025-04-09 20:52:47,121 DEBUG http://localhost:2750 "POST /get_config_paths HTTP/1.1" 200 12744
+2025-04-09 20:52:47,132 INFO 127.0.0.1 - - [09/Apr/2025 20:52:47] "POST /sensitivity/configure HTTP/1.1" 200 -
+2025-04-09 20:52:47,152 INFO 127.0.0.1 - - [09/Apr/2025 20:52:47] "OPTIONS /runs HTTP/1.1" 200 -
+2025-04-09 20:54:53,860 INFO 127.0.0.1 - - [09/Apr/2025 20:54:53] "POST /runs HTTP/1.1" 200 -
+2025-04-09 20:54:53,908 INFO 127.0.0.1 - - [09/Apr/2025 20:54:53] "OPTIONS /calculate-sensitivity HTTP/1.1" 200 -
+2025-04-09 20:55:46,125 INFO 127.0.0.1 - - [09/Apr/2025 20:55:46] "POST /calculate-sensitivity HTTP/1.1" 200 -
+2025-04-09 20:55:46,145 INFO 127.0.0.1 - - [09/Apr/2025 20:55:46] "OPTIONS /api/sensitivity/parameters?version=4 HTTP/1.1" 200 -
+2025-04-09 20:55:46,160 DEBUG Starting new HTTP connection (1): localhost:2750
+2025-04-09 20:55:53,401 INFO 127.0.0.1 - - [09/Apr/2025 20:55:53] "GET /api/sensitivity/parameters?version=4 HTTP/1.1" 200 -
+2025-04-09 20:55:53,412 INFO 127.0.0.1 - - [09/Apr/2025 20:55:53] "OPTIONS /api/sensitivity/visualize HTTP/1.1" 200 -
+2025-04-09 20:55:53,434 INFO 127.0.0.1 - - [09/Apr/2025 20:55:53] "[33mPOST /api/sensitivity/visualize HTTP/1.1[0m" 404 -
+2025-04-09 21:05:16,532 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on http://127.0.0.1:2500
-2025-04-09 05:38:24,849 INFO [33mPress CTRL+C to quit[0m
-2025-04-09 05:38:24,849 INFO  * Restarting with stat
-2025-04-09 05:38:27,302 WARNING  * Debugger is active!
-2025-04-09 05:38:27,302 INFO  * Debugger PIN: 119-059-632
-2025-04-09 05:42:52,347 INFO 127.0.0.1 - - [09/Apr/2025 05:42:52] "[33mOPTIONS /sensitivity/visualize HTTP/1.1[0m" 404 -
-2025-04-09 05:42:52,405 INFO 127.0.0.1 - - [09/Apr/2025 05:42:52] "[33mOPTIONS /sensitivity/visualize HTTP/1.1[0m" 404 -
-2025-04-09 05:43:05,324 INFO 127.0.0.1 - - [09/Apr/2025 05:43:05] "OPTIONS /run-baseline HTTP/1.1" 200 -
-2025-04-09 05:43:40,477 INFO 127.0.0.1 - - [09/Apr/2025 05:43:40] "POST /run-baseline HTTP/1.1" 200 -
-2025-04-09 05:43:40,540 INFO 127.0.0.1 - - [09/Apr/2025 05:43:40] "OPTIONS /sensitivity/configure HTTP/1.1" 200 -
-2025-04-09 05:43:40,571 INFO 127.0.0.1 - - [09/Apr/2025 05:43:40] "POST /sensitivity/configure HTTP/1.1" 200 -
-2025-04-09 05:43:40,680 INFO 127.0.0.1 - - [09/Apr/2025 05:43:40] "OPTIONS /runs HTTP/1.1" 200 -
-2025-04-09 05:44:11,238 DEBUG Starting new HTTP connection (1): localhost:2600
-2025-04-09 05:44:23,396 DEBUG Starting new HTTP connection (1): localhost:2600
-2025-04-09 05:44:25,411 DEBUG http://localhost:2600 "GET /health HTTP/1.1" 200 125
-2025-04-09 05:44:25,411 INFO 127.0.0.1 - - [09/Apr/2025 05:44:25] "POST /runs HTTP/1.1" 200 -
-2025-04-09 06:02:41,676 INFO 127.0.0.1 - - [09/Apr/2025 06:02:41] "OPTIONS /run-baseline HTTP/1.1" 200 -
-2025-04-09 06:03:18,497 INFO 127.0.0.1 - - [09/Apr/2025 06:03:18] "POST /run-baseline HTTP/1.1" 200 -
-2025-04-09 06:03:18,512 INFO 127.0.0.1 - - [09/Apr/2025 06:03:18] "OPTIONS /sensitivity/configure HTTP/1.1" 200 -
-2025-04-09 06:03:18,564 INFO 127.0.0.1 - - [09/Apr/2025 06:03:18] "POST /sensitivity/configure HTTP/1.1" 200 -
-2025-04-09 06:03:18,564 INFO 127.0.0.1 - - [09/Apr/2025 06:03:18] "OPTIONS /runs HTTP/1.1" 200 -
-2025-04-09 06:03:55,446 DEBUG Starting new HTTP connection (1): localhost:2600
-2025-04-09 06:04:07,731 DEBUG Starting new HTTP connection (1): localhost:2600
-2025-04-09 06:04:09,757 DEBUG http://localhost:2600 "GET /health HTTP/1.1" 200 125
-2025-04-09 06:05:04,603 INFO 127.0.0.1 - - [09/Apr/2025 06:05:04] "POST /runs HTTP/1.1" 200 -
-2025-04-09 06:35:01,541 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\Calculations_and_sensitivity.py', reloading
-2025-04-09 06:35:01,776 INFO  * Restarting with stat
-2025-04-09 06:35:08,619 WARNING  * Debugger is active!
-2025-04-09 06:35:08,619 INFO  * Debugger PIN: 119-059-632
-2025-04-09 07:07:26,456 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\CalSen.py', reloading
-2025-04-09 07:07:26,704 INFO  * Restarting with stat
-2025-04-09 07:07:31,171 WARNING  * Debugger is active!
-2025-04-09 07:07:31,179 INFO  * Debugger PIN: 119-059-632
-2025-04-09 09:00:46,061 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers-sbasb\\Calculations_and_Sensitivity.py', reloading
-2025-04-09 09:00:46,437 INFO  * Restarting with stat
-2025-04-09 09:00:51,344 WARNING  * Debugger is active!
-2025-04-09 09:00:51,344 INFO  * Debugger PIN: 119-059-632
+2025-04-09 21:05:16,532 INFO [33mPress CTRL+C to quit[0m
+2025-04-09 21:05:16,534 INFO  * Restarting with stat
+2025-04-09 21:05:18,828 WARNING  * Debugger is active!
+2025-04-09 21:05:18,836 INFO  * Debugger PIN: 119-059-632
+2025-04-09 21:05:39,344 INFO 127.0.0.1 - - [09/Apr/2025 21:05:39] "OPTIONS /run-baseline HTTP/1.1" 200 -
+2025-04-09 21:06:15,804 INFO 127.0.0.1 - - [09/Apr/2025 21:06:15] "POST /run-baseline HTTP/1.1" 200 -
+2025-04-09 21:06:15,841 INFO 127.0.0.1 - - [09/Apr/2025 21:06:15] "OPTIONS /sensitivity/configure HTTP/1.1" 200 -
+2025-04-09 21:06:15,889 DEBUG Starting new HTTP connection (1): localhost:2600
+2025-04-09 21:42:12,962 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-04-09 21:42:12,962 INFO [33mPress CTRL+C to quit[0m
+2025-04-09 21:42:12,964 INFO  * Restarting with stat
+2025-04-09 21:42:15,223 WARNING  * Debugger is active!
+2025-04-09 21:42:15,232 INFO  * Debugger PIN: 119-059-632
+2025-04-09 21:42:49,390 INFO 127.0.0.1 - - [09/Apr/2025 21:42:49] "OPTIONS /run-baseline HTTP/1.1" 200 -
+2025-04-09 21:43:45,369 INFO 127.0.0.1 - - [09/Apr/2025 21:43:45] "POST /run-baseline HTTP/1.1" 200 -
+2025-04-09 21:43:45,521 INFO 127.0.0.1 - - [09/Apr/2025 21:43:45] "OPTIONS /sensitivity/configure HTTP/1.1" 200 -
+2025-04-09 21:43:45,623 DEBUG Starting new HTTP connection (1): localhost:2600
+2025-04-09 21:43:58,021 DEBUG Starting new HTTP connection (1): localhost:2750
+2025-04-09 21:44:00,389 DEBUG http://localhost:2750 "POST /get_config_paths HTTP/1.1" 200 12744
+2025-04-09 21:44:00,400 INFO 127.0.0.1 - - [09/Apr/2025 21:44:00] "POST /sensitivity/configure HTTP/1.1" 200 -
+2025-04-09 21:44:00,456 INFO 127.0.0.1 - - [09/Apr/2025 21:44:00] "OPTIONS /runs HTTP/1.1" 200 -
+2025-04-09 21:45:59,604 INFO 127.0.0.1 - - [09/Apr/2025 21:45:59] "POST /runs HTTP/1.1" 200 -
+2025-04-09 21:45:59,610 INFO 127.0.0.1 - - [09/Apr/2025 21:45:59] "OPTIONS /calculate-sensitivity HTTP/1.1" 200 -
+2025-04-09 21:46:57,721 INFO 127.0.0.1 - - [09/Apr/2025 21:46:57] "POST /calculate-sensitivity HTTP/1.1" 200 -
+2025-04-09 21:46:57,732 INFO 127.0.0.1 - - [09/Apr/2025 21:46:57] "OPTIONS /api/sensitivity/parameters?version=4 HTTP/1.1" 200 -
+2025-04-09 21:46:57,754 DEBUG Starting new HTTP connection (1): localhost:2750
+2025-04-09 21:47:05,213 INFO 127.0.0.1 - - [09/Apr/2025 21:47:05] "GET /api/sensitivity/parameters?version=4 HTTP/1.1" 200 -
+2025-04-09 21:47:05,256 INFO 127.0.0.1 - - [09/Apr/2025 21:47:05] "OPTIONS /api/sensitivity/visualize HTTP/1.1" 200 -
+2025-04-09 21:47:05,287 INFO 127.0.0.1 - - [09/Apr/2025 21:47:05] "[33mPOST /api/sensitivity/visualize HTTP/1.1[0m" 404 -
+2025-04-09 21:59:24,346 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\sense_config_base.py', reloading
+2025-04-09 21:59:24,518 INFO  * Restarting with stat
+2025-04-09 21:59:32,068 WARNING  * Debugger is active!
+2025-04-09 21:59:32,077 INFO  * Debugger PIN: 119-059-632
+2025-04-09 22:02:06,296 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\sensitivity_Routes.py', reloading
+2025-04-09 22:02:06,479 INFO  * Restarting with stat
+2025-04-09 22:02:12,123 WARNING  * Debugger is active!
+2025-04-09 22:02:12,125 INFO  * Debugger PIN: 119-059-632
+2025-04-09 22:03:54,531 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\sensitivity_Routes.py', reloading
+2025-04-09 22:03:54,702 INFO  * Restarting with stat
+2025-04-09 22:03:59,282 WARNING  * Debugger is active!
+2025-04-09 22:03:59,290 INFO  * Debugger PIN: 119-059-632
+2025-04-09 22:11:27,647 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\sensitivity_Routes.py', reloading
+2025-04-09 22:11:27,961 INFO  * Restarting with stat
+2025-04-09 22:11:34,352 WARNING  * Debugger is active!
+2025-04-09 22:11:34,361 INFO  * Debugger PIN: 119-059-632
+2025-04-09 22:12:42,565 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\sensitivity_Routes.py', reloading
+2025-04-09 22:12:42,734 INFO  * Restarting with stat
+2025-04-09 22:12:46,288 WARNING  * Debugger is active!
+2025-04-09 22:12:46,298 INFO  * Debugger PIN: 119-059-632
+2025-04-09 22:16:07,595 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\sensitivity_Routes.py', reloading
+2025-04-09 22:16:07,756 INFO  * Restarting with stat
+2025-04-09 22:16:11,290 WARNING  * Debugger is active!
+2025-04-09 22:16:11,298 INFO  * Debugger PIN: 119-059-632
+2025-04-09 22:18:10,845 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-04-09 22:18:11,036 INFO  * Restarting with stat
+2025-04-09 22:41:14,478 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-04-09 22:41:14,479 INFO [33mPress CTRL+C to quit[0m
+2025-04-09 22:41:14,481 INFO  * Restarting with stat
+2025-04-09 22:41:17,415 WARNING  * Debugger is active!
+2025-04-09 22:41:17,423 INFO  * Debugger PIN: 119-059-632
+2025-04-09 22:42:17,131 INFO 127.0.0.1 - - [09/Apr/2025 22:42:17] "OPTIONS /run-baseline HTTP/1.1" 200 -
+2025-04-09 22:43:04,613 INFO 127.0.0.1 - - [09/Apr/2025 22:43:04] "POST /run-baseline HTTP/1.1" 200 -
+2025-04-09 22:43:04,629 INFO 127.0.0.1 - - [09/Apr/2025 22:43:04] "OPTIONS /sensitivity/configure HTTP/1.1" 200 -
+2025-04-09 22:43:04,676 DEBUG Starting new HTTP connection (1): localhost:2600
+2025-04-09 22:43:16,913 DEBUG Starting new HTTP connection (1): localhost:2750
+2025-04-09 22:43:19,112 DEBUG http://localhost:2750 "POST /get_config_paths HTTP/1.1" 200 12744
+2025-04-09 22:43:19,128 INFO 127.0.0.1 - - [09/Apr/2025 22:43:19] "POST /sensitivity/configure HTTP/1.1" 200 -
+2025-04-09 22:43:19,128 INFO 127.0.0.1 - - [09/Apr/2025 22:43:19] "OPTIONS /runs HTTP/1.1" 200 -
+2025-04-09 22:45:12,513 INFO 127.0.0.1 - - [09/Apr/2025 22:45:12] "POST /runs HTTP/1.1" 200 -
+2025-04-09 22:45:12,701 INFO 127.0.0.1 - - [09/Apr/2025 22:45:12] "[33mOPTIONS /sensitivity/analysis HTTP/1.1[0m" 404 -
+2025-04-09 22:53:25,000 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-04-09 22:53:25,001 INFO [33mPress CTRL+C to quit[0m
+2025-04-09 22:53:25,003 INFO  * Restarting with stat
+2025-04-09 22:53:27,922 WARNING  * Debugger is active!
+2025-04-09 22:53:27,929 INFO  * Debugger PIN: 119-059-632
+2025-04-09 22:54:08,865 INFO 127.0.0.1 - - [09/Apr/2025 22:54:08] "OPTIONS /run-baseline HTTP/1.1" 200 -
+2025-04-09 22:54:43,279 INFO 127.0.0.1 - - [09/Apr/2025 22:54:43] "POST /run-baseline HTTP/1.1" 200 -
+2025-04-09 22:54:43,284 INFO 127.0.0.1 - - [09/Apr/2025 22:54:43] "OPTIONS /sensitivity/configure HTTP/1.1" 200 -
+2025-04-09 22:54:43,326 DEBUG Starting new HTTP connection (1): localhost:2600
+2025-04-09 22:54:55,457 DEBUG Starting new HTTP connection (1): localhost:2750
+2025-04-09 22:54:57,831 DEBUG http://localhost:2750 "POST /get_config_paths HTTP/1.1" 200 12744
+2025-04-09 22:54:57,843 INFO 127.0.0.1 - - [09/Apr/2025 22:54:57] "POST /sensitivity/configure HTTP/1.1" 200 -
+2025-04-09 22:54:57,872 INFO 127.0.0.1 - - [09/Apr/2025 22:54:57] "OPTIONS /runs HTTP/1.1" 200 -
+2025-04-09 22:57:01,951 INFO 127.0.0.1 - - [09/Apr/2025 22:57:01] "POST /runs HTTP/1.1" 200 -
+2025-04-09 22:57:02,776 INFO 127.0.0.1 - - [09/Apr/2025 22:57:02] "OPTIONS /calculate-sensitivity HTTP/1.1" 200 -
+2025-04-09 22:58:09,353 INFO 127.0.0.1 - - [09/Apr/2025 22:58:09] "POST /calculate-sensitivity HTTP/1.1" 200 -
+2025-04-09 22:58:09,939 INFO 127.0.0.1 - - [09/Apr/2025 22:58:09] "OPTIONS /api/sensitivity/parameters?version=4 HTTP/1.1" 200 -
+2025-04-09 22:58:10,137 DEBUG Starting new HTTP connection (1): localhost:2750
+2025-04-09 22:58:17,487 INFO 127.0.0.1 - - [09/Apr/2025 22:58:17] "GET /api/sensitivity/parameters?version=4 HTTP/1.1" 200 -
+2025-04-09 22:58:17,492 INFO 127.0.0.1 - - [09/Apr/2025 22:58:17] "OPTIONS /api/sensitivity/visualize HTTP/1.1" 200 -
+2025-04-09 22:58:17,498 INFO 127.0.0.1 - - [09/Apr/2025 22:58:17] "[33mPOST /api/sensitivity/visualize HTTP/1.1[0m" 404 -
+2025-04-09 23:14:08,487 INFO 127.0.0.1 - - [09/Apr/2025 23:14:08] "OPTIONS /run-baseline HTTP/1.1" 200 -
+2025-04-09 23:14:41,727 INFO 127.0.0.1 - - [09/Apr/2025 23:14:41] "POST /run-baseline HTTP/1.1" 200 -
+2025-04-09 23:14:41,740 INFO 127.0.0.1 - - [09/Apr/2025 23:14:41] "OPTIONS /sensitivity/configure HTTP/1.1" 200 -
+2025-04-09 23:14:41,927 DEBUG Starting new HTTP connection (1): localhost:2600
+2025-04-09 23:14:54,150 DEBUG Starting new HTTP connection (1): localhost:2750
+2025-04-09 23:15:01,185 INFO 127.0.0.1 - - [09/Apr/2025 23:15:01] "POST /sensitivity/configure HTTP/1.1" 200 -
+2025-04-09 23:15:01,189 INFO 127.0.0.1 - - [09/Apr/2025 23:15:01] "OPTIONS /runs HTTP/1.1" 200 -
+2025-04-09 23:16:52,010 INFO 127.0.0.1 - - [09/Apr/2025 23:16:52] "POST /runs HTTP/1.1" 200 -
+2025-04-09 23:16:52,041 INFO 127.0.0.1 - - [09/Apr/2025 23:16:52] "OPTIONS /calculate-sensitivity HTTP/1.1" 200 -
+2025-04-09 23:17:56,498 INFO 127.0.0.1 - - [09/Apr/2025 23:17:56] "POST /calculate-sensitivity HTTP/1.1" 200 -
+2025-04-09 23:26:25,861 INFO 127.0.0.1 - - [09/Apr/2025 23:26:25] "OPTIONS /run-baseline HTTP/1.1" 200 -
+2025-04-09 23:27:15,878 INFO 127.0.0.1 - - [09/Apr/2025 23:27:15] "POST /run-baseline HTTP/1.1" 200 -
+2025-04-09 23:27:16,050 INFO 127.0.0.1 - - [09/Apr/2025 23:27:16] "OPTIONS /sensitivity/configure HTTP/1.1" 200 -
+2025-04-09 23:27:16,176 DEBUG Starting new HTTP connection (1): localhost:2600
+2025-04-09 23:27:28,827 DEBUG Starting new HTTP connection (1): localhost:2750
+2025-04-09 23:27:36,223 INFO 127.0.0.1 - - [09/Apr/2025 23:27:36] "POST /sensitivity/configure HTTP/1.1" 200 -
+2025-04-09 23:27:36,223 INFO 127.0.0.1 - - [09/Apr/2025 23:27:36] "OPTIONS /runs HTTP/1.1" 200 -
+2025-04-09 23:28:10,282 INFO 127.0.0.1 - - [09/Apr/2025 23:28:10] "POST /runs HTTP/1.1" 200 -
+2025-04-09 23:28:10,297 INFO 127.0.0.1 - - [09/Apr/2025 23:28:10] "OPTIONS /calculate-sensitivity HTTP/1.1" 200 -
+2025-04-09 23:28:10,297 INFO 127.0.0.1 - - [09/Apr/2025 23:28:10] "POST /calculate-sensitivity HTTP/1.1" 200 -
+2025-04-09 23:28:10,297 INFO 127.0.0.1 - - [09/Apr/2025 23:28:10] "OPTIONS /api/sensitivity/parameters?version=4 HTTP/1.1" 200 -
+2025-04-09 23:28:10,313 DEBUG Starting new HTTP connection (1): localhost:2750
+2025-04-09 23:28:17,457 INFO 127.0.0.1 - - [09/Apr/2025 23:28:17] "GET /api/sensitivity/parameters?version=4 HTTP/1.1" 200 -
+2025-04-09 23:28:17,472 INFO 127.0.0.1 - - [09/Apr/2025 23:28:17] "[33mOPTIONS /generate-report HTTP/1.1[0m" 404 -
+2025-04-09 23:30:36,884 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-04-09 23:30:36,884 INFO [33mPress CTRL+C to quit[0m
+2025-04-09 23:30:36,884 INFO  * Restarting with stat
+2025-04-09 23:30:47,050 WARNING  * Debugger is active!
+2025-04-09 23:30:47,066 INFO  * Debugger PIN: 119-059-632
+2025-04-09 23:30:57,574 INFO 127.0.0.1 - - [09/Apr/2025 23:30:57] "OPTIONS /run-baseline HTTP/1.1" 200 -
+2025-04-09 23:30:57,590 INFO 127.0.0.1 - - [09/Apr/2025 23:30:57] "OPTIONS /run-baseline HTTP/1.1" 200 -
+2025-04-09 23:31:25,457 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-04-09 23:31:25,457 INFO [33mPress CTRL+C to quit[0m
+2025-04-09 23:31:25,457 INFO  * Restarting with stat
+2025-04-09 23:31:28,502 WARNING  * Debugger is active!
+2025-04-09 23:31:28,518 INFO  * Debugger PIN: 119-059-632
+2025-04-09 23:32:09,316 INFO 127.0.0.1 - - [09/Apr/2025 23:32:09] "OPTIONS /run-baseline HTTP/1.1" 200 -
+2025-04-09 23:32:54,959 INFO 127.0.0.1 - - [09/Apr/2025 23:32:54] "POST /run-baseline HTTP/1.1" 200 -
+2025-04-09 23:32:54,990 INFO 127.0.0.1 - - [09/Apr/2025 23:32:54] "OPTIONS /sensitivity/configure HTTP/1.1" 200 -
+2025-04-09 23:32:55,037 DEBUG Starting new HTTP connection (1): localhost:2600
+2025-04-09 23:33:07,394 DEBUG Starting new HTTP connection (1): localhost:2750
+2025-04-09 23:33:10,017 DEBUG http://localhost:2750 "POST /get_config_paths HTTP/1.1" 200 12020
+2025-04-09 23:33:10,033 INFO 127.0.0.1 - - [09/Apr/2025 23:33:10] "POST /sensitivity/configure HTTP/1.1" 200 -
+2025-04-09 23:33:10,100 INFO 127.0.0.1 - - [09/Apr/2025 23:33:10] "OPTIONS /runs HTTP/1.1" 200 -
+2025-04-09 23:35:14,381 INFO 127.0.0.1 - - [09/Apr/2025 23:35:14] "POST /runs HTTP/1.1" 200 -
+2025-04-09 23:35:14,522 INFO 127.0.0.1 - - [09/Apr/2025 23:35:14] "OPTIONS /calculate-sensitivity HTTP/1.1" 200 -
+2025-04-09 23:36:02,017 INFO 127.0.0.1 - - [09/Apr/2025 23:36:02] "POST /calculate-sensitivity HTTP/1.1" 200 -
+2025-04-09 23:36:04,744 INFO 127.0.0.1 - - [09/Apr/2025 23:36:04] "OPTIONS /api/sensitivity/parameters?version=4 HTTP/1.1" 200 -
+2025-04-09 23:36:04,775 DEBUG Starting new HTTP connection (1): localhost:2750
+2025-04-09 23:36:06,946 DEBUG http://localhost:2750 "POST /list_parameters HTTP/1.1" 200 370
+2025-04-09 23:36:06,947 INFO 127.0.0.1 - - [09/Apr/2025 23:36:06] "GET /api/sensitivity/parameters?version=4 HTTP/1.1" 200 -
+2025-04-09 23:36:06,972 INFO 127.0.0.1 - - [09/Apr/2025 23:36:06] "[33mOPTIONS /generate-report HTTP/1.1[0m" 404 -
+2025-04-09 23:47:45,867 INFO  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\Calculations_and_Sensitivity.py', reloading
+2025-04-09 23:47:46,117 INFO  * Restarting with stat
+2025-04-10 00:33:21,160 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-04-10 00:33:21,161 INFO [33mPress CTRL+C to quit[0m
+2025-04-10 00:33:21,163 INFO  * Restarting with stat
+2025-04-10 00:33:23,418 WARNING  * Debugger is active!
+2025-04-10 00:33:23,426 INFO  * Debugger PIN: 119-059-632
+2025-04-10 08:12:34,988 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-04-10 08:12:34,988 INFO [33mPress CTRL+C to quit[0m
+2025-04-10 08:12:34,988 INFO  * Restarting with stat
+2025-04-10 08:12:37,129 WARNING  * Debugger is active!
+2025-04-10 08:12:37,145 INFO  * Debugger PIN: 119-059-632
+2025-04-10 15:16:05,945 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-04-10 15:16:05,945 INFO [33mPress CTRL+C to quit[0m
+2025-04-10 15:16:05,945 INFO  * Restarting with stat
+2025-04-10 15:16:08,204 WARNING  * Debugger is active!
+2025-04-10 15:16:08,220 INFO  * Debugger PIN: 119-059-632
+2025-04-10 18:45:23,428 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2500
+2025-04-10 18:45:23,428 INFO [33mPress CTRL+C to quit[0m
+2025-04-10 18:45:23,428 INFO  * Restarting with stat
+2025-04-10 18:45:25,621 WARNING  * Debugger is active!
+2025-04-10 18:45:25,621 INFO  * Debugger PIN: 119-059-632

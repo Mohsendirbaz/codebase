@@ -36,8 +36,7 @@ import PlotsTabs from './components/modules/PlotsTabs';
 import SensitivityPlotsTabs from './components/modules/SensitivityPlotsTabs';
 import CentralScalingTab from 'src/components/truly_extended_scaling/CentralScalingTab';
 import StickerHeader from './components/modules/HeaderBackground';
-
-
+import ProcessEconomicsLibrary from './components/process_economics_pilot/integration-module';
 
 
 const HomePageContent = () => {
@@ -649,7 +648,13 @@ const HomePageContent = () => {
         */
     };
 
-
+    const [error, setError] = useState(null);
+    const [success, setSuccess] = useState(null);
+    const [availableParameters, setAvailableParameters] = useState([]);
+    const [plotData, setPlotData] = useState(null);
+    const [sensitivityReport, setSensitivityReport] = useState(null);
+    const [sensitivitySummary, setSensitivitySummary] = useState(false);
+    const [enabledParams, setEnabledParams] = useState([]);
     const handleRuns = async () => {
         // Set loading state and reset previous results
         setAnalysisRunning(true);
@@ -666,7 +671,6 @@ const HomePageContent = () => {
                 SenParameters: S,
                 formValues: formValues // Include form values to extract Amount10
             };
-
             console.log('Running CFA with parameters:', requestPayload);
 
             // STEP 1: Run baseline calculations first
@@ -676,7 +680,6 @@ const HomePageContent = () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(requestPayload),
             });
-
             if (!baselineResponse.ok) {
                 const baselineError = await baselineResponse.json();
                 throw new Error(baselineError.error || 'Baseline calculation failed');
@@ -691,7 +694,6 @@ const HomePageContent = () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(requestPayload),
             });
-
             if (!configResponse.ok) {
                 const configErrorData = await configResponse.json();
                 throw new Error(configErrorData.error || 'Failed to generate sensitivity configurations');
@@ -706,7 +708,6 @@ const HomePageContent = () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(requestPayload),
             });
-
             if (!response.ok) {
                 const errorData = await response.json();
                 throw new Error(errorData.error || 'Failed to run calculation');
@@ -714,9 +715,138 @@ const HomePageContent = () => {
             const result = await response.json();
             console.log('Calculation completed successfully:', result);
 
+            // STEP 4: Execute specific sensitivity calculations with CalSen paths
+            console.log('Step 4: Running parameter-specific sensitivity calculations...');
+            const senCalcResponse = await fetch('http://127.0.0.1:2500/calculate-sensitivity', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(requestPayload),
+            });
+            if (!senCalcResponse.ok) {
+                const senCalcErrorData = await senCalcResponse.json();
+                throw new Error(senCalcErrorData.error || 'Failed to execute sensitivity calculations');
+            }
+            const senCalcResult = await senCalcResponse.json();
+            console.log('Parameter-specific sensitivity calculations completed:', senCalcResult);
+
+            // Process each enabled parameter
+            for (const param of enabledParams) {
+                console.log(`Processing parameter ${param.paramId} in ${param.mode} mode`);
+
+                const analysisResponse = await fetch('http://127.0.0.1:2500/sensitivity/analysis', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        param_id: param.paramId,
+                        mode: param.mode,
+                        values: param.values,
+                        compareToKey: param.compareToKey,
+                        version: selectedVersions[0],
+                        waterfall: true,
+                        bar: true,
+                        point: true
+                    }),
+                });
+
+                if (!analysisResponse.ok) {
+                    console.warn(`Analysis for ${param.paramId} failed:`, await analysisResponse.json());
+                } else {
+                    const analysisResult = await analysisResponse.json();
+                    console.log(`Analysis for ${param.paramId} completed:`, analysisResult);
+                }
+            }
+
+            // STEP 5: Get available sensitivity parameters for visualization
+            console.log('Step 5: Fetching available sensitivity parameters...');
+            const paramsResponse = await fetch(`http://127.0.0.1:2500/api/sensitivity/parameters?version=${selectedVersions[0]}`, {
+                method: 'GET',
+                headers: { 'Content-Type': 'application/json' },
+            });
+            if (!paramsResponse.ok) {
+                const paramsError = await paramsResponse.json();
+                throw new Error(paramsError.error || 'Failed to fetch sensitivity parameters');
+            }
+            const paramsData = await paramsResponse.json();
+            console.log('Available sensitivity parameters:', paramsData);
+            setAvailableParameters(paramsData || []);
+
+            // STEP 6: Generate a comprehensive sensitivity report
+            console.log('Step 6: Generating sensitivity report...');
+            const reportResponse = await fetch('http://127.0.0.1:2500/generate-report', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    version: selectedVersions[0]
+                }),
+            });
+            if (reportResponse.ok) {
+                const reportResult = await reportResponse.json();
+                console.log('Report generated successfully:', reportResult);
+                setSensitivityReport(reportResult);
+            }
+
+            // STEP 7: Get sensitivity summary with plot counts and status
+            console.log('Step 7: Getting sensitivity summary...');
+            const summaryResponse = await fetch(`http://127.0.0.1:2500/api/sensitivity-summary/${selectedVersions[0]}`, {
+                method: 'GET',
+                headers: { 'Content-Type': 'application/json' },
+            });
+            if (summaryResponse.ok) {
+                const summaryData = await summaryResponse.json();
+                console.log('Sensitivity summary:', summaryData);
+                setSensitivitySummary(summaryData);
+            }
+
+            // STEP 8: Visualize results if we have parameters
+            if (paramsData && paramsData.length > 0) {
+                const firstParam = paramsData[0];
+                console.log('Step 8: Visualizing results for first parameter...');
+                const visualizeResponse = await fetch('http://127.0.0.1:2500/api/sensitivity/visualize', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        version: selectedVersions[0],
+                        param_id: firstParam.id,
+                        mode: firstParam.modes[0] || 'percentage',
+                        compareToKey: firstParam.compareToKey || 'S13',
+                        plotTypes: ['waterfall', 'bar', 'point']
+                    }),
+                });
+                if (!visualizeResponse.ok) {
+                    const visualizeError = await visualizeResponse.json();
+                    console.warn('Failed to visualize results:', visualizeError);
+                } else {
+                    const visualizeData = await visualizeResponse.json();
+                    console.log('Visualization data:', visualizeData);
+                    setPlotData(visualizeData);
+                }
+            }
+
+            // STEP 9: Unified call to /run-all-sensitivity
+            console.log('Step 9: Running unified sensitivity analysis...');
+            const allResponse = await fetch('http://127.0.0.1:2500/run-all-sensitivity', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    selectedVersions,
+                    enabledParams: enabledParams // make sure this is available in scope
+                }),
+            });
+            if (allResponse.ok) {
+                const allResult = await allResponse.json();
+                console.log('Unified sensitivity analysis completed:', allResult);
+            } else {
+                const allError = await allResponse.json();
+                console.warn('Unified sensitivity analysis failed:', allError);
+            }
+
+            setSuccess('Analysis completed successfully!');
+            setError(null);
+
         } catch (error) {
             console.error('Error during CFA calculation:', error);
-            // Could add user notification here
+            setError(error.message);
+            setSuccess(null);
         } finally {
             setAnalysisRunning(false);
         }
@@ -1496,9 +1626,11 @@ const HomePageContent = () => {
                         R={R}
                         toggleV={toggleV}
                         toggleR={toggleR}
+
                         scalingBaseCosts={scalingBaseCosts}
                         setScalingBaseCosts={setScalingBaseCosts}
                         scalingGroups={scalingGroups}
+
                         onScalingGroupsChange={handleScalingGroupsChange}
                         onScaledValuesChange={handleScaledValuesChange}
                     />
@@ -1763,9 +1895,11 @@ const HomePageContent = () => {
                         R={R}
                         toggleV={toggleV}
                         toggleR={toggleR}
+
                         scalingBaseCosts={scalingBaseCosts}
                         setScalingBaseCosts={setScalingBaseCosts}
                         scalingGroups={scalingGroups}
+
                         onScalingGroupsChange={handleScalingGroupsChange}
                         onScaledValuesChange={handleScaledValuesChange}
                     />
@@ -1904,7 +2038,8 @@ const HomePageContent = () => {
                     </div>
                 </nav>
                 <div className="content-container">
-                    {activeTab !== 'AboutUs' && (
+                    {activeTab !== 'AboutUs' && activeTab !== 'TestingZone' &&
+                        (
                         <>
                             <SensitivityMonitor
                                 S={S}

@@ -5,7 +5,7 @@ import Popup from './components/modules/Efficacy';
 import { faEdit, faCheck, faTimes, faSave, faUndo } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import { sensitivityActionRef } from './components/modules/SensitivityMonitor';
-
+import FactualPrecedence from './components/find_factual_precedence/components/modules/FactualPrecedence/index'
 /**
  * GeneralFormConfig Component
  * Handles configuration of form values, labels, and related settings
@@ -15,10 +15,9 @@ const GeneralFormConfig = ({
                              handleInputChange,
                              version,
                              filterKeyword,
-                             V, setV, toggleV,
-                             R, setR, toggleR,
+                             V, toggleV,
+                             R, toggleR,
                              F, toggleF,
-                             S, setS,
                              setVersion,
                              summaryItems,
                            }) => {
@@ -32,6 +31,11 @@ const GeneralFormConfig = ({
   const [selectedItemId, setSelectedItemId] = useState();
   const [updateStatus, setUpdateStatus] = useState('');
   const [isUpdating, setIsUpdating] = useState(false);
+
+  // Factual Precedence state
+  const [showFactualPrecedence, setShowFactualPrecedence] = useState(false);
+  const [factualPrecedencePosition, setFactualPrecedencePosition] = useState({ top: 0, left: 0 });
+  const [factualItemId, setFactualItemId] = useState(null);
 
   // Label management state
   const [editingLabel, setEditingLabel] = useState(null);
@@ -239,6 +243,24 @@ const GeneralFormConfig = ({
     setShowPopup(true);
   };
 
+  // FIXED: Factual precedence handlers
+  const handleFactualPrecedenceClick = (event, itemId) => {
+    event.preventDefault();
+    const rect = event.currentTarget.getBoundingClientRect();
+    setFactualPrecedencePosition({
+      top: rect.bottom + window.scrollY,
+      left: rect.left + window.scrollX
+    });
+    // Set factual item ID separately from selected item ID
+    setFactualItemId(itemId);
+    setShowFactualPrecedence(true);
+  };
+
+  const handleCloseFactualPrecedence = () => {
+    setShowFactualPrecedence(false);
+    setFactualItemId(null);
+  };
+
   //--------------------------------------------------------------------------
   // COMPONENT RENDERING
   //--------------------------------------------------------------------------
@@ -438,7 +460,7 @@ const GeneralFormConfig = ({
                         </button>
                         <button
                             className="action-button-factual"
-                            onClick={(e) => handleScheduleClick(e, item.id)}
+                            onClick={(e) => handleFactualPrecedenceClick(e, item.id)}
                         >
                           Find Factual Precedence
                         </button>
@@ -505,7 +527,7 @@ const GeneralFormConfig = ({
                         </button>
                         <button
                             className="action-button-factual"
-                            onClick={(e) => handleScheduleClick(e, item.id)}
+                            onClick={(e) => handleFactualPrecedenceClick(e, item.id)}
                         >
                           Find Factual Precedence
                         </button>
@@ -531,6 +553,18 @@ const GeneralFormConfig = ({
                 onVersionChange={(newVersion) => setVersion(newVersion)}
                 version={version}
                 itemId={selectedItemId}
+            />
+        )}
+
+        {/* Factual Precedence Popup - Moved outside the loop */}
+        {showFactualPrecedence && (
+            <FactualPrecedence
+                show={showFactualPrecedence}
+                position={factualPrecedencePosition}
+                onClose={handleCloseFactualPrecedence}
+                formValues={formValues}
+                id={factualItemId}
+                handleInputChange={handleInputChange}
             />
         )}
       </>

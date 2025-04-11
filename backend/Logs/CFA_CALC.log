@@ -1,0 +1,6086 @@
+2025-04-09 15:40:15,135 - CalculationsLogger - INFO - ================================================================================
+2025-04-09 15:40:15,136 - CalculationsLogger - INFO - RUN ENDPOINT CALLED
+2025-04-09 15:40:15,137 - CalculationsLogger - INFO - Request received at: 2025-04-09T15:40:15.137743
+2025-04-09 15:40:15,137 - CalculationsLogger - INFO - Request headers: {'Host': '127.0.0.1:5007', 'Connection': 'keep-alive', 'Content-Length': '34846', 'Sec-Ch-Ua-Platform': '"Windows"', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 Edg/135.0.0.0', 'Sec-Ch-Ua': '"Microsoft Edge";v="135", "Not-A.Brand";v="8", "Chromium";v="135"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Origin': 'http://localhost:3000', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:3000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-US,en;q=0.9'}
+2025-04-09 15:40:15,143 - CalculationsLogger - INFO - Request data: {
+  "selectedVersions": [
+    "4"
+  ],
+  "selectedV": {
+    "V1": "on",
+    "V2": "off",
+    "V3": "off",
+    "V4": "off",
+    "V5": "off",
+    "V6": "off",
+    "V7": "off",
+    "V8": "off",
+    "V9": "off",
+    "V10": "off"
+  },
+  "selectedF": {
+    "F1": "on",
+    "F2": "on",
+    "F3": "on",
+    "F4": "on",
+    "F5": "on"
+  },
+  "selectedCalculationOption": "calculateForPrice",
+  "targetRow": "20",
+  "SenParameters": {
+    "S10": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S11": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S12": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S13": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S14": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S15": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S16": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S17": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S18": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S19": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S20": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S21": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S22": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S23": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S24": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S25": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S26": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S27": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S28": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S29": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S30": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S31": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S32": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S33": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S34": {
+      "mode": "percentage",
+      "values": [
+        100
+      ],
+      "enabled": true,
+      "compareToKey": "S13",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": true
+    },
+    "S35": {
+      "mode": "directvalue",
+      "values": [
+        30000
+      ],
+      "enabled": true,
+      "compareToKey": "S13",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": true,
+      "point": false
+    },
+    "S36": {
+      "mode": "absolutedeparture",
+      "values": [
+        -500,
+        2000
+      ],
+      "enabled": true,
+      "compareToKey": "S13",
+      "comparisonType": null,
+      "waterfall": true,
+      "bar": false,
+      "point": false
+    },
+    "S37": {
+      "mode": "percentage",
+      "values": [
+        20
+      ],
+      "enabled": true,
+      "compareToKey": "S13",
+      "comparisonType": null,
+      "waterfall": true,
+      "bar": true,
+      "point": true
+    },
+    "S38": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S39": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S40": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S41": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S42": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S43": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S44": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S45": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S46": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S47": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S48": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S49": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S50": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S51": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S52": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S53": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S54": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S55": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S56": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S57": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S58": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S59": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S60": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S61": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S62": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S63": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S64": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S65": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S66": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S67": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S68": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S69": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S70": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S71": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S72": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S73": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S74": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S75": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S76": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S77": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S78": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S79": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    }
+  },
+  "formValues": {
+    "plantLifetimeAmount10": {
+      "id": "plantLifetimeAmount10",
+      "value": 20,
+      "type": "number",
+      "label": "Plant Lifetime",
+      "placeholder": 20,
+      "step": 4,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "bECAmount11": {
+      "id": "bECAmount11",
+      "value": 200000,
+      "type": "number",
+      "label": "Bare Erected Cost",
+      "placeholder": 200000,
+      "step": 40000,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "numberOfUnitsAmount12": {
+      "id": "numberOfUnitsAmount12",
+      "value": 30000,
+      "type": "number",
+      "label": "Number of Units",
+      "placeholder": 30000,
+      "step": 6000,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "initialSellingPriceAmount13": {
+      "id": "initialSellingPriceAmount13",
+      "value": 2,
+      "type": "number",
+      "label": "Price",
+      "placeholder": 2,
+      "step": 0.4,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "totalOperatingCostPercentageAmount14": {
+      "id": "totalOperatingCostPercentageAmount14",
+      "value": 0.1,
+      "type": "number",
+      "label": "Direct Total Operating Cost Percentage as % of Revenue",
+      "placeholder": 0.1,
+      "step": 0.02,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "engineering_Procurement_and_Construction_EPC_Amount15": {
+      "id": "engineering_Procurement_and_Construction_EPC_Amount15",
+      "value": 0,
+      "type": "number",
+      "label": "Engineering Procurement and Construction as % of BEC",
+      "placeholder": 0,
+      "step": 0,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "process_contingency_PC_Amount16": {
+      "id": "process_contingency_PC_Amount16",
+      "value": 0,
+      "type": "number",
+      "label": "Process Contingency as % of BEC",
+      "placeholder": 0,
+      "step": 0,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "project_Contingency_PT_BEC_EPC_PCAmount17": {
+      "id": "project_Contingency_PT_BEC_EPC_PCAmount17",
+      "value": 0,
+      "type": "number",
+      "label": "Project Contingency as % of BEC, EPC, PC",
+      "placeholder": 0,
+      "step": 0,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "use_direct_operating_expensesAmount18": {
+      "id": "use_direct_operating_expensesAmount18",
+      "value": "False",
+      "type": "select",
+      "label": "Use Direct Operating Expenses",
+      "placeholder": "False",
+      "step": "",
+      "options": [
+        "True",
+        "False"
+      ],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "use_direct_revenueAmount19": {
+      "id": "use_direct_revenueAmount19",
+      "value": "False",
+      "type": "select",
+      "label": "Use Direct Revenue",
+      "placeholder": "False",
+      "step": "",
+      "options": [
+        "True",
+        "False"
+      ],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "depreciationMethodAmount20": {
+      "id": "depreciationMethodAmount20",
+      "value": "Straight-Line",
+      "type": "select",
+      "label": "Depreciation Method",
+      "placeholder": "Straight-Line",
+      "step": "",
+      "options": [
+        "Straight-Line",
+        "5-MACRS",
+        "7-MACRS",
+        "15-MACRS",
+        "Custom"
+      ],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "loanTypeAmount21": {
+      "id": "loanTypeAmount21",
+      "value": "simple",
+      "type": "select",
+      "label": "Loan Type",
+      "placeholder": "simple",
+      "step": "",
+      "options": [
+        "simple",
+        "compounded"
+      ],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "interestTypeAmount22": {
+      "id": "interestTypeAmount22",
+      "value": "fixed",
+      "type": "select",
+      "label": "Interest Type",
+      "placeholder": "fixed",
+      "step": "",
+      "options": [
+        "fixed",
+        "variable"
+      ],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "generalInflationRateAmount23": {
+      "id": "generalInflationRateAmount23",
+      "value": 0,
+      "type": "number",
+      "label": "General Inflation Rate",
+      "placeholder": 0,
+      "step": 0,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "interestProportionAmount24": {
+      "id": "interestProportionAmount24",
+      "value": 0.5,
+      "type": "number",
+      "label": "Interest Proportion",
+      "placeholder": 0.5,
+      "step": 0.1,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "principalProportionAmount25": {
+      "id": "principalProportionAmount25",
+      "value": 0.5,
+      "type": "number",
+      "label": "Principal Proportion",
+      "placeholder": 0.5,
+      "step": 0.1,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "loanPercentageAmount26": {
+      "id": "loanPercentageAmount26",
+      "value": 0.2,
+      "type": "number",
+      "label": "Loan Percentage of TOC",
+      "placeholder": 0.2,
+      "step": 0.04,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "repaymentPercentageOfRevenueAmount27": {
+      "id": "repaymentPercentageOfRevenueAmount27",
+      "value": 0.1,
+      "type": "number",
+      "label": "Repayment Percentage Of Revenue",
+      "placeholder": 0.1,
+      "step": 0.02,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "numberofconstructionYearsAmount28": {
+      "id": "numberofconstructionYearsAmount28",
+      "value": 1,
+      "type": "number",
+      "label": "Number of Construction Years",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "iRRAmount30": {
+      "id": "iRRAmount30",
+      "value": 0.05,
+      "type": "number",
+      "label": "Internal Rate of Return",
+      "placeholder": 0.05,
+      "step": 0.01,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "annualInterestRateAmount31": {
+      "id": "annualInterestRateAmount31",
+      "value": 0.04,
+      "type": "number",
+      "label": "Annual Interest Rate",
+      "placeholder": 0.04,
+      "step": 0.008,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "stateTaxRateAmount32": {
+      "id": "stateTaxRateAmount32",
+      "value": 0.05,
+      "type": "number",
+      "label": "State Tax Rate",
+      "placeholder": 0.05,
+      "step": 0.01,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "federalTaxRateAmount33": {
+      "id": "federalTaxRateAmount33",
+      "value": 0.21,
+      "type": "number",
+      "label": "Federal Tax Rate",
+      "placeholder": 0.21,
+      "step": 0.042,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "rawmaterialAmount34": {
+      "id": "rawmaterialAmount34",
+      "value": 10000,
+      "type": "number",
+      "label": "Feedstock Cost",
+      "placeholder": 10000,
+      "step": 2000,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "laborAmount35": {
+      "id": "laborAmount35",
+      "value": 24000,
+      "type": "number",
+      "label": "Labor Cost",
+      "placeholder": 24000,
+      "step": 4800,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "utilityAmount36": {
+      "id": "utilityAmount36",
+      "value": 5000,
+      "type": "number",
+      "label": "Utility Cost",
+      "placeholder": 5000,
+      "step": 1000,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "maintenanceAmount37": {
+      "id": "maintenanceAmount37",
+      "value": 2500,
+      "type": "number",
+      "label": "Maintenance Cost",
+      "placeholder": 2500,
+      "step": 500,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "insuranceAmount38": {
+      "id": "insuranceAmount38",
+      "value": 500,
+      "type": "number",
+      "label": "Insurance Cost",
+      "placeholder": 500,
+      "step": 100,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "vAmount40": {
+      "id": "vAmount40",
+      "value": 1,
+      "type": "number",
+      "label": "v40",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "vAmount41": {
+      "id": "vAmount41",
+      "value": 1,
+      "type": "number",
+      "label": "v41",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "vAmount42": {
+      "id": "vAmount42",
+      "value": 1,
+      "type": "number",
+      "label": "v42",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "vAmount43": {
+      "id": "vAmount43",
+      "value": 1,
+      "type": "number",
+      "label": "v43",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "vAmount44": {
+      "id": "vAmount44",
+      "value": 1,
+      "type": "number",
+      "label": "v44",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "vAmount45": {
+      "id": "vAmount45",
+      "value": 1,
+      "type": "number",
+      "label": "v45",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "vAmount46": {
+      "id": "vAmount46",
+      "value": 1,
+      "type": "number",
+      "label": "v46",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "vAmount47": {
+      "id": "vAmount47",
+      "value": 1,
+      "type": "number",
+      "label": "v47",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "vAmount48": {
+      "id": "vAmount48",
+      "value": 1,
+      "type": "number",
+      "label": "v48",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "vAmount49": {
+      "id": "vAmount49",
+      "value": 1,
+      "type": "number",
+      "label": "v49",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "vAmount50": {
+      "id": "vAmount50",
+      "value": 1,
+      "type": "number",
+      "label": "v50",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "vAmount51": {
+      "id": "vAmount51",
+      "value": 1,
+      "type": "number",
+      "label": "v51",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "vAmount52": {
+      "id": "vAmount52",
+      "value": 1,
+      "type": "number",
+      "label": "v52",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "vAmount53": {
+      "id": "vAmount53",
+      "value": 1,
+      "type": "number",
+      "label": "v53",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "vAmount54": {
+      "id": "vAmount54",
+      "value": 1,
+      "type": "number",
+      "label": "v54",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "vAmount55": {
+      "id": "vAmount55",
+      "value": 1,
+      "type": "number",
+      "label": "v55",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "vAmount56": {
+      "id": "vAmount56",
+      "value": 1,
+      "type": "number",
+      "label": "v56",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "vAmount57": {
+      "id": "vAmount57",
+      "value": 1,
+      "type": "number",
+      "label": "v57",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "vAmount58": {
+      "id": "vAmount58",
+      "value": 1,
+      "type": "number",
+      "label": "v58",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "vAmount59": {
+      "id": "vAmount59",
+      "value": 1,
+      "type": "number",
+      "label": "v59",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "rAmount60": {
+      "id": "rAmount60",
+      "value": 1,
+      "type": "number",
+      "label": "r60",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "rAmount61": {
+      "id": "rAmount61",
+      "value": 1,
+      "type": "number",
+      "label": "r61",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "rAmount62": {
+      "id": "rAmount62",
+      "value": 1,
+      "type": "number",
+      "label": "r62",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "rAmount63": {
+      "id": "rAmount63",
+      "value": 1,
+      "type": "number",
+      "label": "r63",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "rAmount64": {
+      "id": "rAmount64",
+      "value": 1,
+      "type": "number",
+      "label": "r64",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "rAmount65": {
+      "id": "rAmount65",
+      "value": 1,
+      "type": "number",
+      "label": "r65",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "rAmount66": {
+      "id": "rAmount66",
+      "value": 1,
+      "type": "number",
+      "label": "r66",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "rAmount67": {
+      "id": "rAmount67",
+      "value": 1,
+      "type": "number",
+      "label": "r67",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "rAmount68": {
+      "id": "rAmount68",
+      "value": 1,
+      "type": "number",
+      "label": "r68",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "rAmount69": {
+      "id": "rAmount69",
+      "value": 1,
+      "type": "number",
+      "label": "r69",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "rAmount70": {
+      "id": "rAmount70",
+      "value": 1,
+      "type": "number",
+      "label": "r70",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "rAmount71": {
+      "id": "rAmount71",
+      "value": 1,
+      "type": "number",
+      "label": "r71",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "rAmount72": {
+      "id": "rAmount72",
+      "value": 1,
+      "type": "number",
+      "label": "r72",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "rAmount73": {
+      "id": "rAmount73",
+      "value": 1,
+      "type": "number",
+      "label": "r73",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "rAmount74": {
+      "id": "rAmount74",
+      "value": 1,
+      "type": "number",
+      "label": "r74",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "rAmount75": {
+      "id": "rAmount75",
+      "value": 1,
+      "type": "number",
+      "label": "r75",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "rAmount76": {
+      "id": "rAmount76",
+      "value": 1,
+      "type": "number",
+      "label": "r76",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "rAmount77": {
+      "id": "rAmount77",
+      "value": 1,
+      "type": "number",
+      "label": "r77",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "rAmount78": {
+      "id": "rAmount78",
+      "value": 1,
+      "type": "number",
+      "label": "r78",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "rAmount79": {
+      "id": "rAmount79",
+      "value": 1,
+      "type": "number",
+      "label": "r79",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    }
+  }
+}
+2025-04-09 15:40:15,144 - CalculationsLogger - INFO - Found year columns configuration from plantLifetimeAmount10: 20
+2025-04-09 15:40:15,144 - CalculationsLogger - INFO - Processing versions: ['4']
+2025-04-09 15:40:15,144 - CalculationsLogger - INFO - V states - Enabled: ['V1'], Disabled: ['V2', 'V3', 'V4', 'V5', 'V6', 'V7', 'V8', 'V9', 'V10']
+2025-04-09 15:40:15,145 - CalculationsLogger - INFO - F states - Enabled: ['F1', 'F2', 'F3', 'F4', 'F5'], Disabled: []
+2025-04-09 15:40:15,145 - CalculationsLogger - INFO - Calculation option: calculateForPrice, Target row: 20
+2025-04-09 15:40:15,145 - CalculationsLogger - INFO - Price optimization parameters:
+2025-04-09 15:40:15,145 - CalculationsLogger - INFO -   - Tolerance bounds: Lower=-1000, Upper=1000
+2025-04-09 15:40:15,145 - CalculationsLogger - INFO -   - Adjustment rates: Increase=1.02, Decrease=0.985
+2025-04-09 15:40:15,148 - CalculationsLogger - INFO - Sensitivity Parameters:
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| Parameter   | Enabled   | Mode              | Compare To   | Comparison Type   | Visualization         |
++=============+===========+===================+==============+===================+=======================+
+| S10         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S11         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S12         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S13         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S14         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S15         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S16         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S17         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S18         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S19         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S20         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S21         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S22         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S23         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S24         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S25         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S26         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S27         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S28         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S29         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S30         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S31         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S32         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S33         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S34         | Yes       | percentage        | S13          |                   | Point                 |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S35         | Yes       | directvalue       | S13          |                   | Bar                   |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S36         | Yes       | absolutedeparture | S13          |                   | Waterfall             |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S37         | Yes       | percentage        | S13          |                   | Waterfall, Bar, Point |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S38         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S39         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S40         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S41         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S42         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S43         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S44         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S45         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S46         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S47         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S48         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S49         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S50         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S51         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S52         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S53         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S54         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S55         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S56         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S57         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S58         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S59         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S60         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S61         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S62         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S63         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S64         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S65         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S66         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S67         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S68         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S69         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S70         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S71         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S72         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S73         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S74         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S75         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S76         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S77         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S78         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S79         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+2025-04-09 15:40:15,148 - CalculationsLogger - INFO - Year columns configuration: {"4": 20}
+2025-04-09 15:40:15,149 - CalculationsLogger - INFO - Processing version 4
+2025-04-09 15:40:15,149 - CalculationsLogger - INFO - Starting processing for version 4
+2025-04-09 15:40:15,272 - CalculationsLogger - INFO - Successfully ran formatter.py for version 4
+2025-04-09 15:40:17,635 - CalculationsLogger - INFO - Successfully ran module1.py for version 4
+2025-04-09 15:40:19,882 - CalculationsLogger - INFO - Successfully ran config_modules.py for version 4
+2025-04-09 15:40:21,570 - CalculationsLogger - INFO - Successfully ran Table.py for version 4
+2025-04-09 15:40:59,286 - CalculationsLogger - INFO - Successfully ran CFA.py for version 4
+2025-04-09 15:40:59,286 - CalculationsLogger - INFO - Successfully completed processing for version 4
+2025-04-09 15:40:59,286 - CalculationsLogger - INFO - Waiting 1 second before executing R scripts...
+2025-04-09 15:41:00,287 - CalculationsLogger - INFO - Calculation completed successfully
+2025-04-09 15:41:00,334 - CalculationsLogger - WARNING - No price data found for version 4
+2025-04-09 15:41:00,350 - CalculationsLogger - INFO - Initialized monitor for version 4, status file: C:\Users\Mohse\IdeaProjects2\codebase\backend\..\..\Original\Batch(4)\Results(4)\price_optimization_status_4.json
+2025-04-09 15:41:00,350 - CalculationsLogger - INFO - Client added to monitor for version 4. Total clients: 1
+2025-04-09 15:41:00,350 - CalculationsLogger - INFO - Monitoring thread started for version 4
+2025-04-09 15:41:02,357 - CalculationsLogger - WARNING - Status file not found for version 4, consecutive errors: 5
+2025-04-09 15:41:04,860 - CalculationsLogger - WARNING - Status file not found for version 4, consecutive errors: 10
+2025-04-09 15:41:07,365 - CalculationsLogger - WARNING - Status file not found for version 4, consecutive errors: 15
+2025-04-09 15:41:09,867 - CalculationsLogger - WARNING - Status file not found for version 4, consecutive errors: 20
+2025-04-09 15:41:10,367 - CalculationsLogger - ERROR - Too many consecutive errors for version 4, stopping monitor
+2025-04-09 15:41:10,367 - CalculationsLogger - INFO - Monitoring stopped for version 4
+2025-04-09 15:41:10,367 - CalculationsLogger - INFO - Stream ending for version 4 - calculation complete
+2025-04-09 16:32:22,925 - CalculationsLogger - INFO - ================================================================================
+2025-04-09 16:32:22,925 - CalculationsLogger - INFO - RUN ENDPOINT CALLED
+2025-04-09 16:32:22,925 - CalculationsLogger - INFO - Request received at: 2025-04-09T16:32:22.925959
+2025-04-09 16:32:22,925 - CalculationsLogger - INFO - Request headers: {'Host': '127.0.0.1:5007', 'Connection': 'keep-alive', 'Content-Length': '34846', 'Sec-Ch-Ua-Platform': '"Windows"', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 Edg/135.0.0.0', 'Sec-Ch-Ua': '"Microsoft Edge";v="135", "Not-A.Brand";v="8", "Chromium";v="135"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Origin': 'http://localhost:3000', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:3000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-US,en;q=0.9'}
+2025-04-09 16:32:22,948 - CalculationsLogger - INFO - Request data: {
+  "selectedVersions": [
+    "5"
+  ],
+  "selectedV": {
+    "V1": "on",
+    "V2": "off",
+    "V3": "off",
+    "V4": "off",
+    "V5": "off",
+    "V6": "off",
+    "V7": "off",
+    "V8": "off",
+    "V9": "off",
+    "V10": "off"
+  },
+  "selectedF": {
+    "F1": "on",
+    "F2": "on",
+    "F3": "on",
+    "F4": "on",
+    "F5": "on"
+  },
+  "selectedCalculationOption": "calculateForPrice",
+  "targetRow": "20",
+  "SenParameters": {
+    "S10": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S11": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S12": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S13": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S14": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S15": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S16": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S17": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S18": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S19": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S20": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S21": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S22": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S23": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S24": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S25": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S26": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S27": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S28": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S29": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S30": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S31": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S32": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S33": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S34": {
+      "mode": "percentage",
+      "values": [
+        100
+      ],
+      "enabled": true,
+      "compareToKey": "S13",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": true
+    },
+    "S35": {
+      "mode": "directvalue",
+      "values": [
+        30000
+      ],
+      "enabled": true,
+      "compareToKey": "S13",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": true,
+      "point": false
+    },
+    "S36": {
+      "mode": "absolutedeparture",
+      "values": [
+        -500,
+        2000
+      ],
+      "enabled": true,
+      "compareToKey": "S13",
+      "comparisonType": null,
+      "waterfall": true,
+      "bar": false,
+      "point": false
+    },
+    "S37": {
+      "mode": "percentage",
+      "values": [
+        20
+      ],
+      "enabled": true,
+      "compareToKey": "S13",
+      "comparisonType": null,
+      "waterfall": true,
+      "bar": true,
+      "point": true
+    },
+    "S38": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S39": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S40": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S41": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S42": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S43": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S44": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S45": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S46": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S47": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S48": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S49": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S50": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S51": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S52": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S53": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S54": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S55": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S56": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S57": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S58": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S59": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S60": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S61": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S62": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S63": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S64": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S65": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S66": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S67": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S68": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S69": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S70": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S71": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S72": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S73": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S74": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S75": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S76": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S77": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S78": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    },
+    "S79": {
+      "mode": null,
+      "values": [],
+      "enabled": false,
+      "compareToKey": "",
+      "comparisonType": null,
+      "waterfall": false,
+      "bar": false,
+      "point": false
+    }
+  },
+  "formValues": {
+    "plantLifetimeAmount10": {
+      "id": "plantLifetimeAmount10",
+      "value": 20,
+      "type": "number",
+      "label": "Plant Lifetime",
+      "placeholder": 20,
+      "step": 4,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "bECAmount11": {
+      "id": "bECAmount11",
+      "value": 200000,
+      "type": "number",
+      "label": "Bare Erected Cost",
+      "placeholder": 200000,
+      "step": 40000,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "numberOfUnitsAmount12": {
+      "id": "numberOfUnitsAmount12",
+      "value": 30000,
+      "type": "number",
+      "label": "Number of Units",
+      "placeholder": 30000,
+      "step": 6000,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "initialSellingPriceAmount13": {
+      "id": "initialSellingPriceAmount13",
+      "value": 2,
+      "type": "number",
+      "label": "Price",
+      "placeholder": 2,
+      "step": 0.4,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "totalOperatingCostPercentageAmount14": {
+      "id": "totalOperatingCostPercentageAmount14",
+      "value": 0.1,
+      "type": "number",
+      "label": "Direct Total Operating Cost Percentage as % of Revenue",
+      "placeholder": 0.1,
+      "step": 0.02,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "engineering_Procurement_and_Construction_EPC_Amount15": {
+      "id": "engineering_Procurement_and_Construction_EPC_Amount15",
+      "value": 0,
+      "type": "number",
+      "label": "Engineering Procurement and Construction as % of BEC",
+      "placeholder": 0,
+      "step": 0,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "process_contingency_PC_Amount16": {
+      "id": "process_contingency_PC_Amount16",
+      "value": 0,
+      "type": "number",
+      "label": "Process Contingency as % of BEC",
+      "placeholder": 0,
+      "step": 0,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "project_Contingency_PT_BEC_EPC_PCAmount17": {
+      "id": "project_Contingency_PT_BEC_EPC_PCAmount17",
+      "value": 0,
+      "type": "number",
+      "label": "Project Contingency as % of BEC, EPC, PC",
+      "placeholder": 0,
+      "step": 0,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "use_direct_operating_expensesAmount18": {
+      "id": "use_direct_operating_expensesAmount18",
+      "value": "False",
+      "type": "select",
+      "label": "Use Direct Operating Expenses",
+      "placeholder": "False",
+      "step": "",
+      "options": [
+        "True",
+        "False"
+      ],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "use_direct_revenueAmount19": {
+      "id": "use_direct_revenueAmount19",
+      "value": "False",
+      "type": "select",
+      "label": "Use Direct Revenue",
+      "placeholder": "False",
+      "step": "",
+      "options": [
+        "True",
+        "False"
+      ],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "depreciationMethodAmount20": {
+      "id": "depreciationMethodAmount20",
+      "value": "Straight-Line",
+      "type": "select",
+      "label": "Depreciation Method",
+      "placeholder": "Straight-Line",
+      "step": "",
+      "options": [
+        "Straight-Line",
+        "5-MACRS",
+        "7-MACRS",
+        "15-MACRS",
+        "Custom"
+      ],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "loanTypeAmount21": {
+      "id": "loanTypeAmount21",
+      "value": "simple",
+      "type": "select",
+      "label": "Loan Type",
+      "placeholder": "simple",
+      "step": "",
+      "options": [
+        "simple",
+        "compounded"
+      ],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "interestTypeAmount22": {
+      "id": "interestTypeAmount22",
+      "value": "fixed",
+      "type": "select",
+      "label": "Interest Type",
+      "placeholder": "fixed",
+      "step": "",
+      "options": [
+        "fixed",
+        "variable"
+      ],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "generalInflationRateAmount23": {
+      "id": "generalInflationRateAmount23",
+      "value": 0,
+      "type": "number",
+      "label": "General Inflation Rate",
+      "placeholder": 0,
+      "step": 0,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "interestProportionAmount24": {
+      "id": "interestProportionAmount24",
+      "value": 0.5,
+      "type": "number",
+      "label": "Interest Proportion",
+      "placeholder": 0.5,
+      "step": 0.1,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "principalProportionAmount25": {
+      "id": "principalProportionAmount25",
+      "value": 0.5,
+      "type": "number",
+      "label": "Principal Proportion",
+      "placeholder": 0.5,
+      "step": 0.1,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "loanPercentageAmount26": {
+      "id": "loanPercentageAmount26",
+      "value": 0.2,
+      "type": "number",
+      "label": "Loan Percentage of TOC",
+      "placeholder": 0.2,
+      "step": 0.04,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "repaymentPercentageOfRevenueAmount27": {
+      "id": "repaymentPercentageOfRevenueAmount27",
+      "value": 0.1,
+      "type": "number",
+      "label": "Repayment Percentage Of Revenue",
+      "placeholder": 0.1,
+      "step": 0.02,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "numberofconstructionYearsAmount28": {
+      "id": "numberofconstructionYearsAmount28",
+      "value": 1,
+      "type": "number",
+      "label": "Number of Construction Years",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "iRRAmount30": {
+      "id": "iRRAmount30",
+      "value": 0.05,
+      "type": "number",
+      "label": "Internal Rate of Return",
+      "placeholder": 0.05,
+      "step": 0.01,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "annualInterestRateAmount31": {
+      "id": "annualInterestRateAmount31",
+      "value": 0.04,
+      "type": "number",
+      "label": "Annual Interest Rate",
+      "placeholder": 0.04,
+      "step": 0.008,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "stateTaxRateAmount32": {
+      "id": "stateTaxRateAmount32",
+      "value": 0.05,
+      "type": "number",
+      "label": "State Tax Rate",
+      "placeholder": 0.05,
+      "step": 0.01,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "federalTaxRateAmount33": {
+      "id": "federalTaxRateAmount33",
+      "value": 0.21,
+      "type": "number",
+      "label": "Federal Tax Rate",
+      "placeholder": 0.21,
+      "step": 0.042,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "rawmaterialAmount34": {
+      "id": "rawmaterialAmount34",
+      "value": 10000,
+      "type": "number",
+      "label": "Feedstock Cost",
+      "placeholder": 10000,
+      "step": 2000,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "laborAmount35": {
+      "id": "laborAmount35",
+      "value": 24000,
+      "type": "number",
+      "label": "Labor Cost",
+      "placeholder": 24000,
+      "step": 4800,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "utilityAmount36": {
+      "id": "utilityAmount36",
+      "value": 5000,
+      "type": "number",
+      "label": "Utility Cost",
+      "placeholder": 5000,
+      "step": 1000,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "maintenanceAmount37": {
+      "id": "maintenanceAmount37",
+      "value": 2500,
+      "type": "number",
+      "label": "Maintenance Cost",
+      "placeholder": 2500,
+      "step": 500,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "insuranceAmount38": {
+      "id": "insuranceAmount38",
+      "value": 500,
+      "type": "number",
+      "label": "Insurance Cost",
+      "placeholder": 500,
+      "step": 100,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "vAmount40": {
+      "id": "vAmount40",
+      "value": 1,
+      "type": "number",
+      "label": "v40",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "vAmount41": {
+      "id": "vAmount41",
+      "value": 1,
+      "type": "number",
+      "label": "v41",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "vAmount42": {
+      "id": "vAmount42",
+      "value": 1,
+      "type": "number",
+      "label": "v42",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "vAmount43": {
+      "id": "vAmount43",
+      "value": 1,
+      "type": "number",
+      "label": "v43",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "vAmount44": {
+      "id": "vAmount44",
+      "value": 1,
+      "type": "number",
+      "label": "v44",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "vAmount45": {
+      "id": "vAmount45",
+      "value": 1,
+      "type": "number",
+      "label": "v45",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "vAmount46": {
+      "id": "vAmount46",
+      "value": 1,
+      "type": "number",
+      "label": "v46",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "vAmount47": {
+      "id": "vAmount47",
+      "value": 1,
+      "type": "number",
+      "label": "v47",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "vAmount48": {
+      "id": "vAmount48",
+      "value": 1,
+      "type": "number",
+      "label": "v48",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "vAmount49": {
+      "id": "vAmount49",
+      "value": 1,
+      "type": "number",
+      "label": "v49",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "vAmount50": {
+      "id": "vAmount50",
+      "value": 1,
+      "type": "number",
+      "label": "v50",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "vAmount51": {
+      "id": "vAmount51",
+      "value": 1,
+      "type": "number",
+      "label": "v51",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "vAmount52": {
+      "id": "vAmount52",
+      "value": 1,
+      "type": "number",
+      "label": "v52",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "vAmount53": {
+      "id": "vAmount53",
+      "value": 1,
+      "type": "number",
+      "label": "v53",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "vAmount54": {
+      "id": "vAmount54",
+      "value": 1,
+      "type": "number",
+      "label": "v54",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "vAmount55": {
+      "id": "vAmount55",
+      "value": 1,
+      "type": "number",
+      "label": "v55",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "vAmount56": {
+      "id": "vAmount56",
+      "value": 1,
+      "type": "number",
+      "label": "v56",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "vAmount57": {
+      "id": "vAmount57",
+      "value": 1,
+      "type": "number",
+      "label": "v57",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "vAmount58": {
+      "id": "vAmount58",
+      "value": 1,
+      "type": "number",
+      "label": "v58",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "vAmount59": {
+      "id": "vAmount59",
+      "value": 1,
+      "type": "number",
+      "label": "v59",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "rAmount60": {
+      "id": "rAmount60",
+      "value": 1,
+      "type": "number",
+      "label": "r60",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "rAmount61": {
+      "id": "rAmount61",
+      "value": 1,
+      "type": "number",
+      "label": "r61",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "rAmount62": {
+      "id": "rAmount62",
+      "value": 1,
+      "type": "number",
+      "label": "r62",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "rAmount63": {
+      "id": "rAmount63",
+      "value": 1,
+      "type": "number",
+      "label": "r63",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "rAmount64": {
+      "id": "rAmount64",
+      "value": 1,
+      "type": "number",
+      "label": "r64",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "rAmount65": {
+      "id": "rAmount65",
+      "value": 1,
+      "type": "number",
+      "label": "r65",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "rAmount66": {
+      "id": "rAmount66",
+      "value": 1,
+      "type": "number",
+      "label": "r66",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "rAmount67": {
+      "id": "rAmount67",
+      "value": 1,
+      "type": "number",
+      "label": "r67",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "rAmount68": {
+      "id": "rAmount68",
+      "value": 1,
+      "type": "number",
+      "label": "r68",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "rAmount69": {
+      "id": "rAmount69",
+      "value": 1,
+      "type": "number",
+      "label": "r69",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "rAmount70": {
+      "id": "rAmount70",
+      "value": 1,
+      "type": "number",
+      "label": "r70",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "rAmount71": {
+      "id": "rAmount71",
+      "value": 1,
+      "type": "number",
+      "label": "r71",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "rAmount72": {
+      "id": "rAmount72",
+      "value": 1,
+      "type": "number",
+      "label": "r72",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "rAmount73": {
+      "id": "rAmount73",
+      "value": 1,
+      "type": "number",
+      "label": "r73",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "rAmount74": {
+      "id": "rAmount74",
+      "value": 1,
+      "type": "number",
+      "label": "r74",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "rAmount75": {
+      "id": "rAmount75",
+      "value": 1,
+      "type": "number",
+      "label": "r75",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "rAmount76": {
+      "id": "rAmount76",
+      "value": 1,
+      "type": "number",
+      "label": "r76",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "rAmount77": {
+      "id": "rAmount77",
+      "value": 1,
+      "type": "number",
+      "label": "r77",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "rAmount78": {
+      "id": "rAmount78",
+      "value": 1,
+      "type": "number",
+      "label": "r78",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "rAmount79": {
+      "id": "rAmount79",
+      "value": 1,
+      "type": "number",
+      "label": "r79",
+      "placeholder": 1,
+      "step": 0.2,
+      "options": [],
+      "remarks": "",
+      "remarksStyle": {
+        "color": "#007bff !important"
+      },
+      "efficacyPeriod": {
+        "start": {
+          "value": 0,
+          "type": "number",
+          "label": "Start",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        },
+        "end": {
+          "value": 20,
+          "type": "number",
+          "label": "End",
+          "step": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    }
+  }
+}
+2025-04-09 16:32:22,949 - CalculationsLogger - INFO - Found year columns configuration from plantLifetimeAmount10: 20
+2025-04-09 16:32:22,950 - CalculationsLogger - INFO - Processing versions: ['5']
+2025-04-09 16:32:22,950 - CalculationsLogger - INFO - V states - Enabled: ['V1'], Disabled: ['V2', 'V3', 'V4', 'V5', 'V6', 'V7', 'V8', 'V9', 'V10']
+2025-04-09 16:32:22,950 - CalculationsLogger - INFO - F states - Enabled: ['F1', 'F2', 'F3', 'F4', 'F5'], Disabled: []
+2025-04-09 16:32:22,950 - CalculationsLogger - INFO - Calculation option: calculateForPrice, Target row: 20
+2025-04-09 16:32:22,950 - CalculationsLogger - INFO - Price optimization parameters:
+2025-04-09 16:32:22,950 - CalculationsLogger - INFO -   - Tolerance bounds: Lower=-1000, Upper=1000
+2025-04-09 16:32:22,950 - CalculationsLogger - INFO -   - Adjustment rates: Increase=1.02, Decrease=0.985
+2025-04-09 16:32:22,958 - CalculationsLogger - INFO - Sensitivity Parameters:
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| Parameter   | Enabled   | Mode              | Compare To   | Comparison Type   | Visualization         |
++=============+===========+===================+==============+===================+=======================+
+| S10         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S11         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S12         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S13         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S14         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S15         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S16         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S17         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S18         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S19         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S20         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S21         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S22         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S23         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S24         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S25         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S26         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S27         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S28         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S29         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S30         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S31         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S32         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S33         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S34         | Yes       | percentage        | S13          |                   | Point                 |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S35         | Yes       | directvalue       | S13          |                   | Bar                   |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S36         | Yes       | absolutedeparture | S13          |                   | Waterfall             |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S37         | Yes       | percentage        | S13          |                   | Waterfall, Bar, Point |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S38         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S39         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S40         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S41         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S42         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S43         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S44         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S45         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S46         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S47         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S48         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S49         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S50         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S51         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S52         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S53         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S54         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S55         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S56         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S57         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S58         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S59         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S60         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S61         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S62         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S63         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S64         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S65         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S66         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S67         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S68         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S69         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S70         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S71         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S72         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S73         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S74         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S75         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S76         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S77         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S78         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+| S79         | No        |                   |              |                   | None                  |
++-------------+-----------+-------------------+--------------+-------------------+-----------------------+
+2025-04-09 16:32:22,958 - CalculationsLogger - INFO - Year columns configuration: {"5": 20}
+2025-04-09 16:32:22,959 - CalculationsLogger - INFO - Processing version 5
+2025-04-09 16:32:22,959 - CalculationsLogger - INFO - Starting processing for version 5
+2025-04-09 16:32:23,258 - CalculationsLogger - INFO - Successfully ran formatter.py for version 5
+2025-04-09 16:32:24,547 - CalculationsLogger - INFO - Successfully ran module1.py for version 5
+2025-04-09 16:32:27,647 - CalculationsLogger - INFO - Successfully ran config_modules.py for version 5
+2025-04-09 16:32:36,594 - CalculationsLogger - INFO - Successfully ran Table.py for version 5
+2025-04-09 16:32:58,449 - CalculationsLogger - INFO - Successfully ran CFA.py for version 5
+2025-04-09 16:32:58,449 - CalculationsLogger - INFO - Successfully completed processing for version 5
+2025-04-09 16:32:58,449 - CalculationsLogger - INFO - Waiting 1 second before executing R scripts...
+2025-04-09 16:32:59,454 - CalculationsLogger - INFO - Calculation completed successfully
+2025-04-09 16:32:59,501 - CalculationsLogger - WARNING - No price data found for version 5
+2025-04-09 16:32:59,501 - CalculationsLogger - INFO - Initialized monitor for version 5, status file: C:\Users\Mohse\IdeaProjects2\codebase\backend\..\..\Original\Batch(5)\Results(5)\price_optimization_status_5.json
+2025-04-09 16:32:59,501 - CalculationsLogger - INFO - Client added to monitor for version 5. Total clients: 1
+2025-04-09 16:32:59,501 - CalculationsLogger - INFO - Monitoring thread started for version 5
+2025-04-09 16:33:01,519 - CalculationsLogger - WARNING - Status file not found for version 5, consecutive errors: 5
+2025-04-09 16:33:04,043 - CalculationsLogger - WARNING - Status file not found for version 5, consecutive errors: 10
+2025-04-09 16:33:06,547 - CalculationsLogger - WARNING - Status file not found for version 5, consecutive errors: 15
+2025-04-09 16:33:09,299 - CalculationsLogger - WARNING - Status file not found for version 5, consecutive errors: 20
+2025-04-09 16:33:09,898 - CalculationsLogger - ERROR - Too many consecutive errors for version 5, stopping monitor
+2025-04-09 16:33:09,898 - CalculationsLogger - INFO - Monitoring stopped for version 5
+2025-04-09 16:33:09,898 - CalculationsLogger - INFO - Stream ending for version 5 - calculation complete

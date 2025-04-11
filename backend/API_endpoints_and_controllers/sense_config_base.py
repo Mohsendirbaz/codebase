@@ -176,7 +176,7 @@ def generate_sensitivity_datapoints(version, SenParameters):
                 "info": "Position indicator: '+' (all above), '-' (all below), or 'b#' (# variations below baseline)",
                 "data": "Collection of variation measurements",
                 "data:keys": "Numerical measurement points determined by sense_config_base.py",
-                "data:values": "Actual measurements populated by CFA_Sensitivity.py. Must be initially null/empty when created by sense_config_base.py"
+                "data:values": "Actual measurements. Must be initially null/empty when created by sense_config_base.py"
             }
         }
     }
