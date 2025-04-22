@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useFormValues from './useFormValues';
 import Popup from './components/modules/Efficacy';
 import { faEdit, faCheck, faTimes, faSave, faUndo } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import { sensitivityActionRef } from './components/modules/SensitivityMonitor';
-import FactualPrecedence from './components/find_factual_precedence/components/modules/FactualPrecedence/index'
+import FactualPrecedence from './components/find_factual_precedence/components/modules/FactualPrecedence/index';
+// Import label references for reset functionality
+import * as labelReferences from './utils/labelReferences';
 /**
  * GeneralFormConfig Component
  * Handles configuration of form values, labels, and related settings
@@ -18,6 +20,7 @@ const GeneralFormConfig = ({
                              V, toggleV,
                              R, toggleR,
                              F, toggleF,
+                             RF, toggleRF,
                              setVersion,
                              summaryItems,
                            }) => {
@@ -58,7 +61,7 @@ const GeneralFormConfig = ({
     if (!match) return null;
 
     const num = parseInt(match[1]);
-    if (num >= 10 && num <= 79) return `S${num}`; // S10-S79
+    if (num >= 10 && num <= 84) return `S${num}`; // S10-S79
     return null;
   };
 
@@ -88,6 +91,16 @@ const GeneralFormConfig = ({
     return null;
   };
 
+  // Get RF parameter number (fixed revenue parameters)
+  const getRFNumber = (key) => {
+    const match = key.match(/Amount(\d+)/);
+    if (!match) return null;
+
+    const num = parseInt(match[1]);
+    if (num >= 80 && num <= 84) return `RF${num - 79}`;
+    return null;
+  };
+
   //--------------------------------------------------------------------------
   // SUMMARY ITEM HANDLING
   //--------------------------------------------------------------------------
@@ -109,12 +122,14 @@ const GeneralFormConfig = ({
         const vKey = key.includes('vAmount') ? getVNumber(key.replace('vAmount', '')) : null;
         const rKey = key.includes('rAmount') ? getRNumber(key.replace('rAmount', '')) : null;
         const fKey = getFNumber(key);
+        const rfKey = getRFNumber(key);
         const sKey = getSNumber(key);
         return {
           id: key,
           vKey,
           rKey,
           fKey,
+          rfKey,
           sKey,
           ...formValues[key]
         };
@@ -154,7 +169,18 @@ const GeneralFormConfig = ({
     setUpdateStatus('Label saved locally - remember to update form');
     setTimeout(() => setUpdateStatus(''), 3000);
   };
-
+  const [tempLabel_container] = useState({});
+  // useEffect to be notified everytime handleLabelSave is called update tempLabel_container
+  useEffect(() => {
+    // This effect runs whenever editedLabels changes (from handleLabelSave)
+    if (Object.keys(editedLabels).length > 0) {
+      // Store the saved label in tempLabel_container
+      const itemId = Object.keys(editedLabels).find(id => editedLabels[id]);
+      if (itemId && tempLabel_container.current) {
+        tempLabel_container.current[itemId] = tempLabel;
+      }
+    }
+  }, [editedLabels, tempLabel, tempLabel_container]);
   // Update all edited labels to server
   const handleUpdateFormLabels = async () => {
     try {
@@ -166,7 +192,8 @@ const GeneralFormConfig = ({
         if (formValues[key]) {
           updates[key] = {
             label: formValues[key].label,
-            value: formValues[key].value
+            value: formValues[key].value,
+            labelEdited: true // Flag to indicate the label was edited
           };
         }
       });
@@ -178,9 +205,10 @@ const GeneralFormConfig = ({
         return;
       }
 
-      const response = await axios.post('/api/update-form-values', { updates });
+      const response = await axios.post('http://localhost:3060/api/update-form-values', { updates });
 
       if (response.data.success) {
+        // Clear tracking after successful update
         setEditedLabels({});
         setUpdateStatus(`${Object.keys(updates).length} labels updated successfully`);
         setTimeout(() => setUpdateStatus(''), 3000);
@@ -196,17 +224,60 @@ const GeneralFormConfig = ({
     }
   };
 
-  // Reset all labels to original values
-  const handleResetLabels = () => {
-    if (window.confirm('Reset all labels to original values?')) {
-      Object.entries(originalLabels).forEach(([key, label]) => {
+  // Reset all labels to original values using labelReferences
+  const handleResetLabels = async () => {
+    if (window.confirm('Reset all labels and default values to original values?')) {
+      // First, reset labels locally
+      const updatedLabels = {};
+      Object.entries(labelReferences.propertyMapping).forEach(([key, label]) => {
         if (formValues[key]) {
           handleInputChange({ target: { value: label } }, key, 'label');
+
+          // Also reset default values if available
+          if (labelReferences.defaultValues && labelReferences.defaultValues[key] !== undefined) {
+            handleInputChange({ target: { value: labelReferences.defaultValues[key] } }, key, 'value');
+          }
+
+          // Mark this label as edited so we can update the server
+          updatedLabels[key] = true;
         }
       });
-      setEditedLabels({});
-      setUpdateStatus('Labels reset to original values');
-      setTimeout(() => setUpdateStatus(''), 3000);
+
+      // Update the server with all reset values
+      try {
+        setIsUpdating(true);
+        setUpdateStatus('Updating form with original values...');
+
+        const updates = {};
+        Object.keys(updatedLabels).forEach(key => {
+          if (formValues[key]) {
+            updates[key] = {
+              label: formValues[key].label,
+              value: formValues[key].value,
+              labelEdited: true // Flag to indicate the label was reset
+            };
+          }
+        });
+
+        if (Object.keys(updates).length > 0) {
+          const response = await axios.post('http://localhost:3060/api/update-form-values', { updates });
+
+          if (response.data.success) {
+            setUpdateStatus(`Reset complete: ${Object.keys(updates).length} items restored to original values`);
+          } else {
+            throw new Error(response.data.message);
+          }
+        } else {
+          setUpdateStatus('No items to reset');
+        }
+      } catch (error) {
+        console.error('Reset failed:', error);
+        setUpdateStatus(`Reset failed: ${error.message}`);
+      } finally {
+        setIsUpdating(false);
+        setEditedLabels({});
+        setTimeout(() => setUpdateStatus(''), 3000);
+      }
     }
   };
 
@@ -231,8 +302,8 @@ const GeneralFormConfig = ({
   const handleScheduleClick = (e, itemId) => {
     const rect = e.target.getBoundingClientRect();
     setPopupPosition({
-      top: rect.top + window.scrollY + 100,
-      left: rect.left + rect.width + 10,
+      top: rect.top + window.scrollY + 61.8,
+      left: rect.left + rect.width + 1000,
     });
     setSelectedItemId(itemId);
 
@@ -247,9 +318,33 @@ const GeneralFormConfig = ({
   const handleFactualPrecedenceClick = (event, itemId) => {
     event.preventDefault();
     const rect = event.currentTarget.getBoundingClientRect();
-    setFactualPrecedencePosition({
-      top: rect.bottom + window.scrollY,
-      left: rect.left + window.scrollX
+    // Calculate position relative to viewport with offset and boundary checking
+    setFactualPrecedencePosition(() => {
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
+
+      // Default position (below the element)
+      let top = rect.bottom + window.scrollY + 10; // 10px padding
+      let left = rect.left + window.scrollX;
+
+      // Right offset (add 300px to the right)
+      left += 300;
+
+      // Boundary checking (keep popup within viewport)
+      const popupWidth = 550; // From CSS width
+      const popupHeight = 400; // Estimated height
+
+      // Adjust if would go off right edge
+      if (left + popupWidth > viewportWidth) {
+        left = viewportWidth - popupWidth - 20; // 20px margin
+      }
+
+      // Adjust if would go off bottom edge
+      if (top + popupHeight > viewportHeight) {
+        top = rect.top + window.scrollY - popupHeight - 10; // Show above instead
+      }
+
+      return { top, left };
     });
     // Set factual item ID separately from selected item ID
     setFactualItemId(itemId);
@@ -320,6 +415,17 @@ const GeneralFormConfig = ({
                           className="custom-checkbox"
                           checked={F[item.fKey] === 'on'}
                           onChange={() => toggleF(item.fKey)}
+                      />
+                    </div>
+                )}
+                {item.rfKey && (
+                    <div className="checkbox-group">
+                      <span className="checkbox-label">{item.rfKey}</span>
+                      <input
+                          type="checkbox"
+                          className="custom-checkbox"
+                          checked={RF[item.rfKey] === 'on'}
+                          onChange={() => toggleRF(item.rfKey)}
                       />
                     </div>
                 )}

@@ -103,14 +103,103 @@ app.post('/api/update-form-values', (req, res) => {
 
     let defaultValuesContent = defaultValuesMatch[0];
     Object.keys(updates).forEach(key => {
-      const regex = new RegExp(`"${key}":\\s*[^,]+`);
-      if (regex.test(defaultValuesContent)) {
-        defaultValuesContent = defaultValuesContent.replace(
-            regex,
-            `"${key}": ${JSON.stringify(updates[key].value)}`
-        );
-      } else {
-        console.warn(`Key ${key} not found in defaultValues`);
+      // Only update default values for fields where the label was edited
+      if (updates[key].labelEdited) {
+        // More robust regex that handles various formats of the default value
+        // This handles numbers, strings, booleans, arrays, and both quoted and unquoted keys
+        // The pattern matches the key followed by a colon, then captures everything up to the next comma or closing brace
+        const regex = new RegExp(`("${key}"|${key})\\s*:\\s*([^,}]*(\\{[^}]*\\})?[^,}]*)[,}]`);
+        let match = defaultValuesContent.match(regex);
+
+        // Special handling for vAmount and rAmount keys that might be in Object.fromEntries
+        if (!match) {
+          // Check if this is a vAmount or rAmount key
+          const vAmountMatch = key.match(/^vAmount(\d+)$/);
+          const rAmountMatch = key.match(/^rAmount(\d+)$/);
+
+          if (vAmountMatch && vAmountMatch[1] >= 40 && vAmountMatch[1] <= 59) {
+            // This is a vAmount key, update only this specific key in the Object.fromEntries expression
+            console.log(`Special handling for vAmount key: ${key}`);
+
+            // Extract the specific index for this vAmount key (0-19)
+            const vIndex = parseInt(vAmountMatch[1]) - 40;
+
+            // Create a new Object.fromEntries expression that updates only the specific key
+            // We'll use a conditional inside the mapping function to apply different values based on the index
+            const newValue = JSON.stringify(updates[key].value);
+
+            // Find the current Object.fromEntries expression for vAmount
+            const vEntriesRegex = /\.\.\.Object\.fromEntries\(\s*Array\.from\(\{\s*length:\s*20\s*\},\s*\(_,\s*i\)\s*=>\s*\[`vAmount\$\{40\s*\+\s*i\}`,([^\]]*)\]\s*\)\s*\),/;
+            const vEntriesMatch = defaultValuesContent.match(vEntriesRegex);
+
+            if (vEntriesMatch) {
+              // Get the current value used for all vAmount keys
+              const currentValue = vEntriesMatch[1].trim();
+
+              // Replace with a new expression that uses a conditional to apply different values
+              defaultValuesContent = defaultValuesContent.replace(
+                vEntriesRegex,
+                `...Object.fromEntries(Array.from({ length: 20 }, (_, i) => [\`vAmount\${40 + i}\`, i === ${vIndex} ? ${newValue} : ${currentValue}])),`
+              );
+
+              console.log(`Updated vAmount${vAmountMatch[1]} to ${newValue} while preserving other values`);
+              return; // Skip the rest of the loop for this key
+            }
+          }
+
+          if (rAmountMatch && rAmountMatch[1] >= 60 && rAmountMatch[1] <= 79) {
+            // This is an rAmount key, update only this specific key in the Object.fromEntries expression
+            console.log(`Special handling for rAmount key: ${key}`);
+
+            // Extract the specific index for this rAmount key (0-19)
+            const rIndex = parseInt(rAmountMatch[1]) - 60;
+
+            // Create a new Object.fromEntries expression that updates only the specific key
+            // We'll use a conditional inside the mapping function to apply different values based on the index
+            const newValue = JSON.stringify(updates[key].value);
+
+            // Find the current Object.fromEntries expression for rAmount
+            const rEntriesRegex = /\.\.\.Object\.fromEntries\(\s*Array\.from\(\{\s*length:\s*20\s*\},\s*\(_,\s*i\)\s*=>\s*\[`rAmount\$\{60\s*\+\s*i\}`,([^\]]*)\]\s*\)\s*\)/;
+            const rEntriesMatch = defaultValuesContent.match(rEntriesRegex);
+
+            if (rEntriesMatch) {
+              // Get the current value used for all rAmount keys
+              const currentValue = rEntriesMatch[1].trim();
+
+              // Replace with a new expression that uses a conditional to apply different values
+              defaultValuesContent = defaultValuesContent.replace(
+                rEntriesRegex,
+                `...Object.fromEntries(Array.from({ length: 20 }, (_, i) => [\`rAmount\${60 + i}\`, i === ${rIndex} ? ${newValue} : ${currentValue}]))`
+              );
+
+              console.log(`Updated rAmount${rAmountMatch[1]} to ${newValue} while preserving other values`);
+              return; // Skip the rest of the loop for this key
+            }
+          }
+        }
+
+        if (match) {
+          // Extract the matched text and determine the key format and separator
+          const matchedText = match[0];
+          const isLastItem = matchedText.endsWith('}');
+          const separator = isLastItem ? '}' : ',';
+
+          // Determine if the key in the original text is quoted or not
+          const keyFormat = matchedText.trim().startsWith(`"${key}"`) ? `"${key}"` : key;
+
+          // Create replacement with the same key format and ending character
+          // Use JSON.stringify to properly format the value (handles strings, numbers, booleans, etc.)
+          const replacement = `${keyFormat}: ${JSON.stringify(updates[key].value)}${separator}`;
+
+          console.log(`Replacing: "${matchedText}" with "${replacement}"`); // Debug log
+
+          // Replace the matched text with our replacement
+          defaultValuesContent = defaultValuesContent.replace(matchedText, replacement);
+
+          console.log(`Updated default value for ${key} to ${JSON.stringify(updates[key].value)}`);
+        } else {
+          console.warn(`Key ${key} not found in defaultValues`);
+        }
       }
     });
 
@@ -190,7 +279,11 @@ app.use((err, req, res, next) => {
   });
 });
 
-const PORT = 3060;
+// Get port from command line arguments or use default
+const PORT = process.argv.includes('--port') 
+  ? parseInt(process.argv[process.argv.indexOf('--port') + 1], 10) 
+  : 3060;
+
 app.listen(PORT, () => {
   console.log(`Label Update server running on port ${PORT}`);
   console.log(`Project root: ${PROJECT_ROOT}`);

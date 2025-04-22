@@ -26,6 +26,7 @@ import PropertySelector from './PropertySelector.js';
 import VersionSelector from './VersionSelector.js';
 import SpatialTransformComponent from './Naturalmotion.js'
 import useFormValues from './useFormValues.js';
+import './styles/HomePage.CSS/ResetOptionsPopup.css';
 import versionEventEmitter from './state/EventEmitter';
 import TestingZone from './components/modules/TestingZone';
 import CalculationMonitor from './components/modules/CalculationMonitor';
@@ -55,31 +56,8 @@ const HomePageContent = () => {
         };
     }, []);
     const [activeSubTab, setActiveSubTab] = useState('ProjectConfig');
-    const [scalingBaseCosts, setScalingBaseCosts] = useState({
-        Amount4: [], // Process Quantities
-        Amount5: [], // Process Costs
-        Amount6: [], // Revenue Quantities
-        Amount7: []  // Revenue Prices
-    });
     const [selectedProperties, setSelectedProperties] = useState([]);
     const [season, setSeason] = useState('dark');
-    const [S, setS] = useState(() => {
-        const initialS = {};
-        for (let i = 10; i <= 79; i++) {
-            initialS[`S${i}`] = {
-                mode: null,
-                values: [],
-                enabled: false,
-                compareToKey: '',
-                comparisonType: null,
-                waterfall: false,
-                bar: false,
-                point: false
-            };
-        }
-
-        return initialS;
-    });
 
     // Loading States
     const [loadingStates, setLoadingStates] = useState({
@@ -147,22 +125,41 @@ const HomePageContent = () => {
 
 
     }, [season]);
-// Add state to store final results by category
-    const [finalResults, setFinalResults] = useState({
-        Amount4: [],
-        Amount5: [],
-        Amount6: [],
-        Amount7: []
-    });
-
-    // Handler for receiving final results from ExtendedScaling
-    const handleFinalResultsGenerated = (summaryItems, filterKeyword) => {
-        setFinalResults(prev => ({
-            ...prev,
-            [filterKeyword]: summaryItems
-        }));
-    };
-    const { formValues, handleInputChange, handleReset, setFormValues } = useFormValues();
+// Final results and handler now managed in useFormValues
+    const { 
+        formValues, 
+        handleInputChange, 
+        handleReset, 
+        setFormValues,
+        S,
+        setS,
+        F,
+        setF,
+        toggleF,
+        V,
+        setV,
+        toggleV,
+        R,
+        setR,
+        toggleR,
+        RF,
+        setRF,
+        toggleRF,
+        scalingGroups,
+        setScalingGroups,
+        scalingBaseCosts,
+        setScalingBaseCosts,
+        finalResults,
+        setFinalResults,
+        handleFinalResultsGenerated,
+        // Reset options popup states and functions
+        showResetOptions,
+        resetOptions,
+        setResetOptions,
+        handleResetOptionChange,
+        handleResetConfirm,
+        handleResetCancel
+    } = useFormValues();
     const [version, setVersion] = useState('1');
     const [batchRunning, setBatchRunning] = useState(false);
     const [analysisRunning, setAnalysisRunning] = useState(false);
@@ -230,7 +227,6 @@ const HomePageContent = () => {
     const [target_row, settarget_row] = useState('20');
     const [calculatedPrices, setCalculatedPrices] = useState({});
     const [baseCosts, setBaseCosts] = useState([]);
-    const [scalingGroups, setScalingGroups] = useState([]);
     const [collapsedTabs, setCollapsedTabs] = useState({});
     const [isToggleSectionOpen, setIsToggleSectionOpen] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
@@ -384,32 +380,70 @@ const HomePageContent = () => {
         }));
     };
 
-    // States for F1-F5 and V1-V10
-    const [F, setF] = useState({ F1: 'on', F2: 'on', F3: 'on', F4: 'on', F5: 'on' });
-    const [V, setV] = useState({
-        V1: 'on',
-        V2: 'off',
-        V3: 'off',
-        V4: 'off',
-        V5: 'off',
-        V6: 'off',
-        V7: 'off',
-        V8: 'off',
-        V9: 'off',
-        V10: 'off',
-    });
-    const [R, setR] = useState({
-        R1: 'on',
-        R2: 'off',
-        R3: 'off',
-        R4: 'off',
-        R5: 'off',
-        R6: 'off',
-        R7: 'off',
-        R8: 'off',
-        R9: 'off',
-        R10: 'off',
-    });
+    // Reset options popup component
+    const ResetOptionsPopup = ({ 
+        show, 
+        options, 
+        onOptionChange, 
+        onConfirm, 
+        onCancel 
+    }) => {
+        if (!show) return null;
+
+        return (
+            <div className="reset-options-popup-overlay">
+                <div className="reset-options-popup">
+                    <h3>Select states to reset</h3>
+                    <div className="checkbox-row">
+                        <label className="reset-option-label">
+                            <input 
+                                type="checkbox" 
+                                checked={options.S} 
+                                onChange={() => onOptionChange('S')} 
+                            />
+                            S (Sensitivity Analysis)
+                        </label>
+                    </div>
+                    <div className="checkbox-row">
+                        <label className="reset-option-label">
+                            <input 
+                                type="checkbox" 
+                                checked={options.F} 
+                                onChange={() => onOptionChange('F')} 
+                            />
+                            F (Factor Parameters)
+                        </label>
+                    </div>
+                    <div className="checkbox-row">
+                        <label className="reset-option-label">
+                            <input 
+                                type="checkbox" 
+                                checked={options.V} 
+                                onChange={() => onOptionChange('V')} 
+                            />
+                            V (Process Quantities)
+                        </label>
+                    </div>
+                    <div className="checkbox-row">
+                        <label className="reset-option-label">
+                            <input 
+                                type="checkbox" 
+                                checked={options.R} 
+                                onChange={() => onOptionChange('R')} 
+                            />
+                            R (Revenue Variables)
+                        </label>
+                    </div>
+                    <div className="reset-options-buttons">
+                        <button onClick={onConfirm} className="reset-confirm-button">Reset</button>
+                        <button onClick={onCancel} className="reset-cancel-button">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        );
+    };
+
+    // States for V1-V10 and R1-R10 now managed in useFormValues
     const handleThemeChange = (newSeason) => {
         const themeRibbon = document.querySelector('.theme-ribbon');
 
@@ -420,25 +454,7 @@ const HomePageContent = () => {
 
     };
 
-    const toggleF = (key) => {
-        setF((prev) => ({
-            ...prev,
-            [key]: prev[key] === 'off' ? 'on' : 'off',
-        }));
-    };
-
-    const toggleV = (key) => {
-        setV((prev) => ({
-            ...prev,
-            [key]: prev[key] === 'off' ? 'on' : 'off',
-        }));
-    };
-    const toggleR = (key) => {
-        setR((prev) => ({
-            ...prev,
-            [key]: prev[key] === 'off' ? 'on' : 'off',
-        }));
-    };
+    // Toggle functions for F, V, and R now managed in useFormValues
     const createNewBatch = async () => {
         setBatchRunning(true);
         try {
@@ -525,6 +541,8 @@ const HomePageContent = () => {
                 selectedVersions,
                 selectedV: V,
                 selectedF: F,
+                selectedR: R,
+                selectedRF: RF,
                 selectedCalculationOption,
                 targetRow: target_row,
                 SenParameters: S,
@@ -669,7 +687,7 @@ const HomePageContent = () => {
                 selectedCalculationOption,
                 targetRow: target_row,
                 SenParameters: S,
-                formValues: formValues // Include form values to extract Amount10
+                formValues: formValues // Include form values to extract presentable names
             };
             console.log('Running CFA with parameters:', requestPayload);
 
@@ -840,9 +858,25 @@ const HomePageContent = () => {
                 console.warn('Unified sensitivity analysis failed:', allError);
             }
 
+
+// STEP 10: Inject presentable parameter names into sensitivity JSON
+            console.log('Step 10: Injecting presentable parameter names...');
+            const injectResponse = await fetch('http://127.0.0.1:2500/inject-names', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    version: selectedVersions[0]
+                }),
+            });
+            if (injectResponse.ok) {
+                const injectResult = await injectResponse.json();
+                console.log('Parameter names injected successfully:', injectResult);
+            } else {
+                const injectError = await injectResponse.json();
+                console.warn('Failed to inject parameter names:', injectError);
+            }
             setSuccess('Analysis completed successfully!');
             setError(null);
-
         } catch (error) {
             console.error('Error during CFA calculation:', error);
             setError(error.message);
@@ -1428,6 +1462,12 @@ const HomePageContent = () => {
                         >
                             + Scaling
                         </button>
+                <button
+                    className={`sub-tab-button ${activeSubTab === 'FixedRevenueConfig' ? 'active' : ''}`}
+                    onClick={() => setActiveSubTab('FixedRevenueConfig')}
+                >
+                    Fixed Revenue Components <br /> (RFs, $)
+                </button>
             </div>
             <div className="form-content">
 
@@ -1633,6 +1673,21 @@ const HomePageContent = () => {
 
                         onScalingGroupsChange={handleScalingGroupsChange}
                         onScaledValuesChange={handleScaledValuesChange}
+
+                    />
+                )}
+                { activeSubTab === 'FixedRevenueConfig' && (
+                    <GeneralFormConfig
+                        formValues={formValues}
+                        handleInputChange={handleInputChange}
+                        version={version}
+                        filterKeyword="Amount8"
+                        RF={RF}
+                        setRF={setRF}
+                        toggleRF={toggleRF}
+                        S={S || {}}
+                        setS={setS}
+                        setVersion={setVersion}
                     />
                 )}
                 <div className="form-panel-container" style={{gap: 0, margin: 0, padding: 0}}>
@@ -1744,6 +1799,12 @@ const HomePageContent = () => {
                             >
                                 Run Sensitivity
                             </button>
+                            <button
+                                onClick={handleRuns}
+                                style={{padding: "5px 8px"}}
+                            >
+                                Visualize Sensitivity
+                            </button>
                             {/* <span className="tooltip1">
                                 <p className="left-aligned-text">
                                     Engage the button to unleash a thorough cash flow analysis:
@@ -1782,6 +1843,15 @@ const HomePageContent = () => {
                                 Reset
                             </button>
                         </div>
+
+                        {/* Reset Options Popup */}
+                        <ResetOptionsPopup
+                            show={showResetOptions}
+                            options={resetOptions}
+                            onOptionChange={handleResetOptionChange}
+                            onConfirm={handleResetConfirm}
+                            onCancel={handleResetCancel}
+                        />
                     </div>
                 </div>
                 </div>
@@ -1913,6 +1983,7 @@ const HomePageContent = () => {
                     <div>
                         <FactEngine />
                         <FactEngineAdmin />
+                        <StickerHeader />
                     </div>
                 );
 
@@ -1938,7 +2009,7 @@ const HomePageContent = () => {
 
     return (
         <div className="HomePage">
-            <StickerHeader />
+
             <div className="HomePageSectionA">
                 <div className="about-us-image1"></div>
                 <div className="HomePageSectionT">

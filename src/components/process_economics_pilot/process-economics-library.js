@@ -386,22 +386,6 @@ const ProcessEconomicsLibrary = ({
             <FunnelIcon className="button-icon" />
             Filters
           </button>
-
-          <button
-            className="save-button"
-            onClick={() => {
-              setSelectedItem({ configuration: currentConfiguration });
-              setIsSaving(true);
-              setSaveName('');
-              setSaveCategory('');
-              setSaveTags([]);
-            }}
-            disabled={!currentConfiguration}
-          >
-            <ArrowDownOnSquareIcon className="button-icon" />
-            Save Current
-          </button>
-
           <input
             type="file"
             ref={fileInputRef}
@@ -1402,7 +1386,7 @@ const styles = `
   margin-bottom: 20px;
 }
 
-.form-group label {
+.form-group label-L {
   display: block;
   margin-bottom: 8px;
   font-weight: 500;

@@ -289,7 +289,7 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
     setS(prevS => {
       const newS = {};
       // Reset all S parameters to initial state
-      for (let i = 10; i <= 79; i++) {
+      for (let i = 10; i <= 84; i++) {
         const key = `S${i}`;
         newS[key] = {
           mode: null,
@@ -342,7 +342,7 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
                   onClick={() => setIsExpanded(true)}
                   aria-label="Expand panel"
               >
-                <span className="vertical-text">Sensitivity Analysis</span> ▲
+                <span className="vertical-text"></span>
               </button>
           )}
         </div>
@@ -660,8 +660,19 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
                                         );
                                       })
                                   }
+
+                                  {/* Manually append S80 to S89 */}
+                                  {[...Array(10)].map((_, i) => {
+                                    const key = `S${80 + i}`;
+                                    return (
+                                        <option key={key} value={key}>
+                                          {key}
+                                        </option>
+                                    );
+                                  })}
                                 </select>
                               </div>
+
 
                               {parameterDetails.compareToKey && (
                                   <div className="form-group">

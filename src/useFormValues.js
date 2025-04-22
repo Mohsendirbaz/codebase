@@ -46,7 +46,7 @@ const propertyMapping = {
   "vAmount52": "v52",
   "vAmount53": "v53",
   "vAmount54": "v54",
-  "vAmount55": "v55",
+  "vAmount55": "v551",
   "vAmount56": "v56",
   "vAmount57": "v57",
   "vAmount58": "v58",
@@ -71,6 +71,11 @@ const propertyMapping = {
   "rAmount77": "r77",
   "rAmount78": "r78",
   "rAmount79": "r79",
+  "RFAmount80": "Material Revenue",
+  "RFAmount81": "Labor Revenue",
+  "RFAmount82": "Utility Revenue",
+  "RFAmount83": "Maintenance Revenue",
+  "RFAmount84": "Insurance Revenue",
 };
 
 // Complete select options mapping
@@ -125,28 +130,35 @@ const iconMapping = {
   ),
   ...Object.fromEntries(
     Array.from({ length: 40 }, (_, i) => [`rAmount${60 + i}`, faWarehouse])
-  )
+  ),
+
+  // RFAmount icons (80-84)
+  "RFAmount80": faWarehouse,
+  "RFAmount81": faTools,
+  "RFAmount82": faWarehouse,
+  "RFAmount83": faTools,
+  "RFAmount84": faHandshake,
 };
 
 // Complete default values initialization
 const defaultValues = {
   // Amount10-19 defaults
-  bECAmount11: 200_000,
+  bECAmount11: 300000,
   numberOfUnitsAmount12: 30000,
   initialSellingPriceAmount13: 2,
   totalOperatingCostPercentageAmount14: 0.1,
   engineering_Procurement_and_Construction_EPC_Amount15: 0,
   process_contingency_PC_Amount16: 0,
   project_Contingency_PT_BEC_EPC_PCAmount17: 0,
-  use_direct_operating_expensesAmount18: 'False',
-  use_direct_revenueAmount19: 'False',
+  use_direct_operating_expensesAmount18: "False",
+  use_direct_revenueAmount19: "False",
   plantLifetimeAmount10: 20,
 
   // Amount20-29 defaults
   numberofconstructionYearsAmount28: 1,
-  depreciationMethodAmount20: 'Straight-Line',
-  loanTypeAmount21: 'simple',
-  interestTypeAmount22: 'fixed',
+  depreciationMethodAmount20: "Straight-Line",
+  loanTypeAmount21: "simple",
+  interestTypeAmount22: "fixed",
   generalInflationRateAmount23: 0,
   interestProportionAmount24: 0.5,
   principalProportionAmount25: 0.5,
@@ -164,12 +176,18 @@ const defaultValues = {
   maintenanceAmount37: 2500,
   insuranceAmount38: 500,
 
+  // RFAmount80-84 defaults
+  RFAmount80: 10000,
+  RFAmount81: 24000,
+  RFAmount82: 5000,
+  RFAmount83: 2500,
+  RFAmount84: 500,
 
   ...Object.fromEntries(
-    Array.from({ length: 20 }, (_, i) => [`vAmount${40 + i}`,1])
+      Array.from({ length: 20 }, (_, i) => [`vAmount${40 + i}`,1])
   ),
   ...Object.fromEntries(
-    Array.from({ length: 20 }, (_, i) => [`rAmount${60 + i}`,1])
+      Array.from({ length: 20 }, (_, i) => [`rAmount${60 + i}`,1])
   )
 };
 
@@ -218,6 +236,123 @@ const initializeFormValues = () => {
 const useFormValues = () => {
   const [formValues, setFormValues] = useState(initializeFormValues());
 
+  // Initialize S state for sensitivity analysis
+  const [S, setS] = useState(() => {
+    const initialS = {};
+    for (let i = 10; i <= 84; i++) {
+      initialS[`S${i}`] = {
+        mode: null,
+        values: [],
+        enabled: false,
+        compareToKey: '',
+        comparisonType: null,
+        waterfall: false,
+        bar: false,
+        point: false
+      };
+    }
+    return initialS;
+  });
+
+  // Initialize F state for factor parameters
+  const [F, setF] = useState({ F1: 'on', F2: 'on', F3: 'on', F4: 'on', F5: 'on' });
+  // Initialize V state for process quantities variables
+  const [V, setV] = useState({
+    V1: 'off',
+    V2: 'off',
+    V3: 'off',
+    V4: 'off',
+    V5: 'off',
+    V6: 'off',
+    V7: 'off',
+    V8: 'off',
+    V9: 'off',
+    V10: 'off',
+  });
+
+  // Initialize R state for revenue variables
+  const [R, setR] = useState({
+    R1: 'off',
+    R2: 'off',
+    R3: 'off',
+    R4: 'off',
+    R5: 'off',
+    R6: 'off',
+    R7: 'off',
+    R8: 'off',
+    R9: 'off',
+    R10: 'off',
+  });
+
+  // Initialize RF state for fixed revenue parameters
+  const [RF, setRF] = useState({ RF1: 'on', RF2: 'on', RF3: 'on', RF4: 'on', RF5: 'on' });
+
+  // Initialize reset options state
+  const [showResetOptions, setShowResetOptions] = useState(false);
+  const [resetOptions, setResetOptions] = useState({
+    S: true,
+    F: true,
+    V: true,
+    R: true,
+    RF: true
+  });
+
+  // Initialize scalingGroups state for scaling operations
+  const [scalingGroups, setScalingGroups] = useState([]);
+
+  // Initialize scalingBaseCosts state
+  const [scalingBaseCosts, setScalingBaseCosts] = useState({
+    Amount4: [], // Process Quantities
+    Amount5: [], // Process Costs
+    Amount6: [], // Revenue Quantities
+    Amount7: []  // Revenue Prices
+  });
+
+  // Initialize finalResults state for storing scaling operation results
+  const [finalResults, setFinalResults] = useState({
+    Amount4: [],
+    Amount5: [],
+    Amount6: [],
+    Amount7: []
+  });
+
+  // Handler for receiving final results from ExtendedScaling
+  const handleFinalResultsGenerated = (summaryItems, filterKeyword) => {
+    setFinalResults(prev => ({
+      ...prev,
+      [filterKeyword]: summaryItems
+    }));
+  };
+
+  // Toggle functions for F, V, and R states
+  const toggleF = (key) => {
+    setF((prev) => ({
+      ...prev,
+      [key]: prev[key] === 'off' ? 'on' : 'off',
+    }));
+  };
+
+  const toggleV = (key) => {
+    setV((prev) => ({
+      ...prev,
+      [key]: prev[key] === 'off' ? 'on' : 'off',
+    }));
+  };
+
+  const toggleR = (key) => {
+    setR((prev) => ({
+      ...prev,
+      [key]: prev[key] === 'off' ? 'on' : 'off',
+    }));
+  };
+
+  const toggleRF = (key) => {
+    setRF((prev) => ({
+      ...prev,
+      [key]: prev[key] === 'off' ? 'on' : 'off',
+    }));
+  };
+
   const handleInputChange = (e, id, type, subType = null) => {
     let { value } = e.target;
 
@@ -255,12 +390,92 @@ const useFormValues = () => {
     });
   };
 
-  const resetFormItemValues = () => {
+  const resetFormItemValues = (options = { S: true, F: true, V: true, R: true, RF: true }) => {
+    // Always reset form values
     setFormValues(initializeFormValues());
+
+    // Reset S state if selected
+    if (options.S) {
+      const initialS = {};
+      for (let i = 10; i <= 84; i++) {
+        initialS[`S${i}`] = {
+          mode: null,
+          values: [],
+          enabled: false,
+          compareToKey: '',
+          comparisonType: null,
+          waterfall: false,
+          bar: false,
+          point: false
+        };
+      }
+      setS(initialS);
+    }
+
+    // Reset F state if selected
+    if (options.F) {
+      setF({ F1: 'on', F2: 'on', F3: 'on', F4: 'on', F5: 'on' });
+    }
+
+    // Reset V state if selected
+    if (options.V) {
+      setV({
+        V1: 'off',
+        V2: 'off',
+        V3: 'off',
+        V4: 'off',
+        V5: 'off',
+        V6: 'off',
+        V7: 'off',
+        V8: 'off',
+        V9: 'off',
+        V10: 'off',
+      });
+    }
+
+    // Reset R state if selected
+    if (options.R) {
+      setR({
+        R1: 'off',
+        R2: 'off',
+        R3: 'off',
+        R4: 'off',
+        R5: 'off',
+        R6: 'off',
+        R7: 'off',
+        R8: 'off',
+        R9: 'off',
+        R10: 'off',
+      });
+    }
+
+    // Reset RF state if selected
+    if (options.RF) {
+      setRF({ RF1: 'on', RF2: 'on', RF3: 'on', RF4: 'on', RF5: 'on' });
+    }
+
+    // Hide the reset options popup
+    setShowResetOptions(false);
   };
 
   const handleReset = () => {
-    resetFormItemValues();
+    // Show the reset options popup
+    setShowResetOptions(true);
+  };
+
+  const handleResetOptionChange = (option) => {
+    setResetOptions(prev => ({
+      ...prev,
+      [option]: !prev[option]
+    }));
+  };
+
+  const handleResetConfirm = () => {
+    resetFormItemValues(resetOptions);
+  };
+
+  const handleResetCancel = () => {
+    setShowResetOptions(false);
   };
 
   return {
@@ -270,7 +485,37 @@ const useFormValues = () => {
     resetFormItemValues,
     handleReset,
     propertyMapping,
-    iconMapping
+    iconMapping,
+    // Return the new states and functions
+    S,
+    setS,
+    F,
+    setF,
+    toggleF,
+    V,
+    setV,
+    toggleV,
+    R,
+    setR,
+    toggleR,
+    RF,
+    setRF,
+    toggleRF,
+    scalingGroups,
+    setScalingGroups,
+    scalingBaseCosts,
+    setScalingBaseCosts,
+    finalResults,
+    setFinalResults,
+    handleFinalResultsGenerated,
+    // Reset options popup states and functions
+    showResetOptions,
+    setShowResetOptions,
+    resetOptions,
+    setResetOptions,
+    handleResetOptionChange,
+    handleResetConfirm,
+    handleResetCancel
   };
 };
 
