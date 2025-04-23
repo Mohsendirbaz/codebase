@@ -17,6 +17,7 @@ import requests
 import glob
 import re
 import pandas as pd
+from Sensitivity_monitor import create_sensitivity_stream_endpoint
 
 # Base directories setup
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -477,6 +478,9 @@ def get_sensitivity_data(version, param_id, mode, compare_to_key):
         return None
 app = Flask(__name__)
 CORS(app)
+
+# Register the sensitivity stream endpoint
+create_sensitivity_stream_endpoint(app)
 setup_logging()
 
 # =====================================
@@ -1003,7 +1007,7 @@ def run_baseline():
 @app.route('/calculate-sensitivity', methods=['POST'])
 def calculate_sensitivity():
     """
-    Execute specific sensitivity calculations using CFA-b.py with paths from CalSen service.
+    Execute specific sensitivity calculations using CFA-b.py with paths from CalSen service (calsen_paths.json that will always be in Reports directory).
     This endpoint runs after the general sensitivity configurations and runs have completed.
     It leverages the CalSen service for path resolution to ensure consistent file locations.
     """
@@ -1142,7 +1146,6 @@ def calculate_sensitivity():
                         command,
                         capture_output=True,
                         text=True,
-                        timeout=600,  # 10-minute timeout
                         env=env,
                         cwd=SCRIPT_DIR  # Set working directory to script directory
                     )
@@ -1603,6 +1606,274 @@ def run_all_sensitivity():
             "error": f"Error executing unified sensitivity runner: {str(e)}"
         }), 500
 
+
+@app.route('/check-calsen-paths', methods=['GET'])
+def check_calsen_paths():
+    """
+    Check if calsen_paths.json exists for the specified version.
+    """
+    sensitivity_logger = logging.getLogger('sensitivity')
+    version = request.args.get('version', '1')
+
+    sensitivity_logger.info(f"Checking if calsen_paths.json exists for version {version}")
+
+    # Calculate path to calsen_paths.json
+    base_dir = os.path.join(BASE_DIR, 'backend', 'Original')
+    sensitivity_dir = os.path.join(base_dir, f'Batch({version})', f'Results({version})', 'Sensitivity')
+    reports_dir = os.path.join(sensitivity_dir, 'Reports')
+    calsen_paths_file = os.path.join(reports_dir, 'calsen_paths.json')
+
+    # Check if file exists
+    file_exists = os.path.exists(calsen_paths_file)
+
+    # Log the result
+    if file_exists:
+        sensitivity_logger.info(f"calsen_paths.json found at {calsen_paths_file}")
+    else:
+        sensitivity_logger.warning(f"calsen_paths.json not found at {calsen_paths_file}")
+
+    # Include payload details for monitoring
+    payload_details = {
+        "operation": "check_calsen_paths",
+        "version": version,
+        "path": calsen_paths_file,
+        "exists": file_exists
+    }
+
+    # Log payload details for monitoring
+    sensitivity_logger.info(f"Payload details: {json.dumps(payload_details)}")
+
+    return jsonify({
+        'exists': file_exists,
+        'path': calsen_paths_file
+    })
+
+@app.route('/run-script-econ', methods=['POST'])
+def run_script_econ():
+    """
+    Execute script_econ.py to extract metrics from Economic Summary CSV files
+    and append them to calsen_paths.json.
+    """
+    sensitivity_logger = logging.getLogger('sensitivity')
+    data = request.get_json()
+    version = data.get('version', '1')
+
+    # Log the start of the operation
+    sensitivity_logger.info(f"Starting script_econ.py execution for version {version}")
+
+    # Include payload details for monitoring
+    payload_details = {
+        "operation": "run_script_econ",
+        "version": version,
+        "timestamp": time.strftime("%Y-%m-%d %H:%M:%S")
+    }
+
+    # Log payload details for monitoring
+    sensitivity_logger.info(f"Payload details: {json.dumps(payload_details)}")
+
+    try:
+        # Get path to script_econ.py
+        script_path = os.path.join(BASE_DIR, 'backend', 'API_endpoints_and_controllers', 'script_econ.py')
+        sensitivity_logger.info(f"Script path: {script_path}")
+
+        # Log calculation step
+        calculation_step = "Extracting metrics from Economic Summary CSV files"
+        sensitivity_logger.info(f"Calculation step: {calculation_step}")
+
+        # Execute script_econ.py with the version argument
+        sensitivity_logger.info(f"Executing: {sys.executable} {script_path} --version {version}")
+        result = subprocess.run(
+            [sys.executable, script_path, '--version', version],
+            capture_output=True,
+            text=True,
+            check=True
+        )
+
+        # Log the output
+        sensitivity_logger.info(f"script_econ.py stdout: {result.stdout}")
+        if result.stderr:
+            sensitivity_logger.warning(f"script_econ.py stderr: {result.stderr}")
+
+        # Log success
+        sensitivity_logger.info(f"script_econ.py executed successfully for version {version}")
+
+        return jsonify({
+            'status': 'success',
+            'message': 'script_econ.py executed successfully',
+            'stdout': result.stdout,
+            'stderr': result.stderr
+        })
+    except subprocess.CalledProcessError as e:
+        # Log error
+        sensitivity_logger.error(f"Error executing script_econ.py: {str(e)}")
+        sensitivity_logger.error(f"stdout: {e.stdout}")
+        sensitivity_logger.error(f"stderr: {e.stderr}")
+
+        return jsonify({
+            'status': 'error',
+            'message': f'Error executing script_econ.py: {str(e)}',
+            'stdout': e.stdout,
+            'stderr': e.stderr
+        }), 500
+    except Exception as e:
+        # Log error
+        sensitivity_logger.error(f"Unexpected error executing script_econ.py: {str(e)}")
+
+        return jsonify({
+            'status': 'error',
+            'message': f'Error: {str(e)}'
+        }), 500
+
+@app.route('/run-add-axis-labels', methods=['POST'])
+def run_add_axis_labels():
+    """
+    Execute add_axis_labels.py to add axis labels to the JSON file
+    based on parameter names and modified values.
+    """
+    sensitivity_logger = logging.getLogger('sensitivity')
+    data = request.get_json()
+    version = data.get('version', '1')
+
+    # Log the start of the operation
+    sensitivity_logger.info(f"Starting add_axis_labels.py execution for version {version}")
+
+    # Include payload details for monitoring
+    payload_details = {
+        "operation": "run_add_axis_labels",
+        "version": version,
+        "timestamp": time.strftime("%Y-%m-%d %H:%M:%S")
+    }
+
+    # Log payload details for monitoring
+    sensitivity_logger.info(f"Payload details: {json.dumps(payload_details)}")
+
+    try:
+        # Get path to add_axis_labels.py
+        script_path = os.path.join(BASE_DIR, 'backend', 'API_endpoints_and_controllers', 'add_axis_labels.py')
+        sensitivity_logger.info(f"Script path: {script_path}")
+
+        # Log calculation step
+        calculation_step = "Adding axis labels to JSON file based on parameter names and modified values"
+        sensitivity_logger.info(f"Calculation step: {calculation_step}")
+
+        # Execute add_axis_labels.py with the version argument
+        sensitivity_logger.info(f"Executing: {sys.executable} {script_path} {version}")
+        result = subprocess.run(
+            [sys.executable, script_path, version],
+            capture_output=True,
+            text=True,
+            check=True
+        )
+
+        # Log the output
+        sensitivity_logger.info(f"add_axis_labels.py stdout: {result.stdout}")
+        if result.stderr:
+            sensitivity_logger.warning(f"add_axis_labels.py stderr: {result.stderr}")
+
+        # Log success
+        sensitivity_logger.info(f"add_axis_labels.py executed successfully for version {version}")
+
+        return jsonify({
+            'status': 'success',
+            'message': 'add_axis_labels.py executed successfully',
+            'stdout': result.stdout,
+            'stderr': result.stderr
+        })
+    except subprocess.CalledProcessError as e:
+        # Log error
+        sensitivity_logger.error(f"Error executing add_axis_labels.py: {str(e)}")
+        sensitivity_logger.error(f"stdout: {e.stdout}")
+        sensitivity_logger.error(f"stderr: {e.stderr}")
+
+        return jsonify({
+            'status': 'error',
+            'message': f'Error executing add_axis_labels.py: {str(e)}',
+            'stdout': e.stdout,
+            'stderr': e.stderr
+        }), 500
+    except Exception as e:
+        # Log error
+        sensitivity_logger.error(f"Unexpected error executing add_axis_labels.py: {str(e)}")
+
+        return jsonify({
+            'status': 'error',
+            'message': f'Error: {str(e)}'
+        }), 500
+
+@app.route('/run-generate-plots', methods=['POST'])
+def run_generate_plots():
+    """
+    Execute generate_plots.py to generate plot files for sensitivity analysis.
+    """
+    sensitivity_logger = logging.getLogger('sensitivity')
+    data = request.get_json()
+    version = data.get('version', '1')
+
+    # Log the start of the operation
+    sensitivity_logger.info(f"Starting generate_plots.py execution for version {version}")
+
+    # Include payload details for monitoring
+    payload_details = {
+        "operation": "run_generate_plots",
+        "version": version,
+        "timestamp": time.strftime("%Y-%m-%d %H:%M:%S")
+    }
+
+    # Log payload details for monitoring
+    sensitivity_logger.info(f"Payload details: {json.dumps(payload_details)}")
+
+    try:
+        # Get path to generate_plots.py
+        script_path = os.path.join(BASE_DIR, 'backend', 'API_endpoints_and_controllers', 'generate_plots.py')
+        sensitivity_logger.info(f"Script path: {script_path}")
+
+        # Log calculation step
+        calculation_step = "Generating plot files for sensitivity analysis"
+        sensitivity_logger.info(f"Calculation step: {calculation_step}")
+
+        # Execute generate_plots.py with the version argument
+        sensitivity_logger.info(f"Executing: {sys.executable} {script_path} {version}")
+        result = subprocess.run(
+            [sys.executable, script_path, version],
+            capture_output=True,
+            text=True,
+            check=True
+        )
+
+        # Log the output
+        sensitivity_logger.info(f"generate_plots.py stdout: {result.stdout}")
+        if result.stderr:
+            sensitivity_logger.warning(f"generate_plots.py stderr: {result.stderr}")
+
+        # Log success
+        sensitivity_logger.info(f"generate_plots.py executed successfully for version {version}")
+
+        return jsonify({
+            'status': 'success',
+            'message': 'generate_plots.py executed successfully',
+            'stdout': result.stdout,
+            'stderr': result.stderr
+        })
+    except subprocess.CalledProcessError as e:
+        # Log error
+        sensitivity_logger.error(f"Error executing generate_plots.py: {str(e)}")
+        sensitivity_logger.error(f"stdout: {e.stdout}")
+        sensitivity_logger.error(f"stderr: {e.stderr}")
+
+        return jsonify({
+            'status': 'error',
+            'message': f'Error executing generate_plots.py: {str(e)}',
+            'stdout': e.stdout,
+            'stderr': e.stderr
+        }), 500
+    except Exception as e:
+        # Log error
+        sensitivity_logger.error(f"Unexpected error executing generate_plots.py: {str(e)}")
+
+        return jsonify({
+            'status': 'error',
+            'message': f'Error: {str(e)}'
+        }), 500
 
 if __name__ == '__main__':
     app.run(debug=True, host='127.0.0.1', port=2500)

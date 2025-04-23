@@ -120,7 +120,7 @@ def import_sensitivity_functions():
 def generate_sensitivity_datapoints(version, SenParameters):
     """
     Generate SensitivityPlotDatapoints_{version}.json file with baseline and variation points.
-    Uses actual base values from configuration modules.
+    Uses actual modified values from configuration modules.
 
     Args:
         version (int): Version number
@@ -175,7 +175,7 @@ def generate_sensitivity_datapoints(version, SenParameters):
                 "baseline:value": "Reference measurement value to compare against",
                 "info": "Position indicator: '+' (all above), '-' (all below), or 'b#' (# variations below baseline)",
                 "data": "Collection of variation measurements",
-                "data:keys": "Numerical measurement points determined by sense_config_base.py",
+                "data:keys": "Numerical measurement points using actual modified values",
                 "data:values": "Actual measurements. Must be initially null/empty when created by sense_config_base.py"
             }
         }
@@ -192,13 +192,8 @@ def generate_sensitivity_datapoints(version, SenParameters):
 
         # Get mode and values from parameter configuration
         # Normalize mode terminology to match Sen_Config.py
-        mode = param_config.get('mode', 'symmetrical')
-        if mode in ['symmetrical', 'multiple']:
-            normalized_mode = 'symmetrical'
-        elif mode in ['discrete']:
-            normalized_mode = 'multipoint'
-        else:
-            normalized_mode = mode.lower()
+        mode = param_config.get('mode', 'percentage')
+        normalized_mode = mode.lower()  # Use lowercase for consistency
 
         values = param_config.get('values', [])
 
@@ -238,14 +233,6 @@ def generate_sensitivity_datapoints(version, SenParameters):
         # Ensure baseline_key is an integer for the datapoints structure
         baseline_key = int(baseline_value)
 
-        # Get variations based on actual mode
-        variations = []
-        if normalized_mode == 'symmetrical':
-            base_variation = values[0]
-            variations = [base_variation]
-        else:  # 'multipoint'/'discrete'
-            variations = values
-
         # Create data points dictionary excluding baseline
         data_points = {}
 
@@ -254,8 +241,11 @@ def generate_sensitivity_datapoints(version, SenParameters):
         all_below = True
         all_above = True
 
+        # Create a temporary config copy for calculating modified values
+        temp_config = copy.deepcopy(base_config) if base_config else {}
+
         # Process each variation
-        for variation in sorted(variations):
+        for variation in sorted(values):
             # Skip baseline variation (typically 0) if present
             if variation == 0:
                 continue
@@ -267,17 +257,64 @@ def generate_sensitivity_datapoints(version, SenParameters):
             elif variation > 0:
                 all_below = False
 
-            # Apply variation to base value using the same logic as apply_sensitivity_variation
-            if normalized_mode == 'symmetrical':
-                # For symmetrical/symmetrical mode, apply symmetrical change
-                variation_value = baseline_value * (1 + variation/100)
-            else:
-                # For multipoint/discrete mode, use direct value
-                variation_value = baseline_value + variation
+            # Calculate the actual modified value
+            modified_value = None
 
-            # Use the variation value as the point key
-            point_key = int(variation_value)
+            # Try to calculate the actual modified value using apply_sensitivity_variation
+            if base_config and param_key:
+                try:
+                    # Create a fresh copy to avoid cumulative modifications
+                    var_config = copy.deepcopy(base_config)
+
+                    # Apply the variation to get modified config
+                    var_config = apply_sensitivity_variation(
+                        var_config,
+                        param_id,
+                        variation,
+                        normalized_mode
+                    )
+
+                    # Extract the modified value
+                    modified_value = var_config[param_key]
+                    sensitivity_logger.info(f"Calculated modified value {modified_value} for {param_id} with variation {variation}")
+                except Exception as e:
+                    sensitivity_logger.warning(f"Error calculating modified value: {str(e)}")
+
+            # Fallback calculation if the above method failed
+            if modified_value is None:
+                if normalized_mode == 'percentage':
+                    # For percentage mode, apply percentage change
+                    modified_value = baseline_value * (1 + variation/100)
+                elif normalized_mode == 'directvalue':
+                    # For direct value mode, use variation value directly
+                    modified_value = variation
+                elif normalized_mode == 'absolutedeparture':
+                    # For absolute departure mode, add variation to the baseline
+                    modified_value = baseline_value + variation
+                else:
+                    # Default to percentage mode for unknown modes
+                    modified_value = baseline_value * (1 + variation/100)
+                sensitivity_logger.info(f"Using fallback calculation for modified value: {modified_value}")
+
+            # Ensure modified_value is numeric
+            if isinstance(modified_value, str):
+                try:
+                    if '.' in modified_value:
+                        modified_value = float(modified_value)
+                    else:
+                        modified_value = int(modified_value)
+                except (ValueError, TypeError):
+                    sensitivity_logger.warning(f"Could not convert modified value to numeric: {modified_value}")
+                    # Use variation as fallback
+                    modified_value = variation
+
+            # Use the modified value as the point key (ensure it's an integer)
+            point_key = int(modified_value)
             data_points[str(point_key)] = None
+
+            sensitivity_logger.info(
+                f"Added point for {param_id}: variation={variation}, modified_value={modified_value}, point_key={point_key}"
+            )
 
         # Determine info indicator
         if all_below:
@@ -337,9 +374,6 @@ def process_config_modules(version, SenParameters):
         'py_files_copied': 0
     }
 
-    sensitivity_logger.info("Starting config module processing with initial 2-minute pause...")
-    time.sleep(120)  # Initial 2-minute pause for system stabilization
-    sensitivity_logger.info("Resuming after pause, processing config modules...")
 
     try:
         # Import sensitivity functions from Sen_Config

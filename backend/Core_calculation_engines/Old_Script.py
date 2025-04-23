@@ -8,7 +8,7 @@ import logging
 import logging.config
 import plotly.express as px
 import matplotlib.pyplot as plt
-from matplotlib import colors as mcolors 
+from matplotlib import colors as mcolors
 import matplotlib.patches as patches
 import seaborn as sns
 import itertools
@@ -75,31 +75,30 @@ def remove_existing_file(file_path):
 # Function to calculate annual revenue
 def calculate_annual_revenue(numberOfUnitsAmount12, initialSellingPriceAmount13, generalInflationRateAmount23, years, construction_years):
     revenue = [0] * construction_years + [
-        int(numberOfUnitsAmount12 * initialSellingPriceAmount13 * (1 + generalInflationRateAmount23) ) 
+        int(numberOfUnitsAmount12 * initialSellingPriceAmount13 * (1 + generalInflationRateAmount23) )
         for year in range(construction_years, years)
     ]
     logging.debug(f"Annual Revenue: {revenue}")
     return revenue
 
-
 def calculate_annual_operating_expenses(
-    use_direct_operating_expensesAmount18, 
-    totalOperatingCostPercentageAmount14, 
-    variable_costsAmount4, 
-    amounts_per_unitAmount5, 
-    MaterialInventory, 
-    Labor, 
-    utility, 
-    maintenance_amount, 
-    insurance_amount, 
-    annual_revenue, 
-    generalInflationRateAmount23, 
-    years, 
-    construction_years, 
-    selected_v, 
-    selected_f
+        use_direct_operating_expensesAmount18,
+        totalOperatingCostPercentageAmount14,
+        variable_costsAmount4,
+        amounts_per_unitAmount5,
+        MaterialInventory,
+        Labor,
+        utility,
+        maintenance_amount,
+        insurance_amount,
+        annual_revenue,
+        generalInflationRateAmount23,
+        years,
+        construction_years,
+        selected_v,
+        selected_f
 ):
-    
+
 
     # List of fixed costs (corresponding to selected_f)
     fixed_costs = [MaterialInventory, Labor, utility, maintenance_amount, insurance_amount]
@@ -121,9 +120,9 @@ def calculate_annual_operating_expenses(
     # Filter fixed costs based on selected_f
     # If 'off', set corresponding value to 0
     fixed_costs_filtered = [
-    round(cost * (1 + generalInflationRateAmount23)) if selected_f.get(f'F{i+1}') == 'on' else 0
-    for i, cost in enumerate(fixed_costs)
-]
+        round(cost * (1 + generalInflationRateAmount23)) if selected_f.get(f'F{i+1}') == 'on' else 0
+        for i, cost in enumerate(fixed_costs)
+    ]
 
 
     logging.info(f"Filtered fixed costs: {fixed_costs_filtered}")
@@ -134,7 +133,7 @@ def calculate_annual_operating_expenses(
 
     # If direct operating expenses are used, calculate using total operating cost percentage
     if use_direct_operating_expensesAmount18:
-    
+
         expenses = [0] * construction_years + [
             int(totalOperatingCostPercentageAmount14 * revenue) for revenue in annual_revenue[construction_years:]
         ]
@@ -149,15 +148,15 @@ def calculate_annual_operating_expenses(
 
         # Calculate the total expenses over the years, applying inflation after construction years
         expenses = [0] * construction_years + [
-            int((annual_variable_cost + total_fixed_cost)) 
+            int((annual_variable_cost + total_fixed_cost))
             for year in range(construction_years, years)
         ]
         logging.info(f"Operating expenses (indirect method): {expenses}")
 
-    # Log the final result
-    logging.info(f"Final operating expenses: {expenses}")
-    logging.info(f"Filtered variable costs returned: {variable_costs_filtered}")
-    logging.info(f"Filtered fixed costs returned: {fixed_costs_filtered}")
+        # Log the final result
+        logging.info(f"Final operating expenses: {expenses}")
+        logging.info(f"Filtered variable costs returned: {variable_costs_filtered}")
+        logging.info(f"Filtered fixed costs returned: {fixed_costs_filtered}")
 
     return expenses, variable_costs_filtered, fixed_costs_filtered
 
@@ -231,30 +230,42 @@ def generate_cumulative_opex_table(fixed_costs_results, variable_costs_results, 
 
     return cumulative_opex_table
 
-def save_opex_tables(fixed_costs_results, variable_costs_results, expenses_results, plant_lifetime, results_folder, version):
+def save_opex_tables(fixed_costs_results, variable_costs_results, expenses_results, plant_lifetime, results_folder,
+                     version):
+    # Generate the tables
     fixed_opex_table = generate_fixed_opex_table(fixed_costs_results, plant_lifetime)
     variable_opex_table = generate_variable_opex_table(variable_costs_results, plant_lifetime)
-    cumulative_opex_table = generate_cumulative_opex_table(fixed_costs_results, variable_costs_results, expenses_results, plant_lifetime)
+    cumulative_opex_table = generate_cumulative_opex_table(fixed_costs_results, variable_costs_results,
+                                                           expenses_results, plant_lifetime)
 
-    fixed_opex_table.to_csv(os.path.join(results_folder, f"Fixed_Opex_Table_({version}).csv"), index=False)
-    variable_opex_table.to_csv(os.path.join(results_folder, f"Variable_Opex_Table_({version}).csv"), index=False)
-    cumulative_opex_table.to_csv(os.path.join(results_folder, f"Cumulative_Opex_Table_({version}).csv"), index=False)
+    # Define the file paths
+    fixed_opex_path = os.path.join(results_folder, f"Fixed_Opex_Table_({version}).csv")
+    variable_opex_path = os.path.join(results_folder, f"Variable_Opex_Table_({version}).csv")
+    cumulative_opex_path = os.path.join(results_folder, f"Cumulative_Opex_Table_({version}).csv")
 
-   
+    # Remove existing files if they exist
+    remove_existing_file(fixed_opex_path)
+    remove_existing_file(variable_opex_path)
+    remove_existing_file(cumulative_opex_path)
+
+    # Save the new tables
+    fixed_opex_table.to_csv(fixed_opex_path, index=False)
+    variable_opex_table.to_csv(variable_opex_path, index=False)
+    cumulative_opex_table.to_csv(cumulative_opex_path, index=False)
 
 
 # Function to calculate state tax
 def calculate_state_tax(revenue, stateTaxRateAmount32, operating_expenses, depreciation):
     taxable_income = revenue - operating_expenses - depreciation
     tax = max(taxable_income, 0) * stateTaxRateAmount32
-  
+
     return tax
 
 # Function to calculate federal tax
 def calculate_federal_tax(revenue, federalTaxRateAmount33, operating_expenses, depreciation):
     taxable_income = revenue - operating_expenses - depreciation
     tax = max(taxable_income, 0) * federalTaxRateAmount33
-   
+
     return tax
 
 # ---------------- Tax Calculation Block End ----------------
@@ -273,8 +284,8 @@ def read_config_module(file_path):
 # ---------------- Revenue and Expense Calculation from Config Block Start ----------------
 
 def calculate_revenue_and_expenses_from_modules(config_received, config_matrix_df, results_folder, version, selected_v, selected_f, price, target_row, iteration):
-    
-    
+
+
     # Extract parameters
     plant_lifetime = config_received.plantLifetimeAmount10
     construction_years = config_received.numberofconstructionYearsAmount28
@@ -290,7 +301,7 @@ def calculate_revenue_and_expenses_from_modules(config_received, config_matrix_d
 
     CFA_matrix = pd.DataFrame(np.zeros(((plant_lifetime + construction_years), 10)),
                               columns=['Year', 'Revenue', 'Operating Expenses', 'Loan', 'Depreciation', 'State Taxes', 'Federal Taxes', 'After-Tax Cash Flow','Discounted Cash Flow' ,'Cumulative Cash Flow'])
-    CFA_matrix['Year'] = range(1, len(CFA_matrix) + 1)
+    CFA_matrix['Year'] = range(1, len(CFA_matrix)+1)
 
     # Complete set for CFA matrix
     revenue_results = {}
@@ -310,8 +321,8 @@ def calculate_revenue_and_expenses_from_modules(config_received, config_matrix_d
     utility_cost_operational = {}
     maintenance_cost_operational = {}
     insurance_cost_operational = {}
-    
-   
+
+
     interval_units_sold = {}
     total_units_sold = 0
     cumulative_length = 0
@@ -323,6 +334,7 @@ def calculate_revenue_and_expenses_from_modules(config_received, config_matrix_d
         end_year = int(row['end']) + construction_years
         length = int(row['end']) - int(row['start']) + 1
         cumulative_length += length
+        logging.debug(f"cumulative_length: {cumulative_length}")
         config_module_file = os.path.join(results_folder, f"{version}_config_module_{row['start']}.json")
         if not os.path.exists(config_module_file):
             logging.warning(f"Config module file not found: {config_module_file}")
@@ -330,14 +342,14 @@ def calculate_revenue_and_expenses_from_modules(config_received, config_matrix_d
 
         config_module = read_config_module(config_module_file)
         if int(row['start'])+1> target_row:
-        # Use the initial selling price if the period is after the target row
+            # Use the initial selling price if the period is after the target row
             annual_revenue = calculate_annual_revenue(
                 config_module['numberOfUnitsAmount12'],
                 config_module['initialSellingPriceAmount13'],
                 config_module['generalInflationRateAmount23'],
                 plant_lifetime + construction_years,
                 construction_years
-        )
+            )
         else:
             # Use the calculated price if the period is before the target row
             annual_revenue = calculate_annual_revenue(
@@ -346,7 +358,7 @@ def calculate_revenue_and_expenses_from_modules(config_received, config_matrix_d
                 config_module['generalInflationRateAmount23'],
                 plant_lifetime + construction_years,
                 construction_years
-        )
+            )
         logging.debug(f"Annual Revenue calculated: {annual_revenue}")
         annual_operating_expenses, variable_costs, fixed_costs = calculate_annual_operating_expenses(
             config_module['use_direct_operating_expensesAmount18'],
@@ -366,11 +378,11 @@ def calculate_revenue_and_expenses_from_modules(config_received, config_matrix_d
             selected_f
         )
 
-        adjusted_length_calculation = length - 1
-        
+        adjusted_length_calculation = length
+
         up_to_year[idx]=adjusted_length_calculation
         interval_units_sold[idx]=config_module['numberOfUnitsAmount12']* adjusted_length_calculation
-        
+
 
 
 
@@ -383,17 +395,17 @@ def calculate_revenue_and_expenses_from_modules(config_received, config_matrix_d
         insurance_cost_operational[idx] = fixed_costs[4] * adjusted_length_calculation
 
         if int(row['start'])+1> target_row:
-        # Store module selling price for each row
+            # Store module selling price for each row
             module_selling_price_operational[idx] = config_module['initialSellingPriceAmount13'] * adjusted_length_calculation
         else:
             module_selling_price_operational[idx] = price * adjusted_length_calculation
-        
+
         # Store for CFA
         revenue_results[(start_year, end_year)] = annual_revenue
         expenses_results[(start_year, end_year)] = annual_operating_expenses
         fixed_costs_results[(start_year, end_year)] = fixed_costs
         variable_costs_results[(start_year, end_year)] = variable_costs
-       
+
         # Store for OPEX
         operational_start_year = int(row['start'])
         operational_end_year = int(row['end'])
@@ -402,8 +414,8 @@ def calculate_revenue_and_expenses_from_modules(config_received, config_matrix_d
         expenses_operational[(operational_start_year, operational_end_year)] = annual_operating_expenses[construction_years:]
         fixed_costs_operational[(operational_start_year, operational_end_year)] = fixed_costs
         variable_costs_operational[(operational_start_year, operational_end_year)] = variable_costs
-     
-        # Calculate average values for each cost component operational 
+
+        # Calculate average values for each cost component operational
         average_feedstock_cost_operational = sum(feedstock_cost_operational.values()) / sum(up_to_year.values())
         average_labor_cost_operational = sum(labor_cost_operational.values()) / sum(up_to_year.values())
         average_utility_cost_operational = sum(utility_cost_operational.values()) / sum(up_to_year.values())
@@ -414,13 +426,13 @@ def calculate_revenue_and_expenses_from_modules(config_received, config_matrix_d
         cfa_logger.info(f"total units sold: {total_units_sold}")
 
 
-         # Check if cumulative length has reached or exceeded the target
+        # Check if cumulative length has reached or exceeded the target
         if cumulative_length >= target_row and cumulative_length <= target_row+1:
             cumulative_total_units_sold+= interval_units_sold[idx]
             cumulative_total_units_sold_npv= cumulative_total_units_sold
         else:
             continue
-        
+
     # Save OPEX tables
     save_opex_tables(fixed_costs_operational, variable_costs_operational, expenses_operational, plant_lifetime, results_folder, version)
 
@@ -443,7 +455,7 @@ def calculate_revenue_and_expenses_from_modules(config_received, config_matrix_d
     CFA_matrix_file = os.path.join(results_folder, f"CFA({version}).csv")
     remove_existing_file(CFA_matrix_file)
     CFA_matrix.to_csv(CFA_matrix_file, index=False)
-  
+
 
 
     # Second loop to place results in the correct places in the CFA matrix
@@ -451,20 +463,20 @@ def calculate_revenue_and_expenses_from_modules(config_received, config_matrix_d
         start_year = int(row['start']) + construction_years
         end_year = int(row['end']) + construction_years
         length = int(row['length'])
-      
+
         # Get the results for the current interval
         annual_revenue = revenue_results.get((start_year, end_year), [])
-       
+
         annual_operating_expenses = expenses_results.get((start_year, end_year), [])
 
         # Update the CFA matrix with annual revenue and expenses
         for year in range(start_year, end_year + 1):
             cfa_year = year-1
-           
+
             if year < len(annual_revenue):
-             
+
                 CFA_matrix.at[cfa_year, 'Revenue'] = annual_revenue[year]
-         
+
             if year < len(annual_operating_expenses):
                 CFA_matrix.at[cfa_year, 'Operating Expenses'] = annual_operating_expenses[year]
 
@@ -539,7 +551,7 @@ def calculate_revenue_and_expenses_from_modules(config_received, config_matrix_d
         CFA_matrix.at[year, 'After-Tax Cash Flow'] = after_tax_cash_flow
         Discounted_cash_flow = after_tax_cash_flow/(1 + config_received.iRRAmount30)
         CFA_matrix.at[year, 'Discounted Cash Flow'] = Discounted_cash_flow
-    
+
         cumulative_cash_flow += Discounted_cash_flow
         CFA_matrix.at[year, 'Cumulative Cash Flow'] = cumulative_cash_flow
 
@@ -554,13 +566,13 @@ def calculate_revenue_and_expenses_from_modules(config_received, config_matrix_d
 
 
     # ---------------- Economic Summary and Plotting Block Start ----------------
-    
+
 
     # ---------------- Economic Summary and Plotting Block Start ----------------
 
     # Calculate economic summary
     operational_years = plant_lifetime
-   
+
     total_revenue = CFA_matrix.loc[construction_years:, 'Revenue'].sum()
     total_operating_expenses = CFA_matrix.loc[construction_years:, 'Operating Expenses'].sum()
     total_depreciation = CFA_matrix.loc[construction_years:, 'Depreciation'].sum()
@@ -612,7 +624,7 @@ def calculate_revenue_and_expenses_from_modules(config_received, config_matrix_d
     economic_summary_file = os.path.join(results_folder, f"Economic_Summary({version}).csv")
     remove_existing_file(economic_summary_file)  # Remove if the file already exists
     economic_summary.to_csv(economic_summary_file, index=False)
- 
+
 
     # Generate and save the pie chart for relative magnitudes using Plotly
     labels = [
@@ -628,41 +640,9 @@ def calculate_revenue_and_expenses_from_modules(config_received, config_matrix_d
         average_annual_federal_taxes
     ]
 
-   # Create pie chart
-    pie_chart = px.pie(values=sizes, names=labels, title='Economic Breakdown', color_discrete_sequence=px.colors.qualitative.Set3)  # Use a qualitative color set
-    # Add CDN script with specific version
-    pie_chart.add_html_head("""
-        <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
-    """)
-    # Customize layout and styling
-    pie_chart.update_layout(
-        title=dict(
-            text='Macro Economics Breakdown', 
-            font=dict(family='Georgia', size=18, color='black'),
-            x=0.5,  # Center title
-            xanchor='center'
-        ),
-        legend=dict(
-            font=dict(family='Georgia', size=12),
-            yanchor='top',
-            y=0.95,
-            xanchor='right',
-            x=1.2,
-            title='Macro Economics Breakdown'
-        ),
-        margin=dict(l=50, r=150, t=50, b=50),  # Add margins for better layout
-        showlegend=True,
-        paper_bgcolor='#f0f0f0'  # Light grey background
-    )
-    # Construct paths for PNG and HTML saving
-    pie_chart_folder = os.path.join(results_folder, f'v{version}_DynamicEconomicBreakdown')
-    pie_chart_file = os.path.join(pie_chart_folder, f"Economic_Breakdown_Pie_Chart({version}).html")
-    # Ensure the directory exists
-    os.makedirs(pie_chart_folder, exist_ok=True)
-    
-    pie_chart.write_html(pie_chart_file)
- 
-   
+
+
+
     # ---------------- Economic Summary and Plotting Block End ----------------
 
     # Define labels and corresponding average operational costs
@@ -681,49 +661,10 @@ def calculate_revenue_and_expenses_from_modules(config_received, config_matrix_d
         average_insurance_cost_operational
     ]
 
-    # Generate the pie chart for operational costs with custom styling
-    pie_chart2 = px.pie(
-        values=sizes,
-        names=labels,
-        title='Operational Cost Breakdown',
-        color_discrete_sequence=px.colors.qualitative.Set3  # Use a qualitative color set
-    )
-    # Add CDN script with specific version
-    pie_chart2.add_html_head("""
-        <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
-    """)
-
-    # Customize layout and styling
-    pie_chart2.update_layout(
-        title=dict(
-            text='Operational Cost Breakdown',
-            font=dict(family='Georgia', size=18, color='black'),
-            x=0.5,  # Center title
-            xanchor='center'
-        ),
-        legend=dict(
-            font=dict(family='Georgia', size=12),
-            yanchor='top',
-            y=0.95,
-            xanchor='right',
-            x=1.2,
-            title='Operational Costs'
-        ),
-        margin=dict(l=50, r=150, t=50, b=50),  # Add margins for better layout
-        showlegend=True,
-        paper_bgcolor='#f0f0f0'  # Light grey background
-    )
-
-    # Construct paths for PNG and HTML saving
-    version_dir = os.path.join(results_folder, f'v{version}_DynamicOperationalCost')
-    html_file = os.path.join(version_dir, f"Operational_Cost_Breakdown_Pie_Chart({version}).html")
-    # Ensure the directory exists
-    os.makedirs(version_dir, exist_ok=True)
-    # Save the pie chart as HTML
-    pie_chart2.write_html(html_file)
 
 
-   # Define labels and sizes for the operational cost breakdown
+
+    # Define labels and sizes for the operational cost breakdown
     operational_labels = [
         'Feedstock Cost',
         'Labor Cost',
@@ -806,37 +747,38 @@ def calculate_revenue_and_expenses_from_modules(config_received, config_matrix_d
     plt.close()
 
     # ---------------- Economic Summary and Plotting Block End ----------------
-    
 
 
-# ---------------- Economic Summary and Plotting Block End ----------------
 
-# ---------------- Price Finding Block Start ----------------
+    # ---------------- Economic Summary and Plotting Block End ----------------
+
+    # ---------------- Price Finding Block Start ----------------
     NPV_year=target_row # Set the NPV year to the target row (user specified) plus construction years (cfa table compatibility)
     npv=CFA_matrix.at[NPV_year, 'Cumulative Cash Flow']
     iteration+=1  # Increment the iteration counter
 
-    price_logger.info(f"Calculated Current NPV: {npv:.2f} from row {NPV_year}")  
-    price_logger.info(f"'primary_result': {npv},'secondary_result': {iteration}") 
+    price_logger.info(f"Calculated Current NPV: {npv:.2f} from row {NPV_year}")
+    price_logger.info(f"'primary_result': {npv},'secondary_result': {iteration}")
     # ---------------- Price Finding Block End ----------------
     return {
         'primary_result': npv,
         'secondary_result': iteration,
     }  # Return the calculated NPV and iteration count
- 
-   
+
+
 # ---------------- Main Function Block Start ----------------
 
 # Main function to load config matrix and run the update
 def main(version, selected_v, selected_f, target_row):
     # Set up paths for modules and results
-    code_files_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "backend", "Original")
+    code_files_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "Original")
+
     results_folder = os.path.join(code_files_path, f"Batch({version})", f"Results({version})")
-    config_matrix_file = os.path.join(results_folder, f"Configuration_Matrix({version}).csv")
-    
+    config_matrix_file = os.path.join(results_folder, f"General_Configuration_Matrix({version}).csv")
+
     # Load the config matrix
     config_matrix_df = pd.read_csv(config_matrix_file)
-    
+
     # Load configuration file
     config_file = os.path.join(code_files_path, f"Batch({version})", f"ConfigurationPlotSpec({version})", f"configurations({version}).py")
     spec = importlib.util.spec_from_file_location("config", config_file)
@@ -849,7 +791,7 @@ def main(version, selected_v, selected_f, target_row):
     npv = results['primary_result']
     iteration = results['secondary_result']
     price_logger.info(f"Initial NPV: ${npv:.2f}, Iteration: {iteration}")
-    
+
     # Define convergence tolerance
     TOLERANCE_LOWER = -1000
     TOLERANCE_UPPER = 1000
@@ -857,7 +799,7 @@ def main(version, selected_v, selected_f, target_row):
     # Optimization loop
     while npv < TOLERANCE_LOWER or npv > TOLERANCE_UPPER:
         price_logger.info(f"Current NPV: ${npv:.2f}, Iteration: {iteration}, Price: ${price:.2f}")
-        
+
         # Adjust price based on NPV
         if npv < 0:
             price *= 1.02  # Increment price by 2%
@@ -865,12 +807,12 @@ def main(version, selected_v, selected_f, target_row):
         elif npv > 0:
             price *= 0.985  # Decrement price by 2%
             price_logger.info(f"Decreasing price to ${price:.2f} due to NPV above tolerance.")
-        
+
         # Recalculate NPV with the updated price
         results = calculate_revenue_and_expenses_from_modules(config_received, config_matrix_df, results_folder, version, selected_v, selected_f, price, target_row, iteration)
         npv = results['primary_result']
         iteration = results['secondary_result']
-    
+
         # Check if within tolerance to break the loop
         if TOLERANCE_LOWER <= npv <= TOLERANCE_UPPER:
             price_logger.info("NPV is within tolerance bounds. Exiting optimization loop.")
@@ -885,7 +827,7 @@ if __name__ == "__main__":
     selected_f = json.loads(sys.argv[3]) if len(sys.argv) > 3 else {f'F{i+1}': 'off' for i in range(5)}
     target_row = int(sys.argv[4]) if len(sys.argv) > 4 else 10
     selected_calculation_option = sys.argv[5] if len(sys.argv) > 5 else 'calculateforprice'  # Default to calculateforprice
-    senParameters = json.loads(sys.argv[6]) if len(sys.argv) > 6 else {}  
+    senParameters = json.loads(sys.argv[6]) if len(sys.argv) > 6 else {}
 
     cfa_logger.info(f"Script started with version: {version}, V selections: {selected_v}, F selections: {selected_f}, Target row: {target_row}")
     main(version, selected_v, selected_f, target_row)

@@ -27,6 +27,7 @@ import VersionSelector from './VersionSelector.js';
 import SpatialTransformComponent from './Naturalmotion.js'
 import useFormValues from './useFormValues.js';
 import './styles/HomePage.CSS/ResetOptionsPopup.css';
+import './styles/HomePage.CSS/RunOptionsPopup.css';
 import versionEventEmitter from './state/EventEmitter';
 import TestingZone from './components/modules/TestingZone';
 import CalculationMonitor from './components/modules/CalculationMonitor';
@@ -126,8 +127,8 @@ const HomePageContent = () => {
 
     }, [season]);
 // Final results and handler now managed in useFormValues
-    const { 
-        formValues, 
+    const {
+        formValues,
         handleInputChange, 
         handleReset, 
         setFormValues,
@@ -158,11 +159,20 @@ const HomePageContent = () => {
         setResetOptions,
         handleResetOptionChange,
         handleResetConfirm,
-        handleResetCancel
+        handleResetCancel,
+        // Run options popup states and functions
+        showRunOptions,
+        runOptions,
+        setRunOptions,
+        handleRun: handleRunOptions,
+        handleRunOptionChange,
+        handleRunConfirm,
+        handleRunCancel
     } = useFormValues();
     const [version, setVersion] = useState('1');
     const [batchRunning, setBatchRunning] = useState(false);
     const [analysisRunning, setAnalysisRunning] = useState(false);
+    const [runMode, setRunMode] = useState('cfa'); // 'cfa' or 'sensitivity'
 
     const renderVersionControl = () => (
         <div className="version-control-container" style={{
@@ -215,6 +225,7 @@ const HomePageContent = () => {
         </div>
     );
     const [monitoringActive, setMonitoringActive] = useState(false);
+    const [isMonitoringSensitivity, setIsMonitoringSensitivity] = useState(false);
     const [csvFiles, setCsvFiles] = useState([]);
     const [subTab, setSubTab] = useState('');
     const [albumImages, setAlbumImages] = useState({});
@@ -443,6 +454,84 @@ const HomePageContent = () => {
         );
     };
 
+    // Custom function to handle Run CFA button click
+    const handleRunCFA = () => {
+        setRunMode('cfa');
+        handleRunOptions();
+    };
+
+    // Custom function to handle Run Sensitivity button click
+    const handleRunSensitivity = () => {
+        setRunMode('sensitivity');
+        handleRunOptions();
+    };
+
+    // Custom handleRunConfirm function that calls the appropriate run function based on runMode
+    const customHandleRunConfirm = () => {
+        // First close the popup
+        handleRunConfirm();
+        // Then call the appropriate run function based on runMode
+        if (runMode === 'cfa') {
+            handleRun();
+        } else if (runMode === 'sensitivity') {
+            handleRuns();
+        }
+    };
+
+    // Run options popup component
+    const RunOptionsPopup = ({ 
+        show, 
+        options, 
+        onOptionChange, 
+        onConfirm, 
+        onCancel,
+        customConfirmHandler = customHandleRunConfirm // Default to customHandleRunConfirm if not provided
+    }) => {
+        if (!show) return null;
+
+        return (
+            <div className="run-options-popup-overlay">
+                <div className="run-options-popup">
+                    <h3>Run CFA Options</h3>
+                    <div className="checkbox-row">
+                        <label className="run-option-label">
+                            <input 
+                                type="checkbox" 
+                                checked={options.useSummaryItems} 
+                                onChange={() => onOptionChange('useSummaryItems')} 
+                            />
+                            Use Summary Items (final results)
+                        </label>
+                    </div>
+                    <div className="checkbox-row">
+                        <label className="run-option-label">
+                            <input 
+                                type="checkbox" 
+                                checked={options.includeRemarks} 
+                                onChange={() => onOptionChange('includeRemarks')} 
+                            />
+                            Include Remarks
+                        </label>
+                    </div>
+                    <div className="checkbox-row">
+                        <label className="run-option-label">
+                            <input 
+                                type="checkbox" 
+                                checked={options.includeCustomFeatures} 
+                                onChange={() => onOptionChange('includeCustomFeatures')} 
+                            />
+                            Include Custom Features
+                        </label>
+                    </div>
+                    <div className="run-options-buttons">
+                        <button onClick={customConfirmHandler} className="run-confirm-button">Run</button>
+                        <button onClick={onCancel} className="run-cancel-button">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        );
+    };
+
     // States for V1-V10 and R1-R10 now managed in useFormValues
     const handleThemeChange = (newSeason) => {
         const themeRibbon = document.querySelector('.theme-ribbon');
@@ -536,6 +625,29 @@ const HomePageContent = () => {
         setCalculatedPrices({});
 
         try {
+            // Create a modified formValues object that includes summary items for Amount4, 5, 6, and 7
+            // Only if the useSummaryItems option is enabled
+            const modifiedFormValues = { ...formValues };
+
+            // Replace formValues with summary items for tabs with keywords Amount4, 5, 6, and 7
+            // Only if the useSummaryItems option is enabled
+            if (runOptions.useSummaryItems) {
+                ['Amount4', 'Amount5', 'Amount6', 'Amount7'].forEach(keyword => {
+                    if (finalResults[keyword] && finalResults[keyword].length > 0) {
+                        // For each item in the summary, update the corresponding formValue
+                        finalResults[keyword].forEach(summaryItem => {
+                            if (modifiedFormValues[summaryItem.id]) {
+                                // Use the finalResult value from the summary item instead of the formValue
+                                modifiedFormValues[summaryItem.id] = {
+                                    ...modifiedFormValues[summaryItem.id],
+                                    value: summaryItem.finalResult
+                                };
+                            }
+                        });
+                    }
+                });
+            }
+
             // Prepare request payload with all necessary parameters
             const requestPayload = {
                 selectedVersions,
@@ -546,7 +658,15 @@ const HomePageContent = () => {
                 selectedCalculationOption,
                 targetRow: target_row,
                 SenParameters: S,
-                formValues: formValues // Include form values to extract Amount10
+                formValues: modifiedFormValues, // Include modified form values with summary items
+                summaryItems: runOptions.useSummaryItems ? {
+                    Amount4: finalResults.Amount4 || [],
+                    Amount5: finalResults.Amount5 || [],
+                    Amount6: finalResults.Amount6 || [],
+                    Amount7: finalResults.Amount7 || []
+                } : {},
+                includeRemarks: runOptions.includeRemarks,
+                includeCustomFeatures: runOptions.includeCustomFeatures
             };
 
             console.log('Running CFA with parameters:', requestPayload);
@@ -580,7 +700,7 @@ const HomePageContent = () => {
 
             // Start real-time monitoring if calculation was successful
             if (result.status === 'success') {
-                startRealTimeMonitoring();
+                startRealTimeMonitoring(false); // Regular calculation (handleRun)
             }
         } catch (error) {
             console.error('Error during CFA calculation:', error);
@@ -614,12 +734,17 @@ const HomePageContent = () => {
     /**
      * Starts real-time monitoring of calculation progress
      * This function connects to a stream for live updates from the calculation process
+     * @param {boolean} isSensitivity - Whether this is a sensitivity analysis (handleRuns) or regular calculation (handleRun)
      */
-    const startRealTimeMonitoring = () => {
+    const startRealTimeMonitoring = (isSensitivity = false) => {
         // Close any existing stream connections
         if (window.calculationEventSource) {
             window.calculationEventSource.close();
         }
+
+        // Set monitoring active and track if it's a sensitivity analysis
+        setMonitoringActive(true);
+        setIsMonitoringSensitivity(isSensitivity);
 
         // For each selected version, set up a stream connection
         selectedVersions.forEach(version => {
@@ -679,15 +804,48 @@ const HomePageContent = () => {
         setCalculatedPrices({});
 
         try {
+            // Create a modified formValues object that includes summary items for Amount4, 5, 6, and 7
+            // Only if the useSummaryItems option is enabled
+            const modifiedFormValues = { ...formValues };
+
+            // Replace formValues with summary items for tabs with keywords Amount4, 5, 6, and 7
+            // Only if the useSummaryItems option is enabled
+            if (runOptions.useSummaryItems) {
+                ['Amount4', 'Amount5', 'Amount6', 'Amount7'].forEach(keyword => {
+                    if (finalResults[keyword] && finalResults[keyword].length > 0) {
+                        // For each item in the summary, update the corresponding formValue
+                        finalResults[keyword].forEach(summaryItem => {
+                            if (modifiedFormValues[summaryItem.id]) {
+                                // Use the finalResult value from the summary item instead of the formValue
+                                modifiedFormValues[summaryItem.id] = {
+                                    ...modifiedFormValues[summaryItem.id],
+                                    value: summaryItem.finalResult
+                                };
+                            }
+                        });
+                    }
+                });
+            }
+
             // Prepare request payload with all necessary parameters
             const requestPayload = {
                 selectedVersions,
                 selectedV: V,
                 selectedF: F,
+                selectedR: R,
+                selectedRF: RF,
                 selectedCalculationOption,
                 targetRow: target_row,
                 SenParameters: S,
-                formValues: formValues // Include form values to extract presentable names
+                formValues: modifiedFormValues, // Include modified form values with summary items
+                summaryItems: runOptions.useSummaryItems ? {
+                    Amount4: finalResults.Amount4 || [],
+                    Amount5: finalResults.Amount5 || [],
+                    Amount6: finalResults.Amount6 || [],
+                    Amount7: finalResults.Amount7 || []
+                } : {},
+                includeRemarks: runOptions.includeRemarks,
+                includeCustomFeatures: runOptions.includeCustomFeatures
             };
             console.log('Running CFA with parameters:', requestPayload);
 
@@ -732,6 +890,11 @@ const HomePageContent = () => {
             }
             const result = await response.json();
             console.log('Calculation completed successfully:', result);
+
+            // Start real-time monitoring for sensitivity analysis
+            if (result.status === 'success') {
+                startRealTimeMonitoring(true); // Sensitivity analysis (handleRuns)
+            }
 
             // STEP 4: Execute specific sensitivity calculations with CalSen paths
             console.log('Step 4: Running parameter-specific sensitivity calculations...');
@@ -859,7 +1022,7 @@ const HomePageContent = () => {
             }
 
 
-// STEP 10: Inject presentable parameter names into sensitivity JSON
+            // STEP 10: Inject presentable parameter names into sensitivity JSON
             console.log('Step 10: Injecting presentable parameter names...');
             const injectResponse = await fetch('http://127.0.0.1:2500/inject-names', {
                 method: 'POST',
@@ -875,6 +1038,7 @@ const HomePageContent = () => {
                 const injectError = await injectResponse.json();
                 console.warn('Failed to inject parameter names:', injectError);
             }
+
             setSuccess('Analysis completed successfully!');
             setError(null);
         } catch (error) {
@@ -883,6 +1047,86 @@ const HomePageContent = () => {
             setSuccess(null);
         } finally {
             setAnalysisRunning(false);
+        }
+
+        // Execute the three-layer mechanism outside the main try-catch block
+        // This ensures it runs regardless of whether the previous steps succeed or fail
+        try {
+            // STEP 11: Run script_econ to extract metrics to JSON
+            console.log('Step 11: Running script_econ to extract metrics...');
+
+            // First layer: Check if calsen_paths.json exists
+            const checkCalsenPathsResponse = await fetch(`http://127.0.0.1:2500/check-calsen-paths?version=${selectedVersions[0]}`, {
+                method: 'GET',
+                headers: { 'Content-Type': 'application/json' },
+            });
+
+            if (checkCalsenPathsResponse.ok) {
+                const checkResult = await checkCalsenPathsResponse.json();
+                if (checkResult.exists) {
+                    console.log('calsen_paths.json exists, proceeding with script_econ...');
+
+                    // Run script_econ
+                    const scriptEconResponse = await fetch('http://127.0.0.1:2500/run-script-econ', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            version: selectedVersions[0]
+                        }),
+                    });
+
+                    if (scriptEconResponse.ok) {
+                        const scriptEconResult = await scriptEconResponse.json();
+                        console.log('script_econ completed successfully:', scriptEconResult);
+
+                        // Second layer: Run add_axis_labels only if script_econ was successful
+                        console.log('Step 12: Running add_axis_labels to add axis labels...');
+                        const addAxisLabelsResponse = await fetch('http://127.0.0.1:2500/run-add-axis-labels', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                version: selectedVersions[0]
+                            }),
+                        });
+
+                        if (addAxisLabelsResponse.ok) {
+                            const addAxisLabelsResult = await addAxisLabelsResponse.json();
+                            console.log('add_axis_labels completed successfully:', addAxisLabelsResult);
+
+                            // Third layer: Run generate_plots only if add_axis_labels was successful
+                            console.log('Step 13: Running generate_plots to generate plot files...');
+                            const generatePlotsResponse = await fetch('http://127.0.0.1:2500/run-generate-plots', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({
+                                    version: selectedVersions[0]
+                                }),
+                            });
+
+                            if (generatePlotsResponse.ok) {
+                                const generatePlotsResult = await generatePlotsResponse.json();
+                                console.log('generate_plots completed successfully:', generatePlotsResult);
+                            } else {
+                                const generatePlotsError = await generatePlotsResponse.json();
+                                console.warn('Failed to run generate_plots:', generatePlotsError);
+                            }
+                        } else {
+                            const addAxisLabelsError = await addAxisLabelsResponse.json();
+                            console.warn('Failed to run add_axis_labels:', addAxisLabelsError);
+                        }
+                    } else {
+                        const scriptEconError = await scriptEconResponse.json();
+                        console.warn('Failed to run script_econ:', scriptEconError);
+                    }
+                } else {
+                    console.warn('calsen_paths.json does not exist, skipping script execution');
+                }
+            } else {
+                console.warn('Failed to check if calsen_paths.json exists:', await checkCalsenPathsResponse.json());
+            }
+        } catch (error) {
+            console.error('Error during three-layer mechanism execution:', error);
+            // This error doesn't affect the main analysis result, so we don't set the error state
         }
     };
 
@@ -1788,19 +2032,19 @@ const HomePageContent = () => {
                     <div className="button-row practical-row" style={{marginTop: 0, padding: 0}}>
                         <div className="tooltip-container">
                             <button
-                                onClick={handleRun}
+                                onClick={handleRunCFA}
                                 style={{padding: "5px 8px"}}
                             >
                                 Run CFA
                             </button>
                             <button
-                                onClick={handleRuns}
+                                onClick={handleRunSensitivity}
                                 style={{padding: "5px 8px"}}
                             >
                                 Run Sensitivity
                             </button>
                             <button
-                                onClick={handleRuns}
+                                onClick={handleRunSensitivity}
                                 style={{padding: "5px 8px"}}
                             >
                                 Visualize Sensitivity
@@ -1852,6 +2096,15 @@ const HomePageContent = () => {
                             onConfirm={handleResetConfirm}
                             onCancel={handleResetCancel}
                         />
+
+                        {/* Run Options Popup */}
+                        <RunOptionsPopup
+                            show={showRunOptions}
+                            options={runOptions}
+                            onOptionChange={handleRunOptionChange}
+                            onConfirm={handleRunConfirm}
+                            onCancel={handleRunCancel}
+                        />
                     </div>
                 </div>
                 </div>
@@ -1861,6 +2114,7 @@ const HomePageContent = () => {
                         updatePrice={updatePrice}
                         isActive={monitoringActive}
                         currentVersion={version}
+                        isSensitivity={isMonitoringSensitivity}
                         onChange={() => {}} // Adding empty function to satisfy prop requirement
                     />
                 )}

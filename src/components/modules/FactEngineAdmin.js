@@ -199,7 +199,8 @@ const FactEngineAdmin = () => {
             onClick={handleAddFact}
             disabled={!newFactText.trim()}
           >
-            Add Fact
+            <span className="add-fact-icon">➕ Add Fact</span>
+
           </button>
         </div>
       </div>

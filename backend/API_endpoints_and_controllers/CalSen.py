@@ -204,7 +204,17 @@ def build_paths_for_version(version):
             var_str = f"{variation:+.2f}"
 
             # Build paths for this variation
-
+            # Economic variation directory (lowercase mode)
+            Econ_var_dir = os.path.join(
+                code_files_path,
+                f"Batch({version})",
+                f"Results({version})",
+                "Sensitivity",
+                s_param,
+                mode.lower(),  # Ensure lowercase for consistency
+                "Configuration",
+                f"{s_param}_{var_str}"
+            )
             # Parameter variation directory (lowercase mode)
             param_var_dir = os.path.join(
                 code_files_path,
@@ -273,6 +283,7 @@ def build_paths_for_version(version):
                 "config_var_dir": config_var_dir,
                 "config_matrix_file": config_matrix_file,
                 "config_file": config_file,
+                "Econ_var_dir": Econ_var_dir,
                 "mode": mode,
                 "variation": variation,
                 "variation_str": var_str

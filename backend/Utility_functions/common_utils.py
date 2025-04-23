@@ -45,7 +45,7 @@ property_mapping = {
     "vAmount52": "v52",
     "vAmount53": "v53",
     "vAmount54": "v54",
-    "vAmount55": "v55",
+    "vAmount55": "v551",
     "vAmount56": "v56",
     "vAmount57": "v57",
     "vAmount58": "v58",
@@ -73,12 +73,10 @@ property_mapping = {
 }
 
 
-
 def extract_properties(config_file):
     spec = importlib.util.spec_from_file_location("config", config_file)
     config = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(config)
     properties = {key: getattr(config, key, None) for key in property_mapping.keys()}
     return properties
-
 

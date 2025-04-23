@@ -11,7 +11,7 @@ const ConfigurationMonitor = ({ version }) => {
   // Import property mapping from useFormValues
   const { propertyMapping } = useFormValues();
   // Component state
-  const [isExpanded, setIsExpanded] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [filterByGroup, setFilterByGroup] = useState('all');
   const [configData, setConfigData] = useState([]); // Baseline parameters (filteredValues)
@@ -297,7 +297,7 @@ const ConfigurationMonitor = ({ version }) => {
             onClick={() => setIsExpanded(true)}
             title="Expand panel"
           >
-            <span className="vertical-text">Configuration Monitor</span> ▶
+            <span className="vertical-text"></span>
           </button>
         )}
       </div>

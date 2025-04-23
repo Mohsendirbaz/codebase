@@ -73,38 +73,49 @@ logger.addHandler(file_handler)
 # Helper Functions
 # =====================================
 
-def log_state_parameters(versions, v_states, f_states, calculation_option, target_row, 
+def log_state_parameters(versions, v_states, f_states,r_states, rf_states, calculation_option, target_row,
                         tolerance_lower, tolerance_upper, increase_rate, decrease_rate, sen_parameters):
     """Log state parameters in a structured, tabulated format"""
-    
+
     # Log versions
     logger.info(f"Processing versions: {versions}")
-    
+
     # Log V states (enabled/disabled)
     v_enabled = [k for k, v in v_states.items() if v == 'on']
     v_disabled = [k for k, v in v_states.items() if v == 'off']
     logger.info(f"V states - Enabled: {v_enabled}, Disabled: {v_disabled}")
-    
+
     # Log F states (enabled/disabled)
     f_enabled = [k for k, v in f_states.items() if v == 'on']
     f_disabled = [k for k, v in f_states.items() if v == 'off']
     logger.info(f"F states - Enabled: {f_enabled}, Disabled: {f_disabled}")
-    
+
+    # Log R states (enabled/disabled)
+    r_enabled = [k for k, v in r_states.items() if v == 'on']
+    r_disabled = [k for k, v in r_states.items() if v == 'off']
+
+    logger.info(f"R states - Enabled: {r_enabled}, Disabled: {r_disabled}")
+
+    # Log RF states
+    rf_enabled = [k for k, v in rf_states.items() if v == 'on']
+    rf_disabled = [k for k, v in rf_states.items() if v == 'off']
+
+    logger.info(f"RF states - Enabled: {rf_enabled}, Disabled: {rf_disabled}")
     # Log calculation options
     logger.info(f"Calculation option: {calculation_option}, Target row: {target_row}")
-    
+
     # Log optimization parameters
     if calculation_option == 'calculateForPrice':
         logger.info(f"Price optimization parameters:")
         logger.info(f"  - Tolerance bounds: Lower={tolerance_lower}, Upper={tolerance_upper}")
         logger.info(f"  - Adjustment rates: Increase={increase_rate}, Decrease={decrease_rate}")
-    
+
     # Log sensitivity parameters in tabular format if they exist
     if sen_parameters:
         # Extract relevant sensitivity parameters
         sen_table_data = []
         headers = ["Parameter", "Enabled", "Mode", "Compare To", "Comparison Type", "Visualization"]
-        
+
         for param, config in sen_parameters.items():
             if isinstance(config, dict):
                 visualization = []
@@ -114,7 +125,7 @@ def log_state_parameters(versions, v_states, f_states, calculation_option, targe
                     visualization.append('Bar')
                 if config.get('point'):
                     visualization.append('Point')
-                
+
                 sen_table_data.append([
                     param,
                     "Yes" if config.get('enabled') else "No",
@@ -123,7 +134,7 @@ def log_state_parameters(versions, v_states, f_states, calculation_option, targe
                     config.get('comparisonType', 'N/A'),
                     ", ".join(visualization) if visualization else "None"
                 ])
-        
+
         if sen_table_data:
             table = tabulate(sen_table_data, headers=headers, tablefmt="grid")
             logger.info(f"Sensitivity Parameters:\n{table}")
@@ -136,29 +147,29 @@ def run_script(script_name, *args, script_type="python"):
     try:
         command = ['python' if script_type == "python" else 'Rscript', script_name]
         command.extend([str(arg) for arg in args])
-        
+
         result = subprocess.run(command, capture_output=True, text=True)
-        
+
         if result.returncode != 0:
             error_msg = f"Error running {os.path.basename(script_name)}: {result.stderr}"
             logger.error(error_msg)
             return False, error_msg
-            
+
         logger.info(f"Successfully ran {os.path.basename(script_name)}" + 
                     (f" for version {args[0]}" if args else ""))
         return True, None
-        
+
     except Exception as e:
         error_msg = f"Exception running {os.path.basename(script_name)}: {str(e)}"
         logger.exception(error_msg)
         return False, error_msg
 
-def process_version(version, calculation_script, selected_v, selected_f, target_row, 
+def process_version(version, calculation_script, selected_v, selected_f, selected_r, selected_rf, target_row,
                    calculation_option, tolerance_lower, tolerance_upper, increase_rate, decrease_rate, sen_parameters):
     try:
         # Log the start of processing for this version
         logger.info(f"Starting processing for version {version}")
-        
+
         # Run common scripts first
         for script in COMMON_PYTHON_SCRIPTS:
             success, error = run_script(script, version)
@@ -172,6 +183,8 @@ def process_version(version, calculation_script, selected_v, selected_f, target_
             version,
             json.dumps(selected_v),
             json.dumps(selected_f),
+            json.dumps(selected_r),
+            json.dumps(selected_rf),
             target_row,
             calculation_option,
             tolerance_lower,
@@ -214,7 +227,7 @@ class PriceOptimizationMonitor:
         self.last_data = None
         self.last_modified_time = 0
         logger.info(f"Initialized monitor for version {version}, status file: {self.status_file_path}")
-    
+
     def _get_status_file_path(self):
         """Get the path to the status file for this version."""
         # Construct path to the status file
@@ -222,37 +235,37 @@ class PriceOptimizationMonitor:
             f"Batch({self.version})", f"Results({self.version})"
         )
         return os.path.join(results_folder, f"price_optimization_status_{self.version}.json")
-    
+
     def _get_fallback_price_file(self):
         """Get the path to the optimal price file as a fallback."""
         results_folder = os.path.join(SCRIPT_DIR, "..", "..", "Original", 
             f"Batch({self.version})", f"Results({self.version})"
         )
         return os.path.join(results_folder, f"optimal_price_{self.version}.json")
-    
+
     def add_client(self, client_queue):
         """Add a client to the monitor."""
         self.clients.append(client_queue)
         logger.info(f"Client added to monitor for version {self.version}. Total clients: {len(self.clients)}")
-        
+
         # If we already have data, send it to the new client immediately
         if self.last_data:
             client_queue.put(self.last_data)
-        
+
         # Start the monitoring thread if not already running
         if not self.running:
             self.start()
-    
+
     def remove_client(self, client_queue):
         """Remove a client from the monitor."""
         if client_queue in self.clients:
             self.clients.remove(client_queue)
             logger.info(f"Client removed from monitor for version {self.version}. Remaining clients: {len(self.clients)}")
-        
+
         # Stop the monitoring thread if no clients remain
         if not self.clients and self.running:
             self.stop()
-    
+
     def start(self):
         """Start the monitoring thread."""
         self.running = True
@@ -260,38 +273,38 @@ class PriceOptimizationMonitor:
         thread.daemon = True
         thread.start()
         logger.info(f"Monitoring thread started for version {self.version}")
-    
+
     def stop(self):
         """Stop the monitoring thread."""
         self.running = False
         logger.info(f"Monitoring stopped for version {self.version}")
-        
+
         # Remove this monitor from the global active monitors
         if self.version in active_monitors:
             del active_monitors[self.version]
-    
+
     def _monitor_loop(self):
         """Main monitoring loop to check for file changes and notify clients."""
         check_interval = 0.5  # Check every half second
         consecutive_errors = 0
         max_errors = 20  # Stop monitoring after this many consecutive errors
-        
+
         while self.running and consecutive_errors < max_errors:
             try:
                 # Check if the status file exists
                 if os.path.exists(self.status_file_path):
                     # Get the last modified time
                     current_modified_time = os.path.getmtime(self.status_file_path)
-                    
+
                     # If the file has been modified since our last check
                     if current_modified_time > self.last_modified_time:
                         self.last_modified_time = current_modified_time
-                        
+
                         # Read the file and parse the JSON
                         with open(self.status_file_path, 'r') as f:
                             status_data = json.load(f)
-                        
-                        # Prepare the event data
+
+                        # Prepare the event data with enhanced information
                         event_data = {
                             'version': self.version,
                             'price': status_data.get('current_price'),
@@ -300,12 +313,19 @@ class PriceOptimizationMonitor:
                             'complete': status_data.get('complete', False),
                             'success': status_data.get('success', False),
                             'error': status_data.get('error'),
-                            'timestamp': datetime.now().isoformat()
+                            'timestamp': datetime.now().isoformat(),
+                            # Enhanced information for calculation steps
+                            'calculationStep': status_data.get('calculation_step', ''),
+                            'calculationDetails': status_data.get('calculation_details', {}),
+                            # Enhanced information for payload details
+                            'payloadDetails': status_data.get('payload_details', {}),
+                            # Additional information that might be useful
+                            'progressPercentage': status_data.get('progress_percentage', 0)
                         }
-                        
+
                         # Store the last data for new clients
                         self.last_data = event_data
-                        
+
                         # Notify all clients
                         for client in list(self.clients):
                             try:
@@ -313,7 +333,7 @@ class PriceOptimizationMonitor:
                             except Exception as e:
                                 logger.error(f"Error sending to client: {str(e)}")
                                 self.clients.remove(client)
-                        
+
                         # If calculation is complete, send one more message then stop
                         if status_data.get('complete', False):
                             logger.info(f"Calculation complete for version {self.version}")
@@ -331,15 +351,15 @@ class PriceOptimizationMonitor:
                             # Stop monitoring
                             self.stop()
                             break
-                        
+
                         consecutive_errors = 0
-                    
+
                 # If status file doesn't exist, check for optimal price file
                 elif os.path.exists(self._get_fallback_price_file()):
                     try:
                         with open(self._get_fallback_price_file(), 'r') as f:
                             price_data = json.load(f)
-                        
+
                         # Prepare the event data
                         event_data = {
                             'version': self.version,
@@ -350,39 +370,39 @@ class PriceOptimizationMonitor:
                             'message': "Calculation was completed previously",
                             'timestamp': datetime.now().isoformat()
                         }
-                        
+
                         # Store the last data for new clients
                         self.last_data = event_data
-                        
+
                         # Notify all clients
                         for client in list(self.clients):
                             try:
                                 client.put(event_data)
                             except Exception:
                                 self.clients.remove(client)
-                        
+
                         # Stop monitoring
                         logger.info(f"Found optimal price file for version {self.version}")
                         self.stop()
                         break
-                        
+
                     except Exception as e:
                         logger.error(f"Error reading optimal price file: {str(e)}")
                         consecutive_errors += 1
-                
+
                 else:
                     # Neither file exists yet
                     consecutive_errors += 1
                     if consecutive_errors % 5 == 0:  # Log every 5th error
                         logger.warning(f"Status file not found for version {self.version}, consecutive errors: {consecutive_errors}")
-                
+
             except Exception as e:
                 logger.error(f"Error in monitoring loop for version {self.version}: {str(e)}")
                 consecutive_errors += 1
-            
+
             # Sleep before next check
             time.sleep(check_interval)
-        
+
         if consecutive_errors >= max_errors:
             logger.error(f"Too many consecutive errors for version {self.version}, stopping monitor")
             # Notify clients of the error
@@ -423,24 +443,24 @@ def stream_price(version):
         """Generator function for the SSE stream."""
         # Create a queue for this client
         client_queue = Queue()
-        
+
         # Get or create a monitor for this version
         if version not in active_monitors:
             active_monitors[version] = PriceOptimizationMonitor(version)
-        
+
         # Add this client to the monitor
         active_monitors[version].add_client(client_queue)
-        
+
         try:
             # Send initial connection message
             yield f"data: {json.dumps({'status': 'connected', 'version': version, 'timestamp': datetime.now().isoformat()})}\n\n"
-            
+
             while True:
                 # Wait for data from the monitor with a timeout
                 try:
                     data = client_queue.get(timeout=30)  # 30 second timeout
                     yield f"data: {json.dumps(data)}\n\n"
-                    
+
                     # If calculation is complete, end the stream
                     if data.get('complete', False):
                         logger.info(f"Stream ending for version {version} - calculation complete")
@@ -457,7 +477,7 @@ def stream_price(version):
             if version in active_monitors:
                 active_monitors[version].remove_client(client_queue)
                 logger.info(f"Client removed from monitor for version {version}")
-    
+
     return Response(generate(), mimetype='text/event-stream')
 
 @app.route('/price/<version>', methods=['GET'])
@@ -467,20 +487,20 @@ def get_price(version):
     """
     try:
         results_folder = os.path.join(SCRIPT_DIR, "..", "..", "Original", f"Batch({version})", f"Results({version})")
-        
+
         # Try both possible file names for the price data
         price_files = [
             os.path.join(results_folder, f"optimal_price_{version}.json"),  # New format from CFA.py
             os.path.join(results_folder, f"optimized_price_{version}.json")  # Old format for backward compatibility
         ]
-        
+
         for price_file in price_files:
             if os.path.exists(price_file):
                 with open(price_file, 'r') as f:
                     data = json.load(f)
                     logger.info(f"Found price data for version {version} in {os.path.basename(price_file)}")
                     return jsonify(data)
-        
+
         # If we get here, no price file was found
         logger.warning(f"No price data found for version {version}")
         return jsonify({"error": f"No price data found for version {version}"}), 404
@@ -515,6 +535,8 @@ def run_scripts():
         # Extract state parameters with defaults
         selected_v = data.get('selectedV', DEFAULT_V_STATES)
         selected_f = data.get('selectedF', DEFAULT_F_STATES)
+        selected_r = data.get('selectedR', {f'R{i+1}': 'off' for i in range(10)})  # Add default for R
+        selected_rf = data.get('selectedRF', {f'RF{i+1}': 'off' for i in range(5)})  # Add default for RF
         selected_calculation_option = data.get('selectedCalculationOption', DEFAULT_CALCULATION_OPTION)
 
         # Validate calculation option
@@ -568,6 +590,8 @@ def run_scripts():
             selected_versions,
             selected_v,
             selected_f,
+            selected_r,  # Add R parameters
+            selected_rf,  # Add RF parameters
             selected_calculation_option,
             target_row,
             tolerance_lower,
@@ -612,6 +636,8 @@ def run_scripts():
                 calculation_script,
                 selected_v,
                 selected_f,
+                selected_r,  # Add R parameters
+                selected_rf,  # Add RF parameters
                 target_row,
                 selected_calculation_option,
                 version_tolerance_lower,

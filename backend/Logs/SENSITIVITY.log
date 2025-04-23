@@ -1,11 +1,1407 @@
-2025-04-09 23:54:40,631 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-09 23:54:43,905 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-10 00:07:20,834 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-10 00:33:20,748 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-10 00:33:21,270 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-10 08:12:34,418 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-10 08:12:34,972 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-10 15:16:05,516 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-10 15:16:06,039 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-10 18:45:22,975 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
-2025-04-10 18:45:23,480 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
+2025-04-22 21:31:30,896 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
+2025-04-22 21:31:31,622 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
+2025-04-22 21:31:50,341 INFO Initialized sensitivity monitor for version 3, log file: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
+2025-04-22 21:31:50,341 INFO Client added to sensitivity monitor for version 3. Total clients: 1
+2025-04-22 21:31:50,369 INFO Sensitivity monitoring thread started for version 3
+2025-04-22 21:31:50,598 INFO Client added to sensitivity monitor for version 3. Total clients: 2
+2025-04-22 21:31:50,878 INFO Client added to sensitivity monitor for version 3. Total clients: 3
+2025-04-22 21:31:50,878 INFO Client disconnected from sensitivity stream for version 3
+2025-04-22 21:31:50,878 INFO Client disconnected from sensitivity stream for version 3
+2025-04-22 21:31:50,878 INFO Client disconnected from sensitivity stream for version 3
+2025-04-22 21:31:50,878 INFO Client removed from sensitivity monitor for version 3. Remaining clients: 0
+2025-04-22 21:31:50,878 INFO Client removed from sensitivity monitor for version 3. Remaining clients: 1
+2025-04-22 21:31:50,878 INFO Client removed from sensitivity monitor for version 3. Remaining clients: 2
+2025-04-22 21:31:50,878 INFO Client removed from sensitivity monitor for version 3
+2025-04-22 21:31:50,878 INFO Client removed from sensitivity monitor for version 3
+2025-04-22 21:31:50,878 INFO Sensitivity monitoring stopped for version 3
+2025-04-22 21:31:50,878 INFO Client removed from sensitivity monitor for version 3
+2025-04-22 21:31:50,894 INFO Initialized sensitivity monitor for version 3, log file: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
+2025-04-22 21:31:50,910 INFO Client added to sensitivity monitor for version 3. Total clients: 1
+2025-04-22 21:31:50,910 INFO Sensitivity monitoring thread started for version 3
+2025-04-22 21:32:05,993 INFO Client added to sensitivity monitor for version 3. Total clients: 2
+2025-04-22 21:32:06,013 INFO Client disconnected from sensitivity stream for version 3
+2025-04-22 21:32:06,169 INFO Client removed from sensitivity monitor for version 3. Remaining clients: 1
+2025-04-22 21:32:06,169 INFO Client removed from sensitivity monitor for version 3
+2025-04-22 21:32:06,169 INFO Client disconnected from sensitivity stream for version 3
+2025-04-22 21:32:06,169 INFO Client removed from sensitivity monitor for version 3. Remaining clients: 0
+2025-04-22 21:32:06,169 INFO Sensitivity monitoring stopped for version 3
+2025-04-22 21:32:06,169 INFO Client removed from sensitivity monitor for version 3
+2025-04-22 21:32:06,355 INFO Initialized sensitivity monitor for version 3, log file: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
+2025-04-22 21:32:06,355 INFO Client added to sensitivity monitor for version 3. Total clients: 1
+2025-04-22 21:32:06,540 INFO Sensitivity monitoring thread started for version 3
+2025-04-22 21:32:13,719 INFO Client added to sensitivity monitor for version 3. Total clients: 2
+2025-04-22 21:32:13,947 INFO Client disconnected from sensitivity stream for version 3
+2025-04-22 21:32:13,947 INFO Client removed from sensitivity monitor for version 3. Remaining clients: 1
+2025-04-22 21:32:13,947 INFO Client removed from sensitivity monitor for version 3
+2025-04-22 21:32:19,898 INFO Client added to sensitivity monitor for version 3. Total clients: 2
+2025-04-22 21:32:20,243 INFO Client disconnected from sensitivity stream for version 3
+2025-04-22 21:32:20,243 INFO Client removed from sensitivity monitor for version 3. Remaining clients: 1
+2025-04-22 21:32:20,243 INFO Client removed from sensitivity monitor for version 3
+2025-04-22 21:32:21,713 INFO Client added to sensitivity monitor for version 3. Total clients: 2
+2025-04-22 21:32:22,153 INFO Client disconnected from sensitivity stream for version 3
+2025-04-22 21:32:22,153 INFO Client removed from sensitivity monitor for version 3. Remaining clients: 1
+2025-04-22 21:32:22,153 INFO Client removed from sensitivity monitor for version 3
+2025-04-22 21:32:52,670 INFO Client disconnected from sensitivity stream for version 3
+2025-04-22 21:32:52,670 INFO Client removed from sensitivity monitor for version 3. Remaining clients: 0
+2025-04-22 21:32:52,670 INFO Sensitivity monitoring stopped for version 3
+2025-04-22 21:32:52,670 INFO Client removed from sensitivity monitor for version 3
+2025-04-22 21:33:38,207 INFO 
+================================================================================
+2025-04-22 21:33:38,208 INFO Baseline Calculation - Run ID: 20250422_213338
+2025-04-22 21:33:38,208 INFO ================================================================================
+2025-04-22 21:33:38,208 INFO Version: 3
+2025-04-22 21:33:38,208 INFO Calculation Mode: calculateForPrice
+2025-04-22 21:33:38,208 INFO Target Row: 20
+2025-04-22 21:33:38,208 INFO 
+Executing Configuration Management Scripts:
+2025-04-22 21:33:38,208 INFO 
+Executing: formatter.py
+2025-04-22 21:33:38,397 INFO Completed formatter.py in 0.19s
+2025-04-22 21:33:38,906 INFO 
+Executing: module1.py
+2025-04-22 21:33:41,407 INFO Initialized sensitivity monitor for version 3, log file: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
+2025-04-22 21:33:41,407 INFO Client added to sensitivity monitor for version 3. Total clients: 1
+2025-04-22 21:33:41,431 INFO Sensitivity monitoring thread started for version 3
+2025-04-22 21:33:42,066 INFO Completed module1.py in 3.16s
+2025-04-22 21:33:42,572 INFO 
+Executing: config_modules.py
+2025-04-22 21:33:44,765 INFO Completed config_modules.py in 2.19s
+2025-04-22 21:33:45,279 INFO 
+Executing: Table.py
+2025-04-22 21:33:53,972 INFO Completed Table.py in 8.69s
+2025-04-22 21:33:54,477 INFO 
+Configuration scripts completed in 16.27s
+2025-04-22 21:33:54,477 INFO Using calculation script: CFA.py
+2025-04-22 21:33:54,477 INFO 
+Executing baseline calculation:
+2025-04-22 21:34:27,078 INFO Baseline calculation completed successfully
+2025-04-22 21:34:27,078 INFO 
+================================================================================
+2025-04-22 21:34:27,078 INFO Run Summary - ID: 20250422_213338
+2025-04-22 21:34:27,078 INFO Total execution time: 48.87s
+2025-04-22 21:34:27,078 INFO Configuration scripts: 16.27s
+2025-04-22 21:34:27,078 INFO ================================================================================
+
+2025-04-22 21:34:27,210 INFO 
+================================================================================
+2025-04-22 21:34:27,210 INFO Sensitivity Configuration Generation - Run ID: 20250422_213427
+2025-04-22 21:34:27,210 INFO ================================================================================
+2025-04-22 21:34:27,210 INFO Version: 3
+2025-04-22 21:34:27,225 INFO Calculation Mode: calculateForPrice
+2025-04-22 21:34:27,225 INFO Target Row: 20
+2025-04-22 21:34:27,241 INFO Created main sensitivity directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity
+2025-04-22 21:34:27,241 INFO Created Reports directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\Reports
+2025-04-22 21:34:27,241 INFO Created Cache directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\Cache
+2025-04-22 21:34:27,241 INFO Created Configuration directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\Configuration
+2025-04-22 21:34:27,241 INFO Created mode directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\Percentage
+2025-04-22 21:34:27,241 INFO Created plot type directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\Percentage\waterfall
+2025-04-22 21:34:27,241 INFO Created plot type directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\Percentage\bar
+2025-04-22 21:34:27,241 INFO Created plot type directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\Percentage\point
+2025-04-22 21:34:27,241 INFO Created plot type directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\Percentage\Configuration
+2025-04-22 21:34:27,241 INFO Created mode directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\DirectValue
+2025-04-22 21:34:27,241 INFO Created plot type directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\DirectValue\waterfall
+2025-04-22 21:34:27,241 INFO Created plot type directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\DirectValue\bar
+2025-04-22 21:34:27,241 INFO Created plot type directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\DirectValue\point
+2025-04-22 21:34:27,241 INFO Created plot type directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\DirectValue\Configuration
+2025-04-22 21:34:27,241 INFO Created mode directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\AbsoluteDeparture
+2025-04-22 21:34:27,241 INFO Created plot type directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\AbsoluteDeparture\waterfall
+2025-04-22 21:34:27,241 INFO Created plot type directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\AbsoluteDeparture\bar
+2025-04-22 21:34:27,250 INFO Created plot type directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\AbsoluteDeparture\point
+2025-04-22 21:34:27,250 INFO Created plot type directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\AbsoluteDeparture\Configuration
+2025-04-22 21:34:27,250 INFO Created mode directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\MonteCarlo
+2025-04-22 21:34:27,250 INFO Created plot type directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\MonteCarlo\waterfall
+2025-04-22 21:34:27,250 INFO Created plot type directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\MonteCarlo\bar
+2025-04-22 21:34:27,250 INFO Created plot type directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\MonteCarlo\point
+2025-04-22 21:34:27,265 INFO Created plot type directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\MonteCarlo\Configuration
+2025-04-22 21:34:27,265 INFO Created parameter variation directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\S34\percentage\-50.00
+2025-04-22 21:34:27,265 INFO Created configuration directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\Percentage\Configuration\S34_-50.00
+2025-04-22 21:34:27,265 INFO Created parameter variation directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\S34\percentage\+100.00
+2025-04-22 21:34:27,265 INFO Created configuration directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\Percentage\Configuration\S34_+100.00
+2025-04-22 21:34:27,265 INFO Created plot directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\Percentage\point\S34_point
+2025-04-22 21:34:27,265 INFO Created parameter variation directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\S35\directvalue\+30000.00
+2025-04-22 21:34:27,265 INFO Created configuration directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\DirectValue\Configuration\S35_+30000.00
+2025-04-22 21:34:27,265 INFO Created plot directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\DirectValue\waterfall\S35_waterfall
+2025-04-22 21:34:27,281 INFO Created plot directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\DirectValue\bar\S35_bar
+2025-04-22 21:34:27,281 INFO Created plot directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\DirectValue\point\S35_point
+2025-04-22 21:34:27,281 INFO 
+================================================================================
+2025-04-22 21:34:27,281 INFO CFA Run Configuration
+2025-04-22 21:34:27,281 INFO ================================================================================
+2025-04-22 21:34:27,281 INFO 
+Basic Configuration:
+2025-04-22 21:34:27,281 INFO Version(s): 3
+2025-04-22 21:34:27,281 INFO Calculation Mode: calculateForPrice
+2025-04-22 21:34:27,281 INFO Target Row: 20
+2025-04-22 21:34:27,281 INFO 
+Parameter States:
+2025-04-22 21:34:27,281 INFO Enabled V Parameters: None
+2025-04-22 21:34:27,281 INFO Enabled F Parameters: F1, F2, F3, F4, F5
+2025-04-22 21:34:27,281 INFO 
+Sensitivity Analysis Configuration:
+2025-04-22 21:34:27,281 INFO Enabled Parameters: S34, S35
+2025-04-22 21:34:27,281 INFO 
+S34 Configuration:
+2025-04-22 21:34:27,281 INFO   Mode: percentage
+2025-04-22 21:34:27,281 INFO   Values: [-50, 100]
+2025-04-22 21:34:27,281 INFO   Comparison:
+2025-04-22 21:34:27,281 INFO     Target: S13
+2025-04-22 21:34:27,281 INFO     Type: None
+2025-04-22 21:34:27,281 INFO     Plot Types: point
+2025-04-22 21:34:27,281 INFO 
+S35 Configuration:
+2025-04-22 21:34:27,281 INFO   Mode: directvalue
+2025-04-22 21:34:27,281 INFO   Values: [30000]
+2025-04-22 21:34:27,281 INFO   Comparison:
+2025-04-22 21:34:27,281 INFO     Target: S13
+2025-04-22 21:34:27,281 INFO     Type: None
+2025-04-22 21:34:27,281 INFO     Plot Types: waterfall, bar, point
+2025-04-22 21:34:27,281 INFO 
+================================================================================
+
+2025-04-22 21:34:27,295 INFO Saved main configuration file: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\Reports\sensitivity_config.json
+2025-04-22 21:34:27,296 INFO Saved parameter configuration file: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\S34\percentage\-50.00\S34_config.json
+2025-04-22 21:34:27,316 INFO Saved parameter configuration file: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\S34\percentage\+100.00\S34_config.json
+2025-04-22 21:34:27,354 INFO Saved parameter configuration file: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\S35\directvalue\+30000.00\S35_config.json
+2025-04-22 21:34:27,354 INFO 
+Triggering configuration module copying:
+2025-04-22 21:34:27,354 INFO Triggering config module copy service on port 2600...
+2025-04-22 21:34:30,690 INFO Successfully imported sensitivity functions via direct import
+2025-04-22 21:34:30,690 INFO Created/ensured ConfigurationPlotSpec directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\ConfigurationPlotSpec(3)
+2025-04-22 21:34:30,690 INFO Starting 5-minute pause to ensure CSV files exist...
+2025-04-22 21:34:33,697 INFO Resuming after 5-minute pause, checking for CSV files...
+2025-04-22 21:34:33,697 INFO Processing parameter S34 with mode percentage
+2025-04-22 21:34:33,697 INFO Processing variation -50.00 in directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\S34\percentage\-50.00
+2025-04-22 21:34:33,776 INFO Copied specific CSV file: Configuration_Matrix(3).csv
+2025-04-22 21:34:33,776 INFO Copied specific CSV file: General_Configuration_Matrix(3).csv
+2025-04-22 21:34:33,776 INFO Copied Python configuration file to variation dir: configurations(3).py
+2025-04-22 21:34:33,776 INFO Copied Python configuration file to main ConfigurationPlotSpec dir: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\ConfigurationPlotSpec(3)\configurations(3).py
+2025-04-22 21:34:33,776 INFO Searching for parameter with numeric identifier: 34
+2025-04-22 21:34:33,776 INFO Found parameter by numeric suffix match: rawmaterialAmount34 for S34
+2025-04-22 21:34:33,776 INFO Applied -50% variation to rawmaterialAmount34 (S34)
+2025-04-22 21:34:33,792 INFO Applied -50 variation to config module 1 for S34
+2025-04-22 21:34:33,792 INFO Searching for parameter with numeric identifier: 34
+2025-04-22 21:34:33,792 INFO Found parameter by numeric suffix match: rawmaterialAmount34 for S34
+2025-04-22 21:34:33,792 INFO Applied -50% variation to rawmaterialAmount34 (S34)
+2025-04-22 21:34:33,792 INFO Applied -50 variation to config module 2 for S34
+2025-04-22 21:34:33,792 INFO Searching for parameter with numeric identifier: 34
+2025-04-22 21:34:33,792 INFO Found parameter by numeric suffix match: rawmaterialAmount34 for S34
+2025-04-22 21:34:33,792 INFO Applied -50% variation to rawmaterialAmount34 (S34)
+2025-04-22 21:34:33,792 INFO Applied -50 variation to config module 3 for S34
+2025-04-22 21:34:33,792 INFO Searching for parameter with numeric identifier: 34
+2025-04-22 21:34:33,792 INFO Found parameter by numeric suffix match: rawmaterialAmount34 for S34
+2025-04-22 21:34:33,792 INFO Applied -50% variation to rawmaterialAmount34 (S34)
+2025-04-22 21:34:33,792 INFO Applied -50 variation to config module 4 for S34
+2025-04-22 21:34:33,792 INFO Searching for parameter with numeric identifier: 34
+2025-04-22 21:34:33,807 INFO Found parameter by numeric suffix match: rawmaterialAmount34 for S34
+2025-04-22 21:34:33,807 INFO Applied -50% variation to rawmaterialAmount34 (S34)
+2025-04-22 21:34:33,807 INFO Applied -50 variation to config module 5 for S34
+2025-04-22 21:34:33,807 INFO Searching for parameter with numeric identifier: 34
+2025-04-22 21:34:33,807 INFO Found parameter by numeric suffix match: rawmaterialAmount34 for S34
+2025-04-22 21:34:33,807 INFO Applied -50% variation to rawmaterialAmount34 (S34)
+2025-04-22 21:34:33,807 INFO Applied -50 variation to config module 6 for S34
+2025-04-22 21:34:33,807 INFO Searching for parameter with numeric identifier: 34
+2025-04-22 21:34:33,807 INFO Found parameter by numeric suffix match: rawmaterialAmount34 for S34
+2025-04-22 21:34:33,807 INFO Applied -50% variation to rawmaterialAmount34 (S34)
+2025-04-22 21:34:33,807 INFO Applied -50 variation to config module 7 for S34
+2025-04-22 21:34:33,807 INFO Searching for parameter with numeric identifier: 34
+2025-04-22 21:34:33,807 INFO Found parameter by numeric suffix match: rawmaterialAmount34 for S34
+2025-04-22 21:34:33,807 INFO Applied -50% variation to rawmaterialAmount34 (S34)
+2025-04-22 21:34:33,807 INFO Applied -50 variation to config module 8 for S34
+2025-04-22 21:34:33,807 INFO Searching for parameter with numeric identifier: 34
+2025-04-22 21:34:33,807 INFO Found parameter by numeric suffix match: rawmaterialAmount34 for S34
+2025-04-22 21:34:33,807 INFO Applied -50% variation to rawmaterialAmount34 (S34)
+2025-04-22 21:34:33,823 INFO Applied -50 variation to config module 9 for S34
+2025-04-22 21:34:33,823 INFO Searching for parameter with numeric identifier: 34
+2025-04-22 21:34:33,823 INFO Found parameter by numeric suffix match: rawmaterialAmount34 for S34
+2025-04-22 21:34:33,823 INFO Applied -50% variation to rawmaterialAmount34 (S34)
+2025-04-22 21:34:33,867 INFO Applied -50 variation to config module 10 for S34
+2025-04-22 21:34:33,868 INFO Searching for parameter with numeric identifier: 34
+2025-04-22 21:34:33,868 INFO Found parameter by numeric suffix match: rawmaterialAmount34 for S34
+2025-04-22 21:34:33,868 INFO Applied -50% variation to rawmaterialAmount34 (S34)
+2025-04-22 21:34:33,891 INFO Applied -50 variation to config module 11 for S34
+2025-04-22 21:34:33,891 INFO Searching for parameter with numeric identifier: 34
+2025-04-22 21:34:33,891 INFO Found parameter by numeric suffix match: rawmaterialAmount34 for S34
+2025-04-22 21:34:33,891 INFO Applied -50% variation to rawmaterialAmount34 (S34)
+2025-04-22 21:34:33,891 INFO Applied -50 variation to config module 12 for S34
+2025-04-22 21:34:33,891 INFO Searching for parameter with numeric identifier: 34
+2025-04-22 21:34:33,891 INFO Found parameter by numeric suffix match: rawmaterialAmount34 for S34
+2025-04-22 21:34:33,891 INFO Applied -50% variation to rawmaterialAmount34 (S34)
+2025-04-22 21:34:33,891 INFO Applied -50 variation to config module 13 for S34
+2025-04-22 21:34:33,907 INFO Searching for parameter with numeric identifier: 34
+2025-04-22 21:34:33,907 INFO Found parameter by numeric suffix match: rawmaterialAmount34 for S34
+2025-04-22 21:34:33,907 INFO Applied -50% variation to rawmaterialAmount34 (S34)
+2025-04-22 21:34:33,907 INFO Applied -50 variation to config module 14 for S34
+2025-04-22 21:34:33,907 INFO Searching for parameter with numeric identifier: 34
+2025-04-22 21:34:33,907 INFO Found parameter by numeric suffix match: rawmaterialAmount34 for S34
+2025-04-22 21:34:33,907 INFO Applied -50% variation to rawmaterialAmount34 (S34)
+2025-04-22 21:34:33,907 INFO Applied -50 variation to config module 15 for S34
+2025-04-22 21:34:33,907 INFO Searching for parameter with numeric identifier: 34
+2025-04-22 21:34:33,907 INFO Found parameter by numeric suffix match: rawmaterialAmount34 for S34
+2025-04-22 21:34:33,907 INFO Applied -50% variation to rawmaterialAmount34 (S34)
+2025-04-22 21:34:33,907 INFO Applied -50 variation to config module 16 for S34
+2025-04-22 21:34:33,907 INFO Searching for parameter with numeric identifier: 34
+2025-04-22 21:34:33,907 INFO Found parameter by numeric suffix match: rawmaterialAmount34 for S34
+2025-04-22 21:34:33,907 INFO Applied -50% variation to rawmaterialAmount34 (S34)
+2025-04-22 21:34:33,907 INFO Applied -50 variation to config module 17 for S34
+2025-04-22 21:34:33,907 INFO Searching for parameter with numeric identifier: 34
+2025-04-22 21:34:33,907 INFO Found parameter by numeric suffix match: rawmaterialAmount34 for S34
+2025-04-22 21:34:33,907 INFO Applied -50% variation to rawmaterialAmount34 (S34)
+2025-04-22 21:34:33,907 INFO Applied -50 variation to config module 18 for S34
+2025-04-22 21:34:33,907 INFO Searching for parameter with numeric identifier: 34
+2025-04-22 21:34:33,907 INFO Found parameter by numeric suffix match: rawmaterialAmount34 for S34
+2025-04-22 21:34:33,907 INFO Applied -50% variation to rawmaterialAmount34 (S34)
+2025-04-22 21:34:33,923 INFO Applied -50 variation to config module 19 for S34
+2025-04-22 21:34:33,923 INFO Searching for parameter with numeric identifier: 34
+2025-04-22 21:34:33,923 INFO Found parameter by numeric suffix match: rawmaterialAmount34 for S34
+2025-04-22 21:34:33,923 INFO Applied -50% variation to rawmaterialAmount34 (S34)
+2025-04-22 21:34:33,923 INFO Applied -50 variation to config module 20 for S34
+2025-04-22 21:34:33,923 INFO Processing variation +100.00 in directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\S34\percentage\+100.00
+2025-04-22 21:34:33,923 INFO Copied specific CSV file: Configuration_Matrix(3).csv
+2025-04-22 21:34:33,923 INFO Copied specific CSV file: General_Configuration_Matrix(3).csv
+2025-04-22 21:34:33,923 INFO Copied Python configuration file to variation dir: configurations(3).py
+2025-04-22 21:34:33,923 INFO Copied Python configuration file to main ConfigurationPlotSpec dir: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\ConfigurationPlotSpec(3)\configurations(3).py
+2025-04-22 21:34:33,923 INFO Searching for parameter with numeric identifier: 34
+2025-04-22 21:34:33,923 INFO Found parameter by numeric suffix match: rawmaterialAmount34 for S34
+2025-04-22 21:34:33,923 INFO Applied 100% variation to rawmaterialAmount34 (S34)
+2025-04-22 21:34:33,938 INFO Applied 100 variation to config module 1 for S34
+2025-04-22 21:34:33,938 INFO Searching for parameter with numeric identifier: 34
+2025-04-22 21:34:33,938 INFO Found parameter by numeric suffix match: rawmaterialAmount34 for S34
+2025-04-22 21:34:33,938 INFO Applied 100% variation to rawmaterialAmount34 (S34)
+2025-04-22 21:34:33,938 INFO Applied 100 variation to config module 2 for S34
+2025-04-22 21:34:33,938 INFO Searching for parameter with numeric identifier: 34
+2025-04-22 21:34:33,938 INFO Found parameter by numeric suffix match: rawmaterialAmount34 for S34
+2025-04-22 21:34:33,938 INFO Applied 100% variation to rawmaterialAmount34 (S34)
+2025-04-22 21:34:33,938 INFO Applied 100 variation to config module 3 for S34
+2025-04-22 21:34:33,938 INFO Searching for parameter with numeric identifier: 34
+2025-04-22 21:34:33,938 INFO Found parameter by numeric suffix match: rawmaterialAmount34 for S34
+2025-04-22 21:34:33,938 INFO Applied 100% variation to rawmaterialAmount34 (S34)
+2025-04-22 21:34:33,938 INFO Applied 100 variation to config module 4 for S34
+2025-04-22 21:34:33,938 INFO Searching for parameter with numeric identifier: 34
+2025-04-22 21:34:33,938 INFO Found parameter by numeric suffix match: rawmaterialAmount34 for S34
+2025-04-22 21:34:33,938 INFO Applied 100% variation to rawmaterialAmount34 (S34)
+2025-04-22 21:34:33,938 INFO Applied 100 variation to config module 5 for S34
+2025-04-22 21:34:33,938 INFO Searching for parameter with numeric identifier: 34
+2025-04-22 21:34:33,938 INFO Found parameter by numeric suffix match: rawmaterialAmount34 for S34
+2025-04-22 21:34:33,938 INFO Applied 100% variation to rawmaterialAmount34 (S34)
+2025-04-22 21:34:33,938 INFO Applied 100 variation to config module 6 for S34
+2025-04-22 21:34:33,938 INFO Searching for parameter with numeric identifier: 34
+2025-04-22 21:34:33,938 INFO Found parameter by numeric suffix match: rawmaterialAmount34 for S34
+2025-04-22 21:34:33,938 INFO Applied 100% variation to rawmaterialAmount34 (S34)
+2025-04-22 21:34:33,954 INFO Applied 100 variation to config module 7 for S34
+2025-04-22 21:34:33,954 INFO Searching for parameter with numeric identifier: 34
+2025-04-22 21:34:33,954 INFO Found parameter by numeric suffix match: rawmaterialAmount34 for S34
+2025-04-22 21:34:33,954 INFO Applied 100% variation to rawmaterialAmount34 (S34)
+2025-04-22 21:34:33,954 INFO Applied 100 variation to config module 8 for S34
+2025-04-22 21:34:33,954 INFO Searching for parameter with numeric identifier: 34
+2025-04-22 21:34:33,954 INFO Found parameter by numeric suffix match: rawmaterialAmount34 for S34
+2025-04-22 21:34:33,954 INFO Applied 100% variation to rawmaterialAmount34 (S34)
+2025-04-22 21:34:33,954 INFO Applied 100 variation to config module 9 for S34
+2025-04-22 21:34:33,954 INFO Searching for parameter with numeric identifier: 34
+2025-04-22 21:34:33,954 INFO Found parameter by numeric suffix match: rawmaterialAmount34 for S34
+2025-04-22 21:34:33,954 INFO Applied 100% variation to rawmaterialAmount34 (S34)
+2025-04-22 21:34:33,954 INFO Applied 100 variation to config module 10 for S34
+2025-04-22 21:34:33,954 INFO Searching for parameter with numeric identifier: 34
+2025-04-22 21:34:33,954 INFO Found parameter by numeric suffix match: rawmaterialAmount34 for S34
+2025-04-22 21:34:33,954 INFO Applied 100% variation to rawmaterialAmount34 (S34)
+2025-04-22 21:34:33,969 INFO Applied 100 variation to config module 11 for S34
+2025-04-22 21:34:33,969 INFO Searching for parameter with numeric identifier: 34
+2025-04-22 21:34:33,969 INFO Found parameter by numeric suffix match: rawmaterialAmount34 for S34
+2025-04-22 21:34:33,969 INFO Applied 100% variation to rawmaterialAmount34 (S34)
+2025-04-22 21:34:33,969 INFO Applied 100 variation to config module 12 for S34
+2025-04-22 21:34:33,974 INFO Searching for parameter with numeric identifier: 34
+2025-04-22 21:34:33,974 INFO Found parameter by numeric suffix match: rawmaterialAmount34 for S34
+2025-04-22 21:34:33,974 INFO Applied 100% variation to rawmaterialAmount34 (S34)
+2025-04-22 21:34:33,978 INFO Applied 100 variation to config module 13 for S34
+2025-04-22 21:34:33,979 INFO Searching for parameter with numeric identifier: 34
+2025-04-22 21:34:33,979 INFO Found parameter by numeric suffix match: rawmaterialAmount34 for S34
+2025-04-22 21:34:33,979 INFO Applied 100% variation to rawmaterialAmount34 (S34)
+2025-04-22 21:34:33,979 INFO Applied 100 variation to config module 14 for S34
+2025-04-22 21:34:33,979 INFO Searching for parameter with numeric identifier: 34
+2025-04-22 21:34:33,979 INFO Found parameter by numeric suffix match: rawmaterialAmount34 for S34
+2025-04-22 21:34:33,979 INFO Applied 100% variation to rawmaterialAmount34 (S34)
+2025-04-22 21:34:33,979 INFO Applied 100 variation to config module 15 for S34
+2025-04-22 21:34:33,979 INFO Searching for parameter with numeric identifier: 34
+2025-04-22 21:34:33,979 INFO Found parameter by numeric suffix match: rawmaterialAmount34 for S34
+2025-04-22 21:34:33,979 INFO Applied 100% variation to rawmaterialAmount34 (S34)
+2025-04-22 21:34:33,979 INFO Applied 100 variation to config module 16 for S34
+2025-04-22 21:34:33,995 INFO Searching for parameter with numeric identifier: 34
+2025-04-22 21:34:33,995 INFO Found parameter by numeric suffix match: rawmaterialAmount34 for S34
+2025-04-22 21:34:33,995 INFO Applied 100% variation to rawmaterialAmount34 (S34)
+2025-04-22 21:34:33,995 INFO Applied 100 variation to config module 17 for S34
+2025-04-22 21:34:33,995 INFO Searching for parameter with numeric identifier: 34
+2025-04-22 21:34:33,995 INFO Found parameter by numeric suffix match: rawmaterialAmount34 for S34
+2025-04-22 21:34:33,995 INFO Applied 100% variation to rawmaterialAmount34 (S34)
+2025-04-22 21:34:33,995 INFO Applied 100 variation to config module 18 for S34
+2025-04-22 21:34:33,995 INFO Searching for parameter with numeric identifier: 34
+2025-04-22 21:34:33,995 INFO Found parameter by numeric suffix match: rawmaterialAmount34 for S34
+2025-04-22 21:34:33,995 INFO Applied 100% variation to rawmaterialAmount34 (S34)
+2025-04-22 21:34:33,995 INFO Applied 100 variation to config module 19 for S34
+2025-04-22 21:34:34,011 INFO Searching for parameter with numeric identifier: 34
+2025-04-22 21:34:34,011 INFO Found parameter by numeric suffix match: rawmaterialAmount34 for S34
+2025-04-22 21:34:34,011 INFO Applied 100% variation to rawmaterialAmount34 (S34)
+2025-04-22 21:34:34,011 INFO Applied 100 variation to config module 20 for S34
+2025-04-22 21:34:34,011 INFO Processing parameter S35 with mode directvalue
+2025-04-22 21:34:34,011 INFO Processing variation +30000.00 in directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\S35\directvalue\+30000.00
+2025-04-22 21:34:34,011 INFO Copied specific CSV file: Configuration_Matrix(3).csv
+2025-04-22 21:34:34,011 INFO Copied specific CSV file: General_Configuration_Matrix(3).csv
+2025-04-22 21:34:34,011 INFO Copied Python configuration file to variation dir: configurations(3).py
+2025-04-22 21:34:34,011 INFO Copied Python configuration file to main ConfigurationPlotSpec dir: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\ConfigurationPlotSpec(3)\configurations(3).py
+2025-04-22 21:34:34,011 INFO Searching for parameter with numeric identifier: 35
+2025-04-22 21:34:34,011 INFO Found parameter by numeric suffix match: laborAmount35 for S35
+2025-04-22 21:34:34,011 INFO Applied direct value 30000 to laborAmount35 (S35)
+2025-04-22 21:34:34,011 INFO Applied 30000 variation to config module 1 for S35
+2025-04-22 21:34:34,026 INFO Searching for parameter with numeric identifier: 35
+2025-04-22 21:34:34,026 INFO Found parameter by numeric suffix match: laborAmount35 for S35
+2025-04-22 21:34:34,026 INFO Applied direct value 30000 to laborAmount35 (S35)
+2025-04-22 21:34:34,026 INFO Applied 30000 variation to config module 2 for S35
+2025-04-22 21:34:34,026 INFO Searching for parameter with numeric identifier: 35
+2025-04-22 21:34:34,026 INFO Found parameter by numeric suffix match: laborAmount35 for S35
+2025-04-22 21:34:34,026 INFO Applied direct value 30000 to laborAmount35 (S35)
+2025-04-22 21:34:34,026 INFO Applied 30000 variation to config module 3 for S35
+2025-04-22 21:34:34,026 INFO Searching for parameter with numeric identifier: 35
+2025-04-22 21:34:34,026 INFO Found parameter by numeric suffix match: laborAmount35 for S35
+2025-04-22 21:34:34,026 INFO Applied direct value 30000 to laborAmount35 (S35)
+2025-04-22 21:34:34,026 INFO Applied 30000 variation to config module 4 for S35
+2025-04-22 21:34:34,026 INFO Searching for parameter with numeric identifier: 35
+2025-04-22 21:34:34,026 INFO Found parameter by numeric suffix match: laborAmount35 for S35
+2025-04-22 21:34:34,026 INFO Applied direct value 30000 to laborAmount35 (S35)
+2025-04-22 21:34:34,039 INFO Applied 30000 variation to config module 5 for S35
+2025-04-22 21:34:34,039 INFO Searching for parameter with numeric identifier: 35
+2025-04-22 21:34:34,039 INFO Found parameter by numeric suffix match: laborAmount35 for S35
+2025-04-22 21:34:34,039 INFO Applied direct value 30000 to laborAmount35 (S35)
+2025-04-22 21:34:34,039 INFO Applied 30000 variation to config module 6 for S35
+2025-04-22 21:34:34,039 INFO Searching for parameter with numeric identifier: 35
+2025-04-22 21:34:34,039 INFO Found parameter by numeric suffix match: laborAmount35 for S35
+2025-04-22 21:34:34,039 INFO Applied direct value 30000 to laborAmount35 (S35)
+2025-04-22 21:34:34,039 INFO Applied 30000 variation to config module 7 for S35
+2025-04-22 21:34:34,039 INFO Searching for parameter with numeric identifier: 35
+2025-04-22 21:34:34,039 INFO Found parameter by numeric suffix match: laborAmount35 for S35
+2025-04-22 21:34:34,039 INFO Applied direct value 30000 to laborAmount35 (S35)
+2025-04-22 21:34:34,039 INFO Applied 30000 variation to config module 8 for S35
+2025-04-22 21:34:34,039 INFO Searching for parameter with numeric identifier: 35
+2025-04-22 21:34:34,039 INFO Found parameter by numeric suffix match: laborAmount35 for S35
+2025-04-22 21:34:34,039 INFO Applied direct value 30000 to laborAmount35 (S35)
+2025-04-22 21:34:34,039 INFO Applied 30000 variation to config module 9 for S35
+2025-04-22 21:34:34,039 INFO Searching for parameter with numeric identifier: 35
+2025-04-22 21:34:34,039 INFO Found parameter by numeric suffix match: laborAmount35 for S35
+2025-04-22 21:34:34,039 INFO Applied direct value 30000 to laborAmount35 (S35)
+2025-04-22 21:34:34,057 INFO Applied 30000 variation to config module 10 for S35
+2025-04-22 21:34:34,057 INFO Searching for parameter with numeric identifier: 35
+2025-04-22 21:34:34,057 INFO Found parameter by numeric suffix match: laborAmount35 for S35
+2025-04-22 21:34:34,057 INFO Applied direct value 30000 to laborAmount35 (S35)
+2025-04-22 21:34:34,057 INFO Applied 30000 variation to config module 11 for S35
+2025-04-22 21:34:34,057 INFO Searching for parameter with numeric identifier: 35
+2025-04-22 21:34:34,057 INFO Found parameter by numeric suffix match: laborAmount35 for S35
+2025-04-22 21:34:34,057 INFO Applied direct value 30000 to laborAmount35 (S35)
+2025-04-22 21:34:34,057 INFO Applied 30000 variation to config module 12 for S35
+2025-04-22 21:34:34,057 INFO Searching for parameter with numeric identifier: 35
+2025-04-22 21:34:34,057 INFO Found parameter by numeric suffix match: laborAmount35 for S35
+2025-04-22 21:34:34,057 INFO Applied direct value 30000 to laborAmount35 (S35)
+2025-04-22 21:34:34,057 INFO Applied 30000 variation to config module 13 for S35
+2025-04-22 21:34:34,057 INFO Searching for parameter with numeric identifier: 35
+2025-04-22 21:34:34,057 INFO Found parameter by numeric suffix match: laborAmount35 for S35
+2025-04-22 21:34:34,057 INFO Applied direct value 30000 to laborAmount35 (S35)
+2025-04-22 21:34:34,057 INFO Applied 30000 variation to config module 14 for S35
+2025-04-22 21:34:34,057 INFO Searching for parameter with numeric identifier: 35
+2025-04-22 21:34:34,057 INFO Found parameter by numeric suffix match: laborAmount35 for S35
+2025-04-22 21:34:34,057 INFO Applied direct value 30000 to laborAmount35 (S35)
+2025-04-22 21:34:34,057 INFO Applied 30000 variation to config module 15 for S35
+2025-04-22 21:34:34,057 INFO Searching for parameter with numeric identifier: 35
+2025-04-22 21:34:34,057 INFO Found parameter by numeric suffix match: laborAmount35 for S35
+2025-04-22 21:34:34,057 INFO Applied direct value 30000 to laborAmount35 (S35)
+2025-04-22 21:34:34,073 INFO Applied 30000 variation to config module 16 for S35
+2025-04-22 21:34:34,073 INFO Searching for parameter with numeric identifier: 35
+2025-04-22 21:34:34,073 INFO Found parameter by numeric suffix match: laborAmount35 for S35
+2025-04-22 21:34:34,073 INFO Applied direct value 30000 to laborAmount35 (S35)
+2025-04-22 21:34:34,073 INFO Applied 30000 variation to config module 17 for S35
+2025-04-22 21:34:34,073 INFO Searching for parameter with numeric identifier: 35
+2025-04-22 21:34:34,073 INFO Found parameter by numeric suffix match: laborAmount35 for S35
+2025-04-22 21:34:34,073 INFO Applied direct value 30000 to laborAmount35 (S35)
+2025-04-22 21:34:34,073 INFO Applied 30000 variation to config module 18 for S35
+2025-04-22 21:34:34,073 INFO Searching for parameter with numeric identifier: 35
+2025-04-22 21:34:34,073 INFO Found parameter by numeric suffix match: laborAmount35 for S35
+2025-04-22 21:34:34,073 INFO Applied direct value 30000 to laborAmount35 (S35)
+2025-04-22 21:34:34,073 INFO Applied 30000 variation to config module 19 for S35
+2025-04-22 21:34:34,073 INFO Searching for parameter with numeric identifier: 35
+2025-04-22 21:34:34,073 INFO Found parameter by numeric suffix match: laborAmount35 for S35
+2025-04-22 21:34:34,073 INFO Applied direct value 30000 to laborAmount35 (S35)
+2025-04-22 21:34:34,073 INFO Applied 30000 variation to config module 20 for S35
+2025-04-22 21:34:34,086 INFO Config module processing completed: found 60 JSON files, modified 60 JSON files, copied 6 specific CSV files, copied 3 Python configuration files
+2025-04-22 21:34:34,086 INFO Generating SensitivityPlotDatapoints_{version}.json file with actual base values...
+2025-04-22 21:34:34,086 INFO Successfully imported sensitivity functions via direct import
+2025-04-22 21:34:34,086 INFO Generating SensitivityPlotDatapoints_3.json in C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)
+2025-04-22 21:34:34,086 INFO Loaded base configuration from C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(3)\Results(3)\3_config_module_1.json
+2025-04-22 21:34:34,086 INFO Searching for parameter with numeric identifier: 34
+2025-04-22 21:34:34,086 INFO Found parameter by numeric suffix match: rawmaterialAmount34 for S34
+2025-04-22 21:34:34,086 INFO Found base value 10000 for S34 via key rawmaterialAmount34
+2025-04-22 21:34:34,221 INFO Searching for parameter with numeric identifier: 34
+2025-04-22 21:34:34,221 INFO Found parameter by numeric suffix match: rawmaterialAmount34 for S34
+2025-04-22 21:34:34,221 INFO Applied -50% variation to rawmaterialAmount34 (S34)
+2025-04-22 21:34:34,221 INFO Calculated modified value 5000.0 for S34 with variation -50
+2025-04-22 21:34:34,221 INFO Added point for S34: variation=-50, modified_value=5000.0, point_key=5000
+2025-04-22 21:34:34,221 INFO Searching for parameter with numeric identifier: 34
+2025-04-22 21:34:34,221 INFO Found parameter by numeric suffix match: rawmaterialAmount34 for S34
+2025-04-22 21:34:34,221 INFO Applied 100% variation to rawmaterialAmount34 (S34)
+2025-04-22 21:34:34,221 INFO Calculated modified value 20000.0 for S34 with variation 100
+2025-04-22 21:34:34,221 INFO Added point for S34: variation=100, modified_value=20000.0, point_key=20000
+2025-04-22 21:34:34,221 INFO Added datapoints for S34,S13: baseline=10000, mode=percentage, variations=2, info=b1
+2025-04-22 21:34:34,221 INFO Searching for parameter with numeric identifier: 35
+2025-04-22 21:34:34,221 INFO Found parameter by numeric suffix match: laborAmount35 for S35
+2025-04-22 21:34:34,221 INFO Found base value 24000 for S35 via key laborAmount35
+2025-04-22 21:34:34,221 INFO Searching for parameter with numeric identifier: 35
+2025-04-22 21:34:34,221 INFO Found parameter by numeric suffix match: laborAmount35 for S35
+2025-04-22 21:34:34,221 INFO Applied direct value 30000 to laborAmount35 (S35)
+2025-04-22 21:34:34,221 INFO Calculated modified value 30000 for S35 with variation 30000
+2025-04-22 21:34:34,221 INFO Added point for S35: variation=30000, modified_value=30000, point_key=30000
+2025-04-22 21:34:34,221 INFO Added datapoints for S35,S13: baseline=24000, mode=directvalue, variations=1, info=+
+2025-04-22 21:34:34,237 INFO Successfully saved SensitivityPlotDatapoints_3.json with 2 parameter entries
+2025-04-22 21:34:34,237 INFO SensitivityPlotDatapoints generation completed: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\SensitivityPlotDatapoints_3.json
+2025-04-22 21:34:34,237 INFO Config copy service triggered successfully: Config module processing completed successfully
+2025-04-22 21:34:34,237 INFO Preparing path configurations with CalSen service...
+2025-04-22 21:34:36,828 INFO CalSen paths prepared: 2 configurations
+2025-04-22 21:34:36,877 INFO 
+Sensitivity configuration completed successfully
+2025-04-22 21:34:36,877 INFO Configuration files saved: 4
+2025-04-22 21:34:36,877 INFO Configuration status saved to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\sensitivity_config_status.json
+2025-04-22 21:34:36,877 INFO ================================================================================
+
+2025-04-22 21:34:38,074 INFO Using saved sensitivity configuration data
+2025-04-22 21:34:38,090 INFO Year columns configuration set to 20 for all versions
+2025-04-22 21:34:38,091 INFO Using sensitivity directory: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity
+2025-04-22 21:34:38,091 INFO 
+================================================================================
+2025-04-22 21:34:38,091 INFO Sensitivity Calculation Run - ID: 20250422_213437
+2025-04-22 21:34:38,091 INFO ================================================================================
+2025-04-22 21:34:38,091 INFO 
+================================================================================
+2025-04-22 21:34:38,091 INFO CFA Run Configuration
+2025-04-22 21:34:38,091 INFO ================================================================================
+2025-04-22 21:34:38,091 INFO 
+Basic Configuration:
+2025-04-22 21:34:38,091 INFO Version(s): 3
+2025-04-22 21:34:38,091 INFO Calculation Mode: calculateForPrice
+2025-04-22 21:34:38,092 INFO Target Row: 20
+2025-04-22 21:34:38,092 INFO 
+Parameter States:
+2025-04-22 21:34:38,092 INFO Enabled V Parameters: None
+2025-04-22 21:34:38,092 INFO Enabled F Parameters: F1, F2, F3, F4, F5
+2025-04-22 21:34:38,092 INFO 
+Sensitivity Analysis Configuration:
+2025-04-22 21:34:38,092 INFO Enabled Parameters: S34, S35
+2025-04-22 21:34:38,092 INFO 
+S34 Configuration:
+2025-04-22 21:34:38,092 INFO   Mode: percentage
+2025-04-22 21:34:38,092 INFO   Values: [-50, 100]
+2025-04-22 21:34:38,092 INFO   Comparison:
+2025-04-22 21:34:38,092 INFO     Target: S13
+2025-04-22 21:34:38,092 INFO     Type: None
+2025-04-22 21:34:38,092 INFO     Plot Types: point
+2025-04-22 21:34:38,093 INFO 
+S35 Configuration:
+2025-04-22 21:34:38,093 INFO   Mode: directvalue
+2025-04-22 21:34:38,093 INFO   Values: [30000]
+2025-04-22 21:34:38,093 INFO   Comparison:
+2025-04-22 21:34:38,093 INFO     Target: S13
+2025-04-22 21:34:38,093 INFO     Type: None
+2025-04-22 21:34:38,093 INFO     Plot Types: waterfall, bar, point
+2025-04-22 21:34:38,093 INFO 
+================================================================================
+
+2025-04-22 21:34:38,093 INFO 
+Executing Configuration Management Scripts:
+2025-04-22 21:34:38,093 INFO 
+Executing: formatter.py
+2025-04-22 21:34:40,587 INFO Completed formatter.py in 2.49s
+2025-04-22 21:34:41,107 INFO 
+Executing: module1.py
+2025-04-22 21:34:45,902 INFO Completed module1.py in 4.79s
+2025-04-22 21:34:46,410 INFO 
+Executing: config_modules.py
+2025-04-22 21:34:49,251 INFO Completed config_modules.py in 2.84s
+2025-04-22 21:34:50,318 INFO 
+Executing: Table.py
+2025-04-22 21:35:00,616 INFO Completed Table.py in 10.30s
+2025-04-22 21:35:01,128 INFO 
+Configuration scripts completed in 23.03s
+2025-04-22 21:35:01,128 INFO 
+Processing Baseline Calculation:
+2025-04-22 21:35:01,128 INFO Using calculation script: CFA.py
+2025-04-22 21:35:01,128 INFO 
+Executing baseline calculation:
+2025-04-22 21:35:25,125 INFO Baseline calculation completed successfully
+2025-04-22 21:35:25,125 INFO 
+Checking configuration module copy status:
+2025-04-22 21:35:25,125 INFO Configuration copying was already initiated during configuration step
+2025-04-22 21:35:25,125 INFO Verifying configuration files existence...
+2025-04-22 21:35:25,125 INFO All required configuration files verified!
+2025-04-22 21:35:25,125 INFO Updating configuration data with current version...
+2025-04-22 21:35:25,125 INFO Updated configuration data with version 3
+2025-04-22 21:35:25,125 INFO 
+Processing 2 enabled sensitivity parameters...
+2025-04-22 21:35:25,125 INFO Initial run completed. For detailed parameter calculations, use the /calculate-sensitivity endpoint.
+2025-04-22 21:35:25,125 INFO 
+================================================================================
+2025-04-22 21:35:25,125 INFO Run Summary - ID: 20250422_213437
+2025-04-22 21:35:25,125 INFO Total execution time: 47.03s
+2025-04-22 21:35:25,125 INFO Configuration scripts: 23.03s
+2025-04-22 21:35:25,125 INFO Configurations processed: 2
+2025-04-22 21:35:25,125 INFO ================================================================================
+
+2025-04-22 21:35:25,150 INFO Using saved sensitivity configuration data
+2025-04-22 21:35:25,150 INFO 
+================================================================================
+2025-04-22 21:35:25,150 INFO Parameter-Specific Sensitivity Calculations - Run ID: 20250422_213525
+2025-04-22 21:35:25,150 INFO ================================================================================
+2025-04-22 21:35:25,150 INFO Version: 3
+2025-04-22 21:35:25,150 INFO Calculation Mode: calculateForPrice
+2025-04-22 21:35:25,150 INFO Target Row: 20
+2025-04-22 21:35:25,150 INFO Using calculation script: CFA-b.py
+2025-04-22 21:35:25,150 INFO Processing 2 enabled parameters
+2025-04-22 21:35:25,150 INFO Processing S34 variation -50.00
+2025-04-22 21:35:25,150 INFO Executing CFA-b.py for S34 variation -50.00...
+2025-04-22 21:35:25,150 INFO Command: python C:\Users\Mohse\IdeaProjects2\codebase\backend\Core_calculation_engines\CFA-b.py 3 {"V1": "off", "V2": "off", "V3": "off", "V4": "off", "V5": "off", "V6": "off", "V7": "off", "V8": "off", "V9": "off", "V10": "off"} {"F1": "on", "F2": "on", "F3": "on", "F4": "on", "F5": "on"} 20 calculateForPrice {"S34": {"mode": "percentage", "values": [-50, 100], "enabled": true, "compareToKey": "S13", "comparisonType": null, "waterfall": false, "bar": false, "point": true}} --param_id S34 --variation -50.0 --compare_to_key S13 --mode percentage
+2025-04-22 21:35:42,533 INFO CFA-b.py connected to sensitivity logger
+2025-04-22 21:35:42,533 INFO Processing sensitivity calculation for S34 variation -50.0
+2025-04-22 21:35:42,533 INFO Requesting paths from CalSen for S34 variation -50.0
+2025-04-22 21:35:45,032 INFO Received response from CalSen service
+2025-04-22 21:35:45,032 INFO Found paths for S34 variation -50.00
+2025-04-22 21:35:45,032 INFO Using paths from CalSen service for S34 variation -50.0
+2025-04-22 21:35:46,989 ERROR Command stderr: 2025-04-22 21:35:42,533 - CFA-b.py connected to sensitivity logger
+2025-04-22 21:35:42,533 - Processing sensitivity calculation for S34 variation -50.0
+2025-04-22 21:35:42,533 - Requesting paths from CalSen for S34 variation -50.0
+2025-04-22 21:35:45,032 - Received response from CalSen service
+2025-04-22 21:35:45,032 - Found paths for S34 variation -50.00
+2025-04-22 21:35:45,032 - Using paths from CalSen service for S34 variation -50.0
+2025-04-22 21:35:45,032 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,032 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,032 - Filtered fixed costs: [5000, 24000, 5000, 2500, 500]
+2025-04-22 21:35:45,032 - Total fixed costs: 37000
+2025-04-22 21:35:45,032 - Using indirect calculation for operating expenses.
+2025-04-22 21:35:45,032 - Annual variable costs: 0
+2025-04-22 21:35:45,032 - Operating expenses (indirect method): [0, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000]
+2025-04-22 21:35:45,048 - Final operating expenses: [0, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000]
+2025-04-22 21:35:45,048 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,048 - Filtered fixed costs returned: [5000, 24000, 5000, 2500, 500]
+2025-04-22 21:35:45,048 - total units sold: 31578.947368421053
+2025-04-22 21:35:45,048 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,048 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,048 - Filtered fixed costs: [5000, 24000, 5000, 2500, 500]
+2025-04-22 21:35:45,048 - Total fixed costs: 37000
+2025-04-22 21:35:45,048 - Using indirect calculation for operating expenses.
+2025-04-22 21:35:45,048 - Annual variable costs: 0
+2025-04-22 21:35:45,048 - Operating expenses (indirect method): [0, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000]
+2025-04-22 21:35:45,048 - Final operating expenses: [0, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000]
+2025-04-22 21:35:45,048 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,048 - Filtered fixed costs returned: [5000, 24000, 5000, 2500, 500]
+2025-04-22 21:35:45,048 - total units sold: 63157.89473684211
+2025-04-22 21:35:45,048 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,048 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,048 - Filtered fixed costs: [5000, 24000, 5000, 2500, 500]
+2025-04-22 21:35:45,048 - Total fixed costs: 37000
+2025-04-22 21:35:45,048 - Using indirect calculation for operating expenses.
+2025-04-22 21:35:45,048 - Annual variable costs: 0
+2025-04-22 21:35:45,048 - Operating expenses (indirect method): [0, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000]
+2025-04-22 21:35:45,048 - Final operating expenses: [0, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000]
+2025-04-22 21:35:45,048 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,048 - Filtered fixed costs returned: [5000, 24000, 5000, 2500, 500]
+2025-04-22 21:35:45,048 - total units sold: 94736.84210526316
+2025-04-22 21:35:45,048 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,048 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,048 - Filtered fixed costs: [5000, 24000, 5000, 2500, 500]
+2025-04-22 21:35:45,048 - Total fixed costs: 37000
+2025-04-22 21:35:45,048 - Using indirect calculation for operating expenses.
+2025-04-22 21:35:45,048 - Annual variable costs: 0
+2025-04-22 21:35:45,048 - Operating expenses (indirect method): [0, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000]
+2025-04-22 21:35:45,048 - Final operating expenses: [0, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000]
+2025-04-22 21:35:45,048 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,048 - Filtered fixed costs returned: [5000, 24000, 5000, 2500, 500]
+2025-04-22 21:35:45,048 - total units sold: 126315.78947368421
+2025-04-22 21:35:45,048 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,048 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,048 - Filtered fixed costs: [5000, 24000, 5000, 2500, 500]
+2025-04-22 21:35:45,048 - Total fixed costs: 37000
+2025-04-22 21:35:45,048 - Using indirect calculation for operating expenses.
+2025-04-22 21:35:45,048 - Annual variable costs: 0
+2025-04-22 21:35:45,048 - Operating expenses (indirect method): [0, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000]
+2025-04-22 21:35:45,048 - Final operating expenses: [0, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000]
+2025-04-22 21:35:45,048 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,048 - Filtered fixed costs returned: [5000, 24000, 5000, 2500, 500]
+2025-04-22 21:35:45,048 - total units sold: 157894.73684210525
+2025-04-22 21:35:45,048 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,048 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,048 - Filtered fixed costs: [5000, 24000, 5000, 2500, 500]
+2025-04-22 21:35:45,048 - Total fixed costs: 37000
+2025-04-22 21:35:45,048 - Using indirect calculation for operating expenses.
+2025-04-22 21:35:45,048 - Annual variable costs: 0
+2025-04-22 21:35:45,048 - Operating expenses (indirect method): [0, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000]
+2025-04-22 21:35:45,048 - Final operating expenses: [0, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000]
+2025-04-22 21:35:45,048 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,048 - Filtered fixed costs returned: [5000, 24000, 5000, 2500, 500]
+2025-04-22 21:35:45,048 - total units sold: 189473.68421052632
+2025-04-22 21:35:45,048 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,048 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,048 - Filtered fixed costs: [5000, 24000, 5000, 2500, 500]
+2025-04-22 21:35:45,048 - Total fixed costs: 37000
+2025-04-22 21:35:45,048 - Using indirect calculation for operating expenses.
+2025-04-22 21:35:45,048 - Annual variable costs: 0
+2025-04-22 21:35:45,048 - Operating expenses (indirect method): [0, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000]
+2025-04-22 21:35:45,048 - Final operating expenses: [0, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000]
+2025-04-22 21:35:45,048 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,048 - Filtered fixed costs returned: [5000, 24000, 5000, 2500, 500]
+2025-04-22 21:35:45,048 - total units sold: 221052.63157894736
+2025-04-22 21:35:45,048 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,048 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,048 - Filtered fixed costs: [5000, 24000, 5000, 2500, 500]
+2025-04-22 21:35:45,048 - Total fixed costs: 37000
+2025-04-22 21:35:45,048 - Using indirect calculation for operating expenses.
+2025-04-22 21:35:45,048 - Annual variable costs: 0
+2025-04-22 21:35:45,048 - Operating expenses (indirect method): [0, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000]
+2025-04-22 21:35:45,048 - Final operating expenses: [0, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000]
+2025-04-22 21:35:45,048 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,048 - Filtered fixed costs returned: [5000, 24000, 5000, 2500, 500]
+2025-04-22 21:35:45,048 - total units sold: 252631.57894736843
+2025-04-22 21:35:45,048 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,048 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,048 - Filtered fixed costs: [5000, 24000, 5000, 2500, 500]
+2025-04-22 21:35:45,048 - Total fixed costs: 37000
+2025-04-22 21:35:45,048 - Using indirect calculation for operating expenses.
+2025-04-22 21:35:45,048 - Annual variable costs: 0
+2025-04-22 21:35:45,048 - Operating expenses (indirect method): [0, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000]
+2025-04-22 21:35:45,048 - Final operating expenses: [0, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000]
+2025-04-22 21:35:45,048 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,048 - Filtered fixed costs returned: [5000, 24000, 5000, 2500, 500]
+2025-04-22 21:35:45,048 - total units sold: 284210.5263157895
+2025-04-22 21:35:45,063 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,063 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,063 - Filtered fixed costs: [5000, 24000, 5000, 2500, 500]
+2025-04-22 21:35:45,063 - Total fixed costs: 37000
+2025-04-22 21:35:45,063 - Using indirect calculation for operating expenses.
+2025-04-22 21:35:45,063 - Annual variable costs: 0
+2025-04-22 21:35:45,063 - Operating expenses (indirect method): [0, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000]
+2025-04-22 21:35:45,063 - Final operating expenses: [0, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000]
+2025-04-22 21:35:45,063 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,063 - Filtered fixed costs returned: [5000, 24000, 5000, 2500, 500]
+2025-04-22 21:35:45,063 - total units sold: 315789.4736842105
+2025-04-22 21:35:45,063 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,063 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,063 - Filtered fixed costs: [5000, 24000, 5000, 2500, 500]
+2025-04-22 21:35:45,063 - Total fixed costs: 37000
+2025-04-22 21:35:45,063 - Using indirect calculation for operating expenses.
+2025-04-22 21:35:45,063 - Annual variable costs: 0
+2025-04-22 21:35:45,063 - Operating expenses (indirect method): [0, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000]
+2025-04-22 21:35:45,063 - Final operating expenses: [0, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000]
+2025-04-22 21:35:45,063 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,063 - Filtered fixed costs returned: [5000, 24000, 5000, 2500, 500]
+2025-04-22 21:35:45,063 - total units sold: 347368.4210526316
+2025-04-22 21:35:45,063 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,063 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,063 - Filtered fixed costs: [5000, 24000, 5000, 2500, 500]
+2025-04-22 21:35:45,063 - Total fixed costs: 37000
+2025-04-22 21:35:45,063 - Using indirect calculation for operating expenses.
+2025-04-22 21:35:45,063 - Annual variable costs: 0
+2025-04-22 21:35:45,063 - Operating expenses (indirect method): [0, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000]
+2025-04-22 21:35:45,063 - Final operating expenses: [0, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000]
+2025-04-22 21:35:45,063 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,063 - Filtered fixed costs returned: [5000, 24000, 5000, 2500, 500]
+2025-04-22 21:35:45,063 - total units sold: 378947.36842105264
+2025-04-22 21:35:45,063 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,063 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,063 - Filtered fixed costs: [5000, 24000, 5000, 2500, 500]
+2025-04-22 21:35:45,063 - Total fixed costs: 37000
+2025-04-22 21:35:45,063 - Using indirect calculation for operating expenses.
+2025-04-22 21:35:45,063 - Annual variable costs: 0
+2025-04-22 21:35:45,063 - Operating expenses (indirect method): [0, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000]
+2025-04-22 21:35:45,063 - Final operating expenses: [0, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000]
+2025-04-22 21:35:45,063 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,063 - Filtered fixed costs returned: [5000, 24000, 5000, 2500, 500]
+2025-04-22 21:35:45,063 - total units sold: 410526.3157894737
+2025-04-22 21:35:45,063 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,063 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,063 - Filtered fixed costs: [5000, 24000, 5000, 2500, 500]
+2025-04-22 21:35:45,063 - Total fixed costs: 37000
+2025-04-22 21:35:45,063 - Using indirect calculation for operating expenses.
+2025-04-22 21:35:45,063 - Annual variable costs: 0
+2025-04-22 21:35:45,063 - Operating expenses (indirect method): [0, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000]
+2025-04-22 21:35:45,063 - Final operating expenses: [0, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000]
+2025-04-22 21:35:45,063 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,063 - Filtered fixed costs returned: [5000, 24000, 5000, 2500, 500]
+2025-04-22 21:35:45,063 - total units sold: 442105.2631578947
+2025-04-22 21:35:45,063 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,063 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,063 - Filtered fixed costs: [5000, 24000, 5000, 2500, 500]
+2025-04-22 21:35:45,063 - Total fixed costs: 37000
+2025-04-22 21:35:45,063 - Using indirect calculation for operating expenses.
+2025-04-22 21:35:45,063 - Annual variable costs: 0
+2025-04-22 21:35:45,063 - Operating expenses (indirect method): [0, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000]
+2025-04-22 21:35:45,063 - Final operating expenses: [0, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000]
+2025-04-22 21:35:45,063 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,063 - Filtered fixed costs returned: [5000, 24000, 5000, 2500, 500]
+2025-04-22 21:35:45,063 - total units sold: 473684.2105263158
+2025-04-22 21:35:45,063 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,063 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,063 - Filtered fixed costs: [5000, 24000, 5000, 2500, 500]
+2025-04-22 21:35:45,063 - Total fixed costs: 37000
+2025-04-22 21:35:45,063 - Using indirect calculation for operating expenses.
+2025-04-22 21:35:45,063 - Annual variable costs: 0
+2025-04-22 21:35:45,063 - Operating expenses (indirect method): [0, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000]
+2025-04-22 21:35:45,063 - Final operating expenses: [0, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000]
+2025-04-22 21:35:45,063 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,063 - Filtered fixed costs returned: [5000, 24000, 5000, 2500, 500]
+2025-04-22 21:35:45,063 - total units sold: 505263.15789473685
+2025-04-22 21:35:45,063 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,063 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,063 - Filtered fixed costs: [5000, 24000, 5000, 2500, 500]
+2025-04-22 21:35:45,063 - Total fixed costs: 37000
+2025-04-22 21:35:45,063 - Using indirect calculation for operating expenses.
+2025-04-22 21:35:45,063 - Annual variable costs: 0
+2025-04-22 21:35:45,063 - Operating expenses (indirect method): [0, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000]
+2025-04-22 21:35:45,063 - Final operating expenses: [0, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000]
+2025-04-22 21:35:45,063 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,063 - Filtered fixed costs returned: [5000, 24000, 5000, 2500, 500]
+2025-04-22 21:35:45,063 - total units sold: 536842.1052631579
+2025-04-22 21:35:45,063 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,063 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,063 - Filtered fixed costs: [5000, 24000, 5000, 2500, 500]
+2025-04-22 21:35:45,063 - Total fixed costs: 37000
+2025-04-22 21:35:45,063 - Using indirect calculation for operating expenses.
+2025-04-22 21:35:45,063 - Annual variable costs: 0
+2025-04-22 21:35:45,063 - Operating expenses (indirect method): [0, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000]
+2025-04-22 21:35:45,079 - Final operating expenses: [0, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000]
+2025-04-22 21:35:45,079 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,079 - Filtered fixed costs returned: [5000, 24000, 5000, 2500, 500]
+2025-04-22 21:35:45,079 - total units sold: 568421.052631579
+2025-04-22 21:35:45,079 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,079 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,079 - Filtered fixed costs: [5000, 24000, 5000, 2500, 500]
+2025-04-22 21:35:45,079 - Total fixed costs: 37000
+2025-04-22 21:35:45,079 - Using indirect calculation for operating expenses.
+2025-04-22 21:35:45,079 - Annual variable costs: 0
+2025-04-22 21:35:45,079 - Operating expenses (indirect method): [0, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000]
+2025-04-22 21:35:45,079 - Final operating expenses: [0, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000]
+2025-04-22 21:35:45,079 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,079 - Filtered fixed costs returned: [5000, 24000, 5000, 2500, 500]
+2025-04-22 21:35:45,079 - total units sold: 600000.0
+2025-04-22 21:35:45,079 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,079 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,079 - Filtered fixed costs: [5000, 24000, 5000, 2500, 500]
+2025-04-22 21:35:45,079 - Total fixed costs: 37000
+2025-04-22 21:35:45,079 - Using indirect calculation for operating expenses.
+2025-04-22 21:35:45,079 - Annual variable costs: 0
+2025-04-22 21:35:45,079 - Operating expenses (indirect method): [0, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000]
+2025-04-22 21:35:45,079 - Final operating expenses: [0, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000, 37000]
+2025-04-22 21:35:45,079 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:35:45,079 - Filtered fixed costs returned: [5000, 24000, 5000, 2500, 500]
+2025-04-22 21:35:45,079 - total units sold: 631578.947368421
+C:\Users\Mohse\IdeaProjects2\codebase\backend\Core_calculation_engines\CFA-b.py:545: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '0.115' has dtype incompatible with int64, please explicitly cast to a compatible dtype first.
+  distance_matrix.at[i, 'Fraction of TOC'] = round((revenue - operating_expenses) / TOC, 9)
+2025-04-22 21:35:45,346 - Finished CFA calculation
+2025-04-22 21:35:45,346 - Finished CFA calculation
+2025-04-22 21:35:45,346 - Finished CFA calculation
+2025-04-22 21:35:45,346 - Finished CFA calculation
+2025-04-22 21:35:45,346 - Finished CFA calculation
+2025-04-22 21:35:45,346 - Finished CFA calculation
+2025-04-22 21:35:45,346 - Finished CFA calculation
+2025-04-22 21:35:45,346 - Finished CFA calculation
+2025-04-22 21:35:45,361 - total_units_sold: 631578.947368421
+2025-04-22 21:35:46,648 - Calculated Current NPV: 173714.00 from row 20
+2025-04-22 21:35:46,648 - 'primary_result': 173714,'secondary_result': 1
+2025-04-22 21:35:46,648 - Script finished execution with result: {'primary_result': np.int64(173714), 'secondary_result': 1}
+
+2025-04-22 21:35:46,989 INFO Successfully calculated S34 variation -50.00
+2025-04-22 21:35:46,989 INFO Found economic summary at C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\S34\percentage\-50.00\Economic_Summary(3).csv
+2025-04-22 21:35:47,005 INFO Extracted price: $1.90, NPV: $173,714.00
+2025-04-22 21:35:47,005 INFO Processing S34 variation +100.00
+2025-04-22 21:35:47,005 INFO Executing CFA-b.py for S34 variation +100.00...
+2025-04-22 21:35:47,005 INFO Command: python C:\Users\Mohse\IdeaProjects2\codebase\backend\Core_calculation_engines\CFA-b.py 3 {"V1": "off", "V2": "off", "V3": "off", "V4": "off", "V5": "off", "V6": "off", "V7": "off", "V8": "off", "V9": "off", "V10": "off"} {"F1": "on", "F2": "on", "F3": "on", "F4": "on", "F5": "on"} 20 calculateForPrice {"S34": {"mode": "percentage", "values": [-50, 100], "enabled": true, "compareToKey": "S13", "comparisonType": null, "waterfall": false, "bar": false, "point": true}} --param_id S34 --variation 100.0 --compare_to_key S13 --mode percentage
+2025-04-22 21:36:03,019 INFO CFA-b.py connected to sensitivity logger
+2025-04-22 21:36:03,019 INFO Processing sensitivity calculation for S34 variation 100.0
+2025-04-22 21:36:03,019 INFO Requesting paths from CalSen for S34 variation 100.0
+2025-04-22 21:36:05,287 INFO Received response from CalSen service
+2025-04-22 21:36:05,287 INFO Found paths for S34 variation +100.00
+2025-04-22 21:36:05,287 INFO Using paths from CalSen service for S34 variation 100.0
+2025-04-22 21:36:07,231 ERROR Command stderr: 2025-04-22 21:36:03,019 - CFA-b.py connected to sensitivity logger
+2025-04-22 21:36:03,019 - Processing sensitivity calculation for S34 variation 100.0
+2025-04-22 21:36:03,019 - Requesting paths from CalSen for S34 variation 100.0
+2025-04-22 21:36:05,287 - Received response from CalSen service
+2025-04-22 21:36:05,287 - Found paths for S34 variation +100.00
+2025-04-22 21:36:05,287 - Using paths from CalSen service for S34 variation 100.0
+2025-04-22 21:36:05,287 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,287 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,287 - Filtered fixed costs: [20000, 24000, 5000, 2500, 500]
+2025-04-22 21:36:05,287 - Total fixed costs: 52000
+2025-04-22 21:36:05,287 - Using indirect calculation for operating expenses.
+2025-04-22 21:36:05,287 - Annual variable costs: 0
+2025-04-22 21:36:05,287 - Operating expenses (indirect method): [0, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000]
+2025-04-22 21:36:05,287 - Final operating expenses: [0, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000]
+2025-04-22 21:36:05,287 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,287 - Filtered fixed costs returned: [20000, 24000, 5000, 2500, 500]
+2025-04-22 21:36:05,287 - total units sold: 31578.947368421053
+2025-04-22 21:36:05,287 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,287 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,287 - Filtered fixed costs: [20000, 24000, 5000, 2500, 500]
+2025-04-22 21:36:05,287 - Total fixed costs: 52000
+2025-04-22 21:36:05,287 - Using indirect calculation for operating expenses.
+2025-04-22 21:36:05,287 - Annual variable costs: 0
+2025-04-22 21:36:05,287 - Operating expenses (indirect method): [0, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000]
+2025-04-22 21:36:05,287 - Final operating expenses: [0, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000]
+2025-04-22 21:36:05,287 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,287 - Filtered fixed costs returned: [20000, 24000, 5000, 2500, 500]
+2025-04-22 21:36:05,287 - total units sold: 63157.89473684211
+2025-04-22 21:36:05,287 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,287 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,287 - Filtered fixed costs: [20000, 24000, 5000, 2500, 500]
+2025-04-22 21:36:05,287 - Total fixed costs: 52000
+2025-04-22 21:36:05,287 - Using indirect calculation for operating expenses.
+2025-04-22 21:36:05,287 - Annual variable costs: 0
+2025-04-22 21:36:05,287 - Operating expenses (indirect method): [0, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000]
+2025-04-22 21:36:05,287 - Final operating expenses: [0, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000]
+2025-04-22 21:36:05,287 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,303 - Filtered fixed costs returned: [20000, 24000, 5000, 2500, 500]
+2025-04-22 21:36:05,303 - total units sold: 94736.84210526316
+2025-04-22 21:36:05,303 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,303 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,303 - Filtered fixed costs: [20000, 24000, 5000, 2500, 500]
+2025-04-22 21:36:05,303 - Total fixed costs: 52000
+2025-04-22 21:36:05,303 - Using indirect calculation for operating expenses.
+2025-04-22 21:36:05,303 - Annual variable costs: 0
+2025-04-22 21:36:05,303 - Operating expenses (indirect method): [0, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000]
+2025-04-22 21:36:05,303 - Final operating expenses: [0, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000]
+2025-04-22 21:36:05,303 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,303 - Filtered fixed costs returned: [20000, 24000, 5000, 2500, 500]
+2025-04-22 21:36:05,303 - total units sold: 126315.78947368421
+2025-04-22 21:36:05,303 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,303 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,303 - Filtered fixed costs: [20000, 24000, 5000, 2500, 500]
+2025-04-22 21:36:05,303 - Total fixed costs: 52000
+2025-04-22 21:36:05,303 - Using indirect calculation for operating expenses.
+2025-04-22 21:36:05,303 - Annual variable costs: 0
+2025-04-22 21:36:05,303 - Operating expenses (indirect method): [0, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000]
+2025-04-22 21:36:05,303 - Final operating expenses: [0, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000]
+2025-04-22 21:36:05,303 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,303 - Filtered fixed costs returned: [20000, 24000, 5000, 2500, 500]
+2025-04-22 21:36:05,303 - total units sold: 157894.73684210525
+2025-04-22 21:36:05,303 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,303 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,303 - Filtered fixed costs: [20000, 24000, 5000, 2500, 500]
+2025-04-22 21:36:05,303 - Total fixed costs: 52000
+2025-04-22 21:36:05,303 - Using indirect calculation for operating expenses.
+2025-04-22 21:36:05,303 - Annual variable costs: 0
+2025-04-22 21:36:05,303 - Operating expenses (indirect method): [0, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000]
+2025-04-22 21:36:05,303 - Final operating expenses: [0, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000]
+2025-04-22 21:36:05,303 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,303 - Filtered fixed costs returned: [20000, 24000, 5000, 2500, 500]
+2025-04-22 21:36:05,303 - total units sold: 189473.68421052632
+2025-04-22 21:36:05,303 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,303 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,303 - Filtered fixed costs: [20000, 24000, 5000, 2500, 500]
+2025-04-22 21:36:05,303 - Total fixed costs: 52000
+2025-04-22 21:36:05,303 - Using indirect calculation for operating expenses.
+2025-04-22 21:36:05,303 - Annual variable costs: 0
+2025-04-22 21:36:05,303 - Operating expenses (indirect method): [0, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000]
+2025-04-22 21:36:05,303 - Final operating expenses: [0, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000]
+2025-04-22 21:36:05,303 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,303 - Filtered fixed costs returned: [20000, 24000, 5000, 2500, 500]
+2025-04-22 21:36:05,303 - total units sold: 221052.63157894736
+2025-04-22 21:36:05,303 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,303 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,303 - Filtered fixed costs: [20000, 24000, 5000, 2500, 500]
+2025-04-22 21:36:05,303 - Total fixed costs: 52000
+2025-04-22 21:36:05,303 - Using indirect calculation for operating expenses.
+2025-04-22 21:36:05,303 - Annual variable costs: 0
+2025-04-22 21:36:05,303 - Operating expenses (indirect method): [0, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000]
+2025-04-22 21:36:05,303 - Final operating expenses: [0, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000]
+2025-04-22 21:36:05,303 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,303 - Filtered fixed costs returned: [20000, 24000, 5000, 2500, 500]
+2025-04-22 21:36:05,303 - total units sold: 252631.57894736843
+2025-04-22 21:36:05,303 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,303 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,303 - Filtered fixed costs: [20000, 24000, 5000, 2500, 500]
+2025-04-22 21:36:05,303 - Total fixed costs: 52000
+2025-04-22 21:36:05,303 - Using indirect calculation for operating expenses.
+2025-04-22 21:36:05,303 - Annual variable costs: 0
+2025-04-22 21:36:05,303 - Operating expenses (indirect method): [0, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000]
+2025-04-22 21:36:05,303 - Final operating expenses: [0, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000]
+2025-04-22 21:36:05,303 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,303 - Filtered fixed costs returned: [20000, 24000, 5000, 2500, 500]
+2025-04-22 21:36:05,303 - total units sold: 284210.5263157895
+2025-04-22 21:36:05,303 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,303 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,303 - Filtered fixed costs: [20000, 24000, 5000, 2500, 500]
+2025-04-22 21:36:05,303 - Total fixed costs: 52000
+2025-04-22 21:36:05,303 - Using indirect calculation for operating expenses.
+2025-04-22 21:36:05,303 - Annual variable costs: 0
+2025-04-22 21:36:05,303 - Operating expenses (indirect method): [0, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000]
+2025-04-22 21:36:05,303 - Final operating expenses: [0, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000]
+2025-04-22 21:36:05,303 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,303 - Filtered fixed costs returned: [20000, 24000, 5000, 2500, 500]
+2025-04-22 21:36:05,303 - total units sold: 315789.4736842105
+2025-04-22 21:36:05,303 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,303 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,303 - Filtered fixed costs: [20000, 24000, 5000, 2500, 500]
+2025-04-22 21:36:05,303 - Total fixed costs: 52000
+2025-04-22 21:36:05,303 - Using indirect calculation for operating expenses.
+2025-04-22 21:36:05,303 - Annual variable costs: 0
+2025-04-22 21:36:05,303 - Operating expenses (indirect method): [0, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000]
+2025-04-22 21:36:05,303 - Final operating expenses: [0, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000]
+2025-04-22 21:36:05,303 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,303 - Filtered fixed costs returned: [20000, 24000, 5000, 2500, 500]
+2025-04-22 21:36:05,303 - total units sold: 347368.4210526316
+2025-04-22 21:36:05,303 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,303 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,303 - Filtered fixed costs: [20000, 24000, 5000, 2500, 500]
+2025-04-22 21:36:05,303 - Total fixed costs: 52000
+2025-04-22 21:36:05,303 - Using indirect calculation for operating expenses.
+2025-04-22 21:36:05,318 - Annual variable costs: 0
+2025-04-22 21:36:05,318 - Operating expenses (indirect method): [0, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000]
+2025-04-22 21:36:05,318 - Final operating expenses: [0, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000]
+2025-04-22 21:36:05,318 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,318 - Filtered fixed costs returned: [20000, 24000, 5000, 2500, 500]
+2025-04-22 21:36:05,319 - total units sold: 378947.36842105264
+2025-04-22 21:36:05,319 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,319 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,319 - Filtered fixed costs: [20000, 24000, 5000, 2500, 500]
+2025-04-22 21:36:05,319 - Total fixed costs: 52000
+2025-04-22 21:36:05,319 - Using indirect calculation for operating expenses.
+2025-04-22 21:36:05,319 - Annual variable costs: 0
+2025-04-22 21:36:05,319 - Operating expenses (indirect method): [0, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000]
+2025-04-22 21:36:05,319 - Final operating expenses: [0, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000]
+2025-04-22 21:36:05,319 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,319 - Filtered fixed costs returned: [20000, 24000, 5000, 2500, 500]
+2025-04-22 21:36:05,319 - total units sold: 410526.3157894737
+2025-04-22 21:36:05,319 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,319 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,319 - Filtered fixed costs: [20000, 24000, 5000, 2500, 500]
+2025-04-22 21:36:05,319 - Total fixed costs: 52000
+2025-04-22 21:36:05,319 - Using indirect calculation for operating expenses.
+2025-04-22 21:36:05,319 - Annual variable costs: 0
+2025-04-22 21:36:05,319 - Operating expenses (indirect method): [0, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000]
+2025-04-22 21:36:05,319 - Final operating expenses: [0, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000]
+2025-04-22 21:36:05,319 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,319 - Filtered fixed costs returned: [20000, 24000, 5000, 2500, 500]
+2025-04-22 21:36:05,319 - total units sold: 442105.2631578947
+2025-04-22 21:36:05,319 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,319 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,319 - Filtered fixed costs: [20000, 24000, 5000, 2500, 500]
+2025-04-22 21:36:05,319 - Total fixed costs: 52000
+2025-04-22 21:36:05,319 - Using indirect calculation for operating expenses.
+2025-04-22 21:36:05,319 - Annual variable costs: 0
+2025-04-22 21:36:05,319 - Operating expenses (indirect method): [0, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000]
+2025-04-22 21:36:05,319 - Final operating expenses: [0, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000]
+2025-04-22 21:36:05,319 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,319 - Filtered fixed costs returned: [20000, 24000, 5000, 2500, 500]
+2025-04-22 21:36:05,319 - total units sold: 473684.2105263158
+2025-04-22 21:36:05,319 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,319 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,319 - Filtered fixed costs: [20000, 24000, 5000, 2500, 500]
+2025-04-22 21:36:05,319 - Total fixed costs: 52000
+2025-04-22 21:36:05,319 - Using indirect calculation for operating expenses.
+2025-04-22 21:36:05,319 - Annual variable costs: 0
+2025-04-22 21:36:05,319 - Operating expenses (indirect method): [0, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000]
+2025-04-22 21:36:05,319 - Final operating expenses: [0, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000]
+2025-04-22 21:36:05,319 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,319 - Filtered fixed costs returned: [20000, 24000, 5000, 2500, 500]
+2025-04-22 21:36:05,319 - total units sold: 505263.15789473685
+2025-04-22 21:36:05,319 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,319 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,319 - Filtered fixed costs: [20000, 24000, 5000, 2500, 500]
+2025-04-22 21:36:05,319 - Total fixed costs: 52000
+2025-04-22 21:36:05,319 - Using indirect calculation for operating expenses.
+2025-04-22 21:36:05,319 - Annual variable costs: 0
+2025-04-22 21:36:05,319 - Operating expenses (indirect method): [0, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000]
+2025-04-22 21:36:05,319 - Final operating expenses: [0, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000]
+2025-04-22 21:36:05,319 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,319 - Filtered fixed costs returned: [20000, 24000, 5000, 2500, 500]
+2025-04-22 21:36:05,319 - total units sold: 536842.1052631579
+2025-04-22 21:36:05,319 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,319 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,319 - Filtered fixed costs: [20000, 24000, 5000, 2500, 500]
+2025-04-22 21:36:05,319 - Total fixed costs: 52000
+2025-04-22 21:36:05,319 - Using indirect calculation for operating expenses.
+2025-04-22 21:36:05,319 - Annual variable costs: 0
+2025-04-22 21:36:05,319 - Operating expenses (indirect method): [0, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000]
+2025-04-22 21:36:05,319 - Final operating expenses: [0, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000]
+2025-04-22 21:36:05,319 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,319 - Filtered fixed costs returned: [20000, 24000, 5000, 2500, 500]
+2025-04-22 21:36:05,319 - total units sold: 568421.052631579
+2025-04-22 21:36:05,319 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,319 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,319 - Filtered fixed costs: [20000, 24000, 5000, 2500, 500]
+2025-04-22 21:36:05,319 - Total fixed costs: 52000
+2025-04-22 21:36:05,319 - Using indirect calculation for operating expenses.
+2025-04-22 21:36:05,319 - Annual variable costs: 0
+2025-04-22 21:36:05,319 - Operating expenses (indirect method): [0, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000]
+2025-04-22 21:36:05,319 - Final operating expenses: [0, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000]
+2025-04-22 21:36:05,319 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,319 - Filtered fixed costs returned: [20000, 24000, 5000, 2500, 500]
+2025-04-22 21:36:05,319 - total units sold: 600000.0
+2025-04-22 21:36:05,319 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,319 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,319 - Filtered fixed costs: [20000, 24000, 5000, 2500, 500]
+2025-04-22 21:36:05,319 - Total fixed costs: 52000
+2025-04-22 21:36:05,319 - Using indirect calculation for operating expenses.
+2025-04-22 21:36:05,319 - Annual variable costs: 0
+2025-04-22 21:36:05,319 - Operating expenses (indirect method): [0, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000]
+2025-04-22 21:36:05,319 - Final operating expenses: [0, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000, 52000]
+2025-04-22 21:36:05,319 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:05,319 - Filtered fixed costs returned: [20000, 24000, 5000, 2500, 500]
+2025-04-22 21:36:05,319 - total units sold: 631578.947368421
+C:\Users\Mohse\IdeaProjects2\codebase\backend\Core_calculation_engines\CFA-b.py:545: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '0.04' has dtype incompatible with int64, please explicitly cast to a compatible dtype first.
+  distance_matrix.at[i, 'Fraction of TOC'] = round((revenue - operating_expenses) / TOC, 9)
+2025-04-22 21:36:05,606 - total_units_sold: 631578.947368421
+2025-04-22 21:36:06,801 - Calculated Current NPV: -87238.00 from row 20
+2025-04-22 21:36:06,801 - 'primary_result': -87238,'secondary_result': 1
+2025-04-22 21:36:06,817 - Script finished execution with result: {'primary_result': np.int64(-87238), 'secondary_result': 1}
+
+2025-04-22 21:36:07,247 INFO Successfully calculated S34 variation +100.00
+2025-04-22 21:36:07,247 INFO Found economic summary at C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\S34\percentage\+100.00\Economic_Summary(3).csv
+2025-04-22 21:36:07,247 INFO Extracted price: $1.90, NPV: $-87,238.00
+2025-04-22 21:36:07,247 INFO Processing S35 variation +30000.00
+2025-04-22 21:36:07,247 INFO Executing CFA-b.py for S35 variation +30000.00...
+2025-04-22 21:36:07,247 INFO Command: python C:\Users\Mohse\IdeaProjects2\codebase\backend\Core_calculation_engines\CFA-b.py 3 {"V1": "off", "V2": "off", "V3": "off", "V4": "off", "V5": "off", "V6": "off", "V7": "off", "V8": "off", "V9": "off", "V10": "off"} {"F1": "on", "F2": "on", "F3": "on", "F4": "on", "F5": "on"} 20 calculateForPrice {"S35": {"mode": "directvalue", "values": [30000], "enabled": true, "compareToKey": "S13", "comparisonType": null, "waterfall": true, "bar": true, "point": true}} --param_id S35 --variation 30000.0 --compare_to_key S13 --mode directvalue
+2025-04-22 21:36:14,783 INFO CFA-b.py connected to sensitivity logger
+2025-04-22 21:36:14,783 INFO Processing sensitivity calculation for S35 variation 30000.0
+2025-04-22 21:36:14,783 INFO Requesting paths from CalSen for S35 variation 30000.0
+2025-04-22 21:36:17,360 INFO Received response from CalSen service
+2025-04-22 21:36:17,360 INFO Found paths for S35 variation +30000.00
+2025-04-22 21:36:17,360 INFO Using paths from CalSen service for S35 variation 30000.0
+2025-04-22 21:36:21,579 ERROR Command stderr: 2025-04-22 21:36:14,783 - CFA-b.py connected to sensitivity logger
+2025-04-22 21:36:14,783 - Processing sensitivity calculation for S35 variation 30000.0
+2025-04-22 21:36:14,783 - Requesting paths from CalSen for S35 variation 30000.0
+2025-04-22 21:36:17,360 - Received response from CalSen service
+2025-04-22 21:36:17,360 - Found paths for S35 variation +30000.00
+2025-04-22 21:36:17,360 - Using paths from CalSen service for S35 variation 30000.0
+2025-04-22 21:36:17,377 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,377 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,377 - Filtered fixed costs: [10000, 30000, 5000, 2500, 500]
+2025-04-22 21:36:17,377 - Total fixed costs: 48000
+2025-04-22 21:36:17,377 - Using indirect calculation for operating expenses.
+2025-04-22 21:36:17,377 - Annual variable costs: 0
+2025-04-22 21:36:17,377 - Operating expenses (indirect method): [0, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000]
+2025-04-22 21:36:17,377 - Final operating expenses: [0, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000]
+2025-04-22 21:36:17,377 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,377 - Filtered fixed costs returned: [10000, 30000, 5000, 2500, 500]
+2025-04-22 21:36:17,377 - total units sold: 31578.947368421053
+2025-04-22 21:36:17,377 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,377 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,377 - Filtered fixed costs: [10000, 30000, 5000, 2500, 500]
+2025-04-22 21:36:17,377 - Total fixed costs: 48000
+2025-04-22 21:36:17,377 - Using indirect calculation for operating expenses.
+2025-04-22 21:36:17,377 - Annual variable costs: 0
+2025-04-22 21:36:17,377 - Operating expenses (indirect method): [0, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000]
+2025-04-22 21:36:17,377 - Final operating expenses: [0, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000]
+2025-04-22 21:36:17,377 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,377 - Filtered fixed costs returned: [10000, 30000, 5000, 2500, 500]
+2025-04-22 21:36:17,377 - total units sold: 63157.89473684211
+2025-04-22 21:36:17,377 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,377 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,377 - Filtered fixed costs: [10000, 30000, 5000, 2500, 500]
+2025-04-22 21:36:17,377 - Total fixed costs: 48000
+2025-04-22 21:36:17,377 - Using indirect calculation for operating expenses.
+2025-04-22 21:36:17,377 - Annual variable costs: 0
+2025-04-22 21:36:17,377 - Operating expenses (indirect method): [0, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000]
+2025-04-22 21:36:17,377 - Final operating expenses: [0, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000]
+2025-04-22 21:36:17,377 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,377 - Filtered fixed costs returned: [10000, 30000, 5000, 2500, 500]
+2025-04-22 21:36:17,377 - total units sold: 94736.84210526316
+2025-04-22 21:36:17,377 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,377 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,377 - Filtered fixed costs: [10000, 30000, 5000, 2500, 500]
+2025-04-22 21:36:17,377 - Total fixed costs: 48000
+2025-04-22 21:36:17,377 - Using indirect calculation for operating expenses.
+2025-04-22 21:36:17,377 - Annual variable costs: 0
+2025-04-22 21:36:17,377 - Operating expenses (indirect method): [0, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000]
+2025-04-22 21:36:17,377 - Final operating expenses: [0, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000]
+2025-04-22 21:36:17,377 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,377 - Filtered fixed costs returned: [10000, 30000, 5000, 2500, 500]
+2025-04-22 21:36:17,377 - total units sold: 126315.78947368421
+2025-04-22 21:36:17,377 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,377 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,377 - Filtered fixed costs: [10000, 30000, 5000, 2500, 500]
+2025-04-22 21:36:17,377 - Total fixed costs: 48000
+2025-04-22 21:36:17,377 - Using indirect calculation for operating expenses.
+2025-04-22 21:36:17,377 - Annual variable costs: 0
+2025-04-22 21:36:17,377 - Operating expenses (indirect method): [0, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000]
+2025-04-22 21:36:17,377 - Final operating expenses: [0, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000]
+2025-04-22 21:36:17,377 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,377 - Filtered fixed costs returned: [10000, 30000, 5000, 2500, 500]
+2025-04-22 21:36:17,377 - total units sold: 157894.73684210525
+2025-04-22 21:36:17,377 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,377 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,377 - Filtered fixed costs: [10000, 30000, 5000, 2500, 500]
+2025-04-22 21:36:17,377 - Total fixed costs: 48000
+2025-04-22 21:36:17,377 - Using indirect calculation for operating expenses.
+2025-04-22 21:36:17,377 - Annual variable costs: 0
+2025-04-22 21:36:17,377 - Operating expenses (indirect method): [0, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000]
+2025-04-22 21:36:17,377 - Final operating expenses: [0, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000]
+2025-04-22 21:36:17,377 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,377 - Filtered fixed costs returned: [10000, 30000, 5000, 2500, 500]
+2025-04-22 21:36:17,377 - total units sold: 189473.68421052632
+2025-04-22 21:36:17,377 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,377 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,377 - Filtered fixed costs: [10000, 30000, 5000, 2500, 500]
+2025-04-22 21:36:17,377 - Total fixed costs: 48000
+2025-04-22 21:36:17,377 - Using indirect calculation for operating expenses.
+2025-04-22 21:36:17,377 - Annual variable costs: 0
+2025-04-22 21:36:17,377 - Operating expenses (indirect method): [0, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000]
+2025-04-22 21:36:17,377 - Final operating expenses: [0, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000]
+2025-04-22 21:36:17,377 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,377 - Filtered fixed costs returned: [10000, 30000, 5000, 2500, 500]
+2025-04-22 21:36:17,377 - total units sold: 221052.63157894736
+2025-04-22 21:36:17,377 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,377 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,377 - Filtered fixed costs: [10000, 30000, 5000, 2500, 500]
+2025-04-22 21:36:17,377 - Total fixed costs: 48000
+2025-04-22 21:36:17,377 - Using indirect calculation for operating expenses.
+2025-04-22 21:36:17,377 - Annual variable costs: 0
+2025-04-22 21:36:17,377 - Operating expenses (indirect method): [0, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000]
+2025-04-22 21:36:17,377 - Final operating expenses: [0, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000]
+2025-04-22 21:36:17,377 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,377 - Filtered fixed costs returned: [10000, 30000, 5000, 2500, 500]
+2025-04-22 21:36:17,377 - total units sold: 252631.57894736843
+2025-04-22 21:36:17,393 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,393 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,393 - Filtered fixed costs: [10000, 30000, 5000, 2500, 500]
+2025-04-22 21:36:17,393 - Total fixed costs: 48000
+2025-04-22 21:36:17,393 - Using indirect calculation for operating expenses.
+2025-04-22 21:36:17,393 - Annual variable costs: 0
+2025-04-22 21:36:17,393 - Operating expenses (indirect method): [0, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000]
+2025-04-22 21:36:17,393 - Final operating expenses: [0, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000]
+2025-04-22 21:36:17,393 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,393 - Filtered fixed costs returned: [10000, 30000, 5000, 2500, 500]
+2025-04-22 21:36:17,393 - total units sold: 284210.5263157895
+2025-04-22 21:36:17,393 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,393 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,393 - Filtered fixed costs: [10000, 30000, 5000, 2500, 500]
+2025-04-22 21:36:17,393 - Total fixed costs: 48000
+2025-04-22 21:36:17,393 - Using indirect calculation for operating expenses.
+2025-04-22 21:36:17,393 - Annual variable costs: 0
+2025-04-22 21:36:17,393 - Operating expenses (indirect method): [0, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000]
+2025-04-22 21:36:17,393 - Final operating expenses: [0, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000]
+2025-04-22 21:36:17,393 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,393 - Filtered fixed costs returned: [10000, 30000, 5000, 2500, 500]
+2025-04-22 21:36:17,393 - total units sold: 315789.4736842105
+2025-04-22 21:36:17,393 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,393 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,393 - Filtered fixed costs: [10000, 30000, 5000, 2500, 500]
+2025-04-22 21:36:17,393 - Total fixed costs: 48000
+2025-04-22 21:36:17,393 - Using indirect calculation for operating expenses.
+2025-04-22 21:36:17,393 - Annual variable costs: 0
+2025-04-22 21:36:17,393 - Operating expenses (indirect method): [0, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000]
+2025-04-22 21:36:17,393 - Final operating expenses: [0, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000]
+2025-04-22 21:36:17,393 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,393 - Filtered fixed costs returned: [10000, 30000, 5000, 2500, 500]
+2025-04-22 21:36:17,393 - total units sold: 347368.4210526316
+2025-04-22 21:36:17,393 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,393 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,393 - Filtered fixed costs: [10000, 30000, 5000, 2500, 500]
+2025-04-22 21:36:17,393 - Total fixed costs: 48000
+2025-04-22 21:36:17,393 - Using indirect calculation for operating expenses.
+2025-04-22 21:36:17,393 - Annual variable costs: 0
+2025-04-22 21:36:17,393 - Operating expenses (indirect method): [0, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000]
+2025-04-22 21:36:17,393 - Final operating expenses: [0, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000]
+2025-04-22 21:36:17,393 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,393 - Filtered fixed costs returned: [10000, 30000, 5000, 2500, 500]
+2025-04-22 21:36:17,393 - total units sold: 378947.36842105264
+2025-04-22 21:36:17,393 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,393 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,393 - Filtered fixed costs: [10000, 30000, 5000, 2500, 500]
+2025-04-22 21:36:17,393 - Total fixed costs: 48000
+2025-04-22 21:36:17,393 - Using indirect calculation for operating expenses.
+2025-04-22 21:36:17,393 - Annual variable costs: 0
+2025-04-22 21:36:17,393 - Operating expenses (indirect method): [0, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000]
+2025-04-22 21:36:17,393 - Final operating expenses: [0, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000]
+2025-04-22 21:36:17,393 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,393 - Filtered fixed costs returned: [10000, 30000, 5000, 2500, 500]
+2025-04-22 21:36:17,393 - total units sold: 410526.3157894737
+2025-04-22 21:36:17,393 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,393 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,393 - Filtered fixed costs: [10000, 30000, 5000, 2500, 500]
+2025-04-22 21:36:17,393 - Total fixed costs: 48000
+2025-04-22 21:36:17,393 - Using indirect calculation for operating expenses.
+2025-04-22 21:36:17,393 - Annual variable costs: 0
+2025-04-22 21:36:17,393 - Operating expenses (indirect method): [0, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000]
+2025-04-22 21:36:17,393 - Final operating expenses: [0, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000]
+2025-04-22 21:36:17,393 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,393 - Filtered fixed costs returned: [10000, 30000, 5000, 2500, 500]
+2025-04-22 21:36:17,393 - total units sold: 442105.2631578947
+2025-04-22 21:36:17,410 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,410 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,410 - Filtered fixed costs: [10000, 30000, 5000, 2500, 500]
+2025-04-22 21:36:17,410 - Total fixed costs: 48000
+2025-04-22 21:36:17,410 - Using indirect calculation for operating expenses.
+2025-04-22 21:36:17,410 - Annual variable costs: 0
+2025-04-22 21:36:17,410 - Operating expenses (indirect method): [0, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000]
+2025-04-22 21:36:17,410 - Final operating expenses: [0, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000]
+2025-04-22 21:36:17,410 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,410 - Filtered fixed costs returned: [10000, 30000, 5000, 2500, 500]
+2025-04-22 21:36:17,410 - total units sold: 473684.2105263158
+2025-04-22 21:36:17,410 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,410 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,410 - Filtered fixed costs: [10000, 30000, 5000, 2500, 500]
+2025-04-22 21:36:17,410 - Total fixed costs: 48000
+2025-04-22 21:36:17,410 - Using indirect calculation for operating expenses.
+2025-04-22 21:36:17,410 - Annual variable costs: 0
+2025-04-22 21:36:17,410 - Operating expenses (indirect method): [0, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000]
+2025-04-22 21:36:17,410 - Final operating expenses: [0, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000]
+2025-04-22 21:36:17,410 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,410 - Filtered fixed costs returned: [10000, 30000, 5000, 2500, 500]
+2025-04-22 21:36:17,410 - total units sold: 505263.15789473685
+2025-04-22 21:36:17,410 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,410 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,410 - Filtered fixed costs: [10000, 30000, 5000, 2500, 500]
+2025-04-22 21:36:17,410 - Total fixed costs: 48000
+2025-04-22 21:36:17,410 - Using indirect calculation for operating expenses.
+2025-04-22 21:36:17,410 - Annual variable costs: 0
+2025-04-22 21:36:17,410 - Operating expenses (indirect method): [0, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000]
+2025-04-22 21:36:17,410 - Final operating expenses: [0, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000]
+2025-04-22 21:36:17,410 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,410 - Filtered fixed costs returned: [10000, 30000, 5000, 2500, 500]
+2025-04-22 21:36:17,410 - total units sold: 536842.1052631579
+2025-04-22 21:36:17,410 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,410 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,410 - Filtered fixed costs: [10000, 30000, 5000, 2500, 500]
+2025-04-22 21:36:17,410 - Total fixed costs: 48000
+2025-04-22 21:36:17,410 - Using indirect calculation for operating expenses.
+2025-04-22 21:36:17,410 - Annual variable costs: 0
+2025-04-22 21:36:17,410 - Operating expenses (indirect method): [0, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000]
+2025-04-22 21:36:17,410 - Final operating expenses: [0, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000]
+2025-04-22 21:36:17,410 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,410 - Filtered fixed costs returned: [10000, 30000, 5000, 2500, 500]
+2025-04-22 21:36:17,410 - total units sold: 568421.052631579
+2025-04-22 21:36:17,410 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,410 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,410 - Filtered fixed costs: [10000, 30000, 5000, 2500, 500]
+2025-04-22 21:36:17,410 - Total fixed costs: 48000
+2025-04-22 21:36:17,410 - Using indirect calculation for operating expenses.
+2025-04-22 21:36:17,410 - Annual variable costs: 0
+2025-04-22 21:36:17,410 - Operating expenses (indirect method): [0, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000]
+2025-04-22 21:36:17,410 - Final operating expenses: [0, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000]
+2025-04-22 21:36:17,410 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,410 - Filtered fixed costs returned: [10000, 30000, 5000, 2500, 500]
+2025-04-22 21:36:17,410 - total units sold: 600000.0
+2025-04-22 21:36:17,410 - Filtered variable costs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,410 - Filtered amounts per unit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,410 - Filtered fixed costs: [10000, 30000, 5000, 2500, 500]
+2025-04-22 21:36:17,410 - Total fixed costs: 48000
+2025-04-22 21:36:17,410 - Using indirect calculation for operating expenses.
+2025-04-22 21:36:17,410 - Annual variable costs: 0
+2025-04-22 21:36:17,410 - Operating expenses (indirect method): [0, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000]
+2025-04-22 21:36:17,410 - Final operating expenses: [0, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000, 48000]
+2025-04-22 21:36:17,410 - Filtered variable costs returned: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-04-22 21:36:17,410 - Filtered fixed costs returned: [10000, 30000, 5000, 2500, 500]
+2025-04-22 21:36:17,410 - total units sold: 631578.947368421
+C:\Users\Mohse\IdeaProjects2\codebase\backend\Core_calculation_engines\CFA-b.py:545: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '0.06' has dtype incompatible with int64, please explicitly cast to a compatible dtype first.
+  distance_matrix.at[i, 'Fraction of TOC'] = round((revenue - operating_expenses) / TOC, 9)
+2025-04-22 21:36:17,650 - Finished CFA calculation
+2025-04-22 21:36:17,650 - Finished CFA calculation
+2025-04-22 21:36:17,650 - Finished CFA calculation
+2025-04-22 21:36:17,650 - Finished CFA calculation
+2025-04-22 21:36:17,650 - Finished CFA calculation
+2025-04-22 21:36:17,650 - Finished CFA calculation
+2025-04-22 21:36:17,650 - Finished CFA calculation
+2025-04-22 21:36:17,650 - Finished CFA calculation
+2025-04-22 21:36:17,650 - Finished CFA calculation
+2025-04-22 21:36:17,650 - Finished CFA calculation
+2025-04-22 21:36:17,650 - Finished CFA calculation
+2025-04-22 21:36:17,650 - Finished CFA calculation
+2025-04-22 21:36:17,650 - Finished CFA calculation
+2025-04-22 21:36:17,650 - Finished CFA calculation
+2025-04-22 21:36:17,650 - Finished CFA calculation
+2025-04-22 21:36:17,650 - Finished CFA calculation
+2025-04-22 21:36:17,681 - total_units_sold: 631578.947368421
+2025-04-22 21:36:19,041 - Calculated Current NPV: 18666.00 from row 20
+2025-04-22 21:36:19,041 - 'primary_result': 18666,'secondary_result': 1
+2025-04-22 21:36:19,041 - Script finished execution with result: {'primary_result': np.int64(18666), 'secondary_result': 1}
+
+2025-04-22 21:36:21,579 INFO Successfully calculated S35 variation +30000.00
+2025-04-22 21:36:21,579 INFO Found economic summary at C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\S35\directvalue\+30000.00\Economic_Summary(3).csv
+2025-04-22 21:36:21,579 INFO Extracted price: $1.90, NPV: $18,666.00
+2025-04-22 21:36:21,579 INFO 
+Sensitivity Calculation Summary:
+2025-04-22 21:36:21,579 INFO S34: 2/2 variations successful
+2025-04-22 21:36:21,579 INFO S35: 1/1 variations successful
+2025-04-22 21:36:21,579 INFO 
+================================================================================
+2025-04-22 21:36:21,579 INFO Run completed - ID: 20250422_213525
+2025-04-22 21:36:21,579 INFO Overall success: True
+2025-04-22 21:36:21,579 INFO ================================================================================
+
+2025-04-22 21:36:21,626 INFO 
+================================================================================
+2025-04-22 21:36:21,626 INFO Get Sensitivity Parameters Request - Run ID: 20250422_213621
+2025-04-22 21:36:21,626 INFO ================================================================================
+2025-04-22 21:36:21,626 INFO Requested parameters for version: 3
+2025-04-22 21:36:21,626 INFO Attempting to get parameters from CalSen service...
+2025-04-22 21:36:24,284 INFO Successfully retrieved parameters from CalSen service
+2025-04-22 21:36:24,284 INFO ================================================================================
+
+2025-04-22 21:36:24,736 INFO Client added to sensitivity monitor for version 3. Total clients: 2
+2025-04-22 21:36:24,736 INFO Client disconnected from sensitivity stream for version 3
+2025-04-22 21:36:24,736 INFO Client removed from sensitivity monitor for version 3. Remaining clients: 1
+2025-04-22 21:36:24,736 INFO Client removed from sensitivity monitor for version 3
+2025-04-22 21:36:25,065 INFO Client added to sensitivity monitor for version 3. Total clients: 2
+2025-04-22 21:36:25,232 INFO Client disconnected from sensitivity stream for version 3
+2025-04-22 21:36:25,232 INFO Client removed from sensitivity monitor for version 3. Remaining clients: 1
+2025-04-22 21:36:25,232 INFO Client removed from sensitivity monitor for version 3
+2025-04-22 21:36:25,450 INFO Checking if calsen_paths.json exists for version 3
+2025-04-22 21:36:25,574 INFO calsen_paths.json found at C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\Reports\calsen_paths.json
+2025-04-22 21:36:25,574 INFO Payload details: {"operation": "check_calsen_paths", "version": "3", "path": "C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\Original\\Batch(3)\\Results(3)\\Sensitivity\\Reports\\calsen_paths.json", "exists": true}
+2025-04-22 21:36:25,997 INFO Starting script_econ.py execution for version 3
+2025-04-22 21:36:25,997 INFO Payload details: {"operation": "run_script_econ", "version": "3", "timestamp": "2025-04-22 21:36:25"}
+2025-04-22 21:36:25,997 INFO Script path: C:\Users\Mohse\IdeaProjects2\codebase\backend\API_endpoints_and_controllers\script_econ.py
+2025-04-22 21:36:25,997 INFO Calculation step: Extracting metrics from Economic Summary CSV files
+2025-04-22 21:36:25,997 INFO Executing: C:\Program Files\Python312\python.exe C:\Users\Mohse\IdeaProjects2\codebase\backend\API_endpoints_and_controllers\script_econ.py --version 3
+2025-04-22 21:36:27,747 INFO script_econ.py stdout: Successfully updated C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\Reports\calsen_paths.json
+
+2025-04-22 21:36:27,747 INFO script_econ.py executed successfully for version 3
+2025-04-22 21:36:27,925 INFO Starting add_axis_labels.py execution for version 3
+2025-04-22 21:36:27,925 INFO Payload details: {"operation": "run_add_axis_labels", "version": "3", "timestamp": "2025-04-22 21:36:27"}
+2025-04-22 21:36:27,925 INFO Script path: C:\Users\Mohse\IdeaProjects2\codebase\backend\API_endpoints_and_controllers\add_axis_labels.py
+2025-04-22 21:36:27,925 INFO Calculation step: Adding axis labels to JSON file based on parameter names and modified values
+2025-04-22 21:36:27,925 INFO Executing: C:\Program Files\Python312\python.exe C:\Users\Mohse\IdeaProjects2\codebase\backend\API_endpoints_and_controllers\add_axis_labels.py 3
+2025-04-22 21:36:29,120 INFO add_axis_labels.py stdout: Found calsen_paths.json at: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\Reports\calsen_paths.json
+Found datapoints file at: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\SensitivityPlotDatapoints_3.json
+Found baseline value 10000.0 for S34
+Added axis label for S34: Feedstock Cost ($20,000, $5,000)
+Found baseline value 24000.0 for S35
+Added axis label for S35: Labor Cost ($30,000)
+Successfully updated C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\Reports\calsen_paths.json
+Processed 2 parameters, skipped 0 parameters
+
+2025-04-22 21:36:29,120 INFO add_axis_labels.py executed successfully for version 3
+2025-04-22 21:36:29,167 INFO Starting generate_plots.py execution for version 3
+2025-04-22 21:36:29,167 INFO Payload details: {"operation": "run_generate_plots", "version": "3", "timestamp": "2025-04-22 21:36:29"}
+2025-04-22 21:36:29,167 INFO Script path: C:\Users\Mohse\IdeaProjects2\codebase\backend\API_endpoints_and_controllers\generate_plots.py
+2025-04-22 21:36:29,167 INFO Calculation step: Generating plot files for sensitivity analysis
+2025-04-22 21:36:29,167 INFO Executing: C:\Program Files\Python312\python.exe C:\Users\Mohse\IdeaProjects2\codebase\backend\API_endpoints_and_controllers\generate_plots.py 3
+2025-04-22 21:36:42,809 INFO generate_plots.py stdout: Found calsen_paths.json at: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\Reports\calsen_paths.json
+
+Generating plot_1:
+  X-axis parameter: S13
+  Y-axis parameters: S34, S35
+  Plot types: waterfall, point, bar
+  Using variation plotCoordinates from calsen_paths.json for S34
+  Created JSON plot file: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\Percentage\Waterfall\S34_S13_plot.json
+  Created PNG plot: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\Percentage\Waterfall\PNG\S34_S13_plot.png
+  Using variation plotCoordinates from calsen_paths.json for S35
+  Created JSON plot file: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\Directvalue\Waterfall\S35_S13_plot.json
+  Created PNG plot: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\Directvalue\Waterfall\PNG\S35_S13_plot.png
+  Using variation plotCoordinates from calsen_paths.json for S34
+  Created JSON plot file: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\Percentage\Point\S34_S13_plot.json
+  Created PNG plot: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\Percentage\Point\PNG\S34_S13_plot.png
+  Using variation plotCoordinates from calsen_paths.json for S35
+  Created JSON plot file: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\Directvalue\Point\S35_S13_plot.json
+  Created PNG plot: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\Directvalue\Point\PNG\S35_S13_plot.png
+  Using variation plotCoordinates from calsen_paths.json for S34
+  Created JSON plot file: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\Percentage\Bar\S34_S13_plot.json
+  Created PNG plot: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\Percentage\Bar\PNG\S34_S13_plot.png
+  Using variation plotCoordinates from calsen_paths.json for S35
+  Created JSON plot file: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\Directvalue\Bar\S35_S13_plot.json
+  Created PNG plot: C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\Directvalue\Bar\PNG\S35_S13_plot.png
+
+Successfully updated C:\Users\Mohse\IdeaProjects2\codebase\backend\Original\Batch(3)\Results(3)\Sensitivity\Reports\calsen_paths.json with comparisonType changes
+
+Plot generation complete. Created 6 JSON and 6 PNG plot files using coordinate points from calsen_paths.json.
+PNG files are available in the PNG subdirectories and can be displayed in the plot gallery and sensitivity tabs.
+
+2025-04-22 21:36:42,809 INFO generate_plots.py executed successfully for version 3

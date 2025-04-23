@@ -52,32 +52,14 @@ def find_parameter_by_id(config_module, param_id):
     param_digits = param_id[1:]  # Get just the numeric part
     logger.info(f"Searching for parameter with numeric identifier: {param_digits}")
 
-    # Search for parameter by checking the last digits of each key
+    # Efficient search - just look for keys ending with the two-digit number
     for key in config_module:
-        # Check if the key ends with the param_digits
         if key.endswith(param_digits):
             logger.info(f"Found parameter by numeric suffix match: {key} for {param_id}")
             return key
 
-    # If not found by exact suffix match, check for numeric ending that matches
-    for key in config_module:
-        # Extract all digits from the end of the key
-        numeric_suffix = ''
-        for char in reversed(key):
-            if char.isdigit():
-                numeric_suffix = char + numeric_suffix
-            else:
-                break
-        if numeric_suffix == param_digits:
-            logger.info(f"Found parameter by extracted numeric suffix: {key} for {param_id}")
-            return key
-
-    # If still not found, look for the digits anywhere in the key
-    for key in config_module:
-        if param_digits in key:
-            logger.info(f"Found parameter by partial numeric match: {key} for {param_id}")
-            return key
-
+    # If not found, log warning and raise error
+    logger.warning(f"Could not find parameter for {param_id} in config module")
     raise ValueError(f"Could not find parameter for {param_id} in config module")
 
 def apply_sensitivity_variation(config_module, param_id, variation_value, mode='percentage'):

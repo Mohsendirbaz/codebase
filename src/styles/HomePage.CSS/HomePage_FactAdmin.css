@@ -21,13 +21,21 @@
   color: var(--secondary-color);
   margin: 0;
 }
-
+.add-fact-section h3 {
+  color: var(--text-color);
+}
 .facts-summary {
   display: flex;
   gap: var(--spacing-md);
   margin-bottom: var(--spacing-md);
 }
-
+.add-fact-btn {
+  color: var(--text-color);
+}
+.add-fact-icon {
+  margin-right: var(--spacing-xs);
+  color: var(--text-color);
+}
 .summary-card {
   flex: 1;
   background: var(--neu-gradient-basic);

@@ -297,6 +297,14 @@ const useFormValues = () => {
     RF: true
   });
 
+  // Initialize run options state
+  const [showRunOptions, setShowRunOptions] = useState(false);
+  const [runOptions, setRunOptions] = useState({
+    useSummaryItems: true,
+    includeRemarks: false,
+    includeCustomFeatures: false
+  });
+
   // Initialize scalingGroups state for scaling operations
   const [scalingGroups, setScalingGroups] = useState([]);
 
@@ -478,6 +486,30 @@ const useFormValues = () => {
     setShowResetOptions(false);
   };
 
+  // Run options handlers
+  const handleRun = () => {
+    // Show the run options popup
+    setShowRunOptions(true);
+  };
+
+  const handleRunOptionChange = (option) => {
+    setRunOptions(prev => ({
+      ...prev,
+      [option]: !prev[option]
+    }));
+  };
+
+  const handleRunConfirm = () => {
+    // Hide the run options popup
+    setShowRunOptions(false);
+    // The actual run functionality will be handled in HomePage.js
+    // This just closes the popup
+  };
+
+  const handleRunCancel = () => {
+    setShowRunOptions(false);
+  };
+
   return {
     formValues,
     handleInputChange,
@@ -515,7 +547,16 @@ const useFormValues = () => {
     setResetOptions,
     handleResetOptionChange,
     handleResetConfirm,
-    handleResetCancel
+    handleResetCancel,
+    // Run options popup states and functions
+    showRunOptions,
+    setShowRunOptions,
+    runOptions,
+    setRunOptions,
+    handleRun,
+    handleRunOptionChange,
+    handleRunConfirm,
+    handleRunCancel
   };
 };
 

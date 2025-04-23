@@ -1,0 +1,275 @@
+import { useState } from 'react';
+import { faDollarSign, faCogs, faIndustry, faBuilding, faWarehouse, faHandshake, faChartLine, faTools } from '@fortawesome/free-solid-svg-icons';
+
+// Optimized property mapping with consistent naming
+const propertyMapping = {
+    "plantLifetimeAmount10": "Plant Lifetime",
+    "bECAmount11": "Bare Erected Cost",
+    "numberOfUnitsAmount12": "Number of Units",
+    "initialSellingPriceAmount13": "Price",
+    "totalOperatingCostPercentageAmount14": "Direct Total Operating Cost Percentage as % of Revenue",
+    "engineering_Procurement_and_Construction_EPC_Amount15": "Engineering Procurement and Construction as % of BEC",
+    "process_contingency_PC_Amount16": "Process Contingency as % of BEC",
+    "project_Contingency_PT_BEC_EPC_PCAmount17": "Project Contingency as % of BEC, EPC, PC",
+    "use_direct_operating_expensesAmount18": "Use Direct Operating Expenses",
+    "use_direct_revenueAmount19": "Use Direct Revenue",
+    "depreciationMethodAmount20": "Depreciation Method",
+    "loanTypeAmount21": "Loan Type",
+    "interestTypeAmount22": "Interest Type",
+    "generalInflationRateAmount23": "General Inflation Rate",
+    "interestProportionAmount24": "Interest Proportion",
+    "principalProportionAmount25": "Principal Proportion",
+    "loanPercentageAmount26": "Loan Percentage of TOC",
+    "repaymentPercentageOfRevenueAmount27": "Repayment Percentage Of Revenue",
+    "numberofconstructionYearsAmount28": "Number of Construction Years",
+    "iRRAmount30": "Internal Rate of Return",
+    "annualInterestRateAmount31": "Annual Interest Rate",
+    "stateTaxRateAmount32": "State Tax Rate",
+    "federalTaxRateAmount33": "Federal Tax Rate",
+    "rawmaterialAmount34": "Feedstock Cost",
+    "laborAmount35": "Labor Cost",
+    "utilityAmount36": "Utility Cost",
+    "maintenanceAmount37": "Maintenance Cost",
+    "insuranceAmount38": "Insurance Cost",
+    ...Object.fromEntries(Array.from({ length: 20 }, (_, i) => [`vAmount${40 + i}`, `v${40 + i}`])),
+    ...Object.fromEntries(Array.from({ length: 20 }, (_, i) => [`rAmount${60 + i}`, `r${60 + i}`])),
+    "RFAmount80": "Material Revenue",
+    "RFAmount81": "Labor Revenue",
+    "RFAmount82": "Utility Revenue",
+    "RFAmount83": "Maintenance Revenue",
+    "RFAmount84": "Insurance Revenue",
+};
+
+// Compact select options mapping
+const selectOptionsMapping = {
+    "depreciationMethodAmount20": ['Straight-Line', '5-MACRS', '7-MACRS', '15-MACRS', 'Custom'],
+    "loanTypeAmount21": ['simple', 'compounded'],
+    "interestTypeAmount22": ['fixed', 'variable'],
+    "loanRepaymentFrequencyAmount21": ['quarterly', 'semiannually', 'annually'],
+    "use_direct_operating_expensesAmount18": ['True', 'False'],
+    "use_direct_revenueAmount19": ['True', 'False']
+};
+
+// Icon mapping with category-based grouping for efficiency
+const iconMapping = {
+    // Financial icons
+    ...Object.fromEntries(['bECAmount11', 'initialSellingPriceAmount13', 'loanTypeAmount21', 'interestTypeAmount22',
+        'interestProportionAmount24', 'principalProportionAmount25', 'loanPercentageAmount26',
+        'repaymentPercentageOfRevenueAmount27', 'annualInterestRateAmount31', 'stateTaxRateAmount32',
+        'federalTaxRateAmount33'].map(key => [key, faDollarSign])),
+
+    // Analysis & metrics icons
+    ...Object.fromEntries(['totalOperatingCostPercentageAmount14', 'depreciationMethodAmount20', 'generalInflationRateAmount23',
+        'iRRAmount30'].map(key => [key, faChartLine])),
+
+    // Equipment & process icons
+    ...Object.fromEntries(['numberOfUnitsAmount12', 'process_contingency_PC_Amount16', 'project_Contingency_PT_BEC_EPC_PCAmount17',
+        'laborAmount35', 'maintenanceAmount37'].map(key => [key, faTools])),
+
+    // Building & construction icons
+    ...Object.fromEntries(['plantLifetimeAmount10', 'numberofconstructionYearsAmount28'].map(key => [key, faBuilding])),
+
+    // Industry icons
+    "engineering_Procurement_and_Construction_EPC_Amount15": faIndustry,
+
+    // Commercial icons
+    ...Object.fromEntries(['use_direct_operating_expensesAmount18', 'use_direct_revenueAmount19', 'insuranceAmount38',
+        'RFAmount84'].map(key => [key, faHandshake])),
+
+    // Materials & resources icons
+    ...Object.fromEntries(['rawmaterialAmount34', 'utilityAmount36', 'RFAmount80', 'RFAmount82'].map(key => [key, faWarehouse])),
+
+    // Dynamic icons for bulk items
+    ...Object.fromEntries(Array.from({ length: 20 }, (_, i) => [`vAmount${40 + i}`, faWarehouse])),
+    ...Object.fromEntries(Array.from({ length: 20 }, (_, i) => [`rAmount${60 + i}`, faWarehouse])),
+
+    // Labor revenue icon
+    "RFAmount81": faTools,
+    "RFAmount83": faTools,
+};
+
+// Optimized default values with dynamic generation
+const defaultValues = {
+    // Core financial defaults
+    bECAmount11: 300000, numberOfUnitsAmount12: 30000, initialSellingPriceAmount13: 2,
+    totalOperatingCostPercentageAmount14: 0.1, engineering_Procurement_and_Construction_EPC_Amount15: 0,
+    process_contingency_PC_Amount16: 0, project_Contingency_PT_BEC_EPC_PCAmount17: 0,
+    use_direct_operating_expensesAmount18: "False", use_direct_revenueAmount19: "False",
+    plantLifetimeAmount10: 20, numberofconstructionYearsAmount28: 1,
+
+    // Loan and depreciation defaults
+    depreciationMethodAmount20: "Straight-Line", loanTypeAmount21: "simple",
+    interestTypeAmount22: "fixed", generalInflationRateAmount23: 0,
+    interestProportionAmount24: 0.5, principalProportionAmount25: 0.5,
+    loanPercentageAmount26: 0.2, repaymentPercentageOfRevenueAmount27: 0.1,
+
+    // Rate and tax defaults
+    iRRAmount30: 0.05, annualInterestRateAmount31: 0.04,
+    stateTaxRateAmount32: 0.05, federalTaxRateAmount33: 0.21,
+
+    // Operational cost defaults
+    rawmaterialAmount34: 10000, laborAmount35: 24000, utilityAmount36: 5000,
+    maintenanceAmount37: 2500, insuranceAmount38: 500,
+
+    // Revenue defaults (matching operational costs)
+    RFAmount80: 10000, RFAmount81: 24000, RFAmount82: 5000, RFAmount83: 2500, RFAmount84: 500,
+
+    // Dynamic defaults for vAmount and rAmount
+    ...Object.fromEntries(Array.from({ length: 20 }, (_, i) => [`vAmount${40 + i}`, 1])),
+    ...Object.fromEntries(Array.from({ length: 20 }, (_, i) => [`rAmount${60 + i}`, 1]))
+};
+
+// Main hook implementation with optimized state initialization
+const useFormValues = () => {
+    // Initialize form values with dynamic calculation
+    const [formValues, setFormValues] = useState(() => {
+        return Object.keys(propertyMapping).reduce((values, key) => {
+            const isNumber = typeof defaultValues[key] === 'number';
+            const isSelect = selectOptionsMapping[key] !== undefined;
+            const stepValue = isNumber && !isSelect ? Math.round((defaultValues[key] * 0.20) * 1000) / 1000 : '';
+
+            values[key] = {
+                id: key,
+                value: defaultValues[key] !== undefined ? defaultValues[key] : '',
+                type: isSelect ? 'select' : (isNumber ? 'number' : 'text'),
+                label: propertyMapping[key],
+                placeholder: defaultValues[key] !== undefined ? defaultValues[key] : '',
+                step: stepValue,
+                options: selectOptionsMapping[key] || [],
+                remarks: "",
+                remarksStyle: { color: '#007bff !important' },
+                efficacyPeriod: {
+                    start: { value: 0, type: 'number', label: 'Start', step: 1, min: 0, max: 1000 },
+                    end: { value: defaultValues['plantLifetimeAmount10'], type: 'number', label: 'End', step: 1, min: 0, max: 1000 }
+                }
+            };
+            return values;
+        }, {});
+    });
+
+    // Initialize analysis states using functional initialization
+    const [S, setS] = useState(() => Object.fromEntries(
+        Array.from({ length: 70 }, (_, i) => [`S${i + 10}`, {
+            mode: null, values: [], enabled: false, compareToKey: '',
+            comparisonType: null, waterfall: false, bar: false, point: false
+        }])
+    ));
+
+    // Initialize toggle states with optimized structure
+    const [F, setF] = useState(() => Object.fromEntries(Array.from({ length: 5 }, (_, i) => [`F${i + 1}`, 'on'])));
+    const [RF, setRF] = useState(() => Object.fromEntries(Array.from({ length: 5 }, (_, i) => [`RF${i + 1}`, 'on'])));
+
+    const createOffToggleState = (prefix, count) => Object.fromEntries(
+        Array.from({ length: count }, (_, i) => [`${prefix}${i + 1}`, 'off'])
+    );
+
+    const [V, setV] = useState(() => createOffToggleState('V', 10));
+    const [R, setR] = useState(() => createOffToggleState('R', 10));
+
+    // Initialize reset and scaling states
+    const [showResetOptions, setShowResetOptions] = useState(false);
+    const [resetOptions, setResetOptions] = useState({ S: true, F: true, V: true, R: true, RF: true });
+    const [scalingGroups, setScalingGroups] = useState([]);
+    const [scalingBaseCosts, setScalingBaseCosts] = useState({
+        Amount4: [], Amount5: [], Amount6: [], Amount7: []
+    });
+    const [finalResults, setFinalResults] = useState({
+        Amount4: [], Amount5: [], Amount6: [], Amount7: []
+    });
+
+    // Consolidated toggle function for state switching
+    const createToggleFunction = (setter) => (key) => {
+        setter(prev => ({ ...prev, [key]: prev[key] === 'off' ? 'on' : 'off' }));
+    };
+
+    const toggleF = createToggleFunction(setF);
+    const toggleV = createToggleFunction(setV);
+    const toggleR = createToggleFunction(setR);
+    const toggleRF = createToggleFunction(setRF);
+
+    // Optimized input change handler
+    const handleInputChange = (e, id, type, subType = null) => {
+        const { value: rawValue } = e.target;
+        const value = type === 'number' ? (parseFloat(rawValue) || null) : rawValue;
+
+        setFormValues(prev => {
+            if (!subType) return { ...prev, [id]: { ...prev[id], [type]: value }};
+
+            return {
+                ...prev,
+                [id]: {
+                    ...prev[id],
+                    [type]: {
+                        ...prev[id][type],
+                        [subType]: { ...prev[id][type][subType], value }
+                    }
+                }
+            };
+        });
+    };
+
+    // Reset functionality with consolidated implementation
+    const resetFormItemValues = (options = resetOptions) => {
+        // Always reset form values
+        setFormValues(Object.keys(propertyMapping).reduce((values, key) => {
+            const isNumber = typeof defaultValues[key] === 'number';
+            const isSelect = selectOptionsMapping[key] !== undefined;
+            const stepValue = isNumber && !isSelect ? Math.round((defaultValues[key] * 0.20) * 1000) / 1000 : '';
+
+            values[key] = {
+                id: key,
+                value: defaultValues[key] !== undefined ? defaultValues[key] : '',
+                type: isSelect ? 'select' : (isNumber ? 'number' : 'text'),
+                label: propertyMapping[key],
+                placeholder: defaultValues[key] !== undefined ? defaultValues[key] : '',
+                step: stepValue,
+                options: selectOptionsMapping[key] || [],
+                remarks: "",
+                remarksStyle: { color: '#007bff !important' },
+                efficacyPeriod: {
+                    start: { value: 0, type: 'number', label: 'Start', step: 1, min: 0, max: 1000 },
+                    end: { value: defaultValues['plantLifetimeAmount10'], type: 'number', label: 'End', step: 1, min: 0, max: 1000 }
+                }
+            };
+            return values;
+        }, {}));
+
+        // Conditionally reset other states based on options
+        if (options.S) setS(Object.fromEntries(
+            Array.from({ length: 70 }, (_, i) => [`S${i + 10}`, {
+                mode: null, values: [], enabled: false, compareToKey: '',
+                comparisonType: null, waterfall: false, bar: false, point: false
+            }])
+        ));
+
+        if (options.F) setF(Object.fromEntries(Array.from({ length: 5 }, (_, i) => [`F${i + 1}`, 'on'])));
+        if (options.RF) setRF(Object.fromEntries(Array.from({ length: 5 }, (_, i) => [`RF${i + 1}`, 'on'])));
+        if (options.V) setV(createOffToggleState('V', 10));
+        if (options.R) setR(createOffToggleState('R', 10));
+
+        setShowResetOptions(false);
+    };
+
+    // Reset UI handlers
+    const handleReset = () => setShowResetOptions(true);
+    const handleResetOptionChange = (option) => setResetOptions(prev => ({ ...prev, [option]: !prev[option] }));
+    const handleResetConfirm = () => resetFormItemValues(resetOptions);
+    const handleResetCancel = () => setShowResetOptions(false);
+
+    // Results handler
+    const handleFinalResultsGenerated = (summaryItems, filterKeyword) => {
+        setFinalResults(prev => ({ ...prev, [filterKeyword]: summaryItems }));
+    };
+
+    return {
+        formValues, handleInputChange, setFormValues, resetFormItemValues, handleReset,
+        propertyMapping, iconMapping, S, setS, F, setF, toggleF, V, setV, toggleV,
+        R, setR, toggleR, RF, setRF, toggleRF, scalingGroups, setScalingGroups,
+        scalingBaseCosts, setScalingBaseCosts, finalResults, setFinalResults,
+        handleFinalResultsGenerated, showResetOptions, setShowResetOptions,
+        resetOptions, setResetOptions, handleResetOptionChange,
+        handleResetConfirm, handleResetCancel
+    };
+};
+
+export default useFormValues;

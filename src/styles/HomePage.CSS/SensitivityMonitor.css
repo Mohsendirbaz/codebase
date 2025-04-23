@@ -37,8 +37,7 @@
   padding: 12px 16px;
   background: var(--neu-gradient-basic);
   border-bottom: 1px solid var(--border-color);
-  color: var(--text-color);
-  position: relative;
+  color:var(--text-color)
 }
 
 .monitor-header h3 {
@@ -737,11 +736,11 @@
 }
 
 .plot-box.waterfall {
-  background-color: #ff8c42; /* Orange */
+  background-color: #4969b5; /* Orange */
 }
 
 .plot-box.bar {
-  background-color: #2196f3; /* Blue */
+  background-color: #f32178; /* Blue */
 }
 
 .plot-box.point {

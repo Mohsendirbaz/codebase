@@ -71,7 +71,7 @@ SCRIPT_FILES = ['PNG_PLOT.py']
 def log_properties_as_table(properties):
     """
     Create a formatted table of properties in the log file.
-    
+
     Args:
         properties (list): List of property identifiers to be logged
     """
@@ -82,15 +82,15 @@ def log_properties_as_table(properties):
     # Calculate maximum property length for formatting
     max_length = max(len(str(prop)) for prop in properties)
     format_str = f"{{:<5}} | {{:<{max_length}}}"
-    
+
     # Create and log table header
     header = format_str.format("Row", "Property")
     separator = '-' * len(header)
-    
+
     logger.info(separator)
     logger.info(header)
     logger.info(separator)
-    
+
     # Log each property with its index
     for index, prop in enumerate(properties, 1):
         logger.info(format_str.format(index, prop))
@@ -99,7 +99,7 @@ def log_properties_as_table(properties):
 def log_sensitivity_parameters(sensitivity_params):
     """
     Log sensitivity analysis configuration in a structured format.
-    
+
     Args:
         sensitivity_params (dict): Dictionary containing sensitivity analysis parameters
     """
@@ -109,7 +109,7 @@ def log_sensitivity_parameters(sensitivity_params):
 
     logger.info("Sensitivity Analysis Configuration:")
     enabled_params = {k: v for k, v in sensitivity_params.items() if v.get('enabled', False)}
-    
+
     if not enabled_params:
         logger.info("No enabled sensitivity parameters found")
         return
@@ -136,7 +136,7 @@ def validate_request_data(data):
         selected_versions = data.get('selectedVersions', [])
         if not isinstance(selected_versions, list):
             return False, "selectedVersions must be a list"
-            
+
         # Validate that at least one version is selected and all versions are valid
         if not selected_versions:
             logger.info("No versions selected, using default version [1]")
@@ -155,7 +155,7 @@ def validate_request_data(data):
         selected_properties = data.get('selectedProperties', [])
         if not isinstance(selected_properties, list):
             return False, "selectedProperties must be a list"
-            
+
         # Validate that at least one property is selected
         if not selected_properties:
             logger.info("No properties selected, proceeding with empty list")
@@ -173,7 +173,7 @@ def validate_request_data(data):
         logger.info(f"Received sensitivity parameters: {sensitivity_params}")
         if not isinstance(sensitivity_params, dict):
             return False, "S must be a dictionary"
-            
+
         # Add validation for Param_ID
         for key, config in sensitivity_params.items():
             if config.get('enabled', False):
@@ -197,7 +197,7 @@ def run_scripts():
     """
     Main endpoint for running PNG visualization scripts.
     Handles request validation, script execution, and error handling.
-    
+
     Returns:
         tuple: (response, status_code)
     """
@@ -227,7 +227,7 @@ def run_scripts():
             if not selected_versions:
                 logger.warning("No versions selected, using default version [1]")
                 selected_versions = [1]
-            
+
             # Log request parameters
             logger.info(f"Selected versions: {selected_versions}")
             log_properties_as_table(selected_properties)
@@ -257,7 +257,7 @@ def run_scripts():
 
                 logger.info(f"Executing script: {script_filename}")
                 logger.info(f"Command arguments: {[sys.executable, script_filename, selected_versions_str, selected_properties_str, remarks, customized_features, sensitivity_json]}")
-                
+
                 # Ensure all arguments are strings and not empty
                 args = [
                     sys.executable,
@@ -268,19 +268,19 @@ def run_scripts():
                     customized_features or "off",  # Default to "off" if empty
                     sensitivity_json or "{}"  # Default to empty dict if empty
                 ]
-                
+
                 # Create necessary directories and files
                 try:
                     for version in selected_versions:
                         batch_dir = PUBLIC_DIR / f'Batch({version})'
                         results_dir = batch_dir / f'Results({version})'
                         config_dir = batch_dir / f'ConfigurationPlotSpec({version})'
-                        
+
                         # Create directories
                         for directory in [batch_dir, results_dir, config_dir]:
                             directory.mkdir(exist_ok=True)
                             logger.info(f"Created directory: {directory}")
-                        
+
                         # Create default files
                         config_file = config_dir / f'U_configurations({version}).py'
                         if not config_file.exists():
@@ -290,7 +290,7 @@ def run_scripts():
                 except Exception as e:
                     logger.error(f"Error creating directories/files: {str(e)}")
                     return jsonify({"error": f"Error creating directories/files: {str(e)}"}), 500
-                
+
                 # Execute script
                 try:
                     result = subprocess.run(
@@ -305,7 +305,7 @@ def run_scripts():
                         logger.info(f"Script output: {result.stdout}")
                     if result.stderr:
                         logger.warning(f"Script stderr: {result.stderr}")
-                        
+
                     if result.returncode != 0:
                         error_msg = f"Error in {script_filename}: {result.stderr}"
                         logger.error(error_msg)
@@ -313,7 +313,7 @@ def run_scripts():
                 except Exception as e:
                     logger.error(f"Error during script execution: {str(e)}")
                     return jsonify({"error": f"Error during script execution: {str(e)}"}), 500
-                    
+
             except Exception as e:
                 logger.error(f"Error executing {script_filename}: {str(e)}", exc_info=True)
                 return jsonify({"error": f"Error executing {script_filename}: {str(e)}"}), 500
@@ -321,7 +321,7 @@ def run_scripts():
         # Log successful completion
         request_duration = datetime.now() - request_start_time
         logger.info(f"Request completed successfully in {request_duration}")
-        
+
         # Import and run album organizer
         try:
             # Import and run album organizer
@@ -332,12 +332,238 @@ def run_scripts():
         except Exception as e:
             logger.error(f"Error during album organization: {str(e)}")
             # Continue with normal flow, don't fail the request
-            
+
         return '', 204
 
     except Exception as e:
         logger.error(f"Unexpected error: {str(e)}", exc_info=True)
         return jsonify({"error": "Internal server error"}), 500
+
+@app.route('/api/plots/<version>', methods=['GET'])
+def get_plots(version):
+    """
+    Get all plots for a specific version.
+
+    Args:
+        version (str): The version number
+
+    Returns:
+        JSON response with plot information
+    """
+    try:
+        logger.info(f"Fetching plots for version {version}")
+
+        # Construct the path to the version's Results directory
+        version_folder = PUBLIC_DIR / f'Batch({version})' / f'Results({version})'
+
+        if not version_folder.exists():
+            logger.warning(f"Results folder does not exist: {version_folder}")
+            return jsonify({"error": "Version folder not found"}), 404
+
+        # Find all plot files in the version folder
+        plot_files = []
+
+        # Look for plots in various subdirectories
+        for root, dirs, files in os.walk(version_folder):
+            for file in files:
+                if file.lower().endswith(('.png', '.jpg', '.jpeg')):
+                    # Get relative path from version folder
+                    rel_path = os.path.relpath(os.path.join(root, file), version_folder)
+
+                    # Extract category and group from path
+                    path_parts = rel_path.split(os.path.sep)
+                    category = path_parts[0] if len(path_parts) > 1 else "General"
+                    group = path_parts[1] if len(path_parts) > 2 else "Default"
+
+                    # Create plot info
+                    plot_info = {
+                        "id": len(plot_files) + 1,
+                        "name": file,
+                        "path": f"Batch({version})/Results({version})/{rel_path}",
+                        "category": category,
+                        "group": group
+                    }
+
+                    plot_files.append(plot_info)
+
+        if not plot_files:
+            logger.info(f"No plot files found for version {version}")
+            return jsonify([]), 200
+
+        logger.info(f"Found {len(plot_files)} plot files for version {version}")
+        return jsonify(plot_files), 200
+
+    except Exception as e:
+        logger.error(f"Error fetching plots for version {version}: {str(e)}")
+        return jsonify({"error": f"Error fetching plots: {str(e)}"}), 500
+
+@app.route('/api/plots/<version>/<category>/<group>', methods=['GET'])
+def get_plots_by_group(version, category, group):
+    """
+    Get plots for a specific version, category, and group.
+
+    Args:
+        version (str): The version number
+        category (str): The plot category
+        group (str): The plot group
+
+    Returns:
+        JSON response with plot information
+    """
+    try:
+        logger.info(f"Fetching plots for version {version}, category {category}, group {group}")
+
+        # Construct the path to the version's Results directory
+        version_folder = PUBLIC_DIR / f'Batch({version})' / f'Results({version})'
+
+        if not version_folder.exists():
+            logger.warning(f"Results folder does not exist: {version_folder}")
+            return jsonify({"error": "Version folder not found"}), 404
+
+        # Find all plot files in the specified category and group
+        plot_files = []
+
+        # Look for plots in the specified category and group
+        category_folder = version_folder / category
+        if category_folder.exists():
+            group_folder = category_folder / group
+            if group_folder.exists():
+                for file in os.listdir(group_folder):
+                    if file.lower().endswith(('.png', '.jpg', '.jpeg')):
+                        # Create plot info
+                        plot_info = {
+                            "id": len(plot_files) + 1,
+                            "name": file,
+                            "path": f"Batch({version})/Results({version})/{category}/{group}/{file}",
+                            "category": category,
+                            "group": group
+                        }
+
+                        plot_files.append(plot_info)
+
+        if not plot_files:
+            logger.info(f"No plot files found for version {version}, category {category}, group {group}")
+            return jsonify([]), 200
+
+        logger.info(f"Found {len(plot_files)} plot files for version {version}, category {category}, group {group}")
+        return jsonify(plot_files), 200
+
+    except Exception as e:
+        logger.error(f"Error fetching plots for version {version}, category {category}, group {group}: {str(e)}")
+        return jsonify({"error": f"Error fetching plots: {str(e)}"}), 500
+
+@app.route('/api/sensitivity-plots/<version>', methods=['GET'])
+def get_sensitivity_plots(version):
+    """
+    Get all sensitivity plots for a specific version.
+
+    Args:
+        version (str): The version number
+
+    Returns:
+        JSON response with plot information
+    """
+    try:
+        logger.info(f"Fetching sensitivity plots for version {version}")
+
+        # Construct the path to the version's Sensitivity directory
+        sensitivity_folder = PUBLIC_DIR / f'Batch({version})' / f'Results({version})' / 'Sensitivity'
+
+        if not sensitivity_folder.exists():
+            logger.warning(f"Sensitivity folder does not exist: {sensitivity_folder}")
+            return jsonify({"error": "Sensitivity folder not found"}), 404
+
+        # Find all plot files in the sensitivity folder
+        plot_files = []
+
+        # Look for plots in various subdirectories
+        for root, dirs, files in os.walk(sensitivity_folder):
+            for file in files:
+                if file.lower().endswith(('.png', '.jpg', '.jpeg')):
+                    # Get relative path from sensitivity folder
+                    rel_path = os.path.relpath(os.path.join(root, file), sensitivity_folder)
+
+                    # Extract category and group from path
+                    path_parts = rel_path.split(os.path.sep)
+                    category = path_parts[0] if len(path_parts) > 1 else "General"
+                    group = path_parts[1] if len(path_parts) > 2 else "Default"
+
+                    # Create plot info
+                    plot_info = {
+                        "id": len(plot_files) + 1,
+                        "name": file,
+                        "path": f"Batch({version})/Results({version})/Sensitivity/{rel_path}",
+                        "category": category,
+                        "group": group
+                    }
+
+                    plot_files.append(plot_info)
+
+        if not plot_files:
+            logger.info(f"No sensitivity plot files found for version {version}")
+            return jsonify([]), 200
+
+        logger.info(f"Found {len(plot_files)} sensitivity plot files for version {version}")
+        return jsonify(plot_files), 200
+
+    except Exception as e:
+        logger.error(f"Error fetching sensitivity plots for version {version}: {str(e)}")
+        return jsonify({"error": f"Error fetching sensitivity plots: {str(e)}"}), 500
+
+@app.route('/api/sensitivity-plots/<version>/<category>/<group>', methods=['GET'])
+def get_sensitivity_plots_by_group(version, category, group):
+    """
+    Get sensitivity plots for a specific version, category, and group.
+
+    Args:
+        version (str): The version number
+        category (str): The plot category
+        group (str): The plot group
+
+    Returns:
+        JSON response with plot information
+    """
+    try:
+        logger.info(f"Fetching sensitivity plots for version {version}, category {category}, group {group}")
+
+        # Construct the path to the version's Sensitivity directory
+        sensitivity_folder = PUBLIC_DIR / f'Batch({version})' / f'Results({version})' / 'Sensitivity'
+
+        if not sensitivity_folder.exists():
+            logger.warning(f"Sensitivity folder does not exist: {sensitivity_folder}")
+            return jsonify({"error": "Sensitivity folder not found"}), 404
+
+        # Find all plot files in the specified category and group
+        plot_files = []
+
+        # Look for plots in the specified category and group
+        category_folder = sensitivity_folder / category
+        if category_folder.exists():
+            group_folder = category_folder / group
+            if group_folder.exists():
+                for file in os.listdir(group_folder):
+                    if file.lower().endswith(('.png', '.jpg', '.jpeg')):
+                        # Create plot info
+                        plot_info = {
+                            "id": len(plot_files) + 1,
+                            "name": file,
+                            "path": f"Batch({version})/Results({version})/Sensitivity/{category}/{group}/{file}",
+                            "category": category,
+                            "group": group
+                        }
+
+                        plot_files.append(plot_info)
+
+        if not plot_files:
+            logger.info(f"No sensitivity plot files found for version {version}, category {category}, group {group}")
+            return jsonify([]), 200
+
+        logger.info(f"Found {len(plot_files)} sensitivity plot files for version {version}, category {category}, group {group}")
+        return jsonify(plot_files), 200
+
+    except Exception as e:
+        logger.error(f"Error fetching sensitivity plots for version {version}, category {category}, group {group}: {str(e)}")
+        return jsonify({"error": f"Error fetching sensitivity plots: {str(e)}"}), 500
 
 @app.route('/images/<path:filename>')
 def serve_image(filename):
@@ -356,10 +582,10 @@ def serve_image(filename):
 if __name__ == '__main__':
     port = int(os.getenv('FLASK_PORT', 5008))
     debug = os.getenv('FLASK_ENV') == 'development'
-    
+
     # Create public/Original directory if it doesn't exist
     PUBLIC_DIR.mkdir(parents=True, exist_ok=True)
-    
+
     logger.info(f"Starting PNG visualization server on port {port}")
     logger.info(f"Serving images from: {PUBLIC_DIR}")
     app.run(debug=debug, port=port)

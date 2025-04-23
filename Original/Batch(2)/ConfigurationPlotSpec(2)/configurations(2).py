@@ -7,6 +7,7 @@ engineering_Procurement_and_Construction_EPC_Amount15=0
 process_contingency_PC_Amount16=0
 project_Contingency_PT_BEC_EPC_PCAmount17=0
 use_direct_operating_expensesAmount18=False
+use_direct_revenueAmount19='False'
 depreciationMethodAmount20='Straight-Line'
 loanTypeAmount21='simple'
 interestTypeAmount22='fixed'
@@ -69,6 +70,4 @@ variable_costsAmount4=[1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 amounts_per_unitAmount5=[1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 
 filtered_values_json=[
-   '{"filteredValue":{"id":"initialSellingPriceAmount13","value":"8.8","start":"10","end":"20","remarks":"5x higher multiplier in years 10-20"}}',
-   '{"filteredValue":{"id":"plantLifetimeAmount10","value":"20","start":"1","end":"20","remarks":"hi"}}',
 ]

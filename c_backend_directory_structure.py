@@ -44,13 +44,14 @@ def main():
                         help='Absolute path for the output JSON file. If not provided, will use the backend directory')
 
     args = parser.parse_args()
+    current_script_path = os.path.dirname(os.path.abspath(__file__))
 
     # Use the provided paths
     backend_path = args.backend_path
 
     # If output path is not provided, create one in the backend directory
     if not args.output_path:
-        output_path = os.path.join(backend_path, "c_backend_directory_structure.json")
+        output_path = os.path.join(current_script_path, "c_backend_directory_structure.json")
     else:
         output_path = args.output_path
 
