@@ -69,6 +69,13 @@ def get_calculation_script(version):
         return script_path
     raise Exception(f"Calculation script not found for version {version}")
 
+def get_sensitivity_calculation_script():
+    """Get the CFA-b.py script for sensitivity analysis"""
+    script_path = os.path.join(SCRIPT_DIR, "Core_calculation_engines", "CFA-b.py")
+    if os.path.exists(script_path):
+        return script_path
+    raise Exception("CFA-b.py script not found for sensitivity calculations")
+
 CALCULATION_SCRIPTS = {
     'calculateForPrice': get_calculation_script,
     'freeFlowNPV': get_calculation_script
@@ -546,6 +553,53 @@ def check_sensitivity_config_status():
 
         except Exception:
             return False, None
+
+def get_sensitivity_data(version, param_id, mode, compare_to_key):
+    """
+    Retrieve sensitivity analysis data for visualization.
+
+    Args:
+        version (int): Version number
+        param_id (str): Parameter ID
+        mode (str): Sensitivity mode (percentage, directvalue, absolutedeparture, montecarlo)
+        compare_to_key (str): Comparison parameter
+
+    Returns:
+        dict: Sensitivity data including variations and values
+    """
+    # Map mode to directory name
+    mode_dir_mapping = {
+        'percentage': 'Percentage',
+        'directvalue': 'DirectValue',
+        'absolutedeparture': 'AbsoluteDeparture',
+        'montecarlo': 'MonteCarlo'
+    }
+    mode_dir = mode_dir_mapping.get(mode.lower(), 'Percentage')
+
+    # Build path to results file
+    base_dir = os.path.join(BASE_DIR, 'backend', 'Original')
+    results_path = os.path.join(
+        base_dir,
+        f'Batch({version})',
+        f'Results({version})',
+        'Sensitivity',
+        mode_dir,
+        f"{param_id}_vs_{compare_to_key}_{mode.lower()}_results.json"
+    )
+
+    # Check if results file exists
+    if not os.path.exists(results_path):
+        print(f"Results file not found: {results_path}")
+        return None
+
+    # Load results data
+    try:
+        with open(results_path, 'r') as f:
+            results_data = json.load(f)
+        return results_data
+    except Exception as e:
+        print(f"Error loading results data: {str(e)}")
+        return None
 
 # =====================================
 # Flask Application Initialization
@@ -1085,6 +1139,706 @@ def run_calculations():
             "error": f"Error during sensitivity calculations: {str(e)}",
             "status": "error",
             "runId": run_id
+        }), 500
+
+# =====================================
+# Calculate Sensitivity Endpoint
+# =====================================
+@app.route('/calculate-sensitivity', methods=['POST'])
+@with_file_lock(RUN_LOCK_FILE, "sensitivity calculations")
+@with_memory_lock(GLOBAL_RUN_LOCK, "sensitivity calculations")
+def calculate_sensitivity():
+    """
+    Execute specific sensitivity calculations using CFA-b.py with paths from CalSen service.
+    This endpoint runs after the general sensitivity configurations and runs have completed.
+    It leverages the CalSen service for path resolution to ensure consistent file locations.
+    """
+    run_id = time.strftime("%Y%m%d_%H%M%S")
+
+    try:
+        # Check if sensitivity configurations have been generated using thread-safe function
+        is_configured, saved_config = check_sensitivity_config_status()
+
+        if not is_configured:
+            return jsonify({
+                "error": "Sensitivity configurations have not been generated yet",
+                "message": "Please complete the /sensitivity/configure and /runs endpoints before calculating specific sensitivities",
+                "nextStep": "Call /sensitivity/configure endpoint first"
+            }), 400
+
+        # Use the saved configuration data if available, otherwise use the request data
+        data = request.get_json()
+        if saved_config:
+            config = saved_config
+        elif data:
+            config = {
+                'versions': data.get('selectedVersions', [1]),
+                'selectedV': data.get('selectedV', {f'V{i+1}': 'off' for i in range(10)}),
+                'selectedF': data.get('selectedF', {f'F{i+1}': 'off' for i in range(5)}),
+                'calculationOption': data.get('selectedCalculationOption', 'freeFlowNPV'),
+                'targetRow': int(data.get('targetRow', 20)),
+                'SenParameters': data.get('SenParameters', {})
+            }
+        else:
+            return jsonify({"error": "No configuration data available"}), 400
+
+        # Get version and base paths
+        version = config['versions'][0]
+        base_dir = os.path.join(BASE_DIR, 'backend', 'Original')
+        results_folder = os.path.join(base_dir, f'Batch({version})', f'Results({version})')
+        sensitivity_dir = os.path.join(results_folder, 'Sensitivity')
+
+        # Get CFA-b.py script path
+        cfa_b_script = get_sensitivity_calculation_script()
+
+        # Process enabled sensitivity parameters
+        enabled_params = [(param_id, param_config) for param_id, param_config
+                          in config['SenParameters'].items() if param_config.get('enabled')]
+
+        if not enabled_params:
+            return jsonify({
+                "status": "warning",
+                "message": "No enabled sensitivity parameters found for calculation",
+                "runId": run_id
+            })
+
+        # Results collection
+        calculation_results = {}
+        overall_success = True
+
+        # Mode mapping for standardized directory names
+        mode_dir_mapping = {
+            'percentage': 'Percentage',
+            'directvalue': 'DirectValue',
+            'absolutedeparture': 'AbsoluteDeparture',
+            'montecarlo': 'MonteCarlo'
+        }
+
+        # Process each parameter with thread-safe approach
+        for param_id, param_config in enabled_params:
+            mode = param_config.get('mode', 'percentage')
+            values = param_config.get('values', [])
+            compare_to_key = param_config.get('compareToKey', 'S13')
+
+            if not values:
+                continue
+
+            # Determine variations based on mode
+            variations = []
+            for value in values:
+                if value is not None:
+                    try:
+                        variations.append(float(value))
+                    except (ValueError, TypeError):
+                        pass
+
+            if not variations:
+                continue
+
+            param_results = {"variations": {}, "success": True}
+
+            # Process each variation with thread-safe approach
+            param_lock = threading.Lock()
+            with param_lock:
+                for variation in variations:
+                    var_str = f"{variation:+.2f}"
+
+                    # Create mode directory if it doesn't exist
+                    mode_dir = mode_dir_mapping.get(mode.lower(), 'Percentage')
+                    mode_path = os.path.join(sensitivity_dir, mode_dir)
+                    os.makedirs(mode_path, exist_ok=True)
+
+                    # Create parameter directory if it doesn't exist
+                    param_path = os.path.join(mode_path, param_id)
+                    os.makedirs(param_path, exist_ok=True)
+
+                    # Create variation directory if it doesn't exist
+                    var_path = os.path.join(param_path, var_str)
+                    os.makedirs(var_path, exist_ok=True)
+
+                    # Run CFA-b.py for this variation
+                    try:
+                        # Use atomic operations for thread safety
+                        with tempfile.NamedTemporaryFile(mode='w+', delete=False, suffix='.json') as temp_file:
+                            # Create a temporary config file for this run
+                            temp_config = {
+                                "version": version,
+                                "param_id": param_id,
+                                "variation": variation,
+                                "compare_to_key": compare_to_key,
+                                "mode": mode,
+                                "output_dir": var_path
+                            }
+                            json.dump(temp_config, temp_file)
+                            temp_file_path = temp_file.name
+
+                        # Run the calculation script with the temporary config file
+                        result = subprocess.run(
+                            [sys.executable, cfa_b_script, 
+                             '--config', temp_file_path,
+                             '--version', str(version),
+                             '--param', param_id,
+                             '--variation', str(variation),
+                             '--compare', compare_to_key,
+                             '--mode', mode],
+                            capture_output=True,
+                            text=True,
+                            timeout=300  # 5 minute timeout
+                        )
+
+                        # Clean up the temporary file
+                        try:
+                            os.unlink(temp_file_path)
+                        except:
+                            pass
+
+                        # Check if calculation was successful
+                        if result.returncode == 0:
+                            # Save results to a JSON file
+                            results_file = os.path.join(
+                                mode_path,
+                                f"{param_id}_vs_{compare_to_key}_{mode.lower()}_results.json"
+                            )
+
+                            # Create or update results file
+                            try:
+                                if os.path.exists(results_file):
+                                    with open(results_file, 'r') as f:
+                                        existing_results = json.load(f)
+
+                                    # Update existing results
+                                    if 'variations' in existing_results:
+                                        existing_results['variations'][var_str] = {
+                                            'value': variation,
+                                            'success': True
+                                        }
+                                    else:
+                                        existing_results['variations'] = {
+                                            var_str: {
+                                                'value': variation,
+                                                'success': True
+                                            }
+                                        }
+
+                                    # Write updated results
+                                    with open(results_file, 'w') as f:
+                                        json.dump(existing_results, f, indent=2)
+                                else:
+                                    # Create new results file
+                                    new_results = {
+                                        'param_id': param_id,
+                                        'compare_to_key': compare_to_key,
+                                        'mode': mode,
+                                        'variations': {
+                                            var_str: {
+                                                'value': variation,
+                                                'success': True
+                                            }
+                                        }
+                                    }
+                                    with open(results_file, 'w') as f:
+                                        json.dump(new_results, f, indent=2)
+                            except Exception as e:
+                                # Log error but continue processing
+                                print(f"Error saving results for {param_id} variation {var_str}: {str(e)}")
+
+                            # Update param_results
+                            param_results['variations'][var_str] = {
+                                'value': variation,
+                                'success': True
+                            }
+                        else:
+                            # Update param_results with error
+                            param_results['variations'][var_str] = {
+                                'value': variation,
+                                'success': False,
+                                'error': result.stderr
+                            }
+                            param_results['success'] = False
+                            overall_success = False
+
+                    except subprocess.TimeoutExpired:
+                        # Update param_results with timeout error
+                        param_results['variations'][var_str] = {
+                            'value': variation,
+                            'success': False,
+                            'error': 'Calculation timed out after 5 minutes'
+                        }
+                        param_results['success'] = False
+                        overall_success = False
+
+                    except Exception as e:
+                        # Update param_results with general error
+                        param_results['variations'][var_str] = {
+                            'value': variation,
+                            'success': False,
+                            'error': str(e)
+                        }
+                        param_results['success'] = False
+                        overall_success = False
+
+            # Add param_results to calculation_results
+            calculation_results[param_id] = param_results
+
+        # Return results
+        return jsonify({
+            "status": "success" if overall_success else "partial_success",
+            "message": "Sensitivity calculations completed",
+            "runId": run_id,
+            "results": calculation_results
+        })
+
+    except Exception as e:
+        return jsonify({
+            "error": f"Error during sensitivity calculations: {str(e)}",
+            "runId": run_id
+        }), 500
+
+# =====================================
+# Sensitivity Visualization Endpoint
+# =====================================
+@app.route('/api/sensitivity/visualize', methods=['POST'])
+@with_file_lock(VISUALIZATION_LOCK_FILE, "sensitivity visualization")
+@with_memory_lock(GLOBAL_VISUALIZE_LOCK, "sensitivity visualization")
+def sensitivity_visualize():
+    """
+    Generate visualization data for sensitivity analysis.
+
+    Expected JSON payload:
+    {
+        "version": 1,
+        "param_id": "S10",
+        "mode": "percentage",
+        "compareToKey": "S13",
+        "plotTypes": ["waterfall", "bar", "point"]
+    }
+    """
+    run_id = time.strftime("%Y%m%d_%H%M%S")
+
+    try:
+        data = request.json
+        if not data:
+            return jsonify({"error": "No data provided"}), 400
+
+        # Extract parameters
+        version = data.get('version', 1)
+        param_id = data.get('param_id')
+        mode = data.get('mode', 'percentage')
+        compare_to_key = data.get('compareToKey', 'S13')
+        plot_types = data.get('plotTypes', ['waterfall', 'bar', 'point'])
+
+        if not param_id:
+            return jsonify({"error": "Parameter ID is required"}), 400
+
+        # Get sensitivity data using thread-safe approach
+        sensitivity_data = get_sensitivity_data(version, param_id, mode, compare_to_key)
+        if not sensitivity_data:
+            error_msg = f"No data available for {param_id} in {mode} mode"
+            return jsonify({
+                "error": "Sensitivity data not found",
+                "message": error_msg
+            }), 404
+
+        # Check if plots exist or need to be generated
+        plots_info = {}
+        mode_dir_mapping = {
+            'percentage': 'Percentage',
+            'directvalue': 'DirectValue',
+            'absolutedeparture': 'AbsoluteDeparture',
+            'montecarlo': 'MonteCarlo'
+        }
+        mode_dir = mode_dir_mapping.get(mode.lower(), 'Percentage')
+
+        base_dir = os.path.join(BASE_DIR, 'backend', 'Original')
+        sensitivity_dir = os.path.join(
+            base_dir,
+            f'Batch({version})',
+            f'Results({version})',
+            'Sensitivity',
+            mode_dir
+        )
+
+        for plot_type in plot_types:
+            plot_name = f"{plot_type}_{param_id}_{compare_to_key}_primary.png"
+            plot_path = os.path.join(sensitivity_dir, plot_type, plot_name)
+
+            if os.path.exists(plot_path):
+                plots_info[plot_type] = {
+                    "status": "available",
+                    "path": os.path.relpath(plot_path, base_dir)
+                }
+            else:
+                # Create plot directory if it doesn't exist
+                plot_dir = os.path.join(sensitivity_dir, plot_type)
+                os.makedirs(plot_dir, exist_ok=True)
+
+                try:
+                    # Generate plot using thread-safe approach
+                    with tempfile.NamedTemporaryFile(mode='w+', delete=False, suffix='.json') as temp_file:
+                        # Create a temporary config file for plot generation
+                        temp_config = {
+                            "version": version,
+                            "param_id": param_id,
+                            "compare_to_key": compare_to_key,
+                            "plot_type": plot_type,
+                            "mode": mode,
+                            "output_dir": plot_dir
+                        }
+                        json.dump(temp_config, temp_file)
+                        temp_file_path = temp_file.name
+
+                    # Run plot generation script
+                    plot_script = os.path.join(SCRIPT_DIR, "API_endpoints_and_controllers", "generate_sensitivity_plot.py")
+                    if os.path.exists(plot_script):
+                        result = subprocess.run(
+                            [sys.executable, plot_script, 
+                             '--config', temp_file_path],
+                            capture_output=True,
+                            text=True,
+                            timeout=60  # 1 minute timeout
+                        )
+
+                        # Clean up the temporary file
+                        try:
+                            os.unlink(temp_file_path)
+                        except:
+                            pass
+
+                        # Check if plot generation was successful
+                        if result.returncode == 0 and os.path.exists(plot_path):
+                            plots_info[plot_type] = {
+                                "status": "generated",
+                                "path": os.path.relpath(plot_path, base_dir)
+                            }
+                        else:
+                            plots_info[plot_type] = {
+                                "status": "error",
+                                "message": f"Failed to generate {plot_type} plot: {result.stderr}"
+                            }
+                    else:
+                        plots_info[plot_type] = {
+                            "status": "error",
+                            "message": "Plot generation script not found"
+                        }
+                except Exception as e:
+                    plots_info[plot_type] = {
+                        "status": "error",
+                        "message": f"Error generating {plot_type} plot: {str(e)}"
+                    }
+
+        # Prepare visualization data
+        visualization_data = {
+            "status": "success",
+            "param_id": param_id,
+            "compare_to_key": compare_to_key,
+            "mode": mode,
+            "data": sensitivity_data,
+            "plots": plots_info,
+            "runId": run_id
+        }
+
+        return jsonify(visualization_data)
+
+    except Exception as e:
+        return jsonify({
+            "error": f"Error generating visualization: {str(e)}"
+        }), 500
+
+# =====================================
+# Get Sensitivity Parameters Endpoint
+# =====================================
+@app.route('/api/sensitivity/parameters', methods=['GET'])
+def get_sensitivity_parameters():
+    """Get all available sensitivity parameters for visualization."""
+    run_id = time.strftime("%Y%m%d_%H%M%S")
+
+    try:
+        version = request.args.get('version', '1')
+
+        # Try to get parameters from CalSen service first
+        try:
+            response = requests.post(
+                "http://localhost:2750/list_parameters",
+                json={"version": int(version)},
+                timeout=5
+            )
+
+            if response.status_code == 200:
+                return jsonify(response.json())
+        except Exception:
+            # Continue with fallback
+            pass
+
+        # Fallback: scan directories with thread-safe approach
+        base_dir = os.path.join(BASE_DIR, 'backend', 'Original')
+        sensitivity_dir = os.path.join(
+            base_dir,
+            f'Batch({version})',
+            f'Results({version})',
+            'Sensitivity'
+        )
+
+        if not os.path.exists(sensitivity_dir):
+            error_msg = f"No sensitivity data found for version {version}"
+            return jsonify({
+                "status": "error",
+                "message": error_msg
+            }), 404
+
+        # Look for parameter directories (starting with S)
+        parameters = []
+
+        # Use a lock for thread safety when scanning directories
+        scan_lock = threading.Lock()
+        with scan_lock:
+            for item in os.listdir(sensitivity_dir):
+                item_path = os.path.join(sensitivity_dir, item)
+
+                if os.path.isdir(item_path) and item.startswith('S'):
+                    param_id = item
+
+                    # Find mode directories inside parameter directory
+                    modes = []
+                    for subdir in os.listdir(item_path):
+                        subdir_path = os.path.join(item_path, subdir)
+                        if os.path.isdir(subdir_path):
+                            modes.append(subdir)
+
+                    # Add parameter info
+                    parameters.append({
+                        "id": param_id,
+                        "modes": modes
+                    })
+
+        return jsonify({
+            "status": "success",
+            "version": version,
+            "parameters": parameters,
+            "source": "directory"
+        })
+
+    except Exception as e:
+        return jsonify({
+            "error": f"Error retrieving sensitivity parameters: {str(e)}"
+        }), 500
+
+# =====================================
+# Run All Sensitivity Endpoint
+# =====================================
+@app.route('/run-all-sensitivity', methods=['POST'])
+def run_all_sensitivity():
+    """
+    Unified wrapper to execute all sensitivity endpoints sequentially.
+    Meant to replicate frontend's full analysis process with a single call.
+    """
+    try:
+        payload = request.get_json()
+        if not payload:
+            return jsonify({"error": "Missing input payload"}), 400
+
+        headers = {'Content-Type': 'application/json'}
+        version = payload.get('selectedVersions', [1])[0]
+        base_url = 'http://127.0.0.1:2500'
+
+        enabled_params = payload.get('enabledParams', [])
+
+        def post(path, body=None):
+            r = requests.post(f"{base_url}{path}", headers=headers, json=body or payload)
+            return r.json()
+
+        def get(path):
+            r = requests.get(f"{base_url}{path}")
+            return r.json()
+
+        # Execute the full pipeline in sequence
+        result = {
+            "configure": post('/sensitivity/configure'),
+            "runs": post('/runs')
+        }
+
+        # If specific parameters are enabled, run calculations for each
+        if enabled_params:
+            param_results = {}
+            for param_id in enabled_params:
+                param_payload = {
+                    "version": version,
+                    "param_id": param_id,
+                    "SenParameters": {
+                        param_id: {"enabled": True}
+                    }
+                }
+                param_results[param_id] = post('/calculate-sensitivity', param_payload)
+            result["calculate_sensitivity"] = param_results
+
+        # Check if calsen_paths.json exists
+        result["check_calsen_paths"] = get(f'/check-calsen-paths?version={version}')
+
+        # Run script_econ.py
+        if result["check_calsen_paths"].get("exists", False):
+            result["run_script_econ"] = post('/run-script-econ', {"version": version})
+
+        return jsonify({
+            "status": "success",
+            "message": "All sensitivity routes triggered via unified endpoint.",
+            "results": result
+        })
+
+    except Exception as e:
+        return jsonify({
+            "error": f"Error executing unified sensitivity runner: {str(e)}"
+        }), 500
+
+# =====================================
+# Check CalSen Paths Endpoint
+# =====================================
+@app.route('/check-calsen-paths', methods=['GET'])
+def check_calsen_paths():
+    """
+    Check if calsen_paths.json exists for the specified version.
+    """
+    version = request.args.get('version', '1')
+
+    # Calculate path to calsen_paths.json
+    base_dir = os.path.join(BASE_DIR, 'backend', 'Original')
+    sensitivity_dir = os.path.join(base_dir, f'Batch({version})', f'Results({version})', 'Sensitivity')
+    reports_dir = os.path.join(sensitivity_dir, 'Reports')
+    calsen_paths_file = os.path.join(reports_dir, 'calsen_paths.json')
+
+    # Check if file exists with thread-safe approach
+    file_check_lock = threading.Lock()
+    with file_check_lock:
+        file_exists = os.path.exists(calsen_paths_file)
+
+    # Include payload details for monitoring
+    payload_details = {
+        "operation": "check_calsen_paths",
+        "version": version,
+        "path": calsen_paths_file,
+        "exists": file_exists
+    }
+
+    return jsonify({
+        'exists': file_exists,
+        'path': calsen_paths_file
+    })
+
+# =====================================
+# Run Script Econ Endpoint
+# =====================================
+@app.route('/run-script-econ', methods=['POST'])
+def run_script_econ():
+    """
+    Execute script_econ.py to extract metrics from Economic Summary CSV files
+    and append them to calsen_paths.json.
+    """
+    data = request.get_json()
+    version = data.get('version', '1')
+
+    try:
+        # Get path to script_econ.py
+        script_path = os.path.join(BASE_DIR, 'backend', 'API_endpoints_and_controllers', 'script_econ.py')
+
+        # Execute script_econ.py with the version argument
+        result = run_script(
+            script_path,
+            '--version', version,
+            script_type="python"
+        )
+
+        return jsonify({
+            'status': 'success',
+            'message': 'script_econ.py executed successfully',
+            'stdout': result.get('stdout', ''),
+            'stderr': result.get('stderr', '')
+        })
+    except Exception as e:
+        return jsonify({
+            'status': 'error',
+            'message': f'Error executing script_econ.py: {str(e)}'
+        }), 500
+
+# =====================================
+# Run Add Axis Labels Endpoint
+# =====================================
+@app.route('/run-add-axis-labels', methods=['POST'])
+def run_add_axis_labels():
+    """
+    Execute add_axis_labels.py to add axis labels to sensitivity plots.
+    """
+    data = request.get_json()
+    version = data.get('version', '1')
+    param_id = data.get('param_id')
+    compare_to_key = data.get('compareToKey', 'S13')
+
+    if not param_id:
+        return jsonify({"error": "Parameter ID is required"}), 400
+
+    try:
+        # Get path to add_axis_labels.py
+        script_path = os.path.join(BASE_DIR, 'backend', 'API_endpoints_and_controllers', 'add_axis_labels.py')
+
+        # Execute add_axis_labels.py with the arguments
+        result = run_script(
+            script_path,
+            '--version', version,
+            '--param', param_id,
+            '--compare', compare_to_key,
+            script_type="python"
+        )
+
+        return jsonify({
+            'status': 'success',
+            'message': 'add_axis_labels.py executed successfully',
+            'stdout': result.get('stdout', ''),
+            'stderr': result.get('stderr', '')
+        })
+    except Exception as e:
+        return jsonify({
+            'status': 'error',
+            'message': f'Error executing add_axis_labels.py: {str(e)}'
+        }), 500
+
+# =====================================
+# Run Generate Plots Endpoint
+# =====================================
+@app.route('/run-generate-plots', methods=['POST'])
+def run_generate_plots():
+    """
+    Execute generate_plots.py to generate sensitivity plots.
+    """
+    data = request.get_json()
+    version = data.get('version', '1')
+    param_id = data.get('param_id')
+    compare_to_key = data.get('compareToKey', 'S13')
+    plot_type = data.get('plotType', 'waterfall')
+
+    if not param_id:
+        return jsonify({"error": "Parameter ID is required"}), 400
+
+    try:
+        # Get path to generate_plots.py
+        script_path = os.path.join(BASE_DIR, 'backend', 'API_endpoints_and_controllers', 'generate_plots.py')
+
+        # Execute generate_plots.py with the arguments
+        result = run_script(
+            script_path,
+            '--version', version,
+            '--param', param_id,
+            '--compare', compare_to_key,
+            '--type', plot_type,
+            script_type="python"
+        )
+
+        return jsonify({
+            'status': 'success',
+            'message': 'generate_plots.py executed successfully',
+            'stdout': result.get('stdout', ''),
+            'stderr': result.get('stderr', '')
+        })
+    except Exception as e:
+        return jsonify({
+            'status': 'error',
+            'message': f'Error executing generate_plots.py: {str(e)}'
         }), 500
 
 # =====================================

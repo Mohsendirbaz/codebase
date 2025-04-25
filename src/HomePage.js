@@ -44,8 +44,6 @@ import ProcessEconomicsLibrary from './components/process_economics_pilot/integr
 const HomePageContent = () => {
     const [selectedVersions, setSelectedVersions] = useState([1]);
     const [activeTab, setActiveTab] = useState('Input');
-
-    // Listen for version change events
     useEffect(() => {
         const handleVersionChange = (version) => {
             setSelectedVersions(Array.isArray(version) ? version : [version]);
@@ -59,8 +57,6 @@ const HomePageContent = () => {
     const [activeSubTab, setActiveSubTab] = useState('ProjectConfig');
     const [selectedProperties, setSelectedProperties] = useState([]);
     const [season, setSeason] = useState('dark');
-
-    // Loading States
     const [loadingStates, setLoadingStates] = useState({
         html: false,
         csv: false,
@@ -69,8 +65,6 @@ const HomePageContent = () => {
     const [contentLoaded, setContentLoaded] = useState({});
     const [iframesLoaded, setIframesLoaded] = useState({});
     const [imagesLoaded, setImagesLoaded] = useState({});
-
-    // Content Loading States
     const [contentLoadingState, setContentLoadingState] = useState({
         csv: false,
         html: false,
@@ -80,7 +74,6 @@ const HomePageContent = () => {
         content: {},
     });
 
-    // Effect for tab transitions
     useEffect(() => {
         setContentLoadingState((prev) => ({
             ...prev,
@@ -93,7 +86,6 @@ const HomePageContent = () => {
         }));
     }, [activeTab]);
 
-    // Effect for content loading
     useEffect(() => {
         if (contentLoadingState.csv || contentLoadingState.html || contentLoadingState.plots) {
             const timer = setTimeout(() => {
@@ -106,7 +98,6 @@ const HomePageContent = () => {
         }
     }, [contentLoadingState.csv, contentLoadingState.html, contentLoadingState.plots, activeTab]);
 
-    // Theme management
     useEffect(() => {
         // Remove all theme classes
         document.documentElement.classList.remove('dark-theme', 'light-theme', 'creative-theme');
@@ -126,11 +117,11 @@ const HomePageContent = () => {
 
 
     }, [season]);
-// Final results and handler now managed in useFormValues
+
     const {
         formValues,
-        handleInputChange, 
-        handleReset, 
+        handleInputChange,
+        handleReset,
         setFormValues,
         S,
         setS,
@@ -140,6 +131,9 @@ const HomePageContent = () => {
         V,
         setV,
         toggleV,
+        subDynamicPlots,
+        setSubDynamicPlots,
+        toggleSubDynamicPlot,
         R,
         setR,
         toggleR,
@@ -153,14 +147,17 @@ const HomePageContent = () => {
         finalResults,
         setFinalResults,
         handleFinalResultsGenerated,
-        // Reset options popup states and functions
         showResetOptions,
         resetOptions,
         setResetOptions,
         handleResetOptionChange,
         handleResetConfirm,
         handleResetCancel,
-        // Run options popup states and functions
+        showDynamicPlotsOptions,
+        handleDynamicPlots,
+        handleDynamicPlotsOptionChange,
+        handleDynamicPlotsConfirm,
+        handleDynamicPlotsCancel,
         showRunOptions,
         runOptions,
         setRunOptions,
@@ -169,6 +166,7 @@ const HomePageContent = () => {
         handleRunConfirm,
         handleRunCancel
     } = useFormValues();
+
     const [version, setVersion] = useState('1');
     const [batchRunning, setBatchRunning] = useState(false);
     const [analysisRunning, setAnalysisRunning] = useState(false);
@@ -242,7 +240,7 @@ const HomePageContent = () => {
     const [isToggleSectionOpen, setIsToggleSectionOpen] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
     const [popupPosition, setPopupPosition] = useState({ top: 0, left: 0 });
-    // THEN define the effect that depends on formValues
+
     useEffect(() => {
         // Create a mapping of all four Amount categories
         const amountCategories = ['Amount4', 'Amount5', 'Amount6', 'Amount7'];
@@ -277,7 +275,7 @@ const HomePageContent = () => {
         // Update state
         setScalingBaseCosts(updatedScalingBaseCosts);
     }, [formValues]);
-// Add this state to HomePage to track active groups by type
+
     const [activeScalingGroups, setActiveScalingGroups] = useState({
         Amount4: 0,
         Amount5: 0,
@@ -285,13 +283,13 @@ const HomePageContent = () => {
         Amount7: 0
     });
 
-// Handler for active group changes
     const handleActiveGroupChange = (groupIndex, filterKeyword) => {
         setActiveScalingGroups(prev => ({
             ...prev,
             [filterKeyword]: groupIndex
         }));
     };
+
     const handleScaledValuesChange = (scaledValues) => {
         console.log('Scaled values:', scaledValues);
     };
@@ -363,7 +361,6 @@ const HomePageContent = () => {
         setcustomizedFeatures((prevState) => (prevState === 'off' ? 'on' : 'off'));
     };
 
-    // State to track refresh operations
     const [isRefreshing, setIsRefreshing] = useState(false);
 
     const handleRefresh = () => {
@@ -375,6 +372,9 @@ const HomePageContent = () => {
 
         // Force a re-fetch by setting a different version temporarily
         // Using '0' instead of empty string to ensure it's a valid version number
+        // Update selectedVersions first as it's what user selects in version selector
+        setSelectedVersions(['0']);
+        // Then update version as a simple state
         setVersion('0');
 
         // Set it back to the current version after a short delay
@@ -391,13 +391,12 @@ const HomePageContent = () => {
         }));
     };
 
-    // Reset options popup component
-    const ResetOptionsPopup = ({ 
-        show, 
-        options, 
-        onOptionChange, 
-        onConfirm, 
-        onCancel 
+    const ResetOptionsPopup = ({
+        show,
+        options,
+        onOptionChange,
+        onConfirm,
+        onCancel
     }) => {
         if (!show) return null;
 
@@ -407,40 +406,40 @@ const HomePageContent = () => {
                     <h3>Select states to reset</h3>
                     <div className="checkbox-row">
                         <label className="reset-option-label">
-                            <input 
-                                type="checkbox" 
-                                checked={options.S} 
-                                onChange={() => onOptionChange('S')} 
+                            <input
+                                type="checkbox"
+                                checked={options.S}
+                                onChange={() => onOptionChange('S')}
                             />
                             S (Sensitivity Analysis)
                         </label>
                     </div>
                     <div className="checkbox-row">
                         <label className="reset-option-label">
-                            <input 
-                                type="checkbox" 
-                                checked={options.F} 
-                                onChange={() => onOptionChange('F')} 
+                            <input
+                                type="checkbox"
+                                checked={options.F}
+                                onChange={() => onOptionChange('F')}
                             />
                             F (Factor Parameters)
                         </label>
                     </div>
                     <div className="checkbox-row">
                         <label className="reset-option-label">
-                            <input 
-                                type="checkbox" 
-                                checked={options.V} 
-                                onChange={() => onOptionChange('V')} 
+                            <input
+                                type="checkbox"
+                                checked={options.V}
+                                onChange={() => onOptionChange('V')}
                             />
                             V (Process Quantities)
                         </label>
                     </div>
                     <div className="checkbox-row">
                         <label className="reset-option-label">
-                            <input 
-                                type="checkbox" 
-                                checked={options.R} 
-                                onChange={() => onOptionChange('R')} 
+                            <input
+                                type="checkbox"
+                                checked={options.R}
+                                onChange={() => onOptionChange('R')}
                             />
                             R (Revenue Variables)
                         </label>
@@ -454,19 +453,16 @@ const HomePageContent = () => {
         );
     };
 
-    // Custom function to handle Run CFA button click
     const handleRunCFA = () => {
         setRunMode('cfa');
         handleRunOptions();
     };
 
-    // Custom function to handle Run Sensitivity button click
     const handleRunSensitivity = () => {
         setRunMode('sensitivity');
         handleRunOptions();
     };
 
-    // Custom handleRunConfirm function that calls the appropriate run function based on runMode
     const customHandleRunConfirm = () => {
         // First close the popup
         handleRunConfirm();
@@ -478,14 +474,115 @@ const HomePageContent = () => {
         }
     };
 
-    // Run options popup component
-    const RunOptionsPopup = ({ 
-        show, 
-        options, 
-        onOptionChange, 
-        onConfirm, 
+    const DynamicPlotsOptionsPopup = ({
+        show,
+        options,
+        onOptionChange,
+        onConfirm,
+        onCancel
+    }) => {
+        if (!show) return null;
+
+        return (
+            <div className="dynamic-plots-options-popup-overlay">
+                <div className="dynamic-plots-options-popup">
+                    <h3>Select Dynamic Plots to Generate</h3>
+                    <div className="checkbox-row">
+                        <label className="dynamic-plots-option-label">
+                            <input
+                                type="checkbox"
+                                checked={options.SP1 === 'on'}
+                                onChange={() => onOptionChange('SP1')}
+                            />
+                            Annual Cash Flows
+                        </label>
+                    </div>
+                    <div className="checkbox-row">
+                        <label className="dynamic-plots-option-label">
+                            <input
+                                type="checkbox"
+                                checked={options.SP2 === 'on'}
+                                onChange={() => onOptionChange('SP2')}
+                            />
+                            Annual Revenues
+                        </label>
+                    </div>
+                    <div className="checkbox-row">
+                        <label className="dynamic-plots-option-label">
+                            <input
+                                type="checkbox"
+                                checked={options.SP3 === 'on'}
+                                onChange={() => onOptionChange('SP3')}
+                            />
+                            Annual Operating Expenses
+                        </label>
+                    </div>
+                    <div className="checkbox-row">
+                        <label className="dynamic-plots-option-label">
+                            <input
+                                type="checkbox"
+                                checked={options.SP4 === 'on'}
+                                onChange={() => onOptionChange('SP4')}
+                            />
+                            Loan Repayment Terms
+                        </label>
+                    </div>
+                    <div className="checkbox-row">
+                        <label className="dynamic-plots-option-label">
+                            <input
+                                type="checkbox"
+                                checked={options.SP5 === 'on'}
+                                onChange={() => onOptionChange('SP5')}
+                            />
+                            Depreciation Schedules
+                        </label>
+                    </div>
+                    <div className="checkbox-row">
+                        <label className="dynamic-plots-option-label">
+                            <input
+                                type="checkbox"
+                                checked={options.SP6 === 'on'}
+                                onChange={() => onOptionChange('SP6')}
+                            />
+                            State Taxes
+                        </label>
+                    </div>
+                    <div className="checkbox-row">
+                        <label className="dynamic-plots-option-label">
+                            <input
+                                type="checkbox"
+                                checked={options.SP7 === 'on'}
+                                onChange={() => onOptionChange('SP7')}
+                            />
+                            Federal Taxes
+                        </label>
+                    </div>
+                    <div className="checkbox-row">
+                        <label className="dynamic-plots-option-label">
+                            <input
+                                type="checkbox"
+                                checked={options.SP8 === 'on'}
+                                onChange={() => onOptionChange('SP8')}
+                            />
+                            Cumulative Cash Flows
+                        </label>
+                    </div>
+                    <div className="dynamic-plots-options-buttons">
+                        <button onClick={onConfirm} className="dynamic-plots-confirm-button">Generate</button>
+                        <button onClick={onCancel} className="dynamic-plots-cancel-button">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        );
+    };
+
+    const RunOptionsPopup = ({
+        show,
+        options,
+        onOptionChange,
+        onConfirm,
         onCancel,
-        customConfirmHandler = customHandleRunConfirm // Default to customHandleRunConfirm if not provided
+        customConfirmHandler = customHandleRunConfirm
     }) => {
         if (!show) return null;
 
@@ -495,30 +592,30 @@ const HomePageContent = () => {
                     <h3>Run CFA Options</h3>
                     <div className="checkbox-row">
                         <label className="run-option-label">
-                            <input 
-                                type="checkbox" 
-                                checked={options.useSummaryItems} 
-                                onChange={() => onOptionChange('useSummaryItems')} 
+                            <input
+                                type="checkbox"
+                                checked={options.useSummaryItems}
+                                onChange={() => onOptionChange('useSummaryItems')}
                             />
                             Use Summary Items (final results)
                         </label>
                     </div>
                     <div className="checkbox-row">
                         <label className="run-option-label">
-                            <input 
-                                type="checkbox" 
-                                checked={options.includeRemarks} 
-                                onChange={() => onOptionChange('includeRemarks')} 
+                            <input
+                                type="checkbox"
+                                checked={options.includeRemarks}
+                                onChange={() => onOptionChange('includeRemarks')}
                             />
                             Include Remarks
                         </label>
                     </div>
                     <div className="checkbox-row">
                         <label className="run-option-label">
-                            <input 
-                                type="checkbox" 
-                                checked={options.includeCustomFeatures} 
-                                onChange={() => onOptionChange('includeCustomFeatures')} 
+                            <input
+                                type="checkbox"
+                                checked={options.includeCustomFeatures}
+                                onChange={() => onOptionChange('includeCustomFeatures')}
                             />
                             Include Custom Features
                         </label>
@@ -532,7 +629,6 @@ const HomePageContent = () => {
         );
     };
 
-    // States for V1-V10 and R1-R10 now managed in useFormValues
     const handleThemeChange = (newSeason) => {
         const themeRibbon = document.querySelector('.theme-ribbon');
 
@@ -543,7 +639,6 @@ const HomePageContent = () => {
 
     };
 
-    // Toggle functions for F, V, and R now managed in useFormValues
     const createNewBatch = async () => {
         setBatchRunning(true);
         try {
@@ -611,14 +706,6 @@ const HomePageContent = () => {
         }
     };
 
-    /**
-     * Runs Cash Flow Analysis (CFA) calculations for selected versions
-     * Sends configuration parameters to the backend and processes the response
-     */
-    /**
-     * Runs Cash Flow Analysis (CFA) calculations for selected versions
-     * Sends configuration parameters to the backend and processes the response
-     */
     const handleRun = async () => {
         // Set loading state and reset previous results
         setAnalysisRunning(true);
@@ -710,10 +797,6 @@ const HomePageContent = () => {
         }
     };
 
-    /**
-     * Fetches calculated prices for all selected versions
-     * This is a separate function to keep the main handleRun function focused
-     */
     const fetchCalculatedPrices = async () => {
         try {
             // For each selected version, fetch the calculated price
@@ -731,11 +814,6 @@ const HomePageContent = () => {
         }
     };
 
-    /**
-     * Starts real-time monitoring of calculation progress
-     * This function connects to a stream for live updates from the calculation process
-     * @param {boolean} isSensitivity - Whether this is a sensitivity analysis (handleRuns) or regular calculation (handleRun)
-     */
     const startRealTimeMonitoring = (isSensitivity = false) => {
         // Close any existing stream connections
         if (window.calculationEventSource) {
@@ -1130,10 +1208,6 @@ const HomePageContent = () => {
         }
     };
 
-
-
-
-
     const handleRunPNG = async () => {
         setAnalysisRunning(true);
         try {
@@ -1191,7 +1265,7 @@ const HomePageContent = () => {
                     selectedProperties,
                     remarks,
                     customizedFeatures,
-                    selectedV: V,
+                    subplotSelection: subDynamicPlots, // Use the new state name for better semantics
                 }),
             });
 
@@ -1246,7 +1320,6 @@ const HomePageContent = () => {
         }
     };
 
-    // Fetch HTML files based on version
     useEffect(() => {
         const fetchHtmlFiles = async () => {
             // Skip API call if version is empty (during refresh)
@@ -1352,6 +1425,24 @@ const HomePageContent = () => {
         return `http://localhost:8009/static/html/${version}/${album}/${fileName}`;
     };
 
+    const transformPathToUrlForVersion = (filePath, specificVersion) => {
+        // Normalize the file path to replace backslashes with forward slashes
+        const normalizedPath = filePath.replace(/\\/g, '/');
+
+        // Split the path by '/' to extract album and filename more reliably
+        const pathParts = normalizedPath.split('/');
+
+        // The HTML file should be the last part
+        const fileName = pathParts[pathParts.length - 1];
+
+        // The album should be the second-to-last directory
+        const album = pathParts[pathParts.length - 2];
+
+        // Construct the URL using the extracted parts and the specified version
+        // Use the Flask server that's serving the HTML files (port 8009)
+        return `http://localhost:8009/static/html/${specificVersion}/${album}/${fileName}`;
+    };
+
     const transformAlbumName = (album) => {
         // Handle HTML_v1_2_PlotType format
         const htmlMatch = album.match(/HTML_v([\d_]+)_(.+)/);
@@ -1422,7 +1513,6 @@ const HomePageContent = () => {
         );
     };
 
-    // Fetch album images based on version
     useEffect(() => {
         const fetchImages = async () => {
             // Skip API call if version is empty (during refresh)
@@ -1555,7 +1645,6 @@ const HomePageContent = () => {
         );
     };
 
-    // Fetch CSV files based on version
     useEffect(() => {
         const fetchCsvFiles = async () => {
             // Skip API call if version is empty (during refresh)
@@ -1581,7 +1670,6 @@ const HomePageContent = () => {
         fetchCsvFiles();
     }, [version]);
 
-    // Update subTab based on activeSubTab and ensure it's valid
     useEffect(() => {
         if (csvFiles.length > 0) {
             const fileNames = csvFiles.map((file) => file.name);
@@ -2105,6 +2193,18 @@ const HomePageContent = () => {
                             onConfirm={handleRunConfirm}
                             onCancel={handleRunCancel}
                         />
+
+                        {/* Dynamic Plots Options Popup */}
+                        <DynamicPlotsOptionsPopup
+                            show={showDynamicPlotsOptions}
+                            options={subDynamicPlots}
+                            onOptionChange={handleDynamicPlotsOptionChange}
+                            onConfirm={() => {
+                                handleDynamicPlotsConfirm();
+                                executeDynamicPlotsGeneration();
+                            }}
+                            onCancel={handleDynamicPlotsCancel}
+                        />
                     </div>
                 </div>
                 </div>
@@ -2115,6 +2215,9 @@ const HomePageContent = () => {
                         isActive={monitoringActive}
                         currentVersion={version}
                         isSensitivity={isMonitoringSensitivity}
+                        selectedProperties={selectedProperties}
+                        remarks={remarks}
+                        customizedFeatures={customizedFeatures}
                         onChange={() => {}} // Adding empty function to satisfy prop requirement
                     />
                 )}
@@ -2157,7 +2260,6 @@ const HomePageContent = () => {
             </div>
         </div>
     );
-
 
     const renderAboutUsContent = () => {
         return (

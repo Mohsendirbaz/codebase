@@ -374,6 +374,55 @@ def save_sensitivity_config_files(version, reports_dir, SenParameters):
 
         return saved_files
 
+def get_sensitivity_data(version, param_id, mode, compare_to_key):
+    """
+    Retrieve sensitivity analysis data for visualization.
+
+    Args:
+        version (int): Version number
+        param_id (str): Parameter ID
+        mode (str): Sensitivity mode (percentage, directvalue, absolutedeparture, montecarlo)
+        compare_to_key (str): Comparison parameter
+
+    Returns:
+        dict: Sensitivity data including variations and values
+    """
+    # Map mode to directory name
+    mode_dir_mapping = {
+        'percentage': 'Percentage',
+        'directvalue': 'DirectValue',
+        'absolutedeparture': 'AbsoluteDeparture',
+        'montecarlo': 'MonteCarlo'
+    }
+    mode_dir = mode_dir_mapping.get(mode.lower(), 'Percentage')
+
+    # Build path to results file
+    base_dir = os.path.join(BASE_DIR, 'backend', 'Original')
+    results_path = os.path.join(
+        base_dir,
+        f'Batch({version})',
+        f'Results({version})',
+        'Sensitivity',
+        mode_dir,
+        f"{param_id}_vs_{compare_to_key}_{mode.lower()}_results.json"
+    )
+
+    # Check if results file exists
+    if not os.path.exists(results_path):
+        logger = get_module_logger(__name__)
+        logger.warning(f"Results file not found: {results_path}")
+        return None
+
+    # Load results data
+    try:
+        with open(results_path, 'r') as f:
+            results_data = json.load(f)
+        return results_data
+    except Exception as e:
+        logger = get_module_logger(__name__)
+        logger.error(f"Error loading results data: {str(e)}")
+        return None
+
 def check_sensitivity_config_status():
     """Thread-safe configuration status check with proper locking"""
     status_lock_file = os.path.join(LOGS_DIR, "status_check.lock")

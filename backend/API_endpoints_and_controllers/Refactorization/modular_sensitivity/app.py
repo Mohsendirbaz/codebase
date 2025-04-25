@@ -18,6 +18,7 @@ from blueprints.payload import payload_bp
 from blueprints.baseline import baseline_bp
 from blueprints.sensitivity import sensitivity_bp
 from blueprints.runs import runs_bp
+from blueprints.advanced_sensitivity import advanced_sensitivity_bp
 
 # Import middleware
 from middleware import check_endpoint_availability
@@ -33,17 +34,18 @@ def create_app():
     """Create and configure the Flask application"""
     app = Flask(__name__)
     CORS(app)
-    
+
     # Register middleware
     app.before_request(check_endpoint_availability)
-    
+
     # Register blueprints
     app.register_blueprint(health_bp)
     app.register_blueprint(payload_bp)
     app.register_blueprint(baseline_bp)
     app.register_blueprint(sensitivity_bp)
     app.register_blueprint(runs_bp)
-    
+    app.register_blueprint(advanced_sensitivity_bp)
+
     return app
 
 def run_health_check():
@@ -59,7 +61,7 @@ def run_health_check():
                         logger.debug(f"Lock file {lock_file} is accessible")
                 except filelock.Timeout:
                     logger.warning(f"Lock file {lock_file} is stuck")
-        
+
         time.sleep(60)  # Check every minute
 
 if __name__ == '__main__':
@@ -81,7 +83,7 @@ if __name__ == '__main__':
 
             # Initialize event flags
             reset_execution_pipeline()
-            
+
             # Start health check thread
             health_thread = threading.Thread(target=run_health_check, daemon=True)
             health_thread.start()

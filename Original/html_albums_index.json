@@ -1,0 +1,126 @@
+{
+  "albums": [
+    {
+      "version": "0",
+      "versions_id": "0",
+      "plot_type": "Annual_Cash_Flows",
+      "album_name": "HTML_v0_Annual_Cash_Flows",
+      "path": "C:\\Users\\Mohse\\IdeaProjects2\\codebase\\Original\\Batch(0)\\Results(0)\\HTML_v0_Annual_Cash_Flows"
+    },
+    {
+      "version": "0",
+      "versions_id": "0",
+      "plot_type": "Cumulative",
+      "album_name": "HTML_v0_Cumulative",
+      "path": "C:\\Users\\Mohse\\IdeaProjects2\\codebase\\Original\\Batch(0)\\Results(0)\\HTML_v0_Cumulative"
+    },
+    {
+      "version": "1",
+      "versions_id": "1",
+      "plot_type": "Annual_Cash_Flows",
+      "album_name": "HTML_v1_Annual_Cash_Flows",
+      "path": "C:\\Users\\Mohse\\IdeaProjects2\\codebase\\Original\\Batch(1)\\Results(1)\\HTML_v1_Annual_Cash_Flows"
+    },
+    {
+      "version": "1",
+      "versions_id": "1",
+      "plot_type": "Annual_Operating_Expenses",
+      "album_name": "HTML_v1_Annual_Operating_Expenses",
+      "path": "C:\\Users\\Mohse\\IdeaProjects2\\codebase\\Original\\Batch(1)\\Results(1)\\HTML_v1_Annual_Operating_Expenses"
+    },
+    {
+      "version": "1",
+      "versions_id": "1",
+      "plot_type": "Annual_Revenues",
+      "album_name": "HTML_v1_Annual_Revenues",
+      "path": "C:\\Users\\Mohse\\IdeaProjects2\\codebase\\Original\\Batch(1)\\Results(1)\\HTML_v1_Annual_Revenues"
+    },
+    {
+      "version": "1",
+      "versions_id": "1",
+      "plot_type": "Cumulative_Cash_Flows",
+      "album_name": "HTML_v1_Cumulative_Cash_Flows",
+      "path": "C:\\Users\\Mohse\\IdeaProjects2\\codebase\\Original\\Batch(1)\\Results(1)\\HTML_v1_Cumulative_Cash_Flows"
+    },
+    {
+      "version": "1",
+      "versions_id": "1",
+      "plot_type": "Cumulative",
+      "album_name": "HTML_v1_Cumulative",
+      "path": "C:\\Users\\Mohse\\IdeaProjects2\\codebase\\Original\\Batch(1)\\Results(1)\\HTML_v1_Cumulative"
+    },
+    {
+      "version": "1",
+      "versions_id": "1",
+      "plot_type": "Depreciation_Schedules",
+      "album_name": "HTML_v1_Depreciation_Schedules",
+      "path": "C:\\Users\\Mohse\\IdeaProjects2\\codebase\\Original\\Batch(1)\\Results(1)\\HTML_v1_Depreciation_Schedules"
+    },
+    {
+      "version": "1",
+      "versions_id": "1",
+      "plot_type": "Federal_Taxes",
+      "album_name": "HTML_v1_Federal_Taxes",
+      "path": "C:\\Users\\Mohse\\IdeaProjects2\\codebase\\Original\\Batch(1)\\Results(1)\\HTML_v1_Federal_Taxes"
+    },
+    {
+      "version": "1",
+      "versions_id": "1",
+      "plot_type": "Loan_Repayment_Terms",
+      "album_name": "HTML_v1_Loan_Repayment_Terms",
+      "path": "C:\\Users\\Mohse\\IdeaProjects2\\codebase\\Original\\Batch(1)\\Results(1)\\HTML_v1_Loan_Repayment_Terms"
+    },
+    {
+      "version": "1",
+      "versions_id": "1",
+      "plot_type": "State_Taxes",
+      "album_name": "HTML_v1_State_Taxes",
+      "path": "C:\\Users\\Mohse\\IdeaProjects2\\codebase\\Original\\Batch(1)\\Results(1)\\HTML_v1_State_Taxes"
+    },
+    {
+      "version": "3",
+      "versions_id": "3",
+      "plot_type": "Annual_Cash_Flows",
+      "album_name": "HTML_v3_Annual_Cash_Flows",
+      "path": "C:\\Users\\Mohse\\IdeaProjects2\\codebase\\Original\\Batch(3)\\Results(3)\\HTML_v3_Annual_Cash_Flows"
+    },
+    {
+      "version": "3",
+      "versions_id": "3",
+      "plot_type": "Annual_Revenues",
+      "album_name": "HTML_v3_Annual_Revenues",
+      "path": "C:\\Users\\Mohse\\IdeaProjects2\\codebase\\Original\\Batch(3)\\Results(3)\\HTML_v3_Annual_Revenues"
+    },
+    {
+      "version": "3",
+      "versions_id": "3",
+      "plot_type": "Cumulative_Cash_Flows",
+      "album_name": "HTML_v3_Cumulative_Cash_Flows",
+      "path": "C:\\Users\\Mohse\\IdeaProjects2\\codebase\\Original\\Batch(3)\\Results(3)\\HTML_v3_Cumulative_Cash_Flows"
+    },
+    {
+      "version": "3",
+      "versions_id": "3",
+      "plot_type": "Cumulative",
+      "album_name": "HTML_v3_Cumulative",
+      "path": "C:\\Users\\Mohse\\IdeaProjects2\\codebase\\Original\\Batch(3)\\Results(3)\\HTML_v3_Cumulative"
+    }
+  ],
+  "count": 15,
+  "types": [
+    "Federal_Taxes",
+    "Annual_Operating_Expenses",
+    "Loan_Repayment_Terms",
+    "Depreciation_Schedules",
+    "Cumulative",
+    "State_Taxes",
+    "Annual_Cash_Flows",
+    "Annual_Revenues",
+    "Cumulative_Cash_Flows"
+  ],
+  "versions": [
+    "0",
+    "3",
+    "1"
+  ]
+}

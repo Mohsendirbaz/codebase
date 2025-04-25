@@ -1,5 +1,5 @@
 plantLifetimeAmount10=20
-bECAmount11=200000
+bECAmount11=300000
 numberOfUnitsAmount12=30000
 initialSellingPriceAmount13=2
 totalOperatingCostPercentageAmount14=0.1
@@ -72,4 +72,7 @@ variable_RevAmount6=[1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 amounts_per_unitRevAmount7=[1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 
 filtered_values_json=[
+   '{"filteredValue":{"id":"initialSellingPriceAmount13","value":"2","start":"6","end":"8","remarks":"b"}}',
+   '{"filteredValue":{"id":"initialSellingPriceAmount13","value":"2","start":"13","end":"16","remarks":"bb"}}',
+   '{"filteredValue":{"id":"initialSellingPriceAmount13","value":"2.4","start":"13","end":"20","remarks":"bv"}}',
 ]

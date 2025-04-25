@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useFormValues from './useFormValues';
-import Popup from './components/modules/Efficacy';
 import { faEdit, faCheck, faTimes, faSave, faUndo } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import { sensitivityActionRef } from './components/modules/SensitivityMonitor';
 import FactualPrecedence from './components/find_factual_precedence/components/modules/FactualPrecedence/index';
 // Import label references for reset functionality
 import * as labelReferences from './utils/labelReferences';
+import Popup from './components/modules/Efficacy';
+
 /**
  * GeneralFormConfig Component
  * Handles configuration of form values, labels, and related settings

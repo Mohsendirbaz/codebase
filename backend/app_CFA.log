@@ -25134,3 +25134,782 @@ total units sold: 600000.0
 total units sold: 631578.947368421
 total_units_sold: 631578.947368421
 Script finished execution with result: {'primary_result': np.int64(18666), 'secondary_result': 1}
+CFA process initiated.
+Script started with version: 4, V selections: {'V1': 'off', 'V2': 'off', 'V3': 'off', 'V4': 'off', 'V5': 'off', 'V6': 'off', 'V7': 'off', 'V8': 'off', 'V9': 'off', 'V10': 'off'}, F selections: {'F1': 'on', 'F2': 'on', 'F3': 'on', 'F4': 'on', 'F5': 'on'}, R selections: {'R1': 'off', 'R2': 'off', 'R3': 'off', 'R4': 'off', 'R5': 'off', 'R6': 'off', 'R7': 'off', 'R8': 'off', 'R9': 'off', 'R10': 'off'}, RF selections: {'RF1': 'on', 'RF2': 'on', 'RF3': 'on', 'RF4': 'on', 'RF5': 'on'}, Target row: 20
+Updated status file for version 4: Initializing calculation
+Updated status file for version 4: Loading configuration
+total units sold: 31578.947368421053
+total units sold: 69473.68421052632
+total units sold: 101052.63157894737
+total units sold: 132631.57894736843
+total units sold: 164210.52631578947
+total units sold: 195789.47368421053
+total units sold: 227368.42105263157
+total units sold: 258947.36842105264
+total units sold: 290526.3157894737
+total units sold: 322105.2631578947
+total units sold: 353684.2105263158
+total units sold: 385263.15789473685
+total units sold: 416842.1052631579
+total units sold: 448421.05263157893
+total units sold: 480000.0
+total units sold: 511578.94736842107
+total units sold: 543157.8947368421
+total units sold: 574736.8421052631
+total units sold: 606315.7894736842
+total units sold: 637894.7368421053
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+total_units_sold: 637894.7368421053
+total units sold: 31578.947368421053
+total units sold: 69473.68421052632
+total units sold: 101052.63157894737
+total units sold: 132631.57894736843
+total units sold: 164210.52631578947
+total units sold: 195789.47368421053
+total units sold: 227368.42105263157
+total units sold: 258947.36842105264
+total units sold: 290526.3157894737
+total units sold: 322105.2631578947
+total units sold: 353684.2105263158
+total units sold: 385263.15789473685
+total units sold: 416842.1052631579
+total units sold: 448421.05263157893
+total units sold: 480000.0
+total units sold: 511578.94736842107
+total units sold: 543157.8947368421
+total units sold: 574736.8421052631
+total units sold: 606315.7894736842
+total units sold: 637894.7368421053
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+total_units_sold: 637894.7368421053
+total units sold: 31578.947368421053
+total units sold: 69473.68421052632
+total units sold: 101052.63157894737
+total units sold: 132631.57894736843
+total units sold: 164210.52631578947
+total units sold: 195789.47368421053
+total units sold: 227368.42105263157
+total units sold: 258947.36842105264
+total units sold: 290526.3157894737
+total units sold: 322105.2631578947
+total units sold: 353684.2105263158
+total units sold: 385263.15789473685
+total units sold: 416842.1052631579
+total units sold: 448421.05263157893
+total units sold: 480000.0
+total units sold: 511578.94736842107
+total units sold: 543157.8947368421
+total units sold: 574736.8421052631
+total units sold: 606315.7894736842
+total units sold: 637894.7368421053
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+total_units_sold: 637894.7368421053
+total units sold: 31578.947368421053
+total units sold: 69473.68421052632
+total units sold: 101052.63157894737
+total units sold: 132631.57894736843
+total units sold: 164210.52631578947
+total units sold: 195789.47368421053
+total units sold: 227368.42105263157
+total units sold: 258947.36842105264
+total units sold: 290526.3157894737
+total units sold: 322105.2631578947
+total units sold: 353684.2105263158
+total units sold: 385263.15789473685
+total units sold: 416842.1052631579
+total units sold: 448421.05263157893
+total units sold: 480000.0
+total units sold: 511578.94736842107
+total units sold: 543157.8947368421
+total units sold: 574736.8421052631
+total units sold: 606315.7894736842
+total units sold: 637894.7368421053
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+total_units_sold: 637894.7368421053
+total units sold: 31578.947368421053
+total units sold: 69473.68421052632
+total units sold: 101052.63157894737
+total units sold: 132631.57894736843
+total units sold: 164210.52631578947
+total units sold: 195789.47368421053
+total units sold: 227368.42105263157
+total units sold: 258947.36842105264
+total units sold: 290526.3157894737
+total units sold: 322105.2631578947
+total units sold: 353684.2105263158
+total units sold: 385263.15789473685
+total units sold: 416842.1052631579
+total units sold: 448421.05263157893
+total units sold: 480000.0
+total units sold: 511578.94736842107
+total units sold: 543157.8947368421
+total units sold: 574736.8421052631
+total units sold: 606315.7894736842
+total units sold: 637894.7368421053
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+total_units_sold: 637894.7368421053
+total units sold: 31578.947368421053
+total units sold: 69473.68421052632
+total units sold: 101052.63157894737
+total units sold: 132631.57894736843
+total units sold: 164210.52631578947
+total units sold: 195789.47368421053
+total units sold: 227368.42105263157
+total units sold: 258947.36842105264
+total units sold: 290526.3157894737
+total units sold: 322105.2631578947
+total units sold: 353684.2105263158
+total units sold: 385263.15789473685
+total units sold: 416842.1052631579
+total units sold: 448421.05263157893
+total units sold: 480000.0
+total units sold: 511578.94736842107
+total units sold: 543157.8947368421
+total units sold: 574736.8421052631
+total units sold: 606315.7894736842
+total units sold: 637894.7368421053
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+total_units_sold: 637894.7368421053
+total units sold: 31578.947368421053
+total units sold: 69473.68421052632
+total units sold: 101052.63157894737
+total units sold: 132631.57894736843
+total units sold: 164210.52631578947
+total units sold: 195789.47368421053
+total units sold: 227368.42105263157
+total units sold: 258947.36842105264
+total units sold: 290526.3157894737
+total units sold: 322105.2631578947
+total units sold: 353684.2105263158
+total units sold: 385263.15789473685
+total units sold: 416842.1052631579
+total units sold: 448421.05263157893
+total units sold: 480000.0
+total units sold: 511578.94736842107
+total units sold: 543157.8947368421
+total units sold: 574736.8421052631
+total units sold: 606315.7894736842
+total units sold: 637894.7368421053
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+total_units_sold: 637894.7368421053
+total units sold: 31578.947368421053
+total units sold: 69473.68421052632
+total units sold: 101052.63157894737
+total units sold: 132631.57894736843
+total units sold: 164210.52631578947
+total units sold: 195789.47368421053
+total units sold: 227368.42105263157
+total units sold: 258947.36842105264
+total units sold: 290526.3157894737
+total units sold: 322105.2631578947
+total units sold: 353684.2105263158
+total units sold: 385263.15789473685
+total units sold: 416842.1052631579
+total units sold: 448421.05263157893
+total units sold: 480000.0
+total units sold: 511578.94736842107
+total units sold: 543157.8947368421
+total units sold: 574736.8421052631
+total units sold: 606315.7894736842
+total units sold: 637894.7368421053
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+total_units_sold: 637894.7368421053
+total units sold: 31578.947368421053
+total units sold: 69473.68421052632
+total units sold: 101052.63157894737
+total units sold: 132631.57894736843
+total units sold: 164210.52631578947
+total units sold: 195789.47368421053
+total units sold: 227368.42105263157
+total units sold: 258947.36842105264
+total units sold: 290526.3157894737
+total units sold: 322105.2631578947
+total units sold: 353684.2105263158
+total units sold: 385263.15789473685
+total units sold: 416842.1052631579
+total units sold: 448421.05263157893
+total units sold: 480000.0
+total units sold: 511578.94736842107
+total units sold: 543157.8947368421
+total units sold: 574736.8421052631
+total units sold: 606315.7894736842
+total units sold: 637894.7368421053
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+total_units_sold: 637894.7368421053
+total units sold: 31578.947368421053
+total units sold: 69473.68421052632
+total units sold: 101052.63157894737
+total units sold: 132631.57894736843
+total units sold: 164210.52631578947
+total units sold: 195789.47368421053
+total units sold: 227368.42105263157
+total units sold: 258947.36842105264
+total units sold: 290526.3157894737
+total units sold: 322105.2631578947
+total units sold: 353684.2105263158
+total units sold: 385263.15789473685
+total units sold: 416842.1052631579
+total units sold: 448421.05263157893
+total units sold: 480000.0
+total units sold: 511578.94736842107
+total units sold: 543157.8947368421
+total units sold: 574736.8421052631
+total units sold: 606315.7894736842
+total units sold: 637894.7368421053
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+total_units_sold: 637894.7368421053
+total units sold: 31578.947368421053
+total units sold: 69473.68421052632
+total units sold: 101052.63157894737
+total units sold: 132631.57894736843
+total units sold: 164210.52631578947
+total units sold: 195789.47368421053
+total units sold: 227368.42105263157
+total units sold: 258947.36842105264
+total units sold: 290526.3157894737
+total units sold: 322105.2631578947
+total units sold: 353684.2105263158
+total units sold: 385263.15789473685
+total units sold: 416842.1052631579
+total units sold: 448421.05263157893
+total units sold: 480000.0
+total units sold: 511578.94736842107
+total units sold: 543157.8947368421
+total units sold: 574736.8421052631
+total units sold: 606315.7894736842
+total units sold: 637894.7368421053
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+total_units_sold: 637894.7368421053
+total units sold: 31578.947368421053
+total units sold: 69473.68421052632
+total units sold: 101052.63157894737
+total units sold: 132631.57894736843
+total units sold: 164210.52631578947
+total units sold: 195789.47368421053
+total units sold: 227368.42105263157
+total units sold: 258947.36842105264
+total units sold: 290526.3157894737
+total units sold: 322105.2631578947
+total units sold: 353684.2105263158
+total units sold: 385263.15789473685
+total units sold: 416842.1052631579
+total units sold: 448421.05263157893
+total units sold: 480000.0
+total units sold: 511578.94736842107
+total units sold: 543157.8947368421
+total units sold: 574736.8421052631
+total units sold: 606315.7894736842
+total units sold: 637894.7368421053
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+total_units_sold: 637894.7368421053
+total units sold: 31578.947368421053
+total units sold: 69473.68421052632
+total units sold: 101052.63157894737
+total units sold: 132631.57894736843
+total units sold: 164210.52631578947
+total units sold: 195789.47368421053
+total units sold: 227368.42105263157
+total units sold: 258947.36842105264
+total units sold: 290526.3157894737
+total units sold: 322105.2631578947
+total units sold: 353684.2105263158
+total units sold: 385263.15789473685
+total units sold: 416842.1052631579
+total units sold: 448421.05263157893
+total units sold: 480000.0
+total units sold: 511578.94736842107
+total units sold: 543157.8947368421
+total units sold: 574736.8421052631
+total units sold: 606315.7894736842
+total units sold: 637894.7368421053
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+total_units_sold: 637894.7368421053
+total units sold: 31578.947368421053
+total units sold: 69473.68421052632
+total units sold: 101052.63157894737
+total units sold: 132631.57894736843
+total units sold: 164210.52631578947
+total units sold: 195789.47368421053
+total units sold: 227368.42105263157
+total units sold: 258947.36842105264
+total units sold: 290526.3157894737
+total units sold: 322105.2631578947
+total units sold: 353684.2105263158
+total units sold: 385263.15789473685
+total units sold: 416842.1052631579
+total units sold: 448421.05263157893
+total units sold: 480000.0
+total units sold: 511578.94736842107
+total units sold: 543157.8947368421
+total units sold: 574736.8421052631
+total units sold: 606315.7894736842
+total units sold: 637894.7368421053
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+total_units_sold: 637894.7368421053
+total units sold: 31578.947368421053
+total units sold: 69473.68421052632
+total units sold: 101052.63157894737
+total units sold: 132631.57894736843
+total units sold: 164210.52631578947
+total units sold: 195789.47368421053
+total units sold: 227368.42105263157
+total units sold: 258947.36842105264
+total units sold: 290526.3157894737
+total units sold: 322105.2631578947
+total units sold: 353684.2105263158
+total units sold: 385263.15789473685
+total units sold: 416842.1052631579
+total units sold: 448421.05263157893
+total units sold: 480000.0
+total units sold: 511578.94736842107
+total units sold: 543157.8947368421
+total units sold: 574736.8421052631
+total units sold: 606315.7894736842
+total units sold: 637894.7368421053
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+total_units_sold: 637894.7368421053
+total units sold: 31578.947368421053
+total units sold: 69473.68421052632
+total units sold: 101052.63157894737
+total units sold: 132631.57894736843
+total units sold: 164210.52631578947
+total units sold: 195789.47368421053
+total units sold: 227368.42105263157
+total units sold: 258947.36842105264
+total units sold: 290526.3157894737
+total units sold: 322105.2631578947
+total units sold: 353684.2105263158
+total units sold: 385263.15789473685
+total units sold: 416842.1052631579
+total units sold: 448421.05263157893
+total units sold: 480000.0
+total units sold: 511578.94736842107
+total units sold: 543157.8947368421
+total units sold: 574736.8421052631
+total units sold: 606315.7894736842
+total units sold: 637894.7368421053
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+total_units_sold: 637894.7368421053
+total units sold: 31578.947368421053
+total units sold: 69473.68421052632
+total units sold: 101052.63157894737
+total units sold: 132631.57894736843
+total units sold: 164210.52631578947
+total units sold: 195789.47368421053
+total units sold: 227368.42105263157
+total units sold: 258947.36842105264
+total units sold: 290526.3157894737
+total units sold: 322105.2631578947
+total units sold: 353684.2105263158
+total units sold: 385263.15789473685
+total units sold: 416842.1052631579
+total units sold: 448421.05263157893
+total units sold: 480000.0
+total units sold: 511578.94736842107
+total units sold: 543157.8947368421
+total units sold: 574736.8421052631
+total units sold: 606315.7894736842
+total units sold: 637894.7368421053
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+total_units_sold: 637894.7368421053
+total units sold: 31578.947368421053
+total units sold: 69473.68421052632
+total units sold: 101052.63157894737
+total units sold: 132631.57894736843
+total units sold: 164210.52631578947
+total units sold: 195789.47368421053
+total units sold: 227368.42105263157
+total units sold: 258947.36842105264
+total units sold: 290526.3157894737
+total units sold: 322105.2631578947
+total units sold: 353684.2105263158
+total units sold: 385263.15789473685
+total units sold: 416842.1052631579
+total units sold: 448421.05263157893
+total units sold: 480000.0
+total units sold: 511578.94736842107
+total units sold: 543157.8947368421
+total units sold: 574736.8421052631
+total units sold: 606315.7894736842
+total units sold: 637894.7368421053
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+total_units_sold: 637894.7368421053
+total units sold: 31578.947368421053
+total units sold: 69473.68421052632
+total units sold: 101052.63157894737
+total units sold: 132631.57894736843
+total units sold: 164210.52631578947
+total units sold: 195789.47368421053
+total units sold: 227368.42105263157
+total units sold: 258947.36842105264
+total units sold: 290526.3157894737
+total units sold: 322105.2631578947
+total units sold: 353684.2105263158
+total units sold: 385263.15789473685
+total units sold: 416842.1052631579
+total units sold: 448421.05263157893
+total units sold: 480000.0
+total units sold: 511578.94736842107
+total units sold: 543157.8947368421
+total units sold: 574736.8421052631
+total units sold: 606315.7894736842
+total units sold: 637894.7368421053
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+total_units_sold: 637894.7368421053
+total units sold: 31578.947368421053
+total units sold: 69473.68421052632
+total units sold: 101052.63157894737
+total units sold: 132631.57894736843
+total units sold: 164210.52631578947
+total units sold: 195789.47368421053
+total units sold: 227368.42105263157
+total units sold: 258947.36842105264
+total units sold: 290526.3157894737
+total units sold: 322105.2631578947
+total units sold: 353684.2105263158
+total units sold: 385263.15789473685
+total units sold: 416842.1052631579
+total units sold: 448421.05263157893
+total units sold: 480000.0
+total units sold: 511578.94736842107
+total units sold: 543157.8947368421
+total units sold: 574736.8421052631
+total units sold: 606315.7894736842
+total units sold: 637894.7368421053
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+Finished CFA calculation
+total_units_sold: 637894.7368421053
+Error updating status file for version 4: Object of type int64 is not JSON serializable
+Script finished execution. Final price: $1.92, Final NPV: $710.00

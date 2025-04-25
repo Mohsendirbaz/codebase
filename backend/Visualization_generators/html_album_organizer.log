@@ -1,0 +1,248 @@
+2025-04-23 18:29:30 [INFO] Scanning for version directories in C:\Users\Mohse\IdeaProjects2\codebase\Original
+2025-04-23 18:29:30 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(0)\Results(0)\HTML_v0_Annual_Cash_Flows
+2025-04-23 18:29:30 [INFO] File Annual_Cash_Flows_Plot.html already exists in album HTML_v0_Annual_Cash_Flows, skipping
+2025-04-23 18:29:30 [INFO] Created metadata file for album HTML_v0_Annual_Cash_Flows
+2025-04-23 18:29:30 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(0)\Results(0)\HTML_v0_Cumulative
+2025-04-23 18:29:30 [INFO] File Annual_Cash_Flows_Cumulative_Plot.html already exists in album HTML_v0_Cumulative, skipping
+2025-04-23 18:29:30 [INFO] File Annual_Operating_Expenses_Cumulative_Plot.html already exists in album HTML_v0_Cumulative, skipping
+2025-04-23 18:29:30 [INFO] File Annual_Revenues_Cumulative_Plot.html already exists in album HTML_v0_Cumulative, skipping
+2025-04-23 18:29:30 [INFO] File Cumulative_Cash_Flows_Cumulative_Plot.html already exists in album HTML_v0_Cumulative, skipping
+2025-04-23 18:29:30 [INFO] File Depreciation_Schedules_Cumulative_Plot.html already exists in album HTML_v0_Cumulative, skipping
+2025-04-23 18:29:30 [INFO] File Federal_Taxes_Cumulative_Plot.html already exists in album HTML_v0_Cumulative, skipping
+2025-04-23 18:29:30 [INFO] File Loan_Repayment_Terms_Cumulative_Plot.html already exists in album HTML_v0_Cumulative, skipping
+2025-04-23 18:29:30 [INFO] File State_Taxes_Cumulative_Plot.html already exists in album HTML_v0_Cumulative, skipping
+2025-04-23 18:29:30 [INFO] Created metadata file for album HTML_v0_Cumulative
+2025-04-23 18:29:30 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(1)\Results(1)\HTML_v1_Annual_Cash_Flows
+2025-04-23 18:29:30 [INFO] Created metadata file for album HTML_v1_Annual_Cash_Flows
+2025-04-23 18:29:30 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(1)\Results(1)\HTML_v1_Annual_Operating_Expenses
+2025-04-23 18:29:30 [INFO] Copied Annual_Operating_Expenses_Plot.html to album HTML_v1_Annual_Operating_Expenses
+2025-04-23 18:29:30 [INFO] Created metadata file for album HTML_v1_Annual_Operating_Expenses
+2025-04-23 18:29:30 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(1)\Results(1)\HTML_v1_Annual_Revenues
+2025-04-23 18:29:30 [INFO] Created metadata file for album HTML_v1_Annual_Revenues
+2025-04-23 18:29:30 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(1)\Results(1)\HTML_v1_Cumulative_Cash_Flows
+2025-04-23 18:29:30 [INFO] File Cumulative_Cash_Flows_Plot.html already exists in album HTML_v1_Cumulative_Cash_Flows, skipping
+2025-04-23 18:29:30 [INFO] Created metadata file for album HTML_v1_Cumulative_Cash_Flows
+2025-04-23 18:29:30 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(1)\Results(1)\HTML_v1_Cumulative
+2025-04-23 18:29:30 [INFO] File Annual_Operating_Expenses_Cumulative_Plot.html already exists in album HTML_v1_Cumulative, skipping
+2025-04-23 18:29:30 [INFO] File Annual_Revenues_Cumulative_Plot.html already exists in album HTML_v1_Cumulative, skipping
+2025-04-23 18:29:30 [INFO] File Cumulative_Cash_Flows_Cumulative_Plot.html already exists in album HTML_v1_Cumulative, skipping
+2025-04-23 18:29:30 [INFO] File Depreciation_Schedules_Cumulative_Plot.html already exists in album HTML_v1_Cumulative, skipping
+2025-04-23 18:29:30 [INFO] File Federal_Taxes_Cumulative_Plot.html already exists in album HTML_v1_Cumulative, skipping
+2025-04-23 18:29:30 [INFO] File Loan_Repayment_Terms_Cumulative_Plot.html already exists in album HTML_v1_Cumulative, skipping
+2025-04-23 18:29:30 [INFO] File State_Taxes_Cumulative_Plot.html already exists in album HTML_v1_Cumulative, skipping
+2025-04-23 18:29:30 [INFO] Created metadata file for album HTML_v1_Cumulative
+2025-04-23 18:29:30 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(1)\Results(1)\HTML_v1_Depreciation_Schedules
+2025-04-23 18:29:30 [INFO] Copied Depreciation_Schedules_Plot.html to album HTML_v1_Depreciation_Schedules
+2025-04-23 18:29:30 [INFO] Created metadata file for album HTML_v1_Depreciation_Schedules
+2025-04-23 18:29:30 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(1)\Results(1)\HTML_v1_Federal_Taxes
+2025-04-23 18:29:30 [INFO] Copied Federal_Taxes_Plot.html to album HTML_v1_Federal_Taxes
+2025-04-23 18:29:30 [INFO] Created metadata file for album HTML_v1_Federal_Taxes
+2025-04-23 18:29:30 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(1)\Results(1)\HTML_v1_Loan_Repayment_Terms
+2025-04-23 18:29:30 [INFO] Copied Loan_Repayment_Terms_Plot.html to album HTML_v1_Loan_Repayment_Terms
+2025-04-23 18:29:30 [INFO] Created metadata file for album HTML_v1_Loan_Repayment_Terms
+2025-04-23 18:29:30 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(1)\Results(1)\HTML_v1_State_Taxes
+2025-04-23 18:29:30 [INFO] Copied State_Taxes_Plot.html to album HTML_v1_State_Taxes
+2025-04-23 18:29:30 [INFO] Created metadata file for album HTML_v1_State_Taxes
+2025-04-23 18:29:30 [INFO] No HTML plot directories found for version 2
+2025-04-23 18:29:30 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(3)\Results(3)\HTML_v3_Annual_Cash_Flows
+2025-04-23 18:29:30 [INFO] Copied Annual_Cash_Flows_Plot.html to album HTML_v3_Annual_Cash_Flows
+2025-04-23 18:29:30 [INFO] Created metadata file for album HTML_v3_Annual_Cash_Flows
+2025-04-23 18:29:30 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(3)\Results(3)\HTML_v3_Annual_Revenues
+2025-04-23 18:29:30 [INFO] Copied Annual_Revenues_Plot.html to album HTML_v3_Annual_Revenues
+2025-04-23 18:29:30 [INFO] Created metadata file for album HTML_v3_Annual_Revenues
+2025-04-23 18:29:30 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(3)\Results(3)\HTML_v3_Cumulative_Cash_Flows
+2025-04-23 18:29:30 [INFO] Copied Cumulative_Cash_Flows_Plot.html to album HTML_v3_Cumulative_Cash_Flows
+2025-04-23 18:29:30 [INFO] Created metadata file for album HTML_v3_Cumulative_Cash_Flows
+2025-04-23 18:29:30 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(3)\Results(3)\HTML_v3_Cumulative
+2025-04-23 18:29:30 [INFO] Copied Annual_Cash_Flows_Cumulative_Plot.html to album HTML_v3_Cumulative
+2025-04-23 18:29:30 [INFO] Copied Annual_Revenues_Cumulative_Plot.html to album HTML_v3_Cumulative
+2025-04-23 18:29:30 [INFO] Copied Cumulative_Cash_Flows_Cumulative_Plot.html to album HTML_v3_Cumulative
+2025-04-23 18:29:30 [INFO] Created metadata file for album HTML_v3_Cumulative
+2025-04-23 18:29:30 [INFO] Created HTML albums index at C:\Users\Mohse\IdeaProjects2\codebase\Original\html_albums_index.json
+2025-04-23 18:29:30 [INFO] HTML album organization completed successfully
+2025-04-23 18:33:06 [INFO] Scanning for version directories in C:\Users\Mohse\IdeaProjects2\codebase\Original
+2025-04-23 18:33:06 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(0)\Results(0)\HTML_v0_Annual_Cash_Flows
+2025-04-23 18:33:06 [INFO] File Annual_Cash_Flows_Plot.html already exists in album HTML_v0_Annual_Cash_Flows, skipping
+2025-04-23 18:33:06 [INFO] Created metadata file for album HTML_v0_Annual_Cash_Flows
+2025-04-23 18:33:06 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(0)\Results(0)\HTML_v0_Cumulative
+2025-04-23 18:33:06 [INFO] File Annual_Cash_Flows_Cumulative_Plot.html already exists in album HTML_v0_Cumulative, skipping
+2025-04-23 18:33:06 [INFO] File Annual_Operating_Expenses_Cumulative_Plot.html already exists in album HTML_v0_Cumulative, skipping
+2025-04-23 18:33:06 [INFO] File Annual_Revenues_Cumulative_Plot.html already exists in album HTML_v0_Cumulative, skipping
+2025-04-23 18:33:06 [INFO] File Cumulative_Cash_Flows_Cumulative_Plot.html already exists in album HTML_v0_Cumulative, skipping
+2025-04-23 18:33:06 [INFO] File Depreciation_Schedules_Cumulative_Plot.html already exists in album HTML_v0_Cumulative, skipping
+2025-04-23 18:33:06 [INFO] File Federal_Taxes_Cumulative_Plot.html already exists in album HTML_v0_Cumulative, skipping
+2025-04-23 18:33:06 [INFO] File Loan_Repayment_Terms_Cumulative_Plot.html already exists in album HTML_v0_Cumulative, skipping
+2025-04-23 18:33:06 [INFO] File State_Taxes_Cumulative_Plot.html already exists in album HTML_v0_Cumulative, skipping
+2025-04-23 18:33:06 [INFO] Created metadata file for album HTML_v0_Cumulative
+2025-04-23 18:33:06 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(1)\Results(1)\HTML_v1_Annual_Cash_Flows
+2025-04-23 18:33:06 [INFO] Created metadata file for album HTML_v1_Annual_Cash_Flows
+2025-04-23 18:33:06 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(1)\Results(1)\HTML_v1_Annual_Operating_Expenses
+2025-04-23 18:33:06 [INFO] File Annual_Operating_Expenses_Plot.html already exists in album HTML_v1_Annual_Operating_Expenses, skipping
+2025-04-23 18:33:06 [INFO] Created metadata file for album HTML_v1_Annual_Operating_Expenses
+2025-04-23 18:33:06 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(1)\Results(1)\HTML_v1_Annual_Revenues
+2025-04-23 18:33:06 [INFO] Created metadata file for album HTML_v1_Annual_Revenues
+2025-04-23 18:33:06 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(1)\Results(1)\HTML_v1_Cumulative_Cash_Flows
+2025-04-23 18:33:06 [INFO] File Cumulative_Cash_Flows_Plot.html already exists in album HTML_v1_Cumulative_Cash_Flows, skipping
+2025-04-23 18:33:06 [INFO] Created metadata file for album HTML_v1_Cumulative_Cash_Flows
+2025-04-23 18:33:06 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(1)\Results(1)\HTML_v1_Cumulative
+2025-04-23 18:33:06 [INFO] File Annual_Operating_Expenses_Cumulative_Plot.html already exists in album HTML_v1_Cumulative, skipping
+2025-04-23 18:33:06 [INFO] File Annual_Revenues_Cumulative_Plot.html already exists in album HTML_v1_Cumulative, skipping
+2025-04-23 18:33:06 [INFO] File Cumulative_Cash_Flows_Cumulative_Plot.html already exists in album HTML_v1_Cumulative, skipping
+2025-04-23 18:33:06 [INFO] File Depreciation_Schedules_Cumulative_Plot.html already exists in album HTML_v1_Cumulative, skipping
+2025-04-23 18:33:06 [INFO] File Federal_Taxes_Cumulative_Plot.html already exists in album HTML_v1_Cumulative, skipping
+2025-04-23 18:33:06 [INFO] File Loan_Repayment_Terms_Cumulative_Plot.html already exists in album HTML_v1_Cumulative, skipping
+2025-04-23 18:33:06 [INFO] File State_Taxes_Cumulative_Plot.html already exists in album HTML_v1_Cumulative, skipping
+2025-04-23 18:33:06 [INFO] Created metadata file for album HTML_v1_Cumulative
+2025-04-23 18:33:06 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(1)\Results(1)\HTML_v1_Depreciation_Schedules
+2025-04-23 18:33:06 [INFO] File Depreciation_Schedules_Plot.html already exists in album HTML_v1_Depreciation_Schedules, skipping
+2025-04-23 18:33:06 [INFO] Created metadata file for album HTML_v1_Depreciation_Schedules
+2025-04-23 18:33:06 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(1)\Results(1)\HTML_v1_Federal_Taxes
+2025-04-23 18:33:06 [INFO] File Federal_Taxes_Plot.html already exists in album HTML_v1_Federal_Taxes, skipping
+2025-04-23 18:33:06 [INFO] Created metadata file for album HTML_v1_Federal_Taxes
+2025-04-23 18:33:06 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(1)\Results(1)\HTML_v1_Loan_Repayment_Terms
+2025-04-23 18:33:06 [INFO] File Loan_Repayment_Terms_Plot.html already exists in album HTML_v1_Loan_Repayment_Terms, skipping
+2025-04-23 18:33:06 [INFO] Created metadata file for album HTML_v1_Loan_Repayment_Terms
+2025-04-23 18:33:06 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(1)\Results(1)\HTML_v1_State_Taxes
+2025-04-23 18:33:06 [INFO] File State_Taxes_Plot.html already exists in album HTML_v1_State_Taxes, skipping
+2025-04-23 18:33:06 [INFO] Created metadata file for album HTML_v1_State_Taxes
+2025-04-23 18:33:06 [INFO] No HTML plot directories found for version 2
+2025-04-23 18:33:06 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(3)\Results(3)\HTML_v3_Annual_Cash_Flows
+2025-04-23 18:33:06 [INFO] File Annual_Cash_Flows_Plot.html already exists in album HTML_v3_Annual_Cash_Flows, skipping
+2025-04-23 18:33:06 [INFO] Created metadata file for album HTML_v3_Annual_Cash_Flows
+2025-04-23 18:33:06 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(3)\Results(3)\HTML_v3_Annual_Revenues
+2025-04-23 18:33:06 [INFO] File Annual_Revenues_Plot.html already exists in album HTML_v3_Annual_Revenues, skipping
+2025-04-23 18:33:06 [INFO] Created metadata file for album HTML_v3_Annual_Revenues
+2025-04-23 18:33:06 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(3)\Results(3)\HTML_v3_Cumulative_Cash_Flows
+2025-04-23 18:33:06 [INFO] File Cumulative_Cash_Flows_Plot.html already exists in album HTML_v3_Cumulative_Cash_Flows, skipping
+2025-04-23 18:33:06 [INFO] Created metadata file for album HTML_v3_Cumulative_Cash_Flows
+2025-04-23 18:33:06 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(3)\Results(3)\HTML_v3_Cumulative
+2025-04-23 18:33:06 [INFO] File Annual_Cash_Flows_Cumulative_Plot.html already exists in album HTML_v3_Cumulative, skipping
+2025-04-23 18:33:06 [INFO] File Annual_Revenues_Cumulative_Plot.html already exists in album HTML_v3_Cumulative, skipping
+2025-04-23 18:33:06 [INFO] File Cumulative_Cash_Flows_Cumulative_Plot.html already exists in album HTML_v3_Cumulative, skipping
+2025-04-23 18:33:06 [INFO] Created metadata file for album HTML_v3_Cumulative
+2025-04-23 18:33:06 [INFO] Created HTML albums index at C:\Users\Mohse\IdeaProjects2\codebase\Original\html_albums_index.json
+2025-04-23 18:33:06 [INFO] HTML album organization completed successfully
+2025-04-23 18:36:26 [INFO] Scanning for version directories in C:\Users\Mohse\IdeaProjects2\codebase\Original
+2025-04-23 18:36:26 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(0)\Results(0)\HTML_v0_Annual_Cash_Flows
+2025-04-23 18:36:26 [INFO] File Annual_Cash_Flows_Plot.html already exists in album HTML_v0_Annual_Cash_Flows, skipping
+2025-04-23 18:36:26 [INFO] Created metadata file for album HTML_v0_Annual_Cash_Flows
+2025-04-23 18:36:26 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(0)\Results(0)\HTML_v0_Cumulative
+2025-04-23 18:36:26 [INFO] File Annual_Cash_Flows_Cumulative_Plot.html already exists in album HTML_v0_Cumulative, skipping
+2025-04-23 18:36:26 [INFO] File Annual_Operating_Expenses_Cumulative_Plot.html already exists in album HTML_v0_Cumulative, skipping
+2025-04-23 18:36:26 [INFO] File Annual_Revenues_Cumulative_Plot.html already exists in album HTML_v0_Cumulative, skipping
+2025-04-23 18:36:26 [INFO] File Cumulative_Cash_Flows_Cumulative_Plot.html already exists in album HTML_v0_Cumulative, skipping
+2025-04-23 18:36:26 [INFO] File Depreciation_Schedules_Cumulative_Plot.html already exists in album HTML_v0_Cumulative, skipping
+2025-04-23 18:36:27 [INFO] File Federal_Taxes_Cumulative_Plot.html already exists in album HTML_v0_Cumulative, skipping
+2025-04-23 18:36:27 [INFO] File Loan_Repayment_Terms_Cumulative_Plot.html already exists in album HTML_v0_Cumulative, skipping
+2025-04-23 18:36:27 [INFO] File State_Taxes_Cumulative_Plot.html already exists in album HTML_v0_Cumulative, skipping
+2025-04-23 18:36:27 [INFO] Created metadata file for album HTML_v0_Cumulative
+2025-04-23 18:36:27 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(1)\Results(1)\HTML_v1_Annual_Cash_Flows
+2025-04-23 18:36:27 [INFO] Created metadata file for album HTML_v1_Annual_Cash_Flows
+2025-04-23 18:36:27 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(1)\Results(1)\HTML_v1_Annual_Operating_Expenses
+2025-04-23 18:36:27 [INFO] File Annual_Operating_Expenses_Plot.html already exists in album HTML_v1_Annual_Operating_Expenses, skipping
+2025-04-23 18:36:27 [INFO] Created metadata file for album HTML_v1_Annual_Operating_Expenses
+2025-04-23 18:36:27 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(1)\Results(1)\HTML_v1_Annual_Revenues
+2025-04-23 18:36:27 [INFO] Created metadata file for album HTML_v1_Annual_Revenues
+2025-04-23 18:36:27 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(1)\Results(1)\HTML_v1_Cumulative_Cash_Flows
+2025-04-23 18:36:27 [INFO] File Cumulative_Cash_Flows_Plot.html already exists in album HTML_v1_Cumulative_Cash_Flows, skipping
+2025-04-23 18:36:27 [INFO] Created metadata file for album HTML_v1_Cumulative_Cash_Flows
+2025-04-23 18:36:27 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(1)\Results(1)\HTML_v1_Cumulative
+2025-04-23 18:36:27 [INFO] File Annual_Operating_Expenses_Cumulative_Plot.html already exists in album HTML_v1_Cumulative, skipping
+2025-04-23 18:36:27 [INFO] File Annual_Revenues_Cumulative_Plot.html already exists in album HTML_v1_Cumulative, skipping
+2025-04-23 18:36:27 [INFO] File Cumulative_Cash_Flows_Cumulative_Plot.html already exists in album HTML_v1_Cumulative, skipping
+2025-04-23 18:36:27 [INFO] File Depreciation_Schedules_Cumulative_Plot.html already exists in album HTML_v1_Cumulative, skipping
+2025-04-23 18:36:27 [INFO] File Federal_Taxes_Cumulative_Plot.html already exists in album HTML_v1_Cumulative, skipping
+2025-04-23 18:36:27 [INFO] File Loan_Repayment_Terms_Cumulative_Plot.html already exists in album HTML_v1_Cumulative, skipping
+2025-04-23 18:36:27 [INFO] File State_Taxes_Cumulative_Plot.html already exists in album HTML_v1_Cumulative, skipping
+2025-04-23 18:36:27 [INFO] Created metadata file for album HTML_v1_Cumulative
+2025-04-23 18:36:27 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(1)\Results(1)\HTML_v1_Depreciation_Schedules
+2025-04-23 18:36:27 [INFO] File Depreciation_Schedules_Plot.html already exists in album HTML_v1_Depreciation_Schedules, skipping
+2025-04-23 18:36:27 [INFO] Created metadata file for album HTML_v1_Depreciation_Schedules
+2025-04-23 18:36:27 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(1)\Results(1)\HTML_v1_Federal_Taxes
+2025-04-23 18:36:27 [INFO] File Federal_Taxes_Plot.html already exists in album HTML_v1_Federal_Taxes, skipping
+2025-04-23 18:36:27 [INFO] Created metadata file for album HTML_v1_Federal_Taxes
+2025-04-23 18:36:27 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(1)\Results(1)\HTML_v1_Loan_Repayment_Terms
+2025-04-23 18:36:27 [INFO] File Loan_Repayment_Terms_Plot.html already exists in album HTML_v1_Loan_Repayment_Terms, skipping
+2025-04-23 18:36:27 [INFO] Created metadata file for album HTML_v1_Loan_Repayment_Terms
+2025-04-23 18:36:27 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(1)\Results(1)\HTML_v1_State_Taxes
+2025-04-23 18:36:27 [INFO] File State_Taxes_Plot.html already exists in album HTML_v1_State_Taxes, skipping
+2025-04-23 18:36:27 [INFO] Created metadata file for album HTML_v1_State_Taxes
+2025-04-23 18:36:27 [INFO] No HTML plot directories found for version 2
+2025-04-23 18:36:27 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(3)\Results(3)\HTML_v3_Annual_Cash_Flows
+2025-04-23 18:36:27 [INFO] Copied Annual_Cash_Flows_Plot.html to album HTML_v3_Annual_Cash_Flows
+2025-04-23 18:36:27 [INFO] Created metadata file for album HTML_v3_Annual_Cash_Flows
+2025-04-23 18:36:27 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(3)\Results(3)\HTML_v3_Annual_Revenues
+2025-04-23 18:36:27 [INFO] Copied Annual_Revenues_Plot.html to album HTML_v3_Annual_Revenues
+2025-04-23 18:36:27 [INFO] Created metadata file for album HTML_v3_Annual_Revenues
+2025-04-23 18:36:27 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(3)\Results(3)\HTML_v3_Cumulative_Cash_Flows
+2025-04-23 18:36:27 [INFO] Copied Cumulative_Cash_Flows_Plot.html to album HTML_v3_Cumulative_Cash_Flows
+2025-04-23 18:36:27 [INFO] Created metadata file for album HTML_v3_Cumulative_Cash_Flows
+2025-04-23 18:36:27 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(3)\Results(3)\HTML_v3_Cumulative
+2025-04-23 18:36:27 [INFO] Copied Annual_Cash_Flows_Cumulative_Plot.html to album HTML_v3_Cumulative
+2025-04-23 18:36:27 [INFO] Copied Annual_Revenues_Cumulative_Plot.html to album HTML_v3_Cumulative
+2025-04-23 18:36:27 [INFO] Copied Cumulative_Cash_Flows_Cumulative_Plot.html to album HTML_v3_Cumulative
+2025-04-23 18:36:27 [INFO] Created metadata file for album HTML_v3_Cumulative
+2025-04-23 18:36:27 [INFO] Created HTML albums index at C:\Users\Mohse\IdeaProjects2\codebase\Original\html_albums_index.json
+2025-04-23 18:36:27 [INFO] HTML album organization completed successfully
+2025-04-23 18:45:13 [INFO] Scanning for version directories in C:\Users\Mohse\IdeaProjects2\codebase\Original
+2025-04-23 18:45:13 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(0)\Results(0)\HTML_v0_Annual_Cash_Flows
+2025-04-23 18:45:13 [INFO] File Annual_Cash_Flows_Plot.html already exists in album HTML_v0_Annual_Cash_Flows, skipping
+2025-04-23 18:45:13 [INFO] Created metadata file for album HTML_v0_Annual_Cash_Flows
+2025-04-23 18:45:13 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(0)\Results(0)\HTML_v0_Cumulative
+2025-04-23 18:45:13 [INFO] File Annual_Cash_Flows_Cumulative_Plot.html already exists in album HTML_v0_Cumulative, skipping
+2025-04-23 18:45:13 [INFO] File Annual_Operating_Expenses_Cumulative_Plot.html already exists in album HTML_v0_Cumulative, skipping
+2025-04-23 18:45:13 [INFO] File Annual_Revenues_Cumulative_Plot.html already exists in album HTML_v0_Cumulative, skipping
+2025-04-23 18:45:13 [INFO] File Cumulative_Cash_Flows_Cumulative_Plot.html already exists in album HTML_v0_Cumulative, skipping
+2025-04-23 18:45:13 [INFO] File Depreciation_Schedules_Cumulative_Plot.html already exists in album HTML_v0_Cumulative, skipping
+2025-04-23 18:45:13 [INFO] File Federal_Taxes_Cumulative_Plot.html already exists in album HTML_v0_Cumulative, skipping
+2025-04-23 18:45:13 [INFO] File Loan_Repayment_Terms_Cumulative_Plot.html already exists in album HTML_v0_Cumulative, skipping
+2025-04-23 18:45:13 [INFO] File State_Taxes_Cumulative_Plot.html already exists in album HTML_v0_Cumulative, skipping
+2025-04-23 18:45:13 [INFO] Created metadata file for album HTML_v0_Cumulative
+2025-04-23 18:45:13 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(1)\Results(1)\HTML_v1_Annual_Cash_Flows
+2025-04-23 18:45:13 [INFO] Created metadata file for album HTML_v1_Annual_Cash_Flows
+2025-04-23 18:45:13 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(1)\Results(1)\HTML_v1_Annual_Operating_Expenses
+2025-04-23 18:45:13 [INFO] File Annual_Operating_Expenses_Plot.html already exists in album HTML_v1_Annual_Operating_Expenses, skipping
+2025-04-23 18:45:13 [INFO] Created metadata file for album HTML_v1_Annual_Operating_Expenses
+2025-04-23 18:45:13 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(1)\Results(1)\HTML_v1_Annual_Revenues
+2025-04-23 18:45:13 [INFO] Created metadata file for album HTML_v1_Annual_Revenues
+2025-04-23 18:45:13 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(1)\Results(1)\HTML_v1_Cumulative_Cash_Flows
+2025-04-23 18:45:13 [INFO] File Cumulative_Cash_Flows_Plot.html already exists in album HTML_v1_Cumulative_Cash_Flows, skipping
+2025-04-23 18:45:13 [INFO] Created metadata file for album HTML_v1_Cumulative_Cash_Flows
+2025-04-23 18:45:13 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(1)\Results(1)\HTML_v1_Cumulative
+2025-04-23 18:45:13 [INFO] File Annual_Operating_Expenses_Cumulative_Plot.html already exists in album HTML_v1_Cumulative, skipping
+2025-04-23 18:45:13 [INFO] File Annual_Revenues_Cumulative_Plot.html already exists in album HTML_v1_Cumulative, skipping
+2025-04-23 18:45:13 [INFO] File Cumulative_Cash_Flows_Cumulative_Plot.html already exists in album HTML_v1_Cumulative, skipping
+2025-04-23 18:45:13 [INFO] File Depreciation_Schedules_Cumulative_Plot.html already exists in album HTML_v1_Cumulative, skipping
+2025-04-23 18:45:13 [INFO] File Federal_Taxes_Cumulative_Plot.html already exists in album HTML_v1_Cumulative, skipping
+2025-04-23 18:45:13 [INFO] File Loan_Repayment_Terms_Cumulative_Plot.html already exists in album HTML_v1_Cumulative, skipping
+2025-04-23 18:45:13 [INFO] File State_Taxes_Cumulative_Plot.html already exists in album HTML_v1_Cumulative, skipping
+2025-04-23 18:45:13 [INFO] Created metadata file for album HTML_v1_Cumulative
+2025-04-23 18:45:13 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(1)\Results(1)\HTML_v1_Depreciation_Schedules
+2025-04-23 18:45:13 [INFO] File Depreciation_Schedules_Plot.html already exists in album HTML_v1_Depreciation_Schedules, skipping
+2025-04-23 18:45:13 [INFO] Created metadata file for album HTML_v1_Depreciation_Schedules
+2025-04-23 18:45:13 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(1)\Results(1)\HTML_v1_Federal_Taxes
+2025-04-23 18:45:13 [INFO] File Federal_Taxes_Plot.html already exists in album HTML_v1_Federal_Taxes, skipping
+2025-04-23 18:45:13 [INFO] Created metadata file for album HTML_v1_Federal_Taxes
+2025-04-23 18:45:13 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(1)\Results(1)\HTML_v1_Loan_Repayment_Terms
+2025-04-23 18:45:13 [INFO] File Loan_Repayment_Terms_Plot.html already exists in album HTML_v1_Loan_Repayment_Terms, skipping
+2025-04-23 18:45:13 [INFO] Created metadata file for album HTML_v1_Loan_Repayment_Terms
+2025-04-23 18:45:13 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(1)\Results(1)\HTML_v1_State_Taxes
+2025-04-23 18:45:13 [INFO] File State_Taxes_Plot.html already exists in album HTML_v1_State_Taxes, skipping
+2025-04-23 18:45:13 [INFO] Created metadata file for album HTML_v1_State_Taxes
+2025-04-23 18:45:13 [INFO] No HTML plot directories found for version 2
+2025-04-23 18:45:13 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(3)\Results(3)\HTML_v3_Annual_Cash_Flows
+2025-04-23 18:45:13 [INFO] File Annual_Cash_Flows_Plot.html already exists in album HTML_v3_Annual_Cash_Flows, skipping
+2025-04-23 18:45:13 [INFO] Created metadata file for album HTML_v3_Annual_Cash_Flows
+2025-04-23 18:45:13 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(3)\Results(3)\HTML_v3_Annual_Revenues
+2025-04-23 18:45:13 [INFO] File Annual_Revenues_Plot.html already exists in album HTML_v3_Annual_Revenues, skipping
+2025-04-23 18:45:13 [INFO] Created metadata file for album HTML_v3_Annual_Revenues
+2025-04-23 18:45:13 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(3)\Results(3)\HTML_v3_Cumulative_Cash_Flows
+2025-04-23 18:45:13 [INFO] File Cumulative_Cash_Flows_Plot.html already exists in album HTML_v3_Cumulative_Cash_Flows, skipping
+2025-04-23 18:45:13 [INFO] Created metadata file for album HTML_v3_Cumulative_Cash_Flows
+2025-04-23 18:45:13 [INFO] Created HTML album directory: C:\Users\Mohse\IdeaProjects2\codebase\Original\Batch(3)\Results(3)\HTML_v3_Cumulative
+2025-04-23 18:45:13 [INFO] File Annual_Cash_Flows_Cumulative_Plot.html already exists in album HTML_v3_Cumulative, skipping
+2025-04-23 18:45:13 [INFO] File Annual_Revenues_Cumulative_Plot.html already exists in album HTML_v3_Cumulative, skipping
+2025-04-23 18:45:13 [INFO] File Cumulative_Cash_Flows_Cumulative_Plot.html already exists in album HTML_v3_Cumulative, skipping
+2025-04-23 18:45:13 [INFO] Created metadata file for album HTML_v3_Cumulative
+2025-04-23 18:45:13 [INFO] Created HTML albums index at C:\Users\Mohse\IdeaProjects2\codebase\Original\html_albums_index.json
+2025-04-23 18:45:13 [INFO] HTML album organization completed successfully

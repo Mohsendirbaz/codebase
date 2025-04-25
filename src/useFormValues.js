@@ -225,6 +225,31 @@ const initializeFormValues = () => {
           min: 0,
           max: 1000,
         }
+      },
+      // Dynamic appendix for scaling, group, and item state
+      dynamicAppendix: {
+        scaling: {
+          type: null, // 'Amount4', 'Amount5', 'Amount6', 'Amount7', etc.
+          factor: 1,
+          operation: 'multiply',
+          enabled: false,
+          baseValue: defaultValues[key] !== undefined ? defaultValues[key] : 0,
+          scaledValue: defaultValues[key] !== undefined ? defaultValues[key] : 0,
+          notes: ''
+        },
+        group: {
+          id: null,
+          name: null,
+          isProtected: false
+        },
+        itemState: {
+          vKey: key.includes('vAmount') ? `V${parseInt(key.replace('vAmount', ''))}` : null,
+          rKey: key.includes('rAmount') ? `R${parseInt(key.replace('rAmount', ''))}` : null,
+          fKey: key.includes('Amount') && parseInt(key.replace(/\D/g, '')) >= 34 && parseInt(key.replace(/\D/g, '')) <= 38 ? `F${parseInt(key.replace(/\D/g, '')) - 33}` : null,
+          rfKey: key.includes('Amount') && parseInt(key.replace(/\D/g, '')) >= 80 && parseInt(key.replace(/\D/g, '')) <= 84 ? `RF${parseInt(key.replace(/\D/g, '')) - 79}` : null,
+          sKey: key.includes('Amount') ? `S${parseInt(key.replace(/\D/g, ''))}` : null,
+          status: 'off' // 'on' or 'off'
+        }
       }
     };
 
@@ -236,7 +261,7 @@ const initializeFormValues = () => {
 const useFormValues = () => {
   const [formValues, setFormValues] = useState(initializeFormValues());
 
-  // Initialize S state for sensitivity analysis
+  // Initialize S state for sensitivity analysis (now also stored in formValues.dynamicAppendix)
   const [S, setS] = useState(() => {
     const initialS = {};
     for (let i = 10; i <= 84; i++) {
@@ -254,9 +279,10 @@ const useFormValues = () => {
     return initialS;
   });
 
-  // Initialize F state for factor parameters
+  // Initialize F state for factor parameters (now also stored in formValues.dynamicAppendix)
   const [F, setF] = useState({ F1: 'on', F2: 'on', F3: 'on', F4: 'on', F5: 'on' });
-  // Initialize V state for process quantities variables
+
+  // Initialize V state for process quantities variables (now also stored in formValues.dynamicAppendix)
   const [V, setV] = useState({
     V1: 'off',
     V2: 'off',
@@ -270,7 +296,20 @@ const useFormValues = () => {
     V10: 'off',
   });
 
-  // Initialize R state for revenue variables
+  // Initialize SubDynamicPlots state for subplot selection
+  const [subDynamicPlots, setSubDynamicPlots] = useState({
+    SP1: 'off', // Annual Cash Flows
+    SP2: 'off', // Annual Revenues
+    SP3: 'off', // Annual Operating Expenses
+    SP4: 'off', // Loan Repayment Terms
+    SP5: 'off', // Depreciation Schedules
+    SP6: 'off', // State Taxes
+    SP7: 'off', // Federal Taxes
+    SP8: 'off', // Cumulative Cash Flows
+    SP9: 'off', // Reserved for future use
+  });
+
+  // Initialize R state for revenue variables (now also stored in formValues.dynamicAppendix)
   const [R, setR] = useState({
     R1: 'off',
     R2: 'off',
@@ -284,7 +323,7 @@ const useFormValues = () => {
     R10: 'off',
   });
 
-  // Initialize RF state for fixed revenue parameters
+  // Initialize RF state for fixed revenue parameters (now also stored in formValues.dynamicAppendix)
   const [RF, setRF] = useState({ RF1: 'on', RF2: 'on', RF3: 'on', RF4: 'on', RF5: 'on' });
 
   // Initialize reset options state
@@ -294,8 +333,12 @@ const useFormValues = () => {
     F: true,
     V: true,
     R: true,
-    RF: true
+    RF: true,
+    SP: true
   });
+
+  // Initialize dynamic plots options state
+  const [showDynamicPlotsOptions, setShowDynamicPlotsOptions] = useState(false);
 
   // Initialize run options state
   const [showRunOptions, setShowRunOptions] = useState(false);
@@ -304,6 +347,9 @@ const useFormValues = () => {
     includeRemarks: false,
     includeCustomFeatures: false
   });
+
+  // Note: scalingGroups, scalingBaseCosts, and finalResults are now integrated into formValues.dynamicAppendix
+  // These states are kept for backward compatibility but will be synchronized with the formValues structure
 
   // Initialize scalingGroups state for scaling operations
   const [scalingGroups, setScalingGroups] = useState([]);
@@ -325,40 +371,182 @@ const useFormValues = () => {
   });
 
   // Handler for receiving final results from ExtendedScaling
+  // Now also updates formValues.dynamicAppendix.scaling
   const handleFinalResultsGenerated = (summaryItems, filterKeyword) => {
+    // Update the finalResults state for backward compatibility
     setFinalResults(prev => ({
       ...prev,
       [filterKeyword]: summaryItems
     }));
+
+    // Update the corresponding formValues.dynamicAppendix.scaling
+    setFormValues(prevValues => {
+      const updatedValues = { ...prevValues };
+
+      // Process each summary item
+      summaryItems.forEach(item => {
+        const formKey = item.id;
+
+        // Only update if this form key exists
+        if (updatedValues[formKey]) {
+          updatedValues[formKey] = {
+            ...updatedValues[formKey],
+            dynamicAppendix: {
+              ...updatedValues[formKey].dynamicAppendix,
+              scaling: {
+                ...updatedValues[formKey].dynamicAppendix.scaling,
+                type: filterKeyword,
+                scaledValue: item.finalResult || item.value,
+                baseValue: item.baseValue || updatedValues[formKey].value,
+                enabled: true
+              }
+            }
+          };
+        }
+      });
+
+      return updatedValues;
+    });
   };
 
-  // Toggle functions for F, V, and R states
+  // Toggle functions for F, V, R, and RF states - now also updates formValues.dynamicAppendix
   const toggleF = (key) => {
+    const newStatus = F[key] === 'off' ? 'on' : 'off';
+
+    // Update the F state
     setF((prev) => ({
       ...prev,
-      [key]: prev[key] === 'off' ? 'on' : 'off',
+      [key]: newStatus,
     }));
+
+    // Update the corresponding formValues.dynamicAppendix.itemState
+    setFormValues(prevValues => {
+      const updatedValues = { ...prevValues };
+
+      // Find all form values with this F key in their dynamicAppendix
+      Object.keys(updatedValues).forEach(formKey => {
+        if (updatedValues[formKey].dynamicAppendix?.itemState?.fKey === key) {
+          updatedValues[formKey] = {
+            ...updatedValues[formKey],
+            dynamicAppendix: {
+              ...updatedValues[formKey].dynamicAppendix,
+              itemState: {
+                ...updatedValues[formKey].dynamicAppendix.itemState,
+                status: newStatus
+              }
+            }
+          };
+        }
+      });
+
+      return updatedValues;
+    });
   };
 
   const toggleV = (key) => {
+    const newStatus = V[key] === 'off' ? 'on' : 'off';
+
+    // Update the V state
     setV((prev) => ({
       ...prev,
-      [key]: prev[key] === 'off' ? 'on' : 'off',
+      [key]: newStatus,
     }));
+
+    // Update the corresponding formValues.dynamicAppendix.itemState
+    setFormValues(prevValues => {
+      const updatedValues = { ...prevValues };
+
+      // Find all form values with this V key in their dynamicAppendix
+      Object.keys(updatedValues).forEach(formKey => {
+        if (updatedValues[formKey].dynamicAppendix?.itemState?.vKey === key) {
+          updatedValues[formKey] = {
+            ...updatedValues[formKey],
+            dynamicAppendix: {
+              ...updatedValues[formKey].dynamicAppendix,
+              itemState: {
+                ...updatedValues[formKey].dynamicAppendix.itemState,
+                status: newStatus
+              }
+            }
+          };
+        }
+      });
+
+      return updatedValues;
+    });
   };
 
   const toggleR = (key) => {
+    const newStatus = R[key] === 'off' ? 'on' : 'off';
+
+    // Update the R state
     setR((prev) => ({
+      ...prev,
+      [key]: newStatus,
+    }));
+
+    // Update the corresponding formValues.dynamicAppendix.itemState
+    setFormValues(prevValues => {
+      const updatedValues = { ...prevValues };
+
+      // Find all form values with this R key in their dynamicAppendix
+      Object.keys(updatedValues).forEach(formKey => {
+        if (updatedValues[formKey].dynamicAppendix?.itemState?.rKey === key) {
+          updatedValues[formKey] = {
+            ...updatedValues[formKey],
+            dynamicAppendix: {
+              ...updatedValues[formKey].dynamicAppendix,
+              itemState: {
+                ...updatedValues[formKey].dynamicAppendix.itemState,
+                status: newStatus
+              }
+            }
+          };
+        }
+      });
+
+      return updatedValues;
+    });
+  };
+
+  const toggleSubDynamicPlot = (key) => {
+    setSubDynamicPlots((prev) => ({
       ...prev,
       [key]: prev[key] === 'off' ? 'on' : 'off',
     }));
   };
 
   const toggleRF = (key) => {
+    const newStatus = RF[key] === 'off' ? 'on' : 'off';
+
+    // Update the RF state
     setRF((prev) => ({
       ...prev,
-      [key]: prev[key] === 'off' ? 'on' : 'off',
+      [key]: newStatus,
     }));
+
+    // Update the corresponding formValues.dynamicAppendix.itemState
+    setFormValues(prevValues => {
+      const updatedValues = { ...prevValues };
+
+      // Find all form values with this RF key in their dynamicAppendix
+      Object.keys(updatedValues).forEach(formKey => {
+        if (updatedValues[formKey].dynamicAppendix?.itemState?.rfKey === key) {
+          updatedValues[formKey] = {
+            ...updatedValues[formKey],
+            dynamicAppendix: {
+              ...updatedValues[formKey].dynamicAppendix,
+              itemState: {
+                ...updatedValues[formKey].dynamicAppendix.itemState,
+                status: newStatus
+              }
+            }
+          };
+        }
+      });
+
+      return updatedValues;
+    });
   };
 
   const handleInputChange = (e, id, type, subType = null) => {
@@ -398,9 +586,48 @@ const useFormValues = () => {
     });
   };
 
-  const resetFormItemValues = (options = { S: true, F: true, V: true, R: true, RF: true }) => {
-    // Always reset form values
-    setFormValues(initializeFormValues());
+  const resetFormItemValues = (options = { S: true, F: true, V: true, R: true, RF: true, SP: true }) => {
+    // Initialize new form values
+    const newFormValues = initializeFormValues();
+
+    // Get current form values to preserve any data we don't want to reset
+    const currentFormValues = { ...formValues };
+
+    // If we're not resetting certain options, preserve their values in the dynamicAppendix
+    Object.keys(newFormValues).forEach(key => {
+      if (!options.S && currentFormValues[key]?.dynamicAppendix?.itemState?.sKey) {
+        // Preserve S state in dynamicAppendix
+        newFormValues[key].dynamicAppendix.itemState.status = 
+          currentFormValues[key].dynamicAppendix.itemState.status;
+      }
+
+      if (!options.F && currentFormValues[key]?.dynamicAppendix?.itemState?.fKey) {
+        // Preserve F state in dynamicAppendix
+        newFormValues[key].dynamicAppendix.itemState.status = 
+          currentFormValues[key].dynamicAppendix.itemState.status;
+      }
+
+      if (!options.V && currentFormValues[key]?.dynamicAppendix?.itemState?.vKey) {
+        // Preserve V state in dynamicAppendix
+        newFormValues[key].dynamicAppendix.itemState.status = 
+          currentFormValues[key].dynamicAppendix.itemState.status;
+      }
+
+      if (!options.R && currentFormValues[key]?.dynamicAppendix?.itemState?.rKey) {
+        // Preserve R state in dynamicAppendix
+        newFormValues[key].dynamicAppendix.itemState.status = 
+          currentFormValues[key].dynamicAppendix.itemState.status;
+      }
+
+      if (!options.RF && currentFormValues[key]?.dynamicAppendix?.itemState?.rfKey) {
+        // Preserve RF state in dynamicAppendix
+        newFormValues[key].dynamicAppendix.itemState.status = 
+          currentFormValues[key].dynamicAppendix.itemState.status;
+      }
+    });
+
+    // Set the updated form values
+    setFormValues(newFormValues);
 
     // Reset S state if selected
     if (options.S) {
@@ -462,6 +689,43 @@ const useFormValues = () => {
       setRF({ RF1: 'on', RF2: 'on', RF3: 'on', RF4: 'on', RF5: 'on' });
     }
 
+    // Reset SubDynamicPlots state if selected
+    if (options.SP) {
+      setSubDynamicPlots({
+        SP1: 'off',
+        SP2: 'off',
+        SP3: 'off',
+        SP4: 'off',
+        SP5: 'off',
+        SP6: 'off',
+        SP7: 'off',
+        SP8: 'off',
+        SP9: 'off',
+      });
+    }
+
+    // Reset scaling-related states if any of the options are selected
+    if (options.S || options.F || options.V || options.R || options.RF) {
+      // Reset scaling groups
+      setScalingGroups([]);
+
+      // Reset scaling base costs
+      setScalingBaseCosts({
+        Amount4: [],
+        Amount5: [],
+        Amount6: [],
+        Amount7: []
+      });
+
+      // Reset final results
+      setFinalResults({
+        Amount4: [],
+        Amount5: [],
+        Amount6: [],
+        Amount7: []
+      });
+    }
+
     // Hide the reset options popup
     setShowResetOptions(false);
   };
@@ -484,6 +748,27 @@ const useFormValues = () => {
 
   const handleResetCancel = () => {
     setShowResetOptions(false);
+  };
+
+  // Dynamic plots options handlers
+  const handleDynamicPlots = () => {
+    // Show the dynamic plots options popup
+    setShowDynamicPlotsOptions(true);
+  };
+
+  const handleDynamicPlotsOptionChange = (option) => {
+    toggleSubDynamicPlot(option);
+  };
+
+  const handleDynamicPlotsConfirm = () => {
+    // Hide the dynamic plots options popup
+    setShowDynamicPlotsOptions(false);
+    // The actual functionality will be handled in HomePage.js
+    // This just closes the popup
+  };
+
+  const handleDynamicPlotsCancel = () => {
+    setShowDynamicPlotsOptions(false);
   };
 
   // Run options handlers
@@ -510,6 +795,103 @@ const useFormValues = () => {
     setShowRunOptions(false);
   };
 
+  // Enhanced setScalingGroups function that also updates formValues.dynamicAppendix.group
+  const setScalingGroupsWithFormSync = (newGroups) => {
+    // Update the scalingGroups state for backward compatibility
+    setScalingGroups(newGroups);
+
+    // Update the corresponding formValues.dynamicAppendix.group
+    setFormValues(prevValues => {
+      const updatedValues = { ...prevValues };
+
+      // First, reset all group associations
+      Object.keys(updatedValues).forEach(formKey => {
+        if (updatedValues[formKey].dynamicAppendix) {
+          updatedValues[formKey] = {
+            ...updatedValues[formKey],
+            dynamicAppendix: {
+              ...updatedValues[formKey].dynamicAppendix,
+              group: {
+                id: null,
+                name: null,
+                isProtected: false
+              }
+            }
+          };
+        }
+      });
+
+      // Then, set the new group associations based on the items in each group
+      newGroups.forEach(group => {
+        group.items.forEach(item => {
+          const formKey = item.id;
+
+          // Only update if this form key exists
+          if (updatedValues[formKey]) {
+            updatedValues[formKey] = {
+              ...updatedValues[formKey],
+              dynamicAppendix: {
+                ...updatedValues[formKey].dynamicAppendix,
+                group: {
+                  id: group.id,
+                  name: group.name,
+                  isProtected: group.isProtected || false
+                },
+                scaling: {
+                  ...updatedValues[formKey].dynamicAppendix.scaling,
+                  type: group._scalingType || updatedValues[formKey].dynamicAppendix.scaling.type,
+                  factor: item.scalingFactor || updatedValues[formKey].dynamicAppendix.scaling.factor,
+                  operation: item.operation || updatedValues[formKey].dynamicAppendix.scaling.operation,
+                  enabled: item.enabled !== undefined ? item.enabled : updatedValues[formKey].dynamicAppendix.scaling.enabled,
+                  baseValue: item.baseValue || updatedValues[formKey].dynamicAppendix.scaling.baseValue,
+                  scaledValue: item.scaledValue || updatedValues[formKey].dynamicAppendix.scaling.scaledValue,
+                  notes: item.notes || updatedValues[formKey].dynamicAppendix.scaling.notes
+                }
+              }
+            };
+          }
+        });
+      });
+
+      return updatedValues;
+    });
+  };
+
+  // Enhanced setScalingBaseCosts function that also updates formValues.dynamicAppendix.scaling
+  const setScalingBaseCostsWithFormSync = (newBaseCosts) => {
+    // Update the scalingBaseCosts state for backward compatibility
+    setScalingBaseCosts(newBaseCosts);
+
+    // Update the corresponding formValues.dynamicAppendix.scaling
+    setFormValues(prevValues => {
+      const updatedValues = { ...prevValues };
+
+      // Process each scaling type and its base costs
+      Object.entries(newBaseCosts).forEach(([scalingType, baseCosts]) => {
+        baseCosts.forEach(cost => {
+          const formKey = cost.id;
+
+          // Only update if this form key exists
+          if (updatedValues[formKey]) {
+            updatedValues[formKey] = {
+              ...updatedValues[formKey],
+              dynamicAppendix: {
+                ...updatedValues[formKey].dynamicAppendix,
+                scaling: {
+                  ...updatedValues[formKey].dynamicAppendix.scaling,
+                  type: scalingType,
+                  baseValue: cost.value || cost.baseValue || updatedValues[formKey].value
+                }
+              }
+            };
+          }
+        });
+      });
+
+      return updatedValues;
+    });
+  };
+
   return {
     formValues,
     handleInputChange,
@@ -527,6 +909,9 @@ const useFormValues = () => {
     V,
     setV,
     toggleV,
+    subDynamicPlots,
+    setSubDynamicPlots,
+    toggleSubDynamicPlot,
     R,
     setR,
     toggleR,
@@ -534,9 +919,11 @@ const useFormValues = () => {
     setRF,
     toggleRF,
     scalingGroups,
-    setScalingGroups,
+    // Replace setScalingGroups with the enhanced version
+    setScalingGroups: setScalingGroupsWithFormSync,
     scalingBaseCosts,
-    setScalingBaseCosts,
+    // Replace setScalingBaseCosts with the enhanced version
+    setScalingBaseCosts: setScalingBaseCostsWithFormSync,
     finalResults,
     setFinalResults,
     handleFinalResultsGenerated,
@@ -548,6 +935,13 @@ const useFormValues = () => {
     handleResetOptionChange,
     handleResetConfirm,
     handleResetCancel,
+    // Dynamic plots options popup states and functions
+    showDynamicPlotsOptions,
+    setShowDynamicPlotsOptions,
+    handleDynamicPlots,
+    handleDynamicPlotsOptionChange,
+    handleDynamicPlotsConfirm,
+    handleDynamicPlotsCancel,
     // Run options popup states and functions
     showRunOptions,
     setShowRunOptions,

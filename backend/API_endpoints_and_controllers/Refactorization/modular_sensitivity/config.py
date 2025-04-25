@@ -37,6 +37,13 @@ def get_calculation_script(version):
         return script_path
     raise Exception(f"Calculation script not found for version {version}")
 
+def get_sensitivity_calculation_script():
+    """Get the CFA-b.py script for sensitivity analysis"""
+    script_path = os.path.join(SCRIPT_DIR, "Core_calculation_engines", "CFA-b.py")
+    if os.path.exists(script_path):
+        return script_path
+    raise Exception("CFA-b.py script not found for sensitivity calculations")
+
 CALCULATION_SCRIPTS = {
     'calculateForPrice': get_calculation_script,
     'freeFlowNPV': get_calculation_script

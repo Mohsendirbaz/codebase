@@ -444,6 +444,261 @@ def test():
     """Simple test endpoint to check if the server is running"""
     return jsonify({"status": "ok", "message": "Server is running"}), 200
 
+@app.route('/test/album_endpoints')
+def test_album_endpoints():
+    """
+    Test endpoint to verify the album HTML content endpoints are working
+
+    This endpoint tests both /api/album_html_content/<album> and /api/album_html_all
+    by attempting to find and retrieve content from the first available album.
+
+    Returns:
+        JSON response with test results
+    """
+    logging.info("Running test for album HTML content endpoints")
+
+    test_results = {
+        "timestamp": time.strftime('%Y-%m-%d %H:%M:%S'),
+        "tests": []
+    }
+
+    # Test 1: Check if BASE_PATH exists
+    test_results["tests"].append({
+        "name": "Check BASE_PATH",
+        "status": "PASS" if BASE_PATH.exists() else "FAIL",
+        "message": f"BASE_PATH exists at {BASE_PATH}" if BASE_PATH.exists() else f"BASE_PATH not found at {BASE_PATH}"
+    })
+
+    # Test 2: Find available versions
+    versions = get_versions(BASE_PATH)
+    test_results["tests"].append({
+        "name": "Find available versions",
+        "status": "PASS" if versions else "FAIL",
+        "message": f"Found versions: {versions}" if versions else "No versions found"
+    })
+
+    if not versions:
+        return jsonify(test_results), 200
+
+    # Use the first available version for testing
+    test_version = versions[0]
+    version_folder = BASE_PATH / f"Batch({test_version})" / f"Results({test_version})"
+
+    # Test 3: Check if version folder exists
+    test_results["tests"].append({
+        "name": "Check version folder",
+        "status": "PASS" if version_folder.exists() else "FAIL",
+        "message": f"Version folder exists at {version_folder}" if version_folder.exists() else f"Version folder not found at {version_folder}"
+    })
+
+    if not version_folder.exists():
+        return jsonify(test_results), 200
+
+    # Test 4: Find album directories
+    album_dirs = [d for d in version_folder.iterdir() 
+                 if d.is_dir() and (d.name.startswith('HTML_v') or 
+                                    (d.name.startswith('v') and '_Plot' in d.name))]
+
+    test_results["tests"].append({
+        "name": "Find album directories",
+        "status": "PASS" if album_dirs else "FAIL",
+        "message": f"Found {len(album_dirs)} album directories" if album_dirs else "No album directories found"
+    })
+
+    if not album_dirs:
+        return jsonify(test_results), 200
+
+    # Use the first available album for testing
+    test_album = album_dirs[0].name
+
+    # Test 5: Test /api/album_html_content/<album> endpoint
+    try:
+        # Simulate a request to the endpoint
+        with app.test_client() as client:
+            response = client.get(f'/api/album_html_content/{test_album}')
+
+        test_results["tests"].append({
+            "name": "Test /api/album_html_content/<album> endpoint",
+            "status": "PASS" if response.status_code == 200 else "FAIL",
+            "message": f"Endpoint returned status code {response.status_code}",
+            "details": {
+                "status_code": response.status_code,
+                "album": test_album
+            }
+        })
+    except Exception as e:
+        test_results["tests"].append({
+            "name": "Test /api/album_html_content/<album> endpoint",
+            "status": "FAIL",
+            "message": f"Error testing endpoint: {str(e)}"
+        })
+
+    # Test 6: Test /api/album_html_all endpoint
+    try:
+        # Simulate a request to the endpoint
+        with app.test_client() as client:
+            response = client.get(f'/api/album_html_all?version={test_version}')
+
+        test_results["tests"].append({
+            "name": "Test /api/album_html_all endpoint",
+            "status": "PASS" if response.status_code == 200 else "FAIL",
+            "message": f"Endpoint returned status code {response.status_code}",
+            "details": {
+                "status_code": response.status_code,
+                "version": test_version
+            }
+        })
+    except Exception as e:
+        test_results["tests"].append({
+            "name": "Test /api/album_html_all endpoint",
+            "status": "FAIL",
+            "message": f"Error testing endpoint: {str(e)}"
+        })
+
+    return jsonify(test_results), 200
+
+@app.route('/api/album_html_content/<album>')
+def get_album_html_content(album: str):
+    """
+    Fetch HTML content for a specific album
+
+    Args:
+        album: The album identifier
+
+    Returns:
+        JSON response with the album's HTML content
+    """
+    logging.info(f"Fetching HTML content for album: {album}")
+
+    try:
+        # Parse the album name to extract version and album type
+        # Expected format: HTML_v{version}_{plot_type} or v{version}_{plot_type}_Plot
+        version_match = re.search(r'(?:HTML_)?v(\d+(?:_\d+)*)_', album)
+
+        if not version_match:
+            logging.error(f"Invalid album format: {album}")
+            return jsonify({"error": f"Invalid album format: {album}"}), 400
+
+        # Extract the version from the album name
+        version_str = version_match.group(1).split('_')[0]  # Take the first version if multiple
+        logging.info(f"Extracted version: {version_str} from album: {album}")
+
+        # Find the album directory
+        version_folder = BASE_PATH / f"Batch({version_str})" / f"Results({version_str})"
+        album_dir = version_folder / album
+
+        if not album_dir.exists():
+            logging.warning(f"Album directory not found: {album_dir}")
+            # Try to find the album directory by partial match
+            potential_dirs = [d for d in version_folder.iterdir() if d.is_dir() and album in d.name]
+            if potential_dirs:
+                album_dir = potential_dirs[0]
+                logging.info(f"Found album directory by partial match: {album_dir}")
+            else:
+                return jsonify({"error": f"Album not found: {album}"}), 404
+
+        # Find all HTML files in the album directory
+        html_files = [f for f in album_dir.iterdir() if f.is_file() and f.suffix.lower() == '.html']
+
+        if not html_files:
+            logging.warning(f"No HTML files found in album directory: {album_dir}")
+            return jsonify({"error": f"No HTML files found in album: {album}"}), 404
+
+        # Get the first HTML file (most albums only have one main HTML file)
+        html_file = html_files[0]
+        logging.info(f"Using HTML file: {html_file}")
+
+        # Read the HTML content
+        try:
+            with open(html_file, 'r', encoding='utf-8', errors='replace') as f:
+                content = f.read()
+
+            # Return the HTML content
+            return jsonify({
+                "album": album,
+                "file": html_file.name,
+                "content": content,
+                "path": str(html_file)
+            })
+        except Exception as e:
+            logging.error(f"Error reading HTML file {html_file}: {e}")
+            return jsonify({"error": f"Error reading HTML file: {str(e)}"}), 500
+
+    except Exception as e:
+        logging.error(f"Error processing album {album}: {e}")
+        return jsonify({"error": f"Error processing album: {str(e)}"}), 500
+
+@app.route('/api/album_html_all')
+def get_all_albums_html():
+    """
+    Fetch HTML content for all albums across specified versions
+
+    Query parameters:
+        version: One or more version numbers (can be specified multiple times)
+
+    Returns:
+        JSON response with all albums' HTML content
+    """
+    # Get versions from query parameters
+    versions = request.args.getlist('version')
+
+    if not versions:
+        logging.warning("No versions specified in request")
+        return jsonify({"error": "No versions specified"}), 400
+
+    logging.info(f"Fetching HTML content for versions: {versions}")
+
+    all_albums = []
+
+    for version in versions:
+        version_folder = BASE_PATH / f"Batch({version})" / f"Results({version})"
+
+        if not version_folder.exists():
+            logging.warning(f"Version folder not found: {version_folder}")
+            continue
+
+        # Find all potential album directories
+        album_dirs = [d for d in version_folder.iterdir() 
+                     if d.is_dir() and (d.name.startswith('HTML_v') or 
+                                        (d.name.startswith('v') and '_Plot' in d.name))]
+
+        for album_dir in album_dirs:
+            # Find HTML files in the album directory
+            html_files = [f for f in album_dir.iterdir() 
+                         if f.is_file() and f.suffix.lower() == '.html']
+
+            if not html_files:
+                continue
+
+            # Get the first HTML file
+            html_file = html_files[0]
+
+            try:
+                # Read the HTML content
+                with open(html_file, 'r', encoding='utf-8', errors='replace') as f:
+                    content = f.read()
+
+                # Add album to the list
+                all_albums.append({
+                    "album": album_dir.name,
+                    "version": version,
+                    "file": html_file.name,
+                    "content": content,
+                    "path": str(html_file)
+                })
+
+                logging.info(f"Added album: {album_dir.name} from version: {version}")
+
+            except Exception as e:
+                logging.error(f"Error reading HTML file {html_file}: {e}")
+                # Continue to the next album
+
+    if not all_albums:
+        logging.warning("No albums found across specified versions")
+        return jsonify({"error": "No albums found"}), 404
+
+    return jsonify(all_albums)
+
 @app.route('/api/logs', methods=['GET'])
 def get_logs():
     """Return the most recent log entries"""
