@@ -2386,3 +2386,45 @@
  * Running on http://127.0.0.1:2750
  * Running on http://192.168.0.229:2750
 2025-04-24 13:29:12,117 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-25 10:08:56,533 - calsen - INFO - CalSen service starting up
+2025-04-25 10:08:56,538 - calsen - INFO - Starting CalSen service on port 2750
+2025-04-25 10:08:56,572 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:2750
+ * Running on http://192.168.0.229:2750
+2025-04-25 10:08:56,572 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-25 10:42:06,928 - calsen - INFO - CalSen service starting up
+2025-04-25 10:42:06,935 - calsen - INFO - Starting CalSen service on port 2750
+2025-04-25 10:42:06,979 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:2750
+ * Running on http://192.168.0.229:2750
+2025-04-25 10:42:06,980 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-25 10:55:01,997 - calsen - INFO - CalSen service starting up
+2025-04-25 10:55:02,005 - calsen - INFO - Starting CalSen service on port 2750
+2025-04-25 10:55:02,036 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:2750
+ * Running on http://192.168.0.229:2750
+2025-04-25 10:55:02,036 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-25 11:21:16,831 - calsen - INFO - CalSen service starting up
+2025-04-25 11:21:16,840 - calsen - INFO - Starting CalSen service on port 2750
+2025-04-25 11:21:16,864 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:2750
+ * Running on http://192.168.0.229:2750
+2025-04-25 11:21:16,864 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-25 17:50:03,145 - calsen - INFO - CalSen service starting up
+2025-04-25 17:50:03,145 - calsen - INFO - Starting CalSen service on port 2750
+2025-04-25 17:50:03,193 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:2750
+ * Running on http://192.168.0.229:2750
+2025-04-25 17:50:03,193 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-26 07:54:31,147 - calsen - INFO - CalSen service starting up
+2025-04-26 07:54:31,162 - calsen - INFO - Starting CalSen service on port 2750
+2025-04-26 07:54:31,224 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:2750
+ * Running on http://192.168.0.229:2750
+2025-04-26 07:54:31,224 - werkzeug - INFO - [33mPress CTRL+C to quit[0m

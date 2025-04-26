@@ -121,18 +121,45 @@ const defaultValues = {
 
 // Main hook implementation with optimized state initialization
 const useFormValues = () => {
-    // Initialize form values with dynamic calculation
-    const [formValues, setFormValues] = useState(() => {
-        return Object.keys(propertyMapping).reduce((values, key) => {
+    // Initialize versions state
+    const [versions, setVersionsState] = useState({
+        list: ["v1"],
+        active: "v1",
+        metadata: {
+            "v1": {
+                label: "Base Case",
+                description: "Default financial case",
+                created: Date.now(),
+                modified: Date.now()
+            }
+        }
+    });
+
+    // Initialize zones state
+    const [zones, setZonesState] = useState({
+        list: ["z1"],
+        active: "z1",
+        metadata: {
+            "z1": {
+                label: "Local",
+                description: "Local market zone",
+                created: Date.now()
+            }
+        }
+    });
+
+    // Initialize form matrix with dynamic calculation
+    const [formMatrix, setFormMatrix] = useState(() => {
+        return Object.keys(propertyMapping).reduce((matrix, key) => {
             const isNumber = typeof defaultValues[key] === 'number';
             const isSelect = selectOptionsMapping[key] !== undefined;
             const stepValue = isNumber && !isSelect ? Math.round((defaultValues[key] * 0.20) * 1000) / 1000 : '';
 
-            values[key] = {
+            // Create parameter object with matrix structure
+            matrix[key] = {
                 id: key,
-                value: defaultValues[key] !== undefined ? defaultValues[key] : '',
-                type: isSelect ? 'select' : (isNumber ? 'number' : 'text'),
                 label: propertyMapping[key],
+                type: isSelect ? 'select' : (isNumber ? 'number' : 'text'),
                 placeholder: defaultValues[key] !== undefined ? defaultValues[key] : '',
                 step: stepValue,
                 options: selectOptionsMapping[key] || [],
@@ -141,6 +168,30 @@ const useFormValues = () => {
                 efficacyPeriod: {
                     start: { value: 0, type: 'number', label: 'Start', step: 1, min: 0, max: 1000 },
                     end: { value: defaultValues['plantLifetimeAmount10'], type: 'number', label: 'End', step: 1, min: 0, max: 1000 }
+                },
+                // Matrix structure for versions and zones
+                versions: {
+                    "v1": {
+                        label: "Base Case",
+                        isActive: true
+                    }
+                },
+                zones: {
+                    "z1": {
+                        label: "Local",
+                        isActive: true
+                    }
+                },
+                matrix: {
+                    "v1": {
+                        "z1": defaultValues[key] !== undefined ? defaultValues[key] : ''
+                    }
+                },
+                inheritance: {
+                    "v1": {
+                        source: null,
+                        percentage: 100
+                    }
                 },
                 // Dynamic appendix for scaling, group, and item state
                 dynamicAppendix: {
@@ -168,9 +219,17 @@ const useFormValues = () => {
                     }
                 }
             };
-            return values;
+            return matrix;
         }, {});
     });
+
+    // Combined formValues object with matrix structure
+    const formValues = {
+        formMatrix,
+        versions,
+        zones,
+        iconMapping
+    };
 
     // Initialize analysis states using functional initialization
     const [S, setS] = useState(() => Object.fromEntries(
@@ -359,40 +418,273 @@ const useFormValues = () => {
         });
     };
 
-    // Optimized input change handler
+    // Matrix-aware version and zone management functions
+    const setActiveVersion = (versionId) => {
+        setVersionsState(prev => ({
+            ...prev,
+            active: versionId
+        }));
+    };
+
+    const setActiveZone = (zoneId) => {
+        setZonesState(prev => ({
+            ...prev,
+            active: zoneId
+        }));
+    };
+
+    const createVersion = (label, description = null, baseVersion = null) => {
+        // Generate version ID
+        const versionId = `v${versions.list.length + 1}`;
+
+        // Update versions state
+        setVersionsState(prev => {
+            const newVersions = {
+                ...prev,
+                list: [...prev.list, versionId],
+                metadata: {
+                    ...prev.metadata,
+                    [versionId]: {
+                        label,
+                        description: description || `Version created on ${new Date().toLocaleString()}`,
+                        created: Date.now(),
+                        modified: Date.now(),
+                        baseVersion
+                    }
+                }
+            };
+            return newVersions;
+        });
+
+        // Update form matrix to include the new version
+        setFormMatrix(prev => {
+            const updatedMatrix = { ...prev };
+
+            // For each parameter, add the new version
+            Object.keys(updatedMatrix).forEach(paramId => {
+                const param = updatedMatrix[paramId];
+
+                // Add version to parameter versions
+                param.versions[versionId] = {
+                    label,
+                    isActive: false
+                };
+
+                // Initialize matrix for this version
+                param.matrix[versionId] = {};
+
+                // Set inheritance from base version if provided
+                if (baseVersion) {
+                    param.inheritance[versionId] = {
+                        source: baseVersion,
+                        percentage: 70  // Default to 70% inheritance
+                    };
+
+                    // Copy values from base version with 70% inheritance
+                    Object.keys(param.matrix[baseVersion] || {}).forEach(zoneId => {
+                        const baseValue = param.matrix[baseVersion][zoneId];
+                        param.matrix[versionId][zoneId] = baseValue;
+                    });
+                } else {
+                    param.inheritance[versionId] = {
+                        source: null,
+                        percentage: 100  // No inheritance
+                    };
+
+                    // Initialize with default values
+                    Object.keys(param.zones).forEach(zoneId => {
+                        param.matrix[versionId][zoneId] = defaultValues[paramId] !== undefined ? defaultValues[paramId] : '';
+                    });
+                }
+            });
+
+            return updatedMatrix;
+        });
+
+        return versionId;
+    };
+
+    const createZone = (label, description = null) => {
+        // Generate zone ID
+        const zoneId = `z${zones.list.length + 1}`;
+
+        // Update zones state
+        setZonesState(prev => {
+            const newZones = {
+                ...prev,
+                list: [...prev.list, zoneId],
+                metadata: {
+                    ...prev.metadata,
+                    [zoneId]: {
+                        label,
+                        description: description || `Zone created on ${new Date().toLocaleString()}`,
+                        created: Date.now()
+                    }
+                }
+            };
+            return newZones;
+        });
+
+        // Update form matrix to include the new zone
+        setFormMatrix(prev => {
+            const updatedMatrix = { ...prev };
+
+            // For each parameter, add the new zone
+            Object.keys(updatedMatrix).forEach(paramId => {
+                const param = updatedMatrix[paramId];
+
+                // Add zone to parameter zones
+                param.zones[zoneId] = {
+                    label,
+                    isActive: false
+                };
+
+                // Initialize matrix for this zone in all versions
+                Object.keys(param.versions).forEach(versionId => {
+                    // For new zone, use value from first existing zone as default
+                    const firstZone = Object.keys(param.matrix[versionId])[0];
+                    const defaultValue = firstZone ? param.matrix[versionId][firstZone] : 
+                        (defaultValues[paramId] !== undefined ? defaultValues[paramId] : '');
+
+                    param.matrix[versionId][zoneId] = defaultValue;
+                });
+            });
+
+            return updatedMatrix;
+        });
+
+        return zoneId;
+    };
+
+    // Matrix-aware parameter value update function
+    const updateParameterValue = (paramId, value, versionId = null, zoneId = null) => {
+        // Use active version/zone if not specified
+        const targetVersion = versionId || versions.active;
+        const targetZone = zoneId || zones.active;
+
+        setFormMatrix(prev => {
+            // Skip if parameter doesn't exist
+            if (!prev[paramId]) return prev;
+
+            const updatedMatrix = { ...prev };
+            const param = { ...updatedMatrix[paramId] };
+
+            // Ensure matrix structure exists
+            if (!param.matrix[targetVersion]) {
+                param.matrix[targetVersion] = {};
+            }
+
+            // Update the value
+            param.matrix[targetVersion][targetZone] = value;
+
+            // Apply inheritance if needed
+            Object.keys(param.inheritance).forEach(version => {
+                const inheritance = param.inheritance[version];
+                if (version !== targetVersion && inheritance.source === targetVersion && inheritance.percentage < 100) {
+                    // Calculate inherited value
+                    const sourceValue = value;
+                    const currentValue = param.matrix[version][targetZone] || 0;
+                    const inheritPercent = inheritance.percentage / 100;
+
+                    // inherited value = (current * (1 - inherit%)) + (source * inherit%)
+                    const newValue = (currentValue * (1 - inheritPercent)) + (sourceValue * inheritPercent);
+                    param.matrix[version][targetZone] = newValue;
+                }
+            });
+
+            updatedMatrix[paramId] = param;
+            return updatedMatrix;
+        });
+
+        return true;
+    };
+
+    // Matrix-aware input change handler
     const handleInputChange = (e, id, type, subType = null) => {
         const { value: rawValue } = e.target;
         const value = type === 'number' ? (parseFloat(rawValue) || null) : rawValue;
 
-        setFormValues(prev => {
-            if (!subType) return { ...prev, [id]: { ...prev[id], [type]: value }};
+        if (type === 'value') {
+            // Update matrix value
+            updateParameterValue(id, value);
+        } else if (subType && type === 'efficacyPeriod') {
+            // Update efficacy period
+            setFormMatrix(prev => {
+                const updatedMatrix = { ...prev };
+                if (!updatedMatrix[id]) return updatedMatrix;
 
-            return {
-                ...prev,
-                [id]: {
-                    ...prev[id],
-                    [type]: {
-                        ...prev[id][type],
-                        [subType]: { ...prev[id][type][subType], value }
+                const param = { ...updatedMatrix[id] };
+                param.efficacyPeriod = {
+                    ...param.efficacyPeriod,
+                    [subType]: {
+                        ...param.efficacyPeriod[subType],
+                        value
                     }
-                }
-            };
-        });
+                };
+
+                updatedMatrix[id] = param;
+                return updatedMatrix;
+            });
+        } else {
+            // Update other properties
+            setFormMatrix(prev => {
+                const updatedMatrix = { ...prev };
+                if (!updatedMatrix[id]) return updatedMatrix;
+
+                updatedMatrix[id] = {
+                    ...updatedMatrix[id],
+                    [type]: value
+                };
+
+                return updatedMatrix;
+            });
+        }
     };
 
-    // Reset functionality with consolidated implementation
+    // Reset functionality with matrix-aware implementation
     const resetFormItemValues = (options = resetOptions) => {
-        // Always reset form values
-        setFormValues(Object.keys(propertyMapping).reduce((values, key) => {
+        // Reset versions if requested
+        if (options.versions) {
+            setVersionsState({
+                list: ["v1"],
+                active: "v1",
+                metadata: {
+                    "v1": {
+                        label: "Base Case",
+                        description: "Default financial case",
+                        created: Date.now(),
+                        modified: Date.now()
+                    }
+                }
+            });
+        }
+
+        // Reset zones if requested
+        if (options.zones) {
+            setZonesState({
+                list: ["z1"],
+                active: "z1",
+                metadata: {
+                    "z1": {
+                        label: "Local",
+                        description: "Local market zone",
+                        created: Date.now()
+                    }
+                }
+            });
+        }
+
+        // Always reset form matrix
+        setFormMatrix(Object.keys(propertyMapping).reduce((matrix, key) => {
             const isNumber = typeof defaultValues[key] === 'number';
             const isSelect = selectOptionsMapping[key] !== undefined;
             const stepValue = isNumber && !isSelect ? Math.round((defaultValues[key] * 0.20) * 1000) / 1000 : '';
 
-            values[key] = {
+            // Create parameter object with matrix structure
+            matrix[key] = {
                 id: key,
-                value: defaultValues[key] !== undefined ? defaultValues[key] : '',
-                type: isSelect ? 'select' : (isNumber ? 'number' : 'text'),
                 label: propertyMapping[key],
+                type: isSelect ? 'select' : (isNumber ? 'number' : 'text'),
                 placeholder: defaultValues[key] !== undefined ? defaultValues[key] : '',
                 step: stepValue,
                 options: selectOptionsMapping[key] || [],
@@ -402,6 +694,31 @@ const useFormValues = () => {
                     start: { value: 0, type: 'number', label: 'Start', step: 1, min: 0, max: 1000 },
                     end: { value: defaultValues['plantLifetimeAmount10'], type: 'number', label: 'End', step: 1, min: 0, max: 1000 }
                 },
+                // Matrix structure for versions and zones
+                versions: {
+                    "v1": {
+                        label: "Base Case",
+                        isActive: true
+                    }
+                },
+                zones: {
+                    "z1": {
+                        label: "Local",
+                        isActive: true
+                    }
+                },
+                matrix: {
+                    "v1": {
+                        "z1": defaultValues[key] !== undefined ? defaultValues[key] : ''
+                    }
+                },
+                inheritance: {
+                    "v1": {
+                        source: null,
+                        percentage: 100
+                    }
+                },
+                // Dynamic appendix for scaling, group, and item state
                 dynamicAppendix: {
                     scaling: {
                         type: null,
@@ -427,7 +744,7 @@ const useFormValues = () => {
                     }
                 }
             };
-            return values;
+            return matrix;
         }, {}));
 
         // Conditionally reset other states based on options
@@ -655,26 +972,87 @@ const useFormValues = () => {
         });
     };
 
+    // Update resetOptions to include versions and zones
+    const updatedResetOptions = {
+        ...resetOptions,
+        versions: true,
+        zones: true
+    };
+
     return {
-        formValues, handleInputChange, setFormValues, resetFormItemValues, handleReset,
-        propertyMapping, iconMapping, S, setS, F, setF, toggleF, V, setV, toggleV,
-        R, setR, toggleR, RF, setRF, toggleRF, 
-        subDynamicPlots, setSubDynamicPlots, toggleSubDynamicPlot,
-        // Replace setScalingGroups with the enhanced version
-        scalingGroups, setScalingGroups: setScalingGroupsWithFormSync,
-        // Replace setScalingBaseCosts with the enhanced version
-        scalingBaseCosts, setScalingBaseCosts: setScalingBaseCostsWithFormSync,
-        finalResults, setFinalResults, handleFinalResultsGenerated, 
+        // Matrix-based form values
+        formValues,
+        formMatrix,
+        setFormMatrix,
+
+        // Version and zone management
+        versions,
+        setActiveVersion,
+        createVersion,
+
+        zones,
+        setActiveZone,
+        createZone,
+
+        // Parameter value management
+        updateParameterValue,
+        handleInputChange,
+
+        // Reset functionality
+        resetFormItemValues,
+        handleReset,
+
+        // Original properties and mappings
+        propertyMapping,
+        iconMapping,
+
+        // Analysis states
+        S, setS,
+        F, setF, toggleF,
+        V, setV, toggleV,
+        R, setR, toggleR,
+        RF, setRF, toggleRF,
+
+        // Subplot management
+        subDynamicPlots,
+        setSubDynamicPlots,
+        toggleSubDynamicPlot,
+
+        // Scaling management
+        scalingGroups,
+        setScalingGroups: setScalingGroupsWithFormSync,
+        scalingBaseCosts,
+        setScalingBaseCosts: setScalingBaseCostsWithFormSync,
+        finalResults,
+        setFinalResults,
+        handleFinalResultsGenerated,
+
         // Reset options popup states and functions
-        showResetOptions, setShowResetOptions, resetOptions, setResetOptions, 
-        handleResetOptionChange, handleResetConfirm, handleResetCancel,
+        showResetOptions,
+        setShowResetOptions,
+        resetOptions: updatedResetOptions,
+        setResetOptions,
+        handleResetOptionChange,
+        handleResetConfirm,
+        handleResetCancel,
+
         // Dynamic plots options popup states and functions
-        showDynamicPlotsOptions, setShowDynamicPlotsOptions,
-        handleDynamicPlots, handleDynamicPlotsOptionChange,
-        handleDynamicPlotsConfirm, handleDynamicPlotsCancel,
+        showDynamicPlotsOptions,
+        setShowDynamicPlotsOptions,
+        handleDynamicPlots,
+        handleDynamicPlotsOptionChange,
+        handleDynamicPlotsConfirm,
+        handleDynamicPlotsCancel,
+
         // Run options popup states and functions
-        showRunOptions, setShowRunOptions, runOptions, setRunOptions,
-        handleRun, handleRunOptionChange, handleRunConfirm, handleRunCancel
+        showRunOptions,
+        setShowRunOptions,
+        runOptions,
+        setRunOptions,
+        handleRun,
+        handleRunOptionChange,
+        handleRunConfirm,
+        handleRunCancel
     };
 };
 

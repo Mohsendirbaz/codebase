@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import { VersionStateProvider, useVersionState } from './contexts/VersionStateContext';
 import CustomizableImage from './components/modules/CustomizableImage';
 import CustomizableTable from './components/modules/CustomizableTable';
 import ExtendedScaling from 'src/components/truly_extended_scaling/ExtendedScaling';
@@ -28,7 +29,6 @@ import SpatialTransformComponent from './Naturalmotion.js'
 import useFormValues from './useFormValues.js';
 import './styles/HomePage.CSS/ResetOptionsPopup.css';
 import './styles/HomePage.CSS/RunOptionsPopup.css';
-import versionEventEmitter from './state/EventEmitter';
 import TestingZone from './components/modules/TestingZone';
 import CalculationMonitor from './components/modules/CalculationMonitor';
 import SensitivityMonitor from './components/modules/SensitivityMonitor';
@@ -42,20 +42,22 @@ import ProcessEconomicsLibrary from './components/process_economics_pilot/integr
 
 
 const HomePageContent = () => {
-    const [selectedVersions, setSelectedVersions] = useState([1]);
+    const { selectedVersions, version, setVersion } = useVersionState();
     const [activeTab, setActiveTab] = useState('Input');
-    useEffect(() => {
-        const handleVersionChange = (version) => {
-            setSelectedVersions(Array.isArray(version) ? version : [version]);
-        };
-
-        versionEventEmitter.on('versionChange', handleVersionChange);
-        return () => {
-            versionEventEmitter.off('versionChange', handleVersionChange);
-        };
-    }, []);
     const [activeSubTab, setActiveSubTab] = useState('ProjectConfig');
     const [selectedProperties, setSelectedProperties] = useState([]);
+
+
+
+    // Diagnostic logging for selectedProperties
+    useEffect(() => {
+        console.log('selectedProperties changed:', selectedProperties);
+    }, [selectedProperties]);
+
+    // Diagnostic logging for selectedVersions
+    useEffect(() => {
+        console.log('selectedVersions changed:', selectedVersions);
+    }, [selectedVersions]);
     const [season, setSeason] = useState('dark');
     const [loadingStates, setLoadingStates] = useState({
         html: false,
@@ -167,7 +169,6 @@ const HomePageContent = () => {
         handleRunCancel
     } = useFormValues();
 
-    const [version, setVersion] = useState('1');
     const [batchRunning, setBatchRunning] = useState(false);
     const [analysisRunning, setAnalysisRunning] = useState(false);
     const [runMode, setRunMode] = useState('cfa'); // 'cfa' or 'sensitivity'
@@ -182,43 +183,49 @@ const HomePageContent = () => {
             borderBottom: '1px solid var(--border-color)',
             marginBottom: '20px'
         }}>
-            <div className="version-input-container" style={{
+            <div className="version-selector-wrapper" style={{
                 display: 'flex',
-                gap: '10px',
+                justifyContent: 'space-between',
                 alignItems: 'center',
-                justifyContent: 'flex-end',
                 maxWidth: '1200px',
                 margin: '0 auto',
                 padding: '0 20px'
             }}>
-                <input
-                    id="versionNumber"
-                    type="number"
-                    className="version-input"
-                    placeholder="1"
-                    value={version}
-                    onChange={handleVersionChange}
-                    style={{
-                        width: '80px',
-                        padding: '5px',
-                        border: '1px solid var(--border-color)',
-                        borderRadius: '4px'
-                    }}
-                />
-                <button
-                    className="refresh-button"
-                    onClick={handleRefresh}
-                    title="Refresh visualization"
-                    style={{
-                        padding: '5px 10px',
-                        border: '1px solid var(--border-color)',
-                        borderRadius: '4px',
-                        background: 'var(--button-background)',
-                        cursor: 'pointer'
-                    }}
-                >
-                    ↻
-                </button>
+                <VersionSelector maxVersions={20} />
+                <div className="version-input-container" style={{
+                    display: 'flex',
+                    gap: '10px',
+                    alignItems: 'center'
+                }}>
+                    <input
+                        id="versionNumber"
+                        type="number"
+                        className="version-input"
+                        placeholder="1"
+                        value={version}
+                        onChange={handleVersionChange}
+                        style={{
+                            width: '80px',
+                            padding: '5px',
+                            border: '1px solid var(--border-color)',
+                            borderRadius: '4px'
+                        }}
+                    />
+                    <button
+                        className="refresh-button"
+                        onClick={handleRefresh}
+                        title="Refresh visualization"
+                        style={{
+                            padding: '5px 10px',
+                            border: '1px solid var(--border-color)',
+                            borderRadius: '4px',
+                            background: 'var(--button-background)',
+                            cursor: 'pointer'
+                        }}
+                    >
+                        ↻
+                    </button>
+                </div>
             </div>
         </div>
     );
@@ -373,7 +380,6 @@ const HomePageContent = () => {
         // Force a re-fetch by setting a different version temporarily
         // Using '0' instead of empty string to ensure it's a valid version number
         // Update selectedVersions first as it's what user selects in version selector
-        setSelectedVersions(['0']);
         // Then update version as a simple state
         setVersion('0');
 
@@ -1279,6 +1285,34 @@ const HomePageContent = () => {
         }
     };
 
+    // Function to generate dynamic plots based on selected options in the popup
+    const executeDynamicPlotsGeneration = async () => {
+        setAnalysisRunning(true);
+        try {
+            const response = await fetch('http://127.0.0.1:5009/runSub', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    selectedVersions,
+                    selectedProperties,
+                    remarks,
+                    customizedFeatures,
+                    subplotSelection: subDynamicPlots,
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+        } catch (error) {
+            console.error('Error during dynamic plots generation:', error);
+        } finally {
+            setAnalysisRunning(false);
+        }
+    };
+
     const handleSubmitCompleteSet = async () => {
         const formItems = Object.keys(formValues)
             .filter((key) =>
@@ -1320,13 +1354,24 @@ const HomePageContent = () => {
         }
     };
 
+    // Track if HTML fetch is in progress to prevent multiple simultaneous calls
+    const [isHtmlFetchInProgress, setIsHtmlFetchInProgress] = useState(false);
+
     useEffect(() => {
         const fetchHtmlFiles = async () => {
-            // Skip API call if version is empty (during refresh)
+            // Skip API call if version is empty (during refresh) or if a fetch is already in progress
             if (!version) {
                 console.log('Skipping HTML fetch - version is empty (refresh in progress)');
                 return;
             }
+
+            // Prevent multiple simultaneous calls for the same version
+            if (isHtmlFetchInProgress) {
+                console.log(`Skipping HTML fetch - already in progress for version: ${version}`);
+                return;
+            }
+
+            setIsHtmlFetchInProgress(true);
 
             try {
                 console.log(`Fetching HTML files for version: ${version}`);
@@ -1339,6 +1384,12 @@ const HomePageContent = () => {
 
                 const data = await response.json();
                 console.log(`API response data:`, data);
+
+                // Log the first HTML file's path and transformed URL
+                if (data && data.length > 0 && data[0].path) {
+                    console.log(`Example HTML path:`, data[0].path);
+                    console.log(`Transformed URL:`, transformPathToUrlh(data[0].path));
+                }
 
                 if (!data || data.length === 0) {
                     console.log(`No HTML files returned from API for version ${version}`);
@@ -1360,7 +1411,7 @@ const HomePageContent = () => {
                 console.log(`First HTML file:`, data[0]);
 
                 // Check if the data has the expected structure
-                if (!data[0].album || !data[0].content) {
+                if (!data[0].album || !data[0].path) {
                     console.log(`HTML data does not have the expected structure:`, data[0]);
                     setAlbumHtmls({});
                     return;
@@ -1385,21 +1436,25 @@ const HomePageContent = () => {
                 if (firstAlbumWithHtml) {
                     setSelectedHtml(firstAlbumWithHtml);
 
-                    // Log the HTML content of the first file in the first album
+                    // Log the HTML path and transformed URL of the first file in the first album
                     if (albumGroupedHtmls[firstAlbumWithHtml] && albumGroupedHtmls[firstAlbumWithHtml][0]) {
-                        console.log(`HTML content of first file:`, albumGroupedHtmls[firstAlbumWithHtml][0].content);
-                        console.log(`HTML content length:`, albumGroupedHtmls[firstAlbumWithHtml][0].content.length);
+                        const firstHtml = albumGroupedHtmls[firstAlbumWithHtml][0];
+                        console.log(`First HTML path:`, firstHtml.path);
+                        console.log(`First HTML transformed URL:`, transformPathToUrlh(firstHtml.path));
                     }
                 }
             } catch (error) {
                 console.error('Error fetching HTML files:', error);
                 console.error('Error details:', error.message);
                 setAlbumHtmls({});
+            } finally {
+                // Reset the fetch in progress flag
+                setIsHtmlFetchInProgress(false);
             }
         };
 
         fetchHtmlFiles();
-    }, [version]);
+    }, [version, isHtmlFetchInProgress]);
 
     const transformPathToUrlh = (filePath) => {
         // Normalize the file path to replace backslashes with forward slashes
@@ -1420,8 +1475,7 @@ const HomePageContent = () => {
         // The album should be the second-to-last directory
         const album = pathParts[pathParts.length - 2];
 
-        // Construct the URL using the extracted parts
-        // Use the Flask server that's serving the HTML files (port 8009)
+        // Use the same URL construction pattern as the working version
         return `http://localhost:8009/static/html/${version}/${album}/${fileName}`;
     };
 
@@ -1468,19 +1522,19 @@ const HomePageContent = () => {
         if (!selectedHtml || !albumHtmls[selectedHtml]) return null;
 
         return albumHtmls[selectedHtml].map((html, index) => {
+            const htmlUrl = transformPathToUrlh(html.path);
             return (
                 <div key={index} className={`html-content ${iframesLoaded[index] ? 'loaded' : ''}`}>
                     <iframe
-                        srcDoc={html.content}
-                        style={{ margin: '10px', width: '100%', height: '600px', border: 'none' }}
+                        src={htmlUrl}  // Critical change: use src instead of srcDoc
+                        title={html.name}
+                        width="100%" 
+                        height="600px"
+                        style={{ margin: '10px' }}
                         onLoad={() => {
                             setIframesLoaded((prev) => ({ ...prev, [index]: true }));
-                            console.log(`Iframe ${index} loaded successfully`);
                         }}
                         className={iframesLoaded[index] ? 'loaded' : ''}
-                        title={`HTML Content ${index}`}
-                        allowFullScreen={true}
-                        allow="fullscreen"
                     />
                 </div>
             );
@@ -1513,13 +1567,24 @@ const HomePageContent = () => {
         );
     };
 
+    // Track if image fetch is in progress to prevent multiple simultaneous calls
+    const [isImageFetchInProgress, setIsImageFetchInProgress] = useState(false);
+
     useEffect(() => {
         const fetchImages = async () => {
-            // Skip API call if version is empty (during refresh)
+            // Skip API call if version is empty (during refresh) or if a fetch is already in progress
             if (!version) {
                 console.log('Skipping image fetch - version is empty (refresh in progress)');
                 return;
             }
+
+            // Prevent multiple simultaneous calls for the same version
+            if (isImageFetchInProgress) {
+                console.log(`Skipping image fetch - already in progress for version: ${version}`);
+                return;
+            }
+
+            setIsImageFetchInProgress(true);
 
             try {
                 console.log(`Fetching images for version: ${version}`);
@@ -1548,11 +1613,14 @@ const HomePageContent = () => {
                 }
             } catch (error) {
                 console.error('Error fetching images:', error);
+            } finally {
+                // Reset the fetch in progress flag
+                setIsImageFetchInProgress(false);
             }
         };
 
         fetchImages();
-    }, [version]);
+    }, [version, isImageFetchInProgress]);
 
     const transformPathToUrl = (filePath) => {
         // Normalize the file path to replace backslashes with forward slashes
@@ -1645,13 +1713,24 @@ const HomePageContent = () => {
         );
     };
 
+    // Track if CSV fetch is in progress to prevent multiple simultaneous calls
+    const [isCsvFetchInProgress, setIsCsvFetchInProgress] = useState(false);
+
     useEffect(() => {
         const fetchCsvFiles = async () => {
-            // Skip API call if version is empty (during refresh)
+            // Skip API call if version is empty (during refresh) or if a fetch is already in progress
             if (!version) {
                 console.log('Skipping CSV fetch - version is empty (refresh in progress)');
                 return;
             }
+
+            // Prevent multiple simultaneous calls for the same version
+            if (isCsvFetchInProgress) {
+                console.log(`Skipping CSV fetch - already in progress for version: ${version}`);
+                return;
+            }
+
+            setIsCsvFetchInProgress(true);
 
             try {
                 console.log(`Fetching CSV files for version: ${version}`);
@@ -1664,11 +1743,14 @@ const HomePageContent = () => {
                 setSubTab(data.length > 0 ? data[0].name : ''); // Set the first file as the default subtab if none is active
             } catch (error) {
                 console.error('Error fetching CSV files:', error);
+            } finally {
+                // Reset the fetch in progress flag
+                setIsCsvFetchInProgress(false);
             }
         };
 
         fetchCsvFiles();
-    }, [version]);
+    }, [version, isCsvFetchInProgress]);
 
     useEffect(() => {
         if (csvFiles.length > 0) {
@@ -2192,6 +2274,7 @@ const HomePageContent = () => {
                             onOptionChange={handleRunOptionChange}
                             onConfirm={handleRunConfirm}
                             onCancel={handleRunCancel}
+                            customConfirmHandler={customHandleRunConfirm}
                         />
 
                         {/* Dynamic Plots Options Popup */}
@@ -2489,7 +2572,11 @@ const HomePageContent = () => {
 };
 
 const HomePage = () => {
-    return <HomePageContent />;
+
+   return( <VersionStateProvider>
+        <HomePageContent />
+    </VersionStateProvider>
+    );
 };
 
 export default HomePage;

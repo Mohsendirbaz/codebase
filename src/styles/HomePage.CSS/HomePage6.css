@@ -370,7 +370,7 @@
 .connection-status[data-status="disconnected"] {
     color: orange;
 }
-/* Add to your VersionSelector.css */
+/* Add to your VersionSelectorc.css */
 .version-selector-container {
     display: flex;
     flex-direction: column;

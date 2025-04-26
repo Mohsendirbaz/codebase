@@ -72,3 +72,39 @@
 2025-04-24 14:58:54,245 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 14:58:54] "GET /subplotMetadata HTTP/1.1" 200 -
 2025-04-24 14:58:54,249 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 14:58:54] "GET /subplotMetadata HTTP/1.1" 200 -
 2025-04-24 15:37:05,188 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Mohse\\IdeaProjects2\\codebase\\backend\\API_endpoints_and_controllers\\Refactorization\\Calculations_and_Sensitivity-LL.py', reloading
+2025-04-25 10:09:05,505 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5011
+2025-04-25 10:09:05,505 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-25 10:09:05,508 - werkzeug - INFO -  * Restarting with stat
+2025-04-25 10:09:10,426 - werkzeug - WARNING -  * Debugger is active!
+2025-04-25 10:09:10,436 - werkzeug - INFO -  * Debugger PIN: 119-059-632
+2025-04-25 10:42:13,155 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5011
+2025-04-25 10:42:13,155 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-25 10:42:13,155 - werkzeug - INFO -  * Restarting with stat
+2025-04-25 10:42:15,140 - werkzeug - WARNING -  * Debugger is active!
+2025-04-25 10:42:15,149 - werkzeug - INFO -  * Debugger PIN: 119-059-632
+2025-04-25 10:55:06,864 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5011
+2025-04-25 10:55:06,864 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-25 10:55:06,870 - werkzeug - INFO -  * Restarting with stat
+2025-04-25 10:55:09,185 - werkzeug - WARNING -  * Debugger is active!
+2025-04-25 10:55:09,194 - werkzeug - INFO -  * Debugger PIN: 119-059-632
+2025-04-25 11:21:21,946 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5011
+2025-04-25 11:21:21,947 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-25 11:21:21,970 - werkzeug - INFO -  * Restarting with stat
+2025-04-25 11:21:23,583 - werkzeug - WARNING -  * Debugger is active!
+2025-04-25 11:21:23,599 - werkzeug - INFO -  * Debugger PIN: 119-059-632
+2025-04-25 17:50:08,245 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5011
+2025-04-25 17:50:08,245 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-25 17:50:08,245 - werkzeug - INFO -  * Restarting with stat
+2025-04-25 17:50:09,564 - werkzeug - WARNING -  * Debugger is active!
+2025-04-25 17:50:09,564 - werkzeug - INFO -  * Debugger PIN: 119-059-632
+2025-04-26 07:54:37,642 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5011
+2025-04-26 07:54:37,642 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-26 07:54:37,645 - werkzeug - INFO -  * Restarting with stat
+2025-04-26 07:54:40,520 - werkzeug - WARNING -  * Debugger is active!
+2025-04-26 07:54:40,527 - werkzeug - INFO -  * Debugger PIN: 119-059-632

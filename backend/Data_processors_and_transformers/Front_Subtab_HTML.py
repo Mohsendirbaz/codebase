@@ -404,38 +404,20 @@ def serve_html(version, album, filename):
     """Serve HTML files from the correct directory based on version and album"""
     # Construct the path to the HTML file
     version_folder = BASE_PATH / f"Batch({version})" / f"Results({version})"
-
-    # Try to find the file in the album directory first
     file_path = version_folder / album / filename
 
     # If not found, try directly in the Results directory
     if not file_path.exists():
         file_path = version_folder / filename
-    logging.info(f"Serving HTML file: {file_path}")
-    logging.info(f"File exists: {file_path.exists()}")
-
-    # List all files in the directory to help debug
-    parent_dir = file_path.parent
-    if parent_dir.exists():
-        logging.info(f"Files in directory {parent_dir}:")
-        for file in parent_dir.iterdir():
-            logging.info(f"  - {file.name}")
-    else:
-        logging.error(f"Directory not found: {parent_dir}")
 
     # Check if the file exists
     if not file_path.exists():
-        logging.error(f"HTML file not found: {file_path}")
         return "File not found", 404
 
     # Serve the file from its directory
     try:
-        logging.info(f"Attempting to serve file: {file_path.name} from directory: {str(file_path.parent)}")
-        response = send_from_directory(str(file_path.parent), file_path.name)
-        logging.info(f"Successfully served file: {file_path.name}")
-        return response
+        return send_from_directory(str(file_path.parent), file_path.name)
     except Exception as e:
-        logging.error(f"Error serving file: {e}")
         return f"Error serving file: {e}", 500
 
 
