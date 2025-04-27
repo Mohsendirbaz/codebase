@@ -3,7 +3,7 @@ import { atom, useAtom } from 'jotai';
 import axios from 'axios';
 import * as math from 'mathjs';
 
-// Import shared utilities
+// Import shared utilities.
 import { propertyMapping, defaultValues } from './utils/labelReferences';
 
 /**

@@ -1780,3 +1780,485 @@ p {
 .z-10 { z-index: 10; }
 .z-50 { z-index: 50; }
 .z-100 { z-index: 100; }
+
+
+/* ========== MATRIX APP CONTAINER ========== */
+.matrix-app {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: var(--model-spacing-md);
+    background-color: var(--background-color);
+    min-height: 100vh;
+}
+
+/* ========== TABS STYLING ========== */
+.main-tabs {
+    display: flex;
+    list-style: none;
+    margin-bottom: var(--model-spacing-md);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.react-tabs__tab {
+    padding: var(--model-spacing-md) var(--model-spacing-lg);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all var(--model-transition-fast);
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.react-tabs__tab:hover {
+    color: var(--text-color);
+}
+
+.react-tabs__tab--selected {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.react-tabs__tab-panel {
+    display: none;
+}
+
+.react-tabs__tab-panel--selected {
+    display: block;
+}
+
+/* ========== SUB TABS STYLING ========== */
+.sub-tab-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--model-spacing-sm);
+    margin-bottom: var(--model-spacing-md);
+}
+
+.sub-tab-button {
+    padding: var(--model-spacing-sm) var(--model-spacing-md);
+    background-color: var(--input-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--model-border-radius-sm);
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: all var(--model-transition-fast);
+    font-weight: 500;
+    text-align: center;
+    min-width: 120px;
+}
+
+.sub-tab-button:hover {
+    background-color: rgba(var(--primary-color-rgb), 0.05);
+    color: var(--text-color);
+}
+
+.sub-tab-button.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.sub-tab-content {
+    background-color: var(--card-background);
+    border-radius: var(--model-border-radius-md);
+    padding: var(--model-spacing-md);
+    border: 1px solid var(--border-color);
+}
+
+/* ========== VERSION SELECTOR COMPONENT ========== */
+.version-selector-container {
+    margin-bottom: var(--model-spacing-md);
+}
+
+.version-selector {
+    border: 1px solid var(--border-color);
+    border-radius: var(--model-border-radius-md);
+    overflow: hidden;
+    background-color: var(--card-background);
+    box-shadow: var(--model-shadow-sm);
+    margin-bottom: var(--model-spacing-md);
+}
+
+.version-group {
+    margin-bottom: var(--model-spacing-sm);
+}
+
+.group-header {
+    padding: var(--model-spacing-sm) var(--model-spacing-md);
+    background-color: rgba(var(--primary-color-rgb), 0.05);
+    cursor: pointer;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color var(--model-transition-fast);
+}
+
+.group-header:hover {
+    background-color: rgba(var(--primary-color-rgb), 0.1);
+}
+
+.group-header.all-selected {
+    background-color: rgba(var(--success-color), 0.1);
+}
+
+.group-title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.group-name {
+    font-weight: 500;
+}
+
+.group-count {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+.version-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.version-item {
+    padding: var(--model-spacing-sm) var(--model-spacing-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color var(--model-transition-fast);
+}
+
+.version-item:hover {
+    background-color: rgba(var(--primary-color-rgb), 0.05);
+}
+
+.version-item.selected {
+    background-color: rgba(var(--primary-color-rgb), 0.1);
+}
+
+.version-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.version-number {
+    font-weight: 500;
+}
+
+.version-description {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.version-checkbox {
+    width: 18px;
+    height: 18px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--model-border-radius-sm);
+    position: relative;
+}
+
+.version-checkbox.checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.version-checkbox.checked::after {
+    content: '✓';
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.7rem;
+}
+
+/* ========== PROPERTY SELECTOR COMPONENT ========== */
+.label-common {
+    display: block;
+    margin-bottom: var(--model-spacing-xs);
+    font-weight: 500;
+}
+
+.form-item {
+    width: 100%;
+    padding: var(--model-spacing-sm);
+    border: 1px solid var(--border-color);
+    border-radius: var(--model-border-radius-sm);
+    background-color: var(--input-background);
+    margin-bottom: var(--model-spacing-sm);
+}
+
+/* ========== PLOTS TABS COMPONENT ========== */
+.plots-tabs-container {
+    border: 1px solid var(--border-color);
+    border-radius: var(--model-border-radius-md);
+    overflow: hidden;
+    background-color: var(--card-background);
+    margin-bottom: var(--model-spacing-md);
+}
+
+.plots-category-tabs {
+    display: flex;
+    overflow-x: auto;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.category-tab {
+    padding: var(--model-spacing-sm) var(--model-spacing-md);
+    border: none;
+    background: none;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all var(--model-transition-fast);
+}
+
+.category-tab:hover {
+    background-color: rgba(var(--primary-color-rgb), 0.05);
+}
+
+.category-tab.active {
+    background-color: rgba(var(--primary-color-rgb), 0.1);
+    border-bottom: 2px solid var(--primary-color);
+    font-weight: 500;
+}
+
+.plots-group-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    padding: var(--model-spacing-sm);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.group-tab {
+    padding: var(--model-spacing-xs) var(--model-spacing-sm);
+    margin: var(--model-spacing-xs);
+    border: 1px solid var(--border-color);
+    border-radius: var(--model-border-radius-sm);
+    background-color: var(--card-background);
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: all var(--model-transition-fast);
+}
+
+.group-tab:hover {
+    background-color: rgba(var(--primary-color-rgb), 0.05);
+}
+
+.group-tab.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.plots-display-area {
+    padding: var(--model-spacing-md);
+}
+
+.plots-loading, .plots-error, .plots-empty {
+    padding: var(--model-spacing-md);
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+.plots-error {
+    color: var(--danger-color);
+}
+
+.plots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--model-spacing-md);
+}
+
+.plot-container {
+    border: 1px solid var(--border-color);
+    border-radius: var(--model-border-radius-md);
+    overflow: hidden;
+    background-color: var(--card-background);
+    transition: all var(--model-transition-fast);
+}
+
+.plot-container:hover {
+    box-shadow: var(--model-shadow-md);
+    transform: translateY(-2px);
+}
+
+.plot-title {
+    padding: var(--model-spacing-sm) var(--model-spacing-md);
+    border-bottom: 1px solid var(--border-color);
+    background-color: rgba(var(--primary-color-rgb), 0.05);
+    font-size: 1rem;
+}
+
+.plot-description {
+    padding: var(--model-spacing-sm) var(--model-spacing-md);
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+/* ========== SENSITIVITY PLOTS TABS COMPONENT ========== */
+.sensitivity-plots-container {
+    border: 1px solid var(--border-color);
+    border-radius: var(--model-border-radius-md);
+    overflow: hidden;
+    background-color: var(--card-background);
+    margin-bottom: var(--model-spacing-md);
+}
+
+.sensitivity-header {
+    padding: var(--model-spacing-md);
+    border-bottom: 1px solid var(--border-color);
+    background-color: rgba(var(--primary-color-rgb), 0.05);
+}
+
+.parameter-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--model-spacing-sm);
+    margin-top: var(--model-spacing-sm);
+}
+
+.parameter-tab {
+    padding: var(--model-spacing-xs) var(--model-spacing-sm);
+    border: 1px solid var(--border-color);
+    border-radius: var(--model-border-radius-sm);
+    background-color: var(--card-background);
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: all var(--model-transition-fast);
+}
+
+.parameter-tab:hover {
+    background-color: rgba(var(--primary-color-rgb), 0.05);
+}
+
+.parameter-tab.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.sensitivity-content {
+    padding: var(--model-spacing-md);
+}
+
+.parameter-info {
+    margin-bottom: var(--model-spacing-md);
+}
+
+.parameter-info h3 {
+    margin-bottom: var(--model-spacing-xs);
+}
+
+.parameter-details {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.parameter-error {
+    color: var(--danger-color);
+}
+
+.no-analysis-data {
+    padding: var(--model-spacing-md);
+    text-align: center;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.plots-wrapper {
+    border: 1px solid var(--border-color);
+    border-radius: var(--model-border-radius-md);
+    overflow: hidden;
+}
+
+/* ========== CALCULATION CONFIGURATION SECTION ========== */
+.calculation-configuration {
+    border: 1px solid var(--border-color);
+    border-radius: var(--model-border-radius-md);
+    overflow: hidden;
+    background-color: var(--card-background);
+    margin-bottom: var(--model-spacing-md);
+}
+
+.calculation-header {
+    padding: var(--model-spacing-md);
+    border-bottom: 1px solid var(--border-color);
+    background-color: rgba(var(--primary-color-rgb), 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.calculation-controls {
+    display: flex;
+    gap: var(--model-spacing-md);
+    align-items: center;
+}
+
+.version-selector {
+    display: flex;
+    align-items: center;
+    gap: var(--model-spacing-sm);
+}
+
+.version-selector input {
+    width: 60px;
+    padding: var(--model-spacing-xs) var(--model-spacing-sm);
+    border: 1px solid var(--border-color);
+    border-radius: var(--model-border-radius-sm);
+    background-color: var(--input-background);
+}
+
+.monitor-toggle {
+    padding: var(--model-spacing-xs) var(--model-spacing-sm);
+    border: 1px solid var(--border-color);
+    border-radius: var(--model-border-radius-sm);
+    background-color: var(--input-background);
+    transition: all var(--model-transition-fast);
+}
+
+.monitor-toggle:hover {
+    background-color: rgba(var(--primary-color-rgb), 0.05);
+}
+
+.monitor-toggle.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.calculation-content {
+    padding: var(--model-spacing-md);
+}
+
+/* ========== RESULTS PANEL ========== */
+.results-tabs {
+    border: 1px solid var(--border-color);
+    border-radius: var(--model-border-radius-md);
+    overflow: hidden;
+    background-color: var(--card-background);
+    margin-top: var(--model-spacing-md);
+}
+
+.results-tab-buttons {
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.results-tab-button {
+    padding: var(--model-spacing-sm) var(--model-spacing-md);
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: all var(--model-transition-fast);
+}
+
+.results-tab-button:hover {
+    background-color: rgba(var(--primary-color-rgb), 0.05);
+}
+
+.results-tab-button.active {
+    background-color: rgba(var(--primary-color-rgb), 0.1);
+    border-bottom: 2px solid var(--primary-color);
+ }

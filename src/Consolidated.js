@@ -13,7 +13,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import * as math from 'mathjs';
 
-// Import label references for reset functionality
+// Import label references for reset functionality.
 import * as labelReferences from './utils/labelReferences';
 
 /**

@@ -7403,7 +7403,7 @@ The MatrixIntegrationGuide component provides interactive documentation about th
 .hover-glow:hover {
   box-shadow: 0 0 10px rgba(66, 153, 225, 0.5);
 }
-```
+``
 
 ### Responsive Styles (responsive.css)
 
