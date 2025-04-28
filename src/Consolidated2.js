@@ -2,7 +2,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { atom, useAtom } from 'jotai';
 import axios from 'axios';
 import * as math from 'mathjs';
-
+import './styles/HomePage.CSS/HCSS.css';
+import './styles/HomePage.CSS/Consolidated.css';
 // Import shared utilities.
 import { propertyMapping, defaultValues } from './utils/labelReferences';
 
@@ -15,7 +16,7 @@ export function useMatrixFormValues() {
   //=========================================================================
   // STATE DEFINITIONS
   //=========================================================================
-  
+
   // Version and zone state atoms
   const [versions, setVersions] = useState({
     list: ["v1"],
@@ -29,7 +30,7 @@ export function useMatrixFormValues() {
       }
     }
   });
-  
+
   const [zones, setZones] = useState({
     list: ["z1"],
     active: "z1",
@@ -44,7 +45,7 @@ export function useMatrixFormValues() {
 
   // Main form matrix state - replaces original formValues with matrix structure
   const [formMatrix, setFormMatrix] = useState({});
-  
+
   // Track special parameter states (sensitivity, factors, etc.)
   const [S, setS] = useState({});
   const [F, setF] = useState({});
@@ -62,12 +63,12 @@ export function useMatrixFormValues() {
     SP8: "off",
     SP9: "off"
   });
-  
+
   // Scaling-related state
   const [scalingGroups, setScalingGroups] = useState([]);
   const [scalingBaseCosts, setScalingBaseCosts] = useState({});
   const [finalResults, setFinalResults] = useState({});
-  
+
   // Reset options popup state
   const [showResetOptions, setShowResetOptions] = useState(false);
   const [resetOptions, setResetOptions] = useState({
@@ -76,10 +77,10 @@ export function useMatrixFormValues() {
     V: true,
     R: true
   });
-  
+
   // Dynamic plots options popup state
   const [showDynamicPlotsOptions, setShowDynamicPlotsOptions] = useState(false);
-  
+
   // Run options popup state
   const [showRunOptions, setShowRunOptions] = useState(false);
   const [runOptions, setRunOptions] = useState({
@@ -87,10 +88,10 @@ export function useMatrixFormValues() {
     includeRemarks: false,
     includeCustomFeatures: false
   });
-  
+
   // Synchronization state
   const [isSyncing, setIsSyncing] = useState(false);
-  
+
   // Icons mapping for UI enhancement
   const iconMapping = {
     // Project configuration icons
@@ -98,12 +99,12 @@ export function useMatrixFormValues() {
     constructionTimeAmount11: 'hammer',
     plantCapacityAmount12: 'industry',
     plantCapacityFactorAmount13: 'percentage',
-    
+
     // Loan configuration icons
     debtRatioAmount20: 'money-bill-wave',
     interestRateAmount21: 'percentage',
     loanTermAmount22: 'calendar-alt',
-    
+
     // Rates & Fixed costs icons
     inflationRateAmount30: 'chart-line',
     discountRateAmount31: 'percentage',
@@ -114,7 +115,7 @@ export function useMatrixFormValues() {
     F3Amount36: 'cog',
     F4Amount37: 'cog',
     F5Amount38: 'cog',
-    
+
     // Process quantities icons (V parameters)
     vAmount40: 'boxes',
     vAmount41: 'boxes',
@@ -126,7 +127,7 @@ export function useMatrixFormValues() {
     vAmount47: 'boxes',
     vAmount48: 'boxes',
     vAmount49: 'boxes',
-    
+
     // Process costs icons (V parameters)
     rAmount60: 'dollar-sign',
     rAmount61: 'dollar-sign',
@@ -138,7 +139,7 @@ export function useMatrixFormValues() {
     rAmount67: 'dollar-sign',
     rAmount68: 'dollar-sign',
     rAmount69: 'dollar-sign',
-    
+
     // Fixed revenue components icons (RF parameters)
     RF1Amount80: 'money-check-alt',
     RF2Amount81: 'money-check-alt',
@@ -150,55 +151,55 @@ export function useMatrixFormValues() {
   //=========================================================================
   // INITIALIZATION
   //=========================================================================
-  
+
   // Initialize form matrix with default values
   useEffect(() => {
     // Skip if already initialized
     if (Object.keys(formMatrix).length > 0) return;
-    
+
     // Create initial form matrix
     const initialFormMatrix = {};
-    
+
     // For each parameter in property mapping
     Object.keys(propertyMapping).forEach(paramId => {
       const isNumber = typeof defaultValues[paramId] === 'number';
       const defaultValue = defaultValues[paramId] !== undefined ? defaultValues[paramId] : '';
-      
+
       // Get parameter type (V, R, F, RF, S) for dynamic appendix
       let vKey = null, rKey = null, fKey = null, rfKey = null, sKey = null;
-      
+
       // Determine V parameter keys
       if (paramId.includes('vAmount')) {
         const num = parseInt(paramId.replace('vAmount', ''));
         if (num >= 40 && num <= 49) vKey = `V${num - 39}`;
         else if (num >= 50 && num <= 59) vKey = `V${num - 49}`;
       }
-      
+
       // Determine R parameter keys
       if (paramId.includes('rAmount')) {
         const num = parseInt(paramId.replace('rAmount', ''));
         if (num >= 60 && num <= 69) rKey = `R${num - 59}`;
         else if (num >= 70 && num <= 79) rKey = `R${num - 69}`;
       }
-      
+
       // Determine F parameter keys
       if (paramId.includes('Amount')) {
         const num = parseInt(paramId.replace(/\D/g, ''));
         if (num >= 34 && num <= 38) fKey = `F${num - 33}`;
       }
-      
+
       // Determine RF parameter keys
       if (paramId.includes('Amount')) {
         const num = parseInt(paramId.replace(/\D/g, ''));
         if (num >= 80 && num <= 84) rfKey = `RF${num - 79}`;
       }
-      
+
       // Determine S parameter keys
       if (paramId.includes('Amount')) {
         const num = parseInt(paramId.replace(/\D/g, ''));
         if (num >= 10 && num <= 84) sKey = `S${num}`;
       }
-      
+
       // Initialize matrix structure for this parameter
       initialFormMatrix[paramId] = {
         id: paramId,
@@ -236,64 +237,64 @@ export function useMatrixFormValues() {
           }
         }
       };
-      
+
       // Initialize versions
       versions.list.forEach(versionId => {
         initialFormMatrix[paramId].versions[versionId] = {
           label: versions.metadata[versionId].label,
           isActive: versionId === versions.active
         };
-        
+
         initialFormMatrix[paramId].matrix[versionId] = {};
         initialFormMatrix[paramId].inheritance[versionId] = {
           source: null,
           percentage: 100 // Default to no inheritance
         };
       });
-      
+
       // Initialize zones
       zones.list.forEach(zoneId => {
         initialFormMatrix[paramId].zones[zoneId] = {
           label: zones.metadata[zoneId].label,
           isActive: zoneId === zones.active
         };
-        
+
         // Initialize matrix values for each version and zone
         versions.list.forEach(versionId => {
           initialFormMatrix[paramId].matrix[versionId][zoneId] = defaultValue;
         });
       });
     });
-    
+
     // Set the initial form matrix
     setFormMatrix(initialFormMatrix);
-    
+
     // Initialize special parameter states (V, R, F, RF, S)
     const initialV = {};
     const initialR = {};
     const initialF = {};
     const initialRF = {};
     const initialS = {};
-    
+
     Object.entries(initialFormMatrix).forEach(([paramId, param]) => {
       const { dynamicAppendix } = param;
-      
+
       if (dynamicAppendix.itemState.vKey) {
         initialV[dynamicAppendix.itemState.vKey] = 'off';
       }
-      
+
       if (dynamicAppendix.itemState.rKey) {
         initialR[dynamicAppendix.itemState.rKey] = 'off';
       }
-      
+
       if (dynamicAppendix.itemState.fKey) {
         initialF[dynamicAppendix.itemState.fKey] = 'off';
       }
-      
+
       if (dynamicAppendix.itemState.rfKey) {
         initialRF[dynamicAppendix.itemState.rfKey] = 'off';
       }
-      
+
       if (dynamicAppendix.itemState.sKey) {
         initialS[dynamicAppendix.itemState.sKey] = {
           status: 'off',
@@ -303,20 +304,20 @@ export function useMatrixFormValues() {
         };
       }
     });
-    
+
     // Set initial states
     setV(initialV);
     setR(initialR);
     setF(initialF);
     setRF(initialRF);
     setS(initialS);
-    
+
   }, []);
 
   //=========================================================================
   // VERSION & ZONE MANAGEMENT
   //=========================================================================
-  
+
   /**
    * Create a new version
    * @param {string} label - Display label for the version
@@ -327,7 +328,7 @@ export function useMatrixFormValues() {
   const createVersion = useCallback((label, description = null, baseVersion = null) => {
     // Generate version ID
     const versionId = `v${versions.list.length + 1}`;
-    
+
     // Update versions state
     setVersions(prevVersions => {
       const newVersions = {
@@ -344,34 +345,34 @@ export function useMatrixFormValues() {
           }
         }
       };
-      
+
       return newVersions;
     });
-    
+
     // Update form matrix to include the new version
     setFormMatrix(prevMatrix => {
       const newMatrix = { ...prevMatrix };
-      
+
       // For each parameter in the matrix
       Object.keys(newMatrix).forEach(paramId => {
         const param = { ...newMatrix[paramId] };
-        
+
         // Add version to versions object
         param.versions[versionId] = {
           label,
           isActive: false
         };
-        
+
         // Initialize matrix for this version
         param.matrix[versionId] = {};
-        
+
         // Set inheritance configuration
         if (baseVersion) {
           param.inheritance[versionId] = {
             source: baseVersion,
             percentage: 70 // Default to 70% inheritance
           };
-          
+
           // Copy values from base version with inheritance
           Object.keys(param.matrix[baseVersion] || {}).forEach(zoneId => {
             param.matrix[versionId][zoneId] = param.matrix[baseVersion][zoneId];
@@ -381,7 +382,7 @@ export function useMatrixFormValues() {
             source: null,
             percentage: 100 // No inheritance
           };
-          
+
           // Initialize with default values
           zones.list.forEach(zoneId => {
             param.matrix[versionId][zoneId] = defaultValues[paramId] !== undefined 
@@ -389,16 +390,16 @@ export function useMatrixFormValues() {
               : '';
           });
         }
-        
+
         newMatrix[paramId] = param;
       });
-      
+
       return newMatrix;
     });
-    
+
     return versionId;
   }, [versions, zones.list]);
-  
+
   /**
    * Set the active version
    * @param {string} versionId - ID of the version to activate
@@ -406,21 +407,21 @@ export function useMatrixFormValues() {
   const setActiveVersion = useCallback((versionId) => {
     // Skip if version doesn't exist
     if (!versions.list.includes(versionId)) return;
-    
+
     // Update versions state
     setVersions(prevVersions => ({
       ...prevVersions,
       active: versionId
     }));
-    
+
     // Update active state in form matrix
     setFormMatrix(prevMatrix => {
       const newMatrix = { ...prevMatrix };
-      
+
       // For each parameter in the matrix
       Object.keys(newMatrix).forEach(paramId => {
         const param = { ...newMatrix[paramId] };
-        
+
         // Update active state for all versions
         Object.keys(param.versions).forEach(ver => {
           param.versions[ver] = {
@@ -428,14 +429,14 @@ export function useMatrixFormValues() {
             isActive: ver === versionId
           };
         });
-        
+
         newMatrix[paramId] = param;
       });
-      
+
       return newMatrix;
     });
   }, [versions.list]);
-  
+
   /**
    * Create a new zone
    * @param {string} label - Display label for the zone
@@ -445,7 +446,7 @@ export function useMatrixFormValues() {
   const createZone = useCallback((label, description = null) => {
     // Generate zone ID
     const zoneId = `z${zones.list.length + 1}`;
-    
+
     // Update zones state
     setZones(prevZones => ({
       ...prevZones,
@@ -459,21 +460,21 @@ export function useMatrixFormValues() {
         }
       }
     }));
-    
+
     // Update form matrix to include the new zone
     setFormMatrix(prevMatrix => {
       const newMatrix = { ...prevMatrix };
-      
+
       // For each parameter in the matrix
       Object.keys(newMatrix).forEach(paramId => {
         const param = { ...newMatrix[paramId] };
-        
+
         // Add zone to zones object
         param.zones[zoneId] = {
           label,
           isActive: false
         };
-        
+
         // Initialize matrix values for this zone across all versions
         versions.list.forEach(versionId => {
           // Use the value from first existing zone as default
@@ -481,19 +482,19 @@ export function useMatrixFormValues() {
           const defaultValue = firstZone 
             ? param.matrix[versionId][firstZone]
             : defaultValues[paramId] !== undefined ? defaultValues[paramId] : '';
-          
+
           param.matrix[versionId][zoneId] = defaultValue;
         });
-        
+
         newMatrix[paramId] = param;
       });
-      
+
       return newMatrix;
     });
-    
+
     return zoneId;
   }, [versions.list, zones.list]);
-  
+
   /**
    * Set the active zone
    * @param {string} zoneId - ID of the zone to activate
@@ -501,21 +502,21 @@ export function useMatrixFormValues() {
   const setActiveZone = useCallback((zoneId) => {
     // Skip if zone doesn't exist
     if (!zones.list.includes(zoneId)) return;
-    
+
     // Update zones state
     setZones(prevZones => ({
       ...prevZones,
       active: zoneId
     }));
-    
+
     // Update active state in form matrix
     setFormMatrix(prevMatrix => {
       const newMatrix = { ...prevMatrix };
-      
+
       // For each parameter in the matrix
       Object.keys(newMatrix).forEach(paramId => {
         const param = { ...newMatrix[paramId] };
-        
+
         // Update active state for all zones
         Object.keys(param.zones).forEach(zone => {
           param.zones[zone] = {
@@ -523,10 +524,10 @@ export function useMatrixFormValues() {
             isActive: zone === zoneId
           };
         });
-        
+
         newMatrix[paramId] = param;
       });
-      
+
       return newMatrix;
     });
   }, [zones.list]);
@@ -534,7 +535,7 @@ export function useMatrixFormValues() {
   //=========================================================================
   // PARAMETER VALUE MANAGEMENT
   //=========================================================================
-  
+
   /**
    * Get parameter value for specified version and zone
    * @param {string} paramId - Parameter ID
@@ -544,18 +545,18 @@ export function useMatrixFormValues() {
    */
   const getParameterValue = useCallback((paramId, versionId = null, zoneId = null) => {
     if (!formMatrix[paramId]) return null;
-    
+
     const param = formMatrix[paramId];
     const targetVersion = versionId || versions.active;
     const targetZone = zoneId || zones.active;
-    
+
     if (!param.matrix[targetVersion] || !param.matrix[targetVersion][targetZone]) {
       return null;
     }
-    
+
     return param.matrix[targetVersion][targetZone];
   }, [formMatrix, versions.active, zones.active]);
-  
+
   /**
    * Update parameter value for specified version and zone
    * @param {string} paramId - Parameter ID
@@ -566,52 +567,52 @@ export function useMatrixFormValues() {
    */
   const updateParameterValue = useCallback((paramId, value, versionId = null, zoneId = null) => {
     if (!formMatrix[paramId]) return false;
-    
+
     // Use active version/zone if not specified
     const targetVersion = versionId || versions.active;
     const targetZone = zoneId || zones.active;
-    
+
     // Update form matrix
     setFormMatrix(prevMatrix => {
       const newMatrix = { ...prevMatrix };
       const param = { ...newMatrix[paramId] };
-      
+
       // Initialize matrix structure if needed
       if (!param.matrix[targetVersion]) {
         param.matrix[targetVersion] = {};
       }
-      
+
       // Update value
       param.matrix[targetVersion][targetZone] = value;
-      
+
       // Apply inheritance if needed
       Object.keys(param.inheritance).forEach(ver => {
         const inheritance = param.inheritance[ver];
         if (inheritance.source === targetVersion && inheritance.percentage < 100) {
           // Skip if this version doesn't have the zone yet
           if (!param.matrix[ver] || !param.matrix[ver][targetZone]) return;
-          
+
           const sourceValue = value;
           const currentValue = param.matrix[ver][targetZone];
           const inheritPercent = inheritance.percentage / 100;
-          
+
           // Calculate new value based on inheritance
           // inherited value = (current * (1 - inherit%)) + (source * inherit%)
           const newValue = typeof currentValue === 'number' && typeof sourceValue === 'number'
             ? (currentValue * (1 - inheritPercent)) + (sourceValue * inheritPercent)
             : sourceValue;
-          
+
           param.matrix[ver][targetZone] = newValue;
         }
       });
-      
+
       newMatrix[paramId] = param;
       return newMatrix;
     });
-    
+
     return true;
   }, [formMatrix, versions.active, zones.active]);
-  
+
   /**
    * Get effective value based on parameter status
    * @param {string} paramId - Parameter ID
@@ -621,23 +622,23 @@ export function useMatrixFormValues() {
    */
   const getEffectiveValue = useCallback((paramId, versionId = null, zoneId = null) => {
     if (!formMatrix[paramId]) return null;
-    
+
     const param = formMatrix[paramId];
     const targetVersion = versionId || versions.active;
     const targetZone = zoneId || zones.active;
-    
+
     // Get the base value
     const baseValue = param.matrix[targetVersion]?.[targetZone];
     if (baseValue === undefined) return null;
-    
+
     // Check if parameter is active
     if (!isParameterActive(paramId)) {
       return baseValue;
     }
-    
+
     // Get scaling info
     const { scaling } = param.dynamicAppendix;
-    
+
     // If scaling is enabled, apply it
     if (scaling.enabled) {
       switch (scaling.operation) {
@@ -667,10 +668,10 @@ export function useMatrixFormValues() {
           return baseValue;
       }
     }
-    
+
     return baseValue;
   }, [formMatrix, versions.active, zones.active]);
-  
+
   /**
    * Check if parameter is active based on state (V, R, F, RF)
    * @param {string} paramId - Parameter ID
@@ -678,32 +679,32 @@ export function useMatrixFormValues() {
    */
   const isParameterActive = useCallback((paramId) => {
     if (!formMatrix[paramId]) return false;
-    
+
     const { dynamicAppendix } = formMatrix[paramId];
-    
+
     // Check V parameter status
     if (dynamicAppendix.itemState.vKey && V[dynamicAppendix.itemState.vKey] === 'off') {
       return false;
     }
-    
+
     // Check R parameter status
     if (dynamicAppendix.itemState.rKey && R[dynamicAppendix.itemState.rKey] === 'off') {
       return false;
     }
-    
+
     // Check F parameter status
     if (dynamicAppendix.itemState.fKey && F[dynamicAppendix.itemState.fKey] === 'off') {
       return false;
     }
-    
+
     // Check RF parameter status
     if (dynamicAppendix.itemState.rfKey && RF[dynamicAppendix.itemState.rfKey] === 'off') {
       return false;
     }
-    
+
     return true;
   }, [formMatrix, V, R, F, RF]);
-  
+
   /**
    * Update efficacy period for a parameter
    * @param {string} paramId - Parameter ID
@@ -713,35 +714,35 @@ export function useMatrixFormValues() {
    */
   const updateEfficacyPeriod = useCallback((paramId, start, end) => {
     if (!formMatrix[paramId]) return false;
-    
+
     // Get plant lifetime for validation
     const plantLifetime = formMatrix['plantLifetimeAmount10']?.matrix[versions.active]?.[zones.active] || 20;
-    
+
     // Validate start and end values
     const validStart = Math.max(0, Math.min(start, end, plantLifetime));
     const validEnd = Math.max(validStart, Math.min(end, plantLifetime));
-    
+
     // Update efficacy period
     setFormMatrix(prevMatrix => {
       const newMatrix = { ...prevMatrix };
       const param = { ...newMatrix[paramId] };
-      
+
       param.efficacyPeriod = {
         start: { value: validStart },
         end: { value: validEnd }
       };
-      
+
       newMatrix[paramId] = param;
       return newMatrix;
     });
-    
+
     return true;
   }, [formMatrix, versions.active, zones.active]);
 
   //=========================================================================
   // INPUT HANDLERS
   //=========================================================================
-  
+
   /**
    * Generic input change handler for form values
    * @param {Event} event - Input change event
@@ -751,14 +752,14 @@ export function useMatrixFormValues() {
    */
   const handleInputChange = useCallback((event, itemId, fieldType, subField = null) => {
     const value = event.target?.value;
-    
+
     // Skip if parameter doesn't exist
     if (!formMatrix[itemId]) return;
-    
+
     setFormMatrix(prevMatrix => {
       const newMatrix = { ...prevMatrix };
       const item = { ...newMatrix[itemId] };
-      
+
       // Handle different field types
       switch (fieldType) {
         case 'value':
@@ -768,19 +769,19 @@ export function useMatrixFormValues() {
           }
           item.matrix[versions.active][zones.active] = value;
           break;
-          
+
         case 'label':
           item.label = value;
           break;
-          
+
         case 'step':
           item.step = value;
           break;
-          
+
         case 'remarks':
           item.remarks = value;
           break;
-          
+
         case 'efficacyPeriod':
           // Handle nested efficacy period updates
           if (!item.efficacyPeriod) {
@@ -789,26 +790,26 @@ export function useMatrixFormValues() {
               end: { value: 20 }
             };
           }
-          
+
           if (subField) {
             if (!item.efficacyPeriod[subField]) {
               item.efficacyPeriod[subField] = { value: 0 };
             }
-            
+
             item.efficacyPeriod[subField].value = value;
           }
           break;
-          
+
         default:
           // No action for unknown field types
           break;
       }
-      
+
       newMatrix[itemId] = item;
       return newMatrix;
     });
   }, [formMatrix, versions.active, zones.active]);
-  
+
   /**
    * Toggle V parameter status (on/off)
    * @param {string} key - V parameter key (e.g., 'V1')
@@ -819,7 +820,7 @@ export function useMatrixFormValues() {
       [key]: prev[key] === 'on' ? 'off' : 'on'
     }));
   }, []);
-  
+
   /**
    * Toggle R parameter status (on/off)
    * @param {string} key - R parameter key (e.g., 'R1')
@@ -830,7 +831,7 @@ export function useMatrixFormValues() {
       [key]: prev[key] === 'on' ? 'off' : 'on'
     }));
   }, []);
-  
+
   /**
    * Toggle F parameter status (on/off)
    * @param {string} key - F parameter key (e.g., 'F1')
@@ -841,7 +842,7 @@ export function useMatrixFormValues() {
       [key]: prev[key] === 'on' ? 'off' : 'on'
     }));
   }, []);
-  
+
   /**
    * Toggle RF parameter status (on/off)
    * @param {string} key - RF parameter key (e.g., 'RF1')
@@ -852,7 +853,7 @@ export function useMatrixFormValues() {
       [key]: prev[key] === 'on' ? 'off' : 'on'
     }));
   }, []);
-  
+
   /**
    * Toggle dynamic plot status (on/off)
    * @param {string} key - Dynamic plot key (e.g., 'SP1')
@@ -867,7 +868,7 @@ export function useMatrixFormValues() {
   //=========================================================================
   // RESET & OPTIONS HANDLERS
   //=========================================================================
-  
+
   /**
    * Handle reset button click
    */
@@ -875,7 +876,7 @@ export function useMatrixFormValues() {
     // Show reset options popup
     setShowResetOptions(true);
   }, []);
-  
+
   /**
    * Handle reset option toggle
    * @param {string} option - Option to toggle ('S', 'F', 'V', 'R')
@@ -886,7 +887,7 @@ export function useMatrixFormValues() {
       [option]: !prev[option]
     }));
   }, []);
-  
+
   /**
    * Handle reset confirmation
    */
@@ -904,7 +905,7 @@ export function useMatrixFormValues() {
         return newS;
       });
     }
-    
+
     // Reset F parameters
     if (resetOptions.F) {
       setF(prev => {
@@ -915,7 +916,7 @@ export function useMatrixFormValues() {
         return newF;
       });
     }
-    
+
     // Reset V parameters
     if (resetOptions.V) {
       setV(prev => {
@@ -926,7 +927,7 @@ export function useMatrixFormValues() {
         return newV;
       });
     }
-    
+
     // Reset R parameters
     if (resetOptions.R) {
       setR(prev => {
@@ -937,11 +938,11 @@ export function useMatrixFormValues() {
         return newR;
       });
     }
-    
+
     // Close popup
     setShowResetOptions(false);
   }, [resetOptions]);
-  
+
   /**
    * Handle reset cancellation
    */
@@ -949,7 +950,7 @@ export function useMatrixFormValues() {
     // Close popup
     setShowResetOptions(false);
   }, []);
-  
+
   /**
    * Handle dynamic plots options
    */
@@ -957,7 +958,7 @@ export function useMatrixFormValues() {
     // Show dynamic plots options popup
     setShowDynamicPlotsOptions(true);
   }, []);
-  
+
   /**
    * Handle dynamic plots option change
    * @param {string} option - Option to toggle (e.g., 'SP1')
@@ -968,7 +969,7 @@ export function useMatrixFormValues() {
       [option]: prev[option] === 'on' ? 'off' : 'on'
     }));
   }, []);
-  
+
   /**
    * Handle dynamic plots confirmation
    */
@@ -976,7 +977,7 @@ export function useMatrixFormValues() {
     // Close popup
     setShowDynamicPlotsOptions(false);
   }, []);
-  
+
   /**
    * Handle dynamic plots cancellation
    */
@@ -984,7 +985,7 @@ export function useMatrixFormValues() {
     // Close popup
     setShowDynamicPlotsOptions(false);
   }, []);
-  
+
   /**
    * Handle run options
    */
@@ -992,7 +993,7 @@ export function useMatrixFormValues() {
     // Show run options popup
     setShowRunOptions(true);
   }, []);
-  
+
   /**
    * Handle run option change
    * @param {string} option - Option to toggle
@@ -1003,17 +1004,17 @@ export function useMatrixFormValues() {
       [option]: !prev[option]
     }));
   }, []);
-  
+
   /**
    * Handle run confirmation
    */
   const handleRunConfirm = useCallback(() => {
     // Close popup
     setShowRunOptions(false);
-    
+
     // Run calculations would be implemented separately
   }, []);
-  
+
   /**
    * Handle run cancellation
    */
@@ -1025,7 +1026,7 @@ export function useMatrixFormValues() {
   //=========================================================================
   // SCALING & RESULTS HANDLERS
   //=========================================================================
-  
+
   /**
    * Handle scaling items final results
    * @param {Array} summaryItems - Summary items with results
@@ -1041,13 +1042,13 @@ export function useMatrixFormValues() {
   //=========================================================================
   // BACKEND SYNCHRONIZATION
   //=========================================================================
-  
+
   /**
    * Synchronize with backend services
    */
   const syncWithBackend = useCallback(async () => {
     setIsSyncing(true);
-    
+
     try {
       // Prepare payload
       const payload = {
@@ -1059,10 +1060,10 @@ export function useMatrixFormValues() {
         scalingGroups,
         finalResults
       };
-      
+
       // Make API request
       const response = await axios.post('http://localhost:3060/api/sync-matrix-state', payload);
-      
+
       if (response.data.success) {
         console.log('Synchronized with backend successfully');
       } else {
@@ -1074,17 +1075,17 @@ export function useMatrixFormValues() {
       setIsSyncing(false);
     }
   }, [formMatrix, versions, zones, V, R, F, RF, S, subDynamicPlots, scalingGroups, finalResults]);
-  
+
   /**
    * Load state from backend services
    */
   const loadFromBackend = useCallback(async () => {
     setIsSyncing(true);
-    
+
     try {
       // Make API request
       const response = await axios.get('http://localhost:3060/api/load-matrix-state');
-      
+
       if (response.data.success) {
         // Update state with loaded data
         const {
@@ -1100,7 +1101,7 @@ export function useMatrixFormValues() {
           scalingGroups: loadedScalingGroups,
           finalResults: loadedFinalResults
         } = response.data.state;
-        
+
         // Update state
         setFormMatrix(loadedFormMatrix || {});
         setVersions(loadedVersions || {
@@ -1123,7 +1124,7 @@ export function useMatrixFormValues() {
         });
         setScalingGroups(loadedScalingGroups || []);
         setFinalResults(loadedFinalResults || {});
-        
+
         console.log('Loaded state from backend successfully');
       } else {
         console.error('Loading state failed:', response.data.message);
@@ -1134,7 +1135,7 @@ export function useMatrixFormValues() {
       setIsSyncing(false);
     }
   }, []);
-  
+
   /**
    * Export matrix state to JSON file
    */
@@ -1154,10 +1155,10 @@ export function useMatrixFormValues() {
           finalResults
         }
       };
-      
+
       // Convert to JSON string
       const jsonString = JSON.stringify(exportData, null, 2);
-      
+
       // Create blob and download link
       const blob = new Blob([jsonString], { type: 'application/json' });
       const url = URL.createObjectURL(blob);
@@ -1168,13 +1169,13 @@ export function useMatrixFormValues() {
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
-      
+
       console.log('Matrix state exported successfully');
     } catch (error) {
       console.error('Error exporting matrix state:', error);
     }
   }, [formMatrix, versions, zones, V, R, F, RF, S, subDynamicPlots, scalingGroups, finalResults]);
-  
+
   /**
    * Import matrix state from JSON file
    * @param {File} file - JSON file to import
@@ -1183,15 +1184,15 @@ export function useMatrixFormValues() {
     try {
       // Read file as text
       const text = await file.text();
-      
+
       // Parse JSON
       const importData = JSON.parse(text);
-      
+
       // Validate structure
       if (!importData.state || !importData.version) {
         throw new Error('Invalid import file format');
       }
-      
+
       // Extract state
       const {
         formMatrix: importedFormMatrix,
@@ -1206,7 +1207,7 @@ export function useMatrixFormValues() {
         scalingGroups: importedScalingGroups,
         finalResults: importedFinalResults
       } = importData.state;
-      
+
       // Update state
       setFormMatrix(importedFormMatrix || {});
       setVersions(importedVersions || {
@@ -1229,7 +1230,7 @@ export function useMatrixFormValues() {
       });
       setScalingGroups(importedScalingGroups || []);
       setFinalResults(importedFinalResults || {});
-      
+
       console.log('Matrix state imported successfully');
     } catch (error) {
       console.error('Error importing matrix state:', error);
@@ -1239,51 +1240,51 @@ export function useMatrixFormValues() {
   //=========================================================================
   // RETURN VALUES FOR HOOK
   //=========================================================================
-  
+
   return {
     // Core matrix structures
     formMatrix,
     versions,
     zones,
-    
+
     // Value accessors
     getParameterValue,
     updateParameterValue,
     handleInputChange,
-    
+
     // Reset functionality
     handleReset,
-    
+
     // Special parameters
     S, setS,
     F, setF, toggleF,
     V, setV, toggleV,
     R, setR, toggleR,
     RF, setRF, toggleRF,
-    
+
     // Dynamic plots
     subDynamicPlots, setSubDynamicPlots, toggleSubDynamicPlot,
-    
+
     // Scaling
     scalingGroups, setScalingGroups,
     scalingBaseCosts, setScalingBaseCosts,
     finalResults, setFinalResults,
     handleFinalResultsGenerated,
-    
+
     // Reset options popup
     showResetOptions,
     resetOptions, setResetOptions,
     handleResetOptionChange,
     handleResetConfirm,
     handleResetCancel,
-    
+
     // Dynamic plots popup
     showDynamicPlotsOptions,
     handleDynamicPlots,
     handleDynamicPlotsOptionChange,
     handleDynamicPlotsConfirm,
     handleDynamicPlotsCancel,
-    
+
     // Run options popup
     showRunOptions,
     runOptions, setRunOptions,
@@ -1291,7 +1292,7 @@ export function useMatrixFormValues() {
     handleRunOptionChange,
     handleRunConfirm,
     handleRunCancel,
-    
+
     // Matrix-specific methods
     getEffectiveValue,
     isParameterActive,
@@ -1300,14 +1301,14 @@ export function useMatrixFormValues() {
     createZone,
     setActiveZone,
     updateEfficacyPeriod,
-    
+
     // Backend synchronization
     syncWithBackend,
     loadFromBackend,
     isSyncing,
     exportMatrixState,
     importMatrixState,
-    
+
     // Icon mapping for UI
     propertyMapping,
     iconMapping
@@ -1329,24 +1330,24 @@ export class EfficacyManager {
     this.zones = matrixFormValues.zones || { active: 'z1' };
     this.efficacyPeriods = {};
     this.simulationTime = 0;
-    
+
     // Initialize efficacy periods
     this.initializeEfficacyPeriods();
   }
-  
+
   /**
    * Initialize efficacy periods based on form matrix
    */
   initializeEfficacyPeriods() {
     this.efficacyPeriods = {};
-    
+
     // Get plant lifetime for default end time
     const plantLifetime = this.getPlantLifetime();
-    
+
     // For each parameter in form matrix
     Object.keys(this.formMatrix).forEach(paramId => {
       const param = this.formMatrix[paramId];
-      
+
       if (param.efficacyPeriod) {
         this.efficacyPeriods[paramId] = {
           start: param.efficacyPeriod.start?.value || 0,
@@ -1364,7 +1365,7 @@ export class EfficacyManager {
       }
     });
   }
-  
+
   /**
    * Get plant lifetime value
    * @returns {number} Plant lifetime value
@@ -1372,14 +1373,14 @@ export class EfficacyManager {
   getPlantLifetime() {
     const activeVersion = this.versions.active;
     const activeZone = this.zones.active;
-    
+
     if (this.formMatrix['plantLifetimeAmount10']) {
       return this.formMatrix['plantLifetimeAmount10'].matrix[activeVersion]?.[activeZone] || 20;
     }
-    
+
     return 20; // Default plant lifetime
   }
-  
+
   /**
    * Set simulation time
    * @param {number} time - Simulation time (year)
@@ -1387,7 +1388,7 @@ export class EfficacyManager {
   setSimulationTime(time) {
     this.simulationTime = time;
   }
-  
+
   /**
    * Check if parameter is active at current simulation time
    * @param {string} paramId - Parameter ID
@@ -1395,11 +1396,11 @@ export class EfficacyManager {
    */
   isParameterActive(paramId) {
     if (!this.efficacyPeriods[paramId]) return true;
-    
+
     const { start, end } = this.efficacyPeriods[paramId];
     return this.simulationTime >= start && this.simulationTime <= end;
   }
-  
+
   /**
    * Get effective value for parameter at current simulation time
    * @param {string} paramId - Parameter ID
@@ -1411,10 +1412,10 @@ export class EfficacyManager {
     if (!this.isParameterActive(paramId)) {
       return baseValue;
     }
-    
+
     return scaledValue;
   }
-  
+
   /**
    * Update efficacy period for parameter
    * @param {string} paramId - Parameter ID
@@ -1426,53 +1427,53 @@ export class EfficacyManager {
     if (!this.efficacyPeriods[paramId]) {
       this.efficacyPeriods[paramId] = { start: 0, end: this.getPlantLifetime(), isCustomized: false };
     }
-    
+
     // Validate start/end
     const plantLifetime = this.getPlantLifetime();
     const validStart = Math.max(0, Math.min(start, end, plantLifetime));
     const validEnd = Math.max(validStart, Math.min(end, plantLifetime));
-    
+
     // Update efficacy period
     this.efficacyPeriods[paramId] = {
       start: validStart,
       end: validEnd,
       isCustomized: validStart > 0 || validEnd < plantLifetime
     };
-    
+
     return true;
   }
-  
+
   /**
    * Generate configuration matrix for time periods
    * @returns {Array} Configuration matrix
    */
   generateConfigurationMatrix() {
     const plantLifetime = this.getPlantLifetime();
-    
+
     // Find all break points (unique start/end years)
     const breakPoints = new Set();
     breakPoints.add(0);
     breakPoints.add(plantLifetime);
-    
+
     Object.values(this.efficacyPeriods).forEach(efficacy => {
       if (efficacy.start > 0) breakPoints.add(efficacy.start);
       if (efficacy.end < plantLifetime) breakPoints.add(efficacy.end + 1);
     });
-    
+
     // Sort break points
     const sortedBreaks = Array.from(breakPoints).sort((a, b) => a - b);
-    
+
     // Generate time periods
     const timePeriods = [];
     for (let i = 0; i < sortedBreaks.length - 1; i++) {
       const start = sortedBreaks[i];
       const end = sortedBreaks[i + 1] - 1;
-      
+
       if (start <= end) {
         timePeriods.push({ start, end, length: end - start + 1 });
       }
     }
-    
+
     // Create matrix rows
     const matrix = timePeriods.map(period => {
       const row = {
@@ -1480,20 +1481,20 @@ export class EfficacyManager {
         end: period.end,
         length: period.length
       };
-      
+
       // For each parameter, check if it's active during this period
       Object.keys(this.efficacyPeriods).forEach(paramId => {
         const efficacy = this.efficacyPeriods[paramId];
         const isActive = period.start >= efficacy.start && period.end <= efficacy.end;
         row[paramId] = isActive ? 1 : 0;
       });
-      
+
       return row;
     });
-    
+
     return matrix;
   }
-  
+
   /**
    * Apply efficacy periods to scaling groups
    * @param {Array} scalingGroups - Scaling groups
@@ -1504,7 +1505,7 @@ export class EfficacyManager {
       // Apply efficacy to each item in group
       const efficacyItems = group.items.map(item => {
         const isActive = this.isParameterActive(item.id);
-        
+
         return {
           ...item,
           isActive,
@@ -1512,7 +1513,7 @@ export class EfficacyManager {
           efficacyPeriod: this.efficacyPeriods[item.id]
         };
       });
-      
+
       return {
         ...group,
         items: efficacyItems
@@ -1545,7 +1546,7 @@ export function VersionZoneManager({ versions, zones, createVersion, setActiveVe
           if (label) createVersion(label);
         }}>+ New Version</button>
       </div>
-      
+
       <div className="zone-selector">
         <h3>Zone</h3>
         <select
@@ -1576,10 +1577,10 @@ export function MatrixValueEditor({ paramId, formMatrix, versions, zones, update
   const [selectedZone, setSelectedZone] = useState(zones.active);
   const [currentValue, setCurrentValue] = useState('');
   const [editing, setEditing] = useState(false);
-  
+
   // Get parameter from form matrix
   const parameter = formMatrix[paramId];
-  
+
   // Set initial value based on selected version and zone
   useEffect(() => {
     if (parameter &&
@@ -1590,12 +1591,12 @@ export function MatrixValueEditor({ paramId, formMatrix, versions, zones, update
       setCurrentValue('');
     }
   }, [parameter, selectedVersion, selectedZone]);
-  
+
   // Handle value change
   const handleValueChange = (e) => {
     setCurrentValue(e.target.value);
   };
-  
+
   // Handle save
   const handleSave = () => {
     // Parse numeric values
@@ -1604,41 +1605,41 @@ export function MatrixValueEditor({ paramId, formMatrix, versions, zones, update
       valueToSave = parseFloat(currentValue);
       if (isNaN(valueToSave)) valueToSave = 0;
     }
-    
+
     // Update parameter value
     updateParameterValue(paramId, valueToSave, selectedVersion, selectedZone);
-    
+
     // Exit edit mode
     setEditing(false);
   };
-  
+
   // Get inheritance info
   const getInheritanceInfo = () => {
     if (!parameter.inheritance[selectedVersion]) {
       return null;
     }
-    
+
     const inheritance = parameter.inheritance[selectedVersion];
     if (!inheritance.source) {
       return null;
     }
-    
+
     return {
       source: inheritance.source,
       sourceLabel: versions.metadata[inheritance.source]?.label || inheritance.source,
       percentage: inheritance.percentage
     };
   };
-  
+
   const inheritanceInfo = getInheritanceInfo();
-  
+
   return (
     <div className="matrix-editor">
       <div className="editor-header">
         <h3>Edit Matrix Values: {parameter.label}</h3>
         <button className="close-button" onClick={onClose}>×</button>
       </div>
-      
+
       <div className="editor-content">
         <div className="selector-group">
           <label>Version:</label>
@@ -1653,7 +1654,7 @@ export function MatrixValueEditor({ paramId, formMatrix, versions, zones, update
             ))}
           </select>
         </div>
-        
+
         <div className="selector-group">
           <label>Zone:</label>
           <select
@@ -1667,13 +1668,13 @@ export function MatrixValueEditor({ paramId, formMatrix, versions, zones, update
             ))}
           </select>
         </div>
-        
+
         {inheritanceInfo && (
           <div className="inheritance-info">
             <span>Inherits {inheritanceInfo.percentage}% from {inheritanceInfo.sourceLabel}</span>
           </div>
         )}
-        
+
         <div className="value-editor">
           {editing ? (
             <>
@@ -1697,7 +1698,7 @@ export function MatrixValueEditor({ paramId, formMatrix, versions, zones, update
             </>
           )}
         </div>
-        
+
         <div className="matrix-preview">
           <h4>Matrix Values Preview</h4>
           <table>
@@ -1745,49 +1746,49 @@ export function MatrixValueEditor({ paramId, formMatrix, versions, zones, update
  */
 export function EfficacyPeriodEditor({ paramId, formMatrix, updateEfficacyPeriod, onClose }) {
   const parameter = formMatrix[paramId];
-  
+
   // Get plant lifetime for max end value
   const getPlantLifetime = () => {
     const versions = Object.keys(parameter.matrix)[0];
     const zones = Object.keys(parameter.matrix[versions] || {})[0];
-    
+
     if (formMatrix['plantLifetimeAmount10']) {
       return formMatrix['plantLifetimeAmount10'].matrix[versions]?.[zones] || 20;
     }
-    
+
     return 20; // Default
   };
-  
+
   const plantLifetime = getPlantLifetime();
   const [startYear, setStartYear] = useState(parameter.efficacyPeriod?.start?.value || 0);
   const [endYear, setEndYear] = useState(parameter.efficacyPeriod?.end?.value || plantLifetime);
-  
+
   // Handle save
   const handleSave = () => {
     // Validate values
     const validStart = Math.max(0, Math.min(startYear, endYear, plantLifetime));
     const validEnd = Math.max(validStart, Math.min(endYear, plantLifetime));
-    
+
     // Update efficacy period
     updateEfficacyPeriod(paramId, validStart, validEnd);
-    
+
     // Close editor
     onClose();
   };
-  
+
   // Handle reset
   const handleReset = () => {
     setStartYear(0);
     setEndYear(plantLifetime);
   };
-  
+
   return (
     <div className="efficacy-editor">
       <div className="editor-header">
         <h3>Edit Efficacy Period: {parameter.label}</h3>
         <button className="close-button" onClick={onClose}>×</button>
       </div>
-      
+
       <div className="editor-content">
         <div className="efficacy-range">
           <label>Start Year:</label>
@@ -1799,7 +1800,7 @@ export function EfficacyPeriodEditor({ paramId, formMatrix, updateEfficacyPeriod
             onChange={e => setStartYear(parseInt(e.target.value) || 0)}
           />
         </div>
-        
+
         <div className="efficacy-range">
           <label>End Year:</label>
           <input
@@ -1810,11 +1811,11 @@ export function EfficacyPeriodEditor({ paramId, formMatrix, updateEfficacyPeriod
             onChange={e => setEndYear(parseInt(e.target.value) || 0)}
           />
         </div>
-        
+
         <div className="plant-lifetime">
           <span>Plant Lifetime: {plantLifetime} years</span>
         </div>
-        
+
         <div className="efficacy-indicators">
           <div className="timeline">
             {Array.from({ length: plantLifetime + 1 }).map((_, i) => (
@@ -1828,7 +1829,7 @@ export function EfficacyPeriodEditor({ paramId, formMatrix, updateEfficacyPeriod
             ))}
           </div>
         </div>
-        
+
         <div className="editor-actions">
           <button onClick={handleSave}>Save</button>
           <button onClick={handleReset}>Reset to Full Lifetime</button>
@@ -1856,7 +1857,7 @@ export class MatrixConfigExporter {
       paths: config.endpoints?.paths || '/api/export-paths'
     };
   }
-  
+
   /**
    * Export matrix configuration to backend
    * @param {Object} matrixState - Complete matrix state
@@ -1871,18 +1872,18 @@ export class MatrixConfigExporter {
         },
         body: JSON.stringify(matrixState)
       });
-      
+
       if (!response.ok) {
         throw new Error(`Failed to export configuration: ${response.statusText}`);
       }
-      
+
       return await response.json();
     } catch (error) {
       console.error('Error exporting matrix configuration:', error);
       throw error;
     }
   }
-  
+
   /**
    * Generate configuration matrix file
    * @param {string} version - Version ID (numeric part)
@@ -1893,7 +1894,7 @@ export class MatrixConfigExporter {
     try {
       // Extract numeric version ID
       const numericVersion = version.replace(/\D/g, '');
-      
+
       const response = await fetch(`${this.baseUrl}${this.endpoints.configMatrix}`, {
         method: 'POST',
         headers: {
@@ -1904,18 +1905,18 @@ export class MatrixConfigExporter {
           efficacyPeriods
         })
       });
-      
+
       if (!response.ok) {
         throw new Error(`Failed to generate configuration matrix: ${response.statusText}`);
       }
-      
+
       return await response.json();
     } catch (error) {
       console.error('Error generating configuration matrix:', error);
       throw error;
     }
   }
-  
+
   /**
    * Export paths for calculation
    * @param {string} version - Version ID (numeric part)
@@ -1926,7 +1927,7 @@ export class MatrixConfigExporter {
     try {
       // Extract numeric version ID
       const numericVersion = version.replace(/\D/g, '');
-      
+
       const response = await fetch(`${this.baseUrl}${this.endpoints.paths}`, {
         method: 'POST',
         headers: {
@@ -1941,11 +1942,11 @@ export class MatrixConfigExporter {
           selectedRF: state.RF
         })
       });
-      
+
       if (!response.ok) {
         throw new Error(`Failed to export paths: ${response.statusText}`);
       }
-      
+
       return await response.json();
     } catch (error) {
       console.error('Error exporting paths:', error);
@@ -1968,7 +1969,7 @@ export class MatrixHistoryManager {
     this.currentIndex = 0;
     this.maxHistorySize = 50; // Maximum number of history entries to keep
   }
-  
+
   /**
    * Create a snapshot of the current state
    * @param {Object} state - Current state
@@ -1981,7 +1982,7 @@ export class MatrixHistoryManager {
       state: JSON.parse(JSON.stringify(state)) // Deep clone
     };
   }
-  
+
   /**
    * Add a new history entry
    * @param {Object} state - Current state
@@ -1993,24 +1994,24 @@ export class MatrixHistoryManager {
     if (this.currentIndex < this.history.length - 1) {
       this.history = this.history.slice(0, this.currentIndex + 1);
     }
-    
+
     // Create new snapshot
     const snapshot = this.createSnapshot(state);
     snapshot.action = action;
-    
+
     // Add to history
     this.history.push(snapshot);
     this.currentIndex = this.history.length - 1;
-    
+
     // Limit history size
     if (this.history.length > this.maxHistorySize) {
       this.history.shift();
       this.currentIndex--;
     }
-    
+
     return this.currentIndex;
   }
-  
+
   /**
    * Get current state snapshot
    * @returns {Object} Current state snapshot
@@ -2018,7 +2019,7 @@ export class MatrixHistoryManager {
   getCurrentSnapshot() {
     return this.history[this.currentIndex];
   }
-  
+
   /**
    * Undo last action
    * @returns {Object|null} Previous state or null if at beginning
@@ -2027,11 +2028,11 @@ export class MatrixHistoryManager {
     if (this.currentIndex <= 0) {
       return null;
     }
-    
+
     this.currentIndex--;
     return this.history[this.currentIndex];
   }
-  
+
   /**
    * Redo previously undone action
    * @returns {Object|null} Next state or null if at end
@@ -2040,11 +2041,11 @@ export class MatrixHistoryManager {
     if (this.currentIndex >= this.history.length - 1) {
       return null;
     }
-    
+
     this.currentIndex++;
     return this.history[this.currentIndex];
   }
-  
+
   /**
    * Check if undo is available
    * @returns {boolean} True if undo is available
@@ -2052,7 +2053,7 @@ export class MatrixHistoryManager {
   canUndo() {
     return this.currentIndex > 0;
   }
-  
+
   /**
    * Check if redo is available
    * @returns {boolean} True if redo is available
@@ -2060,7 +2061,7 @@ export class MatrixHistoryManager {
   canRedo() {
     return this.currentIndex < this.history.length - 1;
   }
-  
+
   /**
    * Get history entries
    * @returns {Array} History entries
@@ -2073,7 +2074,7 @@ export class MatrixHistoryManager {
       isCurrent: index === this.currentIndex
     }));
   }
-  
+
   /**
    * Export history
    * @returns {Object} Exportable history object
@@ -2084,7 +2085,7 @@ export class MatrixHistoryManager {
       currentIndex: this.currentIndex
     };
   }
-  
+
   /**
    * Import history
    * @param {Object} historyData - History data to import
@@ -2094,15 +2095,15 @@ export class MatrixHistoryManager {
     if (!historyData || !Array.isArray(historyData.history) || historyData.history.length === 0) {
       return false;
     }
-    
+
     this.history = historyData.history;
     this.currentIndex = historyData.currentIndex || 0;
-    
+
     // Ensure currentIndex is valid
     if (this.currentIndex >= this.history.length) {
       this.currentIndex = this.history.length - 1;
     }
-    
+
     return true;
   }
 }
@@ -2122,14 +2123,14 @@ export class MatrixInheritanceManager {
     this.formMatrix = formMatrix;
     this.inheritanceGraph = this.buildInheritanceGraph();
   }
-  
+
   /**
    * Build inheritance graph from matrix state
    * @returns {Object} Inheritance graph
    */
   buildInheritanceGraph() {
     const graph = {};
-    
+
     // Initialize graph nodes
     this.versions.list.forEach(version => {
       graph[version] = {
@@ -2137,11 +2138,11 @@ export class MatrixInheritanceManager {
         targets: []
       };
     });
-    
+
     // For each parameter, analyze inheritance relationships
     Object.values(this.formMatrix).forEach(param => {
       if (!param.inheritance) return;
-      
+
       // For each version that inherits from another
       Object.entries(param.inheritance).forEach(([version, inheritance]) => {
         if (inheritance.source && inheritance.percentage < 100) {
@@ -2152,7 +2153,7 @@ export class MatrixInheritanceManager {
               percentage: inheritance.percentage
             });
           }
-          
+
           // Add target relationship to source
           if (!graph[inheritance.source].targets.includes(version)) {
             graph[inheritance.source].targets.push({
@@ -2163,10 +2164,10 @@ export class MatrixInheritanceManager {
         }
       });
     });
-    
+
     return graph;
   }
-  
+
   /**
    * Get inheritance sources for a version
    * @param {string} version - Version ID
@@ -2176,7 +2177,7 @@ export class MatrixInheritanceManager {
     if (!this.inheritanceGraph[version]) return [];
     return this.inheritanceGraph[version].sources;
   }
-  
+
   /**
    * Get inheritance targets for a version
    * @param {string} version - Version ID
@@ -2186,7 +2187,7 @@ export class MatrixInheritanceManager {
     if (!this.inheritanceGraph[version]) return [];
     return this.inheritanceGraph[version].targets;
   }
-  
+
   /**
    * Configure inheritance relationship
    * @param {string} paramId - Parameter ID
@@ -2198,31 +2199,31 @@ export class MatrixInheritanceManager {
   configureInheritance(paramId, version, sourceVersion, percentage) {
     // Skip if parameter doesn't exist
     if (!this.formMatrix[paramId]) return this.formMatrix;
-    
+
     // Create a copy of form matrix
     const newFormMatrix = { ...this.formMatrix };
     const param = { ...newFormMatrix[paramId] };
-    
+
     // Update inheritance configuration
     if (!param.inheritance) {
       param.inheritance = {};
     }
-    
+
     param.inheritance[version] = {
       source: sourceVersion,
       percentage: Math.min(100, Math.max(0, percentage))
     };
-    
+
     // Update parameter in form matrix
     newFormMatrix[paramId] = param;
-    
+
     // Update inheritance graph
     this.formMatrix = newFormMatrix;
     this.inheritanceGraph = this.buildInheritanceGraph();
-    
+
     return newFormMatrix;
   }
-  
+
   /**
    * Apply inheritance to parameter values
    * @param {Object} updates - Parameter updates
@@ -2230,44 +2231,44 @@ export class MatrixInheritanceManager {
    */
   applyInheritance(updates) {
     const result = { ...updates };
-    
+
     // For each parameter that was updated
     Object.keys(updates).forEach(paramId => {
       if (!this.formMatrix[paramId]?.inheritance) return;
-      
+
       const paramUpdate = updates[paramId];
       const param = this.formMatrix[paramId];
-      
+
       // For each affected version and zone
       Object.keys(paramUpdate).forEach(version => {
         Object.keys(paramUpdate[version]).forEach(zone => {
           const sourceValue = paramUpdate[version][zone];
-          
+
           // Find all versions that inherit from this version
           this.getInheritanceTargets(version).forEach(target => {
             const { version: targetVersion, percentage } = target;
-            
+
             // Skip if target version not initialized
             if (!param.matrix[targetVersion] || !param.matrix[targetVersion][zone]) return;
-            
+
             const currentValue = param.matrix[targetVersion][zone];
             const inheritPercent = percentage / 100;
-            
+
             // Calculate inherited value
             const newValue = typeof currentValue === 'number' && typeof sourceValue === 'number'
               ? (currentValue * (1 - inheritPercent)) + (sourceValue * inheritPercent)
               : sourceValue;
-            
+
             // Add to result
             if (!result[paramId]) result[paramId] = {};
             if (!result[paramId][targetVersion]) result[paramId][targetVersion] = {};
-            
+
             result[paramId][targetVersion][zone] = newValue;
           });
         });
       });
     });
-    
+
     return result;
   }
 }
@@ -2285,7 +2286,7 @@ export class MatrixValidator {
     this.rules = validationRules;
     this.errors = {};
   }
-  
+
   /**
    * Set validation rules
    * @param {Object} rules - Validation rules configuration
@@ -2293,7 +2294,7 @@ export class MatrixValidator {
   setRules(rules) {
     this.rules = rules;
   }
-  
+
   /**
    * Validate parameter value
    * @param {string} paramId - Parameter ID
@@ -2303,17 +2304,17 @@ export class MatrixValidator {
   validateParameter(paramId, value) {
     // Skip if no rules for this parameter
     if (!this.rules[paramId]) return true;
-    
+
     const rules = this.rules[paramId];
     let isValid = true;
     const errors = [];
-    
+
     // Required rule
     if (rules.required && (value === undefined || value === null || value === '')) {
       errors.push('This field is required');
       isValid = false;
     }
-    
+
     // Type rule
     if (rules.type) {
       switch (rules.type) {
@@ -2345,33 +2346,33 @@ export class MatrixValidator {
           break;
       }
     }
-    
+
     // Min/max rules for numbers
     if ((rules.type === 'number' || rules.type === 'integer') && typeof value === 'number') {
       if (rules.min !== undefined && value < rules.min) {
         errors.push(`Must be at least ${rules.min}`);
         isValid = false;
       }
-      
+
       if (rules.max !== undefined && value > rules.max) {
         errors.push(`Must be at most ${rules.max}`);
         isValid = false;
       }
     }
-    
+
     // Min/max length rules for strings
     if (rules.type === 'string' && typeof value === 'string') {
       if (rules.minLength !== undefined && value.length < rules.minLength) {
         errors.push(`Must be at least ${rules.minLength} characters`);
         isValid = false;
       }
-      
+
       if (rules.maxLength !== undefined && value.length > rules.maxLength) {
         errors.push(`Must be at most ${rules.maxLength} characters`);
         isValid = false;
       }
     }
-    
+
     // Pattern rule for strings
     if (rules.type === 'string' && rules.pattern && typeof value === 'string') {
       const regex = new RegExp(rules.pattern);
@@ -2380,7 +2381,7 @@ export class MatrixValidator {
         isValid = false;
       }
     }
-    
+
     // Custom validation function
     if (rules.validate && typeof rules.validate === 'function') {
       const customResult = rules.validate(value);
@@ -2389,13 +2390,13 @@ export class MatrixValidator {
         isValid = false;
       }
     }
-    
+
     // Store errors
     this.errors[paramId] = errors;
-    
+
     return isValid;
   }
-  
+
   /**
    * Validate multiple parameters
    * @param {Object} formMatrix - Form matrix object
@@ -2406,20 +2407,20 @@ export class MatrixValidator {
   validateMatrix(formMatrix, version, zone) {
     let isValid = true;
     this.errors = {};
-    
+
     // Validate each parameter
     Object.keys(formMatrix).forEach(paramId => {
       const param = formMatrix[paramId];
       const value = param.matrix[version]?.[zone];
-      
+
       if (!this.validateParameter(paramId, value)) {
         isValid = false;
       }
     });
-    
+
     return isValid;
   }
-  
+
   /**
    * Get validation errors
    * @param {string} paramId - Optional parameter ID to get errors for
@@ -2429,10 +2430,10 @@ export class MatrixValidator {
     if (paramId) {
       return this.errors[paramId] || [];
     }
-    
+
     return this.errors;
   }
-  
+
   /**
    * Check if parameter has errors
    * @param {string} paramId - Parameter ID
@@ -2459,7 +2460,7 @@ export class MatrixSummaryGenerator {
     this.versions = versions;
     this.zones = zones;
   }
-  
+
   /**
    * Generate summary for specific parameter categories
    * @param {string} category - Parameter category (e.g., 'Amount4')
@@ -2468,11 +2469,11 @@ export class MatrixSummaryGenerator {
    */
   generateCategorySummary(category, scaling = {}) {
     const summaryItems = [];
-    
+
     // Get active version and zone
     const activeVersion = this.versions.active;
     const activeZone = this.zones.active;
-    
+
     // Filter parameters by category
     const categoryParams = Object.entries(this.formMatrix)
       .filter(([paramId]) => paramId.includes(category))
@@ -2487,20 +2488,20 @@ export class MatrixSummaryGenerator {
         sKey: param.dynamicAppendix?.itemState?.sKey,
         efficacyPeriod: param.efficacyPeriod
       }));
-    
+
     // Process each parameter
     categoryParams.forEach(param => {
       // Get base value (current matrix value)
       const baseValue = param.value || 0;
-      
+
       // Get scaled value from scaling results if available
       const scaledValue = scaling[param.id]?.scaledValue || baseValue;
-      
+
       // Calculate percentage change
       const percentChange = baseValue !== 0
         ? ((scaledValue - baseValue) / Math.abs(baseValue)) * 100
         : 0;
-      
+
       // Add to summary items
       summaryItems.push({
         id: param.id,
@@ -2517,13 +2518,13 @@ export class MatrixSummaryGenerator {
         efficacyPeriod: param.efficacyPeriod
       });
     });
-    
+
     // Sort by absolute impact
     summaryItems.sort((a, b) => b.absImpact - a.absImpact);
-    
+
     return summaryItems;
   }
-  
+
   /**
    * Generate complete summary for all categories
    * @param {Object} scaling - Scaling results for all categories
@@ -2532,14 +2533,14 @@ export class MatrixSummaryGenerator {
   generateCompleteSummary(scaling = {}) {
     const categories = ['Amount1', 'Amount2', 'Amount3', 'Amount4', 'Amount5', 'Amount6', 'Amount7'];
     const summary = {};
-    
+
     categories.forEach(category => {
       summary[category] = this.generateCategorySummary(category, scaling[category] || {});
     });
-    
+
     return summary;
   }
-  
+
   /**
    * Generate statistics from summary items
    * @param {Array} summaryItems - Summary items
@@ -2547,7 +2548,7 @@ export class MatrixSummaryGenerator {
    */
   generateStats(summaryItems) {
     const activeItems = summaryItems.filter(item => item.isActive !== false);
-    
+
     // Skip if no active items
     if (activeItems.length === 0) {
       return {
@@ -2560,22 +2561,22 @@ export class MatrixSummaryGenerator {
         maxImpactItem: null
       };
     }
-    
+
     // Calculate total change
     const totalChange = activeItems.reduce((sum, item) => sum + (item.scaledValue - item.originalValue), 0);
-    
+
     // Calculate average change
     const averageChange = totalChange / activeItems.length;
-    
+
     // Calculate total percent change
     const totalPercentChange = activeItems.reduce((sum, item) => sum + item.percentChange, 0);
-    
+
     // Calculate average percent change
     const averagePercentChange = totalPercentChange / activeItems.length;
-    
+
     // Find item with maximum impact
     const maxImpactItem = [...activeItems].sort((a, b) => b.absImpact - a.absImpact)[0];
-    
+
     return {
       totalCount: summaryItems.length,
       activeCount: activeItems.length,
@@ -2602,7 +2603,7 @@ export class SensitivityConfigGenerator {
     this.S = S;
     this.formMatrix = formMatrix;
   }
-  
+
   /**
    * Generate sensitivity variations for parameter
    * @param {string} paramId - Parameter ID
@@ -2614,24 +2615,24 @@ export class SensitivityConfigGenerator {
     if (!this.S[sKey] || this.S[sKey].status === 'off') {
       return [];
     }
-    
+
     // Get parameter from form matrix
     const param = this.formMatrix[paramId];
     if (!param) return [];
-    
+
     // Get sensitivity configuration
     const senConfig = this.S[sKey];
     const mode = senConfig.mode || 'percentage';
     const baseValue = param.matrix[param.versions.active]?.[param.zones.active] || 0;
-    
+
     // Generate variations based on mode
     const variations = [];
-    
+
     switch (mode) {
       case 'percentage':
         // Percentage variations
         const percents = senConfig.values || [-20, -10, 10, 20];
-        
+
         percents.forEach(percent => {
           const value = baseValue * (1 + percent / 100);
           variations.push({
@@ -2642,11 +2643,11 @@ export class SensitivityConfigGenerator {
           });
         });
         break;
-        
+
       case 'directvalue':
         // Direct value variations
         const values = senConfig.values || [baseValue * 0.8, baseValue * 0.9, baseValue * 1.1, baseValue * 1.2];
-        
+
         values.forEach(value => {
           const percent = baseValue !== 0 ? ((value / baseValue) - 1) * 100 : 0;
           variations.push({
@@ -2657,11 +2658,11 @@ export class SensitivityConfigGenerator {
           });
         });
         break;
-        
+
       case 'absolutedeparture':
         // Absolute departure variations
         const departures = senConfig.values || [-20, -10, 10, 20];
-        
+
         departures.forEach(departure => {
           const value = baseValue + departure;
           const percent = baseValue !== 0 ? (departure / baseValue) * 100 : 0;
@@ -2673,17 +2674,17 @@ export class SensitivityConfigGenerator {
           });
         });
         break;
-        
+
       case 'montecarlo':
         // Monte Carlo variations
         const count = senConfig.count || 5;
         const range = senConfig.range || 20;
-        
+
         for (let i = 0; i < count; i++) {
           // Generate random variation between -range% and +range%
           const percent = (Math.random() * 2 - 1) * range;
           const value = baseValue * (1 + percent / 100);
-          
+
           variations.push({
             mode: 'montecarlo',
             percent,
@@ -2692,36 +2693,36 @@ export class SensitivityConfigGenerator {
           });
         }
         break;
-        
+
       default:
         break;
     }
-    
+
     return variations;
   }
-  
+
   /**
    * Generate complete sensitivity configuration
    * @returns {Object} Sensitivity configuration
    */
   generateConfiguration() {
     const configuration = {};
-    
+
     // Process each S parameter
     Object.entries(this.S).forEach(([sKey, config]) => {
       // Skip if not enabled
       if (config.status === 'off') return;
-      
+
       // Find corresponding parameter ID
       const paramId = Object.keys(this.formMatrix).find(id => {
         return this.formMatrix[id].dynamicAppendix?.itemState?.sKey === sKey;
       });
-      
+
       if (!paramId) return;
-      
+
       // Generate variations
       const variations = this.generateVariations(paramId, sKey);
-      
+
       // Add to configuration
       configuration[sKey] = {
         paramId,
@@ -2731,10 +2732,10 @@ export class SensitivityConfigGenerator {
         variations
       };
     });
-    
+
     return configuration;
   }
-  
+
   /**
    * Generate paths for sensitivity configuration
    * @param {string} version - Version ID (numeric part)
@@ -2743,15 +2744,15 @@ export class SensitivityConfigGenerator {
   generatePaths(version) {
     // Extract numeric version
     const numericVersion = version.replace(/\D/g, '');
-    
+
     const paths = {
       version: numericVersion,
       parameters: {}
     };
-    
+
     // Generate configuration
     const configuration = this.generateConfiguration();
-    
+
     // Build paths for each parameter
     Object.entries(configuration).forEach(([sKey, config]) => {
       const paramPaths = {
@@ -2761,11 +2762,11 @@ export class SensitivityConfigGenerator {
         baseValue: config.baseValue,
         variations: {}
       };
-      
+
       // Build paths for each variation
       config.variations.forEach(variation => {
         const varKey = variation.label.replace(/[^\w-]/g, '_');
-        
+
         paramPaths.variations[varKey] = {
           label: variation.label,
           percent: variation.percent,
@@ -2776,10 +2777,10 @@ export class SensitivityConfigGenerator {
           }
         };
       });
-      
+
       paths.parameters[sKey] = paramPaths;
     });
-    
+
     return paths;
   }
 }
@@ -2802,7 +2803,7 @@ export class MatrixSyncService {
       submitValues: config.endpoints?.submitValues || '/api/submit-values'
     };
   }
-  
+
   /**
    * Synchronize matrix state with backend
    * @param {Object} state - Complete matrix state
@@ -2817,18 +2818,18 @@ export class MatrixSyncService {
         },
         body: JSON.stringify(state)
       });
-      
+
       if (!response.ok) {
         throw new Error(`Failed to synchronize state: ${response.statusText}`);
       }
-      
+
       return await response.json();
     } catch (error) {
       console.error('Error synchronizing matrix state:', error);
       throw error;
     }
   }
-  
+
   /**
    * Load matrix state from backend
    * @returns {Promise<Object>} Loaded state
@@ -2838,18 +2839,18 @@ export class MatrixSyncService {
       const response = await fetch(`${this.baseUrl}${this.endpoints.load}`, {
         method: 'GET'
       });
-      
+
       if (!response.ok) {
         throw new Error(`Failed to load state: ${response.statusText}`);
       }
-      
+
       return await response.json();
     } catch (error) {
       console.error('Error loading matrix state:', error);
       throw error;
     }
   }
-  
+
   /**
    * Update form labels
    * @param {Object} updatedLabels - Map of parameter IDs to updated labels
@@ -2864,18 +2865,18 @@ export class MatrixSyncService {
         },
         body: JSON.stringify({ labels: updatedLabels })
       });
-      
+
       if (!response.ok) {
         throw new Error(`Failed to update labels: ${response.statusText}`);
       }
-      
+
       return await response.json();
     } catch (error) {
       console.error('Error updating form labels:', error);
       throw error;
     }
   }
-  
+
   /**
    * Submit form values to backend
    * @param {Object} values - Form values to submit
@@ -2886,7 +2887,7 @@ export class MatrixSyncService {
     try {
       // Extract numeric version
       const numericVersion = version.replace(/\D/g, '');
-      
+
       const response = await fetch(`${this.baseUrl}${this.endpoints.submitValues}/${numericVersion}`, {
         method: 'POST',
         headers: {
@@ -2894,18 +2895,18 @@ export class MatrixSyncService {
         },
         body: JSON.stringify(values)
       });
-      
+
       if (!response.ok) {
         throw new Error(`Failed to submit values: ${response.statusText}`);
       }
-      
+
       return await response.json();
     } catch (error) {
       console.error('Error submitting form values:', error);
       throw error;
     }
   }
-  
+
   /**
    * Submit filtered values to backend
    * @param {Object} filteredValues - Filtered values object
@@ -2916,7 +2917,7 @@ export class MatrixSyncService {
     try {
       // Extract numeric version
       const numericVersion = version.replace(/\D/g, '');
-      
+
       const response = await fetch(`${this.baseUrl}/append/${numericVersion}`, {
         method: 'POST',
         headers: {
@@ -2924,11 +2925,11 @@ export class MatrixSyncService {
         },
         body: JSON.stringify(filteredValues, null, 2)
       });
-      
+
       if (!response.ok) {
         throw new Error(`Failed to submit filtered values: ${response.statusText}`);
       }
-      
+
       return await response.text();
     } catch (error) {
       console.error('Error submitting filtered values:', error);
@@ -2963,7 +2964,7 @@ export class MatrixScalingManager {
       { id: 'exponential', label: 'Exponential', symbol: 'eˣ' }
     ];
   }
-  
+
   /**
    * Set scaling groups
    * @param {Array} scalingGroups - Scaling groups
@@ -2971,7 +2972,7 @@ export class MatrixScalingManager {
   setScalingGroups(scalingGroups) {
     this.scalingGroups = scalingGroups;
   }
-  
+
   /**
    * Get scaling base costs for a category
    * @param {string} category - Parameter category (e.g., 'Amount4')
@@ -2980,14 +2981,14 @@ export class MatrixScalingManager {
   getScalingBaseCosts(category) {
     const activeVersion = this.versions.active;
     const activeZone = this.zones.active;
-    
+
     // Filter parameters by category
     const baseCosts = Object.entries(this.formMatrix)
       .filter(([paramId]) => paramId.includes(category))
       .map(([paramId, param]) => {
         // Get current value from matrix
         const paramValue = param.matrix[activeVersion]?.[activeZone] || 0;
-        
+
         return {
           id: paramId,
           label: param.label || `Unnamed ${category}`,
@@ -2997,10 +2998,10 @@ export class MatrixScalingManager {
           rKey: param.dynamicAppendix?.itemState?.rKey || null
         };
       });
-    
+
     return baseCosts;
   }
-  
+
   /**
    * Add a new scaling group
    * @param {string} category - Parameter category (e.g., 'Amount4')
@@ -3009,7 +3010,7 @@ export class MatrixScalingManager {
   addScalingGroup(category) {
     // Get base costs for this category
     const baseCosts = this.getScalingBaseCosts(category);
-    
+
     // Look for gaps in the existing group sequence based on naming conventions
     const existingNumbers = this.scalingGroups
       .filter(group => group._scalingType === category)
@@ -3019,7 +3020,7 @@ export class MatrixScalingManager {
       })
       .filter(Boolean)
       .sort((a, b) => a - b);
-    
+
     // Find the first available gap in the sequence
     let newGroupNumber = 1;
     for (let i = 0; i < existingNumbers.length; i++) {
@@ -3029,7 +3030,7 @@ export class MatrixScalingManager {
       }
       newGroupNumber = i + 2; // If no gap found, use the next number
     }
-    
+
     // Create new scaling group
     const newGroup = {
       id: `group-${Date.now()}`,
@@ -3046,13 +3047,13 @@ export class MatrixScalingManager {
         scaledValue: cost.baseValue
       }))
     };
-    
+
     // Add to scaling groups
     this.scalingGroups.push(newGroup);
-    
+
     return newGroup;
   }
-  
+
   /**
    * Remove a scaling group
    * @param {string} groupId - Group ID
@@ -3062,16 +3063,16 @@ export class MatrixScalingManager {
     // Find group index
     const groupIndex = this.scalingGroups.findIndex(group => group.id === groupId);
     if (groupIndex === -1) return false;
-    
+
     // Check if group is protected
     if (this.scalingGroups[groupIndex].isProtected) return false;
-    
+
     // Remove group
     this.scalingGroups.splice(groupIndex, 1);
-    
+
     return true;
   }
-  
+
   /**
    * Update scaling group
    * @param {Object} updatedGroup - Updated scaling group
@@ -3081,13 +3082,13 @@ export class MatrixScalingManager {
     // Find group index
     const groupIndex = this.scalingGroups.findIndex(group => group.id === updatedGroup.id);
     if (groupIndex === -1) return false;
-    
+
     // Update group
     this.scalingGroups[groupIndex] = updatedGroup;
-    
+
     return true;
   }
-  
+
   /**
    * Calculate scaled value based on operation
    * @param {number} baseValue - Base value
@@ -3100,11 +3101,11 @@ export class MatrixScalingManager {
       if (baseValue === 0 && operation === 'divide') {
         return 0; // Avoid division by zero
       }
-      
+
       if (baseValue < 0 && operation === 'log') {
         return baseValue; // Avoid logarithm of negative number
       }
-      
+
       switch (operation) {
         case 'multiply':
           return baseValue * factor;
@@ -3128,7 +3129,7 @@ export class MatrixScalingManager {
       return baseValue;
     }
   }
-  
+
   /**
    * Propagate changes through the scaling chain
    * @param {number} startGroupIndex - Index of the group where changes started
@@ -3139,17 +3140,17 @@ export class MatrixScalingManager {
     if (startGroupIndex < 0 || startGroupIndex >= this.scalingGroups.length - 1) {
       return this.scalingGroups;
     }
-    
+
     // Clone scaling groups to avoid mutations
     const updatedGroups = JSON.parse(JSON.stringify(this.scalingGroups));
-    
+
     // For each subsequent group, update base values from the previous group's results
     for (let i = startGroupIndex + 1; i < updatedGroups.length; i++) {
       const previousGroup = updatedGroups[i - 1];
-      
+
       // Skip if groups have different types
       if (previousGroup._scalingType !== updatedGroups[i]._scalingType) continue;
-      
+
       // Create a map of previous results
       const previousResults = {};
       previousGroup.items.forEach(item => {
@@ -3158,12 +3159,12 @@ export class MatrixScalingManager {
           enabled: item.enabled
         };
       });
-      
+
       // Update each item in the current group
       updatedGroups[i].items = updatedGroups[i].items.map(item => {
         const prevResult = previousResults[item.id];
         if (!prevResult) return item;
-        
+
         // Calculate new scaled value based on updated base value
         const newBaseValue = prevResult.scaledValue;
         const newScaledValue = this.calculateScaledValue(
@@ -3171,7 +3172,7 @@ export class MatrixScalingManager {
           item.operation,
           item.scalingFactor
         );
-        
+
         return {
           ...item,
           originalBaseValue: item.originalBaseValue || item.baseValue, // Preserve original
@@ -3180,20 +3181,20 @@ export class MatrixScalingManager {
         };
       });
     }
-    
+
     // Update local state
     this.scalingGroups = updatedGroups;
-    
+
     return updatedGroups;
   }
-  
+
   /**
    * Calculate results from all scaling groups
    * @returns {Object} Results for each category
    */
   calculateResults() {
     const results = {};
-    
+
     // Group scaling groups by category
     const groupsByCategory = {};
     this.scalingGroups.forEach(group => {
@@ -3203,11 +3204,11 @@ export class MatrixScalingManager {
       }
       groupsByCategory[category].push(group);
     });
-    
+
     // For each category, calculate final results
     Object.entries(groupsByCategory).forEach(([category, groups]) => {
       const categoryResults = {};
-      
+
       // For each parameter ID, find the last scaled value
       groups.forEach(group => {
         group.items.forEach(item => {
@@ -3222,10 +3223,10 @@ export class MatrixScalingManager {
           };
         });
       });
-      
+
       results[category] = categoryResults;
     });
-    
+
     return results;
   }
 }
@@ -3255,7 +3256,7 @@ export class MatrixAPIService {
       { path: '/health', method: 'GET', handler: this.handleHealth.bind(this) }
     ];
   }
-  
+
   /**
    * Initialize API service
    * @returns {Object} API service instance
@@ -3265,32 +3266,32 @@ export class MatrixAPIService {
       // Setup Express app
       const express = await import('express');
       const cors = await import('cors');
-      
+
       this.app = express.default();
       this.app.use(cors.default());
       this.app.use(express.default.json({ limit: '50mb' }));
-      
+
       // Register routes
       this.registerRoutes();
-      
+
       // Start server
       this.server = this.app.listen(this.port, () => {
         console.log(`Matrix API service running on port ${this.port}`);
       });
-      
+
       return this;
     } catch (error) {
       console.error('Error initializing Matrix API service:', error);
       throw error;
     }
   }
-  
+
   /**
    * Register API routes
    */
   registerRoutes() {
     if (!this.app) return;
-    
+
     this.routes.forEach(route => {
       switch (route.method) {
         case 'GET':
@@ -3310,7 +3311,7 @@ export class MatrixAPIService {
       }
     });
   }
-  
+
   /**
    * Stop API service
    * @returns {Promise<void>}
@@ -3329,7 +3330,7 @@ export class MatrixAPIService {
       });
     }
   }
-  
+
   /**
    * Handle matrix state synchronization
    * @param {Object} req - Request object
@@ -3339,7 +3340,7 @@ export class MatrixAPIService {
     try {
       // Update matrix state
       this.matrixState = req.body;
-      
+
       res.json({
         success: true,
         message: 'Matrix state synchronized successfully',
@@ -3354,7 +3355,7 @@ export class MatrixAPIService {
       });
     }
   }
-  
+
   /**
    * Handle loading matrix state
    * @param {Object} req - Request object
@@ -3377,7 +3378,7 @@ export class MatrixAPIService {
       });
     }
   }
-  
+
   /**
    * Handle updating form labels
    * @param {Object} req - Request object
@@ -3386,7 +3387,7 @@ export class MatrixAPIService {
   handleUpdateFormLabels(req, res) {
     try {
       const { labels } = req.body;
-      
+
       // Update labels in matrix state
       if (this.matrixState.formMatrix) {
         Object.entries(labels).forEach(([paramId, label]) => {
@@ -3395,7 +3396,7 @@ export class MatrixAPIService {
           }
         });
       }
-      
+
       res.json({
         success: true,
         message: `Updated ${Object.keys(labels).length} labels successfully`,
@@ -3410,7 +3411,7 @@ export class MatrixAPIService {
       });
     }
   }
-  
+
   /**
    * Handle submitting form values
    * @param {Object} req - Request object
@@ -3420,10 +3421,10 @@ export class MatrixAPIService {
     try {
       const { version } = req.params;
       const values = req.body;
-      
+
       // Process submitted values
       // This would typically involve saving to files or database
-      
+
       res.json({
         success: true,
         message: `Submitted values for version ${version} successfully`,
@@ -3438,7 +3439,7 @@ export class MatrixAPIService {
       });
     }
   }
-  
+
   /**
    * Handle exporting matrix configuration
    * @param {Object} req - Request object
@@ -3447,10 +3448,10 @@ export class MatrixAPIService {
   handleExportConfig(req, res) {
     try {
       const config = req.body;
-      
+
       // Process configuration
       // This would typically involve generating configuration files
-      
+
       res.json({
         success: true,
         message: 'Matrix configuration exported successfully',
@@ -3465,7 +3466,7 @@ export class MatrixAPIService {
       });
     }
   }
-  
+
   /**
    * Handle generating configuration matrix
    * @param {Object} req - Request object
@@ -3474,10 +3475,10 @@ export class MatrixAPIService {
   handleGenerateConfigMatrix(req, res) {
     try {
       const { version, efficacyPeriods } = req.body;
-      
+
       // Generate configuration matrix
       // This would typically involve creating a matrix file
-      
+
       res.json({
         success: true,
         message: `Generated configuration matrix for version ${version} successfully`,
@@ -3492,7 +3493,7 @@ export class MatrixAPIService {
       });
     }
   }
-  
+
   /**
    * Handle exporting paths
    * @param {Object} req - Request object
@@ -3501,10 +3502,10 @@ export class MatrixAPIService {
   handleExportPaths(req, res) {
     try {
       const { version, S, selectedV, selectedF, selectedR, selectedRF } = req.body;
-      
+
       // Generate paths
       // This would typically involve creating path structures for calculations
-      
+
       res.json({
         success: true,
         message: `Exported paths for version ${version} successfully`,
@@ -3527,7 +3528,7 @@ export class MatrixAPIService {
       });
     }
   }
-  
+
   /**
    * Handle health check
    * @param {Object} req - Request object
@@ -3544,4 +3545,3 @@ export class MatrixAPIService {
     });
   }
 }
-

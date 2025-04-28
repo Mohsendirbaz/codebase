@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Script to update the ESLint configuration with the list of inactive files
- * This script reads the active-files-report.json file and updates the .eslintrc.js file
+ * This script reads the active-files-report-c3.json file and updates the .eslintrc.js file
  * to silence ESLint warnings for inactive files
  * 
  * Optimized for better performance with:
@@ -19,7 +19,7 @@ const path = require('path');
 // Parse command line arguments
 const args = process.argv.slice(2);
 const options = {
-  reportPath: args.find(arg => arg.startsWith('--report='))?.split('=')[1] || 'active-files-report.json',
+  reportPath: args.find(arg => arg.startsWith('--report='))?.split('=')[1] || 'active-files-report-c3.json',
   configPath: args.find(arg => arg.startsWith('--config='))?.split('=')[1] || '.eslintrc.js',
   verbose: args.includes('--verbose'),
   help: args.includes('--help') || args.includes('-h'),

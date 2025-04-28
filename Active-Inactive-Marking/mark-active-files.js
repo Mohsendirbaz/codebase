@@ -23,7 +23,7 @@ const globAsync = util.promisify(glob);
 // Parse command line arguments
 const args = process.argv.slice(2);
 const options = {
-  reportPath: args.find(arg => arg.startsWith('--report='))?.split('=')[1] || 'active-files-report.json',
+  reportPath: args.find(arg => arg.startsWith('--report='))?.split('=')[1] || 'active-files-report-c3.json',
   verbose: args.includes('--verbose'),
   dryRun: args.includes('--dry-run'),
   skipImports: args.includes('--skip-imports'),

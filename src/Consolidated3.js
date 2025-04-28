@@ -56,21 +56,8 @@ import SensitivityMonitor, { sensitivityActionRef } from './components/modules/S
 import SensitivityPlotsTabs from './components/modules/SensitivityPlotsTabs';
 
 // Import styling
-import './styles/HomePage.CSS/PropertySelector.css';
-import './styles/HomePage.CSS/CommonSelector.css';
-import './styles/HomePage.CSS/VersionSelector.css';
-import './styles/HomePage.CSS/CFAConsolidationUI.css';
-import './styles/HomePage.CSS/ResultsPanel.css';
-import './styles/HomePage.CSS/ProcessingPanel.css';
-import './styles/HomePage.CSS/SelectionPanel.css';
-import './styles/HomePage.CSS/CalculationMonitor.css';
-import './styles/HomePage.CSS/CalculationMonitorRun.css';
-import './styles/HomePage.CSS/CalculationMonitorRuns.css';
-import './styles/HomePage.CSS/ConfigurationMonitor.css';
-import './styles/HomePage.CSS/plots-tabs-css.css';
-import './styles/HomePage.CSS/sensitivity-plots-css.css';
-import './styles/HomePage.CSS/SensitivityMonitor.css';
-import './styles/HomePage.CSS/Consolidated3.css';
+import './styles/HomePage.CSS/HCSS.css';
+import './styles/HomePage.CSS/Consolidated.css';
 
 // Import label references for reset functionality
 import * as labelReferences from './utils/labelReferences';

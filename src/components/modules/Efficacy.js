@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import '../../styles/HomePage.CSS/Efficacy.css';
+import '../../styles/HomePage.CSS/HCSS.css';
 
 const Popup = ({ show, position, onClose, formValues, handleInputChange, id, version, itemId, onVersionChange}) => {
   const [sliderValues, setSliderValues] = useState([1, 40]);

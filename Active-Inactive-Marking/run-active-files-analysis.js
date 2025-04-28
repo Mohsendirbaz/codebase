@@ -181,7 +181,7 @@ async function main() {
     console.log(resultText);
     
     // Check if the report file was generated
-    const reportPath = path.resolve('./active-files-report.json');
+    const reportPath = path.resolve('./active-files-report-c3.json');
     if (!fileExists(reportPath)) {
       console.error('Error: Report file was not generated.');
       process.exit(1);
@@ -277,7 +277,7 @@ async function main() {
     }
     
     console.log('\nAnalysis complete!');
-    console.log('Report file generated at active-files-report.json');
+    console.log('Report file generated at active-files-report-c3.json');
     console.log('\nTo restore original filenames, run:');
     console.log('node restore-filenames.js');
     

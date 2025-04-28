@@ -707,11 +707,11 @@ module.exports = {
           // Write report to a JSON file
           try {
             fs.writeFileSync(
-              path.join(projectRoot, 'active-files-report.json'),
+              path.join(projectRoot, 'active-files-report-c3.json'),
               JSON.stringify(reportData, null, 2),
               'utf8'
             );
-            console.log("Report written to active-files-report.json");
+            console.log("Report written to active-files-report-c3.json");
           } catch (error) {
             console.error("Error writing report file:", error.message);
           }

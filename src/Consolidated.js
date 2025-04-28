@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import { DndProvider, useDrag, useDrop } from 'react-dnd';
@@ -12,7 +12,8 @@ import {
     faPlus, faTrash, faQuestion, faSync
 } from '@fortawesome/free-solid-svg-icons';
 import * as math from 'mathjs';
-
+import './styles/HomePage.CSS/HCSS.css';
+import './styles/HomePage.CSS/Consolidated.css';
 // Import label references for reset functionality.
 import * as labelReferences from './utils/labelReferences';
 
