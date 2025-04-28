@@ -77,7 +77,7 @@ typings/
 
 # DynamoDB Local files
 .dynamodb/
-
+.package-lock.json
 # OS generated files
 .DS_Store
 .DS_Store?
