@@ -1,6 +1,6 @@
 import React, { useCallback, useState, useMemo } from 'react';
+import '../../styles/HomePage.CSS//ResultsPanel.css';
 import CustomizableTable from '../modules/CustomizableTable'; // Adjust path as needed
-import '../../styles/HomePage.CSS/HCSS.css';
 
 const IndividualResultsPanel = ({
   data,
@@ -217,19 +217,19 @@ const IndividualResultsPanel = ({
   // Load individual version data
   const loadVersionData = useCallback(async (version) => {
     if (!version) return;
-
+    
     setLoadingTable(true);
     try {
       const response = await fetch(`http://localhost:4560/api/process/${version}`);
       if (!response.ok) {
         throw new Error(`Failed to fetch version data: ${response.status}`);
       }
-
+      
       const result = await response.json();
       if (result.error) {
         throw new Error(result.error);
       }
-
+      
       setIndividualTableData(result.data);
       setViewingVersion(version);
     } catch (error) {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CustomizableImage from './CustomizableImage';
-import '../../styles/HomePage.CSS/HCSS.css';
-
+import '../../styles/HomePage.CSS/plots-tabs-css.css';
+import '../../styles/HomePage.CSS/sensitivity-plots-css.css';
 const PlotsTabs = ({ version, sensitivity = false }) => {
     const [plotCategories, setPlotCategories] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState(null);

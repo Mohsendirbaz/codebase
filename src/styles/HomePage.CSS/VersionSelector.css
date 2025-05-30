@@ -1,0 +1,161 @@
+.version-selector {
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid var(--model-color-border);
+  border-radius: var(--model-border-radius-sm);
+  background-color: var(--model-color-background);
+  margin-bottom: 15px;
+  padding: 10px;
+  box-shadow: var(--model-shadow-sm);
+}
+
+/* Styles for when the selector is in the form container */
+.version-selector-container .version-selector {
+  max-height: 200px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.group-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background-color: var(--model-color-background-alt);
+  border-radius: var(--model-border-radius-sm);
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: background-color var(--model-transition-fast);
+}
+
+.version-selector-container .group-header {
+  padding: 6px 10px;
+  font-size: 0.9em;
+}
+
+.group-header:hover {
+  background-color: var(--model-color-background-hover);
+}
+
+.group-header.all-selected {
+  background-color: var(--model-color-primary-light);
+}
+
+.group-title {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.group-name {
+  font-weight: 500;
+}
+
+.group-count {
+  font-size: 0.85em;
+  color: var(--text-secondary);
+}
+
+.version-list {
+  margin-left: 10px;
+  margin-bottom: 15px;
+}
+
+.version-selector-container .version-list {
+  margin-left: 5px;
+  margin-bottom: 10px;
+}
+
+.version-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: var(--model-border-radius-sm);
+  margin-bottom: 4px;
+  cursor: pointer;
+  transition: background-color var(--model-transition-fast);
+  color: var(--text-color);
+}
+
+.version-selector-container .version-item {
+  padding: 4px 8px;
+  font-size: 0.85em;
+}
+
+.version-item:hover {
+  background-color: var(--model-color-background-hover);
+}
+.version-item:active {
+  background-color: var(--model-color-primary);
+  color: var(--dark-color);
+}
+.version-item.selected {
+  background-color: var(--model-color-primary);
+}
+
+.version-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.version-number {
+  font-weight: 500;
+}
+
+.version-description {
+  font-size: 0.8em;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.version-checkbox {
+  position: relative;
+  width: 18px;
+  height: 18px;
+}
+
+.version-checkbox::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--model-color-border);
+  border-radius: var(--model-border-radius-sm);
+  background-color: var(--model-color-background);
+  transition: all var(--model-transition-fast);
+}
+
+/* Use ::after only for the checkmark */
+.version-checkbox::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 7px;
+  width: 4px;
+  height: 8px;
+  border: solid transparent;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  transition: all 0.2s ease;
+}
+
+/* Hover state */
+.version-item:hover .version-checkbox::before {
+  border-color: var(--model-color-primary);
+}
+
+/* Selected state - both for version-item.selected and version-checkbox.checked */
+.version-item.selected .version-checkbox::before,
+.version-checkbox.checked::before {
+  background-color: var(--model-color-primary);
+  border-color: var(--model-color-primary);
+  box-shadow: 0 0 5px var(--model-color-primary-light);
+}
+
+.version-item.selected .version-checkbox::after,
+.version-checkbox.checked::after {
+  border-color: var(--dark-color);
+}

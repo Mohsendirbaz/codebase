@@ -2349,23 +2349,258 @@ const HomePageContent = () => {
             <div className="about-us-container">
                 <div className="about-us-content">
                     <div className="about-us-seal"></div>
-                    <h1>Financial Literacy<br/>
-                        A Foundation for Economic Empowerment</h1>
-                    <p>Financial literacy stands as the cornerstone of personal and professional empowerment in today's complex economic landscape.</p>
+                    <h1>TEA Space - Advanced Techno-Economic Analysis Platform</h1>
+
+                    <div align="center">
+                      <img src="https://img.shields.io/badge/React-18.2.0-61DAFB?style=for-the-badge&logo=react&logoColor=white" alt="React" />
+                      <img src="https://img.shields.io/badge/Python-3.9+-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
+                      <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License" />
+                      <img src="https://img.shields.io/badge/AI-GPT--4-412991?style=for-the-badge&logo=openai&logoColor=white" alt="AI" />
+                    </div>
+
+                    <h2>🌟 Overview</h2>
+                    <p>TEA Space is a cutting-edge techno-economic analysis platform that revolutionizes process economics evaluation through innovative matrix-based architecture, advanced environmental intelligence, and AI-powered assistance. Designed for industrial and chemical process optimization, TEA Space uniquely combines financial modeling with carbon tracking and regulatory compliance.</p>
+
+                    <h3>🎯 Key Features</h3>
+                    <ul>
+                      <li><strong>Advanced Financial Modeling Engine</strong>: Built a comprehensive Cash Flow Analysis (CFA) system with modular revenue/expense component tracking, supporting complex industrial process economics with time-sensitive parameter activation through the proprietary Efficacy Time System.</li>
+                      <li><strong>Multi-dimensional Parameter Management</strong>: Engineered a unified matrix state management system that treats all parameters as elements in a 5-dimensional space (versions, zones, time periods, configurations, and capacity), enabling powerful cross-dimensional comparisons and inheritance patterns with theoretical capacity handling up to 900,000 configurations.</li>
+                      <li><strong>Comprehensive Climate Intelligence Module</strong>: Implemented multi-dimensional carbon tracking across Scope 1, 2, and 3 emissions with configurable emission factors for equipment, installation, materials, energy, and transportation. Features specialized tracking for hard-to-decarbonize sectors (steel, cement, chemicals) with interactive geospatial visualization using heatmaps, bubble charts, and gradient overlays.</li>
+                      <li><strong>Three-Tier Regulatory Compliance Framework</strong>: Developed multilevel emissions treatment supporting local (municipal), state (regional), and federal (national) regulatory thresholds with automatic compliance status monitoring (compliant/warning/non-compliant) and region-specific incentive integration including carbon tax rebates and emissions trading benefits.</li>
+                      <li><strong>AI-Powered Factual Precedence System</strong>: Integrated GPT-4 Turbo to provide context-aware historical business insights and parameter recommendations based on industry type, technology level, scale, and regulatory framework. The system analyzes corporate evolution patterns from companies like Tesla and Toyota to suggest phased deployment strategies, partnerships, and value-based pricing approaches.</li>
+                      <li><strong>Intelligent Virtual Assistant for Modelers</strong>: Built the Junie Connector Plugin providing inline AI-powered suggestions directly in the IDE, featuring sequential agent architecture with isolated contexts, ghost text suggestions, and asynchronous execution for seamless modeling assistance without disrupting workflow.</li>
+                      <li><strong>Decarbonization Pathway Analysis</strong>: Created a comprehensive pathway comparison system evaluating 8 pre-configured hydrogen production methods (renewable, low-carbon, fossil, emerging) with metrics including carbon intensity (1.2-18.2 kg CO2e/kg H2), technology readiness levels, water usage, and cost analysis, enabling side-by-side comparison of up to 4 pathways.</li>
+                      <li><strong>Comprehensive Sensitivity Analysis Suite</strong>: Implemented multiple sensitivity testing modes including percentage variation, direct value modification, absolute departure analysis, and Monte Carlo simulations, all orchestrated through a sequential event processing system ensuring proper workflow execution.</li>
+                      <li><strong>Interactive Visualization Framework</strong>: Developed dynamic visualization capabilities using React/D3.js for real-time rendering of waterfall charts, operational cost breakdowns, cumulative economic summaries, capacity utilization tracking, and climate impact overlays with weighted calculations across all dimensions.</li>
+                      <li><strong>Scalable Architecture with Environmental Focus</strong>: Designed a modular full-stack solution using React.js with Jotai state management, Python Flask APIs with factory-based calculation engines, dual database integration (PostgreSQL/ClickHouse), and blockchain-ready architecture for future carbon credit tracking and immutable compliance records.</li>
+                      <li><strong>Enterprise Environmental Features</strong>: Incorporated multi-zone carbon generation with clustering analysis, regional system support (SI/USD and Europe/EUR), dynamic carbon incentive calculations, and machine learning readiness for predictive emissions modeling and optimization recommendations.</li>
+                    </ul>
+
+                    <h2>🚀 Getting Started</h2>
+
+                    <h3>Prerequisites</h3>
+                    <ul>
+                      <li>Node.js v16.0+</li>
+                      <li>Python 3.9+</li>
+                      <li>PostgreSQL 14+</li>
+                      <li>ClickHouse (optional for analytics)</li>
+                    </ul>
+
+                    <h3>Installation</h3>
+                    <ol>
+                      <li>
+                        <strong>Clone the repository</strong>
+                        <pre><code>git clone https://github.com/yourusername/tea-space.git
+cd tea-space</code></pre>
+                      </li>
+                      <li>
+                        <strong>Install frontend dependencies</strong>
+                        <pre><code>npm install</code></pre>
+                      </li>
+                      <li>
+                        <strong>Install backend dependencies</strong>
+                        <pre><code>cd backend
+pip install -r requirements.txt</code></pre>
+                      </li>
+                      <li>
+                        <strong>Initialize databases</strong>
+                        <pre><code>python backend/database/initialize_databases.py</code></pre>
+                      </li>
+                      <li>
+                        <strong>Start the application</strong>
+                        <pre><code># Terminal 1 - Backend
+python server.py
+
+# Terminal 2 - Frontend
+npm start</code></pre>
+                      </li>
+                    </ol>
+
+                    <h2>🏗️ Architecture</h2>
+
+                    <h3>Frontend Stack</h3>
+                    <ul>
+                      <li><strong>React 18.2</strong> with functional components</li>
+                      <li><strong>Jotai</strong> for atomic state management</li>
+                      <li><strong>Ant Design</strong> for UI components</li>
+                      <li><strong>D3.js</strong> for data visualizations</li>
+                      <li><strong>React Router</strong> for navigation</li>
+                    </ul>
+
+                    <h3>Backend Stack</h3>
+                    <ul>
+                      <li><strong>Flask</strong> API framework</li>
+                      <li><strong>PostgreSQL</strong> for relational data</li>
+                      <li><strong>ClickHouse</strong> for time-series analytics</li>
+                      <li><strong>Modular calculation engines</strong></li>
+                      <li><strong>Factory pattern architecture</strong></li>
+                    </ul>
+
+                    <h3>AI Integration</h3>
+                    <ul>
+                      <li><strong>GPT-4 Turbo</strong> for factual precedence</li>
+                      <li><strong>Sequential agent architecture</strong></li>
+                      <li><strong>Rate-limited queue system</strong></li>
+                      <li><strong>Context-aware recommendations</strong></li>
+                    </ul>
+
+                    <h2>📊 Core Modules</h2>
+
+                    <h3>1. Financial Modeling Engine</h3>
+                    <ul>
+                      <li>Cash Flow Analysis (CFA) with modular components</li>
+                      <li>Revenue/expense tracking with time-sensitive activation</li>
+                      <li>Tax operations and utility calculations</li>
+                      <li>Multi-version configuration management</li>
+                    </ul>
+
+                    <h3>2. Climate Intelligence Module</h3>
+                    <p>Example: Track emissions across zones</p>
+                    <pre>{`const emissionFactors = {
+  equipment: 2.5,
+  installation: 1.2,
+  materials: 3.8,
+  energy: 4.5,
+  transportation: 5.2
+};`}</pre>
+
+                    <h3>3. Sensitivity Analysis Suite</h3>
+                    <ul>
+                      <li>Percentage variation</li>
+                      <li>Direct value modification</li>
+                      <li>Absolute departure analysis</li>
+                      <li>Monte Carlo simulations</li>
+                    </ul>
+
+                    <h3>4. Decarbonization Pathways</h3>
+                    <ul>
+                      <li>Wind-PEM, Solar-PEM, Biomass-PEM</li>
+                      <li>Natural gas with/without CCS</li>
+                      <li>Coal with/without CCS</li>
+                      <li>Emerging technologies (Solid Oxide)</li>
+                    </ul>
+
+                    <h2>🤖 AI-Powered Features</h2>
+
+                    <h3>Factual Precedence System</h3>
+                    <p>The platform provides context-aware business insights based on:</p>
+                    <ul>
+                      <li>Industry type and technology level</li>
+                      <li>Corporate evolution patterns (Tesla, Toyota, Amazon)</li>
+                      <li>Regulatory framework considerations</li>
+                      <li>Phased deployment strategies</li>
+                    </ul>
+
+                    <h3>Virtual Assistant (Junie Plugin)</h3>
+                    <ul>
+                      <li>Inline code suggestions in IDE</li>
+                      <li>Ghost text recommendations</li>
+                      <li>Asynchronous background processing</li>
+                      <li>Context isolation for focused assistance</li>
+                    </ul>
+
+                    <h2>🌍 Environmental Compliance</h2>
+
+                    <h3>Emission Thresholds</h3>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Level</th>
+                          <th>Threshold</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Local</td>
+                          <td>&lt; 1,000 kg CO₂e</td>
+                          <td>Compliant</td>
+                        </tr>
+                        <tr>
+                          <td>State</td>
+                          <td>&lt; 10,000 kg CO₂e</td>
+                          <td>Warning at 80%</td>
+                        </tr>
+                        <tr>
+                          <td>Federal</td>
+                          <td>&lt; 25,000 kg CO₂e</td>
+                          <td>Non-compliant if exceeded</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <h3>Regional Systems</h3>
+                    <ul>
+                      <li><strong>SI/USD</strong>: Standard international metrics</li>
+                      <li><strong>EUR</strong>: EU-specific regulations and incentives</li>
+                    </ul>
+
+                    <h2>📈 Visualization Capabilities</h2>
+                    <ul>
+                      <li><strong>Waterfall Charts</strong> - Financial flow analysis</li>
+                      <li><strong>Heatmaps</strong> - Geographic emission distribution</li>
+                      <li><strong>Bubble Charts</strong> - Multi-dimensional comparisons</li>
+                      <li><strong>Capacity Tracking</strong> - Real-time utilization metrics</li>
+                    </ul>
+
+                    <h2>🛠️ Development Tools</h2>
+
+                    <h3>Code Analysis</h3>
+                    <pre>{`# Find large files for refactoring
+python find_large_files.py
+
+# Analyze source directory
+python find_large_src_files.py`}</pre>
+
+                    <h3>Testing</h3>
+                    <pre>{`# Run unit tests
+npm test
+
+# Run backend tests
+pytest backend/tests/`}</pre>
+
+                    <h2>📚 Documentation</h2>
+                    <ul>
+                      <li><a href="./docs/api.md">API Documentation</a></li>
+                      <li><a href="./docs/components.md">Component Guide</a></li>
+                      <li><a href="./docs/climate-module.md">Climate Module Guide</a></li>
+                      <li><a href="./docs/ai-integration.md">AI Integration Guide</a></li>
+                    </ul>
+
+                    <h2>🤝 Contributing</h2>
+                    <p>We welcome contributions! Please see our <a href="CONTRIBUTING.md">Contributing Guide</a> for details.</p>
+                    <ol>
+                      <li>Fork the repository</li>
+                      <li>Create your feature branch (<code>git checkout -b feature/AmazingFeature</code>)</li>
+                      <li>Commit your changes (<code>git commit -m 'Add some AmazingFeature'</code>)</li>
+                      <li>Push to the branch (<code>git push origin feature/AmazingFeature</code>)</li>
+                      <li>Open a Pull Request</li>
+                    </ol>
+
+                    <h2>📄 License</h2>
+                    <p>This project is licensed under the MIT License - see the <a href="LICENSE">LICENSE</a> file for details.</p>
+
+                    <h2>🙏 Acknowledgments</h2>
+                    <ul>
+                      <li>OpenAI for GPT-4 integration capabilities</li>
+                      <li>React and Python communities</li>
+                      <li>Contributors to open-source dependencies</li>
+                    </ul>
+
+                    <h2>📞 Contact & Support</h2>
+                    <ul>
+                      <li><strong>Issues</strong>: <a href="https://github.com/yourusername/tea-space/issues">GitHub Issues</a></li>
+                      <li><strong>Discussions</strong>: <a href="https://github.com/yourusername/tea-space/discussions">GitHub Discussions</a></li>
+                      <li><strong>Email</strong>: support@teaspace.com</li>
+                    </ul>
 
                     <div className="decorative-divider">✦ ✦ ✦</div>
 
-
-                    <h2>Synthesize disparate elements into cohesive strategies</h2>
-
-                    <p>learners can manipulate, analyze, and internalize.</p>
-
-                    <h2>Cultivating Integrated Financial Thinkers</h2>
-
-                    <div className="decorative-divider">✦ ✦ ✦</div>
-
+                    <div align="center">
+                      <p>Built with ❤️ for sustainable industrial transformation</p>
+                      <p>© 2025 TEA Space. Making complex economics simple, sustainable, and intelligent.</p>
+                    </div>
                 </div>
-
             </div>
         );
     };

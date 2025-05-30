@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import '../../styles/HomePage.CSS/HCSS.css';
-
+import '../../styles/HomePage.CSS/CalculationMonitor.css';
+import '../../styles/HomePage.CSS/CalculationMonitorRun.css';
+import '../../styles/HomePage.CSS/CalculationMonitorRuns.css';
 
 /**
  * CalculationMonitor component that displays real-time updates during price optimization

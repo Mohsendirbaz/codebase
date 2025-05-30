@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "zeroConfig": true,
+        "buildCommand": "sh -c 'node -e \"const fs=require(\\\"fs\\\");const path=require(\\\"path\\\");const symlinkPath=path.join(process.cwd(),\\\"public\\\",\\\"Original\\\");try{const stats=fs.lstatSync(symlinkPath);if(stats.isSymbolicLink()){console.log(\\\"Found symlink at:\\\",symlinkPath);fs.unlinkSync(symlinkPath);console.log(\\\"Removed symlink\\\");}}catch(e){console.log(\\\"No symlink found or other error:\\\",e.message);}try{fs.mkdirSync(symlinkPath,{recursive:true});console.log(\\\"Created directory:\\\",symlinkPath);}catch(e){console.error(\\\"Error creating directory:\\\",e.message);};\"; DISABLE_ESLINT_PLUGIN=true npm run build'"
+      }
+    }
+  ],
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
+}

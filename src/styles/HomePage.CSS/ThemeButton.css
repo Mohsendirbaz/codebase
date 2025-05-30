@@ -1,0 +1,50 @@
+.theme-button-container {
+  position: relative;
+  margin: 0 5px;
+}
+
+.theme-button {
+  padding: 8px 16px;
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--model-border-radius-md, 8px);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: var(--model-transition-medium, 0.3s ease);
+  position: relative;
+  min-width: 100px;
+  font-size: 1rem;
+}
+
+.theme-button.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.theme-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.edit-icon {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  cursor: pointer;
+  z-index: 1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.edit-icon:hover {
+  transform: scale(1.2);
+  background-color: var(--background-color);
+}
