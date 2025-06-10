@@ -1,4 +1,4 @@
-# TEA Space - Advanced Techno-Economic Analysis Platform
+# TEA Space - Advanced Techno-Economic Analysis Platform (under construction)
 
 <div align="center">
   <img src="https://img.shields.io/badge/React-18.2.0-61DAFB?style=for-the-badge&logo=react&logoColor=white" alt="React">
@@ -186,13 +186,6 @@ npm test
 pytest backend/tests/
 ```
 
-## 📚 Documentation
-
-- [API Documentation](./docs/api.md)
-- [Component Guide](./docs/components.md)
-- [Climate Module Guide](./docs/climate-module.md)
-- [AI Integration Guide](./docs/ai-integration.md)
-
 ## 🤝 Contributing
 
 We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
@@ -209,7 +202,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
-- OpenAI for GPT-4 integration capabilities
 - React and Python communities
 - Contributors to open-source dependencies
 
@@ -217,7 +209,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - **Issues**: [GitHub Issues](https://github.com/yourusername/tea-space/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/yourusername/tea-space/discussions)
-- **Email**: support@teaspace.com
+- **Email**: dirbaz.sharif@gmail.com
 
 ---
 
