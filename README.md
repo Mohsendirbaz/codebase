@@ -136,7 +136,7 @@ const emissionFactors = {
 ### Factual Precedence System
 The platform provides context-aware business insights based on:
 - Industry type and technology level
-- Corporate evolution patterns (Tesla, Toyota, Amazon)
+- Corporate evolution patterns
 - Regulatory framework considerations
 - Phased deployment strategies
 
