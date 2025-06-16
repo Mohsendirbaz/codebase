@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import { DndProvider, useDrag, useDrop } from 'react-dnd';
+import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { motion, AnimatePresence } from 'framer-motion';
 import axios from 'axios';
@@ -12,819 +12,29 @@ import {
     faPlus, faTrash, faQuestion, faSync
 } from '@fortawesome/free-solid-svg-icons';
 import * as math from 'mathjs';
-
+import './styles/HomePage.CSS/HCSS.css';
+import './styles/HomePage.CSS/Consolidated.css';
 // Import label references for reset functionality.
 import * as labelReferences from './utils/labelReferences';
+// Import modularized components and services
+import { MatrixSubmissionService } from './services';
+import { MatrixApp } from './components/matrix';
+import { GeneralFormConfig } from './components/forms';
+import { Card, CardHeader, CardContent, Tooltip } from './components/ui';
+import { CumulativeDocumentation } from './components/documentation';
+import { DraggableScalingItem, ScalingSummary } from './components/scaling';
 
 /**
- * MatrixSubmissionService - Handles matrix-based form value submissions to backend services
+ * UI Components
+ * The following components are used to build the UI for the scaling system
+ * 
+ * Note: The following components have been moved to their own files:
+ * - Card, CardHeader, CardContent: src/components/ui/Card.js
+ * - Tooltip: src/components/ui/Tooltip.js
+ * - CumulativeDocumentation: src/components/documentation/CumulativeDocumentation.js
+ * - DraggableScalingItem: src/components/scaling/DraggableScalingItem.js
+ * - ScalingSummary: src/components/scaling/ScalingSummary.js
  */
-class MatrixSubmissionService {
-    constructor() {
-        this.submitParameterUrl = 'http://localhost:3040/append/';
-        this.submitCompleteSetUrl = 'http://localhost:3052/append/';
-        this.formatterUrl = 'http://localhost:3050/formatter/';
-        this.module1Url = 'http://localhost:3051/module1/';
-        this.configModulesUrl = 'http://localhost:3053/config_modules/';
-        this.tableUrl = 'http://localhost:3054/table/';
-    }
-
-    /**
-     * Submit the matrix-based form values to the server
-     * @param {Object} matrixFormValues The matrix form values object
-     * @param {string} versionId The version ID
-     * @returns {Promise<Object>} The response from the server
-     */
-    async submitMatrixFormValues(matrixFormValues, versionId) {
-        try {
-            // Prepare filtered values format with matrix data
-            const filteredValues = this.prepareFilteredValues(matrixFormValues, versionId);
-
-            // Submit the filtered values
-            const submitResponse = await this.submitFilteredValues(filteredValues, versionId);
-
-            // Run the formatter to process the submitted values
-            const formatterResponse = await this.runFormatter(versionId);
-
-            // Run module1 to build the configuration matrix
-            const module1Response = await this.runModule1(versionId);
-
-            // Run config_modules to create configuration modules
-            const configModulesResponse = await this.runConfigModules(versionId);
-
-            // Run table module to create the variable table
-            const tableResponse = await this.runTable(versionId);
-
-            return {
-                submit: submitResponse,
-                formatter: formatterResponse,
-                module1: module1Response,
-                configModules: configModulesResponse,
-                table: tableResponse
-            };
-        } catch (error) {
-            console.error('Error submitting matrix form values:', error);
-            throw error;
-        }
-    }
-
-    /**
-     * Prepare filtered values from matrix form values
-     * @param {Object} matrixFormValues The matrix form values
-     * @param {string} versionId The version ID (e.g., 'v1', 'v2')
-     * @returns {string} The filtered values JSON string
-     */
-    prepareFilteredValues(matrixFormValues, versionId) {
-        const filteredValues = { filteredValues: [] };
-        const activeVersion = versionId || matrixFormValues.versions.active;
-        const activeZone = matrixFormValues.zones.active;
-
-        // Extract the numeric version from the versionId (e.g., 'v1' -> '1')
-        const numericVersion = activeVersion.replace(/\D/g, '');
-
-        // Process each parameter in the matrix
-        Object.keys(matrixFormValues.formMatrix).forEach(paramId => {
-            const param = matrixFormValues.formMatrix[paramId];
-
-            // Skip parameters that don't have matrix values for the active version/zone
-            if (!param.matrix[activeVersion] || !param.matrix[activeVersion][activeZone]) {
-                return;
-            }
-
-            // Get the parameter value for the active version and zone
-            const value = param.matrix[activeVersion][activeZone];
-
-            // Add the parameter to the filtered values array
-            filteredValues.filteredValues.push({
-                id: paramId,
-                value: value,
-                start: param.efficacyPeriod.start.value,
-                end: param.efficacyPeriod.end.value,
-                remarks: param.remarks || ""
-            });
-
-            // Special handling for vector values (Amount4, Amount5, Amount6, Amount7)
-            // For vector quantities (vAmountX) and prices (rAmountY)
-            if (param.dynamicAppendix && param.dynamicAppendix.itemState) {
-                const itemState = param.dynamicAppendix.itemState;
-
-                // Only include items that are turned on (status = 'on')
-                if (itemState.status === 'on') {
-                    // Handle vKey vector items
-                    if (itemState.vKey && paramId.includes('vAmount')) {
-                        const vIndex = parseInt(paramId.replace('vAmount', ''));
-                        filteredValues.filteredValues.push({
-                            id: `variableCostsAmount4_${vIndex - 39}`,
-                            value: value,
-                            start: param.efficacyPeriod.start.value,
-                            end: param.efficacyPeriod.end.value,
-                            remarks: `Vector Quantity Item ${vIndex - 39}`
-                        });
-                    }
-
-                    // Handle rKey vector items
-                    if (itemState.rKey && paramId.includes('rAmount')) {
-                        const rIndex = parseInt(paramId.replace('rAmount', ''));
-                        filteredValues.filteredValues.push({
-                            id: `amounts_per_unitAmount5_${rIndex - 59}`,
-                            value: value,
-                            start: param.efficacyPeriod.start.value,
-                            end: param.efficacyPeriod.end.value,
-                            remarks: `Vector Price Item ${rIndex - 59}`
-                        });
-                    }
-                }
-            }
-        });
-
-        return JSON.stringify(filteredValues, null, 2);
-    }
-
-    /**
-     * Submit filtered values to the server
-     * @param {string} filteredValues The filtered values JSON string
-     * @param {string} version The version ID
-     * @returns {Promise<Object>} The response from the server
-     */
-    async submitFilteredValues(filteredValues, version) {
-        try {
-            // Extract numeric version from version ID (e.g., 'v1' -> '1')
-            const numericVersion = version.replace(/\D/g, '');
-
-            // Submit to the complete set endpoint
-            const response = await fetch(this.submitCompleteSetUrl + numericVersion, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'text/plain'
-                },
-                body: filteredValues
-            });
-
-            if (!response.ok) {
-                throw new Error(`Failed to submit filtered values: ${response.statusText}`);
-            }
-
-            return await response.text();
-        } catch (error) {
-            console.error('Error submitting filtered values:', error);
-            throw error;
-        }
-    }
-
-    /**
-     * Run the formatter module
-     * @param {string} version The version ID
-     * @returns {Promise<Object>} The response from the server
-     */
-    async runFormatter(version) {
-        try {
-            // Extract numeric version from version ID
-            const numericVersion = version.replace(/\D/g, '');
-
-            const response = await fetch(this.formatterUrl + numericVersion, {
-                method: 'GET'
-            });
-
-            if (!response.ok) {
-                throw new Error(`Failed to run formatter: ${response.statusText}`);
-            }
-
-            return await response.json();
-        } catch (error) {
-            console.error('Error running formatter:', error);
-            throw error;
-        }
-    }
-
-    /**
-     * Run module1 to build the configuration matrix
-     * @param {string} version The version ID
-     * @returns {Promise<Object>} The response from the server
-     */
-    async runModule1(version) {
-        try {
-            // Extract numeric version from version ID
-            const numericVersion = version.replace(/\D/g, '');
-
-            const response = await fetch(this.module1Url + numericVersion, {
-                method: 'GET'
-            });
-
-            if (!response.ok) {
-                throw new Error(`Failed to run module1: ${response.statusText}`);
-            }
-
-            return await response.json();
-        } catch (error) {
-            console.error('Error running module1:', error);
-            throw error;
-        }
-    }
-
-    /**
-     * Run config_modules to create configuration modules
-     * @param {string} version The version ID
-     * @returns {Promise<Object>} The response from the server
-     */
-    async runConfigModules(version) {
-        try {
-            // Extract numeric version from version ID
-            const numericVersion = version.replace(/\D/g, '');
-
-            const response = await fetch(this.configModulesUrl + numericVersion, {
-                method: 'GET'
-            });
-
-            if (!response.ok) {
-                throw new Error(`Failed to run config_modules: ${response.statusText}`);
-            }
-
-            return await response.json();
-        } catch (error) {
-            console.error('Error running config_modules:', error);
-            throw error;
-        }
-    }
-
-    /**
-     * Run table module to create the variable table
-     * @param {string} version The version ID
-     * @returns {Promise<Object>} The response from the server
-     */
-    async runTable(version) {
-        try {
-            // Extract numeric version from version ID
-            const numericVersion = version.replace(/\D/g, '');
-
-            const response = await fetch(this.tableUrl + numericVersion, {
-                method: 'GET'
-            });
-
-            if (!response.ok) {
-                throw new Error(`Failed to run table module: ${response.statusText}`);
-            }
-
-            return await response.json();
-        } catch (error) {
-            console.error('Error running table module:', error);
-            throw error;
-        }
-    }
-}
-
-/**
- * Card Component for Scaling UI
- */
-const Card = ({ children, className = '', ...props }) => (
-    <div className={`card ${className}`} {...props}>
-        {children}
-    </div>
-);
-
-/**
- * CardHeader Component for Scaling UI
- */
-const CardHeader = ({ children, className = '', ...props }) => (
-    <div className={`card-header ${className}`} {...props}>
-        {children}
-    </div>
-);
-
-/**
- * CardContent Component for Scaling UI
- */
-const CardContent = ({ children, className = '', ...props }) => (
-    <div className={`card-content ${className}`} {...props}>
-        {children}
-    </div>
-);
-
-/**
- * Tooltip Component
- */
-const Tooltip = ({ content, children }) => {
-    const [isVisible, setIsVisible] = useState(false);
-    const tooltipRef = useRef(null);
-
-    return (
-        <div
-            className="tooltip-container"
-            onMouseEnter={() => setIsVisible(true)}
-            onMouseLeave={() => setIsVisible(false)}
-        >
-            {children}
-            <AnimatePresence>
-                {isVisible && (
-                    <motion.div
-                        ref={tooltipRef}
-                        className="tooltip"
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 10 }}
-                        transition={{ duration: 0.2 }}
-                    >
-                        {content}
-                    </motion.div>
-                )}
-            </AnimatePresence>
-        </div>
-    );
-};
-
-/**
- * CumulativeDocumentation Component
- */
-const CumulativeDocumentation = ({ onClose }) => (
-    <div className="scaling-documentation">
-        <h4>Understanding Cumulative Calculations</h4>
-        <p>In this scaling system, each tab (after the Default Scaling) builds upon the results of previous tabs:</p>
-
-        <ol>
-            <li><strong>Default Scaling</strong> - Uses original base values from your cost data</li>
-            <li><strong>Subsequent Tabs</strong> - Each uses the results from the previous tab as its base values</li>
-        </ol>
-
-        <p>When you add, remove, or modify tabs, all subsequent tabs automatically update to maintain the mathematical flow.</p>
-
-        <div className="scaling-documentation-example">
-            <div className="example-flow">
-                <div className="example-tab">
-                    <div>Default Tab</div>
-                    <div className="example-value">Base: 100</div>
-                    <div className="example-op">× 2</div>
-                    <div className="example-result">Result: 200</div>
-                </div>
-                <div className="example-arrow">→</div>
-                <div className="example-tab">
-                    <div>Second Tab</div>
-                    <div className="example-value">Base: 200</div>
-                    <div className="example-op">+ 50</div>
-                    <div className="example-result">Result: 250</div>
-                </div>
-                <div className="example-arrow">→</div>
-                <div className="example-tab">
-                    <div>Third Tab</div>
-                    <div className="example-value">Base: 250</div>
-                    <div className="example-op">× 1.2</div>
-                    <div className="example-result">Result: 300</div>
-                </div>
-            </div>
-        </div>
-
-        <button className="scaling-documentation-button" onClick={onClose}>
-            Got it
-        </button>
-    </div>
-);
-
-/**
- * DraggableScalingItem Component
- */
-const DraggableScalingItem = ({ item, index, moveItem, V, R, toggleV, toggleR, ...props }) => {
-    const ref = useRef(null);
-
-    const [{ handlerId }, drop] = useDrop({
-        accept: 'scaling-item',
-        collect(monitor) {
-            return {
-                handlerId: monitor.getHandlerId(),
-            };
-        },
-        hover(item, monitor) {
-            if (!ref.current) return;
-            const dragIndex = item.index;
-            const hoverIndex = index;
-            if (dragIndex === hoverIndex) return;
-
-            const hoverBoundingRect = ref.current?.getBoundingClientRect();
-            const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
-            const clientOffset = monitor.getClientOffset();
-            const hoverClientY = clientOffset.y - hoverBoundingRect.top;
-
-            if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) return;
-            if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) return;
-
-            moveItem(dragIndex, hoverIndex);
-            item.index = hoverIndex;
-        },
-    });
-
-    const [{ isDragging }, drag] = useDrag({
-        type: 'scaling-item',
-        item: () => ({ id: item.id, index }),
-        collect: (monitor) => ({
-            isDragging: monitor.isDragging(),
-        }),
-    });
-
-    drag(drop(ref));
-
-    // Render V and R checkboxes if applicable
-    const renderVRCheckboxes = () => {
-        return (
-            <div className="checkbox-section">
-                {item.vKey && (
-                    <div className="checkbox-group">
-                        <span className="checkbox-label">{item.vKey}</span>
-                        <input
-                            type="checkbox"
-                            className="custom-checkbox"
-                            checked={V && V[item.vKey] === 'on'}
-                            onChange={() => toggleV && toggleV(item.vKey)}
-                        />
-                    </div>
-                )}
-                {item.rKey && (
-                    <div className="checkbox-group">
-                        <span className="checkbox-label">{item.rKey}</span>
-                        <input
-                            type="checkbox"
-                            className="custom-checkbox"
-                            checked={R && R[item.rKey] === 'on'}
-                            onChange={() => toggleR && toggleR(item.rKey)}
-                        />
-                    </div>
-                )}
-            </div>
-        );
-    };
-
-    return (
-        <motion.div
-            ref={ref}
-            layout
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
-            style={{ opacity: isDragging ? 0.5 : 1 }}
-            data-handler-id={handlerId}
-            {...props}
-        >
-            {(item.vKey || item.rKey) && renderVRCheckboxes()}
-            {props.children}
-        </motion.div>
-    );
-};
-
-/**
- * ScalingSummary Component
- */
-const ScalingSummary = ({
-                            items,
-                            tabConfigs,
-                            onExpressionChange,
-                            V,
-                            R,
-                            toggleV,
-                            toggleR
-                        }) => {
-    const [itemExpressions, setItemExpressions] = useState({});
-    const [intermediateResults, setIntermediateResults] = useState({});
-    const [lastUpdated, setLastUpdated] = useState(null);
-    const [expandedRows, setExpandedRows] = useState({});
-    const [filterOptions, setFilterOptions] = useState({
-        showVItems: true,
-        showRItems: true,
-        showOtherItems: true,
-        searchTerm: '',
-    });
-
-    // Process items with awareness of cumulative nature
-    useEffect(() => {
-        const newResults = {};
-
-        items.forEach(item => {
-            // Start with original value
-            newResults[item.id] = {
-                baseValue: item.originalValue,
-                currentValue: item.originalValue,
-                steps: []
-            };
-
-            // If there are scaledValues, process them in sequence to simulate the cumulative effect
-            if (item.scaledValues) {
-                const tabIds = Object.keys(item.scaledValues).sort((a, b) => {
-                    // Sort based on the index provided in tabConfigs
-                    const indexA = tabConfigs.findIndex(tab => tab.id === a);
-                    const indexB = tabConfigs.findIndex(tab => tab.id === b);
-                    return indexA - indexB;
-                });
-
-                // Track running value for cumulative calculation
-                let cumulativeValue = item.originalValue;
-
-                tabIds.forEach(tabId => {
-                    const scaledValue = item.scaledValues[tabId];
-                    const tabConfig = tabConfigs.find(tab => tab.id === tabId);
-
-                    if (tabConfig) {
-                        // Add a step showing how this tab's value affects the cumulative result
-                        newResults[item.id].steps.push({
-                            tabId,
-                            tabName: tabConfig.label,
-                            inputValue: cumulativeValue,
-                            scaledValue,
-                            resultValue: scaledValue // The next tab will use this as input
-                        });
-
-                        // Update the cumulative value for the next tab
-                        cumulativeValue = scaledValue;
-                    }
-                });
-
-                // Set the final cumulative value
-                newResults[item.id].currentValue = cumulativeValue;
-            }
-        });
-
-        setIntermediateResults(newResults);
-        setLastUpdated(Date.now());
-    }, [items, tabConfigs]);
-
-    // Toggle row expansion
-    const toggleRowExpansion = useCallback((itemId) => {
-        setExpandedRows(prev => ({
-            ...prev,
-            [itemId]: !prev[itemId]
-        }));
-    }, []);
-
-    // Handle expression change
-    const handleExpressionChange = useCallback((itemId, expression) => {
-        setItemExpressions(prev => ({
-            ...prev,
-            [itemId]: expression
-        }));
-
-        if (onExpressionChange) {
-            onExpressionChange(itemId, expression);
-        }
-    }, [onExpressionChange]);
-
-    // Check if column is within parentheses (for formatting)
-    const isInParenthesis = useCallback((tabId) => {
-        const tabIndex = tabConfigs.findIndex(tab => tab.id === tabId);
-        return tabConfigs[tabIndex]?.isParenthesis || false;
-    }, [tabConfigs]);
-
-    // Handle filter change
-    const handleFilterChange = useCallback((filterName, value) => {
-        setFilterOptions(prev => ({
-            ...prev,
-            [filterName]: value
-        }));
-    }, []);
-
-    // Filter items based on current filter options
-    const filteredItems = useMemo(() => {
-        return items.filter(item => {
-            // Filter by V/R/Other categories
-            const isVItem = !!item.vKey;
-            const isRItem = !!item.rKey;
-
-            if (isVItem && !filterOptions.showVItems) return false;
-            if (isRItem && !filterOptions.showRItems) return false;
-            if (!isVItem && !isRItem && !filterOptions.showOtherItems) return false;
-
-            // Filter by search term
-            if (filterOptions.searchTerm) {
-                const searchLower = filterOptions.searchTerm.toLowerCase();
-                const labelMatch = item.label.toLowerCase().includes(searchLower);
-                const vKeyMatch = item.vKey && item.vKey.toLowerCase().includes(searchLower);
-                const rKeyMatch = item.rKey && item.rKey.toLowerCase().includes(searchLower);
-
-                return labelMatch || vKeyMatch || rKeyMatch;
-            }
-
-            return true;
-        });
-    }, [items, filterOptions]);
-
-    return (
-        <Card className="scaling-summary">
-            <CardHeader>
-                <div className="scaling-summary-header-container">
-                    <h3 className="scaling-summary-title">Scaling Summary</h3>
-
-                    <div className="scaling-summary-filters">
-                        <div className="scaling-summary-filter-group">
-                            <label className="scaling-filter-label">
-                                <input
-                                    type="checkbox"
-                                    checked={filterOptions.showVItems}
-                                    onChange={(e) => handleFilterChange('showVItems', e.target.checked)}
-                                    className="scaling-filter-checkbox"
-                                />
-                                V Items
-                            </label>
-
-                            <label className="scaling-filter-label">
-                                <input
-                                    type="checkbox"
-                                    checked={filterOptions.showRItems}
-                                    onChange={(e) => handleFilterChange('showRItems', e.target.checked)}
-                                    className="scaling-filter-checkbox"
-                                />
-                                R Items
-                            </label>
-
-                            <label className="scaling-filter-label">
-                                <input
-                                    type="checkbox"
-                                    checked={filterOptions.showOtherItems}
-                                    onChange={(e) => handleFilterChange('showOtherItems', e.target.checked)}
-                                    className="scaling-filter-checkbox"
-                                />
-                                Other Items
-                            </label>
-                        </div>
-
-                        <div className="scaling-summary-search">
-                            <input
-                                type="text"
-                                value={filterOptions.searchTerm}
-                                onChange={(e) => handleFilterChange('searchTerm', e.target.value)}
-                                placeholder="Search items..."
-                                className="scaling-summary-search-input"
-                            />
-                        </div>
-                    </div>
-                </div>
-            </CardHeader>
-            <CardContent>
-                <div className="scaling-summary-container">
-                    <table className="scaling-summary-table">
-                        <thead>
-                        <tr className="scaling-summary-header">
-                            <th className="scaling-summary-cell">Item</th>
-                            <th className="scaling-summary-cell">V/R</th>
-                            <th className="scaling-summary-cell scaling-summary-cell-right">Original</th>
-                            {tabConfigs.map((tab) => (
-                                <th
-                                    key={tab.id}
-                                    className={`scaling-summary-cell scaling-summary-cell-right ${
-                                        isInParenthesis(tab.id) ? 'scaling-summary-parenthesis' : ''
-                                    }`}
-                                >
-                                    {tab.label || `Scale ${tab.id}`}
-                                </th>
-                            ))}
-                            <th className="scaling-summary-cell scaling-summary-cell-right">Expression</th>
-                            <th className="scaling-summary-cell scaling-summary-cell-right scaling-summary-result">Final Result</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <AnimatePresence>
-                            {filteredItems.map(item => (
-                                <React.Fragment key={item.id}>
-                                    <motion.tr
-                                        initial={{ opacity: 0, y: 20 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        exit={{ opacity: 0, y: -20 }}
-                                        transition={{ duration: 0.2 }}
-                                        className={`scaling-summary-row ${expandedRows[item.id] ? 'scaling-summary-row-expanded' : ''}`}
-                                        onClick={() => toggleRowExpansion(item.id)}
-                                    >
-                                        <td className="scaling-summary-cell">{item.label}</td>
-
-                                        <td className="scaling-summary-cell scaling-summary-vr-cell">
-                                            {item.vKey && (
-                                                <div className="summary-vr-checkbox">
-                                                    <span className="summary-vr-label">{item.vKey}</span>
-                                                    {V && toggleV && (
-                                                        <input
-                                                            type="checkbox"
-                                                            checked={V[item.vKey] === 'on'}
-                                                            onChange={() => toggleV(item.vKey)}
-                                                            onClick={(e) => e.stopPropagation()}
-                                                            className="summary-vr-toggle"
-                                                        />
-                                                    )}
-                                                </div>
-                                            )}
-
-                                            {item.rKey && (
-                                                <div className="summary-vr-checkbox">
-                                                    <span className="summary-vr-label">{item.rKey}</span>
-                                                    {R && toggleR && (
-                                                        <input
-                                                            type="checkbox"
-                                                            checked={R[item.rKey] === 'on'}
-                                                            onChange={() => toggleR(item.rKey)}
-                                                            onClick={(e) => e.stopPropagation()}
-                                                            className="summary-vr-toggle"
-                                                        />
-                                                    )}
-                                                </div>
-                                            )}
-                                        </td>
-
-                                        <td className="scaling-summary-cell scaling-summary-cell-right">
-                                            <motion.span
-                                                key={`${item.id}-original-${lastUpdated}`}
-                                                initial={{ opacity: 0, y: 10 }}
-                                                animate={{ opacity: 1, y: 0 }}
-                                            >
-                                                {item.originalValue.toFixed(2)}
-                                            </motion.span>
-                                        </td>
-
-                                        {tabConfigs.map((tab) => (
-                                            <td
-                                                key={tab.id}
-                                                className={`scaling-summary-cell scaling-summary-cell-right ${
-                                                    isInParenthesis(tab.id) ? 'scaling-summary-parenthesis' : ''
-                                                }`}
-                                            >
-                                                <motion.span
-                                                    key={`${item.id}-${tab.id}-${lastUpdated}`}
-                                                    initial={{ opacity: 0, y: 10 }}
-                                                    animate={{ opacity: 1, y: 0 }}
-                                                >
-                                                    {(item.scaledValues[tab.id] || item.originalValue).toFixed(2)}
-                                                </motion.span>
-                                            </td>
-                                        ))}
-
-                                        <td className="scaling-summary-cell">
-                                            <input
-                                                type="text"
-                                                className="scaling-summary-expression-input"
-                                                placeholder="Enter formula"
-                                                value={itemExpressions[item.id] || ''}
-                                                onChange={(e) => handleExpressionChange(item.id, e.target.value)}
-                                                onClick={(e) => e.stopPropagation()} // Prevent row toggle when clicking input
-                                            />
-                                        </td>
-
-                                        <td className="scaling-summary-cell scaling-summary-cell-right scaling-summary-result">
-                                            <div className="scaling-summary-result-container">
-                                                <motion.span
-                                                    key={`${item.id}-result-${lastUpdated}`}
-                                                    initial={{ opacity: 0, scale: 0.9 }}
-                                                    animate={{ opacity: 1, scale: 1 }}
-                                                >
-                                                    {(item.finalResult || intermediateResults[item.id]?.currentValue || item.originalValue).toFixed(2)}
-                                                </motion.span>
-                                            </div>
-                                        </td>
-                                    </motion.tr>
-
-                                    {/* Expanded details row showing calculation steps */}
-                                    {expandedRows[item.id] && intermediateResults[item.id]?.steps?.length > 0 && (
-                                        <motion.tr
-                                            initial={{ opacity: 0, height: 0 }}
-                                            animate={{ opacity: 1, height: 'auto' }}
-                                            exit={{ opacity: 0, height: 0 }}
-                                            className="scaling-summary-steps-row"
-                                        >
-                                            <td colSpan={4 + tabConfigs.length} className="scaling-summary-steps-cell">
-                                                <div className="scaling-summary-steps">
-                                                    <h4>Calculation Steps for {item.label}</h4>
-                                                    <div className="scaling-summary-steps-list">
-                                                        <div className="scaling-summary-step scaling-summary-step-header">
-                                                            <span>Tab</span>
-                                                            <span>Input Value</span>
-                                                            <span>→</span>
-                                                            <span>Result</span>
-                                                        </div>
-                                                        {intermediateResults[item.id].steps.map((step, stepIndex) => (
-                                                            <div key={stepIndex} className="scaling-summary-step">
-                                                                <span>{step.tabName}</span>
-                                                                <span>{step.inputValue.toFixed(2)}</span>
-                                                                <span>→</span>
-                                                                <span>{step.scaledValue.toFixed(2)}</span>
-                                                            </div>
-                                                        ))}
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </motion.tr>
-                                    )}
-                                </React.Fragment>
-                            ))}
-                        </AnimatePresence>
-
-                        {filteredItems.length === 0 && (
-                            <tr className="scaling-summary-no-results">
-                                <td colSpan={4 + tabConfigs.length} className="scaling-summary-no-results-cell">
-                                    No items match the current filters
-                                </td>
-                            </tr>
-                        )}
-                        </tbody>
-                    </table>
-                </div>
-                <div className="scaling-summary-footer">
-                    <div className="scaling-summary-footer-item">Base values are inherited from process costs</div>
-                    <div className="scaling-summary-footer-item">Click on a row to show calculation steps</div>
-                    <div className="scaling-summary-footer-item">Each column shows the result after applying that tab's scaling</div>
-                </div>
-            </CardContent>
-        </Card>
-    );
-};
 
 /**
  * EXTENDED SCALING COMPONENT
@@ -1704,7 +914,7 @@ const ExtendedScaling = ({
 
             // For each item, calculate its final result (from the last group where it appears)
             const summaryItems = Object.values(allItemsById).map(item => {
-                const scaledValueEntries = Object.entries(item.scaledValues);
+                const scaledValueEntries = Object.entries(item.scaledValues || {});
                 // Get the last group's scaled value as the final result
                 const finalResult = scaledValueEntries.length > 0
                     ? scaledValueEntries[scaledValueEntries.length - 1][1]
@@ -2108,10 +1318,11 @@ const ExtendedScaling = ({
 };
 
 /**
- * GeneralFormConfig Component
- * Displays and manages matrix-based form parameters
+ * GeneralFormConfigOriginal Component
+ * Original version of the GeneralFormConfig component
+ * @deprecated Use the imported GeneralFormConfig component instead
  */
-const GeneralFormConfig = ({
+const GeneralFormConfigOriginal = ({
                                formValues, // Now contains formMatrix structure
                                handleInputChange,
                                version,
@@ -2125,7 +1336,7 @@ const GeneralFormConfig = ({
                                summaryItems,
                            }) => {
     // Get icon mapping from formValues which now contains matrix structure
-    const { iconMapping } = formValues;
+    const iconMapping = formValues ? formValues.iconMapping : {};
 
     //--------------------------------------------------------------------------
     // STATE MANAGEMENT
@@ -2150,11 +1361,11 @@ const GeneralFormConfig = ({
     // Get plant lifetime value for efficacy calculations
     const getLatestPlantLifetime = (formValues) => {
         // Extract the active version & zone
-        const activeVersion = formValues.versions ? formValues.versions.active : 'v1';
-        const activeZone = formValues.zones ? formValues.zones.active : 'z1';
+        const activeVersion = formValues?.versions?.active || 'v1';
+        const activeZone = formValues?.zones?.active || 'z1';
 
         // Find plant lifetime in matrix
-        const lifetimeParam = Object.values(formValues.formMatrix || formValues)
+        const lifetimeParam = Object.values(formValues?.formMatrix || formValues || {})
             .find(item => item.id === 'plantLifetimeAmount10');
 
         if (lifetimeParam) {
@@ -2223,10 +1434,10 @@ const GeneralFormConfig = ({
     };
 
     // Transform form values into displayable items with appropriate metadata
-    const formItems = Object.keys(formValues.formMatrix || formValues)
+    const formItems = Object.keys(formValues?.formMatrix || formValues || {})
         .filter((key) => key.includes(filterKeyword))
         .map((key) => {
-            const param = formValues.formMatrix ? formValues.formMatrix[key] : formValues[key];
+            const param = formValues?.formMatrix ? formValues?.formMatrix[key] : formValues?.[key];
 
             // For matrix-based form values, extract dynamic appendix information
             let vKey = null, rKey = null, fKey = null, rfKey = null, sKey = null;
@@ -2250,10 +1461,10 @@ const GeneralFormConfig = ({
             // Handle matrix-based form values
             let value, step, remarks, efficacyPeriod, placeholder, type, options;
 
-            if (formValues.versions && formValues.zones) {
+            if (formValues?.versions && formValues?.zones) {
                 // Get active version and zone
-                const activeVersion = formValues.versions.active;
-                const activeZone = formValues.zones.active;
+                const activeVersion = formValues?.versions?.active || 'v1';
+                const activeZone = formValues?.zones?.active || 'z1';
 
                 // Extract value from matrix
                 value = param.matrix && param.matrix[activeVersion] && param.matrix[activeVersion][activeZone] !== undefined
@@ -2301,13 +1512,15 @@ const GeneralFormConfig = ({
         if (Object.keys(originalLabels).length === 0) {
             const labels = {};
             // Check if we're using the matrix structure
-            if (formValues.formMatrix) {
-                Object.entries(formValues.formMatrix).forEach(([key, value]) => {
+            if (formValues?.formMatrix) {
+                Object.entries(formValues?.formMatrix).forEach(([key, value]) => {
                     labels[key] = value.label;
                 });
             } else {
-                Object.entries(formValues).forEach(([key, value]) => {
-                    labels[key] = value.label;
+                Object.entries(formValues || {}).forEach(([key, value]) => {
+                    if (value && value.label) {
+                        labels[key] = value.label;
+                    }
                 });
             }
             setOriginalLabels(labels);
@@ -2318,9 +1531,9 @@ const GeneralFormConfig = ({
     const handleLabelEdit = (itemId) => {
         setEditingLabel(itemId);
         // Get the current label from matrix or regular structure
-        const currentLabel = formValues.formMatrix
-            ? formValues.formMatrix[itemId].label
-            : formValues[itemId].label;
+        const currentLabel = formValues?.formMatrix
+            ? formValues?.formMatrix[itemId]?.label
+            : formValues?.[itemId]?.label;
         setTempLabel(currentLabel);
     };
 
@@ -2348,10 +1561,10 @@ const GeneralFormConfig = ({
             const updates = {};
             Object.keys(editedLabels).forEach(key => {
                 // Handle matrix-based form values
-                if (formValues.formMatrix && formValues.formMatrix[key]) {
-                    const param = formValues.formMatrix[key];
-                    const activeVersion = formValues.versions.active;
-                    const activeZone = formValues.zones.active;
+                if (formValues?.formMatrix && formValues?.formMatrix[key]) {
+                    const param = formValues?.formMatrix[key];
+                    const activeVersion = formValues?.versions?.active || 'v1';
+                    const activeZone = formValues?.zones?.active || 'z1';
 
                     updates[key] = {
                         label: param.label,
@@ -2400,16 +1613,16 @@ const GeneralFormConfig = ({
         if (window.confirm('Reset all labels and default values to original values?')) {
             // First, reset labels locally
             const updatedLabels = {};
-            Object.entries(labelReferences.propertyMapping).forEach(([key, label]) => {
+            Object.entries(labelReferences.propertyMapping || {}).forEach(([key, label]) => {
                 // Handle matrix-based form values
-                if (formValues.formMatrix && formValues.formMatrix[key]) {
+                if (formValues?.formMatrix && formValues?.formMatrix[key]) {
                     handleInputChange({ target: { value: label } }, key, 'label');
 
                     // Also reset default values if available
                     if (labelReferences.defaultValues && labelReferences.defaultValues[key] !== undefined) {
                         // For matrix-based values, update in the active version and zone
-                        const activeVersion = formValues.versions.active;
-                        const activeZone = formValues.zones.active;
+                        const activeVersion = formValues?.versions?.active || 'v1';
+                        const activeZone = formValues?.zones?.active || 'z1';
 
                         // Use updateParameterValue if it exists in the form values object
                         if (formValues.updateParameterValue) {
@@ -2445,10 +1658,10 @@ const GeneralFormConfig = ({
                 const updates = {};
                 Object.keys(updatedLabels).forEach(key => {
                     // Handle matrix-based form values
-                    if (formValues.formMatrix && formValues.formMatrix[key]) {
-                        const param = formValues.formMatrix[key];
-                        const activeVersion = formValues.versions.active;
-                        const activeZone = formValues.zones.active;
+                    if (formValues?.formMatrix && formValues?.formMatrix[key]) {
+                        const param = formValues?.formMatrix[key];
+                        const activeVersion = formValues?.versions?.active || 'v1';
+                        const activeZone = formValues?.zones?.active || 'z1';
 
                         updates[key] = {
                             label: param.label,
@@ -2491,10 +1704,10 @@ const GeneralFormConfig = ({
     // Handle increment button click
     const handleIncrement = (itemId) => {
         // Handle matrix-based form values
-        if (formValues.formMatrix) {
-            const item = formValues.formMatrix[itemId];
-            const activeVersion = formValues.versions.active;
-            const activeZone = formValues.zones.active;
+        if (formValues?.formMatrix) {
+            const item = formValues?.formMatrix[itemId];
+            const activeVersion = formValues?.versions?.active || 'v1';
+            const activeZone = formValues?.zones?.active || 'z1';
 
             // Get current value from matrix
             const currentValue = item.matrix[activeVersion]?.[activeZone] || 0;
@@ -2519,10 +1732,10 @@ const GeneralFormConfig = ({
     // Handle decrement button click
     const handleDecrement = (itemId) => {
         // Handle matrix-based form values
-        if (formValues.formMatrix) {
-            const item = formValues.formMatrix[itemId];
-            const activeVersion = formValues.versions.active;
-            const activeZone = formValues.zones.active;
+        if (formValues?.formMatrix) {
+            const item = formValues?.formMatrix[itemId];
+            const activeVersion = formValues?.versions?.active || 'v1';
+            const activeZone = formValues?.zones?.active || 'z1';
 
             // Get current value from matrix
             const currentValue = item.matrix[activeVersion]?.[activeZone] || 0;
@@ -2556,14 +1769,14 @@ const GeneralFormConfig = ({
         const latestPlantLifetime = getLatestPlantLifetime(formValues);
 
         // Handle efficacy period updates
-        if (formValues.formMatrix) {
+        if (formValues?.formMatrix) {
             // For matrix-based form values, use the efficacyPeriod directly
-            const efficacyPeriod = formValues.formMatrix[itemId].efficacyPeriod || {};
+            const efficacyPeriod = formValues?.formMatrix?.[itemId]?.efficacyPeriod || {};
             // Update the efficacy period end value
             handleInputChange({ target: { value: latestPlantLifetime } }, itemId, 'efficacyPeriod', 'end');
         } else {
             // For regular form values
-            const efficacyPeriod = formValues[itemId].efficacyPeriod || {};
+            const efficacyPeriod = formValues?.[itemId]?.efficacyPeriod || {};
             handleInputChange({ target: { value: latestPlantLifetime } }, itemId, 'efficacyPeriod', 'end');
         }
 
@@ -2913,7 +2126,7 @@ const GeneralFormConfig = ({
                             <input
                                 type="number"
                                 min="0"
-                                value={formValues.formMatrix[selectedItemId]?.efficacyPeriod?.start?.value || 0}
+                                value={formValues?.formMatrix?.[selectedItemId]?.efficacyPeriod?.start?.value || 0}
                                 onChange={(e) => handleInputChange({ target: { value: parseInt(e.target.value) || 0 } }, selectedItemId, 'efficacyPeriod', 'start')}
                             />
                         </div>
@@ -2922,7 +2135,7 @@ const GeneralFormConfig = ({
                             <input
                                 type="number"
                                 min="0"
-                                value={formValues.formMatrix[selectedItemId]?.efficacyPeriod?.end?.value || 20}
+                                value={formValues?.formMatrix?.[selectedItemId]?.efficacyPeriod?.end?.value || 20}
                                 onChange={(e) => handleInputChange({ target: { value: parseInt(e.target.value) || 20 } }, selectedItemId, 'efficacyPeriod', 'end')}
                             />
                         </div>
@@ -2951,10 +2164,11 @@ const GeneralFormConfig = ({
 };
 
 /**
- * Integrated MatrixApp Component
- * Combines all functionality in a single component
+ * Integrated MatrixAppOriginal Component
+ * Original version of the MatrixApp component
+ * @deprecated Use the imported MatrixApp component instead
  */
-const MatrixApp = ({
+const MatrixAppOriginal = ({
                        formValues,
                        handleInputChange,
                        version = "1",
@@ -2993,7 +2207,7 @@ const MatrixApp = ({
         // Generate scalingBaseCosts with the same structure for all categories
         const updatedScalingBaseCosts = amountCategories.reduce((result, category) => {
             // Extract entries for this category
-            const categoryEntries = Object.entries(formValues.formMatrix || formValues)
+            const categoryEntries = Object.entries(formValues?.formMatrix || formValues || {})
                 .filter(([key]) => key.includes(category));
 
             // Sort entries based on their numeric suffix
@@ -3009,9 +2223,9 @@ const MatrixApp = ({
                 let paramValue;
 
                 // Handle matrix-based values
-                if (formValues.versions && formValues.zones) {
-                    const activeVersion = formValues.versions.active;
-                    const activeZone = formValues.zones.active;
+                if (formValues?.versions?.active && formValues?.zones?.active) {
+                    const activeVersion = formValues?.versions?.active;
+                    const activeZone = formValues?.zones?.active;
                     paramValue = value.matrix?.[activeVersion]?.[activeZone] || 0;
                 } else {
                     // Handle regular values
@@ -3055,7 +2269,7 @@ const MatrixApp = ({
     const handleSubmitCompleteSet = async () => {
         try {
             // Get the active version from matrix state
-            const activeVersion = formValues.versions?.active || "v1";
+            const activeVersion = formValues?.versions?.active || "v1";
             const numericVersion = activeVersion.replace(/\D/g, '');
 
             // Use MatrixSubmissionService to submit form values
@@ -3149,40 +2363,40 @@ const MatrixApp = ({
                         {/* Sub-tab content */}
                         <div className="sub-tab-content">
                             {/* Version and Zone Management - Only show with matrix-based form values */}
-                            {formValues.versions && formValues.zones && (
+                            {formValues?.versions && formValues?.zones && (
                                 <div className="matrix-selectors">
                                     <div className="version-selector">
                                         <h3>Version</h3>
                                         <select
-                                            value={formValues.versions.active}
-                                            onChange={e => formValues.setActiveVersion(e.target.value)}
+                                            value={formValues?.versions?.active || 'v1'}
+                                            onChange={e => formValues?.setActiveVersion?.(e.target.value)}
                                         >
-                                            {formValues.versions.list.map(version => (
+                                            {formValues?.versions?.list?.map(version => (
                                                 <option key={version} value={version}>
-                                                    {formValues.versions.metadata[version].label}
+                                                    {formValues?.versions?.metadata?.[version]?.label || version}
                                                 </option>
                                             ))}
                                         </select>
                                         <button onClick={() => {
-                                            const label = prompt("Enter name for new version:", `Version ${formValues.versions.list.length + 1}`);
-                                            if (label) formValues.createVersion(label);
+                                            const label = prompt("Enter name for new version:", `Version ${(formValues?.versions?.list?.length || 0) + 1}`);
+                                            if (label) formValues?.createVersion?.(label);
                                         }}>+ New Version</button>
                                     </div>
                                     <div className="zone-selector">
                                         <h3>Zone</h3>
                                         <select
-                                            value={formValues.zones.active}
-                                            onChange={e => formValues.setActiveZone(e.target.value)}
+                                            value={formValues?.zones?.active || 'z1'}
+                                            onChange={e => formValues?.setActiveZone?.(e.target.value)}
                                         >
-                                            {formValues.zones.list.map(zone => (
+                                            {formValues?.zones?.list?.map(zone => (
                                                 <option key={zone} value={zone}>
-                                                    {formValues.zones.metadata[zone].label}
+                                                    {formValues?.zones?.metadata?.[zone]?.label || zone}
                                                 </option>
                                             ))}
                                         </select>
                                         <button onClick={() => {
-                                            const label = prompt("Enter name for new zone:", `Zone ${formValues.zones.list.length + 1}`);
-                                            if (label) formValues.createZone(label);
+                                            const label = prompt("Enter name for new zone:", `Zone ${(formValues?.zones?.list?.length || 0) + 1}`);
+                                            if (label) formValues?.createZone?.(label);
                                         }}>+ New Zone</button>
                                     </div>
                                 </div>
@@ -3342,9 +2556,13 @@ const MatrixApp = ({
     );
 };
 
+// Export the imported modularized components
+// The original components are still available as GeneralFormConfigOriginal and MatrixAppOriginal
 export {
     MatrixSubmissionService,
     ExtendedScaling,
     GeneralFormConfig,
-    MatrixApp
+    MatrixApp,
+    Tooltip,
+    CumulativeDocumentation
 };

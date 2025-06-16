@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import propertyMapping from '../../useFormValues.js';  // Correctly importing propertyMapping
+import { useMatrixFormValues } from '../../Consolidated2';  // Import useMatrixFormValues
 
 const CustomizableTable = ({
                              data,
@@ -16,6 +16,7 @@ const CustomizableTable = ({
                              version = '1'
                            }) => {
   const tableRef = useRef(null);
+  const { propertyMapping } = useMatrixFormValues();
 
   useEffect(() => {
     // Apply year column styling after component mounts or when yearColumnsToHighlight changes

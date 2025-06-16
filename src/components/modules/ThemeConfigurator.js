@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import ThemeGenerator from './ThemeGenerator';
-import '../../styles/HomePage.CSS/ThemeConfigurator.css';
+import '../../styles/HomePage.CSS/HCSS.css';
 
 const ThemeConfigurator = ({ onClose }) => {
   const [activeTab, setActiveTab] = useState('colors');
@@ -17,7 +17,7 @@ const ThemeConfigurator = ({ onClose }) => {
     info: '',
     textSecondary: ''
   });
-  
+
   const [gradients, setGradients] = useState({
     color1: '#9333ea',
     color2: '#7928ca',
@@ -26,16 +26,16 @@ const ThemeConfigurator = ({ onClose }) => {
     extraPosition: '50%',
     useExtraColor: false
   });
-  
+
   const [cssRegistry, setCssRegistry] = useState({
     selectedFiles: [],
     cssCode: '',
     status: ''
   });
-  
+
   const [colorsChanged, setColorsChanged] = useState([]);
   const [saveStatus, setSaveStatus] = useState(null);
-  
+
   const themeGenerator = useRef(new ThemeGenerator());
   const availableCssFiles = [
     'HomePage_AboutUs.css',
@@ -50,12 +50,12 @@ const ThemeConfigurator = ({ onClose }) => {
     'HomePage5.css',
     'HomePage6.css'
   ];
-  
+
   // Load current theme colors on component mount
   useEffect(() => {
     loadThemeColors();
   }, []);
-  
+
   // Load theme colors from current theme
   const loadThemeColors = () => {
     const themeColors = themeGenerator.current.loadCurrentThemeColors();
@@ -72,14 +72,14 @@ const ThemeConfigurator = ({ onClose }) => {
     info: themeColors['--info-color'],
     textSecondary: themeColors['--text-secondary']
     });
-    
+
     // Parse gradient if present
     const gradientString = themeColors['--gradient-primary'] || '';
     if (gradientString.includes('linear-gradient')) {
       try {
         const angle = gradientString.match(/(\d+)deg/) ? gradientString.match(/(\d+)deg/)[1] + 'deg' : '145deg';
         const colorMatches = gradientString.match(/#[a-f0-9]{6}/gi);
-        
+
         if (colorMatches && colorMatches.length >= 2) {
           setGradients({
             ...gradients,
@@ -94,32 +94,32 @@ const ThemeConfigurator = ({ onClose }) => {
         console.log('Error parsing gradient', error);
       }
     }
-    
+
     setColorsChanged([]);
   };
-  
+
   // Handle color change
   const handleColorChange = (colorKey, value) => {
     // If the value is a linear gradient, it should be processed differently
     if (typeof value === 'string' && value.trim().startsWith('linear-gradient(')) {
       console.log(`Processing gradient for ${colorKey}: ${value.substring(0, 30)}...`);
-      
+
       // For primary color, we can directly apply the gradient to the gradient-primary variable
       if (colorKey === 'primary') {
         // Set gradient-primary and keep the extracted color for the primary color
         themeGenerator.current.applyGradientToCurrentTheme(value);
-        
+
         // Extract the first color for the actual primary color
         const colorMatch = value.match(/#[a-f0-9]{3,8}|rgba?\([^)]+\)/i);
         if (colorMatch && colorMatch[0]) {
           const processedValue = colorMatch[0];
-          
+
           // Update the state
           setColors(prevColors => ({
             ...prevColors,
             [colorKey]: processedValue
           }));
-          
+
           // Apply the color-only version to the primary color variable
           themeGenerator.current.applyColorToCurrentTheme(colorKey, processedValue);
         }
@@ -128,13 +128,13 @@ const ThemeConfigurator = ({ onClose }) => {
         const colorMatch = value.match(/#[a-f0-9]{3,8}|rgba?\([^)]+\)/i);
         if (colorMatch && colorMatch[0]) {
           const processedValue = colorMatch[0];
-          
+
           // Update the state
           setColors(prevColors => ({
             ...prevColors,
             [colorKey]: processedValue
           }));
-          
+
           // Apply the extracted color
           themeGenerator.current.applyColorToCurrentTheme(colorKey, processedValue);
         }
@@ -145,48 +145,48 @@ const ThemeConfigurator = ({ onClose }) => {
         ...prevColors,
         [colorKey]: value
       }));
-      
+
       // Apply the color change in real-time
       themeGenerator.current.applyColorToCurrentTheme(colorKey, value);
     }
-    
+
     // Track changed colors
     if (!colorsChanged.includes(colorKey)) {
       setColorsChanged(prev => [...prev, colorKey]);
     }
   };
-  
+
   // Handle gradient change
   const handleGradientChange = (key, value) => {
     setGradients(prev => ({
       ...prev,
       [key]: value
     }));
-    
+
     // Generate and apply gradient in real-time
     const newGradient = generateGradientString({
       ...gradients,
       [key]: value
     });
-    
+
     themeGenerator.current.applyGradientToCurrentTheme(newGradient);
   };
-  
+
   // Generate gradient string from gradient object
   const generateGradientString = (gradientObj) => {
     const { color1, color2, angle, extraColor, extraPosition, useExtraColor } = gradientObj || gradients;
-    
+
     if (useExtraColor && extraColor) {
       return `linear-gradient(${angle}, ${color1}, ${extraColor} ${extraPosition}, ${color2})`;
     } else {
       return `linear-gradient(${angle}, ${color1}, ${color2})`;
     }
   };
-  
+
   // Apply all theme changes
   const applyTheme = async () => {
     setSaveStatus({ state: 'saving', message: 'Applying theme...' });
-    
+
     try {
       // Create theme data for saving
       const themeData = {
@@ -195,10 +195,10 @@ const ThemeConfigurator = ({ onClose }) => {
           primary: generateGradientString()
         }
       };
-      
+
       // Save theme
       const result = await themeGenerator.current.saveToCreativeTheme(themeData);
-      
+
       if (result.success) {
         setSaveStatus({ state: 'success', message: 'Theme applied successfully!' });
         setColorsChanged([]);
@@ -219,28 +219,28 @@ const ThemeConfigurator = ({ onClose }) => {
         message: `Failed to apply theme: ${error.message}` 
       });
     }
-    
+
     // Clear status after 3 seconds
     setTimeout(() => {
       setSaveStatus(null);
     }, 3000);
   };
-  
+
   // Reset all color changes
   const resetAllColors = () => {
     loadThemeColors();
     themeGenerator.current.resetTheme();
   };
-  
+
   // Reset a specific color
   const resetColor = (colorKey) => {
     const originalColor = themeGenerator.current.getOriginalColor(colorKey);
     handleColorChange(colorKey, originalColor);
-    
+
     // Remove from changed colors list
     setColorsChanged(prev => prev.filter(key => key !== colorKey));
   };
-  
+
   // Toggle CSS file selection
   const toggleCssFile = (filename) => {
     setCssRegistry(prev => {
@@ -253,7 +253,7 @@ const ThemeConfigurator = ({ onClose }) => {
       };
     });
   };
-  
+
   // Handle CSS code input
   const handleCssCodeChange = (e) => {
     setCssRegistry(prev => ({
@@ -261,7 +261,7 @@ const ThemeConfigurator = ({ onClose }) => {
       cssCode: e.target.value
     }));
   };
-  
+
   // Apply CSS to selected files
   const applyCssToFiles = async () => {
     if (cssRegistry.selectedFiles.length === 0 || !cssRegistry.cssCode.trim()) {
@@ -271,18 +271,18 @@ const ThemeConfigurator = ({ onClose }) => {
       }));
       return;
     }
-    
+
     try {
       setCssRegistry(prev => ({
         ...prev,
         status: 'Applying CSS...'
       }));
-      
+
       const result = await themeGenerator.current.applyCssToFiles(
         cssRegistry.selectedFiles,
         cssRegistry.cssCode
       );
-      
+
       if (result.success) {
         setCssRegistry(prev => ({
           ...prev,
@@ -297,7 +297,7 @@ const ThemeConfigurator = ({ onClose }) => {
         status: `Error: ${error.message}`
       }));
     }
-    
+
     // Clear status after 3 seconds
     setTimeout(() => {
       setCssRegistry(prev => ({
@@ -306,14 +306,14 @@ const ThemeConfigurator = ({ onClose }) => {
       }));
     }, 3000);
   };
-  
+
   return (
     <div className="theme-configurator">
       <div className="theme-configurator-header">
         <h2>Theme Customization</h2>
         <button className="close-button" onClick={onClose}>×</button>
       </div>
-      
+
       <div className="tab-buttons">
         <button 
           className={`tab-button ${activeTab === 'colors' ? 'active' : ''}`}
@@ -334,7 +334,7 @@ const ThemeConfigurator = ({ onClose }) => {
           CSS Registry
         </button>
       </div>
-      
+
       {activeTab === 'colors' && (
         <div className="color-pickers-container">
           <h3>Primary & Secondary Colors</h3>
@@ -368,7 +368,7 @@ const ThemeConfigurator = ({ onClose }) => {
                 )}
               </div>
             </div>
-            
+
             <div className="color-picker-item">
               <label>Secondary Color</label>
               <div className="color-input-group">
@@ -399,7 +399,7 @@ const ThemeConfigurator = ({ onClose }) => {
               </div>
             </div>
           </div>
-          
+
           <h3>Text & Background</h3>
           <div className="color-picker-row">
             <div className="color-picker-item">
@@ -431,7 +431,7 @@ const ThemeConfigurator = ({ onClose }) => {
                 )}
               </div>
             </div>
-            
+
             <div className="color-picker-item">
               <label>Text Secondary</label>
               <div className="color-input-group">
@@ -461,7 +461,7 @@ const ThemeConfigurator = ({ onClose }) => {
                 )}
               </div>
             </div>
-            
+
             <div className="color-picker-item">
               <label>Background Color</label>
               <div className="color-input-group">
@@ -492,7 +492,7 @@ const ThemeConfigurator = ({ onClose }) => {
               </div>
             </div>
           </div>
-          
+
           <h3>Component Colors</h3>
           <div className="color-picker-row">
             <div className="color-picker-item">
@@ -524,7 +524,7 @@ const ThemeConfigurator = ({ onClose }) => {
                 )}
               </div>
             </div>
-            
+
             <div className="color-picker-item">
               <label>Border Color</label>
               <div className="color-input-group">
@@ -555,7 +555,7 @@ const ThemeConfigurator = ({ onClose }) => {
               </div>
             </div>
           </div>
-          
+
           <h3>State Colors</h3>
           <div className="color-picker-row">
             <div className="color-picker-item">
@@ -587,7 +587,7 @@ const ThemeConfigurator = ({ onClose }) => {
                 )}
               </div>
             </div>
-            
+
             <div className="color-picker-item">
               <label>Danger Color</label>
               <div className="color-input-group">
@@ -617,7 +617,7 @@ const ThemeConfigurator = ({ onClose }) => {
                 )}
               </div>
             </div>
-            
+
             <div className="color-picker-item">
               <label>Warning Color</label>
               <div className="color-input-group">
@@ -647,7 +647,7 @@ const ThemeConfigurator = ({ onClose }) => {
                 )}
               </div>
             </div>
-            
+
             <div className="color-picker-item">
               <label>Info Color</label>
               <div className="color-input-group">
@@ -678,7 +678,7 @@ const ThemeConfigurator = ({ onClose }) => {
               </div>
             </div>
           </div>
-          
+
           <div className="reset-section">
             <button 
               className="reset-all-colors-button"
@@ -692,11 +692,11 @@ const ThemeConfigurator = ({ onClose }) => {
           </div>
         </div>
       )}
-      
+
       {activeTab === 'gradients' && (
         <div className="gradients-container">
           <h3>Gradient Generator</h3>
-          
+
           <div className="gradient-preview" style={{ 
             background: generateGradientString(),
             height: '100px',
@@ -718,7 +718,7 @@ const ThemeConfigurator = ({ onClose }) => {
                       tooltip.className = 'copy-tooltip';
                       tooltip.innerText = 'Copied to clipboard!';
                       gradientPreview.appendChild(tooltip);
-                      
+
                       // Remove after 2 seconds
                       setTimeout(() => {
                         if (tooltip.parentNode) {
@@ -733,7 +733,7 @@ const ThemeConfigurator = ({ onClose }) => {
               {generateGradientString()} <span className="click-to-copy">(Click to copy)</span>
             </div>
           </div>
-          
+
           <div className="gradient-controls">
             <div className="gradient-color-picker">
               <label>Start Color</label>
@@ -757,7 +757,7 @@ const ThemeConfigurator = ({ onClose }) => {
                 />
               </div>
             </div>
-            
+
             <div className="gradient-color-picker">
               <label>End Color</label>
               <div className="color-input-group">
@@ -780,7 +780,7 @@ const ThemeConfigurator = ({ onClose }) => {
                 />
               </div>
             </div>
-            
+
             <div className="gradient-angle-picker">
               <label>Angle ({gradients.angle})</label>
               <input
@@ -792,7 +792,7 @@ const ThemeConfigurator = ({ onClose }) => {
                 className="angle-slider"
               />
             </div>
-            
+
             <div className="extra-color-option">
               <label>
                 <input
@@ -802,7 +802,7 @@ const ThemeConfigurator = ({ onClose }) => {
                 />
                 Add intermediate color
               </label>
-              
+
               {gradients.useExtraColor && (
                 <>
                   <div className="gradient-color-picker">
@@ -827,7 +827,7 @@ const ThemeConfigurator = ({ onClose }) => {
                       />
                     </div>
                   </div>
-                  
+
                   <div className="gradient-position-picker">
                     <label>Position ({gradients.extraPosition})</label>
                     <input
@@ -843,7 +843,7 @@ const ThemeConfigurator = ({ onClose }) => {
               )}
             </div>
           </div>
-          
+
           <div className="gradient-apply">
             <button 
               className="apply-gradient-button"
@@ -851,7 +851,7 @@ const ThemeConfigurator = ({ onClose }) => {
                 // Apply gradient to primary gradient and handle as a color change
                 const gradientString = generateGradientString();
                 themeGenerator.current.applyGradientToCurrentTheme(gradientString);
-                
+
                 // Mark primary as changed
                 if (!colorsChanged.includes('primary')) {
                   setColorsChanged(prev => [...prev, 'primary']);
@@ -863,14 +863,14 @@ const ThemeConfigurator = ({ onClose }) => {
           </div>
         </div>
       )}
-      
+
       {activeTab === 'css' && (
         <div className="css-registry-container">
           <h3>CSS Registry</h3>
           <p className="css-registry-description">
             Add custom CSS to selected files. Variables will be substituted across themes.
           </p>
-          
+
           <div className="css-file-selector">
             <h4>Select CSS Files</h4>
             <div className="css-files-list">
@@ -888,7 +888,7 @@ const ThemeConfigurator = ({ onClose }) => {
               ))}
             </div>
           </div>
-          
+
           <div className="css-code-editor">
             <h4>CSS Code</h4>
             <p className="css-code-hint">
@@ -925,7 +925,7 @@ const ThemeConfigurator = ({ onClose }) => {
               className="css-code-textarea"
             ></textarea>
           </div>
-          
+
           <div className="css-registry-actions">
             <button 
               className="apply-css-button"
@@ -934,7 +934,7 @@ const ThemeConfigurator = ({ onClose }) => {
             >
               Apply CSS to Selected Files
             </button>
-            
+
             {cssRegistry.status && (
               <div className="css-registry-status">
                 {cssRegistry.status}
@@ -943,7 +943,7 @@ const ThemeConfigurator = ({ onClose }) => {
           </div>
         </div>
       )}
-      
+
       <div className="theme-actions">
         {colorsChanged.length > 0 && (
           <button 
@@ -953,7 +953,7 @@ const ThemeConfigurator = ({ onClose }) => {
             Apply New Theme
           </button>
         )}
-        
+
         <button 
           className="reset-theme-button"
           onClick={resetAllColors}
@@ -962,7 +962,7 @@ const ThemeConfigurator = ({ onClose }) => {
           Reset All Changes
         </button>
       </div>
-      
+
       {saveStatus && (
         <div className={`save-status ${saveStatus.state}`}>
           {saveStatus.message}

@@ -54,23 +54,11 @@ import CustomizableTable from './components/modules/CustomizableTable';
 import Popup from './components/modules/Efficacy';
 import SensitivityMonitor, { sensitivityActionRef } from './components/modules/SensitivityMonitor';
 import SensitivityPlotsTabs from './components/modules/SensitivityPlotsTabs';
+import EfficacyMapContainer from './components/modules/EfficacyMapContainer';
 
 // Import styling
-import './styles/HomePage.CSS/PropertySelector.css';
-import './styles/HomePage.CSS/CommonSelector.css';
-import './styles/HomePage.CSS/VersionSelector.css';
-import './styles/HomePage.CSS/CFAConsolidationUI.css';
-import './styles/HomePage.CSS/ResultsPanel.css';
-import './styles/HomePage.CSS/ProcessingPanel.css';
-import './styles/HomePage.CSS/SelectionPanel.css';
-import './styles/HomePage.CSS/CalculationMonitor.css';
-import './styles/HomePage.CSS/CalculationMonitorRun.css';
-import './styles/HomePage.CSS/CalculationMonitorRuns.css';
-import './styles/HomePage.CSS/ConfigurationMonitor.css';
-import './styles/HomePage.CSS/plots-tabs-css.css';
-import './styles/HomePage.CSS/sensitivity-plots-css.css';
-import './styles/HomePage.CSS/SensitivityMonitor.css';
-import './styles/HomePage.CSS/Consolidated3.css';
+import './styles/HomePage.CSS/HCSS.css';
+import './styles/HomePage.CSS/Consolidated.css';
 
 // Import label references for reset functionality
 import * as labelReferences from './utils/labelReferences';
@@ -586,8 +574,8 @@ const MatrixApp = () => {
 
                 // Handle matrix-based values
                 if (versions && zones) {
-                    const activeVersion = versions.active;
-                    const activeZone = zones.active;
+                    const activeVersion = versions?.active || 'v1';
+                    const activeZone = zones?.active || 'z1';
                     paramValue = value.matrix?.[activeVersion]?.[activeZone] || 0;
                 } else {
                     // Handle regular values
@@ -668,9 +656,9 @@ const MatrixApp = () => {
     const handleUpdatePrice = useCallback((version, price) => {
         // Find the initialSellingPriceAmount13 parameter
         if (formMatrix && formMatrix.initialSellingPriceAmount13) {
-            updateParameterValue('initialSellingPriceAmount13', price, versions.active, zones.active);
+            updateParameterValue('initialSellingPriceAmount13', price, versions?.active || 'v1', zones?.active || 'z1');
         }
-    }, [formMatrix, updateParameterValue, versions.active, zones.active]);
+    }, [formMatrix, updateParameterValue, versions?.active, zones?.active]);
 
     // Update version number for efficacy popup
     const handleVersionChange = (newVersion) => {
@@ -691,8 +679,8 @@ const MatrixApp = () => {
                         {/* Version and Zone Management */}
                         {formMatrix && versions && zones && (
                             <VersionZoneManager
-                                versions={versions}
-                                zones={zones}
+                                versions={versions || {}}
+                                zones={zones || {}}
                                 createVersion={createVersion}
                                 setActiveVersion={setActiveVersion}
                                 createZone={createZone}
@@ -977,6 +965,25 @@ const MatrixApp = () => {
                                 </>
                             )}
 
+                            {/* Scaling Tab */}
+                            {activeSubTab === 'Scaling' && (
+                                <>
+                                    {/* Integrate EfficacyMapContainer */}
+                                    <EfficacyMapContainer
+                                        parameters={formMatrix}
+                                        plantLifetime={formMatrix?.plantLifetimeAmount10?.value || 20}
+                                        configurableVersions={20}
+                                        scalingGroups={scalingGroups.length || 5}
+                                        onParameterUpdate={(paramId, updatedParam) => {
+                                            handleInputChange(
+                                                { target: { value: updatedParam.value } },
+                                                paramId
+                                            );
+                                        }}
+                                    />
+                                </>
+                            )}
+
                             {/* Fixed Revenue Config */}
                             {activeSubTab === 'FixedRevenueConfig' && (
                                 <GeneralFormConfig
@@ -1021,7 +1028,6 @@ const MatrixApp = () => {
                                             </button>
                                         </div>
                                     </div>
-
                                     <div className="calculation-content">
                                         <CalculationMonitor
                                             selectedVersions={selectedRunVersions}

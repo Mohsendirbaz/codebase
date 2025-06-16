@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
-import '../../styles/HomePage.CSS/ConfigurationMonitor.css';
-import useFormValues from '../../useFormValues';
+import '../../styles/HomePage.CSS/HCSS.css';
+import { useMatrixFormValues } from '../../Consolidated2';
 
 /**
  * ConfigurationMonitor component displays configuration values from U_configurations
@@ -9,7 +9,7 @@ import useFormValues from '../../useFormValues';
  */
 const ConfigurationMonitor = ({ version }) => {
   // Import property mapping from useFormValues
-  const { propertyMapping } = useFormValues();
+  const { propertyMapping } = useMatrixFormValues();
   // Component state
   const [isExpanded, setIsExpanded] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');

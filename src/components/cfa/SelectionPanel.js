@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/HomePage.CSS/SelectionPanel.css';
+import '../../styles/HomePage.CSS/HCSS.css';
 
 const SelectionPanel = ({
   available,

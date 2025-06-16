@@ -1,7 +1,7 @@
 // In TestingZone.js
 import React, { useState } from 'react';
-import '../../styles/HomePage.CSS/TestingZone.css';
-import LibraryIntegration from 'src/components/process_economics_pilot/integration-module';
+import '../../styles/HomePage.CSS/HCSS.css';
+import LibraryIntegration from '../../components/process_economics_pilot/integration-module';
 
 const TestingZone = () => {
     // Create default/mock implementations of all required props

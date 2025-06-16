@@ -1,0 +1,529 @@
+/* CoordinateComponent.css - Interface #9: Enhanced Coordinate Component Interface */
+
+.enhanced-coordinate-component {
+  background: linear-gradient(135deg, #FF9A8B 0%, #A8E6CF 100%);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 20px 40px rgba(255, 154, 139, 0.2);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.enhanced-coordinate-component::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 40% 60%, rgba(255, 154, 139, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 60% 40%, rgba(168, 230, 207, 0.2) 0%, transparent 50%),
+    url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="rgba(255,255,255,0.05)" fill-rule="evenodd"><path d="M30 10l8 20h20l-16 12 8 20-20-12-20 12 8-20-16-12h20z"/></g></svg>') repeat;
+  pointer-events: none;
+}
+
+.coordinate-header {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 2rem;
+}
+
+.coordinate-header h3 {
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.coordinate-subtitle {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.coordinate-tabs {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 15px;
+  padding: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.coordinate-tab {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+}
+
+.coordinate-tab::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.coordinate-tab.active {
+  color: white;
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+  transform: translateY(-2px);
+}
+
+.coordinate-tab.active::before {
+  opacity: 1;
+}
+
+.coordinate-tab:hover:not(.active) {
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.coordinate-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Single Zone View */
+.single-zone-view {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.zone-selector {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 15px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.zone-selector h4 {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.zone-select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  color: white;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+.zone-select:focus {
+  outline: none;
+  border-color: #FF9A8B;
+  box-shadow: 0 0 0 3px rgba(255, 154, 139, 0.2);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.zone-select option {
+  background: #333;
+  color: white;
+}
+
+.coordinate-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.coordinate-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.coordinate-label {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.coordinate-input {
+  padding: 0.75rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  color: white;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.coordinate-input:focus {
+  outline: none;
+  border-color: #FF9A8B;
+  box-shadow: 0 0 0 3px rgba(255, 154, 139, 0.2);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.coordinate-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.update-coordinates-btn {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(45deg, #4CAF50, #45a049);
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+  margin-top: 1rem;
+}
+
+.update-coordinates-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+  background: linear-gradient(45deg, #45a049, #4CAF50);
+}
+
+.update-coordinates-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.coordinate-display {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 15px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.coordinate-display h4 {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.current-coordinates {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.coordinate-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.coordinate-row:last-child {
+  border-bottom: none;
+}
+
+.coordinate-row-label {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.coordinate-row-value {
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: 'Courier New', monospace;
+}
+
+.asset-manager {
+  margin-top: 1rem;
+}
+
+.asset-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.asset-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.asset-item:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateX(5px);
+}
+
+.asset-info {
+  flex: 1;
+}
+
+.asset-name {
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin: 0 0 0.25rem 0;
+}
+
+.asset-details {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.7rem;
+}
+
+.asset-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.asset-btn {
+  padding: 0.25rem 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  color: white;
+  font-size: 0.7rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.asset-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Multi Zone View */
+.multi-zone-view {
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  border: 2px dashed rgba(255, 255, 255, 0.3);
+  text-align: center;
+}
+
+.multi-zone-view h4 {
+  color: white;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+}
+
+.multi-zone-view p {
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0 0 2rem 0;
+  line-height: 1.6;
+}
+
+/* Boundary Downloads View */
+.boundary-downloads-view {
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  border: 2px dashed rgba(255, 255, 255, 0.3);
+  text-align: center;
+}
+
+.boundary-downloads-view h4 {
+  color: white;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+}
+
+.boundary-downloads-view p {
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0 0 2rem 0;
+  line-height: 1.6;
+}
+
+.feature-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  color: white;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.feature-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+  text-decoration: none;
+  color: white;
+}
+
+/* Fact Finding Integration */
+.fact-finder-integration {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 15px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin-top: 2rem;
+}
+
+.fact-finder-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.fact-finder-title {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.find-facts-btn {
+  padding: 0.5rem 1rem;
+  background: linear-gradient(45deg, #36D1DC, #5B86E5);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 3px 10px rgba(54, 209, 220, 0.3);
+}
+
+.find-facts-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(54, 209, 220, 0.4);
+}
+
+.facts-results {
+  max-height: 150px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.fact-item {
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  border-left: 3px solid rgba(255, 154, 139, 0.5);
+}
+
+.fact-text {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .single-zone-view {
+    grid-template-columns: 1fr;
+  }
+  
+  .coordinate-tabs {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .enhanced-coordinate-component {
+    padding: 1.5rem;
+  }
+  
+  .coordinate-header h3 {
+    font-size: 1.5rem;
+  }
+  
+  .coordinate-inputs {
+    grid-template-columns: 1fr;
+  }
+  
+  .zone-selector,
+  .coordinate-display {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .enhanced-coordinate-component {
+    padding: 1rem;
+  }
+  
+  .coordinate-tab {
+    padding: 0.75rem 1rem;
+    font-size: 0.8rem;
+  }
+  
+  .multi-zone-view,
+  .boundary-downloads-view {
+    padding: 1.5rem;
+  }
+  
+  .coordinate-row {
+    flex-direction: column;
+    gap: 0.25rem;
+    text-align: center;
+  }
+  
+  .asset-item {
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+  }
+}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import '../../styles/HomePage.CSS/StickerHeader.css';
+import '../../styles/HomePage.CSS/HCSS.css';
 import TicTacToe from './TicTacToe';
 import WhakAMole from './WhakAMole';
 import PendulumClock from './PendulumClock';

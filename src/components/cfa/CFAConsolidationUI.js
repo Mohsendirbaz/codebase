@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import '../../styles/HomePage.CSS/CFAConsolidationUI.css';
+import '../../styles/HomePage.CSS/HCSS.css';
 import SelectionPanel from './SelectionPanel';
 import ProcessingPanel from './ProcessingPanel';
 import ResultsPanel from './ResultsPanel';
@@ -29,7 +29,7 @@ const CFAConsolidationUI = () => {
     inspectorVisible: false,
     inspectorPosition: { x: 0, y: 0 },
     cellDetails: null,
-    viewMode: 'consolidated' // 'consolidated' or 'individual'
+    viewMode: 'individual' // 'individual' or 'consolidated'
   });
 
   const switchToIndividualView = useCallback(() => {
@@ -57,7 +57,7 @@ const CFAConsolidationUI = () => {
       loading: true,
       error: null
     }));
-    
+
     try {
       const response = await fetch('http://localhost:4560/api/versions', {
         method: 'GET',
@@ -65,13 +65,13 @@ const CFAConsolidationUI = () => {
           'Content-Type': 'application/json'
         }
       });
-      
+
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      
+
       const data = await response.json();
-      
+
       if (!data.versions || data.versions.length === 0) {
         setSelectionState(prev => ({
           ...prev,
@@ -82,7 +82,7 @@ const CFAConsolidationUI = () => {
         }));
         return;
       }
-      
+
       setSelectionState(prev => ({
         ...prev,
         loading: false,
@@ -135,14 +135,14 @@ const CFAConsolidationUI = () => {
 
   const startProcessing = useCallback(async () => {
     if (selectionState.selected.length === 0) return;
-    
+
     setProcessingState({
       status: 'processing',
       progress: 0,
       messages: ['Starting consolidation...'],
       error: null
     });
-    
+
     try {
       const consolidationResponse = await fetch('http://localhost:4560/api/consolidate', {
         method: 'POST',
@@ -153,20 +153,20 @@ const CFAConsolidationUI = () => {
           versions: selectionState.selected
         })
       });
-      
+
       if (!consolidationResponse.ok) {
         throw new Error(`Consolidation failed! Status: ${consolidationResponse.status}`);
       }
-      
+
       const consolidationId = await consolidationResponse.json();
-      
+
       let completed = false;
       let lastProgress = 0;
       let stallCount = 0;
       let pollDelay = 1000; // Start with 1 second
       const maxPollDelay = 5000; // Max 5 seconds between polls
       const maxStallCount = 10; // Allow more stall cycles
-      
+
       while (!completed) {
         try {
           const progressResponse = await fetch(`http://localhost:4560/api/consolidate/status/${consolidationId}`, {
@@ -175,17 +175,17 @@ const CFAConsolidationUI = () => {
               'Content-Type': 'application/json'
             }
           });
-          
+
           if (!progressResponse.ok) {
             throw new Error(`Failed to fetch progress! Status: ${progressResponse.status}`);
           }
-          
+
           const progressData = await progressResponse.json();
-          
+
           if (progressData.progress === lastProgress) {
             stallCount++;
             pollDelay = Math.min(pollDelay * 1.5, maxPollDelay);
-            
+
             if (stallCount > maxStallCount) {
               setProcessingState(prev => ({
                 ...prev,
@@ -197,27 +197,27 @@ const CFAConsolidationUI = () => {
             pollDelay = 1000;
             lastProgress = progressData.progress;
           }
-          
+
           setProcessingState(prev => ({
             ...prev,
             progress: progressData.progress,
             messages: [...prev.messages.filter(m => m !== progressData.message), progressData.message]
           }));
-          
+
           if (progressData.status === 'complete') {
             completed = true;
-            
+
             const resultsResponse = await fetch(`http://localhost:4560/api/consolidate/results/${consolidationId}`, {
               method: 'GET',
               headers: {
                 'Content-Type': 'application/json'
               }
             });
-            
+
             if (!resultsResponse.ok) {
               throw new Error(`Failed to fetch results! Status: ${resultsResponse.status}`);
             }
-            
+
             const resultsData = await resultsResponse.json();
             setResultsState(prev => ({
               ...prev,
@@ -228,7 +228,7 @@ const CFAConsolidationUI = () => {
                 sources: resultsData.sources
               }
             }));
-            
+
             setProcessingState(prev => ({
               ...prev,
               status: 'complete',
@@ -290,7 +290,7 @@ const CFAConsolidationUI = () => {
       },
       cellDetails: null
     }));
-    
+
     try {
       const response = await fetch(`http://localhost:4560/api/cell-details`, {
         method: 'POST',
@@ -304,11 +304,11 @@ const CFAConsolidationUI = () => {
           colIndex: cell.colIndex
         })
       });
-      
+
       if (!response.ok) {
         throw new Error(`Failed to fetch cell details! Status: ${response.status}`);
       }
-      
+
       const detailsData = await response.json();
       setResultsState(prev => ({
         ...prev,
@@ -362,7 +362,7 @@ const CFAConsolidationUI = () => {
             disabled={selectionState.selected.length === 0 || processingState.status === 'processing'}
             showReset={processingState.status === 'complete' || processingState.status === 'error'}
           />
-          
+
           <div className="view-switcher">
             <button
               className={`view-button ${resultsState.viewMode === 'consolidated' ? 'active' : ''}`}

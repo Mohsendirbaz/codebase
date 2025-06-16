@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../../styles/HomePage.CSS/TicTacToe.css';
+import '../../styles/HomePage.CSS/HCSS.css';
 
 const TicTacToe = ({ onClose }) => {
     const [board, setBoard] = useState(Array(9).fill(null));

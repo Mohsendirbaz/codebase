@@ -12,6 +12,7 @@ import {
 import { motion } from 'framer-motion';
 
 import ScalingGroupsPreview from './ScalingGroupsPreview';
+import '../styles/ScalingGroupsPreview.css';
 import EditItemForm from './EditItemForm';
 
 const ItemDetailsModal = ({ 
@@ -23,12 +24,12 @@ const ItemDetailsModal = ({
   const [activeTab, setActiveTab] = useState('overview');
   const [isEditing, setIsEditing] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
-  
+
   // Generate snippet of the configuration for sharing
   const configSnippet = `// ${item.name} - ${item.category}
 // Created by: ${item.modeler || 'Unknown'}
 // Generated from Process Economics Library
-  
+
 const scalingConfig = ${JSON.stringify(item.configuration, null, 2).slice(0, 500)}...
 // Full configuration has ${item.configuration.currentState.scalingGroups.length} scaling groups`;
 
@@ -38,7 +39,7 @@ const scalingConfig = ${JSON.stringify(item.configuration, null, 2).slice(0, 500
     setIsCopied(true);
     setTimeout(() => setIsCopied(false), 2000);
   };
-  
+
   // Format date string
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -48,14 +49,14 @@ const scalingConfig = ${JSON.stringify(item.configuration, null, 2).slice(0, 500
       day: 'numeric' 
     });
   };
-  
+
   // Count groups and items
   const groupCount = item.configuration.currentState.scalingGroups.length;
   const itemCount = item.configuration.currentState.scalingGroups.reduce(
     (sum, group) => sum + group.items.length, 
     0
   );
-  
+
   return (
     <div className="modal-overlay">
       <motion.div 
@@ -72,7 +73,7 @@ const scalingConfig = ${JSON.stringify(item.configuration, null, 2).slice(0, 500
               <h2>{item.name}</h2>
             )}
           </div>
-          
+
           {!isEditing && (
             <div className="modal-actions">
               {isPersonal && (
@@ -84,7 +85,7 @@ const scalingConfig = ${JSON.stringify(item.configuration, null, 2).slice(0, 500
                   <PencilIcon className="modal-action-icon" />
                 </button>
               )}
-              
+
               <button 
                 className="modal-action-button"
                 onClick={() => onImport(item.configuration)}
@@ -92,7 +93,7 @@ const scalingConfig = ${JSON.stringify(item.configuration, null, 2).slice(0, 500
               >
                 <ArrowDownTrayIcon className="modal-action-icon" />
               </button>
-              
+
               <button 
                 className="modal-action-button close"
                 onClick={onClose}
@@ -103,7 +104,7 @@ const scalingConfig = ${JSON.stringify(item.configuration, null, 2).slice(0, 500
             </div>
           )}
         </div>
-        
+
         {isEditing ? (
           <EditItemForm 
             item={item}
@@ -135,7 +136,7 @@ const scalingConfig = ${JSON.stringify(item.configuration, null, 2).slice(0, 500
                 Share & Export
               </button>
             </div>
-            
+
             <div className="modal-content">
               {activeTab === 'overview' && (
                 <div className="item-overview">
@@ -146,10 +147,10 @@ const scalingConfig = ${JSON.stringify(item.configuration, null, 2).slice(0, 500
                         {item.configuration.metadata.scalingType || 'Mixed'}
                       </span>
                     </div>
-                    
+
                     <p className="item-description">{item.description}</p>
                   </div>
-                  
+
                   <div className="item-details-grid">
                     <div className="details-section">
                       <h3>Configuration Details</h3>
@@ -186,7 +187,7 @@ const scalingConfig = ${JSON.stringify(item.configuration, null, 2).slice(0, 500
                         )}
                       </div>
                     </div>
-                    
+
                     <div className="tags-section">
                       <h3>Tags</h3>
                       {item.tags && item.tags.length > 0 ? (
@@ -200,7 +201,7 @@ const scalingConfig = ${JSON.stringify(item.configuration, null, 2).slice(0, 500
                       )}
                     </div>
                   </div>
-                  
+
                   <div className="scaling-preview-section">
                     <h3>Scaling Groups Preview</h3>
                     <ScalingGroupsPreview 
@@ -209,14 +210,14 @@ const scalingConfig = ${JSON.stringify(item.configuration, null, 2).slice(0, 500
                   </div>
                 </div>
               )}
-              
+
               {activeTab === 'details' && (
                 <div className="configuration-details">
                   <div className="configuration-summary">
                     <h3>Configuration Structure</h3>
                     <p>This configuration contains {groupCount} scaling groups with a total of {itemCount} items.</p>
                   </div>
-                  
+
                   <div className="groups-breakdown">
                     {item.configuration.currentState.scalingGroups.map((group, index) => (
                       <div key={group.id} className="scaling-group-detail">
@@ -231,7 +232,7 @@ const scalingConfig = ${JSON.stringify(item.configuration, null, 2).slice(0, 500
                             {group.items.length} items
                           </span>
                         </div>
-                        
+
                         <div className="group-items-list">
                           {group.items.slice(0, 5).map((groupItem, itemIndex) => (
                             <div key={itemIndex} className="group-item">
@@ -257,7 +258,7 @@ const scalingConfig = ${JSON.stringify(item.configuration, null, 2).slice(0, 500
                       </div>
                     ))}
                   </div>
-                  
+
                   <div className="configuration-metadata">
                     <h3>Metadata</h3>
                     <div className="metadata-table">
@@ -291,13 +292,13 @@ const scalingConfig = ${JSON.stringify(item.configuration, null, 2).slice(0, 500
                   </div>
                 </div>
               )}
-              
+
               {activeTab === 'share' && (
                 <div className="share-export-panel">
                   <div className="share-section">
                     <h3>Share Configuration</h3>
                     <p>Share this configuration with others using the unique link or code snippet below.</p>
-                    
+
                     <div className="link-section">
                       <h4>Sharable Link</h4>
                       <div className="copy-link-container">
@@ -319,7 +320,7 @@ const scalingConfig = ${JSON.stringify(item.configuration, null, 2).slice(0, 500
                         </button>
                       </div>
                     </div>
-                    
+
                     <div className="snippet-section">
                       <div className="snippet-header">
                         <h4>Code Snippet</h4>
@@ -345,11 +346,11 @@ const scalingConfig = ${JSON.stringify(item.configuration, null, 2).slice(0, 500
                       </pre>
                     </div>
                   </div>
-                  
+
                   <div className="export-section">
                     <h3>Export Options</h3>
                     <p>Export this configuration in different formats.</p>
-                    
+
                     <div className="export-buttons">
                       <button className="export-button">
                         <DocumentTextIcon className="export-icon" />
@@ -361,7 +362,7 @@ const scalingConfig = ${JSON.stringify(item.configuration, null, 2).slice(0, 500
                       </button>
                     </div>
                   </div>
-                  
+
                   <div className="config-id-section">
                     <h4>Configuration ID</h4>
                     <div className="config-id">

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import '../../styles/HomePage.CSS/HomePage_FactAdmin.css';
+import '../../styles/HomePage.CSS/HCSS.css';
 
 // Local storage key - must match the one in FactEngine.js
 const FACT_STORAGE_KEY = 'teaSpaceFacts';
@@ -11,13 +11,13 @@ const FactEngineAdmin = () => {
   const [newFactText, setNewFactText] = useState('');
   const addFactInputRef = useRef(null);
   const editFactInputRef = useRef(null);
-  
+
   // Load facts from localStorage
   useEffect(() => {
     const loadFacts = () => {
       try {
         const storedFactsJSON = localStorage.getItem(FACT_STORAGE_KEY);
-        
+
         if (storedFactsJSON) {
           const storedFacts = JSON.parse(storedFactsJSON);
           setFacts(storedFacts);
@@ -46,14 +46,14 @@ const FactEngineAdmin = () => {
     };
 
     loadFacts();
-    
+
     // Set up storage event listener to sync across components
     const handleStorageChange = (e) => {
       if (e.key === FACT_STORAGE_KEY && e.newValue !== null) {
         setFacts(JSON.parse(e.newValue));
       }
     };
-    
+
     window.addEventListener('storage', handleStorageChange);
     return () => window.removeEventListener('storage', handleStorageChange);
   }, []);
@@ -62,7 +62,7 @@ const FactEngineAdmin = () => {
   useEffect(() => {
     if (facts.length > 0) {
       localStorage.setItem(FACT_STORAGE_KEY, JSON.stringify(facts));
-      
+
       // Dispatch a custom event to notify other components
       window.dispatchEvent(new CustomEvent('factsUpdated', { 
         detail: { facts }
@@ -83,19 +83,19 @@ const FactEngineAdmin = () => {
   // Add a new fact
   const handleAddFact = () => {
     if (newFactText.trim() === '') return;
-    
+
     // Find the highest ID and increment by 1
     const newId = facts.length > 0 
       ? Math.max(...facts.map(fact => fact.id)) + 1 
       : 1;
-    
+
     const newFact = {
       id: newId,
       text: newFactText,
       agrees: 0,
       isPinned: false
     };
-    
+
     setFacts([...facts, newFact]);
     setNewFactText('');
     addFactInputRef.current.focus();
@@ -138,7 +138,7 @@ const FactEngineAdmin = () => {
   // Save edited fact
   const handleSaveEdit = (factId) => {
     if (editText.trim() === '') return;
-    
+
     setFacts(prevFacts => 
       prevFacts.map(fact => 
         fact.id === factId 
@@ -146,7 +146,7 @@ const FactEngineAdmin = () => {
           : fact
       )
     );
-    
+
     setEditingFactId(null);
     setEditText('');
   };
@@ -169,7 +169,7 @@ const FactEngineAdmin = () => {
           Reset All Votes
         </button>
       </div>
-      
+
       <div className="facts-summary">
         <div className="summary-card">
           <div className="summary-number">{facts.length}</div>
@@ -184,7 +184,7 @@ const FactEngineAdmin = () => {
           <div className="summary-label">Pinned Facts</div>
         </div>
       </div>
-      
+
       <div className="add-fact-section">
         <h3>Add New Fact</h3>
         <div className="add-fact-form">
@@ -204,7 +204,7 @@ const FactEngineAdmin = () => {
           </button>
         </div>
       </div>
-      
+
       <div className="facts-list-section">
         <h3>Manage Facts</h3>
         {facts.length === 0 ? (

@@ -1,4 +1,4 @@
-import '../../styles/HomePage.CSS/PendulumClock.css';
+import '../../styles/HomePage.CSS/HCSS.css';
 
 import React, { useEffect, useRef } from 'react';
 

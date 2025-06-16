@@ -12,8 +12,8 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    height: 40px;
+    gap: var(--model-spacing-xs);
+    height: var(--spacing-xl);
 }
 
 /* Hover/Focus States */
@@ -50,13 +50,13 @@
 
 /* Size Variants */
 .btn-sm {
-    padding: 8px 16px;
-    height: 32px;
-    font-size: 0.875rem;
+    padding: var(--model-spacing-xs) var(--model-spacing-md);
+    height: calc(var(--spacing-xl) - var(--model-spacing-xs));
+    font-size: var(--model-font-size-sm);
 }
 
 .btn-lg {
-    padding: 16px 32px;
-    height: 48px;
-    font-size: 1.125rem;
+    padding: var(--model-spacing-md) calc(var(--model-spacing-md) * 2);
+    height: calc(var(--spacing-xl) + var(--model-spacing-xs));
+    font-size: var(--model-font-size-lg);
 }

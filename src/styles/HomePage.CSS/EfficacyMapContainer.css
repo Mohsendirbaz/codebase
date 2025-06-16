@@ -1,0 +1,220 @@
+/* EfficacyMapContainer.css */
+
+.efficacy-map-container {
+  background-color: var(--card-background);
+  border-radius: var(--neu-border-radius-lg);
+  box-shadow: var(--neu-shadow-md);
+  padding: 24px;
+  margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Map header styles */
+.map-header {
+  margin-bottom: 24px;
+}
+
+.map-header h2 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  color: var(--text-color);
+  font-size: 24px;
+}
+
+.map-description {
+  color: var(--text-secondary);
+  font-size: var(--model-font-size-sm);
+  margin-bottom: 16px;
+  max-width: 800px;
+}
+
+/* Capacity summary styles */
+.capacity-summary {
+  background-color: var(--neu-background);
+  border-radius: var(--neu-border-radius-md);
+  padding: 16px;
+  margin-bottom: 16px;
+  border: 1px solid var(--border-color);
+}
+
+.capacity-summary h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  color: var(--text-color);
+  font-size: var(--model-font-size-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.capacity-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.capacity-button:hover {
+  background-color: #45a049;
+}
+
+.capacity-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.capacity-item {
+  flex: 1;
+  min-width: 200px;
+  padding: 12px;
+  background-color: var(--card-background);
+  border-radius: var(--neu-border-radius-md);
+  box-shadow: var(--neu-shadow-sm);
+}
+
+.capacity-label {
+  font-weight: 500;
+  color: var(--text-color);
+  margin-bottom: 4px;
+}
+
+.capacity-value {
+  font-size: var(--model-font-size-lg);
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 8px;
+}
+
+.capacity-bar {
+  height: 8px;
+  background-color: var(--border-color);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.capacity-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+/* Configuration space info styles */
+.configuration-space-info {
+  background-color: #e8f5e9;
+  border-radius: 4px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.configuration-formula {
+  font-family: 'Courier New', monospace;
+  background-color: #f8f9fa;
+  padding: 10px;
+  border-radius: 4px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.total-space {
+  color: #e91e63;
+  font-size: 1.1em;
+  margin-left: 5px;
+}
+
+/* Map content styles */
+.map-content {
+  position: relative;
+}
+
+/* Overlay panels */
+.conflict-panel-overlay,
+.capacity-panel-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .efficacy-map-container {
+    padding: 16px;
+  }
+
+  .capacity-items {
+    flex-direction: column;
+  }
+
+  .capacity-item {
+    min-width: 100%;
+  }
+
+  .conflict-panel-overlay,
+  .capacity-panel-overlay {
+    padding: 10px;
+  }
+
+  .capacity-summary h3 {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .capacity-button {
+    margin-top: 8px;
+  }
+}
+
+/* Exclusion note styles */
+.exclusion-note {
+  margin-top: 16px;
+  padding: 12px;
+  background-color: rgba(33, 150, 243, 0.1); /* Light blue background */
+  border-radius: var(--neu-border-radius-md);
+  border-left: 4px solid #2196f3; /* Blue */
+}
+
+.exclusion-note h4 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  color: #2196f3; /* Blue */
+  font-size: var(--model-font-size-md);
+}
+
+.exclusion-note p {
+  margin: 4px 0;
+  color: var(--text-color);
+  font-size: var(--model-font-size-sm);
+}
+
+.exclusion-note ul {
+  margin: 8px 0;
+  padding-left: 24px;
+}
+
+.exclusion-note li {
+  margin-bottom: 4px;
+  color: var(--text-color);
+  font-size: var(--model-font-size-sm);
+}

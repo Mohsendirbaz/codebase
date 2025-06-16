@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import '../../styles/HomePage.CSS/Efficacy.css';
+import '../../styles/HomePage.CSS/HCSS.css';
 
 const Popup = ({ show, position, onClose, formValues, handleInputChange, id, version, itemId, onVersionChange}) => {
   const [sliderValues, setSliderValues] = useState([1, 40]);
@@ -26,9 +26,9 @@ const Popup = ({ show, position, onClose, formValues, handleInputChange, id, ver
           onClose();
         }
       };
-      
+
       document.addEventListener('mousedown', handleClickOutside);
-      
+
       return () => {
         document.removeEventListener('mousedown', handleClickOutside);
       };
@@ -37,7 +37,7 @@ const Popup = ({ show, position, onClose, formValues, handleInputChange, id, ver
 
   useEffect(() => {
     const currentPlantLifetime = getPlantLifetime();
-    
+
     setSliderValues(prev => {
       const newEnd = Math.min(prev[1], currentPlantLifetime);
       const newStart = Math.min(prev[0], newEnd);
@@ -62,7 +62,7 @@ const Popup = ({ show, position, onClose, formValues, handleInputChange, id, ver
   useEffect(() => {
     const currentPlantLifetime = getPlantLifetime();
     const efficacyPeriod = formValues[id]?.efficacyPeriod || {};
-    
+
     const start = efficacyPeriod.start?.value;
     const end = efficacyPeriod.end?.value;
 
@@ -82,7 +82,7 @@ const Popup = ({ show, position, onClose, formValues, handleInputChange, id, ver
       Math.max(1, parseInt(value) || 1),
       currentPlantLifetime
     );
-    
+
     setSliderValues(prev => {
       const newValues = [...prev];
       if (index === 0) {
@@ -126,7 +126,7 @@ const Popup = ({ show, position, onClose, formValues, handleInputChange, id, ver
       start: sliderValues[0],
       end: sliderValues[1],
       remarks: item.remarks || '',
-      
+
     };
 
     try {
@@ -145,7 +145,7 @@ const Popup = ({ show, position, onClose, formValues, handleInputChange, id, ver
       const result = await response.text();
       console.log('Parameter submitted successfully:', result);
       setSubmitSuccess(true);
-      
+
       setTimeout(() => {
         const successMessage = document.querySelector('.success-message');
         if (successMessage) {
@@ -166,7 +166,7 @@ const Popup = ({ show, position, onClose, formValues, handleInputChange, id, ver
   const handleReset = () => {
     const currentPlantLifetime = getPlantLifetime();
     const newValues = [1, currentPlantLifetime];
-    
+
     setSliderValues(newValues);
     handleInputChange(
       { target: { value: 1 } },
@@ -185,13 +185,13 @@ const Popup = ({ show, position, onClose, formValues, handleInputChange, id, ver
   const getPercentages = () => {
     const currentPlantLifetime = getPlantLifetime();
     const rangeSize = currentPlantLifetime - 1;
-    
+
     const adjustedEnd = Math.min(sliderValues[1], currentPlantLifetime);
     const adjustedStart = Math.min(sliderValues[0], adjustedEnd);
-    
+
     const startPercent = ((adjustedStart - 1) / rangeSize) * 100;
     const widthPercent = ((adjustedEnd - adjustedStart) / rangeSize) * 100;
-    
+
     return {
       startPercent: Math.max(0, Math.min(100, startPercent)),
       widthPercent: Math.max(0, Math.min(100 - startPercent, widthPercent))
@@ -268,7 +268,7 @@ const Popup = ({ show, position, onClose, formValues, handleInputChange, id, ver
               {sliderValues[1]}
             </span>
           </div>
-          
+
         </div>
 
         {submitSuccess && (

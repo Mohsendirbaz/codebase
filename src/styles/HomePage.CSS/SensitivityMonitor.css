@@ -40,6 +40,44 @@
   color:var(--text-color)
 }
 
+.header-content {
+  flex: 1;
+  margin-right: 16px;
+}
+
+/* Usage indicator styles */
+.usage-indicator {
+  margin-top: 8px;
+  font-size: var(--model-font-size-sm);
+}
+
+.usage-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.usage-bar {
+  height: 8px;
+  background-color: var(--border-color);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+
+.usage-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.usage-details {
+  font-size: 0.85em;
+  color: var(--text-secondary);
+  text-align: right;
+}
+
 .monitor-header h3 {
   margin: 0;
   font-size: var(--model-font-size-lg);
@@ -77,14 +115,14 @@
   font-weight: 600;
   letter-spacing: 1px;
   text-align: center;
-  
+
   /* Positioning at top */
   position: absolute;
   top: 10px;
   left: 50%;
   transform: translateX(-50%) rotate(180deg);
   z-index: 5;
-  
+
   /* Spacing */
   padding: 5px;
 }
@@ -402,11 +440,11 @@
     width: 100%;
     justify-content: space-between;
   }
-  
+
   .toggle-slider {
     order: 2;
   }
-  
+
   .toggle-label-text {
     order: 1;
   }
@@ -797,17 +835,17 @@
   .monitor-toolbar-s {
     flex-direction: column;
   }
-  
+
   .search-input, 
   .filter-select {
     width: 100%;
   }
-  
+
   .parameter-header-s {
     flex-direction: column;
     align-items: flex-start;
   }
-  
+
   .parameter-controls-s {
     margin-top: 8px;
     width: 100%;

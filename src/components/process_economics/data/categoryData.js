@@ -39,9 +39,14 @@ export const categories = [
     'Utility Systems',
     'Waste Management',
     'Retrofit Analysis',
-    'Debottlenecking'
+    'Debottlenecking',
+    'Decarbonization Pathway',
+    'Carbon Reduction',
+    'Hydrogen Production',
+    'Carbon Capture',
+    'Electrification'
   ];
-  
+
   /**
    * Category groups organized by domain
    * Helpful for filtering and navigation
@@ -73,7 +78,12 @@ export const categories = [
       'Energy Efficiency',
       'Carbon Footprint',
       'Sustainability',
-      'Waste Management'
+      'Waste Management',
+      'Decarbonization Pathway',
+      'Carbon Reduction',
+      'Hydrogen Production',
+      'Carbon Capture',
+      'Electrification'
     ],
     'Project Lifecycle': [
       'Conceptual Design',
@@ -97,7 +107,7 @@ export const categories = [
       'Regulatory Compliance'
     ]
   };
-  
+
   /**
    * Category colors for visual differentiation
    */
@@ -136,9 +146,14 @@ export const categories = [
     'Utility Systems': '#ef4444', // red
     'Waste Management': '#10b981', // green
     'Retrofit Analysis': '#ef4444', // red
-    'Debottlenecking': '#ef4444' // red
+    'Debottlenecking': '#ef4444', // red
+    'Decarbonization Pathway': '#10b981', // green
+    'Carbon Reduction': '#10b981', // green
+    'Hydrogen Production': '#8b5cf6', // purple
+    'Carbon Capture': '#0891b2', // cyan
+    'Electrification': '#ec4899'  // pink
   };
-  
+
   /**
    * Category icons mapping
    * Maps categories to their respective icon components
@@ -179,12 +194,60 @@ export const categories = [
     'Utility Systems': 'LightBulbIcon',
     'Waste Management': 'TrashIcon',
     'Retrofit Analysis': 'CogIcon',
-    'Debottlenecking': 'SwitchHorizontalIcon'
+    'Debottlenecking': 'SwitchHorizontalIcon',
+    'Decarbonization Pathway': 'LeafIcon',
+    'Carbon Reduction': 'CloudIcon',
+    'Hydrogen Production': 'BeakerIcon',
+    'Carbon Capture': 'FilterIcon',
+    'Electrification': 'BoltIcon'
   };
-  
+
+  /**
+   * Decarbonization categories 
+   * Used for categorizing pathways in the decarbonization module
+   */
+  export const decarbonizationCategories = [
+    'renewable',
+    'low-carbon',
+    'fossil',
+    'emerging',
+    'hydrogen',
+    'carbon-capture',
+    'electrification'
+  ];
+
+  /**
+   * Mapping of decarbonization categories to colors
+   */
+  export const decarbonizationCategoryColors = {
+    'renewable': '#10b981', // green
+    'low-carbon': '#3b82f6', // blue
+    'fossil': '#6b7280', // gray
+    'emerging': '#f59e0b', // amber
+    'hydrogen': '#8b5cf6', // purple
+    'carbon-capture': '#0891b2', // cyan
+    'electrification': '#ec4899' // pink
+  };
+
+  /**
+   * Decarbonization category icons
+   */
+  export const decarbonizationCategoryIcons = {
+    'renewable': 'LeafIcon',
+    'low-carbon': 'CloudIcon',
+    'fossil': 'FireIcon',
+    'emerging': 'SparklesIcon',
+    'hydrogen': 'BeakerIcon',
+    'carbon-capture': 'FilterIcon',
+    'electrification': 'BoltIcon'
+  };
+
   export default {
     categories,
     categoryGroups,
     categoryColors,
-    categoryIcons
+    categoryIcons,
+    decarbonizationCategories,
+    decarbonizationCategoryColors,
+    decarbonizationCategoryIcons
   };

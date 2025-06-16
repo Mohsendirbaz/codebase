@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { Card, CardHeader, CardContent } from './Card';
 import { motion, AnimatePresence } from 'framer-motion';
-import '../../styles/HomePage.CSS/ScalingSummary.css'
+import '../../styles/HomePage.CSS/HCSS.css'
 
 /**
  * @typedef {Object} SummaryItem

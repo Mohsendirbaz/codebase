@@ -1,0 +1,382 @@
+.factual-precedence-popup {
+  position: absolute;
+  z-index: 1000;
+  background-color: var(--popup-background, #ffffff);
+  border: 1px solid var(--popup-border, #cccccc);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  width: 550px;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 0;
+  font-family: var(--font-family, Arial, sans-serif);
+
+}
+
+.factual-precedence-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: var(--header-background, #f5f5f5);
+  border-bottom: 1px solid var(--header-border, #e0e0e0);
+  border-radius: 8px 8px 0 0;
+}
+
+.factual-precedence-header h3 {
+  margin: 0;
+  font-size: 18px;
+  color: var(--header-text, #333333);
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: var(--icon-color, #666666);
+  cursor: pointer;
+  font-size: 16px;
+  transition: color 0.2s;
+}
+
+.close-button:hover {
+  color: var(--icon-hover, #333333);
+}
+
+.factual-precedence-content {
+  padding: 20px;
+}
+
+.factual-summary {
+  margin-bottom: 20px;
+}
+
+.factual-summary h4,
+.factual-examples h4,
+.factual-recommendation h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: var(--text-secondary, #444444);
+  font-size: 16px;
+}
+
+.factual-summary p {
+  line-height: 1.5;
+  color: var(--text-color, #555555);
+  margin: 0;
+}
+
+.reference-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.reference-table th,
+.reference-table td {
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--table-border, #e0e0e0);
+}
+
+.reference-table th {
+  font-weight: 600;
+  background-color: var(--table-header, #f0f0f0);
+  color: var(--table-header-text, #444444);
+}
+
+.reference-table tr:hover {
+  background-color: var(--table-hover, #051b3c);
+}
+
+.selected-row {
+  background-color: var(--selected-background, #e6f7ff) !important;
+}
+
+.apply-value-button,
+.apply-recommendation-button {
+  background-color: var(--button-background, #1890ff);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.2s;
+}
+
+.apply-value-button:hover,
+.apply-recommendation-button:hover {
+  background-color: var(--button-hover, #40a9ff);
+}
+
+.apply-value-button:disabled {
+  background-color: var(--button-disabled, #d9d9d9);
+  cursor: not-allowed;
+}
+
+.recommendation-box {
+  background-color: var(--recommendation-background, #f6ffed);
+  border: 1px solid var(--recommendation-border, #b7eb8f);
+  border-radius: 4px;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.recommendation-box p {
+  margin: 0;
+}
+
+.rationale {
+  font-size: 14px;
+  color: var(--rationale-color, #666666);
+}
+
+.filter-panel {
+  background-color: var(--filter-background, #f9f9f9);
+  border-radius: 4px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.filter-panel h4 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+.filter-category {
+  margin-bottom: 12px;
+}
+
+.filter-category h5 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: var(--filter-category, #666666);
+}
+
+.filter-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filter-checkbox {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  padding: 3px 8px;
+  background-color: var(--filter-checkbox, #f0f0f0);
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.filter-checkbox input {
+  margin-right: 5px;
+}
+
+.loading-state,
+.no-data-message {
+  padding: 30px 20px;
+  text-align: center;
+  color: var(--info-text, #666666);
+}
+
+.loading-state {
+  font-style: italic;
+}
+
+.no-data-message button {
+  margin-top: 10px;
+  background-color: var(--button-background, #1890ff);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.no-data-message button:hover {
+  background-color: var(--button-hover, #40a9ff);
+}
+/* Enhanced contrast for Factual Precedence popup */
+.factual-precedence-popup {
+  /* Use theme variable for background but ensure good contrast */
+  background-color: var(--card-background);
+  color: var(--text-secondary);
+}
+
+.factual-precedence-header {
+  background-color: var(--primary-color);
+}
+
+.factual-precedence-header h3 {
+  color: #ffffff; /* Ensure header text is high contrast */
+}
+
+.tab-button {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.tab-button.active {
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Improve table contrast */
+.reference-table th {
+  background-color: var(--secondary-color);
+  color: #ffffff;
+}
+
+.reference-table td {
+  color: var(--text-color);
+}
+
+/* Better button contrast */
+.apply-value-button,
+.apply-recommendation-button {
+  background-color: var(--accent-color);
+  color: var(--text-color); /* Dark text on light button for better contrast */
+  font-weight: 500;
+}
+/* Feedback button */
+.feedback-button {
+  display: block;
+  margin-top: 20px;
+  padding: 8px 16px;
+  background-color: var(--light-color);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.feedback-button:hover {
+  background-color: var(--input-background);
+  color: var(--text-color);
+}
+
+/* Filtered Factual Precedence Container */
+.filtered-factual-precedence {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Recommendation Box Enhancements */
+.recommendation-box {
+  background-color: var(--text-secondary, #f6ffed);
+  border: 1px solid var(--text-secondary, #b7eb8f);
+  border-radius: 4px;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.recommendation-box p {
+  margin: 0;
+  color: var(--primary-color);
+}
+
+.rationale {
+  font-size: 14px;
+  color: var(--rationale-color, #666666);
+}
+/* Two boxes at top - Evolution and Feedback headers */
+.evolution-header, .feedback-header {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 12px 16px;
+  border-radius: var(--model-border-radius-md) var(--model-border-radius-md) 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Feedback panel content area */
+.feedback-content {
+  padding: 20px;
+  background-color: var(--card-background);
+  color: var(--text-color);
+}
+
+/* Feedback type selection options */
+.feedback-type-selection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+/* Feedback success message */
+.feedback-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  color: var(--success-color);
+}
+
+/* Feedback comment textarea */
+.feedback-comment textarea {
+  width: 100%;
+  border: 1px solid var(--border-color);
+  border-radius: var(--model-border-radius-sm);
+  padding: 8px;
+  background-color: var(--input-background);
+  color: var(--text-color);
+}
+
+/* Submit feedback button */
+.submit-feedback-button {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: var(--model-border-radius-sm);
+  padding: 8px 16px;
+  margin-top: 15px;
+  width: 100%;
+  cursor: pointer;
+}
+
+/* Evolution insights content area */
+.evolution-content {
+  padding: 20px;
+  background-color: var(--card-background);
+  color: var(--text-color);
+}
+
+/* Example cards in corporate evolution section */
+.example-card {
+  background-color: rgba(var(--primary-color-rgb), 0.05);
+  border-radius: var(--model-border-radius-sm);
+  padding: 12px;
+  margin-bottom: 10px;
+  border-left: 3px solid var(--accent-color);
+}
+
+/* Example card company and year display */
+.example-company {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: var(--accent-color);
+}
+
+/* Strategy items in evolution insights */
+.strategy-item {
+  margin-bottom: 8px;
+  padding-left: 15px;
+  position: relative;
+}

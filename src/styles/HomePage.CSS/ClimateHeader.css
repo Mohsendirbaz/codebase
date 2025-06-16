@@ -1,0 +1,478 @@
+/* ClimateHeader.css - Neumorphic Design with Root Variables */
+
+:root {
+  /* Climate Header Color Palette */
+  --climate-bg-primary: #f0f0f3;
+  --climate-bg-secondary: #e8e8eb;
+  --climate-surface: #ffffff;
+  --climate-text-primary: #2d3748;
+  --climate-text-secondary: #4a5568;
+  --climate-text-muted: #718096;
+  --climate-accent-green: #48bb78;
+  --climate-accent-blue: #4299e1;
+  --climate-accent-orange: #ed8936;
+  --climate-accent-red: #f56565;
+  --climate-accent-purple: #9f7aea;
+  
+  /* Neumorphic Shadows */
+  --climate-shadow-inset: inset 8px 8px 16px #d1d1d4, inset -8px -8px 16px #ffffff;
+  --climate-shadow-outset: 8px 8px 16px #d1d1d4, -8px -8px 16px #ffffff;
+  --climate-shadow-pressed: inset 4px 4px 8px #d1d1d4, inset -4px -4px 8px #ffffff;
+  --climate-shadow-hover: 12px 12px 20px #d1d1d4, -12px -12px 20px #ffffff;
+  --climate-shadow-active: 6px 6px 12px #d1d1d4, -6px -6px 12px #ffffff;
+  
+  /* Border Radius */
+  --climate-radius-sm: 8px;
+  --climate-radius-md: 16px;
+  --climate-radius-lg: 24px;
+  --climate-radius-xl: 32px;
+  
+  /* Spacing */
+  --climate-space-xs: 0.5rem;
+  --climate-space-sm: 1rem;
+  --climate-space-md: 1.5rem;
+  --climate-space-lg: 2rem;
+  --climate-space-xl: 3rem;
+  
+  /* Typography */
+  --climate-font-xs: 0.75rem;
+  --climate-font-sm: 0.875rem;
+  --climate-font-md: 1rem;
+  --climate-font-lg: 1.125rem;
+  --climate-font-xl: 1.25rem;
+  --climate-font-2xl: 1.5rem;
+  --climate-font-3xl: 2rem;
+  
+  /* Transitions */
+  --climate-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --climate-transition-fast: all 0.15s ease;
+  --climate-transition-slow: all 0.5s ease;
+}
+
+/* Main Header Container */
+.climate-header {
+  background: var(--climate-bg-primary);
+  border-radius: var(--climate-radius-xl);
+  padding: var(--climate-space-lg);
+  margin-bottom: var(--climate-space-lg);
+  box-shadow: var(--climate-shadow-outset);
+  position: relative;
+  overflow: hidden;
+  transition: var(--climate-transition);
+}
+
+.climate-header:hover {
+  box-shadow: var(--climate-shadow-hover);
+}
+
+/* Header Content Layout */
+.climate-header-content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: var(--climate-space-lg);
+  align-items: center;
+}
+
+/* Climate Summary Section */
+.climate-summary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--climate-space-xs);
+  background: var(--climate-surface);
+  padding: var(--climate-space-md);
+  border-radius: var(--climate-radius-lg);
+  box-shadow: var(--climate-shadow-inset);
+  transition: var(--climate-transition);
+}
+
+.climate-summary:hover {
+  box-shadow: var(--climate-shadow-pressed);
+}
+
+.climate-summary h3 {
+  color: var(--climate-text-primary);
+  font-size: var(--climate-font-2xl);
+  font-weight: 700;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+}
+
+.total-footprint {
+  font-size: var(--climate-font-3xl);
+  font-weight: 800;
+  color: var(--climate-accent-green);
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+  margin: var(--climate-space-xs) 0;
+}
+
+.active-info {
+  display: flex;
+  gap: var(--climate-space-md);
+  font-size: var(--climate-font-sm);
+  color: var(--climate-text-muted);
+  background: var(--climate-bg-secondary);
+  padding: var(--climate-space-xs) var(--climate-space-sm);
+  border-radius: var(--climate-radius-sm);
+  box-shadow: var(--climate-shadow-inset);
+}
+
+/* Toggle Controls */
+.unit-toggle-controls,
+.region-toggle-controls {
+  display: flex;
+  gap: var(--climate-space-xs);
+  background: var(--climate-surface);
+  border-radius: var(--climate-radius-md);
+  padding: var(--climate-space-xs);
+  box-shadow: var(--climate-shadow-inset);
+  transition: var(--climate-transition);
+}
+
+.unit-toggle-controls:hover,
+.region-toggle-controls:hover {
+  box-shadow: var(--climate-shadow-pressed);
+}
+
+.unit-toggle-btn,
+.region-toggle-btn {
+  padding: var(--climate-space-sm) var(--climate-space-md);
+  background: var(--climate-bg-secondary);
+  border: none;
+  border-radius: var(--climate-radius-sm);
+  color: var(--climate-text-secondary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--climate-transition);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: var(--climate-font-xs);
+  box-shadow: var(--climate-shadow-outset);
+}
+
+.unit-toggle-btn:hover,
+.region-toggle-btn:hover {
+  box-shadow: var(--climate-shadow-hover);
+  color: var(--climate-text-primary);
+  transform: translateY(-2px);
+}
+
+.unit-toggle-btn.active {
+  background: var(--climate-accent-green);
+  color: white;
+  box-shadow: var(--climate-shadow-pressed);
+  transform: translateY(1px);
+}
+
+.region-toggle-btn.active {
+  background: var(--climate-accent-blue);
+  color: white;
+  box-shadow: var(--climate-shadow-pressed);
+  transform: translateY(1px);
+}
+
+/* Zones Counter */
+.total-zones-counter {
+  background: var(--climate-surface);
+  padding: var(--climate-space-md);
+  border-radius: var(--climate-radius-lg);
+  text-align: center;
+  box-shadow: var(--climate-shadow-outset);
+  transition: var(--climate-transition);
+}
+
+.total-zones-counter:hover {
+  box-shadow: var(--climate-shadow-hover);
+  transform: translateY(-2px);
+}
+
+.zones-count {
+  font-size: var(--climate-font-3xl);
+  font-weight: 800;
+  color: var(--climate-accent-blue);
+  display: block;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+}
+
+.zones-label {
+  font-size: var(--climate-font-xs);
+  color: var(--climate-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: var(--climate-space-xs);
+  font-weight: 600;
+}
+
+/* Enhanced Header Variations */
+.climate-header-enhanced {
+  background: var(--climate-bg-primary);
+  border-radius: var(--climate-radius-xl);
+  padding: var(--climate-space-xl);
+  margin-bottom: var(--climate-space-lg);
+  box-shadow: var(--climate-shadow-outset);
+  transition: var(--climate-transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.climate-header-enhanced:hover {
+  box-shadow: var(--climate-shadow-hover);
+}
+
+.climate-header-enhanced::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 25% 75%, rgba(66, 153, 225, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 25%, rgba(72, 187, 120, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.climate-header-enhanced .climate-header-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Compact Header Variation */
+.climate-header-compact {
+  background: var(--climate-surface);
+  border-radius: var(--climate-radius-lg);
+  padding: var(--climate-space-md);
+  margin-bottom: var(--climate-space-md);
+  box-shadow: var(--climate-shadow-inset);
+  transition: var(--climate-transition);
+}
+
+.climate-header-compact:hover {
+  box-shadow: var(--climate-shadow-pressed);
+}
+
+.climate-header-compact .climate-header-content {
+  grid-template-columns: auto 1fr auto;
+  gap: var(--climate-space-md);
+  align-items: center;
+}
+
+.climate-header-compact .climate-summary {
+  padding: var(--climate-space-sm);
+}
+
+.climate-header-compact .climate-summary h3 {
+  font-size: var(--climate-font-lg);
+}
+
+.climate-header-compact .total-footprint {
+  font-size: var(--climate-font-xl);
+}
+
+/* Status Indicators */
+.climate-status-indicator {
+  display: flex;
+  align-items: center;
+  gap: var(--climate-space-xs);
+  background: var(--climate-bg-secondary);
+  padding: var(--climate-space-xs) var(--climate-space-sm);
+  border-radius: var(--climate-radius-sm);
+  box-shadow: var(--climate-shadow-inset);
+  font-size: var(--climate-font-xs);
+  font-weight: 500;
+  transition: var(--climate-transition);
+}
+
+.climate-status-indicator:hover {
+  box-shadow: var(--climate-shadow-pressed);
+}
+
+.climate-status-indicator.status-good {
+  border-left: 4px solid var(--climate-accent-green);
+}
+
+.climate-status-indicator.status-warning {
+  border-left: 4px solid var(--climate-accent-orange);
+}
+
+.climate-status-indicator.status-critical {
+  border-left: 4px solid var(--climate-accent-red);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  box-shadow: var(--climate-shadow-outset);
+}
+
+.status-dot.good {
+  background: var(--climate-accent-green);
+}
+
+.status-dot.warning {
+  background: var(--climate-accent-orange);
+}
+
+.status-dot.critical {
+  background: var(--climate-accent-red);
+}
+
+/* Quick Actions */
+.climate-quick-actions {
+  display: flex;
+  gap: var(--climate-space-xs);
+  margin-top: var(--climate-space-sm);
+}
+
+.climate-quick-action-btn {
+  padding: var(--climate-space-xs) var(--climate-space-sm);
+  background: var(--climate-bg-secondary);
+  border: none;
+  border-radius: var(--climate-radius-sm);
+  color: var(--climate-text-secondary);
+  font-size: var(--climate-font-xs);
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--climate-transition);
+  box-shadow: var(--climate-shadow-outset);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.climate-quick-action-btn:hover {
+  box-shadow: var(--climate-shadow-hover);
+  color: var(--climate-text-primary);
+  transform: translateY(-1px);
+}
+
+.climate-quick-action-btn:active {
+  box-shadow: var(--climate-shadow-pressed);
+  transform: translateY(1px);
+}
+
+/* Header Metrics Grid */
+.climate-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: var(--climate-space-sm);
+  margin-top: var(--climate-space-md);
+}
+
+.climate-metric-card {
+  background: var(--climate-surface);
+  border-radius: var(--climate-radius-md);
+  padding: var(--climate-space-sm);
+  text-align: center;
+  box-shadow: var(--climate-shadow-outset);
+  transition: var(--climate-transition);
+}
+
+.climate-metric-card:hover {
+  box-shadow: var(--climate-shadow-hover);
+  transform: translateY(-2px);
+}
+
+.metric-value {
+  font-size: var(--climate-font-lg);
+  font-weight: 700;
+  color: var(--climate-accent-blue);
+  display: block;
+  margin-bottom: var(--climate-space-xs);
+}
+
+.metric-label {
+  font-size: var(--climate-font-xs);
+  color: var(--climate-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .climate-header-content {
+    grid-template-columns: 1fr;
+    gap: var(--climate-space-md);
+    text-align: center;
+  }
+  
+  .unit-toggle-controls,
+  .region-toggle-controls {
+    justify-self: center;
+  }
+
+  .climate-metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .climate-header {
+    padding: var(--climate-space-md);
+  }
+
+  .climate-header-enhanced {
+    padding: var(--climate-space-lg);
+  }
+  
+  .climate-summary h3 {
+    font-size: var(--climate-font-xl);
+  }
+  
+  .total-footprint {
+    font-size: var(--climate-font-2xl);
+  }
+  
+  .unit-toggle-btn,
+  .region-toggle-btn {
+    padding: var(--climate-space-xs) var(--climate-space-sm);
+    font-size: var(--climate-font-xs);
+  }
+
+  .climate-metrics-grid {
+    grid-template-columns: 1fr;
+    gap: var(--climate-space-xs);
+  }
+
+  .active-info {
+    flex-direction: column;
+    gap: var(--climate-space-xs);
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .climate-header {
+    padding: var(--climate-space-sm);
+  }
+
+  .climate-header-enhanced {
+    padding: var(--climate-space-md);
+  }
+  
+  .unit-toggle-controls,
+  .region-toggle-controls {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .total-zones-counter {
+    padding: var(--climate-space-sm);
+  }
+  
+  .zones-count {
+    font-size: var(--climate-font-2xl);
+  }
+
+  .climate-quick-actions {
+    flex-direction: column;
+    gap: var(--climate-space-xs);
+  }
+
+  .climate-summary {
+    padding: var(--climate-space-sm);
+  }
+}

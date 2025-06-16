@@ -112,6 +112,9 @@
     --primary-color-rgb: 18, 26, 46;
     --danger-color-rgb: 220, 53, 69;
     --border-color-rgb: 42, 51, 86;
+    --success-color-rgb: 40, 167, 69;
+    --warning-color-rgb: 255, 193, 7;
+    --text-color-rgb: 224, 224, 224;
 
     /* Year column accent colors */
     --accent-color: #63733f;

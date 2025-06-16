@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import '../../styles/HomePage.CSS/HCSS.css';
 import '../../styles/HomePage.CSS/SensitivityMonitor.css';
-import useFormValues from '../../useFormValues';
+import { useMatrixFormValues } from '../../Consolidated2';
+import capacityTracker from '../../services/CapacityTrackingService';
 
 /**
  * SensitivityMonitor component for configuring and managing sensitivity analysis parameters
@@ -16,7 +18,7 @@ const sensitivityActionRef = { current: null };
 
 const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
   // Get form values
-  const { formValues } = useFormValues();
+  const { formMatrix: formValues } = useMatrixFormValues();
 
   // Component state
   const [isExpanded, setIsExpanded] = useState(true);
@@ -24,6 +26,7 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
   const [filterMode, setFilterMode] = useState('all');
   const [selectedParameter, setSelectedParameter] = useState(null);
   const [parameterDetails, setParameterDetails] = useState(null);
+  const [usagePercentage, setUsagePercentage] = useState(0);
 
   // Mode color mapping for visual indication
   const modeColorMap = {
@@ -319,6 +322,12 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
     };
   }, [toggleParameterEnabled, openParameterDetails]);
 
+  // Update usage percentage whenever S changes
+  useEffect(() => {
+    const percentage = capacityTracker.updateSensitivityUsage(S);
+    setUsagePercentage(percentage);
+  }, [S]);
+
   // If not visible, don't render anything
   if (!isVisible) return null;
 
@@ -327,7 +336,28 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
         <div className="monitor-header-s">
           {isExpanded ? (
               <>
-                <h3>Sensitivity Analysis</h3>
+                <div className="header-content">
+                  <h3>Sensitivity Analysis</h3>
+                  <div className="usage-indicator">
+                    <div className="usage-label">
+                      Usage: {usagePercentage}% of capacity
+                    </div>
+                    <div className="usage-bar">
+                      <div 
+                        className="usage-fill" 
+                        style={{ 
+                          width: `${usagePercentage}%`,
+                          backgroundColor: usagePercentage > 90 ? '#ff4d4d' : 
+                                          usagePercentage > 70 ? '#ffaa33' : 
+                                          '#4caf50'
+                        }}
+                      ></div>
+                    </div>
+                    <div className="usage-details">
+                      {capacityTracker.getUsageCount('sensitivityVariables')} of {capacityTracker.getCapacityLimit('sensitivityVariables')} variables enabled
+                    </div>
+                  </div>
+                </div>
                 <button
                     className="collapse-button"
                     onClick={() => setIsExpanded(false)}

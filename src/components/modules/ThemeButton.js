@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 import ThemeConfigurator from './ThemeConfigurator';
-import '../../styles/HomePage.CSS/ThemeButton.css';
+import '../../styles/HomePage.CSS/HCSS.css';
 
 const ThemeButton = ({ theme, currentTheme, onThemeChange }) => {
   const [isConfiguratorOpen, setIsConfiguratorOpen] = useState(false);
-  
+
   const handleButtonClick = () => {
     // Always change theme when button is clicked
     onThemeChange(theme);
   };
-  
+
   const handleEditClick = (e) => {
     // Stop propagation to prevent theme change
     e.stopPropagation();
     setIsConfiguratorOpen(true);
   };
-  
+
   return (
     <div className={`theme-button-container ${currentTheme === theme ? 'active' : ''}`}>
       <button
@@ -33,7 +33,7 @@ const ThemeButton = ({ theme, currentTheme, onThemeChange }) => {
         )}
         {theme === 'dark' ? 'Dark' : theme === 'light' ? 'Light' : 'Creative'}
       </button>
-      
+
       {isConfiguratorOpen && (
         <ThemeConfigurator onClose={() => setIsConfiguratorOpen(false)} />
       )}

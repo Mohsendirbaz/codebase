@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/HomePage.CSS/HomePage_scaling_t.css';
+import '../../styles/HomePage.CSS/HCSS.css';
 
 export const Card = ({ children, className = '', ...props }) => (
   <div className={`card ${className}`} {...props}>

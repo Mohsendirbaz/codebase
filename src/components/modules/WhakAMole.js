@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import '../../styles/HomePage.CSS/WhakAMole.css';
+import '../../styles/HomePage.CSS/HCSS.css';
 
 const WhakAMole = ({ onClose }) => {
     const [score, setScore] = useState(0);

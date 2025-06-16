@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import '../../styles/HomePage.CSS/HomePage_FactEngine.css';
+import '../../styles/HomePage.CSS/HCSS.css';
 
 // Local storage keys
 const FACT_STORAGE_KEY = 'teaSpaceFacts';
@@ -19,7 +19,7 @@ const FactEngine = () => {
       try {
         // Check if we have facts in localStorage
         const storedFactsJSON = localStorage.getItem(FACT_STORAGE_KEY);
-        
+
         if (storedFactsJSON) {
           const storedFacts = JSON.parse(storedFactsJSON);
           setFacts(storedFacts);
@@ -28,7 +28,7 @@ const FactEngine = () => {
           const response = await fetch('/src/data/teaSpaceFacts.json');
           const initialFacts = await response.json();
           setFacts(initialFacts);
-          
+
           // Save initial facts to localStorage
           localStorage.setItem(FACT_STORAGE_KEY, JSON.stringify(initialFacts));
         }
@@ -80,7 +80,7 @@ const FactEngine = () => {
   const generateRandomFact = useCallback(() => {
     // Filter out pinned facts to ensure we only show unpinned ones
     const unpinnedFacts = facts.filter(fact => !fact.isPinned);
-    
+
     if (unpinnedFacts.length === 0) {
       // If all facts are pinned, use all facts
       const randomIndex = Math.floor(Math.random() * facts.length);
@@ -90,7 +90,7 @@ const FactEngine = () => {
       const randomIndex = Math.floor(Math.random() * unpinnedFacts.length);
       setCurrentFact(unpinnedFacts[randomIndex]);
     }
-    
+
     // Trigger animation
     setIsNewFact(true);
     setTimeout(() => setIsNewFact(false), 500);
@@ -117,7 +117,7 @@ const FactEngine = () => {
       })
     );
   };
-  
+
   // Listen for facts updated event from admin panel
   useEffect(() => {
     const handleFactsUpdated = (event) => {
@@ -125,7 +125,7 @@ const FactEngine = () => {
         setFacts(event.detail.facts);
       }
     };
-    
+
     window.addEventListener('factsUpdated', handleFactsUpdated);
     return () => window.removeEventListener('factsUpdated', handleFactsUpdated);
   }, []);
@@ -141,7 +141,7 @@ const FactEngine = () => {
           ▼
         </div>
       </div>
-      
+
       <div className={`fact-engine-body ${isCollapsed ? 'collapsed' : ''}`}>
         {currentFact && (
           <div className={`fact-card ${isNewFact ? 'new-fact' : ''}`}>
@@ -171,20 +171,20 @@ const FactEngine = () => {
             </div>
           </div>
         )}
-        
+
         <button 
           className="generate-btn"
           onClick={generateRandomFact}
         >
           Generate Fact
         </button>
-        
+
         {pinnedFacts.length > 0 && (
           <div className="pinned-facts-section">
             <div className="pinned-facts-header">
               Pinned Facts
             </div>
-            
+
             {pinnedFacts.map(fact => (
               <div key={fact.id} className="fact-card pinned">
                 <p className="fact-text">{fact.text}</p>
