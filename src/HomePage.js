@@ -2521,12 +2521,7 @@ const HomePageContent = () => {
                         >
                             CFA Consolidation
                         </button>
-                        <button
-                            className={`tab-button ${activeTab === 'NaturalMotion' ? 'active' : ''}`}
-                            onClick={() => setActiveTab('NaturalMotion')}
-                        >
-                            Natural Motion
-                        </button>
+
                         <button
                             className={`tab-button ${activeTab === 'FactAdmin' ? 'active' : ''}`}
                             onClick={() => setActiveTab('FactAdmin')}
