@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import { Tab } from '@headlessui/react';
 import { ArrowPathIcon, PlusIcon, TrashIcon, LockClosedIcon, LockOpenIcon, QuestionMarkCircleIcon, MapIcon, ChartBarIcon } from '@heroicons/react/24/outline';
 import * as math from 'mathjs';
@@ -12,6 +12,7 @@ import CoordinateFactFinder from './CoordinateFactFinder';
 import '../process_economics/styles/ScalingGroupsPreview.css';
 import '../../styles/HomePage.CSS/HCSS.css';
 import './styles/DeleteConfirmationModal.css';
+import './styles/CoordinateComponent.css';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -1010,6 +1011,9 @@ const ExtendedScaling = ({
     });
   }, [scalingGroups]);
 
+  // Memoize the summary items to prevent unnecessary re-renders
+  const summaryItems = useMemo(() => generateSummaryItems(), [generateSummaryItems]);
+
   // Handle coordinate/zone updates
   const handleCoordinateChange = useCallback((newCoordinates) => {
     if (selectedZone) {
@@ -1458,7 +1462,7 @@ const ExtendedScaling = ({
           )}
 
           <ScalingSummary
-              items={generateSummaryItems()}
+              items={summaryItems}
               tabConfigs={tabConfigs}
               onExpressionChange={handleExpressionChange}
               V={V}

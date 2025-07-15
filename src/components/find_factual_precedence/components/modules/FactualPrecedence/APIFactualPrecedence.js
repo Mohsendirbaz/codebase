@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import FactualPrecedenceBase from './FactualPrecedenceBase';
-import axios from 'axios';
+import axiosInstance, { apiCircuitBreaker, makeRequestWithFallback } from '../../../../../utils/axiosConfig';
 
 /**
  * Enhanced API client for Factual Precedence data with improved caching and error handling
  */
-const getAPIPrecedenceData = async (itemId, formValue) => {
+const getAPIPrecedenceData = async (itemId, formValue, retryCount = 0) => {
   // Create a cache key based on the item ID and relevant form properties
   const cacheKey = `factual-precedence-${itemId}-${JSON.stringify({
     label: formValue?.label || '',
@@ -29,22 +29,34 @@ const getAPIPrecedenceData = async (itemId, formValue) => {
     }
   }
 
+  // Max retry attempts
+  const MAX_RETRIES = 3;
+  const RETRY_DELAY = 1000; // Start with 1 second delay
+
   try {
-    const response = await axios.post('http://localhost:3060/api/factual-precedence', {
-      itemId,
-      formContext: {
-        label: formValue?.label || '',
-        value: formValue?.value || '',
-        type: formValue?.type || '',
-        // Include any additional context to help with data relevance
-        remarks: formValue?.remarks || '',
-      }
-    }, {
-      // Set timeout to ensure UI responsiveness
-      timeout: 8000,
-      headers: {
-        'Content-Type': 'application/json',
-      }
+    // Use circuit breaker pattern
+    const response = await apiCircuitBreaker.call(async () => {
+      return await axiosInstance.post('http://localhost:3060/api/factual-precedence', {
+        itemId,
+        formContext: {
+          label: formValue?.label || '',
+          value: formValue?.value || '',
+          type: formValue?.type || '',
+          // Include any additional context to help with data relevance
+          remarks: formValue?.remarks || '',
+        }
+      }, {
+        // Set timeout to ensure UI responsiveness
+        timeout: 8000,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        // Add retry configuration
+        validateStatus: function (status) {
+          return status >= 200 && status < 500; // Don't reject if server returns 4xx
+        },
+        _retryCount: retryCount // Pass retry count to axios config
+      });
     });
 
     if (response.data.success) {
@@ -64,11 +76,26 @@ const getAPIPrecedenceData = async (itemId, formValue) => {
   } catch (error) {
     console.error('API error:', error);
 
+    // Check if it's a network error and we should retry
+    if (error.code === 'ERR_NETWORK' && retryCount < MAX_RETRIES) {
+      console.log(`Network error detected. Retrying... (attempt ${retryCount + 1}/${MAX_RETRIES})`);
+      
+      // Exponential backoff
+      await new Promise(resolve => setTimeout(resolve, RETRY_DELAY * Math.pow(2, retryCount)));
+      
+      // Retry the request
+      return getAPIPrecedenceData(itemId, formValue, retryCount + 1);
+    }
+
     // If we have stale cache, use it as fallback
     if (cachedData) {
       try {
-        console.warn('Using stale cache as fallback');
-        return JSON.parse(cachedData).data;
+        console.warn('Using stale cache as fallback due to network error');
+        const parsedData = JSON.parse(cachedData);
+        // Mark it as stale so UI can show appropriate warning
+        parsedData.data.isStale = true;
+        parsedData.data.staleReason = 'Network error - using cached data';
+        return parsedData.data;
       } catch (e) {
         console.error('Failed to use cache fallback:', e);
       }
@@ -77,10 +104,22 @@ const getAPIPrecedenceData = async (itemId, formValue) => {
     // Create emergency fallback data based on parameter type
     const fallbackData = generateFallbackData(itemId, formValue);
     if (fallbackData) {
+      // Mark as fallback data
+      fallbackData.isFallback = true;
+      fallbackData.fallbackReason = error.code === 'ERR_NETWORK' 
+        ? 'Network connection error - using default values' 
+        : 'Service unavailable - using default values';
       return fallbackData;
     }
 
-    throw error;
+    // If all else fails, return a minimal fallback
+    return {
+      summary: "Service temporarily unavailable. Using default values.",
+      examples: [],
+      confidenceLevel: "low",
+      isFallback: true,
+      fallbackReason: error.message || 'Unknown error'
+    };
   }
 };
 
@@ -161,6 +200,7 @@ const calculateConfidenceLevel = (data) => {
  */
 const generateFallbackData = (itemId, formValue) => {
   const label = formValue?.label || 'parameter';
+  const type = formValue?.type || '';
 
   // Check if this is a lifetime-related parameter
   if (itemId.includes('lifetime') || label.toLowerCase().includes('lifetime')) {
@@ -191,6 +231,61 @@ const generateFallbackData = (itemId, formValue) => {
     };
   }
 
+  // Check for carbon-related parameters
+  if (itemId.includes('carbon') || type.includes('carbon') || label.toLowerCase().includes('carbon')) {
+    return {
+      summary: "Carbon emissions and incentives vary by region, industry, and regulatory framework. Values depend on local policies and carbon markets.",
+      examples: [
+        { entity: "EU ETS", value: 85, unit: "€/tCO2", year: 2023, source: "Carbon Market Report" },
+        { entity: "California", value: 30, unit: "$/tCO2", year: 2023, source: "CARB" }
+      ],
+      recommendedValue: 50,
+      recommendationRationale: "Mid-range carbon price accounting for global variations",
+      confidenceLevel: "low"
+    };
+  }
+
+  // Check for location/coordinate-based parameters
+  if (itemId.includes('location') || itemId.includes('coordinate') || type.includes('coordinate')) {
+    return {
+      summary: "Location-specific data unavailable. Regional characteristics may vary significantly based on local conditions.",
+      examples: [
+        { entity: "Similar Regions", value: "Variable", unit: "varies", year: 2023, source: "Regional Studies" }
+      ],
+      recommendedValue: null,
+      recommendationRationale: "Location-specific analysis required",
+      confidenceLevel: "low"
+    };
+  }
+
+  // Check for efficiency-related parameters
+  if (itemId.includes('efficiency') || label.toLowerCase().includes('efficiency')) {
+    return {
+      summary: "Process efficiency depends on technology maturity, operational conditions, and maintenance practices.",
+      examples: [
+        { entity: "Industry Average", value: 85, unit: "%", year: 2023, source: "Process Engineering Guide" },
+        { entity: "Best-in-Class", value: 95, unit: "%", year: 2023, source: "Technology Review" }
+      ],
+      recommendedValue: 85,
+      recommendationRationale: "Conservative estimate based on typical industrial performance",
+      confidenceLevel: "medium"
+    };
+  }
+
+  // Check for capacity-related parameters
+  if (itemId.includes('capacity') || label.toLowerCase().includes('capacity')) {
+    return {
+      summary: "Capacity parameters should align with project scale and market demand projections.",
+      examples: [
+        { entity: "Small Scale", value: 1000, unit: "units/year", year: 2023, source: "Industry Survey" },
+        { entity: "Large Scale", value: 10000, unit: "units/year", year: 2023, source: "Market Analysis" }
+      ],
+      recommendedValue: 5000,
+      recommendationRationale: "Mid-scale operation balancing efficiency and market risk",
+      confidenceLevel: "low"
+    };
+  }
+
   // Generic fallback for other cases
   return {
     summary: `No specific data available for ${label}. Consider industry benchmarks or consulting with domain experts.`,
@@ -204,14 +299,32 @@ const generateFallbackData = (itemId, formValue) => {
  */
 const submitFeedback = async (itemId, feedbackType, comment) => {
   try {
-    const response = await axios.post('http://localhost:3060/api/factual-precedence/feedback', {
-      itemId,
-      feedbackType,
-      comment,
-      timestamp: new Date().toISOString()
+    const response = await makeRequestWithFallback({
+      method: 'post',
+      url: 'http://localhost:3060/api/factual-precedence/feedback',
+      data: {
+        itemId,
+        feedbackType,
+        comment,
+        timestamp: new Date().toISOString()
+      },
+      timeout: 5000 // Shorter timeout for feedback
+    }, (error) => {
+      // Fallback: store feedback locally for later submission
+      const localFeedback = JSON.parse(localStorage.getItem('pendingFeedback') || '[]');
+      localFeedback.push({
+        itemId,
+        feedbackType,
+        comment,
+        timestamp: new Date().toISOString(),
+        error: error.message
+      });
+      localStorage.setItem('pendingFeedback', JSON.stringify(localFeedback));
+      console.log('Feedback stored locally for later submission');
+      return { success: true, offline: true };
     });
 
-    return response.data.success;
+    return response.success;
   } catch (error) {
     console.error('Error submitting feedback:', error);
     return false;

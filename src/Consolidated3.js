@@ -59,6 +59,7 @@ import EfficacyMapContainer from './components/modules/EfficacyMapContainer';
 // Import styling
 import './styles/HomePage.CSS/HCSS.css';
 import './styles/HomePage.CSS/Consolidated.css';
+import './styles/HomePage.CSS/VersionSelector.css';
 
 // Import label references for reset functionality
 import * as labelReferences from './utils/labelReferences';

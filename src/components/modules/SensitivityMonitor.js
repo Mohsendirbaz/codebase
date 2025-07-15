@@ -21,7 +21,7 @@ const SensitivityMonitor = ({ S, setS, version, activeTab }) => {
   const { formMatrix: formValues } = useMatrixFormValues();
 
   // Component state
-  const [isExpanded, setIsExpanded] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [filterMode, setFilterMode] = useState('all');
   const [selectedParameter, setSelectedParameter] = useState(null);

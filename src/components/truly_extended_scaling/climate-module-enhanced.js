@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import CoordinateContainerEnhanced from './coordinate-container-enhanced';
 import { getAPIPrecedenceData } from '../find_factual_precedence/components/modules/FactualPrecedence/APIFactualPrecedence';
 import './styles/ClimateModuleEnhanced.css';
+import './styles/CoordinateComponent.css';
 
 /**
  * ClimateModuleEnhanced Component

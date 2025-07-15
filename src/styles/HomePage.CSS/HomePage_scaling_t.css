@@ -761,9 +761,10 @@
 }
 
 .scaling-help-button {
-  color: var(--primary-color);
+  color: var(--text-color);
   border-color: var(--primary-color);
-  background: rgba(var(--primary-color-rgb, 59, 130, 246), 0.1);
+  background: var(--model-color-background-dark, #212529);
+  border: 1px solid var(--border-color);
 }
 
 /* Enhanced Actions */
@@ -885,7 +886,7 @@
 
 .scaling-documentation h4 {
   margin-top: 0;
-  color: var(--primary-color);
+  color: var(--text-color);
   font-size: 1.25rem;
   margin-bottom: 1rem;
 }
@@ -1074,7 +1075,7 @@
 .scaling-summary-steps h4 {
   margin-top: 0;
   margin-bottom: 1rem;
-  color: var(--primary-color);
+  color: var(--text-color);
   font-size: 1rem;
 }
 

@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import axios from 'axios';
 import { getAPIPrecedenceData } from '../find_factual_precedence/components/modules/FactualPrecedence/APIFactualPrecedence';
 import './styles/CoordinateFactFinder.css';
+import '../../styles/HomePage.CSS/ClimateHeader.css';
 
 /**
  * CoordinateFactFinder Component

@@ -44,7 +44,6 @@ const ScalingSummary = ({
                         }) => {
   const [itemExpressions, setItemExpressions] = useState({});
   const [intermediateResults, setIntermediateResults] = useState({});
-  const [lastUpdated, setLastUpdated] = useState(null);
   const [expandedRows, setExpandedRows] = useState({});
   const [filterOptions, setFilterOptions] = useState({
     showVItems: true,
@@ -102,7 +101,6 @@ const ScalingSummary = ({
     });
 
     setIntermediateResults(newResults);
-    setLastUpdated(Date.now());
   }, [items, tabConfigs]);
 
   // Toggle row expansion
@@ -285,7 +283,7 @@ const ScalingSummary = ({
 
                         <td className="scaling-summary-cell scaling-summary-cell-right">
                           <motion.span
-                              key={`${item.id}-original-${lastUpdated}`}
+                              key={`${item.id}-original`}
                               initial={{ opacity: 0, y: 10 }}
                               animate={{ opacity: 1, y: 0 }}
                           >
@@ -301,7 +299,7 @@ const ScalingSummary = ({
                                 }`}
                             >
                               <motion.span
-                                  key={`${item.id}-${tab.id}-${lastUpdated}`}
+                                  key={`${item.id}-${tab.id}`}
                                   initial={{ opacity: 0, y: 10 }}
                                   animate={{ opacity: 1, y: 0 }}
                               >
@@ -324,7 +322,7 @@ const ScalingSummary = ({
                         <td className="scaling-summary-cell scaling-summary-cell-right scaling-summary-result">
                           <div className="scaling-summary-result-container">
                             <motion.span
-                                key={`${item.id}-result-${lastUpdated}`}
+                                key={`${item.id}-result`}
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 animate={{ opacity: 1, scale: 1 }}
                             >

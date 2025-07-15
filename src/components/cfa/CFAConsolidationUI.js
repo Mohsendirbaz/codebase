@@ -1,5 +1,6 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import '../../styles/HomePage.CSS/HCSS.css';
+import '../../styles/HomePage.CSS/CFAConsolidationUI.css';
 import SelectionPanel from './SelectionPanel';
 import ProcessingPanel from './ProcessingPanel';
 import ResultsPanel from './ResultsPanel';

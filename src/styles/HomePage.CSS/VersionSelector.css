@@ -141,6 +141,7 @@
   }
 }
 
+
 /* New additions for refresh controls */
 .version-controls {
   display: flex;
@@ -163,7 +164,7 @@
 }
 
 .connection-status[data-status="error"] {
-  color: var(--error-color);
+  color: var(--danger-color);
 }
 
 .connection-status[data-status="disconnected"] {
@@ -182,7 +183,7 @@
 }
 
 .refresh-button:hover {
-  background-color: var(--hover-background);
+  background-color: var(--primary-color);
   transform: scale(1.1);
 }
 

@@ -878,7 +878,7 @@
 .scaling-type-icon {
     width: 24px;
     height: 24px;
-    color: var(--primary-color);
+    color: var(--text-color);
 }
 
 .scaling-type-description h3 {
@@ -5245,4 +5245,148 @@ p {
 .score-animation.bonus {
     color: var(--success-color);
     font-size: 1.2em;
+}
+
+/* ========================================================= */
+/* Extended Scaling Coordinates Panel Styles */
+/* ========================================================= */
+
+.scaling-coordinates-panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 800px;
+    max-height: 80vh;
+    background: var(--model-color-background);
+    border-radius: var(--model-border-radius-lg);
+    box-shadow: var(--model-shadow-lg);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.coordinates-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--model-spacing-md) var(--model-spacing-lg);
+    background: var(--model-color-background-alt);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.coordinates-header h3 {
+    margin: 0;
+    font-size: var(--model-font-size-lg);
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.coordinates-actions {
+    display: flex;
+    gap: var(--model-spacing-sm);
+    align-items: center;
+}
+
+.coordinates-action-button {
+    padding: var(--model-spacing-sm) var(--model-spacing-md);
+    background: var(--model-color-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--model-border-radius-sm);
+    color: var(--text-color);
+    font-size: var(--model-font-size-sm);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--model-transition-fast);
+    display: flex;
+    align-items: center;
+    gap: var(--model-spacing-xs);
+}
+
+.coordinates-action-button:hover {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    transform: translateY(-1px);
+    box-shadow: var(--model-shadow-sm);
+}
+
+.coordinates-action-button.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.coordinates-close-button {
+    padding: var(--model-spacing-sm) var(--model-spacing-md);
+    background: var(--danger-color);
+    border: none;
+    border-radius: var(--model-border-radius-sm);
+    color: white;
+    font-size: var(--model-font-size-sm);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--model-transition-fast);
+}
+
+.coordinates-close-button:hover {
+    background: var(--danger-color-dark);
+    transform: translateY(-1px);
+    box-shadow: var(--model-shadow-sm);
+}
+
+.coordinates-content {
+    flex: 1;
+    padding: var(--model-spacing-lg);
+    overflow-y: auto;
+    display: flex;
+    gap: var(--model-spacing-lg);
+}
+
+.coordinate-component-container {
+    flex: 1;
+}
+
+.fact-finder-container {
+    flex: 1;
+    background: var(--model-color-background-alt);
+    border-radius: var(--model-border-radius-md);
+    padding: var(--model-spacing-md);
+    border: 1px solid var(--border-color);
+}
+
+/* Scaling action buttons in main header */
+.scaling-action-button {
+    padding: var(--model-spacing-xs) var(--model-spacing-sm);
+    background: var(--model-color-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--model-border-radius-sm);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all var(--model-transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+}
+
+.scaling-action-button:hover:not(:disabled) {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    transform: translateY(-1px);
+    box-shadow: var(--model-shadow-sm);
+}
+
+.scaling-action-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.scaling-action-icon {
+    width: 20px;
+    height: 20px;
 }

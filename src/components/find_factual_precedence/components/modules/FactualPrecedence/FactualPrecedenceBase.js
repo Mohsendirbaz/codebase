@@ -10,6 +10,7 @@ import {
   faBuilding,
   faHistory
 } from '@fortawesome/free-solid-svg-icons';
+import '../../../styles/FactualPrecedence.css';
 
 // Advanced parameter context utility
 const getParameterContext = (itemId, formValue) => {
@@ -380,6 +381,17 @@ const FactualPrecedenceBase = ({
                   <div className="loading-state">Loading factual data...</div>
               ) : factualData ? (
                   <>
+                    {/* Show data status indicators */}
+                    {(factualData.isStale || factualData.isFallback) && (
+                      <div className="data-status-warning">
+                        <FontAwesomeIcon icon={faInfoCircle} />
+                        <span>
+                          {factualData.isStale && `Using cached data: ${factualData.staleReason}`}
+                          {factualData.isFallback && `Using default values: ${factualData.fallbackReason}`}
+                        </span>
+                      </div>
+                    )}
+                    
                     <div className="factual-summary">
                       <h4>Industry Standard Information</h4>
                       <p>{factualData.summary}</p>

@@ -1,68 +1,88 @@
-/* ClimateHeader.css - Neumorphic Design with Root Variables */
+/* ClimateHeader.css - Location & Asset Intelligence Header (Asset Management Module) */
 
-:root {
-  /* Climate Header Color Palette */
-  --climate-bg-primary: #f0f0f3;
-  --climate-bg-secondary: #e8e8eb;
-  --climate-surface: #ffffff;
-  --climate-text-primary: #2d3748;
-  --climate-text-secondary: #4a5568;
-  --climate-text-muted: #718096;
-  --climate-accent-green: #48bb78;
-  --climate-accent-blue: #4299e1;
-  --climate-accent-orange: #ed8936;
-  --climate-accent-red: #f56565;
-  --climate-accent-purple: #9f7aea;
-  
-  /* Neumorphic Shadows */
-  --climate-shadow-inset: inset 8px 8px 16px #d1d1d4, inset -8px -8px 16px #ffffff;
-  --climate-shadow-outset: 8px 8px 16px #d1d1d4, -8px -8px 16px #ffffff;
-  --climate-shadow-pressed: inset 4px 4px 8px #d1d1d4, inset -4px -4px 8px #ffffff;
-  --climate-shadow-hover: 12px 12px 20px #d1d1d4, -12px -12px 20px #ffffff;
-  --climate-shadow-active: 6px 6px 12px #d1d1d4, -6px -6px 12px #ffffff;
-  
-  /* Border Radius */
-  --climate-radius-sm: 8px;
-  --climate-radius-md: 16px;
-  --climate-radius-lg: 24px;
-  --climate-radius-xl: 32px;
-  
-  /* Spacing */
-  --climate-space-xs: 0.5rem;
-  --climate-space-sm: 1rem;
-  --climate-space-md: 1.5rem;
-  --climate-space-lg: 2rem;
-  --climate-space-xl: 3rem;
-  
-  /* Typography */
-  --climate-font-xs: 0.75rem;
-  --climate-font-sm: 0.875rem;
-  --climate-font-md: 1rem;
-  --climate-font-lg: 1.125rem;
-  --climate-font-xl: 1.25rem;
-  --climate-font-2xl: 1.5rem;
-  --climate-font-3xl: 2rem;
-  
-  /* Transitions */
-  --climate-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --climate-transition-fast: all 0.15s ease;
-  --climate-transition-slow: all 0.5s ease;
-}
-
-/* Main Header Container */
-.climate-header {
-  background: var(--climate-bg-primary);
-  border-radius: var(--climate-radius-xl);
-  padding: var(--climate-space-lg);
-  margin-bottom: var(--climate-space-lg);
-  box-shadow: var(--climate-shadow-outset);
+/* ========== Location & Asset Intelligence Header ========== */
+.intelligence-header {
+  display: flex;
+  flex-direction: column;
+  background: var(--neu-background);
+  border-radius: var(--neu-border-radius-lg);
+  box-shadow: var(--neu-shadow-md);
+  padding: var(--model-spacing-md);
+  margin-bottom: var(--model-spacing-md);
   position: relative;
   overflow: hidden;
-  transition: var(--climate-transition);
+  transition: var(--neu-transition-medium);
 }
 
-.climate-header:hover {
-  box-shadow: var(--climate-shadow-hover);
+.intelligence-header:hover {
+  box-shadow: var(--neu-shadow-lg);
+}
+
+.intelligence-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--model-spacing-md);
+  padding-bottom: var(--model-spacing-sm);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.intelligence-title {
+  color: var(--text-color);
+  font-size: var(--model-font-size-lg);
+  font-weight: 600;
+  margin: 0;
+}
+
+.intelligence-actions {
+  display: flex;
+  gap: var(--model-spacing-sm);
+}
+
+.intelligence-action-button {
+  background: var(--neu-gradient-basic);
+  border: none;
+  border-radius: var(--neu-border-radius-md);
+  color: var(--text-color);
+  font-weight: 500;
+  padding: var(--model-spacing-sm) var(--model-spacing-md);
+  cursor: pointer;
+  transition: var(--neu-transition-fast);
+  box-shadow: var(--neu-shadow-sm);
+}
+
+.intelligence-action-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: var(--neu-shadow-md);
+}
+
+.intelligence-action-button:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: var(--neu-pressed-shadow);
+  background: var(--neu-gradient-pressed);
+}
+
+.intelligence-loading {
+  display: flex;
+  align-items: center;
+  gap: var(--model-spacing-sm);
+  color: var(--text-secondary);
+  font-size: var(--model-font-size-sm);
+  margin-top: var(--model-spacing-sm);
+}
+
+.intelligence-loading-spinner {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border: 2px solid rgba(var(--text-color-rgb), 0.3);
+  border-radius: 50%;
+  border-top-color: var(--text-color);
+  animation: intelligence-spin 1s linear infinite;
+}
+
+@keyframes intelligence-spin {
+  to { transform: rotate(360deg); }
 }
 
 /* Header Content Layout */
@@ -391,88 +411,16 @@
   font-weight: 500;
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
-  .climate-header-content {
-    grid-template-columns: 1fr;
-    gap: var(--climate-space-md);
-    text-align: center;
-  }
-  
-  .unit-toggle-controls,
-  .region-toggle-controls {
-    justify-self: center;
-  }
-
-  .climate-metrics-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
+/* Responsive adjustments */
 @media (max-width: 768px) {
-  .climate-header {
-    padding: var(--climate-space-md);
-  }
-
-  .climate-header-enhanced {
-    padding: var(--climate-space-lg);
-  }
-  
-  .climate-summary h3 {
-    font-size: var(--climate-font-xl);
-  }
-  
-  .total-footprint {
-    font-size: var(--climate-font-2xl);
-  }
-  
-  .unit-toggle-btn,
-  .region-toggle-btn {
-    padding: var(--climate-space-xs) var(--climate-space-sm);
-    font-size: var(--climate-font-xs);
-  }
-
-  .climate-metrics-grid {
-    grid-template-columns: 1fr;
-    gap: var(--climate-space-xs);
-  }
-
-  .active-info {
+  .intelligence-title-row {
     flex-direction: column;
-    gap: var(--climate-space-xs);
-    text-align: center;
-  }
-}
-
-@media (max-width: 480px) {
-  .climate-header {
-    padding: var(--climate-space-sm);
+    align-items: flex-start;
+    gap: var(--model-spacing-sm);
   }
 
-  .climate-header-enhanced {
-    padding: var(--climate-space-md);
-  }
-  
-  .unit-toggle-controls,
-  .region-toggle-controls {
-    flex-direction: column;
+  .intelligence-actions {
     width: 100%;
-  }
-  
-  .total-zones-counter {
-    padding: var(--climate-space-sm);
-  }
-  
-  .zones-count {
-    font-size: var(--climate-font-2xl);
-  }
-
-  .climate-quick-actions {
-    flex-direction: column;
-    gap: var(--climate-space-xs);
-  }
-
-  .climate-summary {
-    padding: var(--climate-space-sm);
+    justify-content: space-between;
   }
 }

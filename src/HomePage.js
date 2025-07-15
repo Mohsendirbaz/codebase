@@ -71,7 +71,7 @@ import MatrixApp3 from './Consolidated3';
 
 const HomePageContent = () => {
     const { selectedVersions, version, setVersion } = useVersionState();
-    const [activeTab, setActiveTab] = useState('Input');
+    const [activeTab, setActiveTab] = useState('Scaling');
     const [activeSubTab, setActiveSubTab] = useState('ProjectConfig');
     const [selectedProperties, setSelectedProperties] = useState([]);
 

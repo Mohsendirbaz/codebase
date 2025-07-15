@@ -105,25 +105,53 @@
 
 /* Configuration space info styles */
 .configuration-space-info {
-  background-color: #e8f5e9;
-  border-radius: 4px;
-  padding: 15px;
+  background-color: rgba(var(--success-color-rgb), 0.1);
+  border-radius: var(--neu-border-radius-md);
+  padding: 20px;
   margin-bottom: 20px;
+  border-left: 4px solid var(--success-color);
+}
+
+.configuration-space-info h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: var(--success-color);
+  font-size: var(--model-font-size-md);
+  font-weight: 600;
+}
+
+.configuration-space-info p {
+  margin: 0 0 10px 0;
+  color: var(--text-color);
+  font-size: var(--model-font-size-md);
+  line-height: 1.5;
 }
 
 .configuration-formula {
   font-family: 'Courier New', monospace;
-  background-color: #f8f9fa;
-  padding: 10px;
-  border-radius: 4px;
+  background-color: var(--neu-background);
+  padding: 15px;
+  border-radius: var(--neu-border-radius-md);
   margin-top: 10px;
   font-weight: bold;
+  line-height: 1.6;
+  font-size: 1.1em;
+  color: var(--text-color);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
 }
 
 .total-space {
-  color: #e91e63;
-  font-size: 1.1em;
+  color: var(--danger-color);
+  font-size: 1.2em;
+  font-weight: 700;
+  background-color: rgba(var(--danger-color-rgb), 0.1);
+  padding: 3px 8px;
+  border-radius: var(--neu-border-radius-sm);
   margin-left: 5px;
+  display: inline-block;
 }
 
 /* Map content styles */
@@ -183,6 +211,23 @@
 
   .capacity-button {
     margin-top: 8px;
+  }
+
+  .configuration-space-info {
+    padding: 15px;
+  }
+
+  .configuration-formula {
+    padding: 10px;
+    font-size: 1em;
+    gap: 3px;
+  }
+
+  .total-space {
+    margin-top: 5px;
+    display: block;
+    text-align: center;
+    width: 100%;
   }
 }
 
