@@ -4,7 +4,7 @@ import HomePage from './HomePage';
 import ErrorBoundary from './utils/ErrorBoundary';
 import './components/process_economics/styles/LibrarySystem.css'
 import './components/find_factual_precedence/styles/FactualPrecedence.css'
-
+import './styles/HomePage.CSS/UIComponentStyles.css'
 
 function getColorFromTheme(themeClass, varName) {
     try {
@@ -16,7 +16,7 @@ function getColorFromTheme(themeClass, varName) {
         const val = getComputedStyle(el).getPropertyValue(varName).trim();
         document.body.removeChild(el);
 
-        // Validate that we have a proper hex color
+        // Validate that we have a proper hex color-
         if (val && /^#([A-Fa-f0-9]{3}){1,2}$/.test(val)) {
             return val;
         }
