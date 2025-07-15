@@ -79,7 +79,9 @@
     "start:with-analysis": "npm run analyze-active-files && npm start",
     "dev": "npm start",
     "generate-dependency-graph": "node ./generate-dependency-graph.js",
-    "analyze-and-visualize": "npm run analyze-active-files && npm run generate-dependency-graph"
+    "analyze-and-visualize": "npm run analyze-active-files && npm run generate-dependency-graph",
+    "install-python-deps": "pip install -r requirements.txt",
+    "setup": "npm install && npm run install-python-deps"
   },
   "build": {
     "appId": "com.my-dashboard.app",

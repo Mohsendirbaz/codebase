@@ -9,11 +9,12 @@ import ClimateModuleEnhanced from './components/truly_extended_scaling/climate-m
 import { MatrixProvider } from './MatrixStateManager';
 import FactEngine from './components/modules/FactEngine';
 import FactEngineAdmin from './components/modules/FactEngineAdmin';
-import GeneralFormConfig from './GeneralFormConfig.js';
+import GeneralFormConfig from './GeneralFormConfig';
 import './styles/HomePage.CSS/HCSS.css';
 import './styles/Themes/dark-theme.css';
 import './styles/Themes/light-theme.css';
 import './styles/Themes/creative-theme.css';
+import StyledProcessEconomicsLibrary from './components/process_economics_pilot/process-economics-library';
 // Import PropertySelector and VersionSelector from Consolidated3.js instead of separate files
 import { PropertySelector, VersionSelector } from './Consolidated3';
 import SpatialTransformComponent from './Naturalmotion.js'
@@ -2583,6 +2584,31 @@ const HomePageContent = () => {
             case 'Scaling':
                 return (
                     <>
+                        {/* Process Economics Library Button */}
+                        <div className="library-button-container" style={{ margin: '10px 0', textAlign: 'right' }}>
+                            <button 
+                                className="open-library-button"
+                                style={{
+                                    padding: '8px 16px',
+                                    backgroundColor: '#4a90e2',
+                                    color: 'white',
+                                    border: 'none',
+                                    borderRadius: '4px',
+                                    cursor: 'pointer',
+                                    display: 'inline-flex',
+                                    alignItems: 'center',
+                                    gap: '8px'
+                                }}
+                                onClick={() => setActiveTab('StyledProcessEconomicsLibrary')}
+                            >
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4 19V5C4 3.89543 4.89543 3 6 3H19.4C19.7314 3 20 3.26863 20 3.6V16.7143" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                                    <path d="M6 17.9998H20M6 14.9998H20M6 20.9998H20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                                </svg>
+                                Process Economics Library
+                            </button>
+                        </div>
+
                         <CentralScalingTab
                             formValues={formValues}
                             V={V}
@@ -2677,6 +2703,8 @@ const HomePageContent = () => {
                         </div>
                     </div>
                 </div>;
+            case 'StyledProcessEconomicsLibrary':
+                return <StyledProcessEconomicsLibrary />;
 
             case 'Climate':
                 return (
@@ -2796,12 +2824,13 @@ const HomePageContent = () => {
                         >
                             CFA Consolidation
                         </button>
-                       {/* <button
-                            className={`tab-button ${activeTab === 'NaturalMotion' ? 'active' : ''}`}
-                            onClick={() => setActiveTab('NaturalMotion')}
+                       <button
+                            className={`tab-button ${activeTab === 'StyledProcessEconomicsLibrary' ? 'active' : ''}`}
+                            onClick={() => setActiveTab('StyledProcessEconomicsLibrary')}
                         >
-                            Natural Motion
+                           Process Economics Library
                         </button>
+                        {/*
                         <button
                             className={`tab-button ${activeTab === 'FactAdmin' ? 'active' : ''}`}
                             onClick={() => setActiveTab('FactAdmin')}

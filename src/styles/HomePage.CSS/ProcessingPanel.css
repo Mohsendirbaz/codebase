@@ -23,7 +23,7 @@
   margin: 0;
   font-size: var(--model-font-size-md);
   font-weight: 500;
-  color: var(--model-color-text);
+  color: var(--text-color);
 }
 
 /* Status Indicator */
@@ -38,7 +38,7 @@
 
 .status-indicator--idle {
   background: var(--model-color-background-alt);
-  color: var(--model-color-text-light);
+  color: var(--text-color);
 }
 
 .status-indicator--processing {

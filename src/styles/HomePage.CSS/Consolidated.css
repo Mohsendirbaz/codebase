@@ -18,7 +18,12 @@
     margin: 0;
     padding: 0;
 }
-
+.processing-status-title {
+    color: var(--text-color);
+    font-size: var(--model-font-size-md);
+    font-weight: 600;
+    margin: 0 0 var(--model-spacing-sm) 0;
+}
 body {
     background-color: var(--background-color);
     color: var(--text-color);

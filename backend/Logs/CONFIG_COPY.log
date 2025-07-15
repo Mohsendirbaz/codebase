@@ -2485,3 +2485,27 @@
 2025-04-26 07:54:22,283 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\CONFIG_COPY.log
 2025-04-26 07:54:22,339 WARNING  * Debugger is active!
 2025-04-26 07:54:22,349 INFO  * Debugger PIN: 119-059-632
+2025-07-15 12:01:50,613 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects\codebase\backend\Logs\CONFIG_COPY.log
+2025-07-15 12:01:50,671 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-07-15 12:01:50,671 INFO [33mPress CTRL+C to quit[0m
+2025-07-15 12:01:50,673 INFO  * Restarting with stat
+2025-07-15 12:01:51,066 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects\codebase\backend\Logs\CONFIG_COPY.log
+2025-07-15 12:01:51,107 WARNING  * Debugger is active!
+2025-07-15 12:01:51,111 INFO  * Debugger PIN: 845-249-256
+2025-07-15 12:03:02,074 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects\codebase\backend\Logs\CONFIG_COPY.log
+2025-07-15 12:03:02,145 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-07-15 12:03:02,145 INFO [33mPress CTRL+C to quit[0m
+2025-07-15 12:03:02,147 INFO  * Restarting with stat
+2025-07-15 12:03:02,563 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects\codebase\backend\Logs\CONFIG_COPY.log
+2025-07-15 12:03:02,611 WARNING  * Debugger is active!
+2025-07-15 12:03:02,618 INFO  * Debugger PIN: 845-249-256
+2025-07-15 13:08:03,946 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects\codebase\backend\Logs\CONFIG_COPY.log
+2025-07-15 13:08:04,022 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:2600
+2025-07-15 13:08:04,022 INFO [33mPress CTRL+C to quit[0m
+2025-07-15 13:08:04,025 INFO  * Restarting with stat
+2025-07-15 13:08:06,177 INFO Logging configured correctly - Config copy logs going to: C:\Users\Mohse\IdeaProjects\codebase\backend\Logs\CONFIG_COPY.log
+2025-07-15 13:08:06,288 WARNING  * Debugger is active!
+2025-07-15 13:08:06,295 INFO  * Debugger PIN: 845-249-256

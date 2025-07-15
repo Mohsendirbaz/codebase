@@ -199,3 +199,27 @@ AttributeError: 'NoneType' object has no attribute 'items'
 2025-04-26 08:30:46 - INFO - Changed working directory to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Visualization_generators
 2025-04-26 08:30:55 - INFO - HTML album organization completed
 2025-04-26 08:30:55 - INFO - 127.0.0.1 - - [26/Apr/2025 08:30:55] "[35m[1mPOST /runSub?Content-Type=application/json HTTP/1.1[0m" 204 -
+2025-07-15 12:01:53 - INFO - Flask Sub.py logging initialized
+2025-07-15 12:01:53 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5009
+2025-07-15 12:01:53 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-15 12:01:53 - INFO -  * Restarting with stat
+2025-07-15 12:01:54 - INFO - Flask Sub.py logging initialized
+2025-07-15 12:01:54 - WARNING -  * Debugger is active!
+2025-07-15 12:01:54 - INFO -  * Debugger PIN: 845-249-256
+2025-07-15 12:03:05 - INFO - Flask Sub.py logging initialized
+2025-07-15 12:03:05 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5009
+2025-07-15 12:03:05 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-15 12:03:05 - INFO -  * Restarting with stat
+2025-07-15 12:03:05 - INFO - Flask Sub.py logging initialized
+2025-07-15 12:03:05 - WARNING -  * Debugger is active!
+2025-07-15 12:03:05 - INFO -  * Debugger PIN: 845-249-256
+2025-07-15 13:08:08 - INFO - Flask Sub.py logging initialized
+2025-07-15 13:08:08 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5009
+2025-07-15 13:08:08 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-15 13:08:08 - INFO -  * Restarting with stat
+2025-07-15 13:08:09 - INFO - Flask Sub.py logging initialized
+2025-07-15 13:08:09 - WARNING -  * Debugger is active!
+2025-07-15 13:08:09 - INFO -  * Debugger PIN: 845-249-256

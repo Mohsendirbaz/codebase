@@ -90,7 +90,7 @@ const ProcessingPanel = ({
   return (
     <div className="processing-panel">
       <div className="processing-panel__header">
-        <h3 className="processing-panel__title">Processing Status</h3>
+        <h3 className="processing-status-title">Processing Status</h3>
         {renderStatusIndicator()}
       </div>
 

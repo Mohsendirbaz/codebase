@@ -108,3 +108,21 @@
 2025-04-26 07:54:37,645 - werkzeug - INFO -  * Restarting with stat
 2025-04-26 07:54:40,520 - werkzeug - WARNING -  * Debugger is active!
 2025-04-26 07:54:40,527 - werkzeug - INFO -  * Debugger PIN: 119-059-632
+2025-07-15 12:02:02,682 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5011
+2025-07-15 12:02:02,682 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-15 12:02:02,684 - werkzeug - INFO -  * Restarting with stat
+2025-07-15 12:02:03,752 - werkzeug - WARNING -  * Debugger is active!
+2025-07-15 12:02:03,760 - werkzeug - INFO -  * Debugger PIN: 845-249-256
+2025-07-15 12:03:13,649 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5011
+2025-07-15 12:03:13,650 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-15 12:03:13,652 - werkzeug - INFO -  * Restarting with stat
+2025-07-15 12:03:14,101 - werkzeug - WARNING -  * Debugger is active!
+2025-07-15 12:03:14,106 - werkzeug - INFO -  * Debugger PIN: 845-249-256
+2025-07-15 13:08:16,962 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5011
+2025-07-15 13:08:16,963 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-15 13:08:16,964 - werkzeug - INFO -  * Restarting with stat
+2025-07-15 13:08:17,536 - werkzeug - WARNING -  * Debugger is active!
+2025-07-15 13:08:17,543 - werkzeug - INFO -  * Debugger PIN: 845-249-256

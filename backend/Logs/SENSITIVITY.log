@@ -6674,3 +6674,9 @@ PermissionError: [WinError 32] The process cannot access the file because it is 
 2025-04-25 17:49:55,322 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
 2025-04-26 07:54:21,538 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
 2025-04-26 07:54:22,283 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects2\codebase\backend\Logs\SENSITIVITY.log
+2025-07-15 12:01:50,613 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects\codebase\backend\Logs\SENSITIVITY.log
+2025-07-15 12:01:51,067 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects\codebase\backend\Logs\SENSITIVITY.log
+2025-07-15 12:03:02,074 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects\codebase\backend\Logs\SENSITIVITY.log
+2025-07-15 12:03:02,563 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects\codebase\backend\Logs\SENSITIVITY.log
+2025-07-15 13:08:03,946 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects\codebase\backend\Logs\SENSITIVITY.log
+2025-07-15 13:08:06,178 INFO Sensitivity logging configured correctly - Logs going to: C:\Users\Mohse\IdeaProjects\codebase\backend\Logs\SENSITIVITY.log

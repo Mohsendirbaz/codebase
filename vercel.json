@@ -5,31 +5,13 @@
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "build",
-        "buildCommand": "sh -c 'node -e \"const fs=require(\\\"fs\\\");const path=require(\\\"path\\\");const symlinkPath=path.join(process.cwd(),\\\"public\\\",\\\"Original\\\");try{const stats=fs.lstatSync(symlinkPath);if(stats.isSymbolicLink()){console.log(\\\"Found symlink at:\\\",symlinkPath);fs.unlinkSync(symlinkPath);console.log(\\\"Removed symlink\\\");}}catch(e){console.log(\\\"No symlink found or other error:\\\",e.message);}try{fs.mkdirSync(symlinkPath,{recursive:true});console.log(\\\"Created directory:\\\",symlinkPath);}catch(e){console.error(\\\"Error creating directory:\\\",e.message);};\"; DISABLE_ESLINT_PLUGIN=true CI=false npm run build'"
+        "zeroConfig": true,
+        "buildCommand": "sh -c 'node -e \"const fs=require(\\\"fs\\\");const path=require(\\\"path\\\");const symlinkPath=path.join(process.cwd(),\\\"public\\\",\\\"Original\\\");try{const stats=fs.lstatSync(symlinkPath);if(stats.isSymbolicLink()){console.log(\\\"Found symlink at:\\\",symlinkPath);fs.unlinkSync(symlinkPath);console.log(\\\"Removed symlink\\\");}}catch(e){console.log(\\\"No symlink found or other error:\\\",e.message);}try{fs.mkdirSync(symlinkPath,{recursive:true});console.log(\\\"Created directory:\\\",symlinkPath);}catch(e){console.error(\\\"Error creating directory:\\\",e.message);};\"; DISABLE_ESLINT_PLUGIN=true npm run build'"
       }
     }
   ],
   "routes": [
     { "handle": "filesystem" },
-    { "src": "/static/(.*)", "dest": "/static/$1" },
-    { "src": "/favicon.ico", "dest": "/favicon.ico" },
-    { "src": "/manifest.json", "dest": "/manifest.json" },
-    { "src": "/robots.txt", "dest": "/robots.txt" },
     { "src": "/(.*)", "dest": "/index.html" }
-  ],
-  "env": {
-    "NODE_ENV": "production",
-    "CI": "false",
-    "REACT_APP_USE_MOCK_DATA": "false"
-    /* 
-    The following Firebase environment variables should be set in the Vercel dashboard:
-    - REACT_APP_FIREBASE_API_KEY
-    - REACT_APP_FIREBASE_AUTH_DOMAIN
-    - REACT_APP_FIREBASE_PROJECT_ID
-    - REACT_APP_FIREBASE_STORAGE_BUCKET
-    - REACT_APP_FIREBASE_MESSAGING_SENDER_ID
-    - REACT_APP_FIREBASE_APP_ID
-    */
-  }
+  ]
 }
