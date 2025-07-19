@@ -2412,12 +2412,12 @@ const HomePageContent = () => {
             <div className="about-us-container">
                 <div className="about-us-content">
                     <div className="about-us-seal"></div>
-                    <h1>EA Space - Advanced Techno-Economic Analysis Platform</h1>
+                    <h1>TEA Space - Advanced Techno-Economic Analysis Platform</h1>
                     <p>TEA Space is a cutting-edge techno-economic analysis platform equipped with a climate intelligence layer, and AI-powered features. TEA Space uniquely combines financial modeling with carbon tracking and regulatory compliance.</p>
 
                     <div className="decorative-divider">✦ ✦ ✦</div>
 
-                    <h2>Key Features</h2>
+                    <h2>*Key Features*</h2>
 
                     <p>• <strong>Advanced Financial Modeling Engine</strong>: Built a comprehensive Cash Flow Analysis (CFA) system with modular revenue/expense component tracking, supporting complex industrial process economics with time-sensitive parameter activation.</p>
 
