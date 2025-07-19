@@ -2417,7 +2417,7 @@ const HomePageContent = () => {
 
                     <div className="decorative-divider">✦ ✦ ✦</div>
 
-                    <h2>*Key Features*</h2>
+                    <h2>Key Features</h2>
 
                     <p>• <strong>Advanced Financial Modeling Engine</strong>: Built a comprehensive Cash Flow Analysis (CFA) system with modular revenue/expense component tracking, supporting complex industrial process economics with time-sensitive parameter activation.</p>
 
