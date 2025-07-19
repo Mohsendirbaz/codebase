@@ -2413,23 +2413,17 @@ const HomePageContent = () => {
                 <div className="about-us-content">
                     <div className="about-us-seal"></div>
                     <h1>TEA Space - Advanced Techno-Economic Analysis Platform</h1>
-                    <p>TEA Space is a cutting-edge techno-economic analysis platform that revolutionizes process economics evaluation through innovative matrix-based architecture, advanced environmental intelligence, and AI-powered assistance. Designed for industrial and chemical process optimization, TEA Space uniquely combines financial modeling with carbon tracking and regulatory compliance.</p>
+                    <p>TEA Space is a cutting-edge techno-economic analysis platform equipped with a climate intelligence layer, and AI-powered features. TEA Space uniquely combines financial modeling with carbon tracking and regulatory compliance.</p>
 
                     <div className="decorative-divider">✦ ✦ ✦</div>
 
                     <h2>Key Features</h2>
 
-                    <p>• <strong>Advanced Financial Modeling Engine</strong>: Built a comprehensive Cash Flow Analysis (CFA) system with modular revenue/expense component tracking, supporting complex industrial process economics with time-sensitive parameter activation through the proprietary Efficacy Time System.</p>
+                    <p>• <strong>Advanced Financial Modeling Engine</strong>: Built a comprehensive Cash Flow Analysis (CFA) system with modular revenue/expense component tracking, supporting complex industrial process economics with time-sensitive parameter activation.</p>
 
-                    <p>• <strong>Multi-dimensional Parameter Management</strong>: Engineered a unified matrix state management system that treats all parameters as elements in a 5-dimensional space (versions, zones, time periods, configurations, and capacity), enabling powerful cross-dimensional comparisons and inheritance patterns with theoretical capacity handling up to 900,000 configurations.</p>
+                    <p>• <strong>Multi-dimensional Parameter Management</strong>: Engineered a multi-dimensional space via a unified matrix state management system yielding theoretical capacity of handling up to 900,000 configurations .</p>
 
                     <p>• <strong>Comprehensive Climate Intelligence Module</strong>: Implemented multi-dimensional carbon tracking across Scope 1, 2, and 3 emissions with configurable emission factors for equipment, installation, materials, energy, and transportation. Features specialized tracking for hard-to-decarbonize sectors (steel, cement, chemicals) with interactive geospatial visualization using heatmaps, bubble charts, and gradient overlays.</p>
-
-                    <p>• <strong>Three-Tier Regulatory Compliance Framework</strong>: Developed multilevel emissions treatment supporting local (municipal), state (regional), and federal (national) regulatory thresholds with automatic compliance status monitoring (compliant/warning/non-compliant) and region-specific incentive integration including carbon tax rebates and emissions trading benefits.</p>
-
-                    <p>• <strong>AI-Powered Factual Precedence System</strong>: Integrated GPT-4 Turbo to provide context-aware historical business insights and parameter recommendations based on industry type, technology level, scale, and regulatory framework. The system analyzes corporate evolution patterns from companies like Tesla and Toyota to suggest phased deployment strategies, partnerships, and value-based pricing approaches.</p>
-
-                    <p>• <strong>Intelligent Virtual Assistant for Modelers</strong>: Built the Junie Connector Plugin providing inline AI-powered suggestions directly in the IDE, featuring sequential agent architecture with isolated contexts, ghost text suggestions, and asynchronous execution for seamless modeling assistance without disrupting workflow.</p>
 
                     <p>• <strong>Decarbonization Pathway Analysis</strong>: Created a comprehensive pathway comparison system evaluating 8 pre-configured hydrogen production methods (renewable, low-carbon, fossil, emerging) with metrics including carbon intensity (1.2-18.2 kg CO2e/kg H2), technology readiness levels, water usage, and cost analysis, enabling side-by-side comparison of up to 4 pathways.</p>
 
@@ -2437,9 +2431,9 @@ const HomePageContent = () => {
 
                     <p>• <strong>Interactive Visualization Framework</strong>: Developed dynamic visualization capabilities using React/D3.js for real-time rendering of waterfall charts, operational cost breakdowns, cumulative economic summaries, capacity utilization tracking, and climate impact overlays with weighted calculations across all dimensions.</p>
 
-                    <p>• <strong>Scalable Architecture with Environmental Focus</strong>: Designed a modular full-stack solution using React.js with Jotai state management, Python Flask APIs with factory-based calculation engines, dual database integration (PostgreSQL/ClickHouse), and blockchain-ready architecture for future carbon credit tracking and immutable compliance records.</p>
+                    <p>• <strong>Scalable Architecture with Environmental Focus</strong>: Designed a modular full-stack solution using React.js with Jotai state management, Python Flask APIs with factory-based calculation engines, dual database integration (PostgreSQL/ClickHouse) architecture</p>
 
-                    <p>• <strong>Enterprise Environmental Features</strong>: Incorporated multi-zone carbon generation with clustering analysis, regional system support (SI/USD and Europe/EUR), dynamic carbon incentive calculations, and machine learning readiness for predictive emissions modeling and optimization recommendations.</p>
+                    <p>• <strong>Enterprise Environmental Features</strong>: Dynamic carbon incentive calculations, and optimization recommendations.</p>
 
                     <h2>Architecture</h2>
 
@@ -2447,9 +2441,6 @@ const HomePageContent = () => {
 
                     <p><strong>Backend Stack</strong>: Flask API framework, PostgreSQL for relational data, ClickHouse for time-series analytics, modular calculation engines, and factory pattern architecture.</p>
 
-                    <p><strong>AI Integration</strong>: GPT-4 Turbo for factual precedence, sequential agent architecture, rate-limited queue system, and context-aware recommendations.</p>
-
-                    <h2>Getting Started</h2>
 
                     <h3>Prerequisites</h3>
                     <p>• Node.js v16.0+</p>
@@ -2457,19 +2448,10 @@ const HomePageContent = () => {
                     <p>• PostgreSQL 14+</p>
                     <p>• ClickHouse (optional for analytics)</p>
 
-                    <h3>Installation</h3>
-                    <p>1. <strong>Clone the repository</strong></p>
-                    <p>2. <strong>Install frontend dependencies</strong></p>
-                    <p>3. <strong>Install backend dependencies</strong></p>
-                    <p>4. <strong>Initialize databases</strong></p>
-                    <p>5. <strong>Start the application</strong></p>
 
                     <h2>Core Modules</h2>
 
                     <h3>1. Financial Modeling Engine</h3>
-                    <p>• Cash Flow Analysis (CFA) with modular components</p>
-                    <p>• Revenue/expense tracking with time-sensitive activation</p>
-                    <p>• Tax operations and utility calculations</p>
                     <p>• Multi-version configuration management</p>
 
                     <h3>2. Climate Intelligence Module</h3>
@@ -2486,33 +2468,10 @@ const HomePageContent = () => {
                     <p>• Wind-PEM, Solar-PEM, Biomass-PEM</p>
                     <p>• Natural gas with/without CCS</p>
                     <p>• Coal with/without CCS</p>
-                    <p>• Emerging technologies (Solid Oxide)</p>
-
-                    <h2>AI-Powered Features</h2>
+                    <p>• Emerging technologies</p>
 
                     <h3>Factual Precedence System</h3>
-                    <p>The platform provides context-aware business insights based on:</p>
-                    <p>• Industry type and technology level</p>
-                    <p>• Corporate evolution patterns (Tesla, Toyota, Amazon)</p>
-                    <p>• Regulatory framework considerations</p>
-                    <p>• Phased deployment strategies</p>
 
-                    <h3>Virtual Assistant (Junie Plugin)</h3>
-                    <p>• Inline code suggestions in IDE</p>
-                    <p>• Ghost text recommendations</p>
-                    <p>• Asynchronous background processing</p>
-                    <p>• Context isolation for focused assistance</p>
-
-                    <h2>Environmental Compliance</h2>
-
-                    <h3>Emission Thresholds</h3>
-                    <p>• Local: &lt; 1,000 kg CO₂e (Compliant)</p>
-                    <p>• State: &lt; 10,000 kg CO₂e (Warning at 80%)</p>
-                    <p>• Federal: &lt; 25,000 kg CO₂e (Non-compliant if exceeded)</p>
-
-                    <h3>Regional Systems</h3>
-                    <p>• SI/USD: Standard international metrics</p>
-                    <p>• EUR: EU-specific regulations and incentives</p>
 
                     <h2>Visualization Capabilities</h2>
                     <p>• <strong>Waterfall Charts</strong> - Financial flow analysis</p>
@@ -2520,36 +2479,18 @@ const HomePageContent = () => {
                     <p>• <strong>Bubble Charts</strong> - Multi-dimensional comparisons</p>
                     <p>• <strong>Capacity Tracking</strong> - Real-time utilization metrics</p>
 
-                    <h2>Documentation</h2>
-                    <p>• API Documentation</p>
-                    <p>• Component Guide</p>
-                    <p>• Climate Module Guide</p>
-                    <p>• AI Integration Guide</p>
-
-                    <h2>Contributing</h2>
-                    <p>We welcome contributions! Please see our Contributing Guide for details.</p>
-                    <p>1. Fork the repository</p>
-                    <p>2. Create your feature branch</p>
-                    <p>3. Commit your changes</p>
-                    <p>4. Push to the branch</p>
-                    <p>5. Open a Pull Request</p>
-
                     <h2>License</h2>
                     <p>This project is licensed under the MIT License.</p>
 
                     <h2>Acknowledgments</h2>
-                    <p>• OpenAI for GPT-4 integration capabilities</p>
-                    <p>• React and Python communities</p>
-                    <p>• Contributors to open-source dependencies</p>
+                    <p>• University of Missouri-Columbia</p>
 
                     <h2>Contact & Support</h2>
-                    <p>• <strong>Issues</strong>: GitHub Issues</p>
-                    <p>• <strong>Discussions</strong>: GitHub Discussions</p>
-                    <p>• <strong>Email</strong>: support@teaspace.com</p>
+                    <p>• <strong>Email</strong>: dirbaz.sharif@gmail.com</p>
 
                     <div className="decorative-divider">✦ ✦ ✦</div>
 
-                    <p>© 2025 TEA Space. Making complex economics simple, sustainable, and intelligent.</p>
+                    <p>© 2025 TEA Space</p>
                 </div>
             </div>
         );
