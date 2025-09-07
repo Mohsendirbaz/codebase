@@ -11,42 +11,37 @@
 
 TEA Space is a modern environment for techno-economic analysis that turns complex process economics into a structured, defensible narrative. Built on a matrix-native backbone, it treats time and uncertainty as first-class citizens and preserves the provenance of every assumption and change. Analysts move fluidly from scenario design to consolidated results without losing traceability, and teams iterate with shared context and clear accountability. The platform emphasizes clarity, auditability, and extensibility—designed to evolve with emerging environmental metrics and regulatory lenses.
 
-
 ### 🎯 Key Features
 
-Completed
+#### ✅ Completed
 
-Core CFA engine performs base cash-flow analysis across multiple scenarios, consolidating intervalized configurations into a single financial horizon.
+* 🧮 **Core CFA engine** — Base cash-flow analysis across multiple scenarios, consolidating intervalized configurations into a single financial horizon.
+* 📊 **Aggregated visualization** — **Dynamic** (interactive dashboards) and **static** (publication-ready) plots across scenarios.
+* ⏱️ **Time-scoped parameters** — Control activation windows and levels for precise, temporal scenario design.
+* 🧰 **Centralized scaling & factorization** — Apply complex scaling rules to cost components across parameter types and configurations.
+* 🔄 **Scenario import/export** — Shareable, versionable bundles with metadata for collaboration.
 
-Aggregated visualization layer: supports dynamic (interactive) dashboards and static (publication-ready) plots across scenarios.
+#### 🛠️ In Progress
 
-Time-based parameter control interface (activation windows and levels) enabling fine-grained scenario design.
+* 🧱 **Matrix-based computation layer** — Advanced React state management for determinism, performance, and responsive UX.
 
-Centralized console for complex scaling and factorization of cost components across parameter types and configurations.
+#### 🔭 Planned
 
-Scenario import/export for collaboration (structured bundles with metadata for sharing and versioning).
-
-In progress
-
-Migration to a matrix-based computation layer with advanced React state management to improve determinism, performance, and UI responsiveness.
-
-Planned
-
-Climate Intelligence Layer integrating material-level carbon accounting, complementing component-, equipment-, and plant-level series to extend TEA with footprint and intensity metrics.
+* 🌱 **Climate Intelligence Layer** — Material-level carbon accounting complementing component-, equipment-, and plant-level series.
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
-- OpenAI for GPT-5 integration capabilities
-- React and Python communities
-- Contributors to open-source dependencies
+* OpenAI for GPT-5 integration capabilities
+* React and Python communities
+* Contributors to open-source dependencies
 
 ## 📞 Contact & Support
 
-- **Email**: dirbaz.sharif@gmail.com
+* **Email**: [dirbaz.sharif@gmail.com](mailto:dirbaz.sharif@gmail.com)
 
 ---
 
