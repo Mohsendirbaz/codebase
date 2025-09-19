@@ -10,12 +10,13 @@
 ## 🧭 Why TEA Space?
 
 <p align="center">
-  <img src="assets/why/ladder.gif"
-       alt="Animated: Debt Interest vs Major Budget Categories — why TEA Space matters"
+  <img src="assets/why/Why.png"
+       alt="Debt Interest vs Major Budget Categories — why TEA Space matters"
        width="900">
 </p>
 
-<sub><i>The lines draw in and labels fade each cycle. A fixed, recurring pattern—no clicks, runs inline on GitHub.</i></sub>
+<sub><i>A static snapshot of the motivating signal: interest costs rising faster than future-facing investments.</i></sub>
+
 
 ## 🌟 Overview
 
