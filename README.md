@@ -10,7 +10,7 @@
 ## 🧭 Why TEA Space?
 
 <p align="center">
-  <img src="assets/why/Why.png"
+  <img src="assets/why/Why.PNG"
        alt="Debt Interest vs Major Budget Categories — why TEA Space matters"
        width="900">
 </p>
