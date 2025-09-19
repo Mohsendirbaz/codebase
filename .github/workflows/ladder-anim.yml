@@ -1,0 +1,49 @@
+name: Build Ladder Animation
+
+on:
+  push:
+    paths:
+      - 'ladder_anim.html'
+      - 'scripts/render-ladder-anim.js'
+      - 'package.json'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Git identity for commit
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install deps
+        run: npm ci || npm i
+
+      - name: Install ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+
+      - name: Render frames
+        run: npm run render:frames
+
+      - name: Encode MP4
+        run: npm run make:video
+
+      - name: Encode GIF
+        run: npm run make:gif
+
+      - name: Commit artifacts
+        run: |
+          git add assets/why/ladder.mp4 assets/why/ladder.gif
+          git add frames || true
+          git commit -m "chore(anim): update ladder animation" || echo "No changes"
+          git push
