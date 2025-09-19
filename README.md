@@ -7,6 +7,16 @@
   <img src="https://img.shields.io/badge/AI-GPT--5-412991?style=for-the-badge&logo=openai&logoColor=white" alt="AI">
 </div>
 
+## 🧭 Why TEA Space?
+
+<p align="center">
+  <img src="assets/why/ladder.gif"
+       alt="Animated: Debt Interest vs Major Budget Categories — why TEA Space matters"
+       width="900">
+</p>
+
+<sub><i>The lines draw in and labels fade each cycle. A fixed, recurring pattern—no clicks, runs inline on GitHub.</i></sub>
+
 ## 🌟 Overview
 
 TEA Space is a modern environment for techno-economic analysis that turns complex process economics into a structured, defensible narrative. Built on a matrix-native backbone, it treats time and uncertainty as first-class citizens and preserves the provenance of every assumption and change. Analysts move fluidly from scenario design to consolidated results without losing traceability, and teams iterate with shared context and clear accountability. The platform emphasizes clarity, auditability, and extensibility—designed to evolve with emerging environmental metrics and regulatory lenses.
